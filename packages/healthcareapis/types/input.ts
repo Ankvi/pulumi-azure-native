@@ -11,7 +11,7 @@ export interface AnalyticsConnectorDataLakeDataDestinationArgs {
     /**
      * Name of data destination.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Type of data destination.
      * Expected value is 'datalake'.
@@ -45,11 +45,11 @@ export interface AnalyticsConnectorFhirToParquetMappingArgs {
     /**
      * Artifact reference for extension schema.
      */
-    extensionSchemaReference?: pulumi.Input<string>;
+    extensionSchemaReference?: pulumi.Input<string | undefined>;
     /**
      * Artifact reference for filter configurations.
      */
-    filterConfigurationReference?: pulumi.Input<string>;
+    filterConfigurationReference?: pulumi.Input<string | undefined>;
     /**
      * Type of data mapping.
      * Expected value is 'fhirToParquet'.
@@ -64,23 +64,23 @@ export interface CorsConfigurationArgs {
     /**
      * If credentials are allowed via CORS.
      */
-    allowCredentials?: pulumi.Input<boolean>;
+    allowCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * The headers to be allowed via CORS.
      */
-    headers?: pulumi.Input<pulumi.Input<string>[]>;
+    headers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The max age to be allowed via CORS.
      */
-    maxAge?: pulumi.Input<number>;
+    maxAge?: pulumi.Input<number | undefined>;
     /**
      * The methods to be allowed via CORS.
      */
-    methods?: pulumi.Input<pulumi.Input<string>[]>;
+    methods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The origins to be allowed via CORS.
      */
-    origins?: pulumi.Input<pulumi.Input<string>[]>;
+    origins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -90,7 +90,7 @@ export interface EncryptionArgs {
     /**
      * The encryption settings for the customer-managed key
      */
-    customerManagedKeyEncryption?: pulumi.Input<EncryptionCustomerManagedKeyEncryptionArgs>;
+    customerManagedKeyEncryption?: pulumi.Input<EncryptionCustomerManagedKeyEncryptionArgs | undefined>;
 }
 
 /**
@@ -100,7 +100,7 @@ export interface EncryptionCustomerManagedKeyEncryptionArgs {
     /**
      * The URL of the key to use for encryption
      */
-    keyEncryptionKeyUrl?: pulumi.Input<string>;
+    keyEncryptionKeyUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -110,11 +110,11 @@ export interface FhirServiceAcrConfigurationArgs {
     /**
      * The list of the Azure container registry login servers.
      */
-    loginServers?: pulumi.Input<pulumi.Input<string>[]>;
+    loginServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of Open Container Initiative (OCI) artifacts.
      */
-    ociArtifacts?: pulumi.Input<pulumi.Input<ServiceOciArtifactEntryArgs>[]>;
+    ociArtifacts?: pulumi.Input<pulumi.Input<ServiceOciArtifactEntryArgs>[] | undefined>;
 }
 
 /**
@@ -124,19 +124,19 @@ export interface FhirServiceAuthenticationConfigurationArgs {
     /**
      * The audience url for the service
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * The authority url for the service
      */
-    authority?: pulumi.Input<string>;
+    authority?: pulumi.Input<string | undefined>;
     /**
      * The array of identity provider configurations for SMART on FHIR authentication.
      */
-    smartIdentityProviders?: pulumi.Input<pulumi.Input<SmartIdentityProviderConfigurationArgs>[]>;
+    smartIdentityProviders?: pulumi.Input<pulumi.Input<SmartIdentityProviderConfigurationArgs>[] | undefined>;
     /**
      * If the SMART on FHIR proxy is enabled
      */
-    smartProxyEnabled?: pulumi.Input<boolean>;
+    smartProxyEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -146,23 +146,23 @@ export interface FhirServiceCorsConfigurationArgs {
     /**
      * If credentials are allowed via CORS.
      */
-    allowCredentials?: pulumi.Input<boolean>;
+    allowCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * The headers to be allowed via CORS.
      */
-    headers?: pulumi.Input<pulumi.Input<string>[]>;
+    headers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The max age to be allowed via CORS.
      */
-    maxAge?: pulumi.Input<number>;
+    maxAge?: pulumi.Input<number | undefined>;
     /**
      * The methods to be allowed via CORS.
      */
-    methods?: pulumi.Input<pulumi.Input<string>[]>;
+    methods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The origins to be allowed via CORS.
      */
-    origins?: pulumi.Input<pulumi.Input<string>[]>;
+    origins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -172,7 +172,7 @@ export interface FhirServiceExportConfigurationArgs {
     /**
      * The name of the default export storage account.
      */
-    storageAccountName?: pulumi.Input<string>;
+    storageAccountName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,15 +182,15 @@ export interface FhirServiceImportConfigurationArgs {
     /**
      * If the import operation is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * If the FHIR service is in InitialImportMode.
      */
-    initialImportMode?: pulumi.Input<boolean>;
+    initialImportMode?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the default integration storage account.
      */
-    integrationDataStore?: pulumi.Input<string>;
+    integrationDataStore?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,7 +200,7 @@ export interface ImplementationGuidesConfigurationArgs {
     /**
      * If US Core Missing Data requirement is enabled.
      */
-    usCoreMissingData?: pulumi.Input<boolean>;
+    usCoreMissingData?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -210,15 +210,15 @@ export interface IotEventHubIngestionEndpointConfigurationArgs {
     /**
      * Consumer group of the event hub to connected to.
      */
-    consumerGroup?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string | undefined>;
     /**
      * Event Hub name to connect to.
      */
-    eventHubName?: pulumi.Input<string>;
+    eventHubName?: pulumi.Input<string | undefined>;
     /**
      * Fully qualified namespace of the Event Hub to connect to.
      */
-    fullyQualifiedEventHubNamespace?: pulumi.Input<string>;
+    fullyQualifiedEventHubNamespace?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -228,7 +228,7 @@ export interface IotMappingPropertiesArgs {
     /**
      * The mapping.
      */
-    content?: any;
+    content?: any | undefined;
 }
 
 /**
@@ -248,15 +248,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -266,11 +266,11 @@ export interface ResourceVersionPolicyConfigurationArgs {
     /**
      * The default value for tracking history across all resources.
      */
-    default?: pulumi.Input<string | enums.FhirResourceVersionPolicy>;
+    default?: pulumi.Input<string | enums.FhirResourceVersionPolicy | undefined>;
     /**
      * A list of FHIR Resources and their version policy overrides.
      */
-    resourceTypeOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string | enums.FhirResourceVersionPolicy>}>;
+    resourceTypeOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string | enums.FhirResourceVersionPolicy>} | undefined>;
 }
 
 /**
@@ -290,11 +290,11 @@ export interface ServiceAcrConfigurationInfoArgs {
     /**
      * The list of the ACR login servers.
      */
-    loginServers?: pulumi.Input<pulumi.Input<string>[]>;
+    loginServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of Open Container Initiative (OCI) artifacts.
      */
-    ociArtifacts?: pulumi.Input<pulumi.Input<ServiceOciArtifactEntryArgs>[]>;
+    ociArtifacts?: pulumi.Input<pulumi.Input<ServiceOciArtifactEntryArgs>[] | undefined>;
 }
 
 /**
@@ -304,15 +304,15 @@ export interface ServiceAuthenticationConfigurationInfoArgs {
     /**
      * The audience url for the service
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * The authority url for the service
      */
-    authority?: pulumi.Input<string>;
+    authority?: pulumi.Input<string | undefined>;
     /**
      * If the SMART on FHIR proxy is enabled
      */
-    smartProxyEnabled?: pulumi.Input<boolean>;
+    smartProxyEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -322,23 +322,23 @@ export interface ServiceCorsConfigurationInfoArgs {
     /**
      * If credentials are allowed via CORS.
      */
-    allowCredentials?: pulumi.Input<boolean>;
+    allowCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * The headers to be allowed via CORS.
      */
-    headers?: pulumi.Input<pulumi.Input<string>[]>;
+    headers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The max age to be allowed via CORS.
      */
-    maxAge?: pulumi.Input<number>;
+    maxAge?: pulumi.Input<number | undefined>;
     /**
      * The methods to be allowed via CORS.
      */
-    methods?: pulumi.Input<pulumi.Input<string>[]>;
+    methods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The origins to be allowed via CORS.
      */
-    origins?: pulumi.Input<pulumi.Input<string>[]>;
+    origins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -348,15 +348,15 @@ export interface ServiceCosmosDbConfigurationInfoArgs {
     /**
      * The multi-tenant application id used to enable CMK access for services in a data sovereign region.
      */
-    crossTenantCmkApplicationId?: pulumi.Input<string>;
+    crossTenantCmkApplicationId?: pulumi.Input<string | undefined>;
     /**
      * The URI of the customer-managed key for the backing database.
      */
-    keyVaultKeyUri?: pulumi.Input<string>;
+    keyVaultKeyUri?: pulumi.Input<string | undefined>;
     /**
      * The provisioned throughput for the backing database.
      */
-    offerThroughput?: pulumi.Input<number>;
+    offerThroughput?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -366,7 +366,7 @@ export interface ServiceExportConfigurationInfoArgs {
     /**
      * The name of the default export storage account.
      */
-    storageAccountName?: pulumi.Input<string>;
+    storageAccountName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -376,15 +376,15 @@ export interface ServiceImportConfigurationInfoArgs {
     /**
      * If the import operation is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * If the FHIR service is in InitialImportMode.
      */
-    initialImportMode?: pulumi.Input<boolean>;
+    initialImportMode?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the default integration storage account.
      */
-    integrationDataStore?: pulumi.Input<string>;
+    integrationDataStore?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -398,7 +398,7 @@ export interface ServiceManagedIdentityIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -408,15 +408,15 @@ export interface ServiceOciArtifactEntryArgs {
     /**
      * The artifact digest.
      */
-    digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string | undefined>;
     /**
      * The artifact name.
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * The Azure Container Registry login server.
      */
-    loginServer?: pulumi.Input<string>;
+    loginServer?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -426,39 +426,39 @@ export interface ServicesPropertiesArgs {
     /**
      * The access policies of the service instance.
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<ServiceAccessPolicyEntryArgs>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<ServiceAccessPolicyEntryArgs>[] | undefined>;
     /**
      * The azure container registry settings used for convert data operation of the service instance.
      */
-    acrConfiguration?: pulumi.Input<ServiceAcrConfigurationInfoArgs>;
+    acrConfiguration?: pulumi.Input<ServiceAcrConfigurationInfoArgs | undefined>;
     /**
      * The authentication configuration for the service instance.
      */
-    authenticationConfiguration?: pulumi.Input<ServiceAuthenticationConfigurationInfoArgs>;
+    authenticationConfiguration?: pulumi.Input<ServiceAuthenticationConfigurationInfoArgs | undefined>;
     /**
      * The settings for the CORS configuration of the service instance.
      */
-    corsConfiguration?: pulumi.Input<ServiceCorsConfigurationInfoArgs>;
+    corsConfiguration?: pulumi.Input<ServiceCorsConfigurationInfoArgs | undefined>;
     /**
      * The settings for the Cosmos DB database backing the service.
      */
-    cosmosDbConfiguration?: pulumi.Input<ServiceCosmosDbConfigurationInfoArgs>;
+    cosmosDbConfiguration?: pulumi.Input<ServiceCosmosDbConfigurationInfoArgs | undefined>;
     /**
      * The settings for the export operation of the service instance.
      */
-    exportConfiguration?: pulumi.Input<ServiceExportConfigurationInfoArgs>;
+    exportConfiguration?: pulumi.Input<ServiceExportConfigurationInfoArgs | undefined>;
     /**
      * The settings for the import operation of the service instance.
      */
-    importConfiguration?: pulumi.Input<ServiceImportConfigurationInfoArgs>;
+    importConfiguration?: pulumi.Input<ServiceImportConfigurationInfoArgs | undefined>;
     /**
      * The list of private endpoint connections that are set up for this resource.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<PrivateEndpointConnectionArgs>[] | undefined>;
     /**
      * Control permission for data plane traffic coming from public networks while private endpoint is enabled.
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess | undefined>;
 }
 
 /**
@@ -468,7 +468,7 @@ export interface ServicesResourceIdentityArgs {
     /**
      * Type of identity being specified, currently SystemAssigned and None are allowed.
      */
-    type?: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+    type?: pulumi.Input<string | enums.ManagedServiceIdentityType | undefined>;
 }
 
 /**
@@ -478,15 +478,15 @@ export interface SmartIdentityProviderApplicationArgs {
     /**
      * The actions that are permitted to be performed on FHIR resources for the application.
      */
-    allowedDataActions?: pulumi.Input<pulumi.Input<string | enums.SmartDataActions>[]>;
+    allowedDataActions?: pulumi.Input<pulumi.Input<string | enums.SmartDataActions>[] | undefined>;
     /**
      * The audience that will be used to validate bearer tokens against the given authority.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * The application client id defined in the identity provider. This value will be used to validate bearer tokens against the given authority.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -496,11 +496,11 @@ export interface SmartIdentityProviderConfigurationArgs {
     /**
      * The array of identity provider applications for SMART on FHIR authentication.
      */
-    applications?: pulumi.Input<pulumi.Input<SmartIdentityProviderApplicationArgs>[]>;
+    applications?: pulumi.Input<pulumi.Input<SmartIdentityProviderApplicationArgs>[] | undefined>;
     /**
      * The identity provider token authority also known as the token issuing authority.
      */
-    authority?: pulumi.Input<string>;
+    authority?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -510,9 +510,9 @@ export interface StorageConfigurationArgs {
     /**
      * The filesystem name of connected storage account.
      */
-    fileSystemName?: pulumi.Input<string>;
+    fileSystemName?: pulumi.Input<string | undefined>;
     /**
      * The resource id of connected storage account.
      */
-    storageResourceId?: pulumi.Input<string>;
+    storageResourceId?: pulumi.Input<string | undefined>;
 }

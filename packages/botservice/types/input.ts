@@ -12,11 +12,11 @@ export interface AcsChatChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
 }
 /**
  * acsChatChannelArgsProvideDefaults sets the appropriate defaults for AcsChatChannelArgs
@@ -40,15 +40,15 @@ export interface AlexaChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to Alexa channel resource
      */
-    properties?: pulumi.Input<AlexaChannelPropertiesArgs>;
+    properties?: pulumi.Input<AlexaChannelPropertiesArgs | undefined>;
 }
 /**
  * alexaChannelArgsProvideDefaults sets the appropriate defaults for AlexaChannelArgs
@@ -81,35 +81,35 @@ export interface BotPropertiesArgs {
     /**
      * Contains resource all settings defined as key/value pairs.
      */
-    allSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    allSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The hint (e.g. keyVault secret resourceId) on how to fetch the app secret
      */
-    appPasswordHint?: pulumi.Input<string>;
+    appPasswordHint?: pulumi.Input<string | undefined>;
     /**
      * The CMK Url
      */
-    cmekKeyVaultUrl?: pulumi.Input<string>;
+    cmekKeyVaultUrl?: pulumi.Input<string | undefined>;
     /**
      * The description of the bot
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Application Insights key
      */
-    developerAppInsightKey?: pulumi.Input<string>;
+    developerAppInsightKey?: pulumi.Input<string | undefined>;
     /**
      * The Application Insights Api Key
      */
-    developerAppInsightsApiKey?: pulumi.Input<string>;
+    developerAppInsightsApiKey?: pulumi.Input<string | undefined>;
     /**
      * The Application Insights App Id
      */
-    developerAppInsightsApplicationId?: pulumi.Input<string>;
+    developerAppInsightsApplicationId?: pulumi.Input<string | undefined>;
     /**
      * Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * The Name of the bot
      */
@@ -121,27 +121,27 @@ export interface BotPropertiesArgs {
     /**
      * The Icon Url of the bot
      */
-    iconUrl?: pulumi.Input<string>;
+    iconUrl?: pulumi.Input<string | undefined>;
     /**
      * Whether Cmek is enabled
      */
-    isCmekEnabled?: pulumi.Input<boolean>;
+    isCmekEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the bot is streaming supported
      */
-    isStreamingSupported?: pulumi.Input<boolean>;
+    isStreamingSupported?: pulumi.Input<boolean | undefined>;
     /**
      * Collection of LUIS App Ids
      */
-    luisAppIds?: pulumi.Input<pulumi.Input<string>[]>;
+    luisAppIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The LUIS Key
      */
-    luisKey?: pulumi.Input<string>;
+    luisKey?: pulumi.Input<string | undefined>;
     /**
      * The bot's manifest url
      */
-    manifestUrl?: pulumi.Input<string>;
+    manifestUrl?: pulumi.Input<string | undefined>;
     /**
      * Microsoft App Id for the bot
      */
@@ -149,43 +149,43 @@ export interface BotPropertiesArgs {
     /**
      * Microsoft App Managed Identity Resource Id for the bot
      */
-    msaAppMSIResourceId?: pulumi.Input<string>;
+    msaAppMSIResourceId?: pulumi.Input<string | undefined>;
     /**
      * Microsoft App Tenant Id for the bot
      */
-    msaAppTenantId?: pulumi.Input<string>;
+    msaAppTenantId?: pulumi.Input<string | undefined>;
     /**
      * Microsoft App Type for the bot
      */
-    msaAppType?: pulumi.Input<string | enums.MsaAppType>;
+    msaAppType?: pulumi.Input<string | enums.MsaAppType | undefined>;
     /**
      * The hint to browser (e.g. protocol handler) on how to open the bot for authoring
      */
-    openWithHint?: pulumi.Input<string>;
+    openWithHint?: pulumi.Input<string | undefined>;
     /**
      * Contains resource parameters defined as key/value pairs.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether the bot is in an isolated network
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess | undefined>;
     /**
      * Publishing credentials of the resource
      */
-    publishingCredentials?: pulumi.Input<string>;
+    publishingCredentials?: pulumi.Input<string | undefined>;
     /**
      * The channel schema transformation version for the bot
      */
-    schemaTransformationVersion?: pulumi.Input<string>;
+    schemaTransformationVersion?: pulumi.Input<string | undefined>;
     /**
      * The storage resourceId for the bot
      */
-    storageResourceId?: pulumi.Input<string>;
+    storageResourceId?: pulumi.Input<string | undefined>;
     /**
      * The Tenant Id for the bot
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 /**
  * botPropertiesArgsProvideDefaults sets the appropriate defaults for BotPropertiesArgs
@@ -207,11 +207,11 @@ export interface ConnectionSettingParameterArgs {
     /**
      * Key for the Connection Setting Parameter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Value associated with the Connection Setting Parameter.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -221,39 +221,39 @@ export interface ConnectionSettingPropertiesArgs {
     /**
      * Client Id associated with the Connection Setting.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Client Secret associated with the Connection Setting
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Id of the Connection Setting.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Name of the Connection Setting.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Service Provider Parameters associated with the Connection Setting
      */
-    parameters?: pulumi.Input<pulumi.Input<ConnectionSettingParameterArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<ConnectionSettingParameterArgs>[] | undefined>;
     /**
      * Provisioning state of the resource
      */
-    provisioningState?: pulumi.Input<string>;
+    provisioningState?: pulumi.Input<string | undefined>;
     /**
      * Scopes associated with the Connection Setting
      */
-    scopes?: pulumi.Input<string>;
+    scopes?: pulumi.Input<string | undefined>;
     /**
      * Service Provider Display Name associated with the Connection Setting
      */
-    serviceProviderDisplayName?: pulumi.Input<string>;
+    serviceProviderDisplayName?: pulumi.Input<string | undefined>;
     /**
      * Service Provider Id associated with the Connection Setting
      */
-    serviceProviderId?: pulumi.Input<string>;
+    serviceProviderId?: pulumi.Input<string | undefined>;
 }
 /**
  * connectionSettingPropertiesArgsProvideDefaults sets the appropriate defaults for ConnectionSettingPropertiesArgs
@@ -277,15 +277,15 @@ export interface DirectLineChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to Direct Line channel resource
      */
-    properties?: pulumi.Input<DirectLineChannelPropertiesArgs>;
+    properties?: pulumi.Input<DirectLineChannelPropertiesArgs | undefined>;
 }
 /**
  * directLineChannelArgsProvideDefaults sets the appropriate defaults for DirectLineChannelArgs
@@ -294,7 +294,7 @@ export function directLineChannelArgsProvideDefaults(val: DirectLineChannelArgs)
     return {
         ...val,
         location: (val.location) ?? "global",
-        properties: (val.properties ? pulumi.output(val.properties).apply(directLineChannelPropertiesArgsProvideDefaults) : undefined),
+        properties: pulumi.output(val.properties).apply(v => v === undefined ? undefined : directLineChannelPropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -305,19 +305,19 @@ export interface DirectLineChannelPropertiesArgs {
     /**
      * Direct Line embed code of the resource
      */
-    directLineEmbedCode?: pulumi.Input<string>;
+    directLineEmbedCode?: pulumi.Input<string | undefined>;
     /**
      * The extensionKey1
      */
-    extensionKey1?: pulumi.Input<string>;
+    extensionKey1?: pulumi.Input<string | undefined>;
     /**
      * The extensionKey2
      */
-    extensionKey2?: pulumi.Input<string>;
+    extensionKey2?: pulumi.Input<string | undefined>;
     /**
      * The list of Direct Line sites
      */
-    sites?: pulumi.Input<pulumi.Input<DirectLineSiteArgs>[]>;
+    sites?: pulumi.Input<pulumi.Input<DirectLineSiteArgs>[] | undefined>;
 }
 /**
  * directLineChannelPropertiesArgsProvideDefaults sets the appropriate defaults for DirectLineChannelPropertiesArgs
@@ -337,19 +337,19 @@ export interface DirectLineSiteArgs {
     /**
      * DirectLine application id
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Entity Tag
      */
-    eTag?: pulumi.Input<string>;
+    eTag?: pulumi.Input<string | undefined>;
     /**
      * Whether this site is enabled for block user upload.
      */
-    isBlockUserUploadEnabled?: pulumi.Input<boolean>;
+    isBlockUserUploadEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is disabled detailed logging for
      */
-    isDetailedLoggingEnabled?: pulumi.Input<boolean>;
+    isDetailedLoggingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is enabled for DirectLine channel
      */
@@ -357,31 +357,31 @@ export interface DirectLineSiteArgs {
     /**
      * Whether this site is EndpointParameters enabled for channel
      */
-    isEndpointParametersEnabled?: pulumi.Input<boolean>;
+    isEndpointParametersEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this no-storage site is disabled detailed logging for
      */
-    isNoStorageEnabled?: pulumi.Input<boolean>;
+    isNoStorageEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is enabled for authentication with Bot Framework.
      */
-    isSecureSiteEnabled?: pulumi.Input<boolean>;
+    isSecureSiteEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is enabled for Bot Framework V1 protocol.
      */
-    isV1Enabled?: pulumi.Input<boolean>;
+    isV1Enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is enabled for Bot Framework V3 protocol.
      */
-    isV3Enabled?: pulumi.Input<boolean>;
+    isV3Enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is enabled for Webchat Speech
      */
-    isWebChatSpeechEnabled?: pulumi.Input<boolean>;
+    isWebChatSpeechEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is enabled for preview versions of Webchat
      */
-    isWebchatPreviewEnabled?: pulumi.Input<boolean>;
+    isWebchatPreviewEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Site name
      */
@@ -389,11 +389,11 @@ export interface DirectLineSiteArgs {
     /**
      * Tenant Id
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
      */
-    trustedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    trustedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 /**
  * directLineSiteArgsProvideDefaults sets the appropriate defaults for DirectLineSiteArgs
@@ -418,15 +418,15 @@ export interface DirectLineSpeechChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to DirectLine Speech channel resource
      */
-    properties?: pulumi.Input<DirectLineSpeechChannelPropertiesArgs>;
+    properties?: pulumi.Input<DirectLineSpeechChannelPropertiesArgs | undefined>;
 }
 /**
  * directLineSpeechChannelArgsProvideDefaults sets the appropriate defaults for DirectLineSpeechChannelArgs
@@ -445,31 +445,31 @@ export interface DirectLineSpeechChannelPropertiesArgs {
     /**
      * The cognitive service region with this channel registration.
      */
-    cognitiveServiceRegion?: pulumi.Input<string>;
+    cognitiveServiceRegion?: pulumi.Input<string | undefined>;
     /**
      * The cognitive service id with this channel registration.
      */
-    cognitiveServiceResourceId?: pulumi.Input<string>;
+    cognitiveServiceResourceId?: pulumi.Input<string | undefined>;
     /**
      * The cognitive service subscription key to use with this channel registration.
      */
-    cognitiveServiceSubscriptionKey?: pulumi.Input<string>;
+    cognitiveServiceSubscriptionKey?: pulumi.Input<string | undefined>;
     /**
      * Custom voice deployment id (optional).
      */
-    customSpeechModelId?: pulumi.Input<string>;
+    customSpeechModelId?: pulumi.Input<string | undefined>;
     /**
      * Custom speech model id (optional).
      */
-    customVoiceDeploymentId?: pulumi.Input<string>;
+    customVoiceDeploymentId?: pulumi.Input<string | undefined>;
     /**
      * Make this a default bot for chosen cognitive service account.
      */
-    isDefaultBotForCogSvcAccount?: pulumi.Input<boolean>;
+    isDefaultBotForCogSvcAccount?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this channel is enabled or not.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -484,15 +484,15 @@ export interface EmailChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to email channel resource
      */
-    properties?: pulumi.Input<EmailChannelPropertiesArgs>;
+    properties?: pulumi.Input<EmailChannelPropertiesArgs | undefined>;
 }
 /**
  * emailChannelArgsProvideDefaults sets the appropriate defaults for EmailChannelArgs
@@ -511,7 +511,7 @@ export interface EmailChannelPropertiesArgs {
     /**
      * Email channel auth method. 0 Password (Default); 1 Graph.
      */
-    authMethod?: pulumi.Input<number>;
+    authMethod?: pulumi.Input<number | undefined>;
     /**
      * The email address
      */
@@ -523,11 +523,11 @@ export interface EmailChannelPropertiesArgs {
     /**
      * The magic code for setting up the modern authentication.
      */
-    magicCode?: pulumi.Input<string>;
+    magicCode?: pulumi.Input<string | undefined>;
     /**
      * The password for the email address. Value only returned through POST to the action Channel List API, otherwise empty.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -542,15 +542,15 @@ export interface FacebookChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to bot facebook channel
      */
-    properties?: pulumi.Input<FacebookChannelPropertiesArgs>;
+    properties?: pulumi.Input<FacebookChannelPropertiesArgs | undefined>;
 }
 /**
  * facebookChannelArgsProvideDefaults sets the appropriate defaults for FacebookChannelArgs
@@ -573,7 +573,7 @@ export interface FacebookChannelPropertiesArgs {
     /**
      * Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
      */
-    appSecret?: pulumi.Input<string>;
+    appSecret?: pulumi.Input<string | undefined>;
     /**
      * Whether this channel is enabled for the bot
      */
@@ -581,7 +581,7 @@ export interface FacebookChannelPropertiesArgs {
     /**
      * The list of Facebook pages
      */
-    pages?: pulumi.Input<pulumi.Input<FacebookPageArgs>[]>;
+    pages?: pulumi.Input<pulumi.Input<FacebookPageArgs>[] | undefined>;
 }
 
 /**
@@ -591,7 +591,7 @@ export interface FacebookPageArgs {
     /**
      * Facebook application access token. Value only returned through POST to the action Channel List API, otherwise empty.
      */
-    accessToken?: pulumi.Input<string>;
+    accessToken?: pulumi.Input<string | undefined>;
     /**
      * Page id
      */
@@ -610,15 +610,15 @@ export interface KikChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to Kik channel resource
      */
-    properties?: pulumi.Input<KikChannelPropertiesArgs>;
+    properties?: pulumi.Input<KikChannelPropertiesArgs | undefined>;
 }
 /**
  * kikChannelArgsProvideDefaults sets the appropriate defaults for KikChannelArgs
@@ -637,7 +637,7 @@ export interface KikChannelPropertiesArgs {
     /**
      * Kik API key. Value only returned through POST to the action Channel List API, otherwise empty.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Whether this channel is enabled for the bot
      */
@@ -645,7 +645,7 @@ export interface KikChannelPropertiesArgs {
     /**
      * Whether this channel is validated for the bot
      */
-    isValidated?: pulumi.Input<boolean>;
+    isValidated?: pulumi.Input<boolean | undefined>;
     /**
      * The Kik user name
      */
@@ -664,15 +664,15 @@ export interface LineChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to line channel resource
      */
-    properties?: pulumi.Input<LineChannelPropertiesArgs>;
+    properties?: pulumi.Input<LineChannelPropertiesArgs | undefined>;
 }
 /**
  * lineChannelArgsProvideDefaults sets the appropriate defaults for LineChannelArgs
@@ -701,11 +701,11 @@ export interface LineRegistrationArgs {
     /**
      * Access token for the line channel registration
      */
-    channelAccessToken?: pulumi.Input<string>;
+    channelAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Secret for the line channel registration
      */
-    channelSecret?: pulumi.Input<string>;
+    channelSecret?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -720,11 +720,11 @@ export interface M365ExtensionsArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
 }
 /**
  * m365extensionsArgsProvideDefaults sets the appropriate defaults for M365ExtensionsArgs
@@ -748,15 +748,15 @@ export interface MsTeamsChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to Microsoft Teams channel resource
      */
-    properties?: pulumi.Input<MsTeamsChannelPropertiesArgs>;
+    properties?: pulumi.Input<MsTeamsChannelPropertiesArgs | undefined>;
 }
 /**
  * msTeamsChannelArgsProvideDefaults sets the appropriate defaults for MsTeamsChannelArgs
@@ -765,7 +765,7 @@ export function msTeamsChannelArgsProvideDefaults(val: MsTeamsChannelArgs): MsTe
     return {
         ...val,
         location: (val.location) ?? "global",
-        properties: (val.properties ? pulumi.output(val.properties).apply(msTeamsChannelPropertiesArgsProvideDefaults) : undefined),
+        properties: pulumi.output(val.properties).apply(v => v === undefined ? undefined : msTeamsChannelPropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -776,23 +776,23 @@ export interface MsTeamsChannelPropertiesArgs {
     /**
      * Whether this channel accepted terms
      */
-    acceptedTerms?: pulumi.Input<boolean>;
+    acceptedTerms?: pulumi.Input<boolean | undefined>;
     /**
      * Webhook for Microsoft Teams channel calls
      */
-    callingWebhook?: pulumi.Input<string>;
+    callingWebhook?: pulumi.Input<string | undefined>;
     /**
      * Deployment environment for Microsoft Teams channel calls
      */
-    deploymentEnvironment?: pulumi.Input<string>;
+    deploymentEnvironment?: pulumi.Input<string | undefined>;
     /**
      * Enable calling for Microsoft Teams channel
      */
-    enableCalling?: pulumi.Input<boolean>;
+    enableCalling?: pulumi.Input<boolean | undefined>;
     /**
      * Webhook for Microsoft Teams channel calls
      */
-    incomingCallRoute?: pulumi.Input<string>;
+    incomingCallRoute?: pulumi.Input<string | undefined>;
     /**
      * Whether this channel is enabled for the bot
      */
@@ -821,11 +821,11 @@ export interface OmnichannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
 }
 /**
  * omnichannelArgsProvideDefaults sets the appropriate defaults for OmnichannelArgs
@@ -849,11 +849,11 @@ export interface OutlookChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
 }
 /**
  * outlookChannelArgsProvideDefaults sets the appropriate defaults for OutlookChannelArgs
@@ -872,15 +872,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -895,11 +895,11 @@ export interface SearchAssistantArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
 }
 /**
  * searchAssistantArgsProvideDefaults sets the appropriate defaults for SearchAssistantArgs
@@ -933,15 +933,15 @@ export interface SkypeChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to Skype channel resource
      */
-    properties?: pulumi.Input<SkypeChannelPropertiesArgs>;
+    properties?: pulumi.Input<SkypeChannelPropertiesArgs | undefined>;
 }
 /**
  * skypeChannelArgsProvideDefaults sets the appropriate defaults for SkypeChannelArgs
@@ -950,7 +950,7 @@ export function skypeChannelArgsProvideDefaults(val: SkypeChannelArgs): SkypeCha
     return {
         ...val,
         location: (val.location) ?? "global",
-        properties: (val.properties ? pulumi.output(val.properties).apply(skypeChannelPropertiesArgsProvideDefaults) : undefined),
+        properties: pulumi.output(val.properties).apply(v => v === undefined ? undefined : skypeChannelPropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -961,39 +961,39 @@ export interface SkypeChannelPropertiesArgs {
     /**
      * Calling web hook for Skype channel
      */
-    callingWebHook?: pulumi.Input<string>;
+    callingWebHook?: pulumi.Input<string | undefined>;
     /**
      * Enable calling for Skype channel
      */
-    enableCalling?: pulumi.Input<boolean>;
+    enableCalling?: pulumi.Input<boolean | undefined>;
     /**
      * Enable groups for Skype channel
      */
-    enableGroups?: pulumi.Input<boolean>;
+    enableGroups?: pulumi.Input<boolean | undefined>;
     /**
      * Enable media cards for Skype channel
      */
-    enableMediaCards?: pulumi.Input<boolean>;
+    enableMediaCards?: pulumi.Input<boolean | undefined>;
     /**
      * Enable messaging for Skype channel
      */
-    enableMessaging?: pulumi.Input<boolean>;
+    enableMessaging?: pulumi.Input<boolean | undefined>;
     /**
      * Enable screen sharing for Skype channel
      */
-    enableScreenSharing?: pulumi.Input<boolean>;
+    enableScreenSharing?: pulumi.Input<boolean | undefined>;
     /**
      * Enable video for Skype channel
      */
-    enableVideo?: pulumi.Input<boolean>;
+    enableVideo?: pulumi.Input<boolean | undefined>;
     /**
      * Group mode for Skype channel
      */
-    groupsMode?: pulumi.Input<string>;
+    groupsMode?: pulumi.Input<string | undefined>;
     /**
      * Incoming call route for Skype channel
      */
-    incomingCallRoute?: pulumi.Input<string>;
+    incomingCallRoute?: pulumi.Input<string | undefined>;
     /**
      * Whether this channel is enabled for the bot
      */
@@ -1021,15 +1021,15 @@ export interface SlackChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to Slack channel resource
      */
-    properties?: pulumi.Input<SlackChannelPropertiesArgs>;
+    properties?: pulumi.Input<SlackChannelPropertiesArgs | undefined>;
 }
 /**
  * slackChannelArgsProvideDefaults sets the appropriate defaults for SlackChannelArgs
@@ -1048,11 +1048,11 @@ export interface SlackChannelPropertiesArgs {
     /**
      * The Slack client id
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Whether this channel is enabled for the bot
      */
@@ -1060,23 +1060,23 @@ export interface SlackChannelPropertiesArgs {
     /**
      * The Slack landing page Url
      */
-    landingPageUrl?: pulumi.Input<string>;
+    landingPageUrl?: pulumi.Input<string | undefined>;
     /**
      * Whether to register the settings before OAuth validation is performed. Recommended to True.
      */
-    registerBeforeOAuthFlow?: pulumi.Input<boolean>;
+    registerBeforeOAuthFlow?: pulumi.Input<boolean | undefined>;
     /**
      * The Slack permission scopes.
      */
-    scopes?: pulumi.Input<string>;
+    scopes?: pulumi.Input<string | undefined>;
     /**
      * The Slack signing secret.
      */
-    signingSecret?: pulumi.Input<string>;
+    signingSecret?: pulumi.Input<string | undefined>;
     /**
      * The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
      */
-    verificationToken?: pulumi.Input<string>;
+    verificationToken?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1091,15 +1091,15 @@ export interface SmsChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to Sms channel resource
      */
-    properties?: pulumi.Input<SmsChannelPropertiesArgs>;
+    properties?: pulumi.Input<SmsChannelPropertiesArgs | undefined>;
 }
 /**
  * smsChannelArgsProvideDefaults sets the appropriate defaults for SmsChannelArgs
@@ -1122,7 +1122,7 @@ export interface SmsChannelPropertiesArgs {
     /**
      * The Sms auth token. Value only returned through POST to the action Channel List API, otherwise empty.
      */
-    authToken?: pulumi.Input<string>;
+    authToken?: pulumi.Input<string | undefined>;
     /**
      * Whether this channel is enabled for the bot
      */
@@ -1130,7 +1130,7 @@ export interface SmsChannelPropertiesArgs {
     /**
      * Whether this channel is validated for the bot
      */
-    isValidated?: pulumi.Input<boolean>;
+    isValidated?: pulumi.Input<boolean | undefined>;
     /**
      * The Sms phone
      */
@@ -1149,15 +1149,15 @@ export interface TelegramChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to Telegram channel resource
      */
-    properties?: pulumi.Input<TelegramChannelPropertiesArgs>;
+    properties?: pulumi.Input<TelegramChannelPropertiesArgs | undefined>;
 }
 /**
  * telegramChannelArgsProvideDefaults sets the appropriate defaults for TelegramChannelArgs
@@ -1176,7 +1176,7 @@ export interface TelegramChannelPropertiesArgs {
     /**
      * The Telegram access token. Value only returned through POST to the action Channel List API, otherwise empty.
      */
-    accessToken?: pulumi.Input<string>;
+    accessToken?: pulumi.Input<string | undefined>;
     /**
      * Whether this channel is enabled for the bot
      */
@@ -1184,7 +1184,7 @@ export interface TelegramChannelPropertiesArgs {
     /**
      * Whether this channel is validated for the bot
      */
-    isValidated?: pulumi.Input<boolean>;
+    isValidated?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1199,15 +1199,15 @@ export interface TelephonyChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to Telephony channel resource
      */
-    properties?: pulumi.Input<TelephonyChannelPropertiesArgs>;
+    properties?: pulumi.Input<TelephonyChannelPropertiesArgs | undefined>;
 }
 /**
  * telephonyChannelArgsProvideDefaults sets the appropriate defaults for TelephonyChannelArgs
@@ -1226,31 +1226,31 @@ export interface TelephonyChannelPropertiesArgs {
     /**
      * The list of Telephony api configuration
      */
-    apiConfigurations?: pulumi.Input<pulumi.Input<TelephonyChannelResourceApiConfigurationArgs>[]>;
+    apiConfigurations?: pulumi.Input<pulumi.Input<TelephonyChannelResourceApiConfigurationArgs>[] | undefined>;
     /**
      * The extensionKey2
      */
-    cognitiveServiceRegion?: pulumi.Input<string>;
+    cognitiveServiceRegion?: pulumi.Input<string | undefined>;
     /**
      * The extensionKey1
      */
-    cognitiveServiceSubscriptionKey?: pulumi.Input<string>;
+    cognitiveServiceSubscriptionKey?: pulumi.Input<string | undefined>;
     /**
      * The default locale of the channel
      */
-    defaultLocale?: pulumi.Input<string>;
+    defaultLocale?: pulumi.Input<string | undefined>;
     /**
      * Whether the channel is enabled
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The list of Telephony phone numbers
      */
-    phoneNumbers?: pulumi.Input<pulumi.Input<TelephonyPhoneNumbersArgs>[]>;
+    phoneNumbers?: pulumi.Input<pulumi.Input<TelephonyPhoneNumbersArgs>[] | undefined>;
     /**
      * The premium SKU applied to the channel
      */
-    premiumSKU?: pulumi.Input<string>;
+    premiumSKU?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1260,27 +1260,27 @@ export interface TelephonyChannelResourceApiConfigurationArgs {
     /**
      * The cognitive service region.
      */
-    cognitiveServiceRegion?: pulumi.Input<string>;
+    cognitiveServiceRegion?: pulumi.Input<string | undefined>;
     /**
      * The cognitive service resourceId.
      */
-    cognitiveServiceResourceId?: pulumi.Input<string>;
+    cognitiveServiceResourceId?: pulumi.Input<string | undefined>;
     /**
      * The cognitive service subscription key.
      */
-    cognitiveServiceSubscriptionKey?: pulumi.Input<string>;
+    cognitiveServiceSubscriptionKey?: pulumi.Input<string | undefined>;
     /**
      * The default locale.
      */
-    defaultLocale?: pulumi.Input<string>;
+    defaultLocale?: pulumi.Input<string | undefined>;
     /**
      * The id of config.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The provider name.
      */
-    providerName?: pulumi.Input<string>;
+    providerName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1290,43 +1290,43 @@ export interface TelephonyPhoneNumbersArgs {
     /**
      * The endpoint of ACS.
      */
-    acsEndpoint?: pulumi.Input<string>;
+    acsEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The resource id of ACS.
      */
-    acsResourceId?: pulumi.Input<string>;
+    acsResourceId?: pulumi.Input<string | undefined>;
     /**
      * The secret of ACS.
      */
-    acsSecret?: pulumi.Input<string>;
+    acsSecret?: pulumi.Input<string | undefined>;
     /**
      * The service region of cognitive service.
      */
-    cognitiveServiceRegion?: pulumi.Input<string>;
+    cognitiveServiceRegion?: pulumi.Input<string | undefined>;
     /**
      * The resource id of cognitive service.
      */
-    cognitiveServiceResourceId?: pulumi.Input<string>;
+    cognitiveServiceResourceId?: pulumi.Input<string | undefined>;
     /**
      * The subscription key of cognitive service.
      */
-    cognitiveServiceSubscriptionKey?: pulumi.Input<string>;
+    cognitiveServiceSubscriptionKey?: pulumi.Input<string | undefined>;
     /**
      * The default locale of the phone number.
      */
-    defaultLocale?: pulumi.Input<string>;
+    defaultLocale?: pulumi.Input<string | undefined>;
     /**
      * The element id.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Optional Property that will determine the offering type of the phone.
      */
-    offerType?: pulumi.Input<string>;
+    offerType?: pulumi.Input<string | undefined>;
     /**
      * The phone number.
      */
-    phoneNumber?: pulumi.Input<string>;
+    phoneNumber?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1341,15 +1341,15 @@ export interface WebChatChannelArgs {
     /**
      * Entity Tag of the resource
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to Web Chat channel resource
      */
-    properties?: pulumi.Input<WebChatChannelPropertiesArgs>;
+    properties?: pulumi.Input<WebChatChannelPropertiesArgs | undefined>;
 }
 /**
  * webChatChannelArgsProvideDefaults sets the appropriate defaults for WebChatChannelArgs
@@ -1368,7 +1368,7 @@ export interface WebChatChannelPropertiesArgs {
     /**
      * The list of Web Chat sites
      */
-    sites?: pulumi.Input<pulumi.Input<WebChatSiteArgs>[]>;
+    sites?: pulumi.Input<pulumi.Input<WebChatSiteArgs>[] | undefined>;
 }
 
 /**
@@ -1378,19 +1378,19 @@ export interface WebChatSiteArgs {
     /**
      * DirectLine application id
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Entity Tag
      */
-    eTag?: pulumi.Input<string>;
+    eTag?: pulumi.Input<string | undefined>;
     /**
      * Whether this site is enabled for block user upload.
      */
-    isBlockUserUploadEnabled?: pulumi.Input<boolean>;
+    isBlockUserUploadEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is disabled detailed logging for
      */
-    isDetailedLoggingEnabled?: pulumi.Input<boolean>;
+    isDetailedLoggingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is enabled for DirectLine channel
      */
@@ -1398,31 +1398,31 @@ export interface WebChatSiteArgs {
     /**
      * Whether this site is EndpointParameters enabled for channel
      */
-    isEndpointParametersEnabled?: pulumi.Input<boolean>;
+    isEndpointParametersEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this no-storage site is disabled detailed logging for
      */
-    isNoStorageEnabled?: pulumi.Input<boolean>;
+    isNoStorageEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is enabled for authentication with Bot Framework.
      */
-    isSecureSiteEnabled?: pulumi.Input<boolean>;
+    isSecureSiteEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is enabled for Bot Framework V1 protocol.
      */
-    isV1Enabled?: pulumi.Input<boolean>;
+    isV1Enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is enabled for Bot Framework V3 protocol.
      */
-    isV3Enabled?: pulumi.Input<boolean>;
+    isV3Enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is enabled for Webchat Speech
      */
-    isWebChatSpeechEnabled?: pulumi.Input<boolean>;
+    isWebChatSpeechEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this site is enabled for preview versions of Webchat
      */
-    isWebchatPreviewEnabled?: pulumi.Input<boolean>;
+    isWebchatPreviewEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Site name
      */
@@ -1430,11 +1430,11 @@ export interface WebChatSiteArgs {
     /**
      * Tenant Id
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
      */
-    trustedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    trustedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 /**
  * webChatSiteArgsProvideDefaults sets the appropriate defaults for WebChatSiteArgs

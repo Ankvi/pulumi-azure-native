@@ -107,7 +107,7 @@ export interface GetPrefixOutputArgs {
     /**
      * The properties to be expanded.
      */
-    expand?: pulumi.Input<string>;
+    expand?: pulumi.Input<string | undefined>;
     /**
      * The name of the peering service.
      */

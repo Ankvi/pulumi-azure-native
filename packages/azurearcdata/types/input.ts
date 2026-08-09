@@ -7,7 +7,7 @@ export interface ActiveDirectoryConnectorDNSDetailsArgs {
     /**
      * DNS domain name for which DNS lookups should be forwarded to the Active Directory DNS servers.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * List of Active Directory DNS server IP addresses.
      */
@@ -15,11 +15,11 @@ export interface ActiveDirectoryConnectorDNSDetailsArgs {
     /**
      * Flag indicating whether to prefer Kubernetes DNS server response over AD DNS server response for IP address lookups.
      */
-    preferK8sDnsForPtrLookups?: pulumi.Input<boolean>;
+    preferK8sDnsForPtrLookups?: pulumi.Input<boolean | undefined>;
     /**
      * Replica count for DNS proxy service. Default value is 1.
      */
-    replicas?: pulumi.Input<number>;
+    replicas?: pulumi.Input<number | undefined>;
 }
 /**
  * activeDirectoryConnectorDNSDetailsArgsProvideDefaults sets the appropriate defaults for ActiveDirectoryConnectorDNSDetailsArgs
@@ -39,15 +39,15 @@ export interface ActiveDirectoryConnectorDomainDetailsArgs {
     /**
      * null
      */
-    domainControllers?: pulumi.Input<ActiveDirectoryDomainControllersArgs>;
+    domainControllers?: pulumi.Input<ActiveDirectoryDomainControllersArgs | undefined>;
     /**
      * NETBIOS name of the Active Directory domain.
      */
-    netbiosDomainName?: pulumi.Input<string>;
+    netbiosDomainName?: pulumi.Input<string | undefined>;
     /**
      * The distinguished name of the Active Directory Organizational Unit.
      */
-    ouDistinguishedName?: pulumi.Input<string>;
+    ouDistinguishedName?: pulumi.Input<string | undefined>;
     /**
      * Name (uppercase) of the Active Directory domain that this AD connector will be associated with.
      */
@@ -55,7 +55,7 @@ export interface ActiveDirectoryConnectorDomainDetailsArgs {
     /**
      * The service account provisioning mode for this Active Directory connector.
      */
-    serviceAccountProvisioning?: pulumi.Input<string | enums.AccountProvisioningMode>;
+    serviceAccountProvisioning?: pulumi.Input<string | enums.AccountProvisioningMode | undefined>;
 }
 /**
  * activeDirectoryConnectorDomainDetailsArgsProvideDefaults sets the appropriate defaults for ActiveDirectoryConnectorDomainDetailsArgs
@@ -74,7 +74,7 @@ export interface ActiveDirectoryConnectorPropertiesArgs {
     /**
      * Username and password for domain service account authentication.
      */
-    domainServiceAccountLoginInformation?: pulumi.Input<BasicLoginInformationArgs>;
+    domainServiceAccountLoginInformation?: pulumi.Input<BasicLoginInformationArgs | undefined>;
     /**
      * null
      */
@@ -82,7 +82,7 @@ export interface ActiveDirectoryConnectorPropertiesArgs {
     /**
      * null
      */
-    status?: pulumi.Input<ActiveDirectoryConnectorStatusArgs>;
+    status?: pulumi.Input<ActiveDirectoryConnectorStatusArgs | undefined>;
 }
 /**
  * activeDirectoryConnectorPropertiesArgsProvideDefaults sets the appropriate defaults for ActiveDirectoryConnectorPropertiesArgs
@@ -125,15 +125,15 @@ export interface ActiveDirectoryConnectorStatusArgs {
     /**
      * The time that the custom resource was last updated.
      */
-    lastUpdateTime?: pulumi.Input<string>;
+    lastUpdateTime?: pulumi.Input<string | undefined>;
     /**
      * The version of the replicaSet associated with the AD connector custom resource.
      */
-    observedGeneration?: pulumi.Input<number>;
+    observedGeneration?: pulumi.Input<number | undefined>;
     /**
      * The state of the AD connector custom resource.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -153,11 +153,11 @@ export interface ActiveDirectoryDomainControllersArgs {
     /**
      * Information about the Primary Domain Controller (PDC) in the AD domain.
      */
-    primaryDomainController?: pulumi.Input<ActiveDirectoryDomainControllerArgs>;
+    primaryDomainController?: pulumi.Input<ActiveDirectoryDomainControllerArgs | undefined>;
     /**
      * null
      */
-    secondaryDomainControllers?: pulumi.Input<pulumi.Input<ActiveDirectoryDomainControllerArgs>[]>;
+    secondaryDomainControllers?: pulumi.Input<pulumi.Input<ActiveDirectoryDomainControllerArgs>[] | undefined>;
 }
 
 /**
@@ -167,7 +167,7 @@ export interface ActiveDirectoryInformationArgs {
     /**
      * Keytab information that is used for the Sql Managed Instance when Active Directory authentication is used.
      */
-    keytabInformation?: pulumi.Input<KeytabInformationArgs>;
+    keytabInformation?: pulumi.Input<KeytabInformationArgs | undefined>;
 }
 
 /**
@@ -177,11 +177,11 @@ export interface AuthenticationArgs {
     /**
      * Mode of authentication in SqlServer.
      */
-    mode?: pulumi.Input<string | enums.Mode>;
+    mode?: pulumi.Input<string | enums.Mode | undefined>;
     /**
      * Entra Authentication configuration for the SQL Server Instance.
      */
-    sqlServerEntraIdentity?: pulumi.Input<pulumi.Input<EntraAuthenticationArgs>[]>;
+    sqlServerEntraIdentity?: pulumi.Input<pulumi.Input<EntraAuthenticationArgs>[] | undefined>;
 }
 
 /**
@@ -191,59 +191,59 @@ export interface AvailabilityGroupConfigureArgs {
     /**
      * Property that determines whether a given availability replica can run in synchronous-commit mode
      */
-    availabilityMode?: pulumi.Input<string | enums.ArcSqlServerAvailabilityMode>;
+    availabilityMode?: pulumi.Input<string | enums.ArcSqlServerAvailabilityMode | undefined>;
     /**
      * Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
      */
-    backupPriority?: pulumi.Input<number>;
+    backupPriority?: pulumi.Input<number | undefined>;
     /**
      * Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified.
      */
-    certificateName?: pulumi.Input<string>;
+    certificateName?: pulumi.Input<string | undefined>;
     /**
      * Permitted authentication modes for the mirroring endpoint.
      */
-    endpointAuthenticationMode?: pulumi.Input<string | enums.ConnectionAuth>;
+    endpointAuthenticationMode?: pulumi.Input<string | enums.ConnectionAuth | undefined>;
     /**
      * The login which will connect to the mirroring endpoint.
      */
-    endpointConnectLogin?: pulumi.Input<string>;
+    endpointConnectLogin?: pulumi.Input<string | undefined>;
     /**
      * Name of the mirroring endpoint URL
      */
-    endpointName?: pulumi.Input<string>;
+    endpointName?: pulumi.Input<string | undefined>;
     /**
      * Mirroring endpoint URL of availability group replica
      */
-    endpointUrl?: pulumi.Input<string>;
+    endpointUrl?: pulumi.Input<string | undefined>;
     /**
      * Property to set the failover mode of the availability group replica
      */
-    failoverMode?: pulumi.Input<string | enums.ArcSqlServerFailoverMode>;
+    failoverMode?: pulumi.Input<string | enums.ArcSqlServerFailoverMode | undefined>;
     /**
      * Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections)
      */
-    primaryAllowConnections?: pulumi.Input<enums.PrimaryAllowConnections>;
+    primaryAllowConnections?: pulumi.Input<enums.PrimaryAllowConnections | undefined>;
     /**
      * Connectivity endpoint (URL) of the read only availability replica.
      */
-    readOnlyRoutingUrl?: pulumi.Input<string>;
+    readOnlyRoutingUrl?: pulumi.Input<string | undefined>;
     /**
      * Connectivity endpoint (URL) of the read write availability replica.
      */
-    readWriteRoutingUrl?: pulumi.Input<string>;
+    readWriteRoutingUrl?: pulumi.Input<string | undefined>;
     /**
      * Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections.
      */
-    secondaryAllowConnections?: pulumi.Input<enums.SecondaryAllowConnections>;
+    secondaryAllowConnections?: pulumi.Input<enums.SecondaryAllowConnections | undefined>;
     /**
      * Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica.
      */
-    seedingMode?: pulumi.Input<enums.SeedingMode>;
+    seedingMode?: pulumi.Input<enums.SeedingMode | undefined>;
     /**
      * The time-out period of availability group session replica, in seconds.
      */
-    sessionTimeout?: pulumi.Input<number>;
+    sessionTimeout?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -253,39 +253,39 @@ export interface AvailabilityGroupInfoArgs {
     /**
      * Specifies whether this is a basic availability group.
      */
-    basicFeatures?: pulumi.Input<boolean>;
+    basicFeatures?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the availability group supports failover for database health conditions.
      */
-    dbFailover?: pulumi.Input<boolean>;
+    dbFailover?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether DTC support has been enabled for this availability group.
      */
-    dtcSupport?: pulumi.Input<boolean>;
+    dtcSupport?: pulumi.Input<boolean | undefined>;
     /**
      * User-defined failure condition level under which an automatic failover must be triggered.
      */
-    failureConditionLevel?: pulumi.Input<number>;
+    failureConditionLevel?: pulumi.Input<number | undefined>;
     /**
      * Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding.
      */
-    healthCheckTimeout?: pulumi.Input<number>;
+    healthCheckTimeout?: pulumi.Input<number | undefined>;
     /**
      * SQL Server availability group contained system databases.
      */
-    isContained?: pulumi.Input<boolean>;
+    isContained?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether this is a distributed availability group.
      */
-    isDistributed?: pulumi.Input<boolean>;
+    isDistributed?: pulumi.Input<boolean | undefined>;
     /**
      * The listener for the sql server availability group
      */
-    listener?: pulumi.Input<SqlAvailabilityGroupStaticIPListenerPropertiesArgs>;
+    listener?: pulumi.Input<SqlAvailabilityGroupStaticIPListenerPropertiesArgs | undefined>;
     /**
      * The number of secondary replicas that must be in a synchronized state for a commit to complete.
      */
-    requiredSynchronizedSecondariesToCommit?: pulumi.Input<number>;
+    requiredSynchronizedSecondariesToCommit?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -295,19 +295,19 @@ export interface BackupPolicyArgs {
     /**
      * The differential backup interval in hours.
      */
-    differentialBackupHours?: pulumi.Input<number>;
+    differentialBackupHours?: pulumi.Input<number | undefined>;
     /**
      * The value indicating days between full backups.
      */
-    fullBackupDays?: pulumi.Input<number>;
+    fullBackupDays?: pulumi.Input<number | undefined>;
     /**
      * The retention period for all the databases in this managed instance.
      */
-    retentionPeriodDays?: pulumi.Input<number>;
+    retentionPeriodDays?: pulumi.Input<number | undefined>;
     /**
      * The value indicating minutes between transaction log backups.
      */
-    transactionLogBackupMinutes?: pulumi.Input<number>;
+    transactionLogBackupMinutes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -317,11 +317,11 @@ export interface BasicLoginInformationArgs {
     /**
      * Login password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Login username.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -331,7 +331,7 @@ export interface ClientConnectionArgs {
     /**
      * Indicates if client connection is enabled for this SQL Server instance.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -341,51 +341,51 @@ export interface DataControllerPropertiesArgs {
     /**
      * Deprecated. Azure Arc Data Services data controller no longer expose any endpoint. All traffic are exposed through Kubernetes native API.
      */
-    basicLoginInformation?: pulumi.Input<BasicLoginInformationArgs>;
+    basicLoginInformation?: pulumi.Input<BasicLoginInformationArgs | undefined>;
     /**
      * If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
      */
-    extensionId?: pulumi.Input<string>;
+    extensionId?: pulumi.Input<string | undefined>;
     /**
      * The infrastructure the data controller is running on.
      */
-    infrastructure?: pulumi.Input<enums.Infrastructure>;
+    infrastructure?: pulumi.Input<enums.Infrastructure | undefined>;
     /**
      * The raw kubernetes information
      */
-    k8sRaw?: any;
+    k8sRaw?: any | undefined;
     /**
      * Last uploaded date from Kubernetes cluster. Defaults to current date time
      */
-    lastUploadedDate?: pulumi.Input<string>;
+    lastUploadedDate?: pulumi.Input<string | undefined>;
     /**
      * Log analytics workspace id and primary key
      */
-    logAnalyticsWorkspaceConfig?: pulumi.Input<LogAnalyticsWorkspaceConfigArgs>;
+    logAnalyticsWorkspaceConfig?: pulumi.Input<LogAnalyticsWorkspaceConfigArgs | undefined>;
     /**
      * Login credential for logs dashboard on the Kubernetes cluster.
      */
-    logsDashboardCredential?: pulumi.Input<BasicLoginInformationArgs>;
+    logsDashboardCredential?: pulumi.Input<BasicLoginInformationArgs | undefined>;
     /**
      * Login credential for metrics dashboard on the Kubernetes cluster.
      */
-    metricsDashboardCredential?: pulumi.Input<BasicLoginInformationArgs>;
+    metricsDashboardCredential?: pulumi.Input<BasicLoginInformationArgs | undefined>;
     /**
      * Properties from the Kubernetes data controller
      */
-    onPremiseProperty?: pulumi.Input<OnPremisePropertyArgs>;
+    onPremiseProperty?: pulumi.Input<OnPremisePropertyArgs | undefined>;
     /**
      * Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity.
      */
-    uploadServicePrincipal?: pulumi.Input<UploadServicePrincipalArgs>;
+    uploadServicePrincipal?: pulumi.Input<UploadServicePrincipalArgs | undefined>;
     /**
      * Properties on upload watermark.  Mostly timestamp for each upload data type
      */
-    uploadWatermark?: pulumi.Input<UploadWatermarkArgs>;
+    uploadWatermark?: pulumi.Input<UploadWatermarkArgs | undefined>;
 }
 /**
  * dataControllerPropertiesArgsProvideDefaults sets the appropriate defaults for DataControllerPropertiesArgs
@@ -404,11 +404,11 @@ export interface EntraAuthenticationArgs {
     /**
      * The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The method used for Entra authentication
      */
-    identityType?: pulumi.Input<string | enums.IdentityType>;
+    identityType?: pulumi.Input<string | enums.IdentityType | undefined>;
 }
 
 /**
@@ -418,11 +418,11 @@ export interface ExtendedLocationArgs {
     /**
      * The name of the extended location.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of the extended location.
      */
-    type?: pulumi.Input<string | enums.ExtendedLocationTypes>;
+    type?: pulumi.Input<string | enums.ExtendedLocationTypes | undefined>;
 }
 
 /**
@@ -440,7 +440,7 @@ export interface FailoverGroupPropertiesArgs {
     /**
      * The status of the failover group custom resource.
      */
-    status?: any;
+    status?: any | undefined;
 }
 /**
  * failoverGroupPropertiesArgsProvideDefaults sets the appropriate defaults for FailoverGroupPropertiesArgs
@@ -459,19 +459,19 @@ export interface FailoverGroupSpecArgs {
     /**
      * The name of the partner SQL managed instance.
      */
-    partnerMI?: pulumi.Input<string>;
+    partnerMI?: pulumi.Input<string | undefined>;
     /**
      * The mirroring endpoint public certificate for the partner SQL managed instance. Only PEM format is supported.
      */
-    partnerMirroringCert?: pulumi.Input<string>;
+    partnerMirroringCert?: pulumi.Input<string | undefined>;
     /**
      * The mirroring endpoint URL of the partner SQL managed instance.
      */
-    partnerMirroringURL?: pulumi.Input<string>;
+    partnerMirroringURL?: pulumi.Input<string | undefined>;
     /**
      * The partner sync mode of the SQL managed instance.
      */
-    partnerSyncMode?: pulumi.Input<string | enums.FailoverGroupPartnerSyncMode>;
+    partnerSyncMode?: pulumi.Input<string | enums.FailoverGroupPartnerSyncMode | undefined>;
     /**
      * The role of the SQL managed instance in this failover group.
      */
@@ -479,11 +479,11 @@ export interface FailoverGroupSpecArgs {
     /**
      * The shared name of the failover group for this SQL managed instance. Both SQL managed instance and its partner have to use the same shared name.
      */
-    sharedName?: pulumi.Input<string>;
+    sharedName?: pulumi.Input<string | undefined>;
     /**
      * The name of the SQL managed instance with this failover group role.
      */
-    sourceMI?: pulumi.Input<string>;
+    sourceMI?: pulumi.Input<string | undefined>;
 }
 /**
  * failoverGroupSpecArgsProvideDefaults sets the appropriate defaults for FailoverGroupSpecArgs
@@ -503,27 +503,27 @@ export interface K8sActiveDirectoryArgs {
     /**
      * Account name for AAD
      */
-    accountName?: pulumi.Input<string>;
-    connector?: pulumi.Input<K8sActiveDirectoryConnectorArgs>;
+    accountName?: pulumi.Input<string | undefined>;
+    connector?: pulumi.Input<K8sActiveDirectoryConnectorArgs | undefined>;
     /**
      * An array of encryption types
      */
-    encryptionTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    encryptionTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Keytab secret used to authenticate with Active Directory.
      */
-    keytabSecret?: pulumi.Input<string>;
+    keytabSecret?: pulumi.Input<string | undefined>;
 }
 
 export interface K8sActiveDirectoryConnectorArgs {
     /**
      * Name of the connector
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name space of the connector
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -533,15 +533,15 @@ export interface K8sNetworkSettingsArgs {
     /**
      * If 1, then SQL Server forces all connections to be encrypted. By default, this option is 0
      */
-    forceencryption?: pulumi.Input<number>;
+    forceencryption?: pulumi.Input<number | undefined>;
     /**
      * Specifies which ciphers are allowed by SQL Server for TLS
      */
-    tlsciphers?: pulumi.Input<string>;
+    tlsciphers?: pulumi.Input<string | undefined>;
     /**
      * A comma-separated list of which TLS protocols are allowed by SQL Server
      */
-    tlsprotocols?: pulumi.Input<string>;
+    tlsprotocols?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -551,11 +551,11 @@ export interface K8sResourceRequirementsArgs {
     /**
      * Limits for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
      */
-    limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    limits?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Requests for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'.
      */
-    requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    requests?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -565,7 +565,7 @@ export interface K8sSchedulingArgs {
     /**
      * The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
      */
-    default?: pulumi.Input<K8sSchedulingOptionsArgs>;
+    default?: pulumi.Input<K8sSchedulingOptionsArgs | undefined>;
 }
 
 /**
@@ -575,7 +575,7 @@ export interface K8sSchedulingOptionsArgs {
     /**
      * The kubernetes resource limits and requests used to restrict or reserve resource usage.
      */
-    resources?: pulumi.Input<K8sResourceRequirementsArgs>;
+    resources?: pulumi.Input<K8sResourceRequirementsArgs | undefined>;
 }
 
 /**
@@ -585,19 +585,19 @@ export interface K8sSecurityArgs {
     /**
      * The kubernetes active directory information.
      */
-    activeDirectory?: pulumi.Input<K8sActiveDirectoryArgs>;
+    activeDirectory?: pulumi.Input<K8sActiveDirectoryArgs | undefined>;
     /**
      * Admin login secret key
      */
-    adminLoginSecret?: pulumi.Input<string>;
+    adminLoginSecret?: pulumi.Input<string | undefined>;
     /**
      * Service certificate secret used
      */
-    serviceCertificateSecret?: pulumi.Input<string>;
+    serviceCertificateSecret?: pulumi.Input<string | undefined>;
     /**
      * Transparent data encryption information.
      */
-    transparentDataEncryption?: pulumi.Input<K8stransparentDataEncryptionArgs>;
+    transparentDataEncryption?: pulumi.Input<K8stransparentDataEncryptionArgs | undefined>;
 }
 
 /**
@@ -607,7 +607,7 @@ export interface K8sSettingsArgs {
     /**
      * The kubernetes network settings information.
      */
-    network?: pulumi.Input<K8sNetworkSettingsArgs>;
+    network?: pulumi.Input<K8sNetworkSettingsArgs | undefined>;
 }
 
 /**
@@ -617,11 +617,11 @@ export interface K8stransparentDataEncryptionArgs {
     /**
      * Transparent data encryption mode. Can be Service Managed, Customer managed or disabled
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * Protector secret for customer managed Transparent data encryption mode
      */
-    protectorSecret?: pulumi.Input<string>;
+    protectorSecret?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -631,7 +631,7 @@ export interface KeytabInformationArgs {
     /**
      * A base64-encoded keytab.
      */
-    keytab?: pulumi.Input<string>;
+    keytab?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -641,11 +641,11 @@ export interface LogAnalyticsWorkspaceConfigArgs {
     /**
      * Primary key of the workspace
      */
-    primaryKey?: pulumi.Input<string>;
+    primaryKey?: pulumi.Input<string | undefined>;
     /**
      * Azure Log Analytics workspace ID
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -655,7 +655,7 @@ export interface MigrationArgs {
     /**
      * Migration assessments related configuration.
      */
-    assessment?: pulumi.Input<MigrationAssessmentArgs>;
+    assessment?: pulumi.Input<MigrationAssessmentArgs | undefined>;
 }
 
 /**
@@ -665,7 +665,7 @@ export interface MigrationAssessmentArgs {
     /**
      * Indicates if migration assessment is enabled for this SQL Server instance.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -675,7 +675,7 @@ export interface MonitoringArgs {
     /**
      * Indicates if monitoring is enabled for this SQL Server instance.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -693,7 +693,7 @@ export interface OnPremisePropertyArgs {
     /**
      * Unique thumbprint returned to customer to verify the certificate being uploaded
      */
-    signingCertificateThumbprint?: pulumi.Input<string>;
+    signingCertificateThumbprint?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -703,23 +703,23 @@ export interface PostgresInstancePropertiesArgs {
     /**
      * The instance admin
      */
-    admin?: pulumi.Input<string>;
+    admin?: pulumi.Input<string | undefined>;
     /**
      * Username and password for basic authentication.
      */
-    basicLoginInformation?: pulumi.Input<BasicLoginInformationArgs>;
+    basicLoginInformation?: pulumi.Input<BasicLoginInformationArgs | undefined>;
     /**
      * The data controller id
      */
-    dataControllerId?: pulumi.Input<string>;
+    dataControllerId?: pulumi.Input<string | undefined>;
     /**
      * The raw kubernetes information
      */
-    k8sRaw?: any;
+    k8sRaw?: any | undefined;
     /**
      * Last uploaded date from Kubernetes cluster. Defaults to current date time
      */
-    lastUploadedDate?: pulumi.Input<string>;
+    lastUploadedDate?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -729,27 +729,27 @@ export interface PostgresInstanceSkuArgs {
     /**
      * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
-     * Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose. 
+     * Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose.
      */
-    dev?: pulumi.Input<boolean>;
+    dev?: pulumi.Input<boolean | undefined>;
     /**
      * If the service has different generations of hardware, for the same SKU, then that can be captured here.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * The name of the SKU.  It is typically a letter+number code
      */
     name: pulumi.Input<string>;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * This field is required to be implemented by the Resource Provider if the service has more than one tier.
      */
-    tier?: pulumi.Input<enums.PostgresInstanceSkuTier>;
+    tier?: pulumi.Input<enums.PostgresInstanceSkuTier | undefined>;
 }
 /**
  * postgresInstanceSkuArgsProvideDefaults sets the appropriate defaults for PostgresInstanceSkuArgs
@@ -769,7 +769,7 @@ export interface SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs {
     /**
      * the database name.
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -779,15 +779,15 @@ export interface SqlAvailabilityGroupReplicaResourcePropertiesArgs {
     /**
      * null
      */
-    configure?: pulumi.Input<AvailabilityGroupConfigureArgs>;
+    configure?: pulumi.Input<AvailabilityGroupConfigureArgs | undefined>;
     /**
      * The replica name.
      */
-    replicaName?: pulumi.Input<string>;
+    replicaName?: pulumi.Input<string | undefined>;
     /**
      * Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG.
      */
-    replicaResourceId?: pulumi.Input<string>;
+    replicaResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -797,30 +797,30 @@ export interface SqlAvailabilityGroupStaticIPListenerPropertiesArgs {
     /**
      * the DNS name for the listener.
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * IP V4 Addresses and masks for the listener.
      */
-    ipV4AddressesAndMasks?: pulumi.Input<pulumi.Input<SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArgs>[]>;
+    ipV4AddressesAndMasks?: pulumi.Input<pulumi.Input<SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArgs>[] | undefined>;
     /**
      * IP V6 Addresses for the listener
      */
-    ipV6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    ipV6Addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Network port for the listener. Default is 1433.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
 }
 
 export interface SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasksArgs {
     /**
      * IPV4 address
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * IPV4 netmask
      */
-    mask?: pulumi.Input<string>;
+    mask?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -830,7 +830,7 @@ export interface SqlManagedInstanceK8sRawArgs {
     /**
      * The kubernetes spec information.
      */
-    spec?: pulumi.Input<SqlManagedInstanceK8sSpecArgs>;
+    spec?: pulumi.Input<SqlManagedInstanceK8sSpecArgs | undefined>;
 }
 
 /**
@@ -840,19 +840,19 @@ export interface SqlManagedInstanceK8sSpecArgs {
     /**
      * This option specifies the number of SQL Managed Instance replicas that will be deployed in your Kubernetes cluster for high availability purposes. If sku.tier is BusinessCritical, allowed values are '2' or '3' with default of '3'. If sku.tier is GeneralPurpose, replicas must be '1'.
      */
-    replicas?: pulumi.Input<number>;
+    replicas?: pulumi.Input<number | undefined>;
     /**
      * The kubernetes scheduling information.
      */
-    scheduling?: pulumi.Input<K8sSchedulingArgs>;
+    scheduling?: pulumi.Input<K8sSchedulingArgs | undefined>;
     /**
      * The kubernetes security information.
      */
-    security?: pulumi.Input<K8sSecurityArgs>;
+    security?: pulumi.Input<K8sSecurityArgs | undefined>;
     /**
      * The kubernetes settings information.
      */
-    settings?: pulumi.Input<K8sSettingsArgs>;
+    settings?: pulumi.Input<K8sSettingsArgs | undefined>;
 }
 
 /**
@@ -862,47 +862,47 @@ export interface SqlManagedInstancePropertiesArgs {
     /**
      * Active Directory information related to this SQL Managed Instance.
      */
-    activeDirectoryInformation?: pulumi.Input<ActiveDirectoryInformationArgs>;
+    activeDirectoryInformation?: pulumi.Input<ActiveDirectoryInformationArgs | undefined>;
     /**
      * The instance admin user
      */
-    admin?: pulumi.Input<string>;
+    admin?: pulumi.Input<string | undefined>;
     /**
      * Username and password for basic authentication.
      */
-    basicLoginInformation?: pulumi.Input<BasicLoginInformationArgs>;
+    basicLoginInformation?: pulumi.Input<BasicLoginInformationArgs | undefined>;
     /**
      * If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * null
      */
-    dataControllerId?: pulumi.Input<string>;
+    dataControllerId?: pulumi.Input<string | undefined>;
     /**
      * The instance end time
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
      */
-    extensionId?: pulumi.Input<string>;
+    extensionId?: pulumi.Input<string | undefined>;
     /**
      * The raw kubernetes information
      */
-    k8sRaw?: pulumi.Input<SqlManagedInstanceK8sRawArgs>;
+    k8sRaw?: pulumi.Input<SqlManagedInstanceK8sRawArgs | undefined>;
     /**
      * Last uploaded date from Kubernetes cluster. Defaults to current date time
      */
-    lastUploadedDate?: pulumi.Input<string>;
+    lastUploadedDate?: pulumi.Input<string | undefined>;
     /**
      * The license type to apply for this managed instance.
      */
-    licenseType?: pulumi.Input<string | enums.ArcSqlManagedInstanceLicenseType>;
+    licenseType?: pulumi.Input<string | enums.ArcSqlManagedInstanceLicenseType | undefined>;
     /**
      * The instance start time
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }
 /**
  * sqlManagedInstancePropertiesArgsProvideDefaults sets the appropriate defaults for SqlManagedInstancePropertiesArgs
@@ -921,27 +921,27 @@ export interface SqlManagedInstanceSkuArgs {
     /**
      * The SKU capacity
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
-     * Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose. 
+     * Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose.
      */
-    dev?: pulumi.Input<boolean>;
+    dev?: pulumi.Input<boolean | undefined>;
     /**
      * The SKU family
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * The name of the SKU.
      */
     name: pulumi.Input<enums.SqlManagedInstanceSkuName>;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * The pricing tier for the instance.
      */
-    tier?: pulumi.Input<enums.SqlManagedInstanceSkuTier>;
+    tier?: pulumi.Input<enums.SqlManagedInstanceSkuTier | undefined>;
 }
 /**
  * sqlManagedInstanceSkuArgsProvideDefaults sets the appropriate defaults for SqlManagedInstanceSkuArgs
@@ -961,15 +961,15 @@ export interface SqlServerAvailabilityGroupResourcePropertiesArgs {
     /**
      * A list of Availability Group Database Replicas.
      */
-    databases?: pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs>;
+    databases?: pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs | undefined>;
     /**
      * Availability Group Info
      */
-    info?: pulumi.Input<AvailabilityGroupInfoArgs>;
+    info?: pulumi.Input<AvailabilityGroupInfoArgs | undefined>;
     /**
      * A list of Availability Group Replicas.
      */
-    replicas?: pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesReplicasArgs>;
+    replicas?: pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesReplicasArgs | undefined>;
 }
 
 /**
@@ -979,7 +979,7 @@ export interface SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs {
     /**
      * Array of Availability Group Database Replicas.
      */
-    value?: pulumi.Input<pulumi.Input<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs>[]>;
+    value?: pulumi.Input<pulumi.Input<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs>[] | undefined>;
 }
 
 /**
@@ -989,99 +989,99 @@ export interface SqlServerAvailabilityGroupResourcePropertiesReplicasArgs {
     /**
      * Array of Availability Group Replicas.
      */
-    value?: pulumi.Input<pulumi.Input<SqlAvailabilityGroupReplicaResourcePropertiesArgs>[]>;
+    value?: pulumi.Input<pulumi.Input<SqlAvailabilityGroupReplicaResourcePropertiesArgs>[] | undefined>;
 }
 
 /**
  * The properties of Arc Sql Server database resource
  */
 export interface SqlServerDatabaseResourcePropertiesArgs {
-    backupInformation?: pulumi.Input<SqlServerDatabaseResourcePropertiesBackupInformationArgs>;
+    backupInformation?: pulumi.Input<SqlServerDatabaseResourcePropertiesBackupInformationArgs | undefined>;
     /**
      * The backup profile for the SQL server.
      */
-    backupPolicy?: pulumi.Input<BackupPolicyArgs>;
+    backupPolicy?: pulumi.Input<BackupPolicyArgs | undefined>;
     /**
      * Collation of the database.
      */
-    collationName?: pulumi.Input<string>;
+    collationName?: pulumi.Input<string | undefined>;
     /**
      * Compatibility level of the database
      */
-    compatibilityLevel?: pulumi.Input<number>;
+    compatibilityLevel?: pulumi.Input<number | undefined>;
     /**
      * Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified.
      */
-    createMode?: pulumi.Input<string | enums.DatabaseCreateMode>;
+    createMode?: pulumi.Input<string | enums.DatabaseCreateMode | undefined>;
     /**
      * Total size in MB for the data (mdf and ndf) files for this database.
      */
-    dataFileSizeMB?: pulumi.Input<number>;
+    dataFileSizeMB?: pulumi.Input<number | undefined>;
     /**
      * Creation date of the database.
      */
-    databaseCreationDate?: pulumi.Input<string>;
+    databaseCreationDate?: pulumi.Input<string | undefined>;
     /**
      * List of features that are enabled for the database
      */
-    databaseOptions?: pulumi.Input<SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs>;
+    databaseOptions?: pulumi.Input<SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs | undefined>;
     /**
      * Whether the database is read only or not.
      */
-    isReadOnly?: pulumi.Input<boolean>;
+    isReadOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Total size in MB for the log (ldf) files for this database.
      */
-    logFileSizeMB?: pulumi.Input<number>;
+    logFileSizeMB?: pulumi.Input<number | undefined>;
     /**
      * Status of the database.
      */
-    recoveryMode?: pulumi.Input<string | enums.RecoveryMode>;
+    recoveryMode?: pulumi.Input<string | enums.RecoveryMode | undefined>;
     /**
      * Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
      */
-    restorePointInTime?: pulumi.Input<string>;
+    restorePointInTime?: pulumi.Input<string | undefined>;
     /**
      * Size of the database.
      */
-    sizeMB?: pulumi.Input<number>;
+    sizeMB?: pulumi.Input<number | undefined>;
     /**
      * The name of the source database associated with create operation of this database.
      */
-    sourceDatabaseId?: pulumi.Input<string>;
+    sourceDatabaseId?: pulumi.Input<string | undefined>;
     /**
      * Space left of the database.
      */
-    spaceAvailableMB?: pulumi.Input<number>;
+    spaceAvailableMB?: pulumi.Input<number | undefined>;
     /**
      * State of the database.
      */
-    state?: pulumi.Input<string | enums.DatabaseState>;
+    state?: pulumi.Input<string | enums.DatabaseState | undefined>;
 }
 
 export interface SqlServerDatabaseResourcePropertiesBackupInformationArgs {
     /**
      * Date time of last full backup.
      */
-    lastFullBackup?: pulumi.Input<string>;
+    lastFullBackup?: pulumi.Input<string | undefined>;
     /**
      * Date time of last log backup.
      */
-    lastLogBackup?: pulumi.Input<string>;
+    lastLogBackup?: pulumi.Input<string | undefined>;
 }
 
 /**
  * List of features that are enabled for the database
  */
 export interface SqlServerDatabaseResourcePropertiesDatabaseOptionsArgs {
-    isAutoCloseOn?: pulumi.Input<boolean>;
-    isAutoCreateStatsOn?: pulumi.Input<boolean>;
-    isAutoShrinkOn?: pulumi.Input<boolean>;
-    isAutoUpdateStatsOn?: pulumi.Input<boolean>;
-    isEncrypted?: pulumi.Input<boolean>;
-    isMemoryOptimizationEnabled?: pulumi.Input<boolean>;
-    isRemoteDataArchiveEnabled?: pulumi.Input<boolean>;
-    isTrustworthyOn?: pulumi.Input<boolean>;
+    isAutoCloseOn?: pulumi.Input<boolean | undefined>;
+    isAutoCreateStatsOn?: pulumi.Input<boolean | undefined>;
+    isAutoShrinkOn?: pulumi.Input<boolean | undefined>;
+    isAutoUpdateStatsOn?: pulumi.Input<boolean | undefined>;
+    isEncrypted?: pulumi.Input<boolean | undefined>;
+    isMemoryOptimizationEnabled?: pulumi.Input<boolean | undefined>;
+    isRemoteDataArchiveEnabled?: pulumi.Input<boolean | undefined>;
+    isTrustworthyOn?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1117,51 +1117,51 @@ export interface SqlServerInstancePropertiesArgs {
     /**
      * Authentication related configuration for the SQL Server Instance.
      */
-    authentication?: pulumi.Input<AuthenticationArgs>;
+    authentication?: pulumi.Input<AuthenticationArgs | undefined>;
     /**
      * The backup profile for the SQL server.
      */
-    backupPolicy?: pulumi.Input<BackupPolicyArgs>;
+    backupPolicy?: pulumi.Input<BackupPolicyArgs | undefined>;
     /**
      * Client connection related configuration.
      */
-    clientConnection?: pulumi.Input<ClientConnectionArgs>;
+    clientConnection?: pulumi.Input<ClientConnectionArgs | undefined>;
     /**
      * The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance.
      */
-    cores?: pulumi.Input<string>;
+    cores?: pulumi.Input<string | undefined>;
     /**
      * SQL Server edition.
      */
-    edition?: pulumi.Input<string | enums.EditionType>;
+    edition?: pulumi.Input<string | enums.EditionType | undefined>;
     /**
      * Type of host for Azure Arc SQL Server
      */
-    hostType?: pulumi.Input<string | enums.HostType>;
+    hostType?: pulumi.Input<string | enums.HostType | undefined>;
     /**
      * SQL Server instance name.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Migration related configuration.
      */
-    migration?: pulumi.Input<MigrationArgs>;
+    migration?: pulumi.Input<MigrationArgs | undefined>;
     /**
      * The monitoring configuration.
      */
-    monitoring?: pulumi.Input<MonitoringArgs>;
+    monitoring?: pulumi.Input<MonitoringArgs | undefined>;
     /**
      * Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
      */
-    serviceType?: pulumi.Input<string | enums.ServiceType>;
+    serviceType?: pulumi.Input<string | enums.ServiceType | undefined>;
     /**
      * Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
      */
-    upgradeLockedUntil?: pulumi.Input<string>;
+    upgradeLockedUntil?: pulumi.Input<string | undefined>;
     /**
      * SQL Server version.
      */
-    version?: pulumi.Input<string | enums.SqlVersion>;
+    version?: pulumi.Input<string | enums.SqlVersion | undefined>;
 }
 
 /**
@@ -1197,19 +1197,19 @@ export interface UploadServicePrincipalArgs {
     /**
      * Authority for the service principal. Example: https://login.microsoftonline.com/
      */
-    authority?: pulumi.Input<string>;
+    authority?: pulumi.Input<string | undefined>;
     /**
      * Client ID of the service principal for uploading data.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Secret of the service principal
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Tenant ID of the service principal.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1219,13 +1219,13 @@ export interface UploadWatermarkArgs {
     /**
      * Last uploaded date for logs from kubernetes cluster. Defaults to current date time
      */
-    logs?: pulumi.Input<string>;
+    logs?: pulumi.Input<string | undefined>;
     /**
      * Last uploaded date for metrics from kubernetes cluster. Defaults to current date time
      */
-    metrics?: pulumi.Input<string>;
+    metrics?: pulumi.Input<string | undefined>;
     /**
      * Last uploaded date for usages from kubernetes cluster. Defaults to current date time
      */
-    usages?: pulumi.Input<string>;
+    usages?: pulumi.Input<string | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualNetworkTap extends pulumi.CustomResource {
     /**
@@ -98,8 +98,8 @@ export class VirtualNetworkTap extends pulumi.CustomResource {
             if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["destinationLoadBalancerFrontEndIPConfiguration"] = args ? (args.destinationLoadBalancerFrontEndIPConfiguration ? pulumi.output(args.destinationLoadBalancerFrontEndIPConfiguration).apply(types.inputs.frontendIPConfigurationArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["destinationNetworkInterfaceIPConfiguration"] = args ? (args.destinationNetworkInterfaceIPConfiguration ? pulumi.output(args.destinationNetworkInterfaceIPConfiguration).apply(types.inputs.networkInterfaceIPConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["destinationLoadBalancerFrontEndIPConfiguration"] = args ? pulumi.output(args.destinationLoadBalancerFrontEndIPConfiguration).apply(v => v === undefined ? undefined : types.inputs.frontendIPConfigurationArgsProvideDefaults(v)) : undefined;
+            resourceInputs["destinationNetworkInterfaceIPConfiguration"] = args ? pulumi.output(args.destinationNetworkInterfaceIPConfiguration).apply(v => v === undefined ? undefined : types.inputs.networkInterfaceIPConfigurationArgsProvideDefaults(v)) : undefined;
             resourceInputs["destinationPort"] = args?.destinationPort;
             resourceInputs["id"] = args?.id;
             resourceInputs["location"] = args?.location;
@@ -128,7 +128,7 @@ export class VirtualNetworkTap extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180801:VirtualNetworkTap" }, { type: "azure-native:network/v20181001:VirtualNetworkTap" }, { type: "azure-native:network/v20181101:VirtualNetworkTap" }, { type: "azure-native:network/v20181201:VirtualNetworkTap" }, { type: "azure-native:network/v20190201:VirtualNetworkTap" }, { type: "azure-native:network/v20190401:VirtualNetworkTap" }, { type: "azure-native:network/v20190601:VirtualNetworkTap" }, { type: "azure-native:network/v20190701:VirtualNetworkTap" }, { type: "azure-native:network/v20190801:VirtualNetworkTap" }, { type: "azure-native:network/v20190901:VirtualNetworkTap" }, { type: "azure-native:network/v20191101:VirtualNetworkTap" }, { type: "azure-native:network/v20191201:VirtualNetworkTap" }, { type: "azure-native:network/v20200301:VirtualNetworkTap" }, { type: "azure-native:network/v20200401:VirtualNetworkTap" }, { type: "azure-native:network/v20200501:VirtualNetworkTap" }, { type: "azure-native:network/v20200601:VirtualNetworkTap" }, { type: "azure-native:network/v20200701:VirtualNetworkTap" }, { type: "azure-native:network/v20200801:VirtualNetworkTap" }, { type: "azure-native:network/v20201101:VirtualNetworkTap" }, { type: "azure-native:network/v20210201:VirtualNetworkTap" }, { type: "azure-native:network/v20210301:VirtualNetworkTap" }, { type: "azure-native:network/v20210501:VirtualNetworkTap" }, { type: "azure-native:network/v20210801:VirtualNetworkTap" }, { type: "azure-native:network/v20220101:VirtualNetworkTap" }, { type: "azure-native:network/v20220501:VirtualNetworkTap" }, { type: "azure-native:network/v20220701:VirtualNetworkTap" }, { type: "azure-native:network/v20220901:VirtualNetworkTap" }, { type: "azure-native:network/v20221101:VirtualNetworkTap" }, { type: "azure-native:network/v20230201:VirtualNetworkTap" }, { type: "azure-native:network/v20230401:VirtualNetworkTap" }, { type: "azure-native:network/v20230501:VirtualNetworkTap" }, { type: "azure-native:network/v20230601:VirtualNetworkTap" }, { type: "azure-native:network/v20230901:VirtualNetworkTap" }, { type: "azure-native:network/v20231101:VirtualNetworkTap" }, { type: "azure-native:network/v20240101:VirtualNetworkTap" }, { type: "azure-native:network/v20240301:VirtualNetworkTap" }, { type: "azure-native:network/v20240501:VirtualNetworkTap" }, { type: "azure-native:network/v20240701:VirtualNetworkTap" }, { type: "azure-native:network/v20241001:VirtualNetworkTap" }, { type: "azure-native:network/v20250101:VirtualNetworkTap" }, { type: "azure-native:network/v20250301:VirtualNetworkTap" }, { type: "azure-native:network/v20250501:VirtualNetworkTap" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180801:VirtualNetworkTap" }, { type: "azure-native:network/v20181001:VirtualNetworkTap" }, { type: "azure-native:network/v20181101:VirtualNetworkTap" }, { type: "azure-native:network/v20181201:VirtualNetworkTap" }, { type: "azure-native:network/v20190201:VirtualNetworkTap" }, { type: "azure-native:network/v20190401:VirtualNetworkTap" }, { type: "azure-native:network/v20190601:VirtualNetworkTap" }, { type: "azure-native:network/v20190701:VirtualNetworkTap" }, { type: "azure-native:network/v20190801:VirtualNetworkTap" }, { type: "azure-native:network/v20190901:VirtualNetworkTap" }, { type: "azure-native:network/v20191101:VirtualNetworkTap" }, { type: "azure-native:network/v20191201:VirtualNetworkTap" }, { type: "azure-native:network/v20200301:VirtualNetworkTap" }, { type: "azure-native:network/v20200401:VirtualNetworkTap" }, { type: "azure-native:network/v20200501:VirtualNetworkTap" }, { type: "azure-native:network/v20200601:VirtualNetworkTap" }, { type: "azure-native:network/v20200701:VirtualNetworkTap" }, { type: "azure-native:network/v20200801:VirtualNetworkTap" }, { type: "azure-native:network/v20201101:VirtualNetworkTap" }, { type: "azure-native:network/v20210201:VirtualNetworkTap" }, { type: "azure-native:network/v20210301:VirtualNetworkTap" }, { type: "azure-native:network/v20210501:VirtualNetworkTap" }, { type: "azure-native:network/v20210801:VirtualNetworkTap" }, { type: "azure-native:network/v20220101:VirtualNetworkTap" }, { type: "azure-native:network/v20220501:VirtualNetworkTap" }, { type: "azure-native:network/v20220701:VirtualNetworkTap" }, { type: "azure-native:network/v20220901:VirtualNetworkTap" }, { type: "azure-native:network/v20221101:VirtualNetworkTap" }, { type: "azure-native:network/v20230201:VirtualNetworkTap" }, { type: "azure-native:network/v20230401:VirtualNetworkTap" }, { type: "azure-native:network/v20230501:VirtualNetworkTap" }, { type: "azure-native:network/v20230601:VirtualNetworkTap" }, { type: "azure-native:network/v20230901:VirtualNetworkTap" }, { type: "azure-native:network/v20231101:VirtualNetworkTap" }, { type: "azure-native:network/v20240101:VirtualNetworkTap" }, { type: "azure-native:network/v20240301:VirtualNetworkTap" }, { type: "azure-native:network/v20240501:VirtualNetworkTap" }, { type: "azure-native:network/v20240701:VirtualNetworkTap" }, { type: "azure-native:network/v20241001:VirtualNetworkTap" }, { type: "azure-native:network/v20250101:VirtualNetworkTap" }, { type: "azure-native:network/v20250301:VirtualNetworkTap" }, { type: "azure-native:network/v20250501:VirtualNetworkTap" }, { type: "azure-native:network/v20250701:VirtualNetworkTap" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualNetworkTap.__pulumiType, name, resourceInputs, opts);
     }
@@ -141,23 +141,23 @@ export interface VirtualNetworkTapArgs {
     /**
      * The reference to the private IP address on the internal Load Balancer that will receive the tap.
      */
-    destinationLoadBalancerFrontEndIPConfiguration?: pulumi.Input<types.inputs.FrontendIPConfigurationArgs>;
+    destinationLoadBalancerFrontEndIPConfiguration?: pulumi.Input<types.inputs.FrontendIPConfigurationArgs | undefined>;
     /**
      * The reference to the private IP Address of the collector nic that will receive the tap.
      */
-    destinationNetworkInterfaceIPConfiguration?: pulumi.Input<types.inputs.NetworkInterfaceIPConfigurationArgs>;
+    destinationNetworkInterfaceIPConfiguration?: pulumi.Input<types.inputs.NetworkInterfaceIPConfigurationArgs | undefined>;
     /**
      * The VXLAN destination port that will receive the tapped traffic.
      */
-    destinationPort?: pulumi.Input<number>;
+    destinationPort?: pulumi.Input<number | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group.
      */
@@ -165,9 +165,9 @@ export interface VirtualNetworkTapArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the virtual network tap.
      */
-    tapName?: pulumi.Input<string>;
+    tapName?: pulumi.Input<string | undefined>;
 }

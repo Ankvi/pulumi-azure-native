@@ -62,7 +62,7 @@ export interface GetTopicSpaceResult {
     readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The topic filters in the topic space.
-     * Example: "topicTemplates": [ 
+     * Example: "topicTemplates": [
      *               "devices/foo/bar",
      *               "devices/topic1/+",
      *               "devices/${principal.name}/${principal.attributes.keyName}" ].

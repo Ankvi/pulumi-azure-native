@@ -71,11 +71,11 @@ export interface ListProductsAndConfigurationProductFamiliesOutputArgs {
     /**
      * Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.
      */
-    customerSubscriptionDetails?: pulumi.Input<types.inputs.CustomerSubscriptionDetailsArgs>;
+    customerSubscriptionDetails?: pulumi.Input<types.inputs.CustomerSubscriptionDetailsArgs | undefined>;
     /**
      * $expand is supported on configurations parameter for product, which provides details on the configurations for the product.
      */
-    expand?: pulumi.Input<string>;
+    expand?: pulumi.Input<string | undefined>;
     /**
      * Dictionary of filterable properties on product family.
      */
@@ -83,5 +83,5 @@ export interface ListProductsAndConfigurationProductFamiliesOutputArgs {
     /**
      * $skipToken is supported on list of product families, which provides the next page in the list of product families.
      */
-    skipToken?: pulumi.Input<string>;
+    skipToken?: pulumi.Input<string | undefined>;
 }

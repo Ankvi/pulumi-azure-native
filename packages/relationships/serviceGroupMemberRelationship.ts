@@ -95,11 +95,11 @@ export interface ServiceGroupMemberRelationshipArgs {
     /**
      * Name of ServiceGroupMember relationship.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.ServiceGroupMemberRelationshipPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ServiceGroupMemberRelationshipPropertiesArgs | undefined>;
     /**
      * The fully qualified Azure Resource manager identifier of the resource.
      */

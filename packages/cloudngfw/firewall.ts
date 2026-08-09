@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
  *
- * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Firewall extends pulumi.CustomResource {
     /**
@@ -54,7 +54,7 @@ export class Firewall extends pulumi.CustomResource {
     /**
      * The managed service identities assigned to this resource.
      */
-    declare public readonly identity: pulumi.Output<types.outputs.AzureResourceManagerManagedIdentityPropertiesResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedIdentityPropertiesResponse | undefined>;
     /**
      * Panorama Managed: Default is False. Default will be CloudSec managed
      */
@@ -181,7 +181,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cloudngfw/v20220829:Firewall" }, { type: "azure-native:cloudngfw/v20220829preview:Firewall" }, { type: "azure-native:cloudngfw/v20230901:Firewall" }, { type: "azure-native:cloudngfw/v20230901preview:Firewall" }, { type: "azure-native:cloudngfw/v20231010preview:Firewall" }, { type: "azure-native:cloudngfw/v20240119preview:Firewall" }, { type: "azure-native:cloudngfw/v20240207preview:Firewall" }, { type: "azure-native:cloudngfw/v20250206preview:Firewall" }, { type: "azure-native:cloudngfw/v20250523:Firewall" }, { type: "azure-native:cloudngfw/v20250707preview:Firewall" }, { type: "azure-native:cloudngfw/v20251008:Firewall" }, { type: "azure-native:cloudngfw/v20260126preview:Firewall" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cloudngfw/v20220829:Firewall" }, { type: "azure-native:cloudngfw/v20220829preview:Firewall" }, { type: "azure-native:cloudngfw/v20230901:Firewall" }, { type: "azure-native:cloudngfw/v20230901preview:Firewall" }, { type: "azure-native:cloudngfw/v20231010preview:Firewall" }, { type: "azure-native:cloudngfw/v20240119preview:Firewall" }, { type: "azure-native:cloudngfw/v20240207preview:Firewall" }, { type: "azure-native:cloudngfw/v20250206preview:Firewall" }, { type: "azure-native:cloudngfw/v20250523:Firewall" }, { type: "azure-native:cloudngfw/v20250707preview:Firewall" }, { type: "azure-native:cloudngfw/v20251008:Firewall" }, { type: "azure-native:cloudngfw/v20260126preview:Firewall" }, { type: "azure-native:cloudngfw/v20260511preview:Firewall" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Firewall.__pulumiType, name, resourceInputs, opts);
     }
@@ -194,7 +194,7 @@ export interface FirewallArgs {
     /**
      * Associated Rulestack
      */
-    associatedRulestack?: pulumi.Input<types.inputs.RulestackDetailsArgs>;
+    associatedRulestack?: pulumi.Input<types.inputs.RulestackDetailsArgs | undefined>;
     /**
      * DNS settings for Firewall
      */
@@ -202,27 +202,27 @@ export interface FirewallArgs {
     /**
      * Firewall resource name
      */
-    firewallName?: pulumi.Input<string>;
+    firewallName?: pulumi.Input<string | undefined>;
     /**
      * Frontend settings for Firewall
      */
-    frontEndSettings?: pulumi.Input<pulumi.Input<types.inputs.FrontendSettingArgs>[]>;
+    frontEndSettings?: pulumi.Input<pulumi.Input<types.inputs.FrontendSettingArgs>[] | undefined>;
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.AzureResourceManagerManagedIdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.AzureResourceManagerManagedIdentityPropertiesArgs | undefined>;
     /**
      * Panorama Managed: Default is False. Default will be CloudSec managed
      */
-    isPanoramaManaged?: pulumi.Input<string | types.enums.BooleanEnum>;
+    isPanoramaManaged?: pulumi.Input<string | types.enums.BooleanEnum | undefined>;
     /**
      * Strata Cloud Managed: Default is False. Default will be CloudSec managed
      */
-    isStrataCloudManaged?: pulumi.Input<string | types.enums.BooleanEnum>;
+    isStrataCloudManaged?: pulumi.Input<string | types.enums.BooleanEnum | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Marketplace details
      */
@@ -234,11 +234,11 @@ export interface FirewallArgs {
     /**
      * panEtag info
      */
-    panEtag?: pulumi.Input<string>;
+    panEtag?: pulumi.Input<string | undefined>;
     /**
      * Panorama Configuration
      */
-    panoramaConfig?: pulumi.Input<types.inputs.PanoramaConfigArgs>;
+    panoramaConfig?: pulumi.Input<types.inputs.PanoramaConfigArgs | undefined>;
     /**
      * Billing plan information.
      */
@@ -250,9 +250,9 @@ export interface FirewallArgs {
     /**
      * Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
      */
-    strataCloudManagerConfig?: pulumi.Input<types.inputs.StrataCloudManagerConfigArgs>;
+    strataCloudManagerConfig?: pulumi.Input<types.inputs.StrataCloudManagerConfigArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

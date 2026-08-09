@@ -44,7 +44,7 @@ export class Source extends pulumi.CustomResource {
      */
     declare public readonly credit: pulumi.Output<types.outputs.CommitmentResponse | undefined>;
     /**
-     * The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. 
+     * The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
@@ -168,7 +168,7 @@ export interface SourceArgs {
     /**
      * Commitment towards the benefit.
      */
-    credit?: pulumi.Input<types.inputs.CommitmentArgs>;
+    credit?: pulumi.Input<types.inputs.CommitmentArgs | undefined>;
     /**
      * Name of the credit
      */
@@ -176,27 +176,27 @@ export interface SourceArgs {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The billing period of the impact for the resource. Format YYYYMM
      */
-    impactedBillingPeriod?: pulumi.Input<string>;
+    impactedBillingPeriod?: pulumi.Input<string | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
      */
-    managedBy?: pulumi.Input<string>;
+    managedBy?: pulumi.Input<string | undefined>;
     /**
      * Plan for the resource.
      */
-    plan?: pulumi.Input<types.inputs.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -204,21 +204,21 @@ export interface SourceArgs {
     /**
      * The resource model definition representing SKU
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Name of the credit source
      */
-    sourceName?: pulumi.Input<string>;
+    sourceName?: pulumi.Input<string | undefined>;
     /**
      * The uri of the resource impacted which lead to the grant of the credit.
      */
-    sourceResourceId?: pulumi.Input<string>;
+    sourceResourceId?: pulumi.Input<string | undefined>;
     /**
      * Status of the credit
      */
-    status?: pulumi.Input<string | types.enums.CreditStatus>;
+    status?: pulumi.Input<string | types.enums.CreditStatus | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

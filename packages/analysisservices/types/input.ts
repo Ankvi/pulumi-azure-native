@@ -7,7 +7,7 @@ export interface GatewayDetailsArgs {
     /**
      * Gateway resource to be associated with the server.
      */
-    gatewayResourceId?: pulumi.Input<string>;
+    gatewayResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -17,15 +17,15 @@ export interface IPv4FirewallRuleArgs {
     /**
      * The rule name.
      */
-    firewallRuleName?: pulumi.Input<string>;
+    firewallRuleName?: pulumi.Input<string | undefined>;
     /**
      * The end range of IPv4.
      */
-    rangeEnd?: pulumi.Input<string>;
+    rangeEnd?: pulumi.Input<string | undefined>;
     /**
      * The start range of IPv4.
      */
-    rangeStart?: pulumi.Input<string>;
+    rangeStart?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -35,11 +35,11 @@ export interface IPv4FirewallSettingsArgs {
     /**
      * The indicator of enabling PBI service.
      */
-    enablePowerBIService?: pulumi.Input<boolean>;
+    enablePowerBIService?: pulumi.Input<boolean | undefined>;
     /**
      * An array of firewall rules.
      */
-    firewallRules?: pulumi.Input<pulumi.Input<IPv4FirewallRuleArgs>[]>;
+    firewallRules?: pulumi.Input<pulumi.Input<IPv4FirewallRuleArgs>[] | undefined>;
 }
 
 /**
@@ -49,7 +49,7 @@ export interface ResourceSkuArgs {
     /**
      * The number of instances in the read only query pool.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Name of the SKU level.
      */
@@ -57,7 +57,7 @@ export interface ResourceSkuArgs {
     /**
      * The name of the Azure pricing tier to which the SKU applies.
      */
-    tier?: pulumi.Input<string | enums.SkuTier>;
+    tier?: pulumi.Input<string | enums.SkuTier | undefined>;
 }
 /**
  * resourceSkuArgsProvideDefaults sets the appropriate defaults for ResourceSkuArgs
@@ -76,5 +76,5 @@ export interface ServerAdministratorsArgs {
     /**
      * An array of administrator user identities.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

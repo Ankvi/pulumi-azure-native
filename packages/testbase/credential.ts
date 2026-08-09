@@ -112,7 +112,7 @@ export interface CredentialArgs {
     /**
      * The credential resource name.
      */
-    credentialName?: pulumi.Input<string>;
+    credentialName?: pulumi.Input<string | undefined>;
     /**
      * Credential type.
      */

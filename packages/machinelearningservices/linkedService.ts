@@ -106,23 +106,23 @@ export interface LinkedServiceArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
      * Friendly name of the linked workspace
      */
-    linkName?: pulumi.Input<string>;
+    linkName?: pulumi.Input<string | undefined>;
     /**
      * location of the linked service.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Friendly name of the linked service
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * LinkedService specific properties.
      */
-    properties?: pulumi.Input<types.inputs.LinkedServicePropsArgs>;
+    properties?: pulumi.Input<types.inputs.LinkedServicePropsArgs | undefined>;
     /**
      * Name of the resource group in which workspace is located.
      */

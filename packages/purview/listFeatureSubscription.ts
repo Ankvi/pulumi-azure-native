@@ -54,7 +54,7 @@ export interface ListFeatureSubscriptionOutputArgs {
     /**
      * Set of features
      */
-    features?: pulumi.Input<pulumi.Input<string>[]>;
+    features?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Location of feature.
      */

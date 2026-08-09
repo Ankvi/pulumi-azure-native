@@ -7,7 +7,7 @@ export interface LogSettingsArgs {
     /**
      * Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
      */
-    category?: pulumi.Input<string | enums.Category>;
+    category?: pulumi.Input<string | enums.Category | undefined>;
     /**
      * A value indicating whether this log is enabled.
      */
@@ -15,7 +15,7 @@ export interface LogSettingsArgs {
     /**
      * The retention policy for this log.
      */
-    retentionPolicy?: pulumi.Input<RetentionPolicyArgs>;
+    retentionPolicy?: pulumi.Input<RetentionPolicyArgs | undefined>;
 }
 
 /**

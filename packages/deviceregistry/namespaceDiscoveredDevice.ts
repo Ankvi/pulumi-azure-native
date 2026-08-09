@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-07-01-preview.
  *
- * Other available API versions: 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01, 2026-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NamespaceDiscoveredDevice extends pulumi.CustomResource {
     /**
@@ -170,7 +170,7 @@ export class NamespaceDiscoveredDevice extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:deviceregistry/v20250701preview:NamespaceDiscoveredDevice" }, { type: "azure-native:deviceregistry/v20251001:NamespaceDiscoveredDevice" }, { type: "azure-native:deviceregistry/v20251101preview:NamespaceDiscoveredDevice" }, { type: "azure-native:deviceregistry/v20260301preview:NamespaceDiscoveredDevice" }, { type: "azure-native:deviceregistry/v20260401:NamespaceDiscoveredDevice" }, { type: "azure-native:deviceregistry/v20261101preview:NamespaceDiscoveredDevice" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:deviceregistry/v20250701preview:NamespaceDiscoveredDevice" }, { type: "azure-native:deviceregistry/v20251001:NamespaceDiscoveredDevice" }, { type: "azure-native:deviceregistry/v20251101preview:NamespaceDiscoveredDevice" }, { type: "azure-native:deviceregistry/v20260301preview:NamespaceDiscoveredDevice" }, { type: "azure-native:deviceregistry/v20260401:NamespaceDiscoveredDevice" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NamespaceDiscoveredDevice.__pulumiType, name, resourceInputs, opts);
     }
@@ -183,11 +183,11 @@ export interface NamespaceDiscoveredDeviceArgs {
     /**
      * A set of key-value pairs that contain custom attributes.
      */
-    attributes?: any;
+    attributes?: any | undefined;
     /**
      * The name of the discovered device.
      */
-    discoveredDeviceName?: pulumi.Input<string>;
+    discoveredDeviceName?: pulumi.Input<string | undefined>;
     /**
      * Identifier used to detect changes in the discovered device.
      */
@@ -195,7 +195,7 @@ export interface NamespaceDiscoveredDeviceArgs {
     /**
      * Endpoints for discovered devices.
      */
-    endpoints?: pulumi.Input<types.inputs.DiscoveredMessagingEndpointsArgs>;
+    endpoints?: pulumi.Input<types.inputs.DiscoveredMessagingEndpointsArgs | undefined>;
     /**
      * The extended location.
      */
@@ -203,19 +203,19 @@ export interface NamespaceDiscoveredDeviceArgs {
     /**
      * A device ID that represents the device in a system external to Azure. Unique within scope of an Azure tenant.
      */
-    externalDeviceId?: pulumi.Input<string>;
+    externalDeviceId?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Device manufacturer.
      */
-    manufacturer?: pulumi.Input<string>;
+    manufacturer?: pulumi.Input<string | undefined>;
     /**
      * Device model.
      */
-    model?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace.
      */
@@ -223,11 +223,11 @@ export interface NamespaceDiscoveredDeviceArgs {
     /**
      * Device operating system name.
      */
-    operatingSystem?: pulumi.Input<string>;
+    operatingSystem?: pulumi.Input<string | undefined>;
     /**
      * Device operating system version.
      */
-    operatingSystemVersion?: pulumi.Input<string>;
+    operatingSystemVersion?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -235,7 +235,7 @@ export interface NamespaceDiscoveredDeviceArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An integer that is incremented each time the resource is modified.
      */

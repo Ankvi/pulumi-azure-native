@@ -7,11 +7,11 @@ export interface AdministratorPropertiesArgs {
     /**
      * The administrator password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The administrator user name.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -21,7 +21,7 @@ export interface ComputePropertiesArgs {
     /**
      * The compute tier to assign to the cluster, where each tier maps to a virtual-core and memory size. Example values: 'M30', 'M40'.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -84,7 +84,7 @@ export interface HighAvailabilityPropertiesArgs {
     /**
      * The target high availability mode requested for the cluster.
      */
-    targetMode?: pulumi.Input<string | enums.HighAvailabilityMode>;
+    targetMode?: pulumi.Input<string | enums.HighAvailabilityMode | undefined>;
 }
 
 /**
@@ -94,47 +94,47 @@ export interface MongoClusterPropertiesArgs {
     /**
      * The local administrator properties for the mongo cluster.
      */
-    administrator?: pulumi.Input<AdministratorPropertiesArgs>;
+    administrator?: pulumi.Input<AdministratorPropertiesArgs | undefined>;
     /**
      * The compute properties of the mongo cluster.
      */
-    compute?: pulumi.Input<ComputePropertiesArgs>;
+    compute?: pulumi.Input<ComputePropertiesArgs | undefined>;
     /**
      * The mode to create a mongo cluster.
      */
-    createMode?: pulumi.Input<string | enums.CreateMode>;
+    createMode?: pulumi.Input<string | enums.CreateMode | undefined>;
     /**
      * The high availability properties of the mongo cluster.
      */
-    highAvailability?: pulumi.Input<HighAvailabilityPropertiesArgs>;
+    highAvailability?: pulumi.Input<HighAvailabilityPropertiesArgs | undefined>;
     /**
      * List of private endpoint connections.
      */
-    previewFeatures?: pulumi.Input<pulumi.Input<string | enums.PreviewFeature>[]>;
+    previewFeatures?: pulumi.Input<pulumi.Input<string | enums.PreviewFeature>[] | undefined>;
     /**
      * Whether or not public endpoint access is allowed for this mongo cluster.
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess | undefined>;
     /**
      * The parameters to create a replica mongo cluster.
      */
-    replicaParameters?: pulumi.Input<MongoClusterReplicaParametersArgs>;
+    replicaParameters?: pulumi.Input<MongoClusterReplicaParametersArgs | undefined>;
     /**
      * The parameters to create a point-in-time restore mongo cluster.
      */
-    restoreParameters?: pulumi.Input<MongoClusterRestoreParametersArgs>;
+    restoreParameters?: pulumi.Input<MongoClusterRestoreParametersArgs | undefined>;
     /**
      * The Mongo DB server version. Defaults to the latest available version if not specified.
      */
-    serverVersion?: pulumi.Input<string>;
+    serverVersion?: pulumi.Input<string | undefined>;
     /**
      * The sharding properties of the mongo cluster.
      */
-    sharding?: pulumi.Input<ShardingPropertiesArgs>;
+    sharding?: pulumi.Input<ShardingPropertiesArgs | undefined>;
     /**
      * The storage properties of the mongo cluster.
      */
-    storage?: pulumi.Input<StoragePropertiesArgs>;
+    storage?: pulumi.Input<StoragePropertiesArgs | undefined>;
 }
 
 /**
@@ -158,11 +158,11 @@ export interface MongoClusterRestoreParametersArgs {
     /**
      * UTC point in time to restore a mongo cluster
      */
-    pointInTimeUTC?: pulumi.Input<string>;
+    pointInTimeUTC?: pulumi.Input<string | undefined>;
     /**
      * Resource ID to locate the source cluster to restore
      */
-    sourceResourceId?: pulumi.Input<string>;
+    sourceResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,15 +182,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -200,7 +200,7 @@ export interface ShardingPropertiesArgs {
     /**
      * Number of shards to provision on the cluster.
      */
-    shardCount?: pulumi.Input<number>;
+    shardCount?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -210,7 +210,7 @@ export interface StoragePropertiesArgs {
     /**
      * The size of the data disk assigned to each server.
      */
-    sizeGb?: pulumi.Input<number>;
+    sizeGb?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -220,9 +220,9 @@ export interface UserPropertiesArgs {
     /**
      * The user's identity provider definition.
      */
-    identityProvider?: pulumi.Input<EntraIdentityProviderArgs>;
+    identityProvider?: pulumi.Input<EntraIdentityProviderArgs | undefined>;
     /**
      * Database roles that are assigned to the user.
      */
-    roles?: pulumi.Input<pulumi.Input<DatabaseRoleArgs>[]>;
+    roles?: pulumi.Input<pulumi.Input<DatabaseRoleArgs>[] | undefined>;
 }

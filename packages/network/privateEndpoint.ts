@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateEndpoint extends pulumi.CustomResource {
     /**
@@ -125,7 +125,7 @@ export class PrivateEndpoint extends pulumi.CustomResource {
             resourceInputs["privateEndpointName"] = args?.privateEndpointName;
             resourceInputs["privateLinkServiceConnections"] = args?.privateLinkServiceConnections;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
-            resourceInputs["subnet"] = args ? (args.subnet ? pulumi.output(args.subnet).apply(types.inputs.subnetArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["subnet"] = args ? pulumi.output(args.subnet).apply(v => v === undefined ? undefined : types.inputs.subnetArgsProvideDefaults(v)) : undefined;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -152,7 +152,7 @@ export class PrivateEndpoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180801:PrivateEndpoint" }, { type: "azure-native:network/v20181001:PrivateEndpoint" }, { type: "azure-native:network/v20181101:PrivateEndpoint" }, { type: "azure-native:network/v20181201:PrivateEndpoint" }, { type: "azure-native:network/v20190201:InterfaceEndpoint" }, { type: "azure-native:network/v20190201:PrivateEndpoint" }, { type: "azure-native:network/v20190401:PrivateEndpoint" }, { type: "azure-native:network/v20190601:PrivateEndpoint" }, { type: "azure-native:network/v20190701:PrivateEndpoint" }, { type: "azure-native:network/v20190801:PrivateEndpoint" }, { type: "azure-native:network/v20190901:PrivateEndpoint" }, { type: "azure-native:network/v20191101:PrivateEndpoint" }, { type: "azure-native:network/v20191201:PrivateEndpoint" }, { type: "azure-native:network/v20200301:PrivateEndpoint" }, { type: "azure-native:network/v20200401:PrivateEndpoint" }, { type: "azure-native:network/v20200501:PrivateEndpoint" }, { type: "azure-native:network/v20200601:PrivateEndpoint" }, { type: "azure-native:network/v20200701:PrivateEndpoint" }, { type: "azure-native:network/v20200801:PrivateEndpoint" }, { type: "azure-native:network/v20201101:PrivateEndpoint" }, { type: "azure-native:network/v20210201:PrivateEndpoint" }, { type: "azure-native:network/v20210301:PrivateEndpoint" }, { type: "azure-native:network/v20210501:PrivateEndpoint" }, { type: "azure-native:network/v20210801:PrivateEndpoint" }, { type: "azure-native:network/v20220101:PrivateEndpoint" }, { type: "azure-native:network/v20220501:PrivateEndpoint" }, { type: "azure-native:network/v20220701:PrivateEndpoint" }, { type: "azure-native:network/v20220901:PrivateEndpoint" }, { type: "azure-native:network/v20221101:PrivateEndpoint" }, { type: "azure-native:network/v20230201:PrivateEndpoint" }, { type: "azure-native:network/v20230401:PrivateEndpoint" }, { type: "azure-native:network/v20230501:PrivateEndpoint" }, { type: "azure-native:network/v20230601:PrivateEndpoint" }, { type: "azure-native:network/v20230901:PrivateEndpoint" }, { type: "azure-native:network/v20231101:PrivateEndpoint" }, { type: "azure-native:network/v20240101:PrivateEndpoint" }, { type: "azure-native:network/v20240301:PrivateEndpoint" }, { type: "azure-native:network/v20240501:PrivateEndpoint" }, { type: "azure-native:network/v20240701:PrivateEndpoint" }, { type: "azure-native:network/v20241001:PrivateEndpoint" }, { type: "azure-native:network/v20250101:PrivateEndpoint" }, { type: "azure-native:network/v20250301:PrivateEndpoint" }, { type: "azure-native:network/v20250501:PrivateEndpoint" }, { type: "azure-native:network:InterfaceEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180801:PrivateEndpoint" }, { type: "azure-native:network/v20181001:PrivateEndpoint" }, { type: "azure-native:network/v20181101:PrivateEndpoint" }, { type: "azure-native:network/v20181201:PrivateEndpoint" }, { type: "azure-native:network/v20190201:InterfaceEndpoint" }, { type: "azure-native:network/v20190201:PrivateEndpoint" }, { type: "azure-native:network/v20190401:PrivateEndpoint" }, { type: "azure-native:network/v20190601:PrivateEndpoint" }, { type: "azure-native:network/v20190701:PrivateEndpoint" }, { type: "azure-native:network/v20190801:PrivateEndpoint" }, { type: "azure-native:network/v20190901:PrivateEndpoint" }, { type: "azure-native:network/v20191101:PrivateEndpoint" }, { type: "azure-native:network/v20191201:PrivateEndpoint" }, { type: "azure-native:network/v20200301:PrivateEndpoint" }, { type: "azure-native:network/v20200401:PrivateEndpoint" }, { type: "azure-native:network/v20200501:PrivateEndpoint" }, { type: "azure-native:network/v20200601:PrivateEndpoint" }, { type: "azure-native:network/v20200701:PrivateEndpoint" }, { type: "azure-native:network/v20200801:PrivateEndpoint" }, { type: "azure-native:network/v20201101:PrivateEndpoint" }, { type: "azure-native:network/v20210201:PrivateEndpoint" }, { type: "azure-native:network/v20210301:PrivateEndpoint" }, { type: "azure-native:network/v20210501:PrivateEndpoint" }, { type: "azure-native:network/v20210801:PrivateEndpoint" }, { type: "azure-native:network/v20220101:PrivateEndpoint" }, { type: "azure-native:network/v20220501:PrivateEndpoint" }, { type: "azure-native:network/v20220701:PrivateEndpoint" }, { type: "azure-native:network/v20220901:PrivateEndpoint" }, { type: "azure-native:network/v20221101:PrivateEndpoint" }, { type: "azure-native:network/v20230201:PrivateEndpoint" }, { type: "azure-native:network/v20230401:PrivateEndpoint" }, { type: "azure-native:network/v20230501:PrivateEndpoint" }, { type: "azure-native:network/v20230601:PrivateEndpoint" }, { type: "azure-native:network/v20230901:PrivateEndpoint" }, { type: "azure-native:network/v20231101:PrivateEndpoint" }, { type: "azure-native:network/v20240101:PrivateEndpoint" }, { type: "azure-native:network/v20240301:PrivateEndpoint" }, { type: "azure-native:network/v20240501:PrivateEndpoint" }, { type: "azure-native:network/v20240701:PrivateEndpoint" }, { type: "azure-native:network/v20241001:PrivateEndpoint" }, { type: "azure-native:network/v20250101:PrivateEndpoint" }, { type: "azure-native:network/v20250301:PrivateEndpoint" }, { type: "azure-native:network/v20250501:PrivateEndpoint" }, { type: "azure-native:network/v20250701:PrivateEndpoint" }, { type: "azure-native:network:InterfaceEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpoint.__pulumiType, name, resourceInputs, opts);
     }
@@ -165,43 +165,43 @@ export interface PrivateEndpointArgs {
     /**
      * Application security groups in which the private endpoint IP configuration is included.
      */
-    applicationSecurityGroups?: pulumi.Input<pulumi.Input<types.inputs.ApplicationSecurityGroupArgs>[]>;
+    applicationSecurityGroups?: pulumi.Input<pulumi.Input<types.inputs.ApplicationSecurityGroupArgs>[] | undefined>;
     /**
      * An array of custom dns configurations.
      */
-    customDnsConfigs?: pulumi.Input<pulumi.Input<types.inputs.CustomDnsConfigPropertiesFormatArgs>[]>;
+    customDnsConfigs?: pulumi.Input<pulumi.Input<types.inputs.CustomDnsConfigPropertiesFormatArgs>[] | undefined>;
     /**
      * The custom name of the network interface attached to the private endpoint.
      */
-    customNetworkInterfaceName?: pulumi.Input<string>;
+    customNetworkInterfaceName?: pulumi.Input<string | undefined>;
     /**
      * The extended location of the load balancer.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
      */
-    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointIPConfigurationArgs>[]>;
+    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointIPConfigurationArgs>[] | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
      */
-    manualPrivateLinkServiceConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateLinkServiceConnectionArgs>[]>;
+    manualPrivateLinkServiceConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateLinkServiceConnectionArgs>[] | undefined>;
     /**
      * The name of the private endpoint.
      */
-    privateEndpointName?: pulumi.Input<string>;
+    privateEndpointName?: pulumi.Input<string | undefined>;
     /**
      * A grouping of information about the connection to the remote resource.
      */
-    privateLinkServiceConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateLinkServiceConnectionArgs>[]>;
+    privateLinkServiceConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateLinkServiceConnectionArgs>[] | undefined>;
     /**
      * The name of the resource group.
      */
@@ -209,9 +209,9 @@ export interface PrivateEndpointArgs {
     /**
      * The ID of the subnet from which the private IP will be allocated.
      */
-    subnet?: pulumi.Input<types.inputs.SubnetArgs>;
+    subnet?: pulumi.Input<types.inputs.SubnetArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

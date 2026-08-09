@@ -116,7 +116,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * GroupIds from the private link service resource.
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name or namespace name).
      */
@@ -128,19 +128,19 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The Private Endpoint resource for this Connection.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs | undefined>;
     /**
      * The name of the private endpoint connection connection.
      */
-    privateEndpointConnectionName?: pulumi.Input<string>;
+    privateEndpointConnectionName?: pulumi.Input<string | undefined>;
     /**
      * Details about the state of the connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.ConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.ConnectionStateArgs | undefined>;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */
-    provisioningState?: pulumi.Input<string | types.enums.ResourceProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ResourceProvisioningState | undefined>;
     /**
      * The name of the resource group within the user's subscription.
      */

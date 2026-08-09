@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
  *
- * Other available API versions: 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Authorization extends pulumi.CustomResource {
     /**
@@ -111,7 +111,7 @@ export class Authorization extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220401preview:Authorization" }, { type: "azure-native:apimanagement/v20220801:Authorization" }, { type: "azure-native:apimanagement/v20220901preview:Authorization" }, { type: "azure-native:apimanagement/v20230301preview:Authorization" }, { type: "azure-native:apimanagement/v20230501preview:Authorization" }, { type: "azure-native:apimanagement/v20230901preview:Authorization" }, { type: "azure-native:apimanagement/v20240501:Authorization" }, { type: "azure-native:apimanagement/v20240601preview:Authorization" }, { type: "azure-native:apimanagement/v20241001preview:Authorization" }, { type: "azure-native:apimanagement/v20250301preview:Authorization" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220401preview:Authorization" }, { type: "azure-native:apimanagement/v20220801:Authorization" }, { type: "azure-native:apimanagement/v20220901preview:Authorization" }, { type: "azure-native:apimanagement/v20230301preview:Authorization" }, { type: "azure-native:apimanagement/v20230501preview:Authorization" }, { type: "azure-native:apimanagement/v20230901preview:Authorization" }, { type: "azure-native:apimanagement/v20240501:Authorization" }, { type: "azure-native:apimanagement/v20240601preview:Authorization" }, { type: "azure-native:apimanagement/v20241001preview:Authorization" }, { type: "azure-native:apimanagement/v20250301preview:Authorization" }, { type: "azure-native:apimanagement/v20250901preview:Authorization" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Authorization.__pulumiType, name, resourceInputs, opts);
     }
@@ -124,7 +124,7 @@ export interface AuthorizationArgs {
     /**
      * Identifier of the authorization.
      */
-    authorizationId?: pulumi.Input<string>;
+    authorizationId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the authorization provider.
      */
@@ -132,19 +132,19 @@ export interface AuthorizationArgs {
     /**
      * Authorization type options
      */
-    authorizationType?: pulumi.Input<string | types.enums.AuthorizationType>;
+    authorizationType?: pulumi.Input<string | types.enums.AuthorizationType | undefined>;
     /**
      * Authorization error details.
      */
-    error?: pulumi.Input<types.inputs.AuthorizationErrorArgs>;
+    error?: pulumi.Input<types.inputs.AuthorizationErrorArgs | undefined>;
     /**
      * OAuth2 grant type options
      */
-    oAuth2GrantType?: pulumi.Input<string | types.enums.OAuth2GrantType>;
+    oAuth2GrantType?: pulumi.Input<string | types.enums.OAuth2GrantType | undefined>;
     /**
      * Authorization parameters
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -156,5 +156,5 @@ export interface AuthorizationArgs {
     /**
      * Status of the Authorization
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

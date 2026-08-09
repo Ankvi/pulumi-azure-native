@@ -983,7 +983,7 @@ export interface PostgresInstanceSkuResponse {
      */
     capacity?: number;
     /**
-     * Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose. 
+     * Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose.
      */
     dev?: boolean;
     /**
@@ -995,7 +995,7 @@ export interface PostgresInstanceSkuResponse {
      */
     name: string;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
     size?: string;
     /**
@@ -1413,7 +1413,7 @@ export interface SqlManagedInstanceSkuResponse {
      */
     capacity?: number;
     /**
-     * Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose. 
+     * Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose.
      */
     dev?: boolean;
     /**
@@ -1425,7 +1425,7 @@ export interface SqlManagedInstanceSkuResponse {
      */
     name: string;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
     size?: string;
     /**

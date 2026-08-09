@@ -7,7 +7,7 @@ export interface AuthorizationArgs {
     /**
      * The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals.
      */
-    delegatedRoleDefinitionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    delegatedRoleDefinitionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The identifier of the Azure Active Directory principal.
      */
@@ -15,7 +15,7 @@ export interface AuthorizationArgs {
     /**
      * The display name of the Azure Active Directory principal.
      */
-    principalIdDisplayName?: pulumi.Input<string>;
+    principalIdDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the Azure built-in role that defines the permissions that the Azure Active Directory principal will have on the projected scope.
      */
@@ -33,7 +33,7 @@ export interface EligibleApproverArgs {
     /**
      * The display name of the Azure Active Directory principal.
      */
-    principalIdDisplayName?: pulumi.Input<string>;
+    principalIdDisplayName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -43,7 +43,7 @@ export interface EligibleAuthorizationArgs {
     /**
      * The just-in-time access policy setting.
      */
-    justInTimeAccessPolicy?: pulumi.Input<JustInTimeAccessPolicyArgs>;
+    justInTimeAccessPolicy?: pulumi.Input<JustInTimeAccessPolicyArgs | undefined>;
     /**
      * The identifier of the Azure Active Directory principal.
      */
@@ -51,7 +51,7 @@ export interface EligibleAuthorizationArgs {
     /**
      * The display name of the Azure Active Directory principal.
      */
-    principalIdDisplayName?: pulumi.Input<string>;
+    principalIdDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the Azure built-in role that defines the permissions that the Azure Active Directory principal will have on the projected scope.
      */
@@ -63,7 +63,7 @@ export interface EligibleAuthorizationArgs {
 export function eligibleAuthorizationArgsProvideDefaults(val: EligibleAuthorizationArgs): EligibleAuthorizationArgs {
     return {
         ...val,
-        justInTimeAccessPolicy: (val.justInTimeAccessPolicy ? pulumi.output(val.justInTimeAccessPolicy).apply(justInTimeAccessPolicyArgsProvideDefaults) : undefined),
+        justInTimeAccessPolicy: pulumi.output(val.justInTimeAccessPolicy).apply(v => v === undefined ? undefined : justInTimeAccessPolicyArgsProvideDefaults(v)),
     };
 }
 
@@ -74,11 +74,11 @@ export interface JustInTimeAccessPolicyArgs {
     /**
      * The list of managedByTenant approvers for the eligible authorization.
      */
-    managedByTenantApprovers?: pulumi.Input<pulumi.Input<EligibleApproverArgs>[]>;
+    managedByTenantApprovers?: pulumi.Input<pulumi.Input<EligibleApproverArgs>[] | undefined>;
     /**
      * The maximum access duration in ISO 8601 format for just-in-time access requests.
      */
-    maximumActivationDuration?: pulumi.Input<string>;
+    maximumActivationDuration?: pulumi.Input<string | undefined>;
     /**
      * The multi-factor authorization provider to be used for just-in-time access requests.
      */
@@ -138,11 +138,11 @@ export interface RegistrationDefinitionPropertiesArgs {
     /**
      * The description of the registration definition.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
      */
-    eligibleAuthorizations?: pulumi.Input<pulumi.Input<EligibleAuthorizationArgs>[]>;
+    eligibleAuthorizations?: pulumi.Input<pulumi.Input<EligibleAuthorizationArgs>[] | undefined>;
     /**
      * The identifier of the managedBy tenant.
      */
@@ -150,5 +150,5 @@ export interface RegistrationDefinitionPropertiesArgs {
     /**
      * The name of the registration definition.
      */
-    registrationDefinitionName?: pulumi.Input<string>;
+    registrationDefinitionName?: pulumi.Input<string | undefined>;
 }

@@ -7,11 +7,11 @@ export interface ConnectionStateArgs {
     /**
      * Description of the connection state.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Status of the connection.
      */
-    status?: pulumi.Input<string | enums.PrivateLinkConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateLinkConnectionStatus | undefined>;
 }
 
 /**
@@ -21,7 +21,7 @@ export interface PrivateEndpointArgs {
     /**
      * The ARM identifier for Private Endpoint.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -31,15 +31,15 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The Private Endpoint resource for this Connection.
      */
-    privateEndpoint?: pulumi.Input<PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<PrivateEndpointArgs | undefined>;
     /**
      * Details about the state of the connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<ConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<ConnectionStateArgs | undefined>;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */
-    provisioningState?: pulumi.Input<string | enums.EndPointProvisioningState>;
+    provisioningState?: pulumi.Input<string | enums.EndPointProvisioningState | undefined>;
 }
 
 /**
@@ -53,5 +53,5 @@ export interface SkuArgs {
     /**
      * The tier of this SKU.
      */
-    tier?: pulumi.Input<string | enums.SkuTier>;
+    tier?: pulumi.Input<string | enums.SkuTier | undefined>;
 }

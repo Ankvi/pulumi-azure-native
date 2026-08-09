@@ -75,6 +75,16 @@ export interface AdvancedNetworkingSecurityResponse {
 }
 
 /**
+ * Affinity is a group of cluster affinity scheduling rules. More to be added.
+ */
+export interface AffinityResponse {
+    /**
+     * ClusterAffinity contains cluster affinity scheduling rules for the selected resources.
+     */
+    clusterAffinity?: ClusterAffinityResponse;
+}
+
+/**
  * Profile of the managed cluster gateway agent pool.
  */
 export interface AgentPoolGatewayProfileResponse {
@@ -228,6 +238,50 @@ export function azureKeyVaultKmsResponseProvideDefaults(val: AzureKeyVaultKmsRes
         ...val,
         keyVaultNetworkAccess: (val.keyVaultNetworkAccess) ?? "Public",
     };
+}
+
+/**
+ * ClusterAffinity contains cluster affinity scheduling rules for the selected resources.
+ */
+export interface ClusterAffinityResponse {
+    /**
+     * If the affinity requirements specified by this field are not met at scheduling time, the resource will not be scheduled onto the cluster. If the affinity requirements specified by this field cease to be met at some point after the placement (e.g. due to an update), the system may or may not try to eventually remove the resource from the cluster.
+     */
+    requiredDuringSchedulingIgnoredDuringExecution?: ClusterSelectorResponse;
+}
+
+/**
+ * ClusterResourcePlacementSpec defines the desired state of ClusterResourcePlacement.
+ */
+export interface ClusterResourcePlacementSpecResponse {
+    /**
+     * Policy defines how to select member clusters to place the selected resources. If unspecified, all the joined member clusters are selected.
+     */
+    policy?: PlacementPolicyResponse;
+}
+
+/**
+ * ClusterSelector
+ */
+export interface ClusterSelectorResponse {
+    /**
+     * ClusterSelectorTerms is a list of cluster selector terms. The terms are `ORed`.
+     */
+    clusterSelectorTerms: ClusterSelectorTermResponse[];
+}
+
+/**
+ * ClusterSelectorTerm
+ */
+export interface ClusterSelectorTermResponse {
+    /**
+     * LabelSelector is a label query over all the joined member clusters. Clusters matching the query are selected. If you specify both label and property selectors in the same term, the results are AND'd.
+     */
+    labelSelector?: LabelSelectorResponse;
+    /**
+     * PropertySelector is a property query over all joined member clusters. Clusters matching the query are selected. If you specify both label and property selectors in the same term, the results are AND'd. At this moment, PropertySelector can only be used with `RequiredDuringSchedulingIgnoredDuringExecution` affinity terms. This field is beta-level; it is for the property-based scheduling feature and is only functional when a property provider is enabled in the deployment.
+     */
+    propertySelector?: PropertySelectorResponse;
 }
 
 /**
@@ -907,9 +961,23 @@ export interface KubeletConfigResponse {
 }
 
 /**
+ * A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+ */
+export interface LabelSelectorLoadBalancerResponse {
+    /**
+     * matchExpressions is a list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: LabelSelectorRequirementLoadBalancerResponse[];
+    /**
+     * matchLabels is an array of {key=value} pairs. A single {key=value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is `key`, the operator is `In`, and the values array contains only `value`. The requirements are ANDed.
+     */
+    matchLabels?: string[];
+}
+
+/**
  * A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
  */
-export interface LabelSelectorRequirementResponse {
+export interface LabelSelectorRequirementLoadBalancerResponse {
     /**
      * key is the label key that the selector applies to.
      */
@@ -925,6 +993,24 @@ export interface LabelSelectorRequirementResponse {
 }
 
 /**
+ * A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+ */
+export interface LabelSelectorRequirementResponse {
+    /**
+     * key is the label key that the selector applies to.
+     */
+    key: string;
+    /**
+     * operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+     */
+    operator: string;
+    /**
+     * values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+     */
+    values?: string[];
+}
+
+/**
  * A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
  */
 export interface LabelSelectorResponse {
@@ -933,9 +1019,9 @@ export interface LabelSelectorResponse {
      */
     matchExpressions?: LabelSelectorRequirementResponse[];
     /**
-     * matchLabels is an array of {key=value} pairs. A single {key=value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is `key`, the operator is `In`, and the values array contains only `value`. The requirements are ANDed.
+     * matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
      */
-    matchLabels?: string[];
+    matchLabels?: {[key: string]: string};
 }
 
 /**
@@ -1610,7 +1696,7 @@ export interface ManagedClusterIngressProfileWebAppRoutingResponse {
     /**
      * Managed identity of the Application Routing add-on. This is the identity that should be granted permissions, for example, to manage the associated Azure DNS resource and get certificates from Azure Key Vault. See [this overview of the add-on](https://learn.microsoft.com/en-us/azure/aks/web-app-routing?tabs=with-osm) for more instructions.
      */
-    identity: UserAssignedIdentityResponse;
+    identity: UserAssignedIdentityManagedClusterResponse;
     /**
      * Configuration for the default NginxIngressController. See more at https://learn.microsoft.com/en-us/azure/aks/app-routing-nginx-configuration#the-default-nginx-ingress-controller.
      */
@@ -1672,11 +1758,11 @@ export function managedClusterLoadBalancerProfileResponseProvideDefaults(val: Ma
  */
 export interface ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs {
     /**
-     * The desired number of IPv4 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. 
+     * The desired number of IPv4 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
      */
     count?: number;
     /**
-     * The desired number of IPv6 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 0 for single-stack and 1 for dual-stack. 
+     * The desired number of IPv6 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 0 for single-stack and 1 for dual-stack.
      */
     countIPv6?: number;
 }
@@ -1716,7 +1802,7 @@ export interface ManagedClusterLoadBalancerProfileResponseOutboundIPs {
  */
 export interface ManagedClusterManagedOutboundIPProfileResponse {
     /**
-     * The desired number of outbound IPs created/managed by Azure. Allowed values must be in the range of 1 to 16 (inclusive). The default value is 1. 
+     * The desired number of outbound IPs created/managed by Azure. Allowed values must be in the range of 1 to 16 (inclusive). The default value is 1.
      */
     count?: number;
 }
@@ -1895,7 +1981,7 @@ export interface ManagedClusterPodIdentityResponse {
     /**
      * The user assigned identity details.
      */
-    identity: UserAssignedIdentityResponse;
+    identity: UserAssignedIdentityManagedClusterResponse;
     /**
      * The name of the pod identity.
      */
@@ -2424,35 +2510,46 @@ export interface MeshMembershipPropertiesResponse {
 }
 
 /**
- * A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+ * Properties of a namespace managed by ARM
  */
-export interface MetaV1LabelSelectorRequirementResponse {
+export interface NamespacePropertiesNamespaceResponse {
     /**
-     * key is the label key that the selector applies to.
+     * Action if Kubernetes namespace with same name already exists.
      */
-    key: string;
+    adoptionPolicy?: string;
     /**
-     * operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+     * The annotations of managed namespace.
      */
-    operator: string;
+    annotations?: {[key: string]: string};
     /**
-     * values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+     * The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
      */
-    values?: string[];
+    defaultNetworkPolicy?: NetworkPoliciesResponse;
+    /**
+     * The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
+     */
+    defaultResourceQuota?: ResourceQuotaResponse;
+    /**
+     * Delete options of a namespace.
+     */
+    deletePolicy?: string;
+    /**
+     * The labels of managed namespace.
+     */
+    labels?: {[key: string]: string};
+    /**
+     * The current provisioning state of the namespace.
+     */
+    provisioningState: string;
 }
-
 /**
- * A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+ * namespacePropertiesNamespaceResponseProvideDefaults sets the appropriate defaults for NamespacePropertiesNamespaceResponse
  */
-export interface MetaV1LabelSelectorResponse {
-    /**
-     * matchExpressions is a list of label selector requirements. The requirements are ANDed.
-     */
-    matchExpressions?: MetaV1LabelSelectorRequirementResponse[];
-    /**
-     * matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
-     */
-    matchLabels?: {[key: string]: string};
+export function namespacePropertiesNamespaceResponseProvideDefaults(val: NamespacePropertiesNamespaceResponse): NamespacePropertiesNamespaceResponse {
+    return {
+        ...val,
+        defaultNetworkPolicy: (val.defaultNetworkPolicy ? networkPoliciesResponseProvideDefaults(val.defaultNetworkPolicy) : undefined),
+    };
 }
 
 /**
@@ -2496,49 +2593,6 @@ export interface NamespacePropertiesResponse {
  * namespacePropertiesResponseProvideDefaults sets the appropriate defaults for NamespacePropertiesResponse
  */
 export function namespacePropertiesResponseProvideDefaults(val: NamespacePropertiesResponse): NamespacePropertiesResponse {
-    return {
-        ...val,
-        defaultNetworkPolicy: (val.defaultNetworkPolicy ? networkPoliciesResponseProvideDefaults(val.defaultNetworkPolicy) : undefined),
-    };
-}
-
-/**
- * Properties of a namespace managed by ARM
- */
-export interface NamespacePropertiesResponseV1 {
-    /**
-     * Action if Kubernetes namespace with same name already exists.
-     */
-    adoptionPolicy?: string;
-    /**
-     * The annotations of managed namespace.
-     */
-    annotations?: {[key: string]: string};
-    /**
-     * The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. All the network policies will be enforced.
-     */
-    defaultNetworkPolicy?: NetworkPoliciesResponse;
-    /**
-     * The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. All the resource quotas will be enforced.
-     */
-    defaultResourceQuota?: ResourceQuotaResponse;
-    /**
-     * Delete options of a namespace.
-     */
-    deletePolicy?: string;
-    /**
-     * The labels of managed namespace.
-     */
-    labels?: {[key: string]: string};
-    /**
-     * The current provisioning state of the namespace.
-     */
-    provisioningState: string;
-}
-/**
- * namespacePropertiesResponseV1ProvideDefaults sets the appropriate defaults for NamespacePropertiesResponseV1
- */
-export function namespacePropertiesResponseV1ProvideDefaults(val: NamespacePropertiesResponseV1): NamespacePropertiesResponseV1 {
     return {
         ...val,
         defaultNetworkPolicy: (val.defaultNetworkPolicy ? networkPoliciesResponseProvideDefaults(val.defaultNetworkPolicy) : undefined),
@@ -2610,63 +2664,6 @@ export interface NetworkProfileForSnapshotResponse {
 }
 
 /**
- * The properties of the Node Customization resource.
- */
-export interface NodeCustomizationPropertiesResponse {
-    /**
-     * The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
-     */
-    containerImages?: string[];
-    /**
-     * The scripts to customize the node before or after image capture.
-     */
-    customizationScripts?: NodeCustomizationScriptResponse[];
-    /**
-     * The identity used to execute node customization tasks during image build time and provisioning time. 
-     * If not specified the default agentpool identity will be used.
-     * This does not affect provisioned nodes.
-     */
-    identityProfile?: UserAssignedIdentityResponse;
-    /**
-     * The provisioning state of the node customization.
-     */
-    provisioningState: string;
-    /**
-     * An auto-generated value that changes when the other fields of the image customization are changed.
-     */
-    version: string;
-}
-
-/**
- * Node customization script
- */
-export interface NodeCustomizationScriptResponse {
-    /**
-     * The stage at which the script is executed.
-     * Specifying `NodeImageBuildTime` will ensure changes are persisted into the node image.
-     */
-    executionPoint: string;
-    /**
-     * The name for the customization script. 
-     * Must be unique within the node customization resource.
-     * Can only contain lowercase alphanumeric,'-' or '.' characters.
-     */
-    name: string;
-    /**
-     * Whether the node should reboot after successful script execution.
-     */
-    rebootAfter?: boolean;
-    /**
-     * The script content to be executed in plain text. Do not include secrets.
-     */
-    script?: string;
-    /**
-     * The runtime environment for the script (e.g. Bash).
-     */
-    scriptType: string;
-}
-
-/**
  * The node image upgrade to be applied to the target nodes in update run.
  */
 export interface NodeImageSelectionResponse {
@@ -2701,77 +2698,13 @@ export interface NodeImageVersionResponse {
 }
 
 /**
- * The configuration profile for default ClusterResourcePlacement for placement.
- */
-export interface PlacementProfileResponse {
-    /**
-     * The default ClusterResourcePlacement policy configuration.
-     */
-    defaultClusterResourcePlacement?: PlacementV1ClusterResourcePlacementSpecResponse;
-}
-
-/**
- * Affinity is a group of cluster affinity scheduling rules. More to be added.
- */
-export interface PlacementV1AffinityResponse {
-    /**
-     * ClusterAffinity contains cluster affinity scheduling rules for the selected resources.
-     */
-    clusterAffinity?: PlacementV1ClusterAffinityResponse;
-}
-
-/**
- * ClusterAffinity contains cluster affinity scheduling rules for the selected resources.
- */
-export interface PlacementV1ClusterAffinityResponse {
-    /**
-     * If the affinity requirements specified by this field are not met at scheduling time, the resource will not be scheduled onto the cluster. If the affinity requirements specified by this field cease to be met at some point after the placement (e.g. due to an update), the system may or may not try to eventually remove the resource from the cluster.
-     */
-    requiredDuringSchedulingIgnoredDuringExecution?: PlacementV1ClusterSelectorResponse;
-}
-
-/**
- * ClusterResourcePlacementSpec defines the desired state of ClusterResourcePlacement.
- */
-export interface PlacementV1ClusterResourcePlacementSpecResponse {
-    /**
-     * Policy defines how to select member clusters to place the selected resources. If unspecified, all the joined member clusters are selected.
-     */
-    policy?: PlacementV1PlacementPolicyResponse;
-}
-
-/**
- * ClusterSelector
- */
-export interface PlacementV1ClusterSelectorResponse {
-    /**
-     * ClusterSelectorTerms is a list of cluster selector terms. The terms are `ORed`.
-     */
-    clusterSelectorTerms: PlacementV1ClusterSelectorTermResponse[];
-}
-
-/**
- * ClusterSelectorTerm
- */
-export interface PlacementV1ClusterSelectorTermResponse {
-    /**
-     * LabelSelector is a label query over all the joined member clusters. Clusters matching the query are selected. If you specify both label and property selectors in the same term, the results are AND'd.
-     */
-    labelSelector?: MetaV1LabelSelectorResponse;
-    /**
-     * PropertySelector is a property query over all joined member clusters. Clusters matching the query are selected. If you specify both label and property selectors in the same term, the results are AND'd. At this moment, PropertySelector can only be used with `RequiredDuringSchedulingIgnoredDuringExecution` affinity terms. This field is beta-level; it is for the property-based scheduling feature and is only functional when a property provider is enabled in the deployment.
-     */
-    propertySelector?: PlacementV1PropertySelectorResponse;
-}
-
-/**
  * PlacementPolicy contains the rules to select target member clusters to place the selected resources. Note that only clusters that are both joined and satisfying the rules will be selected. You can only specify at most one of the two fields: ClusterNames and Affinity. If none is specified, all the joined clusters are selected.
  */
-export interface PlacementV1PlacementPolicyResponse {
+export interface PlacementPolicyResponse {
     /**
      * Affinity contains cluster affinity scheduling rules. Defines which member clusters to place the selected resources. Only valid if the placement type is "PickAll" or "PickN".
      */
-    affinity?: PlacementV1AffinityResponse;
+    affinity?: AffinityResponse;
     /**
      * ClusterNames contains a list of names of MemberCluster to place the selected resources. Only valid if the placement type is "PickFixed"
      */
@@ -2783,57 +2716,17 @@ export interface PlacementV1PlacementPolicyResponse {
     /**
      * If specified, the ClusterResourcePlacement's Tolerations. Tolerations cannot be updated or deleted. This field is beta-level and is for the taints and tolerations feature.
      */
-    tolerations?: PlacementV1TolerationResponse[];
+    tolerations?: TolerationResponse[];
 }
 
 /**
- * PropertySelectorRequirement is a specific property requirement when picking clusters for resource placement.
+ * The configuration profile for default ClusterResourcePlacement for placement.
  */
-export interface PlacementV1PropertySelectorRequirementResponse {
+export interface PlacementProfileResponse {
     /**
-     * Name is the name of the property; it should be a Kubernetes label name.
+     * The default ClusterResourcePlacement policy configuration.
      */
-    name: string;
-    /**
-     * Operator specifies the relationship between a cluster's observed value of the specified property and the values given in the requirement.
-     */
-    operator: string;
-    /**
-     * Values are a list of values of the specified property which Fleet will compare against the observed values of individual member clusters in accordance with the given operator. At this moment, each value should be a Kubernetes quantity. For more information, see https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity. If the operator is Gt (greater than), Ge (greater than or equal to), Lt (less than), or `Le` (less than or equal to), Eq (equal to), or Ne (ne), exactly one value must be specified in the list.
-     */
-    values: string[];
-}
-
-/**
- * PropertySelector helps user specify property requirements when picking clusters for resource placement.
- */
-export interface PlacementV1PropertySelectorResponse {
-    /**
-     * MatchExpressions is an array of PropertySelectorRequirements. The requirements are AND'd.
-     */
-    matchExpressions: PlacementV1PropertySelectorRequirementResponse[];
-}
-
-/**
- * Toleration allows ClusterResourcePlacement to tolerate any taint that matches the triple <key,value,effect> using the matching operator <operator>.
- */
-export interface PlacementV1TolerationResponse {
-    /**
-     * Effect indicates the taint effect to match. Empty means match all taint effects. When specified, only allowed value is NoSchedule.
-     */
-    effect?: string;
-    /**
-     * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
-     */
-    key?: string;
-    /**
-     * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a ClusterResourcePlacement can tolerate all taints of a particular category.
-     */
-    operator?: string;
-    /**
-     * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
-     */
-    value?: string;
+    defaultClusterResourcePlacement?: ClusterResourcePlacementSpecResponse;
 }
 
 /**
@@ -2930,6 +2823,34 @@ export interface PropagationPolicyResponse {
      * The type of the policy to be used. Default is Placement.
      */
     type: string;
+}
+
+/**
+ * PropertySelectorRequirement is a specific property requirement when picking clusters for resource placement.
+ */
+export interface PropertySelectorRequirementResponse {
+    /**
+     * Name is the name of the property; it should be a Kubernetes label name.
+     */
+    name: string;
+    /**
+     * Operator specifies the relationship between a cluster's observed value of the specified property and the values given in the requirement.
+     */
+    operator: string;
+    /**
+     * Values are a list of values of the specified property which Fleet will compare against the observed values of individual member clusters in accordance with the given operator. At this moment, each value should be a Kubernetes quantity. For more information, see https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity. If the operator is Gt (greater than), Ge (greater than or equal to), Lt (less than), or `Le` (less than or equal to), Eq (equal to), or Ne (ne), exactly one value must be specified in the list.
+     */
+    values: string[];
+}
+
+/**
+ * PropertySelector helps user specify property requirements when picking clusters for resource placement.
+ */
+export interface PropertySelectorResponse {
+    /**
+     * MatchExpressions is an array of PropertySelectorRequirements. The requirements are AND'd.
+     */
+    matchExpressions: PropertySelectorRequirementResponse[];
 }
 
 /**
@@ -3205,12 +3126,34 @@ export interface TimeSpanResponse {
 }
 
 /**
+ * Toleration allows ClusterResourcePlacement to tolerate any taint that matches the triple <key,value,effect> using the matching operator <operator>.
+ */
+export interface TolerationResponse {
+    /**
+     * Effect indicates the taint effect to match. Empty means match all taint effects. When specified, only allowed value is NoSchedule.
+     */
+    effect?: string;
+    /**
+     * Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+     */
+    key?: string;
+    /**
+     * Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a ClusterResourcePlacement can tolerate all taints of a particular category.
+     */
+    operator?: string;
+    /**
+     * Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+     */
+    value?: string;
+}
+
+/**
  * A group to be updated.
  */
 export interface UpdateGroupResponse {
     /**
      * Name of the group.
-     * It must match a group name of an existing fleet member. 
+     * It must match a group name of an existing fleet member.
      */
     name: string;
 }
@@ -3344,23 +3287,9 @@ export interface UpgradeOverrideSettingsResponse {
 }
 
 /**
- * User assigned identity properties
- */
-export interface UserAssignedIdentityResponse {
-    /**
-     * The client ID of the assigned identity.
-     */
-    clientId: string;
-    /**
-     * The principal ID of the assigned identity.
-     */
-    principalId: string;
-}
-
-/**
  * Details about a user assigned identity.
  */
-export interface UserAssignedIdentityResponseV1 {
+export interface UserAssignedIdentityManagedClusterResponse {
     /**
      * The client ID of the user assigned identity.
      */
@@ -3373,6 +3302,20 @@ export interface UserAssignedIdentityResponseV1 {
      * The resource ID of the user assigned identity.
      */
     resourceId?: string;
+}
+
+/**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
 }
 
 /**

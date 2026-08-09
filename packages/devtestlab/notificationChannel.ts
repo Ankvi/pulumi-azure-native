@@ -153,15 +153,15 @@ export interface NotificationChannelArgs {
     /**
      * Description of notification.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The email recipient to send notifications to (can be a list of semi-colon separated email addresses).
      */
-    emailRecipient?: pulumi.Input<string>;
+    emailRecipient?: pulumi.Input<string | undefined>;
     /**
      * The list of event for which this notification is enabled.
      */
-    events?: pulumi.Input<pulumi.Input<types.inputs.EventArgs>[]>;
+    events?: pulumi.Input<pulumi.Input<types.inputs.EventArgs>[] | undefined>;
     /**
      * The name of the lab.
      */
@@ -169,15 +169,15 @@ export interface NotificationChannelArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the notification channel.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The locale to use when sending a notification (fallback for unsupported languages is EN).
      */
-    notificationLocale?: pulumi.Input<string>;
+    notificationLocale?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -185,9 +185,9 @@ export interface NotificationChannelArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The webhook URL to send notifications to.
      */
-    webHookUrl?: pulumi.Input<string>;
+    webHookUrl?: pulumi.Input<string | undefined>;
 }

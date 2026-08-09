@@ -151,7 +151,7 @@ export interface GetProfileOutputArgs {
     /**
      * Locale of profile to retrieve, default is en-us.
      */
-    localeCode?: pulumi.Input<string>;
+    localeCode?: pulumi.Input<string | undefined>;
     /**
      * The name of the profile.
      */

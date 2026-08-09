@@ -7,11 +7,11 @@ export interface B2CResourceSKUArgs {
     /**
      * The name of the SKU for the tenant.
      */
-    name?: pulumi.Input<string | enums.B2CResourceSKUName>;
+    name?: pulumi.Input<string | enums.B2CResourceSKUName | undefined>;
     /**
      * The tier of the tenant.
      */
-    tier?: pulumi.Input<string | enums.B2CResourceSKUTier>;
+    tier?: pulumi.Input<string | enums.B2CResourceSKUTier | undefined>;
 }
 
 /**

@@ -46,7 +46,7 @@ export interface GetSitesByServiceGroupResult {
     /**
      * The resource-specific properties for this resource.
      */
-    readonly properties: types.outputs.SitePropertiesResponse;
+    readonly properties: types.outputs.SitePropertiesSitesByServiceGroupResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */

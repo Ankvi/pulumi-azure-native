@@ -5,6 +5,8 @@ import * as types from "./types";
  * Represents Storage Task.
  *
  * Uses Azure REST API version 2023-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
+ *
+ * Other available API versions: 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storageactions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class StorageTask extends pulumi.CustomResource {
     /**
@@ -143,7 +145,7 @@ export class StorageTask extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storageactions/v20230101:StorageTask" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storageactions/v20230101:StorageTask" }, { type: "azure-native:storageactions/v20260301:StorageTask" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StorageTask.__pulumiType, name, resourceInputs, opts);
     }
@@ -172,7 +174,7 @@ export interface StorageTaskArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -180,9 +182,9 @@ export interface StorageTaskArgs {
     /**
      * The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
      */
-    storageTaskName?: pulumi.Input<string>;
+    storageTaskName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

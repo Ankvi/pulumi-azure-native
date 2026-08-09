@@ -39,7 +39,7 @@ export interface ActiveConnectivityConfigurationResponse {
     /**
      * Groups for configuration
      */
-    appliesToGroups?: ConnectivityGroupItemResponseV1[];
+    appliesToGroups?: ConnectivityGroupItemlistActiveConnectivityConfigurationResponse[];
     /**
      * Deployment time string.
      */
@@ -89,7 +89,7 @@ export interface ActiveConnectivityConfigurationResponse {
 /**
  * Active connectivity configuration.
  */
-export interface ActiveConnectivityConfigurationResponseV1 {
+export interface ActiveConnectivityConfigurationlistActiveConnectivityConfigurationsResponse {
     /**
      * Groups for configuration
      */
@@ -101,7 +101,7 @@ export interface ActiveConnectivityConfigurationResponseV1 {
     /**
      * Effective configuration groups.
      */
-    configurationGroups?: ConfigurationGroupResponseV1[];
+    configurationGroups?: ConfigurationGrouplistActiveConnectivityConfigurationsResponse[];
     /**
      * Connectivity topology type.
      */
@@ -212,7 +212,7 @@ export interface ActiveDefaultSecurityAdminRuleResponse {
     /**
      * Groups for rule collection
      */
-    ruleCollectionAppliesToGroups?: NetworkManagerSecurityGroupItemResponseV1[];
+    ruleCollectionAppliesToGroups?: NetworkManagerSecurityGroupItemlistActiveSecurityAdminRuleResponse[];
     /**
      * A description of the rule collection.
      */
@@ -238,7 +238,7 @@ export interface ActiveDefaultSecurityAdminRuleResponse {
 /**
  * Network default admin rule.
  */
-export interface ActiveDefaultSecurityAdminRuleResponseV1 {
+export interface ActiveDefaultSecurityAdminRulelistActiveSecurityAdminRulesResponse {
     /**
      * Indicates the access allowed for this particular rule
      */
@@ -311,7 +311,7 @@ export interface ActiveDefaultSecurityAdminRuleResponseV1 {
     /**
      * Effective configuration groups.
      */
-    ruleGroups?: ConfigurationGroupResponseV2[];
+    ruleGroups?: ConfigurationGrouplistActiveSecurityAdminRulesResponse[];
     /**
      * The source port ranges.
      */
@@ -386,7 +386,7 @@ export interface ActiveDefaultSecurityUserRuleResponse {
     /**
      * Groups for rule collection
      */
-    ruleCollectionAppliesToGroups?: NetworkManagerSecurityGroupItemResponseV2[];
+    ruleCollectionAppliesToGroups?: NetworkManagerSecurityGroupItemlistActiveSecurityUserRuleResponse[];
     /**
      * A description of the rule collection.
      */
@@ -412,7 +412,7 @@ export interface ActiveDefaultSecurityUserRuleResponse {
 /**
  * Network security default user rule.
  */
-export interface ActiveDefaultSecurityUserRuleResponseV1 {
+export interface ActiveDefaultSecurityUserRulelistActiveSecurityUserRulesResponse {
     /**
      * Deployment time string.
      */
@@ -473,7 +473,7 @@ export interface ActiveDefaultSecurityUserRuleResponseV1 {
     /**
      * Effective configuration groups.
      */
-    ruleGroups?: ConfigurationGroupResponseV3[];
+    ruleGroups?: ConfigurationGrouplistActiveSecurityUserRulesResponse[];
     /**
      * The source port ranges.
      */
@@ -552,7 +552,7 @@ export interface ActiveSecurityAdminRuleResponse {
     /**
      * Groups for rule collection
      */
-    ruleCollectionAppliesToGroups?: NetworkManagerSecurityGroupItemResponse[];
+    ruleCollectionAppliesToGroups?: NetworkManagerSecurityGroupItemlistActiveSecurityAdminRuleResponse[];
     /**
      * A description of the rule collection.
      */
@@ -578,7 +578,7 @@ export interface ActiveSecurityAdminRuleResponse {
 /**
  * Network admin rule.
  */
-export interface ActiveSecurityAdminRuleResponseV1 {
+export interface ActiveSecurityAdminRulelistActiveSecurityAdminRulesResponse {
     /**
      * Indicates the access allowed for this particular rule
      */
@@ -647,7 +647,7 @@ export interface ActiveSecurityAdminRuleResponseV1 {
     /**
      * Effective configuration groups.
      */
-    ruleGroups?: ConfigurationGroupResponse[];
+    ruleGroups?: ConfigurationGrouplistActiveSecurityAdminRulesResponse[];
     /**
      * The source port ranges.
      */
@@ -718,7 +718,7 @@ export interface ActiveSecurityUserRuleResponse {
     /**
      * Groups for rule collection
      */
-    ruleCollectionAppliesToGroups?: NetworkManagerSecurityGroupItemResponse[];
+    ruleCollectionAppliesToGroups?: NetworkManagerSecurityGroupItemlistActiveSecurityUserRuleResponse[];
     /**
      * A description of the rule collection.
      */
@@ -744,7 +744,7 @@ export interface ActiveSecurityUserRuleResponse {
 /**
  * Network security user rule.
  */
-export interface ActiveSecurityUserRuleResponseV1 {
+export interface ActiveSecurityUserRulelistActiveSecurityUserRulesResponse {
     /**
      * Deployment time string.
      */
@@ -801,7 +801,7 @@ export interface ActiveSecurityUserRuleResponseV1 {
     /**
      * Effective configuration groups.
      */
-    ruleGroups?: ConfigurationGroupResponse[];
+    ruleGroups?: ConfigurationGrouplistActiveSecurityUserRulesResponse[];
     /**
      * The source port ranges.
      */
@@ -887,6 +887,40 @@ export interface ApplicationGatewayAutoscaleConfigurationResponse {
 /**
  * Backend Address Pool of an application gateway.
  */
+export interface ApplicationGatewayBackendAddressPoolInterfaceEndpointResponse {
+    /**
+     * Backend addresses
+     */
+    backendAddresses?: ApplicationGatewayBackendAddressResponse[];
+    /**
+     * Collection of references to IPs defined in network interfaces.
+     */
+    backendIPConfigurations?: NetworkInterfaceIPConfigurationInterfaceEndpointResponse[];
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Name of the backend address pool that is unique within an Application Gateway.
+     */
+    name?: string;
+    /**
+     * Provisioning state of the backend address pool resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState?: string;
+    /**
+     * Type of the resource.
+     */
+    type?: string;
+}
+
+/**
+ * Backend Address Pool of an application gateway.
+ */
 export interface ApplicationGatewayBackendAddressPoolResponse {
     /**
      * Backend addresses.
@@ -921,19 +955,19 @@ export interface ApplicationGatewayBackendAddressPoolResponse {
 /**
  * Backend Address Pool of an application gateway.
  */
-export interface ApplicationGatewayBackendAddressPoolResponseV1 {
+export interface ApplicationGatewayBackendAddressPoolServiceGatewayResponse {
     /**
-     * Backend addresses
+     * Backend addresses.
      */
     backendAddresses?: ApplicationGatewayBackendAddressResponse[];
     /**
      * Collection of references to IPs defined in network interfaces.
      */
-    backendIPConfigurations?: NetworkInterfaceIPConfigurationResponse[];
+    backendIPConfigurations: NetworkInterfaceIPConfigurationServiceGatewayResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    etag?: string;
+    etag: string;
     /**
      * Resource ID.
      */
@@ -943,13 +977,47 @@ export interface ApplicationGatewayBackendAddressPoolResponseV1 {
      */
     name?: string;
     /**
-     * Provisioning state of the backend address pool resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the backend address pool resource.
      */
-    provisioningState?: string;
+    provisioningState: string;
     /**
      * Type of the resource.
      */
-    type?: string;
+    type: string;
+}
+
+/**
+ * Backend Address Pool of an application gateway.
+ */
+export interface ApplicationGatewayBackendAddressPoolVirtualNetworkApplianceResponse {
+    /**
+     * Backend addresses.
+     */
+    backendAddresses?: ApplicationGatewayBackendAddressResponse[];
+    /**
+     * Collection of references to IPs defined in network interfaces.
+     */
+    backendIPConfigurations: NetworkInterfaceIPConfigurationVirtualNetworkApplianceResponse[];
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Name of the backend address pool that is unique within an Application Gateway.
+     */
+    name?: string;
+    /**
+     * The provisioning state of the backend address pool resource.
+     */
+    provisioningState: string;
+    /**
+     * Type of the resource.
+     */
+    type: string;
 }
 
 /**
@@ -3039,6 +3107,44 @@ export interface AzureFirewallSkuResponse {
 /**
  * Pool of backend IP addresses.
  */
+export interface BackendAddressPoolInterfaceEndpointResponse {
+    /**
+     * Gets collection of references to IP addresses defined in network interfaces.
+     */
+    backendIPConfigurations: NetworkInterfaceIPConfigurationResponse[];
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Gets load balancing rules that use this backend address pool.
+     */
+    loadBalancingRules: SubResourceResponse[];
+    /**
+     * Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * Gets outbound rules that use this backend address pool.
+     */
+    outboundRule: SubResourceResponse;
+    /**
+     * Gets outbound rules that use this backend address pool.
+     */
+    outboundRules: SubResourceResponse[];
+    /**
+     * Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState?: string;
+}
+
+/**
+ * Pool of backend IP addresses.
+ */
 export interface BackendAddressPoolResponse {
     /**
      * An array of references to IP addresses defined in network interfaces.
@@ -3104,44 +3210,6 @@ export interface BackendAddressPoolResponse {
      * A reference to a virtual network.
      */
     virtualNetwork?: SubResourceResponse;
-}
-
-/**
- * Pool of backend IP addresses.
- */
-export interface BackendAddressPoolResponseV1 {
-    /**
-     * Gets collection of references to IP addresses defined in network interfaces.
-     */
-    backendIPConfigurations: NetworkInterfaceIPConfigurationResponse[];
-    /**
-     * A unique read-only string that changes whenever the resource is updated.
-     */
-    etag?: string;
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * Gets load balancing rules that use this backend address pool.
-     */
-    loadBalancingRules: SubResourceResponse[];
-    /**
-     * Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-     */
-    name?: string;
-    /**
-     * Gets outbound rules that use this backend address pool.
-     */
-    outboundRule: SubResourceResponse;
-    /**
-     * Gets outbound rules that use this backend address pool.
-     */
-    outboundRules: SubResourceResponse[];
-    /**
-     * Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-     */
-    provisioningState?: string;
 }
 
 /**
@@ -3355,6 +3423,44 @@ export interface CircuitMetadataMapResponse {
 }
 
 /**
+ * Properties of commit
+ */
+export interface CommitPropertiesResponse {
+    /**
+     * List of active locations.
+     */
+    activeLocations: string[];
+    /**
+     * Commit Type.
+     */
+    commitType: string;
+    /**
+     * List of configuration IDs.
+     */
+    configurationIds?: string[];
+    /**
+     * A description of the commit.
+     */
+    description?: string;
+    /**
+     * A value that, when changed, forces the commit to be re-evaluated and redeployed.
+     */
+    forceUpdateTag?: string;
+    /**
+     * The provisioning state of the resource.
+     */
+    provisioningState: string;
+    /**
+     * Unique identifier for this resource.
+     */
+    resourceGuid: string;
+    /**
+     * List of target locations.
+     */
+    targetLocations: string[];
+}
+
+/**
  * The network configuration group resource
  */
 export interface ConfigurationGroupResponse {
@@ -3391,7 +3497,7 @@ export interface ConfigurationGroupResponse {
 /**
  * The network configuration group resource
  */
-export interface ConfigurationGroupResponseV1 {
+export interface ConfigurationGrouplistActiveConnectivityConfigurationsResponse {
     /**
      * A description of the network group.
      */
@@ -3417,7 +3523,7 @@ export interface ConfigurationGroupResponseV1 {
 /**
  * The network configuration group resource
  */
-export interface ConfigurationGroupResponseV2 {
+export interface ConfigurationGrouplistActiveSecurityAdminRulesResponse {
     /**
      * A description of the network group.
      */
@@ -3443,7 +3549,7 @@ export interface ConfigurationGroupResponseV2 {
 /**
  * The network configuration group resource
  */
-export interface ConfigurationGroupResponseV3 {
+export interface ConfigurationGrouplistActiveSecurityUserRulesResponse {
     /**
      * A description of the network group.
      */
@@ -3465,7 +3571,7 @@ export interface ConfigurationGroupResponseV3 {
 /**
  * The network configuration group resource
  */
-export interface ConfigurationGroupResponseV4 {
+export interface ConfigurationGrouplistNetworkManagerEffectiveConnectivityConfigurationsResponse {
     /**
      * A description of the network group.
      */
@@ -3491,7 +3597,7 @@ export interface ConfigurationGroupResponseV4 {
 /**
  * The network configuration group resource
  */
-export interface ConfigurationGroupResponseV5 {
+export interface ConfigurationGrouplistNetworkManagerEffectiveSecurityAdminRulesResponse {
     /**
      * A description of the network group.
      */
@@ -3811,6 +3917,28 @@ export interface ConnectionMonitorWorkspaceSettingsResponse {
 }
 
 /**
+ * Properties of the ConnectionPolicy resource.
+ */
+export interface ConnectionPolicyPropertiesResponse {
+    /**
+     * List of connection names (e.g. VpnConnection, HubVirtualNetworkConnection) associated with this ConnectionPolicy. These are resource names, not Azure resource IDs, consistent with the established VirtualWAN pattern used by HubRouteTable.associatedConnections.
+     */
+    associatedConnections: string[];
+    /**
+     * Enable internet security.
+     */
+    enableInternetSecurity?: boolean;
+    /**
+     * The provisioning state of the ConnectionPolicy resource.
+     */
+    provisioningState: string;
+    /**
+     * The Routing Configuration indicating the associated and propagated route tables on this connection.
+     */
+    routingConfiguration?: RoutingConfigurationResponse;
+}
+
+/**
  * Connectivity group item.
  */
 export interface ConnectivityGroupItemResponse {
@@ -3832,7 +3960,7 @@ export interface ConnectivityGroupItemResponse {
     useHubGateway?: string;
 }
 
-export interface ConnectivityGroupItemResponseV1 {
+export interface ConnectivityGroupItemlistActiveConnectivityConfigurationResponse {
     /**
      * Group connectivity type.
      */
@@ -3851,7 +3979,7 @@ export interface ConnectivityGroupItemResponseV1 {
     useHubGateway?: string;
 }
 
-export interface ConnectivityGroupItemResponseV2 {
+export interface ConnectivityGroupItemlistEffectiveConnectivityConfigurationResponse {
     /**
      * Group connectivity type.
      */
@@ -4031,6 +4159,20 @@ export interface CustomDnsConfigPropertiesFormatResponse {
 /**
  * Contains the DDoS protection settings of the public IP.
  */
+export interface DdosSettingsInterfaceEndpointResponse {
+    /**
+     * The DDoS custom policy associated with the public IP.
+     */
+    ddosCustomPolicy?: SubResourceResponse;
+    /**
+     * The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
+     */
+    protectionCoverage?: string;
+}
+
+/**
+ * Contains the DDoS protection settings of the public IP.
+ */
 export interface DdosSettingsResponse {
     /**
      * The DDoS protection plan associated with the public IP. Can only be set if ProtectionMode is Enabled
@@ -4043,17 +4185,33 @@ export interface DdosSettingsResponse {
 }
 
 /**
- * Contains the DDoS protection settings of the public IP.
+ * Details the service to which the subnet is delegated.
  */
-export interface DdosSettingsResponseV1 {
+export interface DelegationInterfaceEndpointResponse {
     /**
-     * The DDoS custom policy associated with the public IP.
+     * Describes the actions permitted to the service upon delegation
      */
-    ddosCustomPolicy?: SubResourceResponse;
+    actions?: string[];
     /**
-     * The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
+     * A unique read-only string that changes whenever the resource is updated.
      */
-    protectionCoverage?: string;
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The name of the resource that is unique within a subnet. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * The provisioning state of the resource.
+     */
+    provisioningState: string;
+    /**
+     * The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers)
+     */
+    serviceName?: string;
 }
 
 /**
@@ -4102,36 +4260,6 @@ export interface DelegationResponse {
      * Resource type.
      */
     type?: string;
-}
-
-/**
- * Details the service to which the subnet is delegated.
- */
-export interface DelegationResponseV1 {
-    /**
-     * Describes the actions permitted to the service upon delegation
-     */
-    actions?: string[];
-    /**
-     * A unique read-only string that changes whenever the resource is updated.
-     */
-    etag?: string;
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * The name of the resource that is unique within a subnet. This name can be used to access the resource.
-     */
-    name?: string;
-    /**
-     * The provisioning state of the resource.
-     */
-    provisioningState: string;
-    /**
-     * The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers)
-     */
-    serviceName?: string;
 }
 
 /**
@@ -4187,7 +4315,7 @@ export interface EffectiveConnectivityConfigurationResponse {
     /**
      * Groups for configuration
      */
-    appliesToGroups?: ConnectivityGroupItemResponseV2[];
+    appliesToGroups?: ConnectivityGroupItemlistEffectiveConnectivityConfigurationResponse[];
     /**
      * Effective configuration groups.
      */
@@ -4229,7 +4357,7 @@ export interface EffectiveConnectivityConfigurationResponse {
 /**
  * The network manager effective connectivity configuration
  */
-export interface EffectiveConnectivityConfigurationResponseV1 {
+export interface EffectiveConnectivityConfigurationlistNetworkManagerEffectiveConnectivityConfigurationsResponse {
     /**
      * Groups for configuration
      */
@@ -4237,7 +4365,7 @@ export interface EffectiveConnectivityConfigurationResponseV1 {
     /**
      * Effective configuration groups.
      */
-    configurationGroups?: ConfigurationGroupResponseV4[];
+    configurationGroups?: ConfigurationGrouplistNetworkManagerEffectiveConnectivityConfigurationsResponse[];
     /**
      * Connectivity topology type.
      */
@@ -4336,7 +4464,7 @@ export interface EffectiveDefaultSecurityAdminRuleResponse {
     /**
      * Groups for rule collection
      */
-    ruleCollectionAppliesToGroups?: NetworkManagerSecurityGroupItemResponseV3[];
+    ruleCollectionAppliesToGroups?: NetworkManagerSecurityGroupItemlistNetworkManagerEffectiveSecurityAdminRuleResponse[];
     /**
      * A description of the rule collection.
      */
@@ -4362,7 +4490,7 @@ export interface EffectiveDefaultSecurityAdminRuleResponse {
 /**
  * Network default admin rule.
  */
-export interface EffectiveDefaultSecurityAdminRuleResponseV1 {
+export interface EffectiveDefaultSecurityAdminRulelistNetworkManagerEffectiveSecurityAdminRulesResponse {
     /**
      * Indicates the access allowed for this particular rule
      */
@@ -4427,7 +4555,7 @@ export interface EffectiveDefaultSecurityAdminRuleResponseV1 {
     /**
      * Effective configuration groups.
      */
-    ruleGroups?: ConfigurationGroupResponseV5[];
+    ruleGroups?: ConfigurationGrouplistNetworkManagerEffectiveSecurityAdminRulesResponse[];
     /**
      * The source port ranges.
      */
@@ -4498,7 +4626,7 @@ export interface EffectiveSecurityAdminRuleResponse {
     /**
      * Groups for rule collection
      */
-    ruleCollectionAppliesToGroups?: NetworkManagerSecurityGroupItemResponse[];
+    ruleCollectionAppliesToGroups?: NetworkManagerSecurityGroupItemlistNetworkManagerEffectiveSecurityAdminRuleResponse[];
     /**
      * A description of the rule collection.
      */
@@ -4524,7 +4652,7 @@ export interface EffectiveSecurityAdminRuleResponse {
 /**
  * Network admin rule.
  */
-export interface EffectiveSecurityAdminRuleResponseV1 {
+export interface EffectiveSecurityAdminRulelistNetworkManagerEffectiveSecurityAdminRulesResponse {
     /**
      * Indicates the access allowed for this particular rule
      */
@@ -4585,7 +4713,7 @@ export interface EffectiveSecurityAdminRuleResponseV1 {
     /**
      * Effective configuration groups.
      */
-    ruleGroups?: ConfigurationGroupResponse[];
+    ruleGroups?: ConfigurationGrouplistNetworkManagerEffectiveSecurityAdminRulesResponse[];
     /**
      * The source port ranges.
      */
@@ -5063,7 +5191,7 @@ export interface ExpressRouteConnectionResponse {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    routingConfiguration?: RoutingConfigurationResponse;
+    routingConfiguration?: RoutingConfigurationExpressRouteGatewayResponse;
     /**
      * The routing weight associated to the connection.
      */
@@ -5694,7 +5822,7 @@ export function flowLogResponseProvideDefaults(val: FlowLogResponse): FlowLogRes
 /**
  * A flow log resource.
  */
-export interface FlowLogResponseV1 {
+export interface FlowLogServiceGatewayResponse {
     /**
      * Flag to enable/disable flow logging.
      */
@@ -5722,7 +5850,7 @@ export interface FlowLogResponseV1 {
     /**
      * FlowLog resource Managed Identity
      */
-    identity?: ManagedServiceIdentityResponse;
+    identity?: ManagedServiceIdentityServiceGatewayResponse;
     /**
      * Resource location.
      */
@@ -5765,9 +5893,9 @@ export interface FlowLogResponseV1 {
     type: string;
 }
 /**
- * flowLogResponseV1ProvideDefaults sets the appropriate defaults for FlowLogResponseV1
+ * flowLogServiceGatewayResponseProvideDefaults sets the appropriate defaults for FlowLogServiceGatewayResponse
  */
-export function flowLogResponseV1ProvideDefaults(val: FlowLogResponseV1): FlowLogResponseV1 {
+export function flowLogServiceGatewayResponseProvideDefaults(val: FlowLogServiceGatewayResponse): FlowLogServiceGatewayResponse {
     return {
         ...val,
         format: (val.format ? flowLogFormatParametersResponseProvideDefaults(val.format) : undefined),
@@ -5778,7 +5906,7 @@ export function flowLogResponseV1ProvideDefaults(val: FlowLogResponseV1): FlowLo
 /**
  * A flow log resource.
  */
-export interface FlowLogResponseV2 {
+export interface FlowLogVirtualNetworkApplianceResponse {
     /**
      * Flag to enable/disable flow logging.
      */
@@ -5806,7 +5934,7 @@ export interface FlowLogResponseV2 {
     /**
      * FlowLog resource Managed Identity
      */
-    identity?: ManagedServiceIdentityResponse;
+    identity?: ManagedServiceIdentityVirtualNetworkApplianceResponse;
     /**
      * Resource location.
      */
@@ -5849,13 +5977,84 @@ export interface FlowLogResponseV2 {
     type: string;
 }
 /**
- * flowLogResponseV2ProvideDefaults sets the appropriate defaults for FlowLogResponseV2
+ * flowLogVirtualNetworkApplianceResponseProvideDefaults sets the appropriate defaults for FlowLogVirtualNetworkApplianceResponse
  */
-export function flowLogResponseV2ProvideDefaults(val: FlowLogResponseV2): FlowLogResponseV2 {
+export function flowLogVirtualNetworkApplianceResponseProvideDefaults(val: FlowLogVirtualNetworkApplianceResponse): FlowLogVirtualNetworkApplianceResponse {
     return {
         ...val,
         format: (val.format ? flowLogFormatParametersResponseProvideDefaults(val.format) : undefined),
         retentionPolicy: (val.retentionPolicy ? retentionPolicyParametersResponseProvideDefaults(val.retentionPolicy) : undefined),
+    };
+}
+
+/**
+ * Frontend IP address of the load balancer.
+ */
+export interface FrontendIPConfigurationInterfaceEndpointResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Read only. Inbound pools URIs that use this frontend IP.
+     */
+    inboundNatPools: SubResourceResponse[];
+    /**
+     * Read only. Inbound rules URIs that use this frontend IP.
+     */
+    inboundNatRules: SubResourceResponse[];
+    /**
+     * Gets load balancing rules URIs that use this frontend IP.
+     */
+    loadBalancingRules: SubResourceResponse[];
+    /**
+     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * Read only. Outbound rules URIs that use this frontend IP.
+     */
+    outboundRules: SubResourceResponse[];
+    /**
+     * The private IP address of the IP configuration.
+     */
+    privateIPAddress?: string;
+    /**
+     * The Private IP allocation method.
+     */
+    privateIPAllocationMethod?: string;
+    /**
+     * Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState?: string;
+    /**
+     * The reference of the Public IP resource.
+     */
+    publicIPAddress?: PublicIPAddressInterfaceEndpointResponse;
+    /**
+     * The reference of the Public IP Prefix resource.
+     */
+    publicIPPrefix?: SubResourceResponse;
+    /**
+     * The reference of the subnet resource.
+     */
+    subnet?: SubnetInterfaceEndpointResponse;
+    /**
+     * A list of availability zones denoting the IP allocated for the resource needs to come from.
+     */
+    zones?: string[];
+}
+/**
+ * frontendIPConfigurationInterfaceEndpointResponseProvideDefaults sets the appropriate defaults for FrontendIPConfigurationInterfaceEndpointResponse
+ */
+export function frontendIPConfigurationInterfaceEndpointResponseProvideDefaults(val: FrontendIPConfigurationInterfaceEndpointResponse): FrontendIPConfigurationInterfaceEndpointResponse {
+    return {
+        ...val,
+        publicIPAddress: (val.publicIPAddress ? publicIPAddressInterfaceEndpointResponseProvideDefaults(val.publicIPAddress) : undefined),
     };
 }
 
@@ -5946,33 +6145,37 @@ export function frontendIPConfigurationResponseProvideDefaults(val: FrontendIPCo
 /**
  * Frontend IP address of the load balancer.
  */
-export interface FrontendIPConfigurationResponseV1 {
+export interface FrontendIPConfigurationServiceGatewayResponse {
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    etag?: string;
+    etag: string;
+    /**
+     * The reference to gateway load balancer frontend IP.
+     */
+    gatewayLoadBalancer?: SubResourceResponse;
     /**
      * Resource ID.
      */
     id?: string;
     /**
-     * Read only. Inbound pools URIs that use this frontend IP.
+     * An array of references to inbound pools that use this frontend IP.
      */
     inboundNatPools: SubResourceResponse[];
     /**
-     * Read only. Inbound rules URIs that use this frontend IP.
+     * An array of references to inbound rules that use this frontend IP.
      */
     inboundNatRules: SubResourceResponse[];
     /**
-     * Gets load balancing rules URIs that use this frontend IP.
+     * An array of references to load balancing rules that use this frontend IP.
      */
     loadBalancingRules: SubResourceResponse[];
     /**
-     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     * Name of the resource.
      */
     name?: string;
     /**
-     * Read only. Outbound rules URIs that use this frontend IP.
+     * An array of references to outbound rules that use this frontend IP.
      */
     outboundRules: SubResourceResponse[];
     /**
@@ -5980,37 +6183,129 @@ export interface FrontendIPConfigurationResponseV1 {
      */
     privateIPAddress?: string;
     /**
+     * Whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     */
+    privateIPAddressVersion?: string;
+    /**
      * The Private IP allocation method.
      */
     privateIPAllocationMethod?: string;
     /**
-     * Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the frontend IP configuration resource.
      */
-    provisioningState?: string;
+    provisioningState: string;
     /**
-     * The reference of the Public IP resource.
+     * The reference to the Public IP resource.
      */
-    publicIPAddress?: PublicIPAddressResponse;
+    publicIPAddress?: PublicIPAddressResponseV1;
     /**
-     * The reference of the Public IP Prefix resource.
+     * The reference to the Public IP Prefix resource.
      */
     publicIPPrefix?: SubResourceResponse;
     /**
-     * The reference of the subnet resource.
+     * The reference to the subnet resource.
      */
     subnet?: SubnetResponse;
+    /**
+     * Resource type.
+     */
+    type: string;
     /**
      * A list of availability zones denoting the IP allocated for the resource needs to come from.
      */
     zones?: string[];
 }
 /**
- * frontendIPConfigurationResponseV1ProvideDefaults sets the appropriate defaults for FrontendIPConfigurationResponseV1
+ * frontendIPConfigurationServiceGatewayResponseProvideDefaults sets the appropriate defaults for FrontendIPConfigurationServiceGatewayResponse
  */
-export function frontendIPConfigurationResponseV1ProvideDefaults(val: FrontendIPConfigurationResponseV1): FrontendIPConfigurationResponseV1 {
+export function frontendIPConfigurationServiceGatewayResponseProvideDefaults(val: FrontendIPConfigurationServiceGatewayResponse): FrontendIPConfigurationServiceGatewayResponse {
     return {
         ...val,
-        publicIPAddress: (val.publicIPAddress ? publicIPAddressResponseProvideDefaults(val.publicIPAddress) : undefined),
+        publicIPAddress: (val.publicIPAddress ? publicIPAddressResponseV1ProvideDefaults(val.publicIPAddress) : undefined),
+        subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
+    };
+}
+
+/**
+ * Frontend IP address of the load balancer.
+ */
+export interface FrontendIPConfigurationVirtualNetworkApplianceResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * The reference to gateway load balancer frontend IP.
+     */
+    gatewayLoadBalancer?: SubResourceResponse;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * An array of references to inbound pools that use this frontend IP.
+     */
+    inboundNatPools: SubResourceResponse[];
+    /**
+     * An array of references to inbound rules that use this frontend IP.
+     */
+    inboundNatRules: SubResourceResponse[];
+    /**
+     * An array of references to load balancing rules that use this frontend IP.
+     */
+    loadBalancingRules: SubResourceResponse[];
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * An array of references to outbound rules that use this frontend IP.
+     */
+    outboundRules: SubResourceResponse[];
+    /**
+     * The private IP address of the IP configuration.
+     */
+    privateIPAddress?: string;
+    /**
+     * Whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     */
+    privateIPAddressVersion?: string;
+    /**
+     * The Private IP allocation method.
+     */
+    privateIPAllocationMethod?: string;
+    /**
+     * The provisioning state of the frontend IP configuration resource.
+     */
+    provisioningState: string;
+    /**
+     * The reference to the Public IP resource.
+     */
+    publicIPAddress?: PublicIPAddressResponseV2;
+    /**
+     * The reference to the Public IP Prefix resource.
+     */
+    publicIPPrefix?: SubResourceResponse;
+    /**
+     * The reference to the subnet resource.
+     */
+    subnet?: SubnetResponse;
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * A list of availability zones denoting the IP allocated for the resource needs to come from.
+     */
+    zones?: string[];
+}
+/**
+ * frontendIPConfigurationVirtualNetworkApplianceResponseProvideDefaults sets the appropriate defaults for FrontendIPConfigurationVirtualNetworkApplianceResponse
+ */
+export function frontendIPConfigurationVirtualNetworkApplianceResponseProvideDefaults(val: FrontendIPConfigurationVirtualNetworkApplianceResponse): FrontendIPConfigurationVirtualNetworkApplianceResponse {
+    return {
+        ...val,
+        publicIPAddress: (val.publicIPAddress ? publicIPAddressResponseV2ProvideDefaults(val.publicIPAddress) : undefined),
         subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
     };
 }
@@ -6283,6 +6578,93 @@ export interface IPConfigurationBgpPeeringAddressResponse {
 }
 
 /**
+ * IP configuration
+ */
+export interface IPConfigurationInterfaceEndpointResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * The private IP address of the IP configuration.
+     */
+    privateIPAddress?: string;
+    /**
+     * The private IP address allocation method.
+     */
+    privateIPAllocationMethod?: string;
+    /**
+     * Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState?: string;
+    /**
+     * The reference of the public IP resource.
+     */
+    publicIPAddress?: PublicIPAddressInterfaceEndpointResponse;
+    /**
+     * The reference of the subnet resource.
+     */
+    subnet?: SubnetResponse;
+}
+/**
+ * ipconfigurationInterfaceEndpointResponseProvideDefaults sets the appropriate defaults for IPConfigurationInterfaceEndpointResponse
+ */
+export function ipconfigurationInterfaceEndpointResponseProvideDefaults(val: IPConfigurationInterfaceEndpointResponse): IPConfigurationInterfaceEndpointResponse {
+    return {
+        ...val,
+        publicIPAddress: (val.publicIPAddress ? publicIPAddressInterfaceEndpointResponseProvideDefaults(val.publicIPAddress) : undefined),
+        subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
+    };
+}
+
+/**
+ * IP configuration profile child resource.
+ */
+export interface IPConfigurationProfileInterfaceEndpointResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The name of the resource. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * The provisioning state of the resource.
+     */
+    provisioningState: string;
+    /**
+     * The reference of the subnet resource to create a container network interface ip configuration.
+     */
+    subnet?: SubnetResponse;
+    /**
+     * Sub Resource type.
+     */
+    type: string;
+}
+/**
+ * ipconfigurationProfileInterfaceEndpointResponseProvideDefaults sets the appropriate defaults for IPConfigurationProfileInterfaceEndpointResponse
+ */
+export function ipconfigurationProfileInterfaceEndpointResponseProvideDefaults(val: IPConfigurationProfileInterfaceEndpointResponse): IPConfigurationProfileInterfaceEndpointResponse {
+    return {
+        ...val,
+        subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
+    };
+}
+
+/**
  * IP configuration profile child resource.
  */
 export interface IPConfigurationProfileResponse {
@@ -6324,11 +6706,11 @@ export function ipconfigurationProfileResponseProvideDefaults(val: IPConfigurati
 /**
  * IP configuration profile child resource.
  */
-export interface IPConfigurationProfileResponseV1 {
+export interface IPConfigurationProfileServiceGatewayResponse {
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    etag?: string;
+    etag: string;
     /**
      * Resource ID.
      */
@@ -6338,25 +6720,64 @@ export interface IPConfigurationProfileResponseV1 {
      */
     name?: string;
     /**
-     * The provisioning state of the resource.
+     * The provisioning state of the IP configuration profile resource.
      */
     provisioningState: string;
     /**
-     * The reference of the subnet resource to create a container network interface ip configuration.
+     * The reference to the subnet resource to create a container network interface ip configuration.
      */
-    subnet?: SubnetResponse;
+    subnet?: SubnetServiceGatewayResponse;
     /**
      * Sub Resource type.
      */
     type: string;
 }
 /**
- * ipconfigurationProfileResponseV1ProvideDefaults sets the appropriate defaults for IPConfigurationProfileResponseV1
+ * ipconfigurationProfileServiceGatewayResponseProvideDefaults sets the appropriate defaults for IPConfigurationProfileServiceGatewayResponse
  */
-export function ipconfigurationProfileResponseV1ProvideDefaults(val: IPConfigurationProfileResponseV1): IPConfigurationProfileResponseV1 {
+export function ipconfigurationProfileServiceGatewayResponseProvideDefaults(val: IPConfigurationProfileServiceGatewayResponse): IPConfigurationProfileServiceGatewayResponse {
     return {
         ...val,
-        subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
+        subnet: (val.subnet ? subnetServiceGatewayResponseProvideDefaults(val.subnet) : undefined),
+    };
+}
+
+/**
+ * IP configuration profile child resource.
+ */
+export interface IPConfigurationProfileVirtualNetworkApplianceResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The name of the resource. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * The provisioning state of the IP configuration profile resource.
+     */
+    provisioningState: string;
+    /**
+     * The reference to the subnet resource to create a container network interface ip configuration.
+     */
+    subnet?: SubnetVirtualNetworkApplianceResponse;
+    /**
+     * Sub Resource type.
+     */
+    type: string;
+}
+/**
+ * ipconfigurationProfileVirtualNetworkApplianceResponseProvideDefaults sets the appropriate defaults for IPConfigurationProfileVirtualNetworkApplianceResponse
+ */
+export function ipconfigurationProfileVirtualNetworkApplianceResponseProvideDefaults(val: IPConfigurationProfileVirtualNetworkApplianceResponse): IPConfigurationProfileVirtualNetworkApplianceResponse {
+    return {
+        ...val,
+        subnet: (val.subnet ? subnetVirtualNetworkApplianceResponseProvideDefaults(val.subnet) : undefined),
     };
 }
 
@@ -6410,57 +6831,9 @@ export function ipconfigurationResponseProvideDefaults(val: IPConfigurationRespo
 }
 
 /**
- * IP configuration
- */
-export interface IPConfigurationResponseV1 {
-    /**
-     * A unique read-only string that changes whenever the resource is updated.
-     */
-    etag?: string;
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
-     */
-    name?: string;
-    /**
-     * The private IP address of the IP configuration.
-     */
-    privateIPAddress?: string;
-    /**
-     * The private IP address allocation method.
-     */
-    privateIPAllocationMethod?: string;
-    /**
-     * Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-     */
-    provisioningState?: string;
-    /**
-     * The reference of the public IP resource.
-     */
-    publicIPAddress?: PublicIPAddressResponseV1;
-    /**
-     * The reference of the subnet resource.
-     */
-    subnet?: SubnetResponse;
-}
-/**
- * ipconfigurationResponseV1ProvideDefaults sets the appropriate defaults for IPConfigurationResponseV1
- */
-export function ipconfigurationResponseV1ProvideDefaults(val: IPConfigurationResponseV1): IPConfigurationResponseV1 {
-    return {
-        ...val,
-        publicIPAddress: (val.publicIPAddress ? publicIPAddressResponseV1ProvideDefaults(val.publicIPAddress) : undefined),
-        subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
-    };
-}
-
-/**
  * IP configuration.
  */
-export interface IPConfigurationResponseV2 {
+export interface IPConfigurationServiceGatewayResponse {
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -6488,20 +6861,19 @@ export interface IPConfigurationResponseV2 {
     /**
      * The reference to the public IP resource.
      */
-    publicIPAddress?: PublicIPAddressResponseV2;
+    publicIPAddress?: PublicIPAddressServiceGatewayResponse;
     /**
      * The reference to the subnet resource.
      */
     subnet?: SubnetResponse;
 }
 /**
- * ipconfigurationResponseV2ProvideDefaults sets the appropriate defaults for IPConfigurationResponseV2
+ * ipconfigurationServiceGatewayResponseProvideDefaults sets the appropriate defaults for IPConfigurationServiceGatewayResponse
  */
-export function ipconfigurationResponseV2ProvideDefaults(val: IPConfigurationResponseV2): IPConfigurationResponseV2 {
+export function ipconfigurationServiceGatewayResponseProvideDefaults(val: IPConfigurationServiceGatewayResponse): IPConfigurationServiceGatewayResponse {
     return {
         ...val,
-        privateIPAllocationMethod: (val.privateIPAllocationMethod) ?? "Dynamic",
-        publicIPAddress: (val.publicIPAddress ? publicIPAddressResponseV2ProvideDefaults(val.publicIPAddress) : undefined),
+        publicIPAddress: (val.publicIPAddress ? publicIPAddressServiceGatewayResponseProvideDefaults(val.publicIPAddress) : undefined),
         subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
     };
 }
@@ -6509,7 +6881,7 @@ export function ipconfigurationResponseV2ProvideDefaults(val: IPConfigurationRes
 /**
  * IP configuration.
  */
-export interface IPConfigurationResponseV3 {
+export interface IPConfigurationVirtualNetworkApplianceResponse {
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -6537,20 +6909,19 @@ export interface IPConfigurationResponseV3 {
     /**
      * The reference to the public IP resource.
      */
-    publicIPAddress?: PublicIPAddressResponseV3;
+    publicIPAddress?: PublicIPAddressVirtualNetworkApplianceResponse;
     /**
      * The reference to the subnet resource.
      */
     subnet?: SubnetResponse;
 }
 /**
- * ipconfigurationResponseV3ProvideDefaults sets the appropriate defaults for IPConfigurationResponseV3
+ * ipconfigurationVirtualNetworkApplianceResponseProvideDefaults sets the appropriate defaults for IPConfigurationVirtualNetworkApplianceResponse
  */
-export function ipconfigurationResponseV3ProvideDefaults(val: IPConfigurationResponseV3): IPConfigurationResponseV3 {
+export function ipconfigurationVirtualNetworkApplianceResponseProvideDefaults(val: IPConfigurationVirtualNetworkApplianceResponse): IPConfigurationVirtualNetworkApplianceResponse {
     return {
         ...val,
-        privateIPAllocationMethod: (val.privateIPAllocationMethod) ?? "Dynamic",
-        publicIPAddress: (val.publicIPAddress ? publicIPAddressResponseV3ProvideDefaults(val.publicIPAddress) : undefined),
+        publicIPAddress: (val.publicIPAddress ? publicIPAddressVirtualNetworkApplianceResponseProvideDefaults(val.publicIPAddress) : undefined),
         subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
     };
 }
@@ -6646,6 +7017,69 @@ export interface InboundNatPoolResponse {
 /**
  * Inbound NAT rule of the load balancer.
  */
+export interface InboundNatRuleInterfaceEndpointResponse {
+    /**
+     * A reference to a private IP address defined on a network interface of a VM. Traffic sent to the frontend port of each of the frontend IP configurations is forwarded to the backend IP.
+     */
+    backendIPConfiguration: NetworkInterfaceIPConfigurationResponse;
+    /**
+     * The port used for the internal endpoint. Acceptable values range from 1 to 65535.
+     */
+    backendPort?: number;
+    /**
+     * Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
+     */
+    enableFloatingIP?: boolean;
+    /**
+     * Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
+     */
+    enableTcpReset?: boolean;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * A reference to frontend IP addresses.
+     */
+    frontendIPConfiguration?: SubResourceResponse;
+    /**
+     * The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
+     */
+    frontendPort?: number;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
+     */
+    idleTimeoutInMinutes?: number;
+    /**
+     * Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * The reference to the transport protocol used by the load balancing rule.
+     */
+    protocol?: string;
+    /**
+     * Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState?: string;
+}
+/**
+ * inboundNatRuleInterfaceEndpointResponseProvideDefaults sets the appropriate defaults for InboundNatRuleInterfaceEndpointResponse
+ */
+export function inboundNatRuleInterfaceEndpointResponseProvideDefaults(val: InboundNatRuleInterfaceEndpointResponse): InboundNatRuleInterfaceEndpointResponse {
+    return {
+        ...val,
+        backendIPConfiguration: networkInterfaceIPConfigurationResponseProvideDefaults(val.backendIPConfiguration),
+    };
+}
+
+/**
+ * Inbound NAT rule of the load balancer.
+ */
 export interface InboundNatRuleResponse {
     /**
      * A reference to backendAddressPool resource.
@@ -6723,69 +7157,6 @@ export function inboundNatRuleResponseProvideDefaults(val: InboundNatRuleRespons
 }
 
 /**
- * Inbound NAT rule of the load balancer.
- */
-export interface InboundNatRuleResponseV1 {
-    /**
-     * A reference to a private IP address defined on a network interface of a VM. Traffic sent to the frontend port of each of the frontend IP configurations is forwarded to the backend IP.
-     */
-    backendIPConfiguration: NetworkInterfaceIPConfigurationResponse;
-    /**
-     * The port used for the internal endpoint. Acceptable values range from 1 to 65535.
-     */
-    backendPort?: number;
-    /**
-     * Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
-     */
-    enableFloatingIP?: boolean;
-    /**
-     * Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
-     */
-    enableTcpReset?: boolean;
-    /**
-     * A unique read-only string that changes whenever the resource is updated.
-     */
-    etag?: string;
-    /**
-     * A reference to frontend IP addresses.
-     */
-    frontendIPConfiguration?: SubResourceResponse;
-    /**
-     * The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
-     */
-    frontendPort?: number;
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
-     */
-    idleTimeoutInMinutes?: number;
-    /**
-     * Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-     */
-    name?: string;
-    /**
-     * The reference to the transport protocol used by the load balancing rule.
-     */
-    protocol?: string;
-    /**
-     * Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-     */
-    provisioningState?: string;
-}
-/**
- * inboundNatRuleResponseV1ProvideDefaults sets the appropriate defaults for InboundNatRuleResponseV1
- */
-export function inboundNatRuleResponseV1ProvideDefaults(val: InboundNatRuleResponseV1): InboundNatRuleResponseV1 {
-    return {
-        ...val,
-        backendIPConfiguration: networkInterfaceIPConfigurationResponseProvideDefaults(val.backendIPConfiguration),
-    };
-}
-
-/**
  * Intent information.
  */
 export interface IntentContentResponse {
@@ -6847,7 +7218,7 @@ export interface InterfaceEndpointResponse {
     /**
      * The ID of the subnet from which the private IP will be allocated.
      */
-    subnet?: SubnetResponseV1;
+    subnet?: SubnetInterfaceEndpointResponse;
     /**
      * Resource tags.
      */
@@ -7291,6 +7662,61 @@ export interface ManagedServiceIdentityResponseUserAssignedIdentities {
 }
 
 /**
+ * Identity for the resource.
+ */
+export interface ManagedServiceIdentityServiceGatewayResponse {
+    /**
+     * The principal id of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant id of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
+     */
+    type?: string;
+    /**
+     * The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     */
+    userAssignedIdentities?: {[key: string]: ManagedServiceIdentityUserAssignedIdentitiesResponse};
+}
+
+export interface ManagedServiceIdentityUserAssignedIdentitiesResponse {
+    /**
+     * The client id of user assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal id of user assigned identity.
+     */
+    principalId: string;
+}
+
+/**
+ * Identity for the resource.
+ */
+export interface ManagedServiceIdentityVirtualNetworkApplianceResponse {
+    /**
+     * The principal id of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant id of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
+     */
+    type?: string;
+    /**
+     * The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     */
+    userAssignedIdentities?: {[key: string]: ManagedServiceIdentityUserAssignedIdentitiesResponse};
+}
+
+/**
  * Define match conditions.
  */
 export interface MatchConditionResponse {
@@ -7395,85 +7821,7 @@ export interface NatGatewayResponse {
 /**
  * Nat Gateway resource.
  */
-export interface NatGatewayResponseV1 {
-    /**
-     * A unique read-only string that changes whenever the resource is updated.
-     */
-    etag: string;
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * The idle timeout of the nat gateway.
-     */
-    idleTimeoutInMinutes?: number;
-    /**
-     * Resource location.
-     */
-    location?: string;
-    /**
-     * Resource name.
-     */
-    name: string;
-    /**
-     * The provisioning state of the NAT gateway resource.
-     */
-    provisioningState: string;
-    /**
-     * An array of public ip addresses V4 associated with the nat gateway resource.
-     */
-    publicIpAddresses?: SubResourceResponse[];
-    /**
-     * An array of public ip addresses V6 associated with the nat gateway resource.
-     */
-    publicIpAddressesV6?: SubResourceResponse[];
-    /**
-     * An array of public ip prefixes V4 associated with the nat gateway resource.
-     */
-    publicIpPrefixes?: SubResourceResponse[];
-    /**
-     * An array of public ip prefixes V6 associated with the nat gateway resource.
-     */
-    publicIpPrefixesV6?: SubResourceResponse[];
-    /**
-     * The resource GUID property of the NAT gateway resource.
-     */
-    resourceGuid: string;
-    /**
-     * Reference to an existing service gateway.
-     */
-    serviceGateway?: SubResourceResponse;
-    /**
-     * The nat gateway SKU.
-     */
-    sku?: NatGatewaySkuResponse;
-    /**
-     * A reference to the source virtual network using this nat gateway resource.
-     */
-    sourceVirtualNetwork?: SubResourceResponse;
-    /**
-     * An array of references to the subnets using this nat gateway resource.
-     */
-    subnets: SubResourceResponse[];
-    /**
-     * Resource tags.
-     */
-    tags?: {[key: string]: string};
-    /**
-     * Resource type.
-     */
-    type: string;
-    /**
-     * A list of availability zones denoting the zone in which Nat Gateway should be deployed.
-     */
-    zones?: string[];
-}
-
-/**
- * Nat Gateway resource.
- */
-export interface NatGatewayResponseV2 {
+export interface NatGatewayServiceGatewayResponse {
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -7556,6 +7904,84 @@ export interface NatGatewaySkuResponse {
      * Name of Nat Gateway SKU.
      */
     name?: string;
+}
+
+/**
+ * Nat Gateway resource.
+ */
+export interface NatGatewayVirtualNetworkApplianceResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The idle timeout of the nat gateway.
+     */
+    idleTimeoutInMinutes?: number;
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * The provisioning state of the NAT gateway resource.
+     */
+    provisioningState: string;
+    /**
+     * An array of public ip addresses V4 associated with the nat gateway resource.
+     */
+    publicIpAddresses?: SubResourceResponse[];
+    /**
+     * An array of public ip addresses V6 associated with the nat gateway resource.
+     */
+    publicIpAddressesV6?: SubResourceResponse[];
+    /**
+     * An array of public ip prefixes V4 associated with the nat gateway resource.
+     */
+    publicIpPrefixes?: SubResourceResponse[];
+    /**
+     * An array of public ip prefixes V6 associated with the nat gateway resource.
+     */
+    publicIpPrefixesV6?: SubResourceResponse[];
+    /**
+     * The resource GUID property of the NAT gateway resource.
+     */
+    resourceGuid: string;
+    /**
+     * Reference to an existing service gateway.
+     */
+    serviceGateway?: SubResourceResponse;
+    /**
+     * The nat gateway SKU.
+     */
+    sku?: NatGatewaySkuResponse;
+    /**
+     * A reference to the source virtual network using this nat gateway resource.
+     */
+    sourceVirtualNetwork?: SubResourceResponse;
+    /**
+     * An array of references to the subnets using this nat gateway resource.
+     */
+    subnets: SubResourceResponse[];
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * A list of availability zones denoting the zone in which Nat Gateway should be deployed.
+     */
+    zones?: string[];
 }
 
 /**
@@ -7669,6 +8095,32 @@ export interface NatRuleResponse {
 /**
  * DNS settings of a network interface.
  */
+export interface NetworkInterfaceDnsSettingsInterfaceEndpointResponse {
+    /**
+     * If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs.
+     */
+    appliedDnsServers?: string[];
+    /**
+     * List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.
+     */
+    dnsServers?: string[];
+    /**
+     * Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
+     */
+    internalDnsNameLabel?: string;
+    /**
+     * Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
+     */
+    internalDomainNameSuffix?: string;
+    /**
+     * Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
+     */
+    internalFqdn?: string;
+}
+
+/**
+ * DNS settings of a network interface.
+ */
 export interface NetworkInterfaceDnsSettingsResponse {
     /**
      * If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs.
@@ -7693,29 +8145,78 @@ export interface NetworkInterfaceDnsSettingsResponse {
 }
 
 /**
- * DNS settings of a network interface.
+ * IPConfiguration in a network interface.
  */
-export interface NetworkInterfaceDnsSettingsResponseV1 {
+export interface NetworkInterfaceIPConfigurationInterfaceEndpointResponse {
     /**
-     * If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs.
+     * The reference of ApplicationGatewayBackendAddressPool resource.
      */
-    appliedDnsServers?: string[];
+    applicationGatewayBackendAddressPools?: ApplicationGatewayBackendAddressPoolResponse[];
     /**
-     * List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.
+     * Application security groups in which the IP configuration is included.
      */
-    dnsServers?: string[];
+    applicationSecurityGroups?: ApplicationSecurityGroupResponse[];
     /**
-     * Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
+     * A unique read-only string that changes whenever the resource is updated.
      */
-    internalDnsNameLabel?: string;
+    etag?: string;
     /**
-     * Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
+     * Resource ID.
      */
-    internalDomainNameSuffix?: string;
+    id?: string;
     /**
-     * Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
+     * The reference of LoadBalancerBackendAddressPool resource.
      */
-    internalFqdn?: string;
+    loadBalancerBackendAddressPools?: BackendAddressPoolInterfaceEndpointResponse[];
+    /**
+     * A list of references of LoadBalancerInboundNatRules.
+     */
+    loadBalancerInboundNatRules?: InboundNatRuleInterfaceEndpointResponse[];
+    /**
+     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * Gets whether this is a primary customer address on the network interface.
+     */
+    primary?: boolean;
+    /**
+     * Private IP address of the IP configuration.
+     */
+    privateIPAddress?: string;
+    /**
+     * Available from Api-Version 2016-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
+     */
+    privateIPAddressVersion?: string;
+    /**
+     * The private IP address allocation method.
+     */
+    privateIPAllocationMethod?: string;
+    /**
+     * The provisioning state of the network interface IP configuration. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState?: string;
+    /**
+     * Public IP address bound to the IP configuration.
+     */
+    publicIPAddress?: PublicIPAddressInterfaceEndpointResponse;
+    /**
+     * Subnet bound to the IP configuration.
+     */
+    subnet?: SubnetInterfaceEndpointResponse;
+    /**
+     * The reference to Virtual Network Taps.
+     */
+    virtualNetworkTaps?: VirtualNetworkTapInterfaceEndpointResponse[];
+}
+/**
+ * networkInterfaceIPConfigurationInterfaceEndpointResponseProvideDefaults sets the appropriate defaults for NetworkInterfaceIPConfigurationInterfaceEndpointResponse
+ */
+export function networkInterfaceIPConfigurationInterfaceEndpointResponseProvideDefaults(val: NetworkInterfaceIPConfigurationInterfaceEndpointResponse): NetworkInterfaceIPConfigurationInterfaceEndpointResponse {
+    return {
+        ...val,
+        publicIPAddress: (val.publicIPAddress ? publicIPAddressInterfaceEndpointResponseProvideDefaults(val.publicIPAddress) : undefined),
+    };
 }
 
 /**
@@ -7835,7 +8336,7 @@ export interface NetworkInterfaceIPConfigurationResponseV1 {
     /**
      * The reference of ApplicationGatewayBackendAddressPool resource.
      */
-    applicationGatewayBackendAddressPools?: ApplicationGatewayBackendAddressPoolResponseV1[];
+    applicationGatewayBackendAddressPools?: ApplicationGatewayBackendAddressPoolInterfaceEndpointResponse[];
     /**
      * Application security groups in which the IP configuration is included.
      */
@@ -7851,11 +8352,11 @@ export interface NetworkInterfaceIPConfigurationResponseV1 {
     /**
      * The reference of LoadBalancerBackendAddressPool resource.
      */
-    loadBalancerBackendAddressPools?: BackendAddressPoolResponseV1[];
+    loadBalancerBackendAddressPools?: BackendAddressPoolInterfaceEndpointResponse[];
     /**
      * A list of references of LoadBalancerInboundNatRules.
      */
-    loadBalancerInboundNatRules?: InboundNatRuleResponseV1[];
+    loadBalancerInboundNatRules?: InboundNatRuleInterfaceEndpointResponse[];
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -7883,15 +8384,15 @@ export interface NetworkInterfaceIPConfigurationResponseV1 {
     /**
      * Public IP address bound to the IP configuration.
      */
-    publicIPAddress?: PublicIPAddressResponse;
+    publicIPAddress?: PublicIPAddressInterfaceEndpointResponse;
     /**
      * Subnet bound to the IP configuration.
      */
-    subnet?: SubnetResponse;
+    subnet?: SubnetInterfaceEndpointResponse;
     /**
      * The reference to Virtual Network Taps.
      */
-    virtualNetworkTaps?: VirtualNetworkTapResponseV1[];
+    virtualNetworkTaps?: VirtualNetworkTapInterfaceEndpointResponse[];
 }
 /**
  * networkInterfaceIPConfigurationResponseV1ProvideDefaults sets the appropriate defaults for NetworkInterfaceIPConfigurationResponseV1
@@ -7899,9 +8400,458 @@ export interface NetworkInterfaceIPConfigurationResponseV1 {
 export function networkInterfaceIPConfigurationResponseV1ProvideDefaults(val: NetworkInterfaceIPConfigurationResponseV1): NetworkInterfaceIPConfigurationResponseV1 {
     return {
         ...val,
-        publicIPAddress: (val.publicIPAddress ? publicIPAddressResponseProvideDefaults(val.publicIPAddress) : undefined),
+        publicIPAddress: (val.publicIPAddress ? publicIPAddressInterfaceEndpointResponseProvideDefaults(val.publicIPAddress) : undefined),
+    };
+}
+
+/**
+ * IPConfiguration in a network interface.
+ */
+export interface NetworkInterfaceIPConfigurationResponseV2 {
+    /**
+     * The reference to ApplicationGatewayBackendAddressPool resource.
+     */
+    applicationGatewayBackendAddressPools?: ApplicationGatewayBackendAddressPoolServiceGatewayResponse[];
+    /**
+     * Application security groups in which the IP configuration is included.
+     */
+    applicationSecurityGroups?: ApplicationSecurityGroupResponse[];
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * The reference to gateway load balancer frontend IP.
+     */
+    gatewayLoadBalancer?: SubResourceResponse;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The reference to LoadBalancerBackendAddressPool resource.
+     */
+    loadBalancerBackendAddressPools?: BackendAddressPoolResponse[];
+    /**
+     * A list of references of LoadBalancerInboundNatRules.
+     */
+    loadBalancerInboundNatRules?: InboundNatRuleResponse[];
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * Whether this is a primary customer address on the network interface.
+     */
+    primary?: boolean;
+    /**
+     * Private IP address of the IP configuration. It can be a single IP address or a CIDR block in the format <address>/<prefix-length>.
+     */
+    privateIPAddress?: string;
+    /**
+     * The private IP address prefix length. If specified and the allocation method is dynamic, the service will allocate a CIDR block instead of a single IP address.
+     */
+    privateIPAddressPrefixLength?: number;
+    /**
+     * Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
+     */
+    privateIPAddressVersion?: string;
+    /**
+     * The private IP address allocation method.
+     */
+    privateIPAllocationMethod?: string;
+    /**
+     * PrivateLinkConnection properties for the network interface.
+     */
+    privateLinkConnectionProperties: NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse;
+    /**
+     * The provisioning state of the network interface IP configuration.
+     */
+    provisioningState: string;
+    /**
+     * Public IP address bound to the IP configuration.
+     */
+    publicIPAddress?: PublicIPAddressServiceGatewayResponse;
+    /**
+     * Subnet bound to the IP configuration.
+     */
+    subnet?: SubnetResponse;
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * The reference to Virtual Network Taps.
+     */
+    virtualNetworkTaps?: VirtualNetworkTapServiceGatewayResponse[];
+}
+/**
+ * networkInterfaceIPConfigurationResponseV2ProvideDefaults sets the appropriate defaults for NetworkInterfaceIPConfigurationResponseV2
+ */
+export function networkInterfaceIPConfigurationResponseV2ProvideDefaults(val: NetworkInterfaceIPConfigurationResponseV2): NetworkInterfaceIPConfigurationResponseV2 {
+    return {
+        ...val,
+        publicIPAddress: (val.publicIPAddress ? publicIPAddressServiceGatewayResponseProvideDefaults(val.publicIPAddress) : undefined),
         subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
     };
+}
+
+/**
+ * IPConfiguration in a network interface.
+ */
+export interface NetworkInterfaceIPConfigurationResponseV3 {
+    /**
+     * The reference to ApplicationGatewayBackendAddressPool resource.
+     */
+    applicationGatewayBackendAddressPools?: ApplicationGatewayBackendAddressPoolVirtualNetworkApplianceResponse[];
+    /**
+     * Application security groups in which the IP configuration is included.
+     */
+    applicationSecurityGroups?: ApplicationSecurityGroupResponse[];
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * The reference to gateway load balancer frontend IP.
+     */
+    gatewayLoadBalancer?: SubResourceResponse;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The reference to LoadBalancerBackendAddressPool resource.
+     */
+    loadBalancerBackendAddressPools?: BackendAddressPoolResponse[];
+    /**
+     * A list of references of LoadBalancerInboundNatRules.
+     */
+    loadBalancerInboundNatRules?: InboundNatRuleResponse[];
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * Whether this is a primary customer address on the network interface.
+     */
+    primary?: boolean;
+    /**
+     * Private IP address of the IP configuration. It can be a single IP address or a CIDR block in the format <address>/<prefix-length>.
+     */
+    privateIPAddress?: string;
+    /**
+     * The private IP address prefix length. If specified and the allocation method is dynamic, the service will allocate a CIDR block instead of a single IP address.
+     */
+    privateIPAddressPrefixLength?: number;
+    /**
+     * Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
+     */
+    privateIPAddressVersion?: string;
+    /**
+     * The private IP address allocation method.
+     */
+    privateIPAllocationMethod?: string;
+    /**
+     * PrivateLinkConnection properties for the network interface.
+     */
+    privateLinkConnectionProperties: NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse;
+    /**
+     * The provisioning state of the network interface IP configuration.
+     */
+    provisioningState: string;
+    /**
+     * Public IP address bound to the IP configuration.
+     */
+    publicIPAddress?: PublicIPAddressVirtualNetworkApplianceResponse;
+    /**
+     * Subnet bound to the IP configuration.
+     */
+    subnet?: SubnetResponse;
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * The reference to Virtual Network Taps.
+     */
+    virtualNetworkTaps?: VirtualNetworkTapVirtualNetworkApplianceResponse[];
+}
+/**
+ * networkInterfaceIPConfigurationResponseV3ProvideDefaults sets the appropriate defaults for NetworkInterfaceIPConfigurationResponseV3
+ */
+export function networkInterfaceIPConfigurationResponseV3ProvideDefaults(val: NetworkInterfaceIPConfigurationResponseV3): NetworkInterfaceIPConfigurationResponseV3 {
+    return {
+        ...val,
+        publicIPAddress: (val.publicIPAddress ? publicIPAddressVirtualNetworkApplianceResponseProvideDefaults(val.publicIPAddress) : undefined),
+        subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
+    };
+}
+
+/**
+ * IPConfiguration in a network interface.
+ */
+export interface NetworkInterfaceIPConfigurationServiceGatewayResponse {
+    /**
+     * The reference to ApplicationGatewayBackendAddressPool resource.
+     */
+    applicationGatewayBackendAddressPools?: ApplicationGatewayBackendAddressPoolResponse[];
+    /**
+     * Application security groups in which the IP configuration is included.
+     */
+    applicationSecurityGroups?: ApplicationSecurityGroupResponse[];
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * The reference to gateway load balancer frontend IP.
+     */
+    gatewayLoadBalancer?: SubResourceResponse;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The reference to LoadBalancerBackendAddressPool resource.
+     */
+    loadBalancerBackendAddressPools?: BackendAddressPoolResponse[];
+    /**
+     * A list of references of LoadBalancerInboundNatRules.
+     */
+    loadBalancerInboundNatRules?: InboundNatRuleResponse[];
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * Whether this is a primary customer address on the network interface.
+     */
+    primary?: boolean;
+    /**
+     * Private IP address of the IP configuration. It can be a single IP address or a CIDR block in the format <address>/<prefix-length>.
+     */
+    privateIPAddress?: string;
+    /**
+     * The private IP address prefix length. If specified and the allocation method is dynamic, the service will allocate a CIDR block instead of a single IP address.
+     */
+    privateIPAddressPrefixLength?: number;
+    /**
+     * Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
+     */
+    privateIPAddressVersion?: string;
+    /**
+     * The private IP address allocation method.
+     */
+    privateIPAllocationMethod?: string;
+    /**
+     * PrivateLinkConnection properties for the network interface.
+     */
+    privateLinkConnectionProperties: NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse;
+    /**
+     * The provisioning state of the network interface IP configuration.
+     */
+    provisioningState: string;
+    /**
+     * Public IP address bound to the IP configuration.
+     */
+    publicIPAddress?: PublicIPAddressServiceGatewayResponse;
+    /**
+     * Subnet bound to the IP configuration.
+     */
+    subnet?: SubnetResponse;
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * The reference to Virtual Network Taps.
+     */
+    virtualNetworkTaps?: VirtualNetworkTapServiceGatewayResponse[];
+}
+/**
+ * networkInterfaceIPConfigurationServiceGatewayResponseProvideDefaults sets the appropriate defaults for NetworkInterfaceIPConfigurationServiceGatewayResponse
+ */
+export function networkInterfaceIPConfigurationServiceGatewayResponseProvideDefaults(val: NetworkInterfaceIPConfigurationServiceGatewayResponse): NetworkInterfaceIPConfigurationServiceGatewayResponse {
+    return {
+        ...val,
+        publicIPAddress: (val.publicIPAddress ? publicIPAddressServiceGatewayResponseProvideDefaults(val.publicIPAddress) : undefined),
+        subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
+    };
+}
+
+/**
+ * IPConfiguration in a network interface.
+ */
+export interface NetworkInterfaceIPConfigurationVirtualNetworkApplianceResponse {
+    /**
+     * The reference to ApplicationGatewayBackendAddressPool resource.
+     */
+    applicationGatewayBackendAddressPools?: ApplicationGatewayBackendAddressPoolResponse[];
+    /**
+     * Application security groups in which the IP configuration is included.
+     */
+    applicationSecurityGroups?: ApplicationSecurityGroupResponse[];
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * The reference to gateway load balancer frontend IP.
+     */
+    gatewayLoadBalancer?: SubResourceResponse;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The reference to LoadBalancerBackendAddressPool resource.
+     */
+    loadBalancerBackendAddressPools?: BackendAddressPoolResponse[];
+    /**
+     * A list of references of LoadBalancerInboundNatRules.
+     */
+    loadBalancerInboundNatRules?: InboundNatRuleResponse[];
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * Whether this is a primary customer address on the network interface.
+     */
+    primary?: boolean;
+    /**
+     * Private IP address of the IP configuration. It can be a single IP address or a CIDR block in the format <address>/<prefix-length>.
+     */
+    privateIPAddress?: string;
+    /**
+     * The private IP address prefix length. If specified and the allocation method is dynamic, the service will allocate a CIDR block instead of a single IP address.
+     */
+    privateIPAddressPrefixLength?: number;
+    /**
+     * Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
+     */
+    privateIPAddressVersion?: string;
+    /**
+     * The private IP address allocation method.
+     */
+    privateIPAllocationMethod?: string;
+    /**
+     * PrivateLinkConnection properties for the network interface.
+     */
+    privateLinkConnectionProperties: NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse;
+    /**
+     * The provisioning state of the network interface IP configuration.
+     */
+    provisioningState: string;
+    /**
+     * Public IP address bound to the IP configuration.
+     */
+    publicIPAddress?: PublicIPAddressVirtualNetworkApplianceResponse;
+    /**
+     * Subnet bound to the IP configuration.
+     */
+    subnet?: SubnetResponse;
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * The reference to Virtual Network Taps.
+     */
+    virtualNetworkTaps?: VirtualNetworkTapVirtualNetworkApplianceResponse[];
+}
+/**
+ * networkInterfaceIPConfigurationVirtualNetworkApplianceResponseProvideDefaults sets the appropriate defaults for NetworkInterfaceIPConfigurationVirtualNetworkApplianceResponse
+ */
+export function networkInterfaceIPConfigurationVirtualNetworkApplianceResponseProvideDefaults(val: NetworkInterfaceIPConfigurationVirtualNetworkApplianceResponse): NetworkInterfaceIPConfigurationVirtualNetworkApplianceResponse {
+    return {
+        ...val,
+        publicIPAddress: (val.publicIPAddress ? publicIPAddressVirtualNetworkApplianceResponseProvideDefaults(val.publicIPAddress) : undefined),
+        subnet: (val.subnet ? subnetResponseProvideDefaults(val.subnet) : undefined),
+    };
+}
+
+/**
+ * A network interface in a resource group.
+ */
+export interface NetworkInterfaceInterfaceEndpointResponse {
+    /**
+     * The DNS settings in network interface.
+     */
+    dnsSettings?: NetworkInterfaceDnsSettingsInterfaceEndpointResponse;
+    /**
+     * If the network interface is accelerated networking enabled.
+     */
+    enableAcceleratedNetworking?: boolean;
+    /**
+     * Indicates whether IP forwarding is enabled on this network interface.
+     */
+    enableIPForwarding?: boolean;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * A list of references to linked BareMetal resources
+     */
+    hostedWorkloads: string[];
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * A reference to the interface endpoint to which the network interface is linked.
+     */
+    interfaceEndpoint: InterfaceEndpointResponse;
+    /**
+     * A list of IPConfigurations of the network interface.
+     */
+    ipConfigurations?: NetworkInterfaceIPConfigurationResponseV1[];
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * The MAC address of the network interface.
+     */
+    macAddress?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * The reference of the NetworkSecurityGroup resource.
+     */
+    networkSecurityGroup?: NetworkSecurityGroupInterfaceEndpointResponse;
+    /**
+     * Gets whether this is a primary network interface on a virtual machine.
+     */
+    primary?: boolean;
+    /**
+     * The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState?: string;
+    /**
+     * The resource GUID property of the network interface resource.
+     */
+    resourceGuid?: string;
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * A list of TapConfigurations of the network interface.
+     */
+    tapConfigurations?: NetworkInterfaceTapConfigurationResponseV1[];
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * The reference of a virtual machine.
+     */
+    virtualMachine: SubResourceResponse;
 }
 
 /**
@@ -8042,352 +8992,174 @@ export function networkInterfaceResponseProvideDefaults(val: NetworkInterfaceRes
 /**
  * A network interface in a resource group.
  */
-export interface NetworkInterfaceResponseV1 {
+export interface NetworkInterfaceServiceGatewayResponse {
+    /**
+     * Auxiliary mode of Network Interface resource.
+     */
+    auxiliaryMode?: string;
+    /**
+     * Auxiliary sku of Network Interface resource.
+     */
+    auxiliarySku?: string;
+    /**
+     * Whether default outbound connectivity for nic was configured or not.
+     */
+    defaultOutboundConnectivityEnabled: boolean;
+    /**
+     * Indicates whether to disable tcp state tracking.
+     */
+    disableTcpStateTracking?: boolean;
     /**
      * The DNS settings in network interface.
      */
-    dnsSettings?: NetworkInterfaceDnsSettingsResponseV1;
+    dnsSettings?: NetworkInterfaceDnsSettingsResponse;
     /**
-     * If the network interface is accelerated networking enabled.
+     * A reference to the dscp configuration to which the network interface is linked.
+     */
+    dscpConfiguration: SubResourceResponse;
+    /**
+     * If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
      */
     enableAcceleratedNetworking?: boolean;
     /**
      * Indicates whether IP forwarding is enabled on this network interface.
      */
     enableIPForwarding?: boolean;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * The extended location of the network interface.
+     */
+    extendedLocation?: ExtendedLocationResponse;
+    /**
+     * A list of references to linked BareMetal resources.
+     */
+    hostedWorkloads: string[];
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * A list of IPConfigurations of the network interface.
+     */
+    ipConfigurations?: NetworkInterfaceIPConfigurationResponseV2[];
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * The MAC address of the network interface.
+     */
+    macAddress: string;
+    /**
+     * Migration phase of Network Interface resource.
+     */
+    migrationPhase?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * The reference to the NetworkSecurityGroup resource.
+     */
+    networkSecurityGroup?: NetworkSecurityGroupResponse;
+    /**
+     * Type of Network Interface resource.
+     */
+    nicType?: string;
+    /**
+     * Whether this is a primary network interface on a virtual machine.
+     */
+    primary: boolean;
+    /**
+     * A reference to the private endpoint to which the network interface is linked.
+     */
+    privateEndpoint: PrivateEndpointServiceGatewayResponse;
+    /**
+     * Privatelinkservice of the network interface resource.
+     */
+    privateLinkService?: PrivateLinkServiceServiceGatewayResponse;
+    /**
+     * The provisioning state of the network interface resource.
+     */
+    provisioningState: string;
+    /**
+     * The resource GUID property of the network interface resource.
+     */
+    resourceGuid: string;
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * A list of TapConfigurations of the network interface.
+     */
+    tapConfigurations: NetworkInterfaceTapConfigurationServiceGatewayResponse[];
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * The reference to a virtual machine.
+     */
+    virtualMachine: SubResourceResponse;
+    /**
+     * Whether the virtual machine this nic is attached to supports encryption.
+     */
+    vnetEncryptionSupported: boolean;
+    /**
+     * WorkloadType of the NetworkInterface for BareMetal resources
+     */
+    workloadType?: string;
+}
+/**
+ * networkInterfaceServiceGatewayResponseProvideDefaults sets the appropriate defaults for NetworkInterfaceServiceGatewayResponse
+ */
+export function networkInterfaceServiceGatewayResponseProvideDefaults(val: NetworkInterfaceServiceGatewayResponse): NetworkInterfaceServiceGatewayResponse {
+    return {
+        ...val,
+        privateEndpoint: privateEndpointServiceGatewayResponseProvideDefaults(val.privateEndpoint),
+    };
+}
+
+/**
+ * Tap configuration in a Network Interface
+ */
+export interface NetworkInterfaceTapConfigurationInterfaceEndpointResponse {
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
     etag?: string;
     /**
-     * A list of references to linked BareMetal resources
-     */
-    hostedWorkloads: string[];
-    /**
      * Resource ID.
      */
     id?: string;
     /**
-     * A reference to the interface endpoint to which the network interface is linked.
+     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
-    interfaceEndpoint: InterfaceEndpointResponse;
+    name?: string;
     /**
-     * A list of IPConfigurations of the network interface.
-     */
-    ipConfigurations?: NetworkInterfaceIPConfigurationResponseV1[];
-    /**
-     * Resource location.
-     */
-    location?: string;
-    /**
-     * The MAC address of the network interface.
-     */
-    macAddress?: string;
-    /**
-     * Resource name.
-     */
-    name: string;
-    /**
-     * The reference of the NetworkSecurityGroup resource.
-     */
-    networkSecurityGroup?: NetworkSecurityGroupResponse;
-    /**
-     * Gets whether this is a primary network interface on a virtual machine.
-     */
-    primary?: boolean;
-    /**
-     * The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-     */
-    provisioningState?: string;
-    /**
-     * The resource GUID property of the network interface resource.
-     */
-    resourceGuid?: string;
-    /**
-     * Resource tags.
-     */
-    tags?: {[key: string]: string};
-    /**
-     * A list of TapConfigurations of the network interface.
-     */
-    tapConfigurations?: NetworkInterfaceTapConfigurationResponse[];
-    /**
-     * Resource type.
-     */
-    type: string;
-    /**
-     * The reference of a virtual machine.
-     */
-    virtualMachine: SubResourceResponse;
-}
-
-/**
- * A network interface in a resource group.
- */
-export interface NetworkInterfaceResponseV2 {
-    /**
-     * Auxiliary mode of Network Interface resource.
-     */
-    auxiliaryMode?: string;
-    /**
-     * Auxiliary sku of Network Interface resource.
-     */
-    auxiliarySku?: string;
-    /**
-     * Whether default outbound connectivity for nic was configured or not.
-     */
-    defaultOutboundConnectivityEnabled: boolean;
-    /**
-     * Indicates whether to disable tcp state tracking.
-     */
-    disableTcpStateTracking?: boolean;
-    /**
-     * The DNS settings in network interface.
-     */
-    dnsSettings?: NetworkInterfaceDnsSettingsResponse;
-    /**
-     * A reference to the dscp configuration to which the network interface is linked.
-     */
-    dscpConfiguration: SubResourceResponse;
-    /**
-     * If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
-     */
-    enableAcceleratedNetworking?: boolean;
-    /**
-     * Indicates whether IP forwarding is enabled on this network interface.
-     */
-    enableIPForwarding?: boolean;
-    /**
-     * A unique read-only string that changes whenever the resource is updated.
-     */
-    etag: string;
-    /**
-     * The extended location of the network interface.
-     */
-    extendedLocation?: ExtendedLocationResponse;
-    /**
-     * A list of references to linked BareMetal resources.
-     */
-    hostedWorkloads: string[];
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * A list of IPConfigurations of the network interface.
-     */
-    ipConfigurations?: NetworkInterfaceIPConfigurationResponse[];
-    /**
-     * Resource location.
-     */
-    location?: string;
-    /**
-     * The MAC address of the network interface.
-     */
-    macAddress: string;
-    /**
-     * Migration phase of Network Interface resource.
-     */
-    migrationPhase?: string;
-    /**
-     * Resource name.
-     */
-    name: string;
-    /**
-     * The reference to the NetworkSecurityGroup resource.
-     */
-    networkSecurityGroup?: NetworkSecurityGroupResponse;
-    /**
-     * Type of Network Interface resource.
-     */
-    nicType?: string;
-    /**
-     * Whether this is a primary network interface on a virtual machine.
-     */
-    primary: boolean;
-    /**
-     * A reference to the private endpoint to which the network interface is linked.
-     */
-    privateEndpoint: PrivateEndpointResponseV1;
-    /**
-     * Privatelinkservice of the network interface resource.
-     */
-    privateLinkService?: PrivateLinkServiceResponseV1;
-    /**
-     * The provisioning state of the network interface resource.
+     * The provisioning state of the network interface tap configuration. Possible values are: 'Updating', 'Deleting', and 'Failed'.
      */
     provisioningState: string;
     /**
-     * The resource GUID property of the network interface resource.
-     */
-    resourceGuid: string;
-    /**
-     * Resource tags.
-     */
-    tags?: {[key: string]: string};
-    /**
-     * A list of TapConfigurations of the network interface.
-     */
-    tapConfigurations: NetworkInterfaceTapConfigurationResponse[];
-    /**
-     * Resource type.
+     * Sub Resource type.
      */
     type: string;
     /**
-     * The reference to a virtual machine.
+     * The reference of the Virtual Network Tap resource.
      */
-    virtualMachine: SubResourceResponse;
-    /**
-     * Whether the virtual machine this nic is attached to supports encryption.
-     */
-    vnetEncryptionSupported: boolean;
-    /**
-     * WorkloadType of the NetworkInterface for BareMetal resources
-     */
-    workloadType?: string;
+    virtualNetworkTap?: VirtualNetworkTapResponse;
 }
 /**
- * networkInterfaceResponseV2ProvideDefaults sets the appropriate defaults for NetworkInterfaceResponseV2
+ * networkInterfaceTapConfigurationInterfaceEndpointResponseProvideDefaults sets the appropriate defaults for NetworkInterfaceTapConfigurationInterfaceEndpointResponse
  */
-export function networkInterfaceResponseV2ProvideDefaults(val: NetworkInterfaceResponseV2): NetworkInterfaceResponseV2 {
+export function networkInterfaceTapConfigurationInterfaceEndpointResponseProvideDefaults(val: NetworkInterfaceTapConfigurationInterfaceEndpointResponse): NetworkInterfaceTapConfigurationInterfaceEndpointResponse {
     return {
         ...val,
-        privateEndpoint: privateEndpointResponseV1ProvideDefaults(val.privateEndpoint),
-    };
-}
-
-/**
- * A network interface in a resource group.
- */
-export interface NetworkInterfaceResponseV3 {
-    /**
-     * Auxiliary mode of Network Interface resource.
-     */
-    auxiliaryMode?: string;
-    /**
-     * Auxiliary sku of Network Interface resource.
-     */
-    auxiliarySku?: string;
-    /**
-     * Whether default outbound connectivity for nic was configured or not.
-     */
-    defaultOutboundConnectivityEnabled: boolean;
-    /**
-     * Indicates whether to disable tcp state tracking.
-     */
-    disableTcpStateTracking?: boolean;
-    /**
-     * The DNS settings in network interface.
-     */
-    dnsSettings?: NetworkInterfaceDnsSettingsResponse;
-    /**
-     * A reference to the dscp configuration to which the network interface is linked.
-     */
-    dscpConfiguration: SubResourceResponse;
-    /**
-     * If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
-     */
-    enableAcceleratedNetworking?: boolean;
-    /**
-     * Indicates whether IP forwarding is enabled on this network interface.
-     */
-    enableIPForwarding?: boolean;
-    /**
-     * A unique read-only string that changes whenever the resource is updated.
-     */
-    etag: string;
-    /**
-     * The extended location of the network interface.
-     */
-    extendedLocation?: ExtendedLocationResponse;
-    /**
-     * A list of references to linked BareMetal resources.
-     */
-    hostedWorkloads: string[];
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * A list of IPConfigurations of the network interface.
-     */
-    ipConfigurations?: NetworkInterfaceIPConfigurationResponse[];
-    /**
-     * Resource location.
-     */
-    location?: string;
-    /**
-     * The MAC address of the network interface.
-     */
-    macAddress: string;
-    /**
-     * Migration phase of Network Interface resource.
-     */
-    migrationPhase?: string;
-    /**
-     * Resource name.
-     */
-    name: string;
-    /**
-     * The reference to the NetworkSecurityGroup resource.
-     */
-    networkSecurityGroup?: NetworkSecurityGroupResponse;
-    /**
-     * Type of Network Interface resource.
-     */
-    nicType?: string;
-    /**
-     * Whether this is a primary network interface on a virtual machine.
-     */
-    primary: boolean;
-    /**
-     * A reference to the private endpoint to which the network interface is linked.
-     */
-    privateEndpoint: PrivateEndpointResponseV2;
-    /**
-     * Privatelinkservice of the network interface resource.
-     */
-    privateLinkService?: PrivateLinkServiceResponseV2;
-    /**
-     * The provisioning state of the network interface resource.
-     */
-    provisioningState: string;
-    /**
-     * The resource GUID property of the network interface resource.
-     */
-    resourceGuid: string;
-    /**
-     * Resource tags.
-     */
-    tags?: {[key: string]: string};
-    /**
-     * A list of TapConfigurations of the network interface.
-     */
-    tapConfigurations: NetworkInterfaceTapConfigurationResponse[];
-    /**
-     * Resource type.
-     */
-    type: string;
-    /**
-     * The reference to a virtual machine.
-     */
-    virtualMachine: SubResourceResponse;
-    /**
-     * Whether the virtual machine this nic is attached to supports encryption.
-     */
-    vnetEncryptionSupported: boolean;
-    /**
-     * WorkloadType of the NetworkInterface for BareMetal resources
-     */
-    workloadType?: string;
-}
-/**
- * networkInterfaceResponseV3ProvideDefaults sets the appropriate defaults for NetworkInterfaceResponseV3
- */
-export function networkInterfaceResponseV3ProvideDefaults(val: NetworkInterfaceResponseV3): NetworkInterfaceResponseV3 {
-    return {
-        ...val,
-        privateEndpoint: privateEndpointResponseV2ProvideDefaults(val.privateEndpoint),
+        virtualNetworkTap: (val.virtualNetworkTap ? virtualNetworkTapResponseProvideDefaults(val.virtualNetworkTap) : undefined),
     };
 }
 
@@ -8457,7 +9229,7 @@ export interface NetworkInterfaceTapConfigurationResponseV1 {
     /**
      * The reference of the Virtual Network Tap resource.
      */
-    virtualNetworkTap?: VirtualNetworkTapResponse;
+    virtualNetworkTap?: VirtualNetworkTapInterfaceEndpointResponse;
 }
 /**
  * networkInterfaceTapConfigurationResponseV1ProvideDefaults sets the appropriate defaults for NetworkInterfaceTapConfigurationResponseV1
@@ -8465,7 +9237,220 @@ export interface NetworkInterfaceTapConfigurationResponseV1 {
 export function networkInterfaceTapConfigurationResponseV1ProvideDefaults(val: NetworkInterfaceTapConfigurationResponseV1): NetworkInterfaceTapConfigurationResponseV1 {
     return {
         ...val,
-        virtualNetworkTap: (val.virtualNetworkTap ? virtualNetworkTapResponseProvideDefaults(val.virtualNetworkTap) : undefined),
+        virtualNetworkTap: (val.virtualNetworkTap ? virtualNetworkTapInterfaceEndpointResponseProvideDefaults(val.virtualNetworkTap) : undefined),
+    };
+}
+
+/**
+ * Tap configuration in a Network Interface.
+ */
+export interface NetworkInterfaceTapConfigurationServiceGatewayResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * The provisioning state of the network interface tap configuration resource.
+     */
+    provisioningState: string;
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * The reference to the Virtual Network Tap resource.
+     */
+    virtualNetworkTap?: VirtualNetworkTapServiceGatewayResponse;
+}
+/**
+ * networkInterfaceTapConfigurationServiceGatewayResponseProvideDefaults sets the appropriate defaults for NetworkInterfaceTapConfigurationServiceGatewayResponse
+ */
+export function networkInterfaceTapConfigurationServiceGatewayResponseProvideDefaults(val: NetworkInterfaceTapConfigurationServiceGatewayResponse): NetworkInterfaceTapConfigurationServiceGatewayResponse {
+    return {
+        ...val,
+        virtualNetworkTap: (val.virtualNetworkTap ? virtualNetworkTapServiceGatewayResponseProvideDefaults(val.virtualNetworkTap) : undefined),
+    };
+}
+
+/**
+ * Tap configuration in a Network Interface.
+ */
+export interface NetworkInterfaceTapConfigurationVirtualNetworkApplianceResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * The provisioning state of the network interface tap configuration resource.
+     */
+    provisioningState: string;
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * The reference to the Virtual Network Tap resource.
+     */
+    virtualNetworkTap?: VirtualNetworkTapVirtualNetworkApplianceResponse;
+}
+/**
+ * networkInterfaceTapConfigurationVirtualNetworkApplianceResponseProvideDefaults sets the appropriate defaults for NetworkInterfaceTapConfigurationVirtualNetworkApplianceResponse
+ */
+export function networkInterfaceTapConfigurationVirtualNetworkApplianceResponseProvideDefaults(val: NetworkInterfaceTapConfigurationVirtualNetworkApplianceResponse): NetworkInterfaceTapConfigurationVirtualNetworkApplianceResponse {
+    return {
+        ...val,
+        virtualNetworkTap: (val.virtualNetworkTap ? virtualNetworkTapVirtualNetworkApplianceResponseProvideDefaults(val.virtualNetworkTap) : undefined),
+    };
+}
+
+/**
+ * A network interface in a resource group.
+ */
+export interface NetworkInterfaceVirtualNetworkApplianceResponse {
+    /**
+     * Auxiliary mode of Network Interface resource.
+     */
+    auxiliaryMode?: string;
+    /**
+     * Auxiliary sku of Network Interface resource.
+     */
+    auxiliarySku?: string;
+    /**
+     * Whether default outbound connectivity for nic was configured or not.
+     */
+    defaultOutboundConnectivityEnabled: boolean;
+    /**
+     * Indicates whether to disable tcp state tracking.
+     */
+    disableTcpStateTracking?: boolean;
+    /**
+     * The DNS settings in network interface.
+     */
+    dnsSettings?: NetworkInterfaceDnsSettingsResponse;
+    /**
+     * A reference to the dscp configuration to which the network interface is linked.
+     */
+    dscpConfiguration: SubResourceResponse;
+    /**
+     * If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
+     */
+    enableAcceleratedNetworking?: boolean;
+    /**
+     * Indicates whether IP forwarding is enabled on this network interface.
+     */
+    enableIPForwarding?: boolean;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * The extended location of the network interface.
+     */
+    extendedLocation?: ExtendedLocationResponse;
+    /**
+     * A list of references to linked BareMetal resources.
+     */
+    hostedWorkloads: string[];
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * A list of IPConfigurations of the network interface.
+     */
+    ipConfigurations?: NetworkInterfaceIPConfigurationResponseV3[];
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * The MAC address of the network interface.
+     */
+    macAddress: string;
+    /**
+     * Migration phase of Network Interface resource.
+     */
+    migrationPhase?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * The reference to the NetworkSecurityGroup resource.
+     */
+    networkSecurityGroup?: NetworkSecurityGroupResponse;
+    /**
+     * Type of Network Interface resource.
+     */
+    nicType?: string;
+    /**
+     * Whether this is a primary network interface on a virtual machine.
+     */
+    primary: boolean;
+    /**
+     * A reference to the private endpoint to which the network interface is linked.
+     */
+    privateEndpoint: PrivateEndpointVirtualNetworkApplianceResponse;
+    /**
+     * Privatelinkservice of the network interface resource.
+     */
+    privateLinkService?: PrivateLinkServiceVirtualNetworkApplianceResponse;
+    /**
+     * The provisioning state of the network interface resource.
+     */
+    provisioningState: string;
+    /**
+     * The resource GUID property of the network interface resource.
+     */
+    resourceGuid: string;
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * A list of TapConfigurations of the network interface.
+     */
+    tapConfigurations: NetworkInterfaceTapConfigurationVirtualNetworkApplianceResponse[];
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * The reference to a virtual machine.
+     */
+    virtualMachine: SubResourceResponse;
+    /**
+     * Whether the virtual machine this nic is attached to supports encryption.
+     */
+    vnetEncryptionSupported: boolean;
+    /**
+     * WorkloadType of the NetworkInterface for BareMetal resources
+     */
+    workloadType?: string;
+}
+/**
+ * networkInterfaceVirtualNetworkApplianceResponseProvideDefaults sets the appropriate defaults for NetworkInterfaceVirtualNetworkApplianceResponse
+ */
+export function networkInterfaceVirtualNetworkApplianceResponseProvideDefaults(val: NetworkInterfaceVirtualNetworkApplianceResponse): NetworkInterfaceVirtualNetworkApplianceResponse {
+    return {
+        ...val,
+        privateEndpoint: privateEndpointVirtualNetworkApplianceResponseProvideDefaults(val.privateEndpoint),
     };
 }
 
@@ -8540,7 +9525,7 @@ export interface NetworkManagerSecurityGroupItemResponse {
 /**
  * Network manager security group item.
  */
-export interface NetworkManagerSecurityGroupItemResponseV1 {
+export interface NetworkManagerSecurityGroupItemlistActiveSecurityAdminRuleResponse {
     /**
      * Network manager group Id.
      */
@@ -8550,7 +9535,7 @@ export interface NetworkManagerSecurityGroupItemResponseV1 {
 /**
  * Network manager security group item.
  */
-export interface NetworkManagerSecurityGroupItemResponseV2 {
+export interface NetworkManagerSecurityGroupItemlistActiveSecurityUserRuleResponse {
     /**
      * Network manager group Id.
      */
@@ -8560,7 +9545,7 @@ export interface NetworkManagerSecurityGroupItemResponseV2 {
 /**
  * Network manager security group item.
  */
-export interface NetworkManagerSecurityGroupItemResponseV3 {
+export interface NetworkManagerSecurityGroupItemlistNetworkManagerEffectiveSecurityAdminRuleResponse {
     /**
      * Network manager group Id.
      */
@@ -8660,6 +9645,60 @@ export interface NetworkRuleResponse {
 /**
  * NetworkSecurityGroup resource.
  */
+export interface NetworkSecurityGroupInterfaceEndpointResponse {
+    /**
+     * The default security rules of network security group.
+     */
+    defaultSecurityRules?: SecurityRuleInterfaceEndpointResponse[];
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * A collection of references to network interfaces.
+     */
+    networkInterfaces: NetworkInterfaceResponse[];
+    /**
+     * The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState?: string;
+    /**
+     * The resource GUID property of the network security group resource.
+     */
+    resourceGuid?: string;
+    /**
+     * A collection of security rules of the network security group.
+     */
+    securityRules?: SecurityRuleInterfaceEndpointResponse[];
+    /**
+     * A collection of references to subnets.
+     */
+    subnets: SubnetResponse[];
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+
+/**
+ * NetworkSecurityGroup resource.
+ */
 export interface NetworkSecurityGroupResponse {
     /**
      * The default security rules of network security group.
@@ -8722,65 +9761,11 @@ export interface NetworkSecurityGroupResponse {
 /**
  * NetworkSecurityGroup resource.
  */
-export interface NetworkSecurityGroupResponseV1 {
+export interface NetworkSecurityGroupServiceGatewayResponse {
     /**
      * The default security rules of network security group.
      */
-    defaultSecurityRules?: SecurityRuleResponseV1[];
-    /**
-     * A unique read-only string that changes whenever the resource is updated.
-     */
-    etag?: string;
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * Resource location.
-     */
-    location?: string;
-    /**
-     * Resource name.
-     */
-    name: string;
-    /**
-     * A collection of references to network interfaces.
-     */
-    networkInterfaces: NetworkInterfaceResponse[];
-    /**
-     * The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-     */
-    provisioningState?: string;
-    /**
-     * The resource GUID property of the network security group resource.
-     */
-    resourceGuid?: string;
-    /**
-     * A collection of security rules of the network security group.
-     */
-    securityRules?: SecurityRuleResponse[];
-    /**
-     * A collection of references to subnets.
-     */
-    subnets: SubnetResponse[];
-    /**
-     * Resource tags.
-     */
-    tags?: {[key: string]: string};
-    /**
-     * Resource type.
-     */
-    type: string;
-}
-
-/**
- * NetworkSecurityGroup resource.
- */
-export interface NetworkSecurityGroupResponseV2 {
-    /**
-     * The default security rules of network security group.
-     */
-    defaultSecurityRules: SecurityRuleResponse[];
+    defaultSecurityRules: SecurityRuleServiceGatewayResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -8788,7 +9773,7 @@ export interface NetworkSecurityGroupResponseV2 {
     /**
      * A collection of references to flow log resources.
      */
-    flowLogs: FlowLogResponseV1[];
+    flowLogs: FlowLogServiceGatewayResponse[];
     /**
      * When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
      */
@@ -8808,7 +9793,7 @@ export interface NetworkSecurityGroupResponseV2 {
     /**
      * A collection of references to network interfaces.
      */
-    networkInterfaces: NetworkInterfaceResponseV2[];
+    networkInterfaces: NetworkInterfaceServiceGatewayResponse[];
     /**
      * The provisioning state of the network security group resource.
      */
@@ -8820,7 +9805,7 @@ export interface NetworkSecurityGroupResponseV2 {
     /**
      * A collection of security rules of the network security group.
      */
-    securityRules?: SecurityRuleResponse[];
+    securityRules?: SecurityRuleServiceGatewayResponse[];
     /**
      * A collection of references to subnets.
      */
@@ -8838,11 +9823,11 @@ export interface NetworkSecurityGroupResponseV2 {
 /**
  * NetworkSecurityGroup resource.
  */
-export interface NetworkSecurityGroupResponseV3 {
+export interface NetworkSecurityGroupVirtualNetworkApplianceResponse {
     /**
      * The default security rules of network security group.
      */
-    defaultSecurityRules: SecurityRuleResponse[];
+    defaultSecurityRules: SecurityRuleVirtualNetworkApplianceResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -8850,7 +9835,7 @@ export interface NetworkSecurityGroupResponseV3 {
     /**
      * A collection of references to flow log resources.
      */
-    flowLogs: FlowLogResponseV2[];
+    flowLogs: FlowLogVirtualNetworkApplianceResponse[];
     /**
      * When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
      */
@@ -8870,7 +9855,7 @@ export interface NetworkSecurityGroupResponseV3 {
     /**
      * A collection of references to network interfaces.
      */
-    networkInterfaces: NetworkInterfaceResponseV3[];
+    networkInterfaces: NetworkInterfaceVirtualNetworkApplianceResponse[];
     /**
      * The provisioning state of the network security group resource.
      */
@@ -8882,7 +9867,7 @@ export interface NetworkSecurityGroupResponseV3 {
     /**
      * A collection of security rules of the network security group.
      */
-    securityRules?: SecurityRuleResponse[];
+    securityRules?: SecurityRuleVirtualNetworkApplianceResponse[];
     /**
      * A collection of references to subnets.
      */
@@ -8924,7 +9909,7 @@ export interface NetworkVirtualApplianceConnectionPropertiesResponse {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    routingConfiguration?: RoutingConfigurationResponse;
+    routingConfiguration?: RoutingConfigurationNetworkVirtualApplianceConnectionResponse;
     /**
      * Unique identifier for the connection.
      */
@@ -9097,7 +10082,91 @@ export interface P2SConnectionConfigurationResponse {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    routingConfiguration?: RoutingConfigurationResponse;
+    routingConfiguration?: RoutingConfigurationP2sVpnGatewayResponse;
+    /**
+     * The reference to the address space resource which represents Address space for P2S VpnClient.
+     */
+    vpnClientAddressPool?: AddressSpaceResponse;
+}
+
+/**
+ * P2SConnectionConfiguration Resource.
+ */
+export interface P2SConnectionConfigurationVpnServerConfigurationResponse {
+    /**
+     * List of Configuration Policy Groups that this P2SConnectionConfiguration is attached to.
+     */
+    configurationPolicyGroupAssociations: SubResourceResponse[];
+    /**
+     * Flag indicating whether the enable internet security flag is turned on for the P2S Connections or not.
+     */
+    enableInternetSecurity?: boolean;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * List of previous Configuration Policy Groups that this P2SConnectionConfiguration was attached to.
+     */
+    previousConfigurationPolicyGroupAssociations: VpnServerConfigurationPolicyGroupResponse[];
+    /**
+     * The provisioning state of the P2SConnectionConfiguration resource.
+     */
+    provisioningState: string;
+    /**
+     * The Routing Configuration indicating the associated and propagated route tables on this connection.
+     */
+    routingConfiguration?: RoutingConfigurationVpnServerConfigurationResponse;
+    /**
+     * The reference to the address space resource which represents Address space for P2S VpnClient.
+     */
+    vpnClientAddressPool?: AddressSpaceResponse;
+}
+
+/**
+ * P2SConnectionConfiguration Resource.
+ */
+export interface P2SConnectionConfigurationgetP2sVpnGatewayP2sVpnConnectionHealthResponse {
+    /**
+     * List of Configuration Policy Groups that this P2SConnectionConfiguration is attached to.
+     */
+    configurationPolicyGroupAssociations: SubResourceResponse[];
+    /**
+     * Flag indicating whether the enable internet security flag is turned on for the P2S Connections or not.
+     */
+    enableInternetSecurity?: boolean;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * List of previous Configuration Policy Groups that this P2SConnectionConfiguration was attached to.
+     */
+    previousConfigurationPolicyGroupAssociations: VpnServerConfigurationPolicyGroupResponse[];
+    /**
+     * The provisioning state of the P2SConnectionConfiguration resource.
+     */
+    provisioningState: string;
+    /**
+     * The Routing Configuration indicating the associated and propagated route tables on this connection.
+     */
+    routingConfiguration?: RoutingConfigurationgetP2sVpnGatewayP2sVpnConnectionHealthResponse;
     /**
      * The reference to the address space resource which represents Address space for P2S VpnClient.
      */
@@ -9135,7 +10204,7 @@ export interface P2SVpnGatewayResponse {
     /**
      * List of all p2s connection configurations of the gateway.
      */
-    p2SConnectionConfigurations?: P2SConnectionConfigurationResponse[];
+    p2SConnectionConfigurations?: P2SConnectionConfigurationVpnServerConfigurationResponse[];
     /**
      * The provisioning state of the P2S VPN gateway resource.
      */
@@ -9712,6 +10781,108 @@ export function privateEndpointConnectionResponseProvideDefaults(val: PrivateEnd
 }
 
 /**
+ * PrivateEndpointConnection resource.
+ */
+export interface PrivateEndpointConnectionServiceGatewayResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The consumer link id.
+     */
+    linkIdentifier: string;
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * The resource of private end point.
+     */
+    privateEndpoint: PrivateEndpointServiceGatewayResponse;
+    /**
+     * The location of the private endpoint.
+     */
+    privateEndpointLocation: string;
+    /**
+     * A collection of information about the state of the connection between service consumer and provider.
+     */
+    privateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private endpoint connection resource.
+     */
+    provisioningState: string;
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+/**
+ * privateEndpointConnectionServiceGatewayResponseProvideDefaults sets the appropriate defaults for PrivateEndpointConnectionServiceGatewayResponse
+ */
+export function privateEndpointConnectionServiceGatewayResponseProvideDefaults(val: PrivateEndpointConnectionServiceGatewayResponse): PrivateEndpointConnectionServiceGatewayResponse {
+    return {
+        ...val,
+        privateEndpoint: privateEndpointServiceGatewayResponseProvideDefaults(val.privateEndpoint),
+    };
+}
+
+/**
+ * PrivateEndpointConnection resource.
+ */
+export interface PrivateEndpointConnectionVirtualNetworkApplianceResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The consumer link id.
+     */
+    linkIdentifier: string;
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * The resource of private end point.
+     */
+    privateEndpoint: PrivateEndpointVirtualNetworkApplianceResponse;
+    /**
+     * The location of the private endpoint.
+     */
+    privateEndpointLocation: string;
+    /**
+     * A collection of information about the state of the connection between service consumer and provider.
+     */
+    privateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private endpoint connection resource.
+     */
+    provisioningState: string;
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+/**
+ * privateEndpointConnectionVirtualNetworkApplianceResponseProvideDefaults sets the appropriate defaults for PrivateEndpointConnectionVirtualNetworkApplianceResponse
+ */
+export function privateEndpointConnectionVirtualNetworkApplianceResponseProvideDefaults(val: PrivateEndpointConnectionVirtualNetworkApplianceResponse): PrivateEndpointConnectionVirtualNetworkApplianceResponse {
+    return {
+        ...val,
+        privateEndpoint: privateEndpointVirtualNetworkApplianceResponseProvideDefaults(val.privateEndpoint),
+    };
+}
+
+/**
  * An IP Configuration of the private endpoint.
  */
 export interface PrivateEndpointIPConfigurationResponse {
@@ -9823,7 +10994,7 @@ export function privateEndpointResponseProvideDefaults(val: PrivateEndpointRespo
 /**
  * Private endpoint resource.
  */
-export interface PrivateEndpointResponseV1 {
+export interface PrivateEndpointServiceGatewayResponse {
     /**
      * Application security groups in which the private endpoint IP configuration is included.
      */
@@ -9894,9 +11065,9 @@ export interface PrivateEndpointResponseV1 {
     type: string;
 }
 /**
- * privateEndpointResponseV1ProvideDefaults sets the appropriate defaults for PrivateEndpointResponseV1
+ * privateEndpointServiceGatewayResponseProvideDefaults sets the appropriate defaults for PrivateEndpointServiceGatewayResponse
  */
-export function privateEndpointResponseV1ProvideDefaults(val: PrivateEndpointResponseV1): PrivateEndpointResponseV1 {
+export function privateEndpointServiceGatewayResponseProvideDefaults(val: PrivateEndpointServiceGatewayResponse): PrivateEndpointServiceGatewayResponse {
     return {
         ...val,
         ipVersionType: (val.ipVersionType) ?? "IPv4",
@@ -9907,7 +11078,7 @@ export function privateEndpointResponseV1ProvideDefaults(val: PrivateEndpointRes
 /**
  * Private endpoint resource.
  */
-export interface PrivateEndpointResponseV2 {
+export interface PrivateEndpointVirtualNetworkApplianceResponse {
     /**
      * Application security groups in which the private endpoint IP configuration is included.
      */
@@ -9978,9 +11149,9 @@ export interface PrivateEndpointResponseV2 {
     type: string;
 }
 /**
- * privateEndpointResponseV2ProvideDefaults sets the appropriate defaults for PrivateEndpointResponseV2
+ * privateEndpointVirtualNetworkApplianceResponseProvideDefaults sets the appropriate defaults for PrivateEndpointVirtualNetworkApplianceResponse
  */
-export function privateEndpointResponseV2ProvideDefaults(val: PrivateEndpointResponseV2): PrivateEndpointResponseV2 {
+export function privateEndpointVirtualNetworkApplianceResponseProvideDefaults(val: PrivateEndpointVirtualNetworkApplianceResponse): PrivateEndpointVirtualNetworkApplianceResponse {
     return {
         ...val,
         ipVersionType: (val.ipVersionType) ?? "IPv4",
@@ -10106,6 +11277,16 @@ export function privateLinkServiceIpConfigurationResponseProvideDefaults(val: Pr
 /**
  * The auto-approval list of the private link service.
  */
+export interface PrivateLinkServicePropertiesAutoApprovalResponse {
+    /**
+     * The list of subscriptions.
+     */
+    subscriptions?: string[];
+}
+
+/**
+ * The auto-approval list of the private link service.
+ */
 export interface PrivateLinkServicePropertiesResponseAutoApproval {
     /**
      * The list of subscriptions.
@@ -10117,6 +11298,16 @@ export interface PrivateLinkServicePropertiesResponseAutoApproval {
  * The visibility list of the private link service.
  */
 export interface PrivateLinkServicePropertiesResponseVisibility {
+    /**
+     * The list of subscriptions.
+     */
+    subscriptions?: string[];
+}
+
+/**
+ * The visibility list of the private link service.
+ */
+export interface PrivateLinkServicePropertiesVisibilityResponse {
     /**
      * The list of subscriptions.
      */
@@ -10204,7 +11395,7 @@ export interface PrivateLinkServiceResponse {
 /**
  * Private link service resource.
  */
-export interface PrivateLinkServiceResponseV1 {
+export interface PrivateLinkServiceServiceGatewayResponse {
     /**
      * The access mode of the private link service.
      */
@@ -10216,7 +11407,7 @@ export interface PrivateLinkServiceResponseV1 {
     /**
      * The auto-approval list of the private link service.
      */
-    autoApproval?: PrivateLinkServicePropertiesResponseAutoApproval;
+    autoApproval?: PrivateLinkServicePropertiesAutoApprovalResponse;
     /**
      * The destination IP address of the private link service.
      */
@@ -10248,7 +11439,7 @@ export interface PrivateLinkServiceResponseV1 {
     /**
      * An array of references to the load balancer IP configurations.
      */
-    loadBalancerFrontendIpConfigurations?: FrontendIPConfigurationResponse[];
+    loadBalancerFrontendIpConfigurations?: FrontendIPConfigurationServiceGatewayResponse[];
     /**
      * Resource location.
      */
@@ -10264,7 +11455,7 @@ export interface PrivateLinkServiceResponseV1 {
     /**
      * An array of list about connections to the private endpoint.
      */
-    privateEndpointConnections: PrivateEndpointConnectionResponse[];
+    privateEndpointConnections: PrivateEndpointConnectionServiceGatewayResponse[];
     /**
      * The provisioning state of the private link service resource.
      */
@@ -10280,13 +11471,13 @@ export interface PrivateLinkServiceResponseV1 {
     /**
      * The visibility list of the private link service.
      */
-    visibility?: PrivateLinkServicePropertiesResponseVisibility;
+    visibility?: PrivateLinkServicePropertiesVisibilityResponse;
 }
 
 /**
  * Private link service resource.
  */
-export interface PrivateLinkServiceResponseV2 {
+export interface PrivateLinkServiceVirtualNetworkApplianceResponse {
     /**
      * The access mode of the private link service.
      */
@@ -10298,7 +11489,7 @@ export interface PrivateLinkServiceResponseV2 {
     /**
      * The auto-approval list of the private link service.
      */
-    autoApproval?: PrivateLinkServicePropertiesResponseAutoApproval;
+    autoApproval?: PrivateLinkServicePropertiesAutoApprovalResponse;
     /**
      * The destination IP address of the private link service.
      */
@@ -10330,7 +11521,7 @@ export interface PrivateLinkServiceResponseV2 {
     /**
      * An array of references to the load balancer IP configurations.
      */
-    loadBalancerFrontendIpConfigurations?: FrontendIPConfigurationResponse[];
+    loadBalancerFrontendIpConfigurations?: FrontendIPConfigurationVirtualNetworkApplianceResponse[];
     /**
      * Resource location.
      */
@@ -10346,7 +11537,7 @@ export interface PrivateLinkServiceResponseV2 {
     /**
      * An array of list about connections to the private endpoint.
      */
-    privateEndpointConnections: PrivateEndpointConnectionResponse[];
+    privateEndpointConnections: PrivateEndpointConnectionVirtualNetworkApplianceResponse[];
     /**
      * The provisioning state of the private link service resource.
      */
@@ -10362,7 +11553,7 @@ export interface PrivateLinkServiceResponseV2 {
     /**
      * The visibility list of the private link service.
      */
-    visibility?: PrivateLinkServicePropertiesResponseVisibility;
+    visibility?: PrivateLinkServicePropertiesVisibilityResponse;
 }
 
 /**
@@ -10438,6 +11629,24 @@ export interface PropagatedRouteTableResponse {
 }
 
 /**
+ * Contains FQDN of the DNS record associated with the public IP address
+ */
+export interface PublicIPAddressDnsSettingsInterfaceEndpointResponse {
+    /**
+     * Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
+     */
+    domainNameLabel?: string;
+    /**
+     * Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
+     */
+    fqdn?: string;
+    /**
+     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
+     */
+    reverseFqdn?: string;
+}
+
+/**
  * Contains FQDN of the DNS record associated with the public IP address.
  */
 export interface PublicIPAddressDnsSettingsResponse {
@@ -10460,21 +11669,94 @@ export interface PublicIPAddressDnsSettingsResponse {
 }
 
 /**
- * Contains FQDN of the DNS record associated with the public IP address
+ * Public IP address resource.
  */
-export interface PublicIPAddressDnsSettingsResponseV1 {
+export interface PublicIPAddressInterfaceEndpointResponse {
     /**
-     * Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
+     * The DDoS protection custom policy associated with the public IP address.
      */
-    domainNameLabel?: string;
+    ddosSettings?: DdosSettingsInterfaceEndpointResponse;
     /**
-     * Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
+     * The FQDN of the DNS record associated with the public IP address.
      */
-    fqdn?: string;
+    dnsSettings?: PublicIPAddressDnsSettingsInterfaceEndpointResponse;
     /**
-     * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. 
+     * A unique read-only string that changes whenever the resource is updated.
      */
-    reverseFqdn?: string;
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The idle timeout of the public IP address.
+     */
+    idleTimeoutInMinutes?: number;
+    /**
+     * The IP address associated with the public IP address resource.
+     */
+    ipAddress?: string;
+    /**
+     * The IP configuration associated with the public IP address.
+     */
+    ipConfiguration: IPConfigurationResponse;
+    /**
+     * The list of tags associated with the public IP address.
+     */
+    ipTags?: IpTagResponse[];
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState?: string;
+    /**
+     * The public IP address version.
+     */
+    publicIPAddressVersion?: string;
+    /**
+     * The public IP address allocation method.
+     */
+    publicIPAllocationMethod?: string;
+    /**
+     * The Public IP Prefix this Public IP Address should be allocated from.
+     */
+    publicIPPrefix?: SubResourceResponse;
+    /**
+     * The resource GUID property of the public IP resource.
+     */
+    resourceGuid?: string;
+    /**
+     * The public IP address SKU.
+     */
+    sku?: PublicIPAddressSkuInterfaceEndpointResponse;
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * A list of availability zones denoting the IP allocated for the resource needs to come from.
+     */
+    zones?: string[];
+}
+/**
+ * publicIPAddressInterfaceEndpointResponseProvideDefaults sets the appropriate defaults for PublicIPAddressInterfaceEndpointResponse
+ */
+export function publicIPAddressInterfaceEndpointResponseProvideDefaults(val: PublicIPAddressInterfaceEndpointResponse): PublicIPAddressInterfaceEndpointResponse {
+    return {
+        ...val,
+        ipConfiguration: ipconfigurationResponseProvideDefaults(val.ipConfiguration),
+    };
 }
 
 /**
@@ -10601,15 +11883,23 @@ export interface PublicIPAddressResponseV1 {
     /**
      * The DDoS protection custom policy associated with the public IP address.
      */
-    ddosSettings?: DdosSettingsResponseV1;
+    ddosSettings?: DdosSettingsResponse;
+    /**
+     * Specify what happens to the public IP address when the VM using it is deleted
+     */
+    deleteOption?: string;
     /**
      * The FQDN of the DNS record associated with the public IP address.
      */
-    dnsSettings?: PublicIPAddressDnsSettingsResponseV1;
+    dnsSettings?: PublicIPAddressDnsSettingsResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    etag?: string;
+    etag: string;
+    /**
+     * The extended location of the public ip address.
+     */
+    extendedLocation?: ExtendedLocationResponse;
     /**
      * Resource ID.
      */
@@ -10625,23 +11915,35 @@ export interface PublicIPAddressResponseV1 {
     /**
      * The IP configuration associated with the public IP address.
      */
-    ipConfiguration: IPConfigurationResponse;
+    ipConfiguration: IPConfigurationServiceGatewayResponse;
     /**
      * The list of tags associated with the public IP address.
      */
     ipTags?: IpTagResponse[];
     /**
+     * The linked public IP address of the public IP address resource.
+     */
+    linkedPublicIPAddress?: PublicIPAddressServiceGatewayResponse;
+    /**
      * Resource location.
      */
     location?: string;
+    /**
+     * Migration phase of Public IP Address.
+     */
+    migrationPhase?: string;
     /**
      * Resource name.
      */
     name: string;
     /**
-     * The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     * The NatGateway for the Public IP address.
      */
-    provisioningState?: string;
+    natGateway?: NatGatewayServiceGatewayResponse;
+    /**
+     * The provisioning state of the public IP address resource.
+     */
+    provisioningState: string;
     /**
      * The public IP address version.
      */
@@ -10655,13 +11957,17 @@ export interface PublicIPAddressResponseV1 {
      */
     publicIPPrefix?: SubResourceResponse;
     /**
-     * The resource GUID property of the public IP resource.
+     * The resource GUID property of the public IP address resource.
      */
-    resourceGuid?: string;
+    resourceGuid: string;
+    /**
+     * The service public IP address of the public IP address resource.
+     */
+    servicePublicIPAddress?: PublicIPAddressServiceGatewayResponse;
     /**
      * The public IP address SKU.
      */
-    sku?: PublicIPAddressSkuResponseV1;
+    sku?: PublicIPAddressSkuResponse;
     /**
      * Resource tags.
      */
@@ -10681,7 +11987,9 @@ export interface PublicIPAddressResponseV1 {
 export function publicIPAddressResponseV1ProvideDefaults(val: PublicIPAddressResponseV1): PublicIPAddressResponseV1 {
     return {
         ...val,
-        ipConfiguration: ipconfigurationResponseProvideDefaults(val.ipConfiguration),
+        ipConfiguration: ipconfigurationServiceGatewayResponseProvideDefaults(val.ipConfiguration),
+        linkedPublicIPAddress: (val.linkedPublicIPAddress ? publicIPAddressServiceGatewayResponseProvideDefaults(val.linkedPublicIPAddress) : undefined),
+        servicePublicIPAddress: (val.servicePublicIPAddress ? publicIPAddressServiceGatewayResponseProvideDefaults(val.servicePublicIPAddress) : undefined),
     };
 }
 
@@ -10724,7 +12032,7 @@ export interface PublicIPAddressResponseV2 {
     /**
      * The IP configuration associated with the public IP address.
      */
-    ipConfiguration: IPConfigurationResponse;
+    ipConfiguration: IPConfigurationVirtualNetworkApplianceResponse;
     /**
      * The list of tags associated with the public IP address.
      */
@@ -10732,7 +12040,7 @@ export interface PublicIPAddressResponseV2 {
     /**
      * The linked public IP address of the public IP address resource.
      */
-    linkedPublicIPAddress?: PublicIPAddressResponse;
+    linkedPublicIPAddress?: PublicIPAddressVirtualNetworkApplianceResponse;
     /**
      * Resource location.
      */
@@ -10748,7 +12056,7 @@ export interface PublicIPAddressResponseV2 {
     /**
      * The NatGateway for the Public IP address.
      */
-    natGateway?: NatGatewayResponseV1;
+    natGateway?: NatGatewayVirtualNetworkApplianceResponse;
     /**
      * The provisioning state of the public IP address resource.
      */
@@ -10772,7 +12080,7 @@ export interface PublicIPAddressResponseV2 {
     /**
      * The service public IP address of the public IP address resource.
      */
-    servicePublicIPAddress?: PublicIPAddressResponse;
+    servicePublicIPAddress?: PublicIPAddressVirtualNetworkApplianceResponse;
     /**
      * The public IP address SKU.
      */
@@ -10796,16 +12104,16 @@ export interface PublicIPAddressResponseV2 {
 export function publicIPAddressResponseV2ProvideDefaults(val: PublicIPAddressResponseV2): PublicIPAddressResponseV2 {
     return {
         ...val,
-        ipConfiguration: ipconfigurationResponseProvideDefaults(val.ipConfiguration),
-        linkedPublicIPAddress: (val.linkedPublicIPAddress ? publicIPAddressResponseProvideDefaults(val.linkedPublicIPAddress) : undefined),
-        servicePublicIPAddress: (val.servicePublicIPAddress ? publicIPAddressResponseProvideDefaults(val.servicePublicIPAddress) : undefined),
+        ipConfiguration: ipconfigurationVirtualNetworkApplianceResponseProvideDefaults(val.ipConfiguration),
+        linkedPublicIPAddress: (val.linkedPublicIPAddress ? publicIPAddressVirtualNetworkApplianceResponseProvideDefaults(val.linkedPublicIPAddress) : undefined),
+        servicePublicIPAddress: (val.servicePublicIPAddress ? publicIPAddressVirtualNetworkApplianceResponseProvideDefaults(val.servicePublicIPAddress) : undefined),
     };
 }
 
 /**
  * Public IP address resource.
  */
-export interface PublicIPAddressResponseV3 {
+export interface PublicIPAddressServiceGatewayResponse {
     /**
      * The DDoS protection custom policy associated with the public IP address.
      */
@@ -10865,7 +12173,7 @@ export interface PublicIPAddressResponseV3 {
     /**
      * The NatGateway for the Public IP address.
      */
-    natGateway?: NatGatewayResponseV2;
+    natGateway?: NatGatewayServiceGatewayResponse;
     /**
      * The provisioning state of the public IP address resource.
      */
@@ -10908,15 +12216,25 @@ export interface PublicIPAddressResponseV3 {
     zones?: string[];
 }
 /**
- * publicIPAddressResponseV3ProvideDefaults sets the appropriate defaults for PublicIPAddressResponseV3
+ * publicIPAddressServiceGatewayResponseProvideDefaults sets the appropriate defaults for PublicIPAddressServiceGatewayResponse
  */
-export function publicIPAddressResponseV3ProvideDefaults(val: PublicIPAddressResponseV3): PublicIPAddressResponseV3 {
+export function publicIPAddressServiceGatewayResponseProvideDefaults(val: PublicIPAddressServiceGatewayResponse): PublicIPAddressServiceGatewayResponse {
     return {
         ...val,
         ipConfiguration: ipconfigurationResponseProvideDefaults(val.ipConfiguration),
         linkedPublicIPAddress: (val.linkedPublicIPAddress ? publicIPAddressResponseProvideDefaults(val.linkedPublicIPAddress) : undefined),
         servicePublicIPAddress: (val.servicePublicIPAddress ? publicIPAddressResponseProvideDefaults(val.servicePublicIPAddress) : undefined),
     };
+}
+
+/**
+ * SKU of a public IP address
+ */
+export interface PublicIPAddressSkuInterfaceEndpointResponse {
+    /**
+     * Name of a public IP address SKU.
+     */
+    name?: string;
 }
 
 /**
@@ -10934,13 +12252,120 @@ export interface PublicIPAddressSkuResponse {
 }
 
 /**
- * SKU of a public IP address
+ * Public IP address resource.
  */
-export interface PublicIPAddressSkuResponseV1 {
+export interface PublicIPAddressVirtualNetworkApplianceResponse {
     /**
-     * Name of a public IP address SKU.
+     * The DDoS protection custom policy associated with the public IP address.
      */
-    name?: string;
+    ddosSettings?: DdosSettingsResponse;
+    /**
+     * Specify what happens to the public IP address when the VM using it is deleted
+     */
+    deleteOption?: string;
+    /**
+     * The FQDN of the DNS record associated with the public IP address.
+     */
+    dnsSettings?: PublicIPAddressDnsSettingsResponse;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * The extended location of the public ip address.
+     */
+    extendedLocation?: ExtendedLocationResponse;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The idle timeout of the public IP address.
+     */
+    idleTimeoutInMinutes?: number;
+    /**
+     * The IP address associated with the public IP address resource.
+     */
+    ipAddress?: string;
+    /**
+     * The IP configuration associated with the public IP address.
+     */
+    ipConfiguration: IPConfigurationResponse;
+    /**
+     * The list of tags associated with the public IP address.
+     */
+    ipTags?: IpTagResponse[];
+    /**
+     * The linked public IP address of the public IP address resource.
+     */
+    linkedPublicIPAddress?: PublicIPAddressResponse;
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * Migration phase of Public IP Address.
+     */
+    migrationPhase?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * The NatGateway for the Public IP address.
+     */
+    natGateway?: NatGatewayVirtualNetworkApplianceResponse;
+    /**
+     * The provisioning state of the public IP address resource.
+     */
+    provisioningState: string;
+    /**
+     * The public IP address version.
+     */
+    publicIPAddressVersion?: string;
+    /**
+     * The public IP address allocation method.
+     */
+    publicIPAllocationMethod?: string;
+    /**
+     * The Public IP Prefix this Public IP Address should be allocated from.
+     */
+    publicIPPrefix?: SubResourceResponse;
+    /**
+     * The resource GUID property of the public IP address resource.
+     */
+    resourceGuid: string;
+    /**
+     * The service public IP address of the public IP address resource.
+     */
+    servicePublicIPAddress?: PublicIPAddressResponse;
+    /**
+     * The public IP address SKU.
+     */
+    sku?: PublicIPAddressSkuResponse;
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * A list of availability zones denoting the IP allocated for the resource needs to come from.
+     */
+    zones?: string[];
+}
+/**
+ * publicIPAddressVirtualNetworkApplianceResponseProvideDefaults sets the appropriate defaults for PublicIPAddressVirtualNetworkApplianceResponse
+ */
+export function publicIPAddressVirtualNetworkApplianceResponseProvideDefaults(val: PublicIPAddressVirtualNetworkApplianceResponse): PublicIPAddressVirtualNetworkApplianceResponse {
+    return {
+        ...val,
+        ipConfiguration: ipconfigurationResponseProvideDefaults(val.ipConfiguration),
+        linkedPublicIPAddress: (val.linkedPublicIPAddress ? publicIPAddressResponseProvideDefaults(val.linkedPublicIPAddress) : undefined),
+        servicePublicIPAddress: (val.servicePublicIPAddress ? publicIPAddressResponseProvideDefaults(val.servicePublicIPAddress) : undefined),
+    };
 }
 
 /**
@@ -11170,6 +12595,36 @@ export interface ResourceBasicsResponse {
 /**
  * ResourceNavigationLink resource.
  */
+export interface ResourceNavigationLinkInterfaceEndpointResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Link to the external resource
+     */
+    link?: string;
+    /**
+     * Resource type of the linked resource.
+     */
+    linkedResourceType?: string;
+    /**
+     * Name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * Provisioning state of the ResourceNavigationLink resource.
+     */
+    provisioningState: string;
+}
+
+/**
+ * ResourceNavigationLink resource.
+ */
 export interface ResourceNavigationLinkResponse {
     /**
      * A unique read-only string that changes whenever the resource is updated.
@@ -11199,36 +12654,6 @@ export interface ResourceNavigationLinkResponse {
      * Resource type.
      */
     type: string;
-}
-
-/**
- * ResourceNavigationLink resource.
- */
-export interface ResourceNavigationLinkResponseV1 {
-    /**
-     * A unique read-only string that changes whenever the resource is updated.
-     */
-    etag: string;
-    /**
-     * Resource ID.
-     */
-    id?: string;
-    /**
-     * Link to the external resource
-     */
-    link?: string;
-    /**
-     * Resource type of the linked resource.
-     */
-    linkedResourceType?: string;
-    /**
-     * Name of the resource that is unique within a resource group. This name can be used to access the resource.
-     */
-    name?: string;
-    /**
-     * Provisioning state of the ResourceNavigationLink resource.
-     */
-    provisioningState: string;
 }
 
 /**
@@ -11291,6 +12716,40 @@ export interface RouteFilterRuleResponse {
      * The rule type of the rule.
      */
     routeFilterRuleType: string;
+}
+
+/**
+ * Route resource
+ */
+export interface RouteInterfaceEndpointResponse {
+    /**
+     * The destination CIDR to which the route applies.
+     */
+    addressPrefix?: string;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+     */
+    nextHopIpAddress?: string;
+    /**
+     * The type of Azure hop the packet should be sent to.
+     */
+    nextHopType: string;
+    /**
+     * The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState?: string;
 }
 
 /**
@@ -11358,9 +12817,9 @@ export interface RouteResponse {
 }
 
 /**
- * Route resource
+ * Route resource.
  */
-export interface RouteResponseV1 {
+export interface RouteServiceGatewayResponse {
     /**
      * The destination CIDR to which the route applies.
      */
@@ -11368,13 +12827,17 @@ export interface RouteResponseV1 {
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    etag?: string;
+    etag: string;
+    /**
+     * A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
+     */
+    hasBgpOverride: boolean;
     /**
      * Resource ID.
      */
     id?: string;
     /**
-     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     * Name of the resource.
      */
     name?: string;
     /**
@@ -11386,9 +12849,13 @@ export interface RouteResponseV1 {
      */
     nextHopType: string;
     /**
-     * The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the route resource.
      */
-    provisioningState?: string;
+    provisioningState: string;
+    /**
+     * Resource type.
+     */
+    type: string;
 }
 
 export interface RouteSourceDetailsResponse {
@@ -11404,6 +12871,52 @@ export interface RouteSourceDetailsResponse {
      * Flag to indicate if the route learned from the secondary device is active or passive
      */
     sec?: string;
+}
+
+/**
+ * Route table resource.
+ */
+export interface RouteTableInterfaceEndpointResponse {
+    /**
+     * Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
+     */
+    disableBgpRoutePropagation?: boolean;
+    /**
+     * Gets a unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState?: string;
+    /**
+     * Collection of routes contained within a route table.
+     */
+    routes?: RouteInterfaceEndpointResponse[];
+    /**
+     * A collection of references to subnets.
+     */
+    subnets: SubnetResponse[];
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Resource type.
+     */
+    type: string;
 }
 
 /**
@@ -11459,15 +12972,15 @@ export interface RouteTableResponse {
 /**
  * Route table resource.
  */
-export interface RouteTableResponseV1 {
+export interface RouteTableServiceGatewayResponse {
     /**
-     * Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
+     * Whether to disable the routes learned by BGP on that route table. True means disable.
      */
     disableBgpRoutePropagation?: boolean;
     /**
-     * Gets a unique read-only string that changes whenever the resource is updated.
+     * A unique read-only string that changes whenever the resource is updated.
      */
-    etag?: string;
+    etag: string;
     /**
      * Resource ID.
      */
@@ -11481,13 +12994,67 @@ export interface RouteTableResponseV1 {
      */
     name: string;
     /**
-     * The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the route table resource.
      */
-    provisioningState?: string;
+    provisioningState: string;
+    /**
+     * The resource GUID property of the route table.
+     */
+    resourceGuid: string;
     /**
      * Collection of routes contained within a route table.
      */
-    routes?: RouteResponseV1[];
+    routes?: RouteServiceGatewayResponse[];
+    /**
+     * A collection of references to subnets.
+     */
+    subnets: SubnetResponse[];
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+
+/**
+ * Route table resource.
+ */
+export interface RouteTableVirtualNetworkApplianceResponse {
+    /**
+     * Whether to disable the routes learned by BGP on that route table. True means disable.
+     */
+    disableBgpRoutePropagation?: boolean;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * The provisioning state of the route table resource.
+     */
+    provisioningState: string;
+    /**
+     * The resource GUID property of the route table.
+     */
+    resourceGuid: string;
+    /**
+     * Collection of routes contained within a route table.
+     */
+    routes?: RouteVirtualNetworkApplianceResponse[];
     /**
      * A collection of references to subnets.
      */
@@ -11517,7 +13084,7 @@ export interface RouteTargetAddressPropertiesFormatResponse {
     /**
      * The reference to the subnet resource.
      */
-    subnet?: SubnetResponseV2;
+    subnet?: SubnetResponseV1;
 }
 /**
  * routeTargetAddressPropertiesFormatResponseProvideDefaults sets the appropriate defaults for RouteTargetAddressPropertiesFormatResponse
@@ -11525,8 +13092,180 @@ export interface RouteTargetAddressPropertiesFormatResponse {
 export function routeTargetAddressPropertiesFormatResponseProvideDefaults(val: RouteTargetAddressPropertiesFormatResponse): RouteTargetAddressPropertiesFormatResponse {
     return {
         ...val,
-        subnet: (val.subnet ? subnetResponseV2ProvideDefaults(val.subnet) : undefined),
+        subnet: (val.subnet ? subnetResponseV1ProvideDefaults(val.subnet) : undefined),
     };
+}
+
+/**
+ * Route resource.
+ */
+export interface RouteVirtualNetworkApplianceResponse {
+    /**
+     * The destination CIDR to which the route applies.
+     */
+    addressPrefix?: string;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
+     */
+    hasBgpOverride: boolean;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+     */
+    nextHopIpAddress?: string;
+    /**
+     * The type of Azure hop the packet should be sent to.
+     */
+    nextHopType: string;
+    /**
+     * The provisioning state of the route resource.
+     */
+    provisioningState: string;
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+
+/**
+ * Routing Configuration indicating the associated and propagated route tables for this connection.
+ */
+export interface RoutingConfigurationExpressRouteConnectionResponse {
+    /**
+     * The resource id RouteTable associated with this RoutingConfiguration.
+     */
+    associatedRouteTable?: SubResourceResponse;
+    /**
+     * The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
+     */
+    inboundRouteMap?: SubResourceResponse;
+    /**
+     * The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
+     */
+    outboundRouteMap?: SubResourceResponse;
+    /**
+     * The list of RouteTables to advertise the routes to.
+     */
+    propagatedRouteTables?: PropagatedRouteTableResponse;
+    /**
+     * List of routes that control routing from VirtualHub into a virtual network connection.
+     */
+    vnetRoutes?: VnetRouteExpressRouteConnectionResponse;
+}
+
+/**
+ * Routing Configuration indicating the associated and propagated route tables for this connection.
+ */
+export interface RoutingConfigurationExpressRouteGatewayResponse {
+    /**
+     * The resource id RouteTable associated with this RoutingConfiguration.
+     */
+    associatedRouteTable?: SubResourceResponse;
+    /**
+     * The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
+     */
+    inboundRouteMap?: SubResourceResponse;
+    /**
+     * The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
+     */
+    outboundRouteMap?: SubResourceResponse;
+    /**
+     * The list of RouteTables to advertise the routes to.
+     */
+    propagatedRouteTables?: PropagatedRouteTableResponse;
+    /**
+     * List of routes that control routing from VirtualHub into a virtual network connection.
+     */
+    vnetRoutes?: VnetRouteExpressRouteGatewayResponse;
+}
+
+/**
+ * Routing Configuration indicating the associated and propagated route tables for this connection.
+ */
+export interface RoutingConfigurationHubVirtualNetworkConnectionResponse {
+    /**
+     * The resource id RouteTable associated with this RoutingConfiguration.
+     */
+    associatedRouteTable?: SubResourceResponse;
+    /**
+     * The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
+     */
+    inboundRouteMap?: SubResourceResponse;
+    /**
+     * The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
+     */
+    outboundRouteMap?: SubResourceResponse;
+    /**
+     * The list of RouteTables to advertise the routes to.
+     */
+    propagatedRouteTables?: PropagatedRouteTableResponse;
+    /**
+     * List of routes that control routing from VirtualHub into a virtual network connection.
+     */
+    vnetRoutes?: VnetRouteHubVirtualNetworkConnectionResponse;
+}
+
+/**
+ * Routing Configuration indicating the associated and propagated route tables for this connection.
+ */
+export interface RoutingConfigurationNetworkVirtualApplianceConnectionResponse {
+    /**
+     * The resource id RouteTable associated with this RoutingConfiguration.
+     */
+    associatedRouteTable?: SubResourceResponse;
+    /**
+     * The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
+     */
+    inboundRouteMap?: SubResourceResponse;
+    /**
+     * The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
+     */
+    outboundRouteMap?: SubResourceResponse;
+    /**
+     * The list of RouteTables to advertise the routes to.
+     */
+    propagatedRouteTables?: PropagatedRouteTableResponse;
+    /**
+     * List of routes that control routing from VirtualHub into a virtual network connection.
+     */
+    vnetRoutes?: VnetRouteNetworkVirtualApplianceConnectionResponse;
+}
+
+/**
+ * Routing Configuration indicating the associated and propagated route tables for this connection.
+ */
+export interface RoutingConfigurationP2sVpnGatewayResponse {
+    /**
+     * The resource id RouteTable associated with this RoutingConfiguration.
+     */
+    associatedRouteTable?: SubResourceResponse;
+    /**
+     * The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
+     */
+    inboundRouteMap?: SubResourceResponse;
+    /**
+     * The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
+     */
+    outboundRouteMap?: SubResourceResponse;
+    /**
+     * The list of RouteTables to advertise the routes to.
+     */
+    propagatedRouteTables?: PropagatedRouteTableResponse;
+    /**
+     * List of routes that control routing from VirtualHub into a virtual network connection.
+     */
+    vnetRoutes?: VnetRouteP2sVpnGatewayResponse;
 }
 
 /**
@@ -11553,6 +13292,110 @@ export interface RoutingConfigurationResponse {
      * List of routes that control routing from VirtualHub into a virtual network connection.
      */
     vnetRoutes?: VnetRouteResponse;
+}
+
+/**
+ * Routing Configuration indicating the associated and propagated route tables for this connection.
+ */
+export interface RoutingConfigurationVpnConnectionResponse {
+    /**
+     * The resource id RouteTable associated with this RoutingConfiguration.
+     */
+    associatedRouteTable?: SubResourceResponse;
+    /**
+     * The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
+     */
+    inboundRouteMap?: SubResourceResponse;
+    /**
+     * The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
+     */
+    outboundRouteMap?: SubResourceResponse;
+    /**
+     * The list of RouteTables to advertise the routes to.
+     */
+    propagatedRouteTables?: PropagatedRouteTableResponse;
+    /**
+     * List of routes that control routing from VirtualHub into a virtual network connection.
+     */
+    vnetRoutes?: VnetRouteVpnConnectionResponse;
+}
+
+/**
+ * Routing Configuration indicating the associated and propagated route tables for this connection.
+ */
+export interface RoutingConfigurationVpnGatewayResponse {
+    /**
+     * The resource id RouteTable associated with this RoutingConfiguration.
+     */
+    associatedRouteTable?: SubResourceResponse;
+    /**
+     * The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
+     */
+    inboundRouteMap?: SubResourceResponse;
+    /**
+     * The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
+     */
+    outboundRouteMap?: SubResourceResponse;
+    /**
+     * The list of RouteTables to advertise the routes to.
+     */
+    propagatedRouteTables?: PropagatedRouteTableResponse;
+    /**
+     * List of routes that control routing from VirtualHub into a virtual network connection.
+     */
+    vnetRoutes?: VnetRouteVpnGatewayResponse;
+}
+
+/**
+ * Routing Configuration indicating the associated and propagated route tables for this connection.
+ */
+export interface RoutingConfigurationVpnServerConfigurationResponse {
+    /**
+     * The resource id RouteTable associated with this RoutingConfiguration.
+     */
+    associatedRouteTable?: SubResourceResponse;
+    /**
+     * The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
+     */
+    inboundRouteMap?: SubResourceResponse;
+    /**
+     * The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
+     */
+    outboundRouteMap?: SubResourceResponse;
+    /**
+     * The list of RouteTables to advertise the routes to.
+     */
+    propagatedRouteTables?: PropagatedRouteTableResponse;
+    /**
+     * List of routes that control routing from VirtualHub into a virtual network connection.
+     */
+    vnetRoutes?: VnetRouteVpnServerConfigurationResponse;
+}
+
+/**
+ * Routing Configuration indicating the associated and propagated route tables for this connection.
+ */
+export interface RoutingConfigurationgetP2sVpnGatewayP2sVpnConnectionHealthResponse {
+    /**
+     * The resource id RouteTable associated with this RoutingConfiguration.
+     */
+    associatedRouteTable?: SubResourceResponse;
+    /**
+     * The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
+     */
+    inboundRouteMap?: SubResourceResponse;
+    /**
+     * The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
+     */
+    outboundRouteMap?: SubResourceResponse;
+    /**
+     * The list of RouteTables to advertise the routes to.
+     */
+    propagatedRouteTables?: PropagatedRouteTableResponse;
+    /**
+     * List of routes that control routing from VirtualHub into a virtual network connection.
+     */
+    vnetRoutes?: VnetRoutegetP2sVpnGatewayP2sVpnConnectionHealthResponse;
 }
 
 /**
@@ -11599,6 +13442,88 @@ export interface RoutingRuleRouteDestinationResponse {
      * Destination type.
      */
     type: string;
+}
+
+/**
+ * Network security rule.
+ */
+export interface SecurityRuleInterfaceEndpointResponse {
+    /**
+     * The network traffic is allowed or denied.
+     */
+    access: string;
+    /**
+     * A description for this rule. Restricted to 140 chars.
+     */
+    description?: string;
+    /**
+     * The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
+     */
+    destinationAddressPrefix?: string;
+    /**
+     * The destination address prefixes. CIDR or destination IP ranges.
+     */
+    destinationAddressPrefixes?: string[];
+    /**
+     * The application security group specified as destination.
+     */
+    destinationApplicationSecurityGroups?: ApplicationSecurityGroupResponse[];
+    /**
+     * The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+     */
+    destinationPortRange?: string;
+    /**
+     * The destination port ranges.
+     */
+    destinationPortRanges?: string[];
+    /**
+     * The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
+     */
+    direction: string;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+     */
+    priority?: number;
+    /**
+     * Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+     */
+    protocol: string;
+    /**
+     * The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState?: string;
+    /**
+     * The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
+     */
+    sourceAddressPrefix?: string;
+    /**
+     * The CIDR or source IP ranges.
+     */
+    sourceAddressPrefixes?: string[];
+    /**
+     * The application security group specified as source.
+     */
+    sourceApplicationSecurityGroups?: ApplicationSecurityGroupResponse[];
+    /**
+     * The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+     */
+    sourcePortRange?: string;
+    /**
+     * The source port ranges.
+     */
+    sourcePortRanges?: string[];
 }
 
 /**
@@ -11690,7 +13615,7 @@ export interface SecurityRuleResponse {
 /**
  * Network security rule.
  */
-export interface SecurityRuleResponseV1 {
+export interface SecurityRuleServiceGatewayResponse {
     /**
      * The network traffic is allowed or denied.
      */
@@ -11726,29 +13651,29 @@ export interface SecurityRuleResponseV1 {
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    etag?: string;
+    etag: string;
     /**
      * Resource ID.
      */
     id?: string;
     /**
-     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     * Name of the resource.
      */
     name?: string;
     /**
      * The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
      */
-    priority?: number;
+    priority: number;
     /**
-     * Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+     * Network protocol this rule applies to.
      */
     protocol: string;
     /**
-     * The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the security rule resource.
      */
-    provisioningState?: string;
+    provisioningState: string;
     /**
-     * The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
+     * The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
      */
     sourceAddressPrefix?: string;
     /**
@@ -11767,6 +13692,96 @@ export interface SecurityRuleResponseV1 {
      * The source port ranges.
      */
     sourcePortRanges?: string[];
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+
+/**
+ * Network security rule.
+ */
+export interface SecurityRuleVirtualNetworkApplianceResponse {
+    /**
+     * The network traffic is allowed or denied.
+     */
+    access: string;
+    /**
+     * A description for this rule. Restricted to 140 chars.
+     */
+    description?: string;
+    /**
+     * The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
+     */
+    destinationAddressPrefix?: string;
+    /**
+     * The destination address prefixes. CIDR or destination IP ranges.
+     */
+    destinationAddressPrefixes?: string[];
+    /**
+     * The application security group specified as destination.
+     */
+    destinationApplicationSecurityGroups?: ApplicationSecurityGroupResponse[];
+    /**
+     * The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+     */
+    destinationPortRange?: string;
+    /**
+     * The destination port ranges.
+     */
+    destinationPortRanges?: string[];
+    /**
+     * The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
+     */
+    direction: string;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+     */
+    priority: number;
+    /**
+     * Network protocol this rule applies to.
+     */
+    protocol: string;
+    /**
+     * The provisioning state of the security rule resource.
+     */
+    provisioningState: string;
+    /**
+     * The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
+     */
+    sourceAddressPrefix?: string;
+    /**
+     * The CIDR or source IP ranges.
+     */
+    sourceAddressPrefixes?: string[];
+    /**
+     * The application security group specified as source.
+     */
+    sourceApplicationSecurityGroups?: ApplicationSecurityGroupResponse[];
+    /**
+     * The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+     */
+    sourcePortRange?: string;
+    /**
+     * The source port ranges.
+     */
+    sourcePortRanges?: string[];
+    /**
+     * Resource type.
+     */
+    type: string;
 }
 
 /**
@@ -11777,6 +13792,36 @@ export interface SecurityUserGroupItemResponse {
      * Network manager group Id.
      */
     networkGroupId: string;
+}
+
+/**
+ * ServiceAssociationLink resource.
+ */
+export interface ServiceAssociationLinkInterfaceEndpointResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Link to the external resource.
+     */
+    link?: string;
+    /**
+     * Resource type of the linked resource.
+     */
+    linkedResourceType?: string;
+    /**
+     * Name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * Provisioning state of the ServiceAssociationLink resource.
+     */
+    provisioningState: string;
 }
 
 /**
@@ -11822,33 +13867,37 @@ export interface ServiceAssociationLinkResponse {
 }
 
 /**
- * ServiceAssociationLink resource.
+ * Service Endpoint policy definitions.
  */
-export interface ServiceAssociationLinkResponseV1 {
+export interface ServiceEndpointPolicyDefinitionInterfaceEndpointResponse {
+    /**
+     * A description for this rule. Restricted to 140 chars.
+     */
+    description?: string;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    etag: string;
+    etag?: string;
     /**
      * Resource ID.
      */
     id?: string;
     /**
-     * Link to the external resource.
-     */
-    link?: string;
-    /**
-     * Resource type of the linked resource.
-     */
-    linkedResourceType?: string;
-    /**
-     * Name of the resource that is unique within a resource group. This name can be used to access the resource.
+     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
     name?: string;
     /**
-     * Provisioning state of the ServiceAssociationLink resource.
+     * The provisioning state of the service end point policy definition. Possible values are: 'Updating', 'Deleting', and 'Failed'.
      */
     provisioningState: string;
+    /**
+     * Service endpoint name.
+     */
+    service?: string;
+    /**
+     * A list of service resources.
+     */
+    serviceResources?: string[];
 }
 
 /**
@@ -11892,7 +13941,7 @@ export interface ServiceEndpointPolicyDefinitionResponse {
 /**
  * Service Endpoint policy definitions.
  */
-export interface ServiceEndpointPolicyDefinitionResponseV1 {
+export interface ServiceEndpointPolicyDefinitionServiceGatewayResponse {
     /**
      * A description for this rule. Restricted to 140 chars.
      */
@@ -11900,17 +13949,17 @@ export interface ServiceEndpointPolicyDefinitionResponseV1 {
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    etag?: string;
+    etag: string;
     /**
      * Resource ID.
      */
     id?: string;
     /**
-     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     * Name of the resource.
      */
     name?: string;
     /**
-     * The provisioning state of the service end point policy definition. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the service endpoint policy definition resource.
      */
     provisioningState: string;
     /**
@@ -11921,6 +13970,94 @@ export interface ServiceEndpointPolicyDefinitionResponseV1 {
      * A list of service resources.
      */
     serviceResources?: string[];
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+
+/**
+ * Service Endpoint policy definitions.
+ */
+export interface ServiceEndpointPolicyDefinitionVirtualNetworkApplianceResponse {
+    /**
+     * A description for this rule. Restricted to 140 chars.
+     */
+    description?: string;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * The provisioning state of the service endpoint policy definition resource.
+     */
+    provisioningState: string;
+    /**
+     * Service endpoint name.
+     */
+    service?: string;
+    /**
+     * A list of service resources.
+     */
+    serviceResources?: string[];
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+
+/**
+ * Service End point policy resource.
+ */
+export interface ServiceEndpointPolicyInterfaceEndpointResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * The provisioning state of the service endpoint policy. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState: string;
+    /**
+     * The resource GUID property of the service endpoint policy resource.
+     */
+    resourceGuid: string;
+    /**
+     * A collection of service endpoint policy definitions of the service endpoint policy.
+     */
+    serviceEndpointPolicyDefinitions?: ServiceEndpointPolicyDefinitionInterfaceEndpointResponse[];
+    /**
+     * A collection of references to subnets.
+     */
+    subnets: SubnetResponse[];
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Resource type.
+     */
+    type: string;
 }
 
 /**
@@ -11984,15 +14121,23 @@ export interface ServiceEndpointPolicyResponse {
 /**
  * Service End point policy resource.
  */
-export interface ServiceEndpointPolicyResponseV1 {
+export interface ServiceEndpointPolicyServiceGatewayResponse {
+    /**
+     * A collection of contextual service endpoint policy.
+     */
+    contextualServiceEndpointPolicies?: string[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    etag?: string;
+    etag: string;
     /**
      * Resource ID.
      */
     id?: string;
+    /**
+     * Kind of service endpoint policy. This is metadata used for the Azure portal experience.
+     */
+    kind: string;
     /**
      * Resource location.
      */
@@ -12002,7 +14147,7 @@ export interface ServiceEndpointPolicyResponseV1 {
      */
     name: string;
     /**
-     * The provisioning state of the service endpoint policy. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the service endpoint policy resource.
      */
     provisioningState: string;
     /**
@@ -12010,9 +14155,13 @@ export interface ServiceEndpointPolicyResponseV1 {
      */
     resourceGuid: string;
     /**
+     * The alias indicating if the policy belongs to a service
+     */
+    serviceAlias?: string;
+    /**
      * A collection of service endpoint policy definitions of the service endpoint policy.
      */
-    serviceEndpointPolicyDefinitions?: ServiceEndpointPolicyDefinitionResponseV1[];
+    serviceEndpointPolicyDefinitions?: ServiceEndpointPolicyDefinitionServiceGatewayResponse[];
     /**
      * A collection of references to subnets.
      */
@@ -12025,6 +14174,82 @@ export interface ServiceEndpointPolicyResponseV1 {
      * Resource type.
      */
     type: string;
+}
+
+/**
+ * Service End point policy resource.
+ */
+export interface ServiceEndpointPolicyVirtualNetworkApplianceResponse {
+    /**
+     * A collection of contextual service endpoint policy.
+     */
+    contextualServiceEndpointPolicies?: string[];
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Kind of service endpoint policy. This is metadata used for the Azure portal experience.
+     */
+    kind: string;
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * The provisioning state of the service endpoint policy resource.
+     */
+    provisioningState: string;
+    /**
+     * The resource GUID property of the service endpoint policy resource.
+     */
+    resourceGuid: string;
+    /**
+     * The alias indicating if the policy belongs to a service
+     */
+    serviceAlias?: string;
+    /**
+     * A collection of service endpoint policy definitions of the service endpoint policy.
+     */
+    serviceEndpointPolicyDefinitions?: ServiceEndpointPolicyDefinitionVirtualNetworkApplianceResponse[];
+    /**
+     * A collection of references to subnets.
+     */
+    subnets: SubnetResponse[];
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+
+/**
+ * The service endpoint properties.
+ */
+export interface ServiceEndpointPropertiesFormatInterfaceEndpointResponse {
+    /**
+     * A list of locations.
+     */
+    locations?: string[];
+    /**
+     * The provisioning state of the resource.
+     */
+    provisioningState?: string;
+    /**
+     * The type of the endpoint service.
+     */
+    service?: string;
 }
 
 /**
@@ -12043,24 +14268,6 @@ export interface ServiceEndpointPropertiesFormatResponse {
      * The provisioning state of the service endpoint resource.
      */
     provisioningState: string;
-    /**
-     * The type of the endpoint service.
-     */
-    service?: string;
-}
-
-/**
- * The service endpoint properties.
- */
-export interface ServiceEndpointPropertiesFormatResponseV1 {
-    /**
-     * A list of locations.
-     */
-    locations?: string[];
-    /**
-     * The provisioning state of the resource.
-     */
-    provisioningState?: string;
     /**
      * The type of the endpoint service.
      */
@@ -12209,7 +14416,133 @@ export interface StaticRouteResponse {
 /**
  * Configuration for static routes on this HubVnetConnectionConfiguration for static routes on this HubVnetConnection.
  */
+export interface StaticRoutesConfigExpressRouteConnectionResponse {
+    /**
+     * Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.
+     */
+    propagateStaticRoutes: boolean;
+    /**
+     * Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
+     */
+    vnetLocalRouteOverrideCriteria?: string;
+}
+
+/**
+ * Configuration for static routes on this HubVnetConnectionConfiguration for static routes on this HubVnetConnection.
+ */
+export interface StaticRoutesConfigExpressRouteGatewayResponse {
+    /**
+     * Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.
+     */
+    propagateStaticRoutes: boolean;
+    /**
+     * Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
+     */
+    vnetLocalRouteOverrideCriteria?: string;
+}
+
+/**
+ * Configuration for static routes on this HubVnetConnectionConfiguration for static routes on this HubVnetConnection.
+ */
+export interface StaticRoutesConfigHubVirtualNetworkConnectionResponse {
+    /**
+     * Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.
+     */
+    propagateStaticRoutes: boolean;
+    /**
+     * Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
+     */
+    vnetLocalRouteOverrideCriteria?: string;
+}
+
+/**
+ * Configuration for static routes on this HubVnetConnectionConfiguration for static routes on this HubVnetConnection.
+ */
+export interface StaticRoutesConfigNetworkVirtualApplianceConnectionResponse {
+    /**
+     * Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.
+     */
+    propagateStaticRoutes: boolean;
+    /**
+     * Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
+     */
+    vnetLocalRouteOverrideCriteria?: string;
+}
+
+/**
+ * Configuration for static routes on this HubVnetConnectionConfiguration for static routes on this HubVnetConnection.
+ */
+export interface StaticRoutesConfigP2sVpnGatewayResponse {
+    /**
+     * Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.
+     */
+    propagateStaticRoutes: boolean;
+    /**
+     * Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
+     */
+    vnetLocalRouteOverrideCriteria?: string;
+}
+
+/**
+ * Configuration for static routes on this HubVnetConnectionConfiguration for static routes on this HubVnetConnection.
+ */
 export interface StaticRoutesConfigResponse {
+    /**
+     * Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.
+     */
+    propagateStaticRoutes?: boolean;
+    /**
+     * Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
+     */
+    vnetLocalRouteOverrideCriteria?: string;
+}
+
+/**
+ * Configuration for static routes on this HubVnetConnectionConfiguration for static routes on this HubVnetConnection.
+ */
+export interface StaticRoutesConfigVpnConnectionResponse {
+    /**
+     * Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.
+     */
+    propagateStaticRoutes: boolean;
+    /**
+     * Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
+     */
+    vnetLocalRouteOverrideCriteria?: string;
+}
+
+/**
+ * Configuration for static routes on this HubVnetConnectionConfiguration for static routes on this HubVnetConnection.
+ */
+export interface StaticRoutesConfigVpnGatewayResponse {
+    /**
+     * Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.
+     */
+    propagateStaticRoutes: boolean;
+    /**
+     * Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
+     */
+    vnetLocalRouteOverrideCriteria?: string;
+}
+
+/**
+ * Configuration for static routes on this HubVnetConnectionConfiguration for static routes on this HubVnetConnection.
+ */
+export interface StaticRoutesConfigVpnServerConfigurationResponse {
+    /**
+     * Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.
+     */
+    propagateStaticRoutes: boolean;
+    /**
+     * Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
+     */
+    vnetLocalRouteOverrideCriteria?: string;
+}
+
+/**
+ * Configuration for static routes on this HubVnetConnectionConfiguration for static routes on this HubVnetConnection.
+ */
+export interface StaticRoutesConfiggetP2sVpnGatewayP2sVpnConnectionHealthResponse {
     /**
      * Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.
      */
@@ -12228,6 +14561,136 @@ export interface SubResourceResponse {
      * Resource ID.
      */
     id?: string;
+}
+
+/**
+ * Subgroup profile of the interconnect group resource.
+ */
+export interface SubgroupProfileResponse {
+    /**
+     * Scope of the subgroup profile.
+     */
+    scope?: string;
+    /**
+     * Size of the subgroup profile.
+     */
+    size?: number;
+    /**
+     * VM size of the subgroup profile.
+     */
+    vmSize: string;
+}
+
+/**
+ * A subgroup in an interconnect group.
+ */
+export interface SubgroupResponse {
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The reference to an interconnect block resource.
+     */
+    interconnectBlock: SubResourceResponse;
+    /**
+     * The unique identifier of the subgroup.
+     */
+    internalSubgroupId: string;
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * The provisioning state of the subgroup.
+     */
+    provisioningState: string;
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * A list of virtual machine references.
+     */
+    virtualMachines: SubResourceResponse[];
+}
+
+/**
+ * Subnet in a virtual network resource.
+ */
+export interface SubnetInterfaceEndpointResponse {
+    /**
+     * The address prefix for the subnet.
+     */
+    addressPrefix?: string;
+    /**
+     * List of  address prefixes for the subnet.
+     */
+    addressPrefixes?: string[];
+    /**
+     * Gets an array of references to the delegations on the subnet.
+     */
+    delegations?: DelegationInterfaceEndpointResponse[];
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * An array of references to interface endpoints
+     */
+    interfaceEndpoints: InterfaceEndpointResponse[];
+    /**
+     * Array of IP configuration profiles which reference this subnet.
+     */
+    ipConfigurationProfiles: IPConfigurationProfileInterfaceEndpointResponse[];
+    /**
+     * Gets an array of references to the network interface IP configurations using subnet.
+     */
+    ipConfigurations: IPConfigurationInterfaceEndpointResponse[];
+    /**
+     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * Nat gateway associated with this subnet.
+     */
+    natGateway?: SubResourceResponse;
+    /**
+     * The reference of the NetworkSecurityGroup resource.
+     */
+    networkSecurityGroup?: NetworkSecurityGroupInterfaceEndpointResponse;
+    /**
+     * The provisioning state of the resource.
+     */
+    provisioningState?: string;
+    /**
+     * A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
+     */
+    purpose: string;
+    /**
+     * Gets an array of references to the external resources using subnet.
+     */
+    resourceNavigationLinks?: ResourceNavigationLinkInterfaceEndpointResponse[];
+    /**
+     * The reference of the RouteTable resource.
+     */
+    routeTable?: RouteTableInterfaceEndpointResponse;
+    /**
+     * Gets an array of references to services injecting into this subnet.
+     */
+    serviceAssociationLinks?: ServiceAssociationLinkInterfaceEndpointResponse[];
+    /**
+     * An array of service endpoint policies.
+     */
+    serviceEndpointPolicies?: ServiceEndpointPolicyInterfaceEndpointResponse[];
+    /**
+     * An array of service endpoints.
+     */
+    serviceEndpoints?: ServiceEndpointPropertiesFormatInterfaceEndpointResponse[];
 }
 
 /**
@@ -12359,35 +14822,47 @@ export interface SubnetResponseV1 {
      */
     addressPrefix?: string;
     /**
-     * List of  address prefixes for the subnet.
+     * List of address prefixes for the subnet.
      */
     addressPrefixes?: string[];
     /**
-     * Gets an array of references to the delegations on the subnet.
+     * Application gateway IP configurations of virtual network resource.
      */
-    delegations?: DelegationResponseV1[];
+    applicationGatewayIPConfigurations?: ApplicationGatewayIPConfigurationResponse[];
+    /**
+     * Set this property to false to disable default outbound connectivity for all VMs in the subnet.
+     */
+    defaultOutboundAccess?: boolean;
+    /**
+     * An array of references to the delegations on the subnet.
+     */
+    delegations?: DelegationResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
-    etag?: string;
+    etag: string;
     /**
      * Resource ID.
      */
     id?: string;
     /**
-     * An array of references to interface endpoints 
+     * Array of IpAllocation which reference this subnet.
      */
-    interfaceEndpoints: InterfaceEndpointResponse[];
+    ipAllocations?: SubResourceResponse[];
     /**
      * Array of IP configuration profiles which reference this subnet.
      */
-    ipConfigurationProfiles: IPConfigurationProfileResponseV1[];
+    ipConfigurationProfiles: IPConfigurationProfileServiceGatewayResponse[];
     /**
-     * Gets an array of references to the network interface IP configurations using subnet.
+     * An array of references to the network interface IP configurations using subnet.
      */
-    ipConfigurations: IPConfigurationResponseV1[];
+    ipConfigurations: IPConfigurationServiceGatewayResponse[];
     /**
-     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     * A list of IPAM Pools for allocating IP address prefixes.
+     */
+    ipamPoolPrefixAllocations?: IpamPoolPrefixAllocationResponse[];
+    /**
+     * Name of the resource.
      */
     name?: string;
     /**
@@ -12395,37 +14870,71 @@ export interface SubnetResponseV1 {
      */
     natGateway?: SubResourceResponse;
     /**
-     * The reference of the NetworkSecurityGroup resource.
+     * The reference to the NetworkSecurityGroup resource.
      */
-    networkSecurityGroup?: NetworkSecurityGroupResponseV1;
+    networkSecurityGroup?: NetworkSecurityGroupServiceGatewayResponse;
     /**
-     * The provisioning state of the resource.
+     * Enable or Disable apply network policies on private end point in the subnet.
      */
-    provisioningState?: string;
+    privateEndpointNetworkPolicies?: string;
+    /**
+     * An array of references to private endpoints.
+     */
+    privateEndpoints: PrivateEndpointServiceGatewayResponse[];
+    /**
+     * Enable or Disable apply network policies on private link service in the subnet.
+     */
+    privateLinkServiceNetworkPolicies?: string;
+    /**
+     * The provisioning state of the subnet resource.
+     */
+    provisioningState: string;
     /**
      * A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
      */
     purpose: string;
     /**
-     * Gets an array of references to the external resources using subnet.
+     * An array of references to the external resources using subnet.
      */
-    resourceNavigationLinks?: ResourceNavigationLinkResponseV1[];
+    resourceNavigationLinks: ResourceNavigationLinkResponse[];
     /**
-     * The reference of the RouteTable resource.
+     * The reference to the RouteTable resource.
      */
-    routeTable?: RouteTableResponseV1;
+    routeTable?: RouteTableServiceGatewayResponse;
     /**
-     * Gets an array of references to services injecting into this subnet.
+     * An array of references to services injecting into this subnet.
      */
-    serviceAssociationLinks?: ServiceAssociationLinkResponseV1[];
+    serviceAssociationLinks: ServiceAssociationLinkResponse[];
     /**
      * An array of service endpoint policies.
      */
-    serviceEndpointPolicies?: ServiceEndpointPolicyResponseV1[];
+    serviceEndpointPolicies?: ServiceEndpointPolicyServiceGatewayResponse[];
     /**
      * An array of service endpoints.
      */
-    serviceEndpoints?: ServiceEndpointPropertiesFormatResponseV1[];
+    serviceEndpoints?: ServiceEndpointPropertiesFormatResponse[];
+    /**
+     * Reference to an existing service gateway.
+     */
+    serviceGateway?: SubResourceResponse;
+    /**
+     * Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+     */
+    sharingScope?: string;
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+/**
+ * subnetResponseV1ProvideDefaults sets the appropriate defaults for SubnetResponseV1
+ */
+export function subnetResponseV1ProvideDefaults(val: SubnetResponseV1): SubnetResponseV1 {
+    return {
+        ...val,
+        privateEndpointNetworkPolicies: (val.privateEndpointNetworkPolicies) ?? "Disabled",
+        privateLinkServiceNetworkPolicies: (val.privateLinkServiceNetworkPolicies) ?? "Enabled",
+    };
 }
 
 /**
@@ -12467,17 +14976,17 @@ export interface SubnetResponseV2 {
     /**
      * Array of IP configuration profiles which reference this subnet.
      */
-    ipConfigurationProfiles: IPConfigurationProfileResponse[];
+    ipConfigurationProfiles: IPConfigurationProfileVirtualNetworkApplianceResponse[];
     /**
      * An array of references to the network interface IP configurations using subnet.
      */
-    ipConfigurations: IPConfigurationResponseV2[];
+    ipConfigurations: IPConfigurationVirtualNetworkApplianceResponse[];
     /**
      * A list of IPAM Pools for allocating IP address prefixes.
      */
     ipamPoolPrefixAllocations?: IpamPoolPrefixAllocationResponse[];
     /**
-     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     * Name of the resource.
      */
     name?: string;
     /**
@@ -12487,7 +14996,7 @@ export interface SubnetResponseV2 {
     /**
      * The reference to the NetworkSecurityGroup resource.
      */
-    networkSecurityGroup?: NetworkSecurityGroupResponseV2;
+    networkSecurityGroup?: NetworkSecurityGroupVirtualNetworkApplianceResponse;
     /**
      * Enable or Disable apply network policies on private end point in the subnet.
      */
@@ -12495,7 +15004,7 @@ export interface SubnetResponseV2 {
     /**
      * An array of references to private endpoints.
      */
-    privateEndpoints: PrivateEndpointResponse[];
+    privateEndpoints: PrivateEndpointVirtualNetworkApplianceResponse[];
     /**
      * Enable or Disable apply network policies on private link service in the subnet.
      */
@@ -12515,7 +15024,7 @@ export interface SubnetResponseV2 {
     /**
      * The reference to the RouteTable resource.
      */
-    routeTable?: RouteTableResponse;
+    routeTable?: RouteTableVirtualNetworkApplianceResponse;
     /**
      * An array of references to services injecting into this subnet.
      */
@@ -12523,7 +15032,7 @@ export interface SubnetResponseV2 {
     /**
      * An array of service endpoint policies.
      */
-    serviceEndpointPolicies?: ServiceEndpointPolicyResponse[];
+    serviceEndpointPolicies?: ServiceEndpointPolicyVirtualNetworkApplianceResponse[];
     /**
      * An array of service endpoints.
      */
@@ -12539,7 +15048,7 @@ export interface SubnetResponseV2 {
     /**
      * Resource type.
      */
-    type?: string;
+    type: string;
 }
 /**
  * subnetResponseV2ProvideDefaults sets the appropriate defaults for SubnetResponseV2
@@ -12555,7 +15064,7 @@ export function subnetResponseV2ProvideDefaults(val: SubnetResponseV2): SubnetRe
 /**
  * Subnet in a virtual network resource.
  */
-export interface SubnetResponseV3 {
+export interface SubnetServiceGatewayResponse {
     /**
      * The address prefix for the subnet.
      */
@@ -12595,13 +15104,13 @@ export interface SubnetResponseV3 {
     /**
      * An array of references to the network interface IP configurations using subnet.
      */
-    ipConfigurations: IPConfigurationResponseV3[];
+    ipConfigurations: IPConfigurationServiceGatewayResponse[];
     /**
      * A list of IPAM Pools for allocating IP address prefixes.
      */
     ipamPoolPrefixAllocations?: IpamPoolPrefixAllocationResponse[];
     /**
-     * The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     * Name of the resource.
      */
     name?: string;
     /**
@@ -12611,7 +15120,7 @@ export interface SubnetResponseV3 {
     /**
      * The reference to the NetworkSecurityGroup resource.
      */
-    networkSecurityGroup?: NetworkSecurityGroupResponseV3;
+    networkSecurityGroup?: NetworkSecurityGroupServiceGatewayResponse;
     /**
      * Enable or Disable apply network policies on private end point in the subnet.
      */
@@ -12619,7 +15128,7 @@ export interface SubnetResponseV3 {
     /**
      * An array of references to private endpoints.
      */
-    privateEndpoints: PrivateEndpointResponse[];
+    privateEndpoints: PrivateEndpointServiceGatewayResponse[];
     /**
      * Enable or Disable apply network policies on private link service in the subnet.
      */
@@ -12639,7 +15148,7 @@ export interface SubnetResponseV3 {
     /**
      * The reference to the RouteTable resource.
      */
-    routeTable?: RouteTableResponse;
+    routeTable?: RouteTableServiceGatewayResponse;
     /**
      * An array of references to services injecting into this subnet.
      */
@@ -12647,7 +15156,7 @@ export interface SubnetResponseV3 {
     /**
      * An array of service endpoint policies.
      */
-    serviceEndpointPolicies?: ServiceEndpointPolicyResponse[];
+    serviceEndpointPolicies?: ServiceEndpointPolicyServiceGatewayResponse[];
     /**
      * An array of service endpoints.
      */
@@ -12663,12 +15172,136 @@ export interface SubnetResponseV3 {
     /**
      * Resource type.
      */
-    type?: string;
+    type: string;
 }
 /**
- * subnetResponseV3ProvideDefaults sets the appropriate defaults for SubnetResponseV3
+ * subnetServiceGatewayResponseProvideDefaults sets the appropriate defaults for SubnetServiceGatewayResponse
  */
-export function subnetResponseV3ProvideDefaults(val: SubnetResponseV3): SubnetResponseV3 {
+export function subnetServiceGatewayResponseProvideDefaults(val: SubnetServiceGatewayResponse): SubnetServiceGatewayResponse {
+    return {
+        ...val,
+        privateEndpointNetworkPolicies: (val.privateEndpointNetworkPolicies) ?? "Disabled",
+        privateLinkServiceNetworkPolicies: (val.privateLinkServiceNetworkPolicies) ?? "Enabled",
+    };
+}
+
+/**
+ * Subnet in a virtual network resource.
+ */
+export interface SubnetVirtualNetworkApplianceResponse {
+    /**
+     * The address prefix for the subnet.
+     */
+    addressPrefix?: string;
+    /**
+     * List of address prefixes for the subnet.
+     */
+    addressPrefixes?: string[];
+    /**
+     * Application gateway IP configurations of virtual network resource.
+     */
+    applicationGatewayIPConfigurations?: ApplicationGatewayIPConfigurationResponse[];
+    /**
+     * Set this property to false to disable default outbound connectivity for all VMs in the subnet.
+     */
+    defaultOutboundAccess?: boolean;
+    /**
+     * An array of references to the delegations on the subnet.
+     */
+    delegations?: DelegationResponse[];
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Array of IpAllocation which reference this subnet.
+     */
+    ipAllocations?: SubResourceResponse[];
+    /**
+     * Array of IP configuration profiles which reference this subnet.
+     */
+    ipConfigurationProfiles: IPConfigurationProfileResponse[];
+    /**
+     * An array of references to the network interface IP configurations using subnet.
+     */
+    ipConfigurations: IPConfigurationVirtualNetworkApplianceResponse[];
+    /**
+     * A list of IPAM Pools for allocating IP address prefixes.
+     */
+    ipamPoolPrefixAllocations?: IpamPoolPrefixAllocationResponse[];
+    /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * Nat gateway associated with this subnet.
+     */
+    natGateway?: SubResourceResponse;
+    /**
+     * The reference to the NetworkSecurityGroup resource.
+     */
+    networkSecurityGroup?: NetworkSecurityGroupVirtualNetworkApplianceResponse;
+    /**
+     * Enable or Disable apply network policies on private end point in the subnet.
+     */
+    privateEndpointNetworkPolicies?: string;
+    /**
+     * An array of references to private endpoints.
+     */
+    privateEndpoints: PrivateEndpointVirtualNetworkApplianceResponse[];
+    /**
+     * Enable or Disable apply network policies on private link service in the subnet.
+     */
+    privateLinkServiceNetworkPolicies?: string;
+    /**
+     * The provisioning state of the subnet resource.
+     */
+    provisioningState: string;
+    /**
+     * A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
+     */
+    purpose: string;
+    /**
+     * An array of references to the external resources using subnet.
+     */
+    resourceNavigationLinks: ResourceNavigationLinkResponse[];
+    /**
+     * The reference to the RouteTable resource.
+     */
+    routeTable?: RouteTableVirtualNetworkApplianceResponse;
+    /**
+     * An array of references to services injecting into this subnet.
+     */
+    serviceAssociationLinks: ServiceAssociationLinkResponse[];
+    /**
+     * An array of service endpoint policies.
+     */
+    serviceEndpointPolicies?: ServiceEndpointPolicyVirtualNetworkApplianceResponse[];
+    /**
+     * An array of service endpoints.
+     */
+    serviceEndpoints?: ServiceEndpointPropertiesFormatResponse[];
+    /**
+     * Reference to an existing service gateway.
+     */
+    serviceGateway?: SubResourceResponse;
+    /**
+     * Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+     */
+    sharingScope?: string;
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+/**
+ * subnetVirtualNetworkApplianceResponseProvideDefaults sets the appropriate defaults for SubnetVirtualNetworkApplianceResponse
+ */
+export function subnetVirtualNetworkApplianceResponseProvideDefaults(val: SubnetVirtualNetworkApplianceResponse): SubnetVirtualNetworkApplianceResponse {
     return {
         ...val,
         privateEndpointNetworkPolicies: (val.privateEndpointNetworkPolicies) ?? "Disabled",
@@ -13447,6 +16080,108 @@ export interface VirtualNetworkPeeringResponse {
      */
     localVirtualNetworkAddressSpace?: AddressSpaceResponse;
     /**
+     * Name of the resource.
+     */
+    name?: string;
+    /**
+     * Whether complete virtual network address space is peered.
+     */
+    peerCompleteVnets?: boolean;
+    /**
+     * The status of the virtual network peering.
+     */
+    peeringState?: string;
+    /**
+     * The peering sync status of the virtual network peering.
+     */
+    peeringSyncLevel?: string;
+    /**
+     * The provisioning state of the virtual network peering resource.
+     */
+    provisioningState: string;
+    /**
+     * The reference to the address space peered with the remote virtual network.
+     */
+    remoteAddressSpace?: AddressSpaceResponse;
+    /**
+     * The reference to the remote virtual network's Bgp Communities.
+     */
+    remoteBgpCommunities?: VirtualNetworkBgpCommunitiesResponse;
+    /**
+     * List of remote subnet names from remote virtual network that are subnet peered.
+     */
+    remoteSubnetNames?: string[];
+    /**
+     * The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
+     */
+    remoteVirtualNetwork?: SubResourceResponse;
+    /**
+     * The reference to the current address space of the remote virtual network.
+     */
+    remoteVirtualNetworkAddressSpace?: AddressSpaceResponse;
+    /**
+     * The reference to the remote virtual network's encryption
+     */
+    remoteVirtualNetworkEncryption: VirtualNetworkEncryptionResponse;
+    /**
+     * The resourceGuid property of the Virtual Network peering resource.
+     */
+    resourceGuid: string;
+    /**
+     * Resource type.
+     */
+    type: string;
+    /**
+     * If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
+     */
+    useRemoteGateways?: boolean;
+}
+
+/**
+ * Peerings in a virtual network resource.
+ */
+export interface VirtualNetworkPeeringVirtualNetworkResponse {
+    /**
+     * Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
+     */
+    allowForwardedTraffic?: boolean;
+    /**
+     * If gateway links can be used in remote virtual networking to link to this virtual network.
+     */
+    allowGatewayTransit?: boolean;
+    /**
+     * Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
+     */
+    allowVirtualNetworkAccess?: boolean;
+    /**
+     * If we need to verify the provisioning state of the remote gateway.
+     */
+    doNotVerifyRemoteGateways?: boolean;
+    /**
+     * Whether only Ipv6 address space is peered for subnet peering.
+     */
+    enableOnlyIPv6Peering?: boolean;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * The local address space of the local virtual network that is peered.
+     */
+    localAddressSpace?: AddressSpaceResponse;
+    /**
+     * List of local subnet names that are subnet peered with remote virtual network.
+     */
+    localSubnetNames?: string[];
+    /**
+     * The current local address space of the local virtual network that is peered.
+     */
+    localVirtualNetworkAddressSpace?: AddressSpaceResponse;
+    /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
     name?: string;
@@ -13551,7 +16286,7 @@ export interface VirtualNetworkResponse {
     /**
      * A collection of references to flow log resources.
      */
-    flowLogs: FlowLogResponse[];
+    flowLogs: FlowLogServiceGatewayResponse[];
     /**
      * The FlowTimeout value (in minutes) for the Virtual Network
      */
@@ -13587,7 +16322,7 @@ export interface VirtualNetworkResponse {
     /**
      * A list of subnets in a Virtual Network.
      */
-    subnets?: SubnetResponse[];
+    subnets?: SubnetServiceGatewayResponse[];
     /**
      * Resource tags.
      */
@@ -13609,6 +16344,70 @@ export function virtualNetworkResponseProvideDefaults(val: VirtualNetworkRespons
         ...val,
         enableDdosProtection: (val.enableDdosProtection) ?? false,
         enableVmProtection: (val.enableVmProtection) ?? false,
+    };
+}
+
+/**
+ * Virtual Network Tap resource
+ */
+export interface VirtualNetworkTapInterfaceEndpointResponse {
+    /**
+     * The reference to the private IP address on the internal Load Balancer that will receive the tap
+     */
+    destinationLoadBalancerFrontEndIPConfiguration?: FrontendIPConfigurationInterfaceEndpointResponse;
+    /**
+     * The reference to the private IP Address of the collector nic that will receive the tap
+     */
+    destinationNetworkInterfaceIPConfiguration?: NetworkInterfaceIPConfigurationResponse;
+    /**
+     * The VXLAN destination port that will receive the tapped traffic.
+     */
+    destinationPort?: number;
+    /**
+     * Gets a unique read-only string that changes whenever the resource is updated.
+     */
+    etag?: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped.
+     */
+    networkInterfaceTapConfigurations: NetworkInterfaceTapConfigurationInterfaceEndpointResponse[];
+    /**
+     * The provisioning state of the virtual network tap. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     */
+    provisioningState: string;
+    /**
+     * The resourceGuid property of the virtual network tap.
+     */
+    resourceGuid: string;
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+/**
+ * virtualNetworkTapInterfaceEndpointResponseProvideDefaults sets the appropriate defaults for VirtualNetworkTapInterfaceEndpointResponse
+ */
+export function virtualNetworkTapInterfaceEndpointResponseProvideDefaults(val: VirtualNetworkTapInterfaceEndpointResponse): VirtualNetworkTapInterfaceEndpointResponse {
+    return {
+        ...val,
+        destinationLoadBalancerFrontEndIPConfiguration: (val.destinationLoadBalancerFrontEndIPConfiguration ? frontendIPConfigurationInterfaceEndpointResponseProvideDefaults(val.destinationLoadBalancerFrontEndIPConfiguration) : undefined),
+        destinationNetworkInterfaceIPConfiguration: (val.destinationNetworkInterfaceIPConfiguration ? networkInterfaceIPConfigurationResponseProvideDefaults(val.destinationNetworkInterfaceIPConfiguration) : undefined),
     };
 }
 
@@ -13677,15 +16476,15 @@ export function virtualNetworkTapResponseProvideDefaults(val: VirtualNetworkTapR
 }
 
 /**
- * Virtual Network Tap resource
+ * Virtual Network Tap resource.
  */
-export interface VirtualNetworkTapResponseV1 {
+export interface VirtualNetworkTapServiceGatewayResponse {
     /**
-     * The reference to the private IP address on the internal Load Balancer that will receive the tap
+     * The reference to the private IP address on the internal Load Balancer that will receive the tap.
      */
-    destinationLoadBalancerFrontEndIPConfiguration?: FrontendIPConfigurationResponseV1;
+    destinationLoadBalancerFrontEndIPConfiguration?: FrontendIPConfigurationServiceGatewayResponse;
     /**
-     * The reference to the private IP Address of the collector nic that will receive the tap
+     * The reference to the private IP Address of the collector nic that will receive the tap.
      */
     destinationNetworkInterfaceIPConfiguration?: NetworkInterfaceIPConfigurationResponse;
     /**
@@ -13693,9 +16492,9 @@ export interface VirtualNetworkTapResponseV1 {
      */
     destinationPort?: number;
     /**
-     * Gets a unique read-only string that changes whenever the resource is updated.
+     * A unique read-only string that changes whenever the resource is updated.
      */
-    etag?: string;
+    etag: string;
     /**
      * Resource ID.
      */
@@ -13711,13 +16510,13 @@ export interface VirtualNetworkTapResponseV1 {
     /**
      * Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped.
      */
-    networkInterfaceTapConfigurations: NetworkInterfaceTapConfigurationResponseV1[];
+    networkInterfaceTapConfigurations: NetworkInterfaceTapConfigurationResponse[];
     /**
-     * The provisioning state of the virtual network tap. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+     * The provisioning state of the virtual network tap resource.
      */
     provisioningState: string;
     /**
-     * The resourceGuid property of the virtual network tap.
+     * The resource GUID property of the virtual network tap resource.
      */
     resourceGuid: string;
     /**
@@ -13730,12 +16529,76 @@ export interface VirtualNetworkTapResponseV1 {
     type: string;
 }
 /**
- * virtualNetworkTapResponseV1ProvideDefaults sets the appropriate defaults for VirtualNetworkTapResponseV1
+ * virtualNetworkTapServiceGatewayResponseProvideDefaults sets the appropriate defaults for VirtualNetworkTapServiceGatewayResponse
  */
-export function virtualNetworkTapResponseV1ProvideDefaults(val: VirtualNetworkTapResponseV1): VirtualNetworkTapResponseV1 {
+export function virtualNetworkTapServiceGatewayResponseProvideDefaults(val: VirtualNetworkTapServiceGatewayResponse): VirtualNetworkTapServiceGatewayResponse {
     return {
         ...val,
-        destinationLoadBalancerFrontEndIPConfiguration: (val.destinationLoadBalancerFrontEndIPConfiguration ? frontendIPConfigurationResponseV1ProvideDefaults(val.destinationLoadBalancerFrontEndIPConfiguration) : undefined),
+        destinationLoadBalancerFrontEndIPConfiguration: (val.destinationLoadBalancerFrontEndIPConfiguration ? frontendIPConfigurationServiceGatewayResponseProvideDefaults(val.destinationLoadBalancerFrontEndIPConfiguration) : undefined),
+        destinationNetworkInterfaceIPConfiguration: (val.destinationNetworkInterfaceIPConfiguration ? networkInterfaceIPConfigurationResponseProvideDefaults(val.destinationNetworkInterfaceIPConfiguration) : undefined),
+    };
+}
+
+/**
+ * Virtual Network Tap resource.
+ */
+export interface VirtualNetworkTapVirtualNetworkApplianceResponse {
+    /**
+     * The reference to the private IP address on the internal Load Balancer that will receive the tap.
+     */
+    destinationLoadBalancerFrontEndIPConfiguration?: FrontendIPConfigurationVirtualNetworkApplianceResponse;
+    /**
+     * The reference to the private IP Address of the collector nic that will receive the tap.
+     */
+    destinationNetworkInterfaceIPConfiguration?: NetworkInterfaceIPConfigurationResponse;
+    /**
+     * The VXLAN destination port that will receive the tapped traffic.
+     */
+    destinationPort?: number;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource ID.
+     */
+    id?: string;
+    /**
+     * Resource location.
+     */
+    location?: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped.
+     */
+    networkInterfaceTapConfigurations: NetworkInterfaceTapConfigurationResponse[];
+    /**
+     * The provisioning state of the virtual network tap resource.
+     */
+    provisioningState: string;
+    /**
+     * The resource GUID property of the virtual network tap resource.
+     */
+    resourceGuid: string;
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+/**
+ * virtualNetworkTapVirtualNetworkApplianceResponseProvideDefaults sets the appropriate defaults for VirtualNetworkTapVirtualNetworkApplianceResponse
+ */
+export function virtualNetworkTapVirtualNetworkApplianceResponseProvideDefaults(val: VirtualNetworkTapVirtualNetworkApplianceResponse): VirtualNetworkTapVirtualNetworkApplianceResponse {
+    return {
+        ...val,
+        destinationLoadBalancerFrontEndIPConfiguration: (val.destinationLoadBalancerFrontEndIPConfiguration ? frontendIPConfigurationVirtualNetworkApplianceResponseProvideDefaults(val.destinationLoadBalancerFrontEndIPConfiguration) : undefined),
         destinationNetworkInterfaceIPConfiguration: (val.destinationNetworkInterfaceIPConfiguration ? networkInterfaceIPConfigurationResponseProvideDefaults(val.destinationNetworkInterfaceIPConfiguration) : undefined),
     };
 }
@@ -13748,6 +16611,96 @@ export interface VirtualRouterAutoScaleConfigurationResponse {
      * The minimum number of scale units for VirtualHub Router.
      */
     minCapacity?: number;
+}
+
+/**
+ * List of routes that control routing from VirtualHub into a virtual network connection.
+ */
+export interface VnetRouteExpressRouteConnectionResponse {
+    /**
+     * The list of references to HubBgpConnection objects.
+     */
+    bgpConnections: SubResourceResponse[];
+    /**
+     * List of all Static Routes.
+     */
+    staticRoutes?: StaticRouteResponse[];
+    /**
+     * Configuration for static routes on this HubVnetConnection.
+     */
+    staticRoutesConfig?: StaticRoutesConfigExpressRouteConnectionResponse;
+}
+
+/**
+ * List of routes that control routing from VirtualHub into a virtual network connection.
+ */
+export interface VnetRouteExpressRouteGatewayResponse {
+    /**
+     * The list of references to HubBgpConnection objects.
+     */
+    bgpConnections: SubResourceResponse[];
+    /**
+     * List of all Static Routes.
+     */
+    staticRoutes?: StaticRouteResponse[];
+    /**
+     * Configuration for static routes on this HubVnetConnection.
+     */
+    staticRoutesConfig?: StaticRoutesConfigExpressRouteGatewayResponse;
+}
+
+/**
+ * List of routes that control routing from VirtualHub into a virtual network connection.
+ */
+export interface VnetRouteHubVirtualNetworkConnectionResponse {
+    /**
+     * The list of references to HubBgpConnection objects.
+     */
+    bgpConnections: SubResourceResponse[];
+    /**
+     * List of all Static Routes.
+     */
+    staticRoutes?: StaticRouteResponse[];
+    /**
+     * Configuration for static routes on this HubVnetConnection.
+     */
+    staticRoutesConfig?: StaticRoutesConfigHubVirtualNetworkConnectionResponse;
+}
+
+/**
+ * List of routes that control routing from VirtualHub into a virtual network connection.
+ */
+export interface VnetRouteNetworkVirtualApplianceConnectionResponse {
+    /**
+     * The list of references to HubBgpConnection objects.
+     */
+    bgpConnections: SubResourceResponse[];
+    /**
+     * List of all Static Routes.
+     */
+    staticRoutes?: StaticRouteResponse[];
+    /**
+     * Configuration for static routes on this HubVnetConnection.
+     */
+    staticRoutesConfig?: StaticRoutesConfigNetworkVirtualApplianceConnectionResponse;
+}
+
+/**
+ * List of routes that control routing from VirtualHub into a virtual network connection.
+ */
+export interface VnetRouteP2sVpnGatewayResponse {
+    /**
+     * The list of references to HubBgpConnection objects.
+     */
+    bgpConnections: SubResourceResponse[];
+    /**
+     * List of all Static Routes.
+     */
+    staticRoutes?: StaticRouteResponse[];
+    /**
+     * Configuration for static routes on this HubVnetConnection.
+     */
+    staticRoutesConfig?: StaticRoutesConfigP2sVpnGatewayResponse;
 }
 
 /**
@@ -13766,6 +16719,78 @@ export interface VnetRouteResponse {
      * Configuration for static routes on this HubVnetConnection.
      */
     staticRoutesConfig?: StaticRoutesConfigResponse;
+}
+
+/**
+ * List of routes that control routing from VirtualHub into a virtual network connection.
+ */
+export interface VnetRouteVpnConnectionResponse {
+    /**
+     * The list of references to HubBgpConnection objects.
+     */
+    bgpConnections: SubResourceResponse[];
+    /**
+     * List of all Static Routes.
+     */
+    staticRoutes?: StaticRouteResponse[];
+    /**
+     * Configuration for static routes on this HubVnetConnection.
+     */
+    staticRoutesConfig?: StaticRoutesConfigVpnConnectionResponse;
+}
+
+/**
+ * List of routes that control routing from VirtualHub into a virtual network connection.
+ */
+export interface VnetRouteVpnGatewayResponse {
+    /**
+     * The list of references to HubBgpConnection objects.
+     */
+    bgpConnections: SubResourceResponse[];
+    /**
+     * List of all Static Routes.
+     */
+    staticRoutes?: StaticRouteResponse[];
+    /**
+     * Configuration for static routes on this HubVnetConnection.
+     */
+    staticRoutesConfig?: StaticRoutesConfigVpnGatewayResponse;
+}
+
+/**
+ * List of routes that control routing from VirtualHub into a virtual network connection.
+ */
+export interface VnetRouteVpnServerConfigurationResponse {
+    /**
+     * The list of references to HubBgpConnection objects.
+     */
+    bgpConnections: SubResourceResponse[];
+    /**
+     * List of all Static Routes.
+     */
+    staticRoutes?: StaticRouteResponse[];
+    /**
+     * Configuration for static routes on this HubVnetConnection.
+     */
+    staticRoutesConfig?: StaticRoutesConfigVpnServerConfigurationResponse;
+}
+
+/**
+ * List of routes that control routing from VirtualHub into a virtual network connection.
+ */
+export interface VnetRoutegetP2sVpnGatewayP2sVpnConnectionHealthResponse {
+    /**
+     * The list of references to HubBgpConnection objects.
+     */
+    bgpConnections: SubResourceResponse[];
+    /**
+     * List of all Static Routes.
+     */
+    staticRoutes?: StaticRouteResponse[];
+    /**
+     * Configuration for static routes on this HubVnetConnection.
+     */
+    staticRoutesConfig?: StaticRoutesConfiggetP2sVpnGatewayP2sVpnConnectionHealthResponse;
 }
 
 /**
@@ -14047,7 +17072,7 @@ export interface VpnConnectionResponse {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    routingConfiguration?: RoutingConfigurationResponse;
+    routingConfiguration?: RoutingConfigurationVpnGatewayResponse;
     /**
      * Routing weight for vpn connection.
      */

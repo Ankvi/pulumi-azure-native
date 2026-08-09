@@ -294,11 +294,11 @@ export interface CorsRuleResponse {
 }
 
 /**
- * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+ * Sets the CORS rules. You can include up to five CorsRule elements in the request.
  */
 export interface CorsRulesResponse {
     /**
-     * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+     * The List of CORS rules. You can include up to five CorsRule elements in the request.
      */
     corsRules?: CorsRuleResponse[];
 }
@@ -315,6 +315,40 @@ export interface CustomDomainResponse {
      * Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates.
      */
     useSubDomainName?: boolean;
+}
+
+/**
+ * The connection details for Data Share source
+ */
+export interface DataShareConnectionResponse {
+    /**
+     * The URI of the backing DataShare. Must be in the format: azds://<region>:<DataShareName>:<DataShareIdentifier>
+     */
+    dataShareUri: string;
+    /**
+     * The connection type for bucket connection in storage connector.
+     * Expected value is 'DataShare'.
+     */
+    type: "DataShare";
+}
+
+/**
+ * The properties of data share source
+ */
+export interface DataShareSourceResponse {
+    /**
+     * Details for how to authenticate to the backing data store.
+     */
+    authProperties: ManagedIdentityAuthPropertiesResponse;
+    /**
+     * Details for how to connect to the backing data store.
+     */
+    connection: DataShareConnectionResponse;
+    /**
+     * The type of the backing data source for storage connector
+     * Expected value is 'DataShare'.
+     */
+    type: "DataShare";
 }
 
 /**
@@ -802,6 +836,21 @@ export interface LegalHoldPropertiesResponse {
 }
 
 /**
+ * The managed identity auth properties for dataShare connection.
+ */
+export interface ManagedIdentityAuthPropertiesResponse {
+    /**
+     * ARM ResourceId of the managed identity that should be used to authenticate to the backing data source.
+     */
+    identityResourceId?: string;
+    /**
+     * The auth type supported for bucket connection in storage connector.
+     * Expected value is 'ManagedIdentity'.
+     */
+    type: "ManagedIdentity";
+}
+
+/**
  * Actions are applied to the filtered blobs when the execution condition is met.
  */
 export interface ManagementPolicyActionResponse {
@@ -864,7 +913,7 @@ export interface ManagementPolicyDefinitionResponse {
 }
 
 /**
- * Filters limit rule actions to a subset of blobs within the storage account. If multiple filters are defined, a logical AND is performed on all filters. 
+ * Filters limit rule actions to a subset of blobs within the storage account. If multiple filters are defined, a logical AND is performed on all filters.
  */
 export interface ManagementPolicyFilterResponse {
     /**
@@ -1390,6 +1439,121 @@ export interface StorageAccountSkuConversionStatusResponse {
 }
 
 /**
+ * The storage connector properties
+ */
+export interface StorageConnectorPropertiesResponse {
+    /**
+     * System-generated creation time of the Storage Connector in ISO 8601 date-time format (YYYY-MM-DDTHH:mm:ssZ).
+     * Not a valid input parameter during creating.
+     */
+    creationTime: string;
+    /**
+     * The type of backing data source for this Storage Connector.
+     */
+    dataSourceType: string;
+    /**
+     * Arbitrary description of this Storage Connector. Max 250 characters.
+     */
+    description?: string;
+    /**
+     * Represents the provisioning state of the storage connector.
+     */
+    provisioningState: string;
+    /**
+     * Information about how to communicate with and authenticate to the backing data store.
+     */
+    source: DataShareSourceResponse;
+    /**
+     * State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active)
+     * (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise.
+     */
+    state?: string;
+    /**
+     * System-generated GUID identifier for the Storage Connector. Not a valid input parameter when creating.
+     */
+    uniqueId: string;
+}
+/**
+ * storageConnectorPropertiesResponseProvideDefaults sets the appropriate defaults for StorageConnectorPropertiesResponse
+ */
+export function storageConnectorPropertiesResponseProvideDefaults(val: StorageConnectorPropertiesResponse): StorageConnectorPropertiesResponse {
+    return {
+        ...val,
+        state: (val.state) ?? "Active",
+    };
+}
+
+/**
+ * Policy that specify the permission allowed to a managed identity
+ */
+export interface StorageDataShareAccessPolicyResponse {
+    /**
+     * Allowed permissions. Currently, only supported value is Read.
+     */
+    permission: string;
+    /**
+     * The AAD principal ID of the Managed Identity.
+     */
+    principalId: string;
+    /**
+     * The AAD tenant ID of the Managed Identity.
+     */
+    tenantId: string;
+}
+
+/**
+ * Properties of a shared resource.
+ */
+export interface StorageDataShareAssetResponse {
+    /**
+     * Source Path to be shared. It can be a folder or a blob.
+     * The asset path should contain container name followed by path within the container, e.g. /container1/logs/external.
+     */
+    assetPath: string;
+    /**
+     * Consumer visible name of the original path.
+     */
+    displayName: string;
+}
+
+/**
+ * The storage datashare properties
+ */
+export interface StorageDataSharePropertiesResponse {
+    /**
+     * List of access policies that specify the permission allowed to a managed identity.
+     * For Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array.
+     * For Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged.
+     * If provided with a non-null value, the existing access policies are replaced with the specified list.
+     */
+    accessPolicies: StorageDataShareAccessPolicyResponse[];
+    /**
+     * List of assets that specify the properties of the shared resources.
+     * For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array.
+     * For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged.
+     * If provided with a non-null value, the existing assets are replaced with the specified list.
+     */
+    assets: StorageDataShareAssetResponse[];
+    /**
+     * System-generated GUID identifier for the Storage DataShare. Not a valid input parameter when creating.
+     */
+    dataShareIdentifier: string;
+    /**
+     * The DataShare URI to be shared with the consumer.
+     * URI Format - 'azds://<location>:<dataShareName>:<dataShareIdentifier>'.
+     */
+    dataShareUri: string;
+    /**
+     * Arbitrary description of this Data Share. Max 250 characters.
+     */
+    description?: string;
+    /**
+     * Represents the provisioning state of the storage datashare.
+     */
+    provisioningState: string;
+}
+
+/**
  * Execution context of the storage task assignment.
  */
 export interface StorageTaskAssignmentExecutionContextResponse {
@@ -1492,7 +1656,7 @@ export interface StorageTaskReportPropertiesResponse {
      */
     storageAccountId: string;
     /**
-     * Full path to the verbose report stored in the reporting container as specified in the assignment execution context for the storage account. 
+     * Full path to the verbose report stored in the reporting container as specified in the assignment execution context for the storage account.
      */
     summaryReportPath: string;
     /**

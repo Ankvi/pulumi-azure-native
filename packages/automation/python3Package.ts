@@ -189,15 +189,15 @@ export interface Python3PackageArgs {
      */
     contentLink: pulumi.Input<types.inputs.ContentLinkArgs>;
     /**
-     * The name of python package.
+     * The python package name.
      */
-    packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string | undefined>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * Gets or sets the tags attached to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

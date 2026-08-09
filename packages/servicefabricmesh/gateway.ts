@@ -156,7 +156,7 @@ export interface GatewayArgs {
     /**
      * User readable description of the gateway.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Network that the Application is using.
      */
@@ -164,15 +164,15 @@ export interface GatewayArgs {
     /**
      * The identity of the gateway.
      */
-    gatewayResourceName?: pulumi.Input<string>;
+    gatewayResourceName?: pulumi.Input<string | undefined>;
     /**
      * Configuration for http connectivity for this gateway.
      */
-    http?: pulumi.Input<pulumi.Input<types.inputs.HttpConfigArgs>[]>;
+    http?: pulumi.Input<pulumi.Input<types.inputs.HttpConfigArgs>[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Azure resource group name
      */
@@ -184,9 +184,9 @@ export interface GatewayArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration for tcp connectivity for this gateway.
      */
-    tcp?: pulumi.Input<pulumi.Input<types.inputs.TcpConfigArgs>[]>;
+    tcp?: pulumi.Input<pulumi.Input<types.inputs.TcpConfigArgs>[] | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ServerSecurityAlertPolicy extends pulumi.CustomResource {
     /**
@@ -134,7 +134,7 @@ export class ServerSecurityAlertPolicy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20200202preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20200801preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20201101preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20210201preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20210501preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20210801preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20211101:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20211101preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20220201preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20220501preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20220801preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20221101preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20230201preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20230501preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20230801:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20230801preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20240501preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20241101preview:ServerSecurityAlertPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20200202preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20200801preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20201101preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20210201preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20210501preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20210801preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20211101:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20211101preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20220201preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20220501preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20220801preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20221101preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20230201preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20230501preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20230801:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20230801preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20240501preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20241101preview:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20250101:ServerSecurityAlertPolicy" }, { type: "azure-native:sql/v20250201preview:ServerSecurityAlertPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ServerSecurityAlertPolicy.__pulumiType, name, resourceInputs, opts);
     }
@@ -147,15 +147,15 @@ export interface ServerSecurityAlertPolicyArgs {
     /**
      * Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force
      */
-    disabledAlerts?: pulumi.Input<pulumi.Input<string>[]>;
+    disabledAlerts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies that the alert is sent to the account administrators.
      */
-    emailAccountAdmins?: pulumi.Input<boolean>;
+    emailAccountAdmins?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies an array of e-mail addresses to which the alert is sent.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -163,11 +163,11 @@ export interface ServerSecurityAlertPolicyArgs {
     /**
      * Specifies the number of days to keep in the Threat Detection audit logs.
      */
-    retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number | undefined>;
     /**
      * The name of the threat detection policy.
      */
-    securityAlertPolicyName?: pulumi.Input<string>;
+    securityAlertPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The name of the server.
      */
@@ -179,9 +179,9 @@ export interface ServerSecurityAlertPolicyArgs {
     /**
      * Specifies the identifier key of the Threat Detection audit storage account.
      */
-    storageAccountAccessKey?: pulumi.Input<string>;
+    storageAccountAccessKey?: pulumi.Input<string | undefined>;
     /**
      * Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
      */
-    storageEndpoint?: pulumi.Input<string>;
+    storageEndpoint?: pulumi.Input<string | undefined>;
 }

@@ -110,15 +110,15 @@ export interface EmployeeArgs {
     /**
      * The name of the Employee
      */
-    employeeName?: pulumi.Input<string>;
+    employeeName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.EmployeePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.EmployeePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -126,5 +126,5 @@ export interface EmployeeArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

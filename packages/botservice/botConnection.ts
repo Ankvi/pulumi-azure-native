@@ -100,7 +100,7 @@ export class BotConnection extends pulumi.CustomResource {
             resourceInputs["connectionName"] = args?.connectionName;
             resourceInputs["kind"] = args?.kind;
             resourceInputs["location"] = args?.location;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.connectionSettingPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.connectionSettingPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["resourceName"] = args?.resourceName;
             resourceInputs["sku"] = args?.sku;
@@ -138,19 +138,19 @@ export interface BotConnectionArgs {
     /**
      * The name of the Bot Service Connection Setting resource.
      */
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
     /**
      * Required. Gets or sets the Kind of the resource.
      */
-    kind?: pulumi.Input<string | types.enums.Kind>;
+    kind?: pulumi.Input<string | types.enums.Kind | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to bot channel resource
      */
-    properties?: pulumi.Input<types.inputs.ConnectionSettingPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConnectionSettingPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -162,9 +162,9 @@ export interface BotConnectionArgs {
     /**
      * Gets or sets the SKU of the resource.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

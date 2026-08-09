@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateLinkService extends pulumi.CustomResource {
     /**
@@ -164,7 +164,7 @@ export class PrivateLinkService extends pulumi.CustomResource {
             resourceInputs["visibility"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20190401:PrivateLinkService" }, { type: "azure-native:network/v20190601:PrivateLinkService" }, { type: "azure-native:network/v20190701:PrivateLinkService" }, { type: "azure-native:network/v20190801:PrivateLinkService" }, { type: "azure-native:network/v20190901:PrivateLinkService" }, { type: "azure-native:network/v20191101:PrivateLinkService" }, { type: "azure-native:network/v20191201:PrivateLinkService" }, { type: "azure-native:network/v20200301:PrivateLinkService" }, { type: "azure-native:network/v20200401:PrivateLinkService" }, { type: "azure-native:network/v20200501:PrivateLinkService" }, { type: "azure-native:network/v20200601:PrivateLinkService" }, { type: "azure-native:network/v20200701:PrivateLinkService" }, { type: "azure-native:network/v20200801:PrivateLinkService" }, { type: "azure-native:network/v20201101:PrivateLinkService" }, { type: "azure-native:network/v20210201:PrivateLinkService" }, { type: "azure-native:network/v20210301:PrivateLinkService" }, { type: "azure-native:network/v20210501:PrivateLinkService" }, { type: "azure-native:network/v20210801:PrivateLinkService" }, { type: "azure-native:network/v20220101:PrivateLinkService" }, { type: "azure-native:network/v20220501:PrivateLinkService" }, { type: "azure-native:network/v20220701:PrivateLinkService" }, { type: "azure-native:network/v20220901:PrivateLinkService" }, { type: "azure-native:network/v20221101:PrivateLinkService" }, { type: "azure-native:network/v20230201:PrivateLinkService" }, { type: "azure-native:network/v20230401:PrivateLinkService" }, { type: "azure-native:network/v20230501:PrivateLinkService" }, { type: "azure-native:network/v20230601:PrivateLinkService" }, { type: "azure-native:network/v20230901:PrivateLinkService" }, { type: "azure-native:network/v20231101:PrivateLinkService" }, { type: "azure-native:network/v20240101:PrivateLinkService" }, { type: "azure-native:network/v20240301:PrivateLinkService" }, { type: "azure-native:network/v20240501:PrivateLinkService" }, { type: "azure-native:network/v20240701:PrivateLinkService" }, { type: "azure-native:network/v20241001:PrivateLinkService" }, { type: "azure-native:network/v20250101:PrivateLinkService" }, { type: "azure-native:network/v20250301:PrivateLinkService" }, { type: "azure-native:network/v20250501:PrivateLinkService" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20190401:PrivateLinkService" }, { type: "azure-native:network/v20190601:PrivateLinkService" }, { type: "azure-native:network/v20190701:PrivateLinkService" }, { type: "azure-native:network/v20190801:PrivateLinkService" }, { type: "azure-native:network/v20190901:PrivateLinkService" }, { type: "azure-native:network/v20191101:PrivateLinkService" }, { type: "azure-native:network/v20191201:PrivateLinkService" }, { type: "azure-native:network/v20200301:PrivateLinkService" }, { type: "azure-native:network/v20200401:PrivateLinkService" }, { type: "azure-native:network/v20200501:PrivateLinkService" }, { type: "azure-native:network/v20200601:PrivateLinkService" }, { type: "azure-native:network/v20200701:PrivateLinkService" }, { type: "azure-native:network/v20200801:PrivateLinkService" }, { type: "azure-native:network/v20201101:PrivateLinkService" }, { type: "azure-native:network/v20210201:PrivateLinkService" }, { type: "azure-native:network/v20210301:PrivateLinkService" }, { type: "azure-native:network/v20210501:PrivateLinkService" }, { type: "azure-native:network/v20210801:PrivateLinkService" }, { type: "azure-native:network/v20220101:PrivateLinkService" }, { type: "azure-native:network/v20220501:PrivateLinkService" }, { type: "azure-native:network/v20220701:PrivateLinkService" }, { type: "azure-native:network/v20220901:PrivateLinkService" }, { type: "azure-native:network/v20221101:PrivateLinkService" }, { type: "azure-native:network/v20230201:PrivateLinkService" }, { type: "azure-native:network/v20230401:PrivateLinkService" }, { type: "azure-native:network/v20230501:PrivateLinkService" }, { type: "azure-native:network/v20230601:PrivateLinkService" }, { type: "azure-native:network/v20230901:PrivateLinkService" }, { type: "azure-native:network/v20231101:PrivateLinkService" }, { type: "azure-native:network/v20240101:PrivateLinkService" }, { type: "azure-native:network/v20240301:PrivateLinkService" }, { type: "azure-native:network/v20240501:PrivateLinkService" }, { type: "azure-native:network/v20240701:PrivateLinkService" }, { type: "azure-native:network/v20241001:PrivateLinkService" }, { type: "azure-native:network/v20250101:PrivateLinkService" }, { type: "azure-native:network/v20250301:PrivateLinkService" }, { type: "azure-native:network/v20250501:PrivateLinkService" }, { type: "azure-native:network/v20250701:PrivateLinkService" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateLinkService.__pulumiType, name, resourceInputs, opts);
     }
@@ -177,39 +177,39 @@ export interface PrivateLinkServiceArgs {
     /**
      * The auto-approval list of the private link service.
      */
-    autoApproval?: pulumi.Input<types.inputs.PrivateLinkServicePropertiesAutoApprovalArgs>;
+    autoApproval?: pulumi.Input<types.inputs.PrivateLinkServicePropertiesAutoApprovalArgs | undefined>;
     /**
      * The destination IP address of the private link service.
      */
-    destinationIPAddress?: pulumi.Input<string>;
+    destinationIPAddress?: pulumi.Input<string | undefined>;
     /**
      * Whether the private link service is enabled for proxy protocol or not.
      */
-    enableProxyProtocol?: pulumi.Input<boolean>;
+    enableProxyProtocol?: pulumi.Input<boolean | undefined>;
     /**
      * The extended location of the load balancer.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * The list of Fqdn.
      */
-    fqdns?: pulumi.Input<pulumi.Input<string>[]>;
+    fqdns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * An array of private link service IP configurations.
      */
-    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.PrivateLinkServiceIpConfigurationArgs>[]>;
+    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.PrivateLinkServiceIpConfigurationArgs>[] | undefined>;
     /**
      * An array of references to the load balancer IP configurations.
      */
-    loadBalancerFrontendIpConfigurations?: pulumi.Input<pulumi.Input<types.inputs.FrontendIPConfigurationArgs>[]>;
+    loadBalancerFrontendIpConfigurations?: pulumi.Input<pulumi.Input<types.inputs.FrontendIPConfigurationArgs>[] | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group.
      */
@@ -217,13 +217,13 @@ export interface PrivateLinkServiceArgs {
     /**
      * The name of the private link service.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The visibility list of the private link service.
      */
-    visibility?: pulumi.Input<types.inputs.PrivateLinkServicePropertiesVisibilityArgs>;
+    visibility?: pulumi.Input<types.inputs.PrivateLinkServicePropertiesVisibilityArgs | undefined>;
 }

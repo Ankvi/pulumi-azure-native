@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
  *
- * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ContainerApp extends pulumi.CustomResource {
     /**
@@ -150,7 +150,7 @@ export class ContainerApp extends pulumi.CustomResource {
             if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["configuration"] = args ? (args.configuration ? pulumi.output(args.configuration).apply(types.inputs.configurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["configuration"] = args ? pulumi.output(args.configuration).apply(v => v === undefined ? undefined : types.inputs.configurationArgsProvideDefaults(v)) : undefined;
             resourceInputs["containerAppName"] = args?.containerAppName;
             resourceInputs["environmentId"] = args?.environmentId;
             resourceInputs["extendedLocation"] = args?.extendedLocation;
@@ -162,7 +162,7 @@ export class ContainerApp extends pulumi.CustomResource {
             resourceInputs["patchingConfiguration"] = args?.patchingConfiguration;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["tags"] = args?.tags;
-            resourceInputs["template"] = args ? (args.template ? pulumi.output(args.template).apply(types.inputs.templateArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["template"] = args ? pulumi.output(args.template).apply(v => v === undefined ? undefined : types.inputs.templateArgsProvideDefaults(v)) : undefined;
             resourceInputs["workloadProfileName"] = args?.workloadProfileName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["customDomainVerificationId"] = undefined /*out*/;
@@ -205,7 +205,7 @@ export class ContainerApp extends pulumi.CustomResource {
             resourceInputs["workloadProfileName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220101preview:ContainerApp" }, { type: "azure-native:app/v20220301:ContainerApp" }, { type: "azure-native:app/v20220601preview:ContainerApp" }, { type: "azure-native:app/v20221001:ContainerApp" }, { type: "azure-native:app/v20221101preview:ContainerApp" }, { type: "azure-native:app/v20230401preview:ContainerApp" }, { type: "azure-native:app/v20230501:ContainerApp" }, { type: "azure-native:app/v20230502preview:ContainerApp" }, { type: "azure-native:app/v20230801preview:ContainerApp" }, { type: "azure-native:app/v20231102preview:ContainerApp" }, { type: "azure-native:app/v20240202preview:ContainerApp" }, { type: "azure-native:app/v20240301:ContainerApp" }, { type: "azure-native:app/v20240802preview:ContainerApp" }, { type: "azure-native:app/v20241002preview:ContainerApp" }, { type: "azure-native:app/v20250101:ContainerApp" }, { type: "azure-native:app/v20250202preview:ContainerApp" }, { type: "azure-native:app/v20250701:ContainerApp" }, { type: "azure-native:app/v20251002preview:ContainerApp" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220101preview:ContainerApp" }, { type: "azure-native:app/v20220301:ContainerApp" }, { type: "azure-native:app/v20220601preview:ContainerApp" }, { type: "azure-native:app/v20221001:ContainerApp" }, { type: "azure-native:app/v20221101preview:ContainerApp" }, { type: "azure-native:app/v20230401preview:ContainerApp" }, { type: "azure-native:app/v20230501:ContainerApp" }, { type: "azure-native:app/v20230502preview:ContainerApp" }, { type: "azure-native:app/v20230801preview:ContainerApp" }, { type: "azure-native:app/v20231102preview:ContainerApp" }, { type: "azure-native:app/v20240202preview:ContainerApp" }, { type: "azure-native:app/v20240301:ContainerApp" }, { type: "azure-native:app/v20240802preview:ContainerApp" }, { type: "azure-native:app/v20241002preview:ContainerApp" }, { type: "azure-native:app/v20250101:ContainerApp" }, { type: "azure-native:app/v20250202preview:ContainerApp" }, { type: "azure-native:app/v20250701:ContainerApp" }, { type: "azure-native:app/v20251002preview:ContainerApp" }, { type: "azure-native:app/v20260101:ContainerApp" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ContainerApp.__pulumiType, name, resourceInputs, opts);
     }
@@ -218,43 +218,43 @@ export interface ContainerAppArgs {
     /**
      * Non versioned Container App configuration properties.
      */
-    configuration?: pulumi.Input<types.inputs.ConfigurationArgs>;
+    configuration?: pulumi.Input<types.inputs.ConfigurationArgs | undefined>;
     /**
      * Name of the Container App.
      */
-    containerAppName?: pulumi.Input<string>;
+    containerAppName?: pulumi.Input<string | undefined>;
     /**
      * Resource ID of environment.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * The complex type of the extended location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * Metadata used to render different experiences for resources of the same type; e.g. WorkflowApp is a kind of Microsoft.App/ContainerApps type. If supported, the resource provider must validate and persist this value.
      */
-    kind?: pulumi.Input<string | types.enums.Kind>;
+    kind?: pulumi.Input<string | types.enums.Kind | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
      */
-    managedBy?: pulumi.Input<string>;
+    managedBy?: pulumi.Input<string | undefined>;
     /**
      * Deprecated. Resource ID of the Container App's environment.
      */
-    managedEnvironmentId?: pulumi.Input<string>;
+    managedEnvironmentId?: pulumi.Input<string | undefined>;
     /**
      * Container App auto patch configuration.
      */
-    patchingConfiguration?: pulumi.Input<types.inputs.ContainerAppPatchingConfigurationArgs>;
+    patchingConfiguration?: pulumi.Input<types.inputs.ContainerAppPatchingConfigurationArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -262,13 +262,13 @@ export interface ContainerAppArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Container App versioned application definition.
      */
-    template?: pulumi.Input<types.inputs.TemplateArgs>;
+    template?: pulumi.Input<types.inputs.TemplateArgs | undefined>;
     /**
      * Workload profile name to pin for container app execution.
      */
-    workloadProfileName?: pulumi.Input<string>;
+    workloadProfileName?: pulumi.Input<string | undefined>;
 }

@@ -62,7 +62,7 @@ export class SubscriptionFeatureRegistration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'providerNamespace'");
             }
             resourceInputs["featureName"] = args?.featureName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.subscriptionFeatureRegistrationPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.subscriptionFeatureRegistrationPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["providerNamespace"] = args?.providerNamespace;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -87,8 +87,8 @@ export interface SubscriptionFeatureRegistrationArgs {
     /**
      * The feature name.
      */
-    featureName?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.SubscriptionFeatureRegistrationPropertiesArgs>;
+    featureName?: pulumi.Input<string | undefined>;
+    properties?: pulumi.Input<types.inputs.SubscriptionFeatureRegistrationPropertiesArgs | undefined>;
     /**
      * The provider namespace.
      */

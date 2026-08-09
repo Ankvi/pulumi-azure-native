@@ -11,7 +11,7 @@ export interface ContainerGroupProfileArgs {
     /**
      * Specifies revision of container group profile.
      */
-    revision?: pulumi.Input<number>;
+    revision?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -25,7 +25,7 @@ export interface ContainerGroupPropertiesArgs {
     /**
      * Specifies subnet Ids for container group.
      */
-    subnetIds?: pulumi.Input<pulumi.Input<SubnetArgs>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<SubnetArgs>[] | undefined>;
 }
 
 /**
@@ -39,7 +39,7 @@ export interface StandbyContainerGroupPoolElasticityProfileArgs {
     /**
      * Specifies refill policy of the pool.
      */
-    refillPolicy?: pulumi.Input<string | enums.RefillPolicy>;
+    refillPolicy?: pulumi.Input<string | enums.RefillPolicy | undefined>;
 }
 
 /**
@@ -53,7 +53,7 @@ export interface StandbyVirtualMachinePoolElasticityProfileArgs {
     /**
      * Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
      */
-    minReadyCapacity?: pulumi.Input<number>;
+    minReadyCapacity?: pulumi.Input<number | undefined>;
 }
 
 /**

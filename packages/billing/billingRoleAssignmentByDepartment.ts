@@ -112,7 +112,7 @@ export interface BillingRoleAssignmentByDepartmentArgs {
     /**
      * The ID that uniquely identifies a role assignment.
      */
-    billingRoleAssignmentName?: pulumi.Input<string>;
+    billingRoleAssignmentName?: pulumi.Input<string | undefined>;
     /**
      * The name of the department.
      */
@@ -120,9 +120,9 @@ export interface BillingRoleAssignmentByDepartmentArgs {
     /**
      * The properties of the billing role assignment.
      */
-    properties?: pulumi.Input<types.inputs.BillingRoleAssignmentPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.BillingRoleAssignmentPropertiesArgs | undefined>;
     /**
      * Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -10,7 +10,7 @@ export interface DependencyOfRelationshipPropertiesArgs {
     /**
      * The relationship target tenant id.
      */
-    targetTenant?: pulumi.Input<string>;
+    targetTenant?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -24,5 +24,5 @@ export interface ServiceGroupMemberRelationshipPropertiesArgs {
     /**
      * The relationship target tenant id.
      */
-    targetTenant?: pulumi.Input<string>;
+    targetTenant?: pulumi.Input<string | undefined>;
 }

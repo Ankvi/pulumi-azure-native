@@ -51,5 +51,5 @@ export interface ListAzureDataTransferFlowProfilesOutputArgs {
     /**
      * The name of the pipeline for which to retrieve associated FlowProfiles.
      */
-    pipeline?: pulumi.Input<string>;
+    pipeline?: pulumi.Input<string | undefined>;
 }

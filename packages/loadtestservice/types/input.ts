@@ -7,11 +7,11 @@ export interface EncryptionPropertiesArgs {
     /**
      * All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
      */
-    identity?: pulumi.Input<EncryptionPropertiesIdentityArgs>;
+    identity?: pulumi.Input<EncryptionPropertiesIdentityArgs | undefined>;
     /**
      * key encryption key Url, versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
      */
-    keyUrl?: pulumi.Input<string>;
+    keyUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -21,11 +21,11 @@ export interface EncryptionPropertiesIdentityArgs {
     /**
      * User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Managed identity type to use for accessing encryption key Url.
      */
-    type?: pulumi.Input<string | enums.Type>;
+    type?: pulumi.Input<string | enums.Type | undefined>;
 }
 
 /**
@@ -39,5 +39,5 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

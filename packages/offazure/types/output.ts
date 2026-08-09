@@ -169,7 +169,7 @@ export interface SiteAppliancePropertiesResponse {
      */
     applianceName?: string;
     /**
-     *  Gets or sets the service principal identity details used by agent for  communication              to the service.  
+     *  Gets or sets the service principal identity details used by agent for  communication              to the service.
      */
     servicePrincipalIdentityDetails?: SiteSpnPropertiesResponse;
 }
@@ -268,7 +268,7 @@ export interface SiteSpnPropertiesResponse {
      * Gets or sets the application/client Id for the service principal with which
      * the
      *             on-premise management/data plane components would communicate
-     * with our Azure 
+     * with our Azure
      *             services.
      */
     applicationId?: string;

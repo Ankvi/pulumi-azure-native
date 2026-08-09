@@ -7,15 +7,15 @@ export interface EnterpriseKnowledgeGraphPropertiesArgs {
     /**
      * The description of the EnterpriseKnowledgeGraph
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies the metadata  of the resource.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
      * The state of EnterpriseKnowledgeGraph provisioning
      */
-    provisioningState?: pulumi.Input<string>;
+    provisioningState?: pulumi.Input<string | undefined>;
 }
 
 /**

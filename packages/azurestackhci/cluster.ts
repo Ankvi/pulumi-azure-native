@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-04-30, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -244,7 +244,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["userAssignedIdentities"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20200301preview:Cluster" }, { type: "azure-native:azurestackhci/v20201001:Cluster" }, { type: "azure-native:azurestackhci/v20210101preview:Cluster" }, { type: "azure-native:azurestackhci/v20210901:Cluster" }, { type: "azure-native:azurestackhci/v20210901preview:Cluster" }, { type: "azure-native:azurestackhci/v20220101:Cluster" }, { type: "azure-native:azurestackhci/v20220301:Cluster" }, { type: "azure-native:azurestackhci/v20220501:Cluster" }, { type: "azure-native:azurestackhci/v20220901:Cluster" }, { type: "azure-native:azurestackhci/v20221001:Cluster" }, { type: "azure-native:azurestackhci/v20221201:Cluster" }, { type: "azure-native:azurestackhci/v20221215preview:Cluster" }, { type: "azure-native:azurestackhci/v20230201:Cluster" }, { type: "azure-native:azurestackhci/v20230301:Cluster" }, { type: "azure-native:azurestackhci/v20230601:Cluster" }, { type: "azure-native:azurestackhci/v20230801:Cluster" }, { type: "azure-native:azurestackhci/v20230801preview:Cluster" }, { type: "azure-native:azurestackhci/v20231101preview:Cluster" }, { type: "azure-native:azurestackhci/v20240101:Cluster" }, { type: "azure-native:azurestackhci/v20240215preview:Cluster" }, { type: "azure-native:azurestackhci/v20240401:Cluster" }, { type: "azure-native:azurestackhci/v20240901preview:Cluster" }, { type: "azure-native:azurestackhci/v20241201preview:Cluster" }, { type: "azure-native:azurestackhci/v20250201preview:Cluster" }, { type: "azure-native:azurestackhci/v20250915preview:Cluster" }, { type: "azure-native:azurestackhci/v20251001:Cluster" }, { type: "azure-native:azurestackhci/v20251101preview:Cluster" }, { type: "azure-native:azurestackhci/v20251201preview:Cluster" }, { type: "azure-native:azurestackhci/v20260201:Cluster" }, { type: "azure-native:azurestackhci/v20260215preview:Cluster" }, { type: "azure-native:azurestackhci/v20260301preview:Cluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20200301preview:Cluster" }, { type: "azure-native:azurestackhci/v20201001:Cluster" }, { type: "azure-native:azurestackhci/v20210101preview:Cluster" }, { type: "azure-native:azurestackhci/v20210901:Cluster" }, { type: "azure-native:azurestackhci/v20210901preview:Cluster" }, { type: "azure-native:azurestackhci/v20220101:Cluster" }, { type: "azure-native:azurestackhci/v20220301:Cluster" }, { type: "azure-native:azurestackhci/v20220501:Cluster" }, { type: "azure-native:azurestackhci/v20220901:Cluster" }, { type: "azure-native:azurestackhci/v20221001:Cluster" }, { type: "azure-native:azurestackhci/v20221201:Cluster" }, { type: "azure-native:azurestackhci/v20221215preview:Cluster" }, { type: "azure-native:azurestackhci/v20230201:Cluster" }, { type: "azure-native:azurestackhci/v20230301:Cluster" }, { type: "azure-native:azurestackhci/v20230601:Cluster" }, { type: "azure-native:azurestackhci/v20230801:Cluster" }, { type: "azure-native:azurestackhci/v20230801preview:Cluster" }, { type: "azure-native:azurestackhci/v20231101preview:Cluster" }, { type: "azure-native:azurestackhci/v20240101:Cluster" }, { type: "azure-native:azurestackhci/v20240215preview:Cluster" }, { type: "azure-native:azurestackhci/v20240401:Cluster" }, { type: "azure-native:azurestackhci/v20240901preview:Cluster" }, { type: "azure-native:azurestackhci/v20241201preview:Cluster" }, { type: "azure-native:azurestackhci/v20250201preview:Cluster" }, { type: "azure-native:azurestackhci/v20250915preview:Cluster" }, { type: "azure-native:azurestackhci/v20251001:Cluster" }, { type: "azure-native:azurestackhci/v20251101preview:Cluster" }, { type: "azure-native:azurestackhci/v20251201preview:Cluster" }, { type: "azure-native:azurestackhci/v20260201:Cluster" }, { type: "azure-native:azurestackhci/v20260215preview:Cluster" }, { type: "azure-native:azurestackhci/v20260301preview:Cluster" }, { type: "azure-native:azurestackhci/v20260401preview:Cluster" }, { type: "azure-native:azurestackhci/v20260430:Cluster" }, { type: "azure-native:azurestackhci/v20260501preview:Cluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -257,35 +257,35 @@ export interface ClusterArgs {
     /**
      * Object id of cluster AAD identity.
      */
-    aadApplicationObjectId?: pulumi.Input<string>;
+    aadApplicationObjectId?: pulumi.Input<string | undefined>;
     /**
      * App id of cluster AAD identity.
      */
-    aadClientId?: pulumi.Input<string>;
+    aadClientId?: pulumi.Input<string | undefined>;
     /**
      * Id of cluster identity service principal.
      */
-    aadServicePrincipalObjectId?: pulumi.Input<string>;
+    aadServicePrincipalObjectId?: pulumi.Input<string | undefined>;
     /**
      * Tenant id of cluster AAD identity.
      */
-    aadTenantId?: pulumi.Input<string>;
+    aadTenantId?: pulumi.Input<string | undefined>;
     /**
      * Endpoint configured for management from the Azure portal.
      */
-    cloudManagementEndpoint?: pulumi.Input<string>;
+    cloudManagementEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The name of the cluster.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * Desired properties of the cluster.
      */
-    desiredProperties?: pulumi.Input<types.inputs.ClusterDesiredPropertiesArgs>;
+    desiredProperties?: pulumi.Input<types.inputs.ClusterDesiredPropertiesArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -293,11 +293,11 @@ export interface ClusterArgs {
     /**
      * Software Assurance properties of the cluster.
      */
-    softwareAssuranceProperties?: pulumi.Input<types.inputs.SoftwareAssurancePropertiesArgs>;
+    softwareAssuranceProperties?: pulumi.Input<types.inputs.SoftwareAssurancePropertiesArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
      */
@@ -305,5 +305,5 @@ export interface ClusterArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

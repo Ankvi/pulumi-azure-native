@@ -1,0 +1,120 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Represents a recovery orchestration plan resource in the Azure Resilience Management provider namespace.
+ *
+ * Uses Azure REST API version 2026-03-01-preview.
+ *
+ * Other available API versions: 2025-02-01-preview, 2026-04-01-preview, 2026-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azureresiliencemanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ */
+export class RecoveryPlan extends pulumi.CustomResource {
+    /**
+     * Get an existing RecoveryPlan resource's state with the given name, ID, and optional extra
+     * properties used to qualify the lookup.
+     *
+     * @param name The _unique_ name of the resulting resource.
+     * @param id The _unique_ provider ID of the resource to lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): RecoveryPlan {
+        return new RecoveryPlan(name, undefined as any, { ...opts, id: id });
+    }
+
+    /** @internal */
+    public static readonly __pulumiType = 'azure-native:azureresiliencemanagement:RecoveryPlan';
+
+    /**
+     * Returns true if the given object is an instance of RecoveryPlan.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RecoveryPlan {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RecoveryPlan.__pulumiType;
+    }
+
+    /**
+     * The Azure API version of the resource.
+     */
+    declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
+    /**
+     * The managed service identities assigned to this resource.
+     */
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    /**
+     * The name of the resource
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * The resource-specific properties for this resource.
+     */
+    declare public readonly properties: pulumi.Output<types.outputs.RecoveryPlanPropertiesResponse>;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    declare public /*out*/ readonly type: pulumi.Output<string>;
+
+    /**
+     * Create a RecoveryPlan resource with the given unique name, arguments, and options.
+     *
+     * @param name The _unique_ name of the resource.
+     * @param args The arguments to use to populate this resource's properties.
+     * @param opts A bag of options that control this resource's behavior.
+     */
+    constructor(name: string, args: RecoveryPlanArgs, opts?: pulumi.CustomResourceOptions) {
+        let resourceInputs: pulumi.Inputs = {};
+        opts = opts || {};
+        if (!opts.id) {
+            if (args?.serviceGroupName === undefined && !opts.urn) {
+                throw new Error("Missing required property 'serviceGroupName'");
+            }
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["recoveryPlanName"] = args?.recoveryPlanName;
+            resourceInputs["serviceGroupName"] = args?.serviceGroupName;
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+        } else {
+            resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["identity"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["properties"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+        }
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "azure-native:azureresiliencemanagement/v20250201preview:RecoveryPlan" }, { type: "azure-native:azureresiliencemanagement/v20260301preview:RecoveryPlan" }, { type: "azure-native:azureresiliencemanagement/v20260401preview:RecoveryPlan" }, { type: "azure-native:azureresiliencemanagement/v20260601preview:RecoveryPlan" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        super(RecoveryPlan.__pulumiType, name, resourceInputs, opts);
+    }
+}
+
+/**
+ * The set of arguments for constructing a RecoveryPlan resource.
+ */
+export interface RecoveryPlanArgs {
+    /**
+     * The managed service identities assigned to this resource.
+     */
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
+    /**
+     * The resource-specific properties for this resource.
+     */
+    properties?: pulumi.Input<types.inputs.RecoveryPlanPropertiesArgs | undefined>;
+    /**
+     * The name of the recovery orchestration plan.
+     */
+    recoveryPlanName?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the service group.
+     */
+    serviceGroupName: pulumi.Input<string>;
+}

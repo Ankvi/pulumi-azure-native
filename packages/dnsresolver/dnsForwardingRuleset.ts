@@ -131,7 +131,7 @@ export interface DnsForwardingRulesetArgs {
     /**
      * The name of the DNS forwarding ruleset.
      */
-    dnsForwardingRulesetName?: pulumi.Input<string>;
+    dnsForwardingRulesetName?: pulumi.Input<string | undefined>;
     /**
      * The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.
      */
@@ -139,7 +139,7 @@ export interface DnsForwardingRulesetArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -147,5 +147,5 @@ export interface DnsForwardingRulesetArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

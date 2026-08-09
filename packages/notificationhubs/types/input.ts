@@ -25,20 +25,20 @@ export interface ApnsCredentialArgs {
     /**
      * Gets or sets the APNS certificate.
      */
-    apnsCertificate?: pulumi.Input<string>;
+    apnsCertificate?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the issuer (iss) registered claim key, whose value is
      * your 10-character Team ID, obtained from your developer account
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the name of the application
      */
-    appName?: pulumi.Input<string>;
+    appName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the certificate key.
      */
-    certificateKey?: pulumi.Input<string>;
+    certificateKey?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the endpoint of this credential.
      */
@@ -47,16 +47,16 @@ export interface ApnsCredentialArgs {
      * Gets or sets a 10-character key identifier (kid) key, obtained from
      * your developer account
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the APNS certificate Thumbprint
      */
-    thumbprint?: pulumi.Input<string>;
+    thumbprint?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets provider Authentication Token, obtained through your
      * developer account
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -120,7 +120,7 @@ export interface GcmCredentialArgs {
     /**
      * Gets or sets the GCM endpoint.
      */
-    gcmEndpoint?: pulumi.Input<string>;
+    gcmEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the Google API key.
      */
@@ -166,11 +166,11 @@ export interface NetworkAclsArgs {
     /**
      * List of IP rules.
      */
-    ipRules?: pulumi.Input<pulumi.Input<IpRuleArgs>[]>;
+    ipRules?: pulumi.Input<pulumi.Input<IpRuleArgs>[] | undefined>;
     /**
      * A default (public Internet) network authorization rule, which contains rights if no other network rule matches.
      */
-    publicNetworkRule?: pulumi.Input<PublicInternetAuthorizationRuleArgs>;
+    publicNetworkRule?: pulumi.Input<PublicInternetAuthorizationRuleArgs | undefined>;
 }
 
 /**
@@ -180,39 +180,39 @@ export interface PnsCredentialsArgs {
     /**
      * Description of a NotificationHub AdmCredential.
      */
-    admCredential?: pulumi.Input<AdmCredentialArgs>;
+    admCredential?: pulumi.Input<AdmCredentialArgs | undefined>;
     /**
      * Description of a NotificationHub ApnsCredential.
      */
-    apnsCredential?: pulumi.Input<ApnsCredentialArgs>;
+    apnsCredential?: pulumi.Input<ApnsCredentialArgs | undefined>;
     /**
      * Description of a NotificationHub BaiduCredential.
      */
-    baiduCredential?: pulumi.Input<BaiduCredentialArgs>;
+    baiduCredential?: pulumi.Input<BaiduCredentialArgs | undefined>;
     /**
      * Description of a NotificationHub BrowserCredential.
      */
-    browserCredential?: pulumi.Input<BrowserCredentialArgs>;
+    browserCredential?: pulumi.Input<BrowserCredentialArgs | undefined>;
     /**
      * Description of a NotificationHub FcmV1Credential.
      */
-    fcmV1Credential?: pulumi.Input<FcmV1CredentialArgs>;
+    fcmV1Credential?: pulumi.Input<FcmV1CredentialArgs | undefined>;
     /**
      * Description of a NotificationHub GcmCredential.
      */
-    gcmCredential?: pulumi.Input<GcmCredentialArgs>;
+    gcmCredential?: pulumi.Input<GcmCredentialArgs | undefined>;
     /**
      * Description of a NotificationHub MpnsCredential.
      */
-    mpnsCredential?: pulumi.Input<MpnsCredentialArgs>;
+    mpnsCredential?: pulumi.Input<MpnsCredentialArgs | undefined>;
     /**
      * Description of a NotificationHub WnsCredential.
      */
-    wnsCredential?: pulumi.Input<WnsCredentialArgs>;
+    wnsCredential?: pulumi.Input<WnsCredentialArgs | undefined>;
     /**
      * Description of a NotificationHub XiaomiCredential.
      */
-    xiaomiCredential?: pulumi.Input<XiaomiCredentialArgs>;
+    xiaomiCredential?: pulumi.Input<XiaomiCredentialArgs | undefined>;
 }
 
 /**
@@ -222,11 +222,11 @@ export interface PrivateEndpointConnectionPropertiesArgs {
     /**
      * State of the Private Link Service connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<RemotePrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<RemotePrivateLinkServiceConnectionStateArgs | undefined>;
     /**
      * State of Private Endpoint Connection.
      */
-    provisioningState?: pulumi.Input<string | enums.PrivateEndpointConnectionProvisioningState>;
+    provisioningState?: pulumi.Input<string | enums.PrivateEndpointConnectionProvisioningState | undefined>;
 }
 
 /**
@@ -246,7 +246,7 @@ export interface RemotePrivateLinkServiceConnectionStateArgs {
     /**
      * State of Private Link Connection.
      */
-    status?: pulumi.Input<string | enums.PrivateLinkConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateLinkConnectionStatus | undefined>;
 }
 
 /**
@@ -256,11 +256,11 @@ export interface SkuArgs {
     /**
      * Gets or sets the capacity of the resource
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the Sku Family
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * Namespace SKU name.
      */
@@ -268,11 +268,11 @@ export interface SkuArgs {
     /**
      * Gets or sets the Sku size
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the tier of particular sku
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -282,23 +282,23 @@ export interface WnsCredentialArgs {
     /**
      * Ges or sets the WNS Certificate Key.
      */
-    certificateKey?: pulumi.Input<string>;
+    certificateKey?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the package ID for this credential.
      */
-    packageSid?: pulumi.Input<string>;
+    packageSid?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the secret key.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the Windows Live endpoint.
      */
-    windowsLiveEndpoint?: pulumi.Input<string>;
+    windowsLiveEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the WNS Certificate.
      */
-    wnsCertificate?: pulumi.Input<string>;
+    wnsCertificate?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -308,9 +308,9 @@ export interface XiaomiCredentialArgs {
     /**
      * Gets or sets app secret.
      */
-    appSecret?: pulumi.Input<string>;
+    appSecret?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets xiaomi service endpoint.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
 }

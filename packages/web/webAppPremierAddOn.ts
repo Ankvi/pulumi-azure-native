@@ -1,11 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * Premier add-on.
  *
- * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+ * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppPremierAddOn extends pulumi.CustomResource {
     /**
@@ -39,11 +40,11 @@ export class WebAppPremierAddOn extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
-     * Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+     * Kind of resource.
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
-     * Resource Location.
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string>;
     /**
@@ -55,7 +56,7 @@ export class WebAppPremierAddOn extends pulumi.CustomResource {
      */
     declare public readonly marketplacePublisher: pulumi.Output<string | undefined>;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -67,11 +68,15 @@ export class WebAppPremierAddOn extends pulumi.CustomResource {
      */
     declare public readonly sku: pulumi.Output<string | undefined>;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
      * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -108,6 +113,7 @@ export class WebAppPremierAddOn extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["vendor"] = args?.vendor;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -118,12 +124,13 @@ export class WebAppPremierAddOn extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["product"] = undefined /*out*/;
             resourceInputs["sku"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["vendor"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppPremierAddOn" }, { type: "azure-native:web/v20160801:WebAppPremierAddOn" }, { type: "azure-native:web/v20180201:WebAppPremierAddOn" }, { type: "azure-native:web/v20181101:WebAppPremierAddOn" }, { type: "azure-native:web/v20190801:WebAppPremierAddOn" }, { type: "azure-native:web/v20200601:WebAppPremierAddOn" }, { type: "azure-native:web/v20200901:WebAppPremierAddOn" }, { type: "azure-native:web/v20201001:WebAppPremierAddOn" }, { type: "azure-native:web/v20201201:WebAppPremierAddOn" }, { type: "azure-native:web/v20210101:WebAppPremierAddOn" }, { type: "azure-native:web/v20210115:WebAppPremierAddOn" }, { type: "azure-native:web/v20210201:WebAppPremierAddOn" }, { type: "azure-native:web/v20210301:WebAppPremierAddOn" }, { type: "azure-native:web/v20220301:WebAppPremierAddOn" }, { type: "azure-native:web/v20220901:WebAppPremierAddOn" }, { type: "azure-native:web/v20230101:WebAppPremierAddOn" }, { type: "azure-native:web/v20231201:WebAppPremierAddOn" }, { type: "azure-native:web/v20240401:WebAppPremierAddOn" }, { type: "azure-native:web/v20241101:WebAppPremierAddOn" }, { type: "azure-native:web/v20250301:WebAppPremierAddOn" }, { type: "azure-native:web/v20250501:WebAppPremierAddOn" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppPremierAddOn" }, { type: "azure-native:web/v20160801:WebAppPremierAddOn" }, { type: "azure-native:web/v20180201:WebAppPremierAddOn" }, { type: "azure-native:web/v20181101:WebAppPremierAddOn" }, { type: "azure-native:web/v20190801:WebAppPremierAddOn" }, { type: "azure-native:web/v20200601:WebAppPremierAddOn" }, { type: "azure-native:web/v20200901:WebAppPremierAddOn" }, { type: "azure-native:web/v20201001:WebAppPremierAddOn" }, { type: "azure-native:web/v20201201:WebAppPremierAddOn" }, { type: "azure-native:web/v20210101:WebAppPremierAddOn" }, { type: "azure-native:web/v20210115:WebAppPremierAddOn" }, { type: "azure-native:web/v20210201:WebAppPremierAddOn" }, { type: "azure-native:web/v20210301:WebAppPremierAddOn" }, { type: "azure-native:web/v20220301:WebAppPremierAddOn" }, { type: "azure-native:web/v20220901:WebAppPremierAddOn" }, { type: "azure-native:web/v20230101:WebAppPremierAddOn" }, { type: "azure-native:web/v20231201:WebAppPremierAddOn" }, { type: "azure-native:web/v20240401:WebAppPremierAddOn" }, { type: "azure-native:web/v20241101:WebAppPremierAddOn" }, { type: "azure-native:web/v20250301:WebAppPremierAddOn" }, { type: "azure-native:web/v20250501:WebAppPremierAddOn" }, { type: "azure-native:web/v20260301preview:WebAppPremierAddOn" }, { type: "azure-native:web/v20260315:WebAppPremierAddOn" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppPremierAddOn.__pulumiType, name, resourceInputs, opts);
     }
@@ -134,21 +141,21 @@ export class WebAppPremierAddOn extends pulumi.CustomResource {
  */
 export interface WebAppPremierAddOnArgs {
     /**
-     * Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+     * Kind of resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
-     * Resource Location.
+     * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Premier add on Marketplace offer.
      */
-    marketplaceOffer?: pulumi.Input<string>;
+    marketplaceOffer?: pulumi.Input<string | undefined>;
     /**
      * Premier add on Marketplace publisher.
      */
-    marketplacePublisher?: pulumi.Input<string>;
+    marketplacePublisher?: pulumi.Input<string | undefined>;
     /**
      * Name of the app.
      */
@@ -156,25 +163,25 @@ export interface WebAppPremierAddOnArgs {
     /**
      * Add-on name.
      */
-    premierAddOnName?: pulumi.Input<string>;
+    premierAddOnName?: pulumi.Input<string | undefined>;
     /**
      * Premier add on Product.
      */
-    product?: pulumi.Input<string>;
+    product?: pulumi.Input<string | undefined>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * Premier add on SKU.
      */
-    sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Premier add on Vendor.
      */
-    vendor?: pulumi.Input<string>;
+    vendor?: pulumi.Input<string | undefined>;
 }

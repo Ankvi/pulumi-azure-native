@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class BlobContainer extends pulumi.CustomResource {
     /**
@@ -197,7 +197,7 @@ export class BlobContainer extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20180201:BlobContainer" }, { type: "azure-native:storage/v20180301preview:BlobContainer" }, { type: "azure-native:storage/v20180701:BlobContainer" }, { type: "azure-native:storage/v20181101:BlobContainer" }, { type: "azure-native:storage/v20190401:BlobContainer" }, { type: "azure-native:storage/v20190601:BlobContainer" }, { type: "azure-native:storage/v20200801preview:BlobContainer" }, { type: "azure-native:storage/v20210101:BlobContainer" }, { type: "azure-native:storage/v20210201:BlobContainer" }, { type: "azure-native:storage/v20210401:BlobContainer" }, { type: "azure-native:storage/v20210601:BlobContainer" }, { type: "azure-native:storage/v20210801:BlobContainer" }, { type: "azure-native:storage/v20210901:BlobContainer" }, { type: "azure-native:storage/v20220501:BlobContainer" }, { type: "azure-native:storage/v20220901:BlobContainer" }, { type: "azure-native:storage/v20230101:BlobContainer" }, { type: "azure-native:storage/v20230401:BlobContainer" }, { type: "azure-native:storage/v20230501:BlobContainer" }, { type: "azure-native:storage/v20240101:BlobContainer" }, { type: "azure-native:storage/v20250101:BlobContainer" }, { type: "azure-native:storage/v20250601:BlobContainer" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20180201:BlobContainer" }, { type: "azure-native:storage/v20180301preview:BlobContainer" }, { type: "azure-native:storage/v20180701:BlobContainer" }, { type: "azure-native:storage/v20181101:BlobContainer" }, { type: "azure-native:storage/v20190401:BlobContainer" }, { type: "azure-native:storage/v20190601:BlobContainer" }, { type: "azure-native:storage/v20200801preview:BlobContainer" }, { type: "azure-native:storage/v20210101:BlobContainer" }, { type: "azure-native:storage/v20210201:BlobContainer" }, { type: "azure-native:storage/v20210401:BlobContainer" }, { type: "azure-native:storage/v20210601:BlobContainer" }, { type: "azure-native:storage/v20210801:BlobContainer" }, { type: "azure-native:storage/v20210901:BlobContainer" }, { type: "azure-native:storage/v20220501:BlobContainer" }, { type: "azure-native:storage/v20220901:BlobContainer" }, { type: "azure-native:storage/v20230101:BlobContainer" }, { type: "azure-native:storage/v20230401:BlobContainer" }, { type: "azure-native:storage/v20230501:BlobContainer" }, { type: "azure-native:storage/v20240101:BlobContainer" }, { type: "azure-native:storage/v20250101:BlobContainer" }, { type: "azure-native:storage/v20250601:BlobContainer" }, { type: "azure-native:storage/v20250801:BlobContainer" }, { type: "azure-native:storage/v20260401:BlobContainer" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(BlobContainer.__pulumiType, name, resourceInputs, opts);
     }
@@ -214,35 +214,35 @@ export interface BlobContainerArgs {
     /**
      * The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
      */
-    containerName?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
     /**
      * Default the container to use specified encryption scope for all writes.
      */
-    defaultEncryptionScope?: pulumi.Input<string>;
+    defaultEncryptionScope?: pulumi.Input<string | undefined>;
     /**
      * Block override of encryption scope from the container default.
      */
-    denyEncryptionScopeOverride?: pulumi.Input<boolean>;
+    denyEncryptionScopeOverride?: pulumi.Input<boolean | undefined>;
     /**
      * Enable NFSv3 all squash on blob container.
      */
-    enableNfsV3AllSquash?: pulumi.Input<boolean>;
+    enableNfsV3AllSquash?: pulumi.Input<boolean | undefined>;
     /**
      * Enable NFSv3 root squash on blob container.
      */
-    enableNfsV3RootSquash?: pulumi.Input<boolean>;
+    enableNfsV3RootSquash?: pulumi.Input<boolean | undefined>;
     /**
      * The object level immutability property of the container. The property is immutable and can only be set to true at the container creation time. Existing containers must undergo a migration process.
      */
-    immutableStorageWithVersioning?: pulumi.Input<types.inputs.ImmutableStorageWithVersioningArgs>;
+    immutableStorageWithVersioning?: pulumi.Input<types.inputs.ImmutableStorageWithVersioningArgs | undefined>;
     /**
      * A name-value pair to associate with the container as metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies whether data in the container may be accessed publicly and the level of access.
      */
-    publicAccess?: pulumi.Input<types.enums.PublicAccess>;
+    publicAccess?: pulumi.Input<types.enums.PublicAccess | undefined>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

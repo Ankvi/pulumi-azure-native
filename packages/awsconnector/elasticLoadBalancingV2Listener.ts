@@ -107,15 +107,15 @@ export interface ElasticLoadBalancingV2ListenerArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of ElasticLoadBalancingV2Listener
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.ElasticLoadBalancingV2ListenerPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ElasticLoadBalancingV2ListenerPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -123,5 +123,5 @@ export interface ElasticLoadBalancingV2ListenerArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

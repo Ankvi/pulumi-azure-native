@@ -7,19 +7,19 @@ export interface PutAliasRequestAdditionalPropertiesArgs {
     /**
      * Management group Id for the subscription.
      */
-    managementGroupId?: pulumi.Input<string>;
+    managementGroupId?: pulumi.Input<string | undefined>;
     /**
      * Owner Id of the subscription
      */
-    subscriptionOwnerId?: pulumi.Input<string>;
+    subscriptionOwnerId?: pulumi.Input<string | undefined>;
     /**
      * Tenant Id of the subscription
      */
-    subscriptionTenantId?: pulumi.Input<string>;
+    subscriptionTenantId?: pulumi.Input<string | undefined>;
     /**
      * Tags for the subscription
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -29,30 +29,30 @@ export interface PutAliasRequestPropertiesArgs {
     /**
      * Put alias request additional properties.
      */
-    additionalProperties?: pulumi.Input<PutAliasRequestAdditionalPropertiesArgs>;
+    additionalProperties?: pulumi.Input<PutAliasRequestAdditionalPropertiesArgs | undefined>;
     /**
      * Billing scope of the subscription.
      * For CustomerLed and FieldLed - /billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}
      * For PartnerLed - /billingAccounts/{billingAccountName}/customers/{customerName}
      * For Legacy EA - /billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}
      */
-    billingScope?: pulumi.Input<string>;
+    billingScope?: pulumi.Input<string | undefined>;
     /**
      * The friendly name of the subscription.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Reseller Id
      */
-    resellerId?: pulumi.Input<string>;
+    resellerId?: pulumi.Input<string | undefined>;
     /**
      * This parameter can be used to create alias for existing subscription Id
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * The workload type of the subscription. It can be either Production or DevTest.
      */
-    workload?: pulumi.Input<string | enums.Workload>;
+    workload?: pulumi.Input<string | enums.Workload | undefined>;
 }
 
 /**
@@ -62,9 +62,9 @@ export interface TargetDirectoryRequestPropertiesArgs {
     /**
      * The destination OwnerId, can be object id or email address
      */
-    destinationOwnerId?: pulumi.Input<string>;
+    destinationOwnerId?: pulumi.Input<string | undefined>;
     /**
      * The destination Tenant id where subscription needs to be accepted
      */
-    destinationTenantId?: pulumi.Input<string>;
+    destinationTenantId?: pulumi.Input<string | undefined>;
 }

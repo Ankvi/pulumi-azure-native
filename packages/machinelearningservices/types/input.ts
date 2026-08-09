@@ -12,19 +12,19 @@ export interface AADAuthTypeWorkspaceConnectionPropertiesArgs {
     /**
      * Category of the connection
      */
-    category?: pulumi.Input<string | enums.ConnectionCategory>;
-    error?: pulumi.Input<string>;
-    expiryTime?: pulumi.Input<string>;
-    isSharedToAll?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string | enums.ConnectionCategory | undefined>;
+    error?: pulumi.Input<string | undefined>;
+    expiryTime?: pulumi.Input<string | undefined>;
+    isSharedToAll?: pulumi.Input<boolean | undefined>;
     /**
      * Store user metadata for this connection
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
-    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
-    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
-    target?: pulumi.Input<string>;
-    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement | undefined>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus | undefined>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -34,7 +34,7 @@ export interface AKSArgs {
     /**
      * Location for the underlying compute
      */
-    computeLocation?: pulumi.Input<string>;
+    computeLocation?: pulumi.Input<string | undefined>;
     /**
      * The type of compute
      * Expected value is 'AKS'.
@@ -43,19 +43,19 @@ export interface AKSArgs {
     /**
      * The description of the Machine Learning compute.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * AKS properties
      */
-    properties?: pulumi.Input<AKSSchemaPropertiesArgs>;
+    properties?: pulumi.Input<AKSSchemaPropertiesArgs | undefined>;
     /**
      * ARM resource id of the underlying compute
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 /**
  * aksargsProvideDefaults sets the appropriate defaults for AKSArgs
@@ -63,7 +63,7 @@ export interface AKSArgs {
 export function aksargsProvideDefaults(val: AKSArgs): AKSArgs {
     return {
         ...val,
-        properties: (val.properties ? pulumi.output(val.properties).apply(aksschemaPropertiesArgsProvideDefaults) : undefined),
+        properties: pulumi.output(val.properties).apply(v => v === undefined ? undefined : aksschemaPropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -74,35 +74,35 @@ export interface AKSSchemaPropertiesArgs {
     /**
      * Number of agents
      */
-    agentCount?: pulumi.Input<number>;
+    agentCount?: pulumi.Input<number | undefined>;
     /**
      * Agent virtual machine size
      */
-    agentVmSize?: pulumi.Input<string>;
+    agentVmSize?: pulumi.Input<string | undefined>;
     /**
      * AKS networking configuration for vnet
      */
-    aksNetworkingConfiguration?: pulumi.Input<AksNetworkingConfigurationArgs>;
+    aksNetworkingConfiguration?: pulumi.Input<AksNetworkingConfigurationArgs | undefined>;
     /**
      * Cluster full qualified domain name
      */
-    clusterFqdn?: pulumi.Input<string>;
+    clusterFqdn?: pulumi.Input<string | undefined>;
     /**
      * Intended usage of the cluster
      */
-    clusterPurpose?: pulumi.Input<string | enums.ClusterPurpose>;
+    clusterPurpose?: pulumi.Input<string | enums.ClusterPurpose | undefined>;
     /**
      * Load Balancer Subnet
      */
-    loadBalancerSubnet?: pulumi.Input<string>;
+    loadBalancerSubnet?: pulumi.Input<string | undefined>;
     /**
      * Load Balancer Type
      */
-    loadBalancerType?: pulumi.Input<string | enums.LoadBalancerType>;
+    loadBalancerType?: pulumi.Input<string | enums.LoadBalancerType | undefined>;
     /**
      * SSL configuration
      */
-    sslConfiguration?: pulumi.Input<SslConfigurationArgs>;
+    sslConfiguration?: pulumi.Input<SslConfigurationArgs | undefined>;
 }
 /**
  * aksschemaPropertiesArgsProvideDefaults sets the appropriate defaults for AKSSchemaPropertiesArgs
@@ -124,20 +124,20 @@ export interface AccessKeyAuthTypeWorkspaceConnectionPropertiesArgs {
     /**
      * Category of the connection
      */
-    category?: pulumi.Input<string | enums.ConnectionCategory>;
-    credentials?: pulumi.Input<WorkspaceConnectionAccessKeyArgs>;
-    error?: pulumi.Input<string>;
-    expiryTime?: pulumi.Input<string>;
-    isSharedToAll?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string | enums.ConnectionCategory | undefined>;
+    credentials?: pulumi.Input<WorkspaceConnectionAccessKeyArgs | undefined>;
+    error?: pulumi.Input<string | undefined>;
+    expiryTime?: pulumi.Input<string | undefined>;
+    isSharedToAll?: pulumi.Input<boolean | undefined>;
     /**
      * Store user metadata for this connection
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
-    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
-    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
-    target?: pulumi.Input<string>;
-    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement | undefined>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus | undefined>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -152,23 +152,23 @@ export interface AccountKeyAuthTypeWorkspaceConnectionPropertiesArgs {
     /**
      * Category of the connection
      */
-    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    category?: pulumi.Input<string | enums.ConnectionCategory | undefined>;
     /**
      * Account key object for workspace connection credential.
      */
-    credentials?: pulumi.Input<WorkspaceConnectionAccountKeyArgs>;
-    error?: pulumi.Input<string>;
-    expiryTime?: pulumi.Input<string>;
-    isSharedToAll?: pulumi.Input<boolean>;
+    credentials?: pulumi.Input<WorkspaceConnectionAccountKeyArgs | undefined>;
+    error?: pulumi.Input<string | undefined>;
+    expiryTime?: pulumi.Input<string | undefined>;
+    isSharedToAll?: pulumi.Input<boolean | undefined>;
     /**
      * Store user metadata for this connection
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
-    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
-    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
-    target?: pulumi.Input<string>;
-    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement | undefined>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus | undefined>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -193,7 +193,7 @@ export interface AccountKeyDatastoreSecretsArgs {
     /**
      * Storage account key.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the datastore secrets type.
      * Expected value is 'AccountKey'.
@@ -208,7 +208,7 @@ export interface AcrDetailsArgs {
     /**
      * Details of system created ACR account to be used for the Registry
      */
-    systemCreatedAcrAccount?: pulumi.Input<SystemCreatedAcrAccountArgs>;
+    systemCreatedAcrAccount?: pulumi.Input<SystemCreatedAcrAccountArgs | undefined>;
 }
 
 /**
@@ -218,24 +218,23 @@ export interface AksNetworkingConfigurationArgs {
     /**
      * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
      */
-    dnsServiceIP?: pulumi.Input<string>;
+    dnsServiceIP?: pulumi.Input<string | undefined>;
     /**
      * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
      */
-    dockerBridgeCidr?: pulumi.Input<string>;
+    dockerBridgeCidr?: pulumi.Input<string | undefined>;
     /**
      * A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
      */
-    serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string | undefined>;
     /**
      * Virtual network subnet resource ID the compute nodes belong to
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
 }
 
 export interface AllFeaturesArgs {
     /**
-     *
      * Expected value is 'AllFeatures'.
      */
     filterType: pulumi.Input<"AllFeatures">;
@@ -259,7 +258,7 @@ export interface AmlComputeArgs {
     /**
      * Location for the underlying compute
      */
-    computeLocation?: pulumi.Input<string>;
+    computeLocation?: pulumi.Input<string | undefined>;
     /**
      * The type of compute
      * Expected value is 'AmlCompute'.
@@ -268,19 +267,19 @@ export interface AmlComputeArgs {
     /**
      * The description of the Machine Learning compute.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Properties of AmlCompute
      */
-    properties?: pulumi.Input<AmlComputePropertiesArgs>;
+    properties?: pulumi.Input<AmlComputePropertiesArgs | undefined>;
     /**
      * ARM resource id of the underlying compute
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 /**
  * amlComputeArgsProvideDefaults sets the appropriate defaults for AmlComputeArgs
@@ -288,7 +287,7 @@ export interface AmlComputeArgs {
 export function amlComputeArgsProvideDefaults(val: AmlComputeArgs): AmlComputeArgs {
     return {
         ...val,
-        properties: (val.properties ? pulumi.output(val.properties).apply(amlComputePropertiesArgsProvideDefaults) : undefined),
+        properties: pulumi.output(val.properties).apply(v => v === undefined ? undefined : amlComputePropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -299,47 +298,47 @@ export interface AmlComputePropertiesArgs {
     /**
      * Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
      */
-    enableNodePublicIp?: pulumi.Input<boolean>;
+    enableNodePublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * Network is isolated or not
      */
-    isolatedNetwork?: pulumi.Input<boolean>;
+    isolatedNetwork?: pulumi.Input<boolean | undefined>;
     /**
      * Compute OS Type
      */
-    osType?: pulumi.Input<string | enums.OsType>;
+    osType?: pulumi.Input<string | enums.OsType | undefined>;
     /**
      * A property bag containing additional properties.
      */
-    propertyBag?: any;
+    propertyBag?: any | undefined;
     /**
      * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
      */
-    remoteLoginPortPublicAccess?: pulumi.Input<string | enums.RemoteLoginPortPublicAccess>;
+    remoteLoginPortPublicAccess?: pulumi.Input<string | enums.RemoteLoginPortPublicAccess | undefined>;
     /**
      * Scale settings for AML Compute
      */
-    scaleSettings?: pulumi.Input<ScaleSettingsArgs>;
+    scaleSettings?: pulumi.Input<ScaleSettingsArgs | undefined>;
     /**
      * Virtual network subnet resource ID the compute nodes belong to.
      */
-    subnet?: pulumi.Input<ResourceIdArgs>;
+    subnet?: pulumi.Input<ResourceIdArgs | undefined>;
     /**
      * Credentials for an administrator user account that will be created on each compute node.
      */
-    userAccountCredentials?: pulumi.Input<UserAccountCredentialsArgs>;
+    userAccountCredentials?: pulumi.Input<UserAccountCredentialsArgs | undefined>;
     /**
      * Virtual Machine image for AML Compute - windows only
      */
-    virtualMachineImage?: pulumi.Input<VirtualMachineImageArgs>;
+    virtualMachineImage?: pulumi.Input<VirtualMachineImageArgs | undefined>;
     /**
      * Virtual Machine priority
      */
-    vmPriority?: pulumi.Input<string | enums.VmPriority>;
+    vmPriority?: pulumi.Input<string | enums.VmPriority | undefined>;
     /**
      * Virtual Machine Size
      */
-    vmSize?: pulumi.Input<string>;
+    vmSize?: pulumi.Input<string | undefined>;
 }
 /**
  * amlComputePropertiesArgsProvideDefaults sets the appropriate defaults for AmlComputePropertiesArgs
@@ -350,7 +349,7 @@ export function amlComputePropertiesArgsProvideDefaults(val: AmlComputePropertie
         enableNodePublicIp: (val.enableNodePublicIp) ?? true,
         osType: (val.osType) ?? "Linux",
         remoteLoginPortPublicAccess: (val.remoteLoginPortPublicAccess) ?? "NotSpecified",
-        scaleSettings: (val.scaleSettings ? pulumi.output(val.scaleSettings).apply(scaleSettingsArgsProvideDefaults) : undefined),
+        scaleSettings: pulumi.output(val.scaleSettings).apply(v => v === undefined ? undefined : scaleSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -407,23 +406,23 @@ export interface ApiKeyAuthWorkspaceConnectionPropertiesArgs {
     /**
      * Category of the connection
      */
-    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    category?: pulumi.Input<string | enums.ConnectionCategory | undefined>;
     /**
      * Api key object for workspace connection credential.
      */
-    credentials?: pulumi.Input<WorkspaceConnectionApiKeyArgs>;
-    error?: pulumi.Input<string>;
-    expiryTime?: pulumi.Input<string>;
-    isSharedToAll?: pulumi.Input<boolean>;
+    credentials?: pulumi.Input<WorkspaceConnectionApiKeyArgs | undefined>;
+    error?: pulumi.Input<string | undefined>;
+    expiryTime?: pulumi.Input<string | undefined>;
+    isSharedToAll?: pulumi.Input<boolean | undefined>;
     /**
      * Store user metadata for this connection
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
-    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
-    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
-    target?: pulumi.Input<string>;
-    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement | undefined>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus | undefined>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -434,7 +433,7 @@ export interface ArmResourceIdArgs {
      * Arm ResourceId is in the format "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Storage/storageAccounts/{StorageAccountName}"
      * or "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{AcrName}"
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -471,41 +470,41 @@ export interface AutoMLJobArgs {
     /**
      * ARM resource ID of the component resource.
      */
-    componentId?: pulumi.Input<string>;
+    componentId?: pulumi.Input<string | undefined>;
     /**
      * ARM resource ID of the compute resource.
      */
-    computeId?: pulumi.Input<string>;
+    computeId?: pulumi.Input<string | undefined>;
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of job.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ARM resource ID of the Environment specification for the job.
      * This is optional value to provide, if not provided, AutoML will default this to Production AutoML curated environment version when running the job.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * Environment variables included in the job.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
      */
-    experimentName?: pulumi.Input<string>;
+    experimentName?: pulumi.Input<string | undefined>;
     /**
      * Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
      * Defaults to AmlToken if null.
      */
-    identity?: pulumi.Input<AmlTokenArgs | ManagedIdentityArgs | UserIdentityArgs>;
+    identity?: pulumi.Input<AmlTokenArgs | ManagedIdentityArgs | UserIdentityArgs | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * Enum to determine the type of job.
      * Expected value is 'AutoML'.
@@ -514,32 +513,32 @@ export interface AutoMLJobArgs {
     /**
      * Notification setting for the job
      */
-    notificationSetting?: pulumi.Input<NotificationSettingArgs>;
+    notificationSetting?: pulumi.Input<NotificationSettingArgs | undefined>;
     /**
      * Mapping of output data bindings used in the job.
      */
-    outputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobOutputArgs | MLFlowModelJobOutputArgs | MLTableJobOutputArgs | TritonModelJobOutputArgs | UriFileJobOutputArgs | UriFolderJobOutputArgs>}>;
+    outputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobOutputArgs | MLFlowModelJobOutputArgs | MLTableJobOutputArgs | TritonModelJobOutputArgs | UriFileJobOutputArgs | UriFolderJobOutputArgs>} | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Queue settings for the job
      */
-    queueSettings?: pulumi.Input<QueueSettingsArgs>;
+    queueSettings?: pulumi.Input<QueueSettingsArgs | undefined>;
     /**
      * Compute Resource configuration for the job.
      */
-    resources?: pulumi.Input<JobResourceConfigurationArgs>;
+    resources?: pulumi.Input<JobResourceConfigurationArgs | undefined>;
     /**
      * List of JobEndpoints.
      * For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
      */
-    services?: pulumi.Input<{[key: string]: pulumi.Input<JobServiceArgs>}>;
+    services?: pulumi.Input<{[key: string]: pulumi.Input<JobServiceArgs>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Required] This represents scenario which can be one of Tables/NLP/Image
      */
@@ -553,8 +552,8 @@ export function autoMLJobArgsProvideDefaults(val: AutoMLJobArgs): AutoMLJobArgs 
         ...val,
         experimentName: (val.experimentName) ?? "Default",
         isArchived: (val.isArchived) ?? false,
-        queueSettings: (val.queueSettings ? pulumi.output(val.queueSettings).apply(queueSettingsArgsProvideDefaults) : undefined),
-        resources: (val.resources ? pulumi.output(val.resources).apply(jobResourceConfigurationArgsProvideDefaults) : undefined),
+        queueSettings: pulumi.output(val.queueSettings).apply(v => v === undefined ? undefined : queueSettingsArgsProvideDefaults(v)),
+        resources: pulumi.output(val.resources).apply(v => v === undefined ? undefined : jobResourceConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -573,17 +572,17 @@ export interface AutoNCrossValidationsArgs {
  * Auto pause properties
  */
 export interface AutoPausePropertiesArgs {
-    delayInMinutes?: pulumi.Input<number>;
-    enabled?: pulumi.Input<boolean>;
+    delayInMinutes?: pulumi.Input<number | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * Auto scale properties
  */
 export interface AutoScalePropertiesArgs {
-    enabled?: pulumi.Input<boolean>;
-    maxNodeCount?: pulumi.Input<number>;
-    minNodeCount?: pulumi.Input<number>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    maxNodeCount?: pulumi.Input<number | undefined>;
+    minNodeCount?: pulumi.Input<number | undefined>;
 }
 
 export interface AutoSeasonalityArgs {
@@ -620,11 +619,11 @@ export interface AzureBlobDatastoreArgs {
     /**
      * Storage account name.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Storage account container name.
      */
-    containerName?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
     /**
      * [Required] Account credentials.
      */
@@ -637,35 +636,35 @@ export interface AzureBlobDatastoreArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Azure cloud endpoint for the storage account.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Protocol used to communicate with the storage account.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * Azure Resource Group name
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Indicates which identity to use to authenticate service data access to customer's storage.
      */
-    serviceDataAccessAuthIdentity?: pulumi.Input<string | enums.ServiceDataAccessAuthIdentity>;
+    serviceDataAccessAuthIdentity?: pulumi.Input<string | enums.ServiceDataAccessAuthIdentity | undefined>;
     /**
      * Azure Subscription Id
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * azureBlobDatastoreArgsProvideDefaults sets the appropriate defaults for AzureBlobDatastoreArgs
@@ -693,19 +692,19 @@ export interface AzureDataLakeGen1DatastoreArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Azure Resource Group name
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Indicates which identity to use to authenticate service data access to customer's storage.
      */
-    serviceDataAccessAuthIdentity?: pulumi.Input<string | enums.ServiceDataAccessAuthIdentity>;
+    serviceDataAccessAuthIdentity?: pulumi.Input<string | enums.ServiceDataAccessAuthIdentity | undefined>;
     /**
      * [Required] Azure Data Lake store name.
      */
@@ -713,11 +712,11 @@ export interface AzureDataLakeGen1DatastoreArgs {
     /**
      * Azure Subscription Id
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * azureDataLakeGen1DatastoreArgsProvideDefaults sets the appropriate defaults for AzureDataLakeGen1DatastoreArgs
@@ -749,11 +748,11 @@ export interface AzureDataLakeGen2DatastoreArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Azure cloud endpoint for the storage account.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * [Required] The name of the Data Lake Gen2 filesystem.
      */
@@ -761,27 +760,27 @@ export interface AzureDataLakeGen2DatastoreArgs {
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Protocol used to communicate with the storage account.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * Azure Resource Group name
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Indicates which identity to use to authenticate service data access to customer's storage.
      */
-    serviceDataAccessAuthIdentity?: pulumi.Input<string | enums.ServiceDataAccessAuthIdentity>;
+    serviceDataAccessAuthIdentity?: pulumi.Input<string | enums.ServiceDataAccessAuthIdentity | undefined>;
     /**
      * Azure Subscription Id
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * azureDataLakeGen2DatastoreArgsProvideDefaults sets the appropriate defaults for AzureDataLakeGen2DatastoreArgs
@@ -800,7 +799,7 @@ export interface AzureDevOpsWebhookArgs {
     /**
      * Send callback on a specified notification event
      */
-    eventType?: pulumi.Input<string>;
+    eventType?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the webhook callback service type.
      * Expected value is 'AzureDevOps'.
@@ -828,11 +827,11 @@ export interface AzureFileDatastoreArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Azure cloud endpoint for the storage account.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * [Required] The name of the Azure file share that the datastore points to.
      */
@@ -840,27 +839,27 @@ export interface AzureFileDatastoreArgs {
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Protocol used to communicate with the storage account.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * Azure Resource Group name
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Indicates which identity to use to authenticate service data access to customer's storage.
      */
-    serviceDataAccessAuthIdentity?: pulumi.Input<string | enums.ServiceDataAccessAuthIdentity>;
+    serviceDataAccessAuthIdentity?: pulumi.Input<string | enums.ServiceDataAccessAuthIdentity | undefined>;
     /**
      * Azure Subscription Id
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * azureFileDatastoreArgsProvideDefaults sets the appropriate defaults for AzureFileDatastoreArgs
@@ -879,24 +878,23 @@ export interface BanditPolicyArgs {
     /**
      * Number of intervals by which to delay the first evaluation.
      */
-    delayEvaluation?: pulumi.Input<number>;
+    delayEvaluation?: pulumi.Input<number | undefined>;
     /**
      * Interval (number of runs) between policy evaluations.
      */
-    evaluationInterval?: pulumi.Input<number>;
+    evaluationInterval?: pulumi.Input<number | undefined>;
     /**
-     *
      * Expected value is 'Bandit'.
      */
     policyType: pulumi.Input<"Bandit">;
     /**
      * Absolute distance allowed from the best performing run.
      */
-    slackAmount?: pulumi.Input<number>;
+    slackAmount?: pulumi.Input<number | undefined>;
     /**
      * Ratio of the allowed distance from the best performing run.
      */
-    slackFactor?: pulumi.Input<number>;
+    slackFactor?: pulumi.Input<number | undefined>;
 }
 /**
  * banditPolicyArgsProvideDefaults sets the appropriate defaults for BanditPolicyArgs
@@ -918,27 +916,27 @@ export interface BatchDeploymentPropertiesArgs {
     /**
      * Code configuration for the endpoint deployment.
      */
-    codeConfiguration?: pulumi.Input<CodeConfigurationArgs>;
+    codeConfiguration?: pulumi.Input<CodeConfigurationArgs | undefined>;
     /**
      * Compute target for batch inference operation.
      */
-    compute?: pulumi.Input<string>;
+    compute?: pulumi.Input<string | undefined>;
     /**
      * Properties relevant to different deployment types.
      */
-    deploymentConfiguration?: pulumi.Input<BatchPipelineComponentDeploymentConfigurationArgs>;
+    deploymentConfiguration?: pulumi.Input<BatchPipelineComponentDeploymentConfigurationArgs | undefined>;
     /**
      * Description of the endpoint deployment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * ARM resource ID or AssetId of the environment specification for the endpoint deployment.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * Environment variables configuration for the deployment.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Error threshold, if the error count for the entire input goes above this value,
      * the batch inference will be aborted. Range is [-1, int.MaxValue].
@@ -946,49 +944,49 @@ export interface BatchDeploymentPropertiesArgs {
      * For TabularDataset, this value is the count of record failures.
      * If set to -1 (the lower bound), all failures during batch inference will be ignored.
      */
-    errorThreshold?: pulumi.Input<number>;
+    errorThreshold?: pulumi.Input<number | undefined>;
     /**
      * Log verbosity for batch inferencing.
      * Increasing verbosity order for logging is : Warning, Info and Debug.
      * The default value is Info.
      */
-    loggingLevel?: pulumi.Input<string | enums.BatchLoggingLevel>;
+    loggingLevel?: pulumi.Input<string | enums.BatchLoggingLevel | undefined>;
     /**
      * Indicates maximum number of parallelism per instance.
      */
-    maxConcurrencyPerInstance?: pulumi.Input<number>;
+    maxConcurrencyPerInstance?: pulumi.Input<number | undefined>;
     /**
      * Size of the mini-batch passed to each batch invocation.
      * For FileDataset, this is the number of files per mini-batch.
      * For TabularDataset, this is the size of the records in bytes, per mini-batch.
      */
-    miniBatchSize?: pulumi.Input<number>;
+    miniBatchSize?: pulumi.Input<number | undefined>;
     /**
      * Reference to the model asset for the endpoint deployment.
      */
-    model?: pulumi.Input<DataPathAssetReferenceArgs | IdAssetReferenceArgs | OutputPathAssetReferenceArgs>;
+    model?: pulumi.Input<DataPathAssetReferenceArgs | IdAssetReferenceArgs | OutputPathAssetReferenceArgs | undefined>;
     /**
      * Enum to determine how batch inferencing will handle output
      */
-    outputAction?: pulumi.Input<string | enums.BatchOutputAction>;
+    outputAction?: pulumi.Input<string | enums.BatchOutputAction | undefined>;
     /**
      * Customized output file name for append_row output action.
      */
-    outputFileName?: pulumi.Input<string>;
+    outputFileName?: pulumi.Input<string | undefined>;
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates compute configuration for the job.
      * If not provided, will default to the defaults defined in ResourceConfiguration.
      */
-    resources?: pulumi.Input<DeploymentResourceConfigurationArgs>;
+    resources?: pulumi.Input<DeploymentResourceConfigurationArgs | undefined>;
     /**
      * Retry Settings for the batch inference operation.
      * If not provided, will default to the defaults defined in BatchRetrySettings.
      */
-    retrySettings?: pulumi.Input<BatchRetrySettingsArgs>;
+    retrySettings?: pulumi.Input<BatchRetrySettingsArgs | undefined>;
 }
 /**
  * batchDeploymentPropertiesArgsProvideDefaults sets the appropriate defaults for BatchDeploymentPropertiesArgs
@@ -1002,8 +1000,8 @@ export function batchDeploymentPropertiesArgsProvideDefaults(val: BatchDeploymen
         miniBatchSize: (val.miniBatchSize) ?? 10,
         outputAction: (val.outputAction) ?? "AppendRow",
         outputFileName: (val.outputFileName) ?? "predictions.csv",
-        resources: (val.resources ? pulumi.output(val.resources).apply(deploymentResourceConfigurationArgsProvideDefaults) : undefined),
-        retrySettings: (val.retrySettings ? pulumi.output(val.retrySettings).apply(batchRetrySettingsArgsProvideDefaults) : undefined),
+        resources: pulumi.output(val.resources).apply(v => v === undefined ? undefined : deploymentResourceConfigurationArgsProvideDefaults(v)),
+        retrySettings: pulumi.output(val.retrySettings).apply(v => v === undefined ? undefined : batchRetrySettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -1015,7 +1013,7 @@ export interface BatchEndpointDefaultsArgs {
      * Name of the deployment that will be default for the endpoint.
      * This deployment will end up getting 100% traffic when the endpoint scoring URL is invoked.
      */
-    deploymentName?: pulumi.Input<string>;
+    deploymentName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1029,20 +1027,20 @@ export interface BatchEndpointPropertiesArgs {
     /**
      * Default values for Batch Endpoint
      */
-    defaults?: pulumi.Input<BatchEndpointDefaultsArgs>;
+    defaults?: pulumi.Input<BatchEndpointDefaultsArgs | undefined>;
     /**
      * Description of the inference endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * EndpointAuthKeys to set initially on an Endpoint.
      * This property will always be returned as null. AuthKey values must be retrieved using the ListKeys API.
      */
-    keys?: pulumi.Input<EndpointAuthKeysArgs>;
+    keys?: pulumi.Input<EndpointAuthKeysArgs | undefined>;
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -1052,7 +1050,7 @@ export interface BatchPipelineComponentDeploymentConfigurationArgs {
     /**
      * The ARM id of the component to be run.
      */
-    componentId?: pulumi.Input<IdAssetReferenceArgs>;
+    componentId?: pulumi.Input<IdAssetReferenceArgs | undefined>;
     /**
      * The enumerated property types for batch deployments.
      * Expected value is 'PipelineComponent'.
@@ -1061,15 +1059,15 @@ export interface BatchPipelineComponentDeploymentConfigurationArgs {
     /**
      * The description which will be applied to the job.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Run-time settings for the pipeline job.
      */
-    settings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    settings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The tags which will be applied to the job.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -1079,11 +1077,11 @@ export interface BatchRetrySettingsArgs {
     /**
      * Maximum retry count for a mini-batch
      */
-    maxRetries?: pulumi.Input<number>;
+    maxRetries?: pulumi.Input<number | undefined>;
     /**
      * Invocation timeout for a mini-batch, in ISO 8601 format.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 /**
  * batchRetrySettingsArgsProvideDefaults sets the appropriate defaults for BatchRetrySettingsArgs
@@ -1101,7 +1099,6 @@ export function batchRetrySettingsArgsProvideDefaults(val: BatchRetrySettingsArg
  */
 export interface BayesianSamplingAlgorithmArgs {
     /**
-     *
      * Expected value is 'Bayesian'.
      */
     samplingAlgorithmType: pulumi.Input<"Bayesian">;
@@ -1111,15 +1108,15 @@ export interface BindOptionsArgs {
     /**
      * Indicate whether to create host path.
      */
-    createHostPath?: pulumi.Input<boolean>;
+    createHostPath?: pulumi.Input<boolean | undefined>;
     /**
      * Type of Bind Option
      */
-    propagation?: pulumi.Input<string>;
+    propagation?: pulumi.Input<string | undefined>;
     /**
      * Mention the selinux options.
      */
-    selinux?: pulumi.Input<string>;
+    selinux?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1135,7 +1132,7 @@ export interface BuildContextArgs {
      * Path to the Dockerfile in the build context.
      * <seealso href="https://docs.docker.com/engine/reference/builder/" />
      */
-    dockerfilePath?: pulumi.Input<string>;
+    dockerfilePath?: pulumi.Input<string | undefined>;
 }
 /**
  * buildContextArgsProvideDefaults sets the appropriate defaults for BuildContextArgs
@@ -1151,43 +1148,43 @@ export interface CapabilityHostPropertiesArgs {
     /**
      * List of Aca Environment connections.
      */
-    acaEnvironmentConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    acaEnvironmentConnections?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of AI services connections.
      */
-    aiServicesConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    aiServicesConnections?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Kind of this capability host.
      */
-    capabilityHostKind?: pulumi.Input<string | enums.CapabilityHostKind>;
+    capabilityHostKind?: pulumi.Input<string | enums.CapabilityHostKind | undefined>;
     /**
      * Customer subnet info to help set up this capability host.
      */
-    customerSubnet?: pulumi.Input<string>;
+    customerSubnet?: pulumi.Input<string | undefined>;
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of Storage connections.
      */
-    storageConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    storageConnections?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of Thread storage connections.
      */
-    threadStorageConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    threadStorageConnections?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of VectorStore connections.
      */
-    vectorStoreConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    vectorStoreConnections?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 /**
  * capabilityHostPropertiesArgsProvideDefaults sets the appropriate defaults for CapabilityHostPropertiesArgs
@@ -1203,7 +1200,7 @@ export interface CapacityReservationGroupArgs {
     /**
      * Offer used by this capacity reservation group.
      */
-    offer?: pulumi.Input<ServerlessOfferArgs>;
+    offer?: pulumi.Input<ServerlessOfferArgs | undefined>;
     /**
      * [Required] Specifies the amount of capacity to reserve.
      */
@@ -1212,7 +1209,6 @@ export interface CapacityReservationGroupArgs {
 
 export interface CategoricalDataDriftMetricThresholdArgs {
     /**
-     *
      * Expected value is 'Categorical'.
      */
     dataType: pulumi.Input<"Categorical">;
@@ -1223,12 +1219,11 @@ export interface CategoricalDataDriftMetricThresholdArgs {
     /**
      * The threshold value. If null, a default value will be set depending on the selected metric.
      */
-    threshold?: pulumi.Input<MonitoringThresholdArgs>;
+    threshold?: pulumi.Input<MonitoringThresholdArgs | undefined>;
 }
 
 export interface CategoricalDataQualityMetricThresholdArgs {
     /**
-     *
      * Expected value is 'Categorical'.
      */
     dataType: pulumi.Input<"Categorical">;
@@ -1239,12 +1234,11 @@ export interface CategoricalDataQualityMetricThresholdArgs {
     /**
      * The threshold value. If null, a default value will be set depending on the selected metric.
      */
-    threshold?: pulumi.Input<MonitoringThresholdArgs>;
+    threshold?: pulumi.Input<MonitoringThresholdArgs | undefined>;
 }
 
 export interface CategoricalPredictionDriftMetricThresholdArgs {
     /**
-     *
      * Expected value is 'Categorical'.
      */
     dataType: pulumi.Input<"Categorical">;
@@ -1255,7 +1249,7 @@ export interface CategoricalPredictionDriftMetricThresholdArgs {
     /**
      * The threshold value. If null, a default value will be set depending on the selected metric.
      */
-    threshold?: pulumi.Input<MonitoringThresholdArgs>;
+    threshold?: pulumi.Input<MonitoringThresholdArgs | undefined>;
 }
 
 /**
@@ -1265,7 +1259,7 @@ export interface CertificateDatastoreCredentialsArgs {
     /**
      * Authority URL used for authentication.
      */
-    authorityUrl?: pulumi.Input<string>;
+    authorityUrl?: pulumi.Input<string | undefined>;
     /**
      * [Required] Service principal client ID.
      */
@@ -1278,7 +1272,7 @@ export interface CertificateDatastoreCredentialsArgs {
     /**
      * Resource the service principal has access to.
      */
-    resourceUrl?: pulumi.Input<string>;
+    resourceUrl?: pulumi.Input<string | undefined>;
     /**
      * [Required] Service principal secrets.
      */
@@ -1300,7 +1294,7 @@ export interface CertificateDatastoreSecretsArgs {
     /**
      * Service principal certificate.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the datastore secrets type.
      * Expected value is 'Certificate'.
@@ -1315,37 +1309,37 @@ export interface ClassificationArgs {
     /**
      * Columns to use for CVSplit data.
      */
-    cvSplitColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
+    cvSplitColumnNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Featurization inputs needed for AutoML job.
      */
-    featurizationSettings?: pulumi.Input<TableVerticalFeaturizationSettingsArgs>;
+    featurizationSettings?: pulumi.Input<TableVerticalFeaturizationSettingsArgs | undefined>;
     /**
      * Execution constraints for AutoMLJob.
      */
-    limitSettings?: pulumi.Input<TableVerticalLimitSettingsArgs>;
+    limitSettings?: pulumi.Input<TableVerticalLimitSettingsArgs | undefined>;
     /**
      * Enum for setting log verbosity.
      */
-    logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
+    logVerbosity?: pulumi.Input<string | enums.LogVerbosity | undefined>;
     /**
      * Number of cross validation folds to be applied on training dataset
      * when validation dataset is not provided.
      */
-    nCrossValidations?: pulumi.Input<AutoNCrossValidationsArgs | CustomNCrossValidationsArgs>;
+    nCrossValidations?: pulumi.Input<AutoNCrossValidationsArgs | CustomNCrossValidationsArgs | undefined>;
     /**
      * Positive label for binary metrics calculation.
      */
-    positiveLabel?: pulumi.Input<string>;
+    positiveLabel?: pulumi.Input<string | undefined>;
     /**
      * Primary metrics for classification tasks.
      */
-    primaryMetric?: pulumi.Input<string | enums.ClassificationPrimaryMetrics>;
+    primaryMetric?: pulumi.Input<string | enums.ClassificationPrimaryMetrics | undefined>;
     /**
      * Target column name: This is prediction values column.
      * Also known as label column name in context of classification tasks.
      */
-    targetColumnName?: pulumi.Input<string>;
+    targetColumnName?: pulumi.Input<string | undefined>;
     /**
      * AutoMLJob Task type.
      * Expected value is 'Classification'.
@@ -1354,13 +1348,13 @@ export interface ClassificationArgs {
     /**
      * Test data input.
      */
-    testData?: pulumi.Input<MLTableJobInputArgs>;
+    testData?: pulumi.Input<MLTableJobInputArgs | undefined>;
     /**
      * The fraction of test dataset that needs to be set aside for validation purpose.
      * Values between (0.0 , 1.0)
      * Applied when validation dataset is not provided.
      */
-    testDataSize?: pulumi.Input<number>;
+    testDataSize?: pulumi.Input<number | undefined>;
     /**
      * [Required] Training data input.
      */
@@ -1368,21 +1362,21 @@ export interface ClassificationArgs {
     /**
      * Inputs for training phase for an AutoML Job.
      */
-    trainingSettings?: pulumi.Input<ClassificationTrainingSettingsArgs>;
+    trainingSettings?: pulumi.Input<ClassificationTrainingSettingsArgs | undefined>;
     /**
      * Validation data inputs.
      */
-    validationData?: pulumi.Input<MLTableJobInputArgs>;
+    validationData?: pulumi.Input<MLTableJobInputArgs | undefined>;
     /**
      * The fraction of training dataset that needs to be set aside for validation purpose.
      * Values between (0.0 , 1.0)
      * Applied when validation dataset is not provided.
      */
-    validationDataSize?: pulumi.Input<number>;
+    validationDataSize?: pulumi.Input<number | undefined>;
     /**
      * The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
      */
-    weightColumnName?: pulumi.Input<string>;
+    weightColumnName?: pulumi.Input<string | undefined>;
 }
 /**
  * classificationArgsProvideDefaults sets the appropriate defaults for ClassificationArgs
@@ -1390,14 +1384,14 @@ export interface ClassificationArgs {
 export function classificationArgsProvideDefaults(val: ClassificationArgs): ClassificationArgs {
     return {
         ...val,
-        featurizationSettings: (val.featurizationSettings ? pulumi.output(val.featurizationSettings).apply(tableVerticalFeaturizationSettingsArgsProvideDefaults) : undefined),
-        limitSettings: (val.limitSettings ? pulumi.output(val.limitSettings).apply(tableVerticalLimitSettingsArgsProvideDefaults) : undefined),
+        featurizationSettings: pulumi.output(val.featurizationSettings).apply(v => v === undefined ? undefined : tableVerticalFeaturizationSettingsArgsProvideDefaults(v)),
+        limitSettings: pulumi.output(val.limitSettings).apply(v => v === undefined ? undefined : tableVerticalLimitSettingsArgsProvideDefaults(v)),
         logVerbosity: (val.logVerbosity) ?? "Info",
         primaryMetric: (val.primaryMetric) ?? "AUCWeighted",
-        testData: (val.testData ? pulumi.output(val.testData).apply(mltableJobInputArgsProvideDefaults) : undefined),
+        testData: pulumi.output(val.testData).apply(v => v === undefined ? undefined : mltableJobInputArgsProvideDefaults(v)),
         trainingData: pulumi.output(val.trainingData).apply(mltableJobInputArgsProvideDefaults),
-        trainingSettings: (val.trainingSettings ? pulumi.output(val.trainingSettings).apply(classificationTrainingSettingsArgsProvideDefaults) : undefined),
-        validationData: (val.validationData ? pulumi.output(val.validationData).apply(mltableJobInputArgsProvideDefaults) : undefined),
+        trainingSettings: pulumi.output(val.trainingSettings).apply(v => v === undefined ? undefined : classificationTrainingSettingsArgsProvideDefaults(v)),
+        validationData: pulumi.output(val.validationData).apply(v => v === undefined ? undefined : mltableJobInputArgsProvideDefaults(v)),
     };
 }
 
@@ -1408,40 +1402,40 @@ export interface ClassificationTrainingSettingsArgs {
     /**
      * Allowed models for classification task.
      */
-    allowedTrainingAlgorithms?: pulumi.Input<pulumi.Input<string | enums.ClassificationModels>[]>;
+    allowedTrainingAlgorithms?: pulumi.Input<pulumi.Input<string | enums.ClassificationModels>[] | undefined>;
     /**
      * Blocked models for classification task.
      */
-    blockedTrainingAlgorithms?: pulumi.Input<pulumi.Input<string | enums.ClassificationModels>[]>;
+    blockedTrainingAlgorithms?: pulumi.Input<pulumi.Input<string | enums.ClassificationModels>[] | undefined>;
     /**
      * Enable recommendation of DNN models.
      */
-    enableDnnTraining?: pulumi.Input<boolean>;
+    enableDnnTraining?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to turn on explainability on best model.
      */
-    enableModelExplainability?: pulumi.Input<boolean>;
+    enableModelExplainability?: pulumi.Input<boolean | undefined>;
     /**
      * Flag for enabling onnx compatible models.
      */
-    enableOnnxCompatibleModels?: pulumi.Input<boolean>;
+    enableOnnxCompatibleModels?: pulumi.Input<boolean | undefined>;
     /**
      * Enable stack ensemble run.
      */
-    enableStackEnsemble?: pulumi.Input<boolean>;
+    enableStackEnsemble?: pulumi.Input<boolean | undefined>;
     /**
      * Enable voting ensemble run.
      */
-    enableVoteEnsemble?: pulumi.Input<boolean>;
+    enableVoteEnsemble?: pulumi.Input<boolean | undefined>;
     /**
      * During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
      * Configure this parameter with a higher value than 300 secs, if more time is needed.
      */
-    ensembleModelDownloadTimeout?: pulumi.Input<string>;
+    ensembleModelDownloadTimeout?: pulumi.Input<string | undefined>;
     /**
      * Stack ensemble settings for stack ensemble run.
      */
-    stackEnsembleSettings?: pulumi.Input<StackEnsembleSettingsArgs>;
+    stackEnsembleSettings?: pulumi.Input<StackEnsembleSettingsArgs | undefined>;
 }
 /**
  * classificationTrainingSettingsArgsProvideDefaults sets the appropriate defaults for ClassificationTrainingSettingsArgs
@@ -1455,7 +1449,7 @@ export function classificationTrainingSettingsArgsProvideDefaults(val: Classific
         enableStackEnsemble: (val.enableStackEnsemble) ?? true,
         enableVoteEnsemble: (val.enableVoteEnsemble) ?? true,
         ensembleModelDownloadTimeout: (val.ensembleModelDownloadTimeout) ?? "PT5M",
-        stackEnsembleSettings: (val.stackEnsembleSettings ? pulumi.output(val.stackEnsembleSettings).apply(stackEnsembleSettingsArgsProvideDefaults) : undefined),
+        stackEnsembleSettings: pulumi.output(val.stackEnsembleSettings).apply(v => v === undefined ? undefined : stackEnsembleSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -1466,7 +1460,7 @@ export interface CodeConfigurationArgs {
     /**
      * ARM resource ID of the code asset.
      */
-    codeId?: pulumi.Input<string>;
+    codeId?: pulumi.Input<string | undefined>;
     /**
      * [Required] The script to execute on startup. eg. "score.py"
      */
@@ -1480,19 +1474,19 @@ export interface CodeContainerPropertiesArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * codeContainerPropertiesArgsProvideDefaults sets the appropriate defaults for CodeContainerPropertiesArgs
@@ -1511,27 +1505,27 @@ export interface CodeVersionPropertiesArgs {
     /**
      * Uri where code is located
      */
-    codeUri?: pulumi.Input<string>;
+    codeUri?: pulumi.Input<string | undefined>;
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If the name version are system generated (anonymous registration).
      */
-    isAnonymous?: pulumi.Input<boolean>;
+    isAnonymous?: pulumi.Input<boolean | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * codeVersionPropertiesArgsProvideDefaults sets the appropriate defaults for CodeVersionPropertiesArgs
@@ -1545,30 +1539,30 @@ export function codeVersionPropertiesArgsProvideDefaults(val: CodeVersionPropert
 }
 
 export interface CognitiveServicesSkuArgs {
-    capacity?: pulumi.Input<number>;
-    family?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    size?: pulumi.Input<string>;
-    tier?: pulumi.Input<string>;
+    capacity?: pulumi.Input<number | undefined>;
+    family?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    size?: pulumi.Input<string | undefined>;
+    tier?: pulumi.Input<string | undefined>;
 }
 
 export interface CollectionArgs {
     /**
      * The msi client id used to collect logging to blob storage. If it's null,backend will pick a registered endpoint identity to auth.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable data collection.
      */
-    dataCollectionMode?: pulumi.Input<string | enums.DataCollectionMode>;
+    dataCollectionMode?: pulumi.Input<string | enums.DataCollectionMode | undefined>;
     /**
      * The data asset arm resource id. Client side will ensure data asset is pointing to the blob storage, and backend will collect data to the blob storage.
      */
-    dataId?: pulumi.Input<string>;
+    dataId?: pulumi.Input<string | undefined>;
     /**
      * The sampling rate for collection. Sampling rate 1.0 means we collect 100% of data by default.
      */
-    samplingRate?: pulumi.Input<number>;
+    samplingRate?: pulumi.Input<number | undefined>;
 }
 /**
  * collectionArgsProvideDefaults sets the appropriate defaults for CollectionArgs
@@ -1588,12 +1582,12 @@ export interface ColumnTransformerArgs {
     /**
      * Fields to apply transformer logic on.
      */
-    fields?: pulumi.Input<pulumi.Input<string>[]>;
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Different properties to be passed to transformer.
      * Input expected is dictionary of key,value pairs in JSON format.
      */
-    parameters?: any;
+    parameters?: any | undefined;
 }
 
 /**
@@ -1603,7 +1597,7 @@ export interface CommandJobArgs {
     /**
      * ARM resource ID of the code asset.
      */
-    codeId?: pulumi.Input<string>;
+    codeId?: pulumi.Input<string | undefined>;
     /**
      * [Required] The command to execute on startup of the job. eg. "python train.py"
      */
@@ -1611,23 +1605,23 @@ export interface CommandJobArgs {
     /**
      * ARM resource ID of the component resource.
      */
-    componentId?: pulumi.Input<string>;
+    componentId?: pulumi.Input<string | undefined>;
     /**
      * ARM resource ID of the compute resource.
      */
-    computeId?: pulumi.Input<string>;
+    computeId?: pulumi.Input<string | undefined>;
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of job.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Distribution configuration of the job. If set, this should be one of Mpi, Tensorflow, PyTorch, or null.
      */
-    distribution?: pulumi.Input<MpiArgs | PyTorchArgs | TensorFlowArgs>;
+    distribution?: pulumi.Input<MpiArgs | PyTorchArgs | TensorFlowArgs | undefined>;
     /**
      * [Required] The ARM resource ID of the Environment specification for the job.
      */
@@ -1635,24 +1629,24 @@ export interface CommandJobArgs {
     /**
      * Environment variables included in the job.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
      */
-    experimentName?: pulumi.Input<string>;
+    experimentName?: pulumi.Input<string | undefined>;
     /**
      * Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
      * Defaults to AmlToken if null.
      */
-    identity?: pulumi.Input<AmlTokenArgs | ManagedIdentityArgs | UserIdentityArgs>;
+    identity?: pulumi.Input<AmlTokenArgs | ManagedIdentityArgs | UserIdentityArgs | undefined>;
     /**
      * Mapping of input data bindings used in the job.
      */
-    inputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobInputArgs | LiteralJobInputArgs | MLFlowModelJobInputArgs | MLTableJobInputArgs | TritonModelJobInputArgs | UriFileJobInputArgs | UriFolderJobInputArgs>}>;
+    inputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobInputArgs | LiteralJobInputArgs | MLFlowModelJobInputArgs | MLTableJobInputArgs | TritonModelJobInputArgs | UriFileJobInputArgs | UriFolderJobInputArgs>} | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * Enum to determine the type of job.
      * Expected value is 'Command'.
@@ -1661,36 +1655,36 @@ export interface CommandJobArgs {
     /**
      * Command Job limit.
      */
-    limits?: pulumi.Input<CommandJobLimitsArgs>;
+    limits?: pulumi.Input<CommandJobLimitsArgs | undefined>;
     /**
      * Notification setting for the job
      */
-    notificationSetting?: pulumi.Input<NotificationSettingArgs>;
+    notificationSetting?: pulumi.Input<NotificationSettingArgs | undefined>;
     /**
      * Mapping of output data bindings used in the job.
      */
-    outputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobOutputArgs | MLFlowModelJobOutputArgs | MLTableJobOutputArgs | TritonModelJobOutputArgs | UriFileJobOutputArgs | UriFolderJobOutputArgs>}>;
+    outputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobOutputArgs | MLFlowModelJobOutputArgs | MLTableJobOutputArgs | TritonModelJobOutputArgs | UriFileJobOutputArgs | UriFolderJobOutputArgs>} | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Queue settings for the job
      */
-    queueSettings?: pulumi.Input<QueueSettingsArgs>;
+    queueSettings?: pulumi.Input<QueueSettingsArgs | undefined>;
     /**
      * Compute Resource configuration for the job.
      */
-    resources?: pulumi.Input<JobResourceConfigurationArgs>;
+    resources?: pulumi.Input<JobResourceConfigurationArgs | undefined>;
     /**
      * List of JobEndpoints.
      * For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
      */
-    services?: pulumi.Input<{[key: string]: pulumi.Input<JobServiceArgs>}>;
+    services?: pulumi.Input<{[key: string]: pulumi.Input<JobServiceArgs>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * commandJobArgsProvideDefaults sets the appropriate defaults for CommandJobArgs
@@ -1700,8 +1694,8 @@ export function commandJobArgsProvideDefaults(val: CommandJobArgs): CommandJobAr
         ...val,
         experimentName: (val.experimentName) ?? "Default",
         isArchived: (val.isArchived) ?? false,
-        queueSettings: (val.queueSettings ? pulumi.output(val.queueSettings).apply(queueSettingsArgsProvideDefaults) : undefined),
-        resources: (val.resources ? pulumi.output(val.resources).apply(jobResourceConfigurationArgsProvideDefaults) : undefined),
+        queueSettings: pulumi.output(val.queueSettings).apply(v => v === undefined ? undefined : queueSettingsArgsProvideDefaults(v)),
+        resources: pulumi.output(val.resources).apply(v => v === undefined ? undefined : jobResourceConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -1710,14 +1704,13 @@ export function commandJobArgsProvideDefaults(val: CommandJobArgs): CommandJobAr
  */
 export interface CommandJobLimitsArgs {
     /**
-     *
      * Expected value is 'Command'.
      */
     jobLimitsType: pulumi.Input<"Command">;
     /**
      * The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1728,19 +1721,19 @@ export interface ComponentContainerPropertiesArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * componentContainerPropertiesArgsProvideDefaults sets the appropriate defaults for ComponentContainerPropertiesArgs
@@ -1760,27 +1753,27 @@ export interface ComponentVersionPropertiesArgs {
      * Defines Component definition details.
      * <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
      */
-    componentSpec?: any;
+    componentSpec?: any | undefined;
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If the name version are system generated (anonymous registration).
      */
-    isAnonymous?: pulumi.Input<boolean>;
+    isAnonymous?: pulumi.Input<boolean | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * componentVersionPropertiesArgsProvideDefaults sets the appropriate defaults for ComponentVersionPropertiesArgs
@@ -1800,7 +1793,7 @@ export interface ComputeInstanceArgs {
     /**
      * Location for the underlying compute
      */
-    computeLocation?: pulumi.Input<string>;
+    computeLocation?: pulumi.Input<string | undefined>;
     /**
      * The type of compute
      * Expected value is 'ComputeInstance'.
@@ -1809,19 +1802,19 @@ export interface ComputeInstanceArgs {
     /**
      * The description of the Machine Learning compute.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Properties of ComputeInstance
      */
-    properties?: pulumi.Input<ComputeInstancePropertiesArgs>;
+    properties?: pulumi.Input<ComputeInstancePropertiesArgs | undefined>;
     /**
      * ARM resource id of the underlying compute
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 /**
  * computeInstanceArgsProvideDefaults sets the appropriate defaults for ComputeInstanceArgs
@@ -1829,7 +1822,7 @@ export interface ComputeInstanceArgs {
 export function computeInstanceArgsProvideDefaults(val: ComputeInstanceArgs): ComputeInstanceArgs {
     return {
         ...val,
-        properties: (val.properties ? pulumi.output(val.properties).apply(computeInstancePropertiesArgsProvideDefaults) : undefined),
+        properties: pulumi.output(val.properties).apply(v => v === undefined ? undefined : computeInstancePropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -1840,51 +1833,51 @@ export interface ComputeInstancePropertiesArgs {
     /**
      * Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
      */
-    applicationSharingPolicy?: pulumi.Input<string | enums.ApplicationSharingPolicy>;
+    applicationSharingPolicy?: pulumi.Input<string | enums.ApplicationSharingPolicy | undefined>;
     /**
      * The Compute Instance Authorization type. Available values are personal (default).
      */
-    computeInstanceAuthorizationType?: pulumi.Input<string | enums.ComputeInstanceAuthorizationType>;
+    computeInstanceAuthorizationType?: pulumi.Input<string | enums.ComputeInstanceAuthorizationType | undefined>;
     /**
      * List of Custom Services added to the compute.
      */
-    customServices?: pulumi.Input<pulumi.Input<CustomServiceArgs>[]>;
+    customServices?: pulumi.Input<pulumi.Input<CustomServiceArgs>[] | undefined>;
     /**
      * Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
      */
-    enableNodePublicIp?: pulumi.Input<boolean>;
+    enableNodePublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * Enable SSO (single sign on). Possible values are: true, false.
      */
-    enableSSO?: pulumi.Input<boolean>;
+    enableSSO?: pulumi.Input<boolean | undefined>;
     /**
      * Stops compute instance after user defined period of inactivity. Time is defined in ISO8601 format. Minimum is 15 min, maximum is 3 days.
      */
-    idleTimeBeforeShutdown?: pulumi.Input<string>;
+    idleTimeBeforeShutdown?: pulumi.Input<string | undefined>;
     /**
      * Settings for a personal compute instance.
      */
-    personalComputeInstanceSettings?: pulumi.Input<PersonalComputeInstanceSettingsArgs>;
+    personalComputeInstanceSettings?: pulumi.Input<PersonalComputeInstanceSettingsArgs | undefined>;
     /**
      * The list of schedules to be applied on the computes.
      */
-    schedules?: pulumi.Input<ComputeSchedulesArgs>;
+    schedules?: pulumi.Input<ComputeSchedulesArgs | undefined>;
     /**
      * Details of customized scripts to execute for setting up the cluster.
      */
-    setupScripts?: pulumi.Input<SetupScriptsArgs>;
+    setupScripts?: pulumi.Input<SetupScriptsArgs | undefined>;
     /**
      * Specifies policy and settings for SSH access.
      */
-    sshSettings?: pulumi.Input<ComputeInstanceSshSettingsArgs>;
+    sshSettings?: pulumi.Input<ComputeInstanceSshSettingsArgs | undefined>;
     /**
      * Virtual network subnet resource ID the compute nodes belong to.
      */
-    subnet?: pulumi.Input<ResourceIdArgs>;
+    subnet?: pulumi.Input<ResourceIdArgs | undefined>;
     /**
      * Virtual Machine Size
      */
-    vmSize?: pulumi.Input<string>;
+    vmSize?: pulumi.Input<string | undefined>;
 }
 /**
  * computeInstancePropertiesArgsProvideDefaults sets the appropriate defaults for ComputeInstancePropertiesArgs
@@ -1895,7 +1888,7 @@ export function computeInstancePropertiesArgsProvideDefaults(val: ComputeInstanc
         applicationSharingPolicy: (val.applicationSharingPolicy) ?? "Shared",
         computeInstanceAuthorizationType: (val.computeInstanceAuthorizationType) ?? "personal",
         enableSSO: (val.enableSSO) ?? true,
-        sshSettings: (val.sshSettings ? pulumi.output(val.sshSettings).apply(computeInstanceSshSettingsArgsProvideDefaults) : undefined),
+        sshSettings: pulumi.output(val.sshSettings).apply(v => v === undefined ? undefined : computeInstanceSshSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -1906,11 +1899,11 @@ export interface ComputeInstanceSshSettingsArgs {
     /**
      * Specifies the SSH rsa public key file as a string. Use "ssh-keygen -t rsa -b 2048" to generate your SSH key pairs.
      */
-    adminPublicKey?: pulumi.Input<string>;
+    adminPublicKey?: pulumi.Input<string | undefined>;
     /**
      * State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
      */
-    sshPublicAccess?: pulumi.Input<string | enums.SshPublicAccess>;
+    sshPublicAccess?: pulumi.Input<string | enums.SshPublicAccess | undefined>;
 }
 /**
  * computeInstanceSshSettingsArgsProvideDefaults sets the appropriate defaults for ComputeInstanceSshSettingsArgs
@@ -1934,15 +1927,15 @@ export interface ComputeRecurrenceScheduleArgs {
     /**
      * List of month days for the schedule
      */
-    monthDays?: pulumi.Input<pulumi.Input<number>[]>;
+    monthDays?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * List of days for the schedule.
      */
-    weekDays?: pulumi.Input<pulumi.Input<string | enums.ComputeWeekDay>[]>;
+    weekDays?: pulumi.Input<pulumi.Input<string | enums.ComputeWeekDay>[] | undefined>;
 }
 
 export interface ComputeRuntimeDtoArgs {
-    sparkRuntimeVersion?: pulumi.Input<string>;
+    sparkRuntimeVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1952,7 +1945,7 @@ export interface ComputeSchedulesArgs {
     /**
      * The list of compute start stop schedules to be applied.
      */
-    computeStartStop?: pulumi.Input<pulumi.Input<ComputeStartStopScheduleArgs>[]>;
+    computeStartStop?: pulumi.Input<pulumi.Input<ComputeStartStopScheduleArgs>[] | undefined>;
 }
 
 /**
@@ -1962,27 +1955,27 @@ export interface ComputeStartStopScheduleArgs {
     /**
      * [Required] The compute power action.
      */
-    action?: pulumi.Input<string | enums.ComputePowerAction>;
+    action?: pulumi.Input<string | enums.ComputePowerAction | undefined>;
     /**
      * Required if triggerType is Cron.
      */
-    cron?: pulumi.Input<CronArgs>;
+    cron?: pulumi.Input<CronArgs | undefined>;
     /**
      * Required if triggerType is Recurrence.
      */
-    recurrence?: pulumi.Input<RecurrenceArgs>;
+    recurrence?: pulumi.Input<RecurrenceArgs | undefined>;
     /**
      * [Deprecated] Not used any more.
      */
-    schedule?: pulumi.Input<ScheduleBaseArgs>;
+    schedule?: pulumi.Input<ScheduleBaseArgs | undefined>;
     /**
      * Is the schedule enabled or disabled?
      */
-    status?: pulumi.Input<string | enums.ScheduleStatus>;
+    status?: pulumi.Input<string | enums.ScheduleStatus | undefined>;
     /**
      * [Required] The schedule trigger type.
      */
-    triggerType?: pulumi.Input<string | enums.ComputeTriggerType>;
+    triggerType?: pulumi.Input<string | enums.ComputeTriggerType | undefined>;
 }
 /**
  * computeStartStopScheduleArgsProvideDefaults sets the appropriate defaults for ComputeStartStopScheduleArgs
@@ -1990,8 +1983,8 @@ export interface ComputeStartStopScheduleArgs {
 export function computeStartStopScheduleArgsProvideDefaults(val: ComputeStartStopScheduleArgs): ComputeStartStopScheduleArgs {
     return {
         ...val,
-        cron: (val.cron ? pulumi.output(val.cron).apply(cronArgsProvideDefaults) : undefined),
-        recurrence: (val.recurrence ? pulumi.output(val.recurrence).apply(recurrenceArgsProvideDefaults) : undefined),
+        cron: pulumi.output(val.cron).apply(v => v === undefined ? undefined : cronArgsProvideDefaults(v)),
+        recurrence: pulumi.output(val.recurrence).apply(v => v === undefined ? undefined : recurrenceArgsProvideDefaults(v)),
     };
 }
 
@@ -2002,11 +1995,11 @@ export interface ContainerResourceRequirementsArgs {
     /**
      * Container resource limit info:
      */
-    containerResourceLimits?: pulumi.Input<ContainerResourceSettingsArgs>;
+    containerResourceLimits?: pulumi.Input<ContainerResourceSettingsArgs | undefined>;
     /**
      * Container resource request info:
      */
-    containerResourceRequests?: pulumi.Input<ContainerResourceSettingsArgs>;
+    containerResourceRequests?: pulumi.Input<ContainerResourceSettingsArgs | undefined>;
 }
 
 export interface ContainerResourceSettingsArgs {
@@ -2014,17 +2007,17 @@ export interface ContainerResourceSettingsArgs {
      * Number of vCPUs request/limit for container. More info:
      * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
      */
-    cpu?: pulumi.Input<string>;
+    cpu?: pulumi.Input<string | undefined>;
     /**
      * Number of Nvidia GPU cards request/limit for container. More info:
      * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
      */
-    gpu?: pulumi.Input<string>;
+    gpu?: pulumi.Input<string | undefined>;
     /**
      * Memory size request/limit for container. More info:
      * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
      */
-    memory?: pulumi.Input<string>;
+    memory?: pulumi.Input<string | undefined>;
 }
 
 export interface ContentSafetyArgs {
@@ -2038,7 +2031,7 @@ export interface ContentSafetyEndpointDeploymentResourcePropertiesArgs {
     /**
      * The failure reason if the creation failed.
      */
-    failureReason?: pulumi.Input<string>;
+    failureReason?: pulumi.Input<string | undefined>;
     /**
      * Model used for the endpoint deployment.
      */
@@ -2046,8 +2039,8 @@ export interface ContentSafetyEndpointDeploymentResourcePropertiesArgs {
     /**
      * The name of RAI policy.
      */
-    raiPolicyName?: pulumi.Input<string>;
-    sku?: pulumi.Input<CognitiveServicesSkuArgs>;
+    raiPolicyName?: pulumi.Input<string | undefined>;
+    sku?: pulumi.Input<CognitiveServicesSkuArgs | undefined>;
     /**
      * Kind of the deployment.
      * Expected value is 'Azure.ContentSafety'.
@@ -2056,16 +2049,15 @@ export interface ContentSafetyEndpointDeploymentResourcePropertiesArgs {
     /**
      * Deployment model version upgrade option.
      */
-    versionUpgradeOption?: pulumi.Input<string | enums.DeploymentModelVersionUpgradeOption>;
+    versionUpgradeOption?: pulumi.Input<string | enums.DeploymentModelVersionUpgradeOption | undefined>;
 }
 
 export interface CosmosDbSettingsArgs {
-    collectionsThroughput?: pulumi.Input<number>;
+    collectionsThroughput?: pulumi.Input<number | undefined>;
 }
 
 export interface CreateMonitorActionArgs {
     /**
-     *
      * Expected value is 'CreateMonitor'.
      */
     actionType: pulumi.Input<"CreateMonitor">;
@@ -2083,16 +2075,16 @@ export interface CronArgs {
      * [Required] Specifies cron expression of schedule.
      * The expression should follow NCronTab format.
      */
-    expression?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
     /**
      * The start time in yyyy-MM-ddTHH:mm:ss format.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies time zone in which the schedule runs.
      * TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 /**
  * cronArgsProvideDefaults sets the appropriate defaults for CronArgs
@@ -2110,7 +2102,7 @@ export interface CronTriggerArgs {
      * Recommented format would be "2022-06-01T00:00:01"
      * If not present, the schedule will run indefinitely
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * [Required] Specifies cron expression of schedule.
      * The expression should follow NCronTab format.
@@ -2119,14 +2111,13 @@ export interface CronTriggerArgs {
     /**
      * Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies time zone in which the schedule runs.
      * TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
-     *
      * Expected value is 'Cron'.
      */
     triggerType: pulumi.Input<"Cron">;
@@ -2160,7 +2151,7 @@ export interface CustomForecastHorizonArgs {
  * Custom Keys credential object
  */
 export interface CustomKeysArgs {
-    keys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    keys?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -2179,23 +2170,23 @@ export interface CustomKeysWorkspaceConnectionPropertiesArgs {
     /**
      * Category of the connection
      */
-    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    category?: pulumi.Input<string | enums.ConnectionCategory | undefined>;
     /**
      * Custom Keys credential object
      */
-    credentials?: pulumi.Input<CustomKeysArgs>;
-    error?: pulumi.Input<string>;
-    expiryTime?: pulumi.Input<string>;
-    isSharedToAll?: pulumi.Input<boolean>;
+    credentials?: pulumi.Input<CustomKeysArgs | undefined>;
+    error?: pulumi.Input<string | undefined>;
+    expiryTime?: pulumi.Input<string | undefined>;
+    isSharedToAll?: pulumi.Input<boolean | undefined>;
     /**
      * Store user metadata for this connection
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
-    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
-    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
-    target?: pulumi.Input<string>;
-    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement | undefined>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus | undefined>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean | undefined>;
 }
 
 export interface CustomMetricThresholdArgs {
@@ -2206,14 +2197,14 @@ export interface CustomMetricThresholdArgs {
     /**
      * The threshold value. If null, a default value will be set depending on the selected metric.
      */
-    threshold?: pulumi.Input<MonitoringThresholdArgs>;
+    threshold?: pulumi.Input<MonitoringThresholdArgs | undefined>;
 }
 
 export interface CustomModelJobInputArgs {
     /**
      * Description for the input.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the Job Input Type.
      * Expected value is 'custom_model'.
@@ -2222,7 +2213,7 @@ export interface CustomModelJobInputArgs {
     /**
      * Enum to determine the input data delivery mode.
      */
-    mode?: pulumi.Input<string | enums.InputDeliveryMode>;
+    mode?: pulumi.Input<string | enums.InputDeliveryMode | undefined>;
     /**
      * [Required] Input Asset URI.
      */
@@ -2242,11 +2233,11 @@ export interface CustomModelJobOutputArgs {
     /**
      * Output Asset Name.
      */
-    assetName?: pulumi.Input<string>;
+    assetName?: pulumi.Input<string | undefined>;
     /**
      * Description for the output.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the Job Output Type.
      * Expected value is 'custom_model'.
@@ -2255,11 +2246,11 @@ export interface CustomModelJobOutputArgs {
     /**
      * Output data delivery mode enums.
      */
-    mode?: pulumi.Input<string | enums.OutputDeliveryMode>;
+    mode?: pulumi.Input<string | enums.OutputDeliveryMode | undefined>;
     /**
      * Output Asset URI.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 /**
  * customModelJobOutputArgsProvideDefaults sets the appropriate defaults for CustomModelJobOutputArgs
@@ -2279,11 +2270,11 @@ export interface CustomMonitoringSignalArgs {
     /**
      * Monitoring assets to take as input. Key is the component input port name, value is the data asset.
      */
-    inputAssets?: pulumi.Input<{[key: string]: pulumi.Input<FixedInputDataArgs | RollingInputDataArgs | StaticInputDataArgs>}>;
+    inputAssets?: pulumi.Input<{[key: string]: pulumi.Input<FixedInputDataArgs | RollingInputDataArgs | StaticInputDataArgs>} | undefined>;
     /**
      * Extra component parameters to take as input. Key is the component literal input port name, value is the parameter value.
      */
-    inputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobInputArgs | LiteralJobInputArgs | MLFlowModelJobInputArgs | MLTableJobInputArgs | TritonModelJobInputArgs | UriFileJobInputArgs | UriFolderJobInputArgs>}>;
+    inputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobInputArgs | LiteralJobInputArgs | MLFlowModelJobInputArgs | MLTableJobInputArgs | TritonModelJobInputArgs | UriFileJobInputArgs | UriFolderJobInputArgs>} | undefined>;
     /**
      * [Required] A list of metrics to calculate and their associated thresholds.
      */
@@ -2291,13 +2282,12 @@ export interface CustomMonitoringSignalArgs {
     /**
      * The current notification mode for this signal.
      */
-    notificationTypes?: pulumi.Input<pulumi.Input<string | enums.MonitoringNotificationType>[]>;
+    notificationTypes?: pulumi.Input<pulumi.Input<string | enums.MonitoringNotificationType>[] | undefined>;
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     *
      * Expected value is 'Custom'.
      */
     signalType: pulumi.Input<"Custom">;
@@ -2337,31 +2327,31 @@ export interface CustomServiceArgs {
     /**
      * Describes the docker settings for the image
      */
-    docker?: pulumi.Input<DockerArgs>;
+    docker?: pulumi.Input<DockerArgs | undefined>;
     /**
      * Configuring the endpoints for the container
      */
-    endpoints?: pulumi.Input<pulumi.Input<EndpointArgs>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<EndpointArgs>[] | undefined>;
     /**
      * Environment Variable for the container
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<EnvironmentVariableArgs>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<EnvironmentVariableArgs>} | undefined>;
     /**
      * Describes the Image Specifications
      */
-    image?: pulumi.Input<ImageArgs>;
+    image?: pulumi.Input<ImageArgs | undefined>;
     /**
      * Describes the jupyter kernel settings for the image if its a custom environment
      */
-    kernel?: pulumi.Input<JupyterKernelConfigArgs>;
+    kernel?: pulumi.Input<JupyterKernelConfigArgs | undefined>;
     /**
      * Name of the Custom Service
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuring the volumes for the container
      */
-    volumes?: pulumi.Input<pulumi.Input<VolumeDefinitionArgs>[]>;
+    volumes?: pulumi.Input<pulumi.Input<VolumeDefinitionArgs>[] | undefined>;
 }
 /**
  * customServiceArgsProvideDefaults sets the appropriate defaults for CustomServiceArgs
@@ -2369,7 +2359,7 @@ export interface CustomServiceArgs {
 export function customServiceArgsProvideDefaults(val: CustomServiceArgs): CustomServiceArgs {
     return {
         ...val,
-        image: (val.image ? pulumi.output(val.image).apply(imageArgsProvideDefaults) : undefined),
+        image: pulumi.output(val.image).apply(v => v === undefined ? undefined : imageArgsProvideDefaults(v)),
     };
 }
 
@@ -2406,14 +2396,14 @@ export interface DataCollectorArgs {
     /**
      * The request logging configuration for mdc, it includes advanced logging settings for all collections. It's optional.
      */
-    requestLogging?: pulumi.Input<RequestLoggingArgs>;
+    requestLogging?: pulumi.Input<RequestLoggingArgs | undefined>;
     /**
      * When model data is collected to blob storage, we need to roll the data to different path to avoid logging all of them in a single blob file.
      * If the rolling rate is hour, all data will be collected in the blob path /yyyy/MM/dd/HH/.
      * If it's day, all data will be collected in blob path /yyyy/MM/dd/.
      * The other benefit of rolling path is that model monitoring ui is able to select a time range of data very quickly.
      */
-    rollingRate?: pulumi.Input<string | enums.RollingRateType>;
+    rollingRate?: pulumi.Input<string | enums.RollingRateType | undefined>;
 }
 /**
  * dataCollectorArgsProvideDefaults sets the appropriate defaults for DataCollectorArgs
@@ -2436,19 +2426,19 @@ export interface DataContainerPropertiesArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * dataContainerPropertiesArgsProvideDefaults sets the appropriate defaults for DataContainerPropertiesArgs
@@ -2464,15 +2454,15 @@ export interface DataDriftMonitoringSignalArgs {
     /**
      * A dictionary that maps feature names to their respective data types.
      */
-    featureDataTypeOverride?: pulumi.Input<{[key: string]: pulumi.Input<string | enums.MonitoringFeatureDataType>}>;
+    featureDataTypeOverride?: pulumi.Input<{[key: string]: pulumi.Input<string | enums.MonitoringFeatureDataType>} | undefined>;
     /**
      * The settings for computing feature importance.
      */
-    featureImportanceSettings?: pulumi.Input<FeatureImportanceSettingsArgs>;
+    featureImportanceSettings?: pulumi.Input<FeatureImportanceSettingsArgs | undefined>;
     /**
      * The feature filter which identifies which feature to calculate drift over.
      */
-    features?: pulumi.Input<AllFeaturesArgs | FeatureSubsetArgs | TopNFeaturesByAttributionArgs>;
+    features?: pulumi.Input<AllFeaturesArgs | FeatureSubsetArgs | TopNFeaturesByAttributionArgs | undefined>;
     /**
      * [Required] A list of metrics to calculate and their associated thresholds.
      */
@@ -2480,7 +2470,7 @@ export interface DataDriftMonitoringSignalArgs {
     /**
      * The current notification mode for this signal.
      */
-    notificationTypes?: pulumi.Input<pulumi.Input<string | enums.MonitoringNotificationType>[]>;
+    notificationTypes?: pulumi.Input<pulumi.Input<string | enums.MonitoringNotificationType>[] | undefined>;
     /**
      * [Required] The data which drift will be calculated for.
      */
@@ -2488,13 +2478,12 @@ export interface DataDriftMonitoringSignalArgs {
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Required] The data to calculate drift against.
      */
     referenceData: pulumi.Input<FixedInputDataArgs | RollingInputDataArgs | StaticInputDataArgs>;
     /**
-     *
      * Expected value is 'DataDrift'.
      */
     signalType: pulumi.Input<"DataDrift">;
@@ -2505,7 +2494,7 @@ export interface DataDriftMonitoringSignalArgs {
 export function dataDriftMonitoringSignalArgsProvideDefaults(val: DataDriftMonitoringSignalArgs): DataDriftMonitoringSignalArgs {
     return {
         ...val,
-        featureImportanceSettings: (val.featureImportanceSettings ? pulumi.output(val.featureImportanceSettings).apply(featureImportanceSettingsArgsProvideDefaults) : undefined),
+        featureImportanceSettings: pulumi.output(val.featureImportanceSettings).apply(v => v === undefined ? undefined : featureImportanceSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -2516,7 +2505,7 @@ export interface DataFactoryArgs {
     /**
      * Location for the underlying compute
      */
-    computeLocation?: pulumi.Input<string>;
+    computeLocation?: pulumi.Input<string | undefined>;
     /**
      * The type of compute
      * Expected value is 'DataFactory'.
@@ -2525,15 +2514,15 @@ export interface DataFactoryArgs {
     /**
      * The description of the Machine Learning compute.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * ARM resource id of the underlying compute
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2543,7 +2532,7 @@ export interface DataLakeAnalyticsArgs {
     /**
      * Location for the underlying compute
      */
-    computeLocation?: pulumi.Input<string>;
+    computeLocation?: pulumi.Input<string | undefined>;
     /**
      * The type of compute
      * Expected value is 'DataLakeAnalytics'.
@@ -2552,23 +2541,23 @@ export interface DataLakeAnalyticsArgs {
     /**
      * The description of the Machine Learning compute.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
-    properties?: pulumi.Input<DataLakeAnalyticsSchemaPropertiesArgs>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
+    properties?: pulumi.Input<DataLakeAnalyticsSchemaPropertiesArgs | undefined>;
     /**
      * ARM resource id of the underlying compute
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 export interface DataLakeAnalyticsSchemaPropertiesArgs {
     /**
      * DataLake Store Account Name
      */
-    dataLakeStoreAccountName?: pulumi.Input<string>;
+    dataLakeStoreAccountName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2578,11 +2567,11 @@ export interface DataPathAssetReferenceArgs {
     /**
      * ARM resource ID of the datastore where the asset is located.
      */
-    datastoreId?: pulumi.Input<string>;
+    datastoreId?: pulumi.Input<string | undefined>;
     /**
      * The path of the file/directory in the datastore.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine which reference method to use for an asset.
      * Expected value is 'DataPath'.
@@ -2594,15 +2583,15 @@ export interface DataQualityMonitoringSignalArgs {
     /**
      * A dictionary that maps feature names to their respective data types.
      */
-    featureDataTypeOverride?: pulumi.Input<{[key: string]: pulumi.Input<string | enums.MonitoringFeatureDataType>}>;
+    featureDataTypeOverride?: pulumi.Input<{[key: string]: pulumi.Input<string | enums.MonitoringFeatureDataType>} | undefined>;
     /**
      * The settings for computing feature importance.
      */
-    featureImportanceSettings?: pulumi.Input<FeatureImportanceSettingsArgs>;
+    featureImportanceSettings?: pulumi.Input<FeatureImportanceSettingsArgs | undefined>;
     /**
      * The features to calculate drift over.
      */
-    features?: pulumi.Input<AllFeaturesArgs | FeatureSubsetArgs | TopNFeaturesByAttributionArgs>;
+    features?: pulumi.Input<AllFeaturesArgs | FeatureSubsetArgs | TopNFeaturesByAttributionArgs | undefined>;
     /**
      * [Required] A list of metrics to calculate and their associated thresholds.
      */
@@ -2610,7 +2599,7 @@ export interface DataQualityMonitoringSignalArgs {
     /**
      * The current notification mode for this signal.
      */
-    notificationTypes?: pulumi.Input<pulumi.Input<string | enums.MonitoringNotificationType>[]>;
+    notificationTypes?: pulumi.Input<pulumi.Input<string | enums.MonitoringNotificationType>[] | undefined>;
     /**
      * [Required] The data produced by the production service which drift will be calculated for.
      */
@@ -2618,13 +2607,12 @@ export interface DataQualityMonitoringSignalArgs {
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Required] The data to calculate drift against.
      */
     referenceData: pulumi.Input<FixedInputDataArgs | RollingInputDataArgs | StaticInputDataArgs>;
     /**
-     *
      * Expected value is 'DataQuality'.
      */
     signalType: pulumi.Input<"DataQuality">;
@@ -2635,7 +2623,7 @@ export interface DataQualityMonitoringSignalArgs {
 export function dataQualityMonitoringSignalArgsProvideDefaults(val: DataQualityMonitoringSignalArgs): DataQualityMonitoringSignalArgs {
     return {
         ...val,
-        featureImportanceSettings: (val.featureImportanceSettings ? pulumi.output(val.featureImportanceSettings).apply(featureImportanceSettingsArgsProvideDefaults) : undefined),
+        featureImportanceSettings: pulumi.output(val.featureImportanceSettings).apply(v => v === undefined ? undefined : featureImportanceSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -2646,7 +2634,7 @@ export interface DatabricksArgs {
     /**
      * Location for the underlying compute
      */
-    computeLocation?: pulumi.Input<string>;
+    computeLocation?: pulumi.Input<string | undefined>;
     /**
      * The type of compute
      * Expected value is 'Databricks'.
@@ -2655,19 +2643,19 @@ export interface DatabricksArgs {
     /**
      * The description of the Machine Learning compute.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Properties of Databricks
      */
-    properties?: pulumi.Input<DatabricksPropertiesArgs>;
+    properties?: pulumi.Input<DatabricksPropertiesArgs | undefined>;
     /**
      * ARM resource id of the underlying compute
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2677,47 +2665,47 @@ export interface DatabricksPropertiesArgs {
     /**
      * Databricks access token
      */
-    databricksAccessToken?: pulumi.Input<string>;
+    databricksAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Workspace Url
      */
-    workspaceUrl?: pulumi.Input<string>;
+    workspaceUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface DatasetCreateRequestDataPathArgs {
     /**
      * The datastore name.
      */
-    datastoreName?: pulumi.Input<string>;
+    datastoreName?: pulumi.Input<string | undefined>;
     /**
      * Path within the datastore.
      */
-    relativePath?: pulumi.Input<string>;
+    relativePath?: pulumi.Input<string | undefined>;
 }
 
 export interface DatasetCreateRequestParametersArgs {
     /**
      * Header type.
      */
-    header?: pulumi.Input<string | enums.Header>;
+    header?: pulumi.Input<string | enums.Header | undefined>;
     /**
      * Boolean to keep path information as column in the dataset. Defaults to False. This is useful when reading multiple files, and want to know which file a particular record originated from, or to keep useful information in file path.
      */
-    includePath?: pulumi.Input<boolean>;
+    includePath?: pulumi.Input<boolean | undefined>;
     /**
      * The partition information of each path will be extracted into columns based on the specified format. Format part '{column_name}' creates string column, and '{column_name:yyyy/MM/dd/HH/mm/ss}' creates datetime column, where 'yyyy', 'MM', 'dd', 'HH', 'mm' and 'ss' are used to extract year, month, day, hour, minute and second for the datetime type. The format should start from the position of first partition key until the end of file path. For example, given the path '../USA/2019/01/01/data.parquet' where the partition is by country/region and time, partition_format='/{CountryOrRegion}/{PartitionDate:yyyy/MM/dd}/data.csv' creates a string column 'CountryOrRegion' with the value 'USA' and a datetime column 'PartitionDate' with the value '2019-01-01
      */
-    partitionFormat?: pulumi.Input<string>;
-    path?: pulumi.Input<DatasetCreateRequestPathArgs>;
-    query?: pulumi.Input<DatasetCreateRequestQueryArgs>;
+    partitionFormat?: pulumi.Input<string | undefined>;
+    path?: pulumi.Input<DatasetCreateRequestPathArgs | undefined>;
+    query?: pulumi.Input<DatasetCreateRequestQueryArgs | undefined>;
     /**
      * The separator used to split columns for 'delimited_files' sourceType.
      */
-    separator?: pulumi.Input<string>;
+    separator?: pulumi.Input<string | undefined>;
     /**
      * Data source type.
      */
-    sourceType?: pulumi.Input<string | enums.SourceType>;
+    sourceType?: pulumi.Input<string | enums.SourceType | undefined>;
 }
 /**
  * datasetCreateRequestParametersArgsProvideDefaults sets the appropriate defaults for DatasetCreateRequestParametersArgs
@@ -2730,48 +2718,48 @@ export function datasetCreateRequestParametersArgsProvideDefaults(val: DatasetCr
 }
 
 export interface DatasetCreateRequestPathArgs {
-    dataPath?: pulumi.Input<DatasetCreateRequestDataPathArgs>;
+    dataPath?: pulumi.Input<DatasetCreateRequestDataPathArgs | undefined>;
     /**
      * The Http URL.
      */
-    httpUrl?: pulumi.Input<string>;
+    httpUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface DatasetCreateRequestQueryArgs {
     /**
      * The SQL/PostgreSQL/MySQL datastore name.
      */
-    datastoreName?: pulumi.Input<string>;
+    datastoreName?: pulumi.Input<string | undefined>;
     /**
      * SQL Quey.
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
 }
 
 export interface DatasetCreateRequestRegistrationArgs {
     /**
      * The description for the dataset.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the dataset.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Tags associated with the dataset.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface DatasetCreateRequestTimeSeriesArgs {
     /**
      * Column name to be used as CoarseGrainTimestamp. Can only be used if 'fineGrainTimestamp' is specified and cannot be same as 'fineGrainTimestamp'.
      */
-    coarseGrainTimestamp?: pulumi.Input<string>;
+    coarseGrainTimestamp?: pulumi.Input<string | undefined>;
     /**
      *  Column name to be used as FineGrainTimestamp
      */
-    fineGrainTimestamp?: pulumi.Input<string>;
+    fineGrainTimestamp?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2781,16 +2769,15 @@ export interface DatasetReferenceArgs {
     /**
      * The fully qualified ARM id of the dataset reference.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the dataset reference.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface DefaultScaleSettingsArgs {
     /**
-     *
      * Expected value is 'Default'.
      */
     scaleType: pulumi.Input<"Default">;
@@ -2800,15 +2787,15 @@ export interface DeploymentResourceConfigurationArgs {
     /**
      * Optional number of instances or nodes used by the compute target.
      */
-    instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number | undefined>;
     /**
      * Optional type of VM used as supported by the compute target.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Additional properties bag.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: any} | undefined>;
 }
 /**
  * deploymentResourceConfigurationArgsProvideDefaults sets the appropriate defaults for DeploymentResourceConfigurationArgs
@@ -2824,7 +2811,7 @@ export interface DockerArgs {
     /**
      * Indicate whether container shall run in privileged or non-privileged mode.
      */
-    privileged?: pulumi.Input<boolean>;
+    privileged?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -2836,7 +2823,7 @@ export interface DockerBuildArgs {
      * The path is relative to the asset path which must contain a single Blob URI value.
      * <seealso href="https://docs.docker.com/engine/context/working-with-contexts/" />
      */
-    context?: pulumi.Input<string>;
+    context?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine docker specification type. Must be either Build or Image.
      * Expected value is 'Build'.
@@ -2850,7 +2837,7 @@ export interface DockerBuildArgs {
     /**
      * The platform information of the docker image.
      */
-    platform?: pulumi.Input<DockerImagePlatformArgs>;
+    platform?: pulumi.Input<DockerImagePlatformArgs | undefined>;
 }
 
 /**
@@ -2870,14 +2857,14 @@ export interface DockerImageArgs {
     /**
      * The platform information of the docker image.
      */
-    platform?: pulumi.Input<DockerImagePlatformArgs>;
+    platform?: pulumi.Input<DockerImagePlatformArgs | undefined>;
 }
 
 export interface DockerImagePlatformArgs {
     /**
      * The OS type the Environment.
      */
-    operatingSystemType?: pulumi.Input<string | enums.OperatingSystemType>;
+    operatingSystemType?: pulumi.Input<string | enums.OperatingSystemType | undefined>;
 }
 
 export interface EncryptionPropertyArgs {
@@ -2885,11 +2872,11 @@ export interface EncryptionPropertyArgs {
      * The byok cosmosdb account that customer brings to store customer's data
      * with encryption
      */
-    cosmosDbResourceId?: pulumi.Input<string>;
+    cosmosDbResourceId?: pulumi.Input<string | undefined>;
     /**
      * Identity to be used with the keyVault
      */
-    identity?: pulumi.Input<IdentityForCmkArgs>;
+    identity?: pulumi.Input<IdentityForCmkArgs | undefined>;
     /**
      * KeyVault details to do the encryption
      */
@@ -2898,7 +2885,7 @@ export interface EncryptionPropertyArgs {
      * The byok search account that customer brings to store customer's data
      * with encryption
      */
-    searchAccountResourceId?: pulumi.Input<string>;
+    searchAccountResourceId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether or not the encryption is enabled for the workspace.
      */
@@ -2907,30 +2894,30 @@ export interface EncryptionPropertyArgs {
      * The byok storage account that customer brings to store customer's data
      * with encryption
      */
-    storageAccountResourceId?: pulumi.Input<string>;
+    storageAccountResourceId?: pulumi.Input<string | undefined>;
 }
 
 export interface EndpointArgs {
     /**
      * Host IP over which the application is exposed from the container
      */
-    hostIp?: pulumi.Input<string>;
+    hostIp?: pulumi.Input<string | undefined>;
     /**
      * Name of the Endpoint
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Protocol over which communication will happen over this endpoint
      */
-    protocol?: pulumi.Input<string | enums.Protocol>;
+    protocol?: pulumi.Input<string | enums.Protocol | undefined>;
     /**
      * Port over which the application is exposed from container.
      */
-    published?: pulumi.Input<number>;
+    published?: pulumi.Input<number | undefined>;
     /**
      * Application port inside the container.
      */
-    target?: pulumi.Input<number>;
+    target?: pulumi.Input<number | undefined>;
 }
 /**
  * endpointArgsProvideDefaults sets the appropriate defaults for EndpointArgs
@@ -2949,35 +2936,34 @@ export interface EndpointAuthKeysArgs {
     /**
      * The primary key.
      */
-    primaryKey?: pulumi.Input<string>;
+    primaryKey?: pulumi.Input<string | undefined>;
     /**
      * The secondary key.
      */
-    secondaryKey?: pulumi.Input<string>;
+    secondaryKey?: pulumi.Input<string | undefined>;
 }
 
 export interface EndpointDeploymentModelArgs {
     /**
      * Model format
      */
-    format?: pulumi.Input<string>;
+    format?: pulumi.Input<string | undefined>;
     /**
      * Model name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Optional. Deployment model source ARM resource ID.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Model version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 export interface EndpointScheduleActionArgs {
     /**
-     *
      * Expected value is 'InvokeBatchEndpoint'.
      */
     actionType: pulumi.Input<"InvokeBatchEndpoint">;
@@ -2995,19 +2981,19 @@ export interface EnvironmentContainerPropertiesArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * environmentContainerPropertiesArgsProvideDefaults sets the appropriate defaults for EnvironmentContainerPropertiesArgs
@@ -3028,42 +3014,42 @@ export interface EnvironmentSpecificationVersionArgs {
      * Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages.
      * <see href="https://repo2docker.readthedocs.io/en/latest/config_files.html#environment-yml-install-a-conda-environment" />
      */
-    condaFile?: pulumi.Input<string>;
+    condaFile?: pulumi.Input<string | undefined>;
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for Docker.
      */
-    docker?: pulumi.Input<DockerBuildArgs | DockerImageArgs>;
+    docker?: pulumi.Input<DockerBuildArgs | DockerImageArgs | undefined>;
     /**
      * Defines configuration specific to inference.
      */
-    inferenceContainerProperties?: pulumi.Input<InferenceContainerPropertiesArgs>;
+    inferenceContainerProperties?: pulumi.Input<InferenceContainerPropertiesArgs | undefined>;
     /**
      * If the name version are system generated (anonymous registration).
      */
-    isAnonymous?: pulumi.Input<boolean>;
+    isAnonymous?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface EnvironmentVariableArgs {
     /**
      * Type of the Environment Variable. Possible values are: local - For local variable
      */
-    type?: pulumi.Input<string | enums.EnvironmentVariableType>;
+    type?: pulumi.Input<string | enums.EnvironmentVariableType | undefined>;
     /**
      * Value of the Environment variable
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 /**
  * environmentVariableArgsProvideDefaults sets the appropriate defaults for EnvironmentVariableArgs
@@ -3082,53 +3068,53 @@ export interface EnvironmentVersionPropertiesArgs {
     /**
      * AutoRebuild setting for the derived image
      */
-    autoRebuild?: pulumi.Input<string | enums.AutoRebuildSetting>;
+    autoRebuild?: pulumi.Input<string | enums.AutoRebuildSetting | undefined>;
     /**
      * Configuration settings for Docker build context.
      */
-    build?: pulumi.Input<BuildContextArgs>;
+    build?: pulumi.Input<BuildContextArgs | undefined>;
     /**
      * Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages.
      * <see href="https://repo2docker.readthedocs.io/en/latest/config_files.html#environment-yml-install-a-conda-environment" />
      */
-    condaFile?: pulumi.Input<string>;
+    condaFile?: pulumi.Input<string | undefined>;
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the image that will be used for the environment.
      * <seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" />
      */
-    image?: pulumi.Input<string>;
+    image?: pulumi.Input<string | undefined>;
     /**
      * Defines configuration specific to inference.
      */
-    inferenceConfig?: pulumi.Input<InferenceContainerPropertiesArgs>;
+    inferenceConfig?: pulumi.Input<InferenceContainerPropertiesArgs | undefined>;
     /**
      * If the name version are system generated (anonymous registration).
      */
-    isAnonymous?: pulumi.Input<boolean>;
+    isAnonymous?: pulumi.Input<boolean | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The type of operating system.
      */
-    osType?: pulumi.Input<string | enums.OperatingSystemType>;
+    osType?: pulumi.Input<string | enums.OperatingSystemType | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Stage in the environment lifecycle assigned to this environment
      */
-    stage?: pulumi.Input<string>;
+    stage?: pulumi.Input<string | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * environmentVersionPropertiesArgsProvideDefaults sets the appropriate defaults for EnvironmentVersionPropertiesArgs
@@ -3137,7 +3123,7 @@ export function environmentVersionPropertiesArgsProvideDefaults(val: Environment
     return {
         ...val,
         autoRebuild: (val.autoRebuild) ?? "Disabled",
-        build: (val.build ? pulumi.output(val.build).apply(buildContextArgsProvideDefaults) : undefined),
+        build: pulumi.output(val.build).apply(v => v === undefined ? undefined : buildContextArgsProvideDefaults(v)),
         isAnonymous: (val.isAnonymous) ?? false,
         isArchived: (val.isArchived) ?? false,
         osType: (val.osType) ?? "Linux",
@@ -3148,7 +3134,7 @@ export interface FeatureAttributionDriftMonitoringSignalArgs {
     /**
      * A dictionary that maps feature names to their respective data types.
      */
-    featureDataTypeOverride?: pulumi.Input<{[key: string]: pulumi.Input<string | enums.MonitoringFeatureDataType>}>;
+    featureDataTypeOverride?: pulumi.Input<{[key: string]: pulumi.Input<string | enums.MonitoringFeatureDataType>} | undefined>;
     /**
      * [Required] The settings for computing feature importance.
      */
@@ -3160,7 +3146,7 @@ export interface FeatureAttributionDriftMonitoringSignalArgs {
     /**
      * The current notification mode for this signal.
      */
-    notificationTypes?: pulumi.Input<pulumi.Input<string | enums.MonitoringNotificationType>[]>;
+    notificationTypes?: pulumi.Input<pulumi.Input<string | enums.MonitoringNotificationType>[] | undefined>;
     /**
      * [Required] The data which drift will be calculated for.
      */
@@ -3168,13 +3154,12 @@ export interface FeatureAttributionDriftMonitoringSignalArgs {
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Required] The data to calculate drift against.
      */
     referenceData: pulumi.Input<FixedInputDataArgs | RollingInputDataArgs | StaticInputDataArgs>;
     /**
-     *
      * Expected value is 'FeatureAttributionDrift'.
      */
     signalType: pulumi.Input<"FeatureAttributionDrift">;
@@ -3197,18 +3182,18 @@ export interface FeatureAttributionMetricThresholdArgs {
     /**
      * The threshold value. If null, a default value will be set depending on the selected metric.
      */
-    threshold?: pulumi.Input<MonitoringThresholdArgs>;
+    threshold?: pulumi.Input<MonitoringThresholdArgs | undefined>;
 }
 
 export interface FeatureImportanceSettingsArgs {
     /**
      * The mode of operation for computing feature importance.
      */
-    mode?: pulumi.Input<string | enums.FeatureImportanceMode>;
+    mode?: pulumi.Input<string | enums.FeatureImportanceMode | undefined>;
     /**
      * The name of the target column within the input data asset.
      */
-    targetColumn?: pulumi.Input<string>;
+    targetColumn?: pulumi.Input<string | undefined>;
 }
 /**
  * featureImportanceSettingsArgsProvideDefaults sets the appropriate defaults for FeatureImportanceSettingsArgs
@@ -3221,9 +3206,9 @@ export function featureImportanceSettingsArgsProvideDefaults(val: FeatureImporta
 }
 
 export interface FeatureStoreSettingsArgs {
-    computeRuntime?: pulumi.Input<ComputeRuntimeDtoArgs>;
-    offlineStoreConnectionName?: pulumi.Input<string>;
-    onlineStoreConnectionName?: pulumi.Input<string>;
+    computeRuntime?: pulumi.Input<ComputeRuntimeDtoArgs | undefined>;
+    offlineStoreConnectionName?: pulumi.Input<string | undefined>;
+    onlineStoreConnectionName?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureSubsetArgs {
@@ -3232,7 +3217,6 @@ export interface FeatureSubsetArgs {
      */
     features: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     *
      * Expected value is 'FeatureSubset'.
      */
     filterType: pulumi.Input<"FeatureSubset">;
@@ -3245,19 +3229,19 @@ export interface FeaturesetContainerPropertiesArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * featuresetContainerPropertiesArgsProvideDefaults sets the appropriate defaults for FeaturesetContainerPropertiesArgs
@@ -3276,7 +3260,7 @@ export interface FeaturesetSpecificationArgs {
     /**
      * Specifies the spec path
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -3286,39 +3270,39 @@ export interface FeaturesetVersionPropertiesArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies list of entities
      */
-    entities?: pulumi.Input<pulumi.Input<string>[]>;
+    entities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If the name version are system generated (anonymous registration).
      */
-    isAnonymous?: pulumi.Input<boolean>;
+    isAnonymous?: pulumi.Input<boolean | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the materialization settings
      */
-    materializationSettings?: pulumi.Input<MaterializationSettingsArgs>;
+    materializationSettings?: pulumi.Input<MaterializationSettingsArgs | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the feature spec details
      */
-    specification?: pulumi.Input<FeaturesetSpecificationArgs>;
+    specification?: pulumi.Input<FeaturesetSpecificationArgs | undefined>;
     /**
      * Specifies the asset stage
      */
-    stage?: pulumi.Input<string>;
+    stage?: pulumi.Input<string | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * featuresetVersionPropertiesArgsProvideDefaults sets the appropriate defaults for FeaturesetVersionPropertiesArgs
@@ -3328,7 +3312,7 @@ export function featuresetVersionPropertiesArgsProvideDefaults(val: FeaturesetVe
         ...val,
         isAnonymous: (val.isAnonymous) ?? false,
         isArchived: (val.isArchived) ?? false,
-        materializationSettings: (val.materializationSettings ? pulumi.output(val.materializationSettings).apply(materializationSettingsArgsProvideDefaults) : undefined),
+        materializationSettings: pulumi.output(val.materializationSettings).apply(v => v === undefined ? undefined : materializationSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -3339,19 +3323,19 @@ export interface FeaturestoreEntityContainerPropertiesArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * featurestoreEntityContainerPropertiesArgsProvideDefaults sets the appropriate defaults for FeaturestoreEntityContainerPropertiesArgs
@@ -3370,31 +3354,31 @@ export interface FeaturestoreEntityVersionPropertiesArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies index columns
      */
-    indexColumns?: pulumi.Input<pulumi.Input<IndexColumnArgs>[]>;
+    indexColumns?: pulumi.Input<pulumi.Input<IndexColumnArgs>[] | undefined>;
     /**
      * If the name version are system generated (anonymous registration).
      */
-    isAnonymous?: pulumi.Input<boolean>;
+    isAnonymous?: pulumi.Input<boolean | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the asset stage
      */
-    stage?: pulumi.Input<string>;
+    stage?: pulumi.Input<string | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * featurestoreEntityVersionPropertiesArgsProvideDefaults sets the appropriate defaults for FeaturestoreEntityVersionPropertiesArgs
@@ -3414,11 +3398,11 @@ export interface FixedInputDataArgs {
     /**
      * Mapping of column names to special uses.
      */
-    columns?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    columns?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The context metadata of the data source.
      */
-    dataContext?: pulumi.Input<string>;
+    dataContext?: pulumi.Input<string | undefined>;
     /**
      * Monitoring input data type enum.
      * Expected value is 'Fixed'.
@@ -3438,7 +3422,7 @@ export interface FlavorDataArgs {
     /**
      * Model flavor-specific data.
      */
-    data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    data?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -3448,37 +3432,37 @@ export interface ForecastingArgs {
     /**
      * Columns to use for CVSplit data.
      */
-    cvSplitColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
+    cvSplitColumnNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Featurization inputs needed for AutoML job.
      */
-    featurizationSettings?: pulumi.Input<TableVerticalFeaturizationSettingsArgs>;
+    featurizationSettings?: pulumi.Input<TableVerticalFeaturizationSettingsArgs | undefined>;
     /**
      * Forecasting task specific inputs.
      */
-    forecastingSettings?: pulumi.Input<ForecastingSettingsArgs>;
+    forecastingSettings?: pulumi.Input<ForecastingSettingsArgs | undefined>;
     /**
      * Execution constraints for AutoMLJob.
      */
-    limitSettings?: pulumi.Input<TableVerticalLimitSettingsArgs>;
+    limitSettings?: pulumi.Input<TableVerticalLimitSettingsArgs | undefined>;
     /**
      * Enum for setting log verbosity.
      */
-    logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
+    logVerbosity?: pulumi.Input<string | enums.LogVerbosity | undefined>;
     /**
      * Number of cross validation folds to be applied on training dataset
      * when validation dataset is not provided.
      */
-    nCrossValidations?: pulumi.Input<AutoNCrossValidationsArgs | CustomNCrossValidationsArgs>;
+    nCrossValidations?: pulumi.Input<AutoNCrossValidationsArgs | CustomNCrossValidationsArgs | undefined>;
     /**
      * Primary metrics for Forecasting task.
      */
-    primaryMetric?: pulumi.Input<string | enums.ForecastingPrimaryMetrics>;
+    primaryMetric?: pulumi.Input<string | enums.ForecastingPrimaryMetrics | undefined>;
     /**
      * Target column name: This is prediction values column.
      * Also known as label column name in context of classification tasks.
      */
-    targetColumnName?: pulumi.Input<string>;
+    targetColumnName?: pulumi.Input<string | undefined>;
     /**
      * AutoMLJob Task type.
      * Expected value is 'Forecasting'.
@@ -3487,13 +3471,13 @@ export interface ForecastingArgs {
     /**
      * Test data input.
      */
-    testData?: pulumi.Input<MLTableJobInputArgs>;
+    testData?: pulumi.Input<MLTableJobInputArgs | undefined>;
     /**
      * The fraction of test dataset that needs to be set aside for validation purpose.
      * Values between (0.0 , 1.0)
      * Applied when validation dataset is not provided.
      */
-    testDataSize?: pulumi.Input<number>;
+    testDataSize?: pulumi.Input<number | undefined>;
     /**
      * [Required] Training data input.
      */
@@ -3501,21 +3485,21 @@ export interface ForecastingArgs {
     /**
      * Inputs for training phase for an AutoML Job.
      */
-    trainingSettings?: pulumi.Input<ForecastingTrainingSettingsArgs>;
+    trainingSettings?: pulumi.Input<ForecastingTrainingSettingsArgs | undefined>;
     /**
      * Validation data inputs.
      */
-    validationData?: pulumi.Input<MLTableJobInputArgs>;
+    validationData?: pulumi.Input<MLTableJobInputArgs | undefined>;
     /**
      * The fraction of training dataset that needs to be set aside for validation purpose.
      * Values between (0.0 , 1.0)
      * Applied when validation dataset is not provided.
      */
-    validationDataSize?: pulumi.Input<number>;
+    validationDataSize?: pulumi.Input<number | undefined>;
     /**
      * The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
      */
-    weightColumnName?: pulumi.Input<string>;
+    weightColumnName?: pulumi.Input<string | undefined>;
 }
 /**
  * forecastingArgsProvideDefaults sets the appropriate defaults for ForecastingArgs
@@ -3523,15 +3507,15 @@ export interface ForecastingArgs {
 export function forecastingArgsProvideDefaults(val: ForecastingArgs): ForecastingArgs {
     return {
         ...val,
-        featurizationSettings: (val.featurizationSettings ? pulumi.output(val.featurizationSettings).apply(tableVerticalFeaturizationSettingsArgsProvideDefaults) : undefined),
-        forecastingSettings: (val.forecastingSettings ? pulumi.output(val.forecastingSettings).apply(forecastingSettingsArgsProvideDefaults) : undefined),
-        limitSettings: (val.limitSettings ? pulumi.output(val.limitSettings).apply(tableVerticalLimitSettingsArgsProvideDefaults) : undefined),
+        featurizationSettings: pulumi.output(val.featurizationSettings).apply(v => v === undefined ? undefined : tableVerticalFeaturizationSettingsArgsProvideDefaults(v)),
+        forecastingSettings: pulumi.output(val.forecastingSettings).apply(v => v === undefined ? undefined : forecastingSettingsArgsProvideDefaults(v)),
+        limitSettings: pulumi.output(val.limitSettings).apply(v => v === undefined ? undefined : tableVerticalLimitSettingsArgsProvideDefaults(v)),
         logVerbosity: (val.logVerbosity) ?? "Info",
         primaryMetric: (val.primaryMetric) ?? "NormalizedRootMeanSquaredError",
-        testData: (val.testData ? pulumi.output(val.testData).apply(mltableJobInputArgsProvideDefaults) : undefined),
+        testData: pulumi.output(val.testData).apply(v => v === undefined ? undefined : mltableJobInputArgsProvideDefaults(v)),
         trainingData: pulumi.output(val.trainingData).apply(mltableJobInputArgsProvideDefaults),
-        trainingSettings: (val.trainingSettings ? pulumi.output(val.trainingSettings).apply(forecastingTrainingSettingsArgsProvideDefaults) : undefined),
-        validationData: (val.validationData ? pulumi.output(val.validationData).apply(mltableJobInputArgsProvideDefaults) : undefined),
+        trainingSettings: pulumi.output(val.trainingSettings).apply(v => v === undefined ? undefined : forecastingTrainingSettingsArgsProvideDefaults(v)),
+        validationData: pulumi.output(val.validationData).apply(v => v === undefined ? undefined : mltableJobInputArgsProvideDefaults(v)),
     };
 }
 
@@ -3543,59 +3527,59 @@ export interface ForecastingSettingsArgs {
      * Country or region for holidays for forecasting tasks.
      * These should be ISO 3166 two-letter country/region codes, for example 'US' or 'GB'.
      */
-    countryOrRegionForHolidays?: pulumi.Input<string>;
+    countryOrRegionForHolidays?: pulumi.Input<string | undefined>;
     /**
      * Number of periods between the origin time of one CV fold and the next fold. For
      * example, if `CVStepSize` = 3 for daily data, the origin time for each fold will be
      * three days apart.
      */
-    cvStepSize?: pulumi.Input<number>;
+    cvStepSize?: pulumi.Input<number | undefined>;
     /**
      * Flag for generating lags for the numeric features.
      */
-    featureLags?: pulumi.Input<string | enums.FeatureLags>;
+    featureLags?: pulumi.Input<string | enums.FeatureLags | undefined>;
     /**
      * The desired maximum forecast horizon in units of time-series frequency.
      */
-    forecastHorizon?: pulumi.Input<AutoForecastHorizonArgs | CustomForecastHorizonArgs>;
+    forecastHorizon?: pulumi.Input<AutoForecastHorizonArgs | CustomForecastHorizonArgs | undefined>;
     /**
      * When forecasting, this parameter represents the period with which the forecast is desired, for example daily, weekly, yearly, etc. The forecast frequency is dataset frequency by default.
      */
-    frequency?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string | undefined>;
     /**
      * Set time series seasonality as an integer multiple of the series frequency.
      * If seasonality is set to 'auto', it will be inferred.
      */
-    seasonality?: pulumi.Input<AutoSeasonalityArgs | CustomSeasonalityArgs>;
+    seasonality?: pulumi.Input<AutoSeasonalityArgs | CustomSeasonalityArgs | undefined>;
     /**
      * The parameter defining how if AutoML should handle short time series.
      */
-    shortSeriesHandlingConfig?: pulumi.Input<string | enums.ShortSeriesHandlingConfiguration>;
+    shortSeriesHandlingConfig?: pulumi.Input<string | enums.ShortSeriesHandlingConfiguration | undefined>;
     /**
      * Target aggregate function.
      */
-    targetAggregateFunction?: pulumi.Input<string | enums.TargetAggregationFunction>;
+    targetAggregateFunction?: pulumi.Input<string | enums.TargetAggregationFunction | undefined>;
     /**
      * The number of past periods to lag from the target column.
      */
-    targetLags?: pulumi.Input<AutoTargetLagsArgs | CustomTargetLagsArgs>;
+    targetLags?: pulumi.Input<AutoTargetLagsArgs | CustomTargetLagsArgs | undefined>;
     /**
      * The number of past periods used to create a rolling window average of the target column.
      */
-    targetRollingWindowSize?: pulumi.Input<AutoTargetRollingWindowSizeArgs | CustomTargetRollingWindowSizeArgs>;
+    targetRollingWindowSize?: pulumi.Input<AutoTargetRollingWindowSizeArgs | CustomTargetRollingWindowSizeArgs | undefined>;
     /**
      * The name of the time column. This parameter is required when forecasting to specify the datetime column in the input data used for building the time series and inferring its frequency.
      */
-    timeColumnName?: pulumi.Input<string>;
+    timeColumnName?: pulumi.Input<string | undefined>;
     /**
      * The names of columns used to group a timeseries. It can be used to create multiple series.
      * If grain is not defined, the data set is assumed to be one time-series. This parameter is used with task type forecasting.
      */
-    timeSeriesIdColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
+    timeSeriesIdColumnNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configure STL Decomposition of the time-series target column.
      */
-    useStl?: pulumi.Input<string | enums.UseStl>;
+    useStl?: pulumi.Input<string | enums.UseStl | undefined>;
 }
 /**
  * forecastingSettingsArgsProvideDefaults sets the appropriate defaults for ForecastingSettingsArgs
@@ -3617,40 +3601,40 @@ export interface ForecastingTrainingSettingsArgs {
     /**
      * Allowed models for forecasting task.
      */
-    allowedTrainingAlgorithms?: pulumi.Input<pulumi.Input<string | enums.ForecastingModels>[]>;
+    allowedTrainingAlgorithms?: pulumi.Input<pulumi.Input<string | enums.ForecastingModels>[] | undefined>;
     /**
      * Blocked models for forecasting task.
      */
-    blockedTrainingAlgorithms?: pulumi.Input<pulumi.Input<string | enums.ForecastingModels>[]>;
+    blockedTrainingAlgorithms?: pulumi.Input<pulumi.Input<string | enums.ForecastingModels>[] | undefined>;
     /**
      * Enable recommendation of DNN models.
      */
-    enableDnnTraining?: pulumi.Input<boolean>;
+    enableDnnTraining?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to turn on explainability on best model.
      */
-    enableModelExplainability?: pulumi.Input<boolean>;
+    enableModelExplainability?: pulumi.Input<boolean | undefined>;
     /**
      * Flag for enabling onnx compatible models.
      */
-    enableOnnxCompatibleModels?: pulumi.Input<boolean>;
+    enableOnnxCompatibleModels?: pulumi.Input<boolean | undefined>;
     /**
      * Enable stack ensemble run.
      */
-    enableStackEnsemble?: pulumi.Input<boolean>;
+    enableStackEnsemble?: pulumi.Input<boolean | undefined>;
     /**
      * Enable voting ensemble run.
      */
-    enableVoteEnsemble?: pulumi.Input<boolean>;
+    enableVoteEnsemble?: pulumi.Input<boolean | undefined>;
     /**
      * During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
      * Configure this parameter with a higher value than 300 secs, if more time is needed.
      */
-    ensembleModelDownloadTimeout?: pulumi.Input<string>;
+    ensembleModelDownloadTimeout?: pulumi.Input<string | undefined>;
     /**
      * Stack ensemble settings for stack ensemble run.
      */
-    stackEnsembleSettings?: pulumi.Input<StackEnsembleSettingsArgs>;
+    stackEnsembleSettings?: pulumi.Input<StackEnsembleSettingsArgs | undefined>;
 }
 /**
  * forecastingTrainingSettingsArgsProvideDefaults sets the appropriate defaults for ForecastingTrainingSettingsArgs
@@ -3664,7 +3648,7 @@ export function forecastingTrainingSettingsArgsProvideDefaults(val: ForecastingT
         enableStackEnsemble: (val.enableStackEnsemble) ?? true,
         enableVoteEnsemble: (val.enableVoteEnsemble) ?? true,
         ensembleModelDownloadTimeout: (val.ensembleModelDownloadTimeout) ?? "PT5M",
-        stackEnsembleSettings: (val.stackEnsembleSettings ? pulumi.output(val.stackEnsembleSettings).apply(stackEnsembleSettingsArgsProvideDefaults) : undefined),
+        stackEnsembleSettings: pulumi.output(val.stackEnsembleSettings).apply(v => v === undefined ? undefined : stackEnsembleSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -3675,12 +3659,12 @@ export interface FqdnOutboundRuleArgs {
     /**
      * Category of a managed network Outbound Rule of a machine learning workspace.
      */
-    category?: pulumi.Input<string | enums.RuleCategory>;
-    destination?: pulumi.Input<string>;
+    category?: pulumi.Input<string | enums.RuleCategory | undefined>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      */
-    status?: pulumi.Input<string | enums.RuleStatus>;
+    status?: pulumi.Input<string | enums.RuleStatus | undefined>;
     /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      * Expected value is 'FQDN'.
@@ -3693,7 +3677,6 @@ export interface FqdnOutboundRuleArgs {
  */
 export interface GridSamplingAlgorithmArgs {
     /**
-     *
      * Expected value is 'Grid'.
      */
     samplingAlgorithmType: pulumi.Input<"Grid">;
@@ -3706,23 +3689,23 @@ export interface GroupEnvironmentConfigurationArgs {
     /**
      * ARM resource ID of the environment specification for the inference pool.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * Environment variables configuration for the inference pool.
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<StringStringKeyValuePairArgs>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<StringStringKeyValuePairArgs>[] | undefined>;
     /**
      * Liveness probe monitors the health of the container regularly.
      */
-    livenessProbe?: pulumi.Input<ProbeSettingsArgs>;
+    livenessProbe?: pulumi.Input<ProbeSettingsArgs | undefined>;
     /**
      * Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
      */
-    readinessProbe?: pulumi.Input<ProbeSettingsArgs>;
+    readinessProbe?: pulumi.Input<ProbeSettingsArgs | undefined>;
     /**
      * This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
      */
-    startupProbe?: pulumi.Input<ProbeSettingsArgs>;
+    startupProbe?: pulumi.Input<ProbeSettingsArgs | undefined>;
 }
 /**
  * groupEnvironmentConfigurationArgsProvideDefaults sets the appropriate defaults for GroupEnvironmentConfigurationArgs
@@ -3730,9 +3713,9 @@ export interface GroupEnvironmentConfigurationArgs {
 export function groupEnvironmentConfigurationArgsProvideDefaults(val: GroupEnvironmentConfigurationArgs): GroupEnvironmentConfigurationArgs {
     return {
         ...val,
-        livenessProbe: (val.livenessProbe ? pulumi.output(val.livenessProbe).apply(probeSettingsArgsProvideDefaults) : undefined),
-        readinessProbe: (val.readinessProbe ? pulumi.output(val.readinessProbe).apply(probeSettingsArgsProvideDefaults) : undefined),
-        startupProbe: (val.startupProbe ? pulumi.output(val.startupProbe).apply(probeSettingsArgsProvideDefaults) : undefined),
+        livenessProbe: pulumi.output(val.livenessProbe).apply(v => v === undefined ? undefined : probeSettingsArgsProvideDefaults(v)),
+        readinessProbe: pulumi.output(val.readinessProbe).apply(v => v === undefined ? undefined : probeSettingsArgsProvideDefaults(v)),
+        startupProbe: pulumi.output(val.startupProbe).apply(v => v === undefined ? undefined : probeSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -3743,7 +3726,7 @@ export interface GroupModelConfigurationArgs {
     /**
      * The URI path to the model.
      */
-    modelId?: pulumi.Input<string>;
+    modelId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -3753,7 +3736,7 @@ export interface HDInsightArgs {
     /**
      * Location for the underlying compute
      */
-    computeLocation?: pulumi.Input<string>;
+    computeLocation?: pulumi.Input<string | undefined>;
     /**
      * The type of compute
      * Expected value is 'HDInsight'.
@@ -3762,19 +3745,19 @@ export interface HDInsightArgs {
     /**
      * The description of the Machine Learning compute.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * HDInsight compute properties
      */
-    properties?: pulumi.Input<HDInsightPropertiesArgs>;
+    properties?: pulumi.Input<HDInsightPropertiesArgs | undefined>;
     /**
      * ARM resource id of the underlying compute
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -3784,15 +3767,15 @@ export interface HDInsightPropertiesArgs {
     /**
      * Public IP address of the master node of the cluster.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Admin credentials for master node of the cluster
      */
-    administratorAccount?: pulumi.Input<VirtualMachineSshCredentialsArgs>;
+    administratorAccount?: pulumi.Input<VirtualMachineSshCredentialsArgs | undefined>;
     /**
      * Port open for ssh connections on the master node of the cluster.
      */
-    sshPort?: pulumi.Input<number>;
+    sshPort?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -3817,11 +3800,11 @@ export interface IdentityArgs {
     /**
      * The identity type.
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
     /**
      * The user assigned identities associated with the resource.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -3831,22 +3814,22 @@ export interface IdentityForCmkArgs {
     /**
      * UserAssignedIdentity to be used to fetch the encryption key from keyVault
      */
-    userAssignedIdentity?: pulumi.Input<string>;
+    userAssignedIdentity?: pulumi.Input<string | undefined>;
 }
 
 export interface ImageArgs {
     /**
      * Image reference URL if type is docker. Environment name if type is azureml
      */
-    reference?: pulumi.Input<string>;
+    reference?: pulumi.Input<string | undefined>;
     /**
      * Type of the image. Possible values are: docker - For docker images. azureml - For AzureML Environment images (custom and curated)
      */
-    type?: pulumi.Input<string | enums.ImageType>;
+    type?: pulumi.Input<string | enums.ImageType | undefined>;
     /**
      * Version of image being used. If latest then skip this field
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 /**
  * imageArgsProvideDefaults sets the appropriate defaults for ImageArgs
@@ -3870,28 +3853,28 @@ export interface ImageClassificationArgs {
     /**
      * Enum for setting log verbosity.
      */
-    logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
+    logVerbosity?: pulumi.Input<string | enums.LogVerbosity | undefined>;
     /**
      * Settings used for training the model.
      */
-    modelSettings?: pulumi.Input<ImageModelSettingsClassificationArgs>;
+    modelSettings?: pulumi.Input<ImageModelSettingsClassificationArgs | undefined>;
     /**
      * Primary metrics for classification tasks.
      */
-    primaryMetric?: pulumi.Input<string | enums.ClassificationPrimaryMetrics>;
+    primaryMetric?: pulumi.Input<string | enums.ClassificationPrimaryMetrics | undefined>;
     /**
      * Search space for sampling different combinations of models and their hyperparameters.
      */
-    searchSpace?: pulumi.Input<pulumi.Input<ImageModelDistributionSettingsClassificationArgs>[]>;
+    searchSpace?: pulumi.Input<pulumi.Input<ImageModelDistributionSettingsClassificationArgs>[] | undefined>;
     /**
      * Model sweeping and hyperparameter sweeping related settings.
      */
-    sweepSettings?: pulumi.Input<ImageSweepSettingsArgs>;
+    sweepSettings?: pulumi.Input<ImageSweepSettingsArgs | undefined>;
     /**
      * Target column name: This is prediction values column.
      * Also known as label column name in context of classification tasks.
      */
-    targetColumnName?: pulumi.Input<string>;
+    targetColumnName?: pulumi.Input<string | undefined>;
     /**
      * AutoMLJob Task type.
      * Expected value is 'ImageClassification'.
@@ -3904,13 +3887,13 @@ export interface ImageClassificationArgs {
     /**
      * Validation data inputs.
      */
-    validationData?: pulumi.Input<MLTableJobInputArgs>;
+    validationData?: pulumi.Input<MLTableJobInputArgs | undefined>;
     /**
      * The fraction of training dataset that needs to be set aside for validation purpose.
      * Values between (0.0 , 1.0)
      * Applied when validation dataset is not provided.
      */
-    validationDataSize?: pulumi.Input<number>;
+    validationDataSize?: pulumi.Input<number | undefined>;
 }
 /**
  * imageClassificationArgsProvideDefaults sets the appropriate defaults for ImageClassificationArgs
@@ -3920,10 +3903,10 @@ export function imageClassificationArgsProvideDefaults(val: ImageClassificationA
         ...val,
         limitSettings: pulumi.output(val.limitSettings).apply(imageLimitSettingsArgsProvideDefaults),
         logVerbosity: (val.logVerbosity) ?? "Info",
-        modelSettings: (val.modelSettings ? pulumi.output(val.modelSettings).apply(imageModelSettingsClassificationArgsProvideDefaults) : undefined),
+        modelSettings: pulumi.output(val.modelSettings).apply(v => v === undefined ? undefined : imageModelSettingsClassificationArgsProvideDefaults(v)),
         primaryMetric: (val.primaryMetric) ?? "Accuracy",
         trainingData: pulumi.output(val.trainingData).apply(mltableJobInputArgsProvideDefaults),
-        validationData: (val.validationData ? pulumi.output(val.validationData).apply(mltableJobInputArgsProvideDefaults) : undefined),
+        validationData: pulumi.output(val.validationData).apply(v => v === undefined ? undefined : mltableJobInputArgsProvideDefaults(v)),
     };
 }
 
@@ -3939,28 +3922,28 @@ export interface ImageClassificationMultilabelArgs {
     /**
      * Enum for setting log verbosity.
      */
-    logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
+    logVerbosity?: pulumi.Input<string | enums.LogVerbosity | undefined>;
     /**
      * Settings used for training the model.
      */
-    modelSettings?: pulumi.Input<ImageModelSettingsClassificationArgs>;
+    modelSettings?: pulumi.Input<ImageModelSettingsClassificationArgs | undefined>;
     /**
      * Primary metrics for classification multilabel tasks.
      */
-    primaryMetric?: pulumi.Input<string | enums.ClassificationMultilabelPrimaryMetrics>;
+    primaryMetric?: pulumi.Input<string | enums.ClassificationMultilabelPrimaryMetrics | undefined>;
     /**
      * Search space for sampling different combinations of models and their hyperparameters.
      */
-    searchSpace?: pulumi.Input<pulumi.Input<ImageModelDistributionSettingsClassificationArgs>[]>;
+    searchSpace?: pulumi.Input<pulumi.Input<ImageModelDistributionSettingsClassificationArgs>[] | undefined>;
     /**
      * Model sweeping and hyperparameter sweeping related settings.
      */
-    sweepSettings?: pulumi.Input<ImageSweepSettingsArgs>;
+    sweepSettings?: pulumi.Input<ImageSweepSettingsArgs | undefined>;
     /**
      * Target column name: This is prediction values column.
      * Also known as label column name in context of classification tasks.
      */
-    targetColumnName?: pulumi.Input<string>;
+    targetColumnName?: pulumi.Input<string | undefined>;
     /**
      * AutoMLJob Task type.
      * Expected value is 'ImageClassificationMultilabel'.
@@ -3973,13 +3956,13 @@ export interface ImageClassificationMultilabelArgs {
     /**
      * Validation data inputs.
      */
-    validationData?: pulumi.Input<MLTableJobInputArgs>;
+    validationData?: pulumi.Input<MLTableJobInputArgs | undefined>;
     /**
      * The fraction of training dataset that needs to be set aside for validation purpose.
      * Values between (0.0 , 1.0)
      * Applied when validation dataset is not provided.
      */
-    validationDataSize?: pulumi.Input<number>;
+    validationDataSize?: pulumi.Input<number | undefined>;
 }
 /**
  * imageClassificationMultilabelArgsProvideDefaults sets the appropriate defaults for ImageClassificationMultilabelArgs
@@ -3989,10 +3972,10 @@ export function imageClassificationMultilabelArgsProvideDefaults(val: ImageClass
         ...val,
         limitSettings: pulumi.output(val.limitSettings).apply(imageLimitSettingsArgsProvideDefaults),
         logVerbosity: (val.logVerbosity) ?? "Info",
-        modelSettings: (val.modelSettings ? pulumi.output(val.modelSettings).apply(imageModelSettingsClassificationArgsProvideDefaults) : undefined),
+        modelSettings: pulumi.output(val.modelSettings).apply(v => v === undefined ? undefined : imageModelSettingsClassificationArgsProvideDefaults(v)),
         primaryMetric: (val.primaryMetric) ?? "IOU",
         trainingData: pulumi.output(val.trainingData).apply(mltableJobInputArgsProvideDefaults),
-        validationData: (val.validationData ? pulumi.output(val.validationData).apply(mltableJobInputArgsProvideDefaults) : undefined),
+        validationData: pulumi.output(val.validationData).apply(v => v === undefined ? undefined : mltableJobInputArgsProvideDefaults(v)),
     };
 }
 
@@ -4008,28 +3991,28 @@ export interface ImageInstanceSegmentationArgs {
     /**
      * Enum for setting log verbosity.
      */
-    logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
+    logVerbosity?: pulumi.Input<string | enums.LogVerbosity | undefined>;
     /**
      * Settings used for training the model.
      */
-    modelSettings?: pulumi.Input<ImageModelSettingsObjectDetectionArgs>;
+    modelSettings?: pulumi.Input<ImageModelSettingsObjectDetectionArgs | undefined>;
     /**
      * Primary metrics for InstanceSegmentation tasks.
      */
-    primaryMetric?: pulumi.Input<string | enums.InstanceSegmentationPrimaryMetrics>;
+    primaryMetric?: pulumi.Input<string | enums.InstanceSegmentationPrimaryMetrics | undefined>;
     /**
      * Search space for sampling different combinations of models and their hyperparameters.
      */
-    searchSpace?: pulumi.Input<pulumi.Input<ImageModelDistributionSettingsObjectDetectionArgs>[]>;
+    searchSpace?: pulumi.Input<pulumi.Input<ImageModelDistributionSettingsObjectDetectionArgs>[] | undefined>;
     /**
      * Model sweeping and hyperparameter sweeping related settings.
      */
-    sweepSettings?: pulumi.Input<ImageSweepSettingsArgs>;
+    sweepSettings?: pulumi.Input<ImageSweepSettingsArgs | undefined>;
     /**
      * Target column name: This is prediction values column.
      * Also known as label column name in context of classification tasks.
      */
-    targetColumnName?: pulumi.Input<string>;
+    targetColumnName?: pulumi.Input<string | undefined>;
     /**
      * AutoMLJob Task type.
      * Expected value is 'ImageInstanceSegmentation'.
@@ -4042,13 +4025,13 @@ export interface ImageInstanceSegmentationArgs {
     /**
      * Validation data inputs.
      */
-    validationData?: pulumi.Input<MLTableJobInputArgs>;
+    validationData?: pulumi.Input<MLTableJobInputArgs | undefined>;
     /**
      * The fraction of training dataset that needs to be set aside for validation purpose.
      * Values between (0.0 , 1.0)
      * Applied when validation dataset is not provided.
      */
-    validationDataSize?: pulumi.Input<number>;
+    validationDataSize?: pulumi.Input<number | undefined>;
 }
 /**
  * imageInstanceSegmentationArgsProvideDefaults sets the appropriate defaults for ImageInstanceSegmentationArgs
@@ -4058,10 +4041,10 @@ export function imageInstanceSegmentationArgsProvideDefaults(val: ImageInstanceS
         ...val,
         limitSettings: pulumi.output(val.limitSettings).apply(imageLimitSettingsArgsProvideDefaults),
         logVerbosity: (val.logVerbosity) ?? "Info",
-        modelSettings: (val.modelSettings ? pulumi.output(val.modelSettings).apply(imageModelSettingsObjectDetectionArgsProvideDefaults) : undefined),
+        modelSettings: pulumi.output(val.modelSettings).apply(v => v === undefined ? undefined : imageModelSettingsObjectDetectionArgsProvideDefaults(v)),
         primaryMetric: (val.primaryMetric) ?? "MeanAveragePrecision",
         trainingData: pulumi.output(val.trainingData).apply(mltableJobInputArgsProvideDefaults),
-        validationData: (val.validationData ? pulumi.output(val.validationData).apply(mltableJobInputArgsProvideDefaults) : undefined),
+        validationData: pulumi.output(val.validationData).apply(v => v === undefined ? undefined : mltableJobInputArgsProvideDefaults(v)),
     };
 }
 
@@ -4072,15 +4055,15 @@ export interface ImageLimitSettingsArgs {
     /**
      * Maximum number of concurrent AutoML iterations.
      */
-    maxConcurrentTrials?: pulumi.Input<number>;
+    maxConcurrentTrials?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of AutoML iterations.
      */
-    maxTrials?: pulumi.Input<number>;
+    maxTrials?: pulumi.Input<number | undefined>;
     /**
      * AutoML job timeout.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 /**
  * imageLimitSettingsArgsProvideDefaults sets the appropriate defaults for ImageLimitSettingsArgs
@@ -4106,147 +4089,147 @@ export function imageLimitSettingsArgsProvideDefaults(val: ImageLimitSettingsArg
  * For more details on how to compose distribution expressions please check the documentation:
  * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters
  * For more information on the available settings please visit the official documentation:
- * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
+ * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.```
  */
 export interface ImageModelDistributionSettingsClassificationArgs {
     /**
      * Enable AMSGrad when optimizer is 'adam' or 'adamw'.
      */
-    amsGradient?: pulumi.Input<string>;
+    amsGradient?: pulumi.Input<string | undefined>;
     /**
      * Settings for using Augmentations.
      */
-    augmentations?: pulumi.Input<string>;
+    augmentations?: pulumi.Input<string | undefined>;
     /**
      * Value of 'beta1' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
      */
-    beta1?: pulumi.Input<string>;
+    beta1?: pulumi.Input<string | undefined>;
     /**
      * Value of 'beta2' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
      */
-    beta2?: pulumi.Input<string>;
+    beta2?: pulumi.Input<string | undefined>;
     /**
      * Whether to use distributer training.
      */
-    distributed?: pulumi.Input<string>;
+    distributed?: pulumi.Input<string | undefined>;
     /**
      * Enable early stopping logic during training.
      */
-    earlyStopping?: pulumi.Input<string>;
+    earlyStopping?: pulumi.Input<string | undefined>;
     /**
      * Minimum number of epochs or validation evaluations to wait before primary metric improvement
      * is tracked for early stopping. Must be a positive integer.
      */
-    earlyStoppingDelay?: pulumi.Input<string>;
+    earlyStoppingDelay?: pulumi.Input<string | undefined>;
     /**
      * Minimum number of epochs or validation evaluations with no primary metric improvement before
      * the run is stopped. Must be a positive integer.
      */
-    earlyStoppingPatience?: pulumi.Input<string>;
+    earlyStoppingPatience?: pulumi.Input<string | undefined>;
     /**
      * Enable normalization when exporting ONNX model.
      */
-    enableOnnxNormalization?: pulumi.Input<string>;
+    enableOnnxNormalization?: pulumi.Input<string | undefined>;
     /**
      * Frequency to evaluate validation dataset to get metric scores. Must be a positive integer.
      */
-    evaluationFrequency?: pulumi.Input<string>;
+    evaluationFrequency?: pulumi.Input<string | undefined>;
     /**
      * Gradient accumulation means running a configured number of "GradAccumulationStep" steps without
      * updating the model weights while accumulating the gradients of those steps, and then using
      * the accumulated gradients to compute the weight updates. Must be a positive integer.
      */
-    gradientAccumulationStep?: pulumi.Input<string>;
+    gradientAccumulationStep?: pulumi.Input<string | undefined>;
     /**
      * Number of layers to freeze for the model. Must be a positive integer.
      * For instance, passing 2 as value for 'seresnext' means
      * freezing layer0 and layer1. For a full list of models supported and details on layer freeze, please
      * see: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
      */
-    layersToFreeze?: pulumi.Input<string>;
+    layersToFreeze?: pulumi.Input<string | undefined>;
     /**
      * Initial learning rate. Must be a float in the range [0, 1].
      */
-    learningRate?: pulumi.Input<string>;
+    learningRate?: pulumi.Input<string | undefined>;
     /**
      * Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
      */
-    learningRateScheduler?: pulumi.Input<string>;
+    learningRateScheduler?: pulumi.Input<string | undefined>;
     /**
      * Name of the model to use for training.
      * For more information on the available models please visit the official documentation:
      * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
      */
-    modelName?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string | undefined>;
     /**
      * Value of momentum when optimizer is 'sgd'. Must be a float in the range [0, 1].
      */
-    momentum?: pulumi.Input<string>;
+    momentum?: pulumi.Input<string | undefined>;
     /**
      * Enable nesterov when optimizer is 'sgd'.
      */
-    nesterov?: pulumi.Input<string>;
+    nesterov?: pulumi.Input<string | undefined>;
     /**
      * Number of training epochs. Must be a positive integer.
      */
-    numberOfEpochs?: pulumi.Input<string>;
+    numberOfEpochs?: pulumi.Input<string | undefined>;
     /**
      * Number of data loader workers. Must be a non-negative integer.
      */
-    numberOfWorkers?: pulumi.Input<string>;
+    numberOfWorkers?: pulumi.Input<string | undefined>;
     /**
      * Type of optimizer. Must be either 'sgd', 'adam', or 'adamw'.
      */
-    optimizer?: pulumi.Input<string>;
+    optimizer?: pulumi.Input<string | undefined>;
     /**
      * Random seed to be used when using deterministic training.
      */
-    randomSeed?: pulumi.Input<string>;
+    randomSeed?: pulumi.Input<string | undefined>;
     /**
      * Value of gamma when learning rate scheduler is 'step'. Must be a float in the range [0, 1].
      */
-    stepLRGamma?: pulumi.Input<string>;
+    stepLRGamma?: pulumi.Input<string | undefined>;
     /**
      * Value of step size when learning rate scheduler is 'step'. Must be a positive integer.
      */
-    stepLRStepSize?: pulumi.Input<string>;
+    stepLRStepSize?: pulumi.Input<string | undefined>;
     /**
      * Training batch size. Must be a positive integer.
      */
-    trainingBatchSize?: pulumi.Input<string>;
+    trainingBatchSize?: pulumi.Input<string | undefined>;
     /**
      * Image crop size that is input to the neural network for the training dataset. Must be a positive integer.
      */
-    trainingCropSize?: pulumi.Input<string>;
+    trainingCropSize?: pulumi.Input<string | undefined>;
     /**
      * Validation batch size. Must be a positive integer.
      */
-    validationBatchSize?: pulumi.Input<string>;
+    validationBatchSize?: pulumi.Input<string | undefined>;
     /**
      * Image crop size that is input to the neural network for the validation dataset. Must be a positive integer.
      */
-    validationCropSize?: pulumi.Input<string>;
+    validationCropSize?: pulumi.Input<string | undefined>;
     /**
      * Image size to which to resize before cropping for validation dataset. Must be a positive integer.
      */
-    validationResizeSize?: pulumi.Input<string>;
+    validationResizeSize?: pulumi.Input<string | undefined>;
     /**
      * Value of cosine cycle when learning rate scheduler is 'warmup_cosine'. Must be a float in the range [0, 1].
      */
-    warmupCosineLRCycles?: pulumi.Input<string>;
+    warmupCosineLRCycles?: pulumi.Input<string | undefined>;
     /**
      * Value of warmup epochs when learning rate scheduler is 'warmup_cosine'. Must be a positive integer.
      */
-    warmupCosineLRWarmupEpochs?: pulumi.Input<string>;
+    warmupCosineLRWarmupEpochs?: pulumi.Input<string | undefined>;
     /**
      * Value of weight decay when optimizer is 'sgd', 'adam', or 'adamw'. Must be a float in the range[0, 1].
      */
-    weightDecay?: pulumi.Input<string>;
+    weightDecay?: pulumi.Input<string | undefined>;
     /**
      * Weighted loss. The accepted values are 0 for no weighted loss.
      * 1 for weighted loss with sqrt.(class_weights). 2 for weighted loss with class_weights. Must be 0 or 1 or 2.
      */
-    weightedLoss?: pulumi.Input<string>;
+    weightedLoss?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -4261,200 +4244,200 @@ export interface ImageModelDistributionSettingsClassificationArgs {
  * For more details on how to compose distribution expressions please check the documentation:
  * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters
  * For more information on the available settings please visit the official documentation:
- * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
+ * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.```
  */
 export interface ImageModelDistributionSettingsObjectDetectionArgs {
     /**
      * Enable AMSGrad when optimizer is 'adam' or 'adamw'.
      */
-    amsGradient?: pulumi.Input<string>;
+    amsGradient?: pulumi.Input<string | undefined>;
     /**
      * Settings for using Augmentations.
      */
-    augmentations?: pulumi.Input<string>;
+    augmentations?: pulumi.Input<string | undefined>;
     /**
      * Value of 'beta1' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
      */
-    beta1?: pulumi.Input<string>;
+    beta1?: pulumi.Input<string | undefined>;
     /**
      * Value of 'beta2' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
      */
-    beta2?: pulumi.Input<string>;
+    beta2?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of detections per image, for all classes. Must be a positive integer.
      * Note: This settings is not supported for the 'yolov5' algorithm.
      */
-    boxDetectionsPerImage?: pulumi.Input<string>;
+    boxDetectionsPerImage?: pulumi.Input<string | undefined>;
     /**
      * During inference, only return proposals with a classification score greater than
      * BoxScoreThreshold. Must be a float in the range[0, 1].
      */
-    boxScoreThreshold?: pulumi.Input<string>;
+    boxScoreThreshold?: pulumi.Input<string | undefined>;
     /**
      * Whether to use distributer training.
      */
-    distributed?: pulumi.Input<string>;
+    distributed?: pulumi.Input<string | undefined>;
     /**
      * Enable early stopping logic during training.
      */
-    earlyStopping?: pulumi.Input<string>;
+    earlyStopping?: pulumi.Input<string | undefined>;
     /**
      * Minimum number of epochs or validation evaluations to wait before primary metric improvement
      * is tracked for early stopping. Must be a positive integer.
      */
-    earlyStoppingDelay?: pulumi.Input<string>;
+    earlyStoppingDelay?: pulumi.Input<string | undefined>;
     /**
      * Minimum number of epochs or validation evaluations with no primary metric improvement before
      * the run is stopped. Must be a positive integer.
      */
-    earlyStoppingPatience?: pulumi.Input<string>;
+    earlyStoppingPatience?: pulumi.Input<string | undefined>;
     /**
      * Enable normalization when exporting ONNX model.
      */
-    enableOnnxNormalization?: pulumi.Input<string>;
+    enableOnnxNormalization?: pulumi.Input<string | undefined>;
     /**
      * Frequency to evaluate validation dataset to get metric scores. Must be a positive integer.
      */
-    evaluationFrequency?: pulumi.Input<string>;
+    evaluationFrequency?: pulumi.Input<string | undefined>;
     /**
      * Gradient accumulation means running a configured number of "GradAccumulationStep" steps without
      * updating the model weights while accumulating the gradients of those steps, and then using
      * the accumulated gradients to compute the weight updates. Must be a positive integer.
      */
-    gradientAccumulationStep?: pulumi.Input<string>;
+    gradientAccumulationStep?: pulumi.Input<string | undefined>;
     /**
      * Image size for train and validation. Must be a positive integer.
      * Note: The training run may get into CUDA OOM if the size is too big.
      * Note: This settings is only supported for the 'yolov5' algorithm.
      */
-    imageSize?: pulumi.Input<string>;
+    imageSize?: pulumi.Input<string | undefined>;
     /**
      * Number of layers to freeze for the model. Must be a positive integer.
      * For instance, passing 2 as value for 'seresnext' means
      * freezing layer0 and layer1. For a full list of models supported and details on layer freeze, please
      * see: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
      */
-    layersToFreeze?: pulumi.Input<string>;
+    layersToFreeze?: pulumi.Input<string | undefined>;
     /**
      * Initial learning rate. Must be a float in the range [0, 1].
      */
-    learningRate?: pulumi.Input<string>;
+    learningRate?: pulumi.Input<string | undefined>;
     /**
      * Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
      */
-    learningRateScheduler?: pulumi.Input<string>;
+    learningRateScheduler?: pulumi.Input<string | undefined>;
     /**
      * Maximum size of the image to be rescaled before feeding it to the backbone.
      * Must be a positive integer. Note: training run may get into CUDA OOM if the size is too big.
      * Note: This settings is not supported for the 'yolov5' algorithm.
      */
-    maxSize?: pulumi.Input<string>;
+    maxSize?: pulumi.Input<string | undefined>;
     /**
      * Minimum size of the image to be rescaled before feeding it to the backbone.
      * Must be a positive integer. Note: training run may get into CUDA OOM if the size is too big.
      * Note: This settings is not supported for the 'yolov5' algorithm.
      */
-    minSize?: pulumi.Input<string>;
+    minSize?: pulumi.Input<string | undefined>;
     /**
      * Name of the model to use for training.
      * For more information on the available models please visit the official documentation:
      * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
      */
-    modelName?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string | undefined>;
     /**
      * Model size. Must be 'small', 'medium', 'large', or 'xlarge'.
      * Note: training run may get into CUDA OOM if the model size is too big.
      * Note: This settings is only supported for the 'yolov5' algorithm.
      */
-    modelSize?: pulumi.Input<string>;
+    modelSize?: pulumi.Input<string | undefined>;
     /**
      * Value of momentum when optimizer is 'sgd'. Must be a float in the range [0, 1].
      */
-    momentum?: pulumi.Input<string>;
+    momentum?: pulumi.Input<string | undefined>;
     /**
      * Enable multi-scale image by varying image size by +/- 50%.
      * Note: training run may get into CUDA OOM if no sufficient GPU memory.
      * Note: This settings is only supported for the 'yolov5' algorithm.
      */
-    multiScale?: pulumi.Input<string>;
+    multiScale?: pulumi.Input<string | undefined>;
     /**
      * Enable nesterov when optimizer is 'sgd'.
      */
-    nesterov?: pulumi.Input<string>;
+    nesterov?: pulumi.Input<string | undefined>;
     /**
      * IOU threshold used during inference in NMS post processing. Must be float in the range [0, 1].
      */
-    nmsIouThreshold?: pulumi.Input<string>;
+    nmsIouThreshold?: pulumi.Input<string | undefined>;
     /**
      * Number of training epochs. Must be a positive integer.
      */
-    numberOfEpochs?: pulumi.Input<string>;
+    numberOfEpochs?: pulumi.Input<string | undefined>;
     /**
      * Number of data loader workers. Must be a non-negative integer.
      */
-    numberOfWorkers?: pulumi.Input<string>;
+    numberOfWorkers?: pulumi.Input<string | undefined>;
     /**
      * Type of optimizer. Must be either 'sgd', 'adam', or 'adamw'.
      */
-    optimizer?: pulumi.Input<string>;
+    optimizer?: pulumi.Input<string | undefined>;
     /**
      * Random seed to be used when using deterministic training.
      */
-    randomSeed?: pulumi.Input<string>;
+    randomSeed?: pulumi.Input<string | undefined>;
     /**
      * Value of gamma when learning rate scheduler is 'step'. Must be a float in the range [0, 1].
      */
-    stepLRGamma?: pulumi.Input<string>;
+    stepLRGamma?: pulumi.Input<string | undefined>;
     /**
      * Value of step size when learning rate scheduler is 'step'. Must be a positive integer.
      */
-    stepLRStepSize?: pulumi.Input<string>;
+    stepLRStepSize?: pulumi.Input<string | undefined>;
     /**
      * The grid size to use for tiling each image. Note: TileGridSize must not be
      * None to enable small object detection logic. A string containing two integers in mxn format.
      * Note: This settings is not supported for the 'yolov5' algorithm.
      */
-    tileGridSize?: pulumi.Input<string>;
+    tileGridSize?: pulumi.Input<string | undefined>;
     /**
      * Overlap ratio between adjacent tiles in each dimension. Must be float in the range [0, 1).
      * Note: This settings is not supported for the 'yolov5' algorithm.
      */
-    tileOverlapRatio?: pulumi.Input<string>;
+    tileOverlapRatio?: pulumi.Input<string | undefined>;
     /**
      * The IOU threshold to use to perform NMS while merging predictions from tiles and image.
      * Used in validation/ inference. Must be float in the range [0, 1].
      * Note: This settings is not supported for the 'yolov5' algorithm.
      * NMS: Non-maximum suppression
      */
-    tilePredictionsNmsThreshold?: pulumi.Input<string>;
+    tilePredictionsNmsThreshold?: pulumi.Input<string | undefined>;
     /**
      * Training batch size. Must be a positive integer.
      */
-    trainingBatchSize?: pulumi.Input<string>;
+    trainingBatchSize?: pulumi.Input<string | undefined>;
     /**
      * Validation batch size. Must be a positive integer.
      */
-    validationBatchSize?: pulumi.Input<string>;
+    validationBatchSize?: pulumi.Input<string | undefined>;
     /**
      * IOU threshold to use when computing validation metric. Must be float in the range [0, 1].
      */
-    validationIouThreshold?: pulumi.Input<string>;
+    validationIouThreshold?: pulumi.Input<string | undefined>;
     /**
      * Metric computation method to use for validation metrics. Must be 'none', 'coco', 'voc', or 'coco_voc'.
      */
-    validationMetricType?: pulumi.Input<string>;
+    validationMetricType?: pulumi.Input<string | undefined>;
     /**
      * Value of cosine cycle when learning rate scheduler is 'warmup_cosine'. Must be a float in the range [0, 1].
      */
-    warmupCosineLRCycles?: pulumi.Input<string>;
+    warmupCosineLRCycles?: pulumi.Input<string | undefined>;
     /**
      * Value of warmup epochs when learning rate scheduler is 'warmup_cosine'. Must be a positive integer.
      */
-    warmupCosineLRWarmupEpochs?: pulumi.Input<string>;
+    warmupCosineLRWarmupEpochs?: pulumi.Input<string | undefined>;
     /**
      * Value of weight decay when optimizer is 'sgd', 'adam', or 'adamw'. Must be a float in the range[0, 1].
      */
-    weightDecay?: pulumi.Input<string>;
+    weightDecay?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -4466,157 +4449,157 @@ export interface ImageModelSettingsClassificationArgs {
     /**
      * Settings for advanced scenarios.
      */
-    advancedSettings?: pulumi.Input<string>;
+    advancedSettings?: pulumi.Input<string | undefined>;
     /**
      * Enable AMSGrad when optimizer is 'adam' or 'adamw'.
      */
-    amsGradient?: pulumi.Input<boolean>;
+    amsGradient?: pulumi.Input<boolean | undefined>;
     /**
      * Settings for using Augmentations.
      */
-    augmentations?: pulumi.Input<string>;
+    augmentations?: pulumi.Input<string | undefined>;
     /**
      * Value of 'beta1' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
      */
-    beta1?: pulumi.Input<number>;
+    beta1?: pulumi.Input<number | undefined>;
     /**
      * Value of 'beta2' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
      */
-    beta2?: pulumi.Input<number>;
+    beta2?: pulumi.Input<number | undefined>;
     /**
      * Frequency to store model checkpoints. Must be a positive integer.
      */
-    checkpointFrequency?: pulumi.Input<number>;
+    checkpointFrequency?: pulumi.Input<number | undefined>;
     /**
      * The pretrained checkpoint model for incremental training.
      */
-    checkpointModel?: pulumi.Input<MLFlowModelJobInputArgs>;
+    checkpointModel?: pulumi.Input<MLFlowModelJobInputArgs | undefined>;
     /**
      * The id of a previous run that has a pretrained checkpoint for incremental training.
      */
-    checkpointRunId?: pulumi.Input<string>;
+    checkpointRunId?: pulumi.Input<string | undefined>;
     /**
      * Whether to use distributed training.
      */
-    distributed?: pulumi.Input<boolean>;
+    distributed?: pulumi.Input<boolean | undefined>;
     /**
      * Enable early stopping logic during training.
      */
-    earlyStopping?: pulumi.Input<boolean>;
+    earlyStopping?: pulumi.Input<boolean | undefined>;
     /**
      * Minimum number of epochs or validation evaluations to wait before primary metric improvement
      * is tracked for early stopping. Must be a positive integer.
      */
-    earlyStoppingDelay?: pulumi.Input<number>;
+    earlyStoppingDelay?: pulumi.Input<number | undefined>;
     /**
      * Minimum number of epochs or validation evaluations with no primary metric improvement before
      * the run is stopped. Must be a positive integer.
      */
-    earlyStoppingPatience?: pulumi.Input<number>;
+    earlyStoppingPatience?: pulumi.Input<number | undefined>;
     /**
      * Enable normalization when exporting ONNX model.
      */
-    enableOnnxNormalization?: pulumi.Input<boolean>;
+    enableOnnxNormalization?: pulumi.Input<boolean | undefined>;
     /**
      * Frequency to evaluate validation dataset to get metric scores. Must be a positive integer.
      */
-    evaluationFrequency?: pulumi.Input<number>;
+    evaluationFrequency?: pulumi.Input<number | undefined>;
     /**
      * Gradient accumulation means running a configured number of "GradAccumulationStep" steps without
      * updating the model weights while accumulating the gradients of those steps, and then using
      * the accumulated gradients to compute the weight updates. Must be a positive integer.
      */
-    gradientAccumulationStep?: pulumi.Input<number>;
+    gradientAccumulationStep?: pulumi.Input<number | undefined>;
     /**
      * Number of layers to freeze for the model. Must be a positive integer.
      * For instance, passing 2 as value for 'seresnext' means
      * freezing layer0 and layer1. For a full list of models supported and details on layer freeze, please
      * see: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
      */
-    layersToFreeze?: pulumi.Input<number>;
+    layersToFreeze?: pulumi.Input<number | undefined>;
     /**
      * Initial learning rate. Must be a float in the range [0, 1].
      */
-    learningRate?: pulumi.Input<number>;
+    learningRate?: pulumi.Input<number | undefined>;
     /**
      * Learning rate scheduler enum.
      */
-    learningRateScheduler?: pulumi.Input<string | enums.LearningRateScheduler>;
+    learningRateScheduler?: pulumi.Input<string | enums.LearningRateScheduler | undefined>;
     /**
      * Name of the model to use for training.
      * For more information on the available models please visit the official documentation:
      * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
      */
-    modelName?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string | undefined>;
     /**
      * Value of momentum when optimizer is 'sgd'. Must be a float in the range [0, 1].
      */
-    momentum?: pulumi.Input<number>;
+    momentum?: pulumi.Input<number | undefined>;
     /**
      * Enable nesterov when optimizer is 'sgd'.
      */
-    nesterov?: pulumi.Input<boolean>;
+    nesterov?: pulumi.Input<boolean | undefined>;
     /**
      * Number of training epochs. Must be a positive integer.
      */
-    numberOfEpochs?: pulumi.Input<number>;
+    numberOfEpochs?: pulumi.Input<number | undefined>;
     /**
      * Number of data loader workers. Must be a non-negative integer.
      */
-    numberOfWorkers?: pulumi.Input<number>;
+    numberOfWorkers?: pulumi.Input<number | undefined>;
     /**
      * Stochastic optimizer for image models.
      */
-    optimizer?: pulumi.Input<string | enums.StochasticOptimizer>;
+    optimizer?: pulumi.Input<string | enums.StochasticOptimizer | undefined>;
     /**
      * Random seed to be used when using deterministic training.
      */
-    randomSeed?: pulumi.Input<number>;
+    randomSeed?: pulumi.Input<number | undefined>;
     /**
      * Value of gamma when learning rate scheduler is 'step'. Must be a float in the range [0, 1].
      */
-    stepLRGamma?: pulumi.Input<number>;
+    stepLRGamma?: pulumi.Input<number | undefined>;
     /**
      * Value of step size when learning rate scheduler is 'step'. Must be a positive integer.
      */
-    stepLRStepSize?: pulumi.Input<number>;
+    stepLRStepSize?: pulumi.Input<number | undefined>;
     /**
      * Training batch size. Must be a positive integer.
      */
-    trainingBatchSize?: pulumi.Input<number>;
+    trainingBatchSize?: pulumi.Input<number | undefined>;
     /**
      * Image crop size that is input to the neural network for the training dataset. Must be a positive integer.
      */
-    trainingCropSize?: pulumi.Input<number>;
+    trainingCropSize?: pulumi.Input<number | undefined>;
     /**
      * Validation batch size. Must be a positive integer.
      */
-    validationBatchSize?: pulumi.Input<number>;
+    validationBatchSize?: pulumi.Input<number | undefined>;
     /**
      * Image crop size that is input to the neural network for the validation dataset. Must be a positive integer.
      */
-    validationCropSize?: pulumi.Input<number>;
+    validationCropSize?: pulumi.Input<number | undefined>;
     /**
      * Image size to which to resize before cropping for validation dataset. Must be a positive integer.
      */
-    validationResizeSize?: pulumi.Input<number>;
+    validationResizeSize?: pulumi.Input<number | undefined>;
     /**
      * Value of cosine cycle when learning rate scheduler is 'warmup_cosine'. Must be a float in the range [0, 1].
      */
-    warmupCosineLRCycles?: pulumi.Input<number>;
+    warmupCosineLRCycles?: pulumi.Input<number | undefined>;
     /**
      * Value of warmup epochs when learning rate scheduler is 'warmup_cosine'. Must be a positive integer.
      */
-    warmupCosineLRWarmupEpochs?: pulumi.Input<number>;
+    warmupCosineLRWarmupEpochs?: pulumi.Input<number | undefined>;
     /**
      * Value of weight decay when optimizer is 'sgd', 'adam', or 'adamw'. Must be a float in the range[0, 1].
      */
-    weightDecay?: pulumi.Input<number>;
+    weightDecay?: pulumi.Input<number | undefined>;
     /**
      * Weighted loss. The accepted values are 0 for no weighted loss.
      * 1 for weighted loss with sqrt.(class_weights). 2 for weighted loss with class_weights. Must be 0 or 1 or 2.
      */
-    weightedLoss?: pulumi.Input<number>;
+    weightedLoss?: pulumi.Input<number | undefined>;
 }
 /**
  * imageModelSettingsClassificationArgsProvideDefaults sets the appropriate defaults for ImageModelSettingsClassificationArgs
@@ -4624,7 +4607,7 @@ export interface ImageModelSettingsClassificationArgs {
 export function imageModelSettingsClassificationArgsProvideDefaults(val: ImageModelSettingsClassificationArgs): ImageModelSettingsClassificationArgs {
     return {
         ...val,
-        checkpointModel: (val.checkpointModel ? pulumi.output(val.checkpointModel).apply(mlflowModelJobInputArgsProvideDefaults) : undefined),
+        checkpointModel: pulumi.output(val.checkpointModel).apply(v => v === undefined ? undefined : mlflowModelJobInputArgsProvideDefaults(v)),
         learningRateScheduler: (val.learningRateScheduler) ?? "None",
         optimizer: (val.optimizer) ?? "None",
     };
@@ -4639,207 +4622,207 @@ export interface ImageModelSettingsObjectDetectionArgs {
     /**
      * Settings for advanced scenarios.
      */
-    advancedSettings?: pulumi.Input<string>;
+    advancedSettings?: pulumi.Input<string | undefined>;
     /**
      * Enable AMSGrad when optimizer is 'adam' or 'adamw'.
      */
-    amsGradient?: pulumi.Input<boolean>;
+    amsGradient?: pulumi.Input<boolean | undefined>;
     /**
      * Settings for using Augmentations.
      */
-    augmentations?: pulumi.Input<string>;
+    augmentations?: pulumi.Input<string | undefined>;
     /**
      * Value of 'beta1' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
      */
-    beta1?: pulumi.Input<number>;
+    beta1?: pulumi.Input<number | undefined>;
     /**
      * Value of 'beta2' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
      */
-    beta2?: pulumi.Input<number>;
+    beta2?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of detections per image, for all classes. Must be a positive integer.
      * Note: This settings is not supported for the 'yolov5' algorithm.
      */
-    boxDetectionsPerImage?: pulumi.Input<number>;
+    boxDetectionsPerImage?: pulumi.Input<number | undefined>;
     /**
      * During inference, only return proposals with a classification score greater than
      * BoxScoreThreshold. Must be a float in the range[0, 1].
      */
-    boxScoreThreshold?: pulumi.Input<number>;
+    boxScoreThreshold?: pulumi.Input<number | undefined>;
     /**
      * Frequency to store model checkpoints. Must be a positive integer.
      */
-    checkpointFrequency?: pulumi.Input<number>;
+    checkpointFrequency?: pulumi.Input<number | undefined>;
     /**
      * The pretrained checkpoint model for incremental training.
      */
-    checkpointModel?: pulumi.Input<MLFlowModelJobInputArgs>;
+    checkpointModel?: pulumi.Input<MLFlowModelJobInputArgs | undefined>;
     /**
      * The id of a previous run that has a pretrained checkpoint for incremental training.
      */
-    checkpointRunId?: pulumi.Input<string>;
+    checkpointRunId?: pulumi.Input<string | undefined>;
     /**
      * Whether to use distributed training.
      */
-    distributed?: pulumi.Input<boolean>;
+    distributed?: pulumi.Input<boolean | undefined>;
     /**
      * Enable early stopping logic during training.
      */
-    earlyStopping?: pulumi.Input<boolean>;
+    earlyStopping?: pulumi.Input<boolean | undefined>;
     /**
      * Minimum number of epochs or validation evaluations to wait before primary metric improvement
      * is tracked for early stopping. Must be a positive integer.
      */
-    earlyStoppingDelay?: pulumi.Input<number>;
+    earlyStoppingDelay?: pulumi.Input<number | undefined>;
     /**
      * Minimum number of epochs or validation evaluations with no primary metric improvement before
      * the run is stopped. Must be a positive integer.
      */
-    earlyStoppingPatience?: pulumi.Input<number>;
+    earlyStoppingPatience?: pulumi.Input<number | undefined>;
     /**
      * Enable normalization when exporting ONNX model.
      */
-    enableOnnxNormalization?: pulumi.Input<boolean>;
+    enableOnnxNormalization?: pulumi.Input<boolean | undefined>;
     /**
      * Frequency to evaluate validation dataset to get metric scores. Must be a positive integer.
      */
-    evaluationFrequency?: pulumi.Input<number>;
+    evaluationFrequency?: pulumi.Input<number | undefined>;
     /**
      * Gradient accumulation means running a configured number of "GradAccumulationStep" steps without
      * updating the model weights while accumulating the gradients of those steps, and then using
      * the accumulated gradients to compute the weight updates. Must be a positive integer.
      */
-    gradientAccumulationStep?: pulumi.Input<number>;
+    gradientAccumulationStep?: pulumi.Input<number | undefined>;
     /**
      * Image size for train and validation. Must be a positive integer.
      * Note: The training run may get into CUDA OOM if the size is too big.
      * Note: This settings is only supported for the 'yolov5' algorithm.
      */
-    imageSize?: pulumi.Input<number>;
+    imageSize?: pulumi.Input<number | undefined>;
     /**
      * Number of layers to freeze for the model. Must be a positive integer.
      * For instance, passing 2 as value for 'seresnext' means
      * freezing layer0 and layer1. For a full list of models supported and details on layer freeze, please
      * see: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
      */
-    layersToFreeze?: pulumi.Input<number>;
+    layersToFreeze?: pulumi.Input<number | undefined>;
     /**
      * Initial learning rate. Must be a float in the range [0, 1].
      */
-    learningRate?: pulumi.Input<number>;
+    learningRate?: pulumi.Input<number | undefined>;
     /**
      * Learning rate scheduler enum.
      */
-    learningRateScheduler?: pulumi.Input<string | enums.LearningRateScheduler>;
+    learningRateScheduler?: pulumi.Input<string | enums.LearningRateScheduler | undefined>;
     /**
      * Maximum size of the image to be rescaled before feeding it to the backbone.
      * Must be a positive integer. Note: training run may get into CUDA OOM if the size is too big.
      * Note: This settings is not supported for the 'yolov5' algorithm.
      */
-    maxSize?: pulumi.Input<number>;
+    maxSize?: pulumi.Input<number | undefined>;
     /**
      * Minimum size of the image to be rescaled before feeding it to the backbone.
      * Must be a positive integer. Note: training run may get into CUDA OOM if the size is too big.
      * Note: This settings is not supported for the 'yolov5' algorithm.
      */
-    minSize?: pulumi.Input<number>;
+    minSize?: pulumi.Input<number | undefined>;
     /**
      * Name of the model to use for training.
      * For more information on the available models please visit the official documentation:
      * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
      */
-    modelName?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string | undefined>;
     /**
      * Image model size.
      */
-    modelSize?: pulumi.Input<string | enums.ModelSize>;
+    modelSize?: pulumi.Input<string | enums.ModelSize | undefined>;
     /**
      * Value of momentum when optimizer is 'sgd'. Must be a float in the range [0, 1].
      */
-    momentum?: pulumi.Input<number>;
+    momentum?: pulumi.Input<number | undefined>;
     /**
      * Enable multi-scale image by varying image size by +/- 50%.
      * Note: training run may get into CUDA OOM if no sufficient GPU memory.
      * Note: This settings is only supported for the 'yolov5' algorithm.
      */
-    multiScale?: pulumi.Input<boolean>;
+    multiScale?: pulumi.Input<boolean | undefined>;
     /**
      * Enable nesterov when optimizer is 'sgd'.
      */
-    nesterov?: pulumi.Input<boolean>;
+    nesterov?: pulumi.Input<boolean | undefined>;
     /**
      * IOU threshold used during inference in NMS post processing. Must be a float in the range [0, 1].
      */
-    nmsIouThreshold?: pulumi.Input<number>;
+    nmsIouThreshold?: pulumi.Input<number | undefined>;
     /**
      * Number of training epochs. Must be a positive integer.
      */
-    numberOfEpochs?: pulumi.Input<number>;
+    numberOfEpochs?: pulumi.Input<number | undefined>;
     /**
      * Number of data loader workers. Must be a non-negative integer.
      */
-    numberOfWorkers?: pulumi.Input<number>;
+    numberOfWorkers?: pulumi.Input<number | undefined>;
     /**
      * Stochastic optimizer for image models.
      */
-    optimizer?: pulumi.Input<string | enums.StochasticOptimizer>;
+    optimizer?: pulumi.Input<string | enums.StochasticOptimizer | undefined>;
     /**
      * Random seed to be used when using deterministic training.
      */
-    randomSeed?: pulumi.Input<number>;
+    randomSeed?: pulumi.Input<number | undefined>;
     /**
      * Value of gamma when learning rate scheduler is 'step'. Must be a float in the range [0, 1].
      */
-    stepLRGamma?: pulumi.Input<number>;
+    stepLRGamma?: pulumi.Input<number | undefined>;
     /**
      * Value of step size when learning rate scheduler is 'step'. Must be a positive integer.
      */
-    stepLRStepSize?: pulumi.Input<number>;
+    stepLRStepSize?: pulumi.Input<number | undefined>;
     /**
      * The grid size to use for tiling each image. Note: TileGridSize must not be
      * None to enable small object detection logic. A string containing two integers in mxn format.
      * Note: This settings is not supported for the 'yolov5' algorithm.
      */
-    tileGridSize?: pulumi.Input<string>;
+    tileGridSize?: pulumi.Input<string | undefined>;
     /**
      * Overlap ratio between adjacent tiles in each dimension. Must be float in the range [0, 1).
      * Note: This settings is not supported for the 'yolov5' algorithm.
      */
-    tileOverlapRatio?: pulumi.Input<number>;
+    tileOverlapRatio?: pulumi.Input<number | undefined>;
     /**
      * The IOU threshold to use to perform NMS while merging predictions from tiles and image.
      * Used in validation/ inference. Must be float in the range [0, 1].
      * Note: This settings is not supported for the 'yolov5' algorithm.
      */
-    tilePredictionsNmsThreshold?: pulumi.Input<number>;
+    tilePredictionsNmsThreshold?: pulumi.Input<number | undefined>;
     /**
      * Training batch size. Must be a positive integer.
      */
-    trainingBatchSize?: pulumi.Input<number>;
+    trainingBatchSize?: pulumi.Input<number | undefined>;
     /**
      * Validation batch size. Must be a positive integer.
      */
-    validationBatchSize?: pulumi.Input<number>;
+    validationBatchSize?: pulumi.Input<number | undefined>;
     /**
      * IOU threshold to use when computing validation metric. Must be float in the range [0, 1].
      */
-    validationIouThreshold?: pulumi.Input<number>;
+    validationIouThreshold?: pulumi.Input<number | undefined>;
     /**
      * Metric computation method to use for validation metrics in image tasks.
      */
-    validationMetricType?: pulumi.Input<string | enums.ValidationMetricType>;
+    validationMetricType?: pulumi.Input<string | enums.ValidationMetricType | undefined>;
     /**
      * Value of cosine cycle when learning rate scheduler is 'warmup_cosine'. Must be a float in the range [0, 1].
      */
-    warmupCosineLRCycles?: pulumi.Input<number>;
+    warmupCosineLRCycles?: pulumi.Input<number | undefined>;
     /**
      * Value of warmup epochs when learning rate scheduler is 'warmup_cosine'. Must be a positive integer.
      */
-    warmupCosineLRWarmupEpochs?: pulumi.Input<number>;
+    warmupCosineLRWarmupEpochs?: pulumi.Input<number | undefined>;
     /**
      * Value of weight decay when optimizer is 'sgd', 'adam', or 'adamw'. Must be a float in the range[0, 1].
      */
-    weightDecay?: pulumi.Input<number>;
+    weightDecay?: pulumi.Input<number | undefined>;
 }
 /**
  * imageModelSettingsObjectDetectionArgsProvideDefaults sets the appropriate defaults for ImageModelSettingsObjectDetectionArgs
@@ -4847,7 +4830,7 @@ export interface ImageModelSettingsObjectDetectionArgs {
 export function imageModelSettingsObjectDetectionArgsProvideDefaults(val: ImageModelSettingsObjectDetectionArgs): ImageModelSettingsObjectDetectionArgs {
     return {
         ...val,
-        checkpointModel: (val.checkpointModel ? pulumi.output(val.checkpointModel).apply(mlflowModelJobInputArgsProvideDefaults) : undefined),
+        checkpointModel: pulumi.output(val.checkpointModel).apply(v => v === undefined ? undefined : mlflowModelJobInputArgsProvideDefaults(v)),
         learningRateScheduler: (val.learningRateScheduler) ?? "None",
         modelSize: (val.modelSize) ?? "None",
         optimizer: (val.optimizer) ?? "None",
@@ -4867,28 +4850,28 @@ export interface ImageObjectDetectionArgs {
     /**
      * Enum for setting log verbosity.
      */
-    logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
+    logVerbosity?: pulumi.Input<string | enums.LogVerbosity | undefined>;
     /**
      * Settings used for training the model.
      */
-    modelSettings?: pulumi.Input<ImageModelSettingsObjectDetectionArgs>;
+    modelSettings?: pulumi.Input<ImageModelSettingsObjectDetectionArgs | undefined>;
     /**
      * Primary metrics for Image ObjectDetection task.
      */
-    primaryMetric?: pulumi.Input<string | enums.ObjectDetectionPrimaryMetrics>;
+    primaryMetric?: pulumi.Input<string | enums.ObjectDetectionPrimaryMetrics | undefined>;
     /**
      * Search space for sampling different combinations of models and their hyperparameters.
      */
-    searchSpace?: pulumi.Input<pulumi.Input<ImageModelDistributionSettingsObjectDetectionArgs>[]>;
+    searchSpace?: pulumi.Input<pulumi.Input<ImageModelDistributionSettingsObjectDetectionArgs>[] | undefined>;
     /**
      * Model sweeping and hyperparameter sweeping related settings.
      */
-    sweepSettings?: pulumi.Input<ImageSweepSettingsArgs>;
+    sweepSettings?: pulumi.Input<ImageSweepSettingsArgs | undefined>;
     /**
      * Target column name: This is prediction values column.
      * Also known as label column name in context of classification tasks.
      */
-    targetColumnName?: pulumi.Input<string>;
+    targetColumnName?: pulumi.Input<string | undefined>;
     /**
      * AutoMLJob Task type.
      * Expected value is 'ImageObjectDetection'.
@@ -4901,13 +4884,13 @@ export interface ImageObjectDetectionArgs {
     /**
      * Validation data inputs.
      */
-    validationData?: pulumi.Input<MLTableJobInputArgs>;
+    validationData?: pulumi.Input<MLTableJobInputArgs | undefined>;
     /**
      * The fraction of training dataset that needs to be set aside for validation purpose.
      * Values between (0.0 , 1.0)
      * Applied when validation dataset is not provided.
      */
-    validationDataSize?: pulumi.Input<number>;
+    validationDataSize?: pulumi.Input<number | undefined>;
 }
 /**
  * imageObjectDetectionArgsProvideDefaults sets the appropriate defaults for ImageObjectDetectionArgs
@@ -4917,10 +4900,10 @@ export function imageObjectDetectionArgsProvideDefaults(val: ImageObjectDetectio
         ...val,
         limitSettings: pulumi.output(val.limitSettings).apply(imageLimitSettingsArgsProvideDefaults),
         logVerbosity: (val.logVerbosity) ?? "Info",
-        modelSettings: (val.modelSettings ? pulumi.output(val.modelSettings).apply(imageModelSettingsObjectDetectionArgsProvideDefaults) : undefined),
+        modelSettings: pulumi.output(val.modelSettings).apply(v => v === undefined ? undefined : imageModelSettingsObjectDetectionArgsProvideDefaults(v)),
         primaryMetric: (val.primaryMetric) ?? "MeanAveragePrecision",
         trainingData: pulumi.output(val.trainingData).apply(mltableJobInputArgsProvideDefaults),
-        validationData: (val.validationData ? pulumi.output(val.validationData).apply(mltableJobInputArgsProvideDefaults) : undefined),
+        validationData: pulumi.output(val.validationData).apply(v => v === undefined ? undefined : mltableJobInputArgsProvideDefaults(v)),
     };
 }
 
@@ -4931,7 +4914,7 @@ export interface ImageSweepSettingsArgs {
     /**
      * Type of early termination policy.
      */
-    earlyTermination?: pulumi.Input<BanditPolicyArgs | MedianStoppingPolicyArgs | TruncationSelectionPolicyArgs>;
+    earlyTermination?: pulumi.Input<BanditPolicyArgs | MedianStoppingPolicyArgs | TruncationSelectionPolicyArgs | undefined>;
     /**
      * [Required] Type of the hyperparameter sampling algorithms.
      */
@@ -4945,11 +4928,11 @@ export interface IndexColumnArgs {
     /**
      * Specifies the column name
      */
-    columnName?: pulumi.Input<string>;
+    columnName?: pulumi.Input<string | undefined>;
     /**
      * Specifies the data type
      */
-    dataType?: pulumi.Input<string | enums.FeatureDataType>;
+    dataType?: pulumi.Input<string | enums.FeatureDataType | undefined>;
 }
 /**
  * indexColumnArgsProvideDefaults sets the appropriate defaults for IndexColumnArgs
@@ -4965,19 +4948,19 @@ export interface InferenceContainerPropertiesArgs {
     /**
      * The route to check the liveness of the inference server container.
      */
-    livenessRoute?: pulumi.Input<RouteArgs>;
+    livenessRoute?: pulumi.Input<RouteArgs | undefined>;
     /**
      * The route to check the readiness of the inference server container.
      */
-    readinessRoute?: pulumi.Input<RouteArgs>;
+    readinessRoute?: pulumi.Input<RouteArgs | undefined>;
     /**
      * The port to send the scoring requests to, within the inference server container.
      */
-    scoringRoute?: pulumi.Input<RouteArgs>;
+    scoringRoute?: pulumi.Input<RouteArgs | undefined>;
     /**
      * The route to check the startup of the application in the container.
      */
-    startupRoute?: pulumi.Input<RouteArgs>;
+    startupRoute?: pulumi.Input<RouteArgs | undefined>;
 }
 
 /**
@@ -4991,7 +4974,7 @@ export interface InferenceEndpointArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * [Required] Group within the same pool with which this endpoint needs to be associated with.
      */
@@ -4999,11 +4982,11 @@ export interface InferenceEndpointArgs {
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: pulumi.Input<pulumi.Input<StringStringKeyValuePairArgs>[]>;
+    properties?: pulumi.Input<pulumi.Input<StringStringKeyValuePairArgs>[] | undefined>;
     /**
      * RequestConfiguration for endpoint.
      */
-    requestConfiguration?: pulumi.Input<RequestConfigurationArgs>;
+    requestConfiguration?: pulumi.Input<RequestConfigurationArgs | undefined>;
 }
 /**
  * inferenceEndpointArgsProvideDefaults sets the appropriate defaults for InferenceEndpointArgs
@@ -5011,7 +4994,7 @@ export interface InferenceEndpointArgs {
 export function inferenceEndpointArgsProvideDefaults(val: InferenceEndpointArgs): InferenceEndpointArgs {
     return {
         ...val,
-        requestConfiguration: (val.requestConfiguration ? pulumi.output(val.requestConfiguration).apply(requestConfigurationArgsProvideDefaults) : undefined),
+        requestConfiguration: pulumi.output(val.requestConfiguration).apply(v => v === undefined ? undefined : requestConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -5022,27 +5005,27 @@ export interface InferenceGroupArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets environment configuration for the inference group. Used if PoolType=ScaleUnit.
      */
-    environmentConfiguration?: pulumi.Input<GroupEnvironmentConfigurationArgs>;
+    environmentConfiguration?: pulumi.Input<GroupEnvironmentConfigurationArgs | undefined>;
     /**
      * Gets or sets model configuration for the inference group. Used if PoolType=ScaleUnit.
      */
-    modelConfiguration?: pulumi.Input<GroupModelConfigurationArgs>;
+    modelConfiguration?: pulumi.Input<GroupModelConfigurationArgs | undefined>;
     /**
      * Gets or sets compute instance type.
      */
-    nodeSkuType?: pulumi.Input<string>;
+    nodeSkuType?: pulumi.Input<string | undefined>;
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: pulumi.Input<pulumi.Input<StringStringKeyValuePairArgs>[]>;
+    properties?: pulumi.Input<pulumi.Input<StringStringKeyValuePairArgs>[] | undefined>;
     /**
      * Gets or sets Scale Unit size.
      */
-    scaleUnitSize?: pulumi.Input<number>;
+    scaleUnitSize?: pulumi.Input<number | undefined>;
 }
 /**
  * inferenceGroupArgsProvideDefaults sets the appropriate defaults for InferenceGroupArgs
@@ -5050,7 +5033,7 @@ export interface InferenceGroupArgs {
 export function inferenceGroupArgsProvideDefaults(val: InferenceGroupArgs): InferenceGroupArgs {
     return {
         ...val,
-        environmentConfiguration: (val.environmentConfiguration ? pulumi.output(val.environmentConfiguration).apply(groupEnvironmentConfigurationArgsProvideDefaults) : undefined),
+        environmentConfiguration: pulumi.output(val.environmentConfiguration).apply(v => v === undefined ? undefined : groupEnvironmentConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -5061,15 +5044,15 @@ export interface InferencePoolArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: pulumi.Input<pulumi.Input<StringStringKeyValuePairArgs>[]>;
+    properties?: pulumi.Input<pulumi.Input<StringStringKeyValuePairArgs>[] | undefined>;
     /**
      * Gets or sets ScaleUnitConfiguration for the inference pool. Used if PoolType=ScaleUnit.
      */
-    scaleUnitConfiguration?: pulumi.Input<ScaleUnitConfigurationArgs>;
+    scaleUnitConfiguration?: pulumi.Input<ScaleUnitConfigurationArgs | undefined>;
 }
 /**
  * inferencePoolArgsProvideDefaults sets the appropriate defaults for InferencePoolArgs
@@ -5077,7 +5060,7 @@ export interface InferencePoolArgs {
 export function inferencePoolArgsProvideDefaults(val: InferencePoolArgs): InferencePoolArgs {
     return {
         ...val,
-        scaleUnitConfiguration: (val.scaleUnitConfiguration ? pulumi.output(val.scaleUnitConfiguration).apply(scaleUnitConfigurationArgsProvideDefaults) : undefined),
+        scaleUnitConfiguration: pulumi.output(val.scaleUnitConfiguration).apply(v => v === undefined ? undefined : scaleUnitConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -5088,11 +5071,11 @@ export interface InstanceTypeSchemaArgs {
     /**
      * Node Selector
      */
-    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeSelector?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource requests/limits for this instance type
      */
-    resources?: pulumi.Input<InstanceTypeSchemaResourcesArgs>;
+    resources?: pulumi.Input<InstanceTypeSchemaResourcesArgs | undefined>;
 }
 
 /**
@@ -5102,38 +5085,38 @@ export interface InstanceTypeSchemaResourcesArgs {
     /**
      * Resource limits for this instance type
      */
-    limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    limits?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource requests for this instance type
      */
-    requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    requests?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface JobResourceConfigurationArgs {
     /**
      * Extra arguments to pass to the Docker run command. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
      */
-    dockerArgs?: pulumi.Input<string>;
+    dockerArgs?: pulumi.Input<string | undefined>;
     /**
      * Extra arguments to pass to the Docker run command, as a collection. This would override any parameters that have already been set by the system, or in this section. This parameter is only supported for Azure ML compute types.
      */
-    dockerArgsList?: pulumi.Input<pulumi.Input<string>[]>;
+    dockerArgsList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Optional number of instances or nodes used by the compute target.
      */
-    instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number | undefined>;
     /**
      * Optional type of VM used as supported by the compute target.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Additional properties bag.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: any} | undefined>;
     /**
      * Size of the docker container's shared memory block. This should be in the format of (number)(unit) where number as to be greater than 0 and the unit can be one of b(bytes), k(kilobytes), m(megabytes), or g(gigabytes).
      */
-    shmSize?: pulumi.Input<string>;
+    shmSize?: pulumi.Input<string | undefined>;
 }
 /**
  * jobResourceConfigurationArgsProvideDefaults sets the appropriate defaults for JobResourceConfigurationArgs
@@ -5148,7 +5131,6 @@ export function jobResourceConfigurationArgsProvideDefaults(val: JobResourceConf
 
 export interface JobScheduleActionArgs {
     /**
-     *
      * Expected value is 'CreateJob'.
      */
     actionType: pulumi.Input<"CreateJob">;
@@ -5165,24 +5147,24 @@ export interface JobServiceArgs {
     /**
      * Url for endpoint.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * Endpoint type.
      */
-    jobServiceType?: pulumi.Input<string>;
+    jobServiceType?: pulumi.Input<string | undefined>;
     /**
      * Nodes that user would like to start the service on.
      * If Nodes is not set or set to null, the service will only be started on leader node.
      */
-    nodes?: pulumi.Input<AllNodesArgs>;
+    nodes?: pulumi.Input<AllNodesArgs | undefined>;
     /**
      * Port for endpoint.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Additional properties to set on the endpoint.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -5192,15 +5174,15 @@ export interface JupyterKernelConfigArgs {
     /**
      * Argument to the the runtime
      */
-    argv?: pulumi.Input<pulumi.Input<string>[]>;
+    argv?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Display name of the kernel
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Language of the kernel [Example value: python]
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -5211,7 +5193,7 @@ export interface KeyVaultPropertiesArgs {
      * Currently, we support only SystemAssigned MSI.
      * We need this when we support UserAssignedIdentities
      */
-    identityClientId?: pulumi.Input<string>;
+    identityClientId?: pulumi.Input<string | undefined>;
     /**
      * KeyVault key identifier to encrypt the data
      */
@@ -5229,7 +5211,7 @@ export interface KubernetesArgs {
     /**
      * Location for the underlying compute
      */
-    computeLocation?: pulumi.Input<string>;
+    computeLocation?: pulumi.Input<string | undefined>;
     /**
      * The type of compute
      * Expected value is 'Kubernetes'.
@@ -5238,19 +5220,19 @@ export interface KubernetesArgs {
     /**
      * The description of the Machine Learning compute.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Properties of Kubernetes
      */
-    properties?: pulumi.Input<KubernetesPropertiesArgs>;
+    properties?: pulumi.Input<KubernetesPropertiesArgs | undefined>;
     /**
      * ARM resource id of the underlying compute
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 /**
  * kubernetesArgsProvideDefaults sets the appropriate defaults for KubernetesArgs
@@ -5258,7 +5240,7 @@ export interface KubernetesArgs {
 export function kubernetesArgsProvideDefaults(val: KubernetesArgs): KubernetesArgs {
     return {
         ...val,
-        properties: (val.properties ? pulumi.output(val.properties).apply(kubernetesPropertiesArgsProvideDefaults) : undefined),
+        properties: pulumi.output(val.properties).apply(v => v === undefined ? undefined : kubernetesPropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -5269,27 +5251,27 @@ export interface KubernetesOnlineDeploymentArgs {
     /**
      * If true, enables Application Insights logging.
      */
-    appInsightsEnabled?: pulumi.Input<boolean>;
+    appInsightsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Code configuration for the endpoint deployment.
      */
-    codeConfiguration?: pulumi.Input<CodeConfigurationArgs>;
+    codeConfiguration?: pulumi.Input<CodeConfigurationArgs | undefined>;
     /**
      * The resource requirements for the container (cpu and memory).
      */
-    containerResourceRequirements?: pulumi.Input<ContainerResourceRequirementsArgs>;
+    containerResourceRequirements?: pulumi.Input<ContainerResourceRequirementsArgs | undefined>;
     /**
      * The mdc configuration, we disable mdc when it's null.
      */
-    dataCollector?: pulumi.Input<DataCollectorArgs>;
+    dataCollector?: pulumi.Input<DataCollectorArgs | undefined>;
     /**
      * Description of the endpoint deployment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment.
      */
-    egressPublicNetworkAccess?: pulumi.Input<string | enums.EgressPublicNetworkAccessType>;
+    egressPublicNetworkAccess?: pulumi.Input<string | enums.EgressPublicNetworkAccessType | undefined>;
     /**
      * Enum to determine endpoint compute type.
      * Expected value is 'Kubernetes'.
@@ -5298,50 +5280,50 @@ export interface KubernetesOnlineDeploymentArgs {
     /**
      * ARM resource ID or AssetId of the environment specification for the endpoint deployment.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * Environment variables configuration for the deployment.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Compute instance type. Default: Standard_F4s_v2.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Liveness probe monitors the health of the container regularly.
      */
-    livenessProbe?: pulumi.Input<ProbeSettingsArgs>;
+    livenessProbe?: pulumi.Input<ProbeSettingsArgs | undefined>;
     /**
      * The URI path to the model.
      */
-    model?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
     /**
      * The path to mount the model in custom container.
      */
-    modelMountPath?: pulumi.Input<string>;
+    modelMountPath?: pulumi.Input<string | undefined>;
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
      */
-    readinessProbe?: pulumi.Input<ProbeSettingsArgs>;
+    readinessProbe?: pulumi.Input<ProbeSettingsArgs | undefined>;
     /**
      * Request settings for the deployment.
      */
-    requestSettings?: pulumi.Input<OnlineRequestSettingsArgs>;
+    requestSettings?: pulumi.Input<OnlineRequestSettingsArgs | undefined>;
     /**
      * Scale settings for the deployment.
      * If it is null or not provided,
      * it defaults to TargetUtilizationScaleSettings for KubernetesOnlineDeployment
      * and to DefaultScaleSettings for ManagedOnlineDeployment.
      */
-    scaleSettings?: pulumi.Input<DefaultScaleSettingsArgs | TargetUtilizationScaleSettingsArgs>;
+    scaleSettings?: pulumi.Input<DefaultScaleSettingsArgs | TargetUtilizationScaleSettingsArgs | undefined>;
     /**
      * Startup probe verify whether an application within a container has started successfully.
      */
-    startupProbe?: pulumi.Input<ProbeSettingsArgs>;
+    startupProbe?: pulumi.Input<ProbeSettingsArgs | undefined>;
 }
 /**
  * kubernetesOnlineDeploymentArgsProvideDefaults sets the appropriate defaults for KubernetesOnlineDeploymentArgs
@@ -5350,13 +5332,13 @@ export function kubernetesOnlineDeploymentArgsProvideDefaults(val: KubernetesOnl
     return {
         ...val,
         appInsightsEnabled: (val.appInsightsEnabled) ?? false,
-        dataCollector: (val.dataCollector ? pulumi.output(val.dataCollector).apply(dataCollectorArgsProvideDefaults) : undefined),
+        dataCollector: pulumi.output(val.dataCollector).apply(v => v === undefined ? undefined : dataCollectorArgsProvideDefaults(v)),
         egressPublicNetworkAccess: (val.egressPublicNetworkAccess) ?? "Enabled",
         instanceType: (val.instanceType) ?? "Standard_F4s_v2",
-        livenessProbe: (val.livenessProbe ? pulumi.output(val.livenessProbe).apply(probeSettingsArgsProvideDefaults) : undefined),
-        readinessProbe: (val.readinessProbe ? pulumi.output(val.readinessProbe).apply(probeSettingsArgsProvideDefaults) : undefined),
-        requestSettings: (val.requestSettings ? pulumi.output(val.requestSettings).apply(onlineRequestSettingsArgsProvideDefaults) : undefined),
-        startupProbe: (val.startupProbe ? pulumi.output(val.startupProbe).apply(probeSettingsArgsProvideDefaults) : undefined),
+        livenessProbe: pulumi.output(val.livenessProbe).apply(v => v === undefined ? undefined : probeSettingsArgsProvideDefaults(v)),
+        readinessProbe: pulumi.output(val.readinessProbe).apply(v => v === undefined ? undefined : probeSettingsArgsProvideDefaults(v)),
+        requestSettings: pulumi.output(val.requestSettings).apply(v => v === undefined ? undefined : onlineRequestSettingsArgsProvideDefaults(v)),
+        startupProbe: pulumi.output(val.startupProbe).apply(v => v === undefined ? undefined : probeSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -5367,35 +5349,35 @@ export interface KubernetesPropertiesArgs {
     /**
      * Default instance type
      */
-    defaultInstanceType?: pulumi.Input<string>;
+    defaultInstanceType?: pulumi.Input<string | undefined>;
     /**
      * Extension instance release train.
      */
-    extensionInstanceReleaseTrain?: pulumi.Input<string>;
+    extensionInstanceReleaseTrain?: pulumi.Input<string | undefined>;
     /**
      * Extension principal-id.
      */
-    extensionPrincipalId?: pulumi.Input<string>;
+    extensionPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Instance Type Schema
      */
-    instanceTypes?: pulumi.Input<{[key: string]: pulumi.Input<InstanceTypeSchemaArgs>}>;
+    instanceTypes?: pulumi.Input<{[key: string]: pulumi.Input<InstanceTypeSchemaArgs>} | undefined>;
     /**
      * Compute namespace
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Relay connection string.
      */
-    relayConnectionString?: pulumi.Input<string>;
+    relayConnectionString?: pulumi.Input<string | undefined>;
     /**
      * ServiceBus connection string.
      */
-    serviceBusConnectionString?: pulumi.Input<string>;
+    serviceBusConnectionString?: pulumi.Input<string | undefined>;
     /**
      * VC name.
      */
-    vcName?: pulumi.Input<string>;
+    vcName?: pulumi.Input<string | undefined>;
 }
 /**
  * kubernetesPropertiesArgsProvideDefaults sets the appropriate defaults for KubernetesPropertiesArgs
@@ -5414,15 +5396,15 @@ export interface LabelCategoryArgs {
     /**
      * Dictionary of label classes in this category.
      */
-    classes?: pulumi.Input<{[key: string]: pulumi.Input<LabelClassArgs>}>;
+    classes?: pulumi.Input<{[key: string]: pulumi.Input<LabelClassArgs>} | undefined>;
     /**
      * Display name of the label category.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether it is allowed to select multiple classes in this category.
      */
-    multiSelect?: pulumi.Input<string | enums.MultiSelect>;
+    multiSelect?: pulumi.Input<string | enums.MultiSelect | undefined>;
 }
 /**
  * labelCategoryArgsProvideDefaults sets the appropriate defaults for LabelCategoryArgs
@@ -5441,11 +5423,11 @@ export interface LabelClassArgs {
     /**
      * Display name of the label class.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Dictionary of subclasses of the label class.
      */
-    subclasses?: pulumi.Input<{[key: string]: pulumi.Input<LabelClassArgs>}>;
+    subclasses?: pulumi.Input<{[key: string]: pulumi.Input<LabelClassArgs>} | undefined>;
 }
 
 /**
@@ -5455,11 +5437,11 @@ export interface LabelingDataConfigurationArgs {
     /**
      * Resource Id of the data asset to perform labeling.
      */
-    dataId?: pulumi.Input<string>;
+    dataId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to enable incremental data refresh.
      */
-    incrementalDataRefresh?: pulumi.Input<string | enums.IncrementalDataRefresh>;
+    incrementalDataRefresh?: pulumi.Input<string | enums.IncrementalDataRefresh | undefined>;
 }
 /**
  * labelingDataConfigurationArgsProvideDefaults sets the appropriate defaults for LabelingDataConfigurationArgs
@@ -5478,40 +5460,40 @@ export interface LabelingJobArgs {
     /**
      * ARM resource ID of the component resource.
      */
-    componentId?: pulumi.Input<string>;
+    componentId?: pulumi.Input<string | undefined>;
     /**
      * ARM resource ID of the compute resource.
      */
-    computeId?: pulumi.Input<string>;
+    computeId?: pulumi.Input<string | undefined>;
     /**
      * Configuration of data used in the job.
      */
-    dataConfiguration?: pulumi.Input<LabelingDataConfigurationArgs>;
+    dataConfiguration?: pulumi.Input<LabelingDataConfigurationArgs | undefined>;
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of job.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
      */
-    experimentName?: pulumi.Input<string>;
+    experimentName?: pulumi.Input<string | undefined>;
     /**
      * Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
      * Defaults to AmlToken if null.
      */
-    identity?: pulumi.Input<AmlTokenArgs | ManagedIdentityArgs | UserIdentityArgs>;
+    identity?: pulumi.Input<AmlTokenArgs | ManagedIdentityArgs | UserIdentityArgs | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * Labeling instructions of the job.
      */
-    jobInstructions?: pulumi.Input<LabelingJobInstructionsArgs>;
+    jobInstructions?: pulumi.Input<LabelingJobInstructionsArgs | undefined>;
     /**
      * Enum to determine the type of job.
      * Expected value is 'Labeling'.
@@ -5520,36 +5502,36 @@ export interface LabelingJobArgs {
     /**
      * Label categories of the job.
      */
-    labelCategories?: pulumi.Input<{[key: string]: pulumi.Input<LabelCategoryArgs>}>;
+    labelCategories?: pulumi.Input<{[key: string]: pulumi.Input<LabelCategoryArgs>} | undefined>;
     /**
      * Media type specific properties in the job.
      */
-    labelingJobMediaProperties?: pulumi.Input<LabelingJobImagePropertiesArgs | LabelingJobTextPropertiesArgs>;
+    labelingJobMediaProperties?: pulumi.Input<LabelingJobImagePropertiesArgs | LabelingJobTextPropertiesArgs | undefined>;
     /**
      * Configuration of MLAssist feature in the job.
      */
-    mlAssistConfiguration?: pulumi.Input<MLAssistConfigurationDisabledArgs | MLAssistConfigurationEnabledArgs>;
+    mlAssistConfiguration?: pulumi.Input<MLAssistConfigurationDisabledArgs | MLAssistConfigurationEnabledArgs | undefined>;
     /**
      * Notification setting for the job
      */
-    notificationSetting?: pulumi.Input<NotificationSettingArgs>;
+    notificationSetting?: pulumi.Input<NotificationSettingArgs | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration for secrets to be made available during runtime.
      */
-    secretsConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<SecretConfigurationArgs>}>;
+    secretsConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<SecretConfigurationArgs>} | undefined>;
     /**
      * List of JobEndpoints.
      * For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
      */
-    services?: pulumi.Input<{[key: string]: pulumi.Input<JobServiceArgs>}>;
+    services?: pulumi.Input<{[key: string]: pulumi.Input<JobServiceArgs>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * labelingJobArgsProvideDefaults sets the appropriate defaults for LabelingJobArgs
@@ -5557,7 +5539,7 @@ export interface LabelingJobArgs {
 export function labelingJobArgsProvideDefaults(val: LabelingJobArgs): LabelingJobArgs {
     return {
         ...val,
-        dataConfiguration: (val.dataConfiguration ? pulumi.output(val.dataConfiguration).apply(labelingDataConfigurationArgsProvideDefaults) : undefined),
+        dataConfiguration: pulumi.output(val.dataConfiguration).apply(v => v === undefined ? undefined : labelingDataConfigurationArgsProvideDefaults(v)),
         experimentName: (val.experimentName) ?? "Default",
         isArchived: (val.isArchived) ?? false,
     };
@@ -5570,7 +5552,7 @@ export interface LabelingJobImagePropertiesArgs {
     /**
      * Annotation type of image labeling job.
      */
-    annotationType?: pulumi.Input<string | enums.ImageAnnotationType>;
+    annotationType?: pulumi.Input<string | enums.ImageAnnotationType | undefined>;
     /**
      * Media type of data asset.
      * Expected value is 'Image'.
@@ -5594,7 +5576,7 @@ export interface LabelingJobInstructionsArgs {
     /**
      * The link to a page with detailed labeling instructions for labelers.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -5604,7 +5586,7 @@ export interface LabelingJobTextPropertiesArgs {
     /**
      * Annotation type of text labeling job.
      */
-    annotationType?: pulumi.Input<string | enums.TextAnnotationType>;
+    annotationType?: pulumi.Input<string | enums.TextAnnotationType | undefined>;
     /**
      * Media type of data asset.
      * Expected value is 'Text'.
@@ -5640,11 +5622,11 @@ export interface LinkedServicePropsArgs {
     /**
      * The creation time of the linked service.
      */
-    createdTime?: pulumi.Input<string>;
+    createdTime?: pulumi.Input<string | undefined>;
     /**
      * Type of the link target.
      */
-    linkType?: pulumi.Input<enums.LinkedServiceLinkType>;
+    linkType?: pulumi.Input<enums.LinkedServiceLinkType | undefined>;
     /**
      * ResourceId of the link target of the linked service.
      */
@@ -5652,7 +5634,7 @@ export interface LinkedServicePropsArgs {
     /**
      * The last modified time of the linked service.
      */
-    modifiedTime?: pulumi.Input<string>;
+    modifiedTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -5662,11 +5644,11 @@ export interface LinkedWorkspacePropsArgs {
     /**
      * ResourceId of the link target of the linked workspace.
      */
-    linkedWorkspaceResourceId?: pulumi.Input<string>;
+    linkedWorkspaceResourceId?: pulumi.Input<string | undefined>;
     /**
      * ResourceId of the user assigned identity for the linked workspace.
      */
-    userAssignedIdentityResourceId?: pulumi.Input<string>;
+    userAssignedIdentityResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -5676,7 +5658,7 @@ export interface LiteralJobInputArgs {
     /**
      * Description for the input.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the Job Input Type.
      * Expected value is 'literal'.
@@ -5693,7 +5675,6 @@ export interface LiteralJobInputArgs {
  */
 export interface MLAssistConfigurationDisabledArgs {
     /**
-     *
      * Expected value is 'Disabled'.
      */
     mlAssist: pulumi.Input<"Disabled">;
@@ -5708,7 +5689,6 @@ export interface MLAssistConfigurationEnabledArgs {
      */
     inferencingComputeBinding: pulumi.Input<string>;
     /**
-     *
      * Expected value is 'Enabled'.
      */
     mlAssist: pulumi.Input<"Enabled">;
@@ -5722,7 +5702,7 @@ export interface MLFlowModelJobInputArgs {
     /**
      * Description for the input.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the Job Input Type.
      * Expected value is 'mlflow_model'.
@@ -5731,7 +5711,7 @@ export interface MLFlowModelJobInputArgs {
     /**
      * Enum to determine the input data delivery mode.
      */
-    mode?: pulumi.Input<string | enums.InputDeliveryMode>;
+    mode?: pulumi.Input<string | enums.InputDeliveryMode | undefined>;
     /**
      * [Required] Input Asset URI.
      */
@@ -5751,11 +5731,11 @@ export interface MLFlowModelJobOutputArgs {
     /**
      * Output Asset Name.
      */
-    assetName?: pulumi.Input<string>;
+    assetName?: pulumi.Input<string | undefined>;
     /**
      * Description for the output.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the Job Output Type.
      * Expected value is 'mlflow_model'.
@@ -5764,11 +5744,11 @@ export interface MLFlowModelJobOutputArgs {
     /**
      * Output data delivery mode enums.
      */
-    mode?: pulumi.Input<string | enums.OutputDeliveryMode>;
+    mode?: pulumi.Input<string | enums.OutputDeliveryMode | undefined>;
     /**
      * Output Asset URI.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 /**
  * mlflowModelJobOutputArgsProvideDefaults sets the appropriate defaults for MLFlowModelJobOutputArgs
@@ -5796,27 +5776,27 @@ export interface MLTableDataArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If the name version are system generated (anonymous registration).
      */
-    isAnonymous?: pulumi.Input<boolean>;
+    isAnonymous?: pulumi.Input<boolean | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Uris referenced in the MLTable definition (required for lineage)
      */
-    referencedUris?: pulumi.Input<pulumi.Input<string>[]>;
+    referencedUris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * mltableDataArgsProvideDefaults sets the appropriate defaults for MLTableDataArgs
@@ -5833,7 +5813,7 @@ export interface MLTableJobInputArgs {
     /**
      * Description for the input.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the Job Input Type.
      * Expected value is 'mltable'.
@@ -5842,7 +5822,7 @@ export interface MLTableJobInputArgs {
     /**
      * Enum to determine the input data delivery mode.
      */
-    mode?: pulumi.Input<string | enums.InputDeliveryMode>;
+    mode?: pulumi.Input<string | enums.InputDeliveryMode | undefined>;
     /**
      * [Required] Input Asset URI.
      */
@@ -5862,11 +5842,11 @@ export interface MLTableJobOutputArgs {
     /**
      * Output Asset Name.
      */
-    assetName?: pulumi.Input<string>;
+    assetName?: pulumi.Input<string | undefined>;
     /**
      * Description for the output.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the Job Output Type.
      * Expected value is 'mltable'.
@@ -5875,11 +5855,11 @@ export interface MLTableJobOutputArgs {
     /**
      * Output data delivery mode enums.
      */
-    mode?: pulumi.Input<string | enums.OutputDeliveryMode>;
+    mode?: pulumi.Input<string | enums.OutputDeliveryMode | undefined>;
     /**
      * Output Asset URI.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 /**
  * mltableJobOutputArgsProvideDefaults sets the appropriate defaults for MLTableJobOutputArgs
@@ -5903,7 +5883,7 @@ export interface ManagedComputeIdentityArgs {
     /**
      * The identity which will be leveraged by the monitoring jobs.
      */
-    identity?: pulumi.Input<ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<ManagedServiceIdentityArgs | undefined>;
 }
 
 /**
@@ -5913,7 +5893,7 @@ export interface ManagedIdentityArgs {
     /**
      * Specifies a user-assigned identity by client ID. For system-assigned, do not set this field.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine identity framework.
      * Expected value is 'Managed'.
@@ -5922,11 +5902,11 @@ export interface ManagedIdentityArgs {
     /**
      * Specifies a user-assigned identity by object ID. For system-assigned, do not set this field.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * Specifies a user-assigned identity by ARM resource ID. For system-assigned, do not set this field.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ManagedIdentityAuthTypeWorkspaceConnectionPropertiesArgs {
@@ -5938,31 +5918,31 @@ export interface ManagedIdentityAuthTypeWorkspaceConnectionPropertiesArgs {
     /**
      * Category of the connection
      */
-    category?: pulumi.Input<string | enums.ConnectionCategory>;
-    credentials?: pulumi.Input<WorkspaceConnectionManagedIdentityArgs>;
-    error?: pulumi.Input<string>;
-    expiryTime?: pulumi.Input<string>;
-    isSharedToAll?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string | enums.ConnectionCategory | undefined>;
+    credentials?: pulumi.Input<WorkspaceConnectionManagedIdentityArgs | undefined>;
+    error?: pulumi.Input<string | undefined>;
+    expiryTime?: pulumi.Input<string | undefined>;
+    isSharedToAll?: pulumi.Input<boolean | undefined>;
     /**
      * Store user metadata for this connection
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
-    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
-    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
-    target?: pulumi.Input<string>;
-    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement | undefined>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus | undefined>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * Status of the Provisioning for the managed network of a machine learning workspace.
  */
 export interface ManagedNetworkProvisionStatusArgs {
-    sparkReady?: pulumi.Input<boolean>;
+    sparkReady?: pulumi.Input<boolean | undefined>;
     /**
      * Status for the managed network of a machine learning workspace.
      */
-    status?: pulumi.Input<string | enums.ManagedNetworkStatus>;
+    status?: pulumi.Input<string | enums.ManagedNetworkStatus | undefined>;
 }
 
 /**
@@ -5972,27 +5952,27 @@ export interface ManagedNetworkSettingsArgs {
     /**
      * A flag to indicate if monitoring needs to be enabled for the managed network.
      */
-    enableNetworkMonitor?: pulumi.Input<boolean>;
+    enableNetworkMonitor?: pulumi.Input<boolean | undefined>;
     /**
      * Firewall Sku used for FQDN Rules
      */
-    firewallSku?: pulumi.Input<string | enums.FirewallSku>;
+    firewallSku?: pulumi.Input<string | enums.FirewallSku | undefined>;
     /**
      * Isolation mode for the managed network of a machine learning workspace.
      */
-    isolationMode?: pulumi.Input<string | enums.IsolationMode>;
+    isolationMode?: pulumi.Input<string | enums.IsolationMode | undefined>;
     /**
      * The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
      */
-    managedNetworkKind?: pulumi.Input<string | enums.ManagedNetworkKind>;
+    managedNetworkKind?: pulumi.Input<string | enums.ManagedNetworkKind | undefined>;
     /**
      * Dictionary of <OutboundRule>
      */
-    outboundRules?: pulumi.Input<{[key: string]: pulumi.Input<FqdnOutboundRuleArgs | PrivateEndpointOutboundRuleArgs | ServiceTagOutboundRuleArgs>}>;
+    outboundRules?: pulumi.Input<{[key: string]: pulumi.Input<FqdnOutboundRuleArgs | PrivateEndpointOutboundRuleArgs | ServiceTagOutboundRuleArgs>} | undefined>;
     /**
      * Status of the Provisioning for the managed network of a machine learning workspace.
      */
-    status?: pulumi.Input<ManagedNetworkProvisionStatusArgs>;
+    status?: pulumi.Input<ManagedNetworkProvisionStatusArgs | undefined>;
 }
 /**
  * managedNetworkSettingsArgsProvideDefaults sets the appropriate defaults for ManagedNetworkSettingsArgs
@@ -6011,23 +5991,23 @@ export interface ManagedOnlineDeploymentArgs {
     /**
      * If true, enables Application Insights logging.
      */
-    appInsightsEnabled?: pulumi.Input<boolean>;
+    appInsightsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Code configuration for the endpoint deployment.
      */
-    codeConfiguration?: pulumi.Input<CodeConfigurationArgs>;
+    codeConfiguration?: pulumi.Input<CodeConfigurationArgs | undefined>;
     /**
      * The mdc configuration, we disable mdc when it's null.
      */
-    dataCollector?: pulumi.Input<DataCollectorArgs>;
+    dataCollector?: pulumi.Input<DataCollectorArgs | undefined>;
     /**
      * Description of the endpoint deployment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine whether PublicNetworkAccess is Enabled or Disabled for egress of a deployment.
      */
-    egressPublicNetworkAccess?: pulumi.Input<string | enums.EgressPublicNetworkAccessType>;
+    egressPublicNetworkAccess?: pulumi.Input<string | enums.EgressPublicNetworkAccessType | undefined>;
     /**
      * Enum to determine endpoint compute type.
      * Expected value is 'Managed'.
@@ -6036,50 +6016,50 @@ export interface ManagedOnlineDeploymentArgs {
     /**
      * ARM resource ID or AssetId of the environment specification for the endpoint deployment.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * Environment variables configuration for the deployment.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Compute instance type. Default: Standard_F4s_v2.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Liveness probe monitors the health of the container regularly.
      */
-    livenessProbe?: pulumi.Input<ProbeSettingsArgs>;
+    livenessProbe?: pulumi.Input<ProbeSettingsArgs | undefined>;
     /**
      * The URI path to the model.
      */
-    model?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
     /**
      * The path to mount the model in custom container.
      */
-    modelMountPath?: pulumi.Input<string>;
+    modelMountPath?: pulumi.Input<string | undefined>;
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
      */
-    readinessProbe?: pulumi.Input<ProbeSettingsArgs>;
+    readinessProbe?: pulumi.Input<ProbeSettingsArgs | undefined>;
     /**
      * Request settings for the deployment.
      */
-    requestSettings?: pulumi.Input<OnlineRequestSettingsArgs>;
+    requestSettings?: pulumi.Input<OnlineRequestSettingsArgs | undefined>;
     /**
      * Scale settings for the deployment.
      * If it is null or not provided,
      * it defaults to TargetUtilizationScaleSettings for KubernetesOnlineDeployment
      * and to DefaultScaleSettings for ManagedOnlineDeployment.
      */
-    scaleSettings?: pulumi.Input<DefaultScaleSettingsArgs | TargetUtilizationScaleSettingsArgs>;
+    scaleSettings?: pulumi.Input<DefaultScaleSettingsArgs | TargetUtilizationScaleSettingsArgs | undefined>;
     /**
      * Startup probe verify whether an application within a container has started successfully.
      */
-    startupProbe?: pulumi.Input<ProbeSettingsArgs>;
+    startupProbe?: pulumi.Input<ProbeSettingsArgs | undefined>;
 }
 /**
  * managedOnlineDeploymentArgsProvideDefaults sets the appropriate defaults for ManagedOnlineDeploymentArgs
@@ -6088,23 +6068,23 @@ export function managedOnlineDeploymentArgsProvideDefaults(val: ManagedOnlineDep
     return {
         ...val,
         appInsightsEnabled: (val.appInsightsEnabled) ?? false,
-        dataCollector: (val.dataCollector ? pulumi.output(val.dataCollector).apply(dataCollectorArgsProvideDefaults) : undefined),
+        dataCollector: pulumi.output(val.dataCollector).apply(v => v === undefined ? undefined : dataCollectorArgsProvideDefaults(v)),
         egressPublicNetworkAccess: (val.egressPublicNetworkAccess) ?? "Enabled",
         instanceType: (val.instanceType) ?? "Standard_F4s_v2",
-        livenessProbe: (val.livenessProbe ? pulumi.output(val.livenessProbe).apply(probeSettingsArgsProvideDefaults) : undefined),
-        readinessProbe: (val.readinessProbe ? pulumi.output(val.readinessProbe).apply(probeSettingsArgsProvideDefaults) : undefined),
-        requestSettings: (val.requestSettings ? pulumi.output(val.requestSettings).apply(onlineRequestSettingsArgsProvideDefaults) : undefined),
-        startupProbe: (val.startupProbe ? pulumi.output(val.startupProbe).apply(probeSettingsArgsProvideDefaults) : undefined),
+        livenessProbe: pulumi.output(val.livenessProbe).apply(v => v === undefined ? undefined : probeSettingsArgsProvideDefaults(v)),
+        readinessProbe: pulumi.output(val.readinessProbe).apply(v => v === undefined ? undefined : probeSettingsArgsProvideDefaults(v)),
+        requestSettings: pulumi.output(val.requestSettings).apply(v => v === undefined ? undefined : onlineRequestSettingsArgsProvideDefaults(v)),
+        startupProbe: pulumi.output(val.startupProbe).apply(v => v === undefined ? undefined : probeSettingsArgsProvideDefaults(v)),
     };
 }
 
 export interface ManagedOnlineEndpointDeploymentResourcePropertiesArgs {
-    endpointComputeType?: pulumi.Input<string | enums.EndpointComputeType>;
+    endpointComputeType?: pulumi.Input<string | enums.EndpointComputeType | undefined>;
     /**
      * The failure reason if the creation failed.
      */
-    failureReason?: pulumi.Input<string>;
-    model?: pulumi.Input<string>;
+    failureReason?: pulumi.Input<string | undefined>;
+    model?: pulumi.Input<string | undefined>;
     /**
      * Kind of the deployment.
      * Expected value is 'managedOnlineEndpoint'.
@@ -6119,7 +6099,7 @@ export interface ManagedResourceGroupAssignedIdentitiesArgs {
     /**
      * Identity principal Id
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -6129,7 +6109,7 @@ export interface ManagedResourceGroupSettingsArgs {
     /**
      * List of assigned identities for the managed resource group
      */
-    assignedIdentities?: pulumi.Input<pulumi.Input<ManagedResourceGroupAssignedIdentitiesArgs>[]>;
+    assignedIdentities?: pulumi.Input<pulumi.Input<ManagedResourceGroupAssignedIdentitiesArgs>[] | undefined>;
 }
 
 /**
@@ -6143,7 +6123,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface MarketplaceSubscriptionPropertiesArgs {
@@ -6160,30 +6140,30 @@ export interface MaterializationComputeResourceArgs {
     /**
      * Specifies the instance type
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
 }
 
 export interface MaterializationSettingsArgs {
     /**
      * Specifies the notification details
      */
-    notification?: pulumi.Input<NotificationSettingArgs>;
+    notification?: pulumi.Input<NotificationSettingArgs | undefined>;
     /**
      * Specifies the compute resource settings
      */
-    resource?: pulumi.Input<MaterializationComputeResourceArgs>;
+    resource?: pulumi.Input<MaterializationComputeResourceArgs | undefined>;
     /**
      * Specifies the schedule details
      */
-    schedule?: pulumi.Input<RecurrenceTriggerArgs>;
+    schedule?: pulumi.Input<RecurrenceTriggerArgs | undefined>;
     /**
      * Specifies the spark compute settings
      */
-    sparkConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sparkConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the stores to which materialization should happen
      */
-    storeType?: pulumi.Input<string | enums.MaterializationStoreType>;
+    storeType?: pulumi.Input<string | enums.MaterializationStoreType | undefined>;
 }
 /**
  * materializationSettingsArgsProvideDefaults sets the appropriate defaults for MaterializationSettingsArgs
@@ -6191,7 +6171,7 @@ export interface MaterializationSettingsArgs {
 export function materializationSettingsArgsProvideDefaults(val: MaterializationSettingsArgs): MaterializationSettingsArgs {
     return {
         ...val,
-        schedule: (val.schedule ? pulumi.output(val.schedule).apply(recurrenceTriggerArgsProvideDefaults) : undefined),
+        schedule: pulumi.output(val.schedule).apply(v => v === undefined ? undefined : recurrenceTriggerArgsProvideDefaults(v)),
         storeType: (val.storeType) ?? "None",
     };
 }
@@ -6203,13 +6183,12 @@ export interface MedianStoppingPolicyArgs {
     /**
      * Number of intervals by which to delay the first evaluation.
      */
-    delayEvaluation?: pulumi.Input<number>;
+    delayEvaluation?: pulumi.Input<number | undefined>;
     /**
      * Interval (number of runs) between policy evaluations.
      */
-    evaluationInterval?: pulumi.Input<number>;
+    evaluationInterval?: pulumi.Input<number | undefined>;
     /**
-     *
      * Expected value is 'MedianStopping'.
      */
     policyType: pulumi.Input<"MedianStopping">;
@@ -6229,19 +6208,19 @@ export interface ModelContainerPropertiesArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * modelContainerPropertiesArgsProvideDefaults sets the appropriate defaults for ModelContainerPropertiesArgs
@@ -6257,7 +6236,7 @@ export interface ModelSettingsArgs {
     /**
      * The unique model identifier that this ServerlessEndpoint should provision.
      */
-    modelId?: pulumi.Input<string>;
+    modelId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -6267,47 +6246,47 @@ export interface ModelVersionPropertiesArgs {
     /**
      * Array of dataset references
      */
-    datasets?: pulumi.Input<pulumi.Input<DatasetReferenceArgs>[]>;
+    datasets?: pulumi.Input<pulumi.Input<DatasetReferenceArgs>[] | undefined>;
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Mapping of model flavors to their properties.
      */
-    flavors?: pulumi.Input<{[key: string]: pulumi.Input<FlavorDataArgs>}>;
+    flavors?: pulumi.Input<{[key: string]: pulumi.Input<FlavorDataArgs>} | undefined>;
     /**
      * If the name version are system generated (anonymous registration).
      */
-    isAnonymous?: pulumi.Input<boolean>;
+    isAnonymous?: pulumi.Input<boolean | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the training job which produced this model
      */
-    jobName?: pulumi.Input<string>;
+    jobName?: pulumi.Input<string | undefined>;
     /**
      * The storage format for this entity. Used for NCD.
      */
-    modelType?: pulumi.Input<string>;
+    modelType?: pulumi.Input<string | undefined>;
     /**
      * The URI path to the model contents.
      */
-    modelUri?: pulumi.Input<string>;
+    modelUri?: pulumi.Input<string | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Stage in the model lifecycle assigned to this model
      */
-    stage?: pulumi.Input<string>;
+    stage?: pulumi.Input<string | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * modelVersionPropertiesArgsProvideDefaults sets the appropriate defaults for ModelVersionPropertiesArgs
@@ -6324,7 +6303,7 @@ export interface MonitorDefinitionArgs {
     /**
      * The monitor's notification settings.
      */
-    alertNotificationSettings?: pulumi.Input<MonitorNotificationSettingsArgs>;
+    alertNotificationSettings?: pulumi.Input<MonitorNotificationSettingsArgs | undefined>;
     /**
      * [Required] The ARM resource ID of the compute resource to run the monitoring job on.
      */
@@ -6332,7 +6311,7 @@ export interface MonitorDefinitionArgs {
     /**
      * The entities targeted by the monitor.
      */
-    monitoringTarget?: pulumi.Input<MonitoringTargetArgs>;
+    monitoringTarget?: pulumi.Input<MonitoringTargetArgs | undefined>;
     /**
      * [Required] The signals to monitor.
      */
@@ -6343,14 +6322,14 @@ export interface MonitorEmailNotificationSettingsArgs {
     /**
      * The email recipient list which has a limitation of 499 characters in total.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface MonitorNotificationSettingsArgs {
     /**
      * The AML notification email settings.
      */
-    emailNotificationSettings?: pulumi.Input<MonitorEmailNotificationSettingsArgs>;
+    emailNotificationSettings?: pulumi.Input<MonitorEmailNotificationSettingsArgs | undefined>;
 }
 
 /**
@@ -6383,11 +6362,11 @@ export interface MonitoringTargetArgs {
     /**
      * Reference to the deployment asset targeted by this monitor.
      */
-    deploymentId?: pulumi.Input<string>;
+    deploymentId?: pulumi.Input<string | undefined>;
     /**
      * Reference to the model asset targeted by this monitor.
      */
-    modelId?: pulumi.Input<string>;
+    modelId?: pulumi.Input<string | undefined>;
     /**
      * [Required] The machine learning task type of the monitored model.
      */
@@ -6398,7 +6377,7 @@ export interface MonitoringThresholdArgs {
     /**
      * The threshold value. If null, the set default is dependent on the metric type.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -6413,14 +6392,14 @@ export interface MpiArgs {
     /**
      * Number of processes per MPI node.
      */
-    processCountPerInstance?: pulumi.Input<number>;
+    processCountPerInstance?: pulumi.Input<number | undefined>;
 }
 
 export interface NlpVerticalFeaturizationSettingsArgs {
     /**
      * Dataset language, useful for the text data.
      */
-    datasetLanguage?: pulumi.Input<string>;
+    datasetLanguage?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -6430,15 +6409,15 @@ export interface NlpVerticalLimitSettingsArgs {
     /**
      * Maximum Concurrent AutoML iterations.
      */
-    maxConcurrentTrials?: pulumi.Input<number>;
+    maxConcurrentTrials?: pulumi.Input<number | undefined>;
     /**
      * Number of AutoML iterations.
      */
-    maxTrials?: pulumi.Input<number>;
+    maxTrials?: pulumi.Input<number | undefined>;
     /**
      * AutoML job timeout.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 /**
  * nlpVerticalLimitSettingsArgsProvideDefaults sets the appropriate defaults for NlpVerticalLimitSettingsArgs
@@ -6461,19 +6440,19 @@ export interface NoneAuthTypeWorkspaceConnectionPropertiesArgs {
     /**
      * Category of the connection
      */
-    category?: pulumi.Input<string | enums.ConnectionCategory>;
-    error?: pulumi.Input<string>;
-    expiryTime?: pulumi.Input<string>;
-    isSharedToAll?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string | enums.ConnectionCategory | undefined>;
+    error?: pulumi.Input<string | undefined>;
+    expiryTime?: pulumi.Input<string | undefined>;
+    isSharedToAll?: pulumi.Input<boolean | undefined>;
     /**
      * Store user metadata for this connection
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
-    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
-    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
-    target?: pulumi.Input<string>;
-    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement | undefined>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus | undefined>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -6494,20 +6473,19 @@ export interface NotificationSettingArgs {
     /**
      * Send email notification to user on specified notification type
      */
-    emailOn?: pulumi.Input<pulumi.Input<string | enums.EmailNotificationEnableType>[]>;
+    emailOn?: pulumi.Input<pulumi.Input<string | enums.EmailNotificationEnableType>[] | undefined>;
     /**
      * This is the email recipient list which has a limitation of 499 characters in total concat with comma separator
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Send webhook callback to a service. Key is a user-provided name for the webhook.
      */
-    webhooks?: pulumi.Input<{[key: string]: pulumi.Input<AzureDevOpsWebhookArgs>}>;
+    webhooks?: pulumi.Input<{[key: string]: pulumi.Input<AzureDevOpsWebhookArgs>} | undefined>;
 }
 
 export interface NumericalDataDriftMetricThresholdArgs {
     /**
-     *
      * Expected value is 'Numerical'.
      */
     dataType: pulumi.Input<"Numerical">;
@@ -6518,12 +6496,11 @@ export interface NumericalDataDriftMetricThresholdArgs {
     /**
      * The threshold value. If null, a default value will be set depending on the selected metric.
      */
-    threshold?: pulumi.Input<MonitoringThresholdArgs>;
+    threshold?: pulumi.Input<MonitoringThresholdArgs | undefined>;
 }
 
 export interface NumericalDataQualityMetricThresholdArgs {
     /**
-     *
      * Expected value is 'Numerical'.
      */
     dataType: pulumi.Input<"Numerical">;
@@ -6534,12 +6511,11 @@ export interface NumericalDataQualityMetricThresholdArgs {
     /**
      * The threshold value. If null, a default value will be set depending on the selected metric.
      */
-    threshold?: pulumi.Input<MonitoringThresholdArgs>;
+    threshold?: pulumi.Input<MonitoringThresholdArgs | undefined>;
 }
 
 export interface NumericalPredictionDriftMetricThresholdArgs {
     /**
-     *
      * Expected value is 'Numerical'.
      */
     dataType: pulumi.Input<"Numerical">;
@@ -6550,7 +6526,7 @@ export interface NumericalPredictionDriftMetricThresholdArgs {
     /**
      * The threshold value. If null, a default value will be set depending on the selected metric.
      */
-    threshold?: pulumi.Input<MonitoringThresholdArgs>;
+    threshold?: pulumi.Input<MonitoringThresholdArgs | undefined>;
 }
 
 export interface OAuth2AuthTypeWorkspaceConnectionPropertiesArgs {
@@ -6562,24 +6538,24 @@ export interface OAuth2AuthTypeWorkspaceConnectionPropertiesArgs {
     /**
      * Category of the connection
      */
-    category?: pulumi.Input<string | enums.ConnectionCategory>;
+    category?: pulumi.Input<string | enums.ConnectionCategory | undefined>;
     /**
      * ClientId and ClientSecret are required. Other properties are optional
      * depending on each OAuth2 provider's implementation.
      */
-    credentials?: pulumi.Input<WorkspaceConnectionOAuth2Args>;
-    error?: pulumi.Input<string>;
-    expiryTime?: pulumi.Input<string>;
-    isSharedToAll?: pulumi.Input<boolean>;
+    credentials?: pulumi.Input<WorkspaceConnectionOAuth2Args | undefined>;
+    error?: pulumi.Input<string | undefined>;
+    expiryTime?: pulumi.Input<string | undefined>;
+    isSharedToAll?: pulumi.Input<boolean | undefined>;
     /**
      * Store user metadata for this connection
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
-    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
-    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
-    target?: pulumi.Input<string>;
-    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement | undefined>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus | undefined>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -6616,11 +6592,11 @@ export interface OneLakeDatastoreArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * OneLake endpoint to use for the datastore.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * [Required] OneLake workspace name.
      */
@@ -6628,15 +6604,15 @@ export interface OneLakeDatastoreArgs {
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates which identity to use to authenticate service data access to customer's storage.
      */
-    serviceDataAccessAuthIdentity?: pulumi.Input<string | enums.ServiceDataAccessAuthIdentity>;
+    serviceDataAccessAuthIdentity?: pulumi.Input<string | enums.ServiceDataAccessAuthIdentity | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * oneLakeDatastoreArgsProvideDefaults sets the appropriate defaults for OneLakeDatastoreArgs
@@ -6660,32 +6636,32 @@ export interface OnlineEndpointPropertiesArgs {
      * ARM resource ID of the compute if it exists.
      * optional
      */
-    compute?: pulumi.Input<string>;
+    compute?: pulumi.Input<string | undefined>;
     /**
      * Description of the inference endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * EndpointAuthKeys to set initially on an Endpoint.
      * This property will always be returned as null. AuthKey values must be retrieved using the ListKeys API.
      */
-    keys?: pulumi.Input<EndpointAuthKeysArgs>;
+    keys?: pulumi.Input<EndpointAuthKeysArgs | undefined>;
     /**
      * Percentage of traffic to be mirrored to each deployment without using returned scoring. Traffic values need to sum to utmost 50.
      */
-    mirrorTraffic?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    mirrorTraffic?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Enum to determine whether PublicNetworkAccess is Enabled or Disabled.
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessType>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessType | undefined>;
     /**
      * Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100.
      */
-    traffic?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    traffic?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
 }
 /**
  * onlineEndpointPropertiesArgsProvideDefaults sets the appropriate defaults for OnlineEndpointPropertiesArgs
@@ -6704,18 +6680,18 @@ export interface OnlineRequestSettingsArgs {
     /**
      * The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
      */
-    maxConcurrentRequestsPerInstance?: pulumi.Input<number>;
+    maxConcurrentRequestsPerInstance?: pulumi.Input<number | undefined>;
     /**
      * (Deprecated for Managed Online Endpoints) The maximum amount of time a request will stay in the queue in ISO 8601 format.
      * Defaults to 500ms.
      * (Now increase `request_timeout_ms` to account for any networking/queue delays)
      */
-    maxQueueWait?: pulumi.Input<string>;
+    maxQueueWait?: pulumi.Input<string | undefined>;
     /**
      * The scoring timeout in ISO 8601 format.
      * Defaults to 5000ms.
      */
-    requestTimeout?: pulumi.Input<string>;
+    requestTimeout?: pulumi.Input<string | undefined>;
 }
 /**
  * onlineRequestSettingsArgsProvideDefaults sets the appropriate defaults for OnlineRequestSettingsArgs
@@ -6733,7 +6709,7 @@ export interface OpenAIEndpointDeploymentResourcePropertiesArgs {
     /**
      * The failure reason if the creation failed.
      */
-    failureReason?: pulumi.Input<string>;
+    failureReason?: pulumi.Input<string | undefined>;
     /**
      * Model used for the endpoint deployment.
      */
@@ -6741,8 +6717,8 @@ export interface OpenAIEndpointDeploymentResourcePropertiesArgs {
     /**
      * The name of RAI policy.
      */
-    raiPolicyName?: pulumi.Input<string>;
-    sku?: pulumi.Input<CognitiveServicesSkuArgs>;
+    raiPolicyName?: pulumi.Input<string | undefined>;
+    sku?: pulumi.Input<CognitiveServicesSkuArgs | undefined>;
     /**
      * Kind of the deployment.
      * Expected value is 'Azure.OpenAI'.
@@ -6751,7 +6727,7 @@ export interface OpenAIEndpointDeploymentResourcePropertiesArgs {
     /**
      * Deployment model version upgrade option.
      */
-    versionUpgradeOption?: pulumi.Input<string | enums.DeploymentModelVersionUpgradeOption>;
+    versionUpgradeOption?: pulumi.Input<string | enums.DeploymentModelVersionUpgradeOption | undefined>;
 }
 
 /**
@@ -6761,11 +6737,11 @@ export interface OutputPathAssetReferenceArgs {
     /**
      * ARM resource ID of the job.
      */
-    jobId?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string | undefined>;
     /**
      * The path of the file/directory in the job output.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine which reference method to use for an asset.
      * Expected value is 'OutputPath'.
@@ -6782,20 +6758,20 @@ export interface PATAuthTypeWorkspaceConnectionPropertiesArgs {
     /**
      * Category of the connection
      */
-    category?: pulumi.Input<string | enums.ConnectionCategory>;
-    credentials?: pulumi.Input<WorkspaceConnectionPersonalAccessTokenArgs>;
-    error?: pulumi.Input<string>;
-    expiryTime?: pulumi.Input<string>;
-    isSharedToAll?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string | enums.ConnectionCategory | undefined>;
+    credentials?: pulumi.Input<WorkspaceConnectionPersonalAccessTokenArgs | undefined>;
+    error?: pulumi.Input<string | undefined>;
+    expiryTime?: pulumi.Input<string | undefined>;
+    isSharedToAll?: pulumi.Input<boolean | undefined>;
     /**
      * Store user metadata for this connection
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
-    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
-    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
-    target?: pulumi.Input<string>;
-    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement | undefined>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus | undefined>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -6805,7 +6781,7 @@ export interface PersonalComputeInstanceSettingsArgs {
     /**
      * A user explicitly assigned to a personal compute instance.
      */
-    assignedUser?: pulumi.Input<AssignedUserArgs>;
+    assignedUser?: pulumi.Input<AssignedUserArgs | undefined>;
 }
 
 /**
@@ -6815,36 +6791,36 @@ export interface PipelineJobArgs {
     /**
      * ARM resource ID of the component resource.
      */
-    componentId?: pulumi.Input<string>;
+    componentId?: pulumi.Input<string | undefined>;
     /**
      * ARM resource ID of the compute resource.
      */
-    computeId?: pulumi.Input<string>;
+    computeId?: pulumi.Input<string | undefined>;
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of job.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
      */
-    experimentName?: pulumi.Input<string>;
+    experimentName?: pulumi.Input<string | undefined>;
     /**
      * Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
      * Defaults to AmlToken if null.
      */
-    identity?: pulumi.Input<AmlTokenArgs | ManagedIdentityArgs | UserIdentityArgs>;
+    identity?: pulumi.Input<AmlTokenArgs | ManagedIdentityArgs | UserIdentityArgs | undefined>;
     /**
      * Inputs for the pipeline job.
      */
-    inputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobInputArgs | LiteralJobInputArgs | MLFlowModelJobInputArgs | MLTableJobInputArgs | TritonModelJobInputArgs | UriFileJobInputArgs | UriFolderJobInputArgs>}>;
+    inputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobInputArgs | LiteralJobInputArgs | MLFlowModelJobInputArgs | MLTableJobInputArgs | TritonModelJobInputArgs | UriFileJobInputArgs | UriFolderJobInputArgs>} | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * Enum to determine the type of job.
      * Expected value is 'Pipeline'.
@@ -6853,36 +6829,36 @@ export interface PipelineJobArgs {
     /**
      * Jobs construct the Pipeline Job.
      */
-    jobs?: pulumi.Input<{[key: string]: any}>;
+    jobs?: pulumi.Input<{[key: string]: any} | undefined>;
     /**
      * Notification setting for the job
      */
-    notificationSetting?: pulumi.Input<NotificationSettingArgs>;
+    notificationSetting?: pulumi.Input<NotificationSettingArgs | undefined>;
     /**
      * Outputs for the pipeline job
      */
-    outputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobOutputArgs | MLFlowModelJobOutputArgs | MLTableJobOutputArgs | TritonModelJobOutputArgs | UriFileJobOutputArgs | UriFolderJobOutputArgs>}>;
+    outputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobOutputArgs | MLFlowModelJobOutputArgs | MLTableJobOutputArgs | TritonModelJobOutputArgs | UriFileJobOutputArgs | UriFolderJobOutputArgs>} | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of JobEndpoints.
      * For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
      */
-    services?: pulumi.Input<{[key: string]: pulumi.Input<JobServiceArgs>}>;
+    services?: pulumi.Input<{[key: string]: pulumi.Input<JobServiceArgs>} | undefined>;
     /**
      * Pipeline settings, for things like ContinueRunOnStepFailure etc.
      */
-    settings?: any;
+    settings?: any | undefined;
     /**
      * ARM resource ID of source job.
      */
-    sourceJobId?: pulumi.Input<string>;
+    sourceJobId?: pulumi.Input<string | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * pipelineJobArgsProvideDefaults sets the appropriate defaults for PipelineJobArgs
@@ -6899,7 +6875,7 @@ export interface PredictionDriftMonitoringSignalArgs {
     /**
      * A dictionary that maps feature names to their respective data types.
      */
-    featureDataTypeOverride?: pulumi.Input<{[key: string]: pulumi.Input<string | enums.MonitoringFeatureDataType>}>;
+    featureDataTypeOverride?: pulumi.Input<{[key: string]: pulumi.Input<string | enums.MonitoringFeatureDataType>} | undefined>;
     /**
      * [Required] A list of metrics to calculate and their associated thresholds.
      */
@@ -6907,7 +6883,7 @@ export interface PredictionDriftMonitoringSignalArgs {
     /**
      * The current notification mode for this signal.
      */
-    notificationTypes?: pulumi.Input<pulumi.Input<string | enums.MonitoringNotificationType>[]>;
+    notificationTypes?: pulumi.Input<pulumi.Input<string | enums.MonitoringNotificationType>[] | undefined>;
     /**
      * [Required] The data which drift will be calculated for.
      */
@@ -6915,13 +6891,12 @@ export interface PredictionDriftMonitoringSignalArgs {
     /**
      * Property dictionary. Properties can be added, but not removed or altered.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Required] The data to calculate drift against.
      */
     referenceData: pulumi.Input<FixedInputDataArgs | RollingInputDataArgs | StaticInputDataArgs>;
     /**
-     *
      * Expected value is 'PredictionDrift'.
      */
     signalType: pulumi.Input<"PredictionDrift">;
@@ -6934,13 +6909,13 @@ export interface PrivateEndpointDestinationArgs {
     /**
      * A type definition that refers the id to an Azure Resource Manager resource.
      */
-    serviceResourceId?: pulumi.Input<string>;
-    sparkEnabled?: pulumi.Input<boolean>;
+    serviceResourceId?: pulumi.Input<string | undefined>;
+    sparkEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      */
-    sparkStatus?: pulumi.Input<string | enums.RuleStatus>;
-    subresourceTarget?: pulumi.Input<string>;
+    sparkStatus?: pulumi.Input<string | enums.RuleStatus | undefined>;
+    subresourceTarget?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -6950,16 +6925,16 @@ export interface PrivateEndpointOutboundRuleArgs {
     /**
      * Category of a managed network Outbound Rule of a machine learning workspace.
      */
-    category?: pulumi.Input<string | enums.RuleCategory>;
+    category?: pulumi.Input<string | enums.RuleCategory | undefined>;
     /**
      * Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
      */
-    destination?: pulumi.Input<PrivateEndpointDestinationArgs>;
-    fqdns?: pulumi.Input<pulumi.Input<string>[]>;
+    destination?: pulumi.Input<PrivateEndpointDestinationArgs | undefined>;
+    fqdns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      */
-    status?: pulumi.Input<string | enums.RuleStatus>;
+    status?: pulumi.Input<string | enums.RuleStatus | undefined>;
     /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      * Expected value is 'PrivateEndpoint'.
@@ -6974,7 +6949,7 @@ export interface PrivateEndpointResourceArgs {
     /**
      * The subnetId that the private endpoint is connected to.
      */
-    subnetArmId?: pulumi.Input<string>;
+    subnetArmId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -6984,15 +6959,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * Some RP chose "None". Other RPs use this for region expansion.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * User-defined message that, per NRP doc, may be used for approval-related message.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
      */
-    status?: pulumi.Input<string | enums.EndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.EndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -7002,23 +6977,23 @@ export interface ProbeSettingsArgs {
     /**
      * The number of failures to allow before returning an unhealthy status.
      */
-    failureThreshold?: pulumi.Input<number>;
+    failureThreshold?: pulumi.Input<number | undefined>;
     /**
      * The delay before the first probe in ISO 8601 format.
      */
-    initialDelay?: pulumi.Input<string>;
+    initialDelay?: pulumi.Input<string | undefined>;
     /**
      * The length of time between probes in ISO 8601 format.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The number of successful probes before returning a healthy status.
      */
-    successThreshold?: pulumi.Input<number>;
+    successThreshold?: pulumi.Input<number | undefined>;
     /**
      * The probe timeout in ISO 8601 format.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 /**
  * probeSettingsArgsProvideDefaults sets the appropriate defaults for ProbeSettingsArgs
@@ -7045,14 +7020,14 @@ export interface PyTorchArgs {
     /**
      * Number of processes per node.
      */
-    processCountPerInstance?: pulumi.Input<number>;
+    processCountPerInstance?: pulumi.Input<number | undefined>;
 }
 
 export interface QueueSettingsArgs {
     /**
      * Enum to determine the job tier.
      */
-    jobTier?: pulumi.Input<string | enums.JobTier>;
+    jobTier?: pulumi.Input<string | enums.JobTier | undefined>;
 }
 /**
  * queueSettingsArgsProvideDefaults sets the appropriate defaults for QueueSettingsArgs
@@ -7071,11 +7046,11 @@ export interface RaiBlocklistConfigArgs {
     /**
      * If blocking would occur.
      */
-    blocking?: pulumi.Input<boolean>;
+    blocking?: pulumi.Input<boolean | undefined>;
     /**
      * Name of ContentFilter.
      */
-    blocklistName?: pulumi.Input<string>;
+    blocklistName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -7085,11 +7060,11 @@ export interface RaiBlocklistItemPropertiesArgs {
     /**
      * If the pattern is a regex pattern.
      */
-    isRegex?: pulumi.Input<boolean>;
+    isRegex?: pulumi.Input<boolean | undefined>;
     /**
      * Pattern to match against.
      */
-    pattern?: pulumi.Input<string>;
+    pattern?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -7099,7 +7074,7 @@ export interface RaiBlocklistPropertiesArgs {
     /**
      * Description of the block list.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -7109,23 +7084,23 @@ export interface RaiPolicyContentFilterArgs {
     /**
      * Level at which content is filtered.
      */
-    allowedContentLevel?: pulumi.Input<string | enums.AllowedContentLevel>;
+    allowedContentLevel?: pulumi.Input<string | enums.AllowedContentLevel | undefined>;
     /**
      * If blocking would occur.
      */
-    blocking?: pulumi.Input<boolean>;
+    blocking?: pulumi.Input<boolean | undefined>;
     /**
      * If the ContentFilter is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of ContentFilter.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Content source to apply the Content Filters.
      */
-    source?: pulumi.Input<string | enums.RaiPolicyContentSource>;
+    source?: pulumi.Input<string | enums.RaiPolicyContentSource | undefined>;
 }
 
 /**
@@ -7135,18 +7110,18 @@ export interface RaiPolicyPropertiesArgs {
     /**
      * Name of the base Content Filters.
      */
-    basePolicyName?: pulumi.Input<string>;
-    completionBlocklists?: pulumi.Input<pulumi.Input<RaiBlocklistConfigArgs>[]>;
-    contentFilters?: pulumi.Input<pulumi.Input<RaiPolicyContentFilterArgs>[]>;
+    basePolicyName?: pulumi.Input<string | undefined>;
+    completionBlocklists?: pulumi.Input<pulumi.Input<RaiBlocklistConfigArgs>[] | undefined>;
+    contentFilters?: pulumi.Input<pulumi.Input<RaiPolicyContentFilterArgs>[] | undefined>;
     /**
      * Content Filters mode.
      */
-    mode?: pulumi.Input<string | enums.RaiPolicyMode>;
-    promptBlocklists?: pulumi.Input<pulumi.Input<RaiBlocklistConfigArgs>[]>;
+    mode?: pulumi.Input<string | enums.RaiPolicyMode | undefined>;
+    promptBlocklists?: pulumi.Input<pulumi.Input<RaiBlocklistConfigArgs>[] | undefined>;
     /**
      * Content Filters policy type.
      */
-    type?: pulumi.Input<string | enums.RaiPolicyType>;
+    type?: pulumi.Input<string | enums.RaiPolicyType | undefined>;
 }
 
 /**
@@ -7156,16 +7131,15 @@ export interface RandomSamplingAlgorithmArgs {
     /**
      * The specific type of random algorithm
      */
-    rule?: pulumi.Input<string | enums.RandomSamplingAlgorithmRule>;
+    rule?: pulumi.Input<string | enums.RandomSamplingAlgorithmRule | undefined>;
     /**
-     *
      * Expected value is 'Random'.
      */
     samplingAlgorithmType: pulumi.Input<"Random">;
     /**
      * An optional integer to use as the seed for random number generation
      */
-    seed?: pulumi.Input<number>;
+    seed?: pulumi.Input<number | undefined>;
 }
 /**
  * randomSamplingAlgorithmArgsProvideDefaults sets the appropriate defaults for RandomSamplingAlgorithmArgs
@@ -7184,24 +7158,24 @@ export interface RecurrenceArgs {
     /**
      * [Required] The frequency to trigger schedule.
      */
-    frequency?: pulumi.Input<string | enums.ComputeRecurrenceFrequency>;
+    frequency?: pulumi.Input<string | enums.ComputeRecurrenceFrequency | undefined>;
     /**
      * [Required] Specifies schedule interval in conjunction with frequency
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * [Required] The recurrence schedule.
      */
-    schedule?: pulumi.Input<ComputeRecurrenceScheduleArgs>;
+    schedule?: pulumi.Input<ComputeRecurrenceScheduleArgs | undefined>;
     /**
      * The start time in yyyy-MM-ddTHH:mm:ss format.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies time zone in which the schedule runs.
      * TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 /**
  * recurrenceArgsProvideDefaults sets the appropriate defaults for RecurrenceArgs
@@ -7225,11 +7199,11 @@ export interface RecurrenceScheduleArgs {
     /**
      * List of month days for the schedule
      */
-    monthDays?: pulumi.Input<pulumi.Input<number>[]>;
+    monthDays?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * List of days for the schedule.
      */
-    weekDays?: pulumi.Input<pulumi.Input<string | enums.WeekDay>[]>;
+    weekDays?: pulumi.Input<pulumi.Input<string | enums.WeekDay>[] | undefined>;
 }
 
 export interface RecurrenceTriggerArgs {
@@ -7238,7 +7212,7 @@ export interface RecurrenceTriggerArgs {
      * Recommented format would be "2022-06-01T00:00:01"
      * If not present, the schedule will run indefinitely
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * [Required] The frequency to trigger schedule.
      */
@@ -7250,18 +7224,17 @@ export interface RecurrenceTriggerArgs {
     /**
      * The recurrence schedule.
      */
-    schedule?: pulumi.Input<RecurrenceScheduleArgs>;
+    schedule?: pulumi.Input<RecurrenceScheduleArgs | undefined>;
     /**
      * Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies time zone in which the schedule runs.
      * TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
-     *
      * Expected value is 'Recurrence'.
      */
     triggerType: pulumi.Input<"Recurrence">;
@@ -7283,28 +7256,28 @@ export interface RegistryPrivateEndpointConnectionArgs {
     /**
      * The group ids
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This is the private endpoint connection name created on SRP
      * Full resource id: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.MachineLearningServices/{resourceType}/{resourceName}/registryPrivateEndpointConnections/{peConnectionName}
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Same as workspace location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The PE network resource that is linked to this PE connection.
      */
-    privateEndpoint?: pulumi.Input<PrivateEndpointResourceArgs>;
+    privateEndpoint?: pulumi.Input<PrivateEndpointResourceArgs | undefined>;
     /**
      * One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
      */
-    provisioningState?: pulumi.Input<string>;
+    provisioningState?: pulumi.Input<string | undefined>;
     /**
      * The connection state.
      */
-    registryPrivateLinkServiceConnectionState?: pulumi.Input<RegistryPrivateLinkServiceConnectionStateArgs>;
+    registryPrivateLinkServiceConnectionState?: pulumi.Input<RegistryPrivateLinkServiceConnectionStateArgs | undefined>;
 }
 
 /**
@@ -7314,15 +7287,15 @@ export interface RegistryPrivateLinkServiceConnectionStateArgs {
     /**
      * Some RP chose "None". Other RPs use this for region expansion.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * User-defined message that, per NRP doc, may be used for approval-related message.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Connection status of the service consumer with the service provider
      */
-    status?: pulumi.Input<string | enums.EndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.EndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -7332,15 +7305,15 @@ export interface RegistryRegionArmDetailsArgs {
     /**
      * List of ACR accounts
      */
-    acrDetails?: pulumi.Input<pulumi.Input<AcrDetailsArgs>[]>;
+    acrDetails?: pulumi.Input<pulumi.Input<AcrDetailsArgs>[] | undefined>;
     /**
      * The location where the registry exists
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * List of storage accounts
      */
-    storageAccountDetails?: pulumi.Input<pulumi.Input<StorageAccountDetailsArgs>[]>;
+    storageAccountDetails?: pulumi.Input<pulumi.Input<StorageAccountDetailsArgs>[] | undefined>;
 }
 
 /**
@@ -7350,33 +7323,33 @@ export interface RegressionArgs {
     /**
      * Columns to use for CVSplit data.
      */
-    cvSplitColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
+    cvSplitColumnNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Featurization inputs needed for AutoML job.
      */
-    featurizationSettings?: pulumi.Input<TableVerticalFeaturizationSettingsArgs>;
+    featurizationSettings?: pulumi.Input<TableVerticalFeaturizationSettingsArgs | undefined>;
     /**
      * Execution constraints for AutoMLJob.
      */
-    limitSettings?: pulumi.Input<TableVerticalLimitSettingsArgs>;
+    limitSettings?: pulumi.Input<TableVerticalLimitSettingsArgs | undefined>;
     /**
      * Enum for setting log verbosity.
      */
-    logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
+    logVerbosity?: pulumi.Input<string | enums.LogVerbosity | undefined>;
     /**
      * Number of cross validation folds to be applied on training dataset
      * when validation dataset is not provided.
      */
-    nCrossValidations?: pulumi.Input<AutoNCrossValidationsArgs | CustomNCrossValidationsArgs>;
+    nCrossValidations?: pulumi.Input<AutoNCrossValidationsArgs | CustomNCrossValidationsArgs | undefined>;
     /**
      * Primary metrics for Regression task.
      */
-    primaryMetric?: pulumi.Input<string | enums.RegressionPrimaryMetrics>;
+    primaryMetric?: pulumi.Input<string | enums.RegressionPrimaryMetrics | undefined>;
     /**
      * Target column name: This is prediction values column.
      * Also known as label column name in context of classification tasks.
      */
-    targetColumnName?: pulumi.Input<string>;
+    targetColumnName?: pulumi.Input<string | undefined>;
     /**
      * AutoMLJob Task type.
      * Expected value is 'Regression'.
@@ -7385,13 +7358,13 @@ export interface RegressionArgs {
     /**
      * Test data input.
      */
-    testData?: pulumi.Input<MLTableJobInputArgs>;
+    testData?: pulumi.Input<MLTableJobInputArgs | undefined>;
     /**
      * The fraction of test dataset that needs to be set aside for validation purpose.
      * Values between (0.0 , 1.0)
      * Applied when validation dataset is not provided.
      */
-    testDataSize?: pulumi.Input<number>;
+    testDataSize?: pulumi.Input<number | undefined>;
     /**
      * [Required] Training data input.
      */
@@ -7399,21 +7372,21 @@ export interface RegressionArgs {
     /**
      * Inputs for training phase for an AutoML Job.
      */
-    trainingSettings?: pulumi.Input<RegressionTrainingSettingsArgs>;
+    trainingSettings?: pulumi.Input<RegressionTrainingSettingsArgs | undefined>;
     /**
      * Validation data inputs.
      */
-    validationData?: pulumi.Input<MLTableJobInputArgs>;
+    validationData?: pulumi.Input<MLTableJobInputArgs | undefined>;
     /**
      * The fraction of training dataset that needs to be set aside for validation purpose.
      * Values between (0.0 , 1.0)
      * Applied when validation dataset is not provided.
      */
-    validationDataSize?: pulumi.Input<number>;
+    validationDataSize?: pulumi.Input<number | undefined>;
     /**
      * The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
      */
-    weightColumnName?: pulumi.Input<string>;
+    weightColumnName?: pulumi.Input<string | undefined>;
 }
 /**
  * regressionArgsProvideDefaults sets the appropriate defaults for RegressionArgs
@@ -7421,14 +7394,14 @@ export interface RegressionArgs {
 export function regressionArgsProvideDefaults(val: RegressionArgs): RegressionArgs {
     return {
         ...val,
-        featurizationSettings: (val.featurizationSettings ? pulumi.output(val.featurizationSettings).apply(tableVerticalFeaturizationSettingsArgsProvideDefaults) : undefined),
-        limitSettings: (val.limitSettings ? pulumi.output(val.limitSettings).apply(tableVerticalLimitSettingsArgsProvideDefaults) : undefined),
+        featurizationSettings: pulumi.output(val.featurizationSettings).apply(v => v === undefined ? undefined : tableVerticalFeaturizationSettingsArgsProvideDefaults(v)),
+        limitSettings: pulumi.output(val.limitSettings).apply(v => v === undefined ? undefined : tableVerticalLimitSettingsArgsProvideDefaults(v)),
         logVerbosity: (val.logVerbosity) ?? "Info",
         primaryMetric: (val.primaryMetric) ?? "NormalizedRootMeanSquaredError",
-        testData: (val.testData ? pulumi.output(val.testData).apply(mltableJobInputArgsProvideDefaults) : undefined),
+        testData: pulumi.output(val.testData).apply(v => v === undefined ? undefined : mltableJobInputArgsProvideDefaults(v)),
         trainingData: pulumi.output(val.trainingData).apply(mltableJobInputArgsProvideDefaults),
-        trainingSettings: (val.trainingSettings ? pulumi.output(val.trainingSettings).apply(regressionTrainingSettingsArgsProvideDefaults) : undefined),
-        validationData: (val.validationData ? pulumi.output(val.validationData).apply(mltableJobInputArgsProvideDefaults) : undefined),
+        trainingSettings: pulumi.output(val.trainingSettings).apply(v => v === undefined ? undefined : regressionTrainingSettingsArgsProvideDefaults(v)),
+        validationData: pulumi.output(val.validationData).apply(v => v === undefined ? undefined : mltableJobInputArgsProvideDefaults(v)),
     };
 }
 
@@ -7439,40 +7412,40 @@ export interface RegressionTrainingSettingsArgs {
     /**
      * Allowed models for regression task.
      */
-    allowedTrainingAlgorithms?: pulumi.Input<pulumi.Input<string | enums.RegressionModels>[]>;
+    allowedTrainingAlgorithms?: pulumi.Input<pulumi.Input<string | enums.RegressionModels>[] | undefined>;
     /**
      * Blocked models for regression task.
      */
-    blockedTrainingAlgorithms?: pulumi.Input<pulumi.Input<string | enums.RegressionModels>[]>;
+    blockedTrainingAlgorithms?: pulumi.Input<pulumi.Input<string | enums.RegressionModels>[] | undefined>;
     /**
      * Enable recommendation of DNN models.
      */
-    enableDnnTraining?: pulumi.Input<boolean>;
+    enableDnnTraining?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to turn on explainability on best model.
      */
-    enableModelExplainability?: pulumi.Input<boolean>;
+    enableModelExplainability?: pulumi.Input<boolean | undefined>;
     /**
      * Flag for enabling onnx compatible models.
      */
-    enableOnnxCompatibleModels?: pulumi.Input<boolean>;
+    enableOnnxCompatibleModels?: pulumi.Input<boolean | undefined>;
     /**
      * Enable stack ensemble run.
      */
-    enableStackEnsemble?: pulumi.Input<boolean>;
+    enableStackEnsemble?: pulumi.Input<boolean | undefined>;
     /**
      * Enable voting ensemble run.
      */
-    enableVoteEnsemble?: pulumi.Input<boolean>;
+    enableVoteEnsemble?: pulumi.Input<boolean | undefined>;
     /**
      * During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
      * Configure this parameter with a higher value than 300 secs, if more time is needed.
      */
-    ensembleModelDownloadTimeout?: pulumi.Input<string>;
+    ensembleModelDownloadTimeout?: pulumi.Input<string | undefined>;
     /**
      * Stack ensemble settings for stack ensemble run.
      */
-    stackEnsembleSettings?: pulumi.Input<StackEnsembleSettingsArgs>;
+    stackEnsembleSettings?: pulumi.Input<StackEnsembleSettingsArgs | undefined>;
 }
 /**
  * regressionTrainingSettingsArgsProvideDefaults sets the appropriate defaults for RegressionTrainingSettingsArgs
@@ -7486,7 +7459,7 @@ export function regressionTrainingSettingsArgsProvideDefaults(val: RegressionTra
         enableStackEnsemble: (val.enableStackEnsemble) ?? true,
         enableVoteEnsemble: (val.enableVoteEnsemble) ?? true,
         ensembleModelDownloadTimeout: (val.ensembleModelDownloadTimeout) ?? "PT5M",
-        stackEnsembleSettings: (val.stackEnsembleSettings ? pulumi.output(val.stackEnsembleSettings).apply(stackEnsembleSettingsArgsProvideDefaults) : undefined),
+        stackEnsembleSettings: pulumi.output(val.stackEnsembleSettings).apply(v => v === undefined ? undefined : stackEnsembleSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -7497,12 +7470,12 @@ export interface RequestConfigurationArgs {
     /**
      * The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
      */
-    maxConcurrentRequestsPerInstance?: pulumi.Input<number>;
+    maxConcurrentRequestsPerInstance?: pulumi.Input<number | undefined>;
     /**
      * The scoring timeout in ISO 8601 format.
      * Defaults to 5000ms.
      */
-    requestTimeout?: pulumi.Input<string>;
+    requestTimeout?: pulumi.Input<string | undefined>;
 }
 /**
  * requestConfigurationArgsProvideDefaults sets the appropriate defaults for RequestConfigurationArgs
@@ -7519,7 +7492,7 @@ export interface RequestLoggingArgs {
     /**
      * For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
      */
-    captureHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    captureHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -7539,11 +7512,11 @@ export interface RollingInputDataArgs {
     /**
      * Mapping of column names to special uses.
      */
-    columns?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    columns?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The context metadata of the data source.
      */
-    dataContext?: pulumi.Input<string>;
+    dataContext?: pulumi.Input<string | undefined>;
     /**
      * Monitoring input data type enum.
      * Expected value is 'Rolling'.
@@ -7556,7 +7529,7 @@ export interface RollingInputDataArgs {
     /**
      * Reference to the component asset used to preprocess the data.
      */
-    preprocessingComponentId?: pulumi.Input<string>;
+    preprocessingComponentId?: pulumi.Input<string | undefined>;
     /**
      * [Required] Input Asset URI.
      */
@@ -7591,20 +7564,20 @@ export interface SASAuthTypeWorkspaceConnectionPropertiesArgs {
     /**
      * Category of the connection
      */
-    category?: pulumi.Input<string | enums.ConnectionCategory>;
-    credentials?: pulumi.Input<WorkspaceConnectionSharedAccessSignatureArgs>;
-    error?: pulumi.Input<string>;
-    expiryTime?: pulumi.Input<string>;
-    isSharedToAll?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string | enums.ConnectionCategory | undefined>;
+    credentials?: pulumi.Input<WorkspaceConnectionSharedAccessSignatureArgs | undefined>;
+    error?: pulumi.Input<string | undefined>;
+    expiryTime?: pulumi.Input<string | undefined>;
+    isSharedToAll?: pulumi.Input<boolean | undefined>;
     /**
      * Store user metadata for this connection
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
-    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
-    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
-    target?: pulumi.Input<string>;
-    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement | undefined>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus | undefined>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -7629,7 +7602,7 @@ export interface SasDatastoreSecretsArgs {
     /**
      * Storage container SAS token.
      */
-    sasToken?: pulumi.Input<string>;
+    sasToken?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the datastore secrets type.
      * Expected value is 'Sas'.
@@ -7648,11 +7621,11 @@ export interface ScaleSettingsArgs {
     /**
      * Min number of nodes to use
      */
-    minNodeCount?: pulumi.Input<number>;
+    minNodeCount?: pulumi.Input<number | undefined>;
     /**
      * Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
      */
-    nodeIdleTimeBeforeScaleDown?: pulumi.Input<string>;
+    nodeIdleTimeBeforeScaleDown?: pulumi.Input<string | undefined>;
 }
 /**
  * scaleSettingsArgsProvideDefaults sets the appropriate defaults for ScaleSettingsArgs
@@ -7671,11 +7644,11 @@ export interface ScaleUnitConfigurationArgs {
     /**
      * Gets or sets a value indicating whether PublicEgress is disabled.
      */
-    disablePublicEgress?: pulumi.Input<boolean>;
+    disablePublicEgress?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets a list of Registry sources that will be used to confirm identity, storage, ACR.
      */
-    registries?: pulumi.Input<pulumi.Input<string>[]>;
+    registries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 /**
  * scaleUnitConfigurationArgsProvideDefaults sets the appropriate defaults for ScaleUnitConfigurationArgs
@@ -7691,15 +7664,15 @@ export interface ScheduleBaseArgs {
     /**
      * A system assigned id for the schedule.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The current deployment state of schedule.
      */
-    provisioningStatus?: pulumi.Input<string | enums.ScheduleProvisioningState>;
+    provisioningStatus?: pulumi.Input<string | enums.ScheduleProvisioningState | undefined>;
     /**
      * Is the schedule enabled or disabled?
      */
-    status?: pulumi.Input<string | enums.ScheduleStatus>;
+    status?: pulumi.Input<string | enums.ScheduleStatus | undefined>;
 }
 
 /**
@@ -7713,23 +7686,23 @@ export interface SchedulePropertiesArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of schedule.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Is the schedule enabled?
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Required] Specifies the trigger details
      */
@@ -7752,19 +7725,19 @@ export interface ScriptReferenceArgs {
     /**
      * Optional command line arguments passed to the script to run.
      */
-    scriptArguments?: pulumi.Input<string>;
+    scriptArguments?: pulumi.Input<string | undefined>;
     /**
      * The location of scripts in the mounted volume.
      */
-    scriptData?: pulumi.Input<string>;
+    scriptData?: pulumi.Input<string | undefined>;
     /**
      * The storage source of the script: inline, workspace.
      */
-    scriptSource?: pulumi.Input<string>;
+    scriptSource?: pulumi.Input<string | undefined>;
     /**
      * Optional time period passed to timeout command.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -7774,11 +7747,11 @@ export interface ScriptsToExecuteArgs {
     /**
      * Script that's run only once during provision of the compute.
      */
-    creationScript?: pulumi.Input<ScriptReferenceArgs>;
+    creationScript?: pulumi.Input<ScriptReferenceArgs | undefined>;
     /**
      * Script that's run every time the machine starts.
      */
-    startupScript?: pulumi.Input<ScriptReferenceArgs>;
+    startupScript?: pulumi.Input<ScriptReferenceArgs | undefined>;
 }
 
 /**
@@ -7789,22 +7762,22 @@ export interface SecretConfigurationArgs {
      * Secret Uri.
      * Sample Uri : https://myvault.vault.azure.net/secrets/mysecretname/secretversion
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
     /**
      * Name of secret in workspace key vault.
      */
-    workspaceSecretName?: pulumi.Input<string>;
+    workspaceSecretName?: pulumi.Input<string | undefined>;
 }
 
 export interface ServerlessComputeSettingsArgs {
     /**
      * The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed
      */
-    serverlessComputeCustomSubnet?: pulumi.Input<string>;
+    serverlessComputeCustomSubnet?: pulumi.Input<string | undefined>;
     /**
      * The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint
      */
-    serverlessComputeNoPublicIP?: pulumi.Input<boolean>;
+    serverlessComputeNoPublicIP?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ServerlessEndpointPropertiesArgs {
@@ -7815,11 +7788,11 @@ export interface ServerlessEndpointPropertiesArgs {
     /**
      * Specifies the content safety options. If omitted, the default content safety settings will be configured
      */
-    contentSafety?: pulumi.Input<ContentSafetyArgs>;
+    contentSafety?: pulumi.Input<ContentSafetyArgs | undefined>;
     /**
      * The model settings (model id) for the model being serviced on the ServerlessEndpoint.
      */
-    modelSettings?: pulumi.Input<ModelSettingsArgs>;
+    modelSettings?: pulumi.Input<ModelSettingsArgs | undefined>;
 }
 
 export interface ServerlessOfferArgs {
@@ -7834,7 +7807,7 @@ export interface ServerlessOfferArgs {
 }
 
 export interface ServiceManagedResourcesSettingsArgs {
-    cosmosDb?: pulumi.Input<CosmosDbSettingsArgs>;
+    cosmosDb?: pulumi.Input<CosmosDbSettingsArgs | undefined>;
 }
 
 export interface ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs {
@@ -7846,20 +7819,20 @@ export interface ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs {
     /**
      * Category of the connection
      */
-    category?: pulumi.Input<string | enums.ConnectionCategory>;
-    credentials?: pulumi.Input<WorkspaceConnectionServicePrincipalArgs>;
-    error?: pulumi.Input<string>;
-    expiryTime?: pulumi.Input<string>;
-    isSharedToAll?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string | enums.ConnectionCategory | undefined>;
+    credentials?: pulumi.Input<WorkspaceConnectionServicePrincipalArgs | undefined>;
+    error?: pulumi.Input<string | undefined>;
+    expiryTime?: pulumi.Input<string | undefined>;
+    isSharedToAll?: pulumi.Input<boolean | undefined>;
     /**
      * Store user metadata for this connection
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
-    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
-    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
-    target?: pulumi.Input<string>;
-    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement | undefined>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus | undefined>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -7869,7 +7842,7 @@ export interface ServicePrincipalDatastoreCredentialsArgs {
     /**
      * Authority URL used for authentication.
      */
-    authorityUrl?: pulumi.Input<string>;
+    authorityUrl?: pulumi.Input<string | undefined>;
     /**
      * [Required] Service principal client ID.
      */
@@ -7882,7 +7855,7 @@ export interface ServicePrincipalDatastoreCredentialsArgs {
     /**
      * Resource the service principal has access to.
      */
-    resourceUrl?: pulumi.Input<string>;
+    resourceUrl?: pulumi.Input<string | undefined>;
     /**
      * [Required] Service principal secrets.
      */
@@ -7900,7 +7873,7 @@ export interface ServicePrincipalDatastoreSecretsArgs {
     /**
      * Service principal secret.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the datastore secrets type.
      * Expected value is 'ServicePrincipal'.
@@ -7915,14 +7888,14 @@ export interface ServiceTagDestinationArgs {
     /**
      * The action enum for networking rule.
      */
-    action?: pulumi.Input<string | enums.RuleAction>;
+    action?: pulumi.Input<string | enums.RuleAction | undefined>;
     /**
      * Optional, if provided, the ServiceTag property will be ignored.
      */
-    addressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
-    portRanges?: pulumi.Input<string>;
-    protocol?: pulumi.Input<string>;
-    serviceTag?: pulumi.Input<string>;
+    addressPrefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    portRanges?: pulumi.Input<string | undefined>;
+    protocol?: pulumi.Input<string | undefined>;
+    serviceTag?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -7932,15 +7905,15 @@ export interface ServiceTagOutboundRuleArgs {
     /**
      * Category of a managed network Outbound Rule of a machine learning workspace.
      */
-    category?: pulumi.Input<string | enums.RuleCategory>;
+    category?: pulumi.Input<string | enums.RuleCategory | undefined>;
     /**
      * Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
      */
-    destination?: pulumi.Input<ServiceTagDestinationArgs>;
+    destination?: pulumi.Input<ServiceTagDestinationArgs | undefined>;
     /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      */
-    status?: pulumi.Input<string | enums.RuleStatus>;
+    status?: pulumi.Input<string | enums.RuleStatus | undefined>;
     /**
      * Type of a managed network Outbound Rule of a machine learning workspace.
      * Expected value is 'ServiceTag'.
@@ -7955,30 +7928,30 @@ export interface SetupScriptsArgs {
     /**
      * Customized setup scripts
      */
-    scripts?: pulumi.Input<ScriptsToExecuteArgs>;
+    scripts?: pulumi.Input<ScriptsToExecuteArgs | undefined>;
 }
 
 export interface SharedPrivateLinkResourceArgs {
     /**
      * group id of the private link
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Unique name of the private link
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * the resource id that private link links to
      */
-    privateLinkResourceId?: pulumi.Input<string>;
+    privateLinkResourceId?: pulumi.Input<string | undefined>;
     /**
      * Request message
      */
-    requestMessage?: pulumi.Input<string>;
+    requestMessage?: pulumi.Input<string | undefined>;
     /**
      * Connection status of the service consumer with the service provider\r\nPossible state transitions\r\nPending -> Approved (Service provider approves the connection request)\r\nPending -> Rejected (Service provider rejects the connection request)\r\nPending -> Disconnected (Service provider deletes the connection)\r\nApproved -> Rejected (Service provider rejects the approved connection)\r\nApproved -> Disconnected (Service provider deletes the connection)\r\nRejected -> Pending (Service consumer re-initiates the connection request that was rejected)\r\nRejected -> Disconnected (Service provider deletes the connection)
      */
-    status?: pulumi.Input<string | enums.EndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.EndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -7988,23 +7961,23 @@ export interface SkuArgs {
     /**
      * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * If the service has different generations of hardware, for the same SKU, then that can be captured here.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * The name of the SKU. Ex - P3. It is typically a letter+number code
      */
     name: pulumi.Input<string>;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
      */
-    tier?: pulumi.Input<enums.SkuTier>;
+    tier?: pulumi.Input<enums.SkuTier | undefined>;
 }
 
 /**
@@ -8014,11 +7987,11 @@ export interface SparkJobArgs {
     /**
      * Archive files used in the job.
      */
-    archives?: pulumi.Input<pulumi.Input<string>[]>;
+    archives?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Arguments for the job.
      */
-    args?: pulumi.Input<string>;
+    args?: pulumi.Input<string | undefined>;
     /**
      * [Required] arm-id of the code asset.
      */
@@ -8026,23 +7999,23 @@ export interface SparkJobArgs {
     /**
      * ARM resource ID of the component resource.
      */
-    componentId?: pulumi.Input<string>;
+    componentId?: pulumi.Input<string | undefined>;
     /**
      * ARM resource ID of the compute resource.
      */
-    computeId?: pulumi.Input<string>;
+    computeId?: pulumi.Input<string | undefined>;
     /**
      * Spark configured properties.
      */
-    conf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    conf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of job.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * [Required] The entry to execute on startup of the job.
      */
@@ -8050,36 +8023,36 @@ export interface SparkJobArgs {
     /**
      * The ARM resource ID of the Environment specification for the job.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * Environment variables included in the job.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
      */
-    experimentName?: pulumi.Input<string>;
+    experimentName?: pulumi.Input<string | undefined>;
     /**
      * Files used in the job.
      */
-    files?: pulumi.Input<pulumi.Input<string>[]>;
+    files?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
      * Defaults to AmlToken if null.
      */
-    identity?: pulumi.Input<AmlTokenArgs | ManagedIdentityArgs | UserIdentityArgs>;
+    identity?: pulumi.Input<AmlTokenArgs | ManagedIdentityArgs | UserIdentityArgs | undefined>;
     /**
      * Mapping of input data bindings used in the job.
      */
-    inputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobInputArgs | LiteralJobInputArgs | MLFlowModelJobInputArgs | MLTableJobInputArgs | TritonModelJobInputArgs | UriFileJobInputArgs | UriFolderJobInputArgs>}>;
+    inputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobInputArgs | LiteralJobInputArgs | MLFlowModelJobInputArgs | MLTableJobInputArgs | TritonModelJobInputArgs | UriFileJobInputArgs | UriFolderJobInputArgs>} | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * Jar files used in the job.
      */
-    jars?: pulumi.Input<pulumi.Input<string>[]>;
+    jars?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enum to determine the type of job.
      * Expected value is 'Spark'.
@@ -8088,36 +8061,36 @@ export interface SparkJobArgs {
     /**
      * Notification setting for the job
      */
-    notificationSetting?: pulumi.Input<NotificationSettingArgs>;
+    notificationSetting?: pulumi.Input<NotificationSettingArgs | undefined>;
     /**
      * Mapping of output data bindings used in the job.
      */
-    outputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobOutputArgs | MLFlowModelJobOutputArgs | MLTableJobOutputArgs | TritonModelJobOutputArgs | UriFileJobOutputArgs | UriFolderJobOutputArgs>}>;
+    outputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobOutputArgs | MLFlowModelJobOutputArgs | MLTableJobOutputArgs | TritonModelJobOutputArgs | UriFileJobOutputArgs | UriFolderJobOutputArgs>} | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Python files used in the job.
      */
-    pyFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    pyFiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Queue settings for the job
      */
-    queueSettings?: pulumi.Input<QueueSettingsArgs>;
+    queueSettings?: pulumi.Input<QueueSettingsArgs | undefined>;
     /**
      * Compute Resource configuration for the job.
      */
-    resources?: pulumi.Input<SparkResourceConfigurationArgs>;
+    resources?: pulumi.Input<SparkResourceConfigurationArgs | undefined>;
     /**
      * List of JobEndpoints.
      * For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
      */
-    services?: pulumi.Input<{[key: string]: pulumi.Input<JobServiceArgs>}>;
+    services?: pulumi.Input<{[key: string]: pulumi.Input<JobServiceArgs>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * sparkJobArgsProvideDefaults sets the appropriate defaults for SparkJobArgs
@@ -8127,8 +8100,8 @@ export function sparkJobArgsProvideDefaults(val: SparkJobArgs): SparkJobArgs {
         ...val,
         experimentName: (val.experimentName) ?? "Default",
         isArchived: (val.isArchived) ?? false,
-        queueSettings: (val.queueSettings ? pulumi.output(val.queueSettings).apply(queueSettingsArgsProvideDefaults) : undefined),
-        resources: (val.resources ? pulumi.output(val.resources).apply(sparkResourceConfigurationArgsProvideDefaults) : undefined),
+        queueSettings: pulumi.output(val.queueSettings).apply(v => v === undefined ? undefined : queueSettingsArgsProvideDefaults(v)),
+        resources: pulumi.output(val.resources).apply(v => v === undefined ? undefined : sparkResourceConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -8138,7 +8111,6 @@ export interface SparkJobPythonEntryArgs {
      */
     file: pulumi.Input<string>;
     /**
-     *
      * Expected value is 'SparkJobPythonEntry'.
      */
     sparkJobEntryType: pulumi.Input<"SparkJobPythonEntry">;
@@ -8150,7 +8122,6 @@ export interface SparkJobScalaEntryArgs {
      */
     className: pulumi.Input<string>;
     /**
-     *
      * Expected value is 'SparkJobScalaEntry'.
      */
     sparkJobEntryType: pulumi.Input<"SparkJobScalaEntry">;
@@ -8160,11 +8131,11 @@ export interface SparkResourceConfigurationArgs {
     /**
      * Optional type of VM used as supported by the compute target.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Version of spark runtime used for the job.
      */
-    runtimeVersion?: pulumi.Input<string>;
+    runtimeVersion?: pulumi.Input<string | undefined>;
 }
 /**
  * sparkResourceConfigurationArgsProvideDefaults sets the appropriate defaults for SparkResourceConfigurationArgs
@@ -8180,7 +8151,7 @@ export interface SpeechEndpointDeploymentResourcePropertiesArgs {
     /**
      * The failure reason if the creation failed.
      */
-    failureReason?: pulumi.Input<string>;
+    failureReason?: pulumi.Input<string | undefined>;
     /**
      * Model used for the endpoint deployment.
      */
@@ -8188,8 +8159,8 @@ export interface SpeechEndpointDeploymentResourcePropertiesArgs {
     /**
      * The name of RAI policy.
      */
-    raiPolicyName?: pulumi.Input<string>;
-    sku?: pulumi.Input<CognitiveServicesSkuArgs>;
+    raiPolicyName?: pulumi.Input<string | undefined>;
+    sku?: pulumi.Input<CognitiveServicesSkuArgs | undefined>;
     /**
      * Kind of the deployment.
      * Expected value is 'Azure.Speech'.
@@ -8198,7 +8169,7 @@ export interface SpeechEndpointDeploymentResourcePropertiesArgs {
     /**
      * Deployment model version upgrade option.
      */
-    versionUpgradeOption?: pulumi.Input<string | enums.DeploymentModelVersionUpgradeOption>;
+    versionUpgradeOption?: pulumi.Input<string | enums.DeploymentModelVersionUpgradeOption | undefined>;
 }
 
 /**
@@ -8208,27 +8179,27 @@ export interface SslConfigurationArgs {
     /**
      * Cert data
      */
-    cert?: pulumi.Input<string>;
+    cert?: pulumi.Input<string | undefined>;
     /**
      * CNAME of the cert
      */
-    cname?: pulumi.Input<string>;
+    cname?: pulumi.Input<string | undefined>;
     /**
      * Key data
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Leaf domain label of public endpoint
      */
-    leafDomainLabel?: pulumi.Input<string>;
+    leafDomainLabel?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to overwrite existing domain label.
      */
-    overwriteExistingDomain?: pulumi.Input<boolean>;
+    overwriteExistingDomain?: pulumi.Input<boolean | undefined>;
     /**
      * Enable or disable ssl for scoring
      */
-    status?: pulumi.Input<string | enums.SslConfigStatus>;
+    status?: pulumi.Input<string | enums.SslConfigStatus | undefined>;
 }
 
 /**
@@ -8238,15 +8209,15 @@ export interface StackEnsembleSettingsArgs {
     /**
      * Optional parameters to pass to the initializer of the meta-learner.
      */
-    stackMetaLearnerKWargs?: any;
+    stackMetaLearnerKWargs?: any | undefined;
     /**
      * Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
      */
-    stackMetaLearnerTrainPercentage?: pulumi.Input<number>;
+    stackMetaLearnerTrainPercentage?: pulumi.Input<number | undefined>;
     /**
      * The meta-learner is a model trained on the output of the individual heterogeneous models.\r\nDefault meta-learners are LogisticRegression for classification tasks (or LogisticRegressionCV if cross-validation is enabled) and ElasticNet for regression/forecasting tasks (or ElasticNetCV if cross-validation is enabled).\r\nThis parameter can be one of the following strings: LogisticRegression, LogisticRegressionCV, LightGBMClassifier, ElasticNet, ElasticNetCV, LightGBMRegressor, or LinearRegression
      */
-    stackMetaLearnerType?: pulumi.Input<string | enums.StackMetaLearnerType>;
+    stackMetaLearnerType?: pulumi.Input<string | enums.StackMetaLearnerType | undefined>;
 }
 /**
  * stackEnsembleSettingsArgsProvideDefaults sets the appropriate defaults for StackEnsembleSettingsArgs
@@ -8266,11 +8237,11 @@ export interface StaticInputDataArgs {
     /**
      * Mapping of column names to special uses.
      */
-    columns?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    columns?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The context metadata of the data source.
      */
-    dataContext?: pulumi.Input<string>;
+    dataContext?: pulumi.Input<string | undefined>;
     /**
      * Monitoring input data type enum.
      * Expected value is 'Static'.
@@ -8283,7 +8254,7 @@ export interface StaticInputDataArgs {
     /**
      * Reference to the component asset used to preprocess the data.
      */
-    preprocessingComponentId?: pulumi.Input<string>;
+    preprocessingComponentId?: pulumi.Input<string | undefined>;
     /**
      * [Required] Input Asset URI.
      */
@@ -8305,12 +8276,12 @@ export interface StorageAccountDetailsArgs {
     /**
      * Details of system created storage account to be used for the registry
      */
-    systemCreatedStorageAccount?: pulumi.Input<SystemCreatedStorageAccountArgs>;
+    systemCreatedStorageAccount?: pulumi.Input<SystemCreatedStorageAccountArgs | undefined>;
 }
 
 export interface StringStringKeyValuePairArgs {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -8320,40 +8291,40 @@ export interface SweepJobArgs {
     /**
      * ARM resource ID of the component resource.
      */
-    componentId?: pulumi.Input<string>;
+    componentId?: pulumi.Input<string | undefined>;
     /**
      * ARM resource ID of the compute resource.
      */
-    computeId?: pulumi.Input<string>;
+    computeId?: pulumi.Input<string | undefined>;
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of job.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Early termination policies enable canceling poor-performing runs before they complete
      */
-    earlyTermination?: pulumi.Input<BanditPolicyArgs | MedianStoppingPolicyArgs | TruncationSelectionPolicyArgs>;
+    earlyTermination?: pulumi.Input<BanditPolicyArgs | MedianStoppingPolicyArgs | TruncationSelectionPolicyArgs | undefined>;
     /**
      * The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
      */
-    experimentName?: pulumi.Input<string>;
+    experimentName?: pulumi.Input<string | undefined>;
     /**
      * Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
      * Defaults to AmlToken if null.
      */
-    identity?: pulumi.Input<AmlTokenArgs | ManagedIdentityArgs | UserIdentityArgs>;
+    identity?: pulumi.Input<AmlTokenArgs | ManagedIdentityArgs | UserIdentityArgs | undefined>;
     /**
      * Mapping of input data bindings used in the job.
      */
-    inputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobInputArgs | LiteralJobInputArgs | MLFlowModelJobInputArgs | MLTableJobInputArgs | TritonModelJobInputArgs | UriFileJobInputArgs | UriFolderJobInputArgs>}>;
+    inputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobInputArgs | LiteralJobInputArgs | MLFlowModelJobInputArgs | MLTableJobInputArgs | TritonModelJobInputArgs | UriFileJobInputArgs | UriFolderJobInputArgs>} | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * Enum to determine the type of job.
      * Expected value is 'Sweep'.
@@ -8362,11 +8333,11 @@ export interface SweepJobArgs {
     /**
      * Sweep Job limit.
      */
-    limits?: pulumi.Input<SweepJobLimitsArgs>;
+    limits?: pulumi.Input<SweepJobLimitsArgs | undefined>;
     /**
      * Notification setting for the job
      */
-    notificationSetting?: pulumi.Input<NotificationSettingArgs>;
+    notificationSetting?: pulumi.Input<NotificationSettingArgs | undefined>;
     /**
      * [Required] Optimization objective.
      */
@@ -8374,15 +8345,15 @@ export interface SweepJobArgs {
     /**
      * Mapping of output data bindings used in the job.
      */
-    outputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobOutputArgs | MLFlowModelJobOutputArgs | MLTableJobOutputArgs | TritonModelJobOutputArgs | UriFileJobOutputArgs | UriFolderJobOutputArgs>}>;
+    outputs?: pulumi.Input<{[key: string]: pulumi.Input<CustomModelJobOutputArgs | MLFlowModelJobOutputArgs | MLTableJobOutputArgs | TritonModelJobOutputArgs | UriFileJobOutputArgs | UriFolderJobOutputArgs>} | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Queue settings for the job
      */
-    queueSettings?: pulumi.Input<QueueSettingsArgs>;
+    queueSettings?: pulumi.Input<QueueSettingsArgs | undefined>;
     /**
      * [Required] The hyperparameter sampling algorithm
      */
@@ -8395,11 +8366,11 @@ export interface SweepJobArgs {
      * List of JobEndpoints.
      * For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
      */
-    services?: pulumi.Input<{[key: string]: pulumi.Input<JobServiceArgs>}>;
+    services?: pulumi.Input<{[key: string]: pulumi.Input<JobServiceArgs>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Required] Trial component definition.
      */
@@ -8413,7 +8384,7 @@ export function sweepJobArgsProvideDefaults(val: SweepJobArgs): SweepJobArgs {
         ...val,
         experimentName: (val.experimentName) ?? "Default",
         isArchived: (val.isArchived) ?? false,
-        queueSettings: (val.queueSettings ? pulumi.output(val.queueSettings).apply(queueSettingsArgsProvideDefaults) : undefined),
+        queueSettings: pulumi.output(val.queueSettings).apply(v => v === undefined ? undefined : queueSettingsArgsProvideDefaults(v)),
         trial: pulumi.output(val.trial).apply(trialComponentArgsProvideDefaults),
     };
 }
@@ -8423,26 +8394,25 @@ export function sweepJobArgsProvideDefaults(val: SweepJobArgs): SweepJobArgs {
  */
 export interface SweepJobLimitsArgs {
     /**
-     *
      * Expected value is 'Sweep'.
      */
     jobLimitsType: pulumi.Input<"Sweep">;
     /**
      * Sweep Job max concurrent trials.
      */
-    maxConcurrentTrials?: pulumi.Input<number>;
+    maxConcurrentTrials?: pulumi.Input<number | undefined>;
     /**
      * Sweep Job max total trials.
      */
-    maxTotalTrials?: pulumi.Input<number>;
+    maxTotalTrials?: pulumi.Input<number | undefined>;
     /**
      * The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
     /**
      * Sweep Job Trial timeout value.
      */
-    trialTimeout?: pulumi.Input<string>;
+    trialTimeout?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -8452,7 +8422,7 @@ export interface SynapseSparkArgs {
     /**
      * Location for the underlying compute
      */
-    computeLocation?: pulumi.Input<string>;
+    computeLocation?: pulumi.Input<string | undefined>;
     /**
      * The type of compute
      * Expected value is 'SynapseSpark'.
@@ -8461,93 +8431,93 @@ export interface SynapseSparkArgs {
     /**
      * The description of the Machine Learning compute.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
-    properties?: pulumi.Input<SynapseSparkPropertiesArgs>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
+    properties?: pulumi.Input<SynapseSparkPropertiesArgs | undefined>;
     /**
      * ARM resource id of the underlying compute
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SynapseSparkPropertiesArgs {
     /**
      * Auto pause properties.
      */
-    autoPauseProperties?: pulumi.Input<AutoPausePropertiesArgs>;
+    autoPauseProperties?: pulumi.Input<AutoPausePropertiesArgs | undefined>;
     /**
      * Auto scale properties.
      */
-    autoScaleProperties?: pulumi.Input<AutoScalePropertiesArgs>;
+    autoScaleProperties?: pulumi.Input<AutoScalePropertiesArgs | undefined>;
     /**
      * The number of compute nodes currently assigned to the compute.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * Node size.
      */
-    nodeSize?: pulumi.Input<string>;
+    nodeSize?: pulumi.Input<string | undefined>;
     /**
      * Node size family.
      */
-    nodeSizeFamily?: pulumi.Input<string>;
+    nodeSizeFamily?: pulumi.Input<string | undefined>;
     /**
      * Pool name.
      */
-    poolName?: pulumi.Input<string>;
+    poolName?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource group in which workspace is located.
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Spark version.
      */
-    sparkVersion?: pulumi.Input<string>;
+    sparkVersion?: pulumi.Input<string | undefined>;
     /**
      * Azure subscription identifier.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * Name of Azure Machine Learning workspace.
      */
-    workspaceName?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string | undefined>;
 }
 
 export interface SystemCreatedAcrAccountArgs {
     /**
      * Name of the ACR account
      */
-    acrAccountName?: pulumi.Input<string>;
+    acrAccountName?: pulumi.Input<string | undefined>;
     /**
      * SKU of the ACR account
      */
-    acrAccountSku?: pulumi.Input<string>;
+    acrAccountSku?: pulumi.Input<string | undefined>;
     /**
      * This is populated once the ACR account is created.
      */
-    armResourceId?: pulumi.Input<ArmResourceIdArgs>;
+    armResourceId?: pulumi.Input<ArmResourceIdArgs | undefined>;
 }
 
 export interface SystemCreatedStorageAccountArgs {
     /**
      * Public blob access allowed
      */
-    allowBlobPublicAccess?: pulumi.Input<boolean>;
+    allowBlobPublicAccess?: pulumi.Input<boolean | undefined>;
     /**
      * This is populated once the storage account is created.
      */
-    armResourceId?: pulumi.Input<ArmResourceIdArgs>;
+    armResourceId?: pulumi.Input<ArmResourceIdArgs | undefined>;
     /**
      * HNS enabled for storage account
      */
-    storageAccountHnsEnabled?: pulumi.Input<boolean>;
+    storageAccountHnsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the storage account
      */
-    storageAccountName?: pulumi.Input<string>;
+    storageAccountName?: pulumi.Input<string | undefined>;
     /**
      * Allowed values:
      * "Standard_LRS",
@@ -8559,7 +8529,7 @@ export interface SystemCreatedStorageAccountArgs {
      * "Premium_LRS",
      * "Premium_ZRS"
      */
-    storageAccountType?: pulumi.Input<string>;
+    storageAccountType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -8569,29 +8539,29 @@ export interface TableVerticalFeaturizationSettingsArgs {
     /**
      * These transformers shall not be used in featurization.
      */
-    blockedTransformers?: pulumi.Input<pulumi.Input<string | enums.BlockedTransformers>[]>;
+    blockedTransformers?: pulumi.Input<pulumi.Input<string | enums.BlockedTransformers>[] | undefined>;
     /**
      * Dictionary of column name and its type (int, float, string, datetime etc).
      */
-    columnNameAndTypes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    columnNameAndTypes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Dataset language, useful for the text data.
      */
-    datasetLanguage?: pulumi.Input<string>;
+    datasetLanguage?: pulumi.Input<string | undefined>;
     /**
      * Determines whether to use Dnn based featurizers for data featurization.
      */
-    enableDnnFeaturization?: pulumi.Input<boolean>;
+    enableDnnFeaturization?: pulumi.Input<boolean | undefined>;
     /**
      * Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
      * If 'Off' is selected then no featurization is done.
      * If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
      */
-    mode?: pulumi.Input<string | enums.FeaturizationMode>;
+    mode?: pulumi.Input<string | enums.FeaturizationMode | undefined>;
     /**
      * User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
      */
-    transformerParams?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<ColumnTransformerArgs>[]>}>;
+    transformerParams?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<ColumnTransformerArgs>[]>} | undefined>;
 }
 /**
  * tableVerticalFeaturizationSettingsArgsProvideDefaults sets the appropriate defaults for TableVerticalFeaturizationSettingsArgs
@@ -8611,31 +8581,31 @@ export interface TableVerticalLimitSettingsArgs {
     /**
      * Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
      */
-    enableEarlyTermination?: pulumi.Input<boolean>;
+    enableEarlyTermination?: pulumi.Input<boolean | undefined>;
     /**
      * Exit score for the AutoML job.
      */
-    exitScore?: pulumi.Input<number>;
+    exitScore?: pulumi.Input<number | undefined>;
     /**
      * Maximum Concurrent iterations.
      */
-    maxConcurrentTrials?: pulumi.Input<number>;
+    maxConcurrentTrials?: pulumi.Input<number | undefined>;
     /**
      * Max cores per iteration.
      */
-    maxCoresPerTrial?: pulumi.Input<number>;
+    maxCoresPerTrial?: pulumi.Input<number | undefined>;
     /**
      * Number of iterations.
      */
-    maxTrials?: pulumi.Input<number>;
+    maxTrials?: pulumi.Input<number | undefined>;
     /**
      * AutoML job timeout.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
     /**
      * Iteration timeout.
      */
-    trialTimeout?: pulumi.Input<string>;
+    trialTimeout?: pulumi.Input<string | undefined>;
 }
 /**
  * tableVerticalLimitSettingsArgsProvideDefaults sets the appropriate defaults for TableVerticalLimitSettingsArgs
@@ -8656,24 +8626,23 @@ export interface TargetUtilizationScaleSettingsArgs {
     /**
      * The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
      */
-    maxInstances?: pulumi.Input<number>;
+    maxInstances?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of instances to always be present.
      */
-    minInstances?: pulumi.Input<number>;
+    minInstances?: pulumi.Input<number | undefined>;
     /**
      * The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
      */
-    pollingInterval?: pulumi.Input<string>;
+    pollingInterval?: pulumi.Input<string | undefined>;
     /**
-     *
      * Expected value is 'TargetUtilization'.
      */
     scaleType: pulumi.Input<"TargetUtilization">;
     /**
      * Target CPU usage for the autoscaler.
      */
-    targetUtilizationPercentage?: pulumi.Input<number>;
+    targetUtilizationPercentage?: pulumi.Input<number | undefined>;
 }
 /**
  * targetUtilizationScaleSettingsArgsProvideDefaults sets the appropriate defaults for TargetUtilizationScaleSettingsArgs
@@ -8700,11 +8669,11 @@ export interface TensorFlowArgs {
     /**
      * Number of parameter server tasks.
      */
-    parameterServerCount?: pulumi.Input<number>;
+    parameterServerCount?: pulumi.Input<number | undefined>;
     /**
      * Number of workers. If not specified, will default to the instance count.
      */
-    workerCount?: pulumi.Input<number>;
+    workerCount?: pulumi.Input<number | undefined>;
 }
 /**
  * tensorFlowArgsProvideDefaults sets the appropriate defaults for TensorFlowArgs
@@ -8724,24 +8693,24 @@ export interface TextClassificationArgs {
     /**
      * Featurization inputs needed for AutoML job.
      */
-    featurizationSettings?: pulumi.Input<NlpVerticalFeaturizationSettingsArgs>;
+    featurizationSettings?: pulumi.Input<NlpVerticalFeaturizationSettingsArgs | undefined>;
     /**
      * Execution constraints for AutoMLJob.
      */
-    limitSettings?: pulumi.Input<NlpVerticalLimitSettingsArgs>;
+    limitSettings?: pulumi.Input<NlpVerticalLimitSettingsArgs | undefined>;
     /**
      * Enum for setting log verbosity.
      */
-    logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
+    logVerbosity?: pulumi.Input<string | enums.LogVerbosity | undefined>;
     /**
      * Primary metrics for classification tasks.
      */
-    primaryMetric?: pulumi.Input<string | enums.ClassificationPrimaryMetrics>;
+    primaryMetric?: pulumi.Input<string | enums.ClassificationPrimaryMetrics | undefined>;
     /**
      * Target column name: This is prediction values column.
      * Also known as label column name in context of classification tasks.
      */
-    targetColumnName?: pulumi.Input<string>;
+    targetColumnName?: pulumi.Input<string | undefined>;
     /**
      * AutoMLJob Task type.
      * Expected value is 'TextClassification'.
@@ -8754,7 +8723,7 @@ export interface TextClassificationArgs {
     /**
      * Validation data inputs.
      */
-    validationData?: pulumi.Input<MLTableJobInputArgs>;
+    validationData?: pulumi.Input<MLTableJobInputArgs | undefined>;
 }
 /**
  * textClassificationArgsProvideDefaults sets the appropriate defaults for TextClassificationArgs
@@ -8762,11 +8731,11 @@ export interface TextClassificationArgs {
 export function textClassificationArgsProvideDefaults(val: TextClassificationArgs): TextClassificationArgs {
     return {
         ...val,
-        limitSettings: (val.limitSettings ? pulumi.output(val.limitSettings).apply(nlpVerticalLimitSettingsArgsProvideDefaults) : undefined),
+        limitSettings: pulumi.output(val.limitSettings).apply(v => v === undefined ? undefined : nlpVerticalLimitSettingsArgsProvideDefaults(v)),
         logVerbosity: (val.logVerbosity) ?? "Info",
         primaryMetric: (val.primaryMetric) ?? "Accuracy",
         trainingData: pulumi.output(val.trainingData).apply(mltableJobInputArgsProvideDefaults),
-        validationData: (val.validationData ? pulumi.output(val.validationData).apply(mltableJobInputArgsProvideDefaults) : undefined),
+        validationData: pulumi.output(val.validationData).apply(v => v === undefined ? undefined : mltableJobInputArgsProvideDefaults(v)),
     };
 }
 
@@ -8778,20 +8747,20 @@ export interface TextClassificationMultilabelArgs {
     /**
      * Featurization inputs needed for AutoML job.
      */
-    featurizationSettings?: pulumi.Input<NlpVerticalFeaturizationSettingsArgs>;
+    featurizationSettings?: pulumi.Input<NlpVerticalFeaturizationSettingsArgs | undefined>;
     /**
      * Execution constraints for AutoMLJob.
      */
-    limitSettings?: pulumi.Input<NlpVerticalLimitSettingsArgs>;
+    limitSettings?: pulumi.Input<NlpVerticalLimitSettingsArgs | undefined>;
     /**
      * Enum for setting log verbosity.
      */
-    logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
+    logVerbosity?: pulumi.Input<string | enums.LogVerbosity | undefined>;
     /**
      * Target column name: This is prediction values column.
      * Also known as label column name in context of classification tasks.
      */
-    targetColumnName?: pulumi.Input<string>;
+    targetColumnName?: pulumi.Input<string | undefined>;
     /**
      * AutoMLJob Task type.
      * Expected value is 'TextClassificationMultilabel'.
@@ -8804,7 +8773,7 @@ export interface TextClassificationMultilabelArgs {
     /**
      * Validation data inputs.
      */
-    validationData?: pulumi.Input<MLTableJobInputArgs>;
+    validationData?: pulumi.Input<MLTableJobInputArgs | undefined>;
 }
 /**
  * textClassificationMultilabelArgsProvideDefaults sets the appropriate defaults for TextClassificationMultilabelArgs
@@ -8812,10 +8781,10 @@ export interface TextClassificationMultilabelArgs {
 export function textClassificationMultilabelArgsProvideDefaults(val: TextClassificationMultilabelArgs): TextClassificationMultilabelArgs {
     return {
         ...val,
-        limitSettings: (val.limitSettings ? pulumi.output(val.limitSettings).apply(nlpVerticalLimitSettingsArgsProvideDefaults) : undefined),
+        limitSettings: pulumi.output(val.limitSettings).apply(v => v === undefined ? undefined : nlpVerticalLimitSettingsArgsProvideDefaults(v)),
         logVerbosity: (val.logVerbosity) ?? "Info",
         trainingData: pulumi.output(val.trainingData).apply(mltableJobInputArgsProvideDefaults),
-        validationData: (val.validationData ? pulumi.output(val.validationData).apply(mltableJobInputArgsProvideDefaults) : undefined),
+        validationData: pulumi.output(val.validationData).apply(v => v === undefined ? undefined : mltableJobInputArgsProvideDefaults(v)),
     };
 }
 
@@ -8828,20 +8797,20 @@ export interface TextNerArgs {
     /**
      * Featurization inputs needed for AutoML job.
      */
-    featurizationSettings?: pulumi.Input<NlpVerticalFeaturizationSettingsArgs>;
+    featurizationSettings?: pulumi.Input<NlpVerticalFeaturizationSettingsArgs | undefined>;
     /**
      * Execution constraints for AutoMLJob.
      */
-    limitSettings?: pulumi.Input<NlpVerticalLimitSettingsArgs>;
+    limitSettings?: pulumi.Input<NlpVerticalLimitSettingsArgs | undefined>;
     /**
      * Enum for setting log verbosity.
      */
-    logVerbosity?: pulumi.Input<string | enums.LogVerbosity>;
+    logVerbosity?: pulumi.Input<string | enums.LogVerbosity | undefined>;
     /**
      * Target column name: This is prediction values column.
      * Also known as label column name in context of classification tasks.
      */
-    targetColumnName?: pulumi.Input<string>;
+    targetColumnName?: pulumi.Input<string | undefined>;
     /**
      * AutoMLJob Task type.
      * Expected value is 'TextNER'.
@@ -8854,7 +8823,7 @@ export interface TextNerArgs {
     /**
      * Validation data inputs.
      */
-    validationData?: pulumi.Input<MLTableJobInputArgs>;
+    validationData?: pulumi.Input<MLTableJobInputArgs | undefined>;
 }
 /**
  * textNerArgsProvideDefaults sets the appropriate defaults for TextNerArgs
@@ -8862,10 +8831,10 @@ export interface TextNerArgs {
 export function textNerArgsProvideDefaults(val: TextNerArgs): TextNerArgs {
     return {
         ...val,
-        limitSettings: (val.limitSettings ? pulumi.output(val.limitSettings).apply(nlpVerticalLimitSettingsArgsProvideDefaults) : undefined),
+        limitSettings: pulumi.output(val.limitSettings).apply(v => v === undefined ? undefined : nlpVerticalLimitSettingsArgsProvideDefaults(v)),
         logVerbosity: (val.logVerbosity) ?? "Info",
         trainingData: pulumi.output(val.trainingData).apply(mltableJobInputArgsProvideDefaults),
-        validationData: (val.validationData ? pulumi.output(val.validationData).apply(mltableJobInputArgsProvideDefaults) : undefined),
+        validationData: pulumi.output(val.validationData).apply(v => v === undefined ? undefined : mltableJobInputArgsProvideDefaults(v)),
     };
 }
 
@@ -8873,19 +8842,18 @@ export interface TmpfsOptionsArgs {
     /**
      * Mention the Tmpfs size
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }
 
 export interface TopNFeaturesByAttributionArgs {
     /**
-     *
      * Expected value is 'TopNByAttribution'.
      */
     filterType: pulumi.Input<"TopNByAttribution">;
     /**
      * The number of top features to include.
      */
-    top?: pulumi.Input<number>;
+    top?: pulumi.Input<number | undefined>;
 }
 /**
  * topNFeaturesByAttributionArgsProvideDefaults sets the appropriate defaults for TopNFeaturesByAttributionArgs
@@ -8904,7 +8872,7 @@ export interface TrialComponentArgs {
     /**
      * ARM resource ID of the code asset.
      */
-    codeId?: pulumi.Input<string>;
+    codeId?: pulumi.Input<string | undefined>;
     /**
      * [Required] The command to execute on startup of the job. eg. "python train.py"
      */
@@ -8912,7 +8880,7 @@ export interface TrialComponentArgs {
     /**
      * Distribution configuration of the job. If set, this should be one of Mpi, Tensorflow, PyTorch, or null.
      */
-    distribution?: pulumi.Input<MpiArgs | PyTorchArgs | TensorFlowArgs>;
+    distribution?: pulumi.Input<MpiArgs | PyTorchArgs | TensorFlowArgs | undefined>;
     /**
      * [Required] The ARM resource ID of the Environment specification for the job.
      */
@@ -8920,11 +8888,11 @@ export interface TrialComponentArgs {
     /**
      * Environment variables included in the job.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Compute Resource configuration for the job.
      */
-    resources?: pulumi.Input<JobResourceConfigurationArgs>;
+    resources?: pulumi.Input<JobResourceConfigurationArgs | undefined>;
 }
 /**
  * trialComponentArgsProvideDefaults sets the appropriate defaults for TrialComponentArgs
@@ -8932,7 +8900,7 @@ export interface TrialComponentArgs {
 export function trialComponentArgsProvideDefaults(val: TrialComponentArgs): TrialComponentArgs {
     return {
         ...val,
-        resources: (val.resources ? pulumi.output(val.resources).apply(jobResourceConfigurationArgsProvideDefaults) : undefined),
+        resources: pulumi.output(val.resources).apply(v => v === undefined ? undefined : jobResourceConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -8940,7 +8908,7 @@ export interface TritonModelJobInputArgs {
     /**
      * Description for the input.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the Job Input Type.
      * Expected value is 'triton_model'.
@@ -8949,7 +8917,7 @@ export interface TritonModelJobInputArgs {
     /**
      * Enum to determine the input data delivery mode.
      */
-    mode?: pulumi.Input<string | enums.InputDeliveryMode>;
+    mode?: pulumi.Input<string | enums.InputDeliveryMode | undefined>;
     /**
      * [Required] Input Asset URI.
      */
@@ -8969,11 +8937,11 @@ export interface TritonModelJobOutputArgs {
     /**
      * Output Asset Name.
      */
-    assetName?: pulumi.Input<string>;
+    assetName?: pulumi.Input<string | undefined>;
     /**
      * Description for the output.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the Job Output Type.
      * Expected value is 'triton_model'.
@@ -8982,11 +8950,11 @@ export interface TritonModelJobOutputArgs {
     /**
      * Output data delivery mode enums.
      */
-    mode?: pulumi.Input<string | enums.OutputDeliveryMode>;
+    mode?: pulumi.Input<string | enums.OutputDeliveryMode | undefined>;
     /**
      * Output Asset URI.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 /**
  * tritonModelJobOutputArgsProvideDefaults sets the appropriate defaults for TritonModelJobOutputArgs
@@ -9005,20 +8973,19 @@ export interface TruncationSelectionPolicyArgs {
     /**
      * Number of intervals by which to delay the first evaluation.
      */
-    delayEvaluation?: pulumi.Input<number>;
+    delayEvaluation?: pulumi.Input<number | undefined>;
     /**
      * Interval (number of runs) between policy evaluations.
      */
-    evaluationInterval?: pulumi.Input<number>;
+    evaluationInterval?: pulumi.Input<number | undefined>;
     /**
-     *
      * Expected value is 'TruncationSelection'.
      */
     policyType: pulumi.Input<"TruncationSelection">;
     /**
      * The percentage of runs to cancel at each evaluation interval.
      */
-    truncationPercentage?: pulumi.Input<number>;
+    truncationPercentage?: pulumi.Input<number | undefined>;
 }
 /**
  * truncationSelectionPolicyArgsProvideDefaults sets the appropriate defaults for TruncationSelectionPolicyArgs
@@ -9048,23 +9015,23 @@ export interface UriFileDataVersionArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If the name version are system generated (anonymous registration).
      */
-    isAnonymous?: pulumi.Input<boolean>;
+    isAnonymous?: pulumi.Input<boolean | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * uriFileDataVersionArgsProvideDefaults sets the appropriate defaults for UriFileDataVersionArgs
@@ -9081,7 +9048,7 @@ export interface UriFileJobInputArgs {
     /**
      * Description for the input.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the Job Input Type.
      * Expected value is 'uri_file'.
@@ -9090,7 +9057,7 @@ export interface UriFileJobInputArgs {
     /**
      * Enum to determine the input data delivery mode.
      */
-    mode?: pulumi.Input<string | enums.InputDeliveryMode>;
+    mode?: pulumi.Input<string | enums.InputDeliveryMode | undefined>;
     /**
      * [Required] Input Asset URI.
      */
@@ -9110,11 +9077,11 @@ export interface UriFileJobOutputArgs {
     /**
      * Output Asset Name.
      */
-    assetName?: pulumi.Input<string>;
+    assetName?: pulumi.Input<string | undefined>;
     /**
      * Description for the output.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the Job Output Type.
      * Expected value is 'uri_file'.
@@ -9123,11 +9090,11 @@ export interface UriFileJobOutputArgs {
     /**
      * Output data delivery mode enums.
      */
-    mode?: pulumi.Input<string | enums.OutputDeliveryMode>;
+    mode?: pulumi.Input<string | enums.OutputDeliveryMode | undefined>;
     /**
      * Output Asset URI.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 /**
  * uriFileJobOutputArgsProvideDefaults sets the appropriate defaults for UriFileJobOutputArgs
@@ -9155,23 +9122,23 @@ export interface UriFolderDataVersionArgs {
     /**
      * The asset description text.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If the name version are system generated (anonymous registration).
      */
-    isAnonymous?: pulumi.Input<boolean>;
+    isAnonymous?: pulumi.Input<boolean | undefined>;
     /**
      * Is the asset archived?
      */
-    isArchived?: pulumi.Input<boolean>;
+    isArchived?: pulumi.Input<boolean | undefined>;
     /**
      * The asset property dictionary.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tag dictionary. Tags can be added, removed, and updated.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * uriFolderDataVersionArgsProvideDefaults sets the appropriate defaults for UriFolderDataVersionArgs
@@ -9188,7 +9155,7 @@ export interface UriFolderJobInputArgs {
     /**
      * Description for the input.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the Job Input Type.
      * Expected value is 'uri_folder'.
@@ -9197,7 +9164,7 @@ export interface UriFolderJobInputArgs {
     /**
      * Enum to determine the input data delivery mode.
      */
-    mode?: pulumi.Input<string | enums.InputDeliveryMode>;
+    mode?: pulumi.Input<string | enums.InputDeliveryMode | undefined>;
     /**
      * [Required] Input Asset URI.
      */
@@ -9217,11 +9184,11 @@ export interface UriFolderJobOutputArgs {
     /**
      * Output Asset Name.
      */
-    assetName?: pulumi.Input<string>;
+    assetName?: pulumi.Input<string | undefined>;
     /**
      * Description for the output.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enum to determine the Job Output Type.
      * Expected value is 'uri_folder'.
@@ -9230,11 +9197,11 @@ export interface UriFolderJobOutputArgs {
     /**
      * Output data delivery mode enums.
      */
-    mode?: pulumi.Input<string | enums.OutputDeliveryMode>;
+    mode?: pulumi.Input<string | enums.OutputDeliveryMode | undefined>;
     /**
      * Output Asset URI.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 /**
  * uriFolderJobOutputArgsProvideDefaults sets the appropriate defaults for UriFolderJobOutputArgs
@@ -9257,11 +9224,11 @@ export interface UserAccountCredentialsArgs {
     /**
      * Password of the administrator user account.
      */
-    adminUserPassword?: pulumi.Input<string>;
+    adminUserPassword?: pulumi.Input<string | undefined>;
     /**
      * SSH public key of the administrator user account.
      */
-    adminUserSshPublicKey?: pulumi.Input<string>;
+    adminUserSshPublicKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -9284,20 +9251,20 @@ export interface UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs {
     /**
      * Category of the connection
      */
-    category?: pulumi.Input<string | enums.ConnectionCategory>;
-    credentials?: pulumi.Input<WorkspaceConnectionUsernamePasswordArgs>;
-    error?: pulumi.Input<string>;
-    expiryTime?: pulumi.Input<string>;
-    isSharedToAll?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string | enums.ConnectionCategory | undefined>;
+    credentials?: pulumi.Input<WorkspaceConnectionUsernamePasswordArgs | undefined>;
+    error?: pulumi.Input<string | undefined>;
+    expiryTime?: pulumi.Input<string | undefined>;
+    isSharedToAll?: pulumi.Input<boolean | undefined>;
     /**
      * Store user metadata for this connection
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement>;
-    peStatus?: pulumi.Input<string | enums.ManagedPEStatus>;
-    sharedUserList?: pulumi.Input<pulumi.Input<string>[]>;
-    target?: pulumi.Input<string>;
-    useWorkspaceManagedIdentity?: pulumi.Input<boolean>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    peRequirement?: pulumi.Input<string | enums.ManagedPERequirement | undefined>;
+    peStatus?: pulumi.Input<string | enums.ManagedPEStatus | undefined>;
+    sharedUserList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    target?: pulumi.Input<string | undefined>;
+    useWorkspaceManagedIdentity?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -9307,7 +9274,7 @@ export interface VirtualMachineArgs {
     /**
      * Location for the underlying compute
      */
-    computeLocation?: pulumi.Input<string>;
+    computeLocation?: pulumi.Input<string | undefined>;
     /**
      * The type of compute
      * Expected value is 'VirtualMachine'.
@@ -9316,16 +9283,16 @@ export interface VirtualMachineArgs {
     /**
      * The description of the Machine Learning compute.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
-    properties?: pulumi.Input<VirtualMachineSchemaPropertiesArgs>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
+    properties?: pulumi.Input<VirtualMachineSchemaPropertiesArgs | undefined>;
     /**
      * ARM resource id of the underlying compute
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -9342,27 +9309,27 @@ export interface VirtualMachineSchemaPropertiesArgs {
     /**
      * Public IP address of the virtual machine.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Admin credentials for virtual machine
      */
-    administratorAccount?: pulumi.Input<VirtualMachineSshCredentialsArgs>;
+    administratorAccount?: pulumi.Input<VirtualMachineSshCredentialsArgs | undefined>;
     /**
      * Indicates whether this compute will be used for running notebooks.
      */
-    isNotebookInstanceCompute?: pulumi.Input<boolean>;
+    isNotebookInstanceCompute?: pulumi.Input<boolean | undefined>;
     /**
      * Notebook server port open for ssh connections.
      */
-    notebookServerPort?: pulumi.Input<number>;
+    notebookServerPort?: pulumi.Input<number | undefined>;
     /**
      * Port open for ssh connections.
      */
-    sshPort?: pulumi.Input<number>;
+    sshPort?: pulumi.Input<number | undefined>;
     /**
      * Virtual Machine size
      */
-    virtualMachineSize?: pulumi.Input<string>;
+    virtualMachineSize?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -9372,54 +9339,54 @@ export interface VirtualMachineSshCredentialsArgs {
     /**
      * Password of admin account
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Private key data
      */
-    privateKeyData?: pulumi.Input<string>;
+    privateKeyData?: pulumi.Input<string | undefined>;
     /**
      * Public key data
      */
-    publicKeyData?: pulumi.Input<string>;
+    publicKeyData?: pulumi.Input<string | undefined>;
     /**
      * Username of admin account
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export interface VolumeDefinitionArgs {
     /**
      * Bind Options of the mount
      */
-    bind?: pulumi.Input<BindOptionsArgs>;
+    bind?: pulumi.Input<BindOptionsArgs | undefined>;
     /**
      * Consistency of the volume
      */
-    consistency?: pulumi.Input<string>;
+    consistency?: pulumi.Input<string | undefined>;
     /**
      * Indicate whether to mount volume as readOnly. Default value for this is false.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Source of the mount. For bind mounts this is the host path.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Target of the mount. For bind mounts this is the path in the container.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * tmpfs option of the mount
      */
-    tmpfs?: pulumi.Input<TmpfsOptionsArgs>;
+    tmpfs?: pulumi.Input<TmpfsOptionsArgs | undefined>;
     /**
      * Type of Volume Definition. Possible Values: bind,volume,tmpfs,npipe
      */
-    type?: pulumi.Input<string | enums.VolumeDefinitionType>;
+    type?: pulumi.Input<string | enums.VolumeDefinitionType | undefined>;
     /**
      * Volume Options of the mount
      */
-    volume?: pulumi.Input<VolumeOptionsArgs>;
+    volume?: pulumi.Input<VolumeOptionsArgs | undefined>;
 }
 /**
  * volumeDefinitionArgsProvideDefaults sets the appropriate defaults for VolumeDefinitionArgs
@@ -9435,31 +9402,31 @@ export interface VolumeOptionsArgs {
     /**
      * Indicate whether volume is nocopy
      */
-    nocopy?: pulumi.Input<boolean>;
+    nocopy?: pulumi.Input<boolean | undefined>;
 }
 
 export interface WorkspaceConnectionAccessKeyArgs {
-    accessKeyId?: pulumi.Input<string>;
-    secretAccessKey?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
+    secretAccessKey?: pulumi.Input<string | undefined>;
 }
 
 /**
  * Account key object for workspace connection credential.
  */
 export interface WorkspaceConnectionAccountKeyArgs {
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
 }
 
 /**
  * Api key object for workspace connection credential.
  */
 export interface WorkspaceConnectionApiKeyArgs {
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceConnectionManagedIdentityArgs {
-    clientId?: pulumi.Input<string>;
-    resourceId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -9470,60 +9437,60 @@ export interface WorkspaceConnectionOAuth2Args {
     /**
      * Required by Concur connection category
      */
-    authUrl?: pulumi.Input<string>;
+    authUrl?: pulumi.Input<string | undefined>;
     /**
      * Client id in the format of UUID
      */
-    clientId?: pulumi.Input<string>;
-    clientSecret?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Required by GoogleAdWords connection category
      */
-    developerToken?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
+    developerToken?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
      * where user needs to get RefreshToken offline
      */
-    refreshToken?: pulumi.Input<string>;
+    refreshToken?: pulumi.Input<string | undefined>;
     /**
      * Required by QuickBooks and Xero connection categories
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Concur, ServiceNow auth server AccessToken grant type is 'Password'
      * which requires UsernamePassword
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceConnectionPersonalAccessTokenArgs {
-    pat?: pulumi.Input<string>;
+    pat?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceConnectionServicePrincipalArgs {
-    clientId?: pulumi.Input<string>;
-    clientSecret?: pulumi.Input<string>;
-    tenantId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
+    clientSecret?: pulumi.Input<string | undefined>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceConnectionSharedAccessSignatureArgs {
-    sas?: pulumi.Input<string>;
+    sas?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceConnectionUsernamePasswordArgs {
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
      */
-    securityToken?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
+    securityToken?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
  * WorkspaceHub's configuration object.
  */
 export interface WorkspaceHubConfigArgs {
-    additionalWorkspaceStorageAccounts?: pulumi.Input<pulumi.Input<string>[]>;
-    defaultWorkspaceResourceGroup?: pulumi.Input<string>;
+    additionalWorkspaceStorageAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    defaultWorkspaceResourceGroup?: pulumi.Input<string | undefined>;
 }

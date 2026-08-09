@@ -216,7 +216,7 @@ export interface KpiArgs {
     /**
      * The aliases.
      */
-    aliases?: pulumi.Input<pulumi.Input<types.inputs.KpiAliasArgs>[]>;
+    aliases?: pulumi.Input<pulumi.Input<types.inputs.KpiAliasArgs>[] | undefined>;
     /**
      * The calculation window.
      */
@@ -224,15 +224,15 @@ export interface KpiArgs {
     /**
      * Name of calculation window field.
      */
-    calculationWindowFieldName?: pulumi.Input<string>;
+    calculationWindowFieldName?: pulumi.Input<string | undefined>;
     /**
      * Localized description for the KPI.
      */
-    description?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    description?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Localized display name for the KPI.
      */
-    displayName?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    displayName?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The mapping entity type.
      */
@@ -248,11 +248,11 @@ export interface KpiArgs {
     /**
      * The KPI extracts.
      */
-    extracts?: pulumi.Input<pulumi.Input<types.inputs.KpiExtractArgs>[]>;
+    extracts?: pulumi.Input<pulumi.Input<types.inputs.KpiExtractArgs>[] | undefined>;
     /**
      * The filter expression for the KPI.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The computation function for the KPI.
      */
@@ -260,7 +260,7 @@ export interface KpiArgs {
     /**
      * the group by properties for the KPI.
      */
-    groupBy?: pulumi.Input<pulumi.Input<string>[]>;
+    groupBy?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the hub.
      */
@@ -268,7 +268,7 @@ export interface KpiArgs {
     /**
      * The name of the KPI.
      */
-    kpiName?: pulumi.Input<string>;
+    kpiName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group.
      */
@@ -276,9 +276,9 @@ export interface KpiArgs {
     /**
      * The KPI thresholds.
      */
-    thresHolds?: pulumi.Input<types.inputs.KpiThresholdsArgs>;
+    thresHolds?: pulumi.Input<types.inputs.KpiThresholdsArgs | undefined>;
     /**
      * The unit of measurement for the KPI.
      */
-    unit?: pulumi.Input<string>;
+    unit?: pulumi.Input<string | undefined>;
 }

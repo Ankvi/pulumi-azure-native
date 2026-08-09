@@ -64,11 +64,11 @@ export class IotSecuritySolution extends pulumi.CustomResource {
      */
     declare public readonly iotHubs: pulumi.Output<string[]>;
     /**
-     * The resource location.
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -84,11 +84,11 @@ export class IotSecuritySolution extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Resource tags
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -176,11 +176,11 @@ export interface IotSecuritySolutionArgs {
     /**
      * List of additional workspaces
      */
-    additionalWorkspaces?: pulumi.Input<pulumi.Input<types.inputs.AdditionalWorkspacesPropertiesArgs>[]>;
+    additionalWorkspaces?: pulumi.Input<pulumi.Input<types.inputs.AdditionalWorkspacesPropertiesArgs>[] | undefined>;
     /**
      * Disabled data sources. Disabling these data sources compromises the system.
      */
-    disabledDataSources?: pulumi.Input<pulumi.Input<string | types.enums.DataSource>[]>;
+    disabledDataSources?: pulumi.Input<pulumi.Input<string | types.enums.DataSource>[] | undefined>;
     /**
      * Resource display name.
      */
@@ -188,45 +188,45 @@ export interface IotSecuritySolutionArgs {
     /**
      * List of additional options for exporting to workspace data.
      */
-    export?: pulumi.Input<pulumi.Input<string | types.enums.ExportData>[]>;
+    export?: pulumi.Input<pulumi.Input<string | types.enums.ExportData>[] | undefined>;
     /**
      * IoT Hub resource IDs
      */
     iotHubs: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The resource location.
+     * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * List of the configuration status for each recommendation type.
      */
-    recommendationsConfiguration?: pulumi.Input<pulumi.Input<types.inputs.RecommendationConfigurationPropertiesArgs>[]>;
+    recommendationsConfiguration?: pulumi.Input<pulumi.Input<types.inputs.RecommendationConfigurationPropertiesArgs>[] | undefined>;
     /**
-     * The name of the resource group within the user's subscription. The name is case insensitive.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * The name of the IoT Security solution.
      */
-    solutionName?: pulumi.Input<string>;
+    solutionName?: pulumi.Input<string | undefined>;
     /**
      * Status of the IoT Security solution.
      */
-    status?: pulumi.Input<string | types.enums.SecuritySolutionStatus>;
+    status?: pulumi.Input<string | types.enums.SecuritySolutionStatus | undefined>;
     /**
-     * Resource tags
+     * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Unmasked IP address logging status
      */
-    unmaskedIpLoggingStatus?: pulumi.Input<string | types.enums.UnmaskedIpLoggingStatus>;
+    unmaskedIpLoggingStatus?: pulumi.Input<string | types.enums.UnmaskedIpLoggingStatus | undefined>;
     /**
      * Properties of the IoT Security solution's user defined resources.
      */
-    userDefinedResources?: pulumi.Input<types.inputs.UserDefinedResourcesPropertiesArgs>;
+    userDefinedResources?: pulumi.Input<types.inputs.UserDefinedResourcesPropertiesArgs | undefined>;
     /**
      * Workspace resource ID
      */
-    workspace?: pulumi.Input<string>;
+    workspace?: pulumi.Input<string | undefined>;
 }

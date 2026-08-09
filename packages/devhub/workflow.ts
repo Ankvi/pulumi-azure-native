@@ -188,63 +188,63 @@ export interface WorkflowArgs {
     /**
      * The name of the app.
      */
-    appName?: pulumi.Input<string>;
+    appName?: pulumi.Input<string | undefined>;
     /**
      * The version of the language image used for building the code in the generated dockerfile.
      */
-    builderVersion?: pulumi.Input<string>;
+    builderVersion?: pulumi.Input<string | undefined>;
     /**
      * The mode of generation to be used for generating Dockerfiles.
      */
-    dockerfileGenerationMode?: pulumi.Input<string | types.enums.DockerfileGenerationMode>;
+    dockerfileGenerationMode?: pulumi.Input<string | types.enums.DockerfileGenerationMode | undefined>;
     /**
      * The directory to output the generated Dockerfile to.
      */
-    dockerfileOutputDirectory?: pulumi.Input<string>;
+    dockerfileOutputDirectory?: pulumi.Input<string | undefined>;
     /**
      * The programming language used.
      */
-    generationLanguage?: pulumi.Input<string | types.enums.GenerationLanguage>;
+    generationLanguage?: pulumi.Input<string | types.enums.GenerationLanguage | undefined>;
     /**
      * Profile of a github workflow.
      */
-    githubWorkflowProfile?: pulumi.Input<types.inputs.GitHubWorkflowProfileArgs>;
+    githubWorkflowProfile?: pulumi.Input<types.inputs.GitHubWorkflowProfileArgs | undefined>;
     /**
      * The name of the image to be generated.
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * The tag to apply to the generated image.
      */
-    imageTag?: pulumi.Input<string>;
+    imageTag?: pulumi.Input<string | undefined>;
     /**
      * The version of the language image used for execution in the generated dockerfile.
      */
-    languageVersion?: pulumi.Input<string>;
+    languageVersion?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The mode of generation to be used for generating Manifest.
      */
-    manifestGenerationMode?: pulumi.Input<string | types.enums.ManifestGenerationMode>;
+    manifestGenerationMode?: pulumi.Input<string | types.enums.ManifestGenerationMode | undefined>;
     /**
      * The directory to output the generated manifests to.
      */
-    manifestOutputDirectory?: pulumi.Input<string>;
+    manifestOutputDirectory?: pulumi.Input<string | undefined>;
     /**
      * Determines the type of manifests to be generated.
      */
-    manifestType?: pulumi.Input<string | types.enums.GenerationManifestType>;
+    manifestType?: pulumi.Input<string | types.enums.GenerationManifestType | undefined>;
     /**
      * The namespace to deploy the application to.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The port the application is exposed on.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -252,9 +252,9 @@ export interface WorkflowArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the workflow resource.
      */
-    workflowName?: pulumi.Input<string>;
+    workflowName?: pulumi.Input<string | undefined>;
 }

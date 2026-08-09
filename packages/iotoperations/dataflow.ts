@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01.
  *
- * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Dataflow extends pulumi.CustomResource {
     /**
@@ -87,7 +87,7 @@ export class Dataflow extends pulumi.CustomResource {
             resourceInputs["dataflowProfileName"] = args?.dataflowProfileName;
             resourceInputs["extendedLocation"] = args?.extendedLocation;
             resourceInputs["instanceName"] = args?.instanceName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.dataflowPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.dataflowPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -102,7 +102,7 @@ export class Dataflow extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:DataFlow" }, { type: "azure-native:iotoperations/v20240701preview:Dataflow" }, { type: "azure-native:iotoperations/v20240815preview:Dataflow" }, { type: "azure-native:iotoperations/v20240915preview:Dataflow" }, { type: "azure-native:iotoperations/v20241101:Dataflow" }, { type: "azure-native:iotoperations/v20250401:Dataflow" }, { type: "azure-native:iotoperations/v20250701preview:Dataflow" }, { type: "azure-native:iotoperations/v20251001:Dataflow" }, { type: "azure-native:iotoperations/v20260301:Dataflow" }, { type: "azure-native:iotoperations:DataFlow" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:DataFlow" }, { type: "azure-native:iotoperations/v20240701preview:Dataflow" }, { type: "azure-native:iotoperations/v20240815preview:Dataflow" }, { type: "azure-native:iotoperations/v20240915preview:Dataflow" }, { type: "azure-native:iotoperations/v20241101:Dataflow" }, { type: "azure-native:iotoperations/v20250401:Dataflow" }, { type: "azure-native:iotoperations/v20250701preview:Dataflow" }, { type: "azure-native:iotoperations/v20251001:Dataflow" }, { type: "azure-native:iotoperations/v20260301:Dataflow" }, { type: "azure-native:iotoperations/v20260701:Dataflow" }, { type: "azure-native:iotoperations:DataFlow" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Dataflow.__pulumiType, name, resourceInputs, opts);
     }
@@ -115,7 +115,7 @@ export interface DataflowArgs {
     /**
      * Name of Instance dataflowProfile dataflow resource
      */
-    dataflowName?: pulumi.Input<string>;
+    dataflowName?: pulumi.Input<string | undefined>;
     /**
      * Name of Instance dataflowProfile resource
      */
@@ -131,7 +131,7 @@ export interface DataflowArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.DataflowPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DataflowPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

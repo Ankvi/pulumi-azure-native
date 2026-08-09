@@ -114,7 +114,7 @@ export interface DiscoverySourceArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Maps resource name
      */
@@ -122,7 +122,7 @@ export interface DiscoverySourceArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.OffAzureDiscoverySourceResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.OffAzureDiscoverySourceResourcePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -130,9 +130,9 @@ export interface DiscoverySourceArgs {
     /**
      * discovery source resource
      */
-    sourceName?: pulumi.Input<string>;
+    sourceName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

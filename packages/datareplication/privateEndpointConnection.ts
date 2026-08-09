@@ -5,6 +5,8 @@ import * as types from "./types";
  * Represents private endpoint connection.
  *
  * Uses Azure REST API version 2024-09-01.
+ *
+ * Other available API versions: 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -87,7 +89,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:datareplication/v20240901:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:datareplication/v20240901:PrivateEndpointConnection" }, { type: "azure-native:datareplication/v20260501:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }
@@ -100,11 +102,11 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The private endpoint connection name.
      */
-    privateEndpointConnectionName?: pulumi.Input<string>;
+    privateEndpointConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionResponsePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionResponsePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

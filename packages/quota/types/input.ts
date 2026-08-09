@@ -3,5 +3,5 @@ export interface GroupQuotasEntityPropertiesArgs {
     /**
      * Display name of the GroupQuota entity.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
 }

@@ -22,7 +22,7 @@ export interface ApiPropertiesArgs {
     /**
      * Interval in minutes for which the weather data for the api needs to be refreshed.
      */
-    apiFreshnessTimeInMinutes?: pulumi.Input<number>;
+    apiFreshnessTimeInMinutes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -42,7 +42,7 @@ export interface IdentityArgs {
     /**
      * The identity type.
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
 }
 
 /**
@@ -89,15 +89,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -107,7 +107,7 @@ export interface SensorIntegrationArgs {
     /**
      * Sensor integration enable state.
      */
-    enabled?: pulumi.Input<string>;
+    enabled?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -129,7 +129,7 @@ export interface SolutionPropertiesArgs {
     /**
      * Role Assignment Id.
      */
-    roleAssignmentId?: pulumi.Input<string>;
+    roleAssignmentId?: pulumi.Input<string | undefined>;
     /**
      * SaaS subscriptionId of the installed SaaS application.
      */

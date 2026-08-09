@@ -134,19 +134,19 @@ export interface WatcherArgs {
     /**
      * The data store for collected monitoring data.
      */
-    datastore?: pulumi.Input<types.inputs.DatastoreArgs>;
+    datastore?: pulumi.Input<types.inputs.DatastoreArgs | undefined>;
     /**
      * The resource ID of a user-assigned managed identity that will be assigned to a new alert rule.
      */
-    defaultAlertRuleIdentityResourceId?: pulumi.Input<string>;
+    defaultAlertRuleIdentityResourceId?: pulumi.Input<string | undefined>;
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -154,9 +154,9 @@ export interface WatcherArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The database watcher name.
      */
-    watcherName?: pulumi.Input<string>;
+    watcherName?: pulumi.Input<string | undefined>;
 }

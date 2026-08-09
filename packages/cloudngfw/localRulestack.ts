@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
  *
- * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class LocalRulestack extends pulumi.CustomResource {
     /**
@@ -54,7 +54,7 @@ export class LocalRulestack extends pulumi.CustomResource {
     /**
      * The managed service identities assigned to this resource.
      */
-    declare public readonly identity: pulumi.Output<types.outputs.AzureResourceManagerManagedIdentityPropertiesResponse | undefined>;
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedIdentityPropertiesResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -151,7 +151,7 @@ export class LocalRulestack extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cloudngfw/v20220829:LocalRulestack" }, { type: "azure-native:cloudngfw/v20220829preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20230901:LocalRulestack" }, { type: "azure-native:cloudngfw/v20230901preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20231010preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20240119preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20240207preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20250206preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20250523:LocalRulestack" }, { type: "azure-native:cloudngfw/v20250707preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20251008:LocalRulestack" }, { type: "azure-native:cloudngfw/v20260126preview:LocalRulestack" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cloudngfw/v20220829:LocalRulestack" }, { type: "azure-native:cloudngfw/v20220829preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20230901:LocalRulestack" }, { type: "azure-native:cloudngfw/v20230901preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20231010preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20240119preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20240207preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20250206preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20250523:LocalRulestack" }, { type: "azure-native:cloudngfw/v20250707preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20251008:LocalRulestack" }, { type: "azure-native:cloudngfw/v20260126preview:LocalRulestack" }, { type: "azure-native:cloudngfw/v20260511preview:LocalRulestack" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LocalRulestack.__pulumiType, name, resourceInputs, opts);
     }
@@ -164,39 +164,39 @@ export interface LocalRulestackArgs {
     /**
      * subscription scope of global rulestack
      */
-    associatedSubscriptions?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedSubscriptions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Mode for default rules creation
      */
-    defaultMode?: pulumi.Input<string | types.enums.DefaultMode>;
+    defaultMode?: pulumi.Input<string | types.enums.DefaultMode | undefined>;
     /**
      * rulestack description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.AzureResourceManagerManagedIdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.AzureResourceManagerManagedIdentityPropertiesArgs | undefined>;
     /**
      * LocalRulestack resource name
      */
-    localRulestackName?: pulumi.Input<string>;
+    localRulestackName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * minimum version
      */
-    minAppIdVersion?: pulumi.Input<string>;
+    minAppIdVersion?: pulumi.Input<string | undefined>;
     /**
      * PanEtag info
      */
-    panEtag?: pulumi.Input<string>;
+    panEtag?: pulumi.Input<string | undefined>;
     /**
      * Rulestack Location, Required for GlobalRulestacks, Not for LocalRulestacks
      */
-    panLocation?: pulumi.Input<string>;
+    panLocation?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -204,13 +204,13 @@ export interface LocalRulestackArgs {
     /**
      * Rulestack Type
      */
-    scope?: pulumi.Input<string | types.enums.ScopeType>;
+    scope?: pulumi.Input<string | types.enums.ScopeType | undefined>;
     /**
      * Security Profile
      */
-    securityServices?: pulumi.Input<types.inputs.SecurityServicesArgs>;
+    securityServices?: pulumi.Input<types.inputs.SecurityServicesArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

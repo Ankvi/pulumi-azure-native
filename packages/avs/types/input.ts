@@ -12,7 +12,7 @@ export interface AddonArcPropertiesArgs {
     /**
      * The VMware vCenter resource ID
      */
-    vCenter?: pulumi.Input<string>;
+    vCenter?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -42,7 +42,7 @@ export interface AddonSrmPropertiesArgs {
     /**
      * The Site Recovery Manager (SRM) license
      */
-    licenseKey?: pulumi.Input<string>;
+    licenseKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -67,15 +67,15 @@ export interface AvailabilityPropertiesArgs {
     /**
      * The secondary availability zone for the private cloud
      */
-    secondaryZone?: pulumi.Input<number>;
+    secondaryZone?: pulumi.Input<number | undefined>;
     /**
      * The availability strategy for the private cloud
      */
-    strategy?: pulumi.Input<string | enums.AvailabilityStrategy>;
+    strategy?: pulumi.Input<string | enums.AvailabilityStrategy | undefined>;
     /**
      * The primary availability zone for the private cloud
      */
-    zone?: pulumi.Input<number>;
+    zone?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -90,7 +90,7 @@ export interface DiskPoolVolumeArgs {
      * Mode that describes whether the LUN has to be mounted as a datastore or
      * attached as a LUN
      */
-    mountOption?: pulumi.Input<string | enums.MountOptionEnum>;
+    mountOption?: pulumi.Input<string | enums.MountOptionEnum | undefined>;
     /**
      * Azure resource ID of the iSCSI target
      */
@@ -123,11 +123,11 @@ export interface EncryptionArgs {
     /**
      * The key vault where the encryption key is stored
      */
-    keyVaultProperties?: pulumi.Input<EncryptionKeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<EncryptionKeyVaultPropertiesArgs | undefined>;
     /**
      * Status of customer managed encryption key
      */
-    status?: pulumi.Input<string | enums.EncryptionState>;
+    status?: pulumi.Input<string | enums.EncryptionState | undefined>;
 }
 
 /**
@@ -137,15 +137,15 @@ export interface EncryptionKeyVaultPropertiesArgs {
     /**
      * The name of the key.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The URL of the vault.
      */
-    keyVaultUrl?: pulumi.Input<string>;
+    keyVaultUrl?: pulumi.Input<string | undefined>;
     /**
      * The version of the key.
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -155,45 +155,45 @@ export interface IdentitySourceArgs {
     /**
      * The domain's NetBIOS name
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * The base distinguished name for groups
      */
-    baseGroupDN?: pulumi.Input<string>;
+    baseGroupDN?: pulumi.Input<string | undefined>;
     /**
      * The base distinguished name for users
      */
-    baseUserDN?: pulumi.Input<string>;
+    baseUserDN?: pulumi.Input<string | undefined>;
     /**
      * The domain's DNS name
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The name of the identity source
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The password of the Active Directory user with a minimum of read-only access to
      * Base DN for users and groups.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Primary server URL
      */
-    primaryServer?: pulumi.Input<string>;
+    primaryServer?: pulumi.Input<string | undefined>;
     /**
      * Secondary server URL
      */
-    secondaryServer?: pulumi.Input<string>;
+    secondaryServer?: pulumi.Input<string | undefined>;
     /**
      * Protect LDAP communication using SSL certificate (LDAPS)
      */
-    ssl?: pulumi.Input<string | enums.SslEnum>;
+    ssl?: pulumi.Input<string | enums.SslEnum | undefined>;
     /**
      * The ID of an Active Directory user with a minimum of read-only access to Base
      * DN for users and group
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -217,15 +217,15 @@ export interface ManagementClusterArgs {
     /**
      * The cluster size
      */
-    clusterSize?: pulumi.Input<number>;
+    clusterSize?: pulumi.Input<number | undefined>;
     /**
      * The hosts
      */
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the vsan datastore associated with the cluster
      */
-    vsanDatastoreName?: pulumi.Input<string>;
+    vsanDatastoreName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -249,7 +249,7 @@ export interface PSCredentialExecutionParameterArgs {
     /**
      * password for login
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * script execution parameter type
      * Expected value is 'Credential'.
@@ -258,7 +258,7 @@ export interface PSCredentialExecutionParameterArgs {
     /**
      * username for login
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -272,7 +272,7 @@ export interface ScriptSecureStringExecutionParameterArgs {
     /**
      * A secure value for the passed parameter, not to be stored in logs
      */
-    secureValue?: pulumi.Input<string>;
+    secureValue?: pulumi.Input<string | undefined>;
     /**
      * script execution parameter type
      * Expected value is 'SecureValue'.
@@ -296,7 +296,7 @@ export interface ScriptStringExecutionParameterArgs {
     /**
      * The value for the passed parameter
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -306,23 +306,23 @@ export interface SkuArgs {
     /**
      * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * If the service has different generations of hardware, for the same SKU, then that can be captured here.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * The name of the SKU. E.g. P3. It is typically a letter+number code
      */
     name: pulumi.Input<string>;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
      */
-    tier?: pulumi.Input<enums.SkuTier>;
+    tier?: pulumi.Input<enums.SkuTier | undefined>;
 }
 
 /**
@@ -342,7 +342,7 @@ export interface VmHostPlacementPolicyPropertiesArgs {
     /**
      * vm-host placement policy affinity strength (should/must)
      */
-    affinityStrength?: pulumi.Input<string | enums.AffinityStrength>;
+    affinityStrength?: pulumi.Input<string | enums.AffinityStrength | undefined>;
     /**
      * placement policy affinity type
      */
@@ -350,11 +350,11 @@ export interface VmHostPlacementPolicyPropertiesArgs {
     /**
      * placement policy azure hybrid benefit opt-in type
      */
-    azureHybridBenefitType?: pulumi.Input<string | enums.AzureHybridBenefitType>;
+    azureHybridBenefitType?: pulumi.Input<string | enums.AzureHybridBenefitType | undefined>;
     /**
      * Display name of the placement policy
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Host members list
      */
@@ -362,7 +362,7 @@ export interface VmHostPlacementPolicyPropertiesArgs {
     /**
      * Whether the placement policy is enabled or disabled
      */
-    state?: pulumi.Input<string | enums.PlacementPolicyState>;
+    state?: pulumi.Input<string | enums.PlacementPolicyState | undefined>;
     /**
      * Placement Policy type
      * Expected value is 'VmHost'.
@@ -385,11 +385,11 @@ export interface VmVmPlacementPolicyPropertiesArgs {
     /**
      * Display name of the placement policy
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Whether the placement policy is enabled or disabled
      */
-    state?: pulumi.Input<string | enums.PlacementPolicyState>;
+    state?: pulumi.Input<string | enums.PlacementPolicyState | undefined>;
     /**
      * Placement Policy type
      * Expected value is 'VmVm'.
@@ -408,11 +408,11 @@ export interface VmwareFirewallLicensePropertiesArgs {
     /**
      * The Broadcom contract number associated with the license.
      */
-    broadcomContractNumber?: pulumi.Input<string>;
+    broadcomContractNumber?: pulumi.Input<string | undefined>;
     /**
      * The Broadcom site ID associated with the license.
      */
-    broadcomSiteId?: pulumi.Input<string>;
+    broadcomSiteId?: pulumi.Input<string | undefined>;
     /**
      * Number of cores included in the license, measured per hour
      */
@@ -429,11 +429,11 @@ export interface VmwareFirewallLicensePropertiesArgs {
     /**
      * Additional labels passed through for license reporting.
      */
-    labels?: pulumi.Input<pulumi.Input<LabelArgs>[]>;
+    labels?: pulumi.Input<pulumi.Input<LabelArgs>[] | undefined>;
     /**
      * License key
      */
-    licenseKey?: pulumi.Input<string>;
+    licenseKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -448,15 +448,15 @@ export interface WorkloadNetworkDhcpRelayArgs {
     /**
      * Display name of the DHCP entity.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * NSX revision number.
      */
-    revision?: pulumi.Input<number>;
+    revision?: pulumi.Input<number | undefined>;
     /**
      * DHCP Relay Addresses. Max 3.
      */
-    serverAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    serverAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -471,19 +471,19 @@ export interface WorkloadNetworkDhcpServerArgs {
     /**
      * Display name of the DHCP entity.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * DHCP Server Lease Time.
      */
-    leaseTime?: pulumi.Input<number>;
+    leaseTime?: pulumi.Input<number | undefined>;
     /**
      * NSX revision number.
      */
-    revision?: pulumi.Input<number>;
+    revision?: pulumi.Input<number | undefined>;
     /**
      * DHCP Server Address.
      */
-    serverAddress?: pulumi.Input<string>;
+    serverAddress?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -493,9 +493,9 @@ export interface WorkloadNetworkSegmentSubnetArgs {
     /**
      * DHCP Range assigned for subnet.
      */
-    dhcpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    dhcpRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Gateway address.
      */
-    gatewayAddress?: pulumi.Input<string>;
+    gatewayAddress?: pulumi.Input<string | undefined>;
 }

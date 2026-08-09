@@ -154,9 +154,9 @@ export interface ApplicationPackageArgs {
     /**
      * The tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The version of the application.
      */
-    versionName?: pulumi.Input<string>;
+    versionName?: pulumi.Input<string | undefined>;
 }

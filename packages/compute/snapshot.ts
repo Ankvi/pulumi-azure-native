@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
  *
- * Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02, 2026-03-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Snapshot extends pulumi.CustomResource {
     /**
@@ -250,7 +250,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["uniqueId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20160430preview:Snapshot" }, { type: "azure-native:compute/v20170330:Snapshot" }, { type: "azure-native:compute/v20180401:Snapshot" }, { type: "azure-native:compute/v20180601:Snapshot" }, { type: "azure-native:compute/v20180930:Snapshot" }, { type: "azure-native:compute/v20190301:Snapshot" }, { type: "azure-native:compute/v20190701:Snapshot" }, { type: "azure-native:compute/v20191101:Snapshot" }, { type: "azure-native:compute/v20200501:Snapshot" }, { type: "azure-native:compute/v20200630:Snapshot" }, { type: "azure-native:compute/v20200930:Snapshot" }, { type: "azure-native:compute/v20201201:Snapshot" }, { type: "azure-native:compute/v20210401:Snapshot" }, { type: "azure-native:compute/v20210801:Snapshot" }, { type: "azure-native:compute/v20211201:Snapshot" }, { type: "azure-native:compute/v20220302:Snapshot" }, { type: "azure-native:compute/v20220702:Snapshot" }, { type: "azure-native:compute/v20230102:Snapshot" }, { type: "azure-native:compute/v20230402:Snapshot" }, { type: "azure-native:compute/v20231002:Snapshot" }, { type: "azure-native:compute/v20240302:Snapshot" }, { type: "azure-native:compute/v20250102:Snapshot" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20160430preview:Snapshot" }, { type: "azure-native:compute/v20170330:Snapshot" }, { type: "azure-native:compute/v20180401:Snapshot" }, { type: "azure-native:compute/v20180601:Snapshot" }, { type: "azure-native:compute/v20180930:Snapshot" }, { type: "azure-native:compute/v20190301:Snapshot" }, { type: "azure-native:compute/v20190701:Snapshot" }, { type: "azure-native:compute/v20191101:Snapshot" }, { type: "azure-native:compute/v20200501:Snapshot" }, { type: "azure-native:compute/v20200630:Snapshot" }, { type: "azure-native:compute/v20200930:Snapshot" }, { type: "azure-native:compute/v20201201:Snapshot" }, { type: "azure-native:compute/v20210401:Snapshot" }, { type: "azure-native:compute/v20210801:Snapshot" }, { type: "azure-native:compute/v20211201:Snapshot" }, { type: "azure-native:compute/v20220302:Snapshot" }, { type: "azure-native:compute/v20220702:Snapshot" }, { type: "azure-native:compute/v20230102:Snapshot" }, { type: "azure-native:compute/v20230402:Snapshot" }, { type: "azure-native:compute/v20231002:Snapshot" }, { type: "azure-native:compute/v20240302:Snapshot" }, { type: "azure-native:compute/v20250102:Snapshot" }, { type: "azure-native:compute/v20260302:Snapshot" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Snapshot.__pulumiType, name, resourceInputs, opts);
     }
@@ -263,11 +263,11 @@ export interface SnapshotArgs {
     /**
      * Percentage complete for the background copy when a resource is created via the CopyStart operation.
      */
-    completionPercent?: pulumi.Input<number>;
+    completionPercent?: pulumi.Input<number | undefined>;
     /**
      * Indicates the error details if the background copy of a resource created via the CopyStart operation fails.
      */
-    copyCompletionError?: pulumi.Input<types.inputs.CopyCompletionErrorArgs>;
+    copyCompletionError?: pulumi.Input<types.inputs.CopyCompletionErrorArgs | undefined>;
     /**
      * Disk source information. CreationData information cannot be changed after the disk has been created.
      */
@@ -275,55 +275,55 @@ export interface SnapshotArgs {
     /**
      * Additional authentication requirements when exporting or uploading to a disk or snapshot.
      */
-    dataAccessAuthMode?: pulumi.Input<string | types.enums.DataAccessAuthMode>;
+    dataAccessAuthMode?: pulumi.Input<string | types.enums.DataAccessAuthMode | undefined>;
     /**
      * ARM id of the DiskAccess resource for using private endpoints on disks.
      */
-    diskAccessId?: pulumi.Input<string>;
+    diskAccessId?: pulumi.Input<string | undefined>;
     /**
      * If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
      */
-    diskSizeGB?: pulumi.Input<number>;
+    diskSizeGB?: pulumi.Input<number | undefined>;
     /**
      * Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.
      */
-    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs | undefined>;
     /**
      * Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot.
      */
-    encryptionSettingsCollection?: pulumi.Input<types.inputs.EncryptionSettingsCollectionArgs>;
+    encryptionSettingsCollection?: pulumi.Input<types.inputs.EncryptionSettingsCollectionArgs | undefined>;
     /**
      * The extended location where the snapshot will be created. Extended location cannot be changed.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
-    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGeneration>;
+    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGeneration | undefined>;
     /**
      * Whether a snapshot is incremental. Incremental snapshots on the same disk occupy less space than full snapshots and can be diffed.
      */
-    incremental?: pulumi.Input<boolean>;
+    incremental?: pulumi.Input<boolean | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Policy for accessing the disk via network.
      */
-    networkAccessPolicy?: pulumi.Input<string | types.enums.NetworkAccessPolicy>;
+    networkAccessPolicy?: pulumi.Input<string | types.enums.NetworkAccessPolicy | undefined>;
     /**
      * The Operating System type.
      */
-    osType?: pulumi.Input<types.enums.OperatingSystemTypes>;
+    osType?: pulumi.Input<types.enums.OperatingSystemTypes | undefined>;
     /**
      * Policy for controlling export on the disk.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * Purchase plan information for the image from which the source disk for the snapshot was originally created.
      */
-    purchasePlan?: pulumi.Input<types.inputs.DiskPurchasePlanArgs>;
+    purchasePlan?: pulumi.Input<types.inputs.DiskPurchasePlanArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -331,25 +331,25 @@ export interface SnapshotArgs {
     /**
      * Contains the security related information for the resource.
      */
-    securityProfile?: pulumi.Input<types.inputs.DiskSecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.DiskSecurityProfileArgs | undefined>;
     /**
      * The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot
      */
-    sku?: pulumi.Input<types.inputs.SnapshotSkuArgs>;
+    sku?: pulumi.Input<types.inputs.SnapshotSkuArgs | undefined>;
     /**
      * The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.
      */
-    snapshotName?: pulumi.Input<string>;
+    snapshotName?: pulumi.Input<string | undefined>;
     /**
      * List of supported capabilities for the image from which the source disk from the snapshot was originally created.
      */
-    supportedCapabilities?: pulumi.Input<types.inputs.SupportedCapabilitiesArgs>;
+    supportedCapabilities?: pulumi.Input<types.inputs.SupportedCapabilitiesArgs | undefined>;
     /**
      * Indicates the OS on a snapshot supports hibernation.
      */
-    supportsHibernation?: pulumi.Input<boolean>;
+    supportsHibernation?: pulumi.Input<boolean | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

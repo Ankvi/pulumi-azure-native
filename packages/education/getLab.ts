@@ -18,11 +18,11 @@ export function getLab(args: GetLabArgs, opts?: pulumi.InvokeOptions): Promise<G
 
 export interface GetLabArgs {
     /**
-     * The ID that uniquely identifies a billing account.
+     * The name of the billing account.
      */
     billingAccountName: string;
     /**
-     * The ID that uniquely identifies a billing profile.
+     * The name of the billing profile.
      */
     billingProfileName: string;
     /**
@@ -30,7 +30,7 @@ export interface GetLabArgs {
      */
     includeBudget?: boolean;
     /**
-     * The ID that uniquely identifies an invoice section.
+     * The name of the invoice section.
      */
     invoiceSectionName: string;
 }
@@ -121,19 +121,19 @@ export function getLabOutput(args: GetLabOutputArgs, opts?: pulumi.InvokeOutputO
 
 export interface GetLabOutputArgs {
     /**
-     * The ID that uniquely identifies a billing account.
+     * The name of the billing account.
      */
     billingAccountName: pulumi.Input<string>;
     /**
-     * The ID that uniquely identifies a billing profile.
+     * The name of the billing profile.
      */
     billingProfileName: pulumi.Input<string>;
     /**
      * May be used to include budget information.
      */
-    includeBudget?: pulumi.Input<boolean>;
+    includeBudget?: pulumi.Input<boolean | undefined>;
     /**
-     * The ID that uniquely identifies an invoice section.
+     * The name of the invoice section.
      */
     invoiceSectionName: pulumi.Input<string>;
 }

@@ -11,11 +11,11 @@ export interface AwsCloudProfileArgs {
     /**
      * List of AWS accounts which need to be excluded.
      */
-    excludedAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Boolean value that indicates whether the account is organizational or not. True represents organization account, whereas false represents a single account.
      */
-    isOrganizationalAccount?: pulumi.Input<boolean>;
+    isOrganizationalAccount?: pulumi.Input<boolean | undefined>;
 }
 /**
  * awsCloudProfileArgsProvideDefaults sets the appropriate defaults for AwsCloudProfileArgs

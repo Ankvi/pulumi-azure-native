@@ -87,7 +87,7 @@ export interface ListWhoisByDomainOutputArgs {
     /**
      * The domain name
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Enrichment type
      */

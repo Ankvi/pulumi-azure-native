@@ -101,7 +101,7 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20240301preview:Backup" }, { type: "azure-native:dbforpostgresql/v20240801:Backup" }, { type: "azure-native:dbforpostgresql/v20241101preview:Backup" }, { type: "azure-native:dbforpostgresql/v20250101preview:Backup" }, { type: "azure-native:dbforpostgresql/v20250601preview:Backup" }, { type: "azure-native:dbforpostgresql/v20250801:Backup" }, { type: "azure-native:dbforpostgresql/v20260101preview:Backup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20240301preview:Backup" }, { type: "azure-native:dbforpostgresql/v20240801:Backup" }, { type: "azure-native:dbforpostgresql/v20241101preview:Backup" }, { type: "azure-native:dbforpostgresql/v20250101preview:Backup" }, { type: "azure-native:dbforpostgresql/v20250601preview:Backup" }, { type: "azure-native:dbforpostgresql/v20250801:Backup" }, { type: "azure-native:dbforpostgresql/v20260101preview:Backup" }, { type: "azure-native:dbforpostgresql/v20260401preview:Backup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Backup.__pulumiType, name, resourceInputs, opts);
     }
@@ -114,7 +114,7 @@ export interface BackupArgs {
     /**
      * Name of the backup.
      */
-    backupName?: pulumi.Input<string>;
+    backupName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

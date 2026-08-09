@@ -47,5 +47,5 @@ export interface ListSubscriptionsOutputArgs {
     /**
      * The API version to use for the request. Defaults to '2022-12-01'.
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
 }

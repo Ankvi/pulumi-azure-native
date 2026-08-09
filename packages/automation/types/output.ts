@@ -33,6 +33,20 @@ export interface AdvancedScheduleResponse {
 }
 
 /**
+ * Error response of an operation failure
+ */
+export interface AutomationErrorResponseResponse {
+    /**
+     * Error code
+     */
+    code?: string;
+    /**
+     * Error message indicating why the operation failed.
+     */
+    message?: string;
+}
+
+/**
  * Azure query for the update configuration.
  */
 export interface AzureQueryPropertiesResponse {
@@ -189,13 +203,23 @@ export interface DscConfigurationParameterResponse {
 }
 
 /**
+ * User identity used for CMK.
+ */
+export interface EncryptionPropertiesIdentityResponse {
+    /**
+     * The user identity used for CMK. It will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     */
+    userAssignedIdentity?: any;
+}
+
+/**
  * The encryption settings for automation account
  */
 export interface EncryptionPropertiesResponse {
     /**
      * User identity used for CMK.
      */
-    identity?: EncryptionPropertiesResponseIdentity;
+    identity?: EncryptionPropertiesIdentityResponse;
     /**
      * Encryption Key Source
      */
@@ -204,30 +228,6 @@ export interface EncryptionPropertiesResponse {
      * Key vault properties.
      */
     keyVaultProperties?: KeyVaultPropertiesResponse;
-}
-
-/**
- * User identity used for CMK.
- */
-export interface EncryptionPropertiesResponseIdentity {
-    /**
-     * The user identity used for CMK. It will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-     */
-    userAssignedIdentity?: any;
-}
-
-/**
- * Error response of an operation failure
- */
-export interface ErrorResponseResponse {
-    /**
-     * Error code
-     */
-    code?: string;
-    /**
-     * Error message indicating why the operation failed.
-     */
-    message?: string;
 }
 
 /**
@@ -561,15 +561,6 @@ export interface SUCSchedulePropertiesResponse {
      * Gets or sets the time zone of the schedule.
      */
     timeZone?: string;
-}
-/**
- * sucschedulePropertiesResponseProvideDefaults sets the appropriate defaults for SUCSchedulePropertiesResponse
- */
-export function sucschedulePropertiesResponseProvideDefaults(val: SUCSchedulePropertiesResponse): SUCSchedulePropertiesResponse {
-    return {
-        ...val,
-        isEnabled: (val.isEnabled) ?? false,
-    };
 }
 
 /**

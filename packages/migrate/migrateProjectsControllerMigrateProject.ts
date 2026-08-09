@@ -54,7 +54,7 @@ export class MigrateProjectsControllerMigrateProject extends pulumi.CustomResour
     /**
      * Properties of a migrate project.
      */
-    declare public readonly properties: pulumi.Output<types.outputs.MigrateProjectPropertiesResponseV1>;
+    declare public readonly properties: pulumi.Output<types.outputs.MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
@@ -110,19 +110,19 @@ export interface MigrateProjectsControllerMigrateProjectArgs {
     /**
      * For optimistic concurrency control.
      */
-    eTag?: pulumi.Input<string>;
+    eTag?: pulumi.Input<string | undefined>;
     /**
      * Azure location in which project is created.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Migrate project name.
      */
-    migrateProjectName?: pulumi.Input<string>;
+    migrateProjectName?: pulumi.Input<string | undefined>;
     /**
      * Properties of a migrate project.
      */
-    properties?: pulumi.Input<types.inputs.MigrateProjectPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MigrateProjectPropertiesArgs | undefined>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
  *
- * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FqdnListLocalRulestack extends pulumi.CustomResource {
     /**
@@ -115,7 +115,7 @@ export class FqdnListLocalRulestack extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cloudngfw/v20220829:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20220829preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20230901:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20230901preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20231010preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20240119preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20240207preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20250206preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20250523:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20250707preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20251008:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20260126preview:FqdnListLocalRulestack" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cloudngfw/v20220829:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20220829preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20230901:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20230901preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20231010preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20240119preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20240207preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20250206preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20250523:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20250707preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20251008:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20260126preview:FqdnListLocalRulestack" }, { type: "azure-native:cloudngfw/v20260511preview:FqdnListLocalRulestack" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FqdnListLocalRulestack.__pulumiType, name, resourceInputs, opts);
     }
@@ -128,11 +128,11 @@ export interface FqdnListLocalRulestackArgs {
     /**
      * comment for this object
      */
-    auditComment?: pulumi.Input<string>;
+    auditComment?: pulumi.Input<string | undefined>;
     /**
      * fqdn object description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * fqdn list
      */
@@ -144,7 +144,7 @@ export interface FqdnListLocalRulestackArgs {
     /**
      * fqdn list name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

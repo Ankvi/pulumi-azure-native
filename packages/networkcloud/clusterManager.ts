@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ClusterManager extends pulumi.CustomResource {
     /**
@@ -164,7 +164,7 @@ export class ClusterManager extends pulumi.CustomResource {
             resourceInputs["vmSize"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:ClusterManager" }, { type: "azure-native:networkcloud/v20231001preview:ClusterManager" }, { type: "azure-native:networkcloud/v20240601preview:ClusterManager" }, { type: "azure-native:networkcloud/v20240701:ClusterManager" }, { type: "azure-native:networkcloud/v20241001preview:ClusterManager" }, { type: "azure-native:networkcloud/v20250201:ClusterManager" }, { type: "azure-native:networkcloud/v20250701preview:ClusterManager" }, { type: "azure-native:networkcloud/v20250901:ClusterManager" }, { type: "azure-native:networkcloud/v20260101preview:ClusterManager" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:ClusterManager" }, { type: "azure-native:networkcloud/v20231001preview:ClusterManager" }, { type: "azure-native:networkcloud/v20240601preview:ClusterManager" }, { type: "azure-native:networkcloud/v20240701:ClusterManager" }, { type: "azure-native:networkcloud/v20241001preview:ClusterManager" }, { type: "azure-native:networkcloud/v20250201:ClusterManager" }, { type: "azure-native:networkcloud/v20250901:ClusterManager" }, { type: "azure-native:networkcloud/v20260101preview:ClusterManager" }, { type: "azure-native:networkcloud/v20260501preview:ClusterManager" }, { type: "azure-native:networkcloud/v20260701:ClusterManager" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ClusterManager.__pulumiType, name, resourceInputs, opts);
     }
@@ -177,15 +177,15 @@ export interface ClusterManagerArgs {
     /**
      * The resource ID of the Log Analytics workspace that is used for the logs collection.
      */
-    analyticsWorkspaceId?: pulumi.Input<string>;
+    analyticsWorkspaceId?: pulumi.Input<string | undefined>;
     /**
      * Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The Azure availability zones within the region that will be used to support the cluster manager resource.
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the cluster manager.
      */
-    clusterManagerName?: pulumi.Input<string>;
+    clusterManagerName?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the fabric controller that has one to one mapping with the cluster manager.
      */
@@ -193,15 +193,15 @@ export interface ClusterManagerArgs {
     /**
      * The identity of the cluster manager.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The configuration of the managed resource group associated with the resource.
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedResourceGroupConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedResourceGroupConfigurationArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -209,9 +209,9 @@ export interface ClusterManagerArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.
      */
-    vmSize?: pulumi.Input<string>;
+    vmSize?: pulumi.Input<string | undefined>;
 }

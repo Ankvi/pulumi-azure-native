@@ -32,11 +32,11 @@ export interface ListBillingAccountInvoiceSectionsByCreateSubscriptionPermission
  */
 export interface ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult {
     /**
-     * The link (url) to the next page of results.
+     * The link to the next page of items
      */
-    readonly nextLink: string;
+    readonly nextLink?: string;
     /**
-     * The list of resources.
+     * The InvoiceSectionWithCreateSubPermission items on this page
      */
     readonly value: types.outputs.InvoiceSectionWithCreateSubPermissionResponse[];
 }
@@ -63,5 +63,5 @@ export interface ListBillingAccountInvoiceSectionsByCreateSubscriptionPermission
     /**
      * The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
 }

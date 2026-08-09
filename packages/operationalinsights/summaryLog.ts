@@ -136,11 +136,11 @@ export interface SummaryLogArgs {
     /**
      * The description of the Summary rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Summary rule.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -148,15 +148,15 @@ export interface SummaryLogArgs {
     /**
      * Rule definition parameters.
      */
-    ruleDefinition?: pulumi.Input<types.inputs.RuleDefinitionArgs>;
+    ruleDefinition?: pulumi.Input<types.inputs.RuleDefinitionArgs | undefined>;
     /**
      * SummaryRules rule type: User.
      */
-    ruleType?: pulumi.Input<string | types.enums.RuleTypeEnum>;
+    ruleType?: pulumi.Input<string | types.enums.RuleTypeEnum | undefined>;
     /**
      * The name of the summary logs. Must not contain '/'.
      */
-    summaryLogsName?: pulumi.Input<string>;
+    summaryLogsName?: pulumi.Input<string | undefined>;
     /**
      * The name of the workspace.
      */

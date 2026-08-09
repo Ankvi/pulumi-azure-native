@@ -126,11 +126,11 @@ export interface ServerCollectorsOperationArgs {
     /**
      * Gets or sets the collector agent properties.
      */
-    agentProperties?: pulumi.Input<types.inputs.CollectorAgentPropertiesBaseArgs>;
+    agentProperties?: pulumi.Input<types.inputs.CollectorAgentPropertiesBaseArgs | undefined>;
     /**
      * Gets the discovery site id.
      */
-    discoverySiteId?: pulumi.Input<string>;
+    discoverySiteId?: pulumi.Input<string | undefined>;
     /**
      * Assessment Project Name
      */
@@ -138,7 +138,7 @@ export interface ServerCollectorsOperationArgs {
     /**
      * The status of the last operation.
      */
-    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -146,5 +146,5 @@ export interface ServerCollectorsOperationArgs {
     /**
      * Physical server collector ARM name
      */
-    serverCollectorName?: pulumi.Input<string>;
+    serverCollectorName?: pulumi.Input<string | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2022-12-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
  *
- * Other available API versions: 2025-05-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native aad [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-05-01, 2025-06-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native aad [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DomainService extends pulumi.CustomResource {
     /**
@@ -153,10 +153,10 @@ export class DomainService extends pulumi.CustomResource {
             resourceInputs["configDiagnostics"] = args?.configDiagnostics;
             resourceInputs["domainConfigurationType"] = args?.domainConfigurationType;
             resourceInputs["domainName"] = args?.domainName;
-            resourceInputs["domainSecuritySettings"] = args ? (args.domainSecuritySettings ? pulumi.output(args.domainSecuritySettings).apply(types.inputs.domainSecuritySettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["domainSecuritySettings"] = args ? pulumi.output(args.domainSecuritySettings).apply(v => v === undefined ? undefined : types.inputs.domainSecuritySettingsArgsProvideDefaults(v)) : undefined;
             resourceInputs["domainServiceName"] = args?.domainServiceName;
             resourceInputs["filteredSync"] = args?.filteredSync;
-            resourceInputs["ldapsSettings"] = args ? (args.ldapsSettings ? pulumi.output(args.ldapsSettings).apply(types.inputs.ldapsSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["ldapsSettings"] = args ? pulumi.output(args.ldapsSettings).apply(v => v === undefined ? undefined : types.inputs.ldapsSettingsArgsProvideDefaults(v)) : undefined;
             resourceInputs["location"] = args?.location;
             resourceInputs["notificationSettings"] = args?.notificationSettings;
             resourceInputs["replicaSets"] = args?.replicaSets;
@@ -205,7 +205,7 @@ export class DomainService extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:aad/v20170101:DomainService" }, { type: "azure-native:aad/v20170601:DomainService" }, { type: "azure-native:aad/v20200101:DomainService" }, { type: "azure-native:aad/v20210301:DomainService" }, { type: "azure-native:aad/v20210501:DomainService" }, { type: "azure-native:aad/v20220901:DomainService" }, { type: "azure-native:aad/v20221201:DomainService" }, { type: "azure-native:aad/v20250501:DomainService" }, { type: "azure-native:aad/v20250601:DomainService" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:aad/v20170101:DomainService" }, { type: "azure-native:aad/v20170601:DomainService" }, { type: "azure-native:aad/v20200101:DomainService" }, { type: "azure-native:aad/v20210301:DomainService" }, { type: "azure-native:aad/v20210501:DomainService" }, { type: "azure-native:aad/v20220901:DomainService" }, { type: "azure-native:aad/v20221201:DomainService" }, { type: "azure-native:aad/v20250501:DomainService" }, { type: "azure-native:aad/v20250601:DomainService" }, { type: "azure-native:aad/v20251001preview:DomainService" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DomainService.__pulumiType, name, resourceInputs, opts);
     }
@@ -218,47 +218,47 @@ export interface DomainServiceArgs {
     /**
      * Configuration diagnostics data containing latest execution from client.
      */
-    configDiagnostics?: pulumi.Input<types.inputs.ConfigDiagnosticsArgs>;
+    configDiagnostics?: pulumi.Input<types.inputs.ConfigDiagnosticsArgs | undefined>;
     /**
      * Domain Configuration Type
      */
-    domainConfigurationType?: pulumi.Input<string>;
+    domainConfigurationType?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure domain that the user would like to deploy Domain Services to.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * DomainSecurity Settings
      */
-    domainSecuritySettings?: pulumi.Input<types.inputs.DomainSecuritySettingsArgs>;
+    domainSecuritySettings?: pulumi.Input<types.inputs.DomainSecuritySettingsArgs | undefined>;
     /**
      * The name of the domain service.
      */
-    domainServiceName?: pulumi.Input<string>;
+    domainServiceName?: pulumi.Input<string | undefined>;
     /**
      * Enabled or Disabled flag to turn on Group-based filtered sync
      */
-    filteredSync?: pulumi.Input<string | types.enums.FilteredSync>;
+    filteredSync?: pulumi.Input<string | types.enums.FilteredSync | undefined>;
     /**
      * Secure LDAP Settings
      */
-    ldapsSettings?: pulumi.Input<types.inputs.LdapsSettingsArgs>;
+    ldapsSettings?: pulumi.Input<types.inputs.LdapsSettingsArgs | undefined>;
     /**
      * Resource location
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Notification Settings
      */
-    notificationSettings?: pulumi.Input<types.inputs.NotificationSettingsArgs>;
+    notificationSettings?: pulumi.Input<types.inputs.NotificationSettingsArgs | undefined>;
     /**
      * List of ReplicaSets
      */
-    replicaSets?: pulumi.Input<pulumi.Input<types.inputs.ReplicaSetArgs>[]>;
+    replicaSets?: pulumi.Input<pulumi.Input<types.inputs.ReplicaSetArgs>[] | undefined>;
     /**
      * Resource Forest Settings
      */
-    resourceForestSettings?: pulumi.Input<types.inputs.ResourceForestSettingsArgs>;
+    resourceForestSettings?: pulumi.Input<types.inputs.ResourceForestSettingsArgs | undefined>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -266,13 +266,13 @@ export interface DomainServiceArgs {
     /**
      * Sku Type
      */
-    sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string | undefined>;
     /**
      * All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
      */
-    syncScope?: pulumi.Input<string | types.enums.SyncScope>;
+    syncScope?: pulumi.Input<string | types.enums.SyncScope | undefined>;
     /**
      * Resource tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

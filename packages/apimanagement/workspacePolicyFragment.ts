@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkspacePolicyFragment extends pulumi.CustomResource {
     /**
@@ -108,7 +108,7 @@ export class WorkspacePolicyFragment extends pulumi.CustomResource {
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20230301preview:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20230501preview:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20230901preview:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20240501:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20240601preview:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20241001preview:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20250301preview:WorkspacePolicyFragment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20230301preview:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20230501preview:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20230901preview:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20240501:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20240601preview:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20241001preview:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20250301preview:WorkspacePolicyFragment" }, { type: "azure-native:apimanagement/v20250901preview:WorkspacePolicyFragment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspacePolicyFragment.__pulumiType, name, resourceInputs, opts);
     }
@@ -121,15 +121,15 @@ export interface WorkspacePolicyFragmentArgs {
     /**
      * Policy fragment description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Format of the policy fragment content.
      */
-    format?: pulumi.Input<string | types.enums.PolicyFragmentContentFormat>;
+    format?: pulumi.Input<string | types.enums.PolicyFragmentContentFormat | undefined>;
     /**
      * A resource identifier.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

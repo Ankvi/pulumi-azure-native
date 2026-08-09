@@ -241,12 +241,12 @@ export interface CustomRegistryCredentialsResponse {
      * Indicates the managed identity assigned to the custom credential. If a user-assigned identity
      * this value is the Client ID. If a system-assigned identity, the value will be `system`. In
      * the case of a system-assigned identity, the Client ID will be determined by the runner. This
-     * identity may be used to authenticate to key vault to retrieve credentials or it may be the only 
+     * identity may be used to authenticate to key vault to retrieve credentials or it may be the only
      * source of authentication used for accessing the registry.
      */
     identity?: string;
     /**
-     * The password for logging into the custom registry. The password is a secret 
+     * The password for logging into the custom registry. The password is a secret
      * object that allows multiple ways of providing the value for it.
      */
     password?: SecretObjectResponse;
@@ -803,8 +803,8 @@ export interface IdentityPropertiesResponse {
      */
     type?: string;
     /**
-     * The list of user identities associated with the resource. The user identity 
-     * dictionary key references will be ARM resource ids in the form: 
+     * The list of user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
      *     providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
@@ -1011,7 +1011,7 @@ export interface ParentPropertiesResponse {
  */
 export interface PipelineRunRequestResponse {
     /**
-     * List of source artifacts to be transferred by the pipeline. 
+     * List of source artifacts to be transferred by the pipeline.
      * Specify an image by repository ('hello-world'). This will use the 'latest' tag.
      * Specify an image by tag ('hello-world:latest').
      * Specify an image by sha256-based manifest digest ('hello-world@sha256:abc123').

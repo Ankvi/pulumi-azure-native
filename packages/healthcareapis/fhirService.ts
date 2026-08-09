@@ -198,47 +198,47 @@ export interface FhirServiceArgs {
     /**
      * Fhir Service Azure container registry configuration.
      */
-    acrConfiguration?: pulumi.Input<types.inputs.FhirServiceAcrConfigurationArgs>;
+    acrConfiguration?: pulumi.Input<types.inputs.FhirServiceAcrConfigurationArgs | undefined>;
     /**
      * Fhir Service authentication configuration.
      */
-    authenticationConfiguration?: pulumi.Input<types.inputs.FhirServiceAuthenticationConfigurationArgs>;
+    authenticationConfiguration?: pulumi.Input<types.inputs.FhirServiceAuthenticationConfigurationArgs | undefined>;
     /**
      * Fhir Service Cors configuration.
      */
-    corsConfiguration?: pulumi.Input<types.inputs.FhirServiceCorsConfigurationArgs>;
+    corsConfiguration?: pulumi.Input<types.inputs.FhirServiceCorsConfigurationArgs | undefined>;
     /**
      * The encryption settings of the FHIR service
      */
-    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs | undefined>;
     /**
      * Fhir Service export configuration.
      */
-    exportConfiguration?: pulumi.Input<types.inputs.FhirServiceExportConfigurationArgs>;
+    exportConfiguration?: pulumi.Input<types.inputs.FhirServiceExportConfigurationArgs | undefined>;
     /**
      * The name of FHIR Service resource.
      */
-    fhirServiceName?: pulumi.Input<string>;
+    fhirServiceName?: pulumi.Input<string | undefined>;
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    identity?: pulumi.Input<types.inputs.ServiceManagedIdentityIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ServiceManagedIdentityIdentityArgs | undefined>;
     /**
      * Implementation Guides configuration.
      */
-    implementationGuidesConfiguration?: pulumi.Input<types.inputs.ImplementationGuidesConfigurationArgs>;
+    implementationGuidesConfiguration?: pulumi.Input<types.inputs.ImplementationGuidesConfigurationArgs | undefined>;
     /**
      * Fhir Service import configuration.
      */
-    importConfiguration?: pulumi.Input<types.inputs.FhirServiceImportConfigurationArgs>;
+    importConfiguration?: pulumi.Input<types.inputs.FhirServiceImportConfigurationArgs | undefined>;
     /**
      * The kind of the service.
      */
-    kind?: pulumi.Input<string | types.enums.FhirServiceKind>;
+    kind?: pulumi.Input<string | types.enums.FhirServiceKind | undefined>;
     /**
      * The resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the service instance.
      */
@@ -246,11 +246,11 @@ export interface FhirServiceArgs {
     /**
      * Determines tracking of history for resources.
      */
-    resourceVersionPolicyConfiguration?: pulumi.Input<types.inputs.ResourceVersionPolicyConfigurationArgs>;
+    resourceVersionPolicyConfiguration?: pulumi.Input<types.inputs.ResourceVersionPolicyConfigurationArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of workspace resource.
      */

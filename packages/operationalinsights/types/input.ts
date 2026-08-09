@@ -7,11 +7,11 @@ export interface ClusterSkuArgs {
     /**
      * The capacity reservation level in Gigabytes for this cluster.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * The SKU (tier) of a cluster.
      */
-    name?: pulumi.Input<string | enums.ClusterSkuNameEnum>;
+    name?: pulumi.Input<string | enums.ClusterSkuNameEnum | undefined>;
 }
 
 /**
@@ -21,23 +21,23 @@ export interface ColumnArgs {
     /**
      * Column data type logical hint.
      */
-    dataTypeHint?: pulumi.Input<string | enums.ColumnDataTypeHintEnum>;
+    dataTypeHint?: pulumi.Input<string | enums.ColumnDataTypeHintEnum | undefined>;
     /**
      * Column description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Column display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Column name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Column data type.
      */
-    type?: pulumi.Input<string | enums.ColumnTypeEnum>;
+    type?: pulumi.Input<string | enums.ColumnTypeEnum | undefined>;
 }
 
 /**
@@ -51,7 +51,7 @@ export interface IdentityArgs {
     /**
      * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -61,19 +61,19 @@ export interface KeyVaultPropertiesArgs {
     /**
      * The name of the key associated with the Log Analytics cluster.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * Selected key minimum required size.
      */
-    keyRsaSize?: pulumi.Input<number>;
+    keyRsaSize?: pulumi.Input<number | undefined>;
     /**
      * The Key Vault uri which holds they key associated with the Log Analytics cluster.
      */
-    keyVaultUri?: pulumi.Input<string>;
+    keyVaultUri?: pulumi.Input<string | undefined>;
     /**
      * The version of the key associated with the Log Analytics cluster.
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -83,15 +83,15 @@ export interface LogAnalyticsQueryPackQueryPropertiesRelatedArgs {
     /**
      * The related categories for the function.
      */
-    categories?: pulumi.Input<pulumi.Input<string>[]>;
+    categories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The related resource types for the function.
      */
-    resourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The related Log Analytics solutions for the function.
      */
-    solutions?: pulumi.Input<pulumi.Input<string>[]>;
+    solutions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -120,7 +120,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -130,15 +130,15 @@ export interface RestoredLogsArgs {
     /**
      * The timestamp to end the restore by (UTC).
      */
-    endRestoreTime?: pulumi.Input<string>;
+    endRestoreTime?: pulumi.Input<string | undefined>;
     /**
      * The table to restore data from.
      */
-    sourceTable?: pulumi.Input<string>;
+    sourceTable?: pulumi.Input<string | undefined>;
     /**
      * The timestamp to start the restore from (UTC).
      */
-    startRestoreTime?: pulumi.Input<string>;
+    startRestoreTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -148,27 +148,27 @@ export interface RuleDefinitionArgs {
     /**
      * The minimum delay in seconds before bin processing.
      */
-    binDelay?: pulumi.Input<number>;
+    binDelay?: pulumi.Input<number | undefined>;
     /**
      * Scheduled window in minutes. Allowed values: 20, 30, 60, 120, 180, 360, 720, 1440.
      */
-    binSize?: pulumi.Input<number>;
+    binSize?: pulumi.Input<number | undefined>;
     /**
      * The start time (UTC) when Summary rule execution starts.
      */
-    binStartTime?: pulumi.Input<string>;
+    binStartTime?: pulumi.Input<string | undefined>;
     /**
      * The destination table used for the Summary rule results.
      */
-    destinationTable?: pulumi.Input<string>;
+    destinationTable?: pulumi.Input<string | undefined>;
     /**
      * Summary rule query.
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
     /**
      * The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
      */
-    timeSelector?: pulumi.Input<string | enums.TimeSelectorEnum>;
+    timeSelector?: pulumi.Input<string | enums.TimeSelectorEnum | undefined>;
 }
 
 /**
@@ -178,19 +178,19 @@ export interface SchemaArgs {
     /**
      * A list of table custom columns.
      */
-    columns?: pulumi.Input<pulumi.Input<ColumnArgs>[]>;
+    columns?: pulumi.Input<pulumi.Input<ColumnArgs>[] | undefined>;
     /**
      * Table description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Table display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Table name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,23 +200,23 @@ export interface SearchResultsArgs {
     /**
      * Search job Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The timestamp to end the search by (UTC)
      */
-    endSearchTime?: pulumi.Input<string>;
+    endSearchTime?: pulumi.Input<string | undefined>;
     /**
      * Limit the search job to return up to specified number of rows.
      */
-    limit?: pulumi.Input<number>;
+    limit?: pulumi.Input<number | undefined>;
     /**
      * Search job query.
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
     /**
      * The timestamp to start the search from (UTC)
      */
-    startSearchTime?: pulumi.Input<string>;
+    startSearchTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -254,7 +254,7 @@ export interface WorkspaceCappingArgs {
     /**
      * The workspace daily quota for ingestion.
      */
-    dailyQuotaGb?: pulumi.Input<number>;
+    dailyQuotaGb?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -264,23 +264,23 @@ export interface WorkspaceFeaturesArgs {
     /**
      * Dedicated LA cluster resourceId that is linked to the workspaces.
      */
-    clusterResourceId?: pulumi.Input<string>;
+    clusterResourceId?: pulumi.Input<string | undefined>;
     /**
      * Disable Non-AAD based Auth.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Flag that indicate if data should be exported.
      */
-    enableDataExport?: pulumi.Input<boolean>;
+    enableDataExport?: pulumi.Input<boolean | undefined>;
     /**
      * Flag that indicate which permission to use - resource or workspace or both.
      */
-    enableLogAccessUsingOnlyResourcePermissions?: pulumi.Input<boolean>;
+    enableLogAccessUsingOnlyResourcePermissions?: pulumi.Input<boolean | undefined>;
     /**
      * Flag that describes if we want to remove the data after 30 days.
      */
-    immediatePurgeDataOn30Days?: pulumi.Input<boolean>;
+    immediatePurgeDataOn30Days?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -290,7 +290,7 @@ export interface WorkspaceSkuArgs {
     /**
      * The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
      */
-    capacityReservationLevel?: pulumi.Input<number>;
+    capacityReservationLevel?: pulumi.Input<number | undefined>;
     /**
      * The name of the SKU.
      */

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class JobAgent extends pulumi.CustomResource {
     /**
@@ -116,7 +116,7 @@ export class JobAgent extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:JobAgent" }, { type: "azure-native:sql/v20200202preview:JobAgent" }, { type: "azure-native:sql/v20200801preview:JobAgent" }, { type: "azure-native:sql/v20201101preview:JobAgent" }, { type: "azure-native:sql/v20210201preview:JobAgent" }, { type: "azure-native:sql/v20210501preview:JobAgent" }, { type: "azure-native:sql/v20210801preview:JobAgent" }, { type: "azure-native:sql/v20211101:JobAgent" }, { type: "azure-native:sql/v20211101preview:JobAgent" }, { type: "azure-native:sql/v20220201preview:JobAgent" }, { type: "azure-native:sql/v20220501preview:JobAgent" }, { type: "azure-native:sql/v20220801preview:JobAgent" }, { type: "azure-native:sql/v20221101preview:JobAgent" }, { type: "azure-native:sql/v20230201preview:JobAgent" }, { type: "azure-native:sql/v20230501preview:JobAgent" }, { type: "azure-native:sql/v20230801:JobAgent" }, { type: "azure-native:sql/v20230801preview:JobAgent" }, { type: "azure-native:sql/v20240501preview:JobAgent" }, { type: "azure-native:sql/v20241101preview:JobAgent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:JobAgent" }, { type: "azure-native:sql/v20200202preview:JobAgent" }, { type: "azure-native:sql/v20200801preview:JobAgent" }, { type: "azure-native:sql/v20201101preview:JobAgent" }, { type: "azure-native:sql/v20210201preview:JobAgent" }, { type: "azure-native:sql/v20210501preview:JobAgent" }, { type: "azure-native:sql/v20210801preview:JobAgent" }, { type: "azure-native:sql/v20211101:JobAgent" }, { type: "azure-native:sql/v20211101preview:JobAgent" }, { type: "azure-native:sql/v20220201preview:JobAgent" }, { type: "azure-native:sql/v20220501preview:JobAgent" }, { type: "azure-native:sql/v20220801preview:JobAgent" }, { type: "azure-native:sql/v20221101preview:JobAgent" }, { type: "azure-native:sql/v20230201preview:JobAgent" }, { type: "azure-native:sql/v20230501preview:JobAgent" }, { type: "azure-native:sql/v20230801:JobAgent" }, { type: "azure-native:sql/v20230801preview:JobAgent" }, { type: "azure-native:sql/v20240501preview:JobAgent" }, { type: "azure-native:sql/v20241101preview:JobAgent" }, { type: "azure-native:sql/v20250101:JobAgent" }, { type: "azure-native:sql/v20250201preview:JobAgent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(JobAgent.__pulumiType, name, resourceInputs, opts);
     }
@@ -133,15 +133,15 @@ export interface JobAgentArgs {
     /**
      * The identity of the job agent.
      */
-    identity?: pulumi.Input<types.inputs.JobAgentIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.JobAgentIdentityArgs | undefined>;
     /**
      * The name of the job agent to be created or updated.
      */
-    jobAgentName?: pulumi.Input<string>;
+    jobAgentName?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -153,9 +153,9 @@ export interface JobAgentArgs {
     /**
      * The name and tier of the SKU.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

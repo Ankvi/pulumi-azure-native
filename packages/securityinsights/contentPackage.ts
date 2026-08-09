@@ -255,11 +255,11 @@ export interface ContentPackageArgs {
     /**
      * The author of the package
      */
-    author?: pulumi.Input<types.inputs.MetadataAuthorArgs>;
+    author?: pulumi.Input<types.inputs.MetadataAuthorArgs | undefined>;
     /**
      * The categories of the package
      */
-    categories?: pulumi.Input<types.inputs.MetadataCategoriesArgs>;
+    categories?: pulumi.Input<types.inputs.MetadataCategoriesArgs | undefined>;
     /**
      * The content id of the package
      */
@@ -275,15 +275,15 @@ export interface ContentPackageArgs {
     /**
      * The version of the content schema.
      */
-    contentSchemaVersion?: pulumi.Input<string>;
+    contentSchemaVersion?: pulumi.Input<string | undefined>;
     /**
      * The support tier of the package
      */
-    dependencies?: pulumi.Input<types.inputs.MetadataDependenciesArgs>;
+    dependencies?: pulumi.Input<types.inputs.MetadataDependenciesArgs | undefined>;
     /**
      * The description of the package
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the package
      */
@@ -291,43 +291,43 @@ export interface ContentPackageArgs {
     /**
      * first publish date package item
      */
-    firstPublishDate?: pulumi.Input<string>;
+    firstPublishDate?: pulumi.Input<string | undefined>;
     /**
      * the icon identifier. this id can later be fetched from the content metadata
      */
-    icon?: pulumi.Input<string>;
+    icon?: pulumi.Input<string | undefined>;
     /**
      * Flag indicates if this template is deprecated
      */
-    isDeprecated?: pulumi.Input<string | types.enums.Flag>;
+    isDeprecated?: pulumi.Input<string | types.enums.Flag | undefined>;
     /**
      * Flag indicates if this package is among the featured list.
      */
-    isFeatured?: pulumi.Input<string | types.enums.Flag>;
+    isFeatured?: pulumi.Input<string | types.enums.Flag | undefined>;
     /**
      * Flag indicates if this is a newly published package.
      */
-    isNew?: pulumi.Input<string | types.enums.Flag>;
+    isNew?: pulumi.Input<string | types.enums.Flag | undefined>;
     /**
      * Flag indicates if this package is in preview.
      */
-    isPreview?: pulumi.Input<string | types.enums.Flag>;
+    isPreview?: pulumi.Input<string | types.enums.Flag | undefined>;
     /**
      * last publish date for the package item
      */
-    lastPublishDate?: pulumi.Input<string>;
+    lastPublishDate?: pulumi.Input<string | undefined>;
     /**
      * package Id
      */
-    packageId?: pulumi.Input<string>;
+    packageId?: pulumi.Input<string | undefined>;
     /**
      * Providers for the package item
      */
-    providers?: pulumi.Input<pulumi.Input<string>[]>;
+    providers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The publisher display name of the package
      */
-    publisherDisplayName?: pulumi.Input<string>;
+    publisherDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -335,19 +335,19 @@ export interface ContentPackageArgs {
     /**
      * The source of the package
      */
-    source?: pulumi.Input<types.inputs.MetadataSourceArgs>;
+    source?: pulumi.Input<types.inputs.MetadataSourceArgs | undefined>;
     /**
      * The support tier of the package
      */
-    support?: pulumi.Input<types.inputs.MetadataSupportArgs>;
+    support?: pulumi.Input<types.inputs.MetadataSupportArgs | undefined>;
     /**
      * the tactics the resource covers
      */
-    threatAnalysisTactics?: pulumi.Input<pulumi.Input<string>[]>;
+    threatAnalysisTactics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * the techniques the resource covers, these have to be aligned with the tactics being used
      */
-    threatAnalysisTechniques?: pulumi.Input<pulumi.Input<string>[]>;
+    threatAnalysisTechniques?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * the latest version number of the package
      */

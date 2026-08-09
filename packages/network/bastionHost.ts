@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class BastionHost extends pulumi.CustomResource {
     /**
@@ -151,7 +151,7 @@ export class BastionHost extends pulumi.CustomResource {
             resourceInputs["networkAcls"] = args?.networkAcls;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["scaleUnits"] = args?.scaleUnits;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.skuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? pulumi.output(args.sku).apply(v => v === undefined ? undefined : types.inputs.skuArgsProvideDefaults(v)) : undefined;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["virtualNetwork"] = args?.virtualNetwork;
             resourceInputs["zones"] = args?.zones;
@@ -185,7 +185,7 @@ export class BastionHost extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20190401:BastionHost" }, { type: "azure-native:network/v20190601:BastionHost" }, { type: "azure-native:network/v20190701:BastionHost" }, { type: "azure-native:network/v20190801:BastionHost" }, { type: "azure-native:network/v20190901:BastionHost" }, { type: "azure-native:network/v20191101:BastionHost" }, { type: "azure-native:network/v20191201:BastionHost" }, { type: "azure-native:network/v20200301:BastionHost" }, { type: "azure-native:network/v20200401:BastionHost" }, { type: "azure-native:network/v20200501:BastionHost" }, { type: "azure-native:network/v20200601:BastionHost" }, { type: "azure-native:network/v20200701:BastionHost" }, { type: "azure-native:network/v20200801:BastionHost" }, { type: "azure-native:network/v20201101:BastionHost" }, { type: "azure-native:network/v20210201:BastionHost" }, { type: "azure-native:network/v20210301:BastionHost" }, { type: "azure-native:network/v20210501:BastionHost" }, { type: "azure-native:network/v20210801:BastionHost" }, { type: "azure-native:network/v20220101:BastionHost" }, { type: "azure-native:network/v20220501:BastionHost" }, { type: "azure-native:network/v20220701:BastionHost" }, { type: "azure-native:network/v20220901:BastionHost" }, { type: "azure-native:network/v20221101:BastionHost" }, { type: "azure-native:network/v20230201:BastionHost" }, { type: "azure-native:network/v20230401:BastionHost" }, { type: "azure-native:network/v20230501:BastionHost" }, { type: "azure-native:network/v20230601:BastionHost" }, { type: "azure-native:network/v20230901:BastionHost" }, { type: "azure-native:network/v20231101:BastionHost" }, { type: "azure-native:network/v20240101:BastionHost" }, { type: "azure-native:network/v20240301:BastionHost" }, { type: "azure-native:network/v20240501:BastionHost" }, { type: "azure-native:network/v20240701:BastionHost" }, { type: "azure-native:network/v20241001:BastionHost" }, { type: "azure-native:network/v20250101:BastionHost" }, { type: "azure-native:network/v20250301:BastionHost" }, { type: "azure-native:network/v20250501:BastionHost" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20190401:BastionHost" }, { type: "azure-native:network/v20190601:BastionHost" }, { type: "azure-native:network/v20190701:BastionHost" }, { type: "azure-native:network/v20190801:BastionHost" }, { type: "azure-native:network/v20190901:BastionHost" }, { type: "azure-native:network/v20191101:BastionHost" }, { type: "azure-native:network/v20191201:BastionHost" }, { type: "azure-native:network/v20200301:BastionHost" }, { type: "azure-native:network/v20200401:BastionHost" }, { type: "azure-native:network/v20200501:BastionHost" }, { type: "azure-native:network/v20200601:BastionHost" }, { type: "azure-native:network/v20200701:BastionHost" }, { type: "azure-native:network/v20200801:BastionHost" }, { type: "azure-native:network/v20201101:BastionHost" }, { type: "azure-native:network/v20210201:BastionHost" }, { type: "azure-native:network/v20210301:BastionHost" }, { type: "azure-native:network/v20210501:BastionHost" }, { type: "azure-native:network/v20210801:BastionHost" }, { type: "azure-native:network/v20220101:BastionHost" }, { type: "azure-native:network/v20220501:BastionHost" }, { type: "azure-native:network/v20220701:BastionHost" }, { type: "azure-native:network/v20220901:BastionHost" }, { type: "azure-native:network/v20221101:BastionHost" }, { type: "azure-native:network/v20230201:BastionHost" }, { type: "azure-native:network/v20230401:BastionHost" }, { type: "azure-native:network/v20230501:BastionHost" }, { type: "azure-native:network/v20230601:BastionHost" }, { type: "azure-native:network/v20230901:BastionHost" }, { type: "azure-native:network/v20231101:BastionHost" }, { type: "azure-native:network/v20240101:BastionHost" }, { type: "azure-native:network/v20240301:BastionHost" }, { type: "azure-native:network/v20240501:BastionHost" }, { type: "azure-native:network/v20240701:BastionHost" }, { type: "azure-native:network/v20241001:BastionHost" }, { type: "azure-native:network/v20250101:BastionHost" }, { type: "azure-native:network/v20250301:BastionHost" }, { type: "azure-native:network/v20250501:BastionHost" }, { type: "azure-native:network/v20250701:BastionHost" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(BastionHost.__pulumiType, name, resourceInputs, opts);
     }
@@ -198,56 +198,56 @@ export interface BastionHostArgs {
     /**
      * The name of the Bastion Host.
      */
-    bastionHostName?: pulumi.Input<string>;
+    bastionHostName?: pulumi.Input<string | undefined>;
     /**
      * Enable/Disable Copy/Paste feature of the Bastion Host resource.
      */
-    disableCopyPaste?: pulumi.Input<boolean>;
+    disableCopyPaste?: pulumi.Input<boolean | undefined>;
     /**
      * FQDN for the endpoint on which bastion host is accessible.
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * Enable/Disable File Copy feature of the Bastion Host resource.
      */
-    enableFileCopy?: pulumi.Input<boolean>;
+    enableFileCopy?: pulumi.Input<boolean | undefined>;
     /**
      * Enable/Disable IP Connect feature of the Bastion Host resource.
      */
-    enableIpConnect?: pulumi.Input<boolean>;
+    enableIpConnect?: pulumi.Input<boolean | undefined>;
     /**
      * Enable/Disable Kerberos feature of the Bastion Host resource.
      */
-    enableKerberos?: pulumi.Input<boolean>;
+    enableKerberos?: pulumi.Input<boolean | undefined>;
     /**
      * Enable/Disable Private Only feature of the Bastion Host resource.
      */
-    enablePrivateOnlyBastion?: pulumi.Input<boolean>;
+    enablePrivateOnlyBastion?: pulumi.Input<boolean | undefined>;
     /**
      * Enable/Disable Session Recording feature of the Bastion Host resource.
      */
-    enableSessionRecording?: pulumi.Input<boolean>;
+    enableSessionRecording?: pulumi.Input<boolean | undefined>;
     /**
      * Enable/Disable Shareable Link of the Bastion Host resource.
      */
-    enableShareableLink?: pulumi.Input<boolean>;
+    enableShareableLink?: pulumi.Input<boolean | undefined>;
     /**
      * Enable/Disable Tunneling feature of the Bastion Host resource.
      */
-    enableTunneling?: pulumi.Input<boolean>;
+    enableTunneling?: pulumi.Input<boolean | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * IP configuration of the Bastion Host resource.
      */
-    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.BastionHostIPConfigurationArgs>[]>;
+    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.BastionHostIPConfigurationArgs>[] | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
-    networkAcls?: pulumi.Input<types.inputs.BastionHostPropertiesFormatNetworkAclsArgs>;
+    location?: pulumi.Input<string | undefined>;
+    networkAcls?: pulumi.Input<types.inputs.BastionHostPropertiesFormatNetworkAclsArgs | undefined>;
     /**
      * The name of the resource group.
      */
@@ -255,21 +255,21 @@ export interface BastionHostArgs {
     /**
      * The scale units for the Bastion Host resource.
      */
-    scaleUnits?: pulumi.Input<number>;
+    scaleUnits?: pulumi.Input<number | undefined>;
     /**
      * The sku of this Bastion Host.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Reference to an existing virtual network required for Developer Bastion Host only.
      */
-    virtualNetwork?: pulumi.Input<types.inputs.SubResourceArgs>;
+    virtualNetwork?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * A list of availability zones denoting where the resource needs to come from.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

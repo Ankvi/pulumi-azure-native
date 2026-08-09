@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-12-01-preview.
  *
- * Other available API versions: 2023-11-15-preview, 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-11-15-preview, 2024-02-15-preview, 2024-05-15-preview, 2024-09-01-preview, 2025-05-01-preview, 2025-11-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ThroughputPoolAccount extends pulumi.CustomResource {
     /**
@@ -107,7 +107,7 @@ export class ThroughputPoolAccount extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cosmosdb/v20231115preview:ThroughputPoolAccount" }, { type: "azure-native:cosmosdb/v20240215preview:ThroughputPoolAccount" }, { type: "azure-native:cosmosdb/v20240515preview:ThroughputPoolAccount" }, { type: "azure-native:cosmosdb/v20240901preview:ThroughputPoolAccount" }, { type: "azure-native:cosmosdb/v20241201preview:ThroughputPoolAccount" }, { type: "azure-native:cosmosdb/v20250501preview:ThroughputPoolAccount" }, { type: "azure-native:cosmosdb/v20251101preview:ThroughputPoolAccount" }, { type: "azure-native:documentdb/v20231115preview:ThroughputPoolAccount" }, { type: "azure-native:documentdb/v20240215preview:ThroughputPoolAccount" }, { type: "azure-native:documentdb/v20240515preview:ThroughputPoolAccount" }, { type: "azure-native:documentdb/v20240901preview:ThroughputPoolAccount" }, { type: "azure-native:documentdb/v20241201preview:ThroughputPoolAccount" }, { type: "azure-native:documentdb:ThroughputPoolAccount" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cosmosdb/v20231115preview:ThroughputPoolAccount" }, { type: "azure-native:cosmosdb/v20240215preview:ThroughputPoolAccount" }, { type: "azure-native:cosmosdb/v20240515preview:ThroughputPoolAccount" }, { type: "azure-native:cosmosdb/v20240901preview:ThroughputPoolAccount" }, { type: "azure-native:cosmosdb/v20241201preview:ThroughputPoolAccount" }, { type: "azure-native:cosmosdb/v20250501preview:ThroughputPoolAccount" }, { type: "azure-native:cosmosdb/v20251101preview:ThroughputPoolAccount" }, { type: "azure-native:cosmosdb/v20260401preview:ThroughputPoolAccount" }, { type: "azure-native:documentdb/v20231115preview:ThroughputPoolAccount" }, { type: "azure-native:documentdb/v20240215preview:ThroughputPoolAccount" }, { type: "azure-native:documentdb/v20240515preview:ThroughputPoolAccount" }, { type: "azure-native:documentdb/v20240901preview:ThroughputPoolAccount" }, { type: "azure-native:documentdb/v20241201preview:ThroughputPoolAccount" }, { type: "azure-native:documentdb:ThroughputPoolAccount" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ThroughputPoolAccount.__pulumiType, name, resourceInputs, opts);
     }
@@ -120,11 +120,11 @@ export interface ThroughputPoolAccountArgs {
     /**
      * The location of  global database account in the throughputPool.
      */
-    accountLocation?: pulumi.Input<string>;
+    accountLocation?: pulumi.Input<string | undefined>;
     /**
      * The resource identifier of global database account in the throughputPool.
      */
-    accountResourceIdentifier?: pulumi.Input<string>;
+    accountResourceIdentifier?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -132,7 +132,7 @@ export interface ThroughputPoolAccountArgs {
     /**
      * Cosmos DB global database account in a Throughput Pool
      */
-    throughputPoolAccountName?: pulumi.Input<string>;
+    throughputPoolAccountName?: pulumi.Input<string | undefined>;
     /**
      * Cosmos DB Throughput Pool name.
      */

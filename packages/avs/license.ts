@@ -100,7 +100,7 @@ export interface LicenseArgs {
     /**
      * Name of the license.
      */
-    licenseName?: pulumi.Input<string>;
+    licenseName?: pulumi.Input<string | undefined>;
     /**
      * Name of the private cloud
      */
@@ -108,7 +108,7 @@ export interface LicenseArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.VmwareFirewallLicensePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.VmwareFirewallLicensePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

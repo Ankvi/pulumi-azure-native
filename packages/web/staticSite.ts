@@ -2,11 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Static Site ARM resource.
+ * Concrete tracked resource types can be created by aliasing this type using a specific property type.
  *
- * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+ * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class StaticSite extends pulumi.CustomResource {
     /**
@@ -80,7 +80,7 @@ export class StaticSite extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly keyVaultReferenceIdentity: pulumi.Output<string>;
     /**
-     * Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+     * Kind of resource.
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
@@ -88,11 +88,11 @@ export class StaticSite extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly linkedBackends: pulumi.Output<types.outputs.StaticSiteLinkedBackendResponse[]>;
     /**
-     * Resource Location.
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string>;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -124,6 +124,10 @@ export class StaticSite extends pulumi.CustomResource {
      */
     declare public readonly stagingEnvironmentPolicy: pulumi.Output<string | undefined>;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
      * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
@@ -132,7 +136,7 @@ export class StaticSite extends pulumi.CustomResource {
      */
     declare public readonly templateProperties: pulumi.Output<types.outputs.StaticSiteTemplateOptionsResponse | undefined>;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -179,6 +183,7 @@ export class StaticSite extends pulumi.CustomResource {
             resourceInputs["keyVaultReferenceIdentity"] = undefined /*out*/;
             resourceInputs["linkedBackends"] = undefined /*out*/;
             resourceInputs["privateEndpointConnections"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["userProvidedFunctionApps"] = undefined /*out*/;
         } else {
@@ -204,13 +209,14 @@ export class StaticSite extends pulumi.CustomResource {
             resourceInputs["repositoryUrl"] = undefined /*out*/;
             resourceInputs["sku"] = undefined /*out*/;
             resourceInputs["stagingEnvironmentPolicy"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["templateProperties"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["userProvidedFunctionApps"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20190801:StaticSite" }, { type: "azure-native:web/v20200601:StaticSite" }, { type: "azure-native:web/v20200901:StaticSite" }, { type: "azure-native:web/v20201001:StaticSite" }, { type: "azure-native:web/v20201201:StaticSite" }, { type: "azure-native:web/v20210101:StaticSite" }, { type: "azure-native:web/v20210115:StaticSite" }, { type: "azure-native:web/v20210201:StaticSite" }, { type: "azure-native:web/v20210301:StaticSite" }, { type: "azure-native:web/v20220301:StaticSite" }, { type: "azure-native:web/v20220901:StaticSite" }, { type: "azure-native:web/v20230101:StaticSite" }, { type: "azure-native:web/v20231201:StaticSite" }, { type: "azure-native:web/v20240401:StaticSite" }, { type: "azure-native:web/v20241101:StaticSite" }, { type: "azure-native:web/v20250301:StaticSite" }, { type: "azure-native:web/v20250501:StaticSite" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20190801:StaticSite" }, { type: "azure-native:web/v20200601:StaticSite" }, { type: "azure-native:web/v20200901:StaticSite" }, { type: "azure-native:web/v20201001:StaticSite" }, { type: "azure-native:web/v20201201:StaticSite" }, { type: "azure-native:web/v20210101:StaticSite" }, { type: "azure-native:web/v20210115:StaticSite" }, { type: "azure-native:web/v20210201:StaticSite" }, { type: "azure-native:web/v20210301:StaticSite" }, { type: "azure-native:web/v20220301:StaticSite" }, { type: "azure-native:web/v20220901:StaticSite" }, { type: "azure-native:web/v20230101:StaticSite" }, { type: "azure-native:web/v20231201:StaticSite" }, { type: "azure-native:web/v20240401:StaticSite" }, { type: "azure-native:web/v20241101:StaticSite" }, { type: "azure-native:web/v20250301:StaticSite" }, { type: "azure-native:web/v20250501:StaticSite" }, { type: "azure-native:web/v20260301preview:StaticSite" }, { type: "azure-native:web/v20260315:StaticSite" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StaticSite.__pulumiType, name, resourceInputs, opts);
     }
@@ -223,69 +229,69 @@ export interface StaticSiteArgs {
     /**
      * <code>false</code> if config file is locked for this static web app; otherwise, <code>true</code>.
      */
-    allowConfigFileUpdates?: pulumi.Input<boolean>;
+    allowConfigFileUpdates?: pulumi.Input<boolean | undefined>;
     /**
      * The target branch in the repository.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Build properties to configure on the repository.
      */
-    buildProperties?: pulumi.Input<types.inputs.StaticSiteBuildPropertiesArgs>;
+    buildProperties?: pulumi.Input<types.inputs.StaticSiteBuildPropertiesArgs | undefined>;
     /**
      * State indicating the status of the enterprise grade CDN serving traffic to the static web app.
      */
-    enterpriseGradeCdnStatus?: pulumi.Input<string | types.enums.EnterpriseGradeCdnStatus>;
+    enterpriseGradeCdnStatus?: pulumi.Input<string | types.enums.EnterpriseGradeCdnStatus | undefined>;
     /**
      * Managed service identity.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
-     * Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+     * Kind of resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
-     * Resource Location.
+     * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
-     * Name of the static site to create or update.
+     * Name of the static site.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The provider that submitted the last deployment to the primary environment of the static site.
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
     /**
      * State indicating whether public traffic are allowed or not for a static web app. Allowed Values: 'Enabled', 'Disabled' or an empty string.
      */
-    publicNetworkAccess?: pulumi.Input<string>;
+    publicNetworkAccess?: pulumi.Input<string | undefined>;
     /**
      * A user's github repository token. This is used to setup the Github Actions workflow file and API secrets.
      */
-    repositoryToken?: pulumi.Input<string>;
+    repositoryToken?: pulumi.Input<string | undefined>;
     /**
      * URL for the repository of the static site.
      */
-    repositoryUrl?: pulumi.Input<string>;
+    repositoryUrl?: pulumi.Input<string | undefined>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * Description of a SKU for a scalable resource.
      */
-    sku?: pulumi.Input<types.inputs.SkuDescriptionArgs>;
+    sku?: pulumi.Input<types.inputs.SkuDescriptionArgs | undefined>;
     /**
      * State indicating whether staging environments are allowed or not allowed for a static web app.
      */
-    stagingEnvironmentPolicy?: pulumi.Input<types.enums.StagingEnvironmentPolicy>;
+    stagingEnvironmentPolicy?: pulumi.Input<types.enums.StagingEnvironmentPolicy | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Template options for generating a new repository.
      */
-    templateProperties?: pulumi.Input<types.inputs.StaticSiteTemplateOptionsArgs>;
+    templateProperties?: pulumi.Input<types.inputs.StaticSiteTemplateOptionsArgs | undefined>;
 }

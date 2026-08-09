@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview, 2025-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AFDOriginGroup extends pulumi.CustomResource {
     /**
@@ -127,7 +127,7 @@ export class AFDOriginGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:AFDOriginGroup" }, { type: "azure-native:cdn/v20210601:AFDOriginGroup" }, { type: "azure-native:cdn/v20220501preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20221101preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20230501:AFDOriginGroup" }, { type: "azure-native:cdn/v20230701preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20240201:AFDOriginGroup" }, { type: "azure-native:cdn/v20240501preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20240601preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20240901:AFDOriginGroup" }, { type: "azure-native:cdn/v20250101preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20250415:AFDOriginGroup" }, { type: "azure-native:cdn/v20250601:AFDOriginGroup" }, { type: "azure-native:cdn/v20250701preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20250901preview:AFDOriginGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:AFDOriginGroup" }, { type: "azure-native:cdn/v20210601:AFDOriginGroup" }, { type: "azure-native:cdn/v20220501preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20221101preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20230501:AFDOriginGroup" }, { type: "azure-native:cdn/v20230701preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20240201:AFDOriginGroup" }, { type: "azure-native:cdn/v20240501preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20240601preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20240901:AFDOriginGroup" }, { type: "azure-native:cdn/v20250101preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20250415:AFDOriginGroup" }, { type: "azure-native:cdn/v20250601:AFDOriginGroup" }, { type: "azure-native:cdn/v20250701preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20250901preview:AFDOriginGroup" }, { type: "azure-native:cdn/v20251201:AFDOriginGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AFDOriginGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -140,19 +140,19 @@ export interface AFDOriginGroupArgs {
     /**
      * Authentication settings for origin in origin group.
      */
-    authentication?: pulumi.Input<types.inputs.OriginAuthenticationPropertiesArgs>;
+    authentication?: pulumi.Input<types.inputs.OriginAuthenticationPropertiesArgs | undefined>;
     /**
      * Health probe settings to the origin that is used to determine the health of the origin.
      */
-    healthProbeSettings?: pulumi.Input<types.inputs.HealthProbeParametersArgs>;
+    healthProbeSettings?: pulumi.Input<types.inputs.HealthProbeParametersArgs | undefined>;
     /**
      * Load balancing settings for a backend pool
      */
-    loadBalancingSettings?: pulumi.Input<types.inputs.LoadBalancingSettingsParametersArgs>;
+    loadBalancingSettings?: pulumi.Input<types.inputs.LoadBalancingSettingsParametersArgs | undefined>;
     /**
      * Name of the origin group which is unique within the endpoint.
      */
-    originGroupName?: pulumi.Input<string>;
+    originGroupName?: pulumi.Input<string | undefined>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
@@ -164,9 +164,9 @@ export interface AFDOriginGroupArgs {
     /**
      * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
      */
-    sessionAffinityState?: pulumi.Input<string | types.enums.EnabledState>;
+    sessionAffinityState?: pulumi.Input<string | types.enums.EnabledState | undefined>;
     /**
      * Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
      */
-    trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: pulumi.Input<number>;
+    trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: pulumi.Input<number | undefined>;
 }

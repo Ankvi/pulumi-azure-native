@@ -77,7 +77,7 @@ export class GatewayRouteConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["gatewayName"] = args?.gatewayName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.gatewayRouteConfigPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.gatewayRouteConfigPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["routeConfigName"] = args?.routeConfigName;
             resourceInputs["serviceName"] = args?.serviceName;
@@ -110,7 +110,7 @@ export interface GatewayRouteConfigArgs {
     /**
      * API route config of the Spring Cloud Gateway
      */
-    properties?: pulumi.Input<types.inputs.GatewayRouteConfigPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.GatewayRouteConfigPropertiesArgs | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -118,7 +118,7 @@ export interface GatewayRouteConfigArgs {
     /**
      * The name of the Spring Cloud Gateway route config.
      */
-    routeConfigName?: pulumi.Input<string>;
+    routeConfigName?: pulumi.Input<string | undefined>;
     /**
      * The name of the Service resource.
      */

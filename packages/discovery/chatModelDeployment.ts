@@ -5,6 +5,8 @@ import * as types from "./types";
  * Represents a deployment that ties a specific model family to a user defined deployment name used when invoking the chat model.
  *
  * Uses Azure REST API version 2026-02-01-preview.
+ *
+ * Other available API versions: 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native discovery [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ChatModelDeployment extends pulumi.CustomResource {
     /**
@@ -99,7 +101,7 @@ export class ChatModelDeployment extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:discovery/v20260201preview:ChatModelDeployment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:discovery/v20260201preview:ChatModelDeployment" }, { type: "azure-native:discovery/v20260601:ChatModelDeployment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ChatModelDeployment.__pulumiType, name, resourceInputs, opts);
     }
@@ -112,15 +114,15 @@ export interface ChatModelDeploymentArgs {
     /**
      * The name of the ChatModelDeployment
      */
-    chatModelDeploymentName?: pulumi.Input<string>;
+    chatModelDeploymentName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.ChatModelDeploymentPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ChatModelDeploymentPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -128,7 +130,7 @@ export interface ChatModelDeploymentArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the Workspace
      */

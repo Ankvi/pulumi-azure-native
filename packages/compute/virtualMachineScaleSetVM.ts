@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualMachineScaleSetVM extends pulumi.CustomResource {
     /**
@@ -250,7 +250,7 @@ export class VirtualMachineScaleSetVM extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20171201:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20180401:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20180601:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20181001:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20190301:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20190701:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20191201:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20200601:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20201201:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20210301:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20210401:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20210701:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20211101:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20220301:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20220801:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20221101:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20230301:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20230701:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20230901:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20240301:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20240701:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20241101:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20250401:VirtualMachineScaleSetVM" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20171201:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20180401:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20180601:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20181001:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20190301:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20190701:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20191201:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20200601:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20201201:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20210301:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20210401:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20210701:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20211101:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20220301:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20220801:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20221101:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20230301:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20230701:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20230901:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20240301:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20240701:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20241101:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20250401:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20251101:VirtualMachineScaleSetVM" }, { type: "azure-native:compute/v20260301:VirtualMachineScaleSetVM" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualMachineScaleSetVM.__pulumiType, name, resourceInputs, opts);
     }
@@ -263,59 +263,59 @@ export interface VirtualMachineScaleSetVMArgs {
     /**
      * Specifies additional capabilities enabled or disabled on the virtual machine in the scale set. For instance: whether the virtual machine has the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
      */
-    additionalCapabilities?: pulumi.Input<types.inputs.AdditionalCapabilitiesArgs>;
+    additionalCapabilities?: pulumi.Input<types.inputs.AdditionalCapabilitiesArgs | undefined>;
     /**
      * Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
      */
-    availabilitySet?: pulumi.Input<types.inputs.SubResourceArgs>;
+    availabilitySet?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
      */
-    diagnosticsProfile?: pulumi.Input<types.inputs.DiagnosticsProfileArgs>;
+    diagnosticsProfile?: pulumi.Input<types.inputs.DiagnosticsProfileArgs | undefined>;
     /**
      * Specifies the hardware settings for the virtual machine.
      */
-    hardwareProfile?: pulumi.Input<types.inputs.HardwareProfileArgs>;
+    hardwareProfile?: pulumi.Input<types.inputs.HardwareProfileArgs | undefined>;
     /**
      * The identity of the virtual machine, if configured.
      */
-    identity?: pulumi.Input<types.inputs.VirtualMachineIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.VirtualMachineIdentityArgs | undefined>;
     /**
      * The instance ID of the virtual machine.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
      */
-    licenseType?: pulumi.Input<string>;
+    licenseType?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Specifies the network interfaces of the virtual machine.
      */
-    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs | undefined>;
     /**
      * Specifies the network profile configuration of the virtual machine.
      */
-    networkProfileConfiguration?: pulumi.Input<types.inputs.VirtualMachineScaleSetVMNetworkProfileConfigurationArgs>;
+    networkProfileConfiguration?: pulumi.Input<types.inputs.VirtualMachineScaleSetVMNetworkProfileConfigurationArgs | undefined>;
     /**
      * Specifies the operating system settings for the virtual machine.
      */
-    osProfile?: pulumi.Input<types.inputs.OSProfileArgs>;
+    osProfile?: pulumi.Input<types.inputs.OSProfileArgs | undefined>;
     /**
      * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
      */
-    plan?: pulumi.Input<types.inputs.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs | undefined>;
     /**
      * Specifies the protection policy of the virtual machine.
      */
-    protectionPolicy?: pulumi.Input<types.inputs.VirtualMachineScaleSetVMProtectionPolicyArgs>;
+    protectionPolicy?: pulumi.Input<types.inputs.VirtualMachineScaleSetVMProtectionPolicyArgs | undefined>;
     /**
      * Specifies the resilient VM deletion status for the virtual machine.
      */
-    resilientVMDeletionStatus?: pulumi.Input<string | types.enums.ResilientVMDeletionStatus>;
+    resilientVMDeletionStatus?: pulumi.Input<string | types.enums.ResilientVMDeletionStatus | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -323,19 +323,19 @@ export interface VirtualMachineScaleSetVMArgs {
     /**
      * Specifies the Security related profile settings for the virtual machine.
      */
-    securityProfile?: pulumi.Input<types.inputs.SecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.SecurityProfileArgs | undefined>;
     /**
      * Specifies the storage settings for the virtual machine disks.
      */
-    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * The name of the VM scale set.
      */

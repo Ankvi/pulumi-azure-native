@@ -7,14 +7,14 @@ export interface AnalyticalStorageConfigurationArgs {
     /**
      * Describes the types of schema for analytical storage.
      */
-    schemaType?: pulumi.Input<string | enums.AnalyticalStorageSchemaType>;
+    schemaType?: pulumi.Input<string | enums.AnalyticalStorageSchemaType | undefined>;
 }
 
 export interface ApiPropertiesArgs {
     /**
      * Describes the version of the MongoDB account.
      */
-    serverVersion?: pulumi.Input<string | enums.ServerVersion>;
+    serverVersion?: pulumi.Input<string | enums.ServerVersion | undefined>;
 }
 
 /**
@@ -24,39 +24,39 @@ export interface AuthenticationMethodLdapPropertiesArgs {
     /**
      * Timeout for connecting to the LDAP server in miliseconds. The default is 5000 ms.
      */
-    connectionTimeoutInMs?: pulumi.Input<number>;
+    connectionTimeoutInMs?: pulumi.Input<number | undefined>;
     /**
      * Distinguished name of the object to start the recursive search of users from.
      */
-    searchBaseDistinguishedName?: pulumi.Input<string>;
+    searchBaseDistinguishedName?: pulumi.Input<string | undefined>;
     /**
      * Template to use for searching. Defaults to (cn=%s) where %s will be replaced by the username used to login.
      */
-    searchFilterTemplate?: pulumi.Input<string>;
-    serverCertificates?: pulumi.Input<pulumi.Input<CertificateArgs>[]>;
+    searchFilterTemplate?: pulumi.Input<string | undefined>;
+    serverCertificates?: pulumi.Input<pulumi.Input<CertificateArgs>[] | undefined>;
     /**
      * Hostname of the LDAP server.
      */
-    serverHostname?: pulumi.Input<string>;
+    serverHostname?: pulumi.Input<string | undefined>;
     /**
      * Port of the LDAP server.
      */
-    serverPort?: pulumi.Input<number>;
+    serverPort?: pulumi.Input<number | undefined>;
     /**
      * Distinguished name of the look up user account, who can look up user details on authentication.
      */
-    serviceUserDistinguishedName?: pulumi.Input<string>;
+    serviceUserDistinguishedName?: pulumi.Input<string | undefined>;
     /**
      * Password of the look up user.
      */
-    serviceUserPassword?: pulumi.Input<string>;
+    serviceUserPassword?: pulumi.Input<string | undefined>;
 }
 
 export interface AutoscaleSettingsArgs {
     /**
      * Represents maximum throughput, the resource can scale up to.
      */
-    maxThroughput?: pulumi.Input<number>;
+    maxThroughput?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -66,15 +66,15 @@ export interface BackupPolicyMigrationStateArgs {
     /**
      * Time at which the backup policy migration started (ISO-8601 format).
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Describes the status of migration between backup policy types.
      */
-    status?: pulumi.Input<string | enums.BackupPolicyMigrationStatus>;
+    status?: pulumi.Input<string | enums.BackupPolicyMigrationStatus | undefined>;
     /**
      * Describes the target backup policy type of the backup policy migration.
      */
-    targetType?: pulumi.Input<string | enums.BackupPolicyType>;
+    targetType?: pulumi.Input<string | enums.BackupPolicyType | undefined>;
 }
 
 /**
@@ -84,7 +84,7 @@ export interface CapabilityArgs {
     /**
      * Name of the Cosmos DB capability. For example, "name": "EnableCassandra". Current values also include "EnableTable" and "EnableGremlin".
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -94,26 +94,26 @@ export interface CapacityArgs {
     /**
      * The total throughput limit imposed on the account. A totalThroughputLimit of 2000 imposes a strict limit of max throughput that can be provisioned on that account to be 2000. A totalThroughputLimit of -1 indicates no limits on provisioning of throughput.
      */
-    totalThroughputLimit?: pulumi.Input<number>;
+    totalThroughputLimit?: pulumi.Input<number | undefined>;
 }
 
 export interface CassandraErrorArgs {
     /**
      * Additional information about the error.
      */
-    additionalErrorInfo?: pulumi.Input<string>;
+    additionalErrorInfo?: pulumi.Input<string | undefined>;
     /**
      * The code of error that occurred.
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * The message of the error.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The target resource of the error.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -133,7 +133,7 @@ export interface CassandraPartitionKeyArgs {
     /**
      * Name of the Cosmos DB Cassandra table partition key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -143,15 +143,15 @@ export interface CassandraSchemaArgs {
     /**
      * List of cluster key.
      */
-    clusterKeys?: pulumi.Input<pulumi.Input<ClusterKeyArgs>[]>;
+    clusterKeys?: pulumi.Input<pulumi.Input<ClusterKeyArgs>[] | undefined>;
     /**
      * List of Cassandra table columns.
      */
-    columns?: pulumi.Input<pulumi.Input<ColumnArgs>[]>;
+    columns?: pulumi.Input<pulumi.Input<ColumnArgs>[] | undefined>;
     /**
      * List of partition key.
      */
-    partitionKeys?: pulumi.Input<pulumi.Input<CassandraPartitionKeyArgs>[]>;
+    partitionKeys?: pulumi.Input<pulumi.Input<CassandraPartitionKeyArgs>[] | undefined>;
 }
 
 /**
@@ -161,11 +161,11 @@ export interface CassandraTableResourceArgs {
     /**
      * Analytical TTL.
      */
-    analyticalStorageTtl?: pulumi.Input<number>;
+    analyticalStorageTtl?: pulumi.Input<number | undefined>;
     /**
      * Time to live of the Cosmos DB Cassandra table
      */
-    defaultTtl?: pulumi.Input<number>;
+    defaultTtl?: pulumi.Input<number | undefined>;
     /**
      * Name of the Cosmos DB Cassandra table
      */
@@ -173,7 +173,7 @@ export interface CassandraTableResourceArgs {
     /**
      * Schema of the Cosmos DB Cassandra table
      */
-    schema?: pulumi.Input<CassandraSchemaArgs>;
+    schema?: pulumi.Input<CassandraSchemaArgs | undefined>;
 }
 
 /**
@@ -194,7 +194,7 @@ export interface CertificateArgs {
     /**
      * PEM formatted public key.
      */
-    pem?: pulumi.Input<string>;
+    pem?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -228,7 +228,7 @@ export interface ClientEncryptionPolicyArgs {
      */
     includedPaths: pulumi.Input<pulumi.Input<ClientEncryptionIncludedPathArgs>[]>;
     /**
-     * Version of the client encryption policy definition. Supported versions are 1 and 2. Version 2 supports id and partition key path encryption. 
+     * Version of the client encryption policy definition. Supported versions are 1 and 2. Version 2 supports id and partition key path encryption.
      */
     policyFormatVersion: pulumi.Input<number>;
 }
@@ -240,11 +240,11 @@ export interface ClusterKeyArgs {
     /**
      * Name of the Cosmos DB Cassandra table cluster key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Order of the Cosmos DB Cassandra table cluster key, only support "Asc" and "Desc"
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -254,71 +254,71 @@ export interface ClusterResourcePropertiesArgs {
     /**
      * Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
      */
-    authenticationMethod?: pulumi.Input<string | enums.AuthenticationMethod>;
+    authenticationMethod?: pulumi.Input<string | enums.AuthenticationMethod | undefined>;
     /**
      * How to connect to the azure services needed for running the cluster
      */
-    azureConnectionMethod?: pulumi.Input<string | enums.AzureConnectionType>;
+    azureConnectionMethod?: pulumi.Input<string | enums.AzureConnectionType | undefined>;
     /**
      * Whether Cassandra audit logging is enabled
      */
-    cassandraAuditLoggingEnabled?: pulumi.Input<boolean>;
+    cassandraAuditLoggingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Which version of Cassandra should this cluster converge to running (e.g., 3.11). When updated, the cluster may take some time to migrate to the new version.
      */
-    cassandraVersion?: pulumi.Input<string>;
+    cassandraVersion?: pulumi.Input<string | undefined>;
     /**
      * List of TLS certificates used to authorize clients connecting to the cluster. All connections are TLS encrypted whether clientCertificates is set or not, but if clientCertificates is set, the managed Cassandra cluster will reject all connections not bearing a TLS client certificate that can be validated from one or more of the public certificates in this property.
      */
-    clientCertificates?: pulumi.Input<pulumi.Input<CertificateArgs>[]>;
+    clientCertificates?: pulumi.Input<pulumi.Input<CertificateArgs>[] | undefined>;
     /**
      * If you need to set the clusterName property in cassandra.yaml to something besides the resource name of the cluster, set the value to use on this property.
      */
-    clusterNameOverride?: pulumi.Input<string>;
+    clusterNameOverride?: pulumi.Input<string | undefined>;
     /**
      * Whether the cluster and associated data centers has been deallocated.
      */
-    deallocated?: pulumi.Input<boolean>;
+    deallocated?: pulumi.Input<boolean | undefined>;
     /**
      * Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
      */
-    delegatedManagementSubnetId?: pulumi.Input<string>;
+    delegatedManagementSubnetId?: pulumi.Input<string | undefined>;
     /**
      * List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property.
      */
-    externalGossipCertificates?: pulumi.Input<pulumi.Input<CertificateArgs>[]>;
+    externalGossipCertificates?: pulumi.Input<pulumi.Input<CertificateArgs>[] | undefined>;
     /**
      * List of IP addresses of seed nodes in unmanaged data centers. These will be added to the seed node lists of all managed nodes.
      */
-    externalSeedNodes?: pulumi.Input<pulumi.Input<SeedNodeArgs>[]>;
+    externalSeedNodes?: pulumi.Input<pulumi.Input<SeedNodeArgs>[] | undefined>;
     /**
      * (Deprecated) Number of hours to wait between taking a backup of the cluster.
      */
-    hoursBetweenBackups?: pulumi.Input<number>;
+    hoursBetweenBackups?: pulumi.Input<number | undefined>;
     /**
      * Initial password for clients connecting as admin to the cluster. Should be changed after cluster creation. Returns null on GET. This field only applies when the authenticationMethod field is 'Cassandra'.
      */
-    initialCassandraAdminPassword?: pulumi.Input<string>;
+    initialCassandraAdminPassword?: pulumi.Input<string | undefined>;
     /**
      * Hostname or IP address where the Prometheus endpoint containing data about the managed Cassandra nodes can be reached.
      */
-    prometheusEndpoint?: pulumi.Input<SeedNodeArgs>;
+    prometheusEndpoint?: pulumi.Input<SeedNodeArgs | undefined>;
     /**
      * Error related to resource provisioning.
      */
-    provisionError?: pulumi.Input<CassandraErrorArgs>;
+    provisionError?: pulumi.Input<CassandraErrorArgs | undefined>;
     /**
      * The status of the resource at the time the operation was called.
      */
-    provisioningState?: pulumi.Input<string | enums.ManagedCassandraProvisioningState>;
+    provisioningState?: pulumi.Input<string | enums.ManagedCassandraProvisioningState | undefined>;
     /**
      * Should automatic repairs run on this cluster? If omitted, this is true, and should stay true unless you are running a hybrid cluster where you are already doing your own repairs.
      */
-    repairEnabled?: pulumi.Input<boolean>;
+    repairEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * To create an empty cluster, omit this field or set it to null. To restore a backup into a new cluster, set this field to the resource id of the backup.
      */
-    restoreFromBackupId?: pulumi.Input<string>;
+    restoreFromBackupId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -328,22 +328,22 @@ export interface ColumnArgs {
     /**
      * Name of the Cosmos DB Cassandra table column
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Type of the Cosmos DB Cassandra table column
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface CompositePathArgs {
     /**
      * Sort order for composite paths.
      */
-    order?: pulumi.Input<string | enums.CompositePathSortOrder>;
+    order?: pulumi.Input<string | enums.CompositePathSortOrder | undefined>;
     /**
      * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -353,11 +353,11 @@ export interface ComputedPropertyArgs {
     /**
      * The name of a computed property, for example - "cp_lowerName"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The query that evaluates the value for computed property, for example - "SELECT VALUE LOWER(c.name) FROM c"
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -367,15 +367,15 @@ export interface ConflictResolutionPolicyArgs {
     /**
      * The conflict resolution path in the case of LastWriterWins mode.
      */
-    conflictResolutionPath?: pulumi.Input<string>;
+    conflictResolutionPath?: pulumi.Input<string | undefined>;
     /**
      * The procedure to resolve conflicts in the case of custom mode.
      */
-    conflictResolutionProcedure?: pulumi.Input<string>;
+    conflictResolutionProcedure?: pulumi.Input<string | undefined>;
     /**
      * Indicates the conflict resolution mode.
      */
-    mode?: pulumi.Input<string | enums.ConflictResolutionMode>;
+    mode?: pulumi.Input<string | enums.ConflictResolutionMode | undefined>;
 }
 /**
  * conflictResolutionPolicyArgsProvideDefaults sets the appropriate defaults for ConflictResolutionPolicyArgs
@@ -398,11 +398,11 @@ export interface ConsistencyPolicyArgs {
     /**
      * When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. Accepted range for this value is 5 - 86400. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
      */
-    maxIntervalInSeconds?: pulumi.Input<number>;
+    maxIntervalInSeconds?: pulumi.Input<number | undefined>;
     /**
      * When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
      */
-    maxStalenessPrefix?: pulumi.Input<number>;
+    maxStalenessPrefix?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -412,15 +412,15 @@ export interface ContainerPartitionKeyArgs {
     /**
      * Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
      */
-    kind?: pulumi.Input<string | enums.PartitionKind>;
+    kind?: pulumi.Input<string | enums.PartitionKind | undefined>;
     /**
      * List of paths using which data within the container can be partitioned
      */
-    paths?: pulumi.Input<pulumi.Input<string>[]>;
+    paths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates the version of the partition key definition
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 /**
  * containerPartitionKeyArgsProvideDefaults sets the appropriate defaults for ContainerPartitionKeyArgs
@@ -439,11 +439,11 @@ export interface ContinuousModeBackupPolicyArgs {
     /**
      * Configuration values for continuous mode backup
      */
-    continuousModeProperties?: pulumi.Input<ContinuousModePropertiesArgs>;
+    continuousModeProperties?: pulumi.Input<ContinuousModePropertiesArgs | undefined>;
     /**
      * The object representing the state of the migration between the backup policies.
      */
-    migrationState?: pulumi.Input<BackupPolicyMigrationStateArgs>;
+    migrationState?: pulumi.Input<BackupPolicyMigrationStateArgs | undefined>;
     /**
      * Describes the mode of backups.
      * Expected value is 'Continuous'.
@@ -458,7 +458,7 @@ export interface ContinuousModePropertiesArgs {
     /**
      * Enum to indicate type of Continuous backup mode
      */
-    tier?: pulumi.Input<string | enums.ContinuousTier>;
+    tier?: pulumi.Input<string | enums.ContinuousTier | undefined>;
 }
 
 /**
@@ -468,11 +468,11 @@ export interface CorsPolicyArgs {
     /**
      * The request headers that the origin domain may specify on the CORS request.
      */
-    allowedHeaders?: pulumi.Input<string>;
+    allowedHeaders?: pulumi.Input<string | undefined>;
     /**
      * The methods (HTTP request verbs) that the origin domain may use for a CORS request.
      */
-    allowedMethods?: pulumi.Input<string>;
+    allowedMethods?: pulumi.Input<string | undefined>;
     /**
      * The origin domains that are permitted to make a request against the service via CORS.
      */
@@ -480,11 +480,11 @@ export interface CorsPolicyArgs {
     /**
      * The response headers that may be sent in the response to the CORS request and exposed by the browser to the request issuer.
      */
-    exposedHeaders?: pulumi.Input<string>;
+    exposedHeaders?: pulumi.Input<string | undefined>;
     /**
      * The maximum amount time that a browser should cache the preflight OPTIONS request.
      */
-    maxAgeInSeconds?: pulumi.Input<number>;
+    maxAgeInSeconds?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -494,11 +494,11 @@ export interface CreateUpdateOptionsArgs {
     /**
      * Specifies the Autoscale settings. Note: Either throughput or autoscaleSettings is required, but not both.
      */
-    autoscaleSettings?: pulumi.Input<AutoscaleSettingsArgs>;
+    autoscaleSettings?: pulumi.Input<AutoscaleSettingsArgs | undefined>;
     /**
      * Request Units per second. For example, "throughput": 10000.
      */
-    throughput?: pulumi.Input<number>;
+    throughput?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -508,63 +508,63 @@ export interface DataCenterResourcePropertiesArgs {
     /**
      * Ldap authentication method properties. This feature is in preview.
      */
-    authenticationMethodLdapProperties?: pulumi.Input<AuthenticationMethodLdapPropertiesArgs>;
+    authenticationMethodLdapProperties?: pulumi.Input<AuthenticationMethodLdapPropertiesArgs | undefined>;
     /**
      * If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the cassandra data center virtual machines.
      */
-    availabilityZone?: pulumi.Input<boolean>;
+    availabilityZone?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates the Key Uri of the customer key to use for encryption of the backup storage account.
      */
-    backupStorageCustomerKeyUri?: pulumi.Input<string>;
+    backupStorageCustomerKeyUri?: pulumi.Input<string | undefined>;
     /**
      * A fragment of a cassandra.yaml configuration file to be included in the cassandra.yaml for all nodes in this data center. The fragment should be Base64 encoded, and only a subset of keys are allowed.
      */
-    base64EncodedCassandraYamlFragment?: pulumi.Input<string>;
+    base64EncodedCassandraYamlFragment?: pulumi.Input<string | undefined>;
     /**
      * The region this data center should be created in.
      */
-    dataCenterLocation?: pulumi.Input<string>;
+    dataCenterLocation?: pulumi.Input<string | undefined>;
     /**
      * Whether the data center has been deallocated.
      */
-    deallocated?: pulumi.Input<boolean>;
+    deallocated?: pulumi.Input<boolean | undefined>;
     /**
      * Resource id of a subnet the nodes in this data center should have their network interfaces connected to. The subnet must be in the same region specified in 'dataCenterLocation' and must be able to route to the subnet specified in the cluster's 'delegatedManagementSubnetId' property. This resource id will be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'.
      */
-    delegatedSubnetId?: pulumi.Input<string>;
+    delegatedSubnetId?: pulumi.Input<string | undefined>;
     /**
      * Number of disks attached to each node. Default is 4.
      */
-    diskCapacity?: pulumi.Input<number>;
+    diskCapacity?: pulumi.Input<number | undefined>;
     /**
      * Disk SKU used for data centers. Default value is P30.
      */
-    diskSku?: pulumi.Input<string>;
+    diskSku?: pulumi.Input<string | undefined>;
     /**
      * Key uri to use for encryption of managed disks. Ensure the system assigned identity of the cluster has been assigned appropriate permissions(key get/wrap/unwrap permissions) on the key.
      */
-    managedDiskCustomerKeyUri?: pulumi.Input<string>;
+    managedDiskCustomerKeyUri?: pulumi.Input<string | undefined>;
     /**
      * The number of nodes the data center should have. This is the desired number. After it is set, it may take some time for the data center to be scaled to match. To monitor the number of nodes and their status, use the fetchNodeStatus method on the cluster.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * Ip of the VPN Endpoint for this data center.
      */
-    privateEndpointIpAddress?: pulumi.Input<string>;
+    privateEndpointIpAddress?: pulumi.Input<string | undefined>;
     /**
      * Error related to resource provisioning.
      */
-    provisionError?: pulumi.Input<CassandraErrorArgs>;
+    provisionError?: pulumi.Input<CassandraErrorArgs | undefined>;
     /**
      * The status of the resource at the time the operation was called.
      */
-    provisioningState?: pulumi.Input<string | enums.ManagedCassandraProvisioningState>;
+    provisioningState?: pulumi.Input<string | enums.ManagedCassandraProvisioningState | undefined>;
     /**
      * Virtual Machine SKU used for data centers. Default value is Standard_DS14_v2
      */
-    sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -574,11 +574,11 @@ export interface DataTransferServiceResourceCreateUpdatePropertiesArgs {
     /**
      * Instance count for the service.
      */
-    instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number | undefined>;
     /**
      * Instance type for the service.
      */
-    instanceSize?: pulumi.Input<string | enums.ServiceSize>;
+    instanceSize?: pulumi.Input<string | enums.ServiceSize | undefined>;
     /**
      * ServiceType for the service.
      * Expected value is 'DataTransfer'.
@@ -593,18 +593,18 @@ export interface DatabaseRestoreResourceArgs {
     /**
      * The names of the collections available for restore.
      */
-    collectionNames?: pulumi.Input<pulumi.Input<string>[]>;
+    collectionNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the database available for restore.
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
 }
 
 export interface ExcludedPathArgs {
     /**
      * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -614,11 +614,11 @@ export interface FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs 
     /**
      * The location of  global database account in the Fleetspace Account.
      */
-    armLocation?: pulumi.Input<string>;
+    armLocation?: pulumi.Input<string | undefined>;
     /**
      * The resource identifier of global database account in the Fleetspace Account.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -628,11 +628,11 @@ export interface FleetspacePropertiesThroughputPoolConfigurationArgs {
     /**
      * Maximum throughput for the pool.
      */
-    maxThroughput?: pulumi.Input<number>;
+    maxThroughput?: pulumi.Input<number | undefined>;
     /**
      * Minimum throughput for the pool.
      */
-    minThroughput?: pulumi.Input<number>;
+    minThroughput?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -652,7 +652,7 @@ export interface FullTextPathArgs {
     /**
      * The language of the full text field in the document.
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * The path to the full text field in the document.
      */
@@ -666,11 +666,11 @@ export interface FullTextPolicyArgs {
     /**
      * The default language for a full text paths.
      */
-    defaultLanguage?: pulumi.Input<string>;
+    defaultLanguage?: pulumi.Input<string | undefined>;
     /**
      * List of FullText Paths
      */
-    fullTextPaths?: pulumi.Input<pulumi.Input<FullTextPathArgs>[]>;
+    fullTextPaths?: pulumi.Input<pulumi.Input<FullTextPathArgs>[] | undefined>;
 }
 
 /**
@@ -680,35 +680,35 @@ export interface GarnetClusterResourcePropertiesArgs {
     /**
      * Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
      */
-    allocationState?: pulumi.Input<string | enums.AllocationState>;
+    allocationState?: pulumi.Input<string | enums.AllocationState | undefined>;
     /**
      * If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the garnet cluster virtual machines.
      */
-    availabilityZone?: pulumi.Input<boolean>;
+    availabilityZone?: pulumi.Input<boolean | undefined>;
     /**
      * Type of the cluster. If set to Production, some operations might not be permitted on cluster.
      */
-    clusterType?: pulumi.Input<string | enums.ClusterType>;
+    clusterType?: pulumi.Input<string | enums.ClusterType | undefined>;
     /**
      * Extensions to be added or updated on cluster.
      */
-    extensions?: pulumi.Input<pulumi.Input<string>[]>;
+    extensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Number of nodes
+     * Number of nodes.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
-     * Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+     * Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2.
      */
-    nodeSku?: pulumi.Input<string>;
+    nodeSku?: pulumi.Input<string | undefined>;
     /**
-     * Number of copies of data maintained by the cluster
+     * Number of copies of data maintained by the cluster.
      */
-    replicationFactor?: pulumi.Input<number>;
+    replicationFactor?: pulumi.Input<number | undefined>;
     /**
      * Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -718,11 +718,11 @@ export interface GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs {
     /**
      * Instance count for the service.
      */
-    instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number | undefined>;
     /**
      * Instance type for the service.
      */
-    instanceSize?: pulumi.Input<string | enums.ServiceSize>;
+    instanceSize?: pulumi.Input<string | enums.ServiceSize | undefined>;
     /**
      * ServiceType for the service.
      * Expected value is 'GraphAPICompute'.
@@ -747,7 +747,7 @@ export interface GremlinDatabaseResourceArgs {
     /**
      * Enum to indicate the mode of resource creation.
      */
-    createMode?: pulumi.Input<string | enums.CreateMode>;
+    createMode?: pulumi.Input<string | enums.CreateMode | undefined>;
     /**
      * Name of the Cosmos DB Gremlin database
      */
@@ -755,7 +755,7 @@ export interface GremlinDatabaseResourceArgs {
     /**
      * Parameters to indicate the information about the restore
      */
-    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs>;
+    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs | undefined>;
 }
 
 /**
@@ -765,11 +765,11 @@ export interface GremlinDatabaseRestoreResourceArgs {
     /**
      * The name of the gremlin database available for restore.
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
     /**
      * The names of the graphs available for restore.
      */
-    graphNames?: pulumi.Input<pulumi.Input<string>[]>;
+    graphNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -779,19 +779,19 @@ export interface GremlinGraphResourceArgs {
     /**
      * Analytical TTL.
      */
-    analyticalStorageTtl?: pulumi.Input<number>;
+    analyticalStorageTtl?: pulumi.Input<number | undefined>;
     /**
      * The conflict resolution policy for the graph.
      */
-    conflictResolutionPolicy?: pulumi.Input<ConflictResolutionPolicyArgs>;
+    conflictResolutionPolicy?: pulumi.Input<ConflictResolutionPolicyArgs | undefined>;
     /**
      * Enum to indicate the mode of resource creation.
      */
-    createMode?: pulumi.Input<string | enums.CreateMode>;
+    createMode?: pulumi.Input<string | enums.CreateMode | undefined>;
     /**
      * Default time to live
      */
-    defaultTtl?: pulumi.Input<number>;
+    defaultTtl?: pulumi.Input<number | undefined>;
     /**
      * Name of the Cosmos DB Gremlin graph
      */
@@ -799,19 +799,19 @@ export interface GremlinGraphResourceArgs {
     /**
      * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
      */
-    indexingPolicy?: pulumi.Input<IndexingPolicyArgs>;
+    indexingPolicy?: pulumi.Input<IndexingPolicyArgs | undefined>;
     /**
      * The configuration of the partition key to be used for partitioning data into multiple partitions
      */
-    partitionKey?: pulumi.Input<ContainerPartitionKeyArgs>;
+    partitionKey?: pulumi.Input<ContainerPartitionKeyArgs | undefined>;
     /**
      * Parameters to indicate the information about the restore
      */
-    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs>;
+    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs | undefined>;
     /**
      * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
      */
-    uniqueKeyPolicy?: pulumi.Input<UniqueKeyPolicyArgs>;
+    uniqueKeyPolicy?: pulumi.Input<UniqueKeyPolicyArgs | undefined>;
 }
 /**
  * gremlinGraphResourceArgsProvideDefaults sets the appropriate defaults for GremlinGraphResourceArgs
@@ -819,9 +819,9 @@ export interface GremlinGraphResourceArgs {
 export function gremlinGraphResourceArgsProvideDefaults(val: GremlinGraphResourceArgs): GremlinGraphResourceArgs {
     return {
         ...val,
-        conflictResolutionPolicy: (val.conflictResolutionPolicy ? pulumi.output(val.conflictResolutionPolicy).apply(conflictResolutionPolicyArgsProvideDefaults) : undefined),
-        indexingPolicy: (val.indexingPolicy ? pulumi.output(val.indexingPolicy).apply(indexingPolicyArgsProvideDefaults) : undefined),
-        partitionKey: (val.partitionKey ? pulumi.output(val.partitionKey).apply(containerPartitionKeyArgsProvideDefaults) : undefined),
+        conflictResolutionPolicy: pulumi.output(val.conflictResolutionPolicy).apply(v => v === undefined ? undefined : conflictResolutionPolicyArgsProvideDefaults(v)),
+        indexingPolicy: pulumi.output(val.indexingPolicy).apply(v => v === undefined ? undefined : indexingPolicyArgsProvideDefaults(v)),
+        partitionKey: pulumi.output(val.partitionKey).apply(v => v === undefined ? undefined : containerPartitionKeyArgsProvideDefaults(v)),
     };
 }
 
@@ -832,11 +832,11 @@ export interface IncludedPathArgs {
     /**
      * List of indexes for this path
      */
-    indexes?: pulumi.Input<pulumi.Input<IndexesArgs>[]>;
+    indexes?: pulumi.Input<pulumi.Input<IndexesArgs>[] | undefined>;
     /**
      * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -846,15 +846,15 @@ export interface IndexesArgs {
     /**
      * The datatype for which the indexing behavior is applied to.
      */
-    dataType?: pulumi.Input<string | enums.DataType>;
+    dataType?: pulumi.Input<string | enums.DataType | undefined>;
     /**
      * Indicates the type of index.
      */
-    kind?: pulumi.Input<string | enums.IndexKind>;
+    kind?: pulumi.Input<string | enums.IndexKind | undefined>;
     /**
      * The precision of the index. -1 is maximum precision.
      */
-    precision?: pulumi.Input<number>;
+    precision?: pulumi.Input<number | undefined>;
 }
 /**
  * indexesArgsProvideDefaults sets the appropriate defaults for IndexesArgs
@@ -874,35 +874,35 @@ export interface IndexingPolicyArgs {
     /**
      * Indicates if the indexing policy is automatic
      */
-    automatic?: pulumi.Input<boolean>;
+    automatic?: pulumi.Input<boolean | undefined>;
     /**
      * List of composite path list
      */
-    compositeIndexes?: pulumi.Input<pulumi.Input<pulumi.Input<CompositePathArgs>[]>[]>;
+    compositeIndexes?: pulumi.Input<pulumi.Input<pulumi.Input<CompositePathArgs>[]>[] | undefined>;
     /**
      * List of paths to exclude from indexing
      */
-    excludedPaths?: pulumi.Input<pulumi.Input<ExcludedPathArgs>[]>;
+    excludedPaths?: pulumi.Input<pulumi.Input<ExcludedPathArgs>[] | undefined>;
     /**
      * List of paths to include in the full text indexing
      */
-    fullTextIndexes?: pulumi.Input<pulumi.Input<FullTextIndexPathArgs>[]>;
+    fullTextIndexes?: pulumi.Input<pulumi.Input<FullTextIndexPathArgs>[] | undefined>;
     /**
      * List of paths to include in the indexing
      */
-    includedPaths?: pulumi.Input<pulumi.Input<IncludedPathArgs>[]>;
+    includedPaths?: pulumi.Input<pulumi.Input<IncludedPathArgs>[] | undefined>;
     /**
      * Indicates the indexing mode.
      */
-    indexingMode?: pulumi.Input<string | enums.IndexingMode>;
+    indexingMode?: pulumi.Input<string | enums.IndexingMode | undefined>;
     /**
      * List of spatial specifics
      */
-    spatialIndexes?: pulumi.Input<pulumi.Input<SpatialSpecArgs>[]>;
+    spatialIndexes?: pulumi.Input<pulumi.Input<SpatialSpecArgs>[] | undefined>;
     /**
      * List of paths to include in the vector indexing
      */
-    vectorIndexes?: pulumi.Input<pulumi.Input<VectorIndexArgs>[]>;
+    vectorIndexes?: pulumi.Input<pulumi.Input<VectorIndexArgs>[] | undefined>;
 }
 /**
  * indexingPolicyArgsProvideDefaults sets the appropriate defaults for IndexingPolicyArgs
@@ -921,7 +921,7 @@ export interface IpAddressOrRangeArgs {
     /**
      * A single IPv4 address or a single IPv4 address range in CIDR format. Provided IPs must be well-formatted and cannot be contained in one of the following ranges: 10.0.0.0/8, 100.64.0.0/10, 172.16.0.0/12, 192.168.0.0/16, since these are not enforceable by the IP address filter. Example of valid inputs: “23.40.210.245” or “23.40.210.0/8”.
      */
-    ipAddressOrRange?: pulumi.Input<string>;
+    ipAddressOrRange?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -931,15 +931,15 @@ export interface LocationArgs {
     /**
      * The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
      */
-    failoverPriority?: pulumi.Input<number>;
+    failoverPriority?: pulumi.Input<number | undefined>;
     /**
      * Flag to indicate whether or not this region is an AvailabilityZone region
      */
-    isZoneRedundant?: pulumi.Input<boolean>;
+    isZoneRedundant?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the region.
      */
-    locationName?: pulumi.Input<string>;
+    locationName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -949,7 +949,7 @@ export interface ManagedCassandraManagedServiceIdentityArgs {
     /**
      * The type of the resource.
      */
-    type?: pulumi.Input<string | enums.ManagedCassandraResourceIdentityType>;
+    type?: pulumi.Input<string | enums.ManagedCassandraResourceIdentityType | undefined>;
 }
 
 /**
@@ -959,11 +959,11 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
     /**
      * The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -973,11 +973,11 @@ export interface MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesAr
     /**
      * Instance count for the service.
      */
-    instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number | undefined>;
     /**
      * Instance type for the service.
      */
-    instanceSize?: pulumi.Input<string | enums.ServiceSize>;
+    instanceSize?: pulumi.Input<string | enums.ServiceSize | undefined>;
     /**
      * ServiceType for the service.
      * Expected value is 'MaterializedViewsBuilder'.
@@ -992,11 +992,11 @@ export interface MongoClusterRestoreParametersArgs {
     /**
      * UTC point in time to restore a mongo cluster
      */
-    pointInTimeUTC?: pulumi.Input<string>;
+    pointInTimeUTC?: pulumi.Input<string | undefined>;
     /**
      * Resource ID to locate the source cluster to restore
      */
-    sourceResourceId?: pulumi.Input<string>;
+    sourceResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1006,11 +1006,11 @@ export interface MongoDBCollectionResourceArgs {
     /**
      * Analytical TTL.
      */
-    analyticalStorageTtl?: pulumi.Input<number>;
+    analyticalStorageTtl?: pulumi.Input<number | undefined>;
     /**
      * Enum to indicate the mode of resource creation.
      */
-    createMode?: pulumi.Input<string | enums.CreateMode>;
+    createMode?: pulumi.Input<string | enums.CreateMode | undefined>;
     /**
      * Name of the Cosmos DB MongoDB collection
      */
@@ -1018,15 +1018,15 @@ export interface MongoDBCollectionResourceArgs {
     /**
      * List of index keys
      */
-    indexes?: pulumi.Input<pulumi.Input<MongoIndexArgs>[]>;
+    indexes?: pulumi.Input<pulumi.Input<MongoIndexArgs>[] | undefined>;
     /**
      * Parameters to indicate the information about the restore
      */
-    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs>;
+    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs | undefined>;
     /**
      * A key-value pair of shard keys to be applied for the request.
      */
-    shardKey?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    shardKey?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -1036,7 +1036,7 @@ export interface MongoDBDatabaseResourceArgs {
     /**
      * Enum to indicate the mode of resource creation.
      */
-    createMode?: pulumi.Input<string | enums.CreateMode>;
+    createMode?: pulumi.Input<string | enums.CreateMode | undefined>;
     /**
      * Name of the Cosmos DB MongoDB database
      */
@@ -1044,7 +1044,7 @@ export interface MongoDBDatabaseResourceArgs {
     /**
      * Parameters to indicate the information about the restore
      */
-    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs>;
+    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs | undefined>;
 }
 
 /**
@@ -1054,11 +1054,11 @@ export interface MongoIndexArgs {
     /**
      * Cosmos DB MongoDB collection index keys
      */
-    key?: pulumi.Input<MongoIndexKeysArgs>;
+    key?: pulumi.Input<MongoIndexKeysArgs | undefined>;
     /**
      * Cosmos DB MongoDB collection index key options
      */
-    options?: pulumi.Input<MongoIndexOptionsArgs>;
+    options?: pulumi.Input<MongoIndexOptionsArgs | undefined>;
 }
 
 /**
@@ -1068,7 +1068,7 @@ export interface MongoIndexKeysArgs {
     /**
      * List of keys for each MongoDB collection in the Azure Cosmos DB service
      */
-    keys?: pulumi.Input<pulumi.Input<string>[]>;
+    keys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1078,11 +1078,11 @@ export interface MongoIndexOptionsArgs {
     /**
      * Expire after seconds
      */
-    expireAfterSeconds?: pulumi.Input<number>;
+    expireAfterSeconds?: pulumi.Input<number | undefined>;
     /**
      * Is unique or not
      */
-    unique?: pulumi.Input<boolean>;
+    unique?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1092,23 +1092,23 @@ export interface NodeGroupSpecArgs {
     /**
      * The disk storage size for the node group in GB. Example values: 128, 256, 512, 1024.
      */
-    diskSizeGB?: pulumi.Input<number>;
+    diskSizeGB?: pulumi.Input<number | undefined>;
     /**
      * Whether high availability is enabled on the node group.
      */
-    enableHa?: pulumi.Input<boolean>;
+    enableHa?: pulumi.Input<boolean | undefined>;
     /**
      * The node type deployed in the node group.
      */
-    kind?: pulumi.Input<string | enums.NodeKind>;
+    kind?: pulumi.Input<string | enums.NodeKind | undefined>;
     /**
      * The number of nodes in the node group.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The resource sku for the node group. This defines the size of CPU and memory that is provisioned for each node. Example values: 'M30', 'M40'.
      */
-    sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1118,11 +1118,11 @@ export interface PeriodicModeBackupPolicyArgs {
     /**
      * The object representing the state of the migration between the backup policies.
      */
-    migrationState?: pulumi.Input<BackupPolicyMigrationStateArgs>;
+    migrationState?: pulumi.Input<BackupPolicyMigrationStateArgs | undefined>;
     /**
      * Configuration values for periodic mode backup
      */
-    periodicModeProperties?: pulumi.Input<PeriodicModePropertiesArgs>;
+    periodicModeProperties?: pulumi.Input<PeriodicModePropertiesArgs | undefined>;
     /**
      * Describes the mode of backups.
      * Expected value is 'Periodic'.
@@ -1137,15 +1137,15 @@ export interface PeriodicModePropertiesArgs {
     /**
      * An integer representing the interval in minutes between two backups
      */
-    backupIntervalInMinutes?: pulumi.Input<number>;
+    backupIntervalInMinutes?: pulumi.Input<number | undefined>;
     /**
      * An integer representing the time (in hours) that each backup is retained
      */
-    backupRetentionIntervalInHours?: pulumi.Input<number>;
+    backupRetentionIntervalInHours?: pulumi.Input<number | undefined>;
     /**
      * Enum to indicate type of backup residency
      */
-    backupStorageRedundancy?: pulumi.Input<string | enums.BackupStorageRedundancy>;
+    backupStorageRedundancy?: pulumi.Input<string | enums.BackupStorageRedundancy | undefined>;
 }
 
 /**
@@ -1155,15 +1155,15 @@ export interface PermissionArgs {
     /**
      * An array of data actions that are allowed.
      */
-    dataActions?: pulumi.Input<pulumi.Input<string>[]>;
+    dataActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The id for the permission.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * An array of data actions that are denied.
      */
-    notDataActions?: pulumi.Input<pulumi.Input<string>[]>;
+    notDataActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1173,7 +1173,7 @@ export interface PrivateEndpointPropertyArgs {
     /**
      * Resource id of the private endpoint.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1183,11 +1183,11 @@ export interface PrivateLinkServiceConnectionStatePropertyArgs {
     /**
      * The private link service connection description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The private link service connection status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1197,11 +1197,11 @@ export interface PrivilegeArgs {
     /**
      * An array of actions that are allowed.
      */
-    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An Azure Cosmos DB Mongo DB Resource.
      */
-    resource?: pulumi.Input<PrivilegeResourceArgs>;
+    resource?: pulumi.Input<PrivilegeResourceArgs | undefined>;
 }
 
 /**
@@ -1211,11 +1211,11 @@ export interface PrivilegeResourceArgs {
     /**
      * The collection name the role is applied.
      */
-    collection?: pulumi.Input<string>;
+    collection?: pulumi.Input<string | undefined>;
     /**
      * The database name the role is applied.
      */
-    db?: pulumi.Input<string>;
+    db?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1225,15 +1225,15 @@ export interface ResourceRestoreParametersArgs {
     /**
      * The id of the restorable database account from which the restore has to be initiated. For example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}
      */
-    restoreSource?: pulumi.Input<string>;
+    restoreSource?: pulumi.Input<string | undefined>;
     /**
      * Time to which the account has to be restored (ISO-8601 format).
      */
-    restoreTimestampInUtc?: pulumi.Input<string>;
+    restoreTimestampInUtc?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the restored account will have Time-To-Live disabled upon the successful restore.
      */
-    restoreWithTtlDisabled?: pulumi.Input<boolean>;
+    restoreWithTtlDisabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1243,35 +1243,35 @@ export interface RestoreParametersArgs {
     /**
      * List of specific databases available for restore.
      */
-    databasesToRestore?: pulumi.Input<pulumi.Input<DatabaseRestoreResourceArgs>[]>;
+    databasesToRestore?: pulumi.Input<pulumi.Input<DatabaseRestoreResourceArgs>[] | undefined>;
     /**
      * List of specific gremlin databases available for restore.
      */
-    gremlinDatabasesToRestore?: pulumi.Input<pulumi.Input<GremlinDatabaseRestoreResourceArgs>[]>;
+    gremlinDatabasesToRestore?: pulumi.Input<pulumi.Input<GremlinDatabaseRestoreResourceArgs>[] | undefined>;
     /**
      * Describes the mode of the restore.
      */
-    restoreMode?: pulumi.Input<string | enums.RestoreMode>;
+    restoreMode?: pulumi.Input<string | enums.RestoreMode | undefined>;
     /**
      * The id of the restorable database account from which the restore has to be initiated. For example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}
      */
-    restoreSource?: pulumi.Input<string>;
+    restoreSource?: pulumi.Input<string | undefined>;
     /**
      * Time to which the account has to be restored (ISO-8601 format).
      */
-    restoreTimestampInUtc?: pulumi.Input<string>;
+    restoreTimestampInUtc?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the restored account will have Time-To-Live disabled upon the successful restore.
      */
-    restoreWithTtlDisabled?: pulumi.Input<boolean>;
+    restoreWithTtlDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * The source backup location for restore.
      */
-    sourceBackupLocation?: pulumi.Input<string>;
+    sourceBackupLocation?: pulumi.Input<string | undefined>;
     /**
      * List of specific tables available for restore.
      */
-    tablesToRestore?: pulumi.Input<pulumi.Input<string>[]>;
+    tablesToRestore?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1281,29 +1281,29 @@ export interface RoleArgs {
     /**
      * The database name the role is applied.
      */
-    db?: pulumi.Input<string>;
+    db?: pulumi.Input<string | undefined>;
     /**
      * The role name.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 export interface SeedNodeArgs {
     /**
      * IP address of this seed node.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
 }
 
 export interface SpatialSpecArgs {
     /**
      * The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * List of path's spatial type
      */
-    types?: pulumi.Input<pulumi.Input<string | enums.SpatialType>[]>;
+    types?: pulumi.Input<pulumi.Input<string | enums.SpatialType>[] | undefined>;
 }
 
 /**
@@ -1313,31 +1313,31 @@ export interface SqlContainerResourceArgs {
     /**
      * Analytical TTL.
      */
-    analyticalStorageTtl?: pulumi.Input<number>;
+    analyticalStorageTtl?: pulumi.Input<number | undefined>;
     /**
      * The client encryption policy for the container.
      */
-    clientEncryptionPolicy?: pulumi.Input<ClientEncryptionPolicyArgs>;
+    clientEncryptionPolicy?: pulumi.Input<ClientEncryptionPolicyArgs | undefined>;
     /**
      * List of computed properties
      */
-    computedProperties?: pulumi.Input<pulumi.Input<ComputedPropertyArgs>[]>;
+    computedProperties?: pulumi.Input<pulumi.Input<ComputedPropertyArgs>[] | undefined>;
     /**
      * The conflict resolution policy for the container.
      */
-    conflictResolutionPolicy?: pulumi.Input<ConflictResolutionPolicyArgs>;
+    conflictResolutionPolicy?: pulumi.Input<ConflictResolutionPolicyArgs | undefined>;
     /**
      * Enum to indicate the mode of resource creation.
      */
-    createMode?: pulumi.Input<string | enums.CreateMode>;
+    createMode?: pulumi.Input<string | enums.CreateMode | undefined>;
     /**
      * Default time to live
      */
-    defaultTtl?: pulumi.Input<number>;
+    defaultTtl?: pulumi.Input<number | undefined>;
     /**
      * The FullText policy for the container.
      */
-    fullTextPolicy?: pulumi.Input<FullTextPolicyArgs>;
+    fullTextPolicy?: pulumi.Input<FullTextPolicyArgs | undefined>;
     /**
      * Name of the Cosmos DB SQL container
      */
@@ -1345,23 +1345,23 @@ export interface SqlContainerResourceArgs {
     /**
      * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container
      */
-    indexingPolicy?: pulumi.Input<IndexingPolicyArgs>;
+    indexingPolicy?: pulumi.Input<IndexingPolicyArgs | undefined>;
     /**
      * The configuration of the partition key to be used for partitioning data into multiple partitions
      */
-    partitionKey?: pulumi.Input<ContainerPartitionKeyArgs>;
+    partitionKey?: pulumi.Input<ContainerPartitionKeyArgs | undefined>;
     /**
      * Parameters to indicate the information about the restore
      */
-    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs>;
+    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs | undefined>;
     /**
      * The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
      */
-    uniqueKeyPolicy?: pulumi.Input<UniqueKeyPolicyArgs>;
+    uniqueKeyPolicy?: pulumi.Input<UniqueKeyPolicyArgs | undefined>;
     /**
      * The vector embedding policy for the container.
      */
-    vectorEmbeddingPolicy?: pulumi.Input<VectorEmbeddingPolicyArgs>;
+    vectorEmbeddingPolicy?: pulumi.Input<VectorEmbeddingPolicyArgs | undefined>;
 }
 /**
  * sqlContainerResourceArgsProvideDefaults sets the appropriate defaults for SqlContainerResourceArgs
@@ -1369,9 +1369,9 @@ export interface SqlContainerResourceArgs {
 export function sqlContainerResourceArgsProvideDefaults(val: SqlContainerResourceArgs): SqlContainerResourceArgs {
     return {
         ...val,
-        conflictResolutionPolicy: (val.conflictResolutionPolicy ? pulumi.output(val.conflictResolutionPolicy).apply(conflictResolutionPolicyArgsProvideDefaults) : undefined),
-        indexingPolicy: (val.indexingPolicy ? pulumi.output(val.indexingPolicy).apply(indexingPolicyArgsProvideDefaults) : undefined),
-        partitionKey: (val.partitionKey ? pulumi.output(val.partitionKey).apply(containerPartitionKeyArgsProvideDefaults) : undefined),
+        conflictResolutionPolicy: pulumi.output(val.conflictResolutionPolicy).apply(v => v === undefined ? undefined : conflictResolutionPolicyArgsProvideDefaults(v)),
+        indexingPolicy: pulumi.output(val.indexingPolicy).apply(v => v === undefined ? undefined : indexingPolicyArgsProvideDefaults(v)),
+        partitionKey: pulumi.output(val.partitionKey).apply(v => v === undefined ? undefined : containerPartitionKeyArgsProvideDefaults(v)),
     };
 }
 
@@ -1382,7 +1382,7 @@ export interface SqlDatabaseResourceArgs {
     /**
      * Enum to indicate the mode of resource creation.
      */
-    createMode?: pulumi.Input<string | enums.CreateMode>;
+    createMode?: pulumi.Input<string | enums.CreateMode | undefined>;
     /**
      * Name of the Cosmos DB SQL database
      */
@@ -1390,7 +1390,7 @@ export interface SqlDatabaseResourceArgs {
     /**
      * Parameters to indicate the information about the restore
      */
-    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs>;
+    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs | undefined>;
 }
 
 /**
@@ -1400,15 +1400,15 @@ export interface SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs {
     /**
      * DedicatedGatewayType for the service.
      */
-    dedicatedGatewayType?: pulumi.Input<string | enums.DedicatedGatewayType>;
+    dedicatedGatewayType?: pulumi.Input<string | enums.DedicatedGatewayType | undefined>;
     /**
      * Instance count for the service.
      */
-    instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number | undefined>;
     /**
      * Instance type for the service.
      */
-    instanceSize?: pulumi.Input<string | enums.ServiceSize>;
+    instanceSize?: pulumi.Input<string | enums.ServiceSize | undefined>;
     /**
      * ServiceType for the service.
      * Expected value is 'SqlDedicatedGateway'.
@@ -1423,7 +1423,7 @@ export interface SqlStoredProcedureResourceArgs {
     /**
      * Body of the Stored Procedure
      */
-    body?: pulumi.Input<string>;
+    body?: pulumi.Input<string | undefined>;
     /**
      * Name of the Cosmos DB SQL storedProcedure
      */
@@ -1437,7 +1437,7 @@ export interface SqlTriggerResourceArgs {
     /**
      * Body of the Trigger
      */
-    body?: pulumi.Input<string>;
+    body?: pulumi.Input<string | undefined>;
     /**
      * Name of the Cosmos DB SQL trigger
      */
@@ -1445,11 +1445,11 @@ export interface SqlTriggerResourceArgs {
     /**
      * The operation the trigger is associated with
      */
-    triggerOperation?: pulumi.Input<string | enums.TriggerOperation>;
+    triggerOperation?: pulumi.Input<string | enums.TriggerOperation | undefined>;
     /**
      * Type of the Trigger
      */
-    triggerType?: pulumi.Input<string | enums.TriggerType>;
+    triggerType?: pulumi.Input<string | enums.TriggerType | undefined>;
 }
 
 /**
@@ -1459,7 +1459,7 @@ export interface SqlUserDefinedFunctionResourceArgs {
     /**
      * Body of the User Defined Function
      */
-    body?: pulumi.Input<string>;
+    body?: pulumi.Input<string | undefined>;
     /**
      * Name of the Cosmos DB SQL userDefinedFunction
      */
@@ -1473,7 +1473,7 @@ export interface TableResourceArgs {
     /**
      * Enum to indicate the mode of resource creation.
      */
-    createMode?: pulumi.Input<string | enums.CreateMode>;
+    createMode?: pulumi.Input<string | enums.CreateMode | undefined>;
     /**
      * Name of the Cosmos DB table
      */
@@ -1481,7 +1481,7 @@ export interface TableResourceArgs {
     /**
      * Parameters to indicate the information about the restore
      */
-    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs>;
+    restoreParameters?: pulumi.Input<ResourceRestoreParametersArgs | undefined>;
 }
 
 /**
@@ -1491,7 +1491,7 @@ export interface UniqueKeyArgs {
     /**
      * List of paths must be unique for each document in the Azure Cosmos DB service
      */
-    paths?: pulumi.Input<pulumi.Input<string>[]>;
+    paths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1501,7 +1501,7 @@ export interface UniqueKeyPolicyArgs {
     /**
      * List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
      */
-    uniqueKeys?: pulumi.Input<pulumi.Input<UniqueKeyArgs>[]>;
+    uniqueKeys?: pulumi.Input<pulumi.Input<UniqueKeyArgs>[] | undefined>;
 }
 
 /**
@@ -1533,14 +1533,14 @@ export interface VectorEmbeddingPolicyArgs {
     /**
      * List of vector embeddings
      */
-    vectorEmbeddings?: pulumi.Input<pulumi.Input<VectorEmbeddingArgs>[]>;
+    vectorEmbeddings?: pulumi.Input<pulumi.Input<VectorEmbeddingArgs>[] | undefined>;
 }
 
 export interface VectorIndexArgs {
     /**
      * This is the size of the candidate list of approximate neighbors stored while building the DiskANN index as part of the optimization processes. Large values may improve recall at the expense of latency. This is only applicable for the diskANN vector index type.
      */
-    indexingSearchListSize?: pulumi.Input<number>;
+    indexingSearchListSize?: pulumi.Input<number | undefined>;
     /**
      * The path to the vector field in the document.
      */
@@ -1548,7 +1548,7 @@ export interface VectorIndexArgs {
     /**
      * The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types.
      */
-    quantizationByteSize?: pulumi.Input<number>;
+    quantizationByteSize?: pulumi.Input<number | undefined>;
     /**
      * The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.
      */
@@ -1556,7 +1556,7 @@ export interface VectorIndexArgs {
     /**
      * Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types.
      */
-    vectorIndexShardKey?: pulumi.Input<pulumi.Input<string>[]>;
+    vectorIndexShardKey?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 /**
  * vectorIndexArgsProvideDefaults sets the appropriate defaults for VectorIndexArgs
@@ -1575,9 +1575,9 @@ export interface VirtualNetworkRuleArgs {
     /**
      * Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Create firewall rule before the virtual network has vnet service endpoint enabled.
      */
-    ignoreMissingVNetServiceEndpoint?: pulumi.Input<boolean>;
+    ignoreMissingVNetServiceEndpoint?: pulumi.Input<boolean | undefined>;
 }

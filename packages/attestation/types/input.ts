@@ -7,15 +7,15 @@ export interface AttestationServiceCreationSpecificParamsArgs {
     /**
      * JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
      */
-    policySigningCertificates?: pulumi.Input<JsonWebKeySetArgs>;
+    policySigningCertificates?: pulumi.Input<JsonWebKeySetArgs | undefined>;
     /**
      * Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessType>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessType | undefined>;
     /**
      * The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
      */
-    tpmAttestationAuthentication?: pulumi.Input<string | enums.TpmAttestationAuthenticationType>;
+    tpmAttestationAuthentication?: pulumi.Input<string | enums.TpmAttestationAuthenticationType | undefined>;
 }
 /**
  * attestationServiceCreationSpecificParamsArgsProvideDefaults sets the appropriate defaults for AttestationServiceCreationSpecificParamsArgs
@@ -36,31 +36,31 @@ export interface JsonWebKeyArgs {
      * established by [JWA] or be a value that contains a Collision-
      * Resistant Name.
      */
-    alg?: pulumi.Input<string>;
+    alg?: pulumi.Input<string | undefined>;
     /**
      * The "crv" (curve) parameter identifies the curve type
      */
-    crv?: pulumi.Input<string>;
+    crv?: pulumi.Input<string | undefined>;
     /**
      * RSA private exponent or ECC private key
      */
-    d?: pulumi.Input<string>;
+    d?: pulumi.Input<string | undefined>;
     /**
      * RSA Private Key Parameter
      */
-    dp?: pulumi.Input<string>;
+    dp?: pulumi.Input<string | undefined>;
     /**
      * RSA Private Key Parameter
      */
-    dq?: pulumi.Input<string>;
+    dq?: pulumi.Input<string | undefined>;
     /**
      * RSA public exponent, in Base64
      */
-    e?: pulumi.Input<string>;
+    e?: pulumi.Input<string | undefined>;
     /**
      * Symmetric key
      */
-    k?: pulumi.Input<string>;
+    k?: pulumi.Input<string | undefined>;
     /**
      * The "kid" (key ID) parameter is used to match a specific key.  This
      * is used, for instance, to choose among a set of keys within a JWK Set
@@ -72,7 +72,7 @@ export interface JsonWebKeyArgs {
      * equivalent alternatives by the application using them.)  The "kid"
      * value is a case-sensitive string.
      */
-    kid?: pulumi.Input<string>;
+    kid?: pulumi.Input<string | undefined>;
     /**
      * The "kty" (key type) parameter identifies the cryptographic algorithm
      * family used with the key, such as "RSA" or "EC". "kty" values should
@@ -84,30 +84,30 @@ export interface JsonWebKeyArgs {
     /**
      * RSA modulus, in Base64
      */
-    n?: pulumi.Input<string>;
+    n?: pulumi.Input<string | undefined>;
     /**
      * RSA secret prime
      */
-    p?: pulumi.Input<string>;
+    p?: pulumi.Input<string | undefined>;
     /**
      * RSA secret prime, with p < q
      */
-    q?: pulumi.Input<string>;
+    q?: pulumi.Input<string | undefined>;
     /**
      * RSA Private Key Parameter
      */
-    qi?: pulumi.Input<string>;
+    qi?: pulumi.Input<string | undefined>;
     /**
      * Use ("public key use") identifies the intended use of
      * the public key. The "use" parameter is employed to indicate whether
      * a public key is used for encrypting data or verifying the signature
      * on data. Values are commonly "sig" (signature) or "enc" (encryption).
      */
-    use?: pulumi.Input<string>;
+    use?: pulumi.Input<string | undefined>;
     /**
      * X coordinate for the Elliptic Curve point
      */
-    x?: pulumi.Input<string>;
+    x?: pulumi.Input<string | undefined>;
     /**
      * The "x5c" (X.509 certificate chain) parameter contains a chain of one
      * or more PKIX certificates [RFC5280].  The certificate chain is
@@ -117,11 +117,11 @@ export interface JsonWebKeyArgs {
      * The PKIX certificate containing the key value MUST be the first
      * certificate.
      */
-    x5C?: pulumi.Input<pulumi.Input<string>[]>;
+    x5C?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Y coordinate for the Elliptic Curve point
      */
-    y?: pulumi.Input<string>;
+    y?: pulumi.Input<string | undefined>;
 }
 
 export interface JsonWebKeySetArgs {
@@ -132,7 +132,7 @@ export interface JsonWebKeySetArgs {
      * can choose to assign a meaning to the order for their purposes, if
      * desired.
      */
-    keys?: pulumi.Input<pulumi.Input<JsonWebKeyArgs>[]>;
+    keys?: pulumi.Input<pulumi.Input<JsonWebKeyArgs>[] | undefined>;
 }
 
 /**
@@ -142,13 +142,13 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
  *
- * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedEnvironment extends pulumi.CustomResource {
     /**
@@ -253,7 +253,7 @@ export class ManagedEnvironment extends pulumi.CustomResource {
             resourceInputs["zoneRedundant"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220101preview:ManagedEnvironment" }, { type: "azure-native:app/v20220301:ManagedEnvironment" }, { type: "azure-native:app/v20220601preview:ManagedEnvironment" }, { type: "azure-native:app/v20221001:ManagedEnvironment" }, { type: "azure-native:app/v20221101preview:ManagedEnvironment" }, { type: "azure-native:app/v20230401preview:ManagedEnvironment" }, { type: "azure-native:app/v20230501:ManagedEnvironment" }, { type: "azure-native:app/v20230502preview:ManagedEnvironment" }, { type: "azure-native:app/v20230801preview:ManagedEnvironment" }, { type: "azure-native:app/v20231102preview:ManagedEnvironment" }, { type: "azure-native:app/v20240202preview:ManagedEnvironment" }, { type: "azure-native:app/v20240301:ManagedEnvironment" }, { type: "azure-native:app/v20240802preview:ManagedEnvironment" }, { type: "azure-native:app/v20241002preview:ManagedEnvironment" }, { type: "azure-native:app/v20250101:ManagedEnvironment" }, { type: "azure-native:app/v20250202preview:ManagedEnvironment" }, { type: "azure-native:app/v20250701:ManagedEnvironment" }, { type: "azure-native:app/v20251002preview:ManagedEnvironment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220101preview:ManagedEnvironment" }, { type: "azure-native:app/v20220301:ManagedEnvironment" }, { type: "azure-native:app/v20220601preview:ManagedEnvironment" }, { type: "azure-native:app/v20221001:ManagedEnvironment" }, { type: "azure-native:app/v20221101preview:ManagedEnvironment" }, { type: "azure-native:app/v20230401preview:ManagedEnvironment" }, { type: "azure-native:app/v20230501:ManagedEnvironment" }, { type: "azure-native:app/v20230502preview:ManagedEnvironment" }, { type: "azure-native:app/v20230801preview:ManagedEnvironment" }, { type: "azure-native:app/v20231102preview:ManagedEnvironment" }, { type: "azure-native:app/v20240202preview:ManagedEnvironment" }, { type: "azure-native:app/v20240301:ManagedEnvironment" }, { type: "azure-native:app/v20240802preview:ManagedEnvironment" }, { type: "azure-native:app/v20241002preview:ManagedEnvironment" }, { type: "azure-native:app/v20250101:ManagedEnvironment" }, { type: "azure-native:app/v20250202preview:ManagedEnvironment" }, { type: "azure-native:app/v20250701:ManagedEnvironment" }, { type: "azure-native:app/v20251002preview:ManagedEnvironment" }, { type: "azure-native:app/v20260101:ManagedEnvironment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedEnvironment.__pulumiType, name, resourceInputs, opts);
     }
@@ -266,71 +266,71 @@ export interface ManagedEnvironmentArgs {
     /**
      * Environment level Application Insights configuration
      */
-    appInsightsConfiguration?: pulumi.Input<types.inputs.AppInsightsConfigurationArgs>;
+    appInsightsConfiguration?: pulumi.Input<types.inputs.AppInsightsConfigurationArgs | undefined>;
     /**
      * Cluster configuration which enables the log daemon to export app logs to configured destination
      */
-    appLogsConfiguration?: pulumi.Input<types.inputs.AppLogsConfigurationArgs>;
+    appLogsConfiguration?: pulumi.Input<types.inputs.AppLogsConfigurationArgs | undefined>;
     /**
      * The list of availability zones to use for managed environment
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Custom domain configuration for the environment
      */
-    customDomainConfiguration?: pulumi.Input<types.inputs.CustomDomainConfigurationArgs>;
+    customDomainConfiguration?: pulumi.Input<types.inputs.CustomDomainConfigurationArgs | undefined>;
     /**
      * Application Insights connection string used by Dapr to export Service to Service communication telemetry
      */
-    daprAIConnectionString?: pulumi.Input<string>;
+    daprAIConnectionString?: pulumi.Input<string | undefined>;
     /**
      * Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
      */
-    daprAIInstrumentationKey?: pulumi.Input<string>;
+    daprAIInstrumentationKey?: pulumi.Input<string | undefined>;
     /**
      * Disk encryption configuration for the Managed Environment.
      */
-    diskEncryptionConfiguration?: pulumi.Input<types.inputs.DiskEncryptionConfigurationArgs>;
+    diskEncryptionConfiguration?: pulumi.Input<types.inputs.DiskEncryptionConfigurationArgs | undefined>;
     /**
      * Name of the Environment.
      */
-    environmentName?: pulumi.Input<string>;
+    environmentName?: pulumi.Input<string | undefined>;
     /**
      * Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
      */
-    infrastructureResourceGroup?: pulumi.Input<string>;
+    infrastructureResourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Ingress configuration for the Managed Environment.
      */
-    ingressConfiguration?: pulumi.Input<types.inputs.IngressConfigurationArgs>;
+    ingressConfiguration?: pulumi.Input<types.inputs.IngressConfigurationArgs | undefined>;
     /**
      * Kind of the Environment.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Environment Open Telemetry configuration
      */
-    openTelemetryConfiguration?: pulumi.Input<types.inputs.OpenTelemetryConfigurationArgs>;
+    openTelemetryConfiguration?: pulumi.Input<types.inputs.OpenTelemetryConfigurationArgs | undefined>;
     /**
      * Peer authentication settings for the Managed Environment
      */
-    peerAuthentication?: pulumi.Input<types.inputs.ManagedEnvironmentPeerAuthenticationArgs>;
+    peerAuthentication?: pulumi.Input<types.inputs.ManagedEnvironmentPeerAuthenticationArgs | undefined>;
     /**
      * Peer traffic settings for the Managed Environment
      */
-    peerTrafficConfiguration?: pulumi.Input<types.inputs.ManagedEnvironmentPeerTrafficConfigurationArgs>;
+    peerTrafficConfiguration?: pulumi.Input<types.inputs.ManagedEnvironmentPeerTrafficConfigurationArgs | undefined>;
     /**
      * Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled'.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -338,17 +338,17 @@ export interface ManagedEnvironmentArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Vnet configuration for the environment
      */
-    vnetConfiguration?: pulumi.Input<types.inputs.VnetConfigurationArgs>;
+    vnetConfiguration?: pulumi.Input<types.inputs.VnetConfigurationArgs | undefined>;
     /**
      * Workload profiles configured for the Managed Environment.
      */
-    workloadProfiles?: pulumi.Input<pulumi.Input<types.inputs.WorkloadProfileArgs>[]>;
+    workloadProfiles?: pulumi.Input<pulumi.Input<types.inputs.WorkloadProfileArgs>[] | undefined>;
     /**
      * Whether or not this Managed Environment is zone-redundant.
      */
-    zoneRedundant?: pulumi.Input<boolean>;
+    zoneRedundant?: pulumi.Input<boolean | undefined>;
 }

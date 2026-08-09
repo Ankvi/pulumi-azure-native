@@ -7,7 +7,7 @@ export interface APIServerProfileArgs {
     /**
      * API server visibility.
      */
-    visibility?: pulumi.Input<string | enums.Visibility>;
+    visibility?: pulumi.Input<string | enums.Visibility | undefined>;
 }
 
 /**
@@ -17,23 +17,23 @@ export interface ClusterProfileArgs {
     /**
      * The domain for the cluster.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * If FIPS validated crypto modules are used
      */
-    fipsValidatedModules?: pulumi.Input<string | enums.FipsValidatedModules>;
+    fipsValidatedModules?: pulumi.Input<string | enums.FipsValidatedModules | undefined>;
     /**
      * The pull secret for the cluster.
      */
-    pullSecret?: pulumi.Input<string>;
+    pullSecret?: pulumi.Input<string | undefined>;
     /**
      * The ID of the cluster resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The version of the cluster.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -43,11 +43,11 @@ export interface IngressProfileArgs {
     /**
      * The ingress profile name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Ingress visibility.
      */
-    visibility?: pulumi.Input<string | enums.Visibility>;
+    visibility?: pulumi.Input<string | enums.Visibility | undefined>;
 }
 
 /**
@@ -57,7 +57,7 @@ export interface LoadBalancerProfileArgs {
     /**
      * The desired managed outbound IPs for the cluster public load balancer.
      */
-    managedOutboundIps?: pulumi.Input<ManagedOutboundIPsArgs>;
+    managedOutboundIps?: pulumi.Input<ManagedOutboundIPsArgs | undefined>;
 }
 
 /**
@@ -67,7 +67,7 @@ export interface ManagedOutboundIPsArgs {
     /**
      * Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
      */
-    count?: pulumi.Input<number>;
+    count?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -77,19 +77,19 @@ export interface MasterProfileArgs {
     /**
      * The resource ID of an associated DiskEncryptionSet, if applicable.
      */
-    diskEncryptionSetId?: pulumi.Input<string>;
+    diskEncryptionSetId?: pulumi.Input<string | undefined>;
     /**
      * Whether master virtual machines are encrypted at host.
      */
-    encryptionAtHost?: pulumi.Input<string | enums.EncryptionAtHost>;
+    encryptionAtHost?: pulumi.Input<string | enums.EncryptionAtHost | undefined>;
     /**
      * The Azure resource ID of the master subnet.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * The size of the master VMs.
      */
-    vmSize?: pulumi.Input<string>;
+    vmSize?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -99,23 +99,23 @@ export interface NetworkProfileArgs {
     /**
      * The cluster load balancer profile.
      */
-    loadBalancerProfile?: pulumi.Input<LoadBalancerProfileArgs>;
+    loadBalancerProfile?: pulumi.Input<LoadBalancerProfileArgs | undefined>;
     /**
      * The OutboundType used for egress traffic.
      */
-    outboundType?: pulumi.Input<string | enums.OutboundType>;
+    outboundType?: pulumi.Input<string | enums.OutboundType | undefined>;
     /**
      * The CIDR used for OpenShift/Kubernetes Pods.
      */
-    podCidr?: pulumi.Input<string>;
+    podCidr?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether subnets are pre-attached with an NSG
      */
-    preconfiguredNSG?: pulumi.Input<string | enums.PreconfiguredNSG>;
+    preconfiguredNSG?: pulumi.Input<string | enums.PreconfiguredNSG | undefined>;
     /**
      * The CIDR used for OpenShift/Kubernetes Services.
      */
-    serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -125,11 +125,11 @@ export interface ServicePrincipalProfileArgs {
     /**
      * The client ID used for the cluster.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The client secret used for the cluster.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,29 +139,29 @@ export interface WorkerProfileArgs {
     /**
      * The number of worker VMs.
      */
-    count?: pulumi.Input<number>;
+    count?: pulumi.Input<number | undefined>;
     /**
      * The resource ID of an associated DiskEncryptionSet, if applicable.
      */
-    diskEncryptionSetId?: pulumi.Input<string>;
+    diskEncryptionSetId?: pulumi.Input<string | undefined>;
     /**
      * The disk size of the worker VMs.
      */
-    diskSizeGB?: pulumi.Input<number>;
+    diskSizeGB?: pulumi.Input<number | undefined>;
     /**
      * Whether master virtual machines are encrypted at host.
      */
-    encryptionAtHost?: pulumi.Input<string | enums.EncryptionAtHost>;
+    encryptionAtHost?: pulumi.Input<string | enums.EncryptionAtHost | undefined>;
     /**
      * The worker profile name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Azure resource ID of the worker subnet.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * The size of the worker VMs.
      */
-    vmSize?: pulumi.Input<string>;
+    vmSize?: pulumi.Input<string | undefined>;
 }

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Console extends pulumi.CustomResource {
     /**
@@ -162,7 +162,7 @@ export class Console extends pulumi.CustomResource {
             resourceInputs["virtualMachineAccessId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:Console" }, { type: "azure-native:networkcloud/v20231001preview:Console" }, { type: "azure-native:networkcloud/v20240601preview:Console" }, { type: "azure-native:networkcloud/v20240701:Console" }, { type: "azure-native:networkcloud/v20241001preview:Console" }, { type: "azure-native:networkcloud/v20250201:Console" }, { type: "azure-native:networkcloud/v20250701preview:Console" }, { type: "azure-native:networkcloud/v20250901:Console" }, { type: "azure-native:networkcloud/v20260101preview:Console" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:Console" }, { type: "azure-native:networkcloud/v20231001preview:Console" }, { type: "azure-native:networkcloud/v20240601preview:Console" }, { type: "azure-native:networkcloud/v20240701:Console" }, { type: "azure-native:networkcloud/v20241001preview:Console" }, { type: "azure-native:networkcloud/v20250201:Console" }, { type: "azure-native:networkcloud/v20250901:Console" }, { type: "azure-native:networkcloud/v20260101preview:Console" }, { type: "azure-native:networkcloud/v20260501preview:Console" }, { type: "azure-native:networkcloud/v20260701:Console" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Console.__pulumiType, name, resourceInputs, opts);
     }
@@ -175,7 +175,7 @@ export interface ConsoleArgs {
     /**
      * The name of the virtual machine console.
      */
-    consoleName?: pulumi.Input<string>;
+    consoleName?: pulumi.Input<string | undefined>;
     /**
      * The indicator of whether the console access is enabled.
      */
@@ -183,7 +183,7 @@ export interface ConsoleArgs {
     /**
      * The date and time after which the key will be disallowed access.
      */
-    expiration?: pulumi.Input<string>;
+    expiration?: pulumi.Input<string | undefined>;
     /**
      * The extended location of the cluster manager associated with the cluster this virtual machine is created on.
      */
@@ -191,7 +191,7 @@ export interface ConsoleArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -203,7 +203,7 @@ export interface ConsoleArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the virtual machine.
      */

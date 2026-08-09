@@ -100,7 +100,7 @@ export interface ManagedNetworkPeeringPolicyArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the Managed Network.
      */
@@ -108,11 +108,11 @@ export interface ManagedNetworkPeeringPolicyArgs {
     /**
      * The name of the Managed Network Peering Policy.
      */
-    managedNetworkPeeringPolicyName?: pulumi.Input<string>;
+    managedNetworkPeeringPolicyName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the properties of a Managed Network Policy
      */
-    properties?: pulumi.Input<types.inputs.ManagedNetworkPeeringPolicyPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagedNetworkPeeringPolicyPropertiesArgs | undefined>;
     /**
      * The name of the resource group.
      */

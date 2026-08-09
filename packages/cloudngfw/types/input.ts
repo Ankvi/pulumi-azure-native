@@ -11,7 +11,7 @@ export interface AzureResourceManagerManagedIdentityPropertiesArgs {
     /**
      * The identities assigned to this resource by the user.
      */
-    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<AzureResourceManagerUserAssignedIdentityArgs>}>;
+    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<AzureResourceManagerUserAssignedIdentityArgs>} | undefined>;
 }
 
 /**
@@ -21,11 +21,11 @@ export interface AzureResourceManagerUserAssignedIdentityArgs {
     /**
      * The active directory client identifier for this principal.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The active directory identifier for this principal.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -49,15 +49,15 @@ export interface DNSSettingsArgs {
     /**
      * List of IPs associated with the Firewall
      */
-    dnsServers?: pulumi.Input<pulumi.Input<IPAddressArgs>[]>;
+    dnsServers?: pulumi.Input<pulumi.Input<IPAddressArgs>[] | undefined>;
     /**
      * Enable DNS proxy, disabled by default
      */
-    enableDnsProxy?: pulumi.Input<string | enums.DNSProxy>;
+    enableDnsProxy?: pulumi.Input<string | enums.DNSProxy | undefined>;
     /**
      * Enabled DNS proxy type, disabled by default
      */
-    enabledDnsType?: pulumi.Input<string | enums.EnabledDNSType>;
+    enabledDnsType?: pulumi.Input<string | enums.EnabledDNSType | undefined>;
 }
 
 /**
@@ -67,23 +67,23 @@ export interface DestinationAddrArgs {
     /**
      * special value 'any'
      */
-    cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * list of countries
      */
-    countries?: pulumi.Input<pulumi.Input<string>[]>;
+    countries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * list of feeds
      */
-    feeds?: pulumi.Input<pulumi.Input<string>[]>;
+    feeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * fqdn list
      */
-    fqdnLists?: pulumi.Input<pulumi.Input<string>[]>;
+    fqdnLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * prefix list
      */
-    prefixLists?: pulumi.Input<pulumi.Input<string>[]>;
+    prefixLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -129,11 +129,11 @@ export interface IPAddressArgs {
     /**
      * Address value
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Resource Id
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -143,11 +143,11 @@ export interface IPAddressSpaceArgs {
     /**
      * Address Space
      */
-    addressSpace?: pulumi.Input<string>;
+    addressSpace?: pulumi.Input<string | undefined>;
     /**
      * Resource Id
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,7 +157,7 @@ export interface MarketplaceDetailsArgs {
     /**
      * Marketplace Subscription Status
      */
-    marketplaceSubscriptionStatus?: pulumi.Input<string | enums.MarketplaceSubscriptionStatus>;
+    marketplaceSubscriptionStatus?: pulumi.Input<string | enums.MarketplaceSubscriptionStatus | undefined>;
     /**
      * Offer Id
      */
@@ -175,7 +175,7 @@ export interface NetworkProfileArgs {
     /**
      * Egress nat IP to use
      */
-    egressNatIp?: pulumi.Input<pulumi.Input<IPAddressArgs>[]>;
+    egressNatIp?: pulumi.Input<pulumi.Input<IPAddressArgs>[] | undefined>;
     /**
      * Enable egress NAT, enabled by default
      */
@@ -187,7 +187,7 @@ export interface NetworkProfileArgs {
     /**
      * Array of ipv4 destination address for which source NAT is to be performed
      */
-    privateSourceNatRulesDestination?: pulumi.Input<pulumi.Input<string>[]>;
+    privateSourceNatRulesDestination?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of IPs associated with the Firewall
      */
@@ -195,15 +195,15 @@ export interface NetworkProfileArgs {
     /**
      * Non-RFC 1918 address
      */
-    trustedRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    trustedRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Vnet configurations
      */
-    vnetConfiguration?: pulumi.Input<VnetConfigurationArgs>;
+    vnetConfiguration?: pulumi.Input<VnetConfigurationArgs | undefined>;
     /**
      * Vwan configurations
      */
-    vwanConfiguration?: pulumi.Input<VwanConfigurationArgs>;
+    vwanConfiguration?: pulumi.Input<VwanConfigurationArgs | undefined>;
 }
 
 /**
@@ -231,7 +231,7 @@ export interface PlanDataArgs {
     /**
      * different usage type like PAYG/COMMITTED
      */
-    usageType?: pulumi.Input<string | enums.UsageType>;
+    usageType?: pulumi.Input<string | enums.UsageType | undefined>;
 }
 
 /**
@@ -241,15 +241,15 @@ export interface RulestackDetailsArgs {
     /**
      * Rulestack location
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Resource Id
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Associated rulestack Id
      */
-    rulestackId?: pulumi.Input<string>;
+    rulestackId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -259,35 +259,35 @@ export interface SecurityServicesArgs {
     /**
      * Anti spyware Profile data
      */
-    antiSpywareProfile?: pulumi.Input<string>;
+    antiSpywareProfile?: pulumi.Input<string | undefined>;
     /**
      * anti virus profile data
      */
-    antiVirusProfile?: pulumi.Input<string>;
+    antiVirusProfile?: pulumi.Input<string | undefined>;
     /**
      * DNS Subscription profile data
      */
-    dnsSubscription?: pulumi.Input<string>;
+    dnsSubscription?: pulumi.Input<string | undefined>;
     /**
      * File blocking profile data
      */
-    fileBlockingProfile?: pulumi.Input<string>;
+    fileBlockingProfile?: pulumi.Input<string | undefined>;
     /**
      * Trusted Egress Decryption profile data
      */
-    outboundTrustCertificate?: pulumi.Input<string>;
+    outboundTrustCertificate?: pulumi.Input<string | undefined>;
     /**
      * Untrusted Egress Decryption profile data
      */
-    outboundUnTrustCertificate?: pulumi.Input<string>;
+    outboundUnTrustCertificate?: pulumi.Input<string | undefined>;
     /**
      * URL filtering profile data
      */
-    urlFilteringProfile?: pulumi.Input<string>;
+    urlFilteringProfile?: pulumi.Input<string | undefined>;
     /**
      * IPs Vulnerability Profile Data
      */
-    vulnerabilityProfile?: pulumi.Input<string>;
+    vulnerabilityProfile?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -297,19 +297,19 @@ export interface SourceAddrArgs {
     /**
      * special value 'any'
      */
-    cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * list of countries
      */
-    countries?: pulumi.Input<pulumi.Input<string>[]>;
+    countries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * list of feeds
      */
-    feeds?: pulumi.Input<pulumi.Input<string>[]>;
+    feeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * prefix list
      */
-    prefixLists?: pulumi.Input<pulumi.Input<string>[]>;
+    prefixLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -343,7 +343,7 @@ export interface VnetConfigurationArgs {
     /**
      * IP of trust subnet for UDR
      */
-    ipOfTrustSubnetForUdr?: pulumi.Input<IPAddressArgs>;
+    ipOfTrustSubnetForUdr?: pulumi.Input<IPAddressArgs | undefined>;
     /**
      * Trust Subnet
      */
@@ -365,19 +365,19 @@ export interface VwanConfigurationArgs {
     /**
      * IP of trust subnet for UDR
      */
-    ipOfTrustSubnetForUdr?: pulumi.Input<IPAddressArgs>;
+    ipOfTrustSubnetForUdr?: pulumi.Input<IPAddressArgs | undefined>;
     /**
-     * Network Virtual Appliance resource ID 
+     * Network Virtual Appliance resource ID
      */
-    networkVirtualApplianceId?: pulumi.Input<string>;
+    networkVirtualApplianceId?: pulumi.Input<string | undefined>;
     /**
      * Trust Subnet
      */
-    trustSubnet?: pulumi.Input<IPAddressSpaceArgs>;
+    trustSubnet?: pulumi.Input<IPAddressSpaceArgs | undefined>;
     /**
      * Untrust Subnet
      */
-    unTrustSubnet?: pulumi.Input<IPAddressSpaceArgs>;
+    unTrustSubnet?: pulumi.Input<IPAddressSpaceArgs | undefined>;
     /**
      * vHub Address
      */

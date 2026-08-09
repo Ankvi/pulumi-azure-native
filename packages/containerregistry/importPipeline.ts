@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01-preview.
  *
- * Other available API versions: 2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-05-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-05-01-preview, 2025-06-01-preview, 2026-01-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ImportPipeline extends pulumi.CustomResource {
     /**
@@ -102,8 +102,8 @@ export class ImportPipeline extends pulumi.CustomResource {
             resourceInputs["options"] = args?.options;
             resourceInputs["registryName"] = args?.registryName;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
-            resourceInputs["source"] = args ? (args.source ? pulumi.output(args.source).apply(types.inputs.importPipelineSourcePropertiesArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["trigger"] = args ? (args.trigger ? pulumi.output(args.trigger).apply(types.inputs.pipelineTriggerPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["source"] = args ? pulumi.output(args.source).apply(types.inputs.importPipelineSourcePropertiesArgsProvideDefaults) : undefined;
+            resourceInputs["trigger"] = args ? pulumi.output(args.trigger).apply(v => v === undefined ? undefined : types.inputs.pipelineTriggerPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -122,7 +122,7 @@ export class ImportPipeline extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20191201preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20201101preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20210601preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20210801preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20211201preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20220201preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20230101preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20230601preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20230801preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20231101preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20241101preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20250301preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20250501preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20250601preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20260101preview:ImportPipeline" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20191201preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20201101preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20210601preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20210801preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20211201preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20220201preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20230101preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20230601preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20230801preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20231101preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20241101preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20250301preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20250501preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20250601preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20260101preview:ImportPipeline" }, { type: "azure-native:containerregistry/v20260301preview:ImportPipeline" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ImportPipeline.__pulumiType, name, resourceInputs, opts);
     }
@@ -135,19 +135,19 @@ export interface ImportPipelineArgs {
     /**
      * The identity of the import pipeline.
      */
-    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs | undefined>;
     /**
      * The name of the import pipeline.
      */
-    importPipelineName?: pulumi.Input<string>;
+    importPipelineName?: pulumi.Input<string | undefined>;
     /**
      * The location of the import pipeline.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The list of all options configured for the pipeline.
      */
-    options?: pulumi.Input<pulumi.Input<string | types.enums.PipelineOptions>[]>;
+    options?: pulumi.Input<pulumi.Input<string | types.enums.PipelineOptions>[] | undefined>;
     /**
      * The name of the container registry.
      */
@@ -163,5 +163,5 @@ export interface ImportPipelineArgs {
     /**
      * The properties that describe the trigger of the import pipeline.
      */
-    trigger?: pulumi.Input<types.inputs.PipelineTriggerPropertiesArgs>;
+    trigger?: pulumi.Input<types.inputs.PipelineTriggerPropertiesArgs | undefined>;
 }

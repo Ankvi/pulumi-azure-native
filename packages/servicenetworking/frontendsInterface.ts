@@ -120,11 +120,11 @@ export interface FrontendsInterfaceArgs {
     /**
      * Frontends
      */
-    frontendName?: pulumi.Input<string>;
+    frontendName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -132,7 +132,7 @@ export interface FrontendsInterfaceArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * traffic controller name for path
      */

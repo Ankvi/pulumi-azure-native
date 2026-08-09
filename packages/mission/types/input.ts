@@ -7,63 +7,63 @@ export interface ApprovalSettingsArgs {
     /**
      * Approval required for enclave connection creation (Required or NotRequired).
      */
-    connectionCreation?: pulumi.Input<string | enums.ApprovalPolicy>;
+    connectionCreation?: pulumi.Input<string | enums.ApprovalPolicy | undefined>;
     /**
      * Approval required for enclave connection deletion (Required or NotRequired).
      */
-    connectionDeletion?: pulumi.Input<string | enums.ApprovalPolicy>;
+    connectionDeletion?: pulumi.Input<string | enums.ApprovalPolicy | undefined>;
     /**
      * Approval required for enclave connection update (Required or NotRequired).
      */
-    connectionUpdate?: pulumi.Input<string | enums.ApprovalPolicy>;
+    connectionUpdate?: pulumi.Input<string | enums.ApprovalPolicy | undefined>;
     /**
      * Approval required for virtual enclave creation (Required or NotRequired).
      */
-    enclaveCreation?: pulumi.Input<string | enums.ApprovalPolicy>;
+    enclaveCreation?: pulumi.Input<string | enums.ApprovalPolicy | undefined>;
     /**
      * Approval required for virtual enclave deletion (Required or NotRequired).
      */
-    enclaveDeletion?: pulumi.Input<string | enums.ApprovalPolicy>;
+    enclaveDeletion?: pulumi.Input<string | enums.ApprovalPolicy | undefined>;
     /**
      * Approval required for endpoint creation (Required or NotRequired).
      */
-    endpointCreation?: pulumi.Input<string | enums.ApprovalPolicy>;
+    endpointCreation?: pulumi.Input<string | enums.ApprovalPolicy | undefined>;
     /**
      * Approval required for endpoint deletion (Required or NotRequired).
      */
-    endpointDeletion?: pulumi.Input<string | enums.ApprovalPolicy>;
+    endpointDeletion?: pulumi.Input<string | enums.ApprovalPolicy | undefined>;
     /**
      * Approval required for endpoint update (Required or NotRequired).
      */
-    endpointUpdate?: pulumi.Input<string | enums.ApprovalPolicy>;
+    endpointUpdate?: pulumi.Input<string | enums.ApprovalPolicy | undefined>;
     /**
      * Approval required for toggling maintenance mode (Required or NotRequired).
      */
-    maintenanceMode?: pulumi.Input<string | enums.ApprovalPolicy>;
+    maintenanceMode?: pulumi.Input<string | enums.ApprovalPolicy | undefined>;
     /**
      * List of mandatory approvers for the approval request
      */
-    mandatoryApprovers?: pulumi.Input<pulumi.Input<MandatoryApproverArgs>[]>;
+    mandatoryApprovers?: pulumi.Input<pulumi.Input<MandatoryApproverArgs>[] | undefined>;
     /**
      * Minimum number of approvers required for the approval request
      */
-    minimumApproversRequired?: pulumi.Input<number>;
+    minimumApproversRequired?: pulumi.Input<number | undefined>;
     /**
      * Notification will be sent on any action taken (Approve/Reject) on an Approval Request
      */
-    notificationOnApprovalAction?: pulumi.Input<string | enums.ApprovalPolicy>;
+    notificationOnApprovalAction?: pulumi.Input<string | enums.ApprovalPolicy | undefined>;
     /**
      * Notification will be sent on creation of an Approval Request
      */
-    notificationOnApprovalCreation?: pulumi.Input<string | enums.ApprovalPolicy>;
+    notificationOnApprovalCreation?: pulumi.Input<string | enums.ApprovalPolicy | undefined>;
     /**
      * Notification will be sent on deletion of an Approval Request
      */
-    notificationOnApprovalDeletion?: pulumi.Input<string | enums.ApprovalPolicy>;
+    notificationOnApprovalDeletion?: pulumi.Input<string | enums.ApprovalPolicy | undefined>;
     /**
      * Approval required for deploying service catalog templates (Required or NotRequired).
      */
-    serviceCatalogDeployment?: pulumi.Input<string | enums.ApprovalPolicy>;
+    serviceCatalogDeployment?: pulumi.Input<string | enums.ApprovalPolicy | undefined>;
 }
 
 /**
@@ -73,7 +73,7 @@ export interface ApproverArgs {
     /**
      * Action Performed by approver
      */
-    actionPerformed?: pulumi.Input<string | enums.ActionPerformed>;
+    actionPerformed?: pulumi.Input<string | enums.ActionPerformed | undefined>;
     /**
      * Entra ObjectID of the approver
      */
@@ -91,27 +91,27 @@ export interface CommunityEndpointDestinationRuleArgs {
     /**
      * Destination address. Can include multiple CIDR/IP Addresses or fqdn tags or fqdns (for community endpoint) separated by commas.
      */
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * Destination Type.
      */
-    destinationType?: pulumi.Input<string | enums.DestinationType>;
+    destinationType?: pulumi.Input<string | enums.DestinationType | undefined>;
     /**
      * Endpoint Rule Name.
      */
-    endpointRuleName?: pulumi.Input<string>;
+    endpointRuleName?: pulumi.Input<string | undefined>;
     /**
      * Port. Can include multiple ports separated by commas or a range indicated by a hyphen.
      */
-    ports?: pulumi.Input<string>;
+    ports?: pulumi.Input<string | undefined>;
     /**
      * Protocols. Options specified by Endpoint Protocol Enum.
      */
-    protocols?: pulumi.Input<pulumi.Input<string | enums.CommunityEndpointProtocol>[]>;
+    protocols?: pulumi.Input<pulumi.Input<string | enums.CommunityEndpointProtocol>[] | undefined>;
     /**
      * Transit Hub Resource Id.
      */
-    transitHubResourceId?: pulumi.Input<string>;
+    transitHubResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -121,7 +121,7 @@ export interface EnclaveDefaultSettingsModelArgs {
     /**
      * Diagnostic Destination.
      */
-    diagnosticDestination?: pulumi.Input<string | enums.DiagnosticDestination>;
+    diagnosticDestination?: pulumi.Input<string | enums.DiagnosticDestination | undefined>;
 }
 /**
  * enclaveDefaultSettingsModelArgsProvideDefaults sets the appropriate defaults for EnclaveDefaultSettingsModelArgs
@@ -140,19 +140,19 @@ export interface EnclaveEndpointDestinationRuleArgs {
     /**
      * Destination address. Can include multiple CIDR/IP Addresses or fqdn tags or fqdns (for community endpoint) separated by commas.
      */
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * Endpoint Rule Name.
      */
-    endpointRuleName?: pulumi.Input<string>;
+    endpointRuleName?: pulumi.Input<string | undefined>;
     /**
      * Port. Can include multiple ports separated by commas or a range indicated by a hyphen.
      */
-    ports?: pulumi.Input<string>;
+    ports?: pulumi.Input<string | undefined>;
     /**
      * Protocols. Options specified by Endpoint Protocol Enum.
      */
-    protocols?: pulumi.Input<pulumi.Input<string | enums.EnclaveEndpointProtocol>[]>;
+    protocols?: pulumi.Input<pulumi.Input<string | enums.EnclaveEndpointProtocol>[] | undefined>;
 }
 
 /**
@@ -162,23 +162,23 @@ export interface EnclaveVirtualNetworkModelArgs {
     /**
      * Allow Subnet Communication.
      */
-    allowSubnetCommunication?: pulumi.Input<boolean>;
+    allowSubnetCommunication?: pulumi.Input<boolean | undefined>;
     /**
      * Custom CIDR Range.
      */
-    customCidrRange?: pulumi.Input<string>;
+    customCidrRange?: pulumi.Input<string | undefined>;
     /**
      * Network Name.
      */
-    networkName?: pulumi.Input<string>;
+    networkName?: pulumi.Input<string | undefined>;
     /**
      * Network Size.
      */
-    networkSize?: pulumi.Input<string>;
+    networkSize?: pulumi.Input<string | undefined>;
     /**
      * Subnet Configurations.
      */
-    subnetConfigurations?: pulumi.Input<pulumi.Input<SubnetConfigurationArgs>[]>;
+    subnetConfigurations?: pulumi.Input<pulumi.Input<SubnetConfigurationArgs>[] | undefined>;
 }
 /**
  * enclaveVirtualNetworkModelArgsProvideDefaults sets the appropriate defaults for EnclaveVirtualNetworkModelArgs
@@ -197,15 +197,15 @@ export interface GovernedServiceItemArgs {
     /**
      * Initiative enforcement (Enabled or Disabled).
      */
-    enforcement?: pulumi.Input<string | enums.Enforcement>;
+    enforcement?: pulumi.Input<string | enums.Enforcement | undefined>;
     /**
      * Governance option for this service (Allow, Deny, ExceptionOnly, or NotApplicable).
      */
-    option?: pulumi.Input<string | enums.Option>;
+    option?: pulumi.Input<string | enums.Option | undefined>;
     /**
      * Enforcement mode for policy. AuditOnly, Enforce, or None.
      */
-    policyAction?: pulumi.Input<string | enums.PolicyAction>;
+    policyAction?: pulumi.Input<string | enums.PolicyAction | undefined>;
     /**
      * Service ID
      */
@@ -219,7 +219,7 @@ export interface MaintenanceModeConfigurationModelArgs {
     /**
      * Justification for entering or exiting Maintenance Mode
      */
-    justification?: pulumi.Input<string | enums.Justification>;
+    justification?: pulumi.Input<string | enums.Justification | undefined>;
     /**
      * Current mode of Maintenance Mode Configuration
      */
@@ -227,7 +227,7 @@ export interface MaintenanceModeConfigurationModelArgs {
     /**
      * The user, group or service principal object affected by Maintenance Mode
      */
-    principals?: pulumi.Input<pulumi.Input<PrincipalArgs>[]>;
+    principals?: pulumi.Input<pulumi.Input<PrincipalArgs>[] | undefined>;
 }
 /**
  * maintenanceModeConfigurationModelArgsProvideDefaults sets the appropriate defaults for MaintenanceModeConfigurationModelArgs
@@ -251,7 +251,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -285,15 +285,15 @@ export interface RequestMetadataArgs {
     /**
      * Payload to be sent upon any action on approval request
      */
-    approvalCallbackPayload?: pulumi.Input<string>;
+    approvalCallbackPayload?: pulumi.Input<string | undefined>;
     /**
      * Route name for the approval callback
      */
-    approvalCallbackRoute?: pulumi.Input<string>;
+    approvalCallbackRoute?: pulumi.Input<string | undefined>;
     /**
      * Status of the approval. Uses ApprovalStatus enum.
      */
-    approvalStatus?: pulumi.Input<string | enums.ApprovalStatus>;
+    approvalStatus?: pulumi.Input<string | enums.ApprovalStatus | undefined>;
     /**
      * Resource Action of the item being approved or declined.
      */
@@ -316,7 +316,7 @@ export interface RoleAssignmentItemArgs {
     /**
      * List of principal IDs to which to assign this role definition
      */
-    principals?: pulumi.Input<pulumi.Input<PrincipalArgs>[]>;
+    principals?: pulumi.Input<pulumi.Input<PrincipalArgs>[] | undefined>;
     /**
      * Role definition identifier
      */
@@ -334,7 +334,7 @@ export interface SubnetConfigurationArgs {
     /**
      * Subnet delegation.
      */
-    subnetDelegation?: pulumi.Input<string>;
+    subnetDelegation?: pulumi.Input<string | undefined>;
     /**
      * Subnet name.
      */
@@ -348,11 +348,11 @@ export interface TransitOptionArgs {
     /**
      * Transit Option Params
      */
-    params?: pulumi.Input<TransitOptionParamsArgs>;
+    params?: pulumi.Input<TransitOptionParamsArgs | undefined>;
     /**
      * Transit Option Type.
      */
-    type?: pulumi.Input<string | enums.TransitOptionType>;
+    type?: pulumi.Input<string | enums.TransitOptionType | undefined>;
 }
 
 /**
@@ -362,9 +362,9 @@ export interface TransitOptionParamsArgs {
     /**
      * Transit Option Params remoteVirtualNetworkId.
      */
-    remoteVirtualNetworkId?: pulumi.Input<string>;
+    remoteVirtualNetworkId?: pulumi.Input<string | undefined>;
     /**
      * Transit Option Params scaleUnits.
      */
-    scaleUnits?: pulumi.Input<number>;
+    scaleUnits?: pulumi.Input<number | undefined>;
 }

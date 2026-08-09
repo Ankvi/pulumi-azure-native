@@ -136,13 +136,13 @@ export interface TunnelPolicyArgs {
     /**
      * Target Groups referenced by this tunnel policy.
      */
-    targetGroups?: pulumi.Input<pulumi.Input<types.inputs.ResourceReferenceArgs>[]>;
+    targetGroups?: pulumi.Input<pulumi.Input<types.inputs.ResourceReferenceArgs>[] | undefined>;
     /**
      * Name of the Tunnel Policy under the profile.
      */
-    tunnelPolicyName?: pulumi.Input<string>;
+    tunnelPolicyName?: pulumi.Input<string | undefined>;
     /**
      * Protocol this tunnel will use for allowing traffic to backends.
      */
-    tunnelType?: pulumi.Input<string | types.enums.TunnelType>;
+    tunnelType?: pulumi.Input<string | types.enums.TunnelType | undefined>;
 }

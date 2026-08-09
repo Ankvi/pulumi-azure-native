@@ -57,7 +57,7 @@ export class SqlSitesController extends pulumi.CustomResource {
     declare public /*out*/ readonly serviceEndpoint: pulumi.Output<string>;
     /**
      * Gets or sets the appliance details used by service to communicate
-     *            
+     *
      * to the appliance.
      */
     declare public readonly siteAppliancePropertiesCollection: pulumi.Output<types.outputs.SiteAppliancePropertiesResponse[] | undefined>;
@@ -122,17 +122,17 @@ export interface SqlSitesControllerArgs {
     /**
      * Gets or sets the discovery scenario.
      */
-    discoveryScenario?: pulumi.Input<string | types.enums.SqlSitePropertiesDiscoveryScenario>;
+    discoveryScenario?: pulumi.Input<string | types.enums.SqlSitePropertiesDiscoveryScenario | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * Gets or sets the appliance details used by service to communicate
-     *            
+     *
      * to the appliance.
      */
-    siteAppliancePropertiesCollection?: pulumi.Input<pulumi.Input<types.inputs.SiteAppliancePropertiesArgs>[]>;
+    siteAppliancePropertiesCollection?: pulumi.Input<pulumi.Input<types.inputs.SiteAppliancePropertiesArgs>[] | undefined>;
     /**
      * Site name
      */
@@ -140,5 +140,5 @@ export interface SqlSitesControllerArgs {
     /**
      * SQL site name.
      */
-    sqlSiteName?: pulumi.Input<string>;
+    sqlSiteName?: pulumi.Input<string | undefined>;
 }

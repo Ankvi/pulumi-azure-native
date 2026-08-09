@@ -133,20 +133,20 @@ export interface ChannelArgs {
     /**
      * Name of the channel.
      */
-    channelName?: pulumi.Input<string>;
+    channelName?: pulumi.Input<string | undefined>;
     /**
      * The type of the event channel which represents the direction flow of events.
      */
-    channelType?: pulumi.Input<string | types.enums.ChannelType>;
+    channelType?: pulumi.Input<string | types.enums.ChannelType | undefined>;
     /**
      * Expiration time of the channel. If this timer expires while the corresponding partner topic is never activated,
      * the channel and corresponding partner topic are deleted.
      */
-    expirationTimeIfNotActivatedUtc?: pulumi.Input<string>;
+    expirationTimeIfNotActivatedUtc?: pulumi.Input<string | undefined>;
     /**
      * Context or helpful message that can be used during the approval process by the subscriber.
      */
-    messageForActivation?: pulumi.Input<string>;
+    messageForActivation?: pulumi.Input<string | undefined>;
     /**
      * Name of the partner namespace.
      */
@@ -154,15 +154,15 @@ export interface ChannelArgs {
     /**
      * This property should be populated when channelType is PartnerTopic and represents information about the partner topic resource corresponding to the channel.
      */
-    partnerTopicInfo?: pulumi.Input<types.inputs.PartnerTopicInfoArgs>;
+    partnerTopicInfo?: pulumi.Input<types.inputs.PartnerTopicInfoArgs | undefined>;
     /**
      * Provisioning state of the channel.
      */
-    provisioningState?: pulumi.Input<string | types.enums.ChannelProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ChannelProvisioningState | undefined>;
     /**
      * The readiness state of the corresponding partner topic.
      */
-    readinessState?: pulumi.Input<string | types.enums.ReadinessState>;
+    readinessState?: pulumi.Input<string | types.enums.ReadinessState | undefined>;
     /**
      * The name of the resource group within the partners subscription.
      */

@@ -138,31 +138,31 @@ export interface AvailabilityGroupListenerArgs {
     /**
      * Availability Group configuration.
      */
-    availabilityGroupConfiguration?: pulumi.Input<types.inputs.AgConfigurationArgs>;
+    availabilityGroupConfiguration?: pulumi.Input<types.inputs.AgConfigurationArgs | undefined>;
     /**
      * Name of the availability group listener.
      */
-    availabilityGroupListenerName?: pulumi.Input<string>;
+    availabilityGroupListenerName?: pulumi.Input<string | undefined>;
     /**
      * Name of the availability group.
      */
-    availabilityGroupName?: pulumi.Input<string>;
+    availabilityGroupName?: pulumi.Input<string | undefined>;
     /**
      * Create a default availability group if it does not exist.
      */
-    createDefaultAvailabilityGroupIfNotExist?: pulumi.Input<boolean>;
+    createDefaultAvailabilityGroupIfNotExist?: pulumi.Input<boolean | undefined>;
     /**
      * List of load balancer configurations for an availability group listener.
      */
-    loadBalancerConfigurations?: pulumi.Input<pulumi.Input<types.inputs.LoadBalancerConfigurationArgs>[]>;
+    loadBalancerConfigurations?: pulumi.Input<pulumi.Input<types.inputs.LoadBalancerConfigurationArgs>[] | undefined>;
     /**
      * List of multi subnet IP configurations for an AG listener.
      */
-    multiSubnetIpConfigurations?: pulumi.Input<pulumi.Input<types.inputs.MultiSubnetIpConfigurationArgs>[]>;
+    multiSubnetIpConfigurations?: pulumi.Input<pulumi.Input<types.inputs.MultiSubnetIpConfigurationArgs>[] | undefined>;
     /**
      * Listener port.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

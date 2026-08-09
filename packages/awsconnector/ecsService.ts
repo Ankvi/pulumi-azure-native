@@ -78,7 +78,7 @@ export class EcsService extends pulumi.CustomResource {
             }
             resourceInputs["location"] = args?.location;
             resourceInputs["name"] = args?.name;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.ecsServicePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.ecsServicePropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -107,15 +107,15 @@ export interface EcsServiceArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of EcsService
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.EcsServicePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.EcsServicePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -123,5 +123,5 @@ export interface EcsServiceArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

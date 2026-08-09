@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class BatchEndpoint extends pulumi.CustomResource {
     /**
@@ -122,7 +122,7 @@ export class BatchEndpoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20210301preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20220201preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20220501:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20220601preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20221001:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20221001preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20221201preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20230201preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20230401:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20230401preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20230601preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20230801preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20231001:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20240101preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20240401:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20240401preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20240701preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20241001:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20241001preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20250101preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20250401:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20250401preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20250601:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20250701preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20250901:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20251001preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20251201:BatchEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20210301preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20220201preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20220501:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20220601preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20221001:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20221001preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20221201preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20230201preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20230401:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20230401preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20230601preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20230801preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20231001:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20240101preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20240401:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20240401preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20240701preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20241001:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20241001preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20250101preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20250401:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20250401preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20250601:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20250701preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20250901:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20251001preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20251201:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20260115preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20260301:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20260315preview:BatchEndpoint" }, { type: "azure-native:machinelearningservices/v20260501:BatchEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(BatchEndpoint.__pulumiType, name, resourceInputs, opts);
     }
@@ -135,19 +135,19 @@ export interface BatchEndpointArgs {
     /**
      * Name for the Batch Endpoint.
      */
-    endpointName?: pulumi.Input<string>;
+    endpointName?: pulumi.Input<string | undefined>;
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * [Required] Additional attributes of the entity.
      */
@@ -159,11 +159,11 @@ export interface BatchEndpointArgs {
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Azure Machine Learning Workspace Name
      */

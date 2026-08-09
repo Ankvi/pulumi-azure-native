@@ -7,27 +7,27 @@ export interface CaptureDescriptionArgs {
     /**
      * Properties of Destination where capture will be stored. (Storage Account, Blob Names)
      */
-    destination?: pulumi.Input<DestinationArgs>;
+    destination?: pulumi.Input<DestinationArgs | undefined>;
     /**
-     * A value that indicates whether capture description is enabled. 
+     * A value that indicates whether capture description is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enumerates the possible values for the encoding format of capture description. Note: 'AvroDeflate' will be deprecated in New API Version
      */
-    encoding?: pulumi.Input<enums.EncodingCaptureDescription>;
+    encoding?: pulumi.Input<enums.EncodingCaptureDescription | undefined>;
     /**
      * The time window allows you to set the frequency with which the capture to Azure Blobs will happen, value should between 60 to 900 seconds
      */
-    intervalInSeconds?: pulumi.Input<number>;
+    intervalInSeconds?: pulumi.Input<number | undefined>;
     /**
      * The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
      */
-    sizeLimitInBytes?: pulumi.Input<number>;
+    sizeLimitInBytes?: pulumi.Input<number | undefined>;
     /**
      * A value that indicates whether to Skip Empty Archives
      */
-    skipEmptyArchives?: pulumi.Input<boolean>;
+    skipEmptyArchives?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -37,11 +37,11 @@ export interface CaptureIdentityArgs {
     /**
      * Type of Azure Active Directory Managed Identity.
      */
-    type?: pulumi.Input<enums.CaptureIdentityType>;
+    type?: pulumi.Input<enums.CaptureIdentityType | undefined>;
     /**
      * ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
      */
-    userAssignedIdentity?: pulumi.Input<string>;
+    userAssignedIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -51,7 +51,7 @@ export interface ClusterSkuArgs {
     /**
      * The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Name of this SKU.
      */
@@ -65,11 +65,11 @@ export interface ConnectionStateArgs {
     /**
      * Description of the connection state.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Status of the connection.
      */
-    status?: pulumi.Input<string | enums.PrivateLinkConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateLinkConnectionStatus | undefined>;
 }
 
 /**
@@ -79,35 +79,35 @@ export interface DestinationArgs {
     /**
      * Blob naming convention for archive, e.g. {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order
      */
-    archiveNameFormat?: pulumi.Input<string>;
+    archiveNameFormat?: pulumi.Input<string | undefined>;
     /**
      * Blob container Name
      */
-    blobContainer?: pulumi.Input<string>;
+    blobContainer?: pulumi.Input<string | undefined>;
     /**
      * The Azure Data Lake Store name for the captured events
      */
-    dataLakeAccountName?: pulumi.Input<string>;
+    dataLakeAccountName?: pulumi.Input<string | undefined>;
     /**
      * The destination folder path for the captured events
      */
-    dataLakeFolderPath?: pulumi.Input<string>;
+    dataLakeFolderPath?: pulumi.Input<string | undefined>;
     /**
      * Subscription Id of Azure Data Lake Store
      */
-    dataLakeSubscriptionId?: pulumi.Input<string>;
+    dataLakeSubscriptionId?: pulumi.Input<string | undefined>;
     /**
      * A value that indicates whether capture description is enabled.
      */
-    identity?: pulumi.Input<CaptureIdentityArgs>;
+    identity?: pulumi.Input<CaptureIdentityArgs | undefined>;
     /**
      * Name for capture destination
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Resource id of the storage account to be used to create the blobs
      */
-    storageAccountResourceId?: pulumi.Input<string>;
+    storageAccountResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -117,15 +117,15 @@ export interface EncryptionArgs {
     /**
      * Enumerates the possible value of keySource for Encryption
      */
-    keySource?: pulumi.Input<enums.KeySource>;
+    keySource?: pulumi.Input<enums.KeySource | undefined>;
     /**
      * Properties of KeyVault
      */
-    keyVaultProperties?: pulumi.Input<pulumi.Input<KeyVaultPropertiesArgs>[]>;
+    keyVaultProperties?: pulumi.Input<pulumi.Input<KeyVaultPropertiesArgs>[] | undefined>;
     /**
      * Enable Infrastructure Encryption (Double Encryption)
      */
-    requireInfrastructureEncryption?: pulumi.Input<boolean>;
+    requireInfrastructureEncryption?: pulumi.Input<boolean | undefined>;
 }
 /**
  * encryptionArgsProvideDefaults sets the appropriate defaults for EncryptionArgs
@@ -144,30 +144,30 @@ export interface IdentityArgs {
     /**
      * Type of managed service identity.
      */
-    type?: pulumi.Input<enums.ManagedServiceIdentityType>;
+    type?: pulumi.Input<enums.ManagedServiceIdentityType | undefined>;
     /**
      * Properties for User Assigned Identities
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
  * Properties to configure keyVault Properties
  */
 export interface KeyVaultPropertiesArgs {
-    identity?: pulumi.Input<UserAssignedIdentityPropertiesArgs>;
+    identity?: pulumi.Input<UserAssignedIdentityPropertiesArgs | undefined>;
     /**
      * Name of the Key from KeyVault
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * Uri of KeyVault
      */
-    keyVaultUri?: pulumi.Input<string>;
+    keyVaultUri?: pulumi.Input<string | undefined>;
     /**
      * Key Version
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,11 +177,11 @@ export interface NWRuleSetIpRulesArgs {
     /**
      * The IP Filter Action
      */
-    action?: pulumi.Input<string | enums.NetworkRuleIPAction>;
+    action?: pulumi.Input<string | enums.NetworkRuleIPAction | undefined>;
     /**
      * IP Mask
      */
-    ipMask?: pulumi.Input<string>;
+    ipMask?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -191,11 +191,11 @@ export interface NWRuleSetVirtualNetworkRulesArgs {
     /**
      * Value that indicates whether to ignore missing Vnet Service Endpoint
      */
-    ignoreMissingVnetServiceEndpoint?: pulumi.Input<boolean>;
+    ignoreMissingVnetServiceEndpoint?: pulumi.Input<boolean | undefined>;
     /**
      * Subnet properties
      */
-    subnet?: pulumi.Input<SubnetArgs>;
+    subnet?: pulumi.Input<SubnetArgs | undefined>;
 }
 
 /**
@@ -205,7 +205,7 @@ export interface PrivateEndpointArgs {
     /**
      * The ARM identifier for Private Endpoint.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,15 +215,15 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The Private Endpoint resource for this Connection.
      */
-    privateEndpoint?: pulumi.Input<PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<PrivateEndpointArgs | undefined>;
     /**
      * Details about the state of the connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<ConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<ConnectionStateArgs | undefined>;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */
-    provisioningState?: pulumi.Input<string | enums.EndPointProvisioningState>;
+    provisioningState?: pulumi.Input<string | enums.EndPointProvisioningState | undefined>;
 }
 
 /**
@@ -233,15 +233,15 @@ export interface RetentionDescriptionArgs {
     /**
      * Enumerates the possible values for cleanup policy
      */
-    cleanupPolicy?: pulumi.Input<string | enums.CleanupPolicyRetentionDescription>;
+    cleanupPolicy?: pulumi.Input<string | enums.CleanupPolicyRetentionDescription | undefined>;
     /**
-     * Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue 
+     * Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
      */
-    retentionTimeInHours?: pulumi.Input<number>;
+    retentionTimeInHours?: pulumi.Input<number | undefined>;
     /**
      * Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
      */
-    tombstoneRetentionTimeInHours?: pulumi.Input<number>;
+    tombstoneRetentionTimeInHours?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -251,7 +251,7 @@ export interface SkuArgs {
     /**
      * The Event Hubs throughput units for Basic or Standard tiers, where value should be 0 to 20 throughput units. The Event Hubs premium units for Premium tier, where value should be 0 to 10 premium units.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Name of this SKU.
      */
@@ -259,7 +259,7 @@ export interface SkuArgs {
     /**
      * The billing tier of this particular SKU.
      */
-    tier?: pulumi.Input<string | enums.SkuTier>;
+    tier?: pulumi.Input<string | enums.SkuTier | undefined>;
 }
 
 /**
@@ -269,7 +269,7 @@ export interface SubnetArgs {
     /**
      * Resource ID of Virtual Network Subnet
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -299,5 +299,5 @@ export interface UserAssignedIdentityPropertiesArgs {
     /**
      * ARM ID of user Identity selected for encryption
      */
-    userAssignedIdentity?: pulumi.Input<string>;
+    userAssignedIdentity?: pulumi.Input<string | undefined>;
 }

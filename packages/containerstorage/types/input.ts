@@ -17,15 +17,15 @@ export interface AzureDiskArgs {
     /**
      * Only required if individual disk selection is desired. Path to disk, e.g. <nodename>:/dev/sda or WWN. Supports specifying multiple disks (same syntax as tags).
      */
-    disks?: pulumi.Input<pulumi.Input<DiskArgs>[]>;
+    disks?: pulumi.Input<pulumi.Input<DiskArgs>[] | undefined>;
     /**
      * Encryption specifies the encryption configuration for the Azure Disk pool
      */
-    encryption?: pulumi.Input<EncryptionArgs>;
+    encryption?: pulumi.Input<EncryptionArgs | undefined>;
     /**
      * Sku name
      */
-    skuName?: pulumi.Input<string | enums.AzureDiskSkuName>;
+    skuName?: pulumi.Input<string | enums.AzureDiskSkuName | undefined>;
 }
 
 /**
@@ -49,11 +49,11 @@ export interface ElasticSanArgs {
     /**
      * Encryption specifies the encryption configuration for the Azure Disk pool
      */
-    encryption?: pulumi.Input<EncryptionArgs>;
+    encryption?: pulumi.Input<EncryptionArgs | undefined>;
     /**
      * Sku name
      */
-    skuName?: pulumi.Input<string | enums.ElasticSanSkuName>;
+    skuName?: pulumi.Input<string | enums.ElasticSanSkuName | undefined>;
 }
 
 /**
@@ -63,7 +63,7 @@ export interface EncryptionArgs {
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<ManagedServiceIdentityArgs | undefined>;
     /**
      * The name of the key vault key.
      */
@@ -81,11 +81,11 @@ export interface EphemeralDiskArgs {
     /**
      * Only required if individual disk selection is desired. Path to disk, e.g. <nodename>:/dev/sda or WWN. Supports specifying multiple disks (same syntax as tags).
      */
-    disks?: pulumi.Input<pulumi.Input<DiskArgs>[]>;
+    disks?: pulumi.Input<pulumi.Input<DiskArgs>[] | undefined>;
     /**
      * The number of data copies. Default 3.
      */
-    replicas?: pulumi.Input<number>;
+    replicas?: pulumi.Input<number | undefined>;
 }
 /**
  * ephemeralDiskArgsProvideDefaults sets the appropriate defaults for EphemeralDiskArgs
@@ -108,7 +108,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -118,15 +118,15 @@ export interface PoolTypeArgs {
     /**
      * Disk Pool Properties
      */
-    azureDisk?: pulumi.Input<AzureDiskArgs>;
+    azureDisk?: pulumi.Input<AzureDiskArgs | undefined>;
     /**
      * Elastic San Pool Properties
      */
-    elasticSan?: pulumi.Input<ElasticSanArgs>;
+    elasticSan?: pulumi.Input<ElasticSanArgs | undefined>;
     /**
      * Ephemeral Pool Properties
      */
-    ephemeralDisk?: pulumi.Input<EphemeralDiskArgs>;
+    ephemeralDisk?: pulumi.Input<EphemeralDiskArgs | undefined>;
 }
 /**
  * poolTypeArgsProvideDefaults sets the appropriate defaults for PoolTypeArgs
@@ -134,7 +134,7 @@ export interface PoolTypeArgs {
 export function poolTypeArgsProvideDefaults(val: PoolTypeArgs): PoolTypeArgs {
     return {
         ...val,
-        ephemeralDisk: (val.ephemeralDisk ? pulumi.output(val.ephemeralDisk).apply(ephemeralDiskArgsProvideDefaults) : undefined),
+        ephemeralDisk: pulumi.output(val.ephemeralDisk).apply(v => v === undefined ? undefined : ephemeralDiskArgsProvideDefaults(v)),
     };
 }
 
@@ -145,7 +145,7 @@ export interface RequestsArgs {
     /**
      * Requested capacity of the pool in GiB.
      */
-    storage?: pulumi.Input<number>;
+    storage?: pulumi.Input<number | undefined>;
 }
 /**
  * requestsArgsProvideDefaults sets the appropriate defaults for RequestsArgs
@@ -164,7 +164,7 @@ export interface ResourcesArgs {
     /**
      * Requests for capacity for the pool.
      */
-    requests?: pulumi.Input<RequestsArgs>;
+    requests?: pulumi.Input<RequestsArgs | undefined>;
 }
 /**
  * resourcesArgsProvideDefaults sets the appropriate defaults for ResourcesArgs
@@ -172,6 +172,6 @@ export interface ResourcesArgs {
 export function resourcesArgsProvideDefaults(val: ResourcesArgs): ResourcesArgs {
     return {
         ...val,
-        requests: (val.requests ? pulumi.output(val.requests).apply(requestsArgsProvideDefaults) : undefined),
+        requests: pulumi.output(val.requests).apply(v => v === undefined ? undefined : requestsArgsProvideDefaults(v)),
     };
 }

@@ -78,10 +78,10 @@ export class ApiPortal extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["apiPortalName"] = args?.apiPortalName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.apiPortalPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.apiPortalPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["serviceName"] = args?.serviceName;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.skuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? pulumi.output(args.sku).apply(v => v === undefined ? undefined : types.inputs.skuArgsProvideDefaults(v)) : undefined;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -108,11 +108,11 @@ export interface ApiPortalArgs {
     /**
      * The name of API portal.
      */
-    apiPortalName?: pulumi.Input<string>;
+    apiPortalName?: pulumi.Input<string | undefined>;
     /**
      * API portal properties payload
      */
-    properties?: pulumi.Input<types.inputs.ApiPortalPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ApiPortalPropertiesArgs | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -124,5 +124,5 @@ export interface ApiPortalArgs {
     /**
      * Sku of the API portal resource
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
 }

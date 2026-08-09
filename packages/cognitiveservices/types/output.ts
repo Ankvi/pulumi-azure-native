@@ -392,19 +392,19 @@ export interface AgenticApplicationPropertiesResponse {
  *     AuthType:= ApiKey (as type discriminator)
  *     Credentials:= {ApiKey} as .ApiKey
  *     Target:= {ApiBase}
- *             
+ *
  * CognitiveService:
  *     Category:= CognitiveService
  *     AuthType:= ApiKey (as type discriminator)
  *     Credentials:= {SubscriptionKey} as ApiKey
  *     Target:= ServiceRegion={serviceRegion}
- *             
+ *
  * CognitiveSearch:
  *     Category:= CognitiveSearch
  *     AuthType:= ApiKey (as type discriminator)
  *     Credentials:= {Key} as ApiKey
  *     Target:= {Endpoint}
- *             
+ *
  * Use Metadata property bag for ApiType, ApiVersion, Kind and other metadata fields
  */
 export interface ApiKeyAuthConnectionPropertiesResponse {
@@ -867,24 +867,6 @@ export interface CustomKeysResponse {
 }
 
 /**
- * Gets or sets the source to which filter applies.
- */
-export interface CustomTopicConfigResponse {
-    /**
-     * If blocking would occur.
-     */
-    blocking?: boolean;
-    /**
-     * Content source to apply the Content Filters.
-     */
-    source?: string;
-    /**
-     * Name of RAI topic.
-     */
-    topicName?: string;
-}
-
-/**
  * Internal use only.
  */
 export interface DeploymentCapacitySettingsResponse {
@@ -1272,6 +1254,63 @@ export interface ManagedIdentityAuthTypeConnectionPropertiesResponse {
 }
 
 /**
+ * Status of the Provisioning for the managed network of a cognitive services account.
+ */
+export interface ManagedNetworkProvisionStatusResponse {
+    /**
+     * Status for the managed network of a cognitive services account.
+     */
+    status?: string;
+}
+
+export interface ManagedNetworkSettingsExResponse {
+    changeableIsolationModes: string[];
+    /**
+     * Public IP address assigned to the Azure Firewall.
+     */
+    firewallPublicIpAddress: string;
+    /**
+     * Firewall Sku used for FQDN Rules
+     */
+    firewallSku?: string;
+    /**
+     * Isolation mode for the managed network of a cognitive services account.
+     */
+    isolationMode?: string;
+    /**
+     * The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
+     */
+    managedNetworkKind?: string;
+    networkId: string;
+    /**
+     * Dictionary of <OutboundRule>
+     */
+    outboundRules?: {[key: string]: FqdnOutboundRuleResponse | PrivateEndpointOutboundRuleResponse | ServiceTagOutboundRuleResponse};
+    /**
+     * The provisioning state of the managed network settings.
+     */
+    provisioningState: string;
+    /**
+     * Status of the Provisioning for the managed network of a cognitive services account.
+     */
+    status?: ManagedNetworkProvisionStatusResponse;
+}
+
+/**
+ * The properties of the managed network settings of a cognitive services account.
+ */
+export interface ManagedNetworkSettingsPropertiesResponse {
+    /**
+     * Managed Network settings for a cognitive services account.
+     */
+    managedNetwork?: ManagedNetworkSettingsExResponse;
+    /**
+     * The current deployment state of the managed network resource. The provisioningState is to indicate states for resource provisioning.
+     */
+    provisioningState: string;
+}
+
+/**
  * The multiregion settings Cognitive Services account.
  */
 export interface MultiRegionSettingsResponse {
@@ -1519,6 +1558,52 @@ export interface PrivateEndpointConnectionResponse {
 }
 
 /**
+ * Private Endpoint destination for an outbound rule.
+ */
+export interface PrivateEndpointOutboundRuleDestinationResponse {
+    /**
+     * The Azure resource ID of the target private endpoint service.
+     */
+    serviceResourceId?: string;
+    /**
+     * The subresource of the target service to connect to.
+     */
+    subresourceTarget?: string;
+}
+
+/**
+ * Private Endpoint outbound rule for the managed network of a cognitive services account.
+ */
+export interface PrivateEndpointOutboundRuleResponse {
+    /**
+     * Category of a managed network Outbound Rule of a cognitive services account.
+     */
+    category?: string;
+    /**
+     * Private Endpoint destination.
+     */
+    destination?: PrivateEndpointOutboundRuleDestinationResponse;
+    /**
+     * Error information about an outbound rule of a cognitive services account if RuleStatus is failed.
+     */
+    errorInformation: string;
+    /**
+     * List of FQDNs associated with the private endpoint outbound rule.
+     */
+    fqdns?: string[];
+    parentRuleNames: string[];
+    /**
+     * Type of a managed network Outbound Rule of a cognitive services account.
+     */
+    status?: string;
+    /**
+     * Type of a managed network Outbound Rule of a cognitive services account.
+     * Expected value is 'PrivateEndpoint'.
+     */
+    type: "PrivateEndpoint";
+}
+
+/**
  * The Private Endpoint resource.
  */
 export interface PrivateEndpointResponse {
@@ -1710,7 +1795,7 @@ export interface RaiPolicyContentFilterResponse {
 /**
  * Azure OpenAI Content Filter.
  */
-export interface RaiPolicyContentFilterResponseV1 {
+export interface RaiPolicyContentFilterSubscriptionRaiPolicyResponse {
     /**
      * The action types to apply to the content filters
      */
@@ -1766,7 +1851,7 @@ export interface RaiPolicyPropertiesResponse {
 /**
  * Azure OpenAI Content Filters properties.
  */
-export interface RaiPolicyPropertiesResponseV1 {
+export interface RaiPolicyPropertiesSubscriptionRaiPolicyResponse {
     /**
      * Name of Rai policy.
      */
@@ -1774,15 +1859,11 @@ export interface RaiPolicyPropertiesResponseV1 {
     /**
      * The list of Content Filters.
      */
-    contentFilters?: RaiPolicyContentFilterResponseV1[];
+    contentFilters?: RaiPolicyContentFilterSubscriptionRaiPolicyResponse[];
     /**
      * The list of custom Blocklist.
      */
     customBlocklists?: CustomBlocklistConfigResponse[];
-    /**
-     * The list of custom rai topics.
-     */
-    customTopics?: CustomTopicConfigResponse[];
     /**
      * Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
      */
@@ -1798,34 +1879,16 @@ export interface RaiPolicyPropertiesResponseV1 {
 }
 
 /**
- * RAI Tool Label properties.
- */
-export interface RaiToolLabelPropertiesResponse {
-    /**
-     * Account-level tool label definition.
-     */
-    accountScope?: RaiToolLabelPropertiesResponseAccountScope;
-    /**
-     * List of project-level tool label definitions.
-     */
-    projectScopes?: RaiToolLabelPropertiesResponseProjectScopes[];
-    /**
-     * The unique tool connection name, e.g., 'Web_Search'.
-     */
-    toolConnectionName: string;
-}
-
-/**
  * Account-level tool label definition.
  */
-export interface RaiToolLabelPropertiesResponseAccountScope {
+export interface RaiToolLabelPropertiesAccountScopeResponse {
     /**
      * Dictionary of label key-value pairs for the account scope.
      */
     labelValues?: {[key: string]: string};
 }
 
-export interface RaiToolLabelPropertiesResponseProjectScopes {
+export interface RaiToolLabelPropertiesProjectScopesItemResponse {
     /**
      * Dictionary of label key-value pairs for the project scope.
      */
@@ -1834,6 +1897,24 @@ export interface RaiToolLabelPropertiesResponseProjectScopes {
      * Project name to which this scope applies.
      */
     project: string;
+}
+
+/**
+ * RAI Tool Label properties.
+ */
+export interface RaiToolLabelPropertiesResponse {
+    /**
+     * Account-level tool label definition.
+     */
+    accountScope?: RaiToolLabelPropertiesAccountScopeResponse;
+    /**
+     * List of project-level tool label definitions.
+     */
+    projectScopes?: RaiToolLabelPropertiesProjectScopesItemResponse[];
+    /**
+     * The unique tool connection name, e.g., 'Web_Search'.
+     */
+    toolConnectionName: string;
 }
 
 /**
@@ -2011,6 +2092,60 @@ export interface ServicePrincipalAuthTypeConnectionPropertiesResponse {
 }
 
 /**
+ * Service Tag destination for an outbound rule.
+ */
+export interface ServiceTagOutboundRuleDestinationResponse {
+    /**
+     * The action for the service tag outbound rule.
+     */
+    action?: string;
+    /**
+     * Optional address prefixes. If provided, the serviceTag property will be ignored.
+     */
+    addressPrefixes?: string[];
+    /**
+     * Destination port ranges.
+     */
+    portRanges?: string;
+    /**
+     * Network protocol used by the service tag rule.
+     */
+    protocol?: string;
+    /**
+     * Name of the Azure service tag to target.
+     */
+    serviceTag?: string;
+}
+
+/**
+ * Service Tag outbound rule for the managed network of a cognitive services account.
+ */
+export interface ServiceTagOutboundRuleResponse {
+    /**
+     * Category of a managed network Outbound Rule of a cognitive services account.
+     */
+    category?: string;
+    /**
+     * Service Tag destination.
+     */
+    destination?: ServiceTagOutboundRuleDestinationResponse;
+    /**
+     * Error information about an outbound rule of a cognitive services account if RuleStatus is failed.
+     */
+    errorInformation: string;
+    parentRuleNames: string[];
+    /**
+     * Type of a managed network Outbound Rule of a cognitive services account.
+     */
+    status?: string;
+    /**
+     * Type of a managed network Outbound Rule of a cognitive services account.
+     * Expected value is 'ServiceTag'.
+     */
+    type: "ServiceTag";
+}
+
+/**
  * SkuCapability indicates the capability of a certain feature.
  */
 export interface SkuCapabilityResponse {
@@ -2059,7 +2194,7 @@ export interface SkuResponse {
      */
     name: string;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
     size?: string;
     /**

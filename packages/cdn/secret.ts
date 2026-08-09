@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview, 2025-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Secret extends pulumi.CustomResource {
     /**
@@ -103,7 +103,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:Secret" }, { type: "azure-native:cdn/v20210601:Secret" }, { type: "azure-native:cdn/v20220501preview:Secret" }, { type: "azure-native:cdn/v20221101preview:Secret" }, { type: "azure-native:cdn/v20230501:Secret" }, { type: "azure-native:cdn/v20230701preview:Secret" }, { type: "azure-native:cdn/v20240201:Secret" }, { type: "azure-native:cdn/v20240501preview:Secret" }, { type: "azure-native:cdn/v20240601preview:Secret" }, { type: "azure-native:cdn/v20240901:Secret" }, { type: "azure-native:cdn/v20250101preview:Secret" }, { type: "azure-native:cdn/v20250415:Secret" }, { type: "azure-native:cdn/v20250601:Secret" }, { type: "azure-native:cdn/v20250701preview:Secret" }, { type: "azure-native:cdn/v20250901preview:Secret" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:Secret" }, { type: "azure-native:cdn/v20210601:Secret" }, { type: "azure-native:cdn/v20220501preview:Secret" }, { type: "azure-native:cdn/v20221101preview:Secret" }, { type: "azure-native:cdn/v20230501:Secret" }, { type: "azure-native:cdn/v20230701preview:Secret" }, { type: "azure-native:cdn/v20240201:Secret" }, { type: "azure-native:cdn/v20240501preview:Secret" }, { type: "azure-native:cdn/v20240601preview:Secret" }, { type: "azure-native:cdn/v20240901:Secret" }, { type: "azure-native:cdn/v20250101preview:Secret" }, { type: "azure-native:cdn/v20250415:Secret" }, { type: "azure-native:cdn/v20250601:Secret" }, { type: "azure-native:cdn/v20250701preview:Secret" }, { type: "azure-native:cdn/v20250901preview:Secret" }, { type: "azure-native:cdn/v20251201:Secret" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Secret.__pulumiType, name, resourceInputs, opts);
     }
@@ -116,7 +116,7 @@ export interface SecretArgs {
     /**
      * object which contains secret parameters
      */
-    parameters?: pulumi.Input<types.inputs.AzureFirstPartyManagedCertificateParametersArgs | types.inputs.CustomerCertificateParametersArgs | types.inputs.ManagedCertificateParametersArgs | types.inputs.UrlSigningKeyParametersArgs>;
+    parameters?: pulumi.Input<types.inputs.AzureFirstPartyManagedCertificateParametersArgs | types.inputs.CustomerCertificateParametersArgs | types.inputs.ManagedCertificateParametersArgs | types.inputs.UrlSigningKeyParametersArgs | undefined>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
@@ -128,5 +128,5 @@ export interface SecretArgs {
     /**
      * Name of the Secret under the profile.
      */
-    secretName?: pulumi.Input<string>;
+    secretName?: pulumi.Input<string | undefined>;
 }

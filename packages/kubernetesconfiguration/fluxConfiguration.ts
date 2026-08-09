@@ -151,14 +151,14 @@ export class FluxConfiguration extends pulumi.CustomResource {
             if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["azureBlob"] = args ? (args.azureBlob ? pulumi.output(args.azureBlob).apply(types.inputs.azureBlobDefinitionArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["bucket"] = args ? (args.bucket ? pulumi.output(args.bucket).apply(types.inputs.bucketDefinitionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["azureBlob"] = args ? pulumi.output(args.azureBlob).apply(v => v === undefined ? undefined : types.inputs.azureBlobDefinitionArgsProvideDefaults(v)) : undefined;
+            resourceInputs["bucket"] = args ? pulumi.output(args.bucket).apply(v => v === undefined ? undefined : types.inputs.bucketDefinitionArgsProvideDefaults(v)) : undefined;
             resourceInputs["clusterName"] = args?.clusterName;
             resourceInputs["clusterResourceName"] = args?.clusterResourceName;
             resourceInputs["clusterRp"] = args?.clusterRp;
             resourceInputs["configurationProtectedSettings"] = args?.configurationProtectedSettings;
             resourceInputs["fluxConfigurationName"] = args?.fluxConfigurationName;
-            resourceInputs["gitRepository"] = args ? (args.gitRepository ? pulumi.output(args.gitRepository).apply(types.inputs.gitRepositoryDefinitionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["gitRepository"] = args ? pulumi.output(args.gitRepository).apply(v => v === undefined ? undefined : types.inputs.gitRepositoryDefinitionArgsProvideDefaults(v)) : undefined;
             resourceInputs["kustomizations"] = args?.kustomizations;
             resourceInputs["namespace"] = (args?.namespace) ?? "default";
             resourceInputs["reconciliationWaitDuration"] = args?.reconciliationWaitDuration;
@@ -218,11 +218,11 @@ export interface FluxConfigurationArgs {
     /**
      * Parameters to reconcile to the AzureBlob source kind type.
      */
-    azureBlob?: pulumi.Input<types.inputs.AzureBlobDefinitionArgs>;
+    azureBlob?: pulumi.Input<types.inputs.AzureBlobDefinitionArgs | undefined>;
     /**
      * Parameters to reconcile to the Bucket source kind type.
      */
-    bucket?: pulumi.Input<types.inputs.BucketDefinitionArgs>;
+    bucket?: pulumi.Input<types.inputs.BucketDefinitionArgs | undefined>;
     /**
      * The name of the kubernetes cluster.
      */
@@ -238,27 +238,27 @@ export interface FluxConfigurationArgs {
     /**
      * Key-value pairs of protected configuration settings for the configuration
      */
-    configurationProtectedSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configurationProtectedSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the Flux Configuration.
      */
-    fluxConfigurationName?: pulumi.Input<string>;
+    fluxConfigurationName?: pulumi.Input<string | undefined>;
     /**
      * Parameters to reconcile to the GitRepository source kind type.
      */
-    gitRepository?: pulumi.Input<types.inputs.GitRepositoryDefinitionArgs>;
+    gitRepository?: pulumi.Input<types.inputs.GitRepositoryDefinitionArgs | undefined>;
     /**
      * Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
      */
-    kustomizations?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.KustomizationDefinitionArgs>}>;
+    kustomizations?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.KustomizationDefinitionArgs>} | undefined>;
     /**
      * The namespace to which this configuration is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Maximum duration to wait for flux configuration reconciliation. E.g PT1H, PT5M, P1D
      */
-    reconciliationWaitDuration?: pulumi.Input<string>;
+    reconciliationWaitDuration?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -266,17 +266,17 @@ export interface FluxConfigurationArgs {
     /**
      * Scope at which the operator will be installed.
      */
-    scope?: pulumi.Input<string | types.enums.ScopeType>;
+    scope?: pulumi.Input<string | types.enums.ScopeType | undefined>;
     /**
      * Source Kind to pull the configuration data from.
      */
-    sourceKind?: pulumi.Input<string | types.enums.SourceKindType>;
+    sourceKind?: pulumi.Input<string | types.enums.SourceKindType | undefined>;
     /**
      * Whether this configuration should suspend its reconciliation of its kustomizations and sources.
      */
-    suspend?: pulumi.Input<boolean>;
+    suspend?: pulumi.Input<boolean | undefined>;
     /**
      * Whether flux configuration deployment should wait for cluster to reconcile the kustomizations.
      */
-    waitForReconciliation?: pulumi.Input<boolean>;
+    waitForReconciliation?: pulumi.Input<boolean | undefined>;
 }

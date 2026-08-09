@@ -119,15 +119,15 @@ export interface DaprComponentResiliencyPolicyArgs {
     /**
      * The optional inbound component resiliency policy configuration
      */
-    inboundPolicy?: pulumi.Input<types.inputs.DaprComponentResiliencyPolicyConfigurationArgs>;
+    inboundPolicy?: pulumi.Input<types.inputs.DaprComponentResiliencyPolicyConfigurationArgs | undefined>;
     /**
      * Name of the Dapr Component Resiliency Policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The optional outbound component resiliency policy configuration
      */
-    outboundPolicy?: pulumi.Input<types.inputs.DaprComponentResiliencyPolicyConfigurationArgs>;
+    outboundPolicy?: pulumi.Input<types.inputs.DaprComponentResiliencyPolicyConfigurationArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

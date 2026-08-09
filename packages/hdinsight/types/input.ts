@@ -7,19 +7,19 @@ export interface ApplicationGetEndpointArgs {
     /**
      * The destination port to connect to.
      */
-    destinationPort?: pulumi.Input<number>;
+    destinationPort?: pulumi.Input<number | undefined>;
     /**
      * The location of the endpoint.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The private ip address of the endpoint.
      */
-    privateIPAddress?: pulumi.Input<string>;
+    privateIPAddress?: pulumi.Input<string | undefined>;
     /**
      * The public port to connect to.
      */
-    publicPort?: pulumi.Input<number>;
+    publicPort?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -29,23 +29,23 @@ export interface ApplicationGetHttpsEndpointArgs {
     /**
      * The list of access modes for the application.
      */
-    accessModes?: pulumi.Input<pulumi.Input<string>[]>;
+    accessModes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The destination port to connect to.
      */
-    destinationPort?: pulumi.Input<number>;
+    destinationPort?: pulumi.Input<number | undefined>;
     /**
      * The value indicates whether to disable GatewayAuth.
      */
-    disableGatewayAuth?: pulumi.Input<boolean>;
+    disableGatewayAuth?: pulumi.Input<boolean | undefined>;
     /**
      * The private ip address of the endpoint.
      */
-    privateIPAddress?: pulumi.Input<string>;
+    privateIPAddress?: pulumi.Input<string | undefined>;
     /**
      * The subdomain suffix of the application.
      */
-    subDomainSuffix?: pulumi.Input<string>;
+    subDomainSuffix?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -55,35 +55,35 @@ export interface ApplicationPropertiesArgs {
     /**
      * The application type.
      */
-    applicationType?: pulumi.Input<string>;
+    applicationType?: pulumi.Input<string | undefined>;
     /**
      * The list of roles in the cluster.
      */
-    computeProfile?: pulumi.Input<ComputeProfileArgs>;
+    computeProfile?: pulumi.Input<ComputeProfileArgs | undefined>;
     /**
      * The list of errors.
      */
-    errors?: pulumi.Input<pulumi.Input<ErrorsArgs>[]>;
+    errors?: pulumi.Input<pulumi.Input<ErrorsArgs>[] | undefined>;
     /**
      * The list of application HTTPS endpoints.
      */
-    httpsEndpoints?: pulumi.Input<pulumi.Input<ApplicationGetHttpsEndpointArgs>[]>;
+    httpsEndpoints?: pulumi.Input<pulumi.Input<ApplicationGetHttpsEndpointArgs>[] | undefined>;
     /**
      * The list of install script actions.
      */
-    installScriptActions?: pulumi.Input<pulumi.Input<RuntimeScriptActionArgs>[]>;
+    installScriptActions?: pulumi.Input<pulumi.Input<RuntimeScriptActionArgs>[] | undefined>;
     /**
      * The private link configurations.
      */
-    privateLinkConfigurations?: pulumi.Input<pulumi.Input<PrivateLinkConfigurationArgs>[]>;
+    privateLinkConfigurations?: pulumi.Input<pulumi.Input<PrivateLinkConfigurationArgs>[] | undefined>;
     /**
      * The list of application SSH endpoints.
      */
-    sshEndpoints?: pulumi.Input<pulumi.Input<ApplicationGetEndpointArgs>[]>;
+    sshEndpoints?: pulumi.Input<pulumi.Input<ApplicationGetEndpointArgs>[] | undefined>;
     /**
      * The list of uninstall script actions.
      */
-    uninstallScriptActions?: pulumi.Input<pulumi.Input<RuntimeScriptActionArgs>[]>;
+    uninstallScriptActions?: pulumi.Input<pulumi.Input<RuntimeScriptActionArgs>[] | undefined>;
 }
 
 /**
@@ -93,11 +93,11 @@ export interface AutoscaleArgs {
     /**
      * Parameters for load-based autoscale
      */
-    capacity?: pulumi.Input<AutoscaleCapacityArgs>;
+    capacity?: pulumi.Input<AutoscaleCapacityArgs | undefined>;
     /**
      * Parameters for schedule-based autoscale
      */
-    recurrence?: pulumi.Input<AutoscaleRecurrenceArgs>;
+    recurrence?: pulumi.Input<AutoscaleRecurrenceArgs | undefined>;
 }
 
 /**
@@ -107,11 +107,11 @@ export interface AutoscaleCapacityArgs {
     /**
      * The maximum instance count of the cluster
      */
-    maxInstanceCount?: pulumi.Input<number>;
+    maxInstanceCount?: pulumi.Input<number | undefined>;
     /**
      * The minimum instance count of the cluster
      */
-    minInstanceCount?: pulumi.Input<number>;
+    minInstanceCount?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -121,11 +121,11 @@ export interface AutoscaleRecurrenceArgs {
     /**
      * Array of schedule-based autoscale rules
      */
-    schedule?: pulumi.Input<pulumi.Input<AutoscaleScheduleArgs>[]>;
+    schedule?: pulumi.Input<pulumi.Input<AutoscaleScheduleArgs>[] | undefined>;
     /**
      * The time zone for the autoscale schedule times
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -135,11 +135,11 @@ export interface AutoscaleScheduleArgs {
     /**
      * Days of the week for a schedule-based autoscale rule
      */
-    days?: pulumi.Input<pulumi.Input<string | enums.DaysOfWeek>[]>;
+    days?: pulumi.Input<pulumi.Input<string | enums.DaysOfWeek>[] | undefined>;
     /**
      * Time and capacity for a schedule-based autoscale rule
      */
-    timeAndCapacity?: pulumi.Input<AutoscaleTimeAndCapacityArgs>;
+    timeAndCapacity?: pulumi.Input<AutoscaleTimeAndCapacityArgs | undefined>;
 }
 
 /**
@@ -149,15 +149,15 @@ export interface AutoscaleTimeAndCapacityArgs {
     /**
      * The maximum instance count of the cluster
      */
-    maxInstanceCount?: pulumi.Input<number>;
+    maxInstanceCount?: pulumi.Input<number | undefined>;
     /**
      * The minimum instance count of the cluster
      */
-    minInstanceCount?: pulumi.Input<number>;
+    minInstanceCount?: pulumi.Input<number | undefined>;
     /**
      * 24-hour time in the form xx:xx
      */
-    time?: pulumi.Input<string>;
+    time?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -167,15 +167,15 @@ export interface AzureMonitorSelectedConfigurationsArgs {
     /**
      * The configuration version.
      */
-    configurationVersion?: pulumi.Input<string>;
+    configurationVersion?: pulumi.Input<string | undefined>;
     /**
      * The global configurations of selected configurations.
      */
-    globalConfigurations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    globalConfigurations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The table list.
      */
-    tableList?: pulumi.Input<pulumi.Input<AzureMonitorTableConfigurationArgs>[]>;
+    tableList?: pulumi.Input<pulumi.Input<AzureMonitorTableConfigurationArgs>[] | undefined>;
 }
 
 /**
@@ -185,7 +185,7 @@ export interface AzureMonitorTableConfigurationArgs {
     /**
      * The name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -195,11 +195,11 @@ export interface ClientGroupInfoArgs {
     /**
      * The AAD security group id.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The AAD security group name.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -209,59 +209,59 @@ export interface ClusterCreatePropertiesArgs {
     /**
      * The cluster definition.
      */
-    clusterDefinition?: pulumi.Input<ClusterDefinitionArgs>;
+    clusterDefinition?: pulumi.Input<ClusterDefinitionArgs | undefined>;
     /**
      * The version of the cluster.
      */
-    clusterVersion?: pulumi.Input<string>;
+    clusterVersion?: pulumi.Input<string | undefined>;
     /**
      * The compute isolation properties.
      */
-    computeIsolationProperties?: pulumi.Input<ComputeIsolationPropertiesArgs>;
+    computeIsolationProperties?: pulumi.Input<ComputeIsolationPropertiesArgs | undefined>;
     /**
      * The compute profile.
      */
-    computeProfile?: pulumi.Input<ComputeProfileArgs>;
+    computeProfile?: pulumi.Input<ComputeProfileArgs | undefined>;
     /**
      * The disk encryption properties.
      */
-    diskEncryptionProperties?: pulumi.Input<DiskEncryptionPropertiesArgs>;
+    diskEncryptionProperties?: pulumi.Input<DiskEncryptionPropertiesArgs | undefined>;
     /**
      * The encryption-in-transit properties.
      */
-    encryptionInTransitProperties?: pulumi.Input<EncryptionInTransitPropertiesArgs>;
+    encryptionInTransitProperties?: pulumi.Input<EncryptionInTransitPropertiesArgs | undefined>;
     /**
      * The cluster kafka rest proxy configuration.
      */
-    kafkaRestProperties?: pulumi.Input<KafkaRestPropertiesArgs>;
+    kafkaRestProperties?: pulumi.Input<KafkaRestPropertiesArgs | undefined>;
     /**
      * The minimal supported tls version.
      */
-    minSupportedTlsVersion?: pulumi.Input<string>;
+    minSupportedTlsVersion?: pulumi.Input<string | undefined>;
     /**
      * The network properties.
      */
-    networkProperties?: pulumi.Input<NetworkPropertiesArgs>;
+    networkProperties?: pulumi.Input<NetworkPropertiesArgs | undefined>;
     /**
      * The type of operating system.
      */
-    osType?: pulumi.Input<string | enums.OSType>;
+    osType?: pulumi.Input<string | enums.OSType | undefined>;
     /**
      * The private link configurations.
      */
-    privateLinkConfigurations?: pulumi.Input<pulumi.Input<PrivateLinkConfigurationArgs>[]>;
+    privateLinkConfigurations?: pulumi.Input<pulumi.Input<PrivateLinkConfigurationArgs>[] | undefined>;
     /**
      * The security profile.
      */
-    securityProfile?: pulumi.Input<SecurityProfileArgs>;
+    securityProfile?: pulumi.Input<SecurityProfileArgs | undefined>;
     /**
      * The storage profile.
      */
-    storageProfile?: pulumi.Input<StorageProfileArgs>;
+    storageProfile?: pulumi.Input<StorageProfileArgs | undefined>;
     /**
      * The cluster tier.
      */
-    tier?: pulumi.Input<string | enums.Tier>;
+    tier?: pulumi.Input<string | enums.Tier | undefined>;
 }
 /**
  * clusterCreatePropertiesArgsProvideDefaults sets the appropriate defaults for ClusterCreatePropertiesArgs
@@ -269,9 +269,9 @@ export interface ClusterCreatePropertiesArgs {
 export function clusterCreatePropertiesArgsProvideDefaults(val: ClusterCreatePropertiesArgs): ClusterCreatePropertiesArgs {
     return {
         ...val,
-        computeIsolationProperties: (val.computeIsolationProperties ? pulumi.output(val.computeIsolationProperties).apply(computeIsolationPropertiesArgsProvideDefaults) : undefined),
-        diskEncryptionProperties: (val.diskEncryptionProperties ? pulumi.output(val.diskEncryptionProperties).apply(diskEncryptionPropertiesArgsProvideDefaults) : undefined),
-        encryptionInTransitProperties: (val.encryptionInTransitProperties ? pulumi.output(val.encryptionInTransitProperties).apply(encryptionInTransitPropertiesArgsProvideDefaults) : undefined),
+        computeIsolationProperties: pulumi.output(val.computeIsolationProperties).apply(v => v === undefined ? undefined : computeIsolationPropertiesArgsProvideDefaults(v)),
+        diskEncryptionProperties: pulumi.output(val.diskEncryptionProperties).apply(v => v === undefined ? undefined : diskEncryptionPropertiesArgsProvideDefaults(v)),
+        encryptionInTransitProperties: pulumi.output(val.encryptionInTransitProperties).apply(v => v === undefined ? undefined : encryptionInTransitPropertiesArgsProvideDefaults(v)),
         tier: (val.tier) ?? "Standard",
     };
 }
@@ -283,19 +283,19 @@ export interface ClusterDefinitionArgs {
     /**
      * The link to the blueprint.
      */
-    blueprint?: pulumi.Input<string>;
+    blueprint?: pulumi.Input<string | undefined>;
     /**
      * The versions of different services in the cluster.
      */
-    componentVersion?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    componentVersion?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cluster configurations.
      */
-    configurations?: any;
+    configurations?: any | undefined;
     /**
      * The type of cluster.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -305,11 +305,11 @@ export interface ClusterIdentityArgs {
     /**
      * The type of identity used for the cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities.
      */
-    type?: pulumi.Input<string | enums.ResourceIdentityType>;
+    type?: pulumi.Input<string | enums.ResourceIdentityType | undefined>;
     /**
      * The list of user identities associated with the cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserAssignedIdentityArgs>}>;
+    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserAssignedIdentityArgs>} | undefined>;
 }
 
 /**
@@ -319,11 +319,11 @@ export interface ComputeIsolationPropertiesArgs {
     /**
      * The flag indicates whether enable compute isolation or not.
      */
-    enableComputeIsolation?: pulumi.Input<boolean>;
+    enableComputeIsolation?: pulumi.Input<boolean | undefined>;
     /**
      * The host sku.
      */
-    hostSku?: pulumi.Input<string>;
+    hostSku?: pulumi.Input<string | undefined>;
 }
 /**
  * computeIsolationPropertiesArgsProvideDefaults sets the appropriate defaults for ComputeIsolationPropertiesArgs
@@ -342,7 +342,7 @@ export interface ComputeProfileArgs {
     /**
      * The list of roles in the cluster.
      */
-    roles?: pulumi.Input<pulumi.Input<RoleArgs>[]>;
+    roles?: pulumi.Input<pulumi.Input<RoleArgs>[] | undefined>;
 }
 
 /**
@@ -352,7 +352,7 @@ export interface DataDisksGroupsArgs {
     /**
      * The number of disks per node.
      */
-    disksPerNode?: pulumi.Input<number>;
+    disksPerNode?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -362,27 +362,27 @@ export interface DiskEncryptionPropertiesArgs {
     /**
      * Algorithm identifier for encryption, default RSA-OAEP.
      */
-    encryptionAlgorithm?: pulumi.Input<string | enums.JsonWebKeyEncryptionAlgorithm>;
+    encryptionAlgorithm?: pulumi.Input<string | enums.JsonWebKeyEncryptionAlgorithm | undefined>;
     /**
      * Indicates whether or not resource disk encryption is enabled.
      */
-    encryptionAtHost?: pulumi.Input<boolean>;
+    encryptionAtHost?: pulumi.Input<boolean | undefined>;
     /**
      * Key name that is used for enabling disk encryption.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * Specific key version that is used for enabling disk encryption.
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
     /**
      * Resource ID of Managed Identity that is used to access the key vault.
      */
-    msiResourceId?: pulumi.Input<string>;
+    msiResourceId?: pulumi.Input<string | undefined>;
     /**
      * Base key vault URI where the customers key is located eg. https://myvault.vault.azure.net
      */
-    vaultUri?: pulumi.Input<string>;
+    vaultUri?: pulumi.Input<string | undefined>;
 }
 /**
  * diskEncryptionPropertiesArgsProvideDefaults sets the appropriate defaults for DiskEncryptionPropertiesArgs
@@ -401,7 +401,7 @@ export interface EncryptionInTransitPropertiesArgs {
     /**
      * Indicates whether or not inter cluster node communication is encrypted in transit.
      */
-    isEncryptionInTransitEnabled?: pulumi.Input<boolean>;
+    isEncryptionInTransitEnabled?: pulumi.Input<boolean | undefined>;
 }
 /**
  * encryptionInTransitPropertiesArgsProvideDefaults sets the appropriate defaults for EncryptionInTransitPropertiesArgs
@@ -420,11 +420,11 @@ export interface ErrorsArgs {
     /**
      * The error code.
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * The error message.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -434,7 +434,7 @@ export interface HardwareProfileArgs {
     /**
      * The size of the VM
      */
-    vmSize?: pulumi.Input<string>;
+    vmSize?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -448,19 +448,19 @@ export interface IPConfigurationArgs {
     /**
      * Indicates whether this IP configuration is primary for the corresponding NIC.
      */
-    primary?: pulumi.Input<boolean>;
+    primary?: pulumi.Input<boolean | undefined>;
     /**
      * The IP address.
      */
-    privateIPAddress?: pulumi.Input<string>;
+    privateIPAddress?: pulumi.Input<string | undefined>;
     /**
      * The method that private IP address is allocated.
      */
-    privateIPAllocationMethod?: pulumi.Input<string | enums.PrivateIPAllocationMethod>;
+    privateIPAllocationMethod?: pulumi.Input<string | enums.PrivateIPAllocationMethod | undefined>;
     /**
      * The subnet resource id.
      */
-    subnet?: pulumi.Input<ResourceIdArgs>;
+    subnet?: pulumi.Input<ResourceIdArgs | undefined>;
 }
 
 /**
@@ -484,11 +484,11 @@ export interface KafkaRestPropertiesArgs {
     /**
      * The information of AAD security group.
      */
-    clientGroupInfo?: pulumi.Input<ClientGroupInfoArgs>;
+    clientGroupInfo?: pulumi.Input<ClientGroupInfoArgs | undefined>;
     /**
      * The configurations that need to be overriden.
      */
-    configurationOverride?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configurationOverride?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -498,15 +498,15 @@ export interface LinuxOperatingSystemProfileArgs {
     /**
      * The password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The SSH profile.
      */
-    sshProfile?: pulumi.Input<SshProfileArgs>;
+    sshProfile?: pulumi.Input<SshProfileArgs | undefined>;
     /**
      * The username.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -516,19 +516,19 @@ export interface NetworkPropertiesArgs {
     /**
      * A value to describe how the outbound dependencies of a HDInsight cluster are managed. 'Managed' means that the outbound dependencies are managed by the HDInsight service. 'External' means that the outbound dependencies are managed by a customer specific solution.
      */
-    outboundDependenciesManagedType?: pulumi.Input<string | enums.OutboundDependenciesManagedType>;
+    outboundDependenciesManagedType?: pulumi.Input<string | enums.OutboundDependenciesManagedType | undefined>;
     /**
      * Indicates whether or not private link is enabled.
      */
-    privateLink?: pulumi.Input<string | enums.PrivateLink>;
+    privateLink?: pulumi.Input<string | enums.PrivateLink | undefined>;
     /**
-     * Gets or sets the IP tag for the public IPs created along with the HDInsight Clusters. 
+     * Gets or sets the IP tag for the public IPs created along with the HDInsight Clusters.
      */
-    publicIpTag?: pulumi.Input<IpTagArgs>;
+    publicIpTag?: pulumi.Input<IpTagArgs | undefined>;
     /**
      * The direction for the resource provider connection.
      */
-    resourceProviderConnection?: pulumi.Input<string | enums.ResourceProviderConnection>;
+    resourceProviderConnection?: pulumi.Input<string | enums.ResourceProviderConnection | undefined>;
 }
 
 /**
@@ -538,7 +538,7 @@ export interface OsProfileArgs {
     /**
      * The Linux OS profile.
      */
-    linuxOperatingSystemProfile?: pulumi.Input<LinuxOperatingSystemProfileArgs>;
+    linuxOperatingSystemProfile?: pulumi.Input<LinuxOperatingSystemProfileArgs | undefined>;
 }
 
 /**
@@ -566,11 +566,11 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * Whether there is further actions.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The optional description of the status.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The concrete private link service connection.
      */
@@ -584,7 +584,7 @@ export interface ResourceIdArgs {
     /**
      * The azure resource id.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -594,47 +594,47 @@ export interface RoleArgs {
     /**
      * The autoscale configurations.
      */
-    autoscaleConfiguration?: pulumi.Input<AutoscaleArgs>;
+    autoscaleConfiguration?: pulumi.Input<AutoscaleArgs | undefined>;
     /**
      * The data disks groups for the role.
      */
-    dataDisksGroups?: pulumi.Input<pulumi.Input<DataDisksGroupsArgs>[]>;
+    dataDisksGroups?: pulumi.Input<pulumi.Input<DataDisksGroupsArgs>[] | undefined>;
     /**
      * Indicates whether encrypt the data disks.
      */
-    encryptDataDisks?: pulumi.Input<boolean>;
+    encryptDataDisks?: pulumi.Input<boolean | undefined>;
     /**
      * The hardware profile.
      */
-    hardwareProfile?: pulumi.Input<HardwareProfileArgs>;
+    hardwareProfile?: pulumi.Input<HardwareProfileArgs | undefined>;
     /**
      * The minimum instance count of the cluster.
      */
-    minInstanceCount?: pulumi.Input<number>;
+    minInstanceCount?: pulumi.Input<number | undefined>;
     /**
      * The name of the role.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The operating system profile.
      */
-    osProfile?: pulumi.Input<OsProfileArgs>;
+    osProfile?: pulumi.Input<OsProfileArgs | undefined>;
     /**
      * The list of script actions on the role.
      */
-    scriptActions?: pulumi.Input<pulumi.Input<ScriptActionArgs>[]>;
+    scriptActions?: pulumi.Input<pulumi.Input<ScriptActionArgs>[] | undefined>;
     /**
      * The instance count of the cluster.
      */
-    targetInstanceCount?: pulumi.Input<number>;
+    targetInstanceCount?: pulumi.Input<number | undefined>;
     /**
      * The name of the virtual machine group.
      */
-    vMGroupName?: pulumi.Input<string>;
+    vMGroupName?: pulumi.Input<string | undefined>;
     /**
      * The virtual network profile.
      */
-    virtualNetworkProfile?: pulumi.Input<VirtualNetworkProfileArgs>;
+    virtualNetworkProfile?: pulumi.Input<VirtualNetworkProfileArgs | undefined>;
 }
 /**
  * roleArgsProvideDefaults sets the appropriate defaults for RoleArgs
@@ -657,7 +657,7 @@ export interface RuntimeScriptActionArgs {
     /**
      * The parameters for the script
      */
-    parameters?: pulumi.Input<string>;
+    parameters?: pulumi.Input<string | undefined>;
     /**
      * The list of roles where script will be executed.
      */
@@ -693,39 +693,39 @@ export interface SecurityProfileArgs {
     /**
      * The resource ID of the user's Azure Active Directory Domain Service.
      */
-    aaddsResourceId?: pulumi.Input<string>;
+    aaddsResourceId?: pulumi.Input<string | undefined>;
     /**
      * Optional. The Distinguished Names for cluster user groups
      */
-    clusterUsersGroupDNs?: pulumi.Input<pulumi.Input<string>[]>;
+    clusterUsersGroupDNs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The directory type.
      */
-    directoryType?: pulumi.Input<string | enums.DirectoryType>;
+    directoryType?: pulumi.Input<string | enums.DirectoryType | undefined>;
     /**
      * The organization's active directory domain.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The domain admin password.
      */
-    domainUserPassword?: pulumi.Input<string>;
+    domainUserPassword?: pulumi.Input<string | undefined>;
     /**
      * The domain user account that will have admin privileges on the cluster.
      */
-    domainUsername?: pulumi.Input<string>;
+    domainUsername?: pulumi.Input<string | undefined>;
     /**
      * The LDAPS protocol URLs to communicate with the Active Directory.
      */
-    ldapsUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    ldapsUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * User assigned identity that has permissions to read and create cluster-related artifacts in the user's AADDS.
      */
-    msiResourceId?: pulumi.Input<string>;
+    msiResourceId?: pulumi.Input<string | undefined>;
     /**
      * The organizational unit within the Active Directory to place the cluster and service accounts.
      */
-    organizationalUnitDN?: pulumi.Input<string>;
+    organizationalUnitDN?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -735,7 +735,7 @@ export interface SshProfileArgs {
     /**
      * The list of SSH public keys.
      */
-    publicKeys?: pulumi.Input<pulumi.Input<SshPublicKeyArgs>[]>;
+    publicKeys?: pulumi.Input<pulumi.Input<SshPublicKeyArgs>[] | undefined>;
 }
 
 /**
@@ -745,7 +745,7 @@ export interface SshPublicKeyArgs {
     /**
      * The certificate for SSH.
      */
-    certificateData?: pulumi.Input<string>;
+    certificateData?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -755,43 +755,43 @@ export interface StorageAccountArgs {
     /**
      * The container in the storage account, only to be specified for WASB storage accounts.
      */
-    container?: pulumi.Input<string>;
+    container?: pulumi.Input<string | undefined>;
     /**
-     * Enable secure channel or not, it's an optional field. Default value is false when cluster version < 5.1 and true when cluster version >= 5.1 , 
+     * Enable secure channel or not, it's an optional field. Default value is false when cluster version < 5.1 and true when cluster version >= 5.1 ,
      */
-    enableSecureChannel?: pulumi.Input<boolean>;
+    enableSecureChannel?: pulumi.Input<boolean | undefined>;
     /**
      * The filesystem, only to be specified for Azure Data Lake Storage Gen 2.
      */
-    fileSystem?: pulumi.Input<string>;
+    fileSystem?: pulumi.Input<string | undefined>;
     /**
      * The file share name.
      */
-    fileshare?: pulumi.Input<string>;
+    fileshare?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the storage account is the default storage account.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * The storage account access key.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The managed identity (MSI) that is allowed to access the storage account, only to be specified for Azure Data Lake Storage Gen 2.
      */
-    msiResourceId?: pulumi.Input<string>;
+    msiResourceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the storage account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of storage account, only to be specified for Azure Data Lake Storage Gen 2.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The shared access signature key.
      */
-    saskey?: pulumi.Input<string>;
+    saskey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -801,7 +801,7 @@ export interface StorageProfileArgs {
     /**
      * The list of storage accounts in the cluster.
      */
-    storageaccounts?: pulumi.Input<pulumi.Input<StorageAccountArgs>[]>;
+    storageaccounts?: pulumi.Input<pulumi.Input<StorageAccountArgs>[] | undefined>;
 }
 
 /**
@@ -811,7 +811,7 @@ export interface UserAssignedIdentityArgs {
     /**
      * The tenant id of user assigned identity.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -821,9 +821,9 @@ export interface VirtualNetworkProfileArgs {
     /**
      * The ID of the virtual network.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the subnet.
      */
-    subnet?: pulumi.Input<string>;
+    subnet?: pulumi.Input<string | undefined>;
 }

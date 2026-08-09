@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CapacityReservation extends pulumi.CustomResource {
     /**
@@ -152,7 +152,7 @@ export class CapacityReservation extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210401:CapacityReservation" }, { type: "azure-native:compute/v20210701:CapacityReservation" }, { type: "azure-native:compute/v20211101:CapacityReservation" }, { type: "azure-native:compute/v20220301:CapacityReservation" }, { type: "azure-native:compute/v20220801:CapacityReservation" }, { type: "azure-native:compute/v20221101:CapacityReservation" }, { type: "azure-native:compute/v20230301:CapacityReservation" }, { type: "azure-native:compute/v20230701:CapacityReservation" }, { type: "azure-native:compute/v20230901:CapacityReservation" }, { type: "azure-native:compute/v20240301:CapacityReservation" }, { type: "azure-native:compute/v20240701:CapacityReservation" }, { type: "azure-native:compute/v20241101:CapacityReservation" }, { type: "azure-native:compute/v20250401:CapacityReservation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210401:CapacityReservation" }, { type: "azure-native:compute/v20210701:CapacityReservation" }, { type: "azure-native:compute/v20211101:CapacityReservation" }, { type: "azure-native:compute/v20220301:CapacityReservation" }, { type: "azure-native:compute/v20220801:CapacityReservation" }, { type: "azure-native:compute/v20221101:CapacityReservation" }, { type: "azure-native:compute/v20230301:CapacityReservation" }, { type: "azure-native:compute/v20230701:CapacityReservation" }, { type: "azure-native:compute/v20230901:CapacityReservation" }, { type: "azure-native:compute/v20240301:CapacityReservation" }, { type: "azure-native:compute/v20240701:CapacityReservation" }, { type: "azure-native:compute/v20241101:CapacityReservation" }, { type: "azure-native:compute/v20250401:CapacityReservation" }, { type: "azure-native:compute/v20251101:CapacityReservation" }, { type: "azure-native:compute/v20260301:CapacityReservation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CapacityReservation.__pulumiType, name, resourceInputs, opts);
     }
@@ -169,11 +169,11 @@ export interface CapacityReservationArgs {
     /**
      * The name of the capacity reservation.
      */
-    capacityReservationName?: pulumi.Input<string>;
+    capacityReservationName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -185,9 +185,9 @@ export interface CapacityReservationArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The availability zones.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -7,9 +7,9 @@ export interface AmountArgs {
     /**
      * The type of currency being used for the value.
      */
-    currency?: pulumi.Input<string>;
+    currency?: pulumi.Input<string | undefined>;
     /**
      * Amount value.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }

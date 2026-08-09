@@ -6,5 +6,5 @@ export interface SkuArgs {
     /**
      * Name of the SKU to be applied
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

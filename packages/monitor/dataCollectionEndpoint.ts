@@ -182,31 +182,31 @@ export interface DataCollectionEndpointArgs {
     /**
      * The name of the data collection endpoint. The name is case insensitive.
      */
-    dataCollectionEndpointName?: pulumi.Input<string>;
+    dataCollectionEndpointName?: pulumi.Input<string | undefined>;
     /**
      * Description of the data collection endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Managed service identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.DataCollectionEndpointResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.DataCollectionEndpointResourceIdentityArgs | undefined>;
     /**
      * The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
      */
-    immutableId?: pulumi.Input<string>;
+    immutableId?: pulumi.Input<string | undefined>;
     /**
      * The kind of the resource.
      */
-    kind?: pulumi.Input<string | types.enums.KnownDataCollectionEndpointResourceKind>;
+    kind?: pulumi.Input<string | types.enums.KnownDataCollectionEndpointResourceKind | undefined>;
     /**
      * The geo-location where the resource lives.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Network access control rules for the endpoints.
      */
-    networkAcls?: pulumi.Input<types.inputs.DataCollectionEndpointNetworkAclsArgs>;
+    networkAcls?: pulumi.Input<types.inputs.DataCollectionEndpointNetworkAclsArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -214,5 +214,5 @@ export interface DataCollectionEndpointArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -108,7 +108,7 @@ export interface PrivateEndpointConnectionControllerPrivateEndpointConnectionArg
     /**
      * Gets the tag for optimistic concurrency control.
      */
-    eTag?: pulumi.Input<string>;
+    eTag?: pulumi.Input<string | undefined>;
     /**
      * Migrate project name.
      */
@@ -116,11 +116,11 @@ export interface PrivateEndpointConnectionControllerPrivateEndpointConnectionArg
     /**
      * Private endpoint connection name.
      */
-    peConnectionName?: pulumi.Input<string>;
+    peConnectionName?: pulumi.Input<string | undefined>;
     /**
      * Properties of Connection state request.
      */
-    properties?: pulumi.Input<types.inputs.ConnectionStateRequestBodyPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConnectionStateRequestBodyPropertiesArgs | undefined>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

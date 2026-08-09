@@ -126,15 +126,15 @@ export interface HypervCollectorsOperationArgs {
     /**
      * Gets or sets the collector agent properties.
      */
-    agentProperties?: pulumi.Input<types.inputs.CollectorAgentPropertiesBaseArgs>;
+    agentProperties?: pulumi.Input<types.inputs.CollectorAgentPropertiesBaseArgs | undefined>;
     /**
      * Gets the discovery site id.
      */
-    discoverySiteId?: pulumi.Input<string>;
+    discoverySiteId?: pulumi.Input<string | undefined>;
     /**
      * Hyper-V collector ARM name
      */
-    hypervCollectorName?: pulumi.Input<string>;
+    hypervCollectorName?: pulumi.Input<string | undefined>;
     /**
      * Assessment Project Name
      */
@@ -142,7 +142,7 @@ export interface HypervCollectorsOperationArgs {
     /**
      * The status of the last operation.
      */
-    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

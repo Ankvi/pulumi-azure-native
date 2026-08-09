@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
  *
- * Other available API versions: 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ReplicationLink extends pulumi.CustomResource {
     /**
@@ -153,7 +153,7 @@ export class ReplicationLink extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20230501preview:ReplicationLink" }, { type: "azure-native:sql/v20230801:ReplicationLink" }, { type: "azure-native:sql/v20230801preview:ReplicationLink" }, { type: "azure-native:sql/v20240501preview:ReplicationLink" }, { type: "azure-native:sql/v20241101preview:ReplicationLink" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20230501preview:ReplicationLink" }, { type: "azure-native:sql/v20230801:ReplicationLink" }, { type: "azure-native:sql/v20230801preview:ReplicationLink" }, { type: "azure-native:sql/v20240501preview:ReplicationLink" }, { type: "azure-native:sql/v20241101preview:ReplicationLink" }, { type: "azure-native:sql/v20250101:ReplicationLink" }, { type: "azure-native:sql/v20250201preview:ReplicationLink" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ReplicationLink.__pulumiType, name, resourceInputs, opts);
     }
@@ -167,11 +167,11 @@ export interface ReplicationLinkArgs {
      * The name of the database.
      */
     databaseName: pulumi.Input<string>;
-    linkId?: pulumi.Input<string>;
+    linkId?: pulumi.Input<string | undefined>;
     /**
      * Link type (GEO, NAMED, STANDBY). Update operation does not support NAMED.
      */
-    linkType?: pulumi.Input<string | types.enums.ReplicationLinkType>;
+    linkType?: pulumi.Input<string | types.enums.ReplicationLinkType | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

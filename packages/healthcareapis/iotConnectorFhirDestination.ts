@@ -139,7 +139,7 @@ export interface IotConnectorFhirDestinationArgs {
     /**
      * The name of IoT Connector FHIR destination resource.
      */
-    fhirDestinationName?: pulumi.Input<string>;
+    fhirDestinationName?: pulumi.Input<string | undefined>;
     /**
      * FHIR Mappings
      */
@@ -155,7 +155,7 @@ export interface IotConnectorFhirDestinationArgs {
     /**
      * The resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the service instance.
      */

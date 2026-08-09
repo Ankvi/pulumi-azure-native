@@ -261,51 +261,51 @@ export interface VirtualMachineArgs {
     /**
      * Gets or sets the extended location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * Firmware type
      */
-    firmwareType?: pulumi.Input<string | types.enums.FirmwareType>;
+    firmwareType?: pulumi.Input<string | types.enums.FirmwareType | undefined>;
     /**
      * Guest agent status properties.
      */
-    guestAgentProfile?: pulumi.Input<types.inputs.GuestAgentProfileArgs>;
+    guestAgentProfile?: pulumi.Input<types.inputs.GuestAgentProfileArgs | undefined>;
     /**
      * Hardware properties.
      */
-    hardwareProfile?: pulumi.Input<types.inputs.HardwareProfileArgs>;
+    hardwareProfile?: pulumi.Input<types.inputs.HardwareProfileArgs | undefined>;
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
      * Gets or sets the inventory Item ID for the virtual machine.
      */
-    inventoryItemId?: pulumi.Input<string>;
+    inventoryItemId?: pulumi.Input<string | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine.
      */
-    moRefId?: pulumi.Input<string>;
+    moRefId?: pulumi.Input<string | undefined>;
     /**
      * Network properties.
      */
-    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs | undefined>;
     /**
      * OS properties.
      */
-    osProfile?: pulumi.Input<types.inputs.OsProfileArgs>;
+    osProfile?: pulumi.Input<types.inputs.OsProfileArgs | undefined>;
     /**
      * Placement properties.
      */
-    placementProfile?: pulumi.Input<types.inputs.PlacementProfileArgs>;
+    placementProfile?: pulumi.Input<types.inputs.PlacementProfileArgs | undefined>;
     /**
      * The Resource Group Name.
      */
@@ -314,33 +314,33 @@ export interface VirtualMachineArgs {
      * Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will
      * deploy.
      */
-    resourcePoolId?: pulumi.Input<string>;
+    resourcePoolId?: pulumi.Input<string | undefined>;
     /**
      * Gets the security profile.
      */
-    securityProfile?: pulumi.Input<types.inputs.SecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.SecurityProfileArgs | undefined>;
     /**
      * Gets or sets the SMBIOS UUID of the vm.
      */
-    smbiosUuid?: pulumi.Input<string>;
+    smbiosUuid?: pulumi.Input<string | undefined>;
     /**
      * Storage properties.
      */
-    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs | undefined>;
     /**
      * Gets or sets the Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Gets or sets the ARM Id of the template resource to deploy the virtual machine.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
      */
-    vCenterId?: pulumi.Input<string>;
+    vCenterId?: pulumi.Input<string | undefined>;
     /**
      * Name of the virtual machine resource.
      */
-    virtualMachineName?: pulumi.Input<string>;
+    virtualMachineName?: pulumi.Input<string | undefined>;
 }

@@ -7,7 +7,7 @@ export interface DistributeVersionerLatestArgs {
     /**
      * Major version for the generated version number. Determine what is "latest" based on versions with this value as the major version. -1 is equivalent to leaving it unset.
      */
-    major?: pulumi.Input<number>;
+    major?: pulumi.Input<number | undefined>;
     /**
      * Version numbering scheme to be used.
      * Expected value is 'Latest'.
@@ -42,7 +42,7 @@ export interface ImageTemplateAutoRunArgs {
     /**
      * Enabling this field will trigger an automatic build on image template creation or update.
      */
-    state?: pulumi.Input<enums.AutoRunState>;
+    state?: pulumi.Input<enums.AutoRunState | undefined>;
 }
 
 /**
@@ -52,19 +52,19 @@ export interface ImageTemplateFileCustomizerArgs {
     /**
      * The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM
      */
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * Friendly Name to provide context on what this customization step does
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * SHA256 checksum of the file provided in the sourceUri field above
      */
-    sha256Checksum?: pulumi.Input<string>;
+    sha256Checksum?: pulumi.Input<string | undefined>;
     /**
      * The URI of the file to be uploaded for customizing the VM. It can be a github link, SAS URI for Azure Storage, etc
      */
-    sourceUri?: pulumi.Input<string>;
+    sourceUri?: pulumi.Input<string | undefined>;
     /**
      * The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
      * Expected value is 'File'.
@@ -88,19 +88,19 @@ export interface ImageTemplateFileValidatorArgs {
     /**
      * The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM
      */
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * Friendly Name to provide context on what this validation step does
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * SHA256 checksum of the file provided in the sourceUri field above
      */
-    sha256Checksum?: pulumi.Input<string>;
+    sha256Checksum?: pulumi.Input<string | undefined>;
     /**
      * The URI of the file to be uploaded to the VM for validation. It can be a github link, Azure Storage URI (authorized or SAS), etc
      */
-    sourceUri?: pulumi.Input<string>;
+    sourceUri?: pulumi.Input<string | undefined>;
     /**
      * The type of validation you want to use on the Image. For example, "Shell" can be shell validation
      * Expected value is 'File'.
@@ -124,11 +124,11 @@ export interface ImageTemplateIdentityArgs {
     /**
      * The type of identity used for the image template. The type 'None' will remove any identities from the image template.
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -138,7 +138,7 @@ export interface ImageTemplateManagedImageDistributorArgs {
     /**
      * Tags that will be applied to the artifact once it has been created/updated by the distributor.
      */
-    artifactTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    artifactTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource Id of the Managed Disk Image
      */
@@ -180,19 +180,19 @@ export interface ImageTemplatePlatformImageSourceArgs {
     /**
      * Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
      */
-    offer?: pulumi.Input<string>;
+    offer?: pulumi.Input<string | undefined>;
     /**
      * Optional configuration of purchase plan for platform image.
      */
-    planInfo?: pulumi.Input<PlatformImagePurchasePlanArgs>;
+    planInfo?: pulumi.Input<PlatformImagePurchasePlanArgs | undefined>;
     /**
      * Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
      */
-    publisher?: pulumi.Input<string>;
+    publisher?: pulumi.Input<string | undefined>;
     /**
      * Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
      */
-    sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string | undefined>;
     /**
      * Specifies the type of source image you want to start with.
      * Expected value is 'PlatformImage'.
@@ -201,7 +201,7 @@ export interface ImageTemplatePlatformImageSourceArgs {
     /**
      * Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,27 +211,27 @@ export interface ImageTemplatePowerShellCustomizerArgs {
     /**
      * Array of PowerShell commands to execute
      */
-    inline?: pulumi.Input<pulumi.Input<string>[]>;
+    inline?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Friendly Name to provide context on what this customization step does
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * If specified, the PowerShell script will be run with elevated privileges using the Local System user. Can only be true when the runElevated field above is set to true.
      */
-    runAsSystem?: pulumi.Input<boolean>;
+    runAsSystem?: pulumi.Input<boolean | undefined>;
     /**
      * If specified, the PowerShell script will be run with elevated privileges
      */
-    runElevated?: pulumi.Input<boolean>;
+    runElevated?: pulumi.Input<boolean | undefined>;
     /**
      * URI of the PowerShell script to be run for customizing. It can be a github link, SAS URI for Azure Storage, etc
      */
-    scriptUri?: pulumi.Input<string>;
+    scriptUri?: pulumi.Input<string | undefined>;
     /**
      * SHA256 checksum of the power shell script provided in the scriptUri field above
      */
-    sha256Checksum?: pulumi.Input<string>;
+    sha256Checksum?: pulumi.Input<string | undefined>;
     /**
      * The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
      * Expected value is 'PowerShell'.
@@ -240,7 +240,7 @@ export interface ImageTemplatePowerShellCustomizerArgs {
     /**
      * Valid exit codes for the PowerShell script. [Default: 0]
      */
-    validExitCodes?: pulumi.Input<pulumi.Input<number>[]>;
+    validExitCodes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 /**
  * imageTemplatePowerShellCustomizerArgsProvideDefaults sets the appropriate defaults for ImageTemplatePowerShellCustomizerArgs
@@ -261,27 +261,27 @@ export interface ImageTemplatePowerShellValidatorArgs {
     /**
      * Array of PowerShell commands to execute
      */
-    inline?: pulumi.Input<pulumi.Input<string>[]>;
+    inline?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Friendly Name to provide context on what this validation step does
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * If specified, the PowerShell script will be run with elevated privileges using the Local System user. Can only be true when the runElevated field above is set to true.
      */
-    runAsSystem?: pulumi.Input<boolean>;
+    runAsSystem?: pulumi.Input<boolean | undefined>;
     /**
      * If specified, the PowerShell script will be run with elevated privileges
      */
-    runElevated?: pulumi.Input<boolean>;
+    runElevated?: pulumi.Input<boolean | undefined>;
     /**
      * URI of the PowerShell script to be run for validation. It can be a github link, Azure Storage URI, etc
      */
-    scriptUri?: pulumi.Input<string>;
+    scriptUri?: pulumi.Input<string | undefined>;
     /**
      * SHA256 checksum of the power shell script provided in the scriptUri field above
      */
-    sha256Checksum?: pulumi.Input<string>;
+    sha256Checksum?: pulumi.Input<string | undefined>;
     /**
      * The type of validation you want to use on the Image. For example, "Shell" can be shell validation
      * Expected value is 'PowerShell'.
@@ -290,7 +290,7 @@ export interface ImageTemplatePowerShellValidatorArgs {
     /**
      * Valid exit codes for the PowerShell script. [Default: 0]
      */
-    validExitCodes?: pulumi.Input<pulumi.Input<number>[]>;
+    validExitCodes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 /**
  * imageTemplatePowerShellValidatorArgsProvideDefaults sets the appropriate defaults for ImageTemplatePowerShellValidatorArgs
@@ -311,11 +311,11 @@ export interface ImageTemplatePropertiesErrorHandlingArgs {
     /**
      * If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
      */
-    onCustomizerError?: pulumi.Input<string | enums.OnBuildError>;
+    onCustomizerError?: pulumi.Input<string | enums.OnBuildError | undefined>;
     /**
      * If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
      */
-    onValidationError?: pulumi.Input<string | enums.OnBuildError>;
+    onValidationError?: pulumi.Input<string | enums.OnBuildError | undefined>;
 }
 /**
  * imageTemplatePropertiesErrorHandlingArgsProvideDefaults sets the appropriate defaults for ImageTemplatePropertiesErrorHandlingArgs
@@ -335,7 +335,7 @@ export interface ImageTemplatePropertiesOptimizeArgs {
     /**
      * Optimization is applied on the image for a faster VM boot.
      */
-    vmBoot?: pulumi.Input<ImageTemplatePropertiesVmBootArgs>;
+    vmBoot?: pulumi.Input<ImageTemplatePropertiesVmBootArgs | undefined>;
 }
 
 /**
@@ -345,15 +345,15 @@ export interface ImageTemplatePropertiesValidateArgs {
     /**
      * If validation fails and this field is set to false, output image(s) will not be distributed. This is the default behavior. If validation fails and this field is set to true, output image(s) will still be distributed. Please use this option with caution as it may result in bad images being distributed for use. In either case (true or false), the end to end image run will be reported as having failed in case of a validation failure. [Note: This field has no effect if validation succeeds.]
      */
-    continueDistributeOnFailure?: pulumi.Input<boolean>;
+    continueDistributeOnFailure?: pulumi.Input<boolean | undefined>;
     /**
      * List of validations to be performed.
      */
-    inVMValidations?: pulumi.Input<pulumi.Input<ImageTemplateFileValidatorArgs | ImageTemplatePowerShellValidatorArgs | ImageTemplateShellValidatorArgs>[]>;
+    inVMValidations?: pulumi.Input<pulumi.Input<ImageTemplateFileValidatorArgs | ImageTemplatePowerShellValidatorArgs | ImageTemplateShellValidatorArgs>[] | undefined>;
     /**
      * If this field is set to true, the image specified in the 'source' section will directly be validated. No separate build will be run to generate and then validate a customized image.
      */
-    sourceValidationOnly?: pulumi.Input<boolean>;
+    sourceValidationOnly?: pulumi.Input<boolean | undefined>;
 }
 /**
  * imageTemplatePropertiesValidateArgsProvideDefaults sets the appropriate defaults for ImageTemplatePropertiesValidateArgs
@@ -373,7 +373,7 @@ export interface ImageTemplatePropertiesVmBootArgs {
     /**
      * Enabling this field will improve VM boot time by optimizing the final customized image output.
      */
-    state?: pulumi.Input<enums.VMBootOptimizationState>;
+    state?: pulumi.Input<enums.VMBootOptimizationState | undefined>;
 }
 
 /**
@@ -383,19 +383,19 @@ export interface ImageTemplateRestartCustomizerArgs {
     /**
      * Friendly Name to provide context on what this customization step does
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Command to check if restart succeeded [Default: '']
      */
-    restartCheckCommand?: pulumi.Input<string>;
+    restartCheckCommand?: pulumi.Input<string | undefined>;
     /**
      * Command to execute the restart [Default: 'shutdown /r /f /t 0 /c "packer restart"']
      */
-    restartCommand?: pulumi.Input<string>;
+    restartCommand?: pulumi.Input<string | undefined>;
     /**
      * Restart timeout specified as a string of magnitude and unit, e.g. '5m' (5 minutes) or '2h' (2 hours) [Default: '5m']
      */
-    restartTimeout?: pulumi.Input<string>;
+    restartTimeout?: pulumi.Input<string | undefined>;
     /**
      * The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
      * Expected value is 'WindowsRestart'.
@@ -410,11 +410,11 @@ export interface ImageTemplateSharedImageDistributorArgs {
     /**
      * Tags that will be applied to the artifact once it has been created/updated by the distributor.
      */
-    artifactTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    artifactTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Flag that indicates whether created image version should be excluded from latest. Omit to use the default (false).
      */
-    excludeFromLatest?: pulumi.Input<boolean>;
+    excludeFromLatest?: pulumi.Input<boolean | undefined>;
     /**
      * Resource Id of the Azure Compute Gallery image
      */
@@ -422,7 +422,7 @@ export interface ImageTemplateSharedImageDistributorArgs {
     /**
      * [Deprecated] A list of regions that the image will be replicated to. This list can be specified only if targetRegions is not specified. This field is deprecated - use targetRegions instead.
      */
-    replicationRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    replicationRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name to be used for the associated RunOutput.
      */
@@ -430,11 +430,11 @@ export interface ImageTemplateSharedImageDistributorArgs {
     /**
      * [Deprecated] Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS). This field can be specified only if replicationRegions is specified. This field is deprecated - use targetRegions instead.
      */
-    storageAccountType?: pulumi.Input<string | enums.SharedImageStorageAccountType>;
+    storageAccountType?: pulumi.Input<string | enums.SharedImageStorageAccountType | undefined>;
     /**
      * The target regions where the distributed Image Version is going to be replicated to. This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
      */
-    targetRegions?: pulumi.Input<pulumi.Input<TargetRegionArgs>[]>;
+    targetRegions?: pulumi.Input<pulumi.Input<TargetRegionArgs>[] | undefined>;
     /**
      * Type of distribution.
      * Expected value is 'SharedImage'.
@@ -443,7 +443,7 @@ export interface ImageTemplateSharedImageDistributorArgs {
     /**
      * Describes how to generate new x.y.z version number for distribution.
      */
-    versioning?: pulumi.Input<DistributeVersionerLatestArgs | DistributeVersionerSourceArgs>;
+    versioning?: pulumi.Input<DistributeVersionerLatestArgs | DistributeVersionerSourceArgs | undefined>;
 }
 /**
  * imageTemplateSharedImageDistributorArgsProvideDefaults sets the appropriate defaults for ImageTemplateSharedImageDistributorArgs
@@ -477,19 +477,19 @@ export interface ImageTemplateShellCustomizerArgs {
     /**
      * Array of shell commands to execute
      */
-    inline?: pulumi.Input<pulumi.Input<string>[]>;
+    inline?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Friendly Name to provide context on what this customization step does
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URI of the shell script to be run for customizing. It can be a github link, SAS URI for Azure Storage, etc
      */
-    scriptUri?: pulumi.Input<string>;
+    scriptUri?: pulumi.Input<string | undefined>;
     /**
      * SHA256 checksum of the shell script provided in the scriptUri field
      */
-    sha256Checksum?: pulumi.Input<string>;
+    sha256Checksum?: pulumi.Input<string | undefined>;
     /**
      * The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
      * Expected value is 'Shell'.
@@ -513,19 +513,19 @@ export interface ImageTemplateShellValidatorArgs {
     /**
      * Array of shell commands to execute
      */
-    inline?: pulumi.Input<pulumi.Input<string>[]>;
+    inline?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Friendly Name to provide context on what this validation step does
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URI of the shell script to be run for validation. It can be a github link, Azure Storage URI, etc
      */
-    scriptUri?: pulumi.Input<string>;
+    scriptUri?: pulumi.Input<string | undefined>;
     /**
      * SHA256 checksum of the shell script provided in the scriptUri field
      */
-    sha256Checksum?: pulumi.Input<string>;
+    sha256Checksum?: pulumi.Input<string | undefined>;
     /**
      * The type of validation you want to use on the Image. For example, "Shell" can be shell validation
      * Expected value is 'Shell'.
@@ -549,7 +549,7 @@ export interface ImageTemplateVhdDistributorArgs {
     /**
      * Tags that will be applied to the artifact once it has been created/updated by the distributor.
      */
-    artifactTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    artifactTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name to be used for the associated RunOutput.
      */
@@ -562,7 +562,7 @@ export interface ImageTemplateVhdDistributorArgs {
     /**
      * Optional Azure Storage URI for the distributed VHD blob. Omit to use the default (empty string) in which case VHD would be published to the storage account in the staging resource group.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -572,19 +572,19 @@ export interface ImageTemplateVmProfileArgs {
     /**
      * Size of the OS disk in GB. Omit or specify 0 to use Azure's default OS disk size.
      */
-    osDiskSizeGB?: pulumi.Input<number>;
+    osDiskSizeGB?: pulumi.Input<number | undefined>;
     /**
      * Optional array of resource IDs of user assigned managed identities to be configured on the build VM and validation VM. This may include the identity of the image template.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Size of the virtual machine used to build, customize and capture images. Omit or specify empty string to use the default (Standard_D1_v2 for Gen1 images and Standard_D2ds_v4 for Gen2 images).
      */
-    vmSize?: pulumi.Input<string>;
+    vmSize?: pulumi.Input<string | undefined>;
     /**
      * Optional configuration of the virtual network to use to deploy the build VM and validation VM in. Omit if no specific virtual network needs to be used.
      */
-    vnetConfig?: pulumi.Input<VirtualNetworkConfigArgs>;
+    vnetConfig?: pulumi.Input<VirtualNetworkConfigArgs | undefined>;
 }
 /**
  * imageTemplateVmProfileArgsProvideDefaults sets the appropriate defaults for ImageTemplateVmProfileArgs
@@ -594,7 +594,7 @@ export function imageTemplateVmProfileArgsProvideDefaults(val: ImageTemplateVmPr
         ...val,
         osDiskSizeGB: (val.osDiskSizeGB) ?? 0,
         vmSize: (val.vmSize) ?? "",
-        vnetConfig: (val.vnetConfig ? pulumi.output(val.vnetConfig).apply(virtualNetworkConfigArgsProvideDefaults) : undefined),
+        vnetConfig: pulumi.output(val.vnetConfig).apply(v => v === undefined ? undefined : virtualNetworkConfigArgsProvideDefaults(v)),
     };
 }
 
@@ -605,15 +605,15 @@ export interface ImageTemplateWindowsUpdateCustomizerArgs {
     /**
      * Array of filters to select updates to apply. Omit or specify empty array to use the default (no filter). Refer to above link for examples and detailed description of this field.
      */
-    filters?: pulumi.Input<pulumi.Input<string>[]>;
+    filters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Friendly Name to provide context on what this customization step does
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Criteria to search updates. Omit or specify empty string to use the default (search all). Refer to above link for examples and detailed description of this field.
      */
-    searchCriteria?: pulumi.Input<string>;
+    searchCriteria?: pulumi.Input<string | undefined>;
     /**
      * The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
      * Expected value is 'WindowsUpdate'.
@@ -622,7 +622,7 @@ export interface ImageTemplateWindowsUpdateCustomizerArgs {
     /**
      * Maximum number of updates to apply at a time. Omit or specify 0 to use the default (1000)
      */
-    updateLimit?: pulumi.Input<number>;
+    updateLimit?: pulumi.Input<number | undefined>;
 }
 /**
  * imageTemplateWindowsUpdateCustomizerArgsProvideDefaults sets the appropriate defaults for ImageTemplateWindowsUpdateCustomizerArgs
@@ -663,11 +663,11 @@ export interface TargetRegionArgs {
     /**
      * The number of replicas of the Image Version to be created in this region. Omit to use the default (1).
      */
-    replicaCount?: pulumi.Input<number>;
+    replicaCount?: pulumi.Input<number | undefined>;
     /**
      * Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
      */
-    storageAccountType?: pulumi.Input<string | enums.SharedImageStorageAccountType>;
+    storageAccountType?: pulumi.Input<string | enums.SharedImageStorageAccountType | undefined>;
 }
 /**
  * targetRegionArgsProvideDefaults sets the appropriate defaults for TargetRegionArgs
@@ -686,15 +686,15 @@ export interface VirtualNetworkConfigArgs {
     /**
      * Resource id of a pre-existing subnet on which Azure Container Instance will be deployed for Isolated Builds. This field may be specified only if `subnetId` is also specified and must be on the same Virtual Network as the subnet specified in `subnetId`.
      */
-    containerInstanceSubnetId?: pulumi.Input<string>;
+    containerInstanceSubnetId?: pulumi.Input<string | undefined>;
     /**
      * Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. This must not be specified if `containerInstanceSubnetId` is specified because no proxy virtual machine is deployed in that case. Omit or specify empty string to use the default (Standard_A1_v2).
      */
-    proxyVmSize?: pulumi.Input<string>;
+    proxyVmSize?: pulumi.Input<string | undefined>;
     /**
      * Resource id of a pre-existing subnet on which the build VM and validation VM will be deployed
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
 }
 /**
  * virtualNetworkConfigArgsProvideDefaults sets the appropriate defaults for VirtualNetworkConfigArgs

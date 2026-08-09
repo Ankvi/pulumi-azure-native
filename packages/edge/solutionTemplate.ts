@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01.
  *
- * Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SolutionTemplate extends pulumi.CustomResource {
     /**
@@ -103,7 +103,7 @@ export class SolutionTemplate extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:edge/v20250601:SolutionTemplate" }, { type: "azure-native:edge/v20250801:SolutionTemplate" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:edge/v20250601:SolutionTemplate" }, { type: "azure-native:edge/v20250801:SolutionTemplate" }, { type: "azure-native:edge/v20250815preview:SolutionTemplate" }, { type: "azure-native:edge/v20260301:SolutionTemplate" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SolutionTemplate.__pulumiType, name, resourceInputs, opts);
     }
@@ -116,11 +116,11 @@ export interface SolutionTemplateArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.SolutionTemplatePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SolutionTemplatePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -128,9 +128,9 @@ export interface SolutionTemplateArgs {
     /**
      * The name of the SolutionTemplate
      */
-    solutionTemplateName?: pulumi.Input<string>;
+    solutionTemplateName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

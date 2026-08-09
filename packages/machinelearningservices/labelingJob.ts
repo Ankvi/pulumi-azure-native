@@ -77,7 +77,7 @@ export class LabelingJob extends pulumi.CustomResource {
                 throw new Error("Missing required property 'workspaceName'");
             }
             resourceInputs["id"] = args?.id;
-            resourceInputs["labelingJobProperties"] = args ? (args.labelingJobProperties ? pulumi.output(args.labelingJobProperties).apply(types.inputs.labelingJobArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["labelingJobProperties"] = args ? pulumi.output(args.labelingJobProperties).apply(types.inputs.labelingJobArgsProvideDefaults) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -105,7 +105,7 @@ export interface LabelingJobArgs {
     /**
      * The name and identifier for the LabelingJob.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * [Required] Additional attributes of the entity.
      */

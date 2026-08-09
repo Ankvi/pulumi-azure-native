@@ -56,7 +56,7 @@ export class Linker extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The provisioning state. 
+     * The provisioning state.
      */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
@@ -146,23 +146,23 @@ export interface LinkerArgs {
     /**
      * The authentication type.
      */
-    authInfo?: pulumi.Input<types.inputs.AccessKeyInfoBaseArgs | types.inputs.EasyAuthMicrosoftEntraIDAuthInfoArgs | types.inputs.SecretAuthInfoArgs | types.inputs.ServicePrincipalCertificateAuthInfoArgs | types.inputs.ServicePrincipalSecretAuthInfoArgs | types.inputs.SystemAssignedIdentityAuthInfoArgs | types.inputs.UserAccountAuthInfoArgs | types.inputs.UserAssignedIdentityAuthInfoArgs>;
+    authInfo?: pulumi.Input<types.inputs.AccessKeyInfoBaseArgs | types.inputs.EasyAuthMicrosoftEntraIDAuthInfoArgs | types.inputs.SecretAuthInfoArgs | types.inputs.ServicePrincipalCertificateAuthInfoArgs | types.inputs.ServicePrincipalSecretAuthInfoArgs | types.inputs.SystemAssignedIdentityAuthInfoArgs | types.inputs.UserAccountAuthInfoArgs | types.inputs.UserAssignedIdentityAuthInfoArgs | undefined>;
     /**
      * The application client type
      */
-    clientType?: pulumi.Input<string | types.enums.ClientType>;
+    clientType?: pulumi.Input<string | types.enums.ClientType | undefined>;
     /**
      * The connection information consumed by applications, including secrets, connection strings.
      */
-    configurationInfo?: pulumi.Input<types.inputs.ConfigurationInfoArgs>;
+    configurationInfo?: pulumi.Input<types.inputs.ConfigurationInfoArgs | undefined>;
     /**
      * The name Linker resource.
      */
-    linkerName?: pulumi.Input<string>;
+    linkerName?: pulumi.Input<string | undefined>;
     /**
      * The network solution.
      */
-    publicNetworkSolution?: pulumi.Input<types.inputs.PublicNetworkSolutionArgs>;
+    publicNetworkSolution?: pulumi.Input<types.inputs.PublicNetworkSolutionArgs | undefined>;
     /**
      * The fully qualified Azure Resource manager identifier of the resource to be connected.
      */
@@ -170,17 +170,17 @@ export interface LinkerArgs {
     /**
      * connection scope in source service.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * An option to store secret value in secure place
      */
-    secretStore?: pulumi.Input<types.inputs.SecretStoreArgs>;
+    secretStore?: pulumi.Input<types.inputs.SecretStoreArgs | undefined>;
     /**
      * The target service properties
      */
-    targetService?: pulumi.Input<types.inputs.AzureResourceArgs | types.inputs.ConfluentBootstrapServerArgs | types.inputs.ConfluentSchemaRegistryArgs | types.inputs.SelfHostedServerArgs>;
+    targetService?: pulumi.Input<types.inputs.AzureResourceArgs | types.inputs.ConfluentBootstrapServerArgs | types.inputs.ConfluentSchemaRegistryArgs | types.inputs.SelfHostedServerArgs | undefined>;
     /**
      * The VNet solution.
      */
-    vNetSolution?: pulumi.Input<types.inputs.VNetSolutionArgs>;
+    vNetSolution?: pulumi.Input<types.inputs.VNetSolutionArgs | undefined>;
 }

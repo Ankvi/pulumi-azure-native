@@ -11,5 +11,5 @@ export interface SkuArgs {
     /**
      * The tier of the SKU for Azure Dev Spaces Controller.
      */
-    tier?: pulumi.Input<string | enums.SkuTier>;
+    tier?: pulumi.Input<string | enums.SkuTier | undefined>;
 }

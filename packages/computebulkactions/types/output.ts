@@ -650,7 +650,7 @@ export interface PlanResponse {
      */
     name: string;
     /**
-     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. 
+     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
      */
     product: string;
     /**
@@ -1001,24 +1001,24 @@ export interface VMAttributeMinMaxIntegerResponse {
 export interface VMAttributesResponse {
     /**
      * The range of accelerator count specified from min to max. Optional parameter. Either Min or Max is required if specified.
-     * acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
      * If acceleratorSupport is "Excluded", this VMAttribute can not be used.
      */
     acceleratorCount?: VMAttributeMinMaxIntegerResponse;
     /**
-     * The accelerator manufacturers specified as a list. 
-     * acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * The accelerator manufacturers specified as a list.
+     * acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
      * If acceleratorSupport is "Excluded", this VMAttribute can not be used.
      */
     acceleratorManufacturers?: string[];
     /**
      * Specifies whether the VMSize supporting accelerator should be used to launch instances or not.
-     * acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
      * If acceleratorSupport is "Excluded", this VMAttribute can not be used.
      */
     acceleratorSupport?: string;
     /**
-     * The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute.
      * If acceleratorSupport is "Excluded", this VMAttribute can not be used.
      */
     acceleratorTypes?: string[];
@@ -1051,12 +1051,12 @@ export interface VMAttributesResponse {
      */
     hyperVGenerations?: string[];
     /**
-     * The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
      * If localStorageSupport is "Excluded", this VMAttribute can not be used.
      */
     localStorageDiskTypes?: string[];
     /**
-     * LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute.
      * If localStorageSupport is "Excluded", this VMAttribute can not be used.
      */
     localStorageInGiB?: VMAttributeMinMaxDoubleResponse;
@@ -1083,7 +1083,7 @@ export interface VMAttributesResponse {
     networkInterfaceCount?: VMAttributeMinMaxIntegerResponse;
     /**
      * The range of RDMA (Remote Direct Memory Access) network interface count specified from Min to Max. Optional parameter. Either Min or Max is required if specified.
-     * rdmaSupport should be set to "Included" or "Required" to use this VMAttribute. 
+     * rdmaSupport should be set to "Included" or "Required" to use this VMAttribute.
      * If rdmaSupport is "Excluded", this VMAttribute can not be used.
      */
     rdmaNetworkInterfaceCount?: VMAttributeMinMaxIntegerResponse;

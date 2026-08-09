@@ -140,23 +140,23 @@ export interface AccountArgs {
     /**
      * Name of account.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations.
      */
-    localAuth?: pulumi.Input<string | types.enums.EnablementStatus>;
+    localAuth?: pulumi.Input<string | types.enums.EnablementStatus | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * This property sets the connection region for Playwright client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created.
      */
-    regionalAffinity?: pulumi.Input<string | types.enums.EnablementStatus>;
+    regionalAffinity?: pulumi.Input<string | types.enums.EnablementStatus | undefined>;
     /**
      * When enabled, this feature allows the workspace to upload and display test results, including artifacts like traces and screenshots, in the Playwright portal. This enables faster and more efficient troubleshooting.
      */
-    reporting?: pulumi.Input<string | types.enums.EnablementStatus>;
+    reporting?: pulumi.Input<string | types.enums.EnablementStatus | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -164,9 +164,9 @@ export interface AccountArgs {
     /**
      * When enabled, Playwright client workers can connect to cloud-hosted browsers. This can increase the number of parallel workers for a test run, significantly minimizing test completion durations.
      */
-    scalableExecution?: pulumi.Input<string | types.enums.EnablementStatus>;
+    scalableExecution?: pulumi.Input<string | types.enums.EnablementStatus | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

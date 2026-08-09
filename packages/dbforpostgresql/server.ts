@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
  *
- * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Server extends pulumi.CustomResource {
     /**
@@ -160,16 +160,16 @@ export class Server extends pulumi.CustomResource {
             }
             resourceInputs["administratorLogin"] = args?.administratorLogin;
             resourceInputs["administratorLoginPassword"] = args?.administratorLoginPassword;
-            resourceInputs["authConfig"] = args ? (args.authConfig ? pulumi.output(args.authConfig).apply(types.inputs.authConfigArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["authConfig"] = args ? pulumi.output(args.authConfig).apply(v => v === undefined ? undefined : types.inputs.authConfigArgsProvideDefaults(v)) : undefined;
             resourceInputs["availabilityZone"] = (args?.availabilityZone) ?? "";
-            resourceInputs["backup"] = args ? (args.backup ? pulumi.output(args.backup).apply(types.inputs.backupArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["cluster"] = args ? (args.cluster ? pulumi.output(args.cluster).apply(types.inputs.clusterArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["backup"] = args ? pulumi.output(args.backup).apply(v => v === undefined ? undefined : types.inputs.backupArgsProvideDefaults(v)) : undefined;
+            resourceInputs["cluster"] = args ? pulumi.output(args.cluster).apply(v => v === undefined ? undefined : types.inputs.clusterArgsProvideDefaults(v)) : undefined;
             resourceInputs["createMode"] = args?.createMode;
             resourceInputs["dataEncryption"] = args?.dataEncryption;
-            resourceInputs["highAvailability"] = args ? (args.highAvailability ? pulumi.output(args.highAvailability).apply(types.inputs.highAvailabilityArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["highAvailability"] = args ? pulumi.output(args.highAvailability).apply(v => v === undefined ? undefined : types.inputs.highAvailabilityArgsProvideDefaults(v)) : undefined;
             resourceInputs["identity"] = args?.identity;
             resourceInputs["location"] = args?.location;
-            resourceInputs["maintenanceWindow"] = args ? (args.maintenanceWindow ? pulumi.output(args.maintenanceWindow).apply(types.inputs.maintenanceWindowArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["maintenanceWindow"] = args ? pulumi.output(args.maintenanceWindow).apply(v => v === undefined ? undefined : types.inputs.maintenanceWindowArgsProvideDefaults(v)) : undefined;
             resourceInputs["network"] = args?.network;
             resourceInputs["pointInTimeUTC"] = args?.pointInTimeUTC;
             resourceInputs["replica"] = args?.replica;
@@ -220,7 +220,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20171201:Server" }, { type: "azure-native:dbforpostgresql/v20171201preview:Server" }, { type: "azure-native:dbforpostgresql/v20200214preview:Server" }, { type: "azure-native:dbforpostgresql/v20200214privatepreview:Server" }, { type: "azure-native:dbforpostgresql/v20210410privatepreview:Server" }, { type: "azure-native:dbforpostgresql/v20210601:Server" }, { type: "azure-native:dbforpostgresql/v20210601preview:Server" }, { type: "azure-native:dbforpostgresql/v20210615privatepreview:Server" }, { type: "azure-native:dbforpostgresql/v20220120preview:Server" }, { type: "azure-native:dbforpostgresql/v20220308preview:Server" }, { type: "azure-native:dbforpostgresql/v20221201:Server" }, { type: "azure-native:dbforpostgresql/v20230301preview:Server" }, { type: "azure-native:dbforpostgresql/v20230601preview:Server" }, { type: "azure-native:dbforpostgresql/v20231201preview:Server" }, { type: "azure-native:dbforpostgresql/v20240301preview:Server" }, { type: "azure-native:dbforpostgresql/v20240801:Server" }, { type: "azure-native:dbforpostgresql/v20241101preview:Server" }, { type: "azure-native:dbforpostgresql/v20250101preview:Server" }, { type: "azure-native:dbforpostgresql/v20250601preview:Server" }, { type: "azure-native:dbforpostgresql/v20250801:Server" }, { type: "azure-native:dbforpostgresql/v20260101preview:Server" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20171201:Server" }, { type: "azure-native:dbforpostgresql/v20171201preview:Server" }, { type: "azure-native:dbforpostgresql/v20200214preview:Server" }, { type: "azure-native:dbforpostgresql/v20200214privatepreview:Server" }, { type: "azure-native:dbforpostgresql/v20210410privatepreview:Server" }, { type: "azure-native:dbforpostgresql/v20210601:Server" }, { type: "azure-native:dbforpostgresql/v20210601preview:Server" }, { type: "azure-native:dbforpostgresql/v20210615privatepreview:Server" }, { type: "azure-native:dbforpostgresql/v20220120preview:Server" }, { type: "azure-native:dbforpostgresql/v20220308preview:Server" }, { type: "azure-native:dbforpostgresql/v20221201:Server" }, { type: "azure-native:dbforpostgresql/v20230301preview:Server" }, { type: "azure-native:dbforpostgresql/v20230601preview:Server" }, { type: "azure-native:dbforpostgresql/v20231201preview:Server" }, { type: "azure-native:dbforpostgresql/v20240301preview:Server" }, { type: "azure-native:dbforpostgresql/v20240801:Server" }, { type: "azure-native:dbforpostgresql/v20241101preview:Server" }, { type: "azure-native:dbforpostgresql/v20250101preview:Server" }, { type: "azure-native:dbforpostgresql/v20250601preview:Server" }, { type: "azure-native:dbforpostgresql/v20250801:Server" }, { type: "azure-native:dbforpostgresql/v20260101preview:Server" }, { type: "azure-native:dbforpostgresql/v20260401preview:Server" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Server.__pulumiType, name, resourceInputs, opts);
     }
@@ -233,67 +233,67 @@ export interface ServerArgs {
     /**
      * Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
      */
-    administratorLogin?: pulumi.Input<string>;
+    administratorLogin?: pulumi.Input<string | undefined>;
     /**
      * Password assigned to the administrator login. As long as password authentication is enabled, this password can be changed at any time.
      */
-    administratorLoginPassword?: pulumi.Input<string>;
+    administratorLoginPassword?: pulumi.Input<string | undefined>;
     /**
      * Authentication configuration properties of a server.
      */
-    authConfig?: pulumi.Input<types.inputs.AuthConfigArgs>;
+    authConfig?: pulumi.Input<types.inputs.AuthConfigArgs | undefined>;
     /**
      * Availability zone of a server.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * Backup properties of a server.
      */
-    backup?: pulumi.Input<types.inputs.BackupArgs>;
+    backup?: pulumi.Input<types.inputs.BackupArgs | undefined>;
     /**
      * Cluster properties of a server.
      */
-    cluster?: pulumi.Input<types.inputs.ClusterArgs>;
+    cluster?: pulumi.Input<types.inputs.ClusterArgs | undefined>;
     /**
      * Creation mode of a new server.
      */
-    createMode?: pulumi.Input<string | types.enums.CreateMode>;
+    createMode?: pulumi.Input<string | types.enums.CreateMode | undefined>;
     /**
      * Data encryption properties of a server.
      */
-    dataEncryption?: pulumi.Input<types.inputs.DataEncryptionArgs>;
+    dataEncryption?: pulumi.Input<types.inputs.DataEncryptionArgs | undefined>;
     /**
      * High availability properties of a server.
      */
-    highAvailability?: pulumi.Input<types.inputs.HighAvailabilityArgs>;
+    highAvailability?: pulumi.Input<types.inputs.HighAvailabilityArgs | undefined>;
     /**
      * User assigned managed identities assigned to the server.
      */
-    identity?: pulumi.Input<types.inputs.UserAssignedIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.UserAssignedIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Maintenance window properties of a server.
      */
-    maintenanceWindow?: pulumi.Input<types.inputs.MaintenanceWindowArgs>;
+    maintenanceWindow?: pulumi.Input<types.inputs.MaintenanceWindowArgs | undefined>;
     /**
      * Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer.
      */
-    network?: pulumi.Input<types.inputs.NetworkArgs>;
+    network?: pulumi.Input<types.inputs.NetworkArgs | undefined>;
     /**
      * Creation time (in ISO8601 format) of the backup which you want to restore in the new server. It's required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', or 'ReviveDropped'.
      */
-    pointInTimeUTC?: pulumi.Input<string>;
+    pointInTimeUTC?: pulumi.Input<string | undefined>;
     /**
      * Read replica properties of a server. Required only in case that you want to promote a server.
      */
-    replica?: pulumi.Input<types.inputs.ReplicaArgs>;
+    replica?: pulumi.Input<types.inputs.ReplicaArgs | undefined>;
     /**
      * Role of the server in a replication set.
      */
-    replicationRole?: pulumi.Input<string | types.enums.ReplicationRole>;
+    replicationRole?: pulumi.Input<string | types.enums.ReplicationRole | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -301,25 +301,25 @@ export interface ServerArgs {
     /**
      * The name of the server.
      */
-    serverName?: pulumi.Input<string>;
+    serverName?: pulumi.Input<string | undefined>;
     /**
      * Compute tier and size of a server.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Identifier of the server to be used as the source of the new server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target server is a read replica.
      */
-    sourceServerResourceId?: pulumi.Input<string>;
+    sourceServerResourceId?: pulumi.Input<string | undefined>;
     /**
      * Storage properties of a server.
      */
-    storage?: pulumi.Input<types.inputs.StorageArgs>;
+    storage?: pulumi.Input<types.inputs.StorageArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Major version of PostgreSQL database engine.
      */
-    version?: pulumi.Input<string | types.enums.PostgresMajorVersion>;
+    version?: pulumi.Input<string | types.enums.PostgresMajorVersion | undefined>;
 }

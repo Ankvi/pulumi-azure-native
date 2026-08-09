@@ -128,15 +128,15 @@ export interface ApiSourceArgs {
     /**
      * The name of the API.
      */
-    apiSourceName?: pulumi.Input<string>;
+    apiSourceName?: pulumi.Input<string | undefined>;
     /**
      * API source configuration for Azure API Management.
      */
-    azureApiManagementSource?: pulumi.Input<types.inputs.AzureApiManagementSourceArgs>;
+    azureApiManagementSource?: pulumi.Input<types.inputs.AzureApiManagementSourceArgs | undefined>;
     /**
      * Indicates if the specification should be imported along with metadata.
      */
-    importSpecification?: pulumi.Input<string | types.enums.ImportSpecificationOptions>;
+    importSpecification?: pulumi.Input<string | types.enums.ImportSpecificationOptions | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -148,11 +148,11 @@ export interface ApiSourceArgs {
     /**
      * The target environment resource ID.
      */
-    targetEnvironmentId?: pulumi.Input<string>;
+    targetEnvironmentId?: pulumi.Input<string | undefined>;
     /**
      * The target lifecycle stage.
      */
-    targetLifecycleStage?: pulumi.Input<string | types.enums.LifecycleStage>;
+    targetLifecycleStage?: pulumi.Input<string | types.enums.LifecycleStage | undefined>;
     /**
      * The name of the workspace.
      */

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
  *
- * Other available API versions: 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SecurityUserRule extends pulumi.CustomResource {
     /**
@@ -157,7 +157,7 @@ export class SecurityUserRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:SecurityUserRule" }, { type: "azure-native:network/v20210501preview:DefaultUserRule" }, { type: "azure-native:network/v20210501preview:SecurityUserRule" }, { type: "azure-native:network/v20210501preview:UserRule" }, { type: "azure-native:network/v20220201preview:SecurityUserRule" }, { type: "azure-native:network/v20220401preview:DefaultUserRule" }, { type: "azure-native:network/v20220401preview:SecurityUserRule" }, { type: "azure-native:network/v20220401preview:UserRule" }, { type: "azure-native:network/v20240301:SecurityUserRule" }, { type: "azure-native:network/v20240501:SecurityUserRule" }, { type: "azure-native:network/v20240701:SecurityUserRule" }, { type: "azure-native:network/v20241001:SecurityUserRule" }, { type: "azure-native:network/v20250101:SecurityUserRule" }, { type: "azure-native:network/v20250301:SecurityUserRule" }, { type: "azure-native:network/v20250501:SecurityUserRule" }, { type: "azure-native:network:DefaultUserRule" }, { type: "azure-native:network:UserRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:SecurityUserRule" }, { type: "azure-native:network/v20210501preview:DefaultUserRule" }, { type: "azure-native:network/v20210501preview:SecurityUserRule" }, { type: "azure-native:network/v20210501preview:UserRule" }, { type: "azure-native:network/v20220201preview:SecurityUserRule" }, { type: "azure-native:network/v20220401preview:DefaultUserRule" }, { type: "azure-native:network/v20220401preview:SecurityUserRule" }, { type: "azure-native:network/v20220401preview:UserRule" }, { type: "azure-native:network/v20240301:SecurityUserRule" }, { type: "azure-native:network/v20240501:SecurityUserRule" }, { type: "azure-native:network/v20240701:SecurityUserRule" }, { type: "azure-native:network/v20241001:SecurityUserRule" }, { type: "azure-native:network/v20250101:SecurityUserRule" }, { type: "azure-native:network/v20250301:SecurityUserRule" }, { type: "azure-native:network/v20250501:SecurityUserRule" }, { type: "azure-native:network/v20250701:SecurityUserRule" }, { type: "azure-native:network:DefaultUserRule" }, { type: "azure-native:network:UserRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SecurityUserRule.__pulumiType, name, resourceInputs, opts);
     }
@@ -174,15 +174,15 @@ export interface SecurityUserRuleArgs {
     /**
      * A description for this rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination port ranges.
      */
-    destinationPortRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationPortRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The destination address prefixes. CIDR or destination IP ranges.
      */
-    destinations?: pulumi.Input<pulumi.Input<types.inputs.AddressPrefixItemArgs>[]>;
+    destinations?: pulumi.Input<pulumi.Input<types.inputs.AddressPrefixItemArgs>[] | undefined>;
     /**
      * Indicates if the traffic matched against the rule in inbound or outbound.
      */
@@ -206,13 +206,13 @@ export interface SecurityUserRuleArgs {
     /**
      * The name of the rule.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The source port ranges.
      */
-    sourcePortRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    sourcePortRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The CIDR or source IP ranges.
      */
-    sources?: pulumi.Input<pulumi.Input<types.inputs.AddressPrefixItemArgs>[]>;
+    sources?: pulumi.Input<pulumi.Input<types.inputs.AddressPrefixItemArgs>[] | undefined>;
 }

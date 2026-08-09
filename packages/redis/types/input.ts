@@ -11,7 +11,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -21,15 +21,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -39,67 +39,67 @@ export interface RedisCommonPropertiesRedisConfigurationArgs {
     /**
      * Specifies whether AAD based authentication has been enabled or disabled for the cache
      */
-    aadEnabled?: pulumi.Input<string>;
+    aadEnabled?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the aof backup is enabled
      */
-    aofBackupEnabled?: pulumi.Input<string>;
+    aofBackupEnabled?: pulumi.Input<string | undefined>;
     /**
      * First storage account connection string
      */
-    aofStorageConnectionString0?: pulumi.Input<string>;
+    aofStorageConnectionString0?: pulumi.Input<string | undefined>;
     /**
      * Second storage account connection string
      */
-    aofStorageConnectionString1?: pulumi.Input<string>;
+    aofStorageConnectionString1?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the authentication is disabled. Setting this property is highly discouraged from security point of view; you should never disable authentication using this property!
      */
-    authnotrequired?: pulumi.Input<string>;
+    authnotrequired?: pulumi.Input<string | undefined>;
     /**
      * Value in megabytes reserved for fragmentation per shard
      */
-    maxfragmentationmemoryReserved?: pulumi.Input<string>;
+    maxfragmentationmemoryReserved?: pulumi.Input<string | undefined>;
     /**
      * Value in megabytes reserved for non-cache usage per shard e.g. failover.
      */
-    maxmemoryDelta?: pulumi.Input<string>;
+    maxmemoryDelta?: pulumi.Input<string | undefined>;
     /**
      * The eviction strategy used when your data won't fit within its memory limit.
      */
-    maxmemoryPolicy?: pulumi.Input<string>;
+    maxmemoryPolicy?: pulumi.Input<string | undefined>;
     /**
      * Value in megabytes reserved for non-cache usage per shard e.g. failover.
      */
-    maxmemoryReserved?: pulumi.Input<string>;
+    maxmemoryReserved?: pulumi.Input<string | undefined>;
     /**
      * The keyspace events which should be monitored.
      */
-    notifyKeyspaceEvents?: pulumi.Input<string>;
+    notifyKeyspaceEvents?: pulumi.Input<string | undefined>;
     /**
      * Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
      */
-    preferredDataPersistenceAuthMethod?: pulumi.Input<string>;
+    preferredDataPersistenceAuthMethod?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the RDB backup is enabled
      */
-    rdbBackupEnabled?: pulumi.Input<string>;
+    rdbBackupEnabled?: pulumi.Input<string | undefined>;
     /**
      * Specifies the frequency for creating rdb backup in minutes. Valid values: (15, 30, 60, 360, 720, 1440)
      */
-    rdbBackupFrequency?: pulumi.Input<string>;
+    rdbBackupFrequency?: pulumi.Input<string | undefined>;
     /**
      * Specifies the maximum number of snapshots for rdb backup
      */
-    rdbBackupMaxSnapshotCount?: pulumi.Input<string>;
+    rdbBackupMaxSnapshotCount?: pulumi.Input<string | undefined>;
     /**
      * The storage account connection string for storing rdb file
      */
-    rdbStorageConnectionString?: pulumi.Input<string>;
+    rdbStorageConnectionString?: pulumi.Input<string | undefined>;
     /**
      * SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
      */
-    storageSubscriptionId?: pulumi.Input<string>;
+    storageSubscriptionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -113,7 +113,7 @@ export interface ScheduleEntryArgs {
     /**
      * ISO8601 timespan specifying how much time cache patching can take.
      */
-    maintenanceWindow?: pulumi.Input<string>;
+    maintenanceWindow?: pulumi.Input<string | undefined>;
     /**
      * Start hour after which cache patching can start.
      */

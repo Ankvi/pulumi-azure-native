@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2022-03-03.
  *
- * Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class GalleryApplication extends pulumi.CustomResource {
     /**
@@ -140,7 +140,7 @@ export class GalleryApplication extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20190301:GalleryApplication" }, { type: "azure-native:compute/v20190701:GalleryApplication" }, { type: "azure-native:compute/v20191201:GalleryApplication" }, { type: "azure-native:compute/v20200930:GalleryApplication" }, { type: "azure-native:compute/v20210701:GalleryApplication" }, { type: "azure-native:compute/v20211001:GalleryApplication" }, { type: "azure-native:compute/v20220103:GalleryApplication" }, { type: "azure-native:compute/v20220303:GalleryApplication" }, { type: "azure-native:compute/v20220803:GalleryApplication" }, { type: "azure-native:compute/v20230703:GalleryApplication" }, { type: "azure-native:compute/v20240303:GalleryApplication" }, { type: "azure-native:compute/v20250303:GalleryApplication" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20190301:GalleryApplication" }, { type: "azure-native:compute/v20190701:GalleryApplication" }, { type: "azure-native:compute/v20191201:GalleryApplication" }, { type: "azure-native:compute/v20200930:GalleryApplication" }, { type: "azure-native:compute/v20210701:GalleryApplication" }, { type: "azure-native:compute/v20211001:GalleryApplication" }, { type: "azure-native:compute/v20220103:GalleryApplication" }, { type: "azure-native:compute/v20220303:GalleryApplication" }, { type: "azure-native:compute/v20220803:GalleryApplication" }, { type: "azure-native:compute/v20230703:GalleryApplication" }, { type: "azure-native:compute/v20240303:GalleryApplication" }, { type: "azure-native:compute/v20250303:GalleryApplication" }, { type: "azure-native:compute/v20251203:GalleryApplication" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GalleryApplication.__pulumiType, name, resourceInputs, opts);
     }
@@ -153,23 +153,23 @@ export interface GalleryApplicationArgs {
     /**
      * A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
      */
-    customActions?: pulumi.Input<pulumi.Input<types.inputs.GalleryApplicationCustomActionArgs>[]>;
+    customActions?: pulumi.Input<pulumi.Input<types.inputs.GalleryApplicationCustomActionArgs>[] | undefined>;
     /**
      * The description of this gallery Application Definition resource. This property is updatable.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The end of life date of the gallery Application Definition. This property can be used for decommissioning purposes. This property is updatable.
      */
-    endOfLifeDate?: pulumi.Input<string>;
+    endOfLifeDate?: pulumi.Input<string | undefined>;
     /**
      * The Eula agreement for the gallery Application Definition.
      */
-    eula?: pulumi.Input<string>;
+    eula?: pulumi.Input<string | undefined>;
     /**
      * The name of the gallery Application Definition to be retrieved.
      */
-    galleryApplicationName?: pulumi.Input<string>;
+    galleryApplicationName?: pulumi.Input<string | undefined>;
     /**
      * The name of the Shared Image Gallery.
      */
@@ -177,15 +177,15 @@ export interface GalleryApplicationArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The privacy statement uri.
      */
-    privacyStatementUri?: pulumi.Input<string>;
+    privacyStatementUri?: pulumi.Input<string | undefined>;
     /**
      * The release note uri.
      */
-    releaseNoteUri?: pulumi.Input<string>;
+    releaseNoteUri?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -197,5 +197,5 @@ export interface GalleryApplicationArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

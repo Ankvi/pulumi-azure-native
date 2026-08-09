@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-01-01.
  *
- * Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-06-01-preview, 2024-10-01-preview, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-06-01-preview, 2024-10-01-preview, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Server extends pulumi.CustomResource {
     /**
@@ -149,7 +149,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["administratorLogin"] = args?.administratorLogin;
             resourceInputs["administratorLoginPassword"] = args?.administratorLoginPassword;
             resourceInputs["availabilityZone"] = args?.availabilityZone;
-            resourceInputs["backup"] = args ? (args.backup ? pulumi.output(args.backup).apply(types.inputs.backupArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["backup"] = args ? pulumi.output(args.backup).apply(v => v === undefined ? undefined : types.inputs.backupArgsProvideDefaults(v)) : undefined;
             resourceInputs["createMode"] = args?.createMode;
             resourceInputs["dataEncryption"] = args?.dataEncryption;
             resourceInputs["highAvailability"] = args?.highAvailability;
@@ -164,7 +164,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["serverName"] = args?.serverName;
             resourceInputs["sku"] = args?.sku;
             resourceInputs["sourceServerResourceId"] = args?.sourceServerResourceId;
-            resourceInputs["storage"] = args ? (args.storage ? pulumi.output(args.storage).apply(types.inputs.storageArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["storage"] = args ? pulumi.output(args.storage).apply(v => v === undefined ? undefined : types.inputs.storageArgsProvideDefaults(v)) : undefined;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["version"] = args?.version;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -202,7 +202,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbformysql/v20171201:Server" }, { type: "azure-native:dbformysql/v20180601privatepreview:Server" }, { type: "azure-native:dbformysql/v20200701preview:Server" }, { type: "azure-native:dbformysql/v20200701privatepreview:Server" }, { type: "azure-native:dbformysql/v20210501:Server" }, { type: "azure-native:dbformysql/v20210501preview:Server" }, { type: "azure-native:dbformysql/v20211201preview:Server" }, { type: "azure-native:dbformysql/v20220101:Server" }, { type: "azure-native:dbformysql/v20220930preview:Server" }, { type: "azure-native:dbformysql/v20230601preview:Server" }, { type: "azure-native:dbformysql/v20230630:Server" }, { type: "azure-native:dbformysql/v20231001preview:Server" }, { type: "azure-native:dbformysql/v20231201preview:Server" }, { type: "azure-native:dbformysql/v20231230:Server" }, { type: "azure-native:dbformysql/v20240201preview:Server" }, { type: "azure-native:dbformysql/v20240601preview:Server" }, { type: "azure-native:dbformysql/v20241001preview:Server" }, { type: "azure-native:dbformysql/v20241201preview:Server" }, { type: "azure-native:dbformysql/v20241230:Server" }, { type: "azure-native:dbformysql/v20250601preview:Server" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbformysql/v20171201:Server" }, { type: "azure-native:dbformysql/v20180601privatepreview:Server" }, { type: "azure-native:dbformysql/v20200701preview:Server" }, { type: "azure-native:dbformysql/v20200701privatepreview:Server" }, { type: "azure-native:dbformysql/v20210501:Server" }, { type: "azure-native:dbformysql/v20210501preview:Server" }, { type: "azure-native:dbformysql/v20211201preview:Server" }, { type: "azure-native:dbformysql/v20220101:Server" }, { type: "azure-native:dbformysql/v20220930preview:Server" }, { type: "azure-native:dbformysql/v20230601preview:Server" }, { type: "azure-native:dbformysql/v20230630:Server" }, { type: "azure-native:dbformysql/v20231001preview:Server" }, { type: "azure-native:dbformysql/v20231201preview:Server" }, { type: "azure-native:dbformysql/v20231230:Server" }, { type: "azure-native:dbformysql/v20240201preview:Server" }, { type: "azure-native:dbformysql/v20240601preview:Server" }, { type: "azure-native:dbformysql/v20241001preview:Server" }, { type: "azure-native:dbformysql/v20241201preview:Server" }, { type: "azure-native:dbformysql/v20241230:Server" }, { type: "azure-native:dbformysql/v20250601preview:Server" }, { type: "azure-native:dbformysql/v20251201preview:Server" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Server.__pulumiType, name, resourceInputs, opts);
     }
@@ -215,55 +215,55 @@ export interface ServerArgs {
     /**
      * The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
      */
-    administratorLogin?: pulumi.Input<string>;
+    administratorLogin?: pulumi.Input<string | undefined>;
     /**
      * The password of the administrator login (required for server creation).
      */
-    administratorLoginPassword?: pulumi.Input<string>;
+    administratorLoginPassword?: pulumi.Input<string | undefined>;
     /**
      * availability Zone information of the server.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * Backup related properties of a server.
      */
-    backup?: pulumi.Input<types.inputs.BackupArgs>;
+    backup?: pulumi.Input<types.inputs.BackupArgs | undefined>;
     /**
      * The mode to create a new MySQL server.
      */
-    createMode?: pulumi.Input<string | types.enums.CreateMode>;
+    createMode?: pulumi.Input<string | types.enums.CreateMode | undefined>;
     /**
      * The Data Encryption for CMK.
      */
-    dataEncryption?: pulumi.Input<types.inputs.DataEncryptionArgs>;
+    dataEncryption?: pulumi.Input<types.inputs.DataEncryptionArgs | undefined>;
     /**
      * High availability related properties of a server.
      */
-    highAvailability?: pulumi.Input<types.inputs.HighAvailabilityArgs>;
+    highAvailability?: pulumi.Input<types.inputs.HighAvailabilityArgs | undefined>;
     /**
      * The cmk identity for the server.
      */
-    identity?: pulumi.Input<types.inputs.MySQLServerIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.MySQLServerIdentityArgs | undefined>;
     /**
      * Source properties for import from storage.
      */
-    importSourceProperties?: pulumi.Input<types.inputs.ImportSourcePropertiesArgs>;
+    importSourceProperties?: pulumi.Input<types.inputs.ImportSourcePropertiesArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Maintenance window of a server.
      */
-    maintenanceWindow?: pulumi.Input<types.inputs.MaintenanceWindowArgs>;
+    maintenanceWindow?: pulumi.Input<types.inputs.MaintenanceWindowArgs | undefined>;
     /**
      * Network related properties of a server.
      */
-    network?: pulumi.Input<types.inputs.NetworkArgs>;
+    network?: pulumi.Input<types.inputs.NetworkArgs | undefined>;
     /**
      * The replication role.
      */
-    replicationRole?: pulumi.Input<string | types.enums.ReplicationRole>;
+    replicationRole?: pulumi.Input<string | types.enums.ReplicationRole | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -271,29 +271,29 @@ export interface ServerArgs {
     /**
      * Restore point creation time (ISO8601 format), specifying the time to restore from.
      */
-    restorePointInTime?: pulumi.Input<string>;
+    restorePointInTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the server.
      */
-    serverName?: pulumi.Input<string>;
+    serverName?: pulumi.Input<string | undefined>;
     /**
      * The SKU (pricing tier) of the server.
      */
-    sku?: pulumi.Input<types.inputs.MySQLServerSkuArgs>;
+    sku?: pulumi.Input<types.inputs.MySQLServerSkuArgs | undefined>;
     /**
      * The source MySQL server id.
      */
-    sourceServerResourceId?: pulumi.Input<string>;
+    sourceServerResourceId?: pulumi.Input<string | undefined>;
     /**
      * Storage related properties of a server.
      */
-    storage?: pulumi.Input<types.inputs.StorageArgs>;
+    storage?: pulumi.Input<types.inputs.StorageArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Server version.
      */
-    version?: pulumi.Input<string | types.enums.ServerVersion>;
+    version?: pulumi.Input<string | types.enums.ServerVersion | undefined>;
 }

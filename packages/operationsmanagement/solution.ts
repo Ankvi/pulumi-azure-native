@@ -108,15 +108,15 @@ export interface SolutionArgs {
     /**
      * Resource location
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Plan for solution object supported by the OperationsManagement resource provider.
      */
-    plan?: pulumi.Input<types.inputs.SolutionPlanArgs>;
+    plan?: pulumi.Input<types.inputs.SolutionPlanArgs | undefined>;
     /**
      * Properties for solution object supported by the OperationsManagement resource provider.
      */
-    properties?: pulumi.Input<types.inputs.SolutionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SolutionPropertiesArgs | undefined>;
     /**
      * The name of the resource group to get. The name is case insensitive.
      */
@@ -124,9 +124,9 @@ export interface SolutionArgs {
     /**
      * User Solution Name.
      */
-    solutionName?: pulumi.Input<string>;
+    solutionName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

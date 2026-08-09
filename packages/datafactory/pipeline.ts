@@ -54,15 +54,15 @@ export class Pipeline extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Etag identifies change in the resource.
+     * "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
      */
-    declare public readonly folder: pulumi.Output<types.outputs.PipelineResponseFolder | undefined>;
+    declare public readonly folder: pulumi.Output<types.outputs.PipelineFolderResponse | undefined>;
     /**
-     * The resource name.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -76,9 +76,13 @@ export class Pipeline extends pulumi.CustomResource {
     /**
      * Dimensions emitted by Pipeline.
      */
-    declare public readonly runDimensions: pulumi.Output<{[key: string]: any} | undefined>;
+    declare public readonly runDimensions: pulumi.Output<any | undefined>;
     /**
-     * The resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -118,6 +122,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["activities"] = undefined /*out*/;
@@ -131,6 +136,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["parameters"] = undefined /*out*/;
             resourceInputs["policy"] = undefined /*out*/;
             resourceInputs["runDimensions"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["variables"] = undefined /*out*/;
         }
@@ -148,19 +154,19 @@ export interface PipelineArgs {
     /**
      * List of activities in pipeline.
      */
-    activities?: pulumi.Input<pulumi.Input<types.inputs.AppendVariableActivityArgs | types.inputs.AzureDataExplorerCommandActivityArgs | types.inputs.AzureFunctionActivityArgs | types.inputs.AzureMLBatchExecutionActivityArgs | types.inputs.AzureMLExecutePipelineActivityArgs | types.inputs.AzureMLUpdateResourceActivityArgs | types.inputs.ControlActivityArgs | types.inputs.CopyActivityArgs | types.inputs.CustomActivityArgs | types.inputs.DataLakeAnalyticsUSQLActivityArgs | types.inputs.DatabricksJobActivityArgs | types.inputs.DatabricksNotebookActivityArgs | types.inputs.DatabricksSparkJarActivityArgs | types.inputs.DatabricksSparkPythonActivityArgs | types.inputs.DeleteActivityArgs | types.inputs.ExecuteDataFlowActivityArgs | types.inputs.ExecutePipelineActivityArgs | types.inputs.ExecuteSSISPackageActivityArgs | types.inputs.ExecuteWranglingDataflowActivityArgs | types.inputs.ExecutionActivityArgs | types.inputs.FailActivityArgs | types.inputs.FilterActivityArgs | types.inputs.ForEachActivityArgs | types.inputs.GetMetadataActivityArgs | types.inputs.HDInsightHiveActivityArgs | types.inputs.HDInsightMapReduceActivityArgs | types.inputs.HDInsightPigActivityArgs | types.inputs.HDInsightSparkActivityArgs | types.inputs.HDInsightStreamingActivityArgs | types.inputs.IfConditionActivityArgs | types.inputs.LookupActivityArgs | types.inputs.ScriptActivityArgs | types.inputs.SetVariableActivityArgs | types.inputs.SqlServerStoredProcedureActivityArgs | types.inputs.SwitchActivityArgs | types.inputs.SynapseNotebookActivityArgs | types.inputs.SynapseSparkJobDefinitionActivityArgs | types.inputs.UntilActivityArgs | types.inputs.ValidationActivityArgs | types.inputs.WaitActivityArgs | types.inputs.WebActivityArgs | types.inputs.WebHookActivityArgs>[]>;
+    activities?: pulumi.Input<pulumi.Input<types.inputs.AppendVariableActivityArgs | types.inputs.AzureDataExplorerCommandActivityArgs | types.inputs.AzureFunctionActivityArgs | types.inputs.AzureMLBatchExecutionActivityArgs | types.inputs.AzureMLExecutePipelineActivityArgs | types.inputs.AzureMLUpdateResourceActivityArgs | types.inputs.ControlActivityArgs | types.inputs.CopyActivityArgs | types.inputs.CustomActivityArgs | types.inputs.DataLakeAnalyticsUSQLActivityArgs | types.inputs.DatabricksJobActivityArgs | types.inputs.DatabricksNotebookActivityArgs | types.inputs.DatabricksSparkJarActivityArgs | types.inputs.DatabricksSparkPythonActivityArgs | types.inputs.DeleteActivityArgs | types.inputs.ExecuteDataFlowActivityArgs | types.inputs.ExecutePipelineActivityArgs | types.inputs.ExecuteSSISPackageActivityArgs | types.inputs.ExecuteWranglingDataflowActivityArgs | types.inputs.ExecutionActivityArgs | types.inputs.FailActivityArgs | types.inputs.FilterActivityArgs | types.inputs.ForEachActivityArgs | types.inputs.GetMetadataActivityArgs | types.inputs.HDInsightHiveActivityArgs | types.inputs.HDInsightMapReduceActivityArgs | types.inputs.HDInsightPigActivityArgs | types.inputs.HDInsightSparkActivityArgs | types.inputs.HDInsightStreamingActivityArgs | types.inputs.IfConditionActivityArgs | types.inputs.LookupActivityArgs | types.inputs.ScriptActivityArgs | types.inputs.SetVariableActivityArgs | types.inputs.SqlServerStoredProcedureActivityArgs | types.inputs.SwitchActivityArgs | types.inputs.SynapseNotebookActivityArgs | types.inputs.SynapseSparkJobDefinitionActivityArgs | types.inputs.UntilActivityArgs | types.inputs.ValidationActivityArgs | types.inputs.WaitActivityArgs | types.inputs.WebActivityArgs | types.inputs.WebHookActivityArgs>[] | undefined>;
     /**
      * List of tags that can be used for describing the Pipeline.
      */
-    annotations?: pulumi.Input<any[]>;
+    annotations?: pulumi.Input<any[] | undefined>;
     /**
      * The max number of concurrent runs for the pipeline.
      */
-    concurrency?: pulumi.Input<number>;
+    concurrency?: pulumi.Input<number | undefined>;
     /**
      * The description of the pipeline.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The factory name.
      */
@@ -168,29 +174,29 @@ export interface PipelineArgs {
     /**
      * The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
      */
-    folder?: pulumi.Input<types.inputs.PipelineFolderArgs>;
+    folder?: pulumi.Input<types.inputs.PipelineFolderArgs | undefined>;
     /**
      * List of parameters for pipeline.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterSpecificationArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterSpecificationArgs>} | undefined>;
     /**
      * The pipeline name.
      */
-    pipelineName?: pulumi.Input<string>;
+    pipelineName?: pulumi.Input<string | undefined>;
     /**
      * Pipeline Policy.
      */
-    policy?: pulumi.Input<types.inputs.PipelinePolicyArgs>;
+    policy?: pulumi.Input<types.inputs.PipelinePolicyArgs | undefined>;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * Dimensions emitted by Pipeline.
      */
-    runDimensions?: pulumi.Input<{[key: string]: any}>;
+    runDimensions?: any | undefined;
     /**
      * List of variables for pipeline.
      */
-    variables?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.VariableSpecificationArgs>}>;
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.VariableSpecificationArgs>} | undefined>;
 }

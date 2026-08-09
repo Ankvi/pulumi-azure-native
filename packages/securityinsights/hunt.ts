@@ -64,7 +64,7 @@ export class Hunt extends pulumi.CustomResource {
      */
     declare public readonly hypothesisStatus: pulumi.Output<string | undefined>;
     /**
-     * List of labels relevant to this hunt 
+     * List of labels relevant to this hunt
      */
     declare public readonly labels: pulumi.Output<string[] | undefined>;
     /**
@@ -156,11 +156,11 @@ export interface HuntArgs {
     /**
      * A list of mitre attack tactics the hunt is associated with
      */
-    attackTactics?: pulumi.Input<pulumi.Input<string | types.enums.AttackTactic>[]>;
+    attackTactics?: pulumi.Input<pulumi.Input<string | types.enums.AttackTactic>[] | undefined>;
     /**
      * A list of a mitre attack techniques the hunt is associated with
      */
-    attackTechniques?: pulumi.Input<pulumi.Input<string>[]>;
+    attackTechniques?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the hunt
      */
@@ -172,19 +172,19 @@ export interface HuntArgs {
     /**
      * The hunt id (GUID)
      */
-    huntId?: pulumi.Input<string>;
+    huntId?: pulumi.Input<string | undefined>;
     /**
      * The hypothesis status of the hunt.
      */
-    hypothesisStatus?: pulumi.Input<string | types.enums.HypothesisStatus>;
+    hypothesisStatus?: pulumi.Input<string | types.enums.HypothesisStatus | undefined>;
     /**
-     * List of labels relevant to this hunt 
+     * List of labels relevant to this hunt
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes a user that the hunt is assigned to
      */
-    owner?: pulumi.Input<types.inputs.HuntOwnerArgs>;
+    owner?: pulumi.Input<types.inputs.HuntOwnerArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -192,7 +192,7 @@ export interface HuntArgs {
     /**
      * The status of the hunt.
      */
-    status?: pulumi.Input<string | types.enums.Status>;
+    status?: pulumi.Input<string | types.enums.Status | undefined>;
     /**
      * The name of the workspace.
      */

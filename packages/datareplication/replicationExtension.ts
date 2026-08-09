@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2021-02-16-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-16-preview.
  *
- * Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-09-01, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ReplicationExtension extends pulumi.CustomResource {
     /**
@@ -89,7 +89,7 @@ export class ReplicationExtension extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:datareplication/v20210216preview:ReplicationExtension" }, { type: "azure-native:datareplication/v20240901:ReplicationExtension" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:datareplication/v20210216preview:ReplicationExtension" }, { type: "azure-native:datareplication/v20240901:ReplicationExtension" }, { type: "azure-native:datareplication/v20260501:ReplicationExtension" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ReplicationExtension.__pulumiType, name, resourceInputs, opts);
     }
@@ -106,7 +106,7 @@ export interface ReplicationExtensionArgs {
     /**
      * The replication extension name.
      */
-    replicationExtensionName?: pulumi.Input<string>;
+    replicationExtensionName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

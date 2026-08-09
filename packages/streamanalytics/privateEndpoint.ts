@@ -110,11 +110,11 @@ export interface PrivateEndpointArgs {
     /**
      * A list of connections to the remote resource. Immutable after it is set.
      */
-    manualPrivateLinkServiceConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateLinkServiceConnectionArgs>[]>;
+    manualPrivateLinkServiceConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateLinkServiceConnectionArgs>[] | undefined>;
     /**
      * The name of the private endpoint.
      */
-    privateEndpointName?: pulumi.Input<string>;
+    privateEndpointName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

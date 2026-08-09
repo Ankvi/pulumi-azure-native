@@ -48,11 +48,11 @@ export interface CustomerDataStoragePropertiesArgs {
     /**
      * Name of the Azure Blob Storage container to use or create.
      */
-    blobContainerName?: pulumi.Input<string>;
+    blobContainerName?: pulumi.Input<string | undefined>;
     /**
      * ARM Resource ID of the Storage account to use for Customer Data storage.
      */
-    storageAccountResourceId?: pulumi.Input<string>;
+    storageAccountResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -108,7 +108,7 @@ export interface ExperimentIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -118,7 +118,7 @@ export interface ExperimentPropertiesArgs {
     /**
      * Optional customer-managed Storage account where Experiment schema will be stored.
      */
-    customerDataStorage?: pulumi.Input<CustomerDataStoragePropertiesArgs>;
+    customerDataStorage?: pulumi.Input<CustomerDataStoragePropertiesArgs | undefined>;
     /**
      * List of selectors.
      */
@@ -150,7 +150,7 @@ export interface ListSelectorArgs {
     /**
      * Model that represents available filter types that can be applied to a targets list.
      */
-    filter?: pulumi.Input<SimpleFilterArgs>;
+    filter?: pulumi.Input<SimpleFilterArgs | undefined>;
     /**
      * String of the selector ID.
      */
@@ -173,7 +173,7 @@ export interface QuerySelectorArgs {
     /**
      * Model that represents available filter types that can be applied to a targets list.
      */
-    filter?: pulumi.Input<SimpleFilterArgs>;
+    filter?: pulumi.Input<SimpleFilterArgs | undefined>;
     /**
      * String of the selector ID.
      */
@@ -200,7 +200,7 @@ export interface SimpleFilterArgs {
     /**
      * Model that represents the Simple filter parameters.
      */
-    parameters?: pulumi.Input<SimpleFilterParametersArgs>;
+    parameters?: pulumi.Input<SimpleFilterParametersArgs | undefined>;
     /**
      * Enum that discriminates between filter types. Currently only `Simple` type is supported.
      * Expected value is 'Simple'.
@@ -215,7 +215,7 @@ export interface SimpleFilterParametersArgs {
     /**
      * List of Azure availability zones to filter targets by.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

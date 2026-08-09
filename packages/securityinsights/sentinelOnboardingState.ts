@@ -108,7 +108,7 @@ export interface SentinelOnboardingStateArgs {
     /**
      * Flag that indicates the status of the CMK setting
      */
-    customerManagedKey?: pulumi.Input<boolean>;
+    customerManagedKey?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -116,7 +116,7 @@ export interface SentinelOnboardingStateArgs {
     /**
      * The Sentinel onboarding state name. Supports - default
      */
-    sentinelOnboardingStateName?: pulumi.Input<string>;
+    sentinelOnboardingStateName?: pulumi.Input<string | undefined>;
     /**
      * The name of the workspace.
      */

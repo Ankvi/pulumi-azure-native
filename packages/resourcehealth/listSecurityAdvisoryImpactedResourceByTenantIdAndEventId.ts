@@ -63,5 +63,5 @@ export interface ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdOutputA
     /**
      * The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
 }

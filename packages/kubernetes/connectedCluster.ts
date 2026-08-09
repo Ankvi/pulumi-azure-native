@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-05-01-preview.
  *
- * Other available API versions: 2021-04-01-preview, 2021-10-01, 2022-05-01-preview, 2022-10-01-preview, 2023-11-01-preview, 2024-01-01, 2024-06-01-preview, 2024-07-01-preview, 2024-07-15-preview, 2024-12-01-preview, 2025-08-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetes [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-04-01-preview, 2021-10-01, 2022-05-01-preview, 2022-10-01-preview, 2023-11-01-preview, 2024-01-01, 2024-06-01-preview, 2024-07-01-preview, 2024-07-15-preview, 2024-12-01-preview, 2025-08-01-preview, 2025-12-01-preview, 2026-02-01-preview, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetes [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConnectedCluster extends pulumi.CustomResource {
     /**
@@ -166,12 +166,12 @@ export class ConnectedCluster extends pulumi.CustomResource {
             }
             resourceInputs["aadProfile"] = args?.aadProfile;
             resourceInputs["agentPublicKeyCertificate"] = args?.agentPublicKeyCertificate;
-            resourceInputs["arcAgentProfile"] = args ? (args.arcAgentProfile ? pulumi.output(args.arcAgentProfile).apply(types.inputs.arcAgentProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["arcAgentProfile"] = args ? pulumi.output(args.arcAgentProfile).apply(v => v === undefined ? undefined : types.inputs.arcAgentProfileArgsProvideDefaults(v)) : undefined;
             resourceInputs["azureHybridBenefit"] = (args?.azureHybridBenefit) ?? "NotApplicable";
             resourceInputs["clusterName"] = args?.clusterName;
             resourceInputs["distribution"] = args?.distribution;
             resourceInputs["distributionVersion"] = args?.distributionVersion;
-            resourceInputs["identity"] = args ? (args.identity ? pulumi.output(args.identity).apply(types.inputs.connectedClusterIdentityArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["identity"] = args ? pulumi.output(args.identity).apply(types.inputs.connectedClusterIdentityArgsProvideDefaults) : undefined;
             resourceInputs["infrastructure"] = args?.infrastructure;
             resourceInputs["kind"] = args?.kind;
             resourceInputs["location"] = args?.location;
@@ -223,7 +223,7 @@ export class ConnectedCluster extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:kubernetes/v20200101preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20210301:ConnectedCluster" }, { type: "azure-native:kubernetes/v20210401preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20211001:ConnectedCluster" }, { type: "azure-native:kubernetes/v20220501preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20221001preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20231101preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240101:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240201preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240601preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240701preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240715preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20241201preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20250801preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20251201preview:ConnectedCluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:kubernetes/v20200101preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20210301:ConnectedCluster" }, { type: "azure-native:kubernetes/v20210401preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20211001:ConnectedCluster" }, { type: "azure-native:kubernetes/v20220501preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20221001preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20231101preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240101:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240201preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240601preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240701preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20240715preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20241201preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20250801preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20251201preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20260201preview:ConnectedCluster" }, { type: "azure-native:kubernetes/v20260501:ConnectedCluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ConnectedCluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -236,7 +236,7 @@ export interface ConnectedClusterArgs {
     /**
      * AAD profile for the connected cluster.
      */
-    aadProfile?: pulumi.Input<types.inputs.AadProfileArgs>;
+    aadProfile?: pulumi.Input<types.inputs.AadProfileArgs | undefined>;
     /**
      * Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.
      */
@@ -244,23 +244,23 @@ export interface ConnectedClusterArgs {
     /**
      * Arc agentry configuration for the provisioned cluster.
      */
-    arcAgentProfile?: pulumi.Input<types.inputs.ArcAgentProfileArgs>;
+    arcAgentProfile?: pulumi.Input<types.inputs.ArcAgentProfileArgs | undefined>;
     /**
      * Indicates whether Azure Hybrid Benefit is opted in
      */
-    azureHybridBenefit?: pulumi.Input<string | types.enums.AzureHybridBenefit>;
+    azureHybridBenefit?: pulumi.Input<string | types.enums.AzureHybridBenefit | undefined>;
     /**
      * The name of the Kubernetes cluster on which get is called.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * The Kubernetes distribution running on this connected cluster.
      */
-    distribution?: pulumi.Input<string>;
+    distribution?: pulumi.Input<string | undefined>;
     /**
      * The Kubernetes distribution version on this connected cluster.
      */
-    distributionVersion?: pulumi.Input<string>;
+    distributionVersion?: pulumi.Input<string | undefined>;
     /**
      * The identity of the connected cluster.
      */
@@ -268,27 +268,27 @@ export interface ConnectedClusterArgs {
     /**
      * The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
      */
-    infrastructure?: pulumi.Input<string>;
+    infrastructure?: pulumi.Input<string | undefined>;
     /**
      * The kind of connected cluster.
      */
-    kind?: pulumi.Input<string | types.enums.ConnectedClusterKind>;
+    kind?: pulumi.Input<string | types.enums.ConnectedClusterKind | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource id of the private link scope this connected cluster is assigned to, if any.
      */
-    privateLinkScopeResourceId?: pulumi.Input<string>;
+    privateLinkScopeResourceId?: pulumi.Input<string | undefined>;
     /**
      * Property which describes the state of private link on a connected cluster resource.
      */
-    privateLinkState?: pulumi.Input<string | types.enums.PrivateLinkState>;
+    privateLinkState?: pulumi.Input<string | types.enums.PrivateLinkState | undefined>;
     /**
      * Provisioning state of the connected cluster resource.
      */
-    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -296,5 +296,5 @@ export interface ConnectedClusterArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

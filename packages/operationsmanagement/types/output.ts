@@ -8,7 +8,7 @@ export interface ArmTemplateParameterResponse {
      */
     name?: string;
     /**
-     * value for the parameter. In Jtoken 
+     * value for the parameter. In Jtoken
      */
     value?: string;
 }

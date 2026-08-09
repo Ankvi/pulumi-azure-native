@@ -135,7 +135,7 @@ export interface DedicatedCloudNodeArgs {
     /**
      * dedicated cloud node name
      */
-    dedicatedCloudNodeName?: pulumi.Input<string>;
+    dedicatedCloudNodeName?: pulumi.Input<string | undefined>;
     /**
      * SKU's id
      */
@@ -143,7 +143,7 @@ export interface DedicatedCloudNodeArgs {
     /**
      * Azure region
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * SKU's name
      */
@@ -167,9 +167,9 @@ export interface DedicatedCloudNodeArgs {
     /**
      * Dedicated Cloud Nodes SKU
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Dedicated Cloud Nodes tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

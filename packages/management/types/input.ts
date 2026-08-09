@@ -6,7 +6,7 @@ export interface CreateManagementGroupDetailsArgs {
     /**
      * (Optional) The ID of the parent management group used during creation.
      */
-    parent?: pulumi.Input<CreateParentGroupInfoArgs>;
+    parent?: pulumi.Input<CreateParentGroupInfoArgs | undefined>;
 }
 
 /**
@@ -16,7 +16,7 @@ export interface CreateParentGroupInfoArgs {
     /**
      * The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -26,7 +26,7 @@ export interface ParentServiceGroupPropertiesArgs {
     /**
      * The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -36,9 +36,9 @@ export interface ServiceGroupPropertiesArgs {
     /**
      * The display name of the serviceGroup. For example, ServiceGroupTest1
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The details of the parent serviceGroup.
      */
-    parent?: pulumi.Input<ParentServiceGroupPropertiesArgs>;
+    parent?: pulumi.Input<ParentServiceGroupPropertiesArgs | undefined>;
 }

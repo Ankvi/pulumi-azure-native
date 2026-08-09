@@ -100,7 +100,7 @@ export interface CompoundAssessmentOperationArgs {
     /**
      * Compound Assessment ARM name
      */
-    compoundAssessmentName?: pulumi.Input<string>;
+    compoundAssessmentName?: pulumi.Input<string | undefined>;
     /**
      * Assessment Project Name
      */
@@ -108,7 +108,7 @@ export interface CompoundAssessmentOperationArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.CompoundAssessmentPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CompoundAssessmentPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

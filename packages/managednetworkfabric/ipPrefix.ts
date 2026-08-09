@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
  *
- * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class IpPrefix extends pulumi.CustomResource {
     /**
@@ -124,7 +124,7 @@ export class IpPrefix extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:IpPrefix" }, { type: "azure-native:managednetworkfabric/v20230615:IpPrefix" }, { type: "azure-native:managednetworkfabric/v20240215preview:IpPrefix" }, { type: "azure-native:managednetworkfabric/v20240615preview:IpPrefix" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:IpPrefix" }, { type: "azure-native:managednetworkfabric/v20230615:IpPrefix" }, { type: "azure-native:managednetworkfabric/v20240215preview:IpPrefix" }, { type: "azure-native:managednetworkfabric/v20240615preview:IpPrefix" }, { type: "azure-native:managednetworkfabric/v20250715:IpPrefix" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(IpPrefix.__pulumiType, name, resourceInputs, opts);
     }
@@ -137,11 +137,11 @@ export interface IpPrefixArgs {
     /**
      * Switch configuration description.
      */
-    annotation?: pulumi.Input<string>;
+    annotation?: pulumi.Input<string | undefined>;
     /**
      * Name of the IP Prefix.
      */
-    ipPrefixName?: pulumi.Input<string>;
+    ipPrefixName?: pulumi.Input<string | undefined>;
     /**
      * The list of IP Prefix Rules.
      */
@@ -149,7 +149,7 @@ export interface IpPrefixArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -157,5 +157,5 @@ export interface IpPrefixArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

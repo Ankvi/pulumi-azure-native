@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
  *
- * Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview, 2025-08-01, 2025-08-01-preview, 2025-09-01, 2025-09-01-preview, 2025-12-01, 2025-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview, 2025-08-01, 2025-08-01-preview, 2025-09-01, 2025-09-01-preview, 2025-12-01, 2025-12-15-preview, 2026-01-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-04-01, 2026-04-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Account extends pulumi.CustomResource {
     /**
@@ -100,7 +100,7 @@ export class Account extends pulumi.CustomResource {
             }
             resourceInputs["accountName"] = args?.accountName;
             resourceInputs["activeDirectories"] = args?.activeDirectories;
-            resourceInputs["encryption"] = args ? (args.encryption ? pulumi.output(args.encryption).apply(types.inputs.accountEncryptionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["encryption"] = args ? pulumi.output(args.encryption).apply(v => v === undefined ? undefined : types.inputs.accountEncryptionArgsProvideDefaults(v)) : undefined;
             resourceInputs["identity"] = args?.identity;
             resourceInputs["location"] = args?.location;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
@@ -127,7 +127,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20170815:Account" }, { type: "azure-native:netapp/v20190501:Account" }, { type: "azure-native:netapp/v20190601:Account" }, { type: "azure-native:netapp/v20190701:Account" }, { type: "azure-native:netapp/v20190801:Account" }, { type: "azure-native:netapp/v20191001:Account" }, { type: "azure-native:netapp/v20191101:Account" }, { type: "azure-native:netapp/v20200201:Account" }, { type: "azure-native:netapp/v20200301:Account" }, { type: "azure-native:netapp/v20200501:Account" }, { type: "azure-native:netapp/v20200601:Account" }, { type: "azure-native:netapp/v20200701:Account" }, { type: "azure-native:netapp/v20200801:Account" }, { type: "azure-native:netapp/v20200901:Account" }, { type: "azure-native:netapp/v20201101:Account" }, { type: "azure-native:netapp/v20201201:Account" }, { type: "azure-native:netapp/v20210201:Account" }, { type: "azure-native:netapp/v20210401:Account" }, { type: "azure-native:netapp/v20210401preview:Account" }, { type: "azure-native:netapp/v20210601:Account" }, { type: "azure-native:netapp/v20210801:Account" }, { type: "azure-native:netapp/v20211001:Account" }, { type: "azure-native:netapp/v20220101:Account" }, { type: "azure-native:netapp/v20220301:Account" }, { type: "azure-native:netapp/v20220501:Account" }, { type: "azure-native:netapp/v20220901:Account" }, { type: "azure-native:netapp/v20221101:Account" }, { type: "azure-native:netapp/v20221101preview:Account" }, { type: "azure-native:netapp/v20230501:Account" }, { type: "azure-native:netapp/v20230501preview:Account" }, { type: "azure-native:netapp/v20230701:Account" }, { type: "azure-native:netapp/v20230701preview:Account" }, { type: "azure-native:netapp/v20231101:Account" }, { type: "azure-native:netapp/v20231101preview:Account" }, { type: "azure-native:netapp/v20240101:Account" }, { type: "azure-native:netapp/v20240301:Account" }, { type: "azure-native:netapp/v20240301preview:Account" }, { type: "azure-native:netapp/v20240501:Account" }, { type: "azure-native:netapp/v20240501preview:Account" }, { type: "azure-native:netapp/v20240701:Account" }, { type: "azure-native:netapp/v20240701preview:Account" }, { type: "azure-native:netapp/v20240901:Account" }, { type: "azure-native:netapp/v20240901preview:Account" }, { type: "azure-native:netapp/v20250101:Account" }, { type: "azure-native:netapp/v20250101preview:Account" }, { type: "azure-native:netapp/v20250301:Account" }, { type: "azure-native:netapp/v20250301preview:Account" }, { type: "azure-native:netapp/v20250601:Account" }, { type: "azure-native:netapp/v20250701preview:Account" }, { type: "azure-native:netapp/v20250801:Account" }, { type: "azure-native:netapp/v20250801preview:Account" }, { type: "azure-native:netapp/v20250901:Account" }, { type: "azure-native:netapp/v20250901preview:Account" }, { type: "azure-native:netapp/v20251201:Account" }, { type: "azure-native:netapp/v20251215preview:Account" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20170815:Account" }, { type: "azure-native:netapp/v20190501:Account" }, { type: "azure-native:netapp/v20190601:Account" }, { type: "azure-native:netapp/v20190701:Account" }, { type: "azure-native:netapp/v20190801:Account" }, { type: "azure-native:netapp/v20191001:Account" }, { type: "azure-native:netapp/v20191101:Account" }, { type: "azure-native:netapp/v20200201:Account" }, { type: "azure-native:netapp/v20200301:Account" }, { type: "azure-native:netapp/v20200501:Account" }, { type: "azure-native:netapp/v20200601:Account" }, { type: "azure-native:netapp/v20200701:Account" }, { type: "azure-native:netapp/v20200801:Account" }, { type: "azure-native:netapp/v20200901:Account" }, { type: "azure-native:netapp/v20201101:Account" }, { type: "azure-native:netapp/v20201201:Account" }, { type: "azure-native:netapp/v20210201:Account" }, { type: "azure-native:netapp/v20210401:Account" }, { type: "azure-native:netapp/v20210401preview:Account" }, { type: "azure-native:netapp/v20210601:Account" }, { type: "azure-native:netapp/v20210801:Account" }, { type: "azure-native:netapp/v20211001:Account" }, { type: "azure-native:netapp/v20220101:Account" }, { type: "azure-native:netapp/v20220301:Account" }, { type: "azure-native:netapp/v20220501:Account" }, { type: "azure-native:netapp/v20220901:Account" }, { type: "azure-native:netapp/v20221101:Account" }, { type: "azure-native:netapp/v20221101preview:Account" }, { type: "azure-native:netapp/v20230501:Account" }, { type: "azure-native:netapp/v20230501preview:Account" }, { type: "azure-native:netapp/v20230701:Account" }, { type: "azure-native:netapp/v20230701preview:Account" }, { type: "azure-native:netapp/v20231101:Account" }, { type: "azure-native:netapp/v20231101preview:Account" }, { type: "azure-native:netapp/v20240101:Account" }, { type: "azure-native:netapp/v20240301:Account" }, { type: "azure-native:netapp/v20240301preview:Account" }, { type: "azure-native:netapp/v20240501:Account" }, { type: "azure-native:netapp/v20240501preview:Account" }, { type: "azure-native:netapp/v20240701:Account" }, { type: "azure-native:netapp/v20240701preview:Account" }, { type: "azure-native:netapp/v20240901:Account" }, { type: "azure-native:netapp/v20240901preview:Account" }, { type: "azure-native:netapp/v20250101:Account" }, { type: "azure-native:netapp/v20250101preview:Account" }, { type: "azure-native:netapp/v20250301:Account" }, { type: "azure-native:netapp/v20250301preview:Account" }, { type: "azure-native:netapp/v20250601:Account" }, { type: "azure-native:netapp/v20250701preview:Account" }, { type: "azure-native:netapp/v20250801:Account" }, { type: "azure-native:netapp/v20250801preview:Account" }, { type: "azure-native:netapp/v20250901:Account" }, { type: "azure-native:netapp/v20250901preview:Account" }, { type: "azure-native:netapp/v20251201:Account" }, { type: "azure-native:netapp/v20251215preview:Account" }, { type: "azure-native:netapp/v20260101:Account" }, { type: "azure-native:netapp/v20260115preview:Account" }, { type: "azure-native:netapp/v20260301:Account" }, { type: "azure-native:netapp/v20260315preview:Account" }, { type: "azure-native:netapp/v20260401:Account" }, { type: "azure-native:netapp/v20260415preview:Account" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Account.__pulumiType, name, resourceInputs, opts);
     }
@@ -140,23 +140,23 @@ export interface AccountArgs {
     /**
      * The name of the NetApp account
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Active Directories
      */
-    activeDirectories?: pulumi.Input<pulumi.Input<types.inputs.ActiveDirectoryArgs>[]>;
+    activeDirectories?: pulumi.Input<pulumi.Input<types.inputs.ActiveDirectoryArgs>[] | undefined>;
     /**
      * Encryption settings
      */
-    encryption?: pulumi.Input<types.inputs.AccountEncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.AccountEncryptionArgs | undefined>;
     /**
      * The identity used for the resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -164,5 +164,5 @@ export interface AccountArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

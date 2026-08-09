@@ -7,5 +7,5 @@ export interface ResourceReferenceArgs {
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }

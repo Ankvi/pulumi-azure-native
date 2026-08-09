@@ -106,11 +106,11 @@ export interface DynamicConfigurationArgs {
     /**
      * Name of the dynamic configuration
      */
-    dynamicConfigurationName?: pulumi.Input<string>;
+    dynamicConfigurationName?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.DynamicConfigurationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DynamicConfigurationPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

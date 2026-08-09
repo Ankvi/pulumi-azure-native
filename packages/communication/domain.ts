@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-31.
  *
- * Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  *
  * Note: If `domainManagement` is set to `AzureManaged`, then `domainName` is required.
  */
@@ -148,7 +148,7 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["verificationStates"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:communication/v20211001preview:Domain" }, { type: "azure-native:communication/v20220701preview:Domain" }, { type: "azure-native:communication/v20230301preview:Domain" }, { type: "azure-native:communication/v20230331:Domain" }, { type: "azure-native:communication/v20230401:Domain" }, { type: "azure-native:communication/v20230401preview:Domain" }, { type: "azure-native:communication/v20230601preview:Domain" }, { type: "azure-native:communication/v20240901preview:Domain" }, { type: "azure-native:communication/v20250501:Domain" }, { type: "azure-native:communication/v20250501preview:Domain" }, { type: "azure-native:communication/v20250901:Domain" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:communication/v20211001preview:Domain" }, { type: "azure-native:communication/v20220701preview:Domain" }, { type: "azure-native:communication/v20230301preview:Domain" }, { type: "azure-native:communication/v20230331:Domain" }, { type: "azure-native:communication/v20230401:Domain" }, { type: "azure-native:communication/v20230401preview:Domain" }, { type: "azure-native:communication/v20230601preview:Domain" }, { type: "azure-native:communication/v20240901preview:Domain" }, { type: "azure-native:communication/v20250501:Domain" }, { type: "azure-native:communication/v20250501preview:Domain" }, { type: "azure-native:communication/v20250901:Domain" }, { type: "azure-native:communication/v20260318:Domain" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Domain.__pulumiType, name, resourceInputs, opts);
     }
@@ -165,7 +165,7 @@ export interface DomainArgs {
     /**
      * The name of the Domains resource.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * The name of the EmailService resource.
      */
@@ -173,7 +173,7 @@ export interface DomainArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -181,9 +181,9 @@ export interface DomainArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Describes whether user engagement tracking is enabled or disabled.
      */
-    userEngagementTracking?: pulumi.Input<string | types.enums.UserEngagementTracking>;
+    userEngagementTracking?: pulumi.Input<string | types.enums.UserEngagementTracking | undefined>;
 }

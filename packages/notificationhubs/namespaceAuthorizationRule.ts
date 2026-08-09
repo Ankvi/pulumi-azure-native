@@ -161,8 +161,8 @@ export interface NamespaceAuthorizationRuleArgs {
     /**
      * Authorization Rule Name
      */
-    authorizationRuleName?: pulumi.Input<string>;
-    location?: pulumi.Input<string>;
+    authorizationRuleName?: pulumi.Input<string | undefined>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Namespace name
      */
@@ -171,7 +171,7 @@ export interface NamespaceAuthorizationRuleArgs {
      * Gets a base64-encoded 256-bit primary key for signing and
      * validating the SAS token.
      */
-    primaryKey?: pulumi.Input<string>;
+    primaryKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -184,6 +184,6 @@ export interface NamespaceAuthorizationRuleArgs {
      * Gets a base64-encoded 256-bit primary key for signing and
      * validating the SAS token.
      */
-    secondaryKey?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    secondaryKey?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

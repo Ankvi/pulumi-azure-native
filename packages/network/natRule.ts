@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NatRule extends pulumi.CustomResource {
     /**
@@ -126,7 +126,7 @@ export class NatRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200801:NatRule" }, { type: "azure-native:network/v20201101:NatRule" }, { type: "azure-native:network/v20210201:NatRule" }, { type: "azure-native:network/v20210301:NatRule" }, { type: "azure-native:network/v20210501:NatRule" }, { type: "azure-native:network/v20210801:NatRule" }, { type: "azure-native:network/v20220101:NatRule" }, { type: "azure-native:network/v20220501:NatRule" }, { type: "azure-native:network/v20220701:NatRule" }, { type: "azure-native:network/v20220901:NatRule" }, { type: "azure-native:network/v20221101:NatRule" }, { type: "azure-native:network/v20230201:NatRule" }, { type: "azure-native:network/v20230401:NatRule" }, { type: "azure-native:network/v20230501:NatRule" }, { type: "azure-native:network/v20230601:NatRule" }, { type: "azure-native:network/v20230901:NatRule" }, { type: "azure-native:network/v20231101:NatRule" }, { type: "azure-native:network/v20240101:NatRule" }, { type: "azure-native:network/v20240301:NatRule" }, { type: "azure-native:network/v20240501:NatRule" }, { type: "azure-native:network/v20240701:NatRule" }, { type: "azure-native:network/v20241001:NatRule" }, { type: "azure-native:network/v20250101:NatRule" }, { type: "azure-native:network/v20250301:NatRule" }, { type: "azure-native:network/v20250501:NatRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200801:NatRule" }, { type: "azure-native:network/v20201101:NatRule" }, { type: "azure-native:network/v20210201:NatRule" }, { type: "azure-native:network/v20210301:NatRule" }, { type: "azure-native:network/v20210501:NatRule" }, { type: "azure-native:network/v20210801:NatRule" }, { type: "azure-native:network/v20220101:NatRule" }, { type: "azure-native:network/v20220501:NatRule" }, { type: "azure-native:network/v20220701:NatRule" }, { type: "azure-native:network/v20220901:NatRule" }, { type: "azure-native:network/v20221101:NatRule" }, { type: "azure-native:network/v20230201:NatRule" }, { type: "azure-native:network/v20230401:NatRule" }, { type: "azure-native:network/v20230501:NatRule" }, { type: "azure-native:network/v20230601:NatRule" }, { type: "azure-native:network/v20230901:NatRule" }, { type: "azure-native:network/v20231101:NatRule" }, { type: "azure-native:network/v20240101:NatRule" }, { type: "azure-native:network/v20240301:NatRule" }, { type: "azure-native:network/v20240501:NatRule" }, { type: "azure-native:network/v20240701:NatRule" }, { type: "azure-native:network/v20241001:NatRule" }, { type: "azure-native:network/v20250101:NatRule" }, { type: "azure-native:network/v20250301:NatRule" }, { type: "azure-native:network/v20250501:NatRule" }, { type: "azure-native:network/v20250701:NatRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NatRule.__pulumiType, name, resourceInputs, opts);
     }
@@ -139,7 +139,7 @@ export interface NatRuleArgs {
     /**
      * The private IP address external mapping for NAT.
      */
-    externalMappings?: pulumi.Input<pulumi.Input<types.inputs.VpnNatRuleMappingArgs>[]>;
+    externalMappings?: pulumi.Input<pulumi.Input<types.inputs.VpnNatRuleMappingArgs>[] | undefined>;
     /**
      * The name of the gateway.
      */
@@ -147,27 +147,27 @@ export interface NatRuleArgs {
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The private IP address internal mapping for NAT.
      */
-    internalMappings?: pulumi.Input<pulumi.Input<types.inputs.VpnNatRuleMappingArgs>[]>;
+    internalMappings?: pulumi.Input<pulumi.Input<types.inputs.VpnNatRuleMappingArgs>[] | undefined>;
     /**
      * The IP Configuration ID this NAT rule applies to.
      */
-    ipConfigurationId?: pulumi.Input<string>;
+    ipConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * The Source NAT direction of a VPN NAT.
      */
-    mode?: pulumi.Input<string | types.enums.VpnNatRuleMode>;
+    mode?: pulumi.Input<string | types.enums.VpnNatRuleMode | undefined>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the nat rule.
      */
-    natRuleName?: pulumi.Input<string>;
+    natRuleName?: pulumi.Input<string | undefined>;
     /**
      * The resource group name of the VpnGateway.
      */
@@ -175,5 +175,5 @@ export interface NatRuleArgs {
     /**
      * The type of NAT rule for VPN NAT.
      */
-    type?: pulumi.Input<string | types.enums.VpnNatRuleType>;
+    type?: pulumi.Input<string | types.enums.VpnNatRuleType | undefined>;
 }

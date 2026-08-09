@@ -107,15 +107,15 @@ export interface ConfigServiceDeliveryChannelArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of ConfigServiceDeliveryChannel
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.ConfigServiceDeliveryChannelPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConfigServiceDeliveryChannelPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -123,5 +123,5 @@ export interface ConfigServiceDeliveryChannelArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

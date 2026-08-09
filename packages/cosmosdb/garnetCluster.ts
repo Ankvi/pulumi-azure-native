@@ -5,6 +5,8 @@ import * as types from "./types";
  * Representation of a Garnet cache cluster.
  *
  * Uses Azure REST API version 2025-11-01-preview.
+ *
+ * Other available API versions: 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class GarnetCluster extends pulumi.CustomResource {
     /**
@@ -38,6 +40,10 @@ export class GarnetCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
+     * Identity for the resource.
+     */
+    declare public readonly identity: pulumi.Output<types.outputs.ManagedCassandraManagedServiceIdentityResponse | undefined>;
+    /**
      * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string>;
@@ -46,9 +52,9 @@ export class GarnetCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * Properties of a Garnet cache cluster.
+     * The resource-specific properties for this resource.
      */
-    declare public readonly properties: pulumi.Output<types.outputs.GarnetClusterResourceResponseProperties>;
+    declare public readonly properties: pulumi.Output<types.outputs.GarnetClusterResourcePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -77,6 +83,7 @@ export class GarnetCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["clusterName"] = args?.clusterName;
+            resourceInputs["identity"] = args?.identity;
             resourceInputs["location"] = args?.location;
             resourceInputs["properties"] = args?.properties;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
@@ -87,6 +94,7 @@ export class GarnetCluster extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["identity"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
@@ -95,7 +103,7 @@ export class GarnetCluster extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cosmosdb/v20251101preview:GarnetCluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cosmosdb/v20251101preview:GarnetCluster" }, { type: "azure-native:cosmosdb/v20260401preview:GarnetCluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GarnetCluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -106,17 +114,21 @@ export class GarnetCluster extends pulumi.CustomResource {
  */
 export interface GarnetClusterArgs {
     /**
-     * Garnet cache cluster name.
+     * The name of the GarnetClusterResource
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
+    /**
+     * Identity for the resource.
+     */
+    identity?: pulumi.Input<types.inputs.ManagedCassandraManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
-     * Properties of a Garnet cache cluster.
+     * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.GarnetClusterResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.GarnetClusterResourcePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -124,5 +136,5 @@ export interface GarnetClusterArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

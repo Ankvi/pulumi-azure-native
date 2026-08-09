@@ -48,9 +48,13 @@ export class DeviceSecurityGroup extends pulumi.CustomResource {
      */
     declare public readonly denylistRules: pulumi.Output<types.outputs.DenylistCustomAlertRuleResponse[] | undefined>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The list of custom alert threshold rules.
      */
@@ -60,7 +64,7 @@ export class DeviceSecurityGroup extends pulumi.CustomResource {
      */
     declare public readonly timeWindowRules: pulumi.Output<types.outputs.TimeWindowCustomAlertRuleResponse[] | undefined>;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -86,12 +90,14 @@ export class DeviceSecurityGroup extends pulumi.CustomResource {
             resourceInputs["timeWindowRules"] = args?.timeWindowRules;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["allowlistRules"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["denylistRules"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["thresholdRules"] = undefined /*out*/;
             resourceInputs["timeWindowRules"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -110,25 +116,25 @@ export interface DeviceSecurityGroupArgs {
     /**
      * The allow-list custom alert rules.
      */
-    allowlistRules?: pulumi.Input<pulumi.Input<types.inputs.AllowlistCustomAlertRuleArgs>[]>;
+    allowlistRules?: pulumi.Input<pulumi.Input<types.inputs.AllowlistCustomAlertRuleArgs>[] | undefined>;
     /**
      * The deny-list custom alert rules.
      */
-    denylistRules?: pulumi.Input<pulumi.Input<types.inputs.DenylistCustomAlertRuleArgs>[]>;
+    denylistRules?: pulumi.Input<pulumi.Input<types.inputs.DenylistCustomAlertRuleArgs>[] | undefined>;
     /**
      * The name of the device security group. Note that the name of the device security group is case insensitive.
      */
-    deviceSecurityGroupName?: pulumi.Input<string>;
+    deviceSecurityGroupName?: pulumi.Input<string | undefined>;
     /**
-     * The identifier of the resource.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     resourceId: pulumi.Input<string>;
     /**
      * The list of custom alert threshold rules.
      */
-    thresholdRules?: pulumi.Input<pulumi.Input<types.inputs.ThresholdCustomAlertRuleArgs>[]>;
+    thresholdRules?: pulumi.Input<pulumi.Input<types.inputs.ThresholdCustomAlertRuleArgs>[] | undefined>;
     /**
      * The list of custom alert time-window rules.
      */
-    timeWindowRules?: pulumi.Input<pulumi.Input<types.inputs.TimeWindowCustomAlertRuleArgs>[]>;
+    timeWindowRules?: pulumi.Input<pulumi.Input<types.inputs.TimeWindowCustomAlertRuleArgs>[] | undefined>;
 }

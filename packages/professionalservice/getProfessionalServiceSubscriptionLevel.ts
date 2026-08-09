@@ -85,5 +85,5 @@ export interface GetProfessionalServiceSubscriptionLevelOutputArgs {
     /**
      * The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }

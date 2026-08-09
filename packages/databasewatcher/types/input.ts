@@ -7,11 +7,11 @@ export interface DatastoreArgs {
     /**
      * The Azure resource ID of an Azure Data Explorer cluster.
      */
-    adxClusterResourceId?: pulumi.Input<string>;
+    adxClusterResourceId?: pulumi.Input<string | undefined>;
     /**
      * The Kusto cluster display name.
      */
-    kustoClusterDisplayName?: pulumi.Input<string>;
+    kustoClusterDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The Kusto cluster URI.
      */
@@ -45,7 +45,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -63,7 +63,7 @@ export interface SqlDbElasticPoolTargetPropertiesArgs {
     /**
      * Set to true to monitor a high availability replica of specified target, if any.
      */
-    readIntent?: pulumi.Input<boolean>;
+    readIntent?: pulumi.Input<boolean | undefined>;
     /**
      * The Azure resource ID of an Azure SQL DB elastic pool target.
      */
@@ -80,7 +80,7 @@ export interface SqlDbElasticPoolTargetPropertiesArgs {
     /**
      * To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
      */
-    targetVault?: pulumi.Input<VaultSecretArgs>;
+    targetVault?: pulumi.Input<VaultSecretArgs | undefined>;
 }
 /**
  * sqlDbElasticPoolTargetPropertiesArgsProvideDefaults sets the appropriate defaults for SqlDbElasticPoolTargetPropertiesArgs
@@ -103,7 +103,7 @@ export interface SqlDbSingleDatabaseTargetPropertiesArgs {
     /**
      * Set to true to monitor a high availability replica of specified target, if any.
      */
-    readIntent?: pulumi.Input<boolean>;
+    readIntent?: pulumi.Input<boolean | undefined>;
     /**
      * The Azure resource ID of an Azure SQL DB database target.
      */
@@ -120,7 +120,7 @@ export interface SqlDbSingleDatabaseTargetPropertiesArgs {
     /**
      * To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
      */
-    targetVault?: pulumi.Input<VaultSecretArgs>;
+    targetVault?: pulumi.Input<VaultSecretArgs | undefined>;
 }
 /**
  * sqlDbSingleDatabaseTargetPropertiesArgsProvideDefaults sets the appropriate defaults for SqlDbSingleDatabaseTargetPropertiesArgs
@@ -143,11 +143,11 @@ export interface SqlMiTargetPropertiesArgs {
     /**
      * The TCP port number to optionally use in the connection string when connecting to an Azure SQL Managed Instance target.
      */
-    connectionTcpPort?: pulumi.Input<number>;
+    connectionTcpPort?: pulumi.Input<number | undefined>;
     /**
      * Set to true to monitor a high availability replica of specified target, if any.
      */
-    readIntent?: pulumi.Input<boolean>;
+    readIntent?: pulumi.Input<boolean | undefined>;
     /**
      * The Azure resource ID of an Azure SQL Managed Instance target.
      */
@@ -164,7 +164,7 @@ export interface SqlMiTargetPropertiesArgs {
     /**
      * To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
      */
-    targetVault?: pulumi.Input<VaultSecretArgs>;
+    targetVault?: pulumi.Input<VaultSecretArgs | undefined>;
 }
 /**
  * sqlMiTargetPropertiesArgsProvideDefaults sets the appropriate defaults for SqlMiTargetPropertiesArgs
@@ -188,11 +188,11 @@ export interface SqlVmTargetPropertiesArgs {
     /**
      * The TCP port number to optionally use in the connection string when connecting to an Azure SQL VM target.
      */
-    connectionTcpPort?: pulumi.Input<number>;
+    connectionTcpPort?: pulumi.Input<number | undefined>;
     /**
      * The SQL instance name to optionally use in the connection string when connecting to an Azure SQL VM target.
      */
-    sqlNamedInstanceName?: pulumi.Input<string>;
+    sqlNamedInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The Azure resource ID of an Azure SQL VM target.
      */
@@ -209,7 +209,7 @@ export interface SqlVmTargetPropertiesArgs {
     /**
      * To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
      */
-    targetVault?: pulumi.Input<VaultSecretArgs>;
+    targetVault?: pulumi.Input<VaultSecretArgs | undefined>;
 }
 /**
  * sqlVmTargetPropertiesArgsProvideDefaults sets the appropriate defaults for SqlVmTargetPropertiesArgs
@@ -228,13 +228,13 @@ export interface VaultSecretArgs {
     /**
      * The Azure resource ID of the Key Vault instance storing database authentication secrets.
      */
-    akvResourceId?: pulumi.Input<string>;
+    akvResourceId?: pulumi.Input<string | undefined>;
     /**
      * The path to the Key Vault secret storing the password for authentication to a target.
      */
-    akvTargetPassword?: pulumi.Input<string>;
+    akvTargetPassword?: pulumi.Input<string | undefined>;
     /**
      * The path to the Key Vault secret storing the login name (aka user name, aka account name) for authentication to a target.
      */
-    akvTargetUser?: pulumi.Input<string>;
+    akvTargetUser?: pulumi.Input<string | undefined>;
 }

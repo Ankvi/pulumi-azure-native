@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkSecurityPerimeterAccessRule extends pulumi.CustomResource {
     /**
@@ -148,7 +148,7 @@ export class NetworkSecurityPerimeterAccessRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20210201preview:NspAccessRule" }, { type: "azure-native:network/v20230701preview:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20230701preview:NspAccessRule" }, { type: "azure-native:network/v20230801preview:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20230801preview:NspAccessRule" }, { type: "azure-native:network/v20240601preview:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20240701:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20241001:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20250101:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20250301:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20250501:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network:NspAccessRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20210201preview:NspAccessRule" }, { type: "azure-native:network/v20230701preview:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20230701preview:NspAccessRule" }, { type: "azure-native:network/v20230801preview:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20230801preview:NspAccessRule" }, { type: "azure-native:network/v20240601preview:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20240701:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20241001:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20250101:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20250301:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20250501:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network/v20250701:NetworkSecurityPerimeterAccessRule" }, { type: "azure-native:network:NspAccessRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkSecurityPerimeterAccessRule.__pulumiType, name, resourceInputs, opts);
     }
@@ -161,31 +161,31 @@ export interface NetworkSecurityPerimeterAccessRuleArgs {
     /**
      * The name of the NSP access rule.
      */
-    accessRuleName?: pulumi.Input<string>;
+    accessRuleName?: pulumi.Input<string | undefined>;
     /**
      * Inbound address prefixes (IPv4/IPv6)
      */
-    addressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    addressPrefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Direction that specifies whether the access rules is inbound/outbound.
      */
-    direction?: pulumi.Input<string | types.enums.AccessRuleDirection>;
+    direction?: pulumi.Input<string | types.enums.AccessRuleDirection | undefined>;
     /**
      * Outbound rules email address format.
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Outbound rules fully qualified domain name format.
      */
-    fullyQualifiedDomainNames?: pulumi.Input<pulumi.Input<string>[]>;
+    fullyQualifiedDomainNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the network security perimeter.
      */
@@ -193,7 +193,7 @@ export interface NetworkSecurityPerimeterAccessRuleArgs {
     /**
      * Outbound rules phone number format.
      */
-    phoneNumbers?: pulumi.Input<pulumi.Input<string>[]>;
+    phoneNumbers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the NSP profile.
      */
@@ -205,13 +205,13 @@ export interface NetworkSecurityPerimeterAccessRuleArgs {
     /**
      * Inbound rules service tag names.
      */
-    serviceTags?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of subscription ids
      */
-    subscriptions?: pulumi.Input<pulumi.Input<types.inputs.SubscriptionIdArgs>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<types.inputs.SubscriptionIdArgs>[] | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

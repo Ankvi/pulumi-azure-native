@@ -114,19 +114,19 @@ export interface IntegrationServiceEnvironmentArgs {
     /**
      * Managed service identity properties.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The integration service environment name.
      */
-    integrationServiceEnvironmentName?: pulumi.Input<string>;
+    integrationServiceEnvironmentName?: pulumi.Input<string | undefined>;
     /**
      * The resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The integration service environment properties.
      */
-    properties?: pulumi.Input<types.inputs.IntegrationServiceEnvironmentPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.IntegrationServiceEnvironmentPropertiesArgs | undefined>;
     /**
      * The resource group.
      */
@@ -134,9 +134,9 @@ export interface IntegrationServiceEnvironmentArgs {
     /**
      * The sku.
      */
-    sku?: pulumi.Input<types.inputs.IntegrationServiceEnvironmentSkuArgs>;
+    sku?: pulumi.Input<types.inputs.IntegrationServiceEnvironmentSkuArgs | undefined>;
     /**
      * The resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

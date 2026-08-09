@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Defines web application firewall policy.
  *
- * Uses Azure REST API version 2024-02-01.
+ * Uses Azure REST API version 2025-11-01.
  *
- * Other available API versions: 2019-03-01, 2019-10-01, 2020-04-01, 2020-11-01, 2021-06-01, 2022-05-01, 2025-03-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-08-01, 2019-03-01, 2019-10-01, 2020-04-01, 2020-11-01, 2021-06-01, 2022-05-01, 2024-02-01, 2025-03-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Policy extends pulumi.CustomResource {
     /**
@@ -71,6 +71,9 @@ export class Policy extends pulumi.CustomResource {
      * Provisioning state of the policy.
      */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
+    /**
+     * Resource status of the policy.
+     */
     declare public /*out*/ readonly resourceState: pulumi.Output<string>;
     /**
      * Describes Routing Rules associated with this Web Application Firewall policy.
@@ -142,7 +145,7 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:frontdoor/v20190301:Policy" }, { type: "azure-native:frontdoor/v20191001:Policy" }, { type: "azure-native:frontdoor/v20200401:Policy" }, { type: "azure-native:frontdoor/v20201101:Policy" }, { type: "azure-native:frontdoor/v20210601:Policy" }, { type: "azure-native:frontdoor/v20220501:Policy" }, { type: "azure-native:frontdoor/v20240201:Policy" }, { type: "azure-native:frontdoor/v20250301:Policy" }, { type: "azure-native:frontdoor/v20251001:Policy" }, { type: "azure-native:network/v20210601:Policy" }, { type: "azure-native:network/v20220501:Policy" }, { type: "azure-native:network/v20240201:Policy" }, { type: "azure-native:network:Policy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:frontdoor/v20180801:Policy" }, { type: "azure-native:frontdoor/v20190301:Policy" }, { type: "azure-native:frontdoor/v20191001:Policy" }, { type: "azure-native:frontdoor/v20200401:Policy" }, { type: "azure-native:frontdoor/v20201101:Policy" }, { type: "azure-native:frontdoor/v20210601:Policy" }, { type: "azure-native:frontdoor/v20220501:Policy" }, { type: "azure-native:frontdoor/v20240201:Policy" }, { type: "azure-native:frontdoor/v20250301:Policy" }, { type: "azure-native:frontdoor/v20251001:Policy" }, { type: "azure-native:frontdoor/v20251101:Policy" }, { type: "azure-native:network/v20210601:Policy" }, { type: "azure-native:network/v20220501:Policy" }, { type: "azure-native:network/v20240201:Policy" }, { type: "azure-native:network:Policy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Policy.__pulumiType, name, resourceInputs, opts);
     }
@@ -155,33 +158,33 @@ export interface PolicyArgs {
     /**
      * Describes custom rules inside the policy.
      */
-    customRules?: pulumi.Input<types.inputs.CustomRuleListArgs>;
+    customRules?: pulumi.Input<types.inputs.CustomRuleListArgs | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Describes managed rules inside the policy.
      */
-    managedRules?: pulumi.Input<types.inputs.ManagedRuleSetListArgs>;
+    managedRules?: pulumi.Input<types.inputs.ManagedRuleSetListArgs | undefined>;
     /**
      * The name of the Web Application Firewall Policy.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * Describes settings for the policy.
      */
-    policySettings?: pulumi.Input<types.inputs.PolicySettingsArgs>;
+    policySettings?: pulumi.Input<types.inputs.PolicySettingsArgs | undefined>;
     /**
-     * Name of the Resource group within the Azure subscription.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -56,7 +56,7 @@ export interface GetLinkerDryrunResult {
      */
     readonly prerequisiteResults: (types.outputs.BasicErrorDryrunPrerequisiteResultResponse | types.outputs.PermissionsMissingDryrunPrerequisiteResultResponse)[];
     /**
-     * The provisioning state. 
+     * The provisioning state.
      */
     readonly provisioningState: string;
     /**

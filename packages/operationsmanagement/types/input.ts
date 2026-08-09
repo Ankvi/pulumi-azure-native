@@ -6,11 +6,11 @@ export interface ArmTemplateParameterArgs {
     /**
      * name of the parameter.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
-     * value for the parameter. In Jtoken 
+     * value for the parameter. In Jtoken
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -30,7 +30,7 @@ export interface ManagementConfigurationPropertiesArgs {
     /**
      * The applicationId of the appliance for this Management.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Parameters to run the ARM template
      */
@@ -52,19 +52,19 @@ export interface SolutionPlanArgs {
     /**
      * name of the solution to be created. For Microsoft published solution it should be in the format of solutionType(workspaceName). SolutionType part is case sensitive. For third party solution, it can be anything.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * name of the solution to enabled/add. For Microsoft published gallery solution it should be in the format of OMSGallery/<solutionType>. This is case sensitive
      */
-    product?: pulumi.Input<string>;
+    product?: pulumi.Input<string | undefined>;
     /**
      * promotionCode, Not really used now, can you left as empty
      */
-    promotionCode?: pulumi.Input<string>;
+    promotionCode?: pulumi.Input<string | undefined>;
     /**
      * Publisher name. For gallery solution, it is Microsoft.
      */
-    publisher?: pulumi.Input<string>;
+    publisher?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -74,11 +74,11 @@ export interface SolutionPropertiesArgs {
     /**
      * The azure resources that will be contained within the solutions. They will be locked and gets deleted automatically when the solution is deleted.
      */
-    containedResources?: pulumi.Input<pulumi.Input<string>[]>;
+    containedResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The resources that will be referenced from this solution. Deleting any of those solution out of band will break the solution.
      */
-    referencedResources?: pulumi.Input<pulumi.Input<string>[]>;
+    referencedResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The azure resourceId for the workspace where the solution will be deployed/enabled.
      */

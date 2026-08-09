@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualHubIpConfiguration extends pulumi.CustomResource {
     /**
@@ -96,7 +96,7 @@ export class VirtualHubIpConfiguration extends pulumi.CustomResource {
             resourceInputs["privateIPAllocationMethod"] = args?.privateIPAllocationMethod;
             resourceInputs["publicIPAddress"] = args?.publicIPAddress;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
-            resourceInputs["subnet"] = args ? (args.subnet ? pulumi.output(args.subnet).apply(types.inputs.subnetArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["subnet"] = args ? pulumi.output(args.subnet).apply(v => v === undefined ? undefined : types.inputs.subnetArgsProvideDefaults(v)) : undefined;
             resourceInputs["virtualHubName"] = args?.virtualHubName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -114,7 +114,7 @@ export class VirtualHubIpConfiguration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20200601:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20200701:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20200801:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20201101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210201:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210301:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210801:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220701:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220901:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20221101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230201:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230401:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230601:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230901:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20231101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240301:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240701:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20241001:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20250101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20250301:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20250501:VirtualHubIpConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20200601:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20200701:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20200801:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20201101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210201:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210301:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20210801:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220701:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20220901:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20221101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230201:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230401:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230601:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20230901:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20231101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240301:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20240701:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20241001:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20250101:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20250301:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20250501:VirtualHubIpConfiguration" }, { type: "azure-native:network/v20250701:VirtualHubIpConfiguration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualHubIpConfiguration.__pulumiType, name, resourceInputs, opts);
     }
@@ -127,27 +127,27 @@ export interface VirtualHubIpConfigurationArgs {
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the ipconfig.
      */
-    ipConfigName?: pulumi.Input<string>;
+    ipConfigName?: pulumi.Input<string | undefined>;
     /**
      * Name of the Ip Configuration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The private IP address of the IP configuration.
      */
-    privateIPAddress?: pulumi.Input<string>;
+    privateIPAddress?: pulumi.Input<string | undefined>;
     /**
      * The private IP address allocation method.
      */
-    privateIPAllocationMethod?: pulumi.Input<string | types.enums.IPAllocationMethod>;
+    privateIPAllocationMethod?: pulumi.Input<string | types.enums.IPAllocationMethod | undefined>;
     /**
      * The reference to the public IP resource.
      */
-    publicIPAddress?: pulumi.Input<types.inputs.PublicIPAddressArgs>;
+    publicIPAddress?: pulumi.Input<types.inputs.PublicIPAddressArgs | undefined>;
     /**
      * The resource group name of the VirtualHub.
      */
@@ -155,7 +155,7 @@ export interface VirtualHubIpConfigurationArgs {
     /**
      * The reference to the subnet resource.
      */
-    subnet?: pulumi.Input<types.inputs.SubnetArgs>;
+    subnet?: pulumi.Input<types.inputs.SubnetArgs | undefined>;
     /**
      * The name of the VirtualHub.
      */

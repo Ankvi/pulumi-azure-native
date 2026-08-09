@@ -66,7 +66,7 @@ export interface GetConnectorResult {
      */
     readonly name: string;
     /**
-     * The provisioning state. 
+     * The provisioning state.
      */
     readonly provisioningState: string;
     /**
@@ -131,5 +131,5 @@ export interface GetConnectorOutputArgs {
     /**
      * The ID of the target subscription.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }

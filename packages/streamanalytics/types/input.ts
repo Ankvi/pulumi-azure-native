@@ -7,12 +7,12 @@ export interface AggregateFunctionPropertiesArgs {
     /**
      * The physical binding of the function. For example, in the Azure Machine Learning web service’s case, this describes the endpoint.
      */
-    binding?: pulumi.Input<AzureMachineLearningWebServiceFunctionBindingArgs | JavaScriptFunctionBindingArgs>;
-    inputs?: pulumi.Input<pulumi.Input<FunctionInputArgs>[]>;
+    binding?: pulumi.Input<AzureMachineLearningWebServiceFunctionBindingArgs | JavaScriptFunctionBindingArgs | undefined>;
+    inputs?: pulumi.Input<pulumi.Input<FunctionInputArgs>[] | undefined>;
     /**
      * Describes the output of a function.
      */
-    output?: pulumi.Input<FunctionOutputArgs>;
+    output?: pulumi.Input<FunctionOutputArgs | undefined>;
     /**
      * Indicates the type of function.
      * Expected value is 'Aggregate'.
@@ -38,39 +38,39 @@ export interface AzureDataLakeStoreOutputDataSourceArgs {
     /**
      * The name of the Azure Data Lake Store account. Required on PUT (CreateOrReplace) requests.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Authentication Mode.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
     /**
      * The date format. Wherever {date} appears in filePathPrefix, the value of this property is used as the date format instead.
      */
-    dateFormat?: pulumi.Input<string>;
+    dateFormat?: pulumi.Input<string | undefined>;
     /**
      * The location of the file to which the output should be written to. Required on PUT (CreateOrReplace) requests.
      */
-    filePathPrefix?: pulumi.Input<string>;
+    filePathPrefix?: pulumi.Input<string | undefined>;
     /**
      * A refresh token that can be used to obtain a valid access token that can then be used to authenticate with the data source. A valid refresh token is currently only obtainable via the Azure Portal. It is recommended to put a dummy string value here when creating the data source and then going to the Azure Portal to authenticate the data source which will update this property with a valid refresh token. Required on PUT (CreateOrReplace) requests.
      */
-    refreshToken?: pulumi.Input<string>;
+    refreshToken?: pulumi.Input<string | undefined>;
     /**
      * The tenant id of the user used to obtain the refresh token. Required on PUT (CreateOrReplace) requests.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The time format. Wherever {time} appears in filePathPrefix, the value of this property is used as the time format instead.
      */
-    timeFormat?: pulumi.Input<string>;
+    timeFormat?: pulumi.Input<string | undefined>;
     /**
      * The user display name of the user that was used to obtain the refresh token. Use this property to help remember which user was used to obtain the refresh token.
      */
-    tokenUserDisplayName?: pulumi.Input<string>;
+    tokenUserDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The user principal name (UPN) of the user that was used to obtain the refresh token. Use this property to help remember which user was used to obtain the refresh token.
      */
-    tokenUserPrincipalName?: pulumi.Input<string>;
+    tokenUserPrincipalName?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.DataLake/Accounts'.
@@ -85,23 +85,23 @@ export interface AzureFunctionOutputDataSourceArgs {
     /**
      * If you want to use an Azure Function from another subscription, you can do so by providing the key to access your function.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * The name of your Azure Functions app.
      */
-    functionAppName?: pulumi.Input<string>;
+    functionAppName?: pulumi.Input<string | undefined>;
     /**
      * The name of the function in your Azure Functions app.
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * A property that lets you specify the maximum number of events in each batch that's sent to Azure Functions. The default value is 100.
      */
-    maxBatchCount?: pulumi.Input<number>;
+    maxBatchCount?: pulumi.Input<number | undefined>;
     /**
      * A property that lets you set the maximum size for each output batch that's sent to your Azure function. The input unit is in bytes. By default, this value is 262,144 bytes (256 KB).
      */
-    maxBatchSize?: pulumi.Input<number>;
+    maxBatchSize?: pulumi.Input<number | undefined>;
     /**
      * Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.AzureFunction'.
@@ -116,23 +116,23 @@ export interface AzureMachineLearningWebServiceFunctionBindingArgs {
     /**
      * The API key used to authenticate with Request-Response endpoint.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Number between 1 and 10000 describing maximum number of rows for every Azure ML RRS execute request. Default is 1000.
      */
-    batchSize?: pulumi.Input<number>;
+    batchSize?: pulumi.Input<number | undefined>;
     /**
      * The Request-Response execute endpoint of the Azure Machine Learning web service. Find out more here: https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The inputs for the Azure Machine Learning web service endpoint.
      */
-    inputs?: pulumi.Input<AzureMachineLearningWebServiceInputsArgs>;
+    inputs?: pulumi.Input<AzureMachineLearningWebServiceInputsArgs | undefined>;
     /**
      * A list of outputs from the Azure Machine Learning web service endpoint execution.
      */
-    outputs?: pulumi.Input<pulumi.Input<AzureMachineLearningWebServiceOutputColumnArgs>[]>;
+    outputs?: pulumi.Input<pulumi.Input<AzureMachineLearningWebServiceOutputColumnArgs>[] | undefined>;
     /**
      * Indicates the function binding type.
      * Expected value is 'Microsoft.MachineLearning/WebService'.
@@ -147,15 +147,15 @@ export interface AzureMachineLearningWebServiceInputColumnArgs {
     /**
      * The (Azure Machine Learning supported) data type of the input column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
      */
-    dataType?: pulumi.Input<string>;
+    dataType?: pulumi.Input<string | undefined>;
     /**
      * The zero based index of the function parameter this input maps to.
      */
-    mapTo?: pulumi.Input<number>;
+    mapTo?: pulumi.Input<number | undefined>;
     /**
      * The name of the input column.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,11 +165,11 @@ export interface AzureMachineLearningWebServiceInputsArgs {
     /**
      * A list of input columns for the Azure Machine Learning web service endpoint.
      */
-    columnNames?: pulumi.Input<pulumi.Input<AzureMachineLearningWebServiceInputColumnArgs>[]>;
+    columnNames?: pulumi.Input<pulumi.Input<AzureMachineLearningWebServiceInputColumnArgs>[] | undefined>;
     /**
      * The name of the input. This is the name provided while authoring the endpoint.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,11 +179,11 @@ export interface AzureMachineLearningWebServiceOutputColumnArgs {
     /**
      * The (Azure Machine Learning supported) data type of the output column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
      */
-    dataType?: pulumi.Input<string>;
+    dataType?: pulumi.Input<string | undefined>;
     /**
      * The name of the output column.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -193,31 +193,31 @@ export interface AzureSqlDatabaseOutputDataSourceArgs {
     /**
      * Authentication Mode.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
     /**
      * The name of the Azure SQL database. Required on PUT (CreateOrReplace) requests.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Max Batch count for write to Sql database, the default value is 10,000. Optional on PUT requests.
      */
-    maxBatchCount?: pulumi.Input<number>;
+    maxBatchCount?: pulumi.Input<number | undefined>;
     /**
      * Max Writer count, currently only 1(single writer) and 0(based on query partition) are available. Optional on PUT requests.
      */
-    maxWriterCount?: pulumi.Input<number>;
+    maxWriterCount?: pulumi.Input<number | undefined>;
     /**
      * The password that will be used to connect to the Azure SQL database. Required on PUT (CreateOrReplace) requests.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The name of the SQL server containing the Azure SQL database. Required on PUT (CreateOrReplace) requests.
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
     /**
      * The name of the table in the Azure SQL database. Required on PUT (CreateOrReplace) requests.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.Sql/Server/Database'.
@@ -226,7 +226,7 @@ export interface AzureSqlDatabaseOutputDataSourceArgs {
     /**
      * The user name that will be used to connect to the Azure SQL database. Required on PUT (CreateOrReplace) requests.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -236,35 +236,35 @@ export interface AzureSqlReferenceInputDataSourceArgs {
     /**
      * This element is associated with the datasource element. This is the name of the database that output will be written to.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * This element is associated with the datasource element. This query is used to fetch incremental changes from the SQL database. To use this option, we recommend using temporal tables in Azure SQL Database.
      */
-    deltaSnapshotQuery?: pulumi.Input<string>;
+    deltaSnapshotQuery?: pulumi.Input<string | undefined>;
     /**
      * This element is associated with the datasource element. This query is used to fetch data from the sql database.
      */
-    fullSnapshotQuery?: pulumi.Input<string>;
+    fullSnapshotQuery?: pulumi.Input<string | undefined>;
     /**
      * This element is associated with the datasource element. This is the password that will be used to connect to the SQL Database instance.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * This element is associated with the datasource element. This indicates how frequently the data will be fetched from the database. It is of DateTime format.
      */
-    refreshRate?: pulumi.Input<string>;
+    refreshRate?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of data refresh option.
      */
-    refreshType?: pulumi.Input<string | enums.RefreshType>;
+    refreshType?: pulumi.Input<string | enums.RefreshType | undefined>;
     /**
      * This element is associated with the datasource element. This is the name of the server that contains the database that will be written to.
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
     /**
      * This element is associated with the datasource element. The name of the table in the Azure SQL database..
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of input data source containing reference data. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.Sql/Server/Database'.
@@ -273,7 +273,7 @@ export interface AzureSqlReferenceInputDataSourceArgs {
     /**
      * This element is associated with the datasource element. This is the user name that will be used to connect to the SQL Database instance.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -283,19 +283,19 @@ export interface AzureSynapseOutputDataSourceArgs {
     /**
      * The name of the Azure SQL database. Required on PUT (CreateOrReplace) requests.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The password that will be used to connect to the Azure SQL database. Required on PUT (CreateOrReplace) requests.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The name of the SQL server containing the Azure SQL database. Required on PUT (CreateOrReplace) requests.
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
     /**
      * The name of the table in the Azure SQL database. Required on PUT (CreateOrReplace) requests.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.Sql/Server/DataWarehouse'.
@@ -304,7 +304,7 @@ export interface AzureSynapseOutputDataSourceArgs {
     /**
      * The user name that will be used to connect to the Azure SQL database. Required on PUT (CreateOrReplace) requests.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -314,31 +314,31 @@ export interface AzureTableOutputDataSourceArgs {
     /**
      * The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests.
      */
-    accountKey?: pulumi.Input<string>;
+    accountKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure Storage account. Required on PUT (CreateOrReplace) requests.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The number of rows to write to the Azure Table at a time.
      */
-    batchSize?: pulumi.Input<number>;
+    batchSize?: pulumi.Input<number | undefined>;
     /**
      * If specified, each item in the array is the name of a column to remove (if present) from output event entities.
      */
-    columnsToRemove?: pulumi.Input<pulumi.Input<string>[]>;
+    columnsToRemove?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This element indicates the name of a column from the SELECT statement in the query that will be used as the partition key for the Azure Table. Required on PUT (CreateOrReplace) requests.
      */
-    partitionKey?: pulumi.Input<string>;
+    partitionKey?: pulumi.Input<string | undefined>;
     /**
      * This element indicates the name of a column from the SELECT statement in the query that will be used as the row key for the Azure Table. Required on PUT (CreateOrReplace) requests.
      */
-    rowKey?: pulumi.Input<string>;
+    rowKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure Table. Required on PUT (CreateOrReplace) requests.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.Storage/Table'.
@@ -353,31 +353,31 @@ export interface BlobOutputDataSourceArgs {
     /**
      * Authentication Mode.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
     /**
      * Blob path prefix.
      */
-    blobPathPrefix?: pulumi.Input<string>;
+    blobPathPrefix?: pulumi.Input<string | undefined>;
     /**
      * The name of a container within the associated Storage account. This container contains either the blob(s) to be read from or written to. Required on PUT (CreateOrReplace) requests.
      */
-    container?: pulumi.Input<string>;
+    container?: pulumi.Input<string | undefined>;
     /**
      * The date format. Wherever {date} appears in pathPattern, the value of this property is used as the date format instead.
      */
-    dateFormat?: pulumi.Input<string>;
+    dateFormat?: pulumi.Input<string | undefined>;
     /**
      * The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a more detailed explanation and example.
      */
-    pathPattern?: pulumi.Input<string>;
+    pathPattern?: pulumi.Input<string | undefined>;
     /**
      * A list of one or more Azure Storage accounts. Required on PUT (CreateOrReplace) requests.
      */
-    storageAccounts?: pulumi.Input<pulumi.Input<StorageAccountArgs>[]>;
+    storageAccounts?: pulumi.Input<pulumi.Input<StorageAccountArgs>[] | undefined>;
     /**
      * The time format. Wherever {time} appears in pathPattern, the value of this property is used as the time format instead.
      */
-    timeFormat?: pulumi.Input<string>;
+    timeFormat?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.Storage/Blob'.
@@ -392,27 +392,27 @@ export interface BlobReferenceInputDataSourceArgs {
     /**
      * Authentication Mode.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
     /**
      * The name of a container within the associated Storage account. This container contains either the blob(s) to be read from or written to. Required on PUT (CreateOrReplace) requests.
      */
-    container?: pulumi.Input<string>;
+    container?: pulumi.Input<string | undefined>;
     /**
      * The date format. Wherever {date} appears in pathPattern, the value of this property is used as the date format instead.
      */
-    dateFormat?: pulumi.Input<string>;
+    dateFormat?: pulumi.Input<string | undefined>;
     /**
      * The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a more detailed explanation and example.
      */
-    pathPattern?: pulumi.Input<string>;
+    pathPattern?: pulumi.Input<string | undefined>;
     /**
      * A list of one or more Azure Storage accounts. Required on PUT (CreateOrReplace) requests.
      */
-    storageAccounts?: pulumi.Input<pulumi.Input<StorageAccountArgs>[]>;
+    storageAccounts?: pulumi.Input<pulumi.Input<StorageAccountArgs>[] | undefined>;
     /**
      * The time format. Wherever {time} appears in pathPattern, the value of this property is used as the time format instead.
      */
-    timeFormat?: pulumi.Input<string>;
+    timeFormat?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of input data source containing reference data. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.Storage/Blob'.
@@ -427,31 +427,31 @@ export interface BlobStreamInputDataSourceArgs {
     /**
      * Authentication Mode.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
     /**
      * The name of a container within the associated Storage account. This container contains either the blob(s) to be read from or written to. Required on PUT (CreateOrReplace) requests.
      */
-    container?: pulumi.Input<string>;
+    container?: pulumi.Input<string | undefined>;
     /**
      * The date format. Wherever {date} appears in pathPattern, the value of this property is used as the date format instead.
      */
-    dateFormat?: pulumi.Input<string>;
+    dateFormat?: pulumi.Input<string | undefined>;
     /**
      * The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a more detailed explanation and example.
      */
-    pathPattern?: pulumi.Input<string>;
+    pathPattern?: pulumi.Input<string | undefined>;
     /**
      * The partition count of the blob input data source. Range 1 - 1024.
      */
-    sourcePartitionCount?: pulumi.Input<number>;
+    sourcePartitionCount?: pulumi.Input<number | undefined>;
     /**
      * A list of one or more Azure Storage accounts. Required on PUT (CreateOrReplace) requests.
      */
-    storageAccounts?: pulumi.Input<pulumi.Input<StorageAccountArgs>[]>;
+    storageAccounts?: pulumi.Input<pulumi.Input<StorageAccountArgs>[] | undefined>;
     /**
      * The time format. Wherever {time} appears in pathPattern, the value of this property is used as the time format instead.
      */
-    timeFormat?: pulumi.Input<string>;
+    timeFormat?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of input data source containing stream data. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.Storage/Blob'.
@@ -466,7 +466,7 @@ export interface ClusterInfoArgs {
     /**
      * The resource id of cluster.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -476,11 +476,11 @@ export interface ClusterSkuArgs {
     /**
      * Denotes the number of streaming units the cluster can support. Valid values for this property are multiples of 36 with a minimum value of 36 and maximum value of 216. Required on PUT (CreateOrUpdate) requests.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Specifies the SKU name of the cluster. Required on PUT (CreateOrUpdate) requests.
      */
-    name?: pulumi.Input<string | enums.ClusterSkuName>;
+    name?: pulumi.Input<string | enums.ClusterSkuName | undefined>;
 }
 
 /**
@@ -500,11 +500,11 @@ export interface CsvSerializationArgs {
     /**
      * Specifies the encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. Required on PUT (CreateOrReplace) requests.
      */
-    encoding?: pulumi.Input<string | enums.Encoding>;
+    encoding?: pulumi.Input<string | enums.Encoding | undefined>;
     /**
      * Specifies the delimiter that will be used to separate comma-separated value (CSV) records. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a list of supported values. Required on PUT (CreateOrReplace) requests.
      */
-    fieldDelimiter?: pulumi.Input<string>;
+    fieldDelimiter?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Csv'.
@@ -519,27 +519,27 @@ export interface DocumentDbOutputDataSourceArgs {
     /**
      * The DocumentDB account name or ID. Required on PUT (CreateOrReplace) requests.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The account key for the DocumentDB account. Required on PUT (CreateOrReplace) requests.
      */
-    accountKey?: pulumi.Input<string>;
+    accountKey?: pulumi.Input<string | undefined>;
     /**
      * The collection name pattern for the collections to be used. The collection name format can be constructed using the optional {partition} token, where partitions start from 0. See the DocumentDB section of https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for more information. Required on PUT (CreateOrReplace) requests.
      */
-    collectionNamePattern?: pulumi.Input<string>;
+    collectionNamePattern?: pulumi.Input<string | undefined>;
     /**
      * The name of the DocumentDB database. Required on PUT (CreateOrReplace) requests.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The name of the field in output events used to specify the primary key which insert or update operations are based on.
      */
-    documentId?: pulumi.Input<string>;
+    documentId?: pulumi.Input<string | undefined>;
     /**
      * The name of the field in output events used to specify the key for partitioning output across collections. If 'collectionNamePattern' contains the {partition} token, this property is required to be specified.
      */
-    partitionKey?: pulumi.Input<string>;
+    partitionKey?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.Storage/DocumentDB'.
@@ -554,31 +554,31 @@ export interface EventHubOutputDataSourceArgs {
     /**
      * Authentication Mode.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
     /**
      * The name of the Event Hub. Required on PUT (CreateOrReplace) requests.
      */
-    eventHubName?: pulumi.Input<string>;
+    eventHubName?: pulumi.Input<string | undefined>;
     /**
      * The key/column that is used to determine to which partition to send event data.
      */
-    partitionKey?: pulumi.Input<string>;
+    partitionKey?: pulumi.Input<string | undefined>;
     /**
      * The properties associated with this Event Hub output.
      */
-    propertyColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    propertyColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
      */
-    serviceBusNamespace?: pulumi.Input<string>;
+    serviceBusNamespace?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyName?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.ServiceBus/EventHub'.
@@ -593,27 +593,27 @@ export interface EventHubStreamInputDataSourceArgs {
     /**
      * Authentication Mode.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
     /**
      * The name of an Event Hub Consumer Group that should be used to read events from the Event Hub. Specifying distinct consumer group names for multiple inputs allows each of those inputs to receive the same events from the Event Hub. If not specified, the input uses the Event Hub’s default consumer group.
      */
-    consumerGroupName?: pulumi.Input<string>;
+    consumerGroupName?: pulumi.Input<string | undefined>;
     /**
      * The name of the Event Hub. Required on PUT (CreateOrReplace) requests.
      */
-    eventHubName?: pulumi.Input<string>;
+    eventHubName?: pulumi.Input<string | undefined>;
     /**
      * The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
      */
-    serviceBusNamespace?: pulumi.Input<string>;
+    serviceBusNamespace?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyName?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of input data source containing stream data. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.ServiceBus/EventHub'.
@@ -628,31 +628,31 @@ export interface EventHubV2OutputDataSourceArgs {
     /**
      * Authentication Mode.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
     /**
      * The name of the Event Hub. Required on PUT (CreateOrReplace) requests.
      */
-    eventHubName?: pulumi.Input<string>;
+    eventHubName?: pulumi.Input<string | undefined>;
     /**
      * The key/column that is used to determine to which partition to send event data.
      */
-    partitionKey?: pulumi.Input<string>;
+    partitionKey?: pulumi.Input<string | undefined>;
     /**
      * The properties associated with this Event Hub output.
      */
-    propertyColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    propertyColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
      */
-    serviceBusNamespace?: pulumi.Input<string>;
+    serviceBusNamespace?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyName?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.EventHub/EventHub'.
@@ -667,27 +667,27 @@ export interface EventHubV2StreamInputDataSourceArgs {
     /**
      * Authentication Mode.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
     /**
      * The name of an Event Hub Consumer Group that should be used to read events from the Event Hub. Specifying distinct consumer group names for multiple inputs allows each of those inputs to receive the same events from the Event Hub. If not specified, the input uses the Event Hub’s default consumer group.
      */
-    consumerGroupName?: pulumi.Input<string>;
+    consumerGroupName?: pulumi.Input<string | undefined>;
     /**
      * The name of the Event Hub. Required on PUT (CreateOrReplace) requests.
      */
-    eventHubName?: pulumi.Input<string>;
+    eventHubName?: pulumi.Input<string | undefined>;
     /**
      * The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
      */
-    serviceBusNamespace?: pulumi.Input<string>;
+    serviceBusNamespace?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyName?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of input data source containing stream data. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.EventHub/EventHub'.
@@ -702,7 +702,7 @@ export interface FileReferenceInputDataSourceArgs {
     /**
      * The path of the file.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of input data source containing reference data. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'File'.
@@ -717,11 +717,11 @@ export interface FunctionArgs {
     /**
      * Resource name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The properties that are associated with a function.
      */
-    properties?: pulumi.Input<AggregateFunctionPropertiesArgs | ScalarFunctionPropertiesArgs>;
+    properties?: pulumi.Input<AggregateFunctionPropertiesArgs | ScalarFunctionPropertiesArgs | undefined>;
 }
 
 /**
@@ -731,11 +731,11 @@ export interface FunctionInputArgs {
     /**
      * The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
      */
-    dataType?: pulumi.Input<string>;
+    dataType?: pulumi.Input<string | undefined>;
     /**
      * A flag indicating if the parameter is a configuration parameter. True if this input parameter is expected to be a constant. Default is false.
      */
-    isConfigurationParameter?: pulumi.Input<boolean>;
+    isConfigurationParameter?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -745,7 +745,7 @@ export interface FunctionOutputArgs {
     /**
      * The (Azure Stream Analytics supported) data type of the function output. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
      */
-    dataType?: pulumi.Input<string>;
+    dataType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -755,7 +755,7 @@ export interface GatewayMessageBusOutputDataSourceArgs {
     /**
      * The name of the Service Bus topic.
      */
-    topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'GatewayMessageBus'.
@@ -770,7 +770,7 @@ export interface GatewayMessageBusStreamInputDataSourceArgs {
     /**
      * The name of the Service Bus topic.
      */
-    topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of input data source containing stream data. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'GatewayMessageBus'.
@@ -785,7 +785,7 @@ export interface IdentityArgs {
     /**
      * The identity type
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -795,11 +795,11 @@ export interface InputArgs {
     /**
      * Resource name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
      */
-    properties?: pulumi.Input<ReferenceInputPropertiesArgs | StreamInputPropertiesArgs>;
+    properties?: pulumi.Input<ReferenceInputPropertiesArgs | StreamInputPropertiesArgs | undefined>;
 }
 
 /**
@@ -809,23 +809,23 @@ export interface IoTHubStreamInputDataSourceArgs {
     /**
      * The name of an IoT Hub Consumer Group that should be used to read events from the IoT Hub. If not specified, the input uses the Iot Hub’s default consumer group.
      */
-    consumerGroupName?: pulumi.Input<string>;
+    consumerGroupName?: pulumi.Input<string | undefined>;
     /**
      * The IoT Hub endpoint to connect to (ie. messages/events, messages/operationsMonitoringEvents, etc.).
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The name or the URI of the IoT Hub. Required on PUT (CreateOrReplace) requests.
      */
-    iotHubNamespace?: pulumi.Input<string>;
+    iotHubNamespace?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy name for the IoT Hub. This policy must contain at least the Service connect permission. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyName?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of input data source containing stream data. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.Devices/IotHubs'.
@@ -840,7 +840,7 @@ export interface JavaScriptFunctionBindingArgs {
     /**
      * The JavaScript code containing a single function definition. For example: 'function (x, y) { return x + y; }'
      */
-    script?: pulumi.Input<string>;
+    script?: pulumi.Input<string | undefined>;
     /**
      * Indicates the function binding type.
      * Expected value is 'Microsoft.StreamAnalytics/JavascriptUdf'.
@@ -855,15 +855,15 @@ export interface JobStorageAccountArgs {
     /**
      * The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests.
      */
-    accountKey?: pulumi.Input<string>;
+    accountKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure Storage account. Required on PUT (CreateOrReplace) requests.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Authentication Mode.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
 }
 
 /**
@@ -873,11 +873,11 @@ export interface JsonSerializationArgs {
     /**
      * Specifies the encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. Required on PUT (CreateOrReplace) requests.
      */
-    encoding?: pulumi.Input<string | enums.Encoding>;
+    encoding?: pulumi.Input<string | enums.Encoding | undefined>;
     /**
      * This property only applies to JSON serialization of outputs only. It is not applicable to inputs. This property specifies the format of the JSON the output will be written in. The currently supported values are 'lineSeparated' indicating the output will be formatted by having each JSON object separated by a new line and 'array' indicating the output will be formatted as an array of JSON objects. Default value is 'lineSeparated' if left null.
      */
-    format?: pulumi.Input<string | enums.JsonOutputSerializationFormat>;
+    format?: pulumi.Input<string | enums.JsonOutputSerializationFormat | undefined>;
     /**
      * Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Json'.
@@ -892,23 +892,23 @@ export interface OutputArgs {
     /**
      * Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
      */
-    datasource?: pulumi.Input<AzureDataLakeStoreOutputDataSourceArgs | AzureFunctionOutputDataSourceArgs | AzureSqlDatabaseOutputDataSourceArgs | AzureSynapseOutputDataSourceArgs | AzureTableOutputDataSourceArgs | BlobOutputDataSourceArgs | DocumentDbOutputDataSourceArgs | EventHubOutputDataSourceArgs | EventHubV2OutputDataSourceArgs | GatewayMessageBusOutputDataSourceArgs | PowerBIOutputDataSourceArgs | ServiceBusQueueOutputDataSourceArgs | ServiceBusTopicOutputDataSourceArgs>;
+    datasource?: pulumi.Input<AzureDataLakeStoreOutputDataSourceArgs | AzureFunctionOutputDataSourceArgs | AzureSqlDatabaseOutputDataSourceArgs | AzureSynapseOutputDataSourceArgs | AzureTableOutputDataSourceArgs | BlobOutputDataSourceArgs | DocumentDbOutputDataSourceArgs | EventHubOutputDataSourceArgs | EventHubV2OutputDataSourceArgs | GatewayMessageBusOutputDataSourceArgs | PowerBIOutputDataSourceArgs | ServiceBusQueueOutputDataSourceArgs | ServiceBusTopicOutputDataSourceArgs | undefined>;
     /**
      * Resource name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
      */
-    serialization?: pulumi.Input<AvroSerializationArgs | CsvSerializationArgs | JsonSerializationArgs | ParquetSerializationArgs>;
+    serialization?: pulumi.Input<AvroSerializationArgs | CsvSerializationArgs | JsonSerializationArgs | ParquetSerializationArgs | undefined>;
     /**
      * The size window to constrain a Stream Analytics output to.
      */
-    sizeWindow?: pulumi.Input<number>;
+    sizeWindow?: pulumi.Input<number | undefined>;
     /**
      * The time frame for filtering Stream Analytics job outputs.
      */
-    timeWindow?: pulumi.Input<string>;
+    timeWindow?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -929,35 +929,35 @@ export interface PowerBIOutputDataSourceArgs {
     /**
      * Authentication Mode.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
     /**
      * The name of the Power BI dataset. Required on PUT (CreateOrReplace) requests.
      */
-    dataset?: pulumi.Input<string>;
+    dataset?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Power BI group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Power BI group. Use this property to help remember which specific Power BI group id was used.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * A refresh token that can be used to obtain a valid access token that can then be used to authenticate with the data source. A valid refresh token is currently only obtainable via the Azure Portal. It is recommended to put a dummy string value here when creating the data source and then going to the Azure Portal to authenticate the data source which will update this property with a valid refresh token. Required on PUT (CreateOrReplace) requests.
      */
-    refreshToken?: pulumi.Input<string>;
+    refreshToken?: pulumi.Input<string | undefined>;
     /**
      * The name of the Power BI table under the specified dataset. Required on PUT (CreateOrReplace) requests.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * The user display name of the user that was used to obtain the refresh token. Use this property to help remember which user was used to obtain the refresh token.
      */
-    tokenUserDisplayName?: pulumi.Input<string>;
+    tokenUserDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The user principal name (UPN) of the user that was used to obtain the refresh token. Use this property to help remember which user was used to obtain the refresh token.
      */
-    tokenUserPrincipalName?: pulumi.Input<string>;
+    tokenUserPrincipalName?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'PowerBI'.
@@ -972,11 +972,11 @@ export interface PrivateLinkServiceConnectionArgs {
     /**
      * The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The resource id of the private link service. Required on PUT (CreateOrUpdate) requests.
      */
-    privateLinkServiceId?: pulumi.Input<string>;
+    privateLinkServiceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -986,19 +986,19 @@ export interface ReferenceInputPropertiesArgs {
     /**
      * Describes how input data is compressed
      */
-    compression?: pulumi.Input<CompressionArgs>;
+    compression?: pulumi.Input<CompressionArgs | undefined>;
     /**
      * Describes an input data source that contains reference data. Required on PUT (CreateOrReplace) requests.
      */
-    datasource?: pulumi.Input<AzureSqlReferenceInputDataSourceArgs | BlobReferenceInputDataSourceArgs | FileReferenceInputDataSourceArgs>;
+    datasource?: pulumi.Input<AzureSqlReferenceInputDataSourceArgs | BlobReferenceInputDataSourceArgs | FileReferenceInputDataSourceArgs | undefined>;
     /**
      * partitionKey Describes a key in the input data which is used for partitioning the input data
      */
-    partitionKey?: pulumi.Input<string>;
+    partitionKey?: pulumi.Input<string | undefined>;
     /**
      * Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
      */
-    serialization?: pulumi.Input<AvroSerializationArgs | CsvSerializationArgs | JsonSerializationArgs | ParquetSerializationArgs>;
+    serialization?: pulumi.Input<AvroSerializationArgs | CsvSerializationArgs | JsonSerializationArgs | ParquetSerializationArgs | undefined>;
     /**
      * Indicates whether the input is a source of reference data or stream data. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Reference'.
@@ -1013,12 +1013,12 @@ export interface ScalarFunctionPropertiesArgs {
     /**
      * The physical binding of the function. For example, in the Azure Machine Learning web service’s case, this describes the endpoint.
      */
-    binding?: pulumi.Input<AzureMachineLearningWebServiceFunctionBindingArgs | JavaScriptFunctionBindingArgs>;
-    inputs?: pulumi.Input<pulumi.Input<FunctionInputArgs>[]>;
+    binding?: pulumi.Input<AzureMachineLearningWebServiceFunctionBindingArgs | JavaScriptFunctionBindingArgs | undefined>;
+    inputs?: pulumi.Input<pulumi.Input<FunctionInputArgs>[] | undefined>;
     /**
      * Describes the output of a function.
      */
-    output?: pulumi.Input<FunctionOutputArgs>;
+    output?: pulumi.Input<FunctionOutputArgs | undefined>;
     /**
      * Indicates the type of function.
      * Expected value is 'Scalar'.
@@ -1033,31 +1033,31 @@ export interface ServiceBusQueueOutputDataSourceArgs {
     /**
      * Authentication Mode.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
     /**
      * A string array of the names of output columns to be attached to Service Bus messages as custom properties.
      */
-    propertyColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    propertyColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the Service Bus Queue. Required on PUT (CreateOrReplace) requests.
      */
-    queueName?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string | undefined>;
     /**
      * The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
      */
-    serviceBusNamespace?: pulumi.Input<string>;
+    serviceBusNamespace?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyName?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The system properties associated with the Service Bus Queue. The following system properties are supported: ReplyToSessionId, ContentType, To, Subject, CorrelationId, TimeToLive, PartitionKey, SessionId, ScheduledEnqueueTime, MessageId, ReplyTo, Label, ScheduledEnqueueTimeUtc.
      */
-    systemPropertyColumns?: any;
+    systemPropertyColumns?: any | undefined;
     /**
      * Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.ServiceBus/Queue'.
@@ -1072,31 +1072,31 @@ export interface ServiceBusTopicOutputDataSourceArgs {
     /**
      * Authentication Mode.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
     /**
      * A string array of the names of output columns to be attached to Service Bus messages as custom properties.
      */
-    propertyColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    propertyColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
      */
-    serviceBusNamespace?: pulumi.Input<string>;
+    serviceBusNamespace?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string | undefined>;
     /**
      * The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
      */
-    sharedAccessPolicyName?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The system properties associated with the Service Bus Topic Output. The following system properties are supported: ReplyToSessionId, ContentType, To, Subject, CorrelationId, TimeToLive, PartitionKey, SessionId, ScheduledEnqueueTime, MessageId, ReplyTo, Label, ScheduledEnqueueTimeUtc.
      */
-    systemPropertyColumns?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    systemPropertyColumns?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the Service Bus Topic. Required on PUT (CreateOrReplace) requests.
      */
-    topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Microsoft.ServiceBus/Topic'.
@@ -1111,7 +1111,7 @@ export interface SkuArgs {
     /**
      * The name of the SKU. Required on PUT (CreateOrReplace) requests.
      */
-    name?: pulumi.Input<string | enums.SkuName>;
+    name?: pulumi.Input<string | enums.SkuName | undefined>;
 }
 
 /**
@@ -1121,11 +1121,11 @@ export interface StorageAccountArgs {
     /**
      * The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests.
      */
-    accountKey?: pulumi.Input<string>;
+    accountKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure Storage account. Required on PUT (CreateOrReplace) requests.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1135,19 +1135,19 @@ export interface StreamInputPropertiesArgs {
     /**
      * Describes how input data is compressed
      */
-    compression?: pulumi.Input<CompressionArgs>;
+    compression?: pulumi.Input<CompressionArgs | undefined>;
     /**
      * Describes an input data source that contains stream data. Required on PUT (CreateOrReplace) requests.
      */
-    datasource?: pulumi.Input<BlobStreamInputDataSourceArgs | EventHubStreamInputDataSourceArgs | EventHubV2StreamInputDataSourceArgs | GatewayMessageBusStreamInputDataSourceArgs | IoTHubStreamInputDataSourceArgs>;
+    datasource?: pulumi.Input<BlobStreamInputDataSourceArgs | EventHubStreamInputDataSourceArgs | EventHubV2StreamInputDataSourceArgs | GatewayMessageBusStreamInputDataSourceArgs | IoTHubStreamInputDataSourceArgs | undefined>;
     /**
      * partitionKey Describes a key in the input data which is used for partitioning the input data
      */
-    partitionKey?: pulumi.Input<string>;
+    partitionKey?: pulumi.Input<string | undefined>;
     /**
      * Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
      */
-    serialization?: pulumi.Input<AvroSerializationArgs | CsvSerializationArgs | JsonSerializationArgs | ParquetSerializationArgs>;
+    serialization?: pulumi.Input<AvroSerializationArgs | CsvSerializationArgs | JsonSerializationArgs | ParquetSerializationArgs | undefined>;
     /**
      * Indicates whether the input is a source of reference data or stream data. Required on PUT (CreateOrReplace) requests.
      * Expected value is 'Stream'.
@@ -1162,19 +1162,19 @@ export interface TransformationArgs {
     /**
      * Resource name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the query that will be run in the streaming job. You can learn more about the Stream Analytics Query Language (SAQL) here: https://msdn.microsoft.com/library/azure/dn834998 . Required on PUT (CreateOrReplace) requests.
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
     /**
      * Specifies the number of streaming units that the streaming job uses.
      */
-    streamingUnits?: pulumi.Input<number>;
+    streamingUnits?: pulumi.Input<number | undefined>;
     /**
      * Specifies the valid streaming units a streaming job can scale to.
      */
-    validStreamingUnits?: pulumi.Input<pulumi.Input<number>[]>;
+    validStreamingUnits?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 /**
  * transformationArgsProvideDefaults sets the appropriate defaults for TransformationArgs

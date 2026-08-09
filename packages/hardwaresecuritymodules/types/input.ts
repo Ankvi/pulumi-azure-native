@@ -7,7 +7,7 @@ export interface ApiEntityReferenceArgs {
     /**
      * The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -17,7 +17,7 @@ export interface CloudHsmClusterSkuArgs {
     /**
      * Sku capacity
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Sku family of the Cloud HSM Cluster
      */
@@ -39,7 +39,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -49,7 +49,7 @@ export interface NetworkInterfaceArgs {
     /**
      * Private Ip address of the interface
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -59,11 +59,11 @@ export interface NetworkProfileArgs {
     /**
      * Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<NetworkInterfaceArgs>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<NetworkInterfaceArgs>[] | undefined>;
     /**
      * Specifies the identifier of the subnet.
      */
-    subnet?: pulumi.Input<ApiEntityReferenceArgs>;
+    subnet?: pulumi.Input<ApiEntityReferenceArgs | undefined>;
 }
 
 /**
@@ -73,15 +73,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -91,5 +91,5 @@ export interface SkuArgs {
     /**
      * SKU of the dedicated HSM
      */
-    name?: pulumi.Input<string | enums.SkuName>;
+    name?: pulumi.Input<string | enums.SkuName | undefined>;
 }

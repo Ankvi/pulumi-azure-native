@@ -11,11 +11,11 @@ export interface CommandArgs {
     /**
      * Specifies whether to run the command even if a previous command is failed.
      */
-    alwaysRun?: pulumi.Input<boolean>;
+    alwaysRun?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to apply update before the command.
      */
-    applyUpdateBefore?: pulumi.Input<boolean>;
+    applyUpdateBefore?: pulumi.Input<boolean | undefined>;
     /**
      * The content of the command. The content depends on source type.
      */
@@ -27,15 +27,15 @@ export interface CommandArgs {
     /**
      * Specifies whether to enroll Intune before the command.
      */
-    enrollIntuneBefore?: pulumi.Input<boolean>;
+    enrollIntuneBefore?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to install first party applications before running the command.
      */
-    install1PAppBefore?: pulumi.Input<boolean>;
+    install1PAppBefore?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the max run time of the command.
      */
-    maxRunTime?: pulumi.Input<number>;
+    maxRunTime?: pulumi.Input<number | undefined>;
     /**
      * The name of the command.
      */
@@ -43,23 +43,23 @@ export interface CommandArgs {
     /**
      * Specifies whether the command is assigned to be executed after in-place upgrade.
      */
-    postUpgrade?: pulumi.Input<boolean>;
+    postUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the command is assigned to be executed before in-place upgrade.
      */
-    preUpgrade?: pulumi.Input<boolean>;
+    preUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to restart the VM after the command executed.
      */
-    restartAfter?: pulumi.Input<boolean>;
+    restartAfter?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to run the command in interactive mode.
      */
-    runAsInteractive?: pulumi.Input<boolean>;
+    runAsInteractive?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to run the command as administrator.
      */
-    runElevated?: pulumi.Input<boolean>;
+    runElevated?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -69,7 +69,7 @@ export interface DistributionGroupListReceiverValueArgs {
     /**
      * The list of distribution groups.
      */
-    distributionGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    distributionGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -79,11 +79,11 @@ export interface DraftPackageIntuneAppMetadataArgs {
     /**
      * The Metadata of the Intune App through intunewin file uploading.
      */
-    intuneApp?: pulumi.Input<DraftPackageIntuneAppMetadataItemArgs>;
+    intuneApp?: pulumi.Input<DraftPackageIntuneAppMetadataItemArgs | undefined>;
     /**
      * The Metadata of dependencies of the Intune App through intunewin file uploading.
      */
-    intuneAppDependencies?: pulumi.Input<pulumi.Input<DraftPackageIntuneAppMetadataItemArgs>[]>;
+    intuneAppDependencies?: pulumi.Input<pulumi.Input<DraftPackageIntuneAppMetadataItemArgs>[] | undefined>;
 }
 
 /**
@@ -93,67 +93,67 @@ export interface DraftPackageIntuneAppMetadataItemArgs {
     /**
      * Intune app id.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Intune app name.
      */
-    appName?: pulumi.Input<string>;
+    appName?: pulumi.Input<string | undefined>;
     /**
      * Creation date of the app.
      */
-    createDate?: pulumi.Input<string>;
+    createDate?: pulumi.Input<string | undefined>;
     /**
      * Ids of dependency apps.
      */
-    dependencyIds?: pulumi.Input<pulumi.Input<string>[]>;
+    dependencyIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Count of dependency apps.
      */
-    dependentAppCount?: pulumi.Input<number>;
+    dependentAppCount?: pulumi.Input<number | undefined>;
     /**
      * Description of the app.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Expected exit codes returned from Intune App.
      */
-    expectedExitCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    expectedExitCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Install command.
      */
-    installCommand?: pulumi.Input<string>;
+    installCommand?: pulumi.Input<string | undefined>;
     /**
      * last processed time tickets.
      */
-    lastProcessed?: pulumi.Input<number>;
+    lastProcessed?: pulumi.Input<number | undefined>;
     /**
      * Minimum supported OS. The OS version must be greater than this version to run this app.
      */
-    minimumSupportedOS?: pulumi.Input<string>;
+    minimumSupportedOS?: pulumi.Input<string | undefined>;
     /**
      * Owner of the app.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Publisher of the app.
      */
-    publisher?: pulumi.Input<string>;
+    publisher?: pulumi.Input<string | undefined>;
     /**
      * Setup file path.
      */
-    setupFile?: pulumi.Input<string>;
+    setupFile?: pulumi.Input<string | undefined>;
     /**
      * Extract status.
      */
-    status?: pulumi.Input<string | enums.IntuneExtractStatus>;
+    status?: pulumi.Input<string | enums.IntuneExtractStatus | undefined>;
     /**
      * Uninstall command.
      */
-    uninstallCommand?: pulumi.Input<string>;
+    uninstallCommand?: pulumi.Input<string | undefined>;
     /**
      * Intune app version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,23 +181,23 @@ export interface FirstPartyAppDefinitionArgs {
     /**
      * The architecture of a first party application of a Test Base Account.
      */
-    architecture?: pulumi.Input<string | enums.Architecture>;
+    architecture?: pulumi.Input<string | enums.Architecture | undefined>;
     /**
      * The channel info of a first party application of a Test Base Account.
      */
-    channel?: pulumi.Input<string>;
+    channel?: pulumi.Input<string | undefined>;
     /**
      * Specifies how the first party applications should be inter-operated with user's application.
      */
-    interopExecutionMode?: pulumi.Input<string | enums.InteropExecutionMode>;
+    interopExecutionMode?: pulumi.Input<string | enums.InteropExecutionMode | undefined>;
     /**
      * The media name of a first party application of a Test Base Account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ring info of a first party application of a Test Base Account.
      */
-    ring?: pulumi.Input<string>;
+    ring?: pulumi.Input<string | undefined>;
 }
 /**
  * firstPartyAppDefinitionArgsProvideDefaults sets the appropriate defaults for FirstPartyAppDefinitionArgs
@@ -216,7 +216,7 @@ export interface GalleryAppDefinitionArgs {
     /**
      * Whether the disclaimer of the gallery application is accepted.
      */
-    isConsented?: pulumi.Input<boolean>;
+    isConsented?: pulumi.Input<boolean | undefined>;
     /**
      * The SKU id of the gallery application.
      */
@@ -243,11 +243,11 @@ export interface HighlightedFileArgs {
     /**
      * The name of sections to highlight.
      */
-    sections?: pulumi.Input<pulumi.Input<string>[]>;
+    sections?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A flag to save whether this file is viewed by user.
      */
-    visited?: pulumi.Input<boolean>;
+    visited?: pulumi.Input<boolean | undefined>;
 }
 /**
  * highlightedFileArgsProvideDefaults sets the appropriate defaults for HighlightedFileArgs
@@ -266,11 +266,11 @@ export interface InplaceUpgradeOSInfoArgs {
     /**
      * Specifies the baseline os for in-place upgrade tests.
      */
-    baselineOS?: pulumi.Input<OsPropertiesArgs>;
+    baselineOS?: pulumi.Input<OsPropertiesArgs | undefined>;
     /**
      * Specifies the target os for in-place upgrade tests.
      */
-    targetOS?: pulumi.Input<string>;
+    targetOS?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -280,15 +280,15 @@ export interface IntuneEnrollmentMetadataArgs {
     /**
      * The enrolled Intune apps.
      */
-    appList?: pulumi.Input<pulumi.Input<EnrolledIntuneAppArgs>[]>;
+    appList?: pulumi.Input<pulumi.Input<EnrolledIntuneAppArgs>[] | undefined>;
     /**
      * The id of the Intune enrollment credential.
      */
-    credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
     /**
      * The expected duration of Intune applications and policies deployment.
      */
-    expectedDeploymentDurationInMinute?: pulumi.Input<number>;
+    expectedDeploymentDurationInMinute?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -298,11 +298,11 @@ export interface NotificationEventReceiverArgs {
     /**
      * The type of the notification event receiver.
      */
-    receiverType?: pulumi.Input<string>;
+    receiverType?: pulumi.Input<string | undefined>;
     /**
      * The notification event receiver value.
      */
-    receiverValue?: pulumi.Input<NotificationReceiverValueArgs>;
+    receiverValue?: pulumi.Input<NotificationReceiverValueArgs | undefined>;
 }
 
 /**
@@ -312,15 +312,15 @@ export interface NotificationReceiverValueArgs {
     /**
      * The user object receiver value.
      */
-    distributionGroupListReceiverValue?: pulumi.Input<DistributionGroupListReceiverValueArgs>;
+    distributionGroupListReceiverValue?: pulumi.Input<DistributionGroupListReceiverValueArgs | undefined>;
     /**
      * The user object receiver value.
      */
-    subscriptionReceiverValue?: pulumi.Input<SubscriptionReceiverValueArgs>;
+    subscriptionReceiverValue?: pulumi.Input<SubscriptionReceiverValueArgs | undefined>;
     /**
      * The user object receiver value.
      */
-    userObjectReceiverValue?: pulumi.Input<UserObjectReceiverValueArgs>;
+    userObjectReceiverValue?: pulumi.Input<UserObjectReceiverValueArgs | undefined>;
 }
 
 /**
@@ -330,27 +330,27 @@ export interface OsPropertiesArgs {
     /**
      * Specify the referenced Test Base Custom Image Id if available.
      */
-    customImageId?: pulumi.Input<string>;
+    customImageId?: pulumi.Input<string | undefined>;
     /**
      * The name of the OS.
      */
-    osName?: pulumi.Input<string>;
+    osName?: pulumi.Input<string | undefined>;
     /**
      * The properties of the OS release.
      */
-    releaseProperties?: pulumi.Input<ReleasePropertiesArgs>;
+    releaseProperties?: pulumi.Input<ReleasePropertiesArgs | undefined>;
 }
 
 export interface PreReleaseAccessRequestSpecArgs {
-    city?: pulumi.Input<string>;
-    companyWebsite?: pulumi.Input<string>;
-    countryAndRegion?: pulumi.Input<string>;
-    email?: pulumi.Input<string>;
-    engagements?: pulumi.Input<pulumi.Input<string | enums.Engagements>[]>;
-    organizationName?: pulumi.Input<string>;
-    stateOrProvince?: pulumi.Input<string>;
-    streetAddress?: pulumi.Input<string>;
-    zipCode?: pulumi.Input<string>;
+    city?: pulumi.Input<string | undefined>;
+    companyWebsite?: pulumi.Input<string | undefined>;
+    countryAndRegion?: pulumi.Input<string | undefined>;
+    email?: pulumi.Input<string | undefined>;
+    engagements?: pulumi.Input<pulumi.Input<string | enums.Engagements>[] | undefined>;
+    organizationName?: pulumi.Input<string | undefined>;
+    stateOrProvince?: pulumi.Input<string | undefined>;
+    streetAddress?: pulumi.Input<string | undefined>;
+    zipCode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -360,19 +360,19 @@ export interface ReleasePropertiesArgs {
     /**
      * The build number of the OS release.
      */
-    buildNumber?: pulumi.Input<string>;
+    buildNumber?: pulumi.Input<string | undefined>;
     /**
      * The build revision of the OS release.
      */
-    buildRevision?: pulumi.Input<string>;
+    buildRevision?: pulumi.Input<string | undefined>;
     /**
      * The name of the OS release.
      */
-    releaseName?: pulumi.Input<string>;
+    releaseName?: pulumi.Input<string | undefined>;
     /**
      * The release version date of the OS release.
      */
-    releaseVersionDate?: pulumi.Input<string>;
+    releaseVersionDate?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -382,15 +382,15 @@ export interface SubscriptionReceiverValueArgs {
     /**
      * The role of the notification receiver.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The subscription id of the notification receiver.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * The subscription name of the notification receiver.
      */
-    subscriptionName?: pulumi.Input<string>;
+    subscriptionName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -410,11 +410,11 @@ export interface TabStateArgs {
     /**
      * Current tab.
      */
-    currentTab?: pulumi.Input<string | enums.PackageStudioTabs>;
+    currentTab?: pulumi.Input<string | enums.PackageStudioTabs | undefined>;
     /**
      * visited tabs.
      */
-    visitedTabs?: pulumi.Input<pulumi.Input<string | enums.PackageStudioTabs>[]>;
+    visitedTabs?: pulumi.Input<pulumi.Input<string | enums.PackageStudioTabs>[] | undefined>;
 }
 
 /**
@@ -424,11 +424,11 @@ export interface TargetOSInfoArgs {
     /**
      * Specifies the baseline OSs to be tested.
      */
-    baselineOSs?: pulumi.Input<pulumi.Input<string>[]>;
+    baselineOSs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Insider Channel Ids. Only used for feature update.
      */
-    insiderChannelIds?: pulumi.Input<pulumi.Input<string>[]>;
+    insiderChannelIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies the OS update type to test against, e.g., 'Security updates' or 'Feature updates'.
      */
@@ -436,11 +436,11 @@ export interface TargetOSInfoArgs {
     /**
      * Specifies the ids of the target OSs from Custom Images to be tested.
      */
-    targetOSImageIds?: pulumi.Input<pulumi.Input<string>[]>;
+    targetOSImageIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies the target OSs to be tested.
      */
-    targetOSs?: pulumi.Input<pulumi.Input<string>[]>;
+    targetOSs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -454,7 +454,7 @@ export interface TestArgs {
     /**
      * Indicates if this test is active.It doesn't schedule test for not active Test.
      */
-    isActive?: pulumi.Input<boolean>;
+    isActive?: pulumi.Input<boolean | undefined>;
     /**
      * The type of the test.
      */
@@ -468,7 +468,7 @@ export interface TestBaseAccountSKUArgs {
     /**
      * The locations that the SKU is available.
      */
-    locations?: pulumi.Input<pulumi.Input<string>[]>;
+    locations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the SKU. This is typically a letter + number code, such as B0 or S0.
      */
@@ -476,7 +476,7 @@ export interface TestBaseAccountSKUArgs {
     /**
      * The type of resource the SKU applies to.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The tier of this particular SKU.
      */
@@ -490,5 +490,5 @@ export interface UserObjectReceiverValueArgs {
     /**
      * user object ids.
      */
-    userObjectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    userObjectIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

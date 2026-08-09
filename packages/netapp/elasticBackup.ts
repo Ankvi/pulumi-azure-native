@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-09-01-preview.
  *
- * Other available API versions: 2025-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-12-15-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-04-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ElasticBackup extends pulumi.CustomResource {
     /**
@@ -79,7 +79,7 @@ export class ElasticBackup extends pulumi.CustomResource {
             resourceInputs["accountName"] = args?.accountName;
             resourceInputs["backupName"] = args?.backupName;
             resourceInputs["backupVaultName"] = args?.backupVaultName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.elasticBackupPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.elasticBackupPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -93,7 +93,7 @@ export class ElasticBackup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20250901preview:ElasticBackup" }, { type: "azure-native:netapp/v20251215preview:ElasticBackup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20250901preview:ElasticBackup" }, { type: "azure-native:netapp/v20251215preview:ElasticBackup" }, { type: "azure-native:netapp/v20260115preview:ElasticBackup" }, { type: "azure-native:netapp/v20260315preview:ElasticBackup" }, { type: "azure-native:netapp/v20260415preview:ElasticBackup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ElasticBackup.__pulumiType, name, resourceInputs, opts);
     }
@@ -110,7 +110,7 @@ export interface ElasticBackupArgs {
     /**
      * The name of the ElasticBackup
      */
-    backupName?: pulumi.Input<string>;
+    backupName?: pulumi.Input<string | undefined>;
     /**
      * The name of the ElasticBackupVault
      */
@@ -118,7 +118,7 @@ export interface ElasticBackupArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.ElasticBackupPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ElasticBackupPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

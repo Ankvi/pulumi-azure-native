@@ -7,15 +7,15 @@ export interface AadProfileArgs {
     /**
      * The list of AAD group object IDs that will have admin role of the cluster.
      */
-    adminGroupObjectIDs?: pulumi.Input<pulumi.Input<string>[]>;
+    adminGroupObjectIDs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to enable Azure RBAC for Kubernetes authorization.
      */
-    enableAzureRBAC?: pulumi.Input<boolean>;
+    enableAzureRBAC?: pulumi.Input<boolean | undefined>;
     /**
      * The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
      */
-    tenantID?: pulumi.Input<string>;
+    tenantID?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -25,15 +25,15 @@ export interface ArcAgentProfileArgs {
     /**
      * Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
      */
-    agentAutoUpgrade?: pulumi.Input<string | enums.AutoUpgradeOptions>;
+    agentAutoUpgrade?: pulumi.Input<string | enums.AutoUpgradeOptions | undefined>;
     /**
      * Version of the Arc agents to be installed on the cluster resource
      */
-    desiredAgentVersion?: pulumi.Input<string>;
+    desiredAgentVersion?: pulumi.Input<string | undefined>;
     /**
      * List of system extensions can be installed on the cluster resource.
      */
-    systemComponents?: pulumi.Input<pulumi.Input<SystemComponentArgs>[]>;
+    systemComponents?: pulumi.Input<pulumi.Input<SystemComponentArgs>[] | undefined>;
 }
 /**
  * arcAgentProfileArgsProvideDefaults sets the appropriate defaults for ArcAgentProfileArgs
@@ -71,13 +71,13 @@ export interface SystemComponentArgs {
     /**
      * Major Version of the system extension to be installed on the cluster resource.
      */
-    majorVersion?: pulumi.Input<number>;
+    majorVersion?: pulumi.Input<number | undefined>;
     /**
      * Type of the system extension
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Version of the system extension to be installed on the cluster resource.
      */
-    userSpecifiedVersion?: pulumi.Input<string>;
+    userSpecifiedVersion?: pulumi.Input<string | undefined>;
 }

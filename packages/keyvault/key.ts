@@ -110,7 +110,7 @@ export class Key extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vaultName'");
             }
             resourceInputs["keyName"] = args?.keyName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.keyPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(types.inputs.keyPropertiesArgsProvideDefaults) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["vaultName"] = args?.vaultName;
@@ -157,7 +157,7 @@ export interface KeyArgs {
     /**
      * The name of the key to be created. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The properties of the key to be created.
      */
@@ -169,7 +169,7 @@ export interface KeyArgs {
     /**
      * The tags that will be assigned to the key.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the key vault which contains the key to be created.
      */

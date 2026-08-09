@@ -52,7 +52,7 @@ export class Topic extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
-     * Event Type Information for the user topic. This information is provided by the publisher and can be used by the 
+     * Event Type Information for the user topic. This information is provided by the publisher and can be used by the
      * subscriber to view different types of events that are published.
      */
     declare public readonly eventTypeInfo: pulumi.Output<types.outputs.EventTypeInfoResponse | undefined>;
@@ -97,7 +97,7 @@ export class Topic extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
-     * This determines if traffic is allowed over public network. By default it is enabled. 
+     * This determines if traffic is allowed over public network. By default it is enabled.
      * You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
      */
     declare public readonly publicNetworkAccess: pulumi.Output<string | undefined>;
@@ -184,45 +184,45 @@ export interface TopicArgs {
     /**
      * Data Residency Boundary of the resource.
      */
-    dataResidencyBoundary?: pulumi.Input<string | types.enums.DataResidencyBoundary>;
+    dataResidencyBoundary?: pulumi.Input<string | types.enums.DataResidencyBoundary | undefined>;
     /**
      * This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the topic.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
-     * Event Type Information for the user topic. This information is provided by the publisher and can be used by the 
+     * Event Type Information for the user topic. This information is provided by the publisher and can be used by the
      * subscriber to view different types of events that are published.
      */
-    eventTypeInfo?: pulumi.Input<types.inputs.EventTypeInfoArgs>;
+    eventTypeInfo?: pulumi.Input<types.inputs.EventTypeInfoArgs | undefined>;
     /**
      * Identity information for the resource.
      */
-    identity?: pulumi.Input<types.inputs.IdentityInfoArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityInfoArgs | undefined>;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[]>;
+    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[] | undefined>;
     /**
      * This determines the format that Event Grid should expect for incoming events published to the topic.
      */
-    inputSchema?: pulumi.Input<string | types.enums.InputSchema>;
+    inputSchema?: pulumi.Input<string | types.enums.InputSchema | undefined>;
     /**
      * This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
      */
-    inputSchemaMapping?: pulumi.Input<types.inputs.JsonInputSchemaMappingArgs>;
+    inputSchemaMapping?: pulumi.Input<types.inputs.JsonInputSchemaMappingArgs | undefined>;
     /**
      * Location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Minimum TLS version of the publisher allowed to publish to this topic
      */
-    minimumTlsVersionAllowed?: pulumi.Input<string | types.enums.TlsVersion>;
+    minimumTlsVersionAllowed?: pulumi.Input<string | types.enums.TlsVersion | undefined>;
     /**
-     * This determines if traffic is allowed over public network. By default it is enabled. 
+     * This determines if traffic is allowed over public network. By default it is enabled.
      * You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * The name of the resource group within the user's subscription.
      */
@@ -230,9 +230,9 @@ export interface TopicArgs {
     /**
      * Tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the topic.
      */
-    topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string | undefined>;
 }

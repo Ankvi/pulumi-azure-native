@@ -129,7 +129,7 @@ export interface AssociationsInterfaceArgs {
     /**
      * Name of Association
      */
-    associationName?: pulumi.Input<string>;
+    associationName?: pulumi.Input<string | undefined>;
     /**
      * Association Type
      */
@@ -137,7 +137,7 @@ export interface AssociationsInterfaceArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -145,11 +145,11 @@ export interface AssociationsInterfaceArgs {
     /**
      * Association Subnet
      */
-    subnet?: pulumi.Input<types.inputs.AssociationSubnetArgs>;
+    subnet?: pulumi.Input<types.inputs.AssociationSubnetArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * traffic controller name for path
      */

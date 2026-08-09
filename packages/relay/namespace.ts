@@ -158,20 +158,20 @@ export interface NamespaceArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The namespace name
      */
-    namespaceName?: pulumi.Input<string>;
+    namespaceName?: pulumi.Input<string | undefined>;
     /**
      * List of private endpoint connections.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[] | undefined>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -179,9 +179,9 @@ export interface NamespaceArgs {
     /**
      * SKU of the namespace.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

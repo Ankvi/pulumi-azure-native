@@ -124,17 +124,17 @@ export interface HybridRunbookWorkerGroupArgs {
     /**
      * Sets the credential of a worker group.
      */
-    credential?: pulumi.Input<types.inputs.RunAsCredentialAssociationPropertyArgs>;
+    credential?: pulumi.Input<types.inputs.RunAsCredentialAssociationPropertyArgs | undefined>;
     /**
      * The hybrid runbook worker group name
      */
-    hybridRunbookWorkerGroupName?: pulumi.Input<string>;
+    hybridRunbookWorkerGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

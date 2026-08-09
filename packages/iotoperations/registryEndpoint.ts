@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-07-01-preview.
  *
- * Other available API versions: 2025-10-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RegistryEndpoint extends pulumi.CustomResource {
     /**
@@ -95,7 +95,7 @@ export class RegistryEndpoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20250701preview:RegistryEndpoint" }, { type: "azure-native:iotoperations/v20251001:RegistryEndpoint" }, { type: "azure-native:iotoperations/v20260301:RegistryEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20250701preview:RegistryEndpoint" }, { type: "azure-native:iotoperations/v20251001:RegistryEndpoint" }, { type: "azure-native:iotoperations/v20260301:RegistryEndpoint" }, { type: "azure-native:iotoperations/v20260701:RegistryEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RegistryEndpoint.__pulumiType, name, resourceInputs, opts);
     }
@@ -108,7 +108,7 @@ export interface RegistryEndpointArgs {
     /**
      * Edge location of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * Name of instance.
      */
@@ -116,11 +116,11 @@ export interface RegistryEndpointArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.RegistryEndpointPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.RegistryEndpointPropertiesArgs | undefined>;
     /**
      * Name of RegistryEndpoint resource
      */
-    registryEndpointName?: pulumi.Input<string>;
+    registryEndpointName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Image extends pulumi.CustomResource {
     /**
@@ -121,7 +121,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20160430preview:Image" }, { type: "azure-native:compute/v20170330:Image" }, { type: "azure-native:compute/v20171201:Image" }, { type: "azure-native:compute/v20180401:Image" }, { type: "azure-native:compute/v20180601:Image" }, { type: "azure-native:compute/v20181001:Image" }, { type: "azure-native:compute/v20190301:Image" }, { type: "azure-native:compute/v20190701:Image" }, { type: "azure-native:compute/v20191201:Image" }, { type: "azure-native:compute/v20200601:Image" }, { type: "azure-native:compute/v20201201:Image" }, { type: "azure-native:compute/v20210301:Image" }, { type: "azure-native:compute/v20210401:Image" }, { type: "azure-native:compute/v20210701:Image" }, { type: "azure-native:compute/v20211101:Image" }, { type: "azure-native:compute/v20220301:Image" }, { type: "azure-native:compute/v20220801:Image" }, { type: "azure-native:compute/v20221101:Image" }, { type: "azure-native:compute/v20230301:Image" }, { type: "azure-native:compute/v20230701:Image" }, { type: "azure-native:compute/v20230901:Image" }, { type: "azure-native:compute/v20240301:Image" }, { type: "azure-native:compute/v20240701:Image" }, { type: "azure-native:compute/v20241101:Image" }, { type: "azure-native:compute/v20250401:Image" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20160430preview:Image" }, { type: "azure-native:compute/v20170330:Image" }, { type: "azure-native:compute/v20171201:Image" }, { type: "azure-native:compute/v20180401:Image" }, { type: "azure-native:compute/v20180601:Image" }, { type: "azure-native:compute/v20181001:Image" }, { type: "azure-native:compute/v20190301:Image" }, { type: "azure-native:compute/v20190701:Image" }, { type: "azure-native:compute/v20191201:Image" }, { type: "azure-native:compute/v20200601:Image" }, { type: "azure-native:compute/v20201201:Image" }, { type: "azure-native:compute/v20210301:Image" }, { type: "azure-native:compute/v20210401:Image" }, { type: "azure-native:compute/v20210701:Image" }, { type: "azure-native:compute/v20211101:Image" }, { type: "azure-native:compute/v20220301:Image" }, { type: "azure-native:compute/v20220801:Image" }, { type: "azure-native:compute/v20221101:Image" }, { type: "azure-native:compute/v20230301:Image" }, { type: "azure-native:compute/v20230701:Image" }, { type: "azure-native:compute/v20230901:Image" }, { type: "azure-native:compute/v20240301:Image" }, { type: "azure-native:compute/v20240701:Image" }, { type: "azure-native:compute/v20241101:Image" }, { type: "azure-native:compute/v20250401:Image" }, { type: "azure-native:compute/v20251101:Image" }, { type: "azure-native:compute/v20260301:Image" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Image.__pulumiType, name, resourceInputs, opts);
     }
@@ -134,19 +134,19 @@ export interface ImageArgs {
     /**
      * The extended location of the Image.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * Specifies the HyperVGenerationType of the VirtualMachine created from the image. From API Version 2019-03-01 if the image source is a blob, then we need the user to specify the value, if the source is managed resource like disk or snapshot, we may require the user to specify the property if we cannot deduce it from the source managed resource.
      */
-    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGenerationTypes>;
+    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGenerationTypes | undefined>;
     /**
      * The name of the image.
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -154,13 +154,13 @@ export interface ImageArgs {
     /**
      * The source virtual machine from which Image is created.
      */
-    sourceVirtualMachine?: pulumi.Input<types.inputs.SubResourceArgs>;
+    sourceVirtualMachine?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * Specifies the storage settings for the virtual machine disks.
      */
-    storageProfile?: pulumi.Input<types.inputs.ImageStorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.ImageStorageProfileArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2019-11-01, 2020-01-01, 2020-02-01, 2020-03-01, 2020-04-01, 2020-06-01, 2020-07-01, 2020-09-01, 2020-11-01, 2020-12-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-07-01, 2021-08-01, 2021-09-01, 2021-10-01, 2021-11-01-preview, 2022-01-01, 2022-01-02-preview, 2022-02-01, 2022-02-02-preview, 2022-03-01, 2022-03-02-preview, 2022-04-01, 2022-04-02-preview, 2022-05-02-preview, 2022-06-01, 2022-06-02-preview, 2022-07-01, 2022-07-02-preview, 2022-08-02-preview, 2022-08-03-preview, 2022-09-01, 2022-09-02-preview, 2022-10-02-preview, 2022-11-01, 2022-11-02-preview, 2023-01-01, 2023-01-02-preview, 2023-02-01, 2023-02-02-preview, 2023-03-01, 2023-03-02-preview, 2023-04-01, 2023-04-02-preview, 2023-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-01, 2024-10-02-preview, 2025-01-01, 2025-01-02-preview, 2025-02-01, 2025-02-02-preview, 2025-03-01, 2025-03-02-preview, 2025-04-01, 2025-04-02-preview, 2025-05-01, 2025-05-02-preview, 2025-06-02-preview, 2025-07-01, 2025-07-02-preview, 2025-08-01, 2025-08-02-preview, 2025-09-02-preview, 2025-10-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-11-01, 2020-01-01, 2020-02-01, 2020-03-01, 2020-04-01, 2020-06-01, 2020-07-01, 2020-09-01, 2020-11-01, 2020-12-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-07-01, 2021-08-01, 2021-09-01, 2021-10-01, 2021-11-01-preview, 2022-01-01, 2022-01-02-preview, 2022-02-01, 2022-02-02-preview, 2022-03-01, 2022-03-02-preview, 2022-04-01, 2022-04-02-preview, 2022-05-02-preview, 2022-06-01, 2022-06-02-preview, 2022-07-01, 2022-07-02-preview, 2022-08-02-preview, 2022-08-03-preview, 2022-09-01, 2022-09-02-preview, 2022-10-02-preview, 2022-11-01, 2022-11-02-preview, 2023-01-01, 2023-01-02-preview, 2023-02-01, 2023-02-02-preview, 2023-03-01, 2023-03-02-preview, 2023-04-01, 2023-04-02-preview, 2023-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview, 2023-11-01, 2023-11-02-preview, 2024-01-01, 2024-01-02-preview, 2024-02-01, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview, 2024-05-01, 2024-05-02-preview, 2024-06-02-preview, 2024-07-01, 2024-07-02-preview, 2024-08-01, 2024-09-01, 2024-09-02-preview, 2024-10-01, 2024-10-02-preview, 2025-01-01, 2025-01-02-preview, 2025-02-01, 2025-02-02-preview, 2025-03-01, 2025-03-02-preview, 2025-04-01, 2025-04-02-preview, 2025-05-01, 2025-05-02-preview, 2025-06-02-preview, 2025-07-01, 2025-07-02-preview, 2025-08-01, 2025-08-02-preview, 2025-09-02-preview, 2025-10-01, 2025-10-02-preview, 2026-01-01, 2026-01-02-preview, 2026-02-01, 2026-02-02-preview, 2026-03-01, 2026-03-02-preview, 2026-04-01, 2026-04-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AgentPool extends pulumi.CustomResource {
     /**
@@ -287,14 +287,14 @@ export class AgentPool extends pulumi.CustomResource {
             resourceInputs["enableFIPS"] = args?.enableFIPS;
             resourceInputs["enableNodePublicIP"] = args?.enableNodePublicIP;
             resourceInputs["enableUltraSSD"] = args?.enableUltraSSD;
-            resourceInputs["gatewayProfile"] = args ? (args.gatewayProfile ? pulumi.output(args.gatewayProfile).apply(types.inputs.agentPoolGatewayProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["gatewayProfile"] = args ? pulumi.output(args.gatewayProfile).apply(v => v === undefined ? undefined : types.inputs.agentPoolGatewayProfileArgsProvideDefaults(v)) : undefined;
             resourceInputs["gpuInstanceProfile"] = args?.gpuInstanceProfile;
             resourceInputs["gpuProfile"] = args?.gpuProfile;
             resourceInputs["hostGroupID"] = args?.hostGroupID;
             resourceInputs["kubeletConfig"] = args?.kubeletConfig;
             resourceInputs["kubeletDiskType"] = args?.kubeletDiskType;
             resourceInputs["linuxOSConfig"] = args?.linuxOSConfig;
-            resourceInputs["localDNSProfile"] = args ? (args.localDNSProfile ? pulumi.output(args.localDNSProfile).apply(types.inputs.localDNSProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["localDNSProfile"] = args ? pulumi.output(args.localDNSProfile).apply(v => v === undefined ? undefined : types.inputs.localDNSProfileArgsProvideDefaults(v)) : undefined;
             resourceInputs["maxCount"] = args?.maxCount;
             resourceInputs["maxPods"] = args?.maxPods;
             resourceInputs["messageOfTheDay"] = args?.messageOfTheDay;
@@ -395,7 +395,7 @@ export class AgentPool extends pulumi.CustomResource {
             resourceInputs["workloadRuntime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20190201:AgentPool" }, { type: "azure-native:containerservice/v20190401:AgentPool" }, { type: "azure-native:containerservice/v20190601:AgentPool" }, { type: "azure-native:containerservice/v20190801:AgentPool" }, { type: "azure-native:containerservice/v20191001:AgentPool" }, { type: "azure-native:containerservice/v20191101:AgentPool" }, { type: "azure-native:containerservice/v20200101:AgentPool" }, { type: "azure-native:containerservice/v20200201:AgentPool" }, { type: "azure-native:containerservice/v20200301:AgentPool" }, { type: "azure-native:containerservice/v20200401:AgentPool" }, { type: "azure-native:containerservice/v20200601:AgentPool" }, { type: "azure-native:containerservice/v20200701:AgentPool" }, { type: "azure-native:containerservice/v20200901:AgentPool" }, { type: "azure-native:containerservice/v20201101:AgentPool" }, { type: "azure-native:containerservice/v20201201:AgentPool" }, { type: "azure-native:containerservice/v20210201:AgentPool" }, { type: "azure-native:containerservice/v20210301:AgentPool" }, { type: "azure-native:containerservice/v20210501:AgentPool" }, { type: "azure-native:containerservice/v20210701:AgentPool" }, { type: "azure-native:containerservice/v20210801:AgentPool" }, { type: "azure-native:containerservice/v20210901:AgentPool" }, { type: "azure-native:containerservice/v20211001:AgentPool" }, { type: "azure-native:containerservice/v20211101preview:AgentPool" }, { type: "azure-native:containerservice/v20220101:AgentPool" }, { type: "azure-native:containerservice/v20220102preview:AgentPool" }, { type: "azure-native:containerservice/v20220201:AgentPool" }, { type: "azure-native:containerservice/v20220202preview:AgentPool" }, { type: "azure-native:containerservice/v20220301:AgentPool" }, { type: "azure-native:containerservice/v20220302preview:AgentPool" }, { type: "azure-native:containerservice/v20220401:AgentPool" }, { type: "azure-native:containerservice/v20220402preview:AgentPool" }, { type: "azure-native:containerservice/v20220502preview:AgentPool" }, { type: "azure-native:containerservice/v20220601:AgentPool" }, { type: "azure-native:containerservice/v20220602preview:AgentPool" }, { type: "azure-native:containerservice/v20220701:AgentPool" }, { type: "azure-native:containerservice/v20220702preview:AgentPool" }, { type: "azure-native:containerservice/v20220802preview:AgentPool" }, { type: "azure-native:containerservice/v20220803preview:AgentPool" }, { type: "azure-native:containerservice/v20220901:AgentPool" }, { type: "azure-native:containerservice/v20220902preview:AgentPool" }, { type: "azure-native:containerservice/v20221002preview:AgentPool" }, { type: "azure-native:containerservice/v20221101:AgentPool" }, { type: "azure-native:containerservice/v20221102preview:AgentPool" }, { type: "azure-native:containerservice/v20230101:AgentPool" }, { type: "azure-native:containerservice/v20230102preview:AgentPool" }, { type: "azure-native:containerservice/v20230201:AgentPool" }, { type: "azure-native:containerservice/v20230202preview:AgentPool" }, { type: "azure-native:containerservice/v20230301:AgentPool" }, { type: "azure-native:containerservice/v20230302preview:AgentPool" }, { type: "azure-native:containerservice/v20230401:AgentPool" }, { type: "azure-native:containerservice/v20230402preview:AgentPool" }, { type: "azure-native:containerservice/v20230501:AgentPool" }, { type: "azure-native:containerservice/v20230502preview:AgentPool" }, { type: "azure-native:containerservice/v20230601:AgentPool" }, { type: "azure-native:containerservice/v20230602preview:AgentPool" }, { type: "azure-native:containerservice/v20230701:AgentPool" }, { type: "azure-native:containerservice/v20230702preview:AgentPool" }, { type: "azure-native:containerservice/v20230801:AgentPool" }, { type: "azure-native:containerservice/v20230802preview:AgentPool" }, { type: "azure-native:containerservice/v20230901:AgentPool" }, { type: "azure-native:containerservice/v20230902preview:AgentPool" }, { type: "azure-native:containerservice/v20231001:AgentPool" }, { type: "azure-native:containerservice/v20231002preview:AgentPool" }, { type: "azure-native:containerservice/v20231101:AgentPool" }, { type: "azure-native:containerservice/v20231102preview:AgentPool" }, { type: "azure-native:containerservice/v20240101:AgentPool" }, { type: "azure-native:containerservice/v20240102preview:AgentPool" }, { type: "azure-native:containerservice/v20240201:AgentPool" }, { type: "azure-native:containerservice/v20240202preview:AgentPool" }, { type: "azure-native:containerservice/v20240302preview:AgentPool" }, { type: "azure-native:containerservice/v20240402preview:AgentPool" }, { type: "azure-native:containerservice/v20240501:AgentPool" }, { type: "azure-native:containerservice/v20240502preview:AgentPool" }, { type: "azure-native:containerservice/v20240602preview:AgentPool" }, { type: "azure-native:containerservice/v20240701:AgentPool" }, { type: "azure-native:containerservice/v20240702preview:AgentPool" }, { type: "azure-native:containerservice/v20240801:AgentPool" }, { type: "azure-native:containerservice/v20240901:AgentPool" }, { type: "azure-native:containerservice/v20240902preview:AgentPool" }, { type: "azure-native:containerservice/v20241001:AgentPool" }, { type: "azure-native:containerservice/v20241002preview:AgentPool" }, { type: "azure-native:containerservice/v20250101:AgentPool" }, { type: "azure-native:containerservice/v20250102preview:AgentPool" }, { type: "azure-native:containerservice/v20250201:AgentPool" }, { type: "azure-native:containerservice/v20250202preview:AgentPool" }, { type: "azure-native:containerservice/v20250301:AgentPool" }, { type: "azure-native:containerservice/v20250302preview:AgentPool" }, { type: "azure-native:containerservice/v20250401:AgentPool" }, { type: "azure-native:containerservice/v20250402preview:AgentPool" }, { type: "azure-native:containerservice/v20250501:AgentPool" }, { type: "azure-native:containerservice/v20250502preview:AgentPool" }, { type: "azure-native:containerservice/v20250602preview:AgentPool" }, { type: "azure-native:containerservice/v20250701:AgentPool" }, { type: "azure-native:containerservice/v20250702preview:AgentPool" }, { type: "azure-native:containerservice/v20250801:AgentPool" }, { type: "azure-native:containerservice/v20250802preview:AgentPool" }, { type: "azure-native:containerservice/v20250901:AgentPool" }, { type: "azure-native:containerservice/v20250902preview:AgentPool" }, { type: "azure-native:containerservice/v20251001:AgentPool" }, { type: "azure-native:containerservice/v20251002preview:AgentPool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20190201:AgentPool" }, { type: "azure-native:containerservice/v20190401:AgentPool" }, { type: "azure-native:containerservice/v20190601:AgentPool" }, { type: "azure-native:containerservice/v20190801:AgentPool" }, { type: "azure-native:containerservice/v20191001:AgentPool" }, { type: "azure-native:containerservice/v20191101:AgentPool" }, { type: "azure-native:containerservice/v20200101:AgentPool" }, { type: "azure-native:containerservice/v20200201:AgentPool" }, { type: "azure-native:containerservice/v20200301:AgentPool" }, { type: "azure-native:containerservice/v20200401:AgentPool" }, { type: "azure-native:containerservice/v20200601:AgentPool" }, { type: "azure-native:containerservice/v20200701:AgentPool" }, { type: "azure-native:containerservice/v20200901:AgentPool" }, { type: "azure-native:containerservice/v20201101:AgentPool" }, { type: "azure-native:containerservice/v20201201:AgentPool" }, { type: "azure-native:containerservice/v20210201:AgentPool" }, { type: "azure-native:containerservice/v20210301:AgentPool" }, { type: "azure-native:containerservice/v20210501:AgentPool" }, { type: "azure-native:containerservice/v20210701:AgentPool" }, { type: "azure-native:containerservice/v20210801:AgentPool" }, { type: "azure-native:containerservice/v20210901:AgentPool" }, { type: "azure-native:containerservice/v20211001:AgentPool" }, { type: "azure-native:containerservice/v20211101preview:AgentPool" }, { type: "azure-native:containerservice/v20220101:AgentPool" }, { type: "azure-native:containerservice/v20220102preview:AgentPool" }, { type: "azure-native:containerservice/v20220201:AgentPool" }, { type: "azure-native:containerservice/v20220202preview:AgentPool" }, { type: "azure-native:containerservice/v20220301:AgentPool" }, { type: "azure-native:containerservice/v20220302preview:AgentPool" }, { type: "azure-native:containerservice/v20220401:AgentPool" }, { type: "azure-native:containerservice/v20220402preview:AgentPool" }, { type: "azure-native:containerservice/v20220502preview:AgentPool" }, { type: "azure-native:containerservice/v20220601:AgentPool" }, { type: "azure-native:containerservice/v20220602preview:AgentPool" }, { type: "azure-native:containerservice/v20220701:AgentPool" }, { type: "azure-native:containerservice/v20220702preview:AgentPool" }, { type: "azure-native:containerservice/v20220802preview:AgentPool" }, { type: "azure-native:containerservice/v20220803preview:AgentPool" }, { type: "azure-native:containerservice/v20220901:AgentPool" }, { type: "azure-native:containerservice/v20220902preview:AgentPool" }, { type: "azure-native:containerservice/v20221002preview:AgentPool" }, { type: "azure-native:containerservice/v20221101:AgentPool" }, { type: "azure-native:containerservice/v20221102preview:AgentPool" }, { type: "azure-native:containerservice/v20230101:AgentPool" }, { type: "azure-native:containerservice/v20230102preview:AgentPool" }, { type: "azure-native:containerservice/v20230201:AgentPool" }, { type: "azure-native:containerservice/v20230202preview:AgentPool" }, { type: "azure-native:containerservice/v20230301:AgentPool" }, { type: "azure-native:containerservice/v20230302preview:AgentPool" }, { type: "azure-native:containerservice/v20230401:AgentPool" }, { type: "azure-native:containerservice/v20230402preview:AgentPool" }, { type: "azure-native:containerservice/v20230501:AgentPool" }, { type: "azure-native:containerservice/v20230502preview:AgentPool" }, { type: "azure-native:containerservice/v20230601:AgentPool" }, { type: "azure-native:containerservice/v20230602preview:AgentPool" }, { type: "azure-native:containerservice/v20230701:AgentPool" }, { type: "azure-native:containerservice/v20230702preview:AgentPool" }, { type: "azure-native:containerservice/v20230801:AgentPool" }, { type: "azure-native:containerservice/v20230802preview:AgentPool" }, { type: "azure-native:containerservice/v20230901:AgentPool" }, { type: "azure-native:containerservice/v20230902preview:AgentPool" }, { type: "azure-native:containerservice/v20231001:AgentPool" }, { type: "azure-native:containerservice/v20231002preview:AgentPool" }, { type: "azure-native:containerservice/v20231101:AgentPool" }, { type: "azure-native:containerservice/v20231102preview:AgentPool" }, { type: "azure-native:containerservice/v20240101:AgentPool" }, { type: "azure-native:containerservice/v20240102preview:AgentPool" }, { type: "azure-native:containerservice/v20240201:AgentPool" }, { type: "azure-native:containerservice/v20240202preview:AgentPool" }, { type: "azure-native:containerservice/v20240302preview:AgentPool" }, { type: "azure-native:containerservice/v20240402preview:AgentPool" }, { type: "azure-native:containerservice/v20240501:AgentPool" }, { type: "azure-native:containerservice/v20240502preview:AgentPool" }, { type: "azure-native:containerservice/v20240602preview:AgentPool" }, { type: "azure-native:containerservice/v20240701:AgentPool" }, { type: "azure-native:containerservice/v20240702preview:AgentPool" }, { type: "azure-native:containerservice/v20240801:AgentPool" }, { type: "azure-native:containerservice/v20240901:AgentPool" }, { type: "azure-native:containerservice/v20240902preview:AgentPool" }, { type: "azure-native:containerservice/v20241001:AgentPool" }, { type: "azure-native:containerservice/v20241002preview:AgentPool" }, { type: "azure-native:containerservice/v20250101:AgentPool" }, { type: "azure-native:containerservice/v20250102preview:AgentPool" }, { type: "azure-native:containerservice/v20250201:AgentPool" }, { type: "azure-native:containerservice/v20250202preview:AgentPool" }, { type: "azure-native:containerservice/v20250301:AgentPool" }, { type: "azure-native:containerservice/v20250302preview:AgentPool" }, { type: "azure-native:containerservice/v20250401:AgentPool" }, { type: "azure-native:containerservice/v20250402preview:AgentPool" }, { type: "azure-native:containerservice/v20250501:AgentPool" }, { type: "azure-native:containerservice/v20250502preview:AgentPool" }, { type: "azure-native:containerservice/v20250602preview:AgentPool" }, { type: "azure-native:containerservice/v20250701:AgentPool" }, { type: "azure-native:containerservice/v20250702preview:AgentPool" }, { type: "azure-native:containerservice/v20250801:AgentPool" }, { type: "azure-native:containerservice/v20250802preview:AgentPool" }, { type: "azure-native:containerservice/v20250901:AgentPool" }, { type: "azure-native:containerservice/v20250902preview:AgentPool" }, { type: "azure-native:containerservice/v20251001:AgentPool" }, { type: "azure-native:containerservice/v20251002preview:AgentPool" }, { type: "azure-native:containerservice/v20260101:AgentPool" }, { type: "azure-native:containerservice/v20260102preview:AgentPool" }, { type: "azure-native:containerservice/v20260201:AgentPool" }, { type: "azure-native:containerservice/v20260202preview:AgentPool" }, { type: "azure-native:containerservice/v20260301:AgentPool" }, { type: "azure-native:containerservice/v20260302preview:AgentPool" }, { type: "azure-native:containerservice/v20260401:AgentPool" }, { type: "azure-native:containerservice/v20260402preview:AgentPool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AgentPool.__pulumiType, name, resourceInputs, opts);
     }
@@ -408,147 +408,147 @@ export interface AgentPoolArgs {
     /**
      * The name of the agent pool.
      */
-    agentPoolName?: pulumi.Input<string>;
+    agentPoolName?: pulumi.Input<string | undefined>;
     /**
      * The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * AKS will associate the specified agent pool with the Capacity Reservation Group.
      */
-    capacityReservationGroupID?: pulumi.Input<string>;
+    capacityReservationGroupID?: pulumi.Input<string | undefined>;
     /**
      * Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
      */
-    count?: pulumi.Input<number>;
+    count?: pulumi.Input<number | undefined>;
     /**
      * CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
      */
-    creationData?: pulumi.Input<types.inputs.CreationDataArgs>;
+    creationData?: pulumi.Input<types.inputs.CreationDataArgs | undefined>;
     /**
      * Whether to enable auto-scaler
      */
-    enableAutoScaling?: pulumi.Input<boolean>;
+    enableAutoScaling?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable host based OS and data drive encryption. This is only supported on certain VM sizes and in certain Azure regions. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption
      */
-    enableEncryptionAtHost?: pulumi.Input<boolean>;
+    enableEncryptionAtHost?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to use a FIPS-enabled OS. See [Add a FIPS-enabled node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview) for more details.
      */
-    enableFIPS?: pulumi.Input<boolean>;
+    enableFIPS?: pulumi.Input<boolean | undefined>;
     /**
      * Whether each node is allocated its own public IP. Some scenarios may require nodes in a node pool to receive their own dedicated public IP addresses. A common scenario is for gaming workloads, where a console needs to make a direct connection to a cloud virtual machine to minimize hops. For more information see [assigning a public IP per node](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#assign-a-public-ip-per-node-for-your-node-pools). The default is false.
      */
-    enableNodePublicIP?: pulumi.Input<boolean>;
+    enableNodePublicIP?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable UltraSSD
      */
-    enableUltraSSD?: pulumi.Input<boolean>;
+    enableUltraSSD?: pulumi.Input<boolean | undefined>;
     /**
      * Profile specific to a managed agent pool in Gateway mode. This field cannot be set if agent pool mode is not Gateway.
      */
-    gatewayProfile?: pulumi.Input<types.inputs.AgentPoolGatewayProfileArgs>;
+    gatewayProfile?: pulumi.Input<types.inputs.AgentPoolGatewayProfileArgs | undefined>;
     /**
      * GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.
      */
-    gpuInstanceProfile?: pulumi.Input<string | types.enums.GPUInstanceProfile>;
+    gpuInstanceProfile?: pulumi.Input<string | types.enums.GPUInstanceProfile | undefined>;
     /**
      * GPU settings for the Agent Pool.
      */
-    gpuProfile?: pulumi.Input<types.inputs.GPUProfileArgs>;
+    gpuProfile?: pulumi.Input<types.inputs.GPUProfileArgs | undefined>;
     /**
      * The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}. For more information see [Azure dedicated hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
      */
-    hostGroupID?: pulumi.Input<string>;
+    hostGroupID?: pulumi.Input<string | undefined>;
     /**
      * The Kubelet configuration on the agent pool nodes.
      */
-    kubeletConfig?: pulumi.Input<types.inputs.KubeletConfigArgs>;
+    kubeletConfig?: pulumi.Input<types.inputs.KubeletConfigArgs | undefined>;
     /**
      * Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
      */
-    kubeletDiskType?: pulumi.Input<string | types.enums.KubeletDiskType>;
+    kubeletDiskType?: pulumi.Input<string | types.enums.KubeletDiskType | undefined>;
     /**
      * The OS configuration of Linux agent nodes.
      */
-    linuxOSConfig?: pulumi.Input<types.inputs.LinuxOSConfigArgs>;
+    linuxOSConfig?: pulumi.Input<types.inputs.LinuxOSConfigArgs | undefined>;
     /**
      * Configures the per-node local DNS, with VnetDNS and KubeDNS overrides. LocalDNS helps improve performance and reliability of DNS resolution in an AKS cluster. For more details see aka.ms/aks/localdns.
      */
-    localDNSProfile?: pulumi.Input<types.inputs.LocalDNSProfileArgs>;
+    localDNSProfile?: pulumi.Input<types.inputs.LocalDNSProfileArgs | undefined>;
     /**
      * The maximum number of nodes for auto-scaling
      */
-    maxCount?: pulumi.Input<number>;
+    maxCount?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of pods that can run on a node.
      */
-    maxPods?: pulumi.Input<number>;
+    maxPods?: pulumi.Input<number | undefined>;
     /**
      * Message of the day for Linux nodes, base64-encoded. A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script).
      */
-    messageOfTheDay?: pulumi.Input<string>;
+    messageOfTheDay?: pulumi.Input<string | undefined>;
     /**
      * The minimum number of nodes for auto-scaling
      */
-    minCount?: pulumi.Input<number>;
+    minCount?: pulumi.Input<number | undefined>;
     /**
      * The mode of an agent pool. A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
      */
-    mode?: pulumi.Input<string | types.enums.AgentPoolMode>;
+    mode?: pulumi.Input<string | types.enums.AgentPoolMode | undefined>;
     /**
      * Network-related settings of an agent pool.
      */
-    networkProfile?: pulumi.Input<types.inputs.AgentPoolNetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.AgentPoolNetworkProfileArgs | undefined>;
     /**
      * The node labels to be persisted across all nodes in agent pool.
      */
-    nodeLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The public IP prefix ID which VM nodes should use IPs from. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
      */
-    nodePublicIPPrefixID?: pulumi.Input<string>;
+    nodePublicIPPrefixID?: pulumi.Input<string | undefined>;
     /**
      * The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
      */
-    nodeTaints?: pulumi.Input<pulumi.Input<string>[]>;
+    nodeTaints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. As a best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The node pool version must have the same major version as the control plane. The node pool minor version must be within two minor versions of the control plane version. The node pool version cannot be greater than the control plane version. For more information see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
      */
-    orchestratorVersion?: pulumi.Input<string>;
+    orchestratorVersion?: pulumi.Input<string | undefined>;
     /**
      * OS Disk Size in GB to be used to specify the disk size for every machine in the master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
      */
-    osDiskSizeGB?: pulumi.Input<number>;
+    osDiskSizeGB?: pulumi.Input<number | undefined>;
     /**
      * The OS disk type to be used for machines in the agent pool. The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
      */
-    osDiskType?: pulumi.Input<string | types.enums.OSDiskType>;
+    osDiskType?: pulumi.Input<string | types.enums.OSDiskType | undefined>;
     /**
      * Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.
      */
-    osSKU?: pulumi.Input<string | types.enums.OSSKU>;
+    osSKU?: pulumi.Input<string | types.enums.OSSKU | undefined>;
     /**
      * The operating system type. The default is Linux.
      */
-    osType?: pulumi.Input<string | types.enums.OSType>;
+    osType?: pulumi.Input<string | types.enums.OSType | undefined>;
     /**
      * Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. The default is 'DynamicIndividual'.
      */
-    podIPAllocationMode?: pulumi.Input<string | types.enums.PodIPAllocationMode>;
+    podIPAllocationMode?: pulumi.Input<string | types.enums.PodIPAllocationMode | undefined>;
     /**
      * The ID of the subnet which pods will join when launched. If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details). This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
      */
-    podSubnetID?: pulumi.Input<string>;
+    podSubnetID?: pulumi.Input<string | undefined>;
     /**
      * Whether the Agent Pool is running or stopped. When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
      */
-    powerState?: pulumi.Input<types.inputs.PowerStateArgs>;
+    powerState?: pulumi.Input<types.inputs.PowerStateArgs | undefined>;
     /**
      * The ID for Proximity Placement Group.
      */
-    proximityPlacementGroupID?: pulumi.Input<string>;
+    proximityPlacementGroupID?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -560,57 +560,57 @@ export interface AgentPoolArgs {
     /**
      * The scale down mode to use when scaling the Agent Pool. This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
      */
-    scaleDownMode?: pulumi.Input<string | types.enums.ScaleDownMode>;
+    scaleDownMode?: pulumi.Input<string | types.enums.ScaleDownMode | undefined>;
     /**
      * The Virtual Machine Scale Set eviction policy to use. This cannot be specified unless the scaleSetPriority is 'Spot'. If not specified, the default is 'Delete'.
      */
-    scaleSetEvictionPolicy?: pulumi.Input<string | types.enums.ScaleSetEvictionPolicy>;
+    scaleSetEvictionPolicy?: pulumi.Input<string | types.enums.ScaleSetEvictionPolicy | undefined>;
     /**
      * The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'.
      */
-    scaleSetPriority?: pulumi.Input<string | types.enums.ScaleSetPriority>;
+    scaleSetPriority?: pulumi.Input<string | types.enums.ScaleSetPriority | undefined>;
     /**
      * The security settings of an agent pool.
      */
-    securityProfile?: pulumi.Input<types.inputs.AgentPoolSecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.AgentPoolSecurityProfileArgs | undefined>;
     /**
      * The max price (in US Dollars) you are willing to pay for spot instances. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand. Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
      */
-    spotMaxPrice?: pulumi.Input<number>;
+    spotMaxPrice?: pulumi.Input<number | undefined>;
     /**
      * The tags to be persisted on the agent pool virtual machine scale set.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of Agent Pool.
      */
-    type?: pulumi.Input<string | types.enums.AgentPoolType>;
+    type?: pulumi.Input<string | types.enums.AgentPoolType | undefined>;
     /**
      * Settings for upgrading the agentpool
      */
-    upgradeSettings?: pulumi.Input<types.inputs.AgentPoolUpgradeSettingsArgs>;
+    upgradeSettings?: pulumi.Input<types.inputs.AgentPoolUpgradeSettingsArgs | undefined>;
     /**
      * The status of nodes in a VirtualMachines agent pool.
      */
-    virtualMachineNodesStatus?: pulumi.Input<pulumi.Input<types.inputs.VirtualMachineNodesArgs>[]>;
+    virtualMachineNodesStatus?: pulumi.Input<pulumi.Input<types.inputs.VirtualMachineNodesArgs>[] | undefined>;
     /**
      * Specifications on VirtualMachines agent pool.
      */
-    virtualMachinesProfile?: pulumi.Input<types.inputs.VirtualMachinesProfileArgs>;
+    virtualMachinesProfile?: pulumi.Input<types.inputs.VirtualMachinesProfileArgs | undefined>;
     /**
      * The size of the agent pool VMs. VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
      */
-    vmSize?: pulumi.Input<string>;
+    vmSize?: pulumi.Input<string | undefined>;
     /**
      * The ID of the subnet which agent pool nodes and optionally pods will join on startup. If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
      */
-    vnetSubnetID?: pulumi.Input<string>;
+    vnetSubnetID?: pulumi.Input<string | undefined>;
     /**
      * The Windows agent pool's specific profile.
      */
-    windowsProfile?: pulumi.Input<types.inputs.AgentPoolWindowsProfileArgs>;
+    windowsProfile?: pulumi.Input<types.inputs.AgentPoolWindowsProfileArgs | undefined>;
     /**
      * Determines the type of workload a node can run.
      */
-    workloadRuntime?: pulumi.Input<string | types.enums.WorkloadRuntime>;
+    workloadRuntime?: pulumi.Input<string | types.enums.WorkloadRuntime | undefined>;
 }

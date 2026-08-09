@@ -7,11 +7,11 @@ export interface ExecutionParametersArgs {
     /**
      * Details that could optimize the user's request
      */
-    optimizationPreference?: pulumi.Input<string | enums.OptimizationPreference>;
+    optimizationPreference?: pulumi.Input<string | enums.OptimizationPreference | undefined>;
     /**
      * Retry policy the user can pass
      */
-    retryPolicy?: pulumi.Input<RetryPolicyArgs>;
+    retryPolicy?: pulumi.Input<RetryPolicyArgs | undefined>;
 }
 
 /**
@@ -25,7 +25,7 @@ export interface NotificationPropertiesArgs {
     /**
      * Tells if the notification is enabled or not.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The language the notification should be sent on.
      */
@@ -52,11 +52,11 @@ export interface RetryPolicyArgs {
     /**
      * Retry count for user request
      */
-    retryCount?: pulumi.Input<number>;
+    retryCount?: pulumi.Input<number | undefined>;
     /**
      * Retry window in minutes for user request
      */
-    retryWindowInMinutes?: pulumi.Input<number>;
+    retryWindowInMinutes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -70,11 +70,11 @@ export interface ScheduledActionPropertiesArgs {
     /**
      * Tell if the scheduled action is disabled or not
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The time when the scheduled action is supposed to stop scheduling
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The notification settings for the scheduled action
      */
@@ -109,11 +109,11 @@ export interface ScheduledActionsScheduleArgs {
     /**
      * The type of deadline the scheduled action is supposed to follow for the schedule. If no value is passed, it will default to InitiateAt.
      */
-    deadlineType?: pulumi.Input<string | enums.DeadlineType>;
+    deadlineType?: pulumi.Input<string | enums.DeadlineType | undefined>;
     /**
      * The execution parameters the scheduled action is supposed to follow
      */
-    executionParameters?: pulumi.Input<ExecutionParametersArgs>;
+    executionParameters?: pulumi.Input<ExecutionParametersArgs | undefined>;
     /**
      * The days of the month the scheduled action is supposed to run on. If empty, it means it will run on every day of the month.
      */

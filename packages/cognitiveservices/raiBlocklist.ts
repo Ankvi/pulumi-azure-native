@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RaiBlocklist extends pulumi.CustomResource {
     /**
@@ -101,7 +101,7 @@ export class RaiBlocklist extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20231001preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20240401preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20240601preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20241001:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20250401preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20250601:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20250701preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20250901:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20251001preview:RaiBlocklist" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20231001preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20240401preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20240601preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20241001:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20250401preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20250601:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20250701preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20250901:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20251001preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20251201:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20260115preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20260301:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20260315preview:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20260501:RaiBlocklist" }, { type: "azure-native:cognitiveservices/v20260515preview:RaiBlocklist" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RaiBlocklist.__pulumiType, name, resourceInputs, opts);
     }
@@ -118,11 +118,11 @@ export interface RaiBlocklistArgs {
     /**
      * Properties of Cognitive Services RaiBlocklist.
      */
-    properties?: pulumi.Input<types.inputs.RaiBlocklistPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.RaiBlocklistPropertiesArgs | undefined>;
     /**
      * The name of the RaiBlocklist associated with the Cognitive Services Account
      */
-    raiBlocklistName?: pulumi.Input<string>;
+    raiBlocklistName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -130,5 +130,5 @@ export interface RaiBlocklistArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

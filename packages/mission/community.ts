@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2024-06-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-06-01-preview, 2024-12-01-preview, 2025-11-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Community extends pulumi.CustomResource {
     /**
@@ -135,7 +135,7 @@ export class Community extends pulumi.CustomResource {
             resourceInputs["governedServiceList"] = args?.governedServiceList;
             resourceInputs["identity"] = args?.identity;
             resourceInputs["location"] = args?.location;
-            resourceInputs["maintenanceModeConfiguration"] = args ? (args.maintenanceModeConfiguration ? pulumi.output(args.maintenanceModeConfiguration).apply(types.inputs.maintenanceModeConfigurationModelArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["maintenanceModeConfiguration"] = args ? pulumi.output(args.maintenanceModeConfiguration).apply(v => v === undefined ? undefined : types.inputs.maintenanceModeConfigurationModelArgsProvideDefaults(v)) : undefined;
             resourceInputs["policyOverride"] = args?.policyOverride;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["tags"] = args?.tags;
@@ -169,7 +169,7 @@ export class Community extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:mission/v20240601preview:Community" }, { type: "azure-native:mission/v20241201preview:Community" }, { type: "azure-native:mission/v20250501preview:Community" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:mission/v20240601preview:Community" }, { type: "azure-native:mission/v20241201preview:Community" }, { type: "azure-native:mission/v20250501preview:Community" }, { type: "azure-native:mission/v20251101preview:Community" }, { type: "azure-native:mission/v20260301preview:Community" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Community.__pulumiType, name, resourceInputs, opts);
     }
@@ -182,47 +182,47 @@ export interface CommunityArgs {
     /**
      * Address Space.
      */
-    addressSpace?: pulumi.Input<string>;
+    addressSpace?: pulumi.Input<string | undefined>;
     /**
      * Approval requirements for various actions on the community's resources.
      */
-    approvalSettings?: pulumi.Input<types.inputs.ApprovalSettingsArgs>;
+    approvalSettings?: pulumi.Input<types.inputs.ApprovalSettingsArgs | undefined>;
     /**
      * The name of the communityResource Resource
      */
-    communityName?: pulumi.Input<string>;
+    communityName?: pulumi.Input<string | undefined>;
     /**
      * Community role assignments
      */
-    communityRoleAssignments?: pulumi.Input<pulumi.Input<types.inputs.RoleAssignmentItemArgs>[]>;
+    communityRoleAssignments?: pulumi.Input<pulumi.Input<types.inputs.RoleAssignmentItemArgs>[] | undefined>;
     /**
      * DNS Servers.
      */
-    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * SKU of the community's Azure Firewall (Basic, Standard, Premium). Standard is the default
      */
-    firewallSku?: pulumi.Input<string | types.enums.FirewallSKU>;
+    firewallSku?: pulumi.Input<string | types.enums.FirewallSKU | undefined>;
     /**
      * List of services governed by a community.
      */
-    governedServiceList?: pulumi.Input<pulumi.Input<types.inputs.GovernedServiceItemArgs>[]>;
+    governedServiceList?: pulumi.Input<pulumi.Input<types.inputs.GovernedServiceItemArgs>[] | undefined>;
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Maintenance Mode configuration.
      */
-    maintenanceModeConfiguration?: pulumi.Input<types.inputs.MaintenanceModeConfigurationModelArgs>;
+    maintenanceModeConfiguration?: pulumi.Input<types.inputs.MaintenanceModeConfigurationModelArgs | undefined>;
     /**
      * Policy override setting for the community. Specifies whether to apply enclave-specific policies or disable policy enforcement.
      */
-    policyOverride?: pulumi.Input<string | types.enums.PolicyOverride>;
+    policyOverride?: pulumi.Input<string | types.enums.PolicyOverride | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -230,5 +230,5 @@ export interface CommunityArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

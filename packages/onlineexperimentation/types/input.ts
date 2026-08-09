@@ -7,11 +7,11 @@ export interface CustomerManagedKeyEncryptionArgs {
     /**
      * All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
      */
-    keyEncryptionKeyIdentity?: pulumi.Input<KeyEncryptionKeyIdentityArgs>;
+    keyEncryptionKeyIdentity?: pulumi.Input<KeyEncryptionKeyIdentityArgs | undefined>;
     /**
      * key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
      */
-    keyEncryptionKeyUrl?: pulumi.Input<string>;
+    keyEncryptionKeyUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -21,15 +21,15 @@ export interface KeyEncryptionKeyIdentityArgs {
     /**
      * application client identity to use for accessing key encryption key Url in a different tenant. Ex: f83c6b1b-4d34-47e4-bb34-9d83df58b540
      */
-    federatedClientId?: pulumi.Input<string>;
+    federatedClientId?: pulumi.Input<string | undefined>;
     /**
      * The type of identity to use. Values can be systemAssignedIdentity, userAssignedIdentity, or delegatedResourceIdentity.
      */
-    identityType?: pulumi.Input<string | enums.KeyEncryptionKeyIdentityType>;
+    identityType?: pulumi.Input<string | enums.KeyEncryptionKeyIdentityType | undefined>;
     /**
      * User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.
      */
-    userAssignedIdentityResourceId?: pulumi.Input<string>;
+    userAssignedIdentityResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -43,7 +43,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -57,7 +57,7 @@ export interface OnlineExperimentationWorkspacePropertiesArgs {
     /**
      * The encryption configuration for the online experimentation workspace resource.
      */
-    encryption?: pulumi.Input<ResourceEncryptionConfigurationArgs>;
+    encryption?: pulumi.Input<ResourceEncryptionConfigurationArgs | undefined>;
     /**
      * The resource identifier of the Log Analytics workspace which online experimentation workspace uses for generating experiment analysis results.
      */
@@ -95,15 +95,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -113,5 +113,5 @@ export interface ResourceEncryptionConfigurationArgs {
     /**
      * All Customer-managed key encryption properties for the resource.
      */
-    customerManagedKeyEncryption?: pulumi.Input<CustomerManagedKeyEncryptionArgs>;
+    customerManagedKeyEncryption?: pulumi.Input<CustomerManagedKeyEncryptionArgs | undefined>;
 }

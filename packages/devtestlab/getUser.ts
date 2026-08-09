@@ -107,7 +107,7 @@ export interface GetUserOutputArgs {
     /**
      * Specify the $expand query. Example: 'properties($select=identity)'
      */
-    expand?: pulumi.Input<string>;
+    expand?: pulumi.Input<string | undefined>;
     /**
      * The name of the lab.
      */

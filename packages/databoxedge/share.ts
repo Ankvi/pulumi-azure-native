@@ -168,19 +168,19 @@ export interface ShareArgs {
     /**
      * Azure container mapping for the share.
      */
-    azureContainerInfo?: pulumi.Input<types.inputs.AzureContainerInfoArgs>;
+    azureContainerInfo?: pulumi.Input<types.inputs.AzureContainerInfoArgs | undefined>;
     /**
      * List of IP addresses and corresponding access rights on the share(required for NFS protocol).
      */
-    clientAccessRights?: pulumi.Input<pulumi.Input<types.inputs.ClientAccessRightArgs>[]>;
+    clientAccessRights?: pulumi.Input<pulumi.Input<types.inputs.ClientAccessRightArgs>[] | undefined>;
     /**
      * Data policy of the share.
      */
-    dataPolicy?: pulumi.Input<string | types.enums.DataPolicy>;
+    dataPolicy?: pulumi.Input<string | types.enums.DataPolicy | undefined>;
     /**
      * Description for the share.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The device name.
      */
@@ -192,11 +192,11 @@ export interface ShareArgs {
     /**
      * The share name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Details of the refresh job on this share.
      */
-    refreshDetails?: pulumi.Input<types.inputs.RefreshDetailsArgs>;
+    refreshDetails?: pulumi.Input<types.inputs.RefreshDetailsArgs | undefined>;
     /**
      * The resource group name.
      */
@@ -208,5 +208,5 @@ export interface ShareArgs {
     /**
      * Mapping of users and corresponding access rights on the share (required for SMB protocol).
      */
-    userAccessRights?: pulumi.Input<pulumi.Input<types.inputs.UserAccessRightArgs>[]>;
+    userAccessRights?: pulumi.Input<pulumi.Input<types.inputs.UserAccessRightArgs>[] | undefined>;
 }

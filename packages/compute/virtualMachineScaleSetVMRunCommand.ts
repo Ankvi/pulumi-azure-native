@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualMachineScaleSetVMRunCommand extends pulumi.CustomResource {
     /**
@@ -183,7 +183,7 @@ export class VirtualMachineScaleSetVMRunCommand extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20200601:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20201201:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20210301:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20210401:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20210701:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20211101:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20220301:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20220801:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20221101:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20230301:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20230701:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20230901:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20240301:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20240701:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20241101:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20250401:VirtualMachineScaleSetVMRunCommand" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20200601:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20201201:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20210301:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20210401:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20210701:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20211101:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20220301:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20220801:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20221101:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20230301:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20230701:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20230901:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20240301:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20240701:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20241101:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20250401:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20251101:VirtualMachineScaleSetVMRunCommand" }, { type: "azure-native:compute/v20260301:VirtualMachineScaleSetVMRunCommand" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualMachineScaleSetVMRunCommand.__pulumiType, name, resourceInputs, opts);
     }
@@ -196,15 +196,15 @@ export interface VirtualMachineScaleSetVMRunCommandArgs {
     /**
      * Optional. If set to true, provisioning will complete as soon as the script starts and will not wait for script to complete.
      */
-    asyncExecution?: pulumi.Input<boolean>;
+    asyncExecution?: pulumi.Input<boolean | undefined>;
     /**
      * User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
      */
-    errorBlobManagedIdentity?: pulumi.Input<types.inputs.RunCommandManagedIdentityArgs>;
+    errorBlobManagedIdentity?: pulumi.Input<types.inputs.RunCommandManagedIdentityArgs | undefined>;
     /**
      * Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
      */
-    errorBlobUri?: pulumi.Input<string>;
+    errorBlobUri?: pulumi.Input<string | undefined>;
     /**
      * The name of the VirtualMachineScaleSetVM
      */
@@ -212,23 +212,23 @@ export interface VirtualMachineScaleSetVMRunCommandArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
      */
-    outputBlobManagedIdentity?: pulumi.Input<types.inputs.RunCommandManagedIdentityArgs>;
+    outputBlobManagedIdentity?: pulumi.Input<types.inputs.RunCommandManagedIdentityArgs | undefined>;
     /**
      * Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.
      */
-    outputBlobUri?: pulumi.Input<string>;
+    outputBlobUri?: pulumi.Input<string | undefined>;
     /**
      * The parameters used by the script.
      */
-    parameters?: pulumi.Input<pulumi.Input<types.inputs.RunCommandInputParameterArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<types.inputs.RunCommandInputParameterArgs>[] | undefined>;
     /**
      * The parameters used by the script.
      */
-    protectedParameters?: pulumi.Input<pulumi.Input<types.inputs.RunCommandInputParameterArgs>[]>;
+    protectedParameters?: pulumi.Input<pulumi.Input<types.inputs.RunCommandInputParameterArgs>[] | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -236,31 +236,31 @@ export interface VirtualMachineScaleSetVMRunCommandArgs {
     /**
      * Specifies the user account password on the VM when executing the run command.
      */
-    runAsPassword?: pulumi.Input<string>;
+    runAsPassword?: pulumi.Input<string | undefined>;
     /**
      * Specifies the user account on the VM when executing the run command.
      */
-    runAsUser?: pulumi.Input<string>;
+    runAsUser?: pulumi.Input<string | undefined>;
     /**
      * The name of the VirtualMachineRunCommand
      */
-    runCommandName?: pulumi.Input<string>;
+    runCommandName?: pulumi.Input<string | undefined>;
     /**
      * The source of the run command script.
      */
-    source?: pulumi.Input<types.inputs.VirtualMachineRunCommandScriptSourceArgs>;
+    source?: pulumi.Input<types.inputs.VirtualMachineRunCommandScriptSourceArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The timeout in seconds to execute the run command.
      */
-    timeoutInSeconds?: pulumi.Input<number>;
+    timeoutInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Optional. If set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
      */
-    treatFailureAsDeploymentFailure?: pulumi.Input<boolean>;
+    treatFailureAsDeploymentFailure?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the VirtualMachineScaleSet
      */

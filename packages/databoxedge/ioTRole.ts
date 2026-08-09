@@ -163,7 +163,7 @@ export interface IoTRoleArgs {
     /**
      * Resource allocation
      */
-    computeResource?: pulumi.Input<types.inputs.ComputeResourceArgs>;
+    computeResource?: pulumi.Input<types.inputs.ComputeResourceArgs | undefined>;
     /**
      * The device name.
      */
@@ -179,7 +179,7 @@ export interface IoTRoleArgs {
     /**
      * Iot edge agent details to download the agent and bootstrap iot runtime.
      */
-    ioTEdgeAgentInfo?: pulumi.Input<types.inputs.IoTEdgeAgentInfoArgs>;
+    ioTEdgeAgentInfo?: pulumi.Input<types.inputs.IoTEdgeAgentInfoArgs | undefined>;
     /**
      * IoT edge device to which the IoT role needs to be configured.
      */
@@ -192,7 +192,7 @@ export interface IoTRoleArgs {
     /**
      * The role name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource group name.
      */
@@ -204,5 +204,5 @@ export interface IoTRoleArgs {
     /**
      * Mount points of shares in role(s).
      */
-    shareMappings?: pulumi.Input<pulumi.Input<types.inputs.MountPointMapArgs>[]>;
+    shareMappings?: pulumi.Input<pulumi.Input<types.inputs.MountPointMapArgs>[] | undefined>;
 }

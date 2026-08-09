@@ -129,7 +129,7 @@ export interface AttachedNetworkByDevCenterArgs {
     /**
      * The name of the attached NetworkConnection.
      */
-    attachedNetworkConnectionName?: pulumi.Input<string>;
+    attachedNetworkConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The name of the devcenter.
      */

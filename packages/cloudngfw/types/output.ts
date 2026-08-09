@@ -77,42 +77,6 @@ export interface ApplicationInsightsResponse {
 }
 
 /**
- * The properties of the managed service identities assigned to this resource.
- */
-export interface AzureResourceManagerManagedIdentityPropertiesResponse {
-    /**
-     * The active directory identifier of this principal.
-     */
-    principalId: string;
-    /**
-     * The Active Directory tenant id of the principal.
-     */
-    tenantId: string;
-    /**
-     * The type of managed identity assigned to this resource.
-     */
-    type: string;
-    /**
-     * The identities assigned to this resource by the user.
-     */
-    userAssignedIdentities?: {[key: string]: AzureResourceManagerUserAssignedIdentityResponse};
-}
-
-/**
- * A managed identity assigned by the user.
- */
-export interface AzureResourceManagerUserAssignedIdentityResponse {
-    /**
-     * The active directory client identifier for this principal.
-     */
-    clientId?: string;
-    /**
-     * The active directory identifier for this principal.
-     */
-    principalId?: string;
-}
-
-/**
  * URL/EDL to match
  */
 export interface CategoryResponse {
@@ -290,6 +254,28 @@ export interface LogDestinationResponse {
      * Storage account configurations
      */
     storageConfigurations?: StorageAccountResponse;
+}
+
+/**
+ * The properties of the managed service identities assigned to this resource.
+ */
+export interface ManagedIdentityPropertiesResponse {
+    /**
+     * The active directory identifier of this principal.
+     */
+    principalId: string;
+    /**
+     * The Active Directory tenant id of the principal.
+     */
+    tenantId: string;
+    /**
+     * The type of managed identity assigned to this resource.
+     */
+    type: string;
+    /**
+     * The identities assigned to this resource by the user.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
 }
 
 /**
@@ -625,6 +611,20 @@ export interface TagInfoResponse {
 }
 
 /**
+ * A managed identity assigned by the user.
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The active directory client identifier for this principal.
+     */
+    clientId?: string;
+    /**
+     * The active directory identifier for this principal.
+     */
+    principalId?: string;
+}
+
+/**
  * VnetInfo for Firewall Networking
  */
 export interface VnetConfigurationResponse {
@@ -655,7 +655,7 @@ export interface VwanConfigurationResponse {
      */
     ipOfTrustSubnetForUdr?: IPAddressResponse;
     /**
-     * Network Virtual Appliance resource ID 
+     * Network Virtual Appliance resource ID
      */
     networkVirtualApplianceId?: string;
     /**

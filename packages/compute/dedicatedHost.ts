@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DedicatedHost extends pulumi.CustomResource {
     /**
@@ -158,7 +158,7 @@ export class DedicatedHost extends pulumi.CustomResource {
             resourceInputs["virtualMachines"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20190301:DedicatedHost" }, { type: "azure-native:compute/v20190701:DedicatedHost" }, { type: "azure-native:compute/v20191201:DedicatedHost" }, { type: "azure-native:compute/v20200601:DedicatedHost" }, { type: "azure-native:compute/v20201201:DedicatedHost" }, { type: "azure-native:compute/v20210301:DedicatedHost" }, { type: "azure-native:compute/v20210401:DedicatedHost" }, { type: "azure-native:compute/v20210701:DedicatedHost" }, { type: "azure-native:compute/v20211101:DedicatedHost" }, { type: "azure-native:compute/v20220301:DedicatedHost" }, { type: "azure-native:compute/v20220801:DedicatedHost" }, { type: "azure-native:compute/v20221101:DedicatedHost" }, { type: "azure-native:compute/v20230301:DedicatedHost" }, { type: "azure-native:compute/v20230701:DedicatedHost" }, { type: "azure-native:compute/v20230901:DedicatedHost" }, { type: "azure-native:compute/v20240301:DedicatedHost" }, { type: "azure-native:compute/v20240701:DedicatedHost" }, { type: "azure-native:compute/v20241101:DedicatedHost" }, { type: "azure-native:compute/v20250401:DedicatedHost" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20190301:DedicatedHost" }, { type: "azure-native:compute/v20190701:DedicatedHost" }, { type: "azure-native:compute/v20191201:DedicatedHost" }, { type: "azure-native:compute/v20200601:DedicatedHost" }, { type: "azure-native:compute/v20201201:DedicatedHost" }, { type: "azure-native:compute/v20210301:DedicatedHost" }, { type: "azure-native:compute/v20210401:DedicatedHost" }, { type: "azure-native:compute/v20210701:DedicatedHost" }, { type: "azure-native:compute/v20211101:DedicatedHost" }, { type: "azure-native:compute/v20220301:DedicatedHost" }, { type: "azure-native:compute/v20220801:DedicatedHost" }, { type: "azure-native:compute/v20221101:DedicatedHost" }, { type: "azure-native:compute/v20230301:DedicatedHost" }, { type: "azure-native:compute/v20230701:DedicatedHost" }, { type: "azure-native:compute/v20230901:DedicatedHost" }, { type: "azure-native:compute/v20240301:DedicatedHost" }, { type: "azure-native:compute/v20240701:DedicatedHost" }, { type: "azure-native:compute/v20241101:DedicatedHost" }, { type: "azure-native:compute/v20250401:DedicatedHost" }, { type: "azure-native:compute/v20251101:DedicatedHost" }, { type: "azure-native:compute/v20260301:DedicatedHost" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DedicatedHost.__pulumiType, name, resourceInputs, opts);
     }
@@ -171,7 +171,7 @@ export interface DedicatedHostArgs {
     /**
      * Specifies whether the dedicated host should be replaced automatically in case of a failure. The value is defaulted to 'true' when not provided.
      */
-    autoReplaceOnFailure?: pulumi.Input<boolean>;
+    autoReplaceOnFailure?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the dedicated host group.
      */
@@ -179,19 +179,19 @@ export interface DedicatedHostArgs {
     /**
      * The name of the dedicated host.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * Specifies the software license type that will be applied to the VMs deployed on the dedicated host. Possible values are: **None,** **Windows_Server_Hybrid,** **Windows_Server_Perpetual.** The default value is: **None.**
      */
-    licenseType?: pulumi.Input<types.enums.DedicatedHostLicenseTypes>;
+    licenseType?: pulumi.Input<types.enums.DedicatedHostLicenseTypes | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Fault domain of the dedicated host within a dedicated host group.
      */
-    platformFaultDomain?: pulumi.Input<number>;
+    platformFaultDomain?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -203,5 +203,5 @@ export interface DedicatedHostArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

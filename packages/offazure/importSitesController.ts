@@ -128,15 +128,15 @@ export interface ImportSitesControllerArgs {
     /**
      * Gets or sets the ARM ID of migration hub solution for SDS.
      */
-    discoverySolutionId?: pulumi.Input<string>;
+    discoverySolutionId?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The status of the last operation.
      */
-    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -144,9 +144,9 @@ export interface ImportSitesControllerArgs {
     /**
      * Site name
      */
-    siteName?: pulumi.Input<string>;
+    siteName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

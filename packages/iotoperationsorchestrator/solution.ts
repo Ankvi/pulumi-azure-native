@@ -128,7 +128,7 @@ export interface SolutionArgs {
     /**
      * A list of components
      */
-    components?: pulumi.Input<pulumi.Input<types.inputs.ComponentPropertiesArgs>[]>;
+    components?: pulumi.Input<pulumi.Input<types.inputs.ComponentPropertiesArgs>[] | undefined>;
     /**
      * Edge location of the resource.
      */
@@ -136,11 +136,11 @@ export interface SolutionArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of solution.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -148,9 +148,9 @@ export interface SolutionArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Version of the particular resource.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

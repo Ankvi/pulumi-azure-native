@@ -122,19 +122,19 @@ export interface MoveCollectionArgs {
     /**
      * Defines the MSI properties of the Move Collection.
      */
-    identity?: pulumi.Input<types.inputs.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The Move Collection Name.
      */
-    moveCollectionName?: pulumi.Input<string>;
+    moveCollectionName?: pulumi.Input<string | undefined>;
     /**
      * Defines the move collection properties.
      */
-    properties?: pulumi.Input<types.inputs.MoveCollectionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MoveCollectionPropertiesArgs | undefined>;
     /**
      * The Resource Group Name.
      */
@@ -142,5 +142,5 @@ export interface MoveCollectionArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

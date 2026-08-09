@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-08-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebPubSubReplica extends pulumi.CustomResource {
     /**
@@ -122,7 +122,7 @@ export class WebPubSubReplica extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:webpubsub/v20230301preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20230601preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20230801preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20240101preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20240301:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20240401preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20240801preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20241001preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20250101preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20250801preview:WebPubSubReplica" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:webpubsub/v20230301preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20230601preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20230801preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20240101preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20240301:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20240401preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20240801preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20241001preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20250101preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20250801preview:WebPubSubReplica" }, { type: "azure-native:webpubsub/v20251201preview:WebPubSubReplica" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebPubSubReplica.__pulumiType, name, resourceInputs, opts);
     }
@@ -135,16 +135,16 @@ export interface WebPubSubReplicaArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable the regional endpoint. Default to "Enabled".
      * When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
      */
-    regionEndpointEnabled?: pulumi.Input<string>;
+    regionEndpointEnabled?: pulumi.Input<string | undefined>;
     /**
      * The name of the replica.
      */
-    replicaName?: pulumi.Input<string>;
+    replicaName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -158,13 +158,13 @@ export interface WebPubSubReplicaArgs {
      * When it's true, the data plane of the resource is shutdown.
      * When it's false, the data plane of the resource is started.
      */
-    resourceStopped?: pulumi.Input<string>;
+    resourceStopped?: pulumi.Input<string | undefined>;
     /**
      * The billing information of the resource.
      */
-    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

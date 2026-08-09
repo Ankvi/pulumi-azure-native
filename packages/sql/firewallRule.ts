@@ -5,7 +5,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2014-04-01, 2015-05-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2014-04-01, 2015-05-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**
@@ -88,7 +88,7 @@ export class FirewallRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:FirewallRule" }, { type: "azure-native:sql/v20150501preview:FirewallRule" }, { type: "azure-native:sql/v20200202preview:FirewallRule" }, { type: "azure-native:sql/v20200801preview:FirewallRule" }, { type: "azure-native:sql/v20201101preview:FirewallRule" }, { type: "azure-native:sql/v20210201preview:FirewallRule" }, { type: "azure-native:sql/v20210501preview:FirewallRule" }, { type: "azure-native:sql/v20210801preview:FirewallRule" }, { type: "azure-native:sql/v20211101:FirewallRule" }, { type: "azure-native:sql/v20211101preview:FirewallRule" }, { type: "azure-native:sql/v20220201preview:FirewallRule" }, { type: "azure-native:sql/v20220501preview:FirewallRule" }, { type: "azure-native:sql/v20220801preview:FirewallRule" }, { type: "azure-native:sql/v20221101preview:FirewallRule" }, { type: "azure-native:sql/v20230201preview:FirewallRule" }, { type: "azure-native:sql/v20230501preview:FirewallRule" }, { type: "azure-native:sql/v20230801:FirewallRule" }, { type: "azure-native:sql/v20230801preview:FirewallRule" }, { type: "azure-native:sql/v20240501preview:FirewallRule" }, { type: "azure-native:sql/v20241101preview:FirewallRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:FirewallRule" }, { type: "azure-native:sql/v20150501preview:FirewallRule" }, { type: "azure-native:sql/v20200202preview:FirewallRule" }, { type: "azure-native:sql/v20200801preview:FirewallRule" }, { type: "azure-native:sql/v20201101preview:FirewallRule" }, { type: "azure-native:sql/v20210201preview:FirewallRule" }, { type: "azure-native:sql/v20210501preview:FirewallRule" }, { type: "azure-native:sql/v20210801preview:FirewallRule" }, { type: "azure-native:sql/v20211101:FirewallRule" }, { type: "azure-native:sql/v20211101preview:FirewallRule" }, { type: "azure-native:sql/v20220201preview:FirewallRule" }, { type: "azure-native:sql/v20220501preview:FirewallRule" }, { type: "azure-native:sql/v20220801preview:FirewallRule" }, { type: "azure-native:sql/v20221101preview:FirewallRule" }, { type: "azure-native:sql/v20230201preview:FirewallRule" }, { type: "azure-native:sql/v20230501preview:FirewallRule" }, { type: "azure-native:sql/v20230801:FirewallRule" }, { type: "azure-native:sql/v20230801preview:FirewallRule" }, { type: "azure-native:sql/v20240501preview:FirewallRule" }, { type: "azure-native:sql/v20241101preview:FirewallRule" }, { type: "azure-native:sql/v20250101:FirewallRule" }, { type: "azure-native:sql/v20250201preview:FirewallRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FirewallRule.__pulumiType, name, resourceInputs, opts);
     }
@@ -101,15 +101,15 @@ export interface FirewallRuleArgs {
     /**
      * The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress. Use value '0.0.0.0' for all Azure-internal IP addresses.
      */
-    endIpAddress?: pulumi.Input<string>;
+    endIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The name of the firewall rule.
      */
-    firewallRuleName?: pulumi.Input<string>;
+    firewallRuleName?: pulumi.Input<string | undefined>;
     /**
      * Resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -121,5 +121,5 @@ export interface FirewallRuleArgs {
     /**
      * The start IP address of the firewall rule. Must be IPv4 format. Use value '0.0.0.0' for all Azure-internal IP addresses.
      */
-    startIpAddress?: pulumi.Input<string>;
+    startIpAddress?: pulumi.Input<string | undefined>;
 }

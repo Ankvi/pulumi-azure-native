@@ -124,13 +124,13 @@ export interface ReportArgs {
     /**
      * The format of the report being delivered.
      */
-    format?: pulumi.Input<string | types.enums.FormatType>;
+    format?: pulumi.Input<string | types.enums.FormatType | undefined>;
     /**
      * Report Name.
      */
-    reportName?: pulumi.Input<string>;
+    reportName?: pulumi.Input<string | undefined>;
     /**
      * Has schedule information for the report.
      */
-    schedule?: pulumi.Input<types.inputs.ReportScheduleArgs>;
+    schedule?: pulumi.Input<types.inputs.ReportScheduleArgs | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VpnServerConfiguration extends pulumi.CustomResource {
     /**
@@ -98,7 +98,7 @@ export class VpnServerConfiguration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20190801:VpnServerConfiguration" }, { type: "azure-native:network/v20190901:VpnServerConfiguration" }, { type: "azure-native:network/v20191101:VpnServerConfiguration" }, { type: "azure-native:network/v20191201:VpnServerConfiguration" }, { type: "azure-native:network/v20200301:VpnServerConfiguration" }, { type: "azure-native:network/v20200401:VpnServerConfiguration" }, { type: "azure-native:network/v20200501:VpnServerConfiguration" }, { type: "azure-native:network/v20200601:VpnServerConfiguration" }, { type: "azure-native:network/v20200701:VpnServerConfiguration" }, { type: "azure-native:network/v20200801:VpnServerConfiguration" }, { type: "azure-native:network/v20201101:VpnServerConfiguration" }, { type: "azure-native:network/v20210201:VpnServerConfiguration" }, { type: "azure-native:network/v20210301:VpnServerConfiguration" }, { type: "azure-native:network/v20210501:VpnServerConfiguration" }, { type: "azure-native:network/v20210801:VpnServerConfiguration" }, { type: "azure-native:network/v20220101:VpnServerConfiguration" }, { type: "azure-native:network/v20220501:VpnServerConfiguration" }, { type: "azure-native:network/v20220701:VpnServerConfiguration" }, { type: "azure-native:network/v20220901:VpnServerConfiguration" }, { type: "azure-native:network/v20221101:VpnServerConfiguration" }, { type: "azure-native:network/v20230201:VpnServerConfiguration" }, { type: "azure-native:network/v20230401:VpnServerConfiguration" }, { type: "azure-native:network/v20230501:VpnServerConfiguration" }, { type: "azure-native:network/v20230601:VpnServerConfiguration" }, { type: "azure-native:network/v20230901:VpnServerConfiguration" }, { type: "azure-native:network/v20231101:VpnServerConfiguration" }, { type: "azure-native:network/v20240101:VpnServerConfiguration" }, { type: "azure-native:network/v20240301:VpnServerConfiguration" }, { type: "azure-native:network/v20240501:VpnServerConfiguration" }, { type: "azure-native:network/v20240701:VpnServerConfiguration" }, { type: "azure-native:network/v20241001:VpnServerConfiguration" }, { type: "azure-native:network/v20250101:VpnServerConfiguration" }, { type: "azure-native:network/v20250301:VpnServerConfiguration" }, { type: "azure-native:network/v20250501:VpnServerConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20190801:VpnServerConfiguration" }, { type: "azure-native:network/v20190901:VpnServerConfiguration" }, { type: "azure-native:network/v20191101:VpnServerConfiguration" }, { type: "azure-native:network/v20191201:VpnServerConfiguration" }, { type: "azure-native:network/v20200301:VpnServerConfiguration" }, { type: "azure-native:network/v20200401:VpnServerConfiguration" }, { type: "azure-native:network/v20200501:VpnServerConfiguration" }, { type: "azure-native:network/v20200601:VpnServerConfiguration" }, { type: "azure-native:network/v20200701:VpnServerConfiguration" }, { type: "azure-native:network/v20200801:VpnServerConfiguration" }, { type: "azure-native:network/v20201101:VpnServerConfiguration" }, { type: "azure-native:network/v20210201:VpnServerConfiguration" }, { type: "azure-native:network/v20210301:VpnServerConfiguration" }, { type: "azure-native:network/v20210501:VpnServerConfiguration" }, { type: "azure-native:network/v20210801:VpnServerConfiguration" }, { type: "azure-native:network/v20220101:VpnServerConfiguration" }, { type: "azure-native:network/v20220501:VpnServerConfiguration" }, { type: "azure-native:network/v20220701:VpnServerConfiguration" }, { type: "azure-native:network/v20220901:VpnServerConfiguration" }, { type: "azure-native:network/v20221101:VpnServerConfiguration" }, { type: "azure-native:network/v20230201:VpnServerConfiguration" }, { type: "azure-native:network/v20230401:VpnServerConfiguration" }, { type: "azure-native:network/v20230501:VpnServerConfiguration" }, { type: "azure-native:network/v20230601:VpnServerConfiguration" }, { type: "azure-native:network/v20230901:VpnServerConfiguration" }, { type: "azure-native:network/v20231101:VpnServerConfiguration" }, { type: "azure-native:network/v20240101:VpnServerConfiguration" }, { type: "azure-native:network/v20240301:VpnServerConfiguration" }, { type: "azure-native:network/v20240501:VpnServerConfiguration" }, { type: "azure-native:network/v20240701:VpnServerConfiguration" }, { type: "azure-native:network/v20241001:VpnServerConfiguration" }, { type: "azure-native:network/v20250101:VpnServerConfiguration" }, { type: "azure-native:network/v20250301:VpnServerConfiguration" }, { type: "azure-native:network/v20250501:VpnServerConfiguration" }, { type: "azure-native:network/v20250701:VpnServerConfiguration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VpnServerConfiguration.__pulumiType, name, resourceInputs, opts);
     }
@@ -111,19 +111,19 @@ export interface VpnServerConfigurationArgs {
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Properties of the P2SVpnServer configuration.
      */
-    properties?: pulumi.Input<types.inputs.VpnServerConfigurationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.VpnServerConfigurationPropertiesArgs | undefined>;
     /**
      * The resource group name of the VpnServerConfiguration.
      */
@@ -131,9 +131,9 @@ export interface VpnServerConfigurationArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the VpnServerConfiguration being created or updated.
      */
-    vpnServerConfigurationName?: pulumi.Input<string>;
+    vpnServerConfigurationName?: pulumi.Input<string | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-09-01.
  *
- * Other available API versions: 2025-03-02-preview, 2025-04-02-preview, 2025-05-02-preview, 2025-06-02-preview, 2025-07-02-preview, 2025-08-02-preview, 2025-09-02-preview, 2025-10-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-03-02-preview, 2025-04-02-preview, 2025-05-02-preview, 2025-06-02-preview, 2025-07-02-preview, 2025-08-02-preview, 2025-09-02-preview, 2025-10-01, 2025-10-02-preview, 2026-01-01, 2026-01-02-preview, 2026-02-01, 2026-02-02-preview, 2026-03-01, 2026-03-02-preview, 2026-04-01, 2026-04-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedNamespace extends pulumi.CustomResource {
     /**
@@ -87,7 +87,7 @@ export class ManagedNamespace extends pulumi.CustomResource {
             }
             resourceInputs["location"] = args?.location;
             resourceInputs["managedNamespaceName"] = args?.managedNamespaceName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.namespacePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.namespacePropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["resourceName"] = args?.resourceName;
             resourceInputs["tags"] = args?.tags;
@@ -107,7 +107,7 @@ export class ManagedNamespace extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20250302preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20250402preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20250502preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20250602preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20250702preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20250802preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20250901:ManagedNamespace" }, { type: "azure-native:containerservice/v20250902preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20251001:ManagedNamespace" }, { type: "azure-native:containerservice/v20251002preview:ManagedNamespace" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20250302preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20250402preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20250502preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20250602preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20250702preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20250802preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20250901:ManagedNamespace" }, { type: "azure-native:containerservice/v20250902preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20251001:ManagedNamespace" }, { type: "azure-native:containerservice/v20251002preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20260101:ManagedNamespace" }, { type: "azure-native:containerservice/v20260102preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20260201:ManagedNamespace" }, { type: "azure-native:containerservice/v20260202preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20260301:ManagedNamespace" }, { type: "azure-native:containerservice/v20260302preview:ManagedNamespace" }, { type: "azure-native:containerservice/v20260401:ManagedNamespace" }, { type: "azure-native:containerservice/v20260402preview:ManagedNamespace" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedNamespace.__pulumiType, name, resourceInputs, opts);
     }
@@ -120,15 +120,15 @@ export interface ManagedNamespaceArgs {
     /**
      * The location of the namespace.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the managed namespace.
      */
-    managedNamespaceName?: pulumi.Input<string>;
+    managedNamespaceName?: pulumi.Input<string | undefined>;
     /**
      * Properties of a namespace.
      */
-    properties?: pulumi.Input<types.inputs.NamespacePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.NamespacePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -140,5 +140,5 @@ export interface ManagedNamespaceArgs {
     /**
      * The tags to be persisted on the managed cluster namespace.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

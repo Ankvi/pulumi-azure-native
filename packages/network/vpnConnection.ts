@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VpnConnection extends pulumi.CustomResource {
     /**
@@ -94,7 +94,7 @@ export class VpnConnection extends pulumi.CustomResource {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    declare public readonly routingConfiguration: pulumi.Output<types.outputs.RoutingConfigurationResponse | undefined>;
+    declare public readonly routingConfiguration: pulumi.Output<types.outputs.RoutingConfigurationVpnConnectionResponse | undefined>;
     /**
      * Routing weight for vpn connection.
      */
@@ -192,7 +192,7 @@ export class VpnConnection extends pulumi.CustomResource {
             resourceInputs["vpnLinkConnections"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180401:VpnConnection" }, { type: "azure-native:network/v20180601:VpnConnection" }, { type: "azure-native:network/v20180701:VpnConnection" }, { type: "azure-native:network/v20180801:VpnConnection" }, { type: "azure-native:network/v20181001:VpnConnection" }, { type: "azure-native:network/v20181101:VpnConnection" }, { type: "azure-native:network/v20181201:VpnConnection" }, { type: "azure-native:network/v20190201:VpnConnection" }, { type: "azure-native:network/v20190401:VpnConnection" }, { type: "azure-native:network/v20190601:VpnConnection" }, { type: "azure-native:network/v20190701:VpnConnection" }, { type: "azure-native:network/v20190801:VpnConnection" }, { type: "azure-native:network/v20190901:VpnConnection" }, { type: "azure-native:network/v20191101:VpnConnection" }, { type: "azure-native:network/v20191201:VpnConnection" }, { type: "azure-native:network/v20200301:VpnConnection" }, { type: "azure-native:network/v20200401:VpnConnection" }, { type: "azure-native:network/v20200501:VpnConnection" }, { type: "azure-native:network/v20200601:VpnConnection" }, { type: "azure-native:network/v20200701:VpnConnection" }, { type: "azure-native:network/v20200801:VpnConnection" }, { type: "azure-native:network/v20201101:VpnConnection" }, { type: "azure-native:network/v20210201:VpnConnection" }, { type: "azure-native:network/v20210301:VpnConnection" }, { type: "azure-native:network/v20210501:VpnConnection" }, { type: "azure-native:network/v20210801:VpnConnection" }, { type: "azure-native:network/v20220101:VpnConnection" }, { type: "azure-native:network/v20220501:VpnConnection" }, { type: "azure-native:network/v20220701:VpnConnection" }, { type: "azure-native:network/v20220901:VpnConnection" }, { type: "azure-native:network/v20221101:VpnConnection" }, { type: "azure-native:network/v20230201:VpnConnection" }, { type: "azure-native:network/v20230401:VpnConnection" }, { type: "azure-native:network/v20230501:VpnConnection" }, { type: "azure-native:network/v20230601:VpnConnection" }, { type: "azure-native:network/v20230901:VpnConnection" }, { type: "azure-native:network/v20231101:VpnConnection" }, { type: "azure-native:network/v20240101:VpnConnection" }, { type: "azure-native:network/v20240301:VpnConnection" }, { type: "azure-native:network/v20240501:VpnConnection" }, { type: "azure-native:network/v20240701:VpnConnection" }, { type: "azure-native:network/v20241001:VpnConnection" }, { type: "azure-native:network/v20250101:VpnConnection" }, { type: "azure-native:network/v20250301:VpnConnection" }, { type: "azure-native:network/v20250501:VpnConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180401:VpnConnection" }, { type: "azure-native:network/v20180601:VpnConnection" }, { type: "azure-native:network/v20180701:VpnConnection" }, { type: "azure-native:network/v20180801:VpnConnection" }, { type: "azure-native:network/v20181001:VpnConnection" }, { type: "azure-native:network/v20181101:VpnConnection" }, { type: "azure-native:network/v20181201:VpnConnection" }, { type: "azure-native:network/v20190201:VpnConnection" }, { type: "azure-native:network/v20190401:VpnConnection" }, { type: "azure-native:network/v20190601:VpnConnection" }, { type: "azure-native:network/v20190701:VpnConnection" }, { type: "azure-native:network/v20190801:VpnConnection" }, { type: "azure-native:network/v20190901:VpnConnection" }, { type: "azure-native:network/v20191101:VpnConnection" }, { type: "azure-native:network/v20191201:VpnConnection" }, { type: "azure-native:network/v20200301:VpnConnection" }, { type: "azure-native:network/v20200401:VpnConnection" }, { type: "azure-native:network/v20200501:VpnConnection" }, { type: "azure-native:network/v20200601:VpnConnection" }, { type: "azure-native:network/v20200701:VpnConnection" }, { type: "azure-native:network/v20200801:VpnConnection" }, { type: "azure-native:network/v20201101:VpnConnection" }, { type: "azure-native:network/v20210201:VpnConnection" }, { type: "azure-native:network/v20210301:VpnConnection" }, { type: "azure-native:network/v20210501:VpnConnection" }, { type: "azure-native:network/v20210801:VpnConnection" }, { type: "azure-native:network/v20220101:VpnConnection" }, { type: "azure-native:network/v20220501:VpnConnection" }, { type: "azure-native:network/v20220701:VpnConnection" }, { type: "azure-native:network/v20220901:VpnConnection" }, { type: "azure-native:network/v20221101:VpnConnection" }, { type: "azure-native:network/v20230201:VpnConnection" }, { type: "azure-native:network/v20230401:VpnConnection" }, { type: "azure-native:network/v20230501:VpnConnection" }, { type: "azure-native:network/v20230601:VpnConnection" }, { type: "azure-native:network/v20230901:VpnConnection" }, { type: "azure-native:network/v20231101:VpnConnection" }, { type: "azure-native:network/v20240101:VpnConnection" }, { type: "azure-native:network/v20240301:VpnConnection" }, { type: "azure-native:network/v20240501:VpnConnection" }, { type: "azure-native:network/v20240701:VpnConnection" }, { type: "azure-native:network/v20241001:VpnConnection" }, { type: "azure-native:network/v20250101:VpnConnection" }, { type: "azure-native:network/v20250301:VpnConnection" }, { type: "azure-native:network/v20250501:VpnConnection" }, { type: "azure-native:network/v20250701:VpnConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VpnConnection.__pulumiType, name, resourceInputs, opts);
     }
@@ -205,27 +205,27 @@ export interface VpnConnectionArgs {
     /**
      * Expected bandwidth in MBPS.
      */
-    connectionBandwidth?: pulumi.Input<number>;
+    connectionBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The name of the connection.
      */
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
     /**
      * DPD timeout in seconds for vpn connection.
      */
-    dpdTimeoutSeconds?: pulumi.Input<number>;
+    dpdTimeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * EnableBgp flag.
      */
-    enableBgp?: pulumi.Input<boolean>;
+    enableBgp?: pulumi.Input<boolean | undefined>;
     /**
      * Enable internet security.
      */
-    enableInternetSecurity?: pulumi.Input<boolean>;
+    enableInternetSecurity?: pulumi.Input<boolean | undefined>;
     /**
      * EnableBgp flag.
      */
-    enableRateLimiting?: pulumi.Input<boolean>;
+    enableRateLimiting?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the gateway.
      */
@@ -233,19 +233,19 @@ export interface VpnConnectionArgs {
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The IPSec Policies to be considered by this connection.
      */
-    ipsecPolicies?: pulumi.Input<pulumi.Input<types.inputs.IpsecPolicyArgs>[]>;
+    ipsecPolicies?: pulumi.Input<pulumi.Input<types.inputs.IpsecPolicyArgs>[] | undefined>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Id of the connected vpn site.
      */
-    remoteVpnSite?: pulumi.Input<types.inputs.SubResourceArgs>;
+    remoteVpnSite?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * The resource group name of the VpnGateway.
      */
@@ -253,33 +253,33 @@ export interface VpnConnectionArgs {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    routingConfiguration?: pulumi.Input<types.inputs.RoutingConfigurationArgs>;
+    routingConfiguration?: pulumi.Input<types.inputs.RoutingConfigurationArgs | undefined>;
     /**
      * Routing weight for vpn connection.
      */
-    routingWeight?: pulumi.Input<number>;
+    routingWeight?: pulumi.Input<number | undefined>;
     /**
      * SharedKey for the vpn connection.
      */
-    sharedKey?: pulumi.Input<string>;
+    sharedKey?: pulumi.Input<string | undefined>;
     /**
      * The Traffic Selector Policies to be considered by this connection.
      */
-    trafficSelectorPolicies?: pulumi.Input<pulumi.Input<types.inputs.TrafficSelectorPolicyArgs>[]>;
+    trafficSelectorPolicies?: pulumi.Input<pulumi.Input<types.inputs.TrafficSelectorPolicyArgs>[] | undefined>;
     /**
      * Use local azure ip to initiate connection.
      */
-    useLocalAzureIpAddress?: pulumi.Input<boolean>;
+    useLocalAzureIpAddress?: pulumi.Input<boolean | undefined>;
     /**
      * Enable policy-based traffic selectors.
      */
-    usePolicyBasedTrafficSelectors?: pulumi.Input<boolean>;
+    usePolicyBasedTrafficSelectors?: pulumi.Input<boolean | undefined>;
     /**
      * Connection protocol used for this connection.
      */
-    vpnConnectionProtocolType?: pulumi.Input<string | types.enums.VirtualNetworkGatewayConnectionProtocol>;
+    vpnConnectionProtocolType?: pulumi.Input<string | types.enums.VirtualNetworkGatewayConnectionProtocol | undefined>;
     /**
      * List of all vpn site link connections to the gateway.
      */
-    vpnLinkConnections?: pulumi.Input<pulumi.Input<types.inputs.VpnSiteLinkConnectionArgs>[]>;
+    vpnLinkConnections?: pulumi.Input<pulumi.Input<types.inputs.VpnSiteLinkConnectionArgs>[] | undefined>;
 }

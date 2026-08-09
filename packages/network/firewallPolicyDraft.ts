@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01.
  *
- * Other available API versions: 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FirewallPolicyDraft extends pulumi.CustomResource {
     /**
@@ -143,7 +143,7 @@ export class FirewallPolicyDraft extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20231101:FirewallPolicyDraft" }, { type: "azure-native:network/v20240101:FirewallPolicyDraft" }, { type: "azure-native:network/v20240301:FirewallPolicyDraft" }, { type: "azure-native:network/v20240501:FirewallPolicyDraft" }, { type: "azure-native:network/v20240701:FirewallPolicyDraft" }, { type: "azure-native:network/v20241001:FirewallPolicyDraft" }, { type: "azure-native:network/v20250101:FirewallPolicyDraft" }, { type: "azure-native:network/v20250301:FirewallPolicyDraft" }, { type: "azure-native:network/v20250501:FirewallPolicyDraft" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20231101:FirewallPolicyDraft" }, { type: "azure-native:network/v20240101:FirewallPolicyDraft" }, { type: "azure-native:network/v20240301:FirewallPolicyDraft" }, { type: "azure-native:network/v20240501:FirewallPolicyDraft" }, { type: "azure-native:network/v20240701:FirewallPolicyDraft" }, { type: "azure-native:network/v20241001:FirewallPolicyDraft" }, { type: "azure-native:network/v20250101:FirewallPolicyDraft" }, { type: "azure-native:network/v20250301:FirewallPolicyDraft" }, { type: "azure-native:network/v20250501:FirewallPolicyDraft" }, { type: "azure-native:network/v20250701:FirewallPolicyDraft" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FirewallPolicyDraft.__pulumiType, name, resourceInputs, opts);
     }
@@ -156,15 +156,15 @@ export interface FirewallPolicyDraftArgs {
     /**
      * The parent firewall policy from which rules are inherited.
      */
-    basePolicy?: pulumi.Input<types.inputs.SubResourceArgs>;
+    basePolicy?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * DNS Proxy Settings definition.
      */
-    dnsSettings?: pulumi.Input<types.inputs.DnsSettingsArgs>;
+    dnsSettings?: pulumi.Input<types.inputs.DnsSettingsArgs | undefined>;
     /**
      * Explicit Proxy Settings definition.
      */
-    explicitProxy?: pulumi.Input<types.inputs.ExplicitProxyArgs>;
+    explicitProxy?: pulumi.Input<types.inputs.ExplicitProxyArgs | undefined>;
     /**
      * The name of the Firewall Policy.
      */
@@ -172,19 +172,19 @@ export interface FirewallPolicyDraftArgs {
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Insights on Firewall Policy.
      */
-    insights?: pulumi.Input<types.inputs.FirewallPolicyInsightsArgs>;
+    insights?: pulumi.Input<types.inputs.FirewallPolicyInsightsArgs | undefined>;
     /**
      * The configuration for Intrusion detection.
      */
-    intrusionDetection?: pulumi.Input<types.inputs.FirewallPolicyIntrusionDetectionArgs>;
+    intrusionDetection?: pulumi.Input<types.inputs.FirewallPolicyIntrusionDetectionArgs | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group.
      */
@@ -192,21 +192,21 @@ export interface FirewallPolicyDraftArgs {
     /**
      * The private IP addresses/IP ranges to which traffic will not be SNAT.
      */
-    snat?: pulumi.Input<types.inputs.FirewallPolicySNATArgs>;
+    snat?: pulumi.Input<types.inputs.FirewallPolicySNATArgs | undefined>;
     /**
      * SQL Settings definition.
      */
-    sql?: pulumi.Input<types.inputs.FirewallPolicySQLArgs>;
+    sql?: pulumi.Input<types.inputs.FirewallPolicySQLArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The operation mode for Threat Intelligence.
      */
-    threatIntelMode?: pulumi.Input<string | types.enums.AzureFirewallThreatIntelMode>;
+    threatIntelMode?: pulumi.Input<string | types.enums.AzureFirewallThreatIntelMode | undefined>;
     /**
      * ThreatIntel Whitelist for Firewall Policy.
      */
-    threatIntelWhitelist?: pulumi.Input<types.inputs.FirewallPolicyThreatIntelWhitelistArgs>;
+    threatIntelWhitelist?: pulumi.Input<types.inputs.FirewallPolicyThreatIntelWhitelistArgs | undefined>;
 }

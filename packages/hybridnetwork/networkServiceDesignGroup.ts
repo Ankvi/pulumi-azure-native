@@ -114,15 +114,15 @@ export interface NetworkServiceDesignGroupArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the network service design group.
      */
-    networkServiceDesignGroupName?: pulumi.Input<string>;
+    networkServiceDesignGroupName?: pulumi.Input<string | undefined>;
     /**
      * network service design group properties.
      */
-    properties?: pulumi.Input<types.inputs.NetworkServiceDesignGroupPropertiesFormatArgs>;
+    properties?: pulumi.Input<types.inputs.NetworkServiceDesignGroupPropertiesFormatArgs | undefined>;
     /**
      * The name of the publisher.
      */
@@ -134,5 +134,5 @@ export interface NetworkServiceDesignGroupArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

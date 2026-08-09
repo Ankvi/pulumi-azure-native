@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-08-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native webpubsub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebPubSubHub extends pulumi.CustomResource {
     /**
@@ -77,7 +77,7 @@ export class WebPubSubHub extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceName'");
             }
             resourceInputs["hubName"] = args?.hubName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.webPubSubHubPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(types.inputs.webPubSubHubPropertiesArgsProvideDefaults) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["resourceName"] = args?.resourceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -92,7 +92,7 @@ export class WebPubSubHub extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:webpubsub/v20211001:WebPubSubHub" }, { type: "azure-native:webpubsub/v20220801preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20230201:WebPubSubHub" }, { type: "azure-native:webpubsub/v20230301preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20230601preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20230801preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20240101preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20240301:WebPubSubHub" }, { type: "azure-native:webpubsub/v20240401preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20240801preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20241001preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20250101preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20250801preview:WebPubSubHub" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:webpubsub/v20211001:WebPubSubHub" }, { type: "azure-native:webpubsub/v20220801preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20230201:WebPubSubHub" }, { type: "azure-native:webpubsub/v20230301preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20230601preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20230801preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20240101preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20240301:WebPubSubHub" }, { type: "azure-native:webpubsub/v20240401preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20240801preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20241001preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20250101preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20250801preview:WebPubSubHub" }, { type: "azure-native:webpubsub/v20251201preview:WebPubSubHub" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebPubSubHub.__pulumiType, name, resourceInputs, opts);
     }
@@ -105,7 +105,7 @@ export interface WebPubSubHubArgs {
     /**
      * The hub name.
      */
-    hubName?: pulumi.Input<string>;
+    hubName?: pulumi.Input<string | undefined>;
     /**
      * Properties of a hub.
      */

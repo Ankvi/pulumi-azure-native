@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
  *
- * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ContainerAppsAuthConfig extends pulumi.CustomResource {
     /**
@@ -119,7 +119,7 @@ export class ContainerAppsAuthConfig extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220101preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20220301:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20220601preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20221001:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20221101preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20230401preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20230501:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20230502preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20230801preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20231102preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20240202preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20240301:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20240802preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20241002preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20250101:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20250202preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20250701:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20251002preview:ContainerAppsAuthConfig" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20220101preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20220301:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20220601preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20221001:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20221101preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20230401preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20230501:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20230502preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20230801preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20231102preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20240202preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20240301:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20240802preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20241002preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20250101:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20250202preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20250701:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20251002preview:ContainerAppsAuthConfig" }, { type: "azure-native:app/v20260101:ContainerAppsAuthConfig" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ContainerAppsAuthConfig.__pulumiType, name, resourceInputs, opts);
     }
@@ -132,7 +132,7 @@ export interface ContainerAppsAuthConfigArgs {
     /**
      * Name of the Container App AuthConfig.
      */
-    authConfigName?: pulumi.Input<string>;
+    authConfigName?: pulumi.Input<string | undefined>;
     /**
      * Name of the Container App.
      */
@@ -140,27 +140,27 @@ export interface ContainerAppsAuthConfigArgs {
     /**
      * The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
      */
-    encryptionSettings?: pulumi.Input<types.inputs.EncryptionSettingsArgs>;
+    encryptionSettings?: pulumi.Input<types.inputs.EncryptionSettingsArgs | undefined>;
     /**
      * The configuration settings that determines the validation flow of users using  Service Authentication/Authorization.
      */
-    globalValidation?: pulumi.Input<types.inputs.GlobalValidationArgs>;
+    globalValidation?: pulumi.Input<types.inputs.GlobalValidationArgs | undefined>;
     /**
      * The configuration settings of the HTTP requests for authentication and authorization requests made against ContainerApp Service Authentication/Authorization.
      */
-    httpSettings?: pulumi.Input<types.inputs.HttpSettingsArgs>;
+    httpSettings?: pulumi.Input<types.inputs.HttpSettingsArgs | undefined>;
     /**
      * The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
      */
-    identityProviders?: pulumi.Input<types.inputs.IdentityProvidersArgs>;
+    identityProviders?: pulumi.Input<types.inputs.IdentityProvidersArgs | undefined>;
     /**
      * The configuration settings of the login flow of users using ContainerApp Service Authentication/Authorization.
      */
-    login?: pulumi.Input<types.inputs.LoginArgs>;
+    login?: pulumi.Input<types.inputs.LoginArgs | undefined>;
     /**
      * The configuration settings of the platform of ContainerApp Service Authentication/Authorization.
      */
-    platform?: pulumi.Input<types.inputs.AuthPlatformArgs>;
+    platform?: pulumi.Input<types.inputs.AuthPlatformArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

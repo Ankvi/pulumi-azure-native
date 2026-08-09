@@ -17,11 +17,11 @@ export interface NetworkRuleSetIpRuleArgs {
     /**
      * The readable name of the IP rule.
      */
-    filterName?: pulumi.Input<string>;
+    filterName?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block defining the IP range.
      */
-    ipMask?: pulumi.Input<string>;
+    ipMask?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -31,19 +31,19 @@ export interface NetworkRuleSetsArgs {
     /**
      * Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
      */
-    applyToDevices?: pulumi.Input<boolean>;
+    applyToDevices?: pulumi.Input<boolean | undefined>;
     /**
      * Whether these rules apply for connectivity via IoT Central web portal and APIs.
      */
-    applyToIoTCentral?: pulumi.Input<boolean>;
+    applyToIoTCentral?: pulumi.Input<boolean | undefined>;
     /**
      * The default network action to apply.
      */
-    defaultAction?: pulumi.Input<string | enums.NetworkAction>;
+    defaultAction?: pulumi.Input<string | enums.NetworkAction | undefined>;
     /**
      * List of IP rules.
      */
-    ipRules?: pulumi.Input<pulumi.Input<NetworkRuleSetIpRuleArgs>[]>;
+    ipRules?: pulumi.Input<pulumi.Input<NetworkRuleSetIpRuleArgs>[] | undefined>;
 }
 /**
  * networkRuleSetsArgsProvideDefaults sets the appropriate defaults for NetworkRuleSetsArgs
@@ -63,15 +63,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**

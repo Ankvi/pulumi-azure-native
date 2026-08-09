@@ -15,7 +15,7 @@ export interface AzureResourceManagerCommonTypesExtendedLocationArgs {
 }
 
 /**
- * Capability, to match in Solution Templates and Targets
+ * Capability, to match in Solution Templates & Targets
  */
 export interface CapabilityArgs {
     /**
@@ -29,7 +29,7 @@ export interface CapabilityArgs {
     /**
      * State of resource
      */
-    state?: pulumi.Input<string | enums.ResourceState>;
+    state?: pulumi.Input<string | enums.ResourceState | undefined>;
 }
 
 /**
@@ -49,7 +49,7 @@ export interface ConfigurationReferencePropertiesArgs {
     /**
      * ArmId of Configuration resource
      */
-    configurationResourceId?: pulumi.Input<string>;
+    configurationResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -93,11 +93,11 @@ export interface ErrorActionArgs {
     /**
      * Max tolerated failures
      */
-    maxToleratedFailures?: pulumi.Input<number>;
+    maxToleratedFailures?: pulumi.Input<number | undefined>;
     /**
      * Error action mode
      */
-    mode?: pulumi.Input<string | enums.ErrorActionMode>;
+    mode?: pulumi.Input<string | enums.ErrorActionMode | undefined>;
 }
 /**
  * errorActionArgsProvideDefaults sets the appropriate defaults for ErrorActionArgs
@@ -116,11 +116,25 @@ export interface ExecutionPropertiesArgs {
     /**
      * Execution specification
      */
-    specification?: any;
+    specification?: any | undefined;
     /**
      * Workflow version of execution
      */
     workflowVersionId: pulumi.Input<string>;
+}
+
+/**
+ * ExecutionV2 Properties
+ */
+export interface ExecutionV2PropertiesArgs {
+    /**
+     * ExecutionV2 specification
+     */
+    specification?: any | undefined;
+    /**
+     * Workflow version of ExecutionV2
+     */
+    workflowVersionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -144,15 +158,15 @@ export interface InstancePropertiesArgs {
     /**
      * State of instance
      */
-    activeState?: pulumi.Input<string | enums.ActiveState>;
+    activeState?: pulumi.Input<string | enums.ActiveState | undefined>;
     /**
      * Reconciliation policy of instance
      */
-    reconciliationPolicy?: pulumi.Input<ReconciliationPolicyPropertiesArgs>;
+    reconciliationPolicy?: pulumi.Input<ReconciliationPolicyPropertiesArgs | undefined>;
     /**
      * Scope of instance
      */
-    solutionScope?: pulumi.Input<string>;
+    solutionScope?: pulumi.Input<string | undefined>;
     /**
      * Solution version of instance
      */
@@ -204,27 +218,27 @@ export interface SiteAddressPropertiesArgs {
     /**
      * City of the address
      */
-    city?: pulumi.Input<string>;
+    city?: pulumi.Input<string | undefined>;
     /**
      * Country of the address
      */
-    country?: pulumi.Input<string>;
+    country?: pulumi.Input<string | undefined>;
     /**
      * Postal or ZIP code of the address
      */
-    postalCode?: pulumi.Input<string>;
+    postalCode?: pulumi.Input<string | undefined>;
     /**
      * State or province of the address
      */
-    stateOrProvince?: pulumi.Input<string>;
+    stateOrProvince?: pulumi.Input<string | undefined>;
     /**
      * First line of the street address
      */
-    streetAddress1?: pulumi.Input<string>;
+    streetAddress1?: pulumi.Input<string | undefined>;
     /**
      * Second line of the street address
      */
-    streetAddress2?: pulumi.Input<string>;
+    streetAddress2?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -234,23 +248,23 @@ export interface SitePropertiesArgs {
     /**
      * AddressResource ArmId of Site resource
      */
-    addressResourceId?: pulumi.Input<string>;
+    addressResourceId?: pulumi.Input<string | undefined>;
     /**
      * Description of Site resource
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * displayName of Site resource
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Key-value pairs for labeling the site resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Physical address of the site
      */
-    siteAddress?: pulumi.Input<SiteAddressPropertiesArgs>;
+    siteAddress?: pulumi.Input<SiteAddressPropertiesArgs | undefined>;
 }
 
 /**
@@ -278,11 +292,11 @@ export interface SolutionTemplatePropertiesArgs {
     /**
      * Flag to enable external validation
      */
-    enableExternalValidation?: pulumi.Input<boolean>;
+    enableExternalValidation?: pulumi.Input<boolean | undefined>;
     /**
      * State of resource
      */
-    state?: pulumi.Input<string | enums.ResourceState>;
+    state?: pulumi.Input<string | enums.ResourceState | undefined>;
 }
 
 /**
@@ -306,15 +320,15 @@ export interface StageSpecArgs {
     /**
      * Stage specification
      */
-    specification?: any;
+    specification?: any | undefined;
     /**
      * Task option for the stage
      */
-    taskOption?: pulumi.Input<TaskOptionArgs>;
+    taskOption?: pulumi.Input<TaskOptionArgs | undefined>;
     /**
      * List of tasks in the stage
      */
-    tasks?: pulumi.Input<pulumi.Input<TaskSpecArgs>[]>;
+    tasks?: pulumi.Input<pulumi.Input<TaskSpecArgs>[] | undefined>;
 }
 /**
  * stageSpecArgsProvideDefaults sets the appropriate defaults for StageSpecArgs
@@ -322,7 +336,7 @@ export interface StageSpecArgs {
 export function stageSpecArgsProvideDefaults(val: StageSpecArgs): StageSpecArgs {
     return {
         ...val,
-        taskOption: (val.taskOption ? pulumi.output(val.taskOption).apply(taskOptionArgsProvideDefaults) : undefined),
+        taskOption: pulumi.output(val.taskOption).apply(v => v === undefined ? undefined : taskOptionArgsProvideDefaults(v)),
     };
 }
 
@@ -353,11 +367,11 @@ export interface TargetPropertiesArgs {
     /**
      * Scope of the target resource
      */
-    solutionScope?: pulumi.Input<string>;
+    solutionScope?: pulumi.Input<string | undefined>;
     /**
      * State of resource
      */
-    state?: pulumi.Input<string | enums.ResourceState>;
+    state?: pulumi.Input<string | enums.ResourceState | undefined>;
     /**
      * target spec
      */
@@ -371,11 +385,11 @@ export interface TaskOptionArgs {
     /**
      * Parallel worker numbers of the tasks
      */
-    concurrency?: pulumi.Input<number>;
+    concurrency?: pulumi.Input<number | undefined>;
     /**
      * Error action for the tasks
      */
-    errorAction?: pulumi.Input<ErrorActionArgs>;
+    errorAction?: pulumi.Input<ErrorActionArgs | undefined>;
 }
 /**
  * taskOptionArgsProvideDefaults sets the appropriate defaults for TaskOptionArgs
@@ -384,7 +398,7 @@ export function taskOptionArgsProvideDefaults(val: TaskOptionArgs): TaskOptionAr
     return {
         ...val,
         concurrency: (val.concurrency) ?? 1,
-        errorAction: (val.errorAction ? pulumi.output(val.errorAction).apply(errorActionArgsProvideDefaults) : undefined),
+        errorAction: pulumi.output(val.errorAction).apply(v => v === undefined ? undefined : errorActionArgsProvideDefaults(v)),
     };
 }
 
@@ -403,7 +417,7 @@ export interface TaskSpecArgs {
     /**
      * Target ARM id
      */
-    targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -413,7 +427,21 @@ export interface WorkflowVersionPropertiesArgs {
     /**
      * Execution specification
      */
-    specification?: any;
+    specification?: any | undefined;
+    /**
+     * A list of stage specs
+     */
+    stageSpec: pulumi.Input<pulumi.Input<StageSpecArgs>[]>;
+}
+
+/**
+ * Workflow Version Properties
+ */
+export interface WorkflowVersionV2PropertiesArgs {
+    /**
+     * Execution specification
+     */
+    specification?: any | undefined;
     /**
      * A list of stage specs
      */

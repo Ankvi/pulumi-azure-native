@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-08-01.
  *
- * Other available API versions: 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-06-01-preview, 2026-01-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AdministratorsMicrosoftEntra extends pulumi.CustomResource {
     /**
@@ -106,7 +106,7 @@ export class AdministratorsMicrosoftEntra extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20220308preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20221201:Administrator" }, { type: "azure-native:dbforpostgresql/v20221201:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20230301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20230301preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20230601preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20230601preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20231201preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20231201preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20240301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240301preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20240801:Administrator" }, { type: "azure-native:dbforpostgresql/v20240801:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20241101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20241101preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20250101preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20250601preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20250801:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20260101preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql:Administrator" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20220308preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20221201:Administrator" }, { type: "azure-native:dbforpostgresql/v20221201:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20230301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20230301preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20230601preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20230601preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20231201preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20231201preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20240301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240301preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20240801:Administrator" }, { type: "azure-native:dbforpostgresql/v20240801:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20241101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20241101preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20250101preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20250601preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20250801:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20260101preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql/v20260401preview:AdministratorsMicrosoftEntra" }, { type: "azure-native:dbforpostgresql:Administrator" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AdministratorsMicrosoftEntra.__pulumiType, name, resourceInputs, opts);
     }
@@ -119,15 +119,15 @@ export interface AdministratorsMicrosoftEntraArgs {
     /**
      * Object identifier of the Microsoft Entra principal.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Microsoft Entra principal.
      */
-    principalName?: pulumi.Input<string>;
+    principalName?: pulumi.Input<string | undefined>;
     /**
      * Type of Microsoft Entra principal to which the server administrator is associated.
      */
-    principalType?: pulumi.Input<string | types.enums.PrincipalType>;
+    principalType?: pulumi.Input<string | types.enums.PrincipalType | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -139,5 +139,5 @@ export interface AdministratorsMicrosoftEntraArgs {
     /**
      * Identifier of the tenant in which the Microsoft Entra principal exists.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

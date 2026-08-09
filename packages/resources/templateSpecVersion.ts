@@ -138,23 +138,23 @@ export interface TemplateSpecVersionArgs {
     /**
      * Template Spec version description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An array of linked template artifacts.
      */
-    linkedTemplates?: pulumi.Input<pulumi.Input<types.inputs.LinkedTemplateArtifactArgs>[]>;
+    linkedTemplates?: pulumi.Input<pulumi.Input<types.inputs.LinkedTemplateArtifactArgs>[] | undefined>;
     /**
      * The location of the Template Spec Version. It must match the location of the parent Template Spec.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The main Azure Resource Manager template content.
      */
-    mainTemplate?: any;
+    mainTemplate?: any | undefined;
     /**
      * The version metadata. Metadata is an open-ended object and is typically a collection of key-value pairs.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -162,7 +162,7 @@ export interface TemplateSpecVersionArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the Template Spec.
      */
@@ -170,9 +170,9 @@ export interface TemplateSpecVersionArgs {
     /**
      * The version of the Template Spec.
      */
-    templateSpecVersion?: pulumi.Input<string>;
+    templateSpecVersion?: pulumi.Input<string | undefined>;
     /**
      * The Azure Resource Manager template UI definition content.
      */
-    uiFormDefinition?: any;
+    uiFormDefinition?: any | undefined;
 }

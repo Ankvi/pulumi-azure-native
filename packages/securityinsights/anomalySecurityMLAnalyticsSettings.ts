@@ -212,7 +212,7 @@ export interface AnomalySecurityMLAnalyticsSettingsArgs {
     /**
      * The anomaly settings version of the Anomaly security ml analytics settings that dictates whether job version gets updated or not.
      */
-    anomalySettingsVersion?: pulumi.Input<number>;
+    anomalySettingsVersion?: pulumi.Input<number | undefined>;
     /**
      * The anomaly version of the AnomalySecurityMLAnalyticsSettings.
      */
@@ -220,11 +220,11 @@ export interface AnomalySecurityMLAnalyticsSettingsArgs {
     /**
      * The customizable observations of the AnomalySecurityMLAnalyticsSettings.
      */
-    customizableObservations?: any;
+    customizableObservations?: any | undefined;
     /**
      * The description of the SecurityMLAnalyticsSettings.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name for settings created by this SecurityMLAnalyticsSettings.
      */
@@ -249,7 +249,7 @@ export interface AnomalySecurityMLAnalyticsSettingsArgs {
     /**
      * The required data sources for this SecurityMLAnalyticsSettings
      */
-    requiredDataConnectors?: pulumi.Input<pulumi.Input<types.inputs.SecurityMLAnalyticsSettingsDataSourceArgs>[]>;
+    requiredDataConnectors?: pulumi.Input<pulumi.Input<types.inputs.SecurityMLAnalyticsSettingsDataSourceArgs>[] | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -257,11 +257,11 @@ export interface AnomalySecurityMLAnalyticsSettingsArgs {
     /**
      * The anomaly settings definition Id
      */
-    settingsDefinitionId?: pulumi.Input<string>;
+    settingsDefinitionId?: pulumi.Input<string | undefined>;
     /**
      * Security ML Analytics Settings resource name
      */
-    settingsResourceName?: pulumi.Input<string>;
+    settingsResourceName?: pulumi.Input<string | undefined>;
     /**
      * The anomaly SecurityMLAnalyticsSettings status
      */
@@ -269,11 +269,11 @@ export interface AnomalySecurityMLAnalyticsSettingsArgs {
     /**
      * The tactics of the SecurityMLAnalyticsSettings
      */
-    tactics?: pulumi.Input<pulumi.Input<string | types.enums.AttackTactic>[]>;
+    tactics?: pulumi.Input<pulumi.Input<string | types.enums.AttackTactic>[] | undefined>;
     /**
      * The techniques of the SecurityMLAnalyticsSettings
      */
-    techniques?: pulumi.Input<pulumi.Input<string>[]>;
+    techniques?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the workspace.
      */

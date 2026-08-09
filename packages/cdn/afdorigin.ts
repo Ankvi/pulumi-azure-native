@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview, 2025-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AFDOrigin extends pulumi.CustomResource {
     /**
@@ -161,7 +161,7 @@ export class AFDOrigin extends pulumi.CustomResource {
             resourceInputs["weight"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:AFDOrigin" }, { type: "azure-native:cdn/v20210601:AFDOrigin" }, { type: "azure-native:cdn/v20220501preview:AFDOrigin" }, { type: "azure-native:cdn/v20221101preview:AFDOrigin" }, { type: "azure-native:cdn/v20230501:AFDOrigin" }, { type: "azure-native:cdn/v20230701preview:AFDOrigin" }, { type: "azure-native:cdn/v20240201:AFDOrigin" }, { type: "azure-native:cdn/v20240501preview:AFDOrigin" }, { type: "azure-native:cdn/v20240601preview:AFDOrigin" }, { type: "azure-native:cdn/v20240901:AFDOrigin" }, { type: "azure-native:cdn/v20250101preview:AFDOrigin" }, { type: "azure-native:cdn/v20250415:AFDOrigin" }, { type: "azure-native:cdn/v20250601:AFDOrigin" }, { type: "azure-native:cdn/v20250701preview:AFDOrigin" }, { type: "azure-native:cdn/v20250901preview:AFDOrigin" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:AFDOrigin" }, { type: "azure-native:cdn/v20210601:AFDOrigin" }, { type: "azure-native:cdn/v20220501preview:AFDOrigin" }, { type: "azure-native:cdn/v20221101preview:AFDOrigin" }, { type: "azure-native:cdn/v20230501:AFDOrigin" }, { type: "azure-native:cdn/v20230701preview:AFDOrigin" }, { type: "azure-native:cdn/v20240201:AFDOrigin" }, { type: "azure-native:cdn/v20240501preview:AFDOrigin" }, { type: "azure-native:cdn/v20240601preview:AFDOrigin" }, { type: "azure-native:cdn/v20240901:AFDOrigin" }, { type: "azure-native:cdn/v20250101preview:AFDOrigin" }, { type: "azure-native:cdn/v20250415:AFDOrigin" }, { type: "azure-native:cdn/v20250601:AFDOrigin" }, { type: "azure-native:cdn/v20250701preview:AFDOrigin" }, { type: "azure-native:cdn/v20250901preview:AFDOrigin" }, { type: "azure-native:cdn/v20251201:AFDOrigin" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AFDOrigin.__pulumiType, name, resourceInputs, opts);
     }
@@ -174,27 +174,27 @@ export interface AFDOriginArgs {
     /**
      * Resource reference to the Azure origin resource.
      */
-    azureOrigin?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
+    azureOrigin?: pulumi.Input<types.inputs.ResourceReferenceArgs | undefined>;
     /**
      * Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
      */
-    enabledState?: pulumi.Input<string | types.enums.EnabledState>;
+    enabledState?: pulumi.Input<string | types.enums.EnabledState | undefined>;
     /**
      * Whether to enable certificate name check at origin level
      */
-    enforceCertificateNameCheck?: pulumi.Input<boolean>;
+    enforceCertificateNameCheck?: pulumi.Input<boolean | undefined>;
     /**
      * The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * The value of the HTTP port. Must be between 1 and 65535.
      */
-    httpPort?: pulumi.Input<number>;
+    httpPort?: pulumi.Input<number | undefined>;
     /**
      * The value of the HTTPS port. Must be between 1 and 65535.
      */
-    httpsPort?: pulumi.Input<number>;
+    httpsPort?: pulumi.Input<number | undefined>;
     /**
      * Name of the origin group which is unique within the endpoint.
      */
@@ -202,15 +202,15 @@ export interface AFDOriginArgs {
     /**
      * The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint
      */
-    originHostHeader?: pulumi.Input<string>;
+    originHostHeader?: pulumi.Input<string | undefined>;
     /**
      * Name of the origin which is unique within the profile.
      */
-    originName?: pulumi.Input<string>;
+    originName?: pulumi.Input<string | undefined>;
     /**
      * Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
@@ -222,9 +222,9 @@ export interface AFDOriginArgs {
     /**
      * The properties of the private link resource for private origin.
      */
-    sharedPrivateLinkResource?: pulumi.Input<types.inputs.SharedPrivateLinkResourcePropertiesArgs>;
+    sharedPrivateLinkResource?: pulumi.Input<types.inputs.SharedPrivateLinkResourcePropertiesArgs | undefined>;
     /**
      * Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }

@@ -7,7 +7,7 @@ export interface AccessKeyInfoBaseArgs {
     /**
      * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
      */
-    authMode?: pulumi.Input<string | enums.AuthMode>;
+    authMode?: pulumi.Input<string | enums.AuthMode | undefined>;
     /**
      * The authentication type.
      * Expected value is 'accessKey'.
@@ -16,7 +16,7 @@ export interface AccessKeyInfoBaseArgs {
     /**
      * Permissions of the accessKey. `Read` and `Write` are for Azure Cosmos DB and Azure App Configuration, `Listen`, `Send` and `Manage` are for Azure Event Hub and Azure Service Bus.
      */
-    permissions?: pulumi.Input<pulumi.Input<string | enums.AccessKeyPermissions>[]>;
+    permissions?: pulumi.Input<pulumi.Input<string | enums.AccessKeyPermissions>[] | undefined>;
 }
 
 /**
@@ -26,7 +26,7 @@ export interface AzureKeyVaultPropertiesArgs {
     /**
      * True if connect via Kubernetes CSI Driver.
      */
-    connectAsKubernetesCsiDriver?: pulumi.Input<boolean>;
+    connectAsKubernetesCsiDriver?: pulumi.Input<boolean | undefined>;
     /**
      * The azure resource type.
      * Expected value is 'KeyVault'.
@@ -41,11 +41,11 @@ export interface AzureResourceArgs {
     /**
      * The Id of azure resource.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The azure resource connection related properties.
      */
-    resourceProperties?: pulumi.Input<AzureKeyVaultPropertiesArgs>;
+    resourceProperties?: pulumi.Input<AzureKeyVaultPropertiesArgs | undefined>;
     /**
      * The target service type.
      * Expected value is 'AzureResource'.
@@ -60,31 +60,31 @@ export interface ConfigurationInfoArgs {
     /**
      * Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
      */
-    action?: pulumi.Input<string | enums.ActionType>;
+    action?: pulumi.Input<string | enums.ActionType | undefined>;
     /**
      * A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
      */
-    additionalConfigurations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    additionalConfigurations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A dictionary of additional properties to be added in the end of connection string.
      */
-    additionalConnectionStringProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    additionalConnectionStringProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An option to store configuration into different place
      */
-    configurationStore?: pulumi.Input<ConfigurationStoreArgs>;
+    configurationStore?: pulumi.Input<ConfigurationStoreArgs | undefined>;
     /**
      * Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
      */
-    customizedKeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customizedKeys?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates some additional properties for dapr client type
      */
-    daprProperties?: pulumi.Input<DaprPropertiesArgs>;
+    daprProperties?: pulumi.Input<DaprPropertiesArgs | undefined>;
     /**
      * Indicates whether to clean up previous operation when Linker is updating or deleting
      */
-    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior>;
+    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior | undefined>;
 }
 
 /**
@@ -94,7 +94,7 @@ export interface ConfigurationStoreArgs {
     /**
      * The app configuration id to store configuration
      */
-    appConfigurationId?: pulumi.Input<string>;
+    appConfigurationId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -104,7 +104,7 @@ export interface ConfluentBootstrapServerArgs {
     /**
      * The endpoint of service.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The target service type.
      * Expected value is 'ConfluentBootstrapServer'.
@@ -119,7 +119,7 @@ export interface ConfluentSchemaRegistryArgs {
     /**
      * The endpoint of service.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The target service type.
      * Expected value is 'ConfluentSchemaRegistry'.
@@ -139,35 +139,35 @@ export interface CreateOrUpdateDryrunParametersArgs {
     /**
      * The authentication type.
      */
-    authInfo?: pulumi.Input<AccessKeyInfoBaseArgs | EasyAuthMicrosoftEntraIDAuthInfoArgs | SecretAuthInfoArgs | ServicePrincipalCertificateAuthInfoArgs | ServicePrincipalSecretAuthInfoArgs | SystemAssignedIdentityAuthInfoArgs | UserAccountAuthInfoArgs | UserAssignedIdentityAuthInfoArgs>;
+    authInfo?: pulumi.Input<AccessKeyInfoBaseArgs | EasyAuthMicrosoftEntraIDAuthInfoArgs | SecretAuthInfoArgs | ServicePrincipalCertificateAuthInfoArgs | ServicePrincipalSecretAuthInfoArgs | SystemAssignedIdentityAuthInfoArgs | UserAccountAuthInfoArgs | UserAssignedIdentityAuthInfoArgs | undefined>;
     /**
      * The application client type
      */
-    clientType?: pulumi.Input<string | enums.ClientType>;
+    clientType?: pulumi.Input<string | enums.ClientType | undefined>;
     /**
      * The connection information consumed by applications, including secrets, connection strings.
      */
-    configurationInfo?: pulumi.Input<ConfigurationInfoArgs>;
+    configurationInfo?: pulumi.Input<ConfigurationInfoArgs | undefined>;
     /**
      * The network solution.
      */
-    publicNetworkSolution?: pulumi.Input<PublicNetworkSolutionArgs>;
+    publicNetworkSolution?: pulumi.Input<PublicNetworkSolutionArgs | undefined>;
     /**
      * connection scope in source service.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * An option to store secret value in secure place
      */
-    secretStore?: pulumi.Input<SecretStoreArgs>;
+    secretStore?: pulumi.Input<SecretStoreArgs | undefined>;
     /**
      * The target service properties
      */
-    targetService?: pulumi.Input<AzureResourceArgs | ConfluentBootstrapServerArgs | ConfluentSchemaRegistryArgs | SelfHostedServerArgs>;
+    targetService?: pulumi.Input<AzureResourceArgs | ConfluentBootstrapServerArgs | ConfluentSchemaRegistryArgs | SelfHostedServerArgs | undefined>;
     /**
      * The VNet solution.
      */
-    vNetSolution?: pulumi.Input<VNetSolutionArgs>;
+    vNetSolution?: pulumi.Input<VNetSolutionArgs | undefined>;
 }
 
 /**
@@ -177,23 +177,23 @@ export interface DaprMetadataArgs {
     /**
      * The description of the metadata, returned from configuration api
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Metadata property name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The value indicating whether the metadata is required or not
      */
-    required?: pulumi.Input<string | enums.DaprMetadataRequired>;
+    required?: pulumi.Input<string | enums.DaprMetadataRequired | undefined>;
     /**
      * The secret name where dapr could get value
      */
-    secretRef?: pulumi.Input<string>;
+    secretRef?: pulumi.Input<string | undefined>;
     /**
      * Metadata property value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -203,23 +203,23 @@ export interface DaprPropertiesArgs {
     /**
      * The dapr component type
      */
-    componentType?: pulumi.Input<string>;
+    componentType?: pulumi.Input<string | undefined>;
     /**
      * Additional dapr metadata
      */
-    metadata?: pulumi.Input<pulumi.Input<DaprMetadataArgs>[]>;
+    metadata?: pulumi.Input<pulumi.Input<DaprMetadataArgs>[] | undefined>;
     /**
      * The dapr component scopes
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of a secret store dapr to retrieve secret
      */
-    secretStoreComponent?: pulumi.Input<string>;
+    secretStoreComponent?: pulumi.Input<string | undefined>;
     /**
      * The dapr component version
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -229,7 +229,7 @@ export interface EasyAuthMicrosoftEntraIDAuthInfoArgs {
     /**
      * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
      */
-    authMode?: pulumi.Input<string | enums.AuthMode>;
+    authMode?: pulumi.Input<string | enums.AuthMode | undefined>;
     /**
      * The authentication type.
      * Expected value is 'easyAuthMicrosoftEntraID'.
@@ -238,15 +238,15 @@ export interface EasyAuthMicrosoftEntraIDAuthInfoArgs {
     /**
      * Application clientId for EasyAuth Microsoft Entra ID.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to clean up previous operation when Linker is updating or deleting
      */
-    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior>;
+    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior | undefined>;
     /**
      * Application Secret for EasyAuth Microsoft Entra ID.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -256,15 +256,15 @@ export interface FirewallRulesArgs {
     /**
      * Allow Azure services to access the target service if true.
      */
-    azureServices?: pulumi.Input<string | enums.AllowType>;
+    azureServices?: pulumi.Input<string | enums.AllowType | undefined>;
     /**
      * Allow caller client IP to access the target service if true. the property is used when connecting local application to target service.
      */
-    callerClientIP?: pulumi.Input<string | enums.AllowType>;
+    callerClientIP?: pulumi.Input<string | enums.AllowType | undefined>;
     /**
      * This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -274,7 +274,7 @@ export interface KeyVaultSecretReferenceSecretInfoArgs {
     /**
      * Name of the Key Vault secret.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The secret type.
      * Expected value is 'keyVaultSecretReference'.
@@ -283,7 +283,7 @@ export interface KeyVaultSecretReferenceSecretInfoArgs {
     /**
      * Version of the Key Vault secret.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -298,7 +298,7 @@ export interface KeyVaultSecretUriSecretInfoArgs {
     /**
      * URI to the keyvault secret
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -308,15 +308,15 @@ export interface PublicNetworkSolutionArgs {
     /**
      * Optional. Indicates public network solution. If enable, enable public network access of target service with best try. Default is enable. If optOut, opt out public network access configuration.
      */
-    action?: pulumi.Input<string | enums.ActionType>;
+    action?: pulumi.Input<string | enums.ActionType | undefined>;
     /**
      * Indicates whether to clean up previous operation(such as firewall rules) when Linker is updating or deleting
      */
-    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior>;
+    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior | undefined>;
     /**
      * Describe firewall rules of target service to make sure source application could connect to the target.
      */
-    firewallRules?: pulumi.Input<FirewallRulesArgs>;
+    firewallRules?: pulumi.Input<FirewallRulesArgs | undefined>;
 }
 
 /**
@@ -326,7 +326,7 @@ export interface SecretAuthInfoArgs {
     /**
      * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
      */
-    authMode?: pulumi.Input<string | enums.AuthMode>;
+    authMode?: pulumi.Input<string | enums.AuthMode | undefined>;
     /**
      * The authentication type.
      * Expected value is 'secret'.
@@ -335,11 +335,11 @@ export interface SecretAuthInfoArgs {
     /**
      * Username or account name for secret auth.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Password or key vault secret for secret auth.
      */
-    secretInfo?: pulumi.Input<KeyVaultSecretReferenceSecretInfoArgs | KeyVaultSecretUriSecretInfoArgs | ValueSecretInfoArgs>;
+    secretInfo?: pulumi.Input<KeyVaultSecretReferenceSecretInfoArgs | KeyVaultSecretUriSecretInfoArgs | ValueSecretInfoArgs | undefined>;
 }
 
 /**
@@ -349,11 +349,11 @@ export interface SecretStoreArgs {
     /**
      * The key vault id to store secret
      */
-    keyVaultId?: pulumi.Input<string>;
+    keyVaultId?: pulumi.Input<string | undefined>;
     /**
      * The key vault secret name to store secret, only valid when storing one secret
      */
-    keyVaultSecretName?: pulumi.Input<string>;
+    keyVaultSecretName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -363,7 +363,7 @@ export interface SelfHostedServerArgs {
     /**
      * The endpoint of service.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The target service type.
      * Expected value is 'SelfHostedServer'.
@@ -378,7 +378,7 @@ export interface ServicePrincipalCertificateAuthInfoArgs {
     /**
      * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
      */
-    authMode?: pulumi.Input<string | enums.AuthMode>;
+    authMode?: pulumi.Input<string | enums.AuthMode | undefined>;
     /**
      * The authentication type.
      * Expected value is 'servicePrincipalCertificate'.
@@ -395,15 +395,15 @@ export interface ServicePrincipalCertificateAuthInfoArgs {
     /**
      * Indicates whether to clean up previous operation when Linker is updating or deleting
      */
-    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior>;
+    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior | undefined>;
     /**
      * Principal Id for servicePrincipal auth.
      */
     principalId: pulumi.Input<string>;
     /**
-     * Optional, this value specifies the Azure roles to be assigned. Automatically 
+     * Optional, this value specifies the Azure roles to be assigned. Automatically
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -413,7 +413,7 @@ export interface ServicePrincipalSecretAuthInfoArgs {
     /**
      * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
      */
-    authMode?: pulumi.Input<string | enums.AuthMode>;
+    authMode?: pulumi.Input<string | enums.AuthMode | undefined>;
     /**
      * The authentication type.
      * Expected value is 'servicePrincipalSecret'.
@@ -426,15 +426,15 @@ export interface ServicePrincipalSecretAuthInfoArgs {
     /**
      * Indicates whether to clean up previous operation when Linker is updating or deleting
      */
-    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior>;
+    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior | undefined>;
     /**
      * Principal Id for servicePrincipal auth.
      */
     principalId: pulumi.Input<string>;
     /**
-     * Optional, this value specifies the Azure roles to be assigned. Automatically 
+     * Optional, this value specifies the Azure roles to be assigned. Automatically
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Secret for servicePrincipal auth.
      */
@@ -442,7 +442,7 @@ export interface ServicePrincipalSecretAuthInfoArgs {
     /**
      * Username created in the database which is mapped to a user in AAD.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -452,7 +452,7 @@ export interface SystemAssignedIdentityAuthInfoArgs {
     /**
      * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
      */
-    authMode?: pulumi.Input<string | enums.AuthMode>;
+    authMode?: pulumi.Input<string | enums.AuthMode | undefined>;
     /**
      * The authentication type.
      * Expected value is 'systemAssignedIdentity'.
@@ -461,15 +461,15 @@ export interface SystemAssignedIdentityAuthInfoArgs {
     /**
      * Indicates whether to clean up previous operation when Linker is updating or deleting
      */
-    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior>;
+    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior | undefined>;
     /**
      * Optional, this value specifies the Azure role to be assigned
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Username created in the database which is mapped to a user in AAD.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -479,7 +479,7 @@ export interface UserAccountAuthInfoArgs {
     /**
      * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
      */
-    authMode?: pulumi.Input<string | enums.AuthMode>;
+    authMode?: pulumi.Input<string | enums.AuthMode | undefined>;
     /**
      * The authentication type.
      * Expected value is 'userAccount'.
@@ -488,19 +488,19 @@ export interface UserAccountAuthInfoArgs {
     /**
      * Indicates whether to clean up previous operation when Linker is updating or deleting
      */
-    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior>;
+    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior | undefined>;
     /**
      * Principal Id for user account.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
-     * Optional, this value specifies the Azure roles to be assigned. Automatically 
+     * Optional, this value specifies the Azure roles to be assigned. Automatically
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Username created in the database which is mapped to a user in AAD.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -510,7 +510,7 @@ export interface UserAssignedIdentityAuthInfoArgs {
     /**
      * Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
      */
-    authMode?: pulumi.Input<string | enums.AuthMode>;
+    authMode?: pulumi.Input<string | enums.AuthMode | undefined>;
     /**
      * The authentication type.
      * Expected value is 'userAssignedIdentity'.
@@ -519,23 +519,23 @@ export interface UserAssignedIdentityAuthInfoArgs {
     /**
      * Client Id for userAssignedIdentity.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to clean up previous operation when Linker is updating or deleting
      */
-    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior>;
+    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior | undefined>;
     /**
      * Optional, this value specifies the Azure role to be assigned
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Subscription id for userAssignedIdentity.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * Username created in the database which is mapped to a user in AAD.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -545,11 +545,11 @@ export interface VNetSolutionArgs {
     /**
      * Indicates whether to clean up previous operation when Linker is updating or deleting
      */
-    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior>;
+    deleteOrUpdateBehavior?: pulumi.Input<string | enums.DeleteOrUpdateBehavior | undefined>;
     /**
      * Type of VNet solution.
      */
-    type?: pulumi.Input<string | enums.VNetSolutionType>;
+    type?: pulumi.Input<string | enums.VNetSolutionType | undefined>;
 }
 
 /**
@@ -564,5 +564,5 @@ export interface ValueSecretInfoArgs {
     /**
      * The actual value of the secret.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }

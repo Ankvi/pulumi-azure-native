@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
  *
- * Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class InferenceEndpoint extends pulumi.CustomResource {
     /**
@@ -99,7 +99,7 @@ export class InferenceEndpoint extends pulumi.CustomResource {
             }
             resourceInputs["endpointName"] = args?.endpointName;
             resourceInputs["identity"] = args?.identity;
-            resourceInputs["inferenceEndpointProperties"] = args ? (args.inferenceEndpointProperties ? pulumi.output(args.inferenceEndpointProperties).apply(types.inputs.inferenceEndpointArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["inferenceEndpointProperties"] = args ? pulumi.output(args.inferenceEndpointProperties).apply(types.inputs.inferenceEndpointArgsProvideDefaults) : undefined;
             resourceInputs["kind"] = args?.kind;
             resourceInputs["location"] = args?.location;
             resourceInputs["poolName"] = args?.poolName;
@@ -124,7 +124,7 @@ export class InferenceEndpoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230801preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20240101preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20240401preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20241001preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20250101preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20250401preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20250701preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20251001preview:InferenceEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230801preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20240101preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20240401preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20241001preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20250101preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20250401preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20250701preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20251001preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20260115preview:InferenceEndpoint" }, { type: "azure-native:machinelearningservices/v20260315preview:InferenceEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(InferenceEndpoint.__pulumiType, name, resourceInputs, opts);
     }
@@ -137,11 +137,11 @@ export interface InferenceEndpointArgs {
     /**
      * InferenceEndpoint name.
      */
-    endpointName?: pulumi.Input<string>;
+    endpointName?: pulumi.Input<string | undefined>;
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * [Required] Additional attributes of the entity.
      */
@@ -149,11 +149,11 @@ export interface InferenceEndpointArgs {
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * InferencePool name.
      */
@@ -165,11 +165,11 @@ export interface InferenceEndpointArgs {
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of Azure Machine Learning workspace.
      */

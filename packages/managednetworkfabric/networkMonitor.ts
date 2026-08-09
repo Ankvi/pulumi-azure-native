@@ -5,6 +5,8 @@ import * as types from "./types";
  * The NetworkMonitor resource definition.
  *
  * Uses Azure REST API version 2024-06-15-preview.
+ *
+ * Other available API versions: 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkMonitor extends pulumi.CustomResource {
     /**
@@ -34,9 +36,29 @@ export class NetworkMonitor extends pulumi.CustomResource {
     }
 
     /**
+     * Administrative state of the resource.
+     */
+    declare public /*out*/ readonly administrativeState: pulumi.Output<string>;
+    /**
+     * Switch configuration description.
+     */
+    declare public readonly annotation: pulumi.Output<string | undefined>;
+    /**
      * The Azure API version of the resource.
      */
     declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
+    /**
+     * BMP Configurations for the Network Fabric.
+     */
+    declare public readonly bmpConfiguration: pulumi.Output<types.outputs.BmpConfigurationPropertiesResponse | undefined>;
+    /**
+     * Configuration state of the resource.
+     */
+    declare public /*out*/ readonly configurationState: pulumi.Output<string>;
+    /**
+     * Details of the last operation performed on the resource
+     */
+    declare public /*out*/ readonly lastOperation: pulumi.Output<types.outputs.LastOperationPropertiesResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -46,9 +68,9 @@ export class NetworkMonitor extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The NetworkFabric Properties
+     * Provides you the latest status of the NetworkMonitor resource
      */
-    declare public readonly properties: pulumi.Output<types.outputs.NetworkMonitorPropertiesResponse>;
+    declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -73,32 +95,39 @@ export class NetworkMonitor extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if (args?.properties === undefined && !opts.urn) {
-                throw new Error("Missing required property 'properties'");
-            }
             if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
+            resourceInputs["annotation"] = args?.annotation;
+            resourceInputs["bmpConfiguration"] = args ? pulumi.output(args.bmpConfiguration).apply(v => v === undefined ? undefined : types.inputs.bmpConfigurationPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["location"] = args?.location;
             resourceInputs["networkMonitorName"] = args?.networkMonitorName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.networkMonitorPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["administrativeState"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["configurationState"] = undefined /*out*/;
+            resourceInputs["lastOperation"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["administrativeState"] = undefined /*out*/;
+            resourceInputs["annotation"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["bmpConfiguration"] = undefined /*out*/;
+            resourceInputs["configurationState"] = undefined /*out*/;
+            resourceInputs["lastOperation"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["properties"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20240615preview:NetworkMonitor" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20240615preview:NetworkMonitor" }, { type: "azure-native:managednetworkfabric/v20250715:NetworkMonitor" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkMonitor.__pulumiType, name, resourceInputs, opts);
     }
@@ -109,17 +138,21 @@ export class NetworkMonitor extends pulumi.CustomResource {
  */
 export interface NetworkMonitorArgs {
     /**
+     * Switch configuration description.
+     */
+    annotation?: pulumi.Input<string | undefined>;
+    /**
+     * BMP Configurations for the Network Fabric.
+     */
+    bmpConfiguration?: pulumi.Input<types.inputs.BmpConfigurationPropertiesArgs | undefined>;
+    /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the Network Monitor.
      */
-    networkMonitorName?: pulumi.Input<string>;
-    /**
-     * The NetworkFabric Properties
-     */
-    properties: pulumi.Input<types.inputs.NetworkMonitorPropertiesArgs>;
+    networkMonitorName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -127,5 +160,5 @@ export interface NetworkMonitorArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

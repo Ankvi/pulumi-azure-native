@@ -83,12 +83,12 @@ export class ServerCollector extends pulumi.CustomResource {
  * The set of arguments for constructing a ServerCollector resource.
  */
 export interface ServerCollectorArgs {
-    eTag?: pulumi.Input<string>;
+    eTag?: pulumi.Input<string | undefined>;
     /**
      * Name of the Azure Migrate project.
      */
     projectName: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.CollectorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CollectorPropertiesArgs | undefined>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */
@@ -96,5 +96,5 @@ export interface ServerCollectorArgs {
     /**
      * Unique name of a Server collector within a project.
      */
-    serverCollectorName?: pulumi.Input<string>;
+    serverCollectorName?: pulumi.Input<string | undefined>;
 }

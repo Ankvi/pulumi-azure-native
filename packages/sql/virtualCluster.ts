@@ -4,6 +4,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * An Azure SQL virtual cluster.
  *
  * Uses Azure REST API version 2024-11-01-preview.
+ *
+ * Other available API versions: 2025-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualCluster extends pulumi.CustomResource {
     /**
@@ -100,7 +102,7 @@ export class VirtualCluster extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20241101preview:VirtualCluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20241101preview:VirtualCluster" }, { type: "azure-native:sql/v20250101:VirtualCluster" }, { type: "azure-native:sql/v20250201preview:VirtualCluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualCluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -113,7 +115,7 @@ export interface VirtualClusterArgs {
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -121,13 +123,13 @@ export interface VirtualClusterArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Virtual cluster version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The name of the virtual cluster.
      */
-    virtualClusterName?: pulumi.Input<string>;
+    virtualClusterName?: pulumi.Input<string | undefined>;
 }

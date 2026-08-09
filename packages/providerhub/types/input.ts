@@ -1,48 +1,48 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 export interface AdditionalAuthorizationArgs {
-    applicationId?: pulumi.Input<string>;
-    roleDefinitionId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
+    roleDefinitionId?: pulumi.Input<string | undefined>;
 }
 
 export interface AllowedResourceNameArgs {
     /**
      * Get action verb.
      */
-    getActionVerb?: pulumi.Input<string>;
+    getActionVerb?: pulumi.Input<string | undefined>;
     /**
      * Resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface AllowedUnauthorizedActionsExtensionArgs {
     /**
      * The action.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The intent.
      */
-    intent?: pulumi.Input<string | enums.Intent>;
+    intent?: pulumi.Input<string | enums.Intent | undefined>;
 }
 
 export interface ApiProfileArgs {
     /**
      * Api version.
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
     /**
      * Profile version.
      */
-    profileVersion?: pulumi.Input<string>;
+    profileVersion?: pulumi.Input<string | undefined>;
 }
 
 export interface ApplicationDataAuthorizationArgs {
     /**
      * The resource types from the defined resource types in the provider namespace that the application can access. If no resource types are specified and the role is service owner, the default is * which is all resource types
      */
-    resourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ownership role the application has on the resource types. The service owner role gives the application owner permissions. The limited owner role gives elevated permissions but does not allow all the permissions of a service owner, such as read/write on internal metadata.
      */
@@ -53,49 +53,49 @@ export interface ApplicationProviderAuthorizationArgs {
     /**
      * The managed by role definition ID for the application.
      */
-    managedByRoleDefinitionId?: pulumi.Input<string>;
+    managedByRoleDefinitionId?: pulumi.Input<string | undefined>;
     /**
      * The role definition ID for the application.
      */
-    roleDefinitionId?: pulumi.Input<string>;
+    roleDefinitionId?: pulumi.Input<string | undefined>;
 }
 
 export interface AsyncOperationPollingRulesArgs {
     /**
      * The additional options.
      */
-    additionalOptions?: pulumi.Input<string | enums.AdditionalOptionsAsyncOperation>;
+    additionalOptions?: pulumi.Input<string | enums.AdditionalOptionsAsyncOperation | undefined>;
     /**
      * The authorization actions.
      */
-    authorizationActions?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizationActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AsyncTimeoutRuleArgs {
-    actionName?: pulumi.Input<string>;
+    actionName?: pulumi.Input<string | undefined>;
     /**
      * This is a TimeSpan property
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 
 export interface AuthorizationActionMappingArgs {
     /**
      * The desired action name.
      */
-    desired?: pulumi.Input<string>;
+    desired?: pulumi.Input<string | undefined>;
     /**
      * The original action name.
      */
-    original?: pulumi.Input<string>;
+    original?: pulumi.Input<string | undefined>;
 }
 
 export interface AuthorizedApplicationPropertiesArgs {
     /**
      * The authorizations that determine the level of data access permissions on the specified resource types.
      */
-    dataAuthorizations?: pulumi.Input<pulumi.Input<ApplicationDataAuthorizationArgs>[]>;
-    providerAuthorization?: pulumi.Input<ApplicationProviderAuthorizationArgs>;
+    dataAuthorizations?: pulumi.Input<pulumi.Input<ApplicationDataAuthorizationArgs>[] | undefined>;
+    providerAuthorization?: pulumi.Input<ApplicationProviderAuthorizationArgs | undefined>;
 }
 
 export interface CustomRolloutPropertiesArgs {
@@ -106,7 +106,7 @@ export interface CustomRolloutPropertiesArgs {
     /**
      * The status.
      */
-    status?: pulumi.Input<CustomRolloutPropertiesStatusArgs>;
+    status?: pulumi.Input<CustomRolloutPropertiesStatusArgs | undefined>;
 }
 /**
  * customRolloutPropertiesArgsProvideDefaults sets the appropriate defaults for CustomRolloutPropertiesArgs
@@ -125,31 +125,31 @@ export interface CustomRolloutPropertiesSpecificationArgs {
     /**
      * The auto provisioning configuration.
      */
-    autoProvisionConfig?: pulumi.Input<CustomRolloutSpecificationAutoProvisionConfigArgs>;
+    autoProvisionConfig?: pulumi.Input<CustomRolloutSpecificationAutoProvisionConfigArgs | undefined>;
     /**
      * The canary region configuration.
      */
-    canary?: pulumi.Input<CustomRolloutSpecificationCanaryArgs>;
+    canary?: pulumi.Input<CustomRolloutSpecificationCanaryArgs | undefined>;
     /**
      * The provider registration.
      */
-    providerRegistration?: pulumi.Input<CustomRolloutSpecificationProviderRegistrationArgs>;
+    providerRegistration?: pulumi.Input<CustomRolloutSpecificationProviderRegistrationArgs | undefined>;
     /**
      * Whether refreshing subscription registration is enabled or disabled.
      */
-    refreshSubscriptionRegistration?: pulumi.Input<boolean>;
+    refreshSubscriptionRegistration?: pulumi.Input<boolean | undefined>;
     /**
      * The list of ARM regions scoped for the release.
      */
-    releaseScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    releaseScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The resource type registrations.
      */
-    resourceTypeRegistrations?: pulumi.Input<pulumi.Input<ResourceTypeRegistrationArgs>[]>;
+    resourceTypeRegistrations?: pulumi.Input<pulumi.Input<ResourceTypeRegistrationArgs>[] | undefined>;
     /**
      * Whether release scope validation should be skipped.
      */
-    skipReleaseScopeValidation?: pulumi.Input<boolean>;
+    skipReleaseScopeValidation?: pulumi.Input<boolean | undefined>;
 }
 /**
  * customRolloutPropertiesSpecificationArgsProvideDefaults sets the appropriate defaults for CustomRolloutPropertiesSpecificationArgs
@@ -157,7 +157,7 @@ export interface CustomRolloutPropertiesSpecificationArgs {
 export function customRolloutPropertiesSpecificationArgsProvideDefaults(val: CustomRolloutPropertiesSpecificationArgs): CustomRolloutPropertiesSpecificationArgs {
     return {
         ...val,
-        providerRegistration: (val.providerRegistration ? pulumi.output(val.providerRegistration).apply(customRolloutSpecificationProviderRegistrationArgsProvideDefaults) : undefined),
+        providerRegistration: pulumi.output(val.providerRegistration).apply(v => v === undefined ? undefined : customRolloutSpecificationProviderRegistrationArgsProvideDefaults(v)),
     };
 }
 
@@ -168,30 +168,30 @@ export interface CustomRolloutPropertiesStatusArgs {
     /**
      * The completed regions.
      */
-    completedRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    completedRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The failed or skipped regions.
      */
-    failedOrSkippedRegions?: pulumi.Input<{[key: string]: pulumi.Input<ExtendedErrorInfoArgs>}>;
+    failedOrSkippedRegions?: pulumi.Input<{[key: string]: pulumi.Input<ExtendedErrorInfoArgs>} | undefined>;
     /**
      * The manifest checkin status.
      */
-    manifestCheckinStatus?: pulumi.Input<CustomRolloutStatusManifestCheckinStatusArgs>;
+    manifestCheckinStatus?: pulumi.Input<CustomRolloutStatusManifestCheckinStatusArgs | undefined>;
 }
 
 /**
  * The auto provisioning configuration.
  */
 export interface CustomRolloutSpecificationAutoProvisionConfigArgs {
-    resourceGraph?: pulumi.Input<boolean>;
-    storage?: pulumi.Input<boolean>;
+    resourceGraph?: pulumi.Input<boolean | undefined>;
+    storage?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * The canary region configuration.
  */
 export interface CustomRolloutSpecificationCanaryArgs {
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -201,8 +201,8 @@ export interface CustomRolloutSpecificationProviderRegistrationArgs {
     /**
      * Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
-    kind?: pulumi.Input<string | enums.ProviderRegistrationKind>;
-    properties?: pulumi.Input<ProviderRegistrationPropertiesArgs>;
+    kind?: pulumi.Input<string | enums.ProviderRegistrationKind | undefined>;
+    properties?: pulumi.Input<ProviderRegistrationPropertiesArgs | undefined>;
 }
 /**
  * customRolloutSpecificationProviderRegistrationArgsProvideDefaults sets the appropriate defaults for CustomRolloutSpecificationProviderRegistrationArgs
@@ -221,7 +221,7 @@ export interface CustomRolloutStatusManifestCheckinStatusArgs {
     /**
      * The commit id.
      */
-    commitId?: pulumi.Input<string>;
+    commitId?: pulumi.Input<string | undefined>;
     /**
      * Whether the manifest is checked in.
      */
@@ -229,7 +229,7 @@ export interface CustomRolloutStatusManifestCheckinStatusArgs {
     /**
      * The pull request.
      */
-    pullRequest?: pulumi.Input<string>;
+    pullRequest?: pulumi.Input<string | undefined>;
     /**
      * The status message.
      */
@@ -240,11 +240,11 @@ export interface DefaultRolloutPropertiesArgs {
     /**
      * The default rollout specification.
      */
-    specification?: pulumi.Input<DefaultRolloutPropertiesSpecificationArgs>;
+    specification?: pulumi.Input<DefaultRolloutPropertiesSpecificationArgs | undefined>;
     /**
      * The default rollout status.
      */
-    status?: pulumi.Input<DefaultRolloutPropertiesStatusArgs>;
+    status?: pulumi.Input<DefaultRolloutPropertiesStatusArgs | undefined>;
 }
 /**
  * defaultRolloutPropertiesArgsProvideDefaults sets the appropriate defaults for DefaultRolloutPropertiesArgs
@@ -252,7 +252,7 @@ export interface DefaultRolloutPropertiesArgs {
 export function defaultRolloutPropertiesArgsProvideDefaults(val: DefaultRolloutPropertiesArgs): DefaultRolloutPropertiesArgs {
     return {
         ...val,
-        specification: (val.specification ? pulumi.output(val.specification).apply(defaultRolloutPropertiesSpecificationArgsProvideDefaults) : undefined),
+        specification: pulumi.output(val.specification).apply(v => v === undefined ? undefined : defaultRolloutPropertiesSpecificationArgsProvideDefaults(v)),
     };
 }
 
@@ -263,43 +263,43 @@ export interface DefaultRolloutPropertiesSpecificationArgs {
     /**
      * The auto provisioning config.
      */
-    autoProvisionConfig?: pulumi.Input<DefaultRolloutSpecificationAutoProvisionConfigArgs>;
+    autoProvisionConfig?: pulumi.Input<DefaultRolloutSpecificationAutoProvisionConfigArgs | undefined>;
     /**
      * The canary traffic region configuration.
      */
-    canary?: pulumi.Input<DefaultRolloutSpecificationCanaryArgs>;
+    canary?: pulumi.Input<DefaultRolloutSpecificationCanaryArgs | undefined>;
     /**
      * The expedited rollout definition.
      */
-    expeditedRollout?: pulumi.Input<DefaultRolloutSpecificationExpeditedRolloutArgs>;
+    expeditedRollout?: pulumi.Input<DefaultRolloutSpecificationExpeditedRolloutArgs | undefined>;
     /**
      * The high traffic region configuration.
      */
-    highTraffic?: pulumi.Input<DefaultRolloutSpecificationHighTrafficArgs>;
+    highTraffic?: pulumi.Input<DefaultRolloutSpecificationHighTrafficArgs | undefined>;
     /**
      * The low traffic region configuration.
      */
-    lowTraffic?: pulumi.Input<DefaultRolloutSpecificationLowTrafficArgs>;
+    lowTraffic?: pulumi.Input<DefaultRolloutSpecificationLowTrafficArgs | undefined>;
     /**
      * The medium traffic region configuration.
      */
-    mediumTraffic?: pulumi.Input<DefaultRolloutSpecificationMediumTrafficArgs>;
+    mediumTraffic?: pulumi.Input<DefaultRolloutSpecificationMediumTrafficArgs | undefined>;
     /**
      * The provider registration.
      */
-    providerRegistration?: pulumi.Input<DefaultRolloutSpecificationProviderRegistrationArgs>;
+    providerRegistration?: pulumi.Input<DefaultRolloutSpecificationProviderRegistrationArgs | undefined>;
     /**
      * The resource type registrations.
      */
-    resourceTypeRegistrations?: pulumi.Input<pulumi.Input<ResourceTypeRegistrationArgs>[]>;
+    resourceTypeRegistrations?: pulumi.Input<pulumi.Input<ResourceTypeRegistrationArgs>[] | undefined>;
     /**
      * The rest of the world group one region configuration.
      */
-    restOfTheWorldGroupOne?: pulumi.Input<DefaultRolloutSpecificationRestOfTheWorldGroupOneArgs>;
+    restOfTheWorldGroupOne?: pulumi.Input<DefaultRolloutSpecificationRestOfTheWorldGroupOneArgs | undefined>;
     /**
      * The rest of the world group two region configuration.
      */
-    restOfTheWorldGroupTwo?: pulumi.Input<DefaultRolloutSpecificationRestOfTheWorldGroupTwoArgs>;
+    restOfTheWorldGroupTwo?: pulumi.Input<DefaultRolloutSpecificationRestOfTheWorldGroupTwoArgs | undefined>;
 }
 /**
  * defaultRolloutPropertiesSpecificationArgsProvideDefaults sets the appropriate defaults for DefaultRolloutPropertiesSpecificationArgs
@@ -307,7 +307,7 @@ export interface DefaultRolloutPropertiesSpecificationArgs {
 export function defaultRolloutPropertiesSpecificationArgsProvideDefaults(val: DefaultRolloutPropertiesSpecificationArgs): DefaultRolloutPropertiesSpecificationArgs {
     return {
         ...val,
-        providerRegistration: (val.providerRegistration ? pulumi.output(val.providerRegistration).apply(defaultRolloutSpecificationProviderRegistrationArgsProvideDefaults) : undefined),
+        providerRegistration: pulumi.output(val.providerRegistration).apply(v => v === undefined ? undefined : defaultRolloutSpecificationProviderRegistrationArgsProvideDefaults(v)),
     };
 }
 
@@ -318,27 +318,27 @@ export interface DefaultRolloutPropertiesStatusArgs {
     /**
      * The completed regions.
      */
-    completedRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    completedRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The failed or skipped regions.
      */
-    failedOrSkippedRegions?: pulumi.Input<{[key: string]: pulumi.Input<ExtendedErrorInfoArgs>}>;
+    failedOrSkippedRegions?: pulumi.Input<{[key: string]: pulumi.Input<ExtendedErrorInfoArgs>} | undefined>;
     /**
      * The manifest checkin status.
      */
-    manifestCheckinStatus?: pulumi.Input<DefaultRolloutStatusManifestCheckinStatusArgs>;
+    manifestCheckinStatus?: pulumi.Input<DefaultRolloutStatusManifestCheckinStatusArgs | undefined>;
     /**
      * The next traffic region.
      */
-    nextTrafficRegion?: pulumi.Input<string | enums.TrafficRegionCategory>;
+    nextTrafficRegion?: pulumi.Input<string | enums.TrafficRegionCategory | undefined>;
     /**
      * The next traffic region scheduled time.
      */
-    nextTrafficRegionScheduledTime?: pulumi.Input<string>;
+    nextTrafficRegionScheduledTime?: pulumi.Input<string | undefined>;
     /**
      * The subscription reregistration result.
      */
-    subscriptionReregistrationResult?: pulumi.Input<string | enums.SubscriptionReregistrationResult>;
+    subscriptionReregistrationResult?: pulumi.Input<string | enums.SubscriptionReregistrationResult | undefined>;
 }
 
 /**
@@ -348,11 +348,11 @@ export interface DefaultRolloutSpecificationAutoProvisionConfigArgs {
     /**
      * Whether auto provisioning for resource graph is enabled.
      */
-    resourceGraph?: pulumi.Input<boolean>;
+    resourceGraph?: pulumi.Input<boolean | undefined>;
     /**
      * Whether auto provisioning for storage is enabled.
      */
-    storage?: pulumi.Input<boolean>;
+    storage?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -362,11 +362,11 @@ export interface DefaultRolloutSpecificationCanaryArgs {
     /**
      * The regions.
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The skip regions.
      */
-    skipRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    skipRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -376,40 +376,40 @@ export interface DefaultRolloutSpecificationExpeditedRolloutArgs {
     /**
      * Indicates whether expedited rollout is enabled/disabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * The high traffic region configuration.
  */
 export interface DefaultRolloutSpecificationHighTrafficArgs {
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The wait duration.
      */
-    waitDuration?: pulumi.Input<string>;
+    waitDuration?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The low traffic region configuration.
  */
 export interface DefaultRolloutSpecificationLowTrafficArgs {
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The wait duration.
      */
-    waitDuration?: pulumi.Input<string>;
+    waitDuration?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The medium traffic region configuration.
  */
 export interface DefaultRolloutSpecificationMediumTrafficArgs {
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The wait duration.
      */
-    waitDuration?: pulumi.Input<string>;
+    waitDuration?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -419,8 +419,8 @@ export interface DefaultRolloutSpecificationProviderRegistrationArgs {
     /**
      * Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
-    kind?: pulumi.Input<string | enums.ProviderRegistrationKind>;
-    properties?: pulumi.Input<ProviderRegistrationPropertiesArgs>;
+    kind?: pulumi.Input<string | enums.ProviderRegistrationKind | undefined>;
+    properties?: pulumi.Input<ProviderRegistrationPropertiesArgs | undefined>;
 }
 /**
  * defaultRolloutSpecificationProviderRegistrationArgsProvideDefaults sets the appropriate defaults for DefaultRolloutSpecificationProviderRegistrationArgs
@@ -436,22 +436,22 @@ export function defaultRolloutSpecificationProviderRegistrationArgsProvideDefaul
  * The rest of the world group one region configuration.
  */
 export interface DefaultRolloutSpecificationRestOfTheWorldGroupOneArgs {
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The wait duration.
      */
-    waitDuration?: pulumi.Input<string>;
+    waitDuration?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The rest of the world group two region configuration.
  */
 export interface DefaultRolloutSpecificationRestOfTheWorldGroupTwoArgs {
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The wait duration.
      */
-    waitDuration?: pulumi.Input<string>;
+    waitDuration?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -461,7 +461,7 @@ export interface DefaultRolloutStatusManifestCheckinStatusArgs {
     /**
      * The commit id.
      */
-    commitId?: pulumi.Input<string>;
+    commitId?: pulumi.Input<string | undefined>;
     /**
      * Whether the manifest is checked in.
      */
@@ -469,7 +469,7 @@ export interface DefaultRolloutStatusManifestCheckinStatusArgs {
     /**
      * The pull request.
      */
-    pullRequest?: pulumi.Input<string>;
+    pullRequest?: pulumi.Input<string | undefined>;
     /**
      * The status message.
      */
@@ -480,30 +480,30 @@ export interface DeleteDependencyArgs {
     /**
      * Linked property.
      */
-    linkedProperty?: pulumi.Input<string>;
+    linkedProperty?: pulumi.Input<string | undefined>;
     /**
      * Linked type.
      */
-    linkedType?: pulumi.Input<string>;
+    linkedType?: pulumi.Input<string | undefined>;
     /**
      * Required features.
      */
-    requiredFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface EndpointInformationArgs {
     /**
      * The endpoint.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The endpoint type.
      */
-    endpointType?: pulumi.Input<string | enums.NotificationEndpointType>;
+    endpointType?: pulumi.Input<string | enums.NotificationEndpointType | undefined>;
     /**
      * The schema version.
      */
-    schemaVersion?: pulumi.Input<string>;
+    schemaVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -513,50 +513,50 @@ export interface ExtendedErrorInfoArgs {
     /**
      * The additional error information.
      */
-    additionalInfo?: pulumi.Input<pulumi.Input<TypedErrorInfoArgs>[]>;
+    additionalInfo?: pulumi.Input<pulumi.Input<TypedErrorInfoArgs>[] | undefined>;
     /**
      * The error code.
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * The error details.
      */
-    details?: pulumi.Input<pulumi.Input<ExtendedErrorInfoArgs>[]>;
+    details?: pulumi.Input<pulumi.Input<ExtendedErrorInfoArgs>[] | undefined>;
     /**
      * The error message.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The target of the error.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
 }
 
 export interface ExtendedLocationOptionsArgs {
-    supportedPolicy?: pulumi.Input<string | enums.ResourceTypeExtendedLocationPolicy>;
+    supportedPolicy?: pulumi.Input<string | enums.ResourceTypeExtendedLocationPolicy | undefined>;
     /**
      * The type.
      */
-    type?: pulumi.Input<string | enums.ExtendedLocationType>;
+    type?: pulumi.Input<string | enums.ExtendedLocationType | undefined>;
 }
 
 export interface FanoutLinkedNotificationRuleArgs {
     /**
      * The actions.
      */
-    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The dsts configuration.
      */
-    dstsConfiguration?: pulumi.Input<FanoutLinkedNotificationRuleDstsConfigurationArgs>;
+    dstsConfiguration?: pulumi.Input<FanoutLinkedNotificationRuleDstsConfigurationArgs | undefined>;
     /**
      * The endpoints.
      */
-    endpoints?: pulumi.Input<pulumi.Input<ResourceProviderEndpointArgs>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<ResourceProviderEndpointArgs>[] | undefined>;
     /**
      * The token auth configuration.
      */
-    tokenAuthConfiguration?: pulumi.Input<TokenAuthConfigurationArgs>;
+    tokenAuthConfiguration?: pulumi.Input<TokenAuthConfigurationArgs | undefined>;
 }
 
 /**
@@ -566,7 +566,7 @@ export interface FanoutLinkedNotificationRuleDstsConfigurationArgs {
     /**
      * This is a URI property.
      */
-    serviceDnsName?: pulumi.Input<string>;
+    serviceDnsName?: pulumi.Input<string | undefined>;
     /**
      * The service name.
      */
@@ -577,22 +577,22 @@ export interface FilterRuleArgs {
     /**
      * The endpoint information.
      */
-    endpointInformation?: pulumi.Input<pulumi.Input<EndpointInformationArgs>[]>;
+    endpointInformation?: pulumi.Input<pulumi.Input<EndpointInformationArgs>[] | undefined>;
     /**
      * The filter query.
      */
-    filterQuery?: pulumi.Input<string>;
+    filterQuery?: pulumi.Input<string | undefined>;
 }
 
 export interface LegacyDisallowedConditionArgs {
     /**
      * The disallowed legacy operations.
      */
-    disallowedLegacyOperations?: pulumi.Input<pulumi.Input<string | enums.LegacyOperation>[]>;
+    disallowedLegacyOperations?: pulumi.Input<pulumi.Input<string | enums.LegacyOperation>[] | undefined>;
     /**
      * Feature string.
      */
-    feature?: pulumi.Input<string>;
+    feature?: pulumi.Input<string | undefined>;
 }
 
 export interface LightHouseAuthorizationArgs {
@@ -610,53 +610,53 @@ export interface LinkedAccessCheckArgs {
     /**
      * The action name.
      */
-    actionName?: pulumi.Input<string>;
+    actionName?: pulumi.Input<string | undefined>;
     /**
      * The linked action.
      */
-    linkedAction?: pulumi.Input<string>;
+    linkedAction?: pulumi.Input<string | undefined>;
     /**
      * The linked action verb.
      */
-    linkedActionVerb?: pulumi.Input<string>;
+    linkedActionVerb?: pulumi.Input<string | undefined>;
     /**
      * The linked property.
      */
-    linkedProperty?: pulumi.Input<string>;
+    linkedProperty?: pulumi.Input<string | undefined>;
     /**
      * The linked type.
      */
-    linkedType?: pulumi.Input<string>;
+    linkedType?: pulumi.Input<string | undefined>;
 }
 
 export interface LinkedNotificationRuleArgs {
     /**
      * The actions.
      */
-    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The actions on failed operation.
      */
-    actionsOnFailedOperation?: pulumi.Input<pulumi.Input<string>[]>;
+    actionsOnFailedOperation?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The fast path actions.
      */
-    fastPathActions?: pulumi.Input<pulumi.Input<string>[]>;
+    fastPathActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The fast path action on failed operation.
      */
-    fastPathActionsOnFailedOperation?: pulumi.Input<pulumi.Input<string>[]>;
+    fastPathActionsOnFailedOperation?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This is a TimeSpan property.
      */
-    linkedNotificationTimeout?: pulumi.Input<string>;
+    linkedNotificationTimeout?: pulumi.Input<string | undefined>;
 }
 
 export interface LinkedOperationRuleArgs {
     /**
      * Depends on types.
      */
-    dependsOnTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    dependsOnTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The linked action.
      */
@@ -671,15 +671,15 @@ export interface LocationQuotaRuleArgs {
     /**
      * The location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The policy.
      */
-    policy?: pulumi.Input<string | enums.QuotaPolicy>;
+    policy?: pulumi.Input<string | enums.QuotaPolicy | undefined>;
     /**
      * The quota id.
      */
-    quotaId?: pulumi.Input<string>;
+    quotaId?: pulumi.Input<string | undefined>;
 }
 
 export interface LoggingRuleArgs {
@@ -698,7 +698,7 @@ export interface LoggingRuleArgs {
     /**
      * The hidden property paths.
      */
-    hiddenPropertyPaths?: pulumi.Input<LoggingRuleHiddenPropertyPathsArgs>;
+    hiddenPropertyPaths?: pulumi.Input<LoggingRuleHiddenPropertyPathsArgs | undefined>;
 }
 
 /**
@@ -708,66 +708,66 @@ export interface LoggingRuleHiddenPropertyPathsArgs {
     /**
      * The hidden paths on request.
      */
-    hiddenPathsOnRequest?: pulumi.Input<pulumi.Input<string>[]>;
+    hiddenPathsOnRequest?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The hidden paths on response.
      */
-    hiddenPathsOnResponse?: pulumi.Input<pulumi.Input<string>[]>;
+    hiddenPathsOnResponse?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface NotificationArgs {
     /**
      * The notification type.
      */
-    notificationType?: pulumi.Input<string | enums.NotificationType>;
+    notificationType?: pulumi.Input<string | enums.NotificationType | undefined>;
     /**
      * Whether notifications should be skipped.
      */
-    skipNotifications?: pulumi.Input<string | enums.SkipNotifications>;
+    skipNotifications?: pulumi.Input<string | enums.SkipNotifications | undefined>;
 }
 
 export interface NotificationEndpointArgs {
     /**
      * The locations.
      */
-    locations?: pulumi.Input<pulumi.Input<string>[]>;
+    locations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The notification destination.
      */
-    notificationDestination?: pulumi.Input<string>;
+    notificationDestination?: pulumi.Input<string | undefined>;
 }
 
 export interface NotificationRegistrationPropertiesArgs {
     /**
      * The included events.
      */
-    includedEvents?: pulumi.Input<pulumi.Input<string>[]>;
+    includedEvents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The message scope.
      */
-    messageScope?: pulumi.Input<string | enums.MessageScope>;
+    messageScope?: pulumi.Input<string | enums.MessageScope | undefined>;
     /**
      * The notification endpoints.
      */
-    notificationEndpoints?: pulumi.Input<pulumi.Input<NotificationEndpointArgs>[]>;
+    notificationEndpoints?: pulumi.Input<pulumi.Input<NotificationEndpointArgs>[] | undefined>;
     /**
      * The notification mode.
      */
-    notificationMode?: pulumi.Input<string | enums.NotificationMode>;
+    notificationMode?: pulumi.Input<string | enums.NotificationMode | undefined>;
 }
 
 export interface OpenApiConfigurationArgs {
     /**
      * The open api validation.
      */
-    validation?: pulumi.Input<OpenApiValidationArgs>;
+    validation?: pulumi.Input<OpenApiValidationArgs | undefined>;
 }
 
 export interface OpenApiValidationArgs {
     /**
      * Indicates whether a non compliance response is allowed for a LIST call
      */
-    allowNoncompliantCollectionResponse?: pulumi.Input<boolean>;
+    allowNoncompliantCollectionResponse?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -787,154 +787,154 @@ export interface ProviderHubMetadataThirdPartyProviderAuthorizationArgs {
     /**
      * The authorizations.
      */
-    authorizations?: pulumi.Input<pulumi.Input<LightHouseAuthorizationArgs>[]>;
+    authorizations?: pulumi.Input<pulumi.Input<LightHouseAuthorizationArgs>[] | undefined>;
     /**
      * The managed by tenant id.
      */
-    managedByTenantId?: pulumi.Input<string>;
+    managedByTenantId?: pulumi.Input<string | undefined>;
 }
 
 export interface ProviderRegistrationPropertiesArgs {
     /**
      * The capabilities.
      */
-    capabilities?: pulumi.Input<pulumi.Input<ResourceProviderCapabilitiesArgs>[]>;
+    capabilities?: pulumi.Input<pulumi.Input<ResourceProviderCapabilitiesArgs>[] | undefined>;
     /**
      * The cross tenant token validation.
      */
-    crossTenantTokenValidation?: pulumi.Input<string | enums.CrossTenantTokenValidation>;
+    crossTenantTokenValidation?: pulumi.Input<string | enums.CrossTenantTokenValidation | undefined>;
     /**
      * Custom manifest version.
      */
-    customManifestVersion?: pulumi.Input<string>;
+    customManifestVersion?: pulumi.Input<string | undefined>;
     /**
      * The dsts configuration.
      */
-    dstsConfiguration?: pulumi.Input<ResourceProviderManifestPropertiesDstsConfigurationArgs>;
+    dstsConfiguration?: pulumi.Input<ResourceProviderManifestPropertiesDstsConfigurationArgs | undefined>;
     /**
      * The enable tenant linked notification.
      */
-    enableTenantLinkedNotification?: pulumi.Input<boolean>;
+    enableTenantLinkedNotification?: pulumi.Input<boolean | undefined>;
     /**
      * The features rule.
      */
-    featuresRule?: pulumi.Input<ResourceProviderManifestPropertiesFeaturesRuleArgs>;
+    featuresRule?: pulumi.Input<ResourceProviderManifestPropertiesFeaturesRuleArgs | undefined>;
     /**
      * The global notification endpoints.
      */
-    globalNotificationEndpoints?: pulumi.Input<pulumi.Input<ResourceProviderEndpointArgs>[]>;
+    globalNotificationEndpoints?: pulumi.Input<pulumi.Input<ResourceProviderEndpointArgs>[] | undefined>;
     /**
      * Legacy namespace.
      */
-    legacyNamespace?: pulumi.Input<string>;
+    legacyNamespace?: pulumi.Input<string | undefined>;
     /**
      * Legacy registrations.
      */
-    legacyRegistrations?: pulumi.Input<pulumi.Input<string>[]>;
+    legacyRegistrations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The linked notification rules.
      */
-    linkedNotificationRules?: pulumi.Input<pulumi.Input<FanoutLinkedNotificationRuleArgs>[]>;
+    linkedNotificationRules?: pulumi.Input<pulumi.Input<FanoutLinkedNotificationRuleArgs>[] | undefined>;
     /**
      * The resource provider management.
      */
-    management?: pulumi.Input<ResourceProviderManifestPropertiesManagementArgs>;
+    management?: pulumi.Input<ResourceProviderManifestPropertiesManagementArgs | undefined>;
     /**
      * Management groups global notification endpoints.
      */
-    managementGroupGlobalNotificationEndpoints?: pulumi.Input<pulumi.Input<ResourceProviderEndpointArgs>[]>;
+    managementGroupGlobalNotificationEndpoints?: pulumi.Input<pulumi.Input<ResourceProviderEndpointArgs>[] | undefined>;
     /**
      * The metadata.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
      * The namespace.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Notification options.
      */
-    notificationOptions?: pulumi.Input<string | enums.NotificationOptions>;
+    notificationOptions?: pulumi.Input<string | enums.NotificationOptions | undefined>;
     /**
      * Notification settings.
      */
-    notificationSettings?: pulumi.Input<ResourceProviderManifestPropertiesNotificationSettingsArgs>;
+    notificationSettings?: pulumi.Input<ResourceProviderManifestPropertiesNotificationSettingsArgs | undefined>;
     /**
      * The notifications.
      */
-    notifications?: pulumi.Input<pulumi.Input<NotificationArgs>[]>;
+    notifications?: pulumi.Input<pulumi.Input<NotificationArgs>[] | undefined>;
     /**
      * Optional features.
      */
-    optionalFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    optionalFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The private resource provider configuration.
      */
-    privateResourceProviderConfiguration?: pulumi.Input<ProviderRegistrationPropertiesPrivateResourceProviderConfigurationArgs>;
+    privateResourceProviderConfiguration?: pulumi.Input<ProviderRegistrationPropertiesPrivateResourceProviderConfigurationArgs | undefined>;
     /**
      * The provider authentication.
      */
-    providerAuthentication?: pulumi.Input<ResourceProviderManifestPropertiesProviderAuthenticationArgs>;
+    providerAuthentication?: pulumi.Input<ResourceProviderManifestPropertiesProviderAuthenticationArgs | undefined>;
     /**
      * The provider authorizations.
      */
-    providerAuthorizations?: pulumi.Input<pulumi.Input<ResourceProviderAuthorizationArgs>[]>;
+    providerAuthorizations?: pulumi.Input<pulumi.Input<ResourceProviderAuthorizationArgs>[] | undefined>;
     /**
      * The provider hub metadata.
      */
-    providerHubMetadata?: pulumi.Input<ProviderRegistrationPropertiesProviderHubMetadataArgs>;
+    providerHubMetadata?: pulumi.Input<ProviderRegistrationPropertiesProviderHubMetadataArgs | undefined>;
     /**
      * The provider type.
      */
-    providerType?: pulumi.Input<string | enums.ResourceProviderType>;
+    providerType?: pulumi.Input<string | enums.ResourceProviderType | undefined>;
     /**
      * The provider version.
      */
-    providerVersion?: pulumi.Input<string>;
+    providerVersion?: pulumi.Input<string | undefined>;
     /**
      * The request header options.
      */
-    requestHeaderOptions?: pulumi.Input<ResourceProviderManifestPropertiesRequestHeaderOptionsArgs>;
+    requestHeaderOptions?: pulumi.Input<ResourceProviderManifestPropertiesRequestHeaderOptionsArgs | undefined>;
     /**
      * The required features.
      */
-    requiredFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource group lock option during move.
      */
-    resourceGroupLockOptionDuringMove?: pulumi.Input<ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveArgs>;
+    resourceGroupLockOptionDuringMove?: pulumi.Input<ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveArgs | undefined>;
     /**
      * resource hydration accounts
      */
-    resourceHydrationAccounts?: pulumi.Input<pulumi.Input<ResourceHydrationAccountArgs>[]>;
+    resourceHydrationAccounts?: pulumi.Input<pulumi.Input<ResourceHydrationAccountArgs>[] | undefined>;
     /**
      * The resource provider authorization rules.
      */
-    resourceProviderAuthorizationRules?: pulumi.Input<ResourceProviderAuthorizationRulesArgs>;
+    resourceProviderAuthorizationRules?: pulumi.Input<ResourceProviderAuthorizationRulesArgs | undefined>;
     /**
      * Response options.
      */
-    responseOptions?: pulumi.Input<ResourceProviderManifestPropertiesResponseOptionsArgs>;
+    responseOptions?: pulumi.Input<ResourceProviderManifestPropertiesResponseOptionsArgs | undefined>;
     /**
      * The service name.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The services.
      */
-    services?: pulumi.Input<pulumi.Input<ResourceProviderServiceArgs>[]>;
+    services?: pulumi.Input<pulumi.Input<ResourceProviderServiceArgs>[] | undefined>;
     /**
      * The subscription lifecycle notification specifications.
      */
-    subscriptionLifecycleNotificationSpecifications?: pulumi.Input<ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsArgs>;
+    subscriptionLifecycleNotificationSpecifications?: pulumi.Input<ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsArgs | undefined>;
     /**
      * The template deployment options.
      */
-    templateDeploymentOptions?: pulumi.Input<ResourceProviderManifestPropertiesTemplateDeploymentOptionsArgs>;
+    templateDeploymentOptions?: pulumi.Input<ResourceProviderManifestPropertiesTemplateDeploymentOptionsArgs | undefined>;
     /**
      * The token auth configuration.
      */
-    tokenAuthConfiguration?: pulumi.Input<TokenAuthConfigurationArgs>;
+    tokenAuthConfiguration?: pulumi.Input<TokenAuthConfigurationArgs | undefined>;
 }
 
 /**
@@ -944,7 +944,7 @@ export interface ProviderRegistrationPropertiesPrivateResourceProviderConfigurat
     /**
      * The allowed subscriptions.
      */
-    allowedSubscriptions?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedSubscriptions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -954,27 +954,27 @@ export interface ProviderRegistrationPropertiesProviderHubMetadataArgs {
     /**
      * The direct RP role definition id.
      */
-    directRpRoleDefinitionId?: pulumi.Input<string>;
+    directRpRoleDefinitionId?: pulumi.Input<string | undefined>;
     /**
      * The global async operation resource type name.
      */
-    globalAsyncOperationResourceTypeName?: pulumi.Input<string>;
+    globalAsyncOperationResourceTypeName?: pulumi.Input<string | undefined>;
     /**
      * The provider authentication.
      */
-    providerAuthentication?: pulumi.Input<ProviderHubMetadataProviderAuthenticationArgs>;
+    providerAuthentication?: pulumi.Input<ProviderHubMetadataProviderAuthenticationArgs | undefined>;
     /**
      * The provider authorizations.
      */
-    providerAuthorizations?: pulumi.Input<pulumi.Input<ResourceProviderAuthorizationArgs>[]>;
+    providerAuthorizations?: pulumi.Input<pulumi.Input<ResourceProviderAuthorizationArgs>[] | undefined>;
     /**
      * The regional async operation resource type name.
      */
-    regionalAsyncOperationResourceTypeName?: pulumi.Input<string>;
+    regionalAsyncOperationResourceTypeName?: pulumi.Input<string | undefined>;
     /**
      * The third party provider authorization.
      */
-    thirdPartyProviderAuthorization?: pulumi.Input<ProviderHubMetadataThirdPartyProviderAuthorizationArgs>;
+    thirdPartyProviderAuthorization?: pulumi.Input<ProviderHubMetadataThirdPartyProviderAuthorizationArgs | undefined>;
 }
 
 /**
@@ -984,112 +984,112 @@ export interface ProviderRegistrationPropertiesSubscriptionLifecycleNotification
     /**
      * The soft delete TTL.
      */
-    softDeleteTTL?: pulumi.Input<string>;
+    softDeleteTTL?: pulumi.Input<string | undefined>;
     /**
      * The subscription state override actions.
      */
-    subscriptionStateOverrideActions?: pulumi.Input<pulumi.Input<SubscriptionStateOverrideActionArgs>[]>;
+    subscriptionStateOverrideActions?: pulumi.Input<pulumi.Input<SubscriptionStateOverrideActionArgs>[] | undefined>;
 }
 
 export interface QuotaRuleArgs {
     /**
      * The location rules.
      */
-    locationRules?: pulumi.Input<pulumi.Input<LocationQuotaRuleArgs>[]>;
+    locationRules?: pulumi.Input<pulumi.Input<LocationQuotaRuleArgs>[] | undefined>;
     /**
      * The quota policy.
      */
-    quotaPolicy?: pulumi.Input<string | enums.QuotaPolicy>;
+    quotaPolicy?: pulumi.Input<string | enums.QuotaPolicy | undefined>;
     /**
      * The required features.
      */
-    requiredFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ResourceAccessRoleArgs {
     /**
      * The actions.
      */
-    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The allowed group claims.
      */
-    allowedGroupClaims?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedGroupClaims?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ResourceConcurrencyControlOptionArgs {
     /**
      * The policy.
      */
-    policy?: pulumi.Input<string | enums.Policy>;
+    policy?: pulumi.Input<string | enums.Policy | undefined>;
 }
 
 export interface ResourceHydrationAccountArgs {
     /**
      * The account name.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The encrypted key.
      */
-    encryptedKey?: pulumi.Input<string>;
+    encryptedKey?: pulumi.Input<string | undefined>;
     /**
      * The max child resource consistency job limit.
      */
-    maxChildResourceConsistencyJobLimit?: pulumi.Input<number>;
+    maxChildResourceConsistencyJobLimit?: pulumi.Input<number | undefined>;
     /**
      * The subscription id.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 export interface ResourceProviderAuthorizationArgs {
     /**
      * The allowed third party extensions.
      */
-    allowedThirdPartyExtensions?: pulumi.Input<pulumi.Input<ThirdPartyExtensionArgs>[]>;
+    allowedThirdPartyExtensions?: pulumi.Input<pulumi.Input<ThirdPartyExtensionArgs>[] | undefined>;
     /**
      * The application id.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The grouping tag.
      */
-    groupingTag?: pulumi.Input<string>;
+    groupingTag?: pulumi.Input<string | undefined>;
     /**
      * Managed by authorization.
      */
-    managedByAuthorization?: pulumi.Input<ResourceProviderAuthorizationManagedByAuthorizationArgs>;
+    managedByAuthorization?: pulumi.Input<ResourceProviderAuthorizationManagedByAuthorizationArgs | undefined>;
     /**
      * The managed by role definition id.
      */
-    managedByRoleDefinitionId?: pulumi.Input<string>;
+    managedByRoleDefinitionId?: pulumi.Input<string | undefined>;
     /**
      * The role definition id.
      */
-    roleDefinitionId?: pulumi.Input<string>;
+    roleDefinitionId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * Managed by authorization.
  */
 export interface ResourceProviderAuthorizationManagedByAuthorizationArgs {
-    additionalAuthorizations?: pulumi.Input<pulumi.Input<AdditionalAuthorizationArgs>[]>;
+    additionalAuthorizations?: pulumi.Input<pulumi.Input<AdditionalAuthorizationArgs>[] | undefined>;
     /**
      * Indicates whether the managed by resource role definition ID should be inherited.
      */
-    allowManagedByInheritance?: pulumi.Input<boolean>;
+    allowManagedByInheritance?: pulumi.Input<boolean | undefined>;
     /**
      * The managed by resource role definition ID for the application.
      */
-    managedByResourceRoleDefinitionId?: pulumi.Input<string>;
+    managedByResourceRoleDefinitionId?: pulumi.Input<string | undefined>;
 }
 
 export interface ResourceProviderAuthorizationRulesArgs {
     /**
      * The async operation polling rules.
      */
-    asyncOperationPollingRules?: pulumi.Input<AsyncOperationPollingRulesArgs>;
+    asyncOperationPollingRules?: pulumi.Input<AsyncOperationPollingRulesArgs | undefined>;
 }
 
 export interface ResourceProviderCapabilitiesArgs {
@@ -1104,46 +1104,46 @@ export interface ResourceProviderCapabilitiesArgs {
     /**
      * The required features.
      */
-    requiredFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ResourceProviderEndpointArgs {
     /**
      * The api versions.
      */
-    apiVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    apiVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the endpoint is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The endpoint type.
      */
-    endpointType?: pulumi.Input<string | enums.EndpointType>;
+    endpointType?: pulumi.Input<string | enums.EndpointType | undefined>;
     /**
      * The endpoint uri.
      */
-    endpointUri?: pulumi.Input<string>;
+    endpointUri?: pulumi.Input<string | undefined>;
     /**
      * The feature rules.
      */
-    featuresRule?: pulumi.Input<ResourceProviderEndpointFeaturesRuleArgs>;
+    featuresRule?: pulumi.Input<ResourceProviderEndpointFeaturesRuleArgs | undefined>;
     /**
      * The locations.
      */
-    locations?: pulumi.Input<pulumi.Input<string>[]>;
+    locations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The required features.
      */
-    requiredFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The sku link.
      */
-    skuLink?: pulumi.Input<string>;
+    skuLink?: pulumi.Input<string | undefined>;
     /**
      * The timeout.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1163,7 +1163,7 @@ export interface ResourceProviderManagementErrorResponseMessageOptionsArgs {
     /**
      * Type of server failure response message.
      */
-    serverFailureResponseMessageType?: pulumi.Input<string | enums.ServerFailureResponseMessageType>;
+    serverFailureResponseMessageType?: pulumi.Input<string | enums.ServerFailureResponseMessageType | undefined>;
 }
 
 /**
@@ -1173,11 +1173,11 @@ export interface ResourceProviderManagementExpeditedRolloutMetadataArgs {
     /**
      * Expedited rollout enabled?
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Expedited rollout intent.
      */
-    expeditedRolloutIntent?: pulumi.Input<string | enums.ExpeditedRolloutIntent>;
+    expeditedRolloutIntent?: pulumi.Input<string | enums.ExpeditedRolloutIntent | undefined>;
 }
 
 /**
@@ -1187,7 +1187,7 @@ export interface ResourceProviderManifestPropertiesDstsConfigurationArgs {
     /**
      * This is a URI property.
      */
-    serviceDnsName?: pulumi.Input<string>;
+    serviceDnsName?: pulumi.Input<string | undefined>;
     /**
      * The service name.
      */
@@ -1211,70 +1211,70 @@ export interface ResourceProviderManifestPropertiesManagementArgs {
     /**
      * The authorization owners.
      */
-    authorizationOwners?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizationOwners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of manifest owners for canary.
      */
-    canaryManifestOwners?: pulumi.Input<pulumi.Input<string>[]>;
+    canaryManifestOwners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Options for error response messages.
      */
-    errorResponseMessageOptions?: pulumi.Input<ResourceProviderManagementErrorResponseMessageOptionsArgs>;
+    errorResponseMessageOptions?: pulumi.Input<ResourceProviderManagementErrorResponseMessageOptionsArgs | undefined>;
     /**
      * Metadata for expedited rollout.
      */
-    expeditedRolloutMetadata?: pulumi.Input<ResourceProviderManagementExpeditedRolloutMetadataArgs>;
+    expeditedRolloutMetadata?: pulumi.Input<ResourceProviderManagementExpeditedRolloutMetadataArgs | undefined>;
     /**
      * List of expedited rollout submitters.
      */
-    expeditedRolloutSubmitters?: pulumi.Input<pulumi.Input<string>[]>;
+    expeditedRolloutSubmitters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The incident contact email.
      */
-    incidentContactEmail?: pulumi.Input<string>;
+    incidentContactEmail?: pulumi.Input<string | undefined>;
     /**
      * The incident routing service.
      */
-    incidentRoutingService?: pulumi.Input<string>;
+    incidentRoutingService?: pulumi.Input<string | undefined>;
     /**
      * The incident routing team.
      */
-    incidentRoutingTeam?: pulumi.Input<string>;
+    incidentRoutingTeam?: pulumi.Input<string | undefined>;
     /**
      * The manifest owners.
      */
-    manifestOwners?: pulumi.Input<pulumi.Input<string>[]>;
+    manifestOwners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The profit center code for the subscription.
      */
-    pcCode?: pulumi.Input<string>;
+    pcCode?: pulumi.Input<string | undefined>;
     /**
      * The profit center program id for the subscription.
      */
-    profitCenterProgramId?: pulumi.Input<string>;
+    profitCenterProgramId?: pulumi.Input<string | undefined>;
     /**
      * The resource access policy.
      */
-    resourceAccessPolicy?: pulumi.Input<enums.ResourceAccessPolicy>;
+    resourceAccessPolicy?: pulumi.Input<enums.ResourceAccessPolicy | undefined>;
     /**
      * The resource access roles.
      */
-    resourceAccessRoles?: pulumi.Input<pulumi.Input<ResourceAccessRoleArgs>[]>;
+    resourceAccessRoles?: pulumi.Input<pulumi.Input<ResourceAccessRoleArgs>[] | undefined>;
     /**
      * The schema owners.
      */
-    schemaOwners?: pulumi.Input<pulumi.Input<string>[]>;
+    schemaOwners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The service tree infos.
      */
-    serviceTreeInfos?: pulumi.Input<pulumi.Input<ServiceTreeInfoArgs>[]>;
+    serviceTreeInfos?: pulumi.Input<pulumi.Input<ServiceTreeInfoArgs>[] | undefined>;
 }
 
 /**
  * Notification settings.
  */
 export interface ResourceProviderManifestPropertiesNotificationSettingsArgs {
-    subscriberSettings?: pulumi.Input<pulumi.Input<SubscriberSettingArgs>[]>;
+    subscriberSettings?: pulumi.Input<pulumi.Input<SubscriberSettingArgs>[] | undefined>;
 }
 
 /**
@@ -1294,11 +1294,11 @@ export interface ResourceProviderManifestPropertiesRequestHeaderOptionsArgs {
     /**
      * The opt in headers.
      */
-    optInHeaders?: pulumi.Input<string | enums.OptInHeaderType>;
+    optInHeaders?: pulumi.Input<string | enums.OptInHeaderType | undefined>;
     /**
      * The opt out headers.
      */
-    optOutHeaders?: pulumi.Input<string | enums.OptOutHeaderType>;
+    optOutHeaders?: pulumi.Input<string | enums.OptOutHeaderType | undefined>;
 }
 
 /**
@@ -1308,14 +1308,14 @@ export interface ResourceProviderManifestPropertiesResourceGroupLockOptionDuring
     /**
      * The action verb that will be blocked when the resource group is locked during move.
      */
-    blockActionVerb?: pulumi.Input<string | enums.BlockActionVerb>;
+    blockActionVerb?: pulumi.Input<string | enums.BlockActionVerb | undefined>;
 }
 
 /**
  * Response options.
  */
 export interface ResourceProviderManifestPropertiesResponseOptionsArgs {
-    serviceClientOptionsType?: pulumi.Input<string | enums.ServiceClientOptionsType>;
+    serviceClientOptionsType?: pulumi.Input<string | enums.ServiceClientOptionsType | undefined>;
 }
 
 /**
@@ -1325,11 +1325,11 @@ export interface ResourceProviderManifestPropertiesTemplateDeploymentOptionsArgs
     /**
      * The preflight options.
      */
-    preflightOptions?: pulumi.Input<pulumi.Input<string | enums.PreflightOption>[]>;
+    preflightOptions?: pulumi.Input<pulumi.Input<string | enums.PreflightOption>[] | undefined>;
     /**
      * Whether preflight is supported.
      */
-    preflightSupported?: pulumi.Input<boolean>;
+    preflightSupported?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1339,78 +1339,78 @@ export interface ResourceProviderServiceArgs {
     /**
      * The service name.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The status.
      */
-    status?: pulumi.Input<string | enums.ServiceStatus>;
+    status?: pulumi.Input<string | enums.ServiceStatus | undefined>;
 }
 
 export interface ResourceTypeEndpointArgs {
     /**
      * Api version.
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
     /**
      * The api versions.
      */
-    apiVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    apiVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The data boundary.
      */
-    dataBoundary?: pulumi.Input<string | enums.DataBoundary>;
+    dataBoundary?: pulumi.Input<string | enums.DataBoundary | undefined>;
     /**
      * The dsts configuration.
      */
-    dstsConfiguration?: pulumi.Input<ResourceTypeEndpointDstsConfigurationArgs>;
+    dstsConfiguration?: pulumi.Input<ResourceTypeEndpointDstsConfigurationArgs | undefined>;
     /**
      * Whether the endpoint is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The endpoint type.
      */
-    endpointType?: pulumi.Input<string | enums.EndpointTypeResourceType>;
+    endpointType?: pulumi.Input<string | enums.EndpointTypeResourceType | undefined>;
     /**
      * The endpoint uri.
      */
-    endpointUri?: pulumi.Input<string>;
+    endpointUri?: pulumi.Input<string | undefined>;
     /**
      * The extensions.
      */
-    extensions?: pulumi.Input<pulumi.Input<ResourceTypeExtensionArgs>[]>;
+    extensions?: pulumi.Input<pulumi.Input<ResourceTypeExtensionArgs>[] | undefined>;
     /**
      * The features rule.
      */
-    featuresRule?: pulumi.Input<ResourceTypeEndpointFeaturesRuleArgs>;
+    featuresRule?: pulumi.Input<ResourceTypeEndpointFeaturesRuleArgs | undefined>;
     /**
      * Resource type endpoint kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
-    kind?: pulumi.Input<string | enums.ResourceTypeEndpointKind>;
+    kind?: pulumi.Input<string | enums.ResourceTypeEndpointKind | undefined>;
     /**
      * The locations.
      */
-    locations?: pulumi.Input<pulumi.Input<string>[]>;
+    locations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The required features.
      */
-    requiredFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The sku link.
      */
-    skuLink?: pulumi.Input<string>;
+    skuLink?: pulumi.Input<string | undefined>;
     /**
      * The timeout.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
     /**
      * The token auth configuration.
      */
-    tokenAuthConfiguration?: pulumi.Input<TokenAuthConfigurationArgs>;
+    tokenAuthConfiguration?: pulumi.Input<TokenAuthConfigurationArgs | undefined>;
     /**
      * List of zones.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 /**
  * resourceTypeEndpointArgsProvideDefaults sets the appropriate defaults for ResourceTypeEndpointArgs
@@ -1429,7 +1429,7 @@ export interface ResourceTypeEndpointDstsConfigurationArgs {
     /**
      * This is a URI property.
      */
-    serviceDnsName?: pulumi.Input<string>;
+    serviceDnsName?: pulumi.Input<string | undefined>;
     /**
      * The service name.
      */
@@ -1450,15 +1450,15 @@ export interface ResourceTypeExtensionArgs {
     /**
      * The endpoint uri.
      */
-    endpointUri?: pulumi.Input<string>;
+    endpointUri?: pulumi.Input<string | undefined>;
     /**
      * The extension categories.
      */
-    extensionCategories?: pulumi.Input<pulumi.Input<string | enums.ExtensionCategory>[]>;
+    extensionCategories?: pulumi.Input<pulumi.Input<string | enums.ExtensionCategory>[] | undefined>;
     /**
      * The timeout.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1468,22 +1468,22 @@ export interface ResourceTypeExtensionOptionsResourceCreationBeginArgs {
     /**
      * The request.
      */
-    request?: pulumi.Input<pulumi.Input<string | enums.ExtensionOptionType>[]>;
+    request?: pulumi.Input<pulumi.Input<string | enums.ExtensionOptionType>[] | undefined>;
     /**
      * The response.
      */
-    response?: pulumi.Input<pulumi.Input<string | enums.ExtensionOptionType>[]>;
+    response?: pulumi.Input<pulumi.Input<string | enums.ExtensionOptionType>[] | undefined>;
 }
 
 export interface ResourceTypeOnBehalfOfTokenArgs {
     /**
      * The action name.
      */
-    actionName?: pulumi.Input<string>;
+    actionName?: pulumi.Input<string | undefined>;
     /**
      * This is a TimeSpan property.
      */
-    lifeTime?: pulumi.Input<string>;
+    lifeTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1493,8 +1493,8 @@ export interface ResourceTypeRegistrationArgs {
     /**
      * Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
-    kind?: pulumi.Input<string | enums.ResourceTypeRegistrationKind>;
-    properties?: pulumi.Input<ResourceTypeRegistrationPropertiesArgs>;
+    kind?: pulumi.Input<string | enums.ResourceTypeRegistrationKind | undefined>;
+    properties?: pulumi.Input<ResourceTypeRegistrationPropertiesArgs | undefined>;
 }
 /**
  * resourceTypeRegistrationArgsProvideDefaults sets the appropriate defaults for ResourceTypeRegistrationArgs
@@ -1510,306 +1510,306 @@ export interface ResourceTypeRegistrationPropertiesArgs {
     /**
      * Add resource list target locations?
      */
-    addResourceListTargetLocations?: pulumi.Input<boolean>;
+    addResourceListTargetLocations?: pulumi.Input<boolean | undefined>;
     /**
      * The additional options.
      */
-    additionalOptions?: pulumi.Input<string | enums.AdditionalOptionsResourceTypeRegistration>;
+    additionalOptions?: pulumi.Input<string | enums.AdditionalOptionsResourceTypeRegistration | undefined>;
     /**
      * The allow empty role assignments.
      */
-    allowEmptyRoleAssignments?: pulumi.Input<boolean>;
+    allowEmptyRoleAssignments?: pulumi.Input<boolean | undefined>;
     /**
      * The allowed resource names.
      */
-    allowedResourceNames?: pulumi.Input<pulumi.Input<AllowedResourceNameArgs>[]>;
+    allowedResourceNames?: pulumi.Input<pulumi.Input<AllowedResourceNameArgs>[] | undefined>;
     /**
      * Allowed template deployment reference actions.
      */
-    allowedTemplateDeploymentReferenceActions?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedTemplateDeploymentReferenceActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The allowed unauthorized actions.
      */
-    allowedUnauthorizedActions?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedUnauthorizedActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The allowed unauthorized actions extensions.
      */
-    allowedUnauthorizedActionsExtensions?: pulumi.Input<pulumi.Input<AllowedUnauthorizedActionsExtensionArgs>[]>;
+    allowedUnauthorizedActionsExtensions?: pulumi.Input<pulumi.Input<AllowedUnauthorizedActionsExtensionArgs>[] | undefined>;
     /**
      * The api profiles.
      */
-    apiProfiles?: pulumi.Input<pulumi.Input<ApiProfileArgs>[]>;
+    apiProfiles?: pulumi.Input<pulumi.Input<ApiProfileArgs>[] | undefined>;
     /**
      * The async operation resource type name.
      */
-    asyncOperationResourceTypeName?: pulumi.Input<string>;
+    asyncOperationResourceTypeName?: pulumi.Input<string | undefined>;
     /**
      * Async timeout rules
      */
-    asyncTimeoutRules?: pulumi.Input<pulumi.Input<AsyncTimeoutRuleArgs>[]>;
+    asyncTimeoutRules?: pulumi.Input<pulumi.Input<AsyncTimeoutRuleArgs>[] | undefined>;
     /**
      * The authorization action mappings
      */
-    authorizationActionMappings?: pulumi.Input<pulumi.Input<AuthorizationActionMappingArgs>[]>;
+    authorizationActionMappings?: pulumi.Input<pulumi.Input<AuthorizationActionMappingArgs>[] | undefined>;
     /**
      * The availability zone rule.
      */
-    availabilityZoneRule?: pulumi.Input<ResourceTypeRegistrationPropertiesAvailabilityZoneRuleArgs>;
+    availabilityZoneRule?: pulumi.Input<ResourceTypeRegistrationPropertiesAvailabilityZoneRuleArgs | undefined>;
     /**
      * Capacity rule.
      */
-    capacityRule?: pulumi.Input<ResourceTypeRegistrationPropertiesCapacityRuleArgs>;
+    capacityRule?: pulumi.Input<ResourceTypeRegistrationPropertiesCapacityRuleArgs | undefined>;
     /**
      * The category.
      */
-    category?: pulumi.Input<string | enums.ResourceTypeCategory>;
+    category?: pulumi.Input<string | enums.ResourceTypeCategory | undefined>;
     /**
      * The check name availability specifications.
      */
-    checkNameAvailabilitySpecifications?: pulumi.Input<ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsArgs>;
+    checkNameAvailabilitySpecifications?: pulumi.Input<ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsArgs | undefined>;
     /**
      * Common API versions for the resource type.
      */
-    commonApiVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    commonApiVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The cross tenant token validation.
      */
-    crossTenantTokenValidation?: pulumi.Input<string | enums.CrossTenantTokenValidation>;
+    crossTenantTokenValidation?: pulumi.Input<string | enums.CrossTenantTokenValidation | undefined>;
     /**
      * The default api version.
      */
-    defaultApiVersion?: pulumi.Input<string>;
+    defaultApiVersion?: pulumi.Input<string | undefined>;
     /**
      * The disallowed action verbs.
      */
-    disallowedActionVerbs?: pulumi.Input<pulumi.Input<string>[]>;
+    disallowedActionVerbs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The disallowed end user operations.
      */
-    disallowedEndUserOperations?: pulumi.Input<pulumi.Input<string>[]>;
+    disallowedEndUserOperations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The dsts configuration.
      */
-    dstsConfiguration?: pulumi.Input<ResourceTypeRegistrationPropertiesDstsConfigurationArgs>;
+    dstsConfiguration?: pulumi.Input<ResourceTypeRegistrationPropertiesDstsConfigurationArgs | undefined>;
     /**
      * Whether async operation is enabled.
      */
-    enableAsyncOperation?: pulumi.Input<boolean>;
+    enableAsyncOperation?: pulumi.Input<boolean | undefined>;
     /**
      * Whether third party S2S is enabled.
      */
-    enableThirdPartyS2S?: pulumi.Input<boolean>;
+    enableThirdPartyS2S?: pulumi.Input<boolean | undefined>;
     /**
      * The extensions.
      */
-    endpoints?: pulumi.Input<pulumi.Input<ResourceTypeEndpointArgs>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<ResourceTypeEndpointArgs>[] | undefined>;
     /**
      * The extended locations.
      */
-    extendedLocations?: pulumi.Input<pulumi.Input<ExtendedLocationOptionsArgs>[]>;
+    extendedLocations?: pulumi.Input<pulumi.Input<ExtendedLocationOptionsArgs>[] | undefined>;
     /**
      * The extension options.
      */
-    extensionOptions?: pulumi.Input<ResourceTypeRegistrationPropertiesExtensionOptionsArgs>;
+    extensionOptions?: pulumi.Input<ResourceTypeRegistrationPropertiesExtensionOptionsArgs | undefined>;
     /**
      * The features rule.
      */
-    featuresRule?: pulumi.Input<ResourceTypeRegistrationPropertiesFeaturesRuleArgs>;
+    featuresRule?: pulumi.Input<ResourceTypeRegistrationPropertiesFeaturesRuleArgs | undefined>;
     /**
      * The frontdoor request mode.
      */
-    frontdoorRequestMode?: pulumi.Input<string | enums.FrontdoorRequestMode>;
+    frontdoorRequestMode?: pulumi.Input<string | enums.FrontdoorRequestMode | undefined>;
     /**
      * Grouping tag.
      */
-    groupingTag?: pulumi.Input<string>;
+    groupingTag?: pulumi.Input<string | undefined>;
     /**
      * The identity management.
      */
-    identityManagement?: pulumi.Input<ResourceTypeRegistrationPropertiesIdentityManagementArgs>;
+    identityManagement?: pulumi.Input<ResourceTypeRegistrationPropertiesIdentityManagementArgs | undefined>;
     /**
      * Whether it is pure proxy.
      */
-    isPureProxy?: pulumi.Input<boolean>;
+    isPureProxy?: pulumi.Input<boolean | undefined>;
     /**
      * The legacy name.
      */
-    legacyName?: pulumi.Input<string>;
+    legacyName?: pulumi.Input<string | undefined>;
     /**
      * The legacy names.
      */
-    legacyNames?: pulumi.Input<pulumi.Input<string>[]>;
+    legacyNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The legacy policy.
      */
-    legacyPolicy?: pulumi.Input<ResourceTypeRegistrationPropertiesLegacyPolicyArgs>;
+    legacyPolicy?: pulumi.Input<ResourceTypeRegistrationPropertiesLegacyPolicyArgs | undefined>;
     /**
      * The linked access checks.
      */
-    linkedAccessChecks?: pulumi.Input<pulumi.Input<LinkedAccessCheckArgs>[]>;
+    linkedAccessChecks?: pulumi.Input<pulumi.Input<LinkedAccessCheckArgs>[] | undefined>;
     /**
      * The linked notification rules.
      */
-    linkedNotificationRules?: pulumi.Input<pulumi.Input<LinkedNotificationRuleArgs>[]>;
+    linkedNotificationRules?: pulumi.Input<pulumi.Input<LinkedNotificationRuleArgs>[] | undefined>;
     /**
      * The linked operation rules.
      */
-    linkedOperationRules?: pulumi.Input<pulumi.Input<LinkedOperationRuleArgs>[]>;
+    linkedOperationRules?: pulumi.Input<pulumi.Input<LinkedOperationRuleArgs>[] | undefined>;
     /**
      * The logging rules.
      */
-    loggingRules?: pulumi.Input<pulumi.Input<LoggingRuleArgs>[]>;
+    loggingRules?: pulumi.Input<pulumi.Input<LoggingRuleArgs>[] | undefined>;
     /**
      * The resource provider management.
      */
-    management?: pulumi.Input<ResourceTypeRegistrationPropertiesManagementArgs>;
+    management?: pulumi.Input<ResourceTypeRegistrationPropertiesManagementArgs | undefined>;
     /**
      * Manifest link.
      */
-    manifestLink?: pulumi.Input<string>;
+    manifestLink?: pulumi.Input<string | undefined>;
     /**
      * Marketplace options.
      */
-    marketplaceOptions?: pulumi.Input<ResourceTypeRegistrationPropertiesMarketplaceOptionsArgs>;
+    marketplaceOptions?: pulumi.Input<ResourceTypeRegistrationPropertiesMarketplaceOptionsArgs | undefined>;
     /**
      * The marketplace type.
      */
-    marketplaceType?: pulumi.Input<enums.MarketplaceType>;
+    marketplaceType?: pulumi.Input<enums.MarketplaceType | undefined>;
     /**
      * The metadata.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
      * The notifications.
      */
-    notifications?: pulumi.Input<pulumi.Input<NotificationArgs>[]>;
+    notifications?: pulumi.Input<pulumi.Input<NotificationArgs>[] | undefined>;
     /**
      * The on behalf of tokens.
      */
-    onBehalfOfTokens?: pulumi.Input<ResourceTypeOnBehalfOfTokenArgs>;
+    onBehalfOfTokens?: pulumi.Input<ResourceTypeOnBehalfOfTokenArgs | undefined>;
     /**
      * The open api configuration.
      */
-    openApiConfiguration?: pulumi.Input<OpenApiConfigurationArgs>;
+    openApiConfiguration?: pulumi.Input<OpenApiConfigurationArgs | undefined>;
     /**
      * The policy execution type.
      */
-    policyExecutionType?: pulumi.Input<string | enums.PolicyExecutionType>;
+    policyExecutionType?: pulumi.Input<string | enums.PolicyExecutionType | undefined>;
     /**
      * The quota rule.
      */
-    quotaRule?: pulumi.Input<QuotaRuleArgs>;
+    quotaRule?: pulumi.Input<QuotaRuleArgs | undefined>;
     /**
      * The regionality.
      */
-    regionality?: pulumi.Input<string | enums.Regionality>;
+    regionality?: pulumi.Input<string | enums.Regionality | undefined>;
     /**
      * The request header options.
      */
-    requestHeaderOptions?: pulumi.Input<ResourceTypeRegistrationPropertiesRequestHeaderOptionsArgs>;
+    requestHeaderOptions?: pulumi.Input<ResourceTypeRegistrationPropertiesRequestHeaderOptionsArgs | undefined>;
     /**
      * The required features.
      */
-    requiredFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource cache options.
      */
-    resourceCache?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceCacheArgs>;
+    resourceCache?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceCacheArgs | undefined>;
     /**
      * The resource concurrency control options.
      */
-    resourceConcurrencyControlOptions?: pulumi.Input<{[key: string]: pulumi.Input<ResourceConcurrencyControlOptionArgs>}>;
+    resourceConcurrencyControlOptions?: pulumi.Input<{[key: string]: pulumi.Input<ResourceConcurrencyControlOptionArgs>} | undefined>;
     /**
      * The resource deletion policy.
      */
-    resourceDeletionPolicy?: pulumi.Input<string | enums.ResourceDeletionPolicy>;
+    resourceDeletionPolicy?: pulumi.Input<string | enums.ResourceDeletionPolicy | undefined>;
     /**
      * The resource graph configuration.
      */
-    resourceGraphConfiguration?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs>;
+    resourceGraphConfiguration?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceGraphConfigurationArgs | undefined>;
     /**
      * Resource management options.
      */
-    resourceManagementOptions?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsArgs>;
+    resourceManagementOptions?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsArgs | undefined>;
     /**
      * The resource move policy.
      */
-    resourceMovePolicy?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceMovePolicyArgs>;
+    resourceMovePolicy?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceMovePolicyArgs | undefined>;
     /**
      * The resource provider authorization rules.
      */
-    resourceProviderAuthorizationRules?: pulumi.Input<ResourceProviderAuthorizationRulesArgs>;
+    resourceProviderAuthorizationRules?: pulumi.Input<ResourceProviderAuthorizationRulesArgs | undefined>;
     /**
      * Resource query management options.
      */
-    resourceQueryManagement?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceQueryManagementArgs>;
+    resourceQueryManagement?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceQueryManagementArgs | undefined>;
     /**
      * The resource sub type.
      */
-    resourceSubType?: pulumi.Input<string | enums.ResourceSubType>;
+    resourceSubType?: pulumi.Input<string | enums.ResourceSubType | undefined>;
     /**
      * Resource type common attribute management.
      */
-    resourceTypeCommonAttributeManagement?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagementArgs>;
+    resourceTypeCommonAttributeManagement?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagementArgs | undefined>;
     /**
      * The resource validation.
      */
-    resourceValidation?: pulumi.Input<string | enums.ResourceValidation>;
+    resourceValidation?: pulumi.Input<string | enums.ResourceValidation | undefined>;
     /**
      * Routing rule.
      */
-    routingRule?: pulumi.Input<ResourceTypeRegistrationPropertiesRoutingRuleArgs>;
+    routingRule?: pulumi.Input<ResourceTypeRegistrationPropertiesRoutingRuleArgs | undefined>;
     /**
      * The resource routing type.
      */
-    routingType?: pulumi.Input<string | enums.RoutingType>;
+    routingType?: pulumi.Input<string | enums.RoutingType | undefined>;
     /**
      * The service tree infos.
      */
-    serviceTreeInfos?: pulumi.Input<pulumi.Input<ServiceTreeInfoArgs>[]>;
+    serviceTreeInfos?: pulumi.Input<pulumi.Input<ServiceTreeInfoArgs>[] | undefined>;
     /**
      * The sku link.
      */
-    skuLink?: pulumi.Input<string>;
+    skuLink?: pulumi.Input<string | undefined>;
     /**
      * The subscription lifecycle notification specifications.
      */
-    subscriptionLifecycleNotificationSpecifications?: pulumi.Input<ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsArgs>;
+    subscriptionLifecycleNotificationSpecifications?: pulumi.Input<ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsArgs | undefined>;
     /**
      * The subscription state rules.
      */
-    subscriptionStateRules?: pulumi.Input<pulumi.Input<SubscriptionStateRuleArgs>[]>;
+    subscriptionStateRules?: pulumi.Input<pulumi.Input<SubscriptionStateRuleArgs>[] | undefined>;
     /**
      * Whether tags are supported.
      */
-    supportsTags?: pulumi.Input<boolean>;
+    supportsTags?: pulumi.Input<boolean | undefined>;
     /**
      * The swagger specifications.
      */
-    swaggerSpecifications?: pulumi.Input<pulumi.Input<SwaggerSpecificationArgs>[]>;
+    swaggerSpecifications?: pulumi.Input<pulumi.Input<SwaggerSpecificationArgs>[] | undefined>;
     /**
      * The template deployment options.
      */
-    templateDeploymentOptions?: pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentOptionsArgs>;
+    templateDeploymentOptions?: pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentOptionsArgs | undefined>;
     /**
      * The template deployment policy.
      */
-    templateDeploymentPolicy?: pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyArgs>;
+    templateDeploymentPolicy?: pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyArgs | undefined>;
     /**
      * The throttling rules.
      */
-    throttlingRules?: pulumi.Input<pulumi.Input<ThrottlingRuleArgs>[]>;
+    throttlingRules?: pulumi.Input<pulumi.Input<ThrottlingRuleArgs>[] | undefined>;
     /**
      * The token auth configuration.
      */
-    tokenAuthConfiguration?: pulumi.Input<TokenAuthConfigurationArgs>;
+    tokenAuthConfiguration?: pulumi.Input<TokenAuthConfigurationArgs | undefined>;
 }
 
 /**
  * The availability zone rule.
  */
 export interface ResourceTypeRegistrationPropertiesAvailabilityZoneRuleArgs {
-    availabilityZonePolicy?: pulumi.Input<string | enums.AvailabilityZonePolicy>;
+    availabilityZonePolicy?: pulumi.Input<string | enums.AvailabilityZonePolicy | undefined>;
 }
 
 /**
@@ -1819,11 +1819,11 @@ export interface ResourceTypeRegistrationPropertiesCapacityRuleArgs {
     /**
      * Capacity policy.
      */
-    capacityPolicy?: pulumi.Input<string | enums.CapacityPolicy>;
+    capacityPolicy?: pulumi.Input<string | enums.CapacityPolicy | undefined>;
     /**
      * Sku alias
      */
-    skuAlias?: pulumi.Input<string>;
+    skuAlias?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1833,11 +1833,11 @@ export interface ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecific
     /**
      * Whether default validation is enabled.
      */
-    enableDefaultValidation?: pulumi.Input<boolean>;
+    enableDefaultValidation?: pulumi.Input<boolean | undefined>;
     /**
      * The resource types with custom validation.
      */
-    resourceTypesWithCustomValidation?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceTypesWithCustomValidation?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1847,7 +1847,7 @@ export interface ResourceTypeRegistrationPropertiesDstsConfigurationArgs {
     /**
      * This is a URI property.
      */
-    serviceDnsName?: pulumi.Input<string>;
+    serviceDnsName?: pulumi.Input<string | undefined>;
     /**
      * The service name.
      */
@@ -1861,7 +1861,7 @@ export interface ResourceTypeRegistrationPropertiesExtensionOptionsArgs {
     /**
      * Resource creation begin.
      */
-    resourceCreationBegin?: pulumi.Input<ResourceTypeExtensionOptionsResourceCreationBeginArgs>;
+    resourceCreationBegin?: pulumi.Input<ResourceTypeExtensionOptionsResourceCreationBeginArgs | undefined>;
 }
 
 /**
@@ -1881,27 +1881,27 @@ export interface ResourceTypeRegistrationPropertiesIdentityManagementArgs {
     /**
      * The application id.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The application ids.
      */
-    applicationIds?: pulumi.Input<pulumi.Input<string>[]>;
+    applicationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The delegation app ids.
      */
-    delegationAppIds?: pulumi.Input<pulumi.Input<string>[]>;
+    delegationAppIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type.
      */
-    type?: pulumi.Input<string | enums.IdentityManagementTypes>;
+    type?: pulumi.Input<string | enums.IdentityManagementTypes | undefined>;
 }
 
 /**
  * The legacy policy.
  */
 export interface ResourceTypeRegistrationPropertiesLegacyPolicyArgs {
-    disallowedConditions?: pulumi.Input<pulumi.Input<LegacyDisallowedConditionArgs>[]>;
-    disallowedLegacyOperations?: pulumi.Input<pulumi.Input<string | enums.LegacyOperation>[]>;
+    disallowedConditions?: pulumi.Input<pulumi.Input<LegacyDisallowedConditionArgs>[] | undefined>;
+    disallowedLegacyOperations?: pulumi.Input<pulumi.Input<string | enums.LegacyOperation>[] | undefined>;
 }
 
 /**
@@ -1911,63 +1911,63 @@ export interface ResourceTypeRegistrationPropertiesManagementArgs {
     /**
      * The authorization owners.
      */
-    authorizationOwners?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizationOwners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of manifest owners for canary.
      */
-    canaryManifestOwners?: pulumi.Input<pulumi.Input<string>[]>;
+    canaryManifestOwners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Options for error response messages.
      */
-    errorResponseMessageOptions?: pulumi.Input<ResourceProviderManagementErrorResponseMessageOptionsArgs>;
+    errorResponseMessageOptions?: pulumi.Input<ResourceProviderManagementErrorResponseMessageOptionsArgs | undefined>;
     /**
      * Metadata for expedited rollout.
      */
-    expeditedRolloutMetadata?: pulumi.Input<ResourceProviderManagementExpeditedRolloutMetadataArgs>;
+    expeditedRolloutMetadata?: pulumi.Input<ResourceProviderManagementExpeditedRolloutMetadataArgs | undefined>;
     /**
      * List of expedited rollout submitters.
      */
-    expeditedRolloutSubmitters?: pulumi.Input<pulumi.Input<string>[]>;
+    expeditedRolloutSubmitters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The incident contact email.
      */
-    incidentContactEmail?: pulumi.Input<string>;
+    incidentContactEmail?: pulumi.Input<string | undefined>;
     /**
      * The incident routing service.
      */
-    incidentRoutingService?: pulumi.Input<string>;
+    incidentRoutingService?: pulumi.Input<string | undefined>;
     /**
      * The incident routing team.
      */
-    incidentRoutingTeam?: pulumi.Input<string>;
+    incidentRoutingTeam?: pulumi.Input<string | undefined>;
     /**
      * The manifest owners.
      */
-    manifestOwners?: pulumi.Input<pulumi.Input<string>[]>;
+    manifestOwners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The profit center code for the subscription.
      */
-    pcCode?: pulumi.Input<string>;
+    pcCode?: pulumi.Input<string | undefined>;
     /**
      * The profit center program id for the subscription.
      */
-    profitCenterProgramId?: pulumi.Input<string>;
+    profitCenterProgramId?: pulumi.Input<string | undefined>;
     /**
      * The resource access policy.
      */
-    resourceAccessPolicy?: pulumi.Input<enums.ResourceAccessPolicy>;
+    resourceAccessPolicy?: pulumi.Input<enums.ResourceAccessPolicy | undefined>;
     /**
      * The resource access roles.
      */
-    resourceAccessRoles?: pulumi.Input<pulumi.Input<ResourceAccessRoleArgs>[]>;
+    resourceAccessRoles?: pulumi.Input<pulumi.Input<ResourceAccessRoleArgs>[] | undefined>;
     /**
      * The schema owners.
      */
-    schemaOwners?: pulumi.Input<pulumi.Input<string>[]>;
+    schemaOwners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The service tree infos.
      */
-    serviceTreeInfos?: pulumi.Input<pulumi.Input<ServiceTreeInfoArgs>[]>;
+    serviceTreeInfos?: pulumi.Input<pulumi.Input<ServiceTreeInfoArgs>[] | undefined>;
 }
 
 /**
@@ -1977,7 +1977,7 @@ export interface ResourceTypeRegistrationPropertiesMarketplaceOptionsArgs {
     /**
      * Add-on plan conversion allowed.
      */
-    addOnPlanConversionAllowed?: pulumi.Input<boolean>;
+    addOnPlanConversionAllowed?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1987,11 +1987,11 @@ export interface ResourceTypeRegistrationPropertiesRequestHeaderOptionsArgs {
     /**
      * The opt in headers.
      */
-    optInHeaders?: pulumi.Input<string | enums.OptInHeaderType>;
+    optInHeaders?: pulumi.Input<string | enums.OptInHeaderType | undefined>;
     /**
      * The opt out headers.
      */
-    optOutHeaders?: pulumi.Input<string | enums.OptOutHeaderType>;
+    optOutHeaders?: pulumi.Input<string | enums.OptOutHeaderType | undefined>;
 }
 
 /**
@@ -2001,11 +2001,11 @@ export interface ResourceTypeRegistrationPropertiesResourceCacheArgs {
     /**
      * Enable resource cache.
      */
-    enableResourceCache?: pulumi.Input<boolean>;
+    enableResourceCache?: pulumi.Input<boolean | undefined>;
     /**
      * Resource cache expiration timespan. This is a TimeSpan property.
      */
-    resourceCacheExpirationTimespan?: pulumi.Input<string>;
+    resourceCacheExpirationTimespan?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2015,11 +2015,11 @@ export interface ResourceTypeRegistrationPropertiesResourceGraphConfigurationArg
     /**
      * The api version.
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
     /**
      * Whether it's enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -2029,15 +2029,15 @@ export interface ResourceTypeRegistrationPropertiesResourceManagementOptionsArgs
     /**
      * Batch provisioning support.
      */
-    batchProvisioningSupport?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportArgs>;
+    batchProvisioningSupport?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportArgs | undefined>;
     /**
      * Delete dependencies.
      */
-    deleteDependencies?: pulumi.Input<pulumi.Input<DeleteDependencyArgs>[]>;
+    deleteDependencies?: pulumi.Input<pulumi.Input<DeleteDependencyArgs>[] | undefined>;
     /**
      * Nested provisioning support.
      */
-    nestedProvisioningSupport?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportArgs>;
+    nestedProvisioningSupport?: pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupportArgs | undefined>;
 }
 
 /**
@@ -2047,7 +2047,7 @@ export interface ResourceTypeRegistrationPropertiesResourceManagementOptionsBatc
     /**
      * Supported operations.
      */
-    supportedOperations?: pulumi.Input<string | enums.SupportedOperations>;
+    supportedOperations?: pulumi.Input<string | enums.SupportedOperations | undefined>;
 }
 
 /**
@@ -2057,7 +2057,7 @@ export interface ResourceTypeRegistrationPropertiesResourceManagementOptionsNest
     /**
      * Minimum API version.
      */
-    minimumApiVersion?: pulumi.Input<string>;
+    minimumApiVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2067,15 +2067,15 @@ export interface ResourceTypeRegistrationPropertiesResourceMovePolicyArgs {
     /**
      * Whether cross resource group move is enabled.
      */
-    crossResourceGroupMoveEnabled?: pulumi.Input<boolean>;
+    crossResourceGroupMoveEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether cross subscription move is enabled.
      */
-    crossSubscriptionMoveEnabled?: pulumi.Input<boolean>;
+    crossSubscriptionMoveEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether validation is required.
      */
-    validationRequired?: pulumi.Input<boolean>;
+    validationRequired?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -2085,7 +2085,7 @@ export interface ResourceTypeRegistrationPropertiesResourceQueryManagementArgs {
     /**
      * Filter option.
      */
-    filterOption?: pulumi.Input<string | enums.FilterOption>;
+    filterOption?: pulumi.Input<string | enums.FilterOption | undefined>;
 }
 
 /**
@@ -2095,7 +2095,7 @@ export interface ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeMa
     /**
      * Common api versions merge mode.
      */
-    commonApiVersionsMergeMode?: pulumi.Input<string | enums.CommonApiVersionsMergeMode>;
+    commonApiVersionsMergeMode?: pulumi.Input<string | enums.CommonApiVersionsMergeMode | undefined>;
 }
 
 /**
@@ -2105,7 +2105,7 @@ export interface ResourceTypeRegistrationPropertiesRoutingRuleArgs {
     /**
      * Hosted resource type.
      */
-    hostResourceType?: pulumi.Input<string>;
+    hostResourceType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2115,11 +2115,11 @@ export interface ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotifica
     /**
      * The soft delete TTL.
      */
-    softDeleteTTL?: pulumi.Input<string>;
+    softDeleteTTL?: pulumi.Input<string | undefined>;
     /**
      * The subscription state override actions.
      */
-    subscriptionStateOverrideActions?: pulumi.Input<pulumi.Input<SubscriptionStateOverrideActionArgs>[]>;
+    subscriptionStateOverrideActions?: pulumi.Input<pulumi.Input<SubscriptionStateOverrideActionArgs>[] | undefined>;
 }
 
 /**
@@ -2129,11 +2129,11 @@ export interface ResourceTypeRegistrationPropertiesTemplateDeploymentOptionsArgs
     /**
      * The preflight options.
      */
-    preflightOptions?: pulumi.Input<pulumi.Input<string | enums.PreflightOption>[]>;
+    preflightOptions?: pulumi.Input<pulumi.Input<string | enums.PreflightOption>[] | undefined>;
     /**
      * Whether preflight is supported.
      */
-    preflightSupported?: pulumi.Input<boolean>;
+    preflightSupported?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -2147,7 +2147,7 @@ export interface ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyArgs 
     /**
      * The preflight notifications.
      */
-    preflightNotifications?: pulumi.Input<string | enums.TemplateDeploymentPreflightNotifications>;
+    preflightNotifications?: pulumi.Input<string | enums.TemplateDeploymentPreflightNotifications | undefined>;
     /**
      * The preflight options.
      */
@@ -2158,15 +2158,15 @@ export interface ServiceTreeInfoArgs {
     /**
      * The component id.
      */
-    componentId?: pulumi.Input<string>;
+    componentId?: pulumi.Input<string | undefined>;
     /**
      * The readiness.
      */
-    readiness?: pulumi.Input<string | enums.Readiness>;
+    readiness?: pulumi.Input<string | enums.Readiness | undefined>;
     /**
      * The service id.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SkuCapabilityArgs {
@@ -2184,7 +2184,7 @@ export interface SkuCostArgs {
     /**
      * The extended unit.
      */
-    extendedUnit?: pulumi.Input<string>;
+    extendedUnit?: pulumi.Input<string | undefined>;
     /**
      * The meter id.
      */
@@ -2192,14 +2192,14 @@ export interface SkuCostArgs {
     /**
      * The quantity.
      */
-    quantity?: pulumi.Input<number>;
+    quantity?: pulumi.Input<number | undefined>;
 }
 
 export interface SkuLocationInfoArgs {
     /**
      * The extended locations.
      */
-    extendedLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    extendedLocations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The location.
      */
@@ -2207,15 +2207,15 @@ export interface SkuLocationInfoArgs {
     /**
      * The type.
      */
-    type?: pulumi.Input<string | enums.ExtendedLocationType>;
+    type?: pulumi.Input<string | enums.ExtendedLocationType | undefined>;
     /**
      * The zone details.
      */
-    zoneDetails?: pulumi.Input<pulumi.Input<SkuZoneDetailArgs>[]>;
+    zoneDetails?: pulumi.Input<pulumi.Input<SkuZoneDetailArgs>[] | undefined>;
     /**
      * The zones.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface SkuResourcePropertiesArgs {
@@ -2229,31 +2229,31 @@ export interface SkuSettingArgs {
     /**
      * The capabilities.
      */
-    capabilities?: pulumi.Input<pulumi.Input<SkuCapabilityArgs>[]>;
+    capabilities?: pulumi.Input<pulumi.Input<SkuCapabilityArgs>[] | undefined>;
     /**
      * The capacity.
      */
-    capacity?: pulumi.Input<SkuSettingCapacityArgs>;
+    capacity?: pulumi.Input<SkuSettingCapacityArgs | undefined>;
     /**
      * The costs.
      */
-    costs?: pulumi.Input<pulumi.Input<SkuCostArgs>[]>;
+    costs?: pulumi.Input<pulumi.Input<SkuCostArgs>[] | undefined>;
     /**
      * The family.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * The kind.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The location info.
      */
-    locationInfo?: pulumi.Input<pulumi.Input<SkuLocationInfoArgs>[]>;
+    locationInfo?: pulumi.Input<pulumi.Input<SkuLocationInfoArgs>[] | undefined>;
     /**
      * The locations.
      */
-    locations?: pulumi.Input<pulumi.Input<string>[]>;
+    locations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name.
      */
@@ -2261,19 +2261,19 @@ export interface SkuSettingArgs {
     /**
      * The required features.
      */
-    requiredFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The required quota ids.
      */
-    requiredQuotaIds?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredQuotaIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The size.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * The tier.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2283,11 +2283,11 @@ export interface SkuSettingCapacityArgs {
     /**
      * The default.
      */
-    default?: pulumi.Input<number>;
+    default?: pulumi.Input<number | undefined>;
     /**
      * The maximum.
      */
-    maximum?: pulumi.Input<number>;
+    maximum?: pulumi.Input<number | undefined>;
     /**
      * The minimum.
      */
@@ -2295,25 +2295,25 @@ export interface SkuSettingCapacityArgs {
     /**
      * The scale type.
      */
-    scaleType?: pulumi.Input<string | enums.SkuScaleType>;
+    scaleType?: pulumi.Input<string | enums.SkuScaleType | undefined>;
 }
 
 export interface SkuZoneDetailArgs {
     /**
      * The capabilities.
      */
-    capabilities?: pulumi.Input<pulumi.Input<SkuCapabilityArgs>[]>;
+    capabilities?: pulumi.Input<pulumi.Input<SkuCapabilityArgs>[] | undefined>;
     /**
      * The name.
      */
-    name?: pulumi.Input<pulumi.Input<string>[]>;
+    name?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface SubscriberSettingArgs {
     /**
      * The filter rules.
      */
-    filterRules?: pulumi.Input<pulumi.Input<FilterRuleArgs>[]>;
+    filterRules?: pulumi.Input<pulumi.Input<FilterRuleArgs>[] | undefined>;
 }
 
 export interface SubscriptionStateOverrideActionArgs {
@@ -2331,36 +2331,36 @@ export interface SubscriptionStateRuleArgs {
     /**
      * The allowed actions.
      */
-    allowedActions?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The subscription state.
      */
-    state?: pulumi.Input<string | enums.SubscriptionState>;
+    state?: pulumi.Input<string | enums.SubscriptionState | undefined>;
 }
 
 export interface SwaggerSpecificationArgs {
     /**
      * The api versions.
      */
-    apiVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    apiVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The swagger spec folder uri.
      */
-    swaggerSpecFolderUri?: pulumi.Input<string>;
+    swaggerSpecFolderUri?: pulumi.Input<string | undefined>;
 }
 
 export interface ThirdPartyExtensionArgs {
     /**
      * Name of third party extension.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface ThrottlingMetricArgs {
     /**
      * The interval.
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * The limit.
      */
@@ -2379,7 +2379,7 @@ export interface ThrottlingRuleArgs {
     /**
      * The application id.
      */
-    applicationId?: pulumi.Input<pulumi.Input<string>[]>;
+    applicationId?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The metrics.
      */
@@ -2387,22 +2387,22 @@ export interface ThrottlingRuleArgs {
     /**
      * The required features.
      */
-    requiredFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    requiredFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface TokenAuthConfigurationArgs {
     /**
      * The authentication scheme.
      */
-    authenticationScheme?: pulumi.Input<string | enums.AuthenticationScheme>;
+    authenticationScheme?: pulumi.Input<string | enums.AuthenticationScheme | undefined>;
     /**
      * Whether certification authentication fallback is disabled.
      */
-    disableCertificateAuthenticationFallback?: pulumi.Input<boolean>;
+    disableCertificateAuthenticationFallback?: pulumi.Input<boolean | undefined>;
     /**
      * The signed request scope.
      */
-    signedRequestScope?: pulumi.Input<string | enums.SignedRequestScope>;
+    signedRequestScope?: pulumi.Input<string | enums.SignedRequestScope | undefined>;
 }
 
 /**

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkspaceApiOperation extends pulumi.CustomResource {
     /**
@@ -142,7 +142,7 @@ export class WorkspaceApiOperation extends pulumi.CustomResource {
             resourceInputs["urlTemplate"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20230901preview:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20240501:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20250301preview:WorkspaceApiOperation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20230901preview:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20240501:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20250301preview:WorkspaceApiOperation" }, { type: "azure-native:apimanagement/v20250901preview:WorkspaceApiOperation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceApiOperation.__pulumiType, name, resourceInputs, opts);
     }
@@ -159,7 +159,7 @@ export interface WorkspaceApiOperationArgs {
     /**
      * Description of the operation. May include HTML formatting tags.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Operation Name.
      */
@@ -171,15 +171,15 @@ export interface WorkspaceApiOperationArgs {
     /**
      * Operation identifier within an API. Must be unique in the current API Management service instance.
      */
-    operationId?: pulumi.Input<string>;
+    operationId?: pulumi.Input<string | undefined>;
     /**
      * Operation Policies
      */
-    policies?: pulumi.Input<string>;
+    policies?: pulumi.Input<string | undefined>;
     /**
      * An entity containing request details.
      */
-    request?: pulumi.Input<types.inputs.RequestContractArgs>;
+    request?: pulumi.Input<types.inputs.RequestContractArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -187,7 +187,7 @@ export interface WorkspaceApiOperationArgs {
     /**
      * Array of Operation responses.
      */
-    responses?: pulumi.Input<pulumi.Input<types.inputs.ResponseContractArgs>[]>;
+    responses?: pulumi.Input<pulumi.Input<types.inputs.ResponseContractArgs>[] | undefined>;
     /**
      * The name of the API Management service.
      */
@@ -195,7 +195,7 @@ export interface WorkspaceApiOperationArgs {
     /**
      * Collection of URL template parameters.
      */
-    templateParameters?: pulumi.Input<pulumi.Input<types.inputs.ParameterContractArgs>[]>;
+    templateParameters?: pulumi.Input<pulumi.Input<types.inputs.ParameterContractArgs>[] | undefined>;
     /**
      * Relative URL template identifying the target resource for this operation. May include parameters. Example: /customers/{cid}/orders/{oid}/?date={date}
      */

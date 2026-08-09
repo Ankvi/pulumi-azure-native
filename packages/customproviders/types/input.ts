@@ -15,7 +15,7 @@ export interface CustomRPActionRouteDefinitionArgs {
     /**
      * The routing types that are supported for action requests.
      */
-    routingType?: pulumi.Input<string | enums.ActionRouting>;
+    routingType?: pulumi.Input<string | enums.ActionRouting | undefined>;
 }
 
 /**
@@ -33,7 +33,7 @@ export interface CustomRPResourceTypeRouteDefinitionArgs {
     /**
      * The routing types that are supported for resource requests.
      */
-    routingType?: pulumi.Input<string | enums.ResourceTypeRouting>;
+    routingType?: pulumi.Input<string | enums.ResourceTypeRouting | undefined>;
 }
 
 /**
@@ -47,5 +47,5 @@ export interface CustomRPValidationsArgs {
     /**
      * The type of validation to run against a matching request.
      */
-    validationType?: pulumi.Input<string | enums.ValidationType>;
+    validationType?: pulumi.Input<string | enums.ValidationType | undefined>;
 }

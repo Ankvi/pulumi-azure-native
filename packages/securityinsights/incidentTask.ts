@@ -154,11 +154,11 @@ export interface IncidentTaskArgs {
     /**
      * Information on the client (user or application) that made some action
      */
-    createdBy?: pulumi.Input<types.inputs.ClientInfoArgs>;
+    createdBy?: pulumi.Input<types.inputs.ClientInfoArgs | undefined>;
     /**
      * The description of the task
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Incident ID
      */
@@ -166,11 +166,11 @@ export interface IncidentTaskArgs {
     /**
      * Incident task ID
      */
-    incidentTaskId?: pulumi.Input<string>;
+    incidentTaskId?: pulumi.Input<string | undefined>;
     /**
      * Information on the client (user or application) that made some action
      */
-    lastModifiedBy?: pulumi.Input<types.inputs.ClientInfoArgs>;
+    lastModifiedBy?: pulumi.Input<types.inputs.ClientInfoArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -201,7 +201,7 @@ export interface EventHubEventSourceArgs {
     /**
      * Name of the event source.
      */
-    eventSourceName?: pulumi.Input<string>;
+    eventSourceName?: pulumi.Input<string | undefined>;
     /**
      * The resource id of the event source in Azure Resource Manager.
      */
@@ -218,11 +218,11 @@ export interface EventHubEventSourceArgs {
     /**
      * An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events.
      */
-    localTimestamp?: pulumi.Input<types.inputs.LocalTimestampArgs>;
+    localTimestamp?: pulumi.Input<types.inputs.LocalTimestampArgs | undefined>;
     /**
      * The location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of an Azure Resource group.
      */
@@ -238,17 +238,17 @@ export interface EventHubEventSourceArgs {
     /**
      * Key-value pairs of additional properties for the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ISO8601 UTC datetime with seconds precision (milliseconds are optional), specifying the date and time that will be the starting point for Events to be consumed.
      */
-    time?: pulumi.Input<string>;
+    time?: pulumi.Input<string | undefined>;
     /**
      * The event property that will be used as the event source's timestamp. If a value isn't specified for timestampPropertyName, or if null or empty-string is specified, the event creation time will be used.
      */
-    timestampPropertyName?: pulumi.Input<string>;
+    timestampPropertyName?: pulumi.Input<string | undefined>;
     /**
      * The type of the ingressStartAt, It can be "EarliestAvailable", "EventSourceCreationTime", "CustomEnqueuedTime".
      */
-    type?: pulumi.Input<string | types.enums.IngressStartAtType>;
+    type?: pulumi.Input<string | types.enums.IngressStartAtType | undefined>;
 }

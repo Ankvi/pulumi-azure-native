@@ -7,11 +7,11 @@ export interface CustomerManagedKeyEncryptionPropertiesArgs {
     /**
      * All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
      */
-    keyEncryptionKeyIdentity?: pulumi.Input<CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentityArgs>;
+    keyEncryptionKeyIdentity?: pulumi.Input<CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentityArgs | undefined>;
     /**
      * key encryption key Url, with or without a version. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. Key auto rotation is enabled by providing a key uri without version. Otherwise, customer is responsible for rotating the key. The keyEncryptionKeyIdentity(either SystemAssigned or UserAssigned) should have permission to access this key url.
      */
-    keyEncryptionKeyUrl?: pulumi.Input<string>;
+    keyEncryptionKeyUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -21,11 +21,11 @@ export interface CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentityA
     /**
      * Values can be SystemAssigned or UserAssigned
      */
-    identityType?: pulumi.Input<enums.CmkIdentityType>;
+    identityType?: pulumi.Input<enums.CmkIdentityType | undefined>;
     /**
      * user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.
      */
-    userAssignedIdentityResourceId?: pulumi.Input<string>;
+    userAssignedIdentityResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -35,7 +35,7 @@ export interface EncryptionPropertiesArgs {
     /**
      * All Customer-managed key encryption properties for the resource.
      */
-    customerManagedKeyEncryption?: pulumi.Input<CustomerManagedKeyEncryptionPropertiesArgs>;
+    customerManagedKeyEncryption?: pulumi.Input<CustomerManagedKeyEncryptionPropertiesArgs | undefined>;
 }
 
 /**
@@ -45,11 +45,11 @@ export interface IdentityArgs {
     /**
      * The identity type.
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
     /**
      * The list of user identities associated with the resource.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -59,13 +59,13 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }

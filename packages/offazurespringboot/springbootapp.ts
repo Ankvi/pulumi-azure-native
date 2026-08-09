@@ -100,7 +100,7 @@ export interface SpringbootappArgs {
     /**
      * The springbootapps resource definition.
      */
-    properties?: pulumi.Input<types.inputs.SpringbootappsPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SpringbootappsPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -112,5 +112,5 @@ export interface SpringbootappArgs {
     /**
      * The springbootapps name.
      */
-    springbootappsName?: pulumi.Input<string>;
+    springbootappsName?: pulumi.Input<string | undefined>;
 }

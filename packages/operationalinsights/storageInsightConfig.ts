@@ -129,11 +129,11 @@ export interface StorageInsightConfigArgs {
     /**
      * The names of the blob containers that the workspace should read
      */
-    containers?: pulumi.Input<pulumi.Input<string>[]>;
+    containers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ETag of the storage insight.
      */
-    eTag?: pulumi.Input<string>;
+    eTag?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -145,15 +145,15 @@ export interface StorageInsightConfigArgs {
     /**
      * Name of the storageInsightsConfigs resource
      */
-    storageInsightName?: pulumi.Input<string>;
+    storageInsightName?: pulumi.Input<string | undefined>;
     /**
      * The names of the Azure tables that the workspace should read
      */
-    tables?: pulumi.Input<pulumi.Input<string>[]>;
+    tables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the workspace.
      */

@@ -5,7 +5,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  *
  * Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
     /**
@@ -101,7 +101,7 @@ export class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20210201preview:NspProfile" }, { type: "azure-native:network/v20230701preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20230701preview:NspProfile" }, { type: "azure-native:network/v20230801preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20230801preview:NspProfile" }, { type: "azure-native:network/v20240601preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20240701:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20241001:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20250101:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20250301:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20250501:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network:NspProfile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20210201preview:NspProfile" }, { type: "azure-native:network/v20230701preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20230701preview:NspProfile" }, { type: "azure-native:network/v20230801preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20230801preview:NspProfile" }, { type: "azure-native:network/v20240601preview:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20240701:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20241001:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20250101:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20250301:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20250501:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network/v20250701:NetworkSecurityPerimeterProfile" }, { type: "azure-native:network:NspProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkSecurityPerimeterProfile.__pulumiType, name, resourceInputs, opts);
     }
@@ -114,11 +114,11 @@ export interface NetworkSecurityPerimeterProfileArgs {
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the network security perimeter.
      */
@@ -126,7 +126,7 @@ export interface NetworkSecurityPerimeterProfileArgs {
     /**
      * The name of the NSP profile.
      */
-    profileName?: pulumi.Input<string>;
+    profileName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group.
      */
@@ -134,5 +134,5 @@ export interface NetworkSecurityPerimeterProfileArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

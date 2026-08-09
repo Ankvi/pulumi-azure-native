@@ -7,15 +7,15 @@ export interface AssignmentLockSettingsArgs {
     /**
      * List of management operations that are excluded from blueprint locks. Up to 200 actions are permitted. If the lock mode is set to 'AllResourcesReadOnly', then the following actions are automatically appended to 'excludedActions': '*&#47;read', 'Microsoft.Network/virtualNetworks/subnets/join/action' and 'Microsoft.Authorization/locks/delete'. If the lock mode is set to 'AllResourcesDoNotDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will get removed.
      */
-    excludedActions?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of AAD principals excluded from blueprint locks. Up to 5 principals are permitted.
      */
-    excludedPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedPrincipals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Lock mode.
      */
-    mode?: pulumi.Input<string | enums.AssignmentLockMode>;
+    mode?: pulumi.Input<string | enums.AssignmentLockMode | undefined>;
 }
 
 /**
@@ -35,11 +35,11 @@ export interface ManagedServiceIdentityArgs {
     /**
      * Azure Active Directory principal ID associated with this Identity.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * ID of the Azure Active Directory.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Type of the managed identity.
      */
@@ -47,7 +47,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
      */
-    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserAssignedIdentityArgs>}>;
+    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserAssignedIdentityArgs>} | undefined>;
 }
 
 /**
@@ -57,23 +57,23 @@ export interface ParameterDefinitionArgs {
     /**
      * Array of allowed values for this parameter.
      */
-    allowedValues?: pulumi.Input<any[]>;
+    allowedValues?: pulumi.Input<any[] | undefined>;
     /**
      * Default Value for this parameter.
      */
-    defaultValue?: any;
+    defaultValue?: any | undefined;
     /**
      * Description of this parameter/resourceGroup.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * DisplayName of this parameter/resourceGroup.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
      */
-    strongType?: pulumi.Input<string>;
+    strongType?: pulumi.Input<string | undefined>;
     /**
      * Allowed data types for Resource Manager template parameters.
      */
@@ -87,11 +87,11 @@ export interface ParameterValueArgs {
     /**
      * Parameter value as reference type.
      */
-    reference?: pulumi.Input<SecretValueReferenceArgs>;
+    reference?: pulumi.Input<SecretValueReferenceArgs | undefined>;
     /**
      * Parameter value. Any valid JSON value is allowed including objects, arrays, strings, numbers and booleans.
      */
-    value?: any;
+    value?: any | undefined;
 }
 
 /**
@@ -101,31 +101,31 @@ export interface ResourceGroupDefinitionArgs {
     /**
      * Artifacts which need to be deployed before this resource group.
      */
-    dependsOn?: pulumi.Input<pulumi.Input<string>[]>;
+    dependsOn?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of this parameter/resourceGroup.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * DisplayName of this parameter/resourceGroup.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Location of this resourceGroup. Leave empty if the resource group location will be specified during the blueprint assignment.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of this resourceGroup. Leave empty if the resource group name will be specified during the blueprint assignment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
      */
-    strongType?: pulumi.Input<string>;
+    strongType?: pulumi.Input<string | undefined>;
     /**
      * Tags to be assigned to this resource group.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -135,11 +135,11 @@ export interface ResourceGroupValueArgs {
     /**
      * Location of the resource group.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,7 +157,7 @@ export interface SecretValueReferenceArgs {
     /**
      * The version of the secret to use. If left blank, the latest version of the secret is used.
      */
-    secretVersion?: pulumi.Input<string>;
+    secretVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -167,9 +167,9 @@ export interface UserAssignedIdentityArgs {
     /**
      * Client App Id associated with this identity.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Azure Active Directory principal ID associated with this Identity.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
 }

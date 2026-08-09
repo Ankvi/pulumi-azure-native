@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Description of a backup which will be performed.
  *
- * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+ * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppBackupConfiguration extends pulumi.CustomResource {
     /**
@@ -93,7 +93,7 @@ export class WebAppBackupConfiguration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'storageAccountUrl'");
             }
             resourceInputs["backupName"] = args?.backupName;
-            resourceInputs["backupSchedule"] = args ? (args.backupSchedule ? pulumi.output(args.backupSchedule).apply(types.inputs.backupScheduleArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["backupSchedule"] = args ? pulumi.output(args.backupSchedule).apply(v => v === undefined ? undefined : types.inputs.backupScheduleArgsProvideDefaults(v)) : undefined;
             resourceInputs["databases"] = args?.databases;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["kind"] = args?.kind;
@@ -114,7 +114,7 @@ export class WebAppBackupConfiguration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppBackupConfiguration" }, { type: "azure-native:web/v20160801:WebAppBackupConfiguration" }, { type: "azure-native:web/v20180201:WebAppBackupConfiguration" }, { type: "azure-native:web/v20181101:WebAppBackupConfiguration" }, { type: "azure-native:web/v20190801:WebAppBackupConfiguration" }, { type: "azure-native:web/v20200601:WebAppBackupConfiguration" }, { type: "azure-native:web/v20200901:WebAppBackupConfiguration" }, { type: "azure-native:web/v20201001:WebAppBackupConfiguration" }, { type: "azure-native:web/v20201201:WebAppBackupConfiguration" }, { type: "azure-native:web/v20210101:WebAppBackupConfiguration" }, { type: "azure-native:web/v20210115:WebAppBackupConfiguration" }, { type: "azure-native:web/v20210201:WebAppBackupConfiguration" }, { type: "azure-native:web/v20210301:WebAppBackupConfiguration" }, { type: "azure-native:web/v20220301:WebAppBackupConfiguration" }, { type: "azure-native:web/v20220901:WebAppBackupConfiguration" }, { type: "azure-native:web/v20230101:WebAppBackupConfiguration" }, { type: "azure-native:web/v20231201:WebAppBackupConfiguration" }, { type: "azure-native:web/v20240401:WebAppBackupConfiguration" }, { type: "azure-native:web/v20241101:WebAppBackupConfiguration" }, { type: "azure-native:web/v20250301:WebAppBackupConfiguration" }, { type: "azure-native:web/v20250501:WebAppBackupConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppBackupConfiguration" }, { type: "azure-native:web/v20160801:WebAppBackupConfiguration" }, { type: "azure-native:web/v20180201:WebAppBackupConfiguration" }, { type: "azure-native:web/v20181101:WebAppBackupConfiguration" }, { type: "azure-native:web/v20190801:WebAppBackupConfiguration" }, { type: "azure-native:web/v20200601:WebAppBackupConfiguration" }, { type: "azure-native:web/v20200901:WebAppBackupConfiguration" }, { type: "azure-native:web/v20201001:WebAppBackupConfiguration" }, { type: "azure-native:web/v20201201:WebAppBackupConfiguration" }, { type: "azure-native:web/v20210101:WebAppBackupConfiguration" }, { type: "azure-native:web/v20210115:WebAppBackupConfiguration" }, { type: "azure-native:web/v20210201:WebAppBackupConfiguration" }, { type: "azure-native:web/v20210301:WebAppBackupConfiguration" }, { type: "azure-native:web/v20220301:WebAppBackupConfiguration" }, { type: "azure-native:web/v20220901:WebAppBackupConfiguration" }, { type: "azure-native:web/v20230101:WebAppBackupConfiguration" }, { type: "azure-native:web/v20231201:WebAppBackupConfiguration" }, { type: "azure-native:web/v20240401:WebAppBackupConfiguration" }, { type: "azure-native:web/v20241101:WebAppBackupConfiguration" }, { type: "azure-native:web/v20250301:WebAppBackupConfiguration" }, { type: "azure-native:web/v20250501:WebAppBackupConfiguration" }, { type: "azure-native:web/v20260301preview:WebAppBackupConfiguration" }, { type: "azure-native:web/v20260315:WebAppBackupConfiguration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppBackupConfiguration.__pulumiType, name, resourceInputs, opts);
     }
@@ -127,29 +127,29 @@ export interface WebAppBackupConfigurationArgs {
     /**
      * Name of the backup.
      */
-    backupName?: pulumi.Input<string>;
+    backupName?: pulumi.Input<string | undefined>;
     /**
      * Schedule for the backup if it is executed periodically.
      */
-    backupSchedule?: pulumi.Input<types.inputs.BackupScheduleArgs>;
+    backupSchedule?: pulumi.Input<types.inputs.BackupScheduleArgs | undefined>;
     /**
      * Databases included in the backup.
      */
-    databases?: pulumi.Input<pulumi.Input<types.inputs.DatabaseBackupSettingArgs>[]>;
+    databases?: pulumi.Input<pulumi.Input<types.inputs.DatabaseBackupSettingArgs>[] | undefined>;
     /**
      * True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Kind of resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Name of the app.
      */
     name: pulumi.Input<string>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

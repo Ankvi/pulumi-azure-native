@@ -145,27 +145,27 @@ export interface CertificateArgs {
      */
     base64Value: pulumi.Input<string>;
     /**
-     * The parameters supplied to the create or update certificate operation.
+     * The name of certificate.
      */
-    certificateName?: pulumi.Input<string>;
+    certificateName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the description of the certificate.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the is exportable flag of the certificate.
      */
-    isExportable?: pulumi.Input<boolean>;
+    isExportable?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the name of the certificate.
      */
     name: pulumi.Input<string>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * Gets or sets the thumbprint of the certificate.
      */
-    thumbprint?: pulumi.Input<string>;
+    thumbprint?: pulumi.Input<string | undefined>;
 }

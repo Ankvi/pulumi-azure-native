@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-12-01-preview.
  *
- * Other available API versions: 2026-02-15-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class EdgeMachine extends pulumi.CustomResource {
     /**
@@ -85,7 +85,7 @@ export class EdgeMachine extends pulumi.CustomResource {
             resourceInputs["edgeMachineName"] = args?.edgeMachineName;
             resourceInputs["identity"] = args?.identity;
             resourceInputs["location"] = args?.location;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.edgeMachinePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.edgeMachinePropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -103,7 +103,7 @@ export class EdgeMachine extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20251201preview:EdgeMachine" }, { type: "azure-native:azurestackhci/v20260215preview:EdgeMachine" }, { type: "azure-native:azurestackhci/v20260301preview:EdgeMachine" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20251201preview:EdgeMachine" }, { type: "azure-native:azurestackhci/v20260215preview:EdgeMachine" }, { type: "azure-native:azurestackhci/v20260301preview:EdgeMachine" }, { type: "azure-native:azurestackhci/v20260401preview:EdgeMachine" }, { type: "azure-native:azurestackhci/v20260501preview:EdgeMachine" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(EdgeMachine.__pulumiType, name, resourceInputs, opts);
     }
@@ -116,19 +116,19 @@ export interface EdgeMachineArgs {
     /**
      * Name of Device
      */
-    edgeMachineName?: pulumi.Input<string>;
+    edgeMachineName?: pulumi.Input<string | undefined>;
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.EdgeMachinePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.EdgeMachinePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -136,5 +136,5 @@ export interface EdgeMachineArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
