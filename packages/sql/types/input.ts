@@ -7,11 +7,11 @@ export interface DatabaseIdentityArgs {
     /**
      * The identity type
      */
-    type?: pulumi.Input<string | enums.DatabaseIdentityType>;
+    type?: pulumi.Input<string | enums.DatabaseIdentityType | undefined>;
     /**
      * The resource ids of the user assigned identities to use
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -31,7 +31,7 @@ export interface DistributedAvailabilityGroupDatabaseArgs {
     /**
      * The name of the database in link
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -41,15 +41,15 @@ export interface ElasticPoolPerDatabaseSettingsArgs {
     /**
      * Auto Pause Delay for per database within pool
      */
-    autoPauseDelay?: pulumi.Input<number>;
+    autoPauseDelay?: pulumi.Input<number | undefined>;
     /**
      * The maximum capacity any one database can consume.
      */
-    maxCapacity?: pulumi.Input<number>;
+    maxCapacity?: pulumi.Input<number | undefined>;
     /**
      * The minimum capacity all databases are guaranteed.
      */
-    minCapacity?: pulumi.Input<number>;
+    minCapacity?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -59,11 +59,11 @@ export interface FailoverGroupReadOnlyEndpointArgs {
     /**
      * Failover policy of the read-only endpoint for the failover group.
      */
-    failoverPolicy?: pulumi.Input<string | enums.ReadOnlyEndpointFailoverPolicy>;
+    failoverPolicy?: pulumi.Input<string | enums.ReadOnlyEndpointFailoverPolicy | undefined>;
     /**
      * The target partner server where the read-only endpoint points to.
      */
-    targetServer?: pulumi.Input<string>;
+    targetServer?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -77,7 +77,7 @@ export interface FailoverGroupReadWriteEndpointArgs {
     /**
      * Grace period before failover with data loss is attempted for the read-write endpoint. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
      */
-    failoverWithDataLossGracePeriodMinutes?: pulumi.Input<number>;
+    failoverWithDataLossGracePeriodMinutes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -87,7 +87,7 @@ export interface InstanceFailoverGroupReadOnlyEndpointArgs {
     /**
      * Failover policy of the read-only endpoint for the failover group.
      */
-    failoverPolicy?: pulumi.Input<string | enums.ReadOnlyEndpointFailoverPolicy>;
+    failoverPolicy?: pulumi.Input<string | enums.ReadOnlyEndpointFailoverPolicy | undefined>;
 }
 
 /**
@@ -101,7 +101,7 @@ export interface InstanceFailoverGroupReadWriteEndpointArgs {
     /**
      * Grace period before failover with data loss is attempted for the read-write endpoint. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
      */
-    failoverWithDataLossGracePeriodMinutes?: pulumi.Input<number>;
+    failoverWithDataLossGracePeriodMinutes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -111,7 +111,7 @@ export interface JobAgentIdentityArgs {
     /**
      * The job agent identity tenant id
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The job agent identity type
      */
@@ -119,7 +119,7 @@ export interface JobAgentIdentityArgs {
     /**
      * The resource ids of the user assigned identities to use
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -129,23 +129,23 @@ export interface JobScheduleArgs {
     /**
      * Whether or not the schedule is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Schedule end time.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * Value of the schedule's recurring interval, if the ScheduleType is recurring. ISO8601 duration format.
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * Schedule start time.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Schedule interval type
      */
-    type?: pulumi.Input<enums.JobScheduleType>;
+    type?: pulumi.Input<enums.JobScheduleType | undefined>;
 }
 /**
  * jobScheduleArgsProvideDefaults sets the appropriate defaults for JobScheduleArgs
@@ -166,11 +166,11 @@ export interface JobStepActionArgs {
     /**
      * The source of the action to execute.
      */
-    source?: pulumi.Input<string | enums.JobStepActionSource>;
+    source?: pulumi.Input<string | enums.JobStepActionSource | undefined>;
     /**
      * Type of action being executed by the job step.
      */
-    type?: pulumi.Input<string | enums.JobStepActionType>;
+    type?: pulumi.Input<string | enums.JobStepActionType | undefined>;
     /**
      * The action value, for example the text of the T-SQL script to execute.
      */
@@ -194,23 +194,23 @@ export interface JobStepExecutionOptionsArgs {
     /**
      * Initial delay between retries for job step execution.
      */
-    initialRetryIntervalSeconds?: pulumi.Input<number>;
+    initialRetryIntervalSeconds?: pulumi.Input<number | undefined>;
     /**
      * The maximum amount of time to wait between retries for job step execution.
      */
-    maximumRetryIntervalSeconds?: pulumi.Input<number>;
+    maximumRetryIntervalSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of times the job step will be reattempted if the first attempt fails.
      */
-    retryAttempts?: pulumi.Input<number>;
+    retryAttempts?: pulumi.Input<number | undefined>;
     /**
      * The backoff multiplier for the time between retries.
      */
-    retryIntervalBackoffMultiplier?: pulumi.Input<number>;
+    retryIntervalBackoffMultiplier?: pulumi.Input<number | undefined>;
     /**
      * Execution timeout for the job step.
      */
-    timeoutSeconds?: pulumi.Input<number>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
 }
 /**
  * jobStepExecutionOptionsArgsProvideDefaults sets the appropriate defaults for JobStepExecutionOptionsArgs
@@ -233,7 +233,7 @@ export interface JobStepOutputArgs {
     /**
      * The resource ID of the credential to use to connect to the output destination.
      */
-    credential?: pulumi.Input<string>;
+    credential?: pulumi.Input<string | undefined>;
     /**
      * The output destination database.
      */
@@ -241,11 +241,11 @@ export interface JobStepOutputArgs {
     /**
      * The output destination resource group.
      */
-    resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * The output destination schema.
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * The output destination server name.
      */
@@ -253,7 +253,7 @@ export interface JobStepOutputArgs {
     /**
      * The output destination subscription id.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * The output destination table.
      */
@@ -261,7 +261,7 @@ export interface JobStepOutputArgs {
     /**
      * The output destination type.
      */
-    type?: pulumi.Input<string | enums.JobStepOutputType>;
+    type?: pulumi.Input<string | enums.JobStepOutputType | undefined>;
 }
 /**
  * jobStepOutputArgsProvideDefaults sets the appropriate defaults for JobStepOutputArgs
@@ -281,27 +281,27 @@ export interface JobTargetArgs {
     /**
      * The target database name.
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
     /**
      * The target elastic pool name.
      */
-    elasticPoolName?: pulumi.Input<string>;
+    elasticPoolName?: pulumi.Input<string | undefined>;
     /**
      * Whether the target is included or excluded from the group.
      */
-    membershipType?: pulumi.Input<enums.JobTargetGroupMembershipType>;
+    membershipType?: pulumi.Input<enums.JobTargetGroupMembershipType | undefined>;
     /**
      * The resource ID of the credential that is used during job execution to connect to the target and determine the list of databases inside the target.
      */
-    refreshCredential?: pulumi.Input<string>;
+    refreshCredential?: pulumi.Input<string | undefined>;
     /**
      * The target server name.
      */
-    serverName?: pulumi.Input<string>;
+    serverName?: pulumi.Input<string | undefined>;
     /**
      * The target shard map.
      */
-    shardMapName?: pulumi.Input<string>;
+    shardMapName?: pulumi.Input<string | undefined>;
     /**
      * The target type.
      */
@@ -324,27 +324,27 @@ export interface ManagedInstanceExternalAdministratorArgs {
     /**
      * Type of the sever administrator.
      */
-    administratorType?: pulumi.Input<string | enums.AdministratorType>;
+    administratorType?: pulumi.Input<string | enums.AdministratorType | undefined>;
     /**
      * Azure Active Directory only Authentication enabled.
      */
-    azureADOnlyAuthentication?: pulumi.Input<boolean>;
+    azureADOnlyAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * Login name of the server administrator.
      */
-    login?: pulumi.Input<string>;
+    login?: pulumi.Input<string | undefined>;
     /**
      * Principal Type of the sever administrator.
      */
-    principalType?: pulumi.Input<string | enums.PrincipalType>;
+    principalType?: pulumi.Input<string | enums.PrincipalType | undefined>;
     /**
      * SID (object ID) of the server administrator.
      */
-    sid?: pulumi.Input<string>;
+    sid?: pulumi.Input<string | undefined>;
     /**
      * Tenant ID of the administrator.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -354,18 +354,18 @@ export interface ManagedInstancePairInfoArgs {
     /**
      * Id of Partner Managed Instance in pair.
      */
-    partnerManagedInstanceId?: pulumi.Input<string>;
+    partnerManagedInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Id of Primary Managed Instance in pair.
      */
-    primaryManagedInstanceId?: pulumi.Input<string>;
+    primaryManagedInstanceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ManagedInstancePrivateEndpointPropertyArgs {
     /**
      * Resource id of the private endpoint.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 export interface ManagedInstancePrivateLinkServiceConnectionStatePropertyArgs {
@@ -396,14 +396,14 @@ export interface PartnerRegionInfoArgs {
     /**
      * Geo location of the partner managed instances.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
 }
 
 export interface PrivateEndpointPropertyArgs {
     /**
      * Resource id of the private endpoint.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 export interface PrivateLinkServiceConnectionStatePropertyArgs {
@@ -424,11 +424,11 @@ export interface ResourceIdentityArgs {
     /**
      * The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
      */
-    type?: pulumi.Input<string | enums.IdentityType>;
+    type?: pulumi.Input<string | enums.IdentityType | undefined>;
     /**
      * The resource ids of the user assigned identities to use
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -460,27 +460,27 @@ export interface ServerExternalAdministratorArgs {
     /**
      * Type of the sever administrator.
      */
-    administratorType?: pulumi.Input<string | enums.AdministratorType>;
+    administratorType?: pulumi.Input<string | enums.AdministratorType | undefined>;
     /**
      * Azure Active Directory only Authentication enabled.
      */
-    azureADOnlyAuthentication?: pulumi.Input<boolean>;
+    azureADOnlyAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * Login name of the server administrator.
      */
-    login?: pulumi.Input<string>;
+    login?: pulumi.Input<string | undefined>;
     /**
      * Principal Type of the sever administrator.
      */
-    principalType?: pulumi.Input<string | enums.PrincipalType>;
+    principalType?: pulumi.Input<string | enums.PrincipalType | undefined>;
     /**
      * SID (object ID) of the server administrator.
      */
-    sid?: pulumi.Input<string>;
+    sid?: pulumi.Input<string | undefined>;
     /**
      * Tenant ID of the administrator.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -500,7 +500,7 @@ export interface ServicePrincipalArgs {
     /**
      * Service principal type.
      */
-    type?: pulumi.Input<string | enums.ServicePrincipalType>;
+    type?: pulumi.Input<string | enums.ServicePrincipalType | undefined>;
 }
 
 /**
@@ -510,11 +510,11 @@ export interface SkuArgs {
     /**
      * Capacity of the particular SKU.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * If the service has different generations of hardware, for the same SKU, then that can be captured here.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * The name of the SKU, typically, a letter + Number code, e.g. P3.
      */
@@ -522,11 +522,11 @@ export interface SkuArgs {
     /**
      * Size of the particular SKU
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * The tier or edition of the particular SKU, e.g. Basic, Premium.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -536,11 +536,11 @@ export interface SyncGroupSchemaArgs {
     /**
      * Name of master sync member where the schema is from.
      */
-    masterSyncMemberName?: pulumi.Input<string>;
+    masterSyncMemberName?: pulumi.Input<string | undefined>;
     /**
      * List of tables in sync group schema.
      */
-    tables?: pulumi.Input<pulumi.Input<SyncGroupSchemaTableArgs>[]>;
+    tables?: pulumi.Input<pulumi.Input<SyncGroupSchemaTableArgs>[] | undefined>;
 }
 
 /**
@@ -550,11 +550,11 @@ export interface SyncGroupSchemaTableArgs {
     /**
      * List of columns in sync group schema.
      */
-    columns?: pulumi.Input<pulumi.Input<SyncGroupSchemaTableColumnArgs>[]>;
+    columns?: pulumi.Input<pulumi.Input<SyncGroupSchemaTableColumnArgs>[] | undefined>;
     /**
      * Quoted name of sync group schema table.
      */
-    quotedName?: pulumi.Input<string>;
+    quotedName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -564,15 +564,15 @@ export interface SyncGroupSchemaTableColumnArgs {
     /**
      * Data size of the column.
      */
-    dataSize?: pulumi.Input<string>;
+    dataSize?: pulumi.Input<string | undefined>;
     /**
      * Data type of the column.
      */
-    dataType?: pulumi.Input<string>;
+    dataType?: pulumi.Input<string | undefined>;
     /**
      * Quoted name of sync group table column.
      */
-    quotedName?: pulumi.Input<string>;
+    quotedName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -582,15 +582,15 @@ export interface VulnerabilityAssessmentRecurringScansPropertiesArgs {
     /**
      * Specifies that the schedule scan notification will be is sent to the subscription administrators.
      */
-    emailSubscriptionAdmins?: pulumi.Input<boolean>;
+    emailSubscriptionAdmins?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies an array of e-mail addresses to which the scan notification is sent.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Recurring scans state.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
 }
 /**
  * vulnerabilityAssessmentRecurringScansPropertiesArgsProvideDefaults sets the appropriate defaults for VulnerabilityAssessmentRecurringScansPropertiesArgs

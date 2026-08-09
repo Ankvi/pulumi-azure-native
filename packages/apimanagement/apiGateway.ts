@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
  *
- * Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ApiGateway extends pulumi.CustomResource {
     /**
@@ -92,7 +92,7 @@ export class ApiGateway extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
-     * The type of VPN in which API Management gateway needs to be configured in. 
+     * The type of VPN in which API Management gateway needs to be configured in.
      */
     declare public readonly virtualNetworkType: pulumi.Output<string | undefined>;
 
@@ -148,7 +148,7 @@ export class ApiGateway extends pulumi.CustomResource {
             resourceInputs["virtualNetworkType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:ApiGateway" }, { type: "azure-native:apimanagement/v20240501:ApiGateway" }, { type: "azure-native:apimanagement/v20240601preview:ApiGateway" }, { type: "azure-native:apimanagement/v20241001preview:ApiGateway" }, { type: "azure-native:apimanagement/v20250301preview:ApiGateway" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:ApiGateway" }, { type: "azure-native:apimanagement/v20240501:ApiGateway" }, { type: "azure-native:apimanagement/v20240601preview:ApiGateway" }, { type: "azure-native:apimanagement/v20241001preview:ApiGateway" }, { type: "azure-native:apimanagement/v20250301preview:ApiGateway" }, { type: "azure-native:apimanagement/v20250901preview:ApiGateway" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ApiGateway.__pulumiType, name, resourceInputs, opts);
     }
@@ -161,15 +161,15 @@ export interface ApiGatewayArgs {
     /**
      * Information regarding how the gateway should integrate with backend systems.
      */
-    backend?: pulumi.Input<types.inputs.BackendConfigurationArgs>;
+    backend?: pulumi.Input<types.inputs.BackendConfigurationArgs | undefined>;
     /**
      * The name of the API Management gateway.
      */
-    gatewayName?: pulumi.Input<string>;
+    gatewayName?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -181,9 +181,9 @@ export interface ApiGatewayArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The type of VPN in which API Management gateway needs to be configured in. 
+     * The type of VPN in which API Management gateway needs to be configured in.
      */
-    virtualNetworkType?: pulumi.Input<string | types.enums.VirtualNetworkType>;
+    virtualNetworkType?: pulumi.Input<string | types.enums.VirtualNetworkType | undefined>;
 }

@@ -7,15 +7,15 @@ export interface AdvancedSettingsArgs {
     /**
      * Configurations related to All Clients.
      */
-    clients?: pulumi.Input<ClientConfigArgs>;
+    clients?: pulumi.Input<ClientConfigArgs | undefined>;
     /**
      * The setting to enable or disable encryption of internal Traffic.
      */
-    encryptInternalTraffic?: pulumi.Input<string | enums.OperationalMode>;
+    encryptInternalTraffic?: pulumi.Input<string | enums.OperationalMode | undefined>;
     /**
      * Certificate rotation and private key configuration.
      */
-    internalCerts?: pulumi.Input<CertManagerCertOptionsArgs>;
+    internalCerts?: pulumi.Input<CertManagerCertOptionsArgs | undefined>;
 }
 /**
  * advancedSettingsArgsProvideDefaults sets the appropriate defaults for AdvancedSettingsArgs
@@ -23,7 +23,7 @@ export interface AdvancedSettingsArgs {
 export function advancedSettingsArgsProvideDefaults(val: AdvancedSettingsArgs): AdvancedSettingsArgs {
     return {
         ...val,
-        clients: (val.clients ? pulumi.output(val.clients).apply(clientConfigArgsProvideDefaults) : undefined),
+        clients: pulumi.output(val.clients).apply(v => v === undefined ? undefined : clientConfigArgsProvideDefaults(v)),
         encryptInternalTraffic: (val.encryptInternalTraffic) ?? "Enabled",
     };
 }
@@ -35,11 +35,11 @@ export interface AkriConnectorTemplateAioMetadataArgs {
     /**
      * The maximum version of AIO required for the connector.
      */
-    aioMaxVersion?: pulumi.Input<string>;
+    aioMaxVersion?: pulumi.Input<string | undefined>;
     /**
      * The minimum version of AIO required for the connector.
      */
-    aioMinVersion?: pulumi.Input<string>;
+    aioMinVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -64,23 +64,23 @@ export interface AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRe
     /**
      * The additional configuration schema reference.
      */
-    additionalConfigSchemaRef?: pulumi.Input<string>;
+    additionalConfigSchemaRef?: pulumi.Input<string | undefined>;
     /**
      * The default configuration schema reference for datasets.
      */
-    defaultDatasetConfigSchemaRef?: pulumi.Input<string>;
+    defaultDatasetConfigSchemaRef?: pulumi.Input<string | undefined>;
     /**
      * The default configuration schema reference for events.
      */
-    defaultEventsConfigSchemaRef?: pulumi.Input<string>;
+    defaultEventsConfigSchemaRef?: pulumi.Input<string | undefined>;
     /**
      * The default configuration schema reference for process control.
      */
-    defaultProcessControlConfigSchemaRef?: pulumi.Input<string>;
+    defaultProcessControlConfigSchemaRef?: pulumi.Input<string | undefined>;
     /**
      * The default configuration schema reference for streams.
      */
-    defaultStreamsConfigSchemaRef?: pulumi.Input<string>;
+    defaultStreamsConfigSchemaRef?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -90,11 +90,11 @@ export interface AkriConnectorTemplateDeviceInboundEndpointTypeArgs {
     /**
      * The configuration schema references for the device inbound endpoint.
      */
-    configurationSchemaRefs?: pulumi.Input<AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs>;
+    configurationSchemaRefs?: pulumi.Input<AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsArgs | undefined>;
     /**
      * A description of the device inbound endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The type of the device inbound endpoint.
      */
@@ -102,7 +102,7 @@ export interface AkriConnectorTemplateDeviceInboundEndpointTypeArgs {
     /**
      * The version of the device inbound endpoint.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -131,15 +131,15 @@ export interface AkriConnectorTemplateHelmAdvancedConfigurationArgs {
     /**
      * Delete operation configuration for the Helm chart.
      */
-    delete?: pulumi.Input<AkriConnectorTemplateHelmDeleteConfigurationArgs>;
+    delete?: pulumi.Input<AkriConnectorTemplateHelmDeleteConfigurationArgs | undefined>;
     /**
      * Install operation configuration for the Helm chart.
      */
-    install?: pulumi.Input<AkriConnectorTemplateHelmInstallConfigurationArgs>;
+    install?: pulumi.Input<AkriConnectorTemplateHelmInstallConfigurationArgs | undefined>;
     /**
      * Upgrade operation configuration for the Helm chart.
      */
-    upgrade?: pulumi.Input<AkriConnectorTemplateHelmUpgradeConfigurationArgs>;
+    upgrade?: pulumi.Input<AkriConnectorTemplateHelmUpgradeConfigurationArgs | undefined>;
 }
 
 /**
@@ -183,11 +183,11 @@ export interface AkriConnectorTemplateHelmConfigurationSettingsArgs {
      * Advanced configuration for the Helm chart.
      * Install, upgrade, and uninstall options for the helm chart such as atomic, wait, timeout, `wait_for_jobs`, and `disable_hooks`.
      */
-    advancedConfiguration?: pulumi.Input<AkriConnectorTemplateHelmAdvancedConfigurationArgs>;
+    advancedConfiguration?: pulumi.Input<AkriConnectorTemplateHelmAdvancedConfigurationArgs | undefined>;
     /**
      * The registry settings for the helm chart to be used.
      */
-    registrySettings?: pulumi.Input<AkriConnectorTemplateHelmContainerRegistryArgs | AkriConnectorTemplateHelmRegistryEndpointRefArgs>;
+    registrySettings?: pulumi.Input<AkriConnectorTemplateHelmContainerRegistryArgs | AkriConnectorTemplateHelmRegistryEndpointRefArgs | undefined>;
     /**
      * The release name of the Helm chart.
      */
@@ -199,7 +199,7 @@ export interface AkriConnectorTemplateHelmConfigurationSettingsArgs {
     /**
      * A map of values to pass to the helm chart.
      */
-    values?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    values?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The version of the Helm chart.
      */
@@ -228,7 +228,7 @@ export interface AkriConnectorTemplateHelmContainerRegistrySettingsArgs {
     /**
      * Optional reference to a secret in the same namespace to use for pulling the Helm chart.
      */
-    authSecretRef?: pulumi.Input<AkriConnectorTemplateHelmAuthSecretRefArgs>;
+    authSecretRef?: pulumi.Input<AkriConnectorTemplateHelmAuthSecretRefArgs | undefined>;
     /**
      * The registry to use for the Helm chart.
      */
@@ -242,23 +242,23 @@ export interface AkriConnectorTemplateHelmDeleteConfigurationArgs {
     /**
      * If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
      */
-    atomic?: pulumi.Input<boolean>;
+    atomic?: pulumi.Input<boolean | undefined>;
     /**
      * Disable pre/post upgrade hooks for the operation.
      */
-    disableHooks?: pulumi.Input<boolean>;
+    disableHooks?: pulumi.Input<boolean | undefined>;
     /**
      * Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
      */
-    wait?: pulumi.Input<boolean>;
+    wait?: pulumi.Input<boolean | undefined>;
     /**
      * If set, the operation will wait for jobs to complete before marking the release as successful.
      */
-    waitForJobs?: pulumi.Input<boolean>;
+    waitForJobs?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -268,23 +268,23 @@ export interface AkriConnectorTemplateHelmInstallConfigurationArgs {
     /**
      * If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
      */
-    atomic?: pulumi.Input<boolean>;
+    atomic?: pulumi.Input<boolean | undefined>;
     /**
      * Disable pre/post upgrade hooks for the operation.
      */
-    disableHooks?: pulumi.Input<boolean>;
+    disableHooks?: pulumi.Input<boolean | undefined>;
     /**
      * Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
      */
-    wait?: pulumi.Input<boolean>;
+    wait?: pulumi.Input<boolean | undefined>;
     /**
      * If set, the operation will wait for jobs to complete before marking the release as successful.
      */
-    waitForJobs?: pulumi.Input<boolean>;
+    waitForJobs?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -309,23 +309,23 @@ export interface AkriConnectorTemplateHelmUpgradeConfigurationArgs {
     /**
      * If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
      */
-    atomic?: pulumi.Input<boolean>;
+    atomic?: pulumi.Input<boolean | undefined>;
     /**
      * Disable pre/post upgrade hooks for the operation.
      */
-    disableHooks?: pulumi.Input<boolean>;
+    disableHooks?: pulumi.Input<boolean | undefined>;
     /**
      * Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
      */
-    wait?: pulumi.Input<boolean>;
+    wait?: pulumi.Input<boolean | undefined>;
     /**
      * If set, the operation will wait for jobs to complete before marking the release as successful.
      */
-    waitForJobs?: pulumi.Input<boolean>;
+    waitForJobs?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -364,7 +364,7 @@ export interface AkriConnectorTemplatePropertiesArgs {
     /**
      * Metadata about AIO.
      */
-    aioMetadata?: pulumi.Input<AkriConnectorTemplateAioMetadataArgs>;
+    aioMetadata?: pulumi.Input<AkriConnectorTemplateAioMetadataArgs | undefined>;
     /**
      * Device inbound endpoint types.
      */
@@ -372,11 +372,11 @@ export interface AkriConnectorTemplatePropertiesArgs {
     /**
      * Diagnostics settings for the Connector template.
      */
-    diagnostics?: pulumi.Input<AkriConnectorTemplateDiagnosticsArgs>;
+    diagnostics?: pulumi.Input<AkriConnectorTemplateDiagnosticsArgs | undefined>;
     /**
      * Mqtt connection configuration settings.
      */
-    mqttConnectionConfiguration?: pulumi.Input<AkriConnectorsMqttConnectionConfigurationArgs>;
+    mqttConnectionConfiguration?: pulumi.Input<AkriConnectorsMqttConnectionConfigurationArgs | undefined>;
     /**
      * The runtime configuration for the Connector template.
      */
@@ -388,8 +388,8 @@ export interface AkriConnectorTemplatePropertiesArgs {
 export function akriConnectorTemplatePropertiesArgsProvideDefaults(val: AkriConnectorTemplatePropertiesArgs): AkriConnectorTemplatePropertiesArgs {
     return {
         ...val,
-        diagnostics: (val.diagnostics ? pulumi.output(val.diagnostics).apply(akriConnectorTemplateDiagnosticsArgsProvideDefaults) : undefined),
-        mqttConnectionConfiguration: (val.mqttConnectionConfiguration ? pulumi.output(val.mqttConnectionConfiguration).apply(akriConnectorsMqttConnectionConfigurationArgsProvideDefaults) : undefined),
+        diagnostics: pulumi.output(val.diagnostics).apply(v => v === undefined ? undefined : akriConnectorTemplateDiagnosticsArgsProvideDefaults(v)),
+        mqttConnectionConfiguration: pulumi.output(val.mqttConnectionConfiguration).apply(v => v === undefined ? undefined : akriConnectorsMqttConnectionConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -400,11 +400,11 @@ export interface AkriConnectorTemplateRuntimeImageConfigurationArgs {
     /**
      * Additional configuration for the image of the managed configuration.
      */
-    additionalConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    additionalConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Allocation settings for the managed configuration.
      */
-    allocation?: pulumi.Input<AkriConnectorTemplateBucketizedAllocationArgs>;
+    allocation?: pulumi.Input<AkriConnectorTemplateBucketizedAllocationArgs | undefined>;
     /**
      * The image configuration settings.
      */
@@ -418,19 +418,19 @@ export interface AkriConnectorTemplateRuntimeImageConfigurationArgs {
      * The persistent volume claim templates for the managed configuration.
      * See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
      */
-    persistentVolumeClaimTemplates?: pulumi.Input<any[]>;
+    persistentVolumeClaimTemplates?: pulumi.Input<any[] | undefined>;
     /**
      * The persistent volume claims for the managed configuration.
      */
-    persistentVolumeClaims?: pulumi.Input<pulumi.Input<AkriConnectorTemplatePersistentVolumeClaimArgs>[]>;
+    persistentVolumeClaims?: pulumi.Input<pulumi.Input<AkriConnectorTemplatePersistentVolumeClaimArgs>[] | undefined>;
     /**
      * Connector secrets that will be mounted onto all connector instances.
      */
-    secrets?: pulumi.Input<pulumi.Input<AkriConnectorsSecretArgs>[]>;
+    secrets?: pulumi.Input<pulumi.Input<AkriConnectorsSecretArgs>[] | undefined>;
     /**
      * Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
      */
-    trustSettings?: pulumi.Input<AkriConnectorTemplateTrustListArgs>;
+    trustSettings?: pulumi.Input<AkriConnectorTemplateTrustListArgs | undefined>;
 }
 
 /**
@@ -444,19 +444,19 @@ export interface AkriConnectorTemplateRuntimeImageConfigurationSettingsArgs {
     /**
      * The pull policy of the image.
      */
-    imagePullPolicy?: pulumi.Input<string | enums.AkriConnectorsImagePullPolicy>;
+    imagePullPolicy?: pulumi.Input<string | enums.AkriConnectorsImagePullPolicy | undefined>;
     /**
      * The registry settings for the image. You can omit this field if using the default docker hub repository or using a local image.
      */
-    registrySettings?: pulumi.Input<AkriConnectorsContainerRegistryArgs | AkriConnectorsRegistryEndpointRefArgs>;
+    registrySettings?: pulumi.Input<AkriConnectorsContainerRegistryArgs | AkriConnectorsRegistryEndpointRefArgs | undefined>;
     /**
      * The number of replicas to be set up.
      */
-    replicas?: pulumi.Input<number>;
+    replicas?: pulumi.Input<number | undefined>;
     /**
      * Optional image tag or digest. If not specified, the default tag is `latest`.
      */
-    tagDigestSettings?: pulumi.Input<AkriConnectorsDigestArgs | AkriConnectorsTagArgs>;
+    tagDigestSettings?: pulumi.Input<AkriConnectorsDigestArgs | AkriConnectorsTagArgs | undefined>;
 }
 
 /**
@@ -466,11 +466,11 @@ export interface AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs {
     /**
      * Additional configuration for the image of the managed configuration.
      */
-    additionalConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    additionalConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Allocation settings for the managed configuration.
      */
-    allocation?: pulumi.Input<AkriConnectorTemplateBucketizedAllocationArgs>;
+    allocation?: pulumi.Input<AkriConnectorTemplateBucketizedAllocationArgs | undefined>;
     /**
      * Managed configuration types.
      * Expected value is 'StatefulSetConfiguration'.
@@ -480,15 +480,15 @@ export interface AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs {
      * The persistent volume claim templates for the managed configuration.
      * See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
      */
-    persistentVolumeClaimTemplates?: pulumi.Input<any[]>;
+    persistentVolumeClaimTemplates?: pulumi.Input<any[] | undefined>;
     /**
      * The persistent volume claims for the managed configuration.
      */
-    persistentVolumeClaims?: pulumi.Input<pulumi.Input<AkriConnectorTemplatePersistentVolumeClaimArgs>[]>;
+    persistentVolumeClaims?: pulumi.Input<pulumi.Input<AkriConnectorTemplatePersistentVolumeClaimArgs>[] | undefined>;
     /**
      * Connector secrets that will be mounted onto all connector instances.
      */
-    secrets?: pulumi.Input<pulumi.Input<AkriConnectorsSecretArgs>[]>;
+    secrets?: pulumi.Input<pulumi.Input<AkriConnectorsSecretArgs>[] | undefined>;
     /**
      * The stateful set configuration settings. This corresponds to the Kubernetes StatefulSet resource.
      * See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json#/components/schemas/io.k8s.api.apps.v1.StatefulSetSpec
@@ -497,7 +497,7 @@ export interface AkriConnectorTemplateRuntimeStatefulSetConfigurationArgs {
     /**
      * Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
      */
-    trustSettings?: pulumi.Input<AkriConnectorTemplateTrustListArgs>;
+    trustSettings?: pulumi.Input<AkriConnectorTemplateTrustListArgs | undefined>;
 }
 
 /**
@@ -532,7 +532,7 @@ export interface AkriConnectorsContainerRegistrySettingsArgs {
     /**
      * Optional list of references to secrets in the same namespace to use for pulling the connector image.
      */
-    imagePullSecrets?: pulumi.Input<pulumi.Input<AkriConnectorsImagePullSecretArgs>[]>;
+    imagePullSecrets?: pulumi.Input<pulumi.Input<AkriConnectorsImagePullSecretArgs>[] | undefined>;
     /**
      * The container registry to use for the artifact.
      */
@@ -546,7 +546,7 @@ export interface AkriConnectorsDiagnosticsLogsArgs {
     /**
      * The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
      */
-    level?: pulumi.Input<string>;
+    level?: pulumi.Input<string | undefined>;
 }
 /**
  * akriConnectorsDiagnosticsLogsArgsProvideDefaults sets the appropriate defaults for AkriConnectorsDiagnosticsLogsArgs
@@ -590,31 +590,31 @@ export interface AkriConnectorsMqttConnectionConfigurationArgs {
     /**
      * Authentication properties.
      */
-    authentication?: pulumi.Input<AkriConnectorsServiceAccountAuthenticationArgs>;
+    authentication?: pulumi.Input<AkriConnectorsServiceAccountAuthenticationArgs | undefined>;
     /**
      * Host of the Broker in the form of <hostname>:<port>.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * KeepAlive for connection in seconds.
      */
-    keepAliveSeconds?: pulumi.Input<number>;
+    keepAliveSeconds?: pulumi.Input<number | undefined>;
     /**
      * The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
      */
-    maxInflightMessages?: pulumi.Input<number>;
+    maxInflightMessages?: pulumi.Input<number | undefined>;
     /**
      * The protocol to use for the connection. Currently only `mqtt` is supported.
      */
-    protocol?: pulumi.Input<string | enums.AkriConnectorsMqttProtocolType>;
+    protocol?: pulumi.Input<string | enums.AkriConnectorsMqttProtocolType | undefined>;
     /**
      * Session expiry in seconds.
      */
-    sessionExpirySeconds?: pulumi.Input<number>;
+    sessionExpirySeconds?: pulumi.Input<number | undefined>;
     /**
      * TLS configuration.
      */
-    tls?: pulumi.Input<TlsPropertiesArgs>;
+    tls?: pulumi.Input<TlsPropertiesArgs | undefined>;
 }
 /**
  * akriConnectorsMqttConnectionConfigurationArgsProvideDefaults sets the appropriate defaults for AkriConnectorsMqttConnectionConfigurationArgs
@@ -622,7 +622,7 @@ export interface AkriConnectorsMqttConnectionConfigurationArgs {
 export function akriConnectorsMqttConnectionConfigurationArgsProvideDefaults(val: AkriConnectorsMqttConnectionConfigurationArgs): AkriConnectorsMqttConnectionConfigurationArgs {
     return {
         ...val,
-        tls: (val.tls ? pulumi.output(val.tls).apply(tlsPropertiesArgsProvideDefaults) : undefined),
+        tls: pulumi.output(val.tls).apply(v => v === undefined ? undefined : tlsPropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -706,11 +706,11 @@ export interface AuthorizationConfigArgs {
     /**
      * Enable caching of the authorization rules.
      */
-    cache?: pulumi.Input<string | enums.OperationalMode>;
+    cache?: pulumi.Input<string | enums.OperationalMode | undefined>;
     /**
      * The authorization rules to follow. If no rule is set, but Authorization Resource is used that would mean DenyAll.
      */
-    rules?: pulumi.Input<pulumi.Input<AuthorizationRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<AuthorizationRuleArgs>[] | undefined>;
 }
 /**
  * authorizationConfigArgsProvideDefaults sets the appropriate defaults for AuthorizationConfigArgs
@@ -737,7 +737,7 @@ export interface AuthorizationRuleArgs {
     /**
      * Give access to state store resources.
      */
-    stateStoreResources?: pulumi.Input<pulumi.Input<StateStoreResourceRuleArgs>[]>;
+    stateStoreResources?: pulumi.Input<pulumi.Input<StateStoreResourceRuleArgs>[] | undefined>;
 }
 
 /**
@@ -755,7 +755,7 @@ export interface BackendChainArgs {
     /**
      * Number of logical backend workers per replica (pod).
      */
-    workers?: pulumi.Input<number>;
+    workers?: pulumi.Input<number | undefined>;
 }
 /**
  * backendChainArgsProvideDefaults sets the appropriate defaults for BackendChainArgs
@@ -774,11 +774,11 @@ export interface BatchingConfigurationArgs {
     /**
      * Batching latency in seconds.
      */
-    latencySeconds?: pulumi.Input<number>;
+    latencySeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of messages in a batch.
      */
-    maxMessages?: pulumi.Input<number>;
+    maxMessages?: pulumi.Input<number | undefined>;
 }
 /**
  * batchingConfigurationArgsProvideDefaults sets the appropriate defaults for BatchingConfigurationArgs
@@ -818,11 +818,11 @@ export interface BrokerAuthenticatorMethodCustomArgs {
     /**
      * Optional authentication needed for authenticating with the custom authentication server.
      */
-    auth?: pulumi.Input<BrokerAuthenticatorCustomAuthArgs>;
+    auth?: pulumi.Input<BrokerAuthenticatorCustomAuthArgs | undefined>;
     /**
      * Optional CA certificate for validating the custom authentication server's certificate.
      */
-    caCertConfigMap?: pulumi.Input<string>;
+    caCertConfigMap?: pulumi.Input<string | undefined>;
     /**
      * Endpoint of the custom authentication server. Must be an HTTPS endpoint.
      */
@@ -830,7 +830,7 @@ export interface BrokerAuthenticatorMethodCustomArgs {
     /**
      * Additional HTTP headers to pass to the custom authentication server.
      */
-    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -850,11 +850,11 @@ export interface BrokerAuthenticatorMethodX509Args {
     /**
      * X509 authorization attributes properties.
      */
-    authorizationAttributes?: pulumi.Input<{[key: string]: pulumi.Input<BrokerAuthenticatorMethodX509AttributesArgs>}>;
+    authorizationAttributes?: pulumi.Input<{[key: string]: pulumi.Input<BrokerAuthenticatorMethodX509AttributesArgs>} | undefined>;
     /**
      * Name of the trusted client ca cert resource.
      */
-    trustedClientCaCert?: pulumi.Input<string>;
+    trustedClientCaCert?: pulumi.Input<string | undefined>;
 }
 /**
  * brokerAuthenticatorMethodX509ArgsProvideDefaults sets the appropriate defaults for BrokerAuthenticatorMethodX509Args
@@ -887,7 +887,7 @@ export interface BrokerAuthenticatorMethodsArgs {
     /**
      * Custom authentication configuration.
      */
-    customSettings?: pulumi.Input<BrokerAuthenticatorMethodCustomArgs>;
+    customSettings?: pulumi.Input<BrokerAuthenticatorMethodCustomArgs | undefined>;
     /**
      * Custom authentication configuration.
      */
@@ -895,11 +895,11 @@ export interface BrokerAuthenticatorMethodsArgs {
     /**
      * ServiceAccountToken authentication configuration.
      */
-    serviceAccountTokenSettings?: pulumi.Input<BrokerAuthenticatorMethodSatArgs>;
+    serviceAccountTokenSettings?: pulumi.Input<BrokerAuthenticatorMethodSatArgs | undefined>;
     /**
      * X.509 authentication configuration.
      */
-    x509Settings?: pulumi.Input<BrokerAuthenticatorMethodX509Args>;
+    x509Settings?: pulumi.Input<BrokerAuthenticatorMethodX509Args | undefined>;
 }
 /**
  * brokerAuthenticatorMethodsArgsProvideDefaults sets the appropriate defaults for BrokerAuthenticatorMethodsArgs
@@ -907,7 +907,7 @@ export interface BrokerAuthenticatorMethodsArgs {
 export function brokerAuthenticatorMethodsArgsProvideDefaults(val: BrokerAuthenticatorMethodsArgs): BrokerAuthenticatorMethodsArgs {
     return {
         ...val,
-        x509Settings: (val.x509Settings ? pulumi.output(val.x509Settings).apply(brokerAuthenticatorMethodX509ArgsProvideDefaults) : undefined),
+        x509Settings: pulumi.output(val.x509Settings).apply(v => v === undefined ? undefined : brokerAuthenticatorMethodX509ArgsProvideDefaults(v)),
     };
 }
 
@@ -937,19 +937,19 @@ export interface BrokerDiagnosticsArgs {
     /**
      * Diagnostic log settings for the resource.
      */
-    logs?: pulumi.Input<DiagnosticsLogsArgs>;
+    logs?: pulumi.Input<DiagnosticsLogsArgs | undefined>;
     /**
      * The metrics settings for the resource.
      */
-    metrics?: pulumi.Input<MetricsArgs>;
+    metrics?: pulumi.Input<MetricsArgs | undefined>;
     /**
      * The self check properties.
      */
-    selfCheck?: pulumi.Input<SelfCheckArgs>;
+    selfCheck?: pulumi.Input<SelfCheckArgs | undefined>;
     /**
      * The trace properties.
      */
-    traces?: pulumi.Input<TracesArgs>;
+    traces?: pulumi.Input<TracesArgs | undefined>;
 }
 /**
  * brokerDiagnosticsArgsProvideDefaults sets the appropriate defaults for BrokerDiagnosticsArgs
@@ -957,10 +957,10 @@ export interface BrokerDiagnosticsArgs {
 export function brokerDiagnosticsArgsProvideDefaults(val: BrokerDiagnosticsArgs): BrokerDiagnosticsArgs {
     return {
         ...val,
-        logs: (val.logs ? pulumi.output(val.logs).apply(diagnosticsLogsArgsProvideDefaults) : undefined),
-        metrics: (val.metrics ? pulumi.output(val.metrics).apply(metricsArgsProvideDefaults) : undefined),
-        selfCheck: (val.selfCheck ? pulumi.output(val.selfCheck).apply(selfCheckArgsProvideDefaults) : undefined),
-        traces: (val.traces ? pulumi.output(val.traces).apply(tracesArgsProvideDefaults) : undefined),
+        logs: pulumi.output(val.logs).apply(v => v === undefined ? undefined : diagnosticsLogsArgsProvideDefaults(v)),
+        metrics: pulumi.output(val.metrics).apply(v => v === undefined ? undefined : metricsArgsProvideDefaults(v)),
+        selfCheck: pulumi.output(val.selfCheck).apply(v => v === undefined ? undefined : selfCheckArgsProvideDefaults(v)),
+        traces: pulumi.output(val.traces).apply(v => v === undefined ? undefined : tracesArgsProvideDefaults(v)),
     };
 }
 
@@ -975,11 +975,11 @@ export interface BrokerListenerPropertiesArgs {
     /**
      * Kubernetes Service name of this listener.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * Kubernetes Service type of this listener.
      */
-    serviceType?: pulumi.Input<string | enums.ServiceType>;
+    serviceType?: pulumi.Input<string | enums.ServiceType | undefined>;
 }
 /**
  * brokerListenerPropertiesArgsProvideDefaults sets the appropriate defaults for BrokerListenerPropertiesArgs
@@ -998,27 +998,27 @@ export interface BrokerPropertiesArgs {
     /**
      * Advanced settings of Broker.
      */
-    advanced?: pulumi.Input<AdvancedSettingsArgs>;
+    advanced?: pulumi.Input<AdvancedSettingsArgs | undefined>;
     /**
      * The cardinality details of the broker.
      */
-    cardinality?: pulumi.Input<CardinalityArgs>;
+    cardinality?: pulumi.Input<CardinalityArgs | undefined>;
     /**
      * Spec defines the desired identities of Broker diagnostics settings.
      */
-    diagnostics?: pulumi.Input<BrokerDiagnosticsArgs>;
+    diagnostics?: pulumi.Input<BrokerDiagnosticsArgs | undefined>;
     /**
      * Settings of Disk Backed Message Buffer.
      */
-    diskBackedMessageBuffer?: pulumi.Input<DiskBackedMessageBufferArgs>;
+    diskBackedMessageBuffer?: pulumi.Input<DiskBackedMessageBufferArgs | undefined>;
     /**
      * This setting controls whether Kubernetes CPU resource limits are requested. Increasing the number of replicas or workers proportionally increases the amount of CPU resources requested. If this setting is enabled and there are insufficient CPU resources, an error will be emitted.
      */
-    generateResourceLimits?: pulumi.Input<GenerateResourceLimitsArgs>;
+    generateResourceLimits?: pulumi.Input<GenerateResourceLimitsArgs | undefined>;
     /**
      * Memory profile of Broker.
      */
-    memoryProfile?: pulumi.Input<string | enums.BrokerMemoryProfile>;
+    memoryProfile?: pulumi.Input<string | enums.BrokerMemoryProfile | undefined>;
 }
 /**
  * brokerPropertiesArgsProvideDefaults sets the appropriate defaults for BrokerPropertiesArgs
@@ -1026,10 +1026,10 @@ export interface BrokerPropertiesArgs {
 export function brokerPropertiesArgsProvideDefaults(val: BrokerPropertiesArgs): BrokerPropertiesArgs {
     return {
         ...val,
-        advanced: (val.advanced ? pulumi.output(val.advanced).apply(advancedSettingsArgsProvideDefaults) : undefined),
-        cardinality: (val.cardinality ? pulumi.output(val.cardinality).apply(cardinalityArgsProvideDefaults) : undefined),
-        diagnostics: (val.diagnostics ? pulumi.output(val.diagnostics).apply(brokerDiagnosticsArgsProvideDefaults) : undefined),
-        generateResourceLimits: (val.generateResourceLimits ? pulumi.output(val.generateResourceLimits).apply(generateResourceLimitsArgsProvideDefaults) : undefined),
+        advanced: pulumi.output(val.advanced).apply(v => v === undefined ? undefined : advancedSettingsArgsProvideDefaults(v)),
+        cardinality: pulumi.output(val.cardinality).apply(v => v === undefined ? undefined : cardinalityArgsProvideDefaults(v)),
+        diagnostics: pulumi.output(val.diagnostics).apply(v => v === undefined ? undefined : brokerDiagnosticsArgsProvideDefaults(v)),
+        generateResourceLimits: pulumi.output(val.generateResourceLimits).apply(v => v === undefined ? undefined : generateResourceLimitsArgsProvideDefaults(v)),
         memoryProfile: (val.memoryProfile) ?? "Medium",
     };
 }
@@ -1041,7 +1041,7 @@ export interface BrokerResourceRuleArgs {
     /**
      * A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect.
      */
-    clientIds?: pulumi.Input<pulumi.Input<string>[]>;
+    clientIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Give access for a Broker method (i.e., Connect, Subscribe, or Publish).
      */
@@ -1049,7 +1049,7 @@ export interface BrokerResourceRuleArgs {
     /**
      * A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe.
      */
-    topics?: pulumi.Input<pulumi.Input<string>[]>;
+    topics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1101,7 +1101,7 @@ export interface CertManagerCertificateSpecArgs {
     /**
      * Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * cert-manager issuerRef.
      */
@@ -1109,19 +1109,19 @@ export interface CertManagerCertificateSpecArgs {
     /**
      * Type of certificate private key.
      */
-    privateKey?: pulumi.Input<CertManagerPrivateKeyArgs>;
+    privateKey?: pulumi.Input<CertManagerPrivateKeyArgs | undefined>;
     /**
      * When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
      */
-    renewBefore?: pulumi.Input<string>;
+    renewBefore?: pulumi.Input<string | undefined>;
     /**
      * Additional Subject Alternative Names (SANs) to include in the certificate.
      */
-    san?: pulumi.Input<SanForCertArgs>;
+    san?: pulumi.Input<SanForCertArgs | undefined>;
     /**
      * Secret for storing server certificate. Any existing data will be overwritten. This is a reference to the secret through an identifying name, not the secret itself.
      */
-    secretName?: pulumi.Input<string>;
+    secretName?: pulumi.Input<string | undefined>;
 }
 /**
  * certManagerCertificateSpecArgsProvideDefaults sets the appropriate defaults for CertManagerCertificateSpecArgs
@@ -1181,27 +1181,27 @@ export interface ClientConfigArgs {
     /**
      * Upper bound of a client's Keep Alive, in seconds.
      */
-    maxKeepAliveSeconds?: pulumi.Input<number>;
+    maxKeepAliveSeconds?: pulumi.Input<number | undefined>;
     /**
      * Upper bound of Message Expiry Interval, in seconds.
      */
-    maxMessageExpirySeconds?: pulumi.Input<number>;
+    maxMessageExpirySeconds?: pulumi.Input<number | undefined>;
     /**
      * Max message size for a packet in Bytes.
      */
-    maxPacketSizeBytes?: pulumi.Input<number>;
+    maxPacketSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * Upper bound of Receive Maximum that a client can request in the CONNECT packet.
      */
-    maxReceiveMaximum?: pulumi.Input<number>;
+    maxReceiveMaximum?: pulumi.Input<number | undefined>;
     /**
      * Upper bound of Session Expiry Interval, in seconds.
      */
-    maxSessionExpirySeconds?: pulumi.Input<number>;
+    maxSessionExpirySeconds?: pulumi.Input<number | undefined>;
     /**
      * The limit on the number of queued messages for a subscriber.
      */
-    subscriberQueueLimit?: pulumi.Input<SubscriberQueueLimitArgs>;
+    subscriberQueueLimit?: pulumi.Input<SubscriberQueueLimitArgs | undefined>;
 }
 /**
  * clientConfigArgsProvideDefaults sets the appropriate defaults for ClientConfigArgs
@@ -1209,7 +1209,7 @@ export interface ClientConfigArgs {
 export function clientConfigArgsProvideDefaults(val: ClientConfigArgs): ClientConfigArgs {
     return {
         ...val,
-        subscriberQueueLimit: (val.subscriberQueueLimit ? pulumi.output(val.subscriberQueueLimit).apply(subscriberQueueLimitArgsProvideDefaults) : undefined),
+        subscriberQueueLimit: pulumi.output(val.subscriberQueueLimit).apply(v => v === undefined ? undefined : subscriberQueueLimitArgsProvideDefaults(v)),
     };
 }
 
@@ -1220,11 +1220,11 @@ export interface DataflowBuiltInTransformationDatasetArgs {
     /**
      * A user provided optional description of the dataset.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Condition to enrich data from Broker State Store. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided)
      */
-    expression?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
     /**
      * List of fields for enriching from the Broker State Store.
      */
@@ -1236,7 +1236,7 @@ export interface DataflowBuiltInTransformationDatasetArgs {
     /**
      * The reference to the schema that describes the dataset. Allowed: JSON Schema/draft-7.
      */
-    schemaRef?: pulumi.Input<string>;
+    schemaRef?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1246,7 +1246,7 @@ export interface DataflowBuiltInTransformationFilterArgs {
     /**
      * A user provided optional description of the filter.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Condition to filter data. Can reference input fields with {n} where n is the index of the input field starting from 1. Example: $1 < 0 || $1 > $2 (Assuming inputs section $1 and $2 are provided)
      */
@@ -1258,7 +1258,7 @@ export interface DataflowBuiltInTransformationFilterArgs {
     /**
      * The type of dataflow operation.
      */
-    type?: pulumi.Input<string | enums.FilterType>;
+    type?: pulumi.Input<string | enums.FilterType | undefined>;
 }
 /**
  * dataflowBuiltInTransformationFilterArgsProvideDefaults sets the appropriate defaults for DataflowBuiltInTransformationFilterArgs
@@ -1277,11 +1277,11 @@ export interface DataflowBuiltInTransformationMapArgs {
     /**
      * A user provided optional description of the mapping function.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Modify the inputs field(s) to the final output field. Example: $1 * 2.2 (Assuming inputs section $1 is provided)
      */
-    expression?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
     /**
      * List of fields for mapping in JSON path expression.
      */
@@ -1293,7 +1293,7 @@ export interface DataflowBuiltInTransformationMapArgs {
     /**
      * Type of transformation.
      */
-    type?: pulumi.Input<string | enums.DataflowMappingType>;
+    type?: pulumi.Input<string | enums.DataflowMappingType | undefined>;
 }
 
 /**
@@ -1303,23 +1303,23 @@ export interface DataflowBuiltInTransformationSettingsArgs {
     /**
      * Enrich data from Broker State Store. Dataset references a key in Broker State Store.
      */
-    datasets?: pulumi.Input<pulumi.Input<DataflowBuiltInTransformationDatasetArgs>[]>;
+    datasets?: pulumi.Input<pulumi.Input<DataflowBuiltInTransformationDatasetArgs>[] | undefined>;
     /**
      * Filters input record or datapoints based on condition.
      */
-    filter?: pulumi.Input<pulumi.Input<DataflowBuiltInTransformationFilterArgs>[]>;
+    filter?: pulumi.Input<pulumi.Input<DataflowBuiltInTransformationFilterArgs>[] | undefined>;
     /**
      * Maps input to output message.
      */
-    map?: pulumi.Input<pulumi.Input<DataflowBuiltInTransformationMapArgs>[]>;
+    map?: pulumi.Input<pulumi.Input<DataflowBuiltInTransformationMapArgs>[] | undefined>;
     /**
      * Reference to the schema that describes the output of the transformation.
      */
-    schemaRef?: pulumi.Input<string>;
+    schemaRef?: pulumi.Input<string | undefined>;
     /**
      * Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
      */
-    serializationFormat?: pulumi.Input<string | enums.TransformationSerializationFormat>;
+    serializationFormat?: pulumi.Input<string | enums.TransformationSerializationFormat | undefined>;
 }
 /**
  * dataflowBuiltInTransformationSettingsArgsProvideDefaults sets the appropriate defaults for DataflowBuiltInTransformationSettingsArgs
@@ -1386,7 +1386,7 @@ export interface DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs
     /**
      * Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1400,7 +1400,7 @@ export interface DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs {
     /**
      * Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Tenant ID.
      */
@@ -1428,7 +1428,7 @@ export interface DataflowEndpointDataExplorerArgs {
     /**
      * Azure Data Explorer endpoint batching configuration.
      */
-    batching?: pulumi.Input<BatchingConfigurationArgs>;
+    batching?: pulumi.Input<BatchingConfigurationArgs | undefined>;
     /**
      * Database name.
      */
@@ -1444,7 +1444,7 @@ export interface DataflowEndpointDataExplorerArgs {
 export function dataflowEndpointDataExplorerArgsProvideDefaults(val: DataflowEndpointDataExplorerArgs): DataflowEndpointDataExplorerArgs {
     return {
         ...val,
-        batching: (val.batching ? pulumi.output(val.batching).apply(batchingConfigurationArgsProvideDefaults) : undefined),
+        batching: pulumi.output(val.batching).apply(v => v === undefined ? undefined : batchingConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -1459,11 +1459,11 @@ export interface DataflowEndpointDataExplorerAuthenticationArgs {
     /**
      * System-assigned managed identity authentication.
      */
-    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs>;
+    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs | undefined>;
     /**
      * User-assigned managed identity authentication.
      */
-    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs>;
+    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs | undefined>;
 }
 
 /**
@@ -1477,7 +1477,7 @@ export interface DataflowEndpointDataLakeStorageArgs {
     /**
      * Azure Data Lake endpoint batching configuration.
      */
-    batching?: pulumi.Input<BatchingConfigurationArgs>;
+    batching?: pulumi.Input<BatchingConfigurationArgs | undefined>;
     /**
      * Host of the Azure Data Lake in the form of <account>.blob.core.windows.net .
      */
@@ -1489,7 +1489,7 @@ export interface DataflowEndpointDataLakeStorageArgs {
 export function dataflowEndpointDataLakeStorageArgsProvideDefaults(val: DataflowEndpointDataLakeStorageArgs): DataflowEndpointDataLakeStorageArgs {
     return {
         ...val,
-        batching: (val.batching ? pulumi.output(val.batching).apply(batchingConfigurationArgsProvideDefaults) : undefined),
+        batching: pulumi.output(val.batching).apply(v => v === undefined ? undefined : batchingConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -1500,7 +1500,7 @@ export interface DataflowEndpointDataLakeStorageAuthenticationArgs {
     /**
      * SAS token authentication.
      */
-    accessTokenSettings?: pulumi.Input<DataflowEndpointAuthenticationAccessTokenArgs>;
+    accessTokenSettings?: pulumi.Input<DataflowEndpointAuthenticationAccessTokenArgs | undefined>;
     /**
      * Mode of Authentication.
      */
@@ -1508,11 +1508,11 @@ export interface DataflowEndpointDataLakeStorageAuthenticationArgs {
     /**
      * System-assigned managed identity authentication.
      */
-    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs>;
+    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs | undefined>;
     /**
      * User-assigned managed identity authentication.
      */
-    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs>;
+    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs | undefined>;
 }
 
 /**
@@ -1526,7 +1526,7 @@ export interface DataflowEndpointFabricOneLakeArgs {
     /**
      * Batching configuration.
      */
-    batching?: pulumi.Input<BatchingConfigurationArgs>;
+    batching?: pulumi.Input<BatchingConfigurationArgs | undefined>;
     /**
      * Host of the Microsoft Fabric in the form of https://<host>.fabric.microsoft.com.
      */
@@ -1546,7 +1546,7 @@ export interface DataflowEndpointFabricOneLakeArgs {
 export function dataflowEndpointFabricOneLakeArgsProvideDefaults(val: DataflowEndpointFabricOneLakeArgs): DataflowEndpointFabricOneLakeArgs {
     return {
         ...val,
-        batching: (val.batching ? pulumi.output(val.batching).apply(batchingConfigurationArgsProvideDefaults) : undefined),
+        batching: pulumi.output(val.batching).apply(v => v === undefined ? undefined : batchingConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -1561,11 +1561,11 @@ export interface DataflowEndpointFabricOneLakeAuthenticationArgs {
     /**
      * System-assigned managed identity authentication.
      */
-    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs>;
+    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs | undefined>;
     /**
      * User-assigned managed identity authentication.
      */
-    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs>;
+    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs | undefined>;
 }
 
 /**
@@ -1593,23 +1593,23 @@ export interface DataflowEndpointKafkaArgs {
     /**
      * Batching configuration.
      */
-    batching?: pulumi.Input<DataflowEndpointKafkaBatchingArgs>;
+    batching?: pulumi.Input<DataflowEndpointKafkaBatchingArgs | undefined>;
     /**
      * Cloud event mapping config.
      */
-    cloudEventAttributes?: pulumi.Input<string | enums.CloudEventAttributeType>;
+    cloudEventAttributes?: pulumi.Input<string | enums.CloudEventAttributeType | undefined>;
     /**
      * Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source.
      */
-    compression?: pulumi.Input<string | enums.DataflowEndpointKafkaCompression>;
+    compression?: pulumi.Input<string | enums.DataflowEndpointKafkaCompression | undefined>;
     /**
      * Consumer group ID.
      */
-    consumerGroupId?: pulumi.Input<string>;
+    consumerGroupId?: pulumi.Input<string | undefined>;
     /**
      * Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source.
      */
-    copyMqttProperties?: pulumi.Input<string | enums.OperationalMode>;
+    copyMqttProperties?: pulumi.Input<string | enums.OperationalMode | undefined>;
     /**
      * Kafka endpoint host.
      */
@@ -1617,15 +1617,15 @@ export interface DataflowEndpointKafkaArgs {
     /**
      * Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
      */
-    kafkaAcks?: pulumi.Input<string | enums.DataflowEndpointKafkaAcks>;
+    kafkaAcks?: pulumi.Input<string | enums.DataflowEndpointKafkaAcks | undefined>;
     /**
      * Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
      */
-    partitionStrategy?: pulumi.Input<string | enums.DataflowEndpointKafkaPartitionStrategy>;
+    partitionStrategy?: pulumi.Input<string | enums.DataflowEndpointKafkaPartitionStrategy | undefined>;
     /**
      * TLS configuration.
      */
-    tls?: pulumi.Input<TlsPropertiesArgs>;
+    tls?: pulumi.Input<TlsPropertiesArgs | undefined>;
 }
 /**
  * dataflowEndpointKafkaArgsProvideDefaults sets the appropriate defaults for DataflowEndpointKafkaArgs
@@ -1633,12 +1633,12 @@ export interface DataflowEndpointKafkaArgs {
 export function dataflowEndpointKafkaArgsProvideDefaults(val: DataflowEndpointKafkaArgs): DataflowEndpointKafkaArgs {
     return {
         ...val,
-        batching: (val.batching ? pulumi.output(val.batching).apply(dataflowEndpointKafkaBatchingArgsProvideDefaults) : undefined),
+        batching: pulumi.output(val.batching).apply(v => v === undefined ? undefined : dataflowEndpointKafkaBatchingArgsProvideDefaults(v)),
         compression: (val.compression) ?? "None",
         copyMqttProperties: (val.copyMqttProperties) ?? "Enabled",
         kafkaAcks: (val.kafkaAcks) ?? "All",
         partitionStrategy: (val.partitionStrategy) ?? "Default",
-        tls: (val.tls ? pulumi.output(val.tls).apply(tlsPropertiesArgsProvideDefaults) : undefined),
+        tls: pulumi.output(val.tls).apply(v => v === undefined ? undefined : tlsPropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -1653,19 +1653,19 @@ export interface DataflowEndpointKafkaAuthenticationArgs {
     /**
      * SASL authentication.
      */
-    saslSettings?: pulumi.Input<DataflowEndpointAuthenticationSaslArgs>;
+    saslSettings?: pulumi.Input<DataflowEndpointAuthenticationSaslArgs | undefined>;
     /**
      * System-assigned managed identity authentication.
      */
-    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs>;
+    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs | undefined>;
     /**
      * User-assigned managed identity authentication.
      */
-    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs>;
+    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs | undefined>;
     /**
      * X.509 certificate authentication.
      */
-    x509CertificateSettings?: pulumi.Input<DataflowEndpointAuthenticationX509Args>;
+    x509CertificateSettings?: pulumi.Input<DataflowEndpointAuthenticationX509Args | undefined>;
 }
 
 /**
@@ -1675,19 +1675,19 @@ export interface DataflowEndpointKafkaBatchingArgs {
     /**
      * Batching latency in milliseconds.
      */
-    latencyMs?: pulumi.Input<number>;
+    latencyMs?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of bytes in a batch.
      */
-    maxBytes?: pulumi.Input<number>;
+    maxBytes?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of messages in a batch.
      */
-    maxMessages?: pulumi.Input<number>;
+    maxMessages?: pulumi.Input<number | undefined>;
     /**
      * Mode for batching.
      */
-    mode?: pulumi.Input<string | enums.OperationalMode>;
+    mode?: pulumi.Input<string | enums.OperationalMode | undefined>;
 }
 /**
  * dataflowEndpointKafkaBatchingArgsProvideDefaults sets the appropriate defaults for DataflowEndpointKafkaBatchingArgs
@@ -1723,43 +1723,43 @@ export interface DataflowEndpointMqttArgs {
     /**
      * Client ID prefix. Client ID generated by the dataflow is <prefix>-TBD. Optional; no prefix if omitted.
      */
-    clientIdPrefix?: pulumi.Input<string>;
+    clientIdPrefix?: pulumi.Input<string | undefined>;
     /**
      * Cloud event mapping config.
      */
-    cloudEventAttributes?: pulumi.Input<string | enums.CloudEventAttributeType>;
+    cloudEventAttributes?: pulumi.Input<string | enums.CloudEventAttributeType | undefined>;
     /**
      * Host of the Broker in the form of <hostname>:<port>. Optional; connects to Broker if omitted.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Broker KeepAlive for connection in seconds.
      */
-    keepAliveSeconds?: pulumi.Input<number>;
+    keepAliveSeconds?: pulumi.Input<number | undefined>;
     /**
      * The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
      */
-    maxInflightMessages?: pulumi.Input<number>;
+    maxInflightMessages?: pulumi.Input<number | undefined>;
     /**
      * Enable or disable websockets.
      */
-    protocol?: pulumi.Input<string | enums.BrokerProtocolType>;
+    protocol?: pulumi.Input<string | enums.BrokerProtocolType | undefined>;
     /**
      * Qos for Broker connection.
      */
-    qos?: pulumi.Input<number>;
+    qos?: pulumi.Input<number | undefined>;
     /**
      * Whether or not to keep the retain setting.
      */
-    retain?: pulumi.Input<string | enums.MqttRetainType>;
+    retain?: pulumi.Input<string | enums.MqttRetainType | undefined>;
     /**
      * Session expiry in seconds.
      */
-    sessionExpirySeconds?: pulumi.Input<number>;
+    sessionExpirySeconds?: pulumi.Input<number | undefined>;
     /**
      * TLS configuration.
      */
-    tls?: pulumi.Input<TlsPropertiesArgs>;
+    tls?: pulumi.Input<TlsPropertiesArgs | undefined>;
 }
 /**
  * dataflowEndpointMqttArgsProvideDefaults sets the appropriate defaults for DataflowEndpointMqttArgs
@@ -1772,7 +1772,7 @@ export function dataflowEndpointMqttArgsProvideDefaults(val: DataflowEndpointMqt
         protocol: (val.protocol) ?? "Mqtt",
         qos: (val.qos) ?? 1,
         retain: (val.retain) ?? "Keep",
-        tls: (val.tls ? pulumi.output(val.tls).apply(tlsPropertiesArgsProvideDefaults) : undefined),
+        tls: pulumi.output(val.tls).apply(v => v === undefined ? undefined : tlsPropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -1787,19 +1787,19 @@ export interface DataflowEndpointMqttAuthenticationArgs {
     /**
      * Kubernetes service account token authentication. Default audience if not set is aio-internal
      */
-    serviceAccountTokenSettings?: pulumi.Input<DataflowEndpointAuthenticationServiceAccountTokenArgs>;
+    serviceAccountTokenSettings?: pulumi.Input<DataflowEndpointAuthenticationServiceAccountTokenArgs | undefined>;
     /**
      * System-assigned managed identity authentication.
      */
-    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs>;
+    systemAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityArgs | undefined>;
     /**
      * User-assigned managed identity authentication.
      */
-    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs>;
+    userAssignedManagedIdentitySettings?: pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityArgs | undefined>;
     /**
      * X.509 certificate authentication.
      */
-    x509CertificateSettings?: pulumi.Input<DataflowEndpointAuthenticationX509Args>;
+    x509CertificateSettings?: pulumi.Input<DataflowEndpointAuthenticationX509Args | undefined>;
 }
 
 /**
@@ -1809,11 +1809,11 @@ export interface DataflowEndpointPropertiesArgs {
     /**
      * Azure Data Explorer endpoint.
      */
-    dataExplorerSettings?: pulumi.Input<DataflowEndpointDataExplorerArgs>;
+    dataExplorerSettings?: pulumi.Input<DataflowEndpointDataExplorerArgs | undefined>;
     /**
      * Azure Data Lake endpoint.
      */
-    dataLakeStorageSettings?: pulumi.Input<DataflowEndpointDataLakeStorageArgs>;
+    dataLakeStorageSettings?: pulumi.Input<DataflowEndpointDataLakeStorageArgs | undefined>;
     /**
      * Endpoint Type.
      */
@@ -1821,19 +1821,19 @@ export interface DataflowEndpointPropertiesArgs {
     /**
      * Microsoft Fabric endpoint.
      */
-    fabricOneLakeSettings?: pulumi.Input<DataflowEndpointFabricOneLakeArgs>;
+    fabricOneLakeSettings?: pulumi.Input<DataflowEndpointFabricOneLakeArgs | undefined>;
     /**
      * Kafka endpoint.
      */
-    kafkaSettings?: pulumi.Input<DataflowEndpointKafkaArgs>;
+    kafkaSettings?: pulumi.Input<DataflowEndpointKafkaArgs | undefined>;
     /**
      * Local persistent volume endpoint.
      */
-    localStorageSettings?: pulumi.Input<DataflowEndpointLocalStorageArgs>;
+    localStorageSettings?: pulumi.Input<DataflowEndpointLocalStorageArgs | undefined>;
     /**
      * Broker endpoint.
      */
-    mqttSettings?: pulumi.Input<DataflowEndpointMqttArgs>;
+    mqttSettings?: pulumi.Input<DataflowEndpointMqttArgs | undefined>;
 }
 /**
  * dataflowEndpointPropertiesArgsProvideDefaults sets the appropriate defaults for DataflowEndpointPropertiesArgs
@@ -1841,11 +1841,11 @@ export interface DataflowEndpointPropertiesArgs {
 export function dataflowEndpointPropertiesArgsProvideDefaults(val: DataflowEndpointPropertiesArgs): DataflowEndpointPropertiesArgs {
     return {
         ...val,
-        dataExplorerSettings: (val.dataExplorerSettings ? pulumi.output(val.dataExplorerSettings).apply(dataflowEndpointDataExplorerArgsProvideDefaults) : undefined),
-        dataLakeStorageSettings: (val.dataLakeStorageSettings ? pulumi.output(val.dataLakeStorageSettings).apply(dataflowEndpointDataLakeStorageArgsProvideDefaults) : undefined),
-        fabricOneLakeSettings: (val.fabricOneLakeSettings ? pulumi.output(val.fabricOneLakeSettings).apply(dataflowEndpointFabricOneLakeArgsProvideDefaults) : undefined),
-        kafkaSettings: (val.kafkaSettings ? pulumi.output(val.kafkaSettings).apply(dataflowEndpointKafkaArgsProvideDefaults) : undefined),
-        mqttSettings: (val.mqttSettings ? pulumi.output(val.mqttSettings).apply(dataflowEndpointMqttArgsProvideDefaults) : undefined),
+        dataExplorerSettings: pulumi.output(val.dataExplorerSettings).apply(v => v === undefined ? undefined : dataflowEndpointDataExplorerArgsProvideDefaults(v)),
+        dataLakeStorageSettings: pulumi.output(val.dataLakeStorageSettings).apply(v => v === undefined ? undefined : dataflowEndpointDataLakeStorageArgsProvideDefaults(v)),
+        fabricOneLakeSettings: pulumi.output(val.fabricOneLakeSettings).apply(v => v === undefined ? undefined : dataflowEndpointFabricOneLakeArgsProvideDefaults(v)),
+        kafkaSettings: pulumi.output(val.kafkaSettings).apply(v => v === undefined ? undefined : dataflowEndpointKafkaArgsProvideDefaults(v)),
+        mqttSettings: pulumi.output(val.mqttSettings).apply(v => v === undefined ? undefined : dataflowEndpointMqttArgsProvideDefaults(v)),
     };
 }
 
@@ -1860,7 +1860,7 @@ export interface DataflowGraphConnectionInputArgs {
     /**
      * Schema settings for the input node.
      */
-    schema?: pulumi.Input<DataflowGraphConnectionSchemaSettingsArgs>;
+    schema?: pulumi.Input<DataflowGraphConnectionSchemaSettingsArgs | undefined>;
 }
 
 /**
@@ -1880,11 +1880,11 @@ export interface DataflowGraphConnectionSchemaSettingsArgs {
     /**
      * Reference to the schema that describes the output of the transformation.
      */
-    schemaRef?: pulumi.Input<string>;
+    schemaRef?: pulumi.Input<string | undefined>;
     /**
      * Output serialization format.
      */
-    serializationFormat?: pulumi.Input<string | enums.DataflowGraphConnectionSchemaSerializationFormat>;
+    serializationFormat?: pulumi.Input<string | enums.DataflowGraphConnectionSchemaSerializationFormat | undefined>;
 }
 
 /**
@@ -1921,7 +1921,7 @@ export interface DataflowGraphDestinationNodeSettingsArgs {
     /**
      * Output schema settings.
      */
-    outputSchemaSettings?: pulumi.Input<DataflowGraphDestinationSchemaSettingsArgs>;
+    outputSchemaSettings?: pulumi.Input<DataflowGraphDestinationSchemaSettingsArgs | undefined>;
 }
 
 /**
@@ -1931,7 +1931,7 @@ export interface DataflowGraphDestinationSchemaSettingsArgs {
     /**
      * Reference to the schema that describes the output of the transformation.
      */
-    schemaRef?: pulumi.Input<string>;
+    schemaRef?: pulumi.Input<string | undefined>;
     /**
      * The format of the output data.
      */
@@ -1996,7 +1996,7 @@ export interface DataflowGraphNodeGraphSettingsArgs {
     /**
      * Configuration key-value pairs.
      */
-    configuration?: pulumi.Input<pulumi.Input<DataflowGraphGraphNodeConfigurationArgs>[]>;
+    configuration?: pulumi.Input<pulumi.Input<DataflowGraphGraphNodeConfigurationArgs>[] | undefined>;
     /**
      * Reference to the registry endpoint for pulling the artifact.
      */
@@ -2010,7 +2010,7 @@ export interface DataflowGraphPropertiesArgs {
     /**
      * The mode of the dataflow graph.
      */
-    mode?: pulumi.Input<string | enums.OperationalMode>;
+    mode?: pulumi.Input<string | enums.OperationalMode | undefined>;
     /**
      * List of connections between nodes in the dataflow graph.
      */
@@ -2022,7 +2022,7 @@ export interface DataflowGraphPropertiesArgs {
     /**
      * Disk persistence mode.
      */
-    requestDiskPersistence?: pulumi.Input<string | enums.OperationalMode>;
+    requestDiskPersistence?: pulumi.Input<string | enums.OperationalMode | undefined>;
 }
 /**
  * dataflowGraphPropertiesArgsProvideDefaults sets the appropriate defaults for DataflowGraphPropertiesArgs
@@ -2060,7 +2060,7 @@ export interface DataflowGraphSourceSettingsArgs {
     /**
      * Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
      */
-    assetRef?: pulumi.Input<string>;
+    assetRef?: pulumi.Input<string | undefined>;
     /**
      * List of data sources.
      */
@@ -2078,15 +2078,15 @@ export interface DataflowOperationArgs {
     /**
      * Built In Transformation configuration.
      */
-    builtInTransformationSettings?: pulumi.Input<DataflowBuiltInTransformationSettingsArgs>;
+    builtInTransformationSettings?: pulumi.Input<DataflowBuiltInTransformationSettingsArgs | undefined>;
     /**
      * Destination configuration.
      */
-    destinationSettings?: pulumi.Input<DataflowDestinationOperationSettingsArgs>;
+    destinationSettings?: pulumi.Input<DataflowDestinationOperationSettingsArgs | undefined>;
     /**
      * Optional user provided name of the transformation.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Type of operation.
      */
@@ -2094,7 +2094,7 @@ export interface DataflowOperationArgs {
     /**
      * Source configuration.
      */
-    sourceSettings?: pulumi.Input<DataflowSourceOperationSettingsArgs>;
+    sourceSettings?: pulumi.Input<DataflowSourceOperationSettingsArgs | undefined>;
 }
 /**
  * dataflowOperationArgsProvideDefaults sets the appropriate defaults for DataflowOperationArgs
@@ -2102,8 +2102,8 @@ export interface DataflowOperationArgs {
 export function dataflowOperationArgsProvideDefaults(val: DataflowOperationArgs): DataflowOperationArgs {
     return {
         ...val,
-        builtInTransformationSettings: (val.builtInTransformationSettings ? pulumi.output(val.builtInTransformationSettings).apply(dataflowBuiltInTransformationSettingsArgsProvideDefaults) : undefined),
-        sourceSettings: (val.sourceSettings ? pulumi.output(val.sourceSettings).apply(dataflowSourceOperationSettingsArgsProvideDefaults) : undefined),
+        builtInTransformationSettings: pulumi.output(val.builtInTransformationSettings).apply(v => v === undefined ? undefined : dataflowBuiltInTransformationSettingsArgsProvideDefaults(v)),
+        sourceSettings: pulumi.output(val.sourceSettings).apply(v => v === undefined ? undefined : dataflowSourceOperationSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -2114,11 +2114,11 @@ export interface DataflowProfilePropertiesArgs {
     /**
      * Spec defines the desired identities of NBC diagnostics settings.
      */
-    diagnostics?: pulumi.Input<ProfileDiagnosticsArgs>;
+    diagnostics?: pulumi.Input<ProfileDiagnosticsArgs | undefined>;
     /**
      * To manually scale the dataflow profile, specify the maximum number of instances you want to run.
      */
-    instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number | undefined>;
 }
 /**
  * dataflowProfilePropertiesArgsProvideDefaults sets the appropriate defaults for DataflowProfilePropertiesArgs
@@ -2126,7 +2126,7 @@ export interface DataflowProfilePropertiesArgs {
 export function dataflowProfilePropertiesArgsProvideDefaults(val: DataflowProfilePropertiesArgs): DataflowProfilePropertiesArgs {
     return {
         ...val,
-        diagnostics: (val.diagnostics ? pulumi.output(val.diagnostics).apply(profileDiagnosticsArgsProvideDefaults) : undefined),
+        diagnostics: pulumi.output(val.diagnostics).apply(v => v === undefined ? undefined : profileDiagnosticsArgsProvideDefaults(v)),
         instanceCount: (val.instanceCount) ?? 1,
     };
 }
@@ -2138,7 +2138,7 @@ export interface DataflowPropertiesArgs {
     /**
      * Mode for Dataflow. Optional; defaults to Enabled.
      */
-    mode?: pulumi.Input<string | enums.OperationalMode>;
+    mode?: pulumi.Input<string | enums.OperationalMode | undefined>;
     /**
      * List of operations including source and destination references as well as transformation.
      */
@@ -2161,7 +2161,7 @@ export interface DataflowSourceOperationSettingsArgs {
     /**
      * Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
      */
-    assetRef?: pulumi.Input<string>;
+    assetRef?: pulumi.Input<string | undefined>;
     /**
      * List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +.
      */
@@ -2173,11 +2173,11 @@ export interface DataflowSourceOperationSettingsArgs {
     /**
      * Schema CR reference. Data will be deserialized according to the schema, and dropped if it doesn't match.
      */
-    schemaRef?: pulumi.Input<string>;
+    schemaRef?: pulumi.Input<string | undefined>;
     /**
      * Content is a JSON Schema. Allowed: JSON Schema/draft-7.
      */
-    serializationFormat?: pulumi.Input<string | enums.SourceSerializationFormat>;
+    serializationFormat?: pulumi.Input<string | enums.SourceSerializationFormat | undefined>;
 }
 /**
  * dataflowSourceOperationSettingsArgsProvideDefaults sets the appropriate defaults for DataflowSourceOperationSettingsArgs
@@ -2196,7 +2196,7 @@ export interface DiagnosticsLogsArgs {
     /**
      * The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
      */
-    level?: pulumi.Input<string>;
+    level?: pulumi.Input<string | undefined>;
 }
 /**
  * diagnosticsLogsArgsProvideDefaults sets the appropriate defaults for DiagnosticsLogsArgs
@@ -2215,7 +2215,7 @@ export interface DiskBackedMessageBufferArgs {
     /**
      * Use the specified persistent volume claim template to mount a "generic ephemeral volume" for the message buffer. See <https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes> for details.
      */
-    ephemeralVolumeClaimSpec?: pulumi.Input<VolumeClaimSpecArgs>;
+    ephemeralVolumeClaimSpec?: pulumi.Input<VolumeClaimSpecArgs | undefined>;
     /**
      * The max size of the message buffer on disk. If a PVC template is specified using one of ephemeralVolumeClaimSpec or persistentVolumeClaimSpec, then this size is used as the request and limit sizes of that template. If neither ephemeralVolumeClaimSpec nor persistentVolumeClaimSpec are specified, then an emptyDir volume is mounted with this size as its limit. See <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir> for details.
      */
@@ -2223,7 +2223,7 @@ export interface DiskBackedMessageBufferArgs {
     /**
      * Use the specified persistent volume claim template to mount a persistent volume for the message buffer.
      */
-    persistentVolumeClaimSpec?: pulumi.Input<VolumeClaimSpecArgs>;
+    persistentVolumeClaimSpec?: pulumi.Input<VolumeClaimSpecArgs | undefined>;
 }
 
 /**
@@ -2251,7 +2251,7 @@ export interface FrontendArgs {
     /**
      * Number of logical frontend workers per instance (pod).
      */
-    workers?: pulumi.Input<number>;
+    workers?: pulumi.Input<number | undefined>;
 }
 /**
  * frontendArgsProvideDefaults sets the appropriate defaults for FrontendArgs
@@ -2270,7 +2270,7 @@ export interface GenerateResourceLimitsArgs {
     /**
      * The toggle to enable/disable cpu resource limits.
      */
-    cpu?: pulumi.Input<string | enums.OperationalMode>;
+    cpu?: pulumi.Input<string | enums.OperationalMode | undefined>;
 }
 /**
  * generateResourceLimitsArgsProvideDefaults sets the appropriate defaults for GenerateResourceLimitsArgs
@@ -2289,7 +2289,7 @@ export interface InstancePropertiesArgs {
     /**
      * Detailed description of the Instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The reference to the Schema Registry for this AIO Instance.
      */
@@ -2303,7 +2303,7 @@ export interface KubernetesReferenceArgs {
     /**
      * APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
      */
-    apiGroup?: pulumi.Input<string>;
+    apiGroup?: pulumi.Input<string | undefined>;
     /**
      * Kind is the type of resource being referenced
      */
@@ -2315,7 +2315,7 @@ export interface KubernetesReferenceArgs {
     /**
      * Namespace is the namespace of the resource being referenced. This field is required when the resource has a namespace.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2325,15 +2325,15 @@ export interface ListenerPortArgs {
     /**
      * Reference to client authentication settings. Omit to disable authentication.
      */
-    authenticationRef?: pulumi.Input<string>;
+    authenticationRef?: pulumi.Input<string | undefined>;
     /**
      * Reference to client authorization settings. Omit to disable authorization.
      */
-    authorizationRef?: pulumi.Input<string>;
+    authorizationRef?: pulumi.Input<string | undefined>;
     /**
      * Kubernetes node port. Only relevant when this port is associated with a `NodePort` listener.
      */
-    nodePort?: pulumi.Input<number>;
+    nodePort?: pulumi.Input<number | undefined>;
     /**
      * TCP port for accepting client connections.
      */
@@ -2341,11 +2341,11 @@ export interface ListenerPortArgs {
     /**
      * Protocol to use for client connections.
      */
-    protocol?: pulumi.Input<string | enums.BrokerProtocolType>;
+    protocol?: pulumi.Input<string | enums.BrokerProtocolType | undefined>;
     /**
      * TLS server certificate settings for this port. Omit to disable TLS.
      */
-    tls?: pulumi.Input<TlsCertMethodArgs>;
+    tls?: pulumi.Input<TlsCertMethodArgs | undefined>;
 }
 /**
  * listenerPortArgsProvideDefaults sets the appropriate defaults for ListenerPortArgs
@@ -2354,7 +2354,7 @@ export function listenerPortArgsProvideDefaults(val: ListenerPortArgs): Listener
     return {
         ...val,
         protocol: (val.protocol) ?? "Mqtt",
-        tls: (val.tls ? pulumi.output(val.tls).apply(tlsCertMethodArgsProvideDefaults) : undefined),
+        tls: pulumi.output(val.tls).apply(v => v === undefined ? undefined : tlsCertMethodArgsProvideDefaults(v)),
     };
 }
 
@@ -2365,7 +2365,7 @@ export interface LocalKubernetesReferenceArgs {
     /**
      * APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
      */
-    apiGroup?: pulumi.Input<string>;
+    apiGroup?: pulumi.Input<string | undefined>;
     /**
      * Kind is the type of resource being referenced
      */
@@ -2387,7 +2387,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -2397,7 +2397,7 @@ export interface MetricsArgs {
     /**
      * The prometheus port to expose the metrics.
      */
-    prometheusPort?: pulumi.Input<number>;
+    prometheusPort?: pulumi.Input<number | undefined>;
 }
 /**
  * metricsArgsProvideDefaults sets the appropriate defaults for MetricsArgs
@@ -2416,15 +2416,15 @@ export interface PrincipalDefinitionArgs {
     /**
      * A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication.
      */
-    attributes?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    attributes?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection.
      */
-    clientIds?: pulumi.Input<pulumi.Input<string>[]>;
+    clientIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of usernames that match the clients. The usernames are case-sensitive and must match the usernames provided by the clients during authentication.
      */
-    usernames?: pulumi.Input<pulumi.Input<string>[]>;
+    usernames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -2434,11 +2434,11 @@ export interface ProfileDiagnosticsArgs {
     /**
      * Diagnostic log settings for the resource.
      */
-    logs?: pulumi.Input<DiagnosticsLogsArgs>;
+    logs?: pulumi.Input<DiagnosticsLogsArgs | undefined>;
     /**
      * The metrics settings for the resource.
      */
-    metrics?: pulumi.Input<MetricsArgs>;
+    metrics?: pulumi.Input<MetricsArgs | undefined>;
 }
 /**
  * profileDiagnosticsArgsProvideDefaults sets the appropriate defaults for ProfileDiagnosticsArgs
@@ -2446,8 +2446,8 @@ export interface ProfileDiagnosticsArgs {
 export function profileDiagnosticsArgsProvideDefaults(val: ProfileDiagnosticsArgs): ProfileDiagnosticsArgs {
     return {
         ...val,
-        logs: (val.logs ? pulumi.output(val.logs).apply(diagnosticsLogsArgsProvideDefaults) : undefined),
-        metrics: (val.metrics ? pulumi.output(val.metrics).apply(metricsArgsProvideDefaults) : undefined),
+        logs: pulumi.output(val.logs).apply(v => v === undefined ? undefined : diagnosticsLogsArgsProvideDefaults(v)),
+        metrics: pulumi.output(val.metrics).apply(v => v === undefined ? undefined : metricsArgsProvideDefaults(v)),
     };
 }
 
@@ -2506,7 +2506,7 @@ export interface RegistryEndpointPropertiesArgs {
     /**
      * Trust settings for the registry endpoint
      */
-    trustSettings?: pulumi.Input<RegistryEndpointTrustedSettingsArgs>;
+    trustSettings?: pulumi.Input<RegistryEndpointTrustedSettingsArgs | undefined>;
 }
 
 /**
@@ -2531,7 +2531,7 @@ export interface RegistryEndpointSystemAssignedManagedIdentitySettingsArgs {
     /**
      * Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2600,7 +2600,7 @@ export interface RegistryEndpointUserAssignedManagedIdentitySettingsArgs {
     /**
      * Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Tenant ID.
      */
@@ -2638,15 +2638,15 @@ export interface SelfCheckArgs {
     /**
      * The self check interval.
      */
-    intervalSeconds?: pulumi.Input<number>;
+    intervalSeconds?: pulumi.Input<number | undefined>;
     /**
      * The toggle to enable/disable self check.
      */
-    mode?: pulumi.Input<string | enums.OperationalMode>;
+    mode?: pulumi.Input<string | enums.OperationalMode | undefined>;
     /**
      * The timeout for self check.
      */
-    timeoutSeconds?: pulumi.Input<number>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
 }
 /**
  * selfCheckArgsProvideDefaults sets the appropriate defaults for SelfCheckArgs
@@ -2667,11 +2667,11 @@ export interface SelfTracingArgs {
     /**
      * The self tracing interval.
      */
-    intervalSeconds?: pulumi.Input<number>;
+    intervalSeconds?: pulumi.Input<number | undefined>;
     /**
      * The toggle to enable/disable self tracing.
      */
-    mode?: pulumi.Input<string | enums.OperationalMode>;
+    mode?: pulumi.Input<string | enums.OperationalMode | undefined>;
 }
 /**
  * selfTracingArgsProvideDefaults sets the appropriate defaults for SelfTracingArgs
@@ -2709,11 +2709,11 @@ export interface SubscriberQueueLimitArgs {
     /**
      * The maximum length of the queue before messages start getting dropped.
      */
-    length?: pulumi.Input<number>;
+    length?: pulumi.Input<number | undefined>;
     /**
      * The strategy to use for dropping messages from the queue.
      */
-    strategy?: pulumi.Input<string | enums.SubscriberMessageDropStrategy>;
+    strategy?: pulumi.Input<string | enums.SubscriberMessageDropStrategy | undefined>;
 }
 /**
  * subscriberQueueLimitArgsProvideDefaults sets the appropriate defaults for SubscriberQueueLimitArgs
@@ -2732,11 +2732,11 @@ export interface TlsCertMethodArgs {
     /**
      * Option 1 - Automatic TLS server certificate management with cert-manager.
      */
-    certManagerCertificateSpec?: pulumi.Input<CertManagerCertificateSpecArgs>;
+    certManagerCertificateSpec?: pulumi.Input<CertManagerCertificateSpecArgs | undefined>;
     /**
      * Option 2 - Manual TLS server certificate management through a defined secret.
      */
-    manual?: pulumi.Input<X509ManualCertificateArgs>;
+    manual?: pulumi.Input<X509ManualCertificateArgs | undefined>;
     /**
      * Mode of TLS server certificate management.
      */
@@ -2748,7 +2748,7 @@ export interface TlsCertMethodArgs {
 export function tlsCertMethodArgsProvideDefaults(val: TlsCertMethodArgs): TlsCertMethodArgs {
     return {
         ...val,
-        certManagerCertificateSpec: (val.certManagerCertificateSpec ? pulumi.output(val.certManagerCertificateSpec).apply(certManagerCertificateSpecArgsProvideDefaults) : undefined),
+        certManagerCertificateSpec: pulumi.output(val.certManagerCertificateSpec).apply(v => v === undefined ? undefined : certManagerCertificateSpecArgsProvideDefaults(v)),
     };
 }
 
@@ -2759,11 +2759,11 @@ export interface TlsPropertiesArgs {
     /**
      * Mode for TLS.
      */
-    mode?: pulumi.Input<string | enums.OperationalMode>;
+    mode?: pulumi.Input<string | enums.OperationalMode | undefined>;
     /**
      * Trusted CA certificate config map.
      */
-    trustedCaCertificateConfigMapRef?: pulumi.Input<string>;
+    trustedCaCertificateConfigMapRef?: pulumi.Input<string | undefined>;
 }
 /**
  * tlsPropertiesArgsProvideDefaults sets the appropriate defaults for TlsPropertiesArgs
@@ -2782,19 +2782,19 @@ export interface TracesArgs {
     /**
      * The cache size in megabytes.
      */
-    cacheSizeMegabytes?: pulumi.Input<number>;
+    cacheSizeMegabytes?: pulumi.Input<number | undefined>;
     /**
      * The toggle to enable/disable traces.
      */
-    mode?: pulumi.Input<string | enums.OperationalMode>;
+    mode?: pulumi.Input<string | enums.OperationalMode | undefined>;
     /**
      * The self tracing properties.
      */
-    selfTracing?: pulumi.Input<SelfTracingArgs>;
+    selfTracing?: pulumi.Input<SelfTracingArgs | undefined>;
     /**
      * The span channel capacity.
      */
-    spanChannelCapacity?: pulumi.Input<number>;
+    spanChannelCapacity?: pulumi.Input<number | undefined>;
 }
 /**
  * tracesArgsProvideDefaults sets the appropriate defaults for TracesArgs
@@ -2804,7 +2804,7 @@ export function tracesArgsProvideDefaults(val: TracesArgs): TracesArgs {
         ...val,
         cacheSizeMegabytes: (val.cacheSizeMegabytes) ?? 16,
         mode: (val.mode) ?? "Enabled",
-        selfTracing: (val.selfTracing ? pulumi.output(val.selfTracing).apply(selfTracingArgsProvideDefaults) : undefined),
+        selfTracing: pulumi.output(val.selfTracing).apply(v => v === undefined ? undefined : selfTracingArgsProvideDefaults(v)),
         spanChannelCapacity: (val.spanChannelCapacity) ?? 1000,
     };
 }
@@ -2816,11 +2816,11 @@ export interface VolumeClaimResourceRequirementsArgs {
     /**
      * Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
      */
-    limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    limits?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
      */
-    requests?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    requests?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -2830,35 +2830,35 @@ export interface VolumeClaimSpecArgs {
     /**
      * AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
      */
-    accessModes?: pulumi.Input<pulumi.Input<string>[]>;
+    accessModes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot) * An existing PVC (PersistentVolumeClaim) If the provisioner or an external controller can support the specified data source, it will create a new volume based on the contents of the specified data source. If the AnyVolumeDataSource feature gate is enabled, this field will always have the same contents as the DataSourceRef field.
      */
-    dataSource?: pulumi.Input<LocalKubernetesReferenceArgs>;
+    dataSource?: pulumi.Input<LocalKubernetesReferenceArgs | undefined>;
     /**
      * Specifies the object from which to populate the volume with data, if a non-empty volume is desired. This may be any local object from a non-empty API group (non core object) or a PersistentVolumeClaim object. When this field is specified, volume binding will only succeed if the type of the specified object matches some installed volume populator or dynamic provisioner. This field will replace the functionality of the DataSource field and as such if both fields are non-empty, they must have the same value. For backwards compatibility, both fields (DataSource and DataSourceRef) will be set to the same value automatically if one of them is empty and the other is non-empty. There are two important differences between DataSource and DataSourceRef: * While DataSource only allows two specific types of objects, DataSourceRef allows any non-core object, as well as PersistentVolumeClaim objects. * While DataSource ignores disallowed values (dropping them), DataSourceRef preserves all values, and generates an error if a disallowed value is specified. (Beta) Using this field requires the AnyVolumeDataSource feature gate to be enabled.
      */
-    dataSourceRef?: pulumi.Input<KubernetesReferenceArgs>;
+    dataSourceRef?: pulumi.Input<KubernetesReferenceArgs | undefined>;
     /**
      * Resources represents the minimum resources the volume should have. If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements that are lower than previous value but must still be higher than capacity recorded in the status field of the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
      */
-    resources?: pulumi.Input<VolumeClaimResourceRequirementsArgs>;
+    resources?: pulumi.Input<VolumeClaimResourceRequirementsArgs | undefined>;
     /**
      * A label query over volumes to consider for binding.
      */
-    selector?: pulumi.Input<VolumeClaimSpecSelectorArgs>;
+    selector?: pulumi.Input<VolumeClaimSpecSelectorArgs | undefined>;
     /**
      * Name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
      */
-    storageClassName?: pulumi.Input<string>;
+    storageClassName?: pulumi.Input<string | undefined>;
     /**
      * volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec. This is a beta feature.
      */
-    volumeMode?: pulumi.Input<string>;
+    volumeMode?: pulumi.Input<string | undefined>;
     /**
      * VolumeName is the binding reference to the PersistentVolume backing this claim.
      */
-    volumeName?: pulumi.Input<string>;
+    volumeName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2868,11 +2868,11 @@ export interface VolumeClaimSpecSelectorArgs {
     /**
      * MatchExpressions is a list of label selector requirements. The requirements are ANDed.
      */
-    matchExpressions?: pulumi.Input<pulumi.Input<VolumeClaimSpecSelectorMatchExpressionsArgs>[]>;
+    matchExpressions?: pulumi.Input<pulumi.Input<VolumeClaimSpecSelectorMatchExpressionsArgs>[] | undefined>;
     /**
      * MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
      */
-    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -2890,7 +2890,7 @@ export interface VolumeClaimSpecSelectorMatchExpressionsArgs {
     /**
      * values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
  *
- * Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualHardDisk extends pulumi.CustomResource {
     /**
@@ -169,7 +169,7 @@ export class VirtualHardDisk extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210701preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20210901preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20210901preview:VirtualharddiskRetrieve" }, { type: "azure-native:azurestackhci/v20221215preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20230701preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20230901preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20240101:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20240201preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20240501preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20240715preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20240801preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20241001preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20250201preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20250401preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20250601preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20250901preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20260201preview:VirtualHardDisk" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210701preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20210901preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20210901preview:VirtualharddiskRetrieve" }, { type: "azure-native:azurestackhci/v20221215preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20230701preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20230901preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20240101:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20240201preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20240501preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20240715preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20240801preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20241001preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20250201preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20250401preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20250601preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20250901preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20260201preview:VirtualHardDisk" }, { type: "azure-native:azurestackhci/v20260401preview:VirtualHardDisk" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualHardDisk.__pulumiType, name, resourceInputs, opts);
     }
@@ -182,51 +182,51 @@ export interface VirtualHardDiskArgs {
     /**
      * Block size in bytes
      */
-    blockSizeBytes?: pulumi.Input<number>;
+    blockSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * Storage ContainerID of the storage container to be used for VHD
      */
-    containerId?: pulumi.Input<string>;
+    containerId?: pulumi.Input<string | undefined>;
     /**
      * Boolean indicating whether it is an existing local hard disk or if one should be created.
      */
-    createFromLocal?: pulumi.Input<boolean>;
+    createFromLocal?: pulumi.Input<boolean | undefined>;
     /**
      * The format of the actual VHD file [vhd, vhdx]
      */
-    diskFileFormat?: pulumi.Input<string | types.enums.DiskFileFormat>;
+    diskFileFormat?: pulumi.Input<string | types.enums.DiskFileFormat | undefined>;
     /**
      * Size of the disk in GB
      */
-    diskSizeGB?: pulumi.Input<number>;
+    diskSizeGB?: pulumi.Input<number | undefined>;
     /**
      * URL for downloading or accessing the virtual hard disk. This URL points to a secure link from where the VHD can be downloaded or accessed directly.
      */
-    downloadUrl?: pulumi.Input<string>;
+    downloadUrl?: pulumi.Input<string | undefined>;
     /**
      * Boolean for enabling dynamic sizing on the virtual hard disk
      */
-    dynamic?: pulumi.Input<boolean>;
+    dynamic?: pulumi.Input<boolean | undefined>;
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
-    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGeneration>;
+    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGeneration | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Logical sector in bytes
      */
-    logicalSectorBytes?: pulumi.Input<number>;
+    logicalSectorBytes?: pulumi.Input<number | undefined>;
     /**
      * Physical sector in bytes
      */
-    physicalSectorBytes?: pulumi.Input<number>;
+    physicalSectorBytes?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -234,9 +234,9 @@ export interface VirtualHardDiskArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the virtual hard disk
      */
-    virtualHardDiskName?: pulumi.Input<string>;
+    virtualHardDiskName?: pulumi.Input<string | undefined>;
 }

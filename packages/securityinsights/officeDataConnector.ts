@@ -128,7 +128,7 @@ export interface OfficeDataConnectorArgs {
     /**
      * Connector ID
      */
-    dataConnectorId?: pulumi.Input<string>;
+    dataConnectorId?: pulumi.Input<string | undefined>;
     /**
      * The available data types for the connector.
      */

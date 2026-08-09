@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class StorageTaskAssignment extends pulumi.CustomResource {
     /**
@@ -86,7 +86,7 @@ export class StorageTaskAssignment extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20230501:StorageTaskAssignment" }, { type: "azure-native:storage/v20240101:StorageTaskAssignment" }, { type: "azure-native:storage/v20250101:StorageTaskAssignment" }, { type: "azure-native:storage/v20250601:StorageTaskAssignment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20230501:StorageTaskAssignment" }, { type: "azure-native:storage/v20240101:StorageTaskAssignment" }, { type: "azure-native:storage/v20250101:StorageTaskAssignment" }, { type: "azure-native:storage/v20250601:StorageTaskAssignment" }, { type: "azure-native:storage/v20250801:StorageTaskAssignment" }, { type: "azure-native:storage/v20260401:StorageTaskAssignment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StorageTaskAssignment.__pulumiType, name, resourceInputs, opts);
     }
@@ -111,5 +111,5 @@ export interface StorageTaskAssignmentArgs {
     /**
      * The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
      */
-    storageTaskAssignmentName?: pulumi.Input<string>;
+    storageTaskAssignmentName?: pulumi.Input<string | undefined>;
 }

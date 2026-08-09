@@ -7,7 +7,7 @@ export interface AzureApiManagementSourceArgs {
     /**
      * The resource ID of the managed identity that has access to the API Management instance.
      */
-    msiResourceId?: pulumi.Input<string>;
+    msiResourceId?: pulumi.Input<string | undefined>;
     /**
      * API Management service resource ID.
      */
@@ -21,15 +21,15 @@ export interface ContactArgs {
     /**
      * Email address of the contact.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Name of the contact.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URL for the contact.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -39,7 +39,7 @@ export interface DeploymentServerArgs {
     /**
      * Base runtime URLs for this deployment.
      */
-    runtimeUri?: pulumi.Input<pulumi.Input<string>[]>;
+    runtimeUri?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -49,11 +49,11 @@ export interface EnvironmentServerArgs {
     /**
      * The location of the management portal
      */
-    managementPortalUri?: pulumi.Input<pulumi.Input<string>[]>;
+    managementPortalUri?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of the server that represents the environment.
      */
-    type?: pulumi.Input<string | enums.EnvironmentServerType>;
+    type?: pulumi.Input<string | enums.EnvironmentServerType | undefined>;
 }
 
 /**
@@ -63,11 +63,11 @@ export interface ExternalDocumentationArgs {
     /**
      * Description of the documentation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Title of the documentation.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * URL pointing to the documentation.
      */
@@ -82,16 +82,16 @@ export interface LicenseArgs {
      * SPDX license information for the API. The identifier field is mutually
      * exclusive of the URL field.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the license.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URL pointing to the license details. The URL field is mutually exclusive of the
      * identifier field.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -105,7 +105,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -115,15 +115,15 @@ export interface MetadataAssignmentArgs {
     /**
      * Deprecated assignment
      */
-    deprecated?: pulumi.Input<boolean>;
+    deprecated?: pulumi.Input<boolean | undefined>;
     /**
      * The entities this metadata schema component gets applied to.
      */
-    entity?: pulumi.Input<string | enums.MetadataAssignmentEntity>;
+    entity?: pulumi.Input<string | enums.MetadataAssignmentEntity | undefined>;
     /**
      * Required assignment
      */
-    required?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -133,11 +133,11 @@ export interface OnboardingArgs {
     /**
      * The location of the development portal
      */
-    developerPortalUri?: pulumi.Input<pulumi.Input<string>[]>;
+    developerPortalUri?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Onboarding guide.
      */
-    instructions?: pulumi.Input<string>;
+    instructions?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -132,15 +132,15 @@ export interface PlanMemberArgs {
     /**
      * The unique id of the member.
      */
-    memberId?: pulumi.Input<string>;
+    memberId?: pulumi.Input<string | undefined>;
     /**
      * The name of a devcenter plan member.
      */
-    memberName?: pulumi.Input<string>;
+    memberName?: pulumi.Input<string | undefined>;
     /**
      * The type of the member (user, group)
      */
-    memberType?: pulumi.Input<string | types.enums.PlanMemberType>;
+    memberType?: pulumi.Input<string | types.enums.PlanMemberType | undefined>;
     /**
      * The name of the devcenter plan.
      */
@@ -152,9 +152,9 @@ export interface PlanMemberArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The tier of the member.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }

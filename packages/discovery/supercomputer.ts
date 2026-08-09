@@ -5,6 +5,8 @@ import * as types from "./types";
  * Supercomputer tracked resource
  *
  * Uses Azure REST API version 2026-02-01-preview.
+ *
+ * Other available API versions: 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native discovery [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Supercomputer extends pulumi.CustomResource {
     /**
@@ -77,7 +79,7 @@ export class Supercomputer extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["location"] = args?.location;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.supercomputerPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.supercomputerPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["supercomputerName"] = args?.supercomputerName;
             resourceInputs["tags"] = args?.tags;
@@ -95,7 +97,7 @@ export class Supercomputer extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:discovery/v20260201preview:Supercomputer" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:discovery/v20260201preview:Supercomputer" }, { type: "azure-native:discovery/v20260601:Supercomputer" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Supercomputer.__pulumiType, name, resourceInputs, opts);
     }
@@ -108,11 +110,11 @@ export interface SupercomputerArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.SupercomputerPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SupercomputerPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -120,9 +122,9 @@ export interface SupercomputerArgs {
     /**
      * The name of the Supercomputer
      */
-    supercomputerName?: pulumi.Input<string>;
+    supercomputerName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

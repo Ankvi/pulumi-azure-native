@@ -165,15 +165,15 @@ export interface DnsSecurityRuleArgs {
     /**
      * The name of the DNS security rule.
      */
-    dnsSecurityRuleName?: pulumi.Input<string>;
+    dnsSecurityRuleName?: pulumi.Input<string | undefined>;
     /**
      * The state of DNS security rule.
      */
-    dnsSecurityRuleState?: pulumi.Input<string | types.enums.DnsSecurityRuleState>;
+    dnsSecurityRuleState?: pulumi.Input<string | types.enums.DnsSecurityRuleState | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The priority of the DNS security rule.
      */
@@ -185,5 +185,5 @@ export interface DnsSecurityRuleArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

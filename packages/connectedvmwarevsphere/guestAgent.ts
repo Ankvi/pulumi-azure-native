@@ -149,23 +149,23 @@ export interface GuestAgentArgs {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    credentials?: pulumi.Input<types.inputs.GuestCredentialArgs>;
+    credentials?: pulumi.Input<types.inputs.GuestCredentialArgs | undefined>;
     /**
      * HTTP Proxy configuration for the VM.
      */
-    httpProxyConfig?: pulumi.Input<types.inputs.HttpProxyConfigurationArgs>;
+    httpProxyConfig?: pulumi.Input<types.inputs.HttpProxyConfigurationArgs | undefined>;
     /**
      * Name of the guestAgents.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource id of the private link scope this machine is assigned to, if any.
      */
-    privateLinkScopeResourceId?: pulumi.Input<string>;
+    privateLinkScopeResourceId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the guest agent provisioning action.
      */
-    provisioningAction?: pulumi.Input<string | types.enums.ProvisioningAction>;
+    provisioningAction?: pulumi.Input<string | types.enums.ProvisioningAction | undefined>;
     /**
      * The Resource Group Name.
      */

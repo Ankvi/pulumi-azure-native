@@ -104,7 +104,7 @@ export interface TagInheritanceSettingArgs {
     /**
      * The properties of the tag inheritance setting.
      */
-    properties?: pulumi.Input<types.inputs.TagInheritancePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.TagInheritancePropertiesArgs | undefined>;
     /**
      * The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
      */
@@ -112,5 +112,5 @@ export interface TagInheritanceSettingArgs {
     /**
      * Setting type.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

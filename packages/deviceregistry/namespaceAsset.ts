@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-07-01-preview.
  *
- * Other available API versions: 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01, 2026-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NamespaceAsset extends pulumi.CustomResource {
     /**
@@ -299,7 +299,7 @@ export class NamespaceAsset extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:deviceregistry/v20250701preview:NamespaceAsset" }, { type: "azure-native:deviceregistry/v20251001:NamespaceAsset" }, { type: "azure-native:deviceregistry/v20251101preview:NamespaceAsset" }, { type: "azure-native:deviceregistry/v20260301preview:NamespaceAsset" }, { type: "azure-native:deviceregistry/v20260401:NamespaceAsset" }, { type: "azure-native:deviceregistry/v20261101preview:NamespaceAsset" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:deviceregistry/v20250701preview:NamespaceAsset" }, { type: "azure-native:deviceregistry/v20251001:NamespaceAsset" }, { type: "azure-native:deviceregistry/v20251101preview:NamespaceAsset" }, { type: "azure-native:deviceregistry/v20260301preview:NamespaceAsset" }, { type: "azure-native:deviceregistry/v20260401:NamespaceAsset" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NamespaceAsset.__pulumiType, name, resourceInputs, opts);
     }
@@ -312,51 +312,51 @@ export interface NamespaceAssetArgs {
     /**
      * The name of the asset.
      */
-    assetName?: pulumi.Input<string>;
+    assetName?: pulumi.Input<string | undefined>;
     /**
      * URIs or type definition IDs.
      */
-    assetTypeRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    assetTypeRefs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of key-value pairs that contain custom attributes set by the customer.
      */
-    attributes?: any;
+    attributes?: any | undefined;
     /**
      * Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
      */
-    datasets?: pulumi.Input<pulumi.Input<types.inputs.NamespaceDatasetArgs>[]>;
+    datasets?: pulumi.Input<pulumi.Input<types.inputs.NamespaceDatasetArgs>[] | undefined>;
     /**
      * Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
      */
-    defaultDatasetsConfiguration?: pulumi.Input<string>;
+    defaultDatasetsConfiguration?: pulumi.Input<string | undefined>;
     /**
      * Default destinations for a dataset.
      */
-    defaultDatasetsDestinations?: pulumi.Input<pulumi.Input<types.inputs.DatasetBrokerStateStoreDestinationArgs | types.inputs.DatasetMqttDestinationArgs | types.inputs.DatasetStorageDestinationArgs>[]>;
+    defaultDatasetsDestinations?: pulumi.Input<pulumi.Input<types.inputs.DatasetBrokerStateStoreDestinationArgs | types.inputs.DatasetMqttDestinationArgs | types.inputs.DatasetStorageDestinationArgs>[] | undefined>;
     /**
      * Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
      */
-    defaultEventsConfiguration?: pulumi.Input<string>;
+    defaultEventsConfiguration?: pulumi.Input<string | undefined>;
     /**
      * Default destinations for an event.
      */
-    defaultEventsDestinations?: pulumi.Input<pulumi.Input<types.inputs.EventMqttDestinationArgs | types.inputs.EventStorageDestinationArgs>[]>;
+    defaultEventsDestinations?: pulumi.Input<pulumi.Input<types.inputs.EventMqttDestinationArgs | types.inputs.EventStorageDestinationArgs>[] | undefined>;
     /**
      * Stringified JSON that contains connector-specific default configuration for all management groups. Each management group can have its own configuration that overrides the default settings here.
      */
-    defaultManagementGroupsConfiguration?: pulumi.Input<string>;
+    defaultManagementGroupsConfiguration?: pulumi.Input<string | undefined>;
     /**
      * Stringified JSON that contains connector-specific default configuration for all streams. Each stream can have its own configuration that overrides the default settings here.
      */
-    defaultStreamsConfiguration?: pulumi.Input<string>;
+    defaultStreamsConfiguration?: pulumi.Input<string | undefined>;
     /**
      * Default destinations for a stream.
      */
-    defaultStreamsDestinations?: pulumi.Input<pulumi.Input<types.inputs.StreamMqttDestinationArgs | types.inputs.StreamStorageDestinationArgs>[]>;
+    defaultStreamsDestinations?: pulumi.Input<pulumi.Input<types.inputs.StreamMqttDestinationArgs | types.inputs.StreamStorageDestinationArgs>[] | undefined>;
     /**
      * Human-readable description of the asset.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Reference to the device that provides data for this asset. Must provide device name & endpoint on the device to use.
      */
@@ -364,23 +364,23 @@ export interface NamespaceAssetArgs {
     /**
      * Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided.
      */
-    discoveredAssetRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    discoveredAssetRefs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Human-readable display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Asset documentation reference.
      */
-    documentationUri?: pulumi.Input<string>;
+    documentationUri?: pulumi.Input<string | undefined>;
     /**
      * Enabled/disabled status of the asset.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Array of events that are part of the asset. Each event can have per-event configuration.
      */
-    events?: pulumi.Input<pulumi.Input<types.inputs.NamespaceEventArgs>[]>;
+    events?: pulumi.Input<pulumi.Input<types.inputs.NamespaceEventArgs>[] | undefined>;
     /**
      * The extended location.
      */
@@ -388,31 +388,31 @@ export interface NamespaceAssetArgs {
     /**
      * Asset ID provided by the customer.
      */
-    externalAssetId?: pulumi.Input<string>;
+    externalAssetId?: pulumi.Input<string | undefined>;
     /**
      * Asset hardware revision number.
      */
-    hardwareRevision?: pulumi.Input<string>;
+    hardwareRevision?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Array of management groups that are part of the asset. Each management group can have a per-group configuration.
      */
-    managementGroups?: pulumi.Input<pulumi.Input<types.inputs.ManagementGroupArgs>[]>;
+    managementGroups?: pulumi.Input<pulumi.Input<types.inputs.ManagementGroupArgs>[] | undefined>;
     /**
      * Asset manufacturer.
      */
-    manufacturer?: pulumi.Input<string>;
+    manufacturer?: pulumi.Input<string | undefined>;
     /**
      * Asset manufacturer URI.
      */
-    manufacturerUri?: pulumi.Input<string>;
+    manufacturerUri?: pulumi.Input<string | undefined>;
     /**
      * Asset model.
      */
-    model?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace.
      */
@@ -420,7 +420,7 @@ export interface NamespaceAssetArgs {
     /**
      * Asset product code.
      */
-    productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -428,17 +428,17 @@ export interface NamespaceAssetArgs {
     /**
      * Asset serial number.
      */
-    serialNumber?: pulumi.Input<string>;
+    serialNumber?: pulumi.Input<string | undefined>;
     /**
      * Asset software revision number.
      */
-    softwareRevision?: pulumi.Input<string>;
+    softwareRevision?: pulumi.Input<string | undefined>;
     /**
      * Array of streams that are part of the asset. Each stream can have a per-stream configuration.
      */
-    streams?: pulumi.Input<pulumi.Input<types.inputs.NamespaceStreamArgs>[]>;
+    streams?: pulumi.Input<pulumi.Input<types.inputs.NamespaceStreamArgs>[] | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -138,19 +138,19 @@ export interface ChannelArgs {
     /**
      * The name of the Channel resource.
      */
-    channelName?: pulumi.Input<string>;
+    channelName?: pulumi.Input<string | undefined>;
     /**
      * Required. Gets or sets the Kind of the resource.
      */
-    kind?: pulumi.Input<string | types.enums.Kind>;
+    kind?: pulumi.Input<string | types.enums.Kind | undefined>;
     /**
      * Specifies the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The set of properties specific to bot channel resource
      */
-    properties?: pulumi.Input<types.inputs.AcsChatChannelArgs | types.inputs.AlexaChannelArgs | types.inputs.DirectLineChannelArgs | types.inputs.DirectLineSpeechChannelArgs | types.inputs.EmailChannelArgs | types.inputs.FacebookChannelArgs | types.inputs.KikChannelArgs | types.inputs.LineChannelArgs | types.inputs.M365ExtensionsArgs | types.inputs.MsTeamsChannelArgs | types.inputs.OmnichannelArgs | types.inputs.OutlookChannelArgs | types.inputs.SearchAssistantArgs | types.inputs.SkypeChannelArgs | types.inputs.SlackChannelArgs | types.inputs.SmsChannelArgs | types.inputs.TelegramChannelArgs | types.inputs.TelephonyChannelArgs | types.inputs.WebChatChannelArgs>;
+    properties?: pulumi.Input<types.inputs.AcsChatChannelArgs | types.inputs.AlexaChannelArgs | types.inputs.DirectLineChannelArgs | types.inputs.DirectLineSpeechChannelArgs | types.inputs.EmailChannelArgs | types.inputs.FacebookChannelArgs | types.inputs.KikChannelArgs | types.inputs.LineChannelArgs | types.inputs.M365ExtensionsArgs | types.inputs.MsTeamsChannelArgs | types.inputs.OmnichannelArgs | types.inputs.OutlookChannelArgs | types.inputs.SearchAssistantArgs | types.inputs.SkypeChannelArgs | types.inputs.SlackChannelArgs | types.inputs.SmsChannelArgs | types.inputs.TelegramChannelArgs | types.inputs.TelephonyChannelArgs | types.inputs.WebChatChannelArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -162,9 +162,9 @@ export interface ChannelArgs {
     /**
      * Gets or sets the SKU of the resource.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

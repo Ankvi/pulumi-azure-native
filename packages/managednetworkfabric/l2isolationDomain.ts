@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
  *
- * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class L2IsolationDomain extends pulumi.CustomResource {
     /**
@@ -139,7 +139,7 @@ export class L2IsolationDomain extends pulumi.CustomResource {
             resourceInputs["vlanId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:L2IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20230615:L2IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20240215preview:L2IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20240615preview:L2IsolationDomain" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:L2IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20230615:L2IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20240215preview:L2IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20240615preview:L2IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20250715:L2IsolationDomain" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(L2IsolationDomain.__pulumiType, name, resourceInputs, opts);
     }
@@ -152,19 +152,19 @@ export interface L2IsolationDomainArgs {
     /**
      * Switch configuration description.
      */
-    annotation?: pulumi.Input<string>;
+    annotation?: pulumi.Input<string | undefined>;
     /**
      * Name of the L2 Isolation Domain.
      */
-    l2IsolationDomainName?: pulumi.Input<string>;
+    l2IsolationDomainName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Maximum transmission unit. Default value is 1500.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * ARM Resource ID of the Network Fabric.
      */
@@ -176,7 +176,7 @@ export interface L2IsolationDomainArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Vlan Identifier of the Network Fabric. Example: 501.
      */

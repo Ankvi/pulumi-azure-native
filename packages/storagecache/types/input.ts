@@ -7,7 +7,7 @@ export interface AmlFilesystemEncryptionSettingsArgs {
     /**
      * Specifies the location of the encryption key in Key Vault.
      */
-    keyEncryptionKey?: pulumi.Input<KeyVaultKeyReferenceArgs>;
+    keyEncryptionKey?: pulumi.Input<KeyVaultKeyReferenceArgs | undefined>;
 }
 
 /**
@@ -17,7 +17,7 @@ export interface AmlFilesystemHsmArgs {
     /**
      * Specifies HSM settings of the AML file system.
      */
-    settings?: pulumi.Input<AmlFilesystemHsmSettingsArgs>;
+    settings?: pulumi.Input<AmlFilesystemHsmSettingsArgs | undefined>;
 }
 /**
  * amlFilesystemHsmArgsProvideDefaults sets the appropriate defaults for AmlFilesystemHsmArgs
@@ -25,7 +25,7 @@ export interface AmlFilesystemHsmArgs {
 export function amlFilesystemHsmArgsProvideDefaults(val: AmlFilesystemHsmArgs): AmlFilesystemHsmArgs {
     return {
         ...val,
-        settings: (val.settings ? pulumi.output(val.settings).apply(amlFilesystemHsmSettingsArgsProvideDefaults) : undefined),
+        settings: pulumi.output(val.settings).apply(v => v === undefined ? undefined : amlFilesystemHsmSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -40,11 +40,11 @@ export interface AmlFilesystemHsmSettingsArgs {
     /**
      * Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.
      */
-    importPrefix?: pulumi.Input<string>;
+    importPrefix?: pulumi.Input<string | undefined>;
     /**
      * Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.
      */
-    importPrefixesInitial?: pulumi.Input<pulumi.Input<string>[]>;
+    importPrefixesInitial?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
      */
@@ -67,11 +67,11 @@ export interface AmlFilesystemIdentityArgs {
     /**
      * The type of identity used for the resource.
      */
-    type?: pulumi.Input<enums.AmlFilesystemIdentityType>;
+    type?: pulumi.Input<enums.AmlFilesystemIdentityType | undefined>;
     /**
      * A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -81,11 +81,11 @@ export interface AmlFilesystemMaintenanceWindowArgs {
     /**
      * Day of the week on which the maintenance window will occur.
      */
-    dayOfWeek?: pulumi.Input<enums.MaintenanceDayOfWeekType>;
+    dayOfWeek?: pulumi.Input<enums.MaintenanceDayOfWeekType | undefined>;
     /**
      * The time of day (in UTC) to start the maintenance window.
      */
-    timeOfDayUTC?: pulumi.Input<string>;
+    timeOfDayUTC?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -95,19 +95,19 @@ export interface AmlFilesystemRootSquashSettingsArgs {
     /**
      * Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
      */
-    mode?: pulumi.Input<string | enums.AmlFilesystemSquashMode>;
+    mode?: pulumi.Input<string | enums.AmlFilesystemSquashMode | undefined>;
     /**
      * Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
      */
-    noSquashNidLists?: pulumi.Input<string>;
+    noSquashNidLists?: pulumi.Input<string | undefined>;
     /**
      * Group ID to squash to.
      */
-    squashGID?: pulumi.Input<number>;
+    squashGID?: pulumi.Input<number | undefined>;
     /**
      * User ID to squash to.
      */
-    squashUID?: pulumi.Input<number>;
+    squashUID?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -117,19 +117,19 @@ export interface BlobNfsTargetArgs {
     /**
      * Resource ID of the storage container.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * Identifies the StorageCache usage model to be used for this storage target.
      */
-    usageModel?: pulumi.Input<string>;
+    usageModel?: pulumi.Input<string | undefined>;
     /**
      * Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
      */
-    verificationTimer?: pulumi.Input<number>;
+    verificationTimer?: pulumi.Input<number | undefined>;
     /**
      * Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
      */
-    writeBackTimer?: pulumi.Input<number>;
+    writeBackTimer?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -143,7 +143,7 @@ export interface CacheActiveDirectorySettingsArgs {
     /**
      * Active Directory admin credentials used to join the HPC Cache to a domain.
      */
-    credentials?: pulumi.Input<CacheActiveDirectorySettingsCredentialsArgs>;
+    credentials?: pulumi.Input<CacheActiveDirectorySettingsCredentialsArgs | undefined>;
     /**
      * The fully qualified domain name of the Active Directory domain controller.
      */
@@ -159,7 +159,7 @@ export interface CacheActiveDirectorySettingsArgs {
     /**
      * Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
      */
-    secondaryDnsIpAddress?: pulumi.Input<string>;
+    secondaryDnsIpAddress?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -169,7 +169,7 @@ export interface CacheActiveDirectorySettingsCredentialsArgs {
     /**
      * Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
      */
@@ -183,11 +183,11 @@ export interface CacheDirectorySettingsArgs {
     /**
      * Specifies settings for joining the HPC Cache to an Active Directory domain.
      */
-    activeDirectory?: pulumi.Input<CacheActiveDirectorySettingsArgs>;
+    activeDirectory?: pulumi.Input<CacheActiveDirectorySettingsArgs | undefined>;
     /**
      * Specifies settings for Extended Groups. Extended Groups allows users to be members of more than 16 groups.
      */
-    usernameDownload?: pulumi.Input<CacheUsernameDownloadSettingsArgs>;
+    usernameDownload?: pulumi.Input<CacheUsernameDownloadSettingsArgs | undefined>;
 }
 /**
  * cacheDirectorySettingsArgsProvideDefaults sets the appropriate defaults for CacheDirectorySettingsArgs
@@ -195,7 +195,7 @@ export interface CacheDirectorySettingsArgs {
 export function cacheDirectorySettingsArgsProvideDefaults(val: CacheDirectorySettingsArgs): CacheDirectorySettingsArgs {
     return {
         ...val,
-        usernameDownload: (val.usernameDownload ? pulumi.output(val.usernameDownload).apply(cacheUsernameDownloadSettingsArgsProvideDefaults) : undefined),
+        usernameDownload: pulumi.output(val.usernameDownload).apply(v => v === undefined ? undefined : cacheUsernameDownloadSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -206,11 +206,11 @@ export interface CacheEncryptionSettingsArgs {
     /**
      * Specifies the location of the key encryption key in key vault.
      */
-    keyEncryptionKey?: pulumi.Input<KeyVaultKeyReferenceArgs>;
+    keyEncryptionKey?: pulumi.Input<KeyVaultKeyReferenceArgs | undefined>;
     /**
      * Specifies whether the service will automatically rotate to the newest version of the key in the key vault.
      */
-    rotationToLatestKeyVersionEnabled?: pulumi.Input<boolean>;
+    rotationToLatestKeyVersionEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -220,11 +220,11 @@ export interface CacheIdentityArgs {
     /**
      * The type of identity used for the cache
      */
-    type?: pulumi.Input<enums.CacheIdentityType>;
+    type?: pulumi.Input<enums.CacheIdentityType | undefined>;
     /**
      * A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -234,19 +234,19 @@ export interface CacheNetworkSettingsArgs {
     /**
      * DNS search domain
      */
-    dnsSearchDomain?: pulumi.Input<string>;
+    dnsSearchDomain?: pulumi.Input<string | undefined>;
     /**
      * DNS servers for the cache to use.  It will be set from the network configuration if no value is provided.
      */
-    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPv4 maximum transmission unit configured for the subnet.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * NTP server IP Address or FQDN for the cache to use. The default is time.windows.com.
      */
-    ntpServer?: pulumi.Input<string>;
+    ntpServer?: pulumi.Input<string | undefined>;
 }
 /**
  * cacheNetworkSettingsArgsProvideDefaults sets the appropriate defaults for CacheNetworkSettingsArgs
@@ -266,7 +266,7 @@ export interface CacheSecuritySettingsArgs {
     /**
      * NFS access policies defined for this cache.
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<NfsAccessPolicyArgs>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<NfsAccessPolicyArgs>[] | undefined>;
 }
 
 /**
@@ -276,7 +276,7 @@ export interface CacheSkuArgs {
     /**
      * SKU name for this cache.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -286,11 +286,11 @@ export interface CacheUpgradeSettingsArgs {
     /**
      * When upgradeScheduleEnabled is true, this field holds the user-chosen upgrade time. At the user-chosen time, the firmware update will automatically be installed on the cache.
      */
-    scheduledTime?: pulumi.Input<string>;
+    scheduledTime?: pulumi.Input<string | undefined>;
     /**
      * True if the user chooses to select an installation time between now and firmwareUpdateDeadline. Else the firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.
      */
-    upgradeScheduleEnabled?: pulumi.Input<boolean>;
+    upgradeScheduleEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -300,47 +300,47 @@ export interface CacheUsernameDownloadSettingsArgs {
     /**
      * Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
      */
-    autoDownloadCertificate?: pulumi.Input<boolean>;
+    autoDownloadCertificate?: pulumi.Input<boolean | undefined>;
     /**
      * The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true.
      */
-    caCertificateURI?: pulumi.Input<string>;
+    caCertificateURI?: pulumi.Input<string | undefined>;
     /**
      * When present, these are the credentials for the secure LDAP connection.
      */
-    credentials?: pulumi.Input<CacheUsernameDownloadSettingsCredentialsArgs>;
+    credentials?: pulumi.Input<CacheUsernameDownloadSettingsCredentialsArgs | undefined>;
     /**
      * Whether or not the LDAP connection should be encrypted.
      */
-    encryptLdapConnection?: pulumi.Input<boolean>;
+    encryptLdapConnection?: pulumi.Input<boolean | undefined>;
     /**
      * Whether or not Extended Groups is enabled.
      */
-    extendedGroups?: pulumi.Input<boolean>;
+    extendedGroups?: pulumi.Input<boolean | undefined>;
     /**
      * The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
      */
-    groupFileURI?: pulumi.Input<string>;
+    groupFileURI?: pulumi.Input<string | undefined>;
     /**
      * The base distinguished name for the LDAP domain.
      */
-    ldapBaseDN?: pulumi.Input<string>;
+    ldapBaseDN?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified domain name or IP address of the LDAP server to use.
      */
-    ldapServer?: pulumi.Input<string>;
+    ldapServer?: pulumi.Input<string | undefined>;
     /**
      * Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided.
      */
-    requireValidCertificate?: pulumi.Input<boolean>;
+    requireValidCertificate?: pulumi.Input<boolean | undefined>;
     /**
      * The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
      */
-    userFileURI?: pulumi.Input<string>;
+    userFileURI?: pulumi.Input<string | undefined>;
     /**
      * This setting determines how the cache gets username and group names for clients.
      */
-    usernameSource?: pulumi.Input<string | enums.UsernameSource>;
+    usernameSource?: pulumi.Input<string | enums.UsernameSource | undefined>;
 }
 /**
  * cacheUsernameDownloadSettingsArgsProvideDefaults sets the appropriate defaults for CacheUsernameDownloadSettingsArgs
@@ -362,11 +362,11 @@ export interface CacheUsernameDownloadSettingsCredentialsArgs {
     /**
      * The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
      */
-    bindDn?: pulumi.Input<string>;
+    bindDn?: pulumi.Input<string | undefined>;
     /**
      * The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
      */
-    bindPassword?: pulumi.Input<string>;
+    bindPassword?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -376,7 +376,7 @@ export interface ClfsTargetArgs {
     /**
      * Resource ID of storage container.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -400,7 +400,7 @@ export interface KeyVaultKeyReferenceSourceVaultArgs {
     /**
      * Resource Id.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -410,19 +410,19 @@ export interface NamespaceJunctionArgs {
     /**
      * Namespace path on a cache for a Storage Target.
      */
-    namespacePath?: pulumi.Input<string>;
+    namespacePath?: pulumi.Input<string | undefined>;
     /**
      * Name of the access policy applied to this junction.
      */
-    nfsAccessPolicy?: pulumi.Input<string>;
+    nfsAccessPolicy?: pulumi.Input<string | undefined>;
     /**
      * NFS export where targetPath exists.
      */
-    nfsExport?: pulumi.Input<string>;
+    nfsExport?: pulumi.Input<string | undefined>;
     /**
      * Path in Storage Target to which namespacePath points.
      */
-    targetPath?: pulumi.Input<string>;
+    targetPath?: pulumi.Input<string | undefined>;
 }
 /**
  * namespaceJunctionArgsProvideDefaults sets the appropriate defaults for NamespaceJunctionArgs
@@ -441,19 +441,19 @@ export interface Nfs3TargetArgs {
     /**
      * IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * Identifies the StorageCache usage model to be used for this storage target.
      */
-    usageModel?: pulumi.Input<string>;
+    usageModel?: pulumi.Input<string | undefined>;
     /**
      * Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
      */
-    verificationTimer?: pulumi.Input<number>;
+    verificationTimer?: pulumi.Input<number | undefined>;
     /**
      * Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
      */
-    writeBackTimer?: pulumi.Input<number>;
+    writeBackTimer?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -481,19 +481,19 @@ export interface NfsAccessRuleArgs {
     /**
      * GID value that replaces 0 when rootSquash is true. This will use the value of anonymousUID if not provided.
      */
-    anonymousGID?: pulumi.Input<string>;
+    anonymousGID?: pulumi.Input<string | undefined>;
     /**
      * UID value that replaces 0 when rootSquash is true. 65534 will be used if not provided.
      */
-    anonymousUID?: pulumi.Input<string>;
+    anonymousUID?: pulumi.Input<string | undefined>;
     /**
      * Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * Map root accesses to anonymousUID and anonymousGID.
      */
-    rootSquash?: pulumi.Input<boolean>;
+    rootSquash?: pulumi.Input<boolean | undefined>;
     /**
      * Scope for this rule. The scope and filter determine which clients match the rule.
      */
@@ -501,11 +501,11 @@ export interface NfsAccessRuleArgs {
     /**
      * For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
      */
-    submountAccess?: pulumi.Input<boolean>;
+    submountAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Allow SUID semantics.
      */
-    suid?: pulumi.Input<boolean>;
+    suid?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -525,7 +525,7 @@ export interface SkuNameArgs {
     /**
      * SKU name for this resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -535,5 +535,5 @@ export interface UnknownTargetArgs {
     /**
      * Dictionary of string->string pairs containing information about the Storage Target.
      */
-    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

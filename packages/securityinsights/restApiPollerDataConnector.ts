@@ -135,7 +135,7 @@ export class RestApiPollerDataConnector extends pulumi.CustomResource {
             resourceInputs["paging"] = args?.paging;
             resourceInputs["request"] = args?.request;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
-            resourceInputs["response"] = args ? (args.response ? pulumi.output(args.response).apply(types.inputs.ccpResponseConfigArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["response"] = args ? pulumi.output(args.response).apply(v => v === undefined ? undefined : types.inputs.ccpResponseConfigArgsProvideDefaults(v)) : undefined;
             resourceInputs["workspaceName"] = args?.workspaceName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -173,7 +173,7 @@ export interface RestApiPollerDataConnectorArgs {
     /**
      * The add on attributes. The key name will become attribute name (a column) and the value will become the attribute value in the payload.
      */
-    addOnAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    addOnAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The a authentication model.
      */
@@ -185,19 +185,19 @@ export interface RestApiPollerDataConnectorArgs {
     /**
      * Connector ID
      */
-    dataConnectorId?: pulumi.Input<string>;
+    dataConnectorId?: pulumi.Input<string | undefined>;
     /**
      * The Log Analytics table destination.
      */
-    dataType?: pulumi.Input<string>;
+    dataType?: pulumi.Input<string | undefined>;
     /**
      * The DCR related properties.
      */
-    dcrConfig?: pulumi.Input<types.inputs.DCRConfigurationArgs>;
+    dcrConfig?: pulumi.Input<types.inputs.DCRConfigurationArgs | undefined>;
     /**
      * Indicates whether the connector is active or not.
      */
-    isActive?: pulumi.Input<boolean>;
+    isActive?: pulumi.Input<boolean | undefined>;
     /**
      * The kind of the data connector
      * Expected value is 'RestApiPoller'.
@@ -206,7 +206,7 @@ export interface RestApiPollerDataConnectorArgs {
     /**
      * The paging configuration.
      */
-    paging?: pulumi.Input<types.inputs.RestApiPollerRequestPagingConfigArgs>;
+    paging?: pulumi.Input<types.inputs.RestApiPollerRequestPagingConfigArgs | undefined>;
     /**
      * The request configuration.
      */
@@ -218,7 +218,7 @@ export interface RestApiPollerDataConnectorArgs {
     /**
      * The response configuration.
      */
-    response?: pulumi.Input<types.inputs.CcpResponseConfigArgs>;
+    response?: pulumi.Input<types.inputs.CcpResponseConfigArgs | undefined>;
     /**
      * The name of the workspace.
      */

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkspaceSubscription extends pulumi.CustomResource {
     /**
@@ -167,7 +167,7 @@ export class WorkspaceSubscription extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20230901preview:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20240501:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20250301preview:WorkspaceSubscription" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20230901preview:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20240501:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20250301preview:WorkspaceSubscription" }, { type: "azure-native:apimanagement/v20250901preview:WorkspaceSubscription" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceSubscription.__pulumiType, name, resourceInputs, opts);
     }
@@ -180,29 +180,29 @@ export interface WorkspaceSubscriptionArgs {
     /**
      * Determines whether tracing can be enabled
      */
-    allowTracing?: pulumi.Input<boolean>;
+    allowTracing?: pulumi.Input<boolean | undefined>;
     /**
      * Determines the type of application which send the create user request. Default is legacy publisher portal.
      */
-    appType?: pulumi.Input<string>;
+    appType?: pulumi.Input<string | undefined>;
     /**
      * Subscription name.
      */
     displayName: pulumi.Input<string>;
     /**
-     * Notify change in Subscription State. 
-     *  - If false, do not send any email notification for change of state of subscription 
-     *  - If true, send email notification of change of state of subscription 
+     * Notify change in Subscription State.
+     *  - If false, do not send any email notification for change of state of subscription
+     *  - If true, send email notification of change of state of subscription
      */
-    notify?: pulumi.Input<boolean>;
+    notify?: pulumi.Input<boolean | undefined>;
     /**
      * User (user id path) for whom subscription is being created in form /users/{userId}
      */
-    ownerId?: pulumi.Input<string>;
+    ownerId?: pulumi.Input<string | undefined>;
     /**
      * Primary subscription key. If not specified during request key will be generated automatically.
      */
-    primaryKey?: pulumi.Input<string>;
+    primaryKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -214,7 +214,7 @@ export interface WorkspaceSubscriptionArgs {
     /**
      * Secondary subscription key. If not specified during request key will be generated automatically.
      */
-    secondaryKey?: pulumi.Input<string>;
+    secondaryKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the API Management service.
      */
@@ -222,11 +222,11 @@ export interface WorkspaceSubscriptionArgs {
     /**
      * Subscription entity Identifier. The entity represents the association between a user and a product in API Management.
      */
-    sid?: pulumi.Input<string>;
+    sid?: pulumi.Input<string | undefined>;
     /**
      * Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated.
      */
-    state?: pulumi.Input<types.enums.SubscriptionState>;
+    state?: pulumi.Input<types.enums.SubscriptionState | undefined>;
     /**
      * Workspace identifier. Must be unique in the current API Management service instance.
      */

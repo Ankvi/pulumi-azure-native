@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
  *
- * Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Connector extends pulumi.CustomResource {
     /**
@@ -109,7 +109,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20240701:Connector" }, { type: "azure-native:confluent/v20250717preview:Connector" }, { type: "azure-native:confluent/v20250818preview:Connector" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20240701:Connector" }, { type: "azure-native:confluent/v20250717preview:Connector" }, { type: "azure-native:confluent/v20250818preview:Connector" }, { type: "azure-native:confluent/v20260501preview:Connector" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Connector.__pulumiType, name, resourceInputs, opts);
     }
@@ -126,15 +126,15 @@ export interface ConnectorArgs {
     /**
      * Connector Info Base
      */
-    connectorBasicInfo?: pulumi.Input<types.inputs.ConnectorInfoBaseArgs>;
+    connectorBasicInfo?: pulumi.Input<types.inputs.ConnectorInfoBaseArgs | undefined>;
     /**
      * Confluent connector name
      */
-    connectorName?: pulumi.Input<string>;
+    connectorName?: pulumi.Input<string | undefined>;
     /**
      * Connector Service type info base properties.
      */
-    connectorServiceTypeInfo?: pulumi.Input<types.inputs.AzureBlobStorageSinkConnectorServiceInfoArgs | types.inputs.AzureBlobStorageSourceConnectorServiceInfoArgs | types.inputs.AzureCosmosDBSinkConnectorServiceInfoArgs | types.inputs.AzureCosmosDBSourceConnectorServiceInfoArgs | types.inputs.AzureSynapseAnalyticsSinkConnectorServiceInfoArgs>;
+    connectorServiceTypeInfo?: pulumi.Input<types.inputs.AzureBlobStorageSinkConnectorServiceInfoArgs | types.inputs.AzureBlobStorageSourceConnectorServiceInfoArgs | types.inputs.AzureCosmosDBSinkConnectorServiceInfoArgs | types.inputs.AzureCosmosDBSourceConnectorServiceInfoArgs | types.inputs.AzureSynapseAnalyticsSinkConnectorServiceInfoArgs | undefined>;
     /**
      * Confluent environment id
      */
@@ -146,7 +146,7 @@ export interface ConnectorArgs {
     /**
      * The connection information consumed by applications.
      */
-    partnerConnectorInfo?: pulumi.Input<types.inputs.KafkaAzureBlobStorageSinkConnectorInfoArgs | types.inputs.KafkaAzureBlobStorageSourceConnectorInfoArgs | types.inputs.KafkaAzureCosmosDBSinkConnectorInfoArgs | types.inputs.KafkaAzureCosmosDBSourceConnectorInfoArgs | types.inputs.KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs>;
+    partnerConnectorInfo?: pulumi.Input<types.inputs.KafkaAzureBlobStorageSinkConnectorInfoArgs | types.inputs.KafkaAzureBlobStorageSourceConnectorInfoArgs | types.inputs.KafkaAzureCosmosDBSinkConnectorInfoArgs | types.inputs.KafkaAzureCosmosDBSourceConnectorInfoArgs | types.inputs.KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

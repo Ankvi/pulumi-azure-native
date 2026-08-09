@@ -140,27 +140,27 @@ export interface DevCenterArgs {
     /**
      * The name of the devcenter.
      */
-    devCenterName?: pulumi.Input<string>;
+    devCenterName?: pulumi.Input<string | undefined>;
     /**
      * The display name of the devcenter.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
      */
-    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs | undefined>;
     /**
      * Managed identity properties
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Dev Center settings to be used when associating a project with a catalog.
      */
-    projectCatalogSettings?: pulumi.Input<types.inputs.DevCenterProjectCatalogSettingsArgs>;
+    projectCatalogSettings?: pulumi.Input<types.inputs.DevCenterProjectCatalogSettingsArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -168,5 +168,5 @@ export interface DevCenterArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

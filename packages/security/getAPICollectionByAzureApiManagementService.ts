@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * Gets an Azure API Management API if it has been onboarded to Microsoft Defender for APIs. If an Azure API Management API is onboarded to Microsoft Defender for APIs, the system will monitor the operations within the Azure API Management API for intrusive behaviors and provide alerts for attacks that have been detected.
  *
@@ -50,11 +51,11 @@ export interface GetAPICollectionByAzureApiManagementServiceResult {
      */
     readonly displayName: string;
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -86,7 +87,11 @@ export interface GetAPICollectionByAzureApiManagementServiceResult {
      */
     readonly sensitivityLabel: string;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }

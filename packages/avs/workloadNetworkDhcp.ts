@@ -102,7 +102,7 @@ export interface WorkloadNetworkDhcpArgs {
     /**
      * The ID of the DHCP configuration
      */
-    dhcpId?: pulumi.Input<string>;
+    dhcpId?: pulumi.Input<string | undefined>;
     /**
      * Name of the private cloud
      */
@@ -110,7 +110,7 @@ export interface WorkloadNetworkDhcpArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.WorkloadNetworkDhcpRelayArgs | types.inputs.WorkloadNetworkDhcpServerArgs>;
+    properties?: pulumi.Input<types.inputs.WorkloadNetworkDhcpRelayArgs | types.inputs.WorkloadNetworkDhcpServerArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -130,23 +130,23 @@ export interface FlowArgs {
     /**
      * The name for the flow that is to be onboarded.
      */
-    flowName?: pulumi.Input<string>;
+    flowName?: pulumi.Input<string | undefined>;
     /**
      * The managed identity of the flow resource, if configured.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Plan for the resource.
      */
-    plan?: pulumi.Input<types.inputs.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs | undefined>;
     /**
      * Properties of flow
      */
-    properties?: pulumi.Input<types.inputs.FlowPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.FlowPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -154,5 +154,5 @@ export interface FlowArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

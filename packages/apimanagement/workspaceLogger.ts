@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
  *
- * Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkspaceLogger extends pulumi.CustomResource {
     /**
@@ -115,7 +115,7 @@ export class WorkspaceLogger extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:WorkspaceLogger" }, { type: "azure-native:apimanagement/v20240501:WorkspaceLogger" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceLogger" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceLogger" }, { type: "azure-native:apimanagement/v20250301preview:WorkspaceLogger" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:WorkspaceLogger" }, { type: "azure-native:apimanagement/v20240501:WorkspaceLogger" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceLogger" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceLogger" }, { type: "azure-native:apimanagement/v20250301preview:WorkspaceLogger" }, { type: "azure-native:apimanagement/v20250901preview:WorkspaceLogger" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceLogger.__pulumiType, name, resourceInputs, opts);
     }
@@ -129,19 +129,19 @@ export interface WorkspaceLoggerArgs {
      * The name and SendRule connection string of the event hub for azureEventHub logger.
      * Instrumentation key for applicationInsights logger.
      */
-    credentials?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    credentials?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Logger description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether records are buffered in the logger before publishing. Default is assumed to be true.
      */
-    isBuffered?: pulumi.Input<boolean>;
+    isBuffered?: pulumi.Input<boolean | undefined>;
     /**
      * Logger identifier. Must be unique in the API Management service instance.
      */
-    loggerId?: pulumi.Input<string>;
+    loggerId?: pulumi.Input<string | undefined>;
     /**
      * Logger type.
      */
@@ -153,7 +153,7 @@ export interface WorkspaceLoggerArgs {
     /**
      * Azure Resource Id of a log target (either Azure Event Hub resource or Azure Application Insights resource).
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the API Management service.
      */

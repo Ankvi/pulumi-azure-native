@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01-preview.
  *
- * Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Instance extends pulumi.CustomResource {
     /**
@@ -112,7 +112,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:Instance" }, { type: "azure-native:iotoperations/v20240815preview:Instance" }, { type: "azure-native:iotoperations/v20240915preview:Instance" }, { type: "azure-native:iotoperations/v20241101:Instance" }, { type: "azure-native:iotoperations/v20250401:Instance" }, { type: "azure-native:iotoperations/v20250701preview:Instance" }, { type: "azure-native:iotoperations/v20251001:Instance" }, { type: "azure-native:iotoperations/v20260301:Instance" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:Instance" }, { type: "azure-native:iotoperations/v20240815preview:Instance" }, { type: "azure-native:iotoperations/v20240915preview:Instance" }, { type: "azure-native:iotoperations/v20241101:Instance" }, { type: "azure-native:iotoperations/v20250401:Instance" }, { type: "azure-native:iotoperations/v20250701preview:Instance" }, { type: "azure-native:iotoperations/v20251001:Instance" }, { type: "azure-native:iotoperations/v20260301:Instance" }, { type: "azure-native:iotoperations/v20260701:Instance" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
@@ -129,19 +129,19 @@ export interface InstanceArgs {
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * Name of instance.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.InstancePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.InstancePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -149,5 +149,5 @@ export interface InstanceArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

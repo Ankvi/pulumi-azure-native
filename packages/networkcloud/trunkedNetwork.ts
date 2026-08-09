@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class TrunkedNetwork extends pulumi.CustomResource {
     /**
@@ -176,7 +176,7 @@ export class TrunkedNetwork extends pulumi.CustomResource {
             resourceInputs["vlans"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20231001preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20240601preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20240701:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20241001preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20250201:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20250701preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20250901:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20260101preview:TrunkedNetwork" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20231001preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20240601preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20240701:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20241001preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20250201:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20250901:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20260101preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20260501preview:TrunkedNetwork" }, { type: "azure-native:networkcloud/v20260701:TrunkedNetwork" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TrunkedNetwork.__pulumiType, name, resourceInputs, opts);
     }
@@ -193,11 +193,11 @@ export interface TrunkedNetworkArgs {
     /**
      * Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
      */
-    hybridAksPluginType?: pulumi.Input<string | types.enums.HybridAksPluginType>;
+    hybridAksPluginType?: pulumi.Input<string | types.enums.HybridAksPluginType | undefined>;
     /**
      * The default interface name for this trunked network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
      */
-    interfaceName?: pulumi.Input<string>;
+    interfaceName?: pulumi.Input<string | undefined>;
     /**
      * The list of resource IDs representing the Network Fabric isolation domains. It can be any combination of l2IsolationDomain and l3IsolationDomain resources.
      */
@@ -205,7 +205,7 @@ export interface TrunkedNetworkArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -213,11 +213,11 @@ export interface TrunkedNetworkArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the trunked network.
      */
-    trunkedNetworkName?: pulumi.Input<string>;
+    trunkedNetworkName?: pulumi.Input<string | undefined>;
     /**
      * The list of vlans that are selected from the isolation domains for trunking.
      */

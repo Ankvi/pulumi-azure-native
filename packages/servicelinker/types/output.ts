@@ -168,7 +168,7 @@ export interface CreateOrUpdateDryrunParametersResponse {
      */
     configurationInfo?: ConfigurationInfoResponse;
     /**
-     * The provisioning state. 
+     * The provisioning state.
      */
     provisioningState: string;
     /**
@@ -481,7 +481,7 @@ export interface ServicePrincipalCertificateAuthInfoResponse {
      */
     principalId: string;
     /**
-     * Optional, this value specifies the Azure roles to be assigned. Automatically 
+     * Optional, this value specifies the Azure roles to be assigned. Automatically
      */
     roles?: string[];
 }
@@ -512,7 +512,7 @@ export interface ServicePrincipalSecretAuthInfoResponse {
      */
     principalId: string;
     /**
-     * Optional, this value specifies the Azure roles to be assigned. Automatically 
+     * Optional, this value specifies the Azure roles to be assigned. Automatically
      */
     roles?: string[];
     /**
@@ -630,7 +630,7 @@ export interface UserAccountAuthInfoResponse {
      */
     principalId?: string;
     /**
-     * Optional, this value specifies the Azure roles to be assigned. Automatically 
+     * Optional, this value specifies the Azure roles to be assigned. Automatically
      */
     roles?: string[];
     /**

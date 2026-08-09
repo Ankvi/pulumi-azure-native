@@ -7,7 +7,7 @@ export interface AzureFunctionEventSubscriptionDestinationArgs {
     /**
      * Delivery attribute details.
      */
-    deliveryAttributeMappings?: pulumi.Input<pulumi.Input<DynamicDeliveryAttributeMappingArgs | StaticDeliveryAttributeMappingArgs>[]>;
+    deliveryAttributeMappings?: pulumi.Input<pulumi.Input<DynamicDeliveryAttributeMappingArgs | StaticDeliveryAttributeMappingArgs>[] | undefined>;
     /**
      * Type of the endpoint for the event subscription destination.
      * Expected value is 'AzureFunction'.
@@ -16,15 +16,15 @@ export interface AzureFunctionEventSubscriptionDestinationArgs {
     /**
      * Maximum number of events per batch.
      */
-    maxEventsPerBatch?: pulumi.Input<number>;
+    maxEventsPerBatch?: pulumi.Input<number | undefined>;
     /**
      * Preferred batch size in Kilobytes.
      */
-    preferredBatchSizeInKilobytes?: pulumi.Input<number>;
+    preferredBatchSizeInKilobytes?: pulumi.Input<number | undefined>;
     /**
      * The Azure Resource Id that represents the endpoint of the Azure Function destination of an event subscription.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 /**
  * azureFunctionEventSubscriptionDestinationArgsProvideDefaults sets the appropriate defaults for AzureFunctionEventSubscriptionDestinationArgs
@@ -44,7 +44,7 @@ export interface BoolEqualsAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'BoolEquals'.
@@ -53,7 +53,7 @@ export interface BoolEqualsAdvancedFilterArgs {
     /**
      * The boolean filter value.
      */
-    value?: pulumi.Input<boolean>;
+    value?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -63,7 +63,7 @@ export interface BoolEqualsFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'BoolEquals'.
@@ -72,7 +72,7 @@ export interface BoolEqualsFilterArgs {
     /**
      * The boolean filter value.
      */
-    value?: pulumi.Input<boolean>;
+    value?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -82,11 +82,11 @@ export interface ClientCertificateAuthenticationArgs {
     /**
      * The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'.
      */
-    allowedThumbprints?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedThumbprints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName.
      */
-    validationScheme?: pulumi.Input<string | enums.ClientCertificateValidationScheme>;
+    validationScheme?: pulumi.Input<string | enums.ClientCertificateValidationScheme | undefined>;
 }
 
 /**
@@ -96,15 +96,15 @@ export interface ConnectionStateArgs {
     /**
      * Actions required (if any).
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * Description of the connection state.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Status of the connection.
      */
-    status?: pulumi.Input<string | enums.PersistedConnectionStatus>;
+    status?: pulumi.Input<string | enums.PersistedConnectionStatus | undefined>;
 }
 
 /**
@@ -116,16 +116,16 @@ export interface CustomDomainConfigurationArgs {
      * versioned URL of the following format https://{key-vault-name}.vault.azure.net/certificates/{certificate-name}/{version-id}, or unversioned URL of the following format (e.g.,
      * https://contosovault.vault.azure.net/certificates/contosocert, we support unversioned certificate URL only (e.g., https://contosovault.vault.azure.net/certificates/contosocert)
      */
-    certificateUrl?: pulumi.Input<string>;
+    certificateUrl?: pulumi.Input<string | undefined>;
     /**
      * Expected DNS TXT record name. Event Grid will check for a TXT record with this name in the DNS record set of the custom domain name to prove ownership over the domain.
      * The values under this TXT record must contain the expected TXT record value.
      */
-    expectedTxtRecordName?: pulumi.Input<string>;
+    expectedTxtRecordName?: pulumi.Input<string | undefined>;
     /**
      * Expected DNS TXT record value. Event Grid will check for a TXT record with this value in the DNS record set of the custom domain name to prove ownership over the domain.
      */
-    expectedTxtRecordValue?: pulumi.Input<string>;
+    expectedTxtRecordValue?: pulumi.Input<string | undefined>;
     /**
      * Fully Qualified Domain Name (FQDN) for the custom domain.
      */
@@ -133,11 +133,11 @@ export interface CustomDomainConfigurationArgs {
     /**
      * Identity info for accessing the certificate for the custom domain. This identity info must match an identity that has been set on the namespace.
      */
-    identity?: pulumi.Input<CustomDomainIdentityArgs>;
+    identity?: pulumi.Input<CustomDomainIdentityArgs | undefined>;
     /**
      * Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated.
      */
-    validationState?: pulumi.Input<string | enums.CustomDomainValidationState>;
+    validationState?: pulumi.Input<string | enums.CustomDomainValidationState | undefined>;
 }
 
 /**
@@ -147,11 +147,11 @@ export interface CustomDomainIdentityArgs {
     /**
      * The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
      */
-    type?: pulumi.Input<string | enums.CustomDomainIdentityType>;
+    type?: pulumi.Input<string | enums.CustomDomainIdentityType | undefined>;
     /**
      * The user identity associated with the resource.
      */
-    userAssignedIdentity?: pulumi.Input<string>;
+    userAssignedIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,11 +162,11 @@ export interface DeadLetterWithResourceIdentityArgs {
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during dead-lettering.
      */
-    deadLetterDestination?: pulumi.Input<StorageBlobDeadLetterDestinationArgs>;
+    deadLetterDestination?: pulumi.Input<StorageBlobDeadLetterDestinationArgs | undefined>;
     /**
      * The identity to use when dead-lettering events.
      */
-    identity?: pulumi.Input<EventSubscriptionIdentityArgs>;
+    identity?: pulumi.Input<EventSubscriptionIdentityArgs | undefined>;
 }
 
 /**
@@ -176,15 +176,15 @@ export interface DeliveryConfigurationArgs {
     /**
      * Delivery mode of the event subscription.
      */
-    deliveryMode?: pulumi.Input<string | enums.DeliveryMode>;
+    deliveryMode?: pulumi.Input<string | enums.DeliveryMode | undefined>;
     /**
      * This property should be populated when deliveryMode is push and represents information about the push subscription.
      */
-    push?: pulumi.Input<PushInfoArgs>;
+    push?: pulumi.Input<PushInfoArgs | undefined>;
     /**
      * This property should be populated when deliveryMode is queue and represents information about the queue subscription.
      */
-    queue?: pulumi.Input<QueueInfoArgs>;
+    queue?: pulumi.Input<QueueInfoArgs | undefined>;
 }
 
 /**
@@ -195,11 +195,11 @@ export interface DeliveryWithResourceIdentityArgs {
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
      */
-    destination?: pulumi.Input<AzureFunctionEventSubscriptionDestinationArgs | EventHubEventSubscriptionDestinationArgs | HybridConnectionEventSubscriptionDestinationArgs | MonitorAlertEventSubscriptionDestinationArgs | NamespaceTopicEventSubscriptionDestinationArgs | ServiceBusQueueEventSubscriptionDestinationArgs | ServiceBusTopicEventSubscriptionDestinationArgs | StorageQueueEventSubscriptionDestinationArgs | WebHookEventSubscriptionDestinationArgs>;
+    destination?: pulumi.Input<AzureFunctionEventSubscriptionDestinationArgs | EventHubEventSubscriptionDestinationArgs | HybridConnectionEventSubscriptionDestinationArgs | MonitorAlertEventSubscriptionDestinationArgs | NamespaceTopicEventSubscriptionDestinationArgs | ServiceBusQueueEventSubscriptionDestinationArgs | ServiceBusTopicEventSubscriptionDestinationArgs | StorageQueueEventSubscriptionDestinationArgs | WebHookEventSubscriptionDestinationArgs | undefined>;
     /**
      * The identity to use when delivering events.
      */
-    identity?: pulumi.Input<EventSubscriptionIdentityArgs>;
+    identity?: pulumi.Input<EventSubscriptionIdentityArgs | undefined>;
 }
 
 /**
@@ -209,11 +209,11 @@ export interface DynamicDeliveryAttributeMappingArgs {
     /**
      * Name of the delivery attribute or header.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * JSON path in the event which contains attribute value.
      */
-    sourceField?: pulumi.Input<string>;
+    sourceField?: pulumi.Input<string | undefined>;
     /**
      * Type of the delivery attribute or header name.
      * Expected value is 'Dynamic'.
@@ -225,11 +225,11 @@ export interface DynamicRoutingEnrichmentArgs {
     /**
      * Dynamic routing enrichment key.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Dynamic routing enrichment value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -239,7 +239,7 @@ export interface EventHubEventSubscriptionDestinationArgs {
     /**
      * Delivery attribute details.
      */
-    deliveryAttributeMappings?: pulumi.Input<pulumi.Input<DynamicDeliveryAttributeMappingArgs | StaticDeliveryAttributeMappingArgs>[]>;
+    deliveryAttributeMappings?: pulumi.Input<pulumi.Input<DynamicDeliveryAttributeMappingArgs | StaticDeliveryAttributeMappingArgs>[] | undefined>;
     /**
      * Type of the endpoint for the event subscription destination.
      * Expected value is 'EventHub'.
@@ -248,7 +248,7 @@ export interface EventHubEventSubscriptionDestinationArgs {
     /**
      * The Azure Resource Id that represents the endpoint of an Event Hub destination of an event subscription.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -258,31 +258,31 @@ export interface EventSubscriptionFilterArgs {
     /**
      * An array of advanced filters that are used for filtering event subscriptions.
      */
-    advancedFilters?: pulumi.Input<pulumi.Input<BoolEqualsAdvancedFilterArgs | IsNotNullAdvancedFilterArgs | IsNullOrUndefinedAdvancedFilterArgs | NumberGreaterThanAdvancedFilterArgs | NumberGreaterThanOrEqualsAdvancedFilterArgs | NumberInAdvancedFilterArgs | NumberInRangeAdvancedFilterArgs | NumberLessThanAdvancedFilterArgs | NumberLessThanOrEqualsAdvancedFilterArgs | NumberNotInAdvancedFilterArgs | NumberNotInRangeAdvancedFilterArgs | StringBeginsWithAdvancedFilterArgs | StringContainsAdvancedFilterArgs | StringEndsWithAdvancedFilterArgs | StringInAdvancedFilterArgs | StringNotBeginsWithAdvancedFilterArgs | StringNotContainsAdvancedFilterArgs | StringNotEndsWithAdvancedFilterArgs | StringNotInAdvancedFilterArgs>[]>;
+    advancedFilters?: pulumi.Input<pulumi.Input<BoolEqualsAdvancedFilterArgs | IsNotNullAdvancedFilterArgs | IsNullOrUndefinedAdvancedFilterArgs | NumberGreaterThanAdvancedFilterArgs | NumberGreaterThanOrEqualsAdvancedFilterArgs | NumberInAdvancedFilterArgs | NumberInRangeAdvancedFilterArgs | NumberLessThanAdvancedFilterArgs | NumberLessThanOrEqualsAdvancedFilterArgs | NumberNotInAdvancedFilterArgs | NumberNotInRangeAdvancedFilterArgs | StringBeginsWithAdvancedFilterArgs | StringContainsAdvancedFilterArgs | StringEndsWithAdvancedFilterArgs | StringInAdvancedFilterArgs | StringNotBeginsWithAdvancedFilterArgs | StringNotContainsAdvancedFilterArgs | StringNotEndsWithAdvancedFilterArgs | StringNotInAdvancedFilterArgs>[] | undefined>;
     /**
      * Allows advanced filters to be evaluated against an array of values instead of expecting a singular value.
      */
-    enableAdvancedFilteringOnArrays?: pulumi.Input<boolean>;
+    enableAdvancedFilteringOnArrays?: pulumi.Input<boolean | undefined>;
     /**
      * A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
      */
-    includedEventTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    includedEventTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the filter
      * should be compared in a case sensitive manner.
      */
-    isSubjectCaseSensitive?: pulumi.Input<boolean>;
+    isSubjectCaseSensitive?: pulumi.Input<boolean | undefined>;
     /**
      * An optional string to filter events for an event subscription based on a resource path prefix.
      * The format of this depends on the publisher of the events.
      * Wildcard characters are not supported in this path.
      */
-    subjectBeginsWith?: pulumi.Input<string>;
+    subjectBeginsWith?: pulumi.Input<string | undefined>;
     /**
      * An optional string to filter events for an event subscription based on a resource path suffix.
      * Wildcard characters are not supported in this path.
      */
-    subjectEndsWith?: pulumi.Input<string>;
+    subjectEndsWith?: pulumi.Input<string | undefined>;
 }
 /**
  * eventSubscriptionFilterArgsProvideDefaults sets the appropriate defaults for EventSubscriptionFilterArgs
@@ -301,11 +301,11 @@ export interface EventSubscriptionIdentityArgs {
     /**
      * The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
      */
-    type?: pulumi.Input<string | enums.EventSubscriptionIdentityType>;
+    type?: pulumi.Input<string | enums.EventSubscriptionIdentityType | undefined>;
     /**
      * The user identity associated with the resource.
      */
-    userAssignedIdentity?: pulumi.Input<string>;
+    userAssignedIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -317,11 +317,11 @@ export interface EventTypeInfoArgs {
      * An example of a valid inline event name is "Contoso.OrderCreated".
      * The inline event type values are of type InlineEventProperties and will contain additional information for every inline event type.
      */
-    inlineEventTypes?: pulumi.Input<{[key: string]: pulumi.Input<InlineEventPropertiesArgs>}>;
+    inlineEventTypes?: pulumi.Input<{[key: string]: pulumi.Input<InlineEventPropertiesArgs>} | undefined>;
     /**
      * The kind of event type used.
      */
-    kind?: pulumi.Input<string | enums.EventDefinitionKind>;
+    kind?: pulumi.Input<string | enums.EventDefinitionKind | undefined>;
 }
 
 /**
@@ -331,11 +331,11 @@ export interface FiltersConfigurationArgs {
     /**
      * An array of filters that are used for filtering event subscriptions.
      */
-    filters?: pulumi.Input<pulumi.Input<BoolEqualsFilterArgs | IsNotNullFilterArgs | IsNullOrUndefinedFilterArgs | NumberGreaterThanFilterArgs | NumberGreaterThanOrEqualsFilterArgs | NumberInFilterArgs | NumberInRangeFilterArgs | NumberLessThanFilterArgs | NumberLessThanOrEqualsFilterArgs | NumberNotInFilterArgs | NumberNotInRangeFilterArgs | StringBeginsWithFilterArgs | StringContainsFilterArgs | StringEndsWithFilterArgs | StringInFilterArgs | StringNotBeginsWithFilterArgs | StringNotContainsFilterArgs | StringNotEndsWithFilterArgs | StringNotInFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<BoolEqualsFilterArgs | IsNotNullFilterArgs | IsNullOrUndefinedFilterArgs | NumberGreaterThanFilterArgs | NumberGreaterThanOrEqualsFilterArgs | NumberInFilterArgs | NumberInRangeFilterArgs | NumberLessThanFilterArgs | NumberLessThanOrEqualsFilterArgs | NumberNotInFilterArgs | NumberNotInRangeFilterArgs | StringBeginsWithFilterArgs | StringContainsFilterArgs | StringEndsWithFilterArgs | StringInFilterArgs | StringNotBeginsWithFilterArgs | StringNotContainsFilterArgs | StringNotEndsWithFilterArgs | StringNotInFilterArgs>[] | undefined>;
     /**
      * A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
      */
-    includedEventTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    includedEventTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -345,7 +345,7 @@ export interface HybridConnectionEventSubscriptionDestinationArgs {
     /**
      * Delivery attribute details.
      */
-    deliveryAttributeMappings?: pulumi.Input<pulumi.Input<DynamicDeliveryAttributeMappingArgs | StaticDeliveryAttributeMappingArgs>[]>;
+    deliveryAttributeMappings?: pulumi.Input<pulumi.Input<DynamicDeliveryAttributeMappingArgs | StaticDeliveryAttributeMappingArgs>[] | undefined>;
     /**
      * Type of the endpoint for the event subscription destination.
      * Expected value is 'HybridConnection'.
@@ -354,7 +354,7 @@ export interface HybridConnectionEventSubscriptionDestinationArgs {
     /**
      * The Azure Resource ID of an hybrid connection that is the destination of an event subscription.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -364,32 +364,32 @@ export interface IdentityInfoArgs {
     /**
      * The principal ID of resource identity.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * The tenant ID of resource.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
      */
-    type?: pulumi.Input<string | enums.IdentityType>;
+    type?: pulumi.Input<string | enums.IdentityType | undefined>;
     /**
      * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      * This property is currently not used and reserved for future usage.
      */
-    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserIdentityPropertiesArgs>}>;
+    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserIdentityPropertiesArgs>} | undefined>;
 }
 
 export interface InboundIpRuleArgs {
     /**
      * Action to perform based on the match or no match of the IpMask.
      */
-    action?: pulumi.Input<string | enums.IpActionType>;
+    action?: pulumi.Input<string | enums.IpActionType | undefined>;
     /**
      * IP Address in CIDR notation e.g., 10.0.0.0/8.
      */
-    ipMask?: pulumi.Input<string>;
+    ipMask?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -399,19 +399,19 @@ export interface InlineEventPropertiesArgs {
     /**
      * The dataSchemaUrl for the inline event.
      */
-    dataSchemaUrl?: pulumi.Input<string>;
+    dataSchemaUrl?: pulumi.Input<string | undefined>;
     /**
      * The description for the inline event.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The displayName for the inline event.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The documentationUrl for the inline event.
      */
-    documentationUrl?: pulumi.Input<string>;
+    documentationUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -421,7 +421,7 @@ export interface IsNotNullAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'IsNotNull'.
@@ -436,7 +436,7 @@ export interface IsNotNullFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'IsNotNull'.
@@ -451,7 +451,7 @@ export interface IsNullOrUndefinedAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'IsNullOrUndefined'.
@@ -466,7 +466,7 @@ export interface IsNullOrUndefinedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'IsNullOrUndefined'.
@@ -481,7 +481,7 @@ export interface JsonFieldArgs {
     /**
      * Name of a field in the input event schema that's to be used as the source of a mapping.
      */
-    sourceField?: pulumi.Input<string>;
+    sourceField?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -494,11 +494,11 @@ export interface JsonFieldWithDefaultArgs {
     /**
      * The default value to be used for mapping when a SourceField is not provided or if there's no property with the specified name in the published JSON event payload.
      */
-    defaultValue?: pulumi.Input<string>;
+    defaultValue?: pulumi.Input<string | undefined>;
     /**
      * Name of a field in the input event schema that's to be used as the source of a mapping.
      */
-    sourceField?: pulumi.Input<string>;
+    sourceField?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -508,19 +508,19 @@ export interface JsonInputSchemaMappingArgs {
     /**
      * The mapping information for the DataVersion property of the Event Grid Event.
      */
-    dataVersion?: pulumi.Input<JsonFieldWithDefaultArgs>;
+    dataVersion?: pulumi.Input<JsonFieldWithDefaultArgs | undefined>;
     /**
      * The mapping information for the EventTime property of the Event Grid Event.
      */
-    eventTime?: pulumi.Input<JsonFieldArgs>;
+    eventTime?: pulumi.Input<JsonFieldArgs | undefined>;
     /**
      * The mapping information for the EventType property of the Event Grid Event.
      */
-    eventType?: pulumi.Input<JsonFieldWithDefaultArgs>;
+    eventType?: pulumi.Input<JsonFieldWithDefaultArgs | undefined>;
     /**
      * The mapping information for the Id property of the Event Grid Event.
      */
-    id?: pulumi.Input<JsonFieldArgs>;
+    id?: pulumi.Input<JsonFieldArgs | undefined>;
     /**
      * Type of the custom mapping
      * Expected value is 'Json'.
@@ -529,11 +529,11 @@ export interface JsonInputSchemaMappingArgs {
     /**
      * The mapping information for the Subject property of the Event Grid Event.
      */
-    subject?: pulumi.Input<JsonFieldWithDefaultArgs>;
+    subject?: pulumi.Input<JsonFieldWithDefaultArgs | undefined>;
     /**
      * The mapping information for the Topic property of the Event Grid Event.
      */
-    topic?: pulumi.Input<JsonFieldArgs>;
+    topic?: pulumi.Input<JsonFieldArgs | undefined>;
 }
 
 /**
@@ -544,11 +544,11 @@ export interface MonitorAlertEventSubscriptionDestinationArgs {
      * The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
      * Each resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Insights/actionGroups/{ActionGroupName}.
      */
-    actionGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    actionGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description that will be attached to every Alert fired through this event subscription.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Type of the endpoint for the event subscription destination.
      * Expected value is 'MonitorAlert'.
@@ -558,7 +558,7 @@ export interface MonitorAlertEventSubscriptionDestinationArgs {
      * The severity that will be attached to every Alert fired through this event subscription.
      * This field must be provided.
      */
-    severity?: pulumi.Input<string | enums.MonitorAlertSeverity>;
+    severity?: pulumi.Input<string | enums.MonitorAlertSeverity | undefined>;
 }
 
 /**
@@ -570,11 +570,11 @@ export interface NamespaceSkuArgs {
      * 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and
      * max allowed capacity is 20.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * The name of the SKU.
      */
-    name?: pulumi.Input<string | enums.SkuName>;
+    name?: pulumi.Input<string | enums.SkuName | undefined>;
 }
 
 /**
@@ -591,7 +591,7 @@ export interface NamespaceTopicEventSubscriptionDestinationArgs {
      * This field is required and the Namespace Topic resource listed must already exist.
      * The resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.EventGrid/namespaces/{NamespaceName}/topics/{TopicName}.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -601,7 +601,7 @@ export interface NumberGreaterThanAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberGreaterThan'.
@@ -610,7 +610,7 @@ export interface NumberGreaterThanAdvancedFilterArgs {
     /**
      * The filter value.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -620,7 +620,7 @@ export interface NumberGreaterThanFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberGreaterThan'.
@@ -629,7 +629,7 @@ export interface NumberGreaterThanFilterArgs {
     /**
      * The filter value.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -639,7 +639,7 @@ export interface NumberGreaterThanOrEqualsAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberGreaterThanOrEquals'.
@@ -648,7 +648,7 @@ export interface NumberGreaterThanOrEqualsAdvancedFilterArgs {
     /**
      * The filter value.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -658,7 +658,7 @@ export interface NumberGreaterThanOrEqualsFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberGreaterThanOrEquals'.
@@ -667,7 +667,7 @@ export interface NumberGreaterThanOrEqualsFilterArgs {
     /**
      * The filter value.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -677,7 +677,7 @@ export interface NumberInAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberIn'.
@@ -686,7 +686,7 @@ export interface NumberInAdvancedFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<number>[]>;
+    values?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 /**
@@ -696,7 +696,7 @@ export interface NumberInFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberIn'.
@@ -705,7 +705,7 @@ export interface NumberInFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<number>[]>;
+    values?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 /**
@@ -715,7 +715,7 @@ export interface NumberInRangeAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberInRange'.
@@ -724,7 +724,7 @@ export interface NumberInRangeAdvancedFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<pulumi.Input<number>[]>[]>;
+    values?: pulumi.Input<pulumi.Input<pulumi.Input<number>[]>[] | undefined>;
 }
 
 /**
@@ -734,7 +734,7 @@ export interface NumberInRangeFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberInRange'.
@@ -743,7 +743,7 @@ export interface NumberInRangeFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<pulumi.Input<number>[]>[]>;
+    values?: pulumi.Input<pulumi.Input<pulumi.Input<number>[]>[] | undefined>;
 }
 
 /**
@@ -753,7 +753,7 @@ export interface NumberLessThanAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberLessThan'.
@@ -762,7 +762,7 @@ export interface NumberLessThanAdvancedFilterArgs {
     /**
      * The filter value.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -772,7 +772,7 @@ export interface NumberLessThanFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberLessThan'.
@@ -781,7 +781,7 @@ export interface NumberLessThanFilterArgs {
     /**
      * The filter value.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -791,7 +791,7 @@ export interface NumberLessThanOrEqualsAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberLessThanOrEquals'.
@@ -800,7 +800,7 @@ export interface NumberLessThanOrEqualsAdvancedFilterArgs {
     /**
      * The filter value.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -810,7 +810,7 @@ export interface NumberLessThanOrEqualsFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberLessThanOrEquals'.
@@ -819,7 +819,7 @@ export interface NumberLessThanOrEqualsFilterArgs {
     /**
      * The filter value.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -829,7 +829,7 @@ export interface NumberNotInAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberNotIn'.
@@ -838,7 +838,7 @@ export interface NumberNotInAdvancedFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<number>[]>;
+    values?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 /**
@@ -848,7 +848,7 @@ export interface NumberNotInFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberNotIn'.
@@ -857,7 +857,7 @@ export interface NumberNotInFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<number>[]>;
+    values?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 /**
@@ -867,7 +867,7 @@ export interface NumberNotInRangeAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberNotInRange'.
@@ -876,7 +876,7 @@ export interface NumberNotInRangeAdvancedFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<pulumi.Input<number>[]>[]>;
+    values?: pulumi.Input<pulumi.Input<pulumi.Input<number>[]>[] | undefined>;
 }
 
 /**
@@ -886,7 +886,7 @@ export interface NumberNotInRangeFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'NumberNotInRange'.
@@ -895,7 +895,7 @@ export interface NumberNotInRangeFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<pulumi.Input<number>[]>[]>;
+    values?: pulumi.Input<pulumi.Input<pulumi.Input<number>[]>[] | undefined>;
 }
 
 /**
@@ -907,15 +907,15 @@ export interface PartnerArgs {
      * context will fail. If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration.
      * If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified.
      */
-    authorizationExpirationTimeInUtc?: pulumi.Input<string>;
+    authorizationExpirationTimeInUtc?: pulumi.Input<string | undefined>;
     /**
      * The partner name.
      */
-    partnerName?: pulumi.Input<string>;
+    partnerName?: pulumi.Input<string | undefined>;
     /**
      * The immutableId of the corresponding partner registration.
      */
-    partnerRegistrationImmutableId?: pulumi.Input<string>;
+    partnerRegistrationImmutableId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -925,12 +925,12 @@ export interface PartnerAuthorizationArgs {
     /**
      * The list of authorized partners.
      */
-    authorizedPartnersList?: pulumi.Input<pulumi.Input<PartnerArgs>[]>;
+    authorizedPartnersList?: pulumi.Input<pulumi.Input<PartnerArgs>[] | undefined>;
     /**
      * Time used to validate the authorization expiration time for each authorized partner. If DefaultMaximumExpirationTimeInDays is
      * not specified, the default is 7 days. Otherwise, allowed values are between 1 and 365 days.
      */
-    defaultMaximumExpirationTimeInDays?: pulumi.Input<number>;
+    defaultMaximumExpirationTimeInDays?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -941,27 +941,27 @@ export interface PartnerTopicInfoArgs {
      * Azure subscription ID of the subscriber. The partner topic associated with the channel will be
      * created under this Azure subscription.
      */
-    azureSubscriptionId?: pulumi.Input<string>;
+    azureSubscriptionId?: pulumi.Input<string | undefined>;
     /**
-     * Event Type Information for the partner topic. This information is provided by the publisher and can be used by the 
+     * Event Type Information for the partner topic. This information is provided by the publisher and can be used by the
      * subscriber to view different types of events that are published.
      */
-    eventTypeInfo?: pulumi.Input<EventTypeInfoArgs>;
+    eventTypeInfo?: pulumi.Input<EventTypeInfoArgs | undefined>;
     /**
      * Name of the partner topic associated with the channel.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Azure Resource Group of the subscriber. The partner topic associated with the channel will be
      * created under this resource group.
      */
-    resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * The source information is provided by the publisher to determine the scope or context from which the events
      * are originating. This information can be used by the subscriber during the approval process of the
      * created partner topic.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -971,26 +971,26 @@ export interface PrivateEndpointArgs {
     /**
      * The ARM identifier for Private Endpoint.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 export interface PrivateEndpointConnectionArgs {
     /**
      * GroupIds from the private link service resource.
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Private Endpoint resource for this Connection.
      */
-    privateEndpoint?: pulumi.Input<PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<PrivateEndpointArgs | undefined>;
     /**
      * Details about the state of the connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<ConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<ConnectionStateArgs | undefined>;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */
-    provisioningState?: pulumi.Input<string | enums.ResourceProvisioningState>;
+    provisioningState?: pulumi.Input<string | enums.ResourceProvisioningState | undefined>;
 }
 
 /**
@@ -1001,17 +1001,17 @@ export interface PushInfoArgs {
      * The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
      * Uses the managed identity setup on the parent resource (namely, namespace) to acquire the authentication tokens being used during dead-lettering.
      */
-    deadLetterDestinationWithResourceIdentity?: pulumi.Input<DeadLetterWithResourceIdentityArgs>;
+    deadLetterDestinationWithResourceIdentity?: pulumi.Input<DeadLetterWithResourceIdentityArgs | undefined>;
     /**
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery.
      */
-    deliveryWithResourceIdentity?: pulumi.Input<DeliveryWithResourceIdentityArgs>;
+    deliveryWithResourceIdentity?: pulumi.Input<DeliveryWithResourceIdentityArgs | undefined>;
     /**
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery.
      */
-    destination?: pulumi.Input<AzureFunctionEventSubscriptionDestinationArgs | EventHubEventSubscriptionDestinationArgs | HybridConnectionEventSubscriptionDestinationArgs | MonitorAlertEventSubscriptionDestinationArgs | NamespaceTopicEventSubscriptionDestinationArgs | ServiceBusQueueEventSubscriptionDestinationArgs | ServiceBusTopicEventSubscriptionDestinationArgs | StorageQueueEventSubscriptionDestinationArgs | WebHookEventSubscriptionDestinationArgs>;
+    destination?: pulumi.Input<AzureFunctionEventSubscriptionDestinationArgs | EventHubEventSubscriptionDestinationArgs | HybridConnectionEventSubscriptionDestinationArgs | MonitorAlertEventSubscriptionDestinationArgs | NamespaceTopicEventSubscriptionDestinationArgs | ServiceBusQueueEventSubscriptionDestinationArgs | ServiceBusTopicEventSubscriptionDestinationArgs | StorageQueueEventSubscriptionDestinationArgs | WebHookEventSubscriptionDestinationArgs | undefined>;
     /**
      * Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
      * This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
@@ -1030,11 +1030,11 @@ export interface PushInfoArgs {
      *     - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
      *     - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
      */
-    eventTimeToLive?: pulumi.Input<string>;
+    eventTimeToLive?: pulumi.Input<string | undefined>;
     /**
      * The maximum delivery count of the events.
      */
-    maxDeliveryCount?: pulumi.Input<number>;
+    maxDeliveryCount?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1045,7 +1045,7 @@ export interface QueueInfoArgs {
      * The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
      * Uses the managed identity setup on the parent resource (namely, topic) to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    deadLetterDestinationWithResourceIdentity?: pulumi.Input<DeadLetterWithResourceIdentityArgs>;
+    deadLetterDestinationWithResourceIdentity?: pulumi.Input<DeadLetterWithResourceIdentityArgs | undefined>;
     /**
      * Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
      * This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where:
@@ -1064,17 +1064,17 @@ export interface QueueInfoArgs {
      *     - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes.
      *     - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day.
      */
-    eventTimeToLive?: pulumi.Input<string>;
+    eventTimeToLive?: pulumi.Input<string | undefined>;
     /**
      * The maximum delivery count of the events.
      */
-    maxDeliveryCount?: pulumi.Input<number>;
+    maxDeliveryCount?: pulumi.Input<number | undefined>;
     /**
      * Maximum period in seconds in which once the message is in received (by the client) state and waiting to be accepted, released or rejected.
      * If this time elapsed after a message has been received by the client and not transitioned into accepted (not processed), released or rejected,
      * the message is available for redelivery. This is an optional field, where default is 60 seconds, minimum is 60 seconds and maximum is 300 seconds.
      */
-    receiveLockDurationInSeconds?: pulumi.Input<number>;
+    receiveLockDurationInSeconds?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1084,11 +1084,11 @@ export interface RetryPolicyArgs {
     /**
      * Time To Live (in minutes) for events.
      */
-    eventTimeToLiveInMinutes?: pulumi.Input<number>;
+    eventTimeToLiveInMinutes?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of delivery retry attempts for events.
      */
-    maxDeliveryAttempts?: pulumi.Input<number>;
+    maxDeliveryAttempts?: pulumi.Input<number | undefined>;
 }
 /**
  * retryPolicyArgsProvideDefaults sets the appropriate defaults for RetryPolicyArgs
@@ -1102,8 +1102,8 @@ export function retryPolicyArgsProvideDefaults(val: RetryPolicyArgs): RetryPolic
 }
 
 export interface RoutingEnrichmentsArgs {
-    dynamic?: pulumi.Input<pulumi.Input<DynamicRoutingEnrichmentArgs>[]>;
-    static?: pulumi.Input<pulumi.Input<StaticStringRoutingEnrichmentArgs>[]>;
+    dynamic?: pulumi.Input<pulumi.Input<DynamicRoutingEnrichmentArgs>[] | undefined>;
+    static?: pulumi.Input<pulumi.Input<StaticStringRoutingEnrichmentArgs>[] | undefined>;
 }
 
 /**
@@ -1113,8 +1113,8 @@ export interface RoutingIdentityInfoArgs {
     /**
      * Routing identity type for topic spaces configuration.
      */
-    type?: pulumi.Input<string | enums.RoutingIdentityType>;
-    userAssignedIdentity?: pulumi.Input<string>;
+    type?: pulumi.Input<string | enums.RoutingIdentityType | undefined>;
+    userAssignedIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1124,7 +1124,7 @@ export interface ServiceBusQueueEventSubscriptionDestinationArgs {
     /**
      * Delivery attribute details.
      */
-    deliveryAttributeMappings?: pulumi.Input<pulumi.Input<DynamicDeliveryAttributeMappingArgs | StaticDeliveryAttributeMappingArgs>[]>;
+    deliveryAttributeMappings?: pulumi.Input<pulumi.Input<DynamicDeliveryAttributeMappingArgs | StaticDeliveryAttributeMappingArgs>[] | undefined>;
     /**
      * Type of the endpoint for the event subscription destination.
      * Expected value is 'ServiceBusQueue'.
@@ -1133,7 +1133,7 @@ export interface ServiceBusQueueEventSubscriptionDestinationArgs {
     /**
      * The Azure Resource Id that represents the endpoint of the Service Bus destination of an event subscription.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1143,7 +1143,7 @@ export interface ServiceBusTopicEventSubscriptionDestinationArgs {
     /**
      * Delivery attribute details.
      */
-    deliveryAttributeMappings?: pulumi.Input<pulumi.Input<DynamicDeliveryAttributeMappingArgs | StaticDeliveryAttributeMappingArgs>[]>;
+    deliveryAttributeMappings?: pulumi.Input<pulumi.Input<DynamicDeliveryAttributeMappingArgs | StaticDeliveryAttributeMappingArgs>[] | undefined>;
     /**
      * Type of the endpoint for the event subscription destination.
      * Expected value is 'ServiceBusTopic'.
@@ -1152,7 +1152,7 @@ export interface ServiceBusTopicEventSubscriptionDestinationArgs {
     /**
      * The Azure Resource Id that represents the endpoint of the Service Bus Topic destination of an event subscription.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1162,11 +1162,11 @@ export interface StaticDeliveryAttributeMappingArgs {
     /**
      * Boolean flag to tell if the attribute contains sensitive information .
      */
-    isSecret?: pulumi.Input<boolean>;
+    isSecret?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the delivery attribute or header.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Type of the delivery attribute or header name.
      * Expected value is 'Static'.
@@ -1175,7 +1175,7 @@ export interface StaticDeliveryAttributeMappingArgs {
     /**
      * Value of the delivery attribute.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 /**
  * staticDeliveryAttributeMappingArgsProvideDefaults sets the appropriate defaults for StaticDeliveryAttributeMappingArgs
@@ -1191,11 +1191,11 @@ export interface StaticStringRoutingEnrichmentArgs {
     /**
      * Static routing enrichment key.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * String type routing enrichment value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * Static routing enrichment value type. For e.g. this property value can be 'String'.
      * Expected value is 'String'.
@@ -1210,7 +1210,7 @@ export interface StorageBlobDeadLetterDestinationArgs {
     /**
      * The name of the Storage blob container that is the destination of the deadletter events
      */
-    blobContainerName?: pulumi.Input<string>;
+    blobContainerName?: pulumi.Input<string | undefined>;
     /**
      * Type of the endpoint for the dead letter destination
      * Expected value is 'StorageBlob'.
@@ -1219,7 +1219,7 @@ export interface StorageBlobDeadLetterDestinationArgs {
     /**
      * The Azure Resource ID of the storage account that is the destination of the deadletter events
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1234,15 +1234,15 @@ export interface StorageQueueEventSubscriptionDestinationArgs {
     /**
      * Storage queue message time to live in seconds. This value cannot be zero or negative with the exception of using -1 to indicate that the Time To Live of the message is Infinite.
      */
-    queueMessageTimeToLiveInSeconds?: pulumi.Input<number>;
+    queueMessageTimeToLiveInSeconds?: pulumi.Input<number | undefined>;
     /**
      * The name of the Storage queue under a storage account that is the destination of an event subscription.
      */
-    queueName?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string | undefined>;
     /**
      * The Azure Resource ID of the storage account that contains the queue that is the destination of an event subscription.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1252,7 +1252,7 @@ export interface StringBeginsWithAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringBeginsWith'.
@@ -1261,7 +1261,7 @@ export interface StringBeginsWithAdvancedFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1271,7 +1271,7 @@ export interface StringBeginsWithFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringBeginsWith'.
@@ -1280,7 +1280,7 @@ export interface StringBeginsWithFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1290,7 +1290,7 @@ export interface StringContainsAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringContains'.
@@ -1299,7 +1299,7 @@ export interface StringContainsAdvancedFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1309,7 +1309,7 @@ export interface StringContainsFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringContains'.
@@ -1318,7 +1318,7 @@ export interface StringContainsFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1328,7 +1328,7 @@ export interface StringEndsWithAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringEndsWith'.
@@ -1337,7 +1337,7 @@ export interface StringEndsWithAdvancedFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1347,7 +1347,7 @@ export interface StringEndsWithFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringEndsWith'.
@@ -1356,7 +1356,7 @@ export interface StringEndsWithFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1366,7 +1366,7 @@ export interface StringInAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringIn'.
@@ -1375,7 +1375,7 @@ export interface StringInAdvancedFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1385,7 +1385,7 @@ export interface StringInFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringIn'.
@@ -1394,7 +1394,7 @@ export interface StringInFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1404,7 +1404,7 @@ export interface StringNotBeginsWithAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringNotBeginsWith'.
@@ -1413,7 +1413,7 @@ export interface StringNotBeginsWithAdvancedFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1423,7 +1423,7 @@ export interface StringNotBeginsWithFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringNotBeginsWith'.
@@ -1432,7 +1432,7 @@ export interface StringNotBeginsWithFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1442,7 +1442,7 @@ export interface StringNotContainsAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringNotContains'.
@@ -1451,7 +1451,7 @@ export interface StringNotContainsAdvancedFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1461,7 +1461,7 @@ export interface StringNotContainsFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringNotContains'.
@@ -1470,7 +1470,7 @@ export interface StringNotContainsFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1480,7 +1480,7 @@ export interface StringNotEndsWithAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringNotEndsWith'.
@@ -1489,7 +1489,7 @@ export interface StringNotEndsWithAdvancedFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1499,7 +1499,7 @@ export interface StringNotEndsWithFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringNotEndsWith'.
@@ -1508,7 +1508,7 @@ export interface StringNotEndsWithFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1518,7 +1518,7 @@ export interface StringNotInAdvancedFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringNotIn'.
@@ -1527,7 +1527,7 @@ export interface StringNotInAdvancedFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1537,7 +1537,7 @@ export interface StringNotInFilterArgs {
     /**
      * The field/property in the event based on which you want to filter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
      * Expected value is 'StringNotIn'.
@@ -1546,7 +1546,7 @@ export interface StringNotInFilterArgs {
     /**
      * The set of filter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1556,35 +1556,35 @@ export interface TopicSpacesConfigurationArgs {
     /**
      * List of custom domain configurations for the namespace.
      */
-    customDomains?: pulumi.Input<pulumi.Input<CustomDomainConfigurationArgs>[]>;
+    customDomains?: pulumi.Input<pulumi.Input<CustomDomainConfigurationArgs>[] | undefined>;
     /**
      * The maximum number of sessions per authentication name. The property default value is 1.
      * Min allowed value is 1 and max allowed value is 100.
      */
-    maximumClientSessionsPerAuthenticationName?: pulumi.Input<number>;
+    maximumClientSessionsPerAuthenticationName?: pulumi.Input<number | undefined>;
     /**
      * The maximum session expiry in hours. The property default value is 1 hour.
      * Min allowed value is 1 hour and max allowed value is 8 hours.
      */
-    maximumSessionExpiryInHours?: pulumi.Input<number>;
+    maximumSessionExpiryInHours?: pulumi.Input<number | undefined>;
     /**
      * Fully qualified Azure Resource Id for the Event Grid Topic to which events will be routed to from TopicSpaces under a namespace.
      * This property should be in the following format '/subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/microsoft.EventGrid/topics/{topicName}'.
      * This topic should reside in the same region where namespace is located.
      */
-    routeTopicResourceId?: pulumi.Input<string>;
+    routeTopicResourceId?: pulumi.Input<string | undefined>;
     /**
      * Routing enrichments for topic spaces configuration
      */
-    routingEnrichments?: pulumi.Input<RoutingEnrichmentsArgs>;
+    routingEnrichments?: pulumi.Input<RoutingEnrichmentsArgs | undefined>;
     /**
      * Routing identity info for topic spaces configuration.
      */
-    routingIdentityInfo?: pulumi.Input<RoutingIdentityInfoArgs>;
+    routingIdentityInfo?: pulumi.Input<RoutingIdentityInfoArgs | undefined>;
     /**
      * Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled.
      */
-    state?: pulumi.Input<string | enums.TopicSpacesConfigurationState>;
+    state?: pulumi.Input<string | enums.TopicSpacesConfigurationState | undefined>;
 }
 /**
  * topicSpacesConfigurationArgsProvideDefaults sets the appropriate defaults for TopicSpacesConfigurationArgs
@@ -1603,7 +1603,7 @@ export interface TopicsConfigurationArgs {
     /**
      * List of custom domain configurations for the namespace.
      */
-    customDomains?: pulumi.Input<pulumi.Input<CustomDomainConfigurationArgs>[]>;
+    customDomains?: pulumi.Input<pulumi.Input<CustomDomainConfigurationArgs>[] | undefined>;
 }
 
 /**
@@ -1613,11 +1613,11 @@ export interface UserIdentityPropertiesArgs {
     /**
      * The client id of user assigned identity.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The principal id of user assigned identity.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1627,15 +1627,15 @@ export interface WebHookEventSubscriptionDestinationArgs {
     /**
      * The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
      */
-    azureActiveDirectoryApplicationIdOrUri?: pulumi.Input<string>;
+    azureActiveDirectoryApplicationIdOrUri?: pulumi.Input<string | undefined>;
     /**
      * The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
      */
-    azureActiveDirectoryTenantId?: pulumi.Input<string>;
+    azureActiveDirectoryTenantId?: pulumi.Input<string | undefined>;
     /**
      * Delivery attribute details.
      */
-    deliveryAttributeMappings?: pulumi.Input<pulumi.Input<DynamicDeliveryAttributeMappingArgs | StaticDeliveryAttributeMappingArgs>[]>;
+    deliveryAttributeMappings?: pulumi.Input<pulumi.Input<DynamicDeliveryAttributeMappingArgs | StaticDeliveryAttributeMappingArgs>[] | undefined>;
     /**
      * Type of the endpoint for the event subscription destination.
      * Expected value is 'WebHook'.
@@ -1644,19 +1644,19 @@ export interface WebHookEventSubscriptionDestinationArgs {
     /**
      * The URL that represents the endpoint of the destination of an event subscription.
      */
-    endpointUrl?: pulumi.Input<string>;
+    endpointUrl?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of events per batch.
      */
-    maxEventsPerBatch?: pulumi.Input<number>;
+    maxEventsPerBatch?: pulumi.Input<number | undefined>;
     /**
      * Minimum TLS version that should be supported by webhook endpoint
      */
-    minimumTlsVersionAllowed?: pulumi.Input<string | enums.TlsVersion>;
+    minimumTlsVersionAllowed?: pulumi.Input<string | enums.TlsVersion | undefined>;
     /**
      * Preferred batch size in Kilobytes.
      */
-    preferredBatchSizeInKilobytes?: pulumi.Input<number>;
+    preferredBatchSizeInKilobytes?: pulumi.Input<number | undefined>;
 }
 /**
  * webHookEventSubscriptionDestinationArgsProvideDefaults sets the appropriate defaults for WebHookEventSubscriptionDestinationArgs

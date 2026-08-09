@@ -146,15 +146,15 @@ export interface IntegrationAccountPartnerArgs {
     /**
      * The resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The metadata.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
      * The integration account partner name.
      */
-    partnerName?: pulumi.Input<string>;
+    partnerName?: pulumi.Input<string | undefined>;
     /**
      * The partner type.
      */
@@ -166,5 +166,5 @@ export interface IntegrationAccountPartnerArgs {
     /**
      * The resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

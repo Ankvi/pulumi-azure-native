@@ -105,20 +105,20 @@ export class Monitor extends pulumi.CustomResource {
  * The set of arguments for constructing a Monitor resource.
  */
 export interface MonitorArgs {
-    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
-    location?: pulumi.Input<string>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs | undefined>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Monitor resource name
      */
-    monitorName?: pulumi.Input<string>;
+    monitorName?: pulumi.Input<string | undefined>;
     /**
      * Properties specific to the monitor resource.
      */
-    properties?: pulumi.Input<types.inputs.MonitorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MonitorPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
-    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -136,23 +136,23 @@ export interface ClientArgs {
      * Example:
      * "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] }
      */
-    attributes?: any;
+    attributes?: any | undefined;
     /**
      * The name presented by the client for authentication. The default value is the name of the resource.
      */
-    authenticationName?: pulumi.Input<string>;
+    authenticationName?: pulumi.Input<string | undefined>;
     /**
      * The client certificate authentication information.
      */
-    clientCertificateAuthentication?: pulumi.Input<types.inputs.ClientCertificateAuthenticationArgs>;
+    clientCertificateAuthentication?: pulumi.Input<types.inputs.ClientCertificateAuthenticationArgs | undefined>;
     /**
      * The client name.
      */
-    clientName?: pulumi.Input<string>;
+    clientName?: pulumi.Input<string | undefined>;
     /**
      * Description for the Client resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the namespace.
      */
@@ -164,5 +164,5 @@ export interface ClientArgs {
     /**
      * Indicates if the client is enabled or not. Default value is Enabled.
      */
-    state?: pulumi.Input<string | types.enums.ClientState>;
+    state?: pulumi.Input<string | types.enums.ClientState | undefined>;
 }

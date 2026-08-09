@@ -106,10 +106,10 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["assignments"] = args?.assignments;
             resourceInputs["location"] = args?.location;
             resourceInputs["poolName"] = args?.poolName;
-            resourceInputs["poolType"] = args ? (args.poolType ? pulumi.output(args.poolType).apply(types.inputs.poolTypeArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["poolType"] = args ? pulumi.output(args.poolType).apply(types.inputs.poolTypeArgsProvideDefaults) : undefined;
             resourceInputs["reclaimPolicy"] = args?.reclaimPolicy;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
-            resourceInputs["resources"] = args ? (args.resources ? pulumi.output(args.resources).apply(types.inputs.resourcesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["resources"] = args ? pulumi.output(args.resources).apply(v => v === undefined ? undefined : types.inputs.resourcesArgsProvideDefaults(v)) : undefined;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["zones"] = args?.zones;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -147,15 +147,15 @@ export interface PoolArgs {
     /**
      * List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
      */
-    assignments?: pulumi.Input<pulumi.Input<types.inputs.AssignmentArgs>[]>;
+    assignments?: pulumi.Input<pulumi.Input<types.inputs.AssignmentArgs>[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Pool Object
      */
-    poolName?: pulumi.Input<string>;
+    poolName?: pulumi.Input<string | undefined>;
     /**
      * Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
      */
@@ -163,7 +163,7 @@ export interface PoolArgs {
     /**
      * ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
      */
-    reclaimPolicy?: pulumi.Input<string | types.enums.ReclaimPolicy>;
+    reclaimPolicy?: pulumi.Input<string | types.enums.ReclaimPolicy | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -171,13 +171,13 @@ export interface PoolArgs {
     /**
      * Resources represent the resources the pool should have.
      */
-    resources?: pulumi.Input<types.inputs.ResourcesArgs>;
+    resources?: pulumi.Input<types.inputs.ResourcesArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of availability zones that resources can be created in.
      */
-    zones?: pulumi.Input<pulumi.Input<string | types.enums.Zone>[]>;
+    zones?: pulumi.Input<pulumi.Input<string | types.enums.Zone>[] | undefined>;
 }

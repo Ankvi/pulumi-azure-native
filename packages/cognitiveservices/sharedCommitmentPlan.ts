@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SharedCommitmentPlan extends pulumi.CustomResource {
     /**
@@ -115,7 +115,7 @@ export class SharedCommitmentPlan extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20221201:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20230501:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20231001preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20240401preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20240601preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20241001:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250401preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250601:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250701preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250901:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20251001preview:SharedCommitmentPlan" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20221201:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20230501:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20231001preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20240401preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20240601preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20241001:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250401preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250601:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250701preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20250901:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20251001preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20251201:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20260115preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20260301:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20260315preview:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20260501:SharedCommitmentPlan" }, { type: "azure-native:cognitiveservices/v20260515preview:SharedCommitmentPlan" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SharedCommitmentPlan.__pulumiType, name, resourceInputs, opts);
     }
@@ -128,19 +128,19 @@ export interface SharedCommitmentPlanArgs {
     /**
      * The name of the commitmentPlan associated with the Cognitive Services Account
      */
-    commitmentPlanName?: pulumi.Input<string>;
+    commitmentPlanName?: pulumi.Input<string | undefined>;
     /**
      * The Kind of the resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Properties of Cognitive Services account commitment plan.
      */
-    properties?: pulumi.Input<types.inputs.CommitmentPlanPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CommitmentPlanPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -148,9 +148,9 @@ export interface SharedCommitmentPlanArgs {
     /**
      * The resource model definition representing SKU
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

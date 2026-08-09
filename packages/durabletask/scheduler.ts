@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.
  *
- * Other available API versions: 2025-04-01-preview, 2025-11-01, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-04-01-preview, 2025-11-01, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Scheduler extends pulumi.CustomResource {
     /**
@@ -97,7 +97,7 @@ export class Scheduler extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:durabletask/v20241001preview:Scheduler" }, { type: "azure-native:durabletask/v20250401preview:Scheduler" }, { type: "azure-native:durabletask/v20251101:Scheduler" }, { type: "azure-native:durabletask/v20260201:Scheduler" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:durabletask/v20241001preview:Scheduler" }, { type: "azure-native:durabletask/v20250401preview:Scheduler" }, { type: "azure-native:durabletask/v20251101:Scheduler" }, { type: "azure-native:durabletask/v20260201:Scheduler" }, { type: "azure-native:durabletask/v20260501preview:Scheduler" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Scheduler.__pulumiType, name, resourceInputs, opts);
     }
@@ -110,11 +110,11 @@ export interface SchedulerArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.SchedulerPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SchedulerPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -122,9 +122,9 @@ export interface SchedulerArgs {
     /**
      * The name of the Scheduler
      */
-    schedulerName?: pulumi.Input<string>;
+    schedulerName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

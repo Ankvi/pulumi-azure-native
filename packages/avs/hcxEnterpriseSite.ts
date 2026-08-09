@@ -114,7 +114,7 @@ export interface HcxEnterpriseSiteArgs {
     /**
      * Name of the HCX Enterprise Site
      */
-    hcxEnterpriseSiteName?: pulumi.Input<string>;
+    hcxEnterpriseSiteName?: pulumi.Input<string | undefined>;
     /**
      * Name of the private cloud
      */

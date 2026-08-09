@@ -122,11 +122,11 @@ export interface ASCDataConnectorArgs {
     /**
      * Connector ID
      */
-    dataConnectorId?: pulumi.Input<string>;
+    dataConnectorId?: pulumi.Input<string | undefined>;
     /**
      * The available data types for the connector.
      */
-    dataTypes?: pulumi.Input<types.inputs.AlertsDataTypeOfDataConnectorArgs>;
+    dataTypes?: pulumi.Input<types.inputs.AlertsDataTypeOfDataConnectorArgs | undefined>;
     /**
      * The kind of the data connector
      * Expected value is 'AzureSecurityCenter'.
@@ -139,7 +139,7 @@ export interface ASCDataConnectorArgs {
     /**
      * The subscription id to connect to, and get the data from.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * The name of the workspace.
      */

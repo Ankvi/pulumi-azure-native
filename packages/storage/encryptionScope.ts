@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class EncryptionScope extends pulumi.CustomResource {
     /**
@@ -113,7 +113,7 @@ export class EncryptionScope extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20190601:EncryptionScope" }, { type: "azure-native:storage/v20200801preview:EncryptionScope" }, { type: "azure-native:storage/v20210101:EncryptionScope" }, { type: "azure-native:storage/v20210201:EncryptionScope" }, { type: "azure-native:storage/v20210401:EncryptionScope" }, { type: "azure-native:storage/v20210601:EncryptionScope" }, { type: "azure-native:storage/v20210801:EncryptionScope" }, { type: "azure-native:storage/v20210901:EncryptionScope" }, { type: "azure-native:storage/v20220501:EncryptionScope" }, { type: "azure-native:storage/v20220901:EncryptionScope" }, { type: "azure-native:storage/v20230101:EncryptionScope" }, { type: "azure-native:storage/v20230401:EncryptionScope" }, { type: "azure-native:storage/v20230501:EncryptionScope" }, { type: "azure-native:storage/v20240101:EncryptionScope" }, { type: "azure-native:storage/v20250101:EncryptionScope" }, { type: "azure-native:storage/v20250601:EncryptionScope" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20190601:EncryptionScope" }, { type: "azure-native:storage/v20200801preview:EncryptionScope" }, { type: "azure-native:storage/v20210101:EncryptionScope" }, { type: "azure-native:storage/v20210201:EncryptionScope" }, { type: "azure-native:storage/v20210401:EncryptionScope" }, { type: "azure-native:storage/v20210601:EncryptionScope" }, { type: "azure-native:storage/v20210801:EncryptionScope" }, { type: "azure-native:storage/v20210901:EncryptionScope" }, { type: "azure-native:storage/v20220501:EncryptionScope" }, { type: "azure-native:storage/v20220901:EncryptionScope" }, { type: "azure-native:storage/v20230101:EncryptionScope" }, { type: "azure-native:storage/v20230401:EncryptionScope" }, { type: "azure-native:storage/v20230501:EncryptionScope" }, { type: "azure-native:storage/v20240101:EncryptionScope" }, { type: "azure-native:storage/v20250101:EncryptionScope" }, { type: "azure-native:storage/v20250601:EncryptionScope" }, { type: "azure-native:storage/v20250801:EncryptionScope" }, { type: "azure-native:storage/v20260401:EncryptionScope" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(EncryptionScope.__pulumiType, name, resourceInputs, opts);
     }
@@ -130,15 +130,15 @@ export interface EncryptionScopeArgs {
     /**
      * The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
      */
-    encryptionScopeName?: pulumi.Input<string>;
+    encryptionScopeName?: pulumi.Input<string | undefined>;
     /**
      * The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'.
      */
-    keyVaultProperties?: pulumi.Input<types.inputs.EncryptionScopeKeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<types.inputs.EncryptionScopeKeyVaultPropertiesArgs | undefined>;
     /**
      * A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest.
      */
-    requireInfrastructureEncryption?: pulumi.Input<boolean>;
+    requireInfrastructureEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -146,9 +146,9 @@ export interface EncryptionScopeArgs {
     /**
      * The provider for the encryption scope. Possible values (case-insensitive):  Microsoft.Storage, Microsoft.KeyVault.
      */
-    source?: pulumi.Input<string | types.enums.EncryptionScopeSource>;
+    source?: pulumi.Input<string | types.enums.EncryptionScopeSource | undefined>;
     /**
      * The state of the encryption scope. Possible values (case-insensitive):  Enabled, Disabled.
      */
-    state?: pulumi.Input<string | types.enums.EncryptionScopeState>;
+    state?: pulumi.Input<string | types.enums.EncryptionScopeState | undefined>;
 }

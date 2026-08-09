@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
  *
- * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ApiDiagnostic extends pulumi.CustomResource {
     /**
@@ -144,7 +144,7 @@ export class ApiDiagnostic extends pulumi.CustomResource {
             resourceInputs["verbosity"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20170301:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20180101:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20180601preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20190101:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20191201:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20191201preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20200601preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20201201:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20210101preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20210401preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20210801:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20211201preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20220401preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20220801:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20220901preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20230301preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20230501preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20230901preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20240501:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20240601preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20241001preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20250301preview:ApiDiagnostic" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20170301:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20180101:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20180601preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20190101:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20191201:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20191201preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20200601preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20201201:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20210101preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20210401preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20210801:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20211201preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20220401preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20220801:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20220901preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20230301preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20230501preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20230901preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20240501:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20240601preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20241001preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20250301preview:ApiDiagnostic" }, { type: "azure-native:apimanagement/v20250901preview:ApiDiagnostic" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ApiDiagnostic.__pulumiType, name, resourceInputs, opts);
     }
@@ -157,7 +157,7 @@ export interface ApiDiagnosticArgs {
     /**
      * Specifies for what type of messages sampling settings should not apply.
      */
-    alwaysLog?: pulumi.Input<string | types.enums.AlwaysLog>;
+    alwaysLog?: pulumi.Input<string | types.enums.AlwaysLog | undefined>;
     /**
      * API identifier. Must be unique in the current API Management service instance.
      */
@@ -165,23 +165,23 @@ export interface ApiDiagnosticArgs {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Backend
      */
-    backend?: pulumi.Input<types.inputs.PipelineDiagnosticSettingsArgs>;
+    backend?: pulumi.Input<types.inputs.PipelineDiagnosticSettingsArgs | undefined>;
     /**
      * Diagnostic identifier. Must be unique in the current API Management service instance.
      */
-    diagnosticId?: pulumi.Input<string>;
+    diagnosticId?: pulumi.Input<string | undefined>;
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
      */
-    frontend?: pulumi.Input<types.inputs.PipelineDiagnosticSettingsArgs>;
+    frontend?: pulumi.Input<types.inputs.PipelineDiagnosticSettingsArgs | undefined>;
     /**
      * Sets correlation protocol to use for Application Insights diagnostics.
      */
-    httpCorrelationProtocol?: pulumi.Input<string | types.enums.HttpCorrelationProtocol>;
+    httpCorrelationProtocol?: pulumi.Input<string | types.enums.HttpCorrelationProtocol | undefined>;
     /**
      * Log the ClientIP. Default is false.
      */
-    logClientIp?: pulumi.Input<boolean>;
+    logClientIp?: pulumi.Input<boolean | undefined>;
     /**
      * Resource Id of a target logger.
      */
@@ -189,11 +189,11 @@ export interface ApiDiagnosticArgs {
     /**
      * Emit custom metrics via emit-metric policy. Applicable only to Application Insights diagnostic settings.
      */
-    metrics?: pulumi.Input<boolean>;
+    metrics?: pulumi.Input<boolean | undefined>;
     /**
      * The format of the Operation Name for Application Insights telemetries. Default is Name.
      */
-    operationNameFormat?: pulumi.Input<string | types.enums.OperationNameFormat>;
+    operationNameFormat?: pulumi.Input<string | types.enums.OperationNameFormat | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -201,7 +201,7 @@ export interface ApiDiagnosticArgs {
     /**
      * Sampling settings for Diagnostic.
      */
-    sampling?: pulumi.Input<types.inputs.SamplingSettingsArgs>;
+    sampling?: pulumi.Input<types.inputs.SamplingSettingsArgs | undefined>;
     /**
      * The name of the API Management service.
      */
@@ -209,5 +209,5 @@ export interface ApiDiagnosticArgs {
     /**
      * The verbosity level applied to traces emitted by trace policies.
      */
-    verbosity?: pulumi.Input<string | types.enums.Verbosity>;
+    verbosity?: pulumi.Input<string | types.enums.Verbosity | undefined>;
 }

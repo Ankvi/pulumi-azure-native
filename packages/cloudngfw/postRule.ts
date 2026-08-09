@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
  *
- * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PostRule extends pulumi.CustomResource {
     /**
@@ -198,7 +198,7 @@ export class PostRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cloudngfw/v20220829:PostRule" }, { type: "azure-native:cloudngfw/v20220829preview:PostRule" }, { type: "azure-native:cloudngfw/v20230901:PostRule" }, { type: "azure-native:cloudngfw/v20230901preview:PostRule" }, { type: "azure-native:cloudngfw/v20231010preview:PostRule" }, { type: "azure-native:cloudngfw/v20240119preview:PostRule" }, { type: "azure-native:cloudngfw/v20240207preview:PostRule" }, { type: "azure-native:cloudngfw/v20250206preview:PostRule" }, { type: "azure-native:cloudngfw/v20250523:PostRule" }, { type: "azure-native:cloudngfw/v20250707preview:PostRule" }, { type: "azure-native:cloudngfw/v20251008:PostRule" }, { type: "azure-native:cloudngfw/v20260126preview:PostRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cloudngfw/v20220829:PostRule" }, { type: "azure-native:cloudngfw/v20220829preview:PostRule" }, { type: "azure-native:cloudngfw/v20230901:PostRule" }, { type: "azure-native:cloudngfw/v20230901preview:PostRule" }, { type: "azure-native:cloudngfw/v20231010preview:PostRule" }, { type: "azure-native:cloudngfw/v20240119preview:PostRule" }, { type: "azure-native:cloudngfw/v20240207preview:PostRule" }, { type: "azure-native:cloudngfw/v20250206preview:PostRule" }, { type: "azure-native:cloudngfw/v20250523:PostRule" }, { type: "azure-native:cloudngfw/v20250707preview:PostRule" }, { type: "azure-native:cloudngfw/v20251008:PostRule" }, { type: "azure-native:cloudngfw/v20260126preview:PostRule" }, { type: "azure-native:cloudngfw/v20260511preview:PostRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PostRule.__pulumiType, name, resourceInputs, opts);
     }
@@ -211,35 +211,35 @@ export interface PostRuleArgs {
     /**
      * rule action
      */
-    actionType?: pulumi.Input<string | types.enums.ActionEnum>;
+    actionType?: pulumi.Input<string | types.enums.ActionEnum | undefined>;
     /**
      * array of rule applications
      */
-    applications?: pulumi.Input<pulumi.Input<string>[]>;
+    applications?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * rule comment
      */
-    auditComment?: pulumi.Input<string>;
+    auditComment?: pulumi.Input<string | undefined>;
     /**
      * rule category
      */
-    category?: pulumi.Input<types.inputs.CategoryArgs>;
+    category?: pulumi.Input<types.inputs.CategoryArgs | undefined>;
     /**
      * enable or disable decryption
      */
-    decryptionRuleType?: pulumi.Input<string | types.enums.DecryptionRuleTypeEnum>;
+    decryptionRuleType?: pulumi.Input<string | types.enums.DecryptionRuleTypeEnum | undefined>;
     /**
      * rule description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * destination address
      */
-    destination?: pulumi.Input<types.inputs.DestinationAddrArgs>;
+    destination?: pulumi.Input<types.inputs.DestinationAddrArgs | undefined>;
     /**
      * enable or disable logging
      */
-    enableLogging?: pulumi.Input<string | types.enums.StateEnum>;
+    enableLogging?: pulumi.Input<string | types.enums.StateEnum | undefined>;
     /**
      * GlobalRulestack resource name
      */
@@ -247,27 +247,27 @@ export interface PostRuleArgs {
     /**
      * inbound Inspection Certificate
      */
-    inboundInspectionCertificate?: pulumi.Input<string>;
+    inboundInspectionCertificate?: pulumi.Input<string | undefined>;
     /**
      * cidr should not be 'any'
      */
-    negateDestination?: pulumi.Input<string | types.enums.BooleanEnum>;
+    negateDestination?: pulumi.Input<string | types.enums.BooleanEnum | undefined>;
     /**
      * cidr should not be 'any'
      */
-    negateSource?: pulumi.Input<string | types.enums.BooleanEnum>;
+    negateSource?: pulumi.Input<string | types.enums.BooleanEnum | undefined>;
     /**
      * Post Rule priority
      */
-    priority?: pulumi.Input<string>;
+    priority?: pulumi.Input<string | undefined>;
     /**
      * any, application-default, TCP:number, UDP:number
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * prot port list
      */
-    protocolPortList?: pulumi.Input<pulumi.Input<string>[]>;
+    protocolPortList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * rule name
      */
@@ -275,13 +275,13 @@ export interface PostRuleArgs {
     /**
      * state of this rule
      */
-    ruleState?: pulumi.Input<string | types.enums.StateEnum>;
+    ruleState?: pulumi.Input<string | types.enums.StateEnum | undefined>;
     /**
      * source address
      */
-    source?: pulumi.Input<types.inputs.SourceAddrArgs>;
+    source?: pulumi.Input<types.inputs.SourceAddrArgs | undefined>;
     /**
      * tag for rule
      */
-    tags?: pulumi.Input<pulumi.Input<types.inputs.TagInfoArgs>[]>;
+    tags?: pulumi.Input<pulumi.Input<types.inputs.TagInfoArgs>[] | undefined>;
 }

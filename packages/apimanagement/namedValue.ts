@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
  *
- * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NamedValue extends pulumi.CustomResource {
     /**
@@ -116,7 +116,7 @@ export class NamedValue extends pulumi.CustomResource {
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20191201:NamedValue" }, { type: "azure-native:apimanagement/v20191201preview:NamedValue" }, { type: "azure-native:apimanagement/v20200601preview:NamedValue" }, { type: "azure-native:apimanagement/v20201201:NamedValue" }, { type: "azure-native:apimanagement/v20210101preview:NamedValue" }, { type: "azure-native:apimanagement/v20210401preview:NamedValue" }, { type: "azure-native:apimanagement/v20210801:NamedValue" }, { type: "azure-native:apimanagement/v20211201preview:NamedValue" }, { type: "azure-native:apimanagement/v20220401preview:NamedValue" }, { type: "azure-native:apimanagement/v20220801:NamedValue" }, { type: "azure-native:apimanagement/v20220901preview:NamedValue" }, { type: "azure-native:apimanagement/v20230301preview:NamedValue" }, { type: "azure-native:apimanagement/v20230501preview:NamedValue" }, { type: "azure-native:apimanagement/v20230901preview:NamedValue" }, { type: "azure-native:apimanagement/v20240501:NamedValue" }, { type: "azure-native:apimanagement/v20240601preview:NamedValue" }, { type: "azure-native:apimanagement/v20241001preview:NamedValue" }, { type: "azure-native:apimanagement/v20250301preview:NamedValue" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20191201:NamedValue" }, { type: "azure-native:apimanagement/v20191201preview:NamedValue" }, { type: "azure-native:apimanagement/v20200601preview:NamedValue" }, { type: "azure-native:apimanagement/v20201201:NamedValue" }, { type: "azure-native:apimanagement/v20210101preview:NamedValue" }, { type: "azure-native:apimanagement/v20210401preview:NamedValue" }, { type: "azure-native:apimanagement/v20210801:NamedValue" }, { type: "azure-native:apimanagement/v20211201preview:NamedValue" }, { type: "azure-native:apimanagement/v20220401preview:NamedValue" }, { type: "azure-native:apimanagement/v20220801:NamedValue" }, { type: "azure-native:apimanagement/v20220901preview:NamedValue" }, { type: "azure-native:apimanagement/v20230301preview:NamedValue" }, { type: "azure-native:apimanagement/v20230501preview:NamedValue" }, { type: "azure-native:apimanagement/v20230901preview:NamedValue" }, { type: "azure-native:apimanagement/v20240501:NamedValue" }, { type: "azure-native:apimanagement/v20240601preview:NamedValue" }, { type: "azure-native:apimanagement/v20241001preview:NamedValue" }, { type: "azure-native:apimanagement/v20250301preview:NamedValue" }, { type: "azure-native:apimanagement/v20250901preview:NamedValue" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NamedValue.__pulumiType, name, resourceInputs, opts);
     }
@@ -133,11 +133,11 @@ export interface NamedValueArgs {
     /**
      * KeyVault location details of the namedValue.
      */
-    keyVault?: pulumi.Input<types.inputs.KeyVaultContractCreatePropertiesArgs>;
+    keyVault?: pulumi.Input<types.inputs.KeyVaultContractCreatePropertiesArgs | undefined>;
     /**
      * Identifier of the NamedValue.
      */
-    namedValueId?: pulumi.Input<string>;
+    namedValueId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -145,7 +145,7 @@ export interface NamedValueArgs {
     /**
      * Determines whether the value is a secret and should be encrypted or not. Default value is false.
      */
-    secret?: pulumi.Input<boolean>;
+    secret?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the API Management service.
      */
@@ -153,9 +153,9 @@ export interface NamedValueArgs {
     /**
      * Optional tags that when provided can be used to filter the NamedValue list.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only of whitespace. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }

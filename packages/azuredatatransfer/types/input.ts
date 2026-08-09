@@ -7,7 +7,7 @@ export interface AntivirusRulesetArgs {
     /**
      * Optional. The list of antiviruses to be used as a scanning solution for replicating data.
      */
-    avSolutions?: pulumi.Input<pulumi.Input<string | enums.AntivirusSolutions>[]>;
+    avSolutions?: pulumi.Input<pulumi.Input<string | enums.AntivirusSolutions>[] | undefined>;
 }
 
 /**
@@ -17,19 +17,19 @@ export interface ArchiveRulesetArgs {
     /**
      * Optional. Provides the multiplication value for an archive in total based on the initial object being validated. This value takes the root object size and multiplies it by this value to create a maximum. Once this maximum is exceeded, the archive is failed. Used to detect and block archives with suspiciously high compression (e.g., zip bombs).
      */
-    maximumCompressionRatioLimit?: pulumi.Input<number>;
+    maximumCompressionRatioLimit?: pulumi.Input<number | undefined>;
     /**
      * Optional. The maximum depth of nested archives that can be expanded. Limits how many layers of embedded archives will be processed. Archives exceeding the max limit will be denied for replication.
      */
-    maximumDepthLimit?: pulumi.Input<number>;
+    maximumDepthLimit?: pulumi.Input<number | undefined>;
     /**
      * Optional. The combined maximum size (in bytes) of all extracted files that an expanded archive is allowed to reach. Archives exceeding the max limit will be denied for replication.
      */
-    maximumExpansionSizeLimit?: pulumi.Input<number>;
+    maximumExpansionSizeLimit?: pulumi.Input<number | undefined>;
     /**
      * Optional. Default is 0. The minimum archive file size (in bytes) required to trigger expansion during replication. Any archive file size below the configured threshold will skip the rest of the configured rulesets for archives.
      */
-    minimumSizeForExpansion?: pulumi.Input<number>;
+    minimumSizeForExpansion?: pulumi.Input<number | undefined>;
 }
 /**
  * archiveRulesetArgsProvideDefaults sets the appropriate defaults for ArchiveRulesetArgs
@@ -48,19 +48,19 @@ export interface ConnectionPropertiesArgs {
     /**
      * Direction of data movement
      */
-    direction?: pulumi.Input<string | enums.Direction>;
+    direction?: pulumi.Input<string | enums.Direction | undefined>;
     /**
      * The flow types being requested for this connection
      */
-    flowTypes?: pulumi.Input<pulumi.Input<string | enums.FlowType>[]>;
+    flowTypes?: pulumi.Input<pulumi.Input<string | enums.FlowType>[] | undefined>;
     /**
      * Justification for the connection request
      */
-    justification?: pulumi.Input<string>;
+    justification?: pulumi.Input<string | undefined>;
     /**
      * PIN to link requests together
      */
-    pin?: pulumi.Input<string>;
+    pin?: pulumi.Input<string | undefined>;
     /**
      * Pipeline to use to transfer data
      */
@@ -68,31 +68,31 @@ export interface ConnectionPropertiesArgs {
     /**
      * The policies for this connection
      */
-    policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The primary contact for this connection request
      */
-    primaryContact?: pulumi.Input<string>;
+    primaryContact?: pulumi.Input<string | undefined>;
     /**
      * Subscription ID to link cloud subscriptions together
      */
-    remoteSubscriptionId?: pulumi.Input<string>;
+    remoteSubscriptionId?: pulumi.Input<string | undefined>;
     /**
      * Requirement ID of the connection
      */
-    requirementId?: pulumi.Input<string>;
+    requirementId?: pulumi.Input<string | undefined>;
     /**
      * The schema URIs for this connection
      */
-    schemaUris?: pulumi.Input<pulumi.Input<string>[]>;
+    schemaUris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The schemas for this connection
      */
-    schemas?: pulumi.Input<pulumi.Input<SchemaArgs>[]>;
+    schemas?: pulumi.Input<pulumi.Input<SchemaArgs>[] | undefined>;
     /**
      * The secondary contacts for this connection request
      */
-    secondaryContacts?: pulumi.Input<pulumi.Input<string>[]>;
+    secondaryContacts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -102,11 +102,11 @@ export interface DataSizeRulesetArgs {
     /**
      * Optional. Specifies the maximum allowed size (in bytes) for files to be replicated. Any file size greater than maximum will be denied replication.
      */
-    maximum?: pulumi.Input<number>;
+    maximum?: pulumi.Input<number | undefined>;
     /**
      * Optional. Default is 0. Specifies the minimum required size (in bytes) for a file to be eligible for replication. Any file size less than minimum will be denied replication.
      */
-    minimum?: pulumi.Input<number>;
+    minimum?: pulumi.Input<number | undefined>;
 }
 /**
  * dataSizeRulesetArgsProvideDefaults sets the appropriate defaults for DataSizeRulesetArgs
@@ -133,7 +133,7 @@ export interface FlowProfilePropertiesArgs {
     /**
      * A set of configurable rulesets applied to this FlowProfile.
      */
-    rulesets?: pulumi.Input<FlowProfileRulesetsArgs>;
+    rulesets?: pulumi.Input<FlowProfileRulesetsArgs | undefined>;
     /**
      * The operational status of the FlowProfile.
      */
@@ -145,7 +145,7 @@ export interface FlowProfilePropertiesArgs {
 export function flowProfilePropertiesArgsProvideDefaults(val: FlowProfilePropertiesArgs): FlowProfilePropertiesArgs {
     return {
         ...val,
-        rulesets: (val.rulesets ? pulumi.output(val.rulesets).apply(flowProfileRulesetsArgsProvideDefaults) : undefined),
+        rulesets: pulumi.output(val.rulesets).apply(v => v === undefined ? undefined : flowProfileRulesetsArgsProvideDefaults(v)),
     };
 }
 
@@ -156,27 +156,27 @@ export interface FlowProfileRulesetsArgs {
     /**
      * Antivirus scanning rules for replicated data.
      */
-    antivirus?: pulumi.Input<AntivirusRulesetArgs>;
+    antivirus?: pulumi.Input<AntivirusRulesetArgs | undefined>;
     /**
      * Rules for handling archive files during replication.
      */
-    archives?: pulumi.Input<ArchiveRulesetArgs>;
+    archives?: pulumi.Input<ArchiveRulesetArgs | undefined>;
     /**
      * Rules that enforce minimum and maximum data size limits.
      */
-    dataSize?: pulumi.Input<DataSizeRulesetArgs>;
+    dataSize?: pulumi.Input<DataSizeRulesetArgs | undefined>;
     /**
      * Rules for filtering files based on MIME types.
      */
-    mimeFilters?: pulumi.Input<MimeFilterRulesetArgs>;
+    mimeFilters?: pulumi.Input<MimeFilterRulesetArgs | undefined>;
     /**
      * Rules for detecting and blocking specific text patterns.
      */
-    textMatching?: pulumi.Input<TextMatchingRulesetArgs>;
+    textMatching?: pulumi.Input<TextMatchingRulesetArgs | undefined>;
     /**
      * Rules for filtering XML content using XSD schemas.
      */
-    xmlFilters?: pulumi.Input<XmlFilterRulesetArgs>;
+    xmlFilters?: pulumi.Input<XmlFilterRulesetArgs | undefined>;
 }
 /**
  * flowProfileRulesetsArgsProvideDefaults sets the appropriate defaults for FlowProfileRulesetsArgs
@@ -184,8 +184,8 @@ export interface FlowProfileRulesetsArgs {
 export function flowProfileRulesetsArgsProvideDefaults(val: FlowProfileRulesetsArgs): FlowProfileRulesetsArgs {
     return {
         ...val,
-        archives: (val.archives ? pulumi.output(val.archives).apply(archiveRulesetArgsProvideDefaults) : undefined),
-        dataSize: (val.dataSize ? pulumi.output(val.dataSize).apply(dataSizeRulesetArgsProvideDefaults) : undefined),
+        archives: pulumi.output(val.archives).apply(v => v === undefined ? undefined : archiveRulesetArgsProvideDefaults(v)),
+        dataSize: pulumi.output(val.dataSize).apply(v => v === undefined ? undefined : dataSizeRulesetArgsProvideDefaults(v)),
     };
 }
 
@@ -196,83 +196,83 @@ export interface FlowPropertiesArgs {
     /**
      * The connection associated with this flow
      */
-    connection?: pulumi.Input<SelectedResourceArgs>;
+    connection?: pulumi.Input<SelectedResourceArgs | undefined>;
     /**
      * The URI to the customer managed key for this flow
      */
-    customerManagedKeyVaultUri?: pulumi.Input<string>;
+    customerManagedKeyVaultUri?: pulumi.Input<string | undefined>;
     /**
      * Transfer Storage Blobs or Tables
      */
-    dataType?: pulumi.Input<string | enums.DataType>;
+    dataType?: pulumi.Input<string | enums.DataType | undefined>;
     /**
      * The destination endpoint ports of the stream
      */
-    destinationEndpointPorts?: pulumi.Input<pulumi.Input<number>[]>;
+    destinationEndpointPorts?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The destination endpoints of the stream
      */
-    destinationEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationEndpoints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The flow type for this flow
      */
-    flowType?: pulumi.Input<string | enums.FlowType>;
+    flowType?: pulumi.Input<string | enums.FlowType | undefined>;
     /**
      * AME, PME, or TORUS only! AKV Chain Containing SAS Token
      */
-    keyVaultUri?: pulumi.Input<string>;
+    keyVaultUri?: pulumi.Input<string | undefined>;
     /**
      * The messaging options for this flow
      */
-    messagingOptions?: pulumi.Input<MessagingOptionsArgs>;
+    messagingOptions?: pulumi.Input<MessagingOptionsArgs | undefined>;
     /**
      * The passphrase used for SRT streams
      */
-    passphrase?: pulumi.Input<string>;
+    passphrase?: pulumi.Input<string | undefined>;
     /**
      * The policies for this flow
      */
-    policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The selected schema for this flow
      */
-    schema?: pulumi.Input<SchemaArgs>;
+    schema?: pulumi.Input<SchemaArgs | undefined>;
     /**
      * Service Bus Queue ID
      */
-    serviceBusQueueId?: pulumi.Input<string>;
+    serviceBusQueueId?: pulumi.Input<string | undefined>;
     /**
      * The source IP address and CIDR ranges of the stream
      */
-    sourceAddresses?: pulumi.Input<StreamSourceAddressesArgs>;
+    sourceAddresses?: pulumi.Input<StreamSourceAddressesArgs | undefined>;
     /**
      * Status of the current flow
      */
-    status?: pulumi.Input<string | enums.FlowStatus>;
+    status?: pulumi.Input<string | enums.FlowStatus | undefined>;
     /**
      * Storage Account ID
      */
-    storageAccountId?: pulumi.Input<string>;
+    storageAccountId?: pulumi.Input<string | undefined>;
     /**
      * Storage Account
      */
-    storageAccountName?: pulumi.Input<string>;
+    storageAccountName?: pulumi.Input<string | undefined>;
     /**
      * Storage Container Name
      */
-    storageContainerName?: pulumi.Input<string>;
+    storageContainerName?: pulumi.Input<string | undefined>;
     /**
      * The flow stream identifier
      */
-    streamId?: pulumi.Input<string>;
+    streamId?: pulumi.Input<string | undefined>;
     /**
      * The latency of the stream in milliseconds
      */
-    streamLatency?: pulumi.Input<number>;
+    streamLatency?: pulumi.Input<number | undefined>;
     /**
      * The protocol of the stream
      */
-    streamProtocol?: pulumi.Input<string | enums.StreamProtocol>;
+    streamProtocol?: pulumi.Input<string | enums.StreamProtocol | undefined>;
 }
 
 /**
@@ -286,7 +286,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -296,7 +296,7 @@ export interface MessagingOptionsArgs {
     /**
      * Billing tier for this messaging flow
      */
-    billingTier?: pulumi.Input<string | enums.FlowBillingTier>;
+    billingTier?: pulumi.Input<string | enums.FlowBillingTier | undefined>;
 }
 
 /**
@@ -306,11 +306,11 @@ export interface MimeFilterRulesetArgs {
     /**
      * Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
      */
-    filters?: pulumi.Input<pulumi.Input<MimeTypeFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<MimeTypeFilterArgs>[] | undefined>;
     /**
      * Specifies whether the filter is an allow list or deny list. For more detail, please refer to the FilterType model.
      */
-    type?: pulumi.Input<string | enums.FilterType>;
+    type?: pulumi.Input<string | enums.FilterType | undefined>;
 }
 
 /**
@@ -320,11 +320,11 @@ export interface MimeTypeFilterArgs {
     /**
      * A list of file extensions associated with the specified Media type (e.g., .json, .png). To specify files with no extension, use an empty string ""."
      */
-    extensions?: pulumi.Input<pulumi.Input<string>[]>;
+    extensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Media Types (f.k.a MIME types), following IANA standards (e.g., application/json, image/png). For a more detailed list of allowed media types please refer to the Tika documentation: https://github.com/apache/tika/blob/main/tika-core/src/main/resources/org/apache/tika/mime/tika-mimetypes.xml
      */
-    media?: pulumi.Input<string>;
+    media?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -334,15 +334,15 @@ export interface PipelinePropertiesArgs {
     /**
      * Display name of this pipeline
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The flow types allowed for this pipeline
      */
-    flowTypes?: pulumi.Input<pulumi.Input<string | enums.FlowType>[]>;
+    flowTypes?: pulumi.Input<pulumi.Input<string | enums.FlowType>[] | undefined>;
     /**
      * The policies for this pipeline
      */
-    policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Remote cloud of the data to be transferred or received
      */
@@ -350,7 +350,7 @@ export interface PipelinePropertiesArgs {
     /**
      * Subscribers of this resource
      */
-    subscribers?: pulumi.Input<pulumi.Input<SubscriberArgs>[]>;
+    subscribers?: pulumi.Input<pulumi.Input<SubscriberArgs>[] | undefined>;
 }
 
 /**
@@ -362,13 +362,13 @@ export interface PlanArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. 
+     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
      */
     product: pulumi.Input<string>;
     /**
      * A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
      */
-    promotionCode?: pulumi.Input<string>;
+    promotionCode?: pulumi.Input<string | undefined>;
     /**
      * The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic
      */
@@ -376,7 +376,7 @@ export interface PlanArgs {
     /**
      * The version of the desired product/artifact.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -386,35 +386,35 @@ export interface SchemaArgs {
     /**
      * Connection ID associated with this schema
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * Content of the schema
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The direction of the schema.
      */
-    direction?: pulumi.Input<string | enums.SchemaDirection>;
+    direction?: pulumi.Input<string | enums.SchemaDirection | undefined>;
     /**
      * ID associated with this schema
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Name of the schema
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Schema Type
      */
-    schemaType?: pulumi.Input<string | enums.SchemaType>;
+    schemaType?: pulumi.Input<string | enums.SchemaType | undefined>;
     /**
      * Uri containing SAS token for the zipped schema
      */
-    schemaUri?: pulumi.Input<string>;
+    schemaUri?: pulumi.Input<string | undefined>;
     /**
      * Status of the schema
      */
-    status?: pulumi.Input<string | enums.SchemaStatus>;
+    status?: pulumi.Input<string | enums.SchemaStatus | undefined>;
 }
 
 /**
@@ -428,15 +428,15 @@ export interface SelectedResourceArgs {
     /**
      * Location of the connection
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the connection
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the subscription with the connection
      */
-    subscriptionName?: pulumi.Input<string>;
+    subscriptionName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -446,18 +446,18 @@ export interface StreamSourceAddressesArgs {
     /**
      * A source IP address or CIDR range
      */
-    sourceAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface SubscriberArgs {
     /**
      * Email of the subscriber
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Number specifying what notifications to receive
      */
-    notifications?: pulumi.Input<number>;
+    notifications?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -495,7 +495,7 @@ export interface TextMatchingRulesetArgs {
     /**
      * A list of text patterns to block, each with matching rules and case sensitivity options.
      */
-    deny?: pulumi.Input<pulumi.Input<TextMatchArgs>[]>;
+    deny?: pulumi.Input<pulumi.Input<TextMatchArgs>[] | undefined>;
 }
 
 /**
@@ -505,13 +505,13 @@ export interface XmlFilterRulesetArgs {
     /**
      * The default XML namespace used for schema validation.
      */
-    defaultNamespace?: pulumi.Input<string>;
+    defaultNamespace?: pulumi.Input<string | undefined>;
     /**
      * Defines the method for referencing the xml schema.
      */
-    reference?: pulumi.Input<string | enums.XmlReferenceType>;
+    reference?: pulumi.Input<string | enums.XmlReferenceType | undefined>;
     /**
      * The inline XSD schema to be used for validation.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
  *
- * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview, 2026-05-11-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CertificateObjectLocalRulestack extends pulumi.CustomResource {
     /**
@@ -121,7 +121,7 @@ export class CertificateObjectLocalRulestack extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cloudngfw/v20220829:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20220829preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20230901:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20230901preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20231010preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20240119preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20240207preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20250206preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20250523:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20250707preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20251008:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20260126preview:CertificateObjectLocalRulestack" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cloudngfw/v20220829:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20220829preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20230901:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20230901preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20231010preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20240119preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20240207preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20250206preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20250523:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20250707preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20251008:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20260126preview:CertificateObjectLocalRulestack" }, { type: "azure-native:cloudngfw/v20260511preview:CertificateObjectLocalRulestack" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CertificateObjectLocalRulestack.__pulumiType, name, resourceInputs, opts);
     }
@@ -134,7 +134,7 @@ export interface CertificateObjectLocalRulestackArgs {
     /**
      * comment for this object
      */
-    auditComment?: pulumi.Input<string>;
+    auditComment?: pulumi.Input<string | undefined>;
     /**
      * use certificate self signed
      */
@@ -142,11 +142,11 @@ export interface CertificateObjectLocalRulestackArgs {
     /**
      * Resource Id of certificate signer, to be populated only when certificateSelfSigned is false
      */
-    certificateSignerResourceId?: pulumi.Input<string>;
+    certificateSignerResourceId?: pulumi.Input<string | undefined>;
     /**
      * user description for this object
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * LocalRulestack resource name
      */
@@ -154,7 +154,7 @@ export interface CertificateObjectLocalRulestackArgs {
     /**
      * certificate name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

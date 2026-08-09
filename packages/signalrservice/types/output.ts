@@ -237,7 +237,7 @@ export interface ResourceSkuResponse {
     /**
      * Optional, integer. The unit count of the resource.
      * 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
-     * 
+     *
      * If present, following values are allowed:
      *     Free_F1: 1;
      *     Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
@@ -251,7 +251,7 @@ export interface ResourceSkuResponse {
     family: string;
     /**
      * The name of the SKU. Required.
-     * 
+     *
      * Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
      */
     name: string;
@@ -260,8 +260,8 @@ export interface ResourceSkuResponse {
      */
     size: string;
     /**
-     * Optional tier of this particular SKU. 'Standard' or 'Free'. 
-     * 
+     * Optional tier of this particular SKU. 'Standard' or 'Free'.
+     *
      * `Basic` is deprecated, use `Standard` instead.
      */
     tier?: string;

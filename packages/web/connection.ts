@@ -108,12 +108,12 @@ export interface ConnectionArgs {
     /**
      * Connection name
      */
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
     /**
      * Resource location
      */
-    location?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.ApiConnectionDefinitionPropertiesArgs>;
+    location?: pulumi.Input<string | undefined>;
+    properties?: pulumi.Input<types.inputs.ApiConnectionDefinitionPropertiesArgs | undefined>;
     /**
      * The resource group
      */
@@ -121,9 +121,9 @@ export interface ConnectionArgs {
     /**
      * Subscription Id
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * Resource tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

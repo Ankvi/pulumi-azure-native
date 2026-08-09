@@ -130,23 +130,23 @@ export interface NamespaceTopicEventSubscriptionArgs {
     /**
      * Information about the delivery configuration of the event subscription.
      */
-    deliveryConfiguration?: pulumi.Input<types.inputs.DeliveryConfigurationArgs>;
+    deliveryConfiguration?: pulumi.Input<types.inputs.DeliveryConfigurationArgs | undefined>;
     /**
      * The event delivery schema for the event subscription.
      */
-    eventDeliverySchema?: pulumi.Input<string | types.enums.DeliverySchema>;
+    eventDeliverySchema?: pulumi.Input<string | types.enums.DeliverySchema | undefined>;
     /**
      * Name of the event subscription to be created. Event subscription names must be between 3 and 50 characters in length and use alphanumeric letters only.
      */
-    eventSubscriptionName?: pulumi.Input<string>;
+    eventSubscriptionName?: pulumi.Input<string | undefined>;
     /**
      * Expiration time of the event subscription.
      */
-    expirationTimeUtc?: pulumi.Input<string>;
+    expirationTimeUtc?: pulumi.Input<string | undefined>;
     /**
      * Information about the filter for the event subscription.
      */
-    filtersConfiguration?: pulumi.Input<types.inputs.FiltersConfigurationArgs>;
+    filtersConfiguration?: pulumi.Input<types.inputs.FiltersConfigurationArgs | undefined>;
     /**
      * Name of the namespace.
      */

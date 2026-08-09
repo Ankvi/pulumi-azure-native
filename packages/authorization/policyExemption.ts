@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2022-07-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-07-01-preview.
  *
- * Other available API versions: 2020-07-01-preview, 2024-12-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-07-01-preview, 2024-12-01-preview, 2025-12-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PolicyExemption extends pulumi.CustomResource {
     /**
@@ -139,7 +139,7 @@ export class PolicyExemption extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20200701preview:PolicyExemption" }, { type: "azure-native:authorization/v20220701preview:PolicyExemption" }, { type: "azure-native:authorization/v20241201preview:PolicyExemption" }, { type: "azure-native:authorization/v20251201preview:PolicyExemption" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20200701preview:PolicyExemption" }, { type: "azure-native:authorization/v20220701preview:PolicyExemption" }, { type: "azure-native:authorization/v20241201preview:PolicyExemption" }, { type: "azure-native:authorization/v20251201preview:PolicyExemption" }, { type: "azure-native:authorization/v20260101preview:PolicyExemption" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicyExemption.__pulumiType, name, resourceInputs, opts);
     }
@@ -152,15 +152,15 @@ export interface PolicyExemptionArgs {
     /**
      * The option whether validate the exemption is at or under the assignment scope.
      */
-    assignmentScopeValidation?: pulumi.Input<string | types.enums.AssignmentScopeValidation>;
+    assignmentScopeValidation?: pulumi.Input<string | types.enums.AssignmentScopeValidation | undefined>;
     /**
      * The description of the policy exemption.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the policy exemption.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The policy exemption category. Possible values are Waiver and Mitigated.
      */
@@ -168,11 +168,11 @@ export interface PolicyExemptionArgs {
     /**
      * The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
      */
-    expiresOn?: pulumi.Input<string>;
+    expiresOn?: pulumi.Input<string | undefined>;
     /**
      * The policy exemption metadata. Metadata is an open ended object and is typically a collection of key value pairs.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
      * The ID of the policy assignment that is being exempted.
      */
@@ -180,15 +180,15 @@ export interface PolicyExemptionArgs {
     /**
      * The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
      */
-    policyDefinitionReferenceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    policyDefinitionReferenceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the policy exemption to delete.
      */
-    policyExemptionName?: pulumi.Input<string>;
+    policyExemptionName?: pulumi.Input<string | undefined>;
     /**
      * The resource selector list to filter policies by resource properties.
      */
-    resourceSelectors?: pulumi.Input<pulumi.Input<types.inputs.ResourceSelectorArgs>[]>;
+    resourceSelectors?: pulumi.Input<pulumi.Input<types.inputs.ResourceSelectorArgs>[] | undefined>;
     /**
      * The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
      */

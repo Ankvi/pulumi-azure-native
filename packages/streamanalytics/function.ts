@@ -96,7 +96,7 @@ export interface FunctionArgs {
     /**
      * The name of the function.
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * The name of the streaming job.
      */
@@ -104,11 +104,11 @@ export interface FunctionArgs {
     /**
      * Resource name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The properties that are associated with a function.
      */
-    properties?: pulumi.Input<types.inputs.AggregateFunctionPropertiesArgs | types.inputs.ScalarFunctionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AggregateFunctionPropertiesArgs | types.inputs.ScalarFunctionPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

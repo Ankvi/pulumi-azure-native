@@ -88,7 +88,7 @@ export class BusinessCaseOperation extends pulumi.CustomResource {
             resourceInputs["businessCaseName"] = args?.businessCaseName;
             resourceInputs["projectName"] = args?.projectName;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
-            resourceInputs["settings"] = args ? (args.settings ? pulumi.output(args.settings).apply(types.inputs.settingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["settings"] = args ? pulumi.output(args.settings).apply(v => v === undefined ? undefined : types.inputs.settingsArgsProvideDefaults(v)) : undefined;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -120,7 +120,7 @@ export interface BusinessCaseOperationArgs {
     /**
      * Business case ARM name
      */
-    businessCaseName?: pulumi.Input<string>;
+    businessCaseName?: pulumi.Input<string | undefined>;
     /**
      * Assessment Project Name
      */
@@ -132,5 +132,5 @@ export interface BusinessCaseOperationArgs {
     /**
      * Business case settings.
      */
-    settings?: pulumi.Input<types.inputs.SettingsArgs>;
+    settings?: pulumi.Input<types.inputs.SettingsArgs | undefined>;
 }

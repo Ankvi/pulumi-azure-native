@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01.
  *
- * Other available API versions: 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FirewallPolicyRuleCollectionGroupDraft extends pulumi.CustomResource {
     /**
@@ -99,7 +99,7 @@ export class FirewallPolicyRuleCollectionGroupDraft extends pulumi.CustomResourc
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20231101:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20240101:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20240301:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20240501:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20240701:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20241001:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20250101:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20250301:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20250501:FirewallPolicyRuleCollectionGroupDraft" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20231101:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20240101:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20240301:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20240501:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20240701:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20241001:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20250101:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20250301:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20250501:FirewallPolicyRuleCollectionGroupDraft" }, { type: "azure-native:network/v20250701:FirewallPolicyRuleCollectionGroupDraft" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FirewallPolicyRuleCollectionGroupDraft.__pulumiType, name, resourceInputs, opts);
     }
@@ -116,15 +116,15 @@ export interface FirewallPolicyRuleCollectionGroupDraftArgs {
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Priority of the Firewall Policy Rule Collection Group resource.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource group.
      */
@@ -136,5 +136,5 @@ export interface FirewallPolicyRuleCollectionGroupDraftArgs {
     /**
      * Group of Firewall Policy rule collections.
      */
-    ruleCollections?: pulumi.Input<pulumi.Input<types.inputs.FirewallPolicyFilterRuleCollectionArgs | types.inputs.FirewallPolicyNatRuleCollectionArgs>[]>;
+    ruleCollections?: pulumi.Input<pulumi.Input<types.inputs.FirewallPolicyFilterRuleCollectionArgs | types.inputs.FirewallPolicyNatRuleCollectionArgs>[] | undefined>;
 }

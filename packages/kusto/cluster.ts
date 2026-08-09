@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2022-12-29.
  *
- * Other available API versions: 2018-09-07-preview, 2019-01-21, 2019-05-15, 2019-09-07, 2019-11-09, 2020-02-15, 2020-06-14, 2020-09-18, 2021-01-01, 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-09-07-preview, 2019-01-21, 2019-05-15, 2019-09-07, 2019-11-09, 2020-02-15, 2020-06-14, 2020-09-18, 2021-01-01, 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15, 2025-02-14. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -221,7 +221,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["trustedExternalTenants"] = args?.trustedExternalTenants;
             resourceInputs["virtualClusterGraduationProperties"] = args?.virtualClusterGraduationProperties;
-            resourceInputs["virtualNetworkConfiguration"] = args ? (args.virtualNetworkConfiguration ? pulumi.output(args.virtualNetworkConfiguration).apply(types.inputs.virtualNetworkConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["virtualNetworkConfiguration"] = args ? pulumi.output(args.virtualNetworkConfiguration).apply(v => v === undefined ? undefined : types.inputs.virtualNetworkConfigurationArgsProvideDefaults(v)) : undefined;
             resourceInputs["zones"] = args?.zones;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["dataIngestionUri"] = undefined /*out*/;
@@ -275,7 +275,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:kusto/v20170907privatepreview:Cluster" }, { type: "azure-native:kusto/v20180907preview:Cluster" }, { type: "azure-native:kusto/v20190121:Cluster" }, { type: "azure-native:kusto/v20190515:Cluster" }, { type: "azure-native:kusto/v20190907:Cluster" }, { type: "azure-native:kusto/v20191109:Cluster" }, { type: "azure-native:kusto/v20200215:Cluster" }, { type: "azure-native:kusto/v20200614:Cluster" }, { type: "azure-native:kusto/v20200918:Cluster" }, { type: "azure-native:kusto/v20210101:Cluster" }, { type: "azure-native:kusto/v20210827:Cluster" }, { type: "azure-native:kusto/v20220201:Cluster" }, { type: "azure-native:kusto/v20220707:Cluster" }, { type: "azure-native:kusto/v20221111:Cluster" }, { type: "azure-native:kusto/v20221229:Cluster" }, { type: "azure-native:kusto/v20230502:Cluster" }, { type: "azure-native:kusto/v20230815:Cluster" }, { type: "azure-native:kusto/v20240413:Cluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:kusto/v20170907privatepreview:Cluster" }, { type: "azure-native:kusto/v20180907preview:Cluster" }, { type: "azure-native:kusto/v20190121:Cluster" }, { type: "azure-native:kusto/v20190515:Cluster" }, { type: "azure-native:kusto/v20190907:Cluster" }, { type: "azure-native:kusto/v20191109:Cluster" }, { type: "azure-native:kusto/v20200215:Cluster" }, { type: "azure-native:kusto/v20200614:Cluster" }, { type: "azure-native:kusto/v20200918:Cluster" }, { type: "azure-native:kusto/v20210101:Cluster" }, { type: "azure-native:kusto/v20210827:Cluster" }, { type: "azure-native:kusto/v20220201:Cluster" }, { type: "azure-native:kusto/v20220707:Cluster" }, { type: "azure-native:kusto/v20221111:Cluster" }, { type: "azure-native:kusto/v20221229:Cluster" }, { type: "azure-native:kusto/v20230502:Cluster" }, { type: "azure-native:kusto/v20230815:Cluster" }, { type: "azure-native:kusto/v20240413:Cluster" }, { type: "azure-native:kusto/v20250214:Cluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -288,75 +288,75 @@ export interface ClusterArgs {
     /**
      * The cluster's accepted audiences.
      */
-    acceptedAudiences?: pulumi.Input<pulumi.Input<types.inputs.AcceptedAudiencesArgs>[]>;
+    acceptedAudiences?: pulumi.Input<pulumi.Input<types.inputs.AcceptedAudiencesArgs>[] | undefined>;
     /**
      * List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster.
      */
-    allowedFqdnList?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedFqdnList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of ips in the format of CIDR allowed to connect to the cluster.
      */
-    allowedIpRangeList?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedIpRangeList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of callout policies for egress from Cluster.
      */
-    calloutPolicies?: pulumi.Input<pulumi.Input<types.inputs.CalloutPolicyArgs>[]>;
+    calloutPolicies?: pulumi.Input<pulumi.Input<types.inputs.CalloutPolicyArgs>[] | undefined>;
     /**
      * The name of the Kusto cluster.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * A boolean value that indicates if the cluster could be automatically stopped (due to lack of data or no activity for many days).
      */
-    enableAutoStop?: pulumi.Input<boolean>;
+    enableAutoStop?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean value that indicates if the cluster's disks are encrypted.
      */
-    enableDiskEncryption?: pulumi.Input<boolean>;
+    enableDiskEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean value that indicates if double encryption is enabled.
      */
-    enableDoubleEncryption?: pulumi.Input<boolean>;
+    enableDoubleEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean value that indicates if the purge operations are enabled.
      */
-    enablePurge?: pulumi.Input<boolean>;
+    enablePurge?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean value that indicates if the streaming ingest is enabled.
      */
-    enableStreamingIngest?: pulumi.Input<boolean>;
+    enableStreamingIngest?: pulumi.Input<boolean | undefined>;
     /**
      * The engine type
      */
-    engineType?: pulumi.Input<string | types.enums.EngineType>;
+    engineType?: pulumi.Input<string | types.enums.EngineType | undefined>;
     /**
      * The identity of the cluster, if configured.
      */
-    identity?: pulumi.Input<types.inputs.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
      * KeyVault properties for the cluster encryption.
      */
-    keyVaultProperties?: pulumi.Input<types.inputs.KeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<types.inputs.KeyVaultPropertiesArgs | undefined>;
     /**
      * List of the cluster's language extensions.
      */
-    languageExtensions?: pulumi.Input<types.inputs.LanguageExtensionsListArgs>;
+    languageExtensions?: pulumi.Input<types.inputs.LanguageExtensionsListArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Optimized auto scale definition.
      */
-    optimizedAutoscale?: pulumi.Input<types.inputs.OptimizedAutoscaleArgs>;
+    optimizedAutoscale?: pulumi.Input<types.inputs.OptimizedAutoscaleArgs | undefined>;
     /**
      * Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)
      */
-    publicIPType?: pulumi.Input<string | types.enums.PublicIPType>;
+    publicIPType?: pulumi.Input<string | types.enums.PublicIPType | undefined>;
     /**
      * Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -364,7 +364,7 @@ export interface ClusterArgs {
     /**
      * Whether or not to restrict outbound network access.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
-    restrictOutboundNetworkAccess?: pulumi.Input<string | types.enums.ClusterNetworkAccessFlag>;
+    restrictOutboundNetworkAccess?: pulumi.Input<string | types.enums.ClusterNetworkAccessFlag | undefined>;
     /**
      * The SKU of the cluster.
      */
@@ -372,21 +372,21 @@ export interface ClusterArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cluster's external tenants.
      */
-    trustedExternalTenants?: pulumi.Input<pulumi.Input<types.inputs.TrustedExternalTenantArgs>[]>;
+    trustedExternalTenants?: pulumi.Input<pulumi.Input<types.inputs.TrustedExternalTenantArgs>[] | undefined>;
     /**
      * Virtual Cluster graduation properties
      */
-    virtualClusterGraduationProperties?: pulumi.Input<string>;
+    virtualClusterGraduationProperties?: pulumi.Input<string | undefined>;
     /**
      * Virtual network definition.
      */
-    virtualNetworkConfiguration?: pulumi.Input<types.inputs.VirtualNetworkConfigurationArgs>;
+    virtualNetworkConfiguration?: pulumi.Input<types.inputs.VirtualNetworkConfigurationArgs | undefined>;
     /**
      * The availability zones of the cluster.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

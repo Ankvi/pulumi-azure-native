@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
  *
- * Other available API versions: 2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-09-01, 2021-12-01-preview, 2022-02-01-preview, 2022-12-01, 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview, 2025-06-01-preview, 2025-11-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-09-01, 2021-12-01-preview, 2022-02-01-preview, 2022-12-01, 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview, 2025-06-01-preview, 2025-11-01, 2026-01-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Webhook extends pulumi.CustomResource {
     /**
@@ -127,7 +127,7 @@ export class Webhook extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20171001:Webhook" }, { type: "azure-native:containerregistry/v20190501:Webhook" }, { type: "azure-native:containerregistry/v20191201preview:Webhook" }, { type: "azure-native:containerregistry/v20201101preview:Webhook" }, { type: "azure-native:containerregistry/v20210601preview:Webhook" }, { type: "azure-native:containerregistry/v20210801preview:Webhook" }, { type: "azure-native:containerregistry/v20210901:Webhook" }, { type: "azure-native:containerregistry/v20211201preview:Webhook" }, { type: "azure-native:containerregistry/v20220201preview:Webhook" }, { type: "azure-native:containerregistry/v20221201:Webhook" }, { type: "azure-native:containerregistry/v20230101preview:Webhook" }, { type: "azure-native:containerregistry/v20230601preview:Webhook" }, { type: "azure-native:containerregistry/v20230701:Webhook" }, { type: "azure-native:containerregistry/v20230801preview:Webhook" }, { type: "azure-native:containerregistry/v20231101preview:Webhook" }, { type: "azure-native:containerregistry/v20241101preview:Webhook" }, { type: "azure-native:containerregistry/v20250301preview:Webhook" }, { type: "azure-native:containerregistry/v20250401:Webhook" }, { type: "azure-native:containerregistry/v20250501preview:Webhook" }, { type: "azure-native:containerregistry/v20250601preview:Webhook" }, { type: "azure-native:containerregistry/v20251101:Webhook" }, { type: "azure-native:containerregistry/v20260101preview:Webhook" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20171001:Webhook" }, { type: "azure-native:containerregistry/v20190501:Webhook" }, { type: "azure-native:containerregistry/v20191201preview:Webhook" }, { type: "azure-native:containerregistry/v20201101preview:Webhook" }, { type: "azure-native:containerregistry/v20210601preview:Webhook" }, { type: "azure-native:containerregistry/v20210801preview:Webhook" }, { type: "azure-native:containerregistry/v20210901:Webhook" }, { type: "azure-native:containerregistry/v20211201preview:Webhook" }, { type: "azure-native:containerregistry/v20220201preview:Webhook" }, { type: "azure-native:containerregistry/v20221201:Webhook" }, { type: "azure-native:containerregistry/v20230101preview:Webhook" }, { type: "azure-native:containerregistry/v20230601preview:Webhook" }, { type: "azure-native:containerregistry/v20230701:Webhook" }, { type: "azure-native:containerregistry/v20230801preview:Webhook" }, { type: "azure-native:containerregistry/v20231101preview:Webhook" }, { type: "azure-native:containerregistry/v20241101preview:Webhook" }, { type: "azure-native:containerregistry/v20250301preview:Webhook" }, { type: "azure-native:containerregistry/v20250401:Webhook" }, { type: "azure-native:containerregistry/v20250501preview:Webhook" }, { type: "azure-native:containerregistry/v20250601preview:Webhook" }, { type: "azure-native:containerregistry/v20251101:Webhook" }, { type: "azure-native:containerregistry/v20260101preview:Webhook" }, { type: "azure-native:containerregistry/v20260301preview:Webhook" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Webhook.__pulumiType, name, resourceInputs, opts);
     }
@@ -144,11 +144,11 @@ export interface WebhookArgs {
     /**
      * Custom headers that will be added to the webhook notifications.
      */
-    customHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the webhook. This cannot be changed after the resource is created.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the container registry.
      */
@@ -160,7 +160,7 @@ export interface WebhookArgs {
     /**
      * The scope of repositories where the event can be triggered. For example, 'foo:*' means events for all tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to 'foo:latest'. Empty means all events.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The service URI for the webhook to post notifications.
      */
@@ -168,13 +168,13 @@ export interface WebhookArgs {
     /**
      * The status of the webhook at the time the operation was called.
      */
-    status?: pulumi.Input<string | types.enums.WebhookStatus>;
+    status?: pulumi.Input<string | types.enums.WebhookStatus | undefined>;
     /**
      * The tags for the webhook.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the webhook.
      */
-    webhookName?: pulumi.Input<string>;
+    webhookName?: pulumi.Input<string | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-30-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-05-preview.
  *
- * Other available API versions: 2024-02-05-preview, 2025-10-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native codesigning [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-02-05-preview, 2025-10-13, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native codesigning [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CodeSigningAccount extends pulumi.CustomResource {
     /**
@@ -109,7 +109,7 @@ export class CodeSigningAccount extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:codesigning/v20240205preview:CodeSigningAccount" }, { type: "azure-native:codesigning/v20240930preview:CodeSigningAccount" }, { type: "azure-native:codesigning/v20251013:CodeSigningAccount" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:codesigning/v20240205preview:CodeSigningAccount" }, { type: "azure-native:codesigning/v20240930preview:CodeSigningAccount" }, { type: "azure-native:codesigning/v20251013:CodeSigningAccount" }, { type: "azure-native:codesigning/v20260515preview:CodeSigningAccount" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CodeSigningAccount.__pulumiType, name, resourceInputs, opts);
     }
@@ -122,11 +122,11 @@ export interface CodeSigningAccountArgs {
     /**
      * Artifact Signing account name.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -134,9 +134,9 @@ export interface CodeSigningAccountArgs {
     /**
      * SKU of the artifact signing account.
      */
-    sku?: pulumi.Input<types.inputs.AccountSkuArgs>;
+    sku?: pulumi.Input<types.inputs.AccountSkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

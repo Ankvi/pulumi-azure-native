@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-04-01-preview.
  *
- * Other available API versions: 2025-07-01-preview, 2025-08-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mongocluster [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-07-01-preview, 2025-08-01-preview, 2025-09-01, 2026-02-01-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mongocluster [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class User extends pulumi.CustomResource {
     /**
@@ -89,7 +89,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:mongocluster/v20250401preview:User" }, { type: "azure-native:mongocluster/v20250701preview:User" }, { type: "azure-native:mongocluster/v20250801preview:User" }, { type: "azure-native:mongocluster/v20250901:User" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:mongocluster/v20250401preview:User" }, { type: "azure-native:mongocluster/v20250701preview:User" }, { type: "azure-native:mongocluster/v20250801preview:User" }, { type: "azure-native:mongocluster/v20250901:User" }, { type: "azure-native:mongocluster/v20260201preview:User" }, { type: "azure-native:mongocluster/v20260601:User" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
@@ -106,7 +106,7 @@ export interface UserArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.UserPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.UserPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -114,5 +114,5 @@ export interface UserArgs {
     /**
      * The name of the mongo cluster user.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }

@@ -159,7 +159,7 @@ export interface StorageTargetArgs {
     /**
      * Properties when targetType is blobNfs.
      */
-    blobNfs?: pulumi.Input<types.inputs.BlobNfsTargetArgs>;
+    blobNfs?: pulumi.Input<types.inputs.BlobNfsTargetArgs | undefined>;
     /**
      * Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
      */
@@ -167,15 +167,15 @@ export interface StorageTargetArgs {
     /**
      * Properties when targetType is clfs.
      */
-    clfs?: pulumi.Input<types.inputs.ClfsTargetArgs>;
+    clfs?: pulumi.Input<types.inputs.ClfsTargetArgs | undefined>;
     /**
      * List of cache namespace junctions to target for namespace associations.
      */
-    junctions?: pulumi.Input<pulumi.Input<types.inputs.NamespaceJunctionArgs>[]>;
+    junctions?: pulumi.Input<pulumi.Input<types.inputs.NamespaceJunctionArgs>[] | undefined>;
     /**
      * Properties when targetType is nfs3.
      */
-    nfs3?: pulumi.Input<types.inputs.Nfs3TargetArgs>;
+    nfs3?: pulumi.Input<types.inputs.Nfs3TargetArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -183,11 +183,11 @@ export interface StorageTargetArgs {
     /**
      * Storage target operational state.
      */
-    state?: pulumi.Input<string | types.enums.OperationalStateType>;
+    state?: pulumi.Input<string | types.enums.OperationalStateType | undefined>;
     /**
      * Name of Storage Target.
      */
-    storageTargetName?: pulumi.Input<string>;
+    storageTargetName?: pulumi.Input<string | undefined>;
     /**
      * Type of the Storage Target.
      */
@@ -195,5 +195,5 @@ export interface StorageTargetArgs {
     /**
      * Properties when targetType is unknown.
      */
-    unknown?: pulumi.Input<types.inputs.UnknownTargetArgs>;
+    unknown?: pulumi.Input<types.inputs.UnknownTargetArgs | undefined>;
 }

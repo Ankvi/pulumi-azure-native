@@ -61,9 +61,9 @@ export class SignalR extends pulumi.CustomResource {
     declare public /*out*/ readonly externalIP: pulumi.Output<string>;
     /**
      * List of the featureFlags.
-     * 
+     *
      * FeatureFlags that are not included in the parameters for the update operation will not be modified.
-     * And the response will only include featureFlags that are explicitly set. 
+     * And the response will only include featureFlags that are explicitly set.
      * When a featureFlag is not explicitly set, its globally default value will be used
      * But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags.
      */
@@ -195,7 +195,7 @@ export class SignalR extends pulumi.CustomResource {
             resourceInputs["features"] = args?.features;
             resourceInputs["identity"] = args?.identity;
             resourceInputs["kind"] = args?.kind;
-            resourceInputs["liveTraceConfiguration"] = args ? (args.liveTraceConfiguration ? pulumi.output(args.liveTraceConfiguration).apply(types.inputs.liveTraceConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["liveTraceConfiguration"] = args ? pulumi.output(args.liveTraceConfiguration).apply(v => v === undefined ? undefined : types.inputs.liveTraceConfigurationArgsProvideDefaults(v)) : undefined;
             resourceInputs["location"] = args?.location;
             resourceInputs["networkACLs"] = args?.networkACLs;
             resourceInputs["publicNetworkAccess"] = (args?.publicNetworkAccess) ?? "Enabled";
@@ -204,10 +204,10 @@ export class SignalR extends pulumi.CustomResource {
             resourceInputs["resourceLogConfiguration"] = args?.resourceLogConfiguration;
             resourceInputs["resourceName"] = args?.resourceName;
             resourceInputs["resourceStopped"] = (args?.resourceStopped) ?? "false";
-            resourceInputs["serverless"] = args ? (args.serverless ? pulumi.output(args.serverless).apply(types.inputs.serverlessSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["serverless"] = args ? pulumi.output(args.serverless).apply(v => v === undefined ? undefined : types.inputs.serverlessSettingsArgsProvideDefaults(v)) : undefined;
             resourceInputs["sku"] = args?.sku;
             resourceInputs["tags"] = args?.tags;
-            resourceInputs["tls"] = args ? (args.tls ? pulumi.output(args.tls).apply(types.inputs.signalRTlsSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["tls"] = args ? pulumi.output(args.tls).apply(v => v === undefined ? undefined : types.inputs.signalRTlsSettingsArgsProvideDefaults(v)) : undefined;
             resourceInputs["upstream"] = args?.upstream;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["externalIP"] = undefined /*out*/;
@@ -269,60 +269,60 @@ export interface SignalRArgs {
     /**
      * Cross-Origin Resource Sharing (CORS) settings.
      */
-    cors?: pulumi.Input<types.inputs.SignalRCorsSettingsArgs>;
+    cors?: pulumi.Input<types.inputs.SignalRCorsSettingsArgs | undefined>;
     /**
      * DisableLocalAuth
      * Enable or disable aad auth
      * When set as true, connection with AuthType=aad won't work.
      */
-    disableAadAuth?: pulumi.Input<boolean>;
+    disableAadAuth?: pulumi.Input<boolean | undefined>;
     /**
      * DisableLocalAuth
      * Enable or disable local auth with AccessKey
      * When set as true, connection with AccessKey=xxx won't work.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * List of the featureFlags.
-     * 
+     *
      * FeatureFlags that are not included in the parameters for the update operation will not be modified.
-     * And the response will only include featureFlags that are explicitly set. 
+     * And the response will only include featureFlags that are explicitly set.
      * When a featureFlag is not explicitly set, its globally default value will be used
      * But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags.
      */
-    features?: pulumi.Input<pulumi.Input<types.inputs.SignalRFeatureArgs>[]>;
+    features?: pulumi.Input<pulumi.Input<types.inputs.SignalRFeatureArgs>[] | undefined>;
     /**
      * A class represent managed identities used for request and response
      */
-    identity?: pulumi.Input<types.inputs.ManagedIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedIdentityArgs | undefined>;
     /**
      * The kind of the service
      */
-    kind?: pulumi.Input<string | types.enums.ServiceKind>;
+    kind?: pulumi.Input<string | types.enums.ServiceKind | undefined>;
     /**
      * Live trace configuration of a Microsoft.SignalRService resource.
      */
-    liveTraceConfiguration?: pulumi.Input<types.inputs.LiveTraceConfigurationArgs>;
+    liveTraceConfiguration?: pulumi.Input<types.inputs.LiveTraceConfigurationArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Network ACLs for the resource
      */
-    networkACLs?: pulumi.Input<types.inputs.SignalRNetworkACLsArgs>;
+    networkACLs?: pulumi.Input<types.inputs.SignalRNetworkACLsArgs | undefined>;
     /**
      * Enable or disable public network access. Default to "Enabled".
      * When it's Enabled, network ACLs still apply.
      * When it's Disabled, public network access is always disabled no matter what you set in network ACLs.
      */
-    publicNetworkAccess?: pulumi.Input<string>;
+    publicNetworkAccess?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable the regional endpoint. Default to "Enabled".
      * When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
      * This property is replica specific. Disable the regional endpoint without replica is not allowed.
      */
-    regionEndpointEnabled?: pulumi.Input<string>;
+    regionEndpointEnabled?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -330,35 +330,35 @@ export interface SignalRArgs {
     /**
      * Resource log configuration of a Microsoft.SignalRService resource.
      */
-    resourceLogConfiguration?: pulumi.Input<types.inputs.ResourceLogConfigurationArgs>;
+    resourceLogConfiguration?: pulumi.Input<types.inputs.ResourceLogConfigurationArgs | undefined>;
     /**
      * The name of the resource.
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * Stop or start the resource.  Default to "False".
      * When it's true, the data plane of the resource is shutdown.
      * When it's false, the data plane of the resource is started.
      */
-    resourceStopped?: pulumi.Input<string>;
+    resourceStopped?: pulumi.Input<string | undefined>;
     /**
      * Serverless settings.
      */
-    serverless?: pulumi.Input<types.inputs.ServerlessSettingsArgs>;
+    serverless?: pulumi.Input<types.inputs.ServerlessSettingsArgs | undefined>;
     /**
      * The billing information of the resource.
      */
-    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * TLS settings for the resource
      */
-    tls?: pulumi.Input<types.inputs.SignalRTlsSettingsArgs>;
+    tls?: pulumi.Input<types.inputs.SignalRTlsSettingsArgs | undefined>;
     /**
      * The settings for the Upstream when the service is in server-less mode.
      */
-    upstream?: pulumi.Input<types.inputs.ServerlessUpstreamSettingsArgs>;
+    upstream?: pulumi.Input<types.inputs.ServerlessUpstreamSettingsArgs | undefined>;
 }

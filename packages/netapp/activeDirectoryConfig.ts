@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-09-01-preview.
  *
- * Other available API versions: 2025-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-12-15-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-04-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ActiveDirectoryConfig extends pulumi.CustomResource {
     /**
@@ -109,7 +109,7 @@ export class ActiveDirectoryConfig extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20250901preview:ActiveDirectoryConfig" }, { type: "azure-native:netapp/v20251215preview:ActiveDirectoryConfig" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20250901preview:ActiveDirectoryConfig" }, { type: "azure-native:netapp/v20251215preview:ActiveDirectoryConfig" }, { type: "azure-native:netapp/v20260115preview:ActiveDirectoryConfig" }, { type: "azure-native:netapp/v20260315preview:ActiveDirectoryConfig" }, { type: "azure-native:netapp/v20260415preview:ActiveDirectoryConfig" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ActiveDirectoryConfig.__pulumiType, name, resourceInputs, opts);
     }
@@ -122,19 +122,19 @@ export interface ActiveDirectoryConfigArgs {
     /**
      * The name of the ActiveDirectoryConfig
      */
-    activeDirectoryConfigName?: pulumi.Input<string>;
+    activeDirectoryConfigName?: pulumi.Input<string | undefined>;
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.ActiveDirectoryConfigPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ActiveDirectoryConfigPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -142,5 +142,5 @@ export interface ActiveDirectoryConfigArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

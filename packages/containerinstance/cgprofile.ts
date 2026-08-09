@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-11-01-preview.
  *
- * Other available API versions: 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-09-01, 2026-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CGProfile extends pulumi.CustomResource {
     /**
@@ -92,7 +92,7 @@ export class CGProfile extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly registeredRevisions: pulumi.Output<number[]>;
     /**
-     * Restart policy for all containers within the container group. 
+     * Restart policy for all containers within the container group.
      * - `Always` Always restart
      * - `OnFailure` Restart on failure
      * - `Never` Never restart
@@ -171,7 +171,7 @@ export class CGProfile extends pulumi.CustomResource {
             resourceInputs["extensions"] = args?.extensions;
             resourceInputs["imageRegistryCredentials"] = args?.imageRegistryCredentials;
             resourceInputs["initContainers"] = args?.initContainers;
-            resourceInputs["ipAddress"] = args ? (args.ipAddress ? pulumi.output(args.ipAddress).apply(types.inputs.ipAddressArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["ipAddress"] = args ? pulumi.output(args.ipAddress).apply(v => v === undefined ? undefined : types.inputs.ipAddressArgsProvideDefaults(v)) : undefined;
             resourceInputs["location"] = args?.location;
             resourceInputs["osType"] = args?.osType;
             resourceInputs["priority"] = args?.priority;
@@ -220,7 +220,7 @@ export class CGProfile extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerinstance/v20240501preview:CGProfile" }, { type: "azure-native:containerinstance/v20240501preview:ContainerGroupProfile" }, { type: "azure-native:containerinstance/v20241101preview:CGProfile" }, { type: "azure-native:containerinstance/v20250901:CGProfile" }, { type: "azure-native:containerinstance:ContainerGroupProfile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerinstance/v20240501preview:CGProfile" }, { type: "azure-native:containerinstance/v20240501preview:ContainerGroupProfile" }, { type: "azure-native:containerinstance/v20241101preview:CGProfile" }, { type: "azure-native:containerinstance/v20250901:CGProfile" }, { type: "azure-native:containerinstance/v20260601preview:CGProfile" }, { type: "azure-native:containerinstance:ContainerGroupProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CGProfile.__pulumiType, name, resourceInputs, opts);
     }
@@ -233,11 +233,11 @@ export interface CGProfileArgs {
     /**
      * The properties for confidential container group
      */
-    confidentialComputeProperties?: pulumi.Input<types.inputs.ConfidentialComputePropertiesArgs>;
+    confidentialComputeProperties?: pulumi.Input<types.inputs.ConfidentialComputePropertiesArgs | undefined>;
     /**
      * ContainerGroupProfile name.
      */
-    containerGroupProfileName?: pulumi.Input<string>;
+    containerGroupProfileName?: pulumi.Input<string | undefined>;
     /**
      * The containers within the container group.
      */
@@ -245,31 +245,31 @@ export interface CGProfileArgs {
     /**
      * The diagnostic information for a container group.
      */
-    diagnostics?: pulumi.Input<types.inputs.ContainerGroupDiagnosticsArgs>;
+    diagnostics?: pulumi.Input<types.inputs.ContainerGroupDiagnosticsArgs | undefined>;
     /**
      * The encryption properties for a container group.
      */
-    encryptionProperties?: pulumi.Input<types.inputs.EncryptionPropertiesArgs>;
+    encryptionProperties?: pulumi.Input<types.inputs.EncryptionPropertiesArgs | undefined>;
     /**
      * extensions used by virtual kubelet
      */
-    extensions?: pulumi.Input<pulumi.Input<types.inputs.DeploymentExtensionSpecArgs>[]>;
+    extensions?: pulumi.Input<pulumi.Input<types.inputs.DeploymentExtensionSpecArgs>[] | undefined>;
     /**
      * The image registry credentials by which the container group is created from.
      */
-    imageRegistryCredentials?: pulumi.Input<pulumi.Input<types.inputs.ImageRegistryCredentialArgs>[]>;
+    imageRegistryCredentials?: pulumi.Input<pulumi.Input<types.inputs.ImageRegistryCredentialArgs>[] | undefined>;
     /**
      * The init containers for a container group.
      */
-    initContainers?: pulumi.Input<pulumi.Input<types.inputs.InitContainerDefinitionArgs>[]>;
+    initContainers?: pulumi.Input<pulumi.Input<types.inputs.InitContainerDefinitionArgs>[] | undefined>;
     /**
      * The IP address type of the container group.
      */
-    ipAddress?: pulumi.Input<types.inputs.IpAddressArgs>;
+    ipAddress?: pulumi.Input<types.inputs.IpAddressArgs | undefined>;
     /**
      * The resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The operating system type required by the containers in the container group.
      */
@@ -277,48 +277,48 @@ export interface CGProfileArgs {
     /**
      * The priority of the container group.
      */
-    priority?: pulumi.Input<string | types.enums.Priority>;
+    priority?: pulumi.Input<string | types.enums.Priority | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Restart policy for all containers within the container group. 
+     * Restart policy for all containers within the container group.
      * - `Always` Always restart
      * - `OnFailure` Restart on failure
      * - `Never` Never restart
      */
-    restartPolicy?: pulumi.Input<string | types.enums.ContainerGroupRestartPolicy>;
+    restartPolicy?: pulumi.Input<string | types.enums.ContainerGroupRestartPolicy | undefined>;
     /**
      * The container security properties.
      */
-    securityContext?: pulumi.Input<types.inputs.SecurityContextDefinitionArgs>;
+    securityContext?: pulumi.Input<types.inputs.SecurityContextDefinitionArgs | undefined>;
     /**
      * Shutdown grace period for containers in a container group.
      */
-    shutdownGracePeriod?: pulumi.Input<string>;
+    shutdownGracePeriod?: pulumi.Input<string | undefined>;
     /**
      * The SKU for a container group.
      */
-    sku?: pulumi.Input<string | types.enums.ContainerGroupSku>;
+    sku?: pulumi.Input<string | types.enums.ContainerGroupSku | undefined>;
     /**
      * The resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Post completion time to live for containers of a CG
      */
-    timeToLive?: pulumi.Input<string>;
+    timeToLive?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets Krypton use property.
      */
-    useKrypton?: pulumi.Input<boolean>;
+    useKrypton?: pulumi.Input<boolean | undefined>;
     /**
      * The list of volumes that can be mounted by containers in this container group.
      */
-    volumes?: pulumi.Input<pulumi.Input<types.inputs.VolumeArgs>[]>;
+    volumes?: pulumi.Input<pulumi.Input<types.inputs.VolumeArgs>[] | undefined>;
     /**
      * The zones for the container group.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

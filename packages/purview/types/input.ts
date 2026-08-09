@@ -7,11 +7,11 @@ export interface AccountSkuArgs {
     /**
      * Gets or sets the sku capacity.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the sku name.
      */
-    name?: pulumi.Input<string | enums.AccountSkuName>;
+    name?: pulumi.Input<string | enums.AccountSkuName | undefined>;
 }
 
 /**
@@ -21,11 +21,11 @@ export interface CredentialsArgs {
     /**
      * Identity identifier for UserAssign type.
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
     /**
      * Identity Type.
      */
-    type?: pulumi.Input<string | enums.KafkaConfigurationIdentityType>;
+    type?: pulumi.Input<string | enums.KafkaConfigurationIdentityType | undefined>;
 }
 
 /**
@@ -35,11 +35,11 @@ export interface IdentityArgs {
     /**
      * Identity Type
      */
-    type?: pulumi.Input<string | enums.ManagedIdentityType>;
+    type?: pulumi.Input<string | enums.ManagedIdentityType | undefined>;
     /**
      * User Assigned Identities
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -49,7 +49,7 @@ export interface IngestionStorageArgs {
     /**
      * Gets or sets the public network access setting
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess | undefined>;
 }
 
 /**
@@ -59,7 +59,7 @@ export interface PrivateEndpointArgs {
     /**
      * The private endpoint identifier.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -69,13 +69,13 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * The required actions.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The status.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointConnectionStatus | undefined>;
 }

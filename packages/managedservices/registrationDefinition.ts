@@ -102,15 +102,15 @@ export interface RegistrationDefinitionArgs {
     /**
      * The details for the Managed Services offer’s plan in Azure Marketplace.
      */
-    plan?: pulumi.Input<types.inputs.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs | undefined>;
     /**
      * The properties of a registration definition.
      */
-    properties?: pulumi.Input<types.inputs.RegistrationDefinitionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.RegistrationDefinitionPropertiesArgs | undefined>;
     /**
      * The GUID of the registration definition.
      */
-    registrationDefinitionId?: pulumi.Input<string>;
+    registrationDefinitionId?: pulumi.Input<string | undefined>;
     /**
      * The scope of the resource.
      */

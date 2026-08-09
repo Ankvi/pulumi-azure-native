@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
  *
- * Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  *
  * A Serverless Endpoint requires a Marketplace subscription. You can create one via the [MarketplaceSubscription resource](https://www.pulumi.com/registry/packages/azure-native/api-docs/machinelearningservices/marketplacesubscription/) and then making your endpoint [depend](https://www.pulumi.com/docs/iac/concepts/options/dependson/) on it.
  */
@@ -123,7 +123,7 @@ export class ServerlessEndpoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230801preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240101preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240401:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240401preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240701preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20241001:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20241001preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250101preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250401:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250401preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250601:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250701preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250901:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20251001preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20251201:ServerlessEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230801preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240101preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240401:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240401preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20240701preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20241001:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20241001preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250101preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250401:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250401preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250601:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250701preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20250901:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20251001preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20251201:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20260115preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20260301:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20260315preview:ServerlessEndpoint" }, { type: "azure-native:machinelearningservices/v20260501:ServerlessEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ServerlessEndpoint.__pulumiType, name, resourceInputs, opts);
     }
@@ -136,19 +136,19 @@ export interface ServerlessEndpointArgs {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Serverless Endpoint name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * [Required] Additional attributes of the entity.
      */
@@ -160,11 +160,11 @@ export interface ServerlessEndpointArgs {
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Azure Machine Learning Workspace Name
      */

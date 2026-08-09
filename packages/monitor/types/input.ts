@@ -7,7 +7,7 @@ export interface AccessModeSettingsArgs {
     /**
      * List of exclusions that override the default access mode settings for specific private endpoint connections.
      */
-    exclusions?: pulumi.Input<pulumi.Input<AccessModeSettingsExclusionArgs>[]>;
+    exclusions?: pulumi.Input<pulumi.Input<AccessModeSettingsExclusionArgs>[] | undefined>;
     /**
      * Specifies the default access mode of ingestion through associated private endpoints in scope. If not specified default value is 'Open'. You can override this default setting for a specific private endpoint connection by adding an exclusion in the 'exclusions' array.
      */
@@ -25,15 +25,15 @@ export interface AccessModeSettingsExclusionArgs {
     /**
      * Specifies the access mode of ingestion through the specified private endpoint connection in the exclusion.
      */
-    ingestionAccessMode?: pulumi.Input<string | enums.AccessMode>;
+    ingestionAccessMode?: pulumi.Input<string | enums.AccessMode | undefined>;
     /**
      * The private endpoint connection name associated to the private endpoint on which we want to apply the specific access mode settings.
      */
-    privateEndpointConnectionName?: pulumi.Input<string>;
+    privateEndpointConnectionName?: pulumi.Input<string | undefined>;
     /**
      * Specifies the access mode of queries through the specified private endpoint connection in the exclusion.
      */
-    queryAccessMode?: pulumi.Input<string | enums.AccessMode>;
+    queryAccessMode?: pulumi.Input<string | enums.AccessMode | undefined>;
 }
 
 /**
@@ -47,7 +47,7 @@ export interface ActionGroupArgs {
     /**
      * the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
      */
-    webhookProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    webhookProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -57,7 +57,7 @@ export interface ActionListArgs {
     /**
      * The list of the Action Groups.
      */
-    actionGroups?: pulumi.Input<pulumi.Input<ActionGroupArgs>[]>;
+    actionGroups?: pulumi.Input<pulumi.Input<ActionGroupArgs>[] | undefined>;
 }
 
 /**
@@ -67,15 +67,15 @@ export interface ActionsArgs {
     /**
      * Action Group resource Ids to invoke when the alert fires.
      */
-    actionGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    actionGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The properties of an action properties.
      */
-    actionProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    actionProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The properties of an alert payload.
      */
-    customProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -85,11 +85,11 @@ export interface AlertConfigurationArgs {
     /**
      * Optional list of action group resource IDs to be notified when the alert is triggered.
      */
-    actionGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    actionGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The alert rule description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The severity of triggered alert.
      */
@@ -111,28 +111,28 @@ export interface AlertRuleAllOfConditionArgs {
  * Each condition can be of one of the following types:
  * __Important__: Each type has its unique subset of properties. Properties from different types CANNOT exist in one condition.
  *    * __Leaf Condition -__ must contain 'field' and either 'equals' or 'containsAny'.
- *   _Please note, 'anyOf' should __not__ be set in a Leaf Condition._
+ *        _Please note, 'anyOf' should __not__ be set in a Leaf Condition._
  *   * __AnyOf Condition -__ must contain __only__ 'anyOf' (which is an array of Leaf Conditions).
- *   _Please note, 'field', 'equals' and 'containsAny' should __not__ be set in an AnyOf Condition._
+ *       _Please note, 'field', 'equals' and 'containsAny' should __not__ be set in an AnyOf Condition._
  */
 export interface AlertRuleAnyOfOrLeafConditionArgs {
     /**
      * An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
      */
-    anyOf?: pulumi.Input<pulumi.Input<AlertRuleLeafConditionArgs>[]>;
+    anyOf?: pulumi.Input<pulumi.Input<AlertRuleLeafConditionArgs>[] | undefined>;
     /**
      * The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
      */
-    containsAny?: pulumi.Input<pulumi.Input<string>[]>;
+    containsAny?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
      */
-    equals?: pulumi.Input<string>;
+    equals?: pulumi.Input<string | undefined>;
     /**
      * The name of the Activity Log event's field that this condition will examine.
      * The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
      */
-    field?: pulumi.Input<string>;
+    field?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -143,16 +143,30 @@ export interface AlertRuleLeafConditionArgs {
     /**
      * The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
      */
-    containsAny?: pulumi.Input<pulumi.Input<string>[]>;
+    containsAny?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
      */
-    equals?: pulumi.Input<string>;
+    equals?: pulumi.Input<string | undefined>;
     /**
      * The name of the Activity Log event's field that this condition will examine.
      * The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
      */
-    field?: pulumi.Input<string>;
+    field?: pulumi.Input<string | undefined>;
+}
+
+/**
+ * Represents an Azure Monitor Workspace (AMW) account used for emitting metrics.
+ */
+export interface AmwAccountArgs {
+    /**
+     * The ARM resource ID of the managed identity with access to the source account.
+     */
+    identity: pulumi.Input<string>;
+    /**
+     * The ARM resource ID of the account where metrics are emitted.
+     */
+    resourceId: pulumi.Input<string>;
 }
 
 /**
@@ -183,7 +197,7 @@ export interface ApplicationInsightsTopologyDiscoveryRulePropertiesArgs {
     /**
      * Display name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -201,7 +215,7 @@ export interface ArmRoleReceiverArgs {
     /**
      * Indicates whether to use common alert schema.
      */
-    useCommonAlertSchema?: pulumi.Input<boolean>;
+    useCommonAlertSchema?: pulumi.Input<boolean | undefined>;
 }
 /**
  * armRoleReceiverArgsProvideDefaults sets the appropriate defaults for ArmRoleReceiverArgs
@@ -226,13 +240,13 @@ export interface AutomationRunbookReceiverArgs {
      */
     isGlobalRunbook: pulumi.Input<boolean>;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
-    managedIdentity?: pulumi.Input<string>;
+    managedIdentity?: pulumi.Input<string | undefined>;
     /**
      * Indicates name of the webhook.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name for this runbook.
      */
@@ -240,11 +254,11 @@ export interface AutomationRunbookReceiverArgs {
     /**
      * The URI where webhooks should be sent.
      */
-    serviceUri?: pulumi.Input<string>;
+    serviceUri?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to use common alert schema.
      */
-    useCommonAlertSchema?: pulumi.Input<boolean>;
+    useCommonAlertSchema?: pulumi.Input<boolean | undefined>;
     /**
      * The resource id for webhook linked to this runbook.
      */
@@ -267,7 +281,7 @@ export interface AutoscaleNotificationArgs {
     /**
      * the email notification.
      */
-    email?: pulumi.Input<EmailNotificationArgs>;
+    email?: pulumi.Input<EmailNotificationArgs | undefined>;
     /**
      * the operation associated with the notification and its value must be "scale"
      */
@@ -275,7 +289,7 @@ export interface AutoscaleNotificationArgs {
     /**
      * the collection of webhook notifications.
      */
-    webhooks?: pulumi.Input<pulumi.Input<WebhookNotificationArgs>[]>;
+    webhooks?: pulumi.Input<pulumi.Input<WebhookNotificationArgs>[] | undefined>;
 }
 /**
  * autoscaleNotificationArgsProvideDefaults sets the appropriate defaults for AutoscaleNotificationArgs
@@ -283,7 +297,7 @@ export interface AutoscaleNotificationArgs {
 export function autoscaleNotificationArgsProvideDefaults(val: AutoscaleNotificationArgs): AutoscaleNotificationArgs {
     return {
         ...val,
-        email: (val.email ? pulumi.output(val.email).apply(emailNotificationArgsProvideDefaults) : undefined),
+        email: pulumi.output(val.email).apply(v => v === undefined ? undefined : emailNotificationArgsProvideDefaults(v)),
     };
 }
 
@@ -298,7 +312,7 @@ export interface AutoscaleProfileArgs {
     /**
      * the specific date-time for the profile. This element is not used if the Recurrence element is used.
      */
-    fixedDate?: pulumi.Input<TimeWindowArgs>;
+    fixedDate?: pulumi.Input<TimeWindowArgs | undefined>;
     /**
      * the name of the profile.
      */
@@ -306,7 +320,7 @@ export interface AutoscaleProfileArgs {
     /**
      * the repeating times at which this profile begins. This element is not used if the FixedDate element is used.
      */
-    recurrence?: pulumi.Input<RecurrenceArgs>;
+    recurrence?: pulumi.Input<RecurrenceArgs | undefined>;
     /**
      * the collection of rules that provide the triggers and parameters for the scaling action. A maximum of 10 rules can be specified.
      */
@@ -344,9 +358,9 @@ export interface AzureFunctionReceiverArgs {
      */
     httpTriggerUrl: pulumi.Input<string>;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
-    managedIdentity?: pulumi.Input<string>;
+    managedIdentity?: pulumi.Input<string | undefined>;
     /**
      * The name of the azure function receiver. Names must be unique across all receivers within an action group.
      */
@@ -354,7 +368,7 @@ export interface AzureFunctionReceiverArgs {
     /**
      * Indicates whether to use common alert schema.
      */
-    useCommonAlertSchema?: pulumi.Input<boolean>;
+    useCommonAlertSchema?: pulumi.Input<boolean | undefined>;
 }
 /**
  * azureFunctionReceiverArgsProvideDefaults sets the appropriate defaults for AzureFunctionReceiverArgs
@@ -399,11 +413,11 @@ export interface AzureMonitorWorkspaceLogsExporterArgs {
     /**
      * Cache configurations.
      */
-    cache?: pulumi.Input<CacheConfigurationArgs>;
+    cache?: pulumi.Input<CacheConfigurationArgs | undefined>;
     /**
      * Concurrency configuration for the exporter.
      */
-    concurrency?: pulumi.Input<ConcurrencyConfigurationArgs>;
+    concurrency?: pulumi.Input<ConcurrencyConfigurationArgs | undefined>;
 }
 /**
  * azureMonitorWorkspaceLogsExporterArgsProvideDefaults sets the appropriate defaults for AzureMonitorWorkspaceLogsExporterArgs
@@ -411,7 +425,7 @@ export interface AzureMonitorWorkspaceLogsExporterArgs {
 export function azureMonitorWorkspaceLogsExporterArgsProvideDefaults(val: AzureMonitorWorkspaceLogsExporterArgs): AzureMonitorWorkspaceLogsExporterArgs {
     return {
         ...val,
-        concurrency: (val.concurrency ? pulumi.output(val.concurrency).apply(concurrencyConfigurationArgsProvideDefaults) : undefined),
+        concurrency: pulumi.output(val.concurrency).apply(v => v === undefined ? undefined : concurrencyConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -430,7 +444,7 @@ export interface AzureMonitorWorkspaceSignalGroupArgs {
     /**
      * Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
      */
-    signalAssignments?: pulumi.Input<pulumi.Input<SignalAssignmentArgs>[]>;
+    signalAssignments?: pulumi.Input<pulumi.Input<SignalAssignmentArgs>[] | undefined>;
 }
 
 /**
@@ -462,7 +476,35 @@ export interface AzureResourceSignalGroupArgs {
     /**
      * Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
      */
-    signalAssignments?: pulumi.Input<pulumi.Input<SignalAssignmentArgs>[]>;
+    signalAssignments?: pulumi.Input<pulumi.Input<SignalAssignmentArgs>[] | undefined>;
+}
+
+/**
+ * Defines the target parameters for a Slo baseline.
+ */
+export interface BaselineArgs {
+    /**
+     * Specifies how evaluation is calculated, either based on calendar days or a rolling window.
+     */
+    evaluationCalculationType: pulumi.Input<string | enums.EvaluationCalculationType>;
+    /**
+     * The time frame (in days) used for SLI evaluation.
+     */
+    evaluationPeriodDays: pulumi.Input<number>;
+    /**
+     * The user-defined or Azure-defined target value used for comparison against the SLI value.
+     */
+    value: pulumi.Input<number>;
+}
+
+/**
+ * Defines the properties of a baseline.
+ */
+export interface BaselinePropertiesArgs {
+    /**
+     * Defines the baseline target, which is compared against the SLI value to determine compliance.
+     */
+    baseline: pulumi.Input<BaselineArgs>;
 }
 
 /**
@@ -472,11 +514,11 @@ export interface BatchProcessorArgs {
     /**
      * Size of the batch.
      */
-    batchSize?: pulumi.Input<number>;
+    batchSize?: pulumi.Input<number | undefined>;
     /**
      * Timeout in milliseconds.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
 }
 /**
  * batchProcessorArgsProvideDefaults sets the appropriate defaults for BatchProcessorArgs
@@ -496,11 +538,11 @@ export interface CacheConfigurationArgs {
     /**
      * Max storage usage in megabytes.
      */
-    maxStorageUsage?: pulumi.Input<number>;
+    maxStorageUsage?: pulumi.Input<number | undefined>;
     /**
      * Retention period in minutes.
      */
-    retentionPeriod?: pulumi.Input<number>;
+    retentionPeriod?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -510,11 +552,11 @@ export interface ColumnDefinitionArgs {
     /**
      * The name of the column.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of the column data.
      */
-    type?: pulumi.Input<string | enums.KnownColumnDefinitionType>;
+    type?: pulumi.Input<string | enums.KnownColumnDefinitionType | undefined>;
 }
 
 /**
@@ -524,11 +566,11 @@ export interface ConcurrencyConfigurationArgs {
     /**
      * Size of the queue for log batches.
      */
-    batchQueueSize?: pulumi.Input<number>;
+    batchQueueSize?: pulumi.Input<number | undefined>;
     /**
      * Number of parallel workers processing the log queues.
      */
-    workerCount?: pulumi.Input<number>;
+    workerCount?: pulumi.Input<number | undefined>;
 }
 /**
  * concurrencyConfigurationArgsProvideDefaults sets the appropriate defaults for ConcurrencyConfigurationArgs
@@ -548,55 +590,55 @@ export interface ConditionArgs {
     /**
      * The extent of deviation required to trigger an alert. Allowed values are 'Low', 'Medium' and 'High'. This will affect how tight the threshold is to the metric series pattern. Relevant only for dynamic threshold rules of the kind LogAlert.
      */
-    alertSensitivity?: pulumi.Input<string>;
+    alertSensitivity?: pulumi.Input<string | undefined>;
     /**
      * Specifies the type of threshold criteria
      */
-    criterionType?: pulumi.Input<string | enums.CriterionType>;
+    criterionType?: pulumi.Input<string | enums.CriterionType | undefined>;
     /**
      * List of Dimensions conditions
      */
-    dimensions?: pulumi.Input<pulumi.Input<DimensionArgs>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<DimensionArgs>[] | undefined>;
     /**
      * The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
      */
-    failingPeriods?: pulumi.Input<ConditionFailingPeriodsArgs>;
+    failingPeriods?: pulumi.Input<ConditionFailingPeriodsArgs | undefined>;
     /**
      * Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format). Relevant only for dynamic threshold rules of the kind LogAlert.
      */
-    ignoreDataBefore?: pulumi.Input<string>;
+    ignoreDataBefore?: pulumi.Input<string | undefined>;
     /**
      * The column containing the metric measure number. Relevant only for rules of the kind LogAlert.
      */
-    metricMeasureColumn?: pulumi.Input<string>;
+    metricMeasureColumn?: pulumi.Input<string | undefined>;
     /**
      * The name of the metric to be sent. Relevant and required only for rules of the kind LogToMetric.
      */
-    metricName?: pulumi.Input<string>;
+    metricName?: pulumi.Input<string | undefined>;
     /**
      * The minimum results count that should be found for triggering an alert. Relevant only for rules of the kind SimpleLogAlert.
      */
-    minRecurrenceCount?: pulumi.Input<number>;
+    minRecurrenceCount?: pulumi.Input<number | undefined>;
     /**
      * The criteria operator. Relevant and required only for rules of the kind LogAlert.
      */
-    operator?: pulumi.Input<string | enums.ConditionOperator>;
+    operator?: pulumi.Input<string | enums.ConditionOperator | undefined>;
     /**
      * Log query alert
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
     /**
      * The column containing the resource id. The content of the column must be a uri formatted as resource id. Relevant only for rules of the kind LogAlert.
      */
-    resourceIdColumn?: pulumi.Input<string>;
+    resourceIdColumn?: pulumi.Input<string | undefined>;
     /**
      * the criteria threshold value that activates the alert. Relevant and required only for static threshold rules of the kind LogAlert.
      */
-    threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number | undefined>;
     /**
      * Aggregation type. Relevant and required only for rules of the kind LogAlert.
      */
-    timeAggregation?: pulumi.Input<string | enums.TimeAggregation>;
+    timeAggregation?: pulumi.Input<string | enums.TimeAggregation | undefined>;
 }
 /**
  * conditionArgsProvideDefaults sets the appropriate defaults for ConditionArgs
@@ -604,7 +646,7 @@ export interface ConditionArgs {
 export function conditionArgsProvideDefaults(val: ConditionArgs): ConditionArgs {
     return {
         ...val,
-        failingPeriods: (val.failingPeriods ? pulumi.output(val.failingPeriods).apply(conditionFailingPeriodsArgsProvideDefaults) : undefined),
+        failingPeriods: pulumi.output(val.failingPeriods).apply(v => v === undefined ? undefined : conditionFailingPeriodsArgsProvideDefaults(v)),
     };
 }
 
@@ -615,11 +657,11 @@ export interface ConditionFailingPeriodsArgs {
     /**
      * The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
      */
-    minFailingPeriodsToAlert?: pulumi.Input<number>;
+    minFailingPeriodsToAlert?: pulumi.Input<number | undefined>;
     /**
      * The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
      */
-    numberOfEvaluationPeriods?: pulumi.Input<number>;
+    numberOfEvaluationPeriods?: pulumi.Input<number | undefined>;
 }
 /**
  * conditionFailingPeriodsArgsProvideDefaults sets the appropriate defaults for ConditionFailingPeriodsArgs
@@ -633,13 +675,39 @@ export function conditionFailingPeriodsArgsProvideDefaults(val: ConditionFailing
 }
 
 /**
+ * Represents a filtering condition.
+ */
+export interface ConditionV1Args {
+    /**
+     * Dimension name used in filtering.
+     */
+    dimensionName?: pulumi.Input<string | undefined>;
+    /**
+     * Operator used in the filtering condition.
+     */
+    operator: pulumi.Input<string | enums.ConditionOperator>;
+    /**
+     * Defines the sampling type.
+     */
+    samplingType?: pulumi.Input<string | enums.SamplingType | undefined>;
+    /**
+     * Scalar function applied for filtering.
+     */
+    scalarFunction?: pulumi.Input<string | enums.ScalarFunction | undefined>;
+    /**
+     * Value used in filtering. For most operators (eq, ne, lt, lte, gt, gte, startswith, notstartswith, contains, notcontains) this is a single value (for example "GetContosoUsers"). For the `in` and `notin` operators, multiple values must be joined by the delimiter `^^` (for example "east^^west^^north").
+     */
+    value: pulumi.Input<string>;
+}
+
+/**
  * Network access control rules for the endpoints.
  */
 export interface DataCollectionEndpointNetworkAclsArgs {
     /**
      * The configuration to set whether network access from public internet to the endpoints are allowed.
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.KnownPublicNetworkAccessOptions>;
+    publicNetworkAccess?: pulumi.Input<string | enums.KnownPublicNetworkAccessOptions | undefined>;
 }
 
 /**
@@ -653,54 +721,54 @@ export interface DataCollectionEndpointResourceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
- * The specification of data sources. 
+ * The specification of data sources.
  * This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
  */
 export interface DataCollectionRuleDataSourcesArgs {
     /**
      * Specifications of pull based data sources
      */
-    dataImports?: pulumi.Input<DataSourcesSpecDataImportsArgs>;
+    dataImports?: pulumi.Input<DataSourcesSpecDataImportsArgs | undefined>;
     /**
      * The list of Azure VM extension data source configurations.
      */
-    extensions?: pulumi.Input<pulumi.Input<ExtensionDataSourceArgs>[]>;
+    extensions?: pulumi.Input<pulumi.Input<ExtensionDataSourceArgs>[] | undefined>;
     /**
      * The list of IIS logs source configurations.
      */
-    iisLogs?: pulumi.Input<pulumi.Input<IisLogsDataSourceArgs>[]>;
+    iisLogs?: pulumi.Input<pulumi.Input<IisLogsDataSourceArgs>[] | undefined>;
     /**
      * The list of Log files source configurations.
      */
-    logFiles?: pulumi.Input<pulumi.Input<LogFilesDataSourceArgs>[]>;
+    logFiles?: pulumi.Input<pulumi.Input<LogFilesDataSourceArgs>[] | undefined>;
     /**
      * The list of performance counter data source configurations.
      */
-    performanceCounters?: pulumi.Input<pulumi.Input<PerfCounterDataSourceArgs>[]>;
+    performanceCounters?: pulumi.Input<pulumi.Input<PerfCounterDataSourceArgs>[] | undefined>;
     /**
      * The list of platform telemetry configurations
      */
-    platformTelemetry?: pulumi.Input<pulumi.Input<PlatformTelemetryDataSourceArgs>[]>;
+    platformTelemetry?: pulumi.Input<pulumi.Input<PlatformTelemetryDataSourceArgs>[] | undefined>;
     /**
      * The list of Prometheus forwarder data source configurations.
      */
-    prometheusForwarder?: pulumi.Input<pulumi.Input<PrometheusForwarderDataSourceArgs>[]>;
+    prometheusForwarder?: pulumi.Input<pulumi.Input<PrometheusForwarderDataSourceArgs>[] | undefined>;
     /**
      * The list of Syslog data source configurations.
      */
-    syslog?: pulumi.Input<pulumi.Input<SyslogDataSourceArgs>[]>;
+    syslog?: pulumi.Input<pulumi.Input<SyslogDataSourceArgs>[] | undefined>;
     /**
      * The list of Windows Event Log data source configurations.
      */
-    windowsEventLogs?: pulumi.Input<pulumi.Input<WindowsEventLogDataSourceArgs>[]>;
+    windowsEventLogs?: pulumi.Input<pulumi.Input<WindowsEventLogDataSourceArgs>[] | undefined>;
     /**
      * The list of Windows Firewall logs source configurations.
      */
-    windowsFirewallLogs?: pulumi.Input<pulumi.Input<WindowsFirewallLogsDataSourceArgs>[]>;
+    windowsFirewallLogs?: pulumi.Input<pulumi.Input<WindowsFirewallLogsDataSourceArgs>[] | undefined>;
 }
 
 /**
@@ -710,35 +778,35 @@ export interface DataCollectionRuleDestinationsArgs {
     /**
      * Azure Monitor Metrics destination.
      */
-    azureMonitorMetrics?: pulumi.Input<DestinationsSpecAzureMonitorMetricsArgs>;
+    azureMonitorMetrics?: pulumi.Input<DestinationsSpecAzureMonitorMetricsArgs | undefined>;
     /**
      * List of Event Hubs destinations.
      */
-    eventHubs?: pulumi.Input<pulumi.Input<EventHubDestinationArgs>[]>;
+    eventHubs?: pulumi.Input<pulumi.Input<EventHubDestinationArgs>[] | undefined>;
     /**
      * List of Event Hubs Direct destinations.
      */
-    eventHubsDirect?: pulumi.Input<pulumi.Input<EventHubDirectDestinationArgs>[]>;
+    eventHubsDirect?: pulumi.Input<pulumi.Input<EventHubDirectDestinationArgs>[] | undefined>;
     /**
      * List of Log Analytics destinations.
      */
-    logAnalytics?: pulumi.Input<pulumi.Input<LogAnalyticsDestinationArgs>[]>;
+    logAnalytics?: pulumi.Input<pulumi.Input<LogAnalyticsDestinationArgs>[] | undefined>;
     /**
      * List of monitoring account destinations.
      */
-    monitoringAccounts?: pulumi.Input<pulumi.Input<MonitoringAccountDestinationArgs>[]>;
+    monitoringAccounts?: pulumi.Input<pulumi.Input<MonitoringAccountDestinationArgs>[] | undefined>;
     /**
      * List of storage accounts destinations.
      */
-    storageAccounts?: pulumi.Input<pulumi.Input<StorageBlobDestinationArgs>[]>;
+    storageAccounts?: pulumi.Input<pulumi.Input<StorageBlobDestinationArgs>[] | undefined>;
     /**
      * List of Storage Blob Direct destinations. To be used only for sending data directly to store from the agent.
      */
-    storageBlobsDirect?: pulumi.Input<pulumi.Input<StorageBlobDestinationArgs>[]>;
+    storageBlobsDirect?: pulumi.Input<pulumi.Input<StorageBlobDestinationArgs>[] | undefined>;
     /**
      * List of Storage Table Direct destinations.
      */
-    storageTablesDirect?: pulumi.Input<pulumi.Input<StorageTableDestinationArgs>[]>;
+    storageTablesDirect?: pulumi.Input<pulumi.Input<StorageTableDestinationArgs>[] | undefined>;
 }
 
 /**
@@ -752,7 +820,7 @@ export interface DataCollectionRuleResourceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -762,23 +830,23 @@ export interface DataFlowArgs {
     /**
      * The builtIn transform to transform stream data
      */
-    builtInTransform?: pulumi.Input<string>;
+    builtInTransform?: pulumi.Input<string | undefined>;
     /**
      * List of destinations for this data flow.
      */
-    destinations?: pulumi.Input<pulumi.Input<string>[]>;
+    destinations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The output stream of the transform. Only required if the transform changes data to a different stream.
      */
-    outputStream?: pulumi.Input<string>;
+    outputStream?: pulumi.Input<string | undefined>;
     /**
      * List of streams for this data flow.
      */
-    streams?: pulumi.Input<pulumi.Input<string | enums.KnownDataFlowStreams>[]>;
+    streams?: pulumi.Input<pulumi.Input<string | enums.KnownDataFlowStreams>[] | undefined>;
     /**
      * The KQL query to transform stream data.
      */
-    transformKql?: pulumi.Input<string>;
+    transformKql?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -788,16 +856,16 @@ export interface DataImportSourcesEventHubArgs {
     /**
      * Event Hub consumer group name
      */
-    consumerGroup?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string | undefined>;
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The stream to collect from EventHub
      */
-    stream?: pulumi.Input<string>;
+    stream?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -807,7 +875,7 @@ export interface DataSourcesSpecDataImportsArgs {
     /**
      * Definition of Event Hub configuration.
      */
-    eventHub?: pulumi.Input<DataImportSourcesEventHubArgs>;
+    eventHub?: pulumi.Input<DataImportSourcesEventHubArgs | undefined>;
 }
 
 /**
@@ -821,11 +889,11 @@ export interface DependenciesSignalGroupArgs {
     /**
      * Degraded threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered degraded when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
      */
-    degradedThreshold?: pulumi.Input<string>;
+    degradedThreshold?: pulumi.Input<string | undefined>;
     /**
      * Unhealthy threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered unhealthy when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
      */
-    unhealthyThreshold?: pulumi.Input<string>;
+    unhealthyThreshold?: pulumi.Input<string | undefined>;
 }
 /**
  * dependenciesSignalGroupArgsProvideDefaults sets the appropriate defaults for DependenciesSignalGroupArgs
@@ -842,10 +910,10 @@ export function dependenciesSignalGroupArgsProvideDefaults(val: DependenciesSign
  */
 export interface DestinationsSpecAzureMonitorMetricsArgs {
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -885,7 +953,7 @@ export interface DynamicDetectionRuleArgs {
     /**
      * Start time of the training in UTC.
      */
-    trainingStartTime?: pulumi.Input<string>;
+    trainingStartTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -904,7 +972,7 @@ export interface DynamicMetricCriteriaArgs {
     /**
      * List of dimension conditions.
      */
-    dimensions?: pulumi.Input<pulumi.Input<MetricDimensionArgs>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<MetricDimensionArgs>[] | undefined>;
     /**
      * The minimum number of violations required within the selected lookback time window required to raise an alert.
      */
@@ -912,7 +980,7 @@ export interface DynamicMetricCriteriaArgs {
     /**
      * Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format)
      */
-    ignoreDataBefore?: pulumi.Input<string>;
+    ignoreDataBefore?: pulumi.Input<string | undefined>;
     /**
      * Name of the metric.
      */
@@ -920,7 +988,7 @@ export interface DynamicMetricCriteriaArgs {
     /**
      * Namespace of the metric.
      */
-    metricNamespace?: pulumi.Input<string>;
+    metricNamespace?: pulumi.Input<string | undefined>;
     /**
      * Name of the criteria.
      */
@@ -932,7 +1000,7 @@ export interface DynamicMetricCriteriaArgs {
     /**
      * Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
      */
-    skipMetricValidation?: pulumi.Input<boolean>;
+    skipMetricValidation?: pulumi.Input<boolean | undefined>;
     /**
      * the criteria time aggregation types.
      */
@@ -960,15 +1028,15 @@ export interface EmailNotificationArgs {
     /**
      * the custom e-mails list. This value can be null or empty, in which case this attribute will be ignored.
      */
-    customEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    customEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * a value indicating whether to send email to subscription administrator.
      */
-    sendToSubscriptionAdministrator?: pulumi.Input<boolean>;
+    sendToSubscriptionAdministrator?: pulumi.Input<boolean | undefined>;
     /**
      * a value indicating whether to send email to subscription co-administrators.
      */
-    sendToSubscriptionCoAdministrators?: pulumi.Input<boolean>;
+    sendToSubscriptionCoAdministrators?: pulumi.Input<boolean | undefined>;
 }
 /**
  * emailNotificationArgsProvideDefaults sets the appropriate defaults for EmailNotificationArgs
@@ -996,7 +1064,7 @@ export interface EmailReceiverArgs {
     /**
      * Indicates whether to use common alert schema.
      */
-    useCommonAlertSchema?: pulumi.Input<boolean>;
+    useCommonAlertSchema?: pulumi.Input<boolean | undefined>;
 }
 /**
  * emailReceiverArgsProvideDefaults sets the appropriate defaults for EmailReceiverArgs
@@ -1015,11 +1083,11 @@ export interface EntityAlertsArgs {
     /**
      * Alert to be triggered on state change to degraded
      */
-    degraded?: pulumi.Input<AlertConfigurationArgs>;
+    degraded?: pulumi.Input<AlertConfigurationArgs | undefined>;
     /**
      * Alert to be triggered on state change to unhealthy
      */
-    unhealthy?: pulumi.Input<AlertConfigurationArgs>;
+    unhealthy?: pulumi.Input<AlertConfigurationArgs | undefined>;
 }
 
 /**
@@ -1043,39 +1111,39 @@ export interface EntityPropertiesArgs {
     /**
      * Alert configuration for this entity
      */
-    alerts?: pulumi.Input<EntityAlertsArgs>;
+    alerts?: pulumi.Input<EntityAlertsArgs | undefined>;
     /**
      * Positioning of the entity on the model canvas
      */
-    canvasPosition?: pulumi.Input<EntityCoordinatesArgs>;
+    canvasPosition?: pulumi.Input<EntityCoordinatesArgs | undefined>;
     /**
      * Display name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Health objective as a percentage of time the entity should be healthy.
      */
-    healthObjective?: pulumi.Input<number>;
+    healthObjective?: pulumi.Input<number | undefined>;
     /**
      * Visual icon definition. If not set, a default icon is used.
      */
-    icon?: pulumi.Input<IconDefinitionArgs>;
+    icon?: pulumi.Input<IconDefinitionArgs | undefined>;
     /**
      * Impact of the entity in health state propagation
      */
-    impact?: pulumi.Input<string | enums.EntityImpact>;
+    impact?: pulumi.Input<string | enums.EntityImpact | undefined>;
     /**
      * Entity kind
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Signal groups which are assigned to this entity
      */
-    signals?: pulumi.Input<SignalGroupArgs>;
+    signals?: pulumi.Input<SignalGroupArgs | undefined>;
     /**
      * Optional set of labels (key-value pairs)
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 /**
  * entityPropertiesArgsProvideDefaults sets the appropriate defaults for EntityPropertiesArgs
@@ -1085,7 +1153,7 @@ export function entityPropertiesArgsProvideDefaults(val: EntityPropertiesArgs): 
         ...val,
         impact: (val.impact) ?? "Standard",
         kind: (val.kind) ?? "Default",
-        signals: (val.signals ? pulumi.output(val.signals).apply(signalGroupArgsProvideDefaults) : undefined),
+        signals: pulumi.output(val.signals).apply(v => v === undefined ? undefined : signalGroupArgsProvideDefaults(v)),
     };
 }
 
@@ -1096,39 +1164,39 @@ export interface EvaluationRuleArgs {
     /**
      * Degraded rule with static threshold. When used, dynamicDetectionRule must not be set.
      */
-    degradedRule?: pulumi.Input<ThresholdRuleArgs>;
+    degradedRule?: pulumi.Input<ThresholdRuleArgs | undefined>;
     /**
      * Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
      */
-    dynamicDetectionRule?: pulumi.Input<DynamicDetectionRuleArgs>;
+    dynamicDetectionRule?: pulumi.Input<DynamicDetectionRuleArgs | undefined>;
     /**
      * Unhealthy rule with static threshold. When used, dynamicDetectionRule must not be set.
      */
-    unhealthyRule?: pulumi.Input<ThresholdRuleArgs>;
+    unhealthyRule?: pulumi.Input<ThresholdRuleArgs | undefined>;
 }
 
 export interface EventHubDestinationArgs {
     /**
      * The resource ID of the event hub.
      */
-    eventHubResourceId?: pulumi.Input<string>;
+    eventHubResourceId?: pulumi.Input<string | undefined>;
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface EventHubDirectDestinationArgs {
     /**
      * The resource ID of the event hub.
      */
-    eventHubResourceId?: pulumi.Input<string>;
+    eventHubResourceId?: pulumi.Input<string | undefined>;
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1144,9 +1212,9 @@ export interface EventHubReceiverArgs {
      */
     eventHubNameSpace: pulumi.Input<string>;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
-    managedIdentity?: pulumi.Input<string>;
+    managedIdentity?: pulumi.Input<string | undefined>;
     /**
      * The name of the Event hub receiver. Names must be unique across all receivers within an action group.
      */
@@ -1158,11 +1226,11 @@ export interface EventHubReceiverArgs {
     /**
      * The tenant Id for the subscription containing this event hub
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to use common alert schema.
      */
-    useCommonAlertSchema?: pulumi.Input<boolean>;
+    useCommonAlertSchema?: pulumi.Input<boolean | undefined>;
 }
 /**
  * eventHubReceiverArgsProvideDefaults sets the appropriate defaults for EventHubReceiverArgs
@@ -1181,7 +1249,7 @@ export interface ExporterArgs {
     /**
      * Azure Monitor Workspace Logs specific configurations.
      */
-    azureMonitorWorkspaceLogs?: pulumi.Input<AzureMonitorWorkspaceLogsExporterArgs>;
+    azureMonitorWorkspaceLogs?: pulumi.Input<AzureMonitorWorkspaceLogsExporterArgs | undefined>;
     /**
      * The name of exporter.
      */
@@ -1189,7 +1257,7 @@ export interface ExporterArgs {
     /**
      * TCP based exporter. Used for pipelineGroup exporter.
      */
-    tcp?: pulumi.Input<TcpExporterArgs>;
+    tcp?: pulumi.Input<TcpExporterArgs | undefined>;
     /**
      * The type of exporter.
      */
@@ -1201,7 +1269,7 @@ export interface ExporterArgs {
 export function exporterArgsProvideDefaults(val: ExporterArgs): ExporterArgs {
     return {
         ...val,
-        azureMonitorWorkspaceLogs: (val.azureMonitorWorkspaceLogs ? pulumi.output(val.azureMonitorWorkspaceLogs).apply(azureMonitorWorkspaceLogsExporterArgsProvideDefaults) : undefined),
+        azureMonitorWorkspaceLogs: pulumi.output(val.azureMonitorWorkspaceLogs).apply(v => v === undefined ? undefined : azureMonitorWorkspaceLogsExporterArgsProvideDefaults(v)),
     };
 }
 
@@ -1217,21 +1285,21 @@ export interface ExtensionDataSourceArgs {
     /**
      * The extension settings. The format is specific for particular extension.
      */
-    extensionSettings?: any;
+    extensionSettings?: any | undefined;
     /**
      * The list of data sources this extension needs data from.
      */
-    inputDataSources?: pulumi.Input<pulumi.Input<string>[]>;
+    inputDataSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of streams that this data source will be sent to.
      * A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
      */
-    streams?: pulumi.Input<pulumi.Input<string | enums.KnownExtensionDataSourceStreams>[]>;
+    streams?: pulumi.Input<pulumi.Input<string | enums.KnownExtensionDataSourceStreams>[] | undefined>;
 }
 
 /**
@@ -1241,7 +1309,7 @@ export interface HealthModelPropertiesArgs {
     /**
      * Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
      */
-    discovery?: pulumi.Input<ModelDiscoverySettingsArgs>;
+    discovery?: pulumi.Input<ModelDiscoverySettingsArgs | undefined>;
 }
 
 /**
@@ -1251,25 +1319,11 @@ export interface IconDefinitionArgs {
     /**
      * Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
      */
-    customData?: pulumi.Input<string>;
+    customData?: pulumi.Input<string | undefined>;
     /**
      * Name of the built-in icon, or 'Custom' to use customData
      */
     iconName: pulumi.Input<string>;
-}
-
-/**
- * Identity for the resource.
- */
-export interface IdentityArgs {
-    /**
-     * Type of managed service identity.
-     */
-    type: pulumi.Input<enums.IdentityType>;
-    /**
-     * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-     */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -1279,12 +1333,12 @@ export interface IisLogsDataSourceArgs {
     /**
      * Absolute paths file location
      */
-    logDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+    logDirectories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * IIS streams
      */
@@ -1382,7 +1436,7 @@ export interface JsonArrayMapperArgs {
     /**
      * Define a destination field to which the parsed output will be written. The output is a map, it's keys is the given keys array and the matching values are the parsed json array elements.
      */
-    destinationField?: pulumi.Input<JsonMapperDestinationFieldArgs>;
+    destinationField?: pulumi.Input<JsonMapperDestinationFieldArgs | undefined>;
     /**
      * Define the names of the keys in the resulting map. The input json array elements are mapped in order, one for every key.
      */
@@ -1390,7 +1444,7 @@ export interface JsonArrayMapperArgs {
     /**
      * Define a source field from which a json array will be read and parsed to it's elements. The number of elements in the json array is expected to be the same as the length of keys.
      */
-    sourceField?: pulumi.Input<JsonMapperSourceFieldArgs>;
+    sourceField?: pulumi.Input<JsonMapperSourceFieldArgs | undefined>;
 }
 /**
  * jsonArrayMapperArgsProvideDefaults sets the appropriate defaults for JsonArrayMapperArgs
@@ -1398,7 +1452,7 @@ export interface JsonArrayMapperArgs {
 export function jsonArrayMapperArgsProvideDefaults(val: JsonArrayMapperArgs): JsonArrayMapperArgs {
     return {
         ...val,
-        destinationField: (val.destinationField ? pulumi.output(val.destinationField).apply(jsonMapperDestinationFieldArgsProvideDefaults) : undefined),
+        destinationField: pulumi.output(val.destinationField).apply(v => v === undefined ? undefined : jsonMapperDestinationFieldArgsProvideDefaults(v)),
     };
 }
 
@@ -1409,11 +1463,11 @@ export interface JsonMapperDestinationFieldArgs {
     /**
      * Define the destination's element. The element is the body or the attributes of the message, to which the json array mapper will write the output map.
      */
-    destination?: pulumi.Input<string | enums.JsonMapperElement>;
+    destination?: pulumi.Input<string | enums.JsonMapperElement | undefined>;
     /**
      * Define a destination field name under the given element. Leaving this empty, means the root of the element. In case element=attributes and fieldName is empty, the object's attributes themselves will contain the key value output pairs.
      */
-    fieldName?: pulumi.Input<string>;
+    fieldName?: pulumi.Input<string | undefined>;
 }
 /**
  * jsonMapperDestinationFieldArgsProvideDefaults sets the appropriate defaults for JsonMapperDestinationFieldArgs
@@ -1432,7 +1486,7 @@ export interface JsonMapperSourceFieldArgs {
     /**
      * Define a source field name from which the json array mapper will read the json array. Leaving this empty, means reading the body of the message itself.
      */
-    fieldName?: pulumi.Input<string>;
+    fieldName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1440,14 +1494,14 @@ export interface JsonMapperSourceFieldArgs {
  */
 export interface LogAnalyticsDestinationArgs {
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the Log Analytics workspace.
      */
-    workspaceResourceId?: pulumi.Input<string>;
+    workspaceResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1457,11 +1511,11 @@ export interface LogAnalyticsQuerySignalDefinitionPropertiesArgs {
     /**
      * Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
      */
-    dataUnit?: pulumi.Input<string>;
+    dataUnit?: pulumi.Input<string | undefined>;
     /**
      * Display name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Evaluation rules for the signal definition
      */
@@ -1473,7 +1527,7 @@ export interface LogAnalyticsQuerySignalDefinitionPropertiesArgs {
     /**
      * Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
      */
-    refreshInterval?: pulumi.Input<string | enums.RefreshInterval>;
+    refreshInterval?: pulumi.Input<string | enums.RefreshInterval | undefined>;
     /**
      * Supported signal kinds as discriminator
      * Expected value is 'LogAnalyticsQuery'.
@@ -1482,15 +1536,15 @@ export interface LogAnalyticsQuerySignalDefinitionPropertiesArgs {
     /**
      * Optional set of labels (key-value pairs)
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Time range of signal. ISO duration format like PT10M. If not specified, the KQL query must define a time range.
      */
-    timeGrain?: pulumi.Input<string>;
+    timeGrain?: pulumi.Input<string | undefined>;
     /**
      * Name of the column in the result set to evaluate against the thresholds. Defaults to the first column in the result set if not specified. The column must be numeric.
      */
-    valueColumnName?: pulumi.Input<string>;
+    valueColumnName?: pulumi.Input<string | undefined>;
 }
 /**
  * logAnalyticsQuerySignalDefinitionPropertiesArgsProvideDefaults sets the appropriate defaults for LogAnalyticsQuerySignalDefinitionPropertiesArgs
@@ -1517,7 +1571,7 @@ export interface LogAnalyticsSignalGroupArgs {
     /**
      * Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
      */
-    signalAssignments?: pulumi.Input<pulumi.Input<SignalAssignmentArgs>[]>;
+    signalAssignments?: pulumi.Input<pulumi.Input<SignalAssignmentArgs>[] | undefined>;
 }
 
 /**
@@ -1543,14 +1597,14 @@ export interface LogFilesDataSourceArgs {
      */
     format: pulumi.Input<string | enums.KnownLogFilesDataSourceFormat>;
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The log files specific settings.
      */
-    settings?: pulumi.Input<LogFilesDataSourceSettingsArgs>;
+    settings?: pulumi.Input<LogFilesDataSourceSettingsArgs | undefined>;
     /**
      * List of streams that this data source will be sent to.
      * A stream indicates what schema will be used for this data source
@@ -1565,7 +1619,7 @@ export interface LogFilesDataSourceSettingsArgs {
     /**
      * Text settings
      */
-    text?: pulumi.Input<LogFileSettingsTextArgs>;
+    text?: pulumi.Input<LogFileSettingsTextArgs | undefined>;
 }
 
 /**
@@ -1575,11 +1629,11 @@ export interface LogSettingsArgs {
     /**
      * Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
      */
-    categoryGroup?: pulumi.Input<string>;
+    categoryGroup?: pulumi.Input<string | undefined>;
     /**
      * a value indicating whether this log is enabled.
      */
@@ -1587,7 +1641,7 @@ export interface LogSettingsArgs {
     /**
      * the retention policy for this log.
      */
-    retentionPolicy?: pulumi.Input<RetentionPolicyArgs>;
+    retentionPolicy?: pulumi.Input<RetentionPolicyArgs | undefined>;
 }
 
 /**
@@ -1599,9 +1653,9 @@ export interface LogicAppReceiverArgs {
      */
     callbackUrl: pulumi.Input<string>;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
-    managedIdentity?: pulumi.Input<string>;
+    managedIdentity?: pulumi.Input<string | undefined>;
     /**
      * The name of the logic app receiver. Names must be unique across all receivers within an action group.
      */
@@ -1613,7 +1667,7 @@ export interface LogicAppReceiverArgs {
     /**
      * Indicates whether to use common alert schema.
      */
-    useCommonAlertSchema?: pulumi.Input<boolean>;
+    useCommonAlertSchema?: pulumi.Input<boolean | undefined>;
 }
 /**
  * logicAppReceiverArgsProvideDefaults sets the appropriate defaults for LogicAppReceiverArgs
@@ -1637,7 +1691,7 @@ export interface ManagedIdentityAuthenticationSettingPropertiesArgs {
     /**
      * Display name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Name of the managed identity to use. Either 'SystemAssigned' or the resourceId of a user-assigned identity.
      */
@@ -1655,7 +1709,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1665,11 +1719,11 @@ export interface ManagementGroupLogSettingsArgs {
     /**
      * Name of a Management Group Diagnostic Log category for a resource type this setting is applied to.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * Name of a Management Group Diagnostic Log category group for a resource type this setting is applied to.
      */
-    categoryGroup?: pulumi.Input<string>;
+    categoryGroup?: pulumi.Input<string | undefined>;
     /**
      * a value indicating whether this log is enabled.
      */
@@ -1683,11 +1737,11 @@ export interface MetricAlertActionArgs {
     /**
      * the id of the action group to use.
      */
-    actionGroupId?: pulumi.Input<string>;
+    actionGroupId?: pulumi.Input<string | undefined>;
     /**
      * This field allows specifying custom properties, which would be appended to the alert payload sent as input to the webhook.
      */
-    webHookProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    webHookProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -1695,9 +1749,9 @@ export interface MetricAlertActionArgs {
  */
 export interface MetricAlertMultipleResourceMultipleMetricCriteriaArgs {
     /**
-     * the list of multiple metric criteria for this 'all of' operation. 
+     * the list of multiple metric criteria for this 'all of' operation.
      */
-    allOf?: pulumi.Input<pulumi.Input<DynamicMetricCriteriaArgs | MetricCriteriaArgs>[]>;
+    allOf?: pulumi.Input<pulumi.Input<DynamicMetricCriteriaArgs | MetricCriteriaArgs>[] | undefined>;
     /**
      * specifies the type of the alert criteria.
      * Expected value is 'Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria'.
@@ -1710,9 +1764,9 @@ export interface MetricAlertMultipleResourceMultipleMetricCriteriaArgs {
  */
 export interface MetricAlertSingleResourceMultipleMetricCriteriaArgs {
     /**
-     * The list of metric criteria for this 'all of' operation. 
+     * The list of metric criteria for this 'all of' operation.
      */
-    allOf?: pulumi.Input<pulumi.Input<MetricCriteriaArgs>[]>;
+    allOf?: pulumi.Input<pulumi.Input<MetricCriteriaArgs>[] | undefined>;
     /**
      * specifies the type of the alert criteria.
      * Expected value is 'Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria'.
@@ -1732,7 +1786,7 @@ export interface MetricCriteriaArgs {
     /**
      * List of dimension conditions.
      */
-    dimensions?: pulumi.Input<pulumi.Input<MetricDimensionArgs>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<MetricDimensionArgs>[] | undefined>;
     /**
      * Name of the metric.
      */
@@ -1740,7 +1794,7 @@ export interface MetricCriteriaArgs {
     /**
      * Namespace of the metric.
      */
-    metricNamespace?: pulumi.Input<string>;
+    metricNamespace?: pulumi.Input<string | undefined>;
     /**
      * Name of the criteria.
      */
@@ -1752,7 +1806,7 @@ export interface MetricCriteriaArgs {
     /**
      * Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
      */
-    skipMetricValidation?: pulumi.Input<boolean>;
+    skipMetricValidation?: pulumi.Input<boolean | undefined>;
     /**
      * the criteria threshold value that activates the alert.
      */
@@ -1788,7 +1842,7 @@ export interface MetricSettingsArgs {
     /**
      * Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * a value indicating whether this category is enabled.
      */
@@ -1796,11 +1850,11 @@ export interface MetricSettingsArgs {
     /**
      * the retention policy for this category.
      */
-    retentionPolicy?: pulumi.Input<RetentionPolicyArgs>;
+    retentionPolicy?: pulumi.Input<RetentionPolicyArgs | undefined>;
     /**
      * the timegrain of the metric in ISO8601 format.
      */
-    timeGrain?: pulumi.Input<string>;
+    timeGrain?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1810,11 +1864,11 @@ export interface MetricTriggerArgs {
     /**
      * List of dimension conditions. For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
      */
-    dimensions?: pulumi.Input<pulumi.Input<ScaleRuleMetricDimensionArgs>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<ScaleRuleMetricDimensionArgs>[] | undefined>;
     /**
      * a value indicating whether metric should divide per instance.
      */
-    dividePerInstance?: pulumi.Input<boolean>;
+    dividePerInstance?: pulumi.Input<boolean | undefined>;
     /**
      * the name of the metric that defines what the rule monitors.
      */
@@ -1822,11 +1876,11 @@ export interface MetricTriggerArgs {
     /**
      * the namespace of the metric that defines what the rule monitors.
      */
-    metricNamespace?: pulumi.Input<string>;
+    metricNamespace?: pulumi.Input<string | undefined>;
     /**
      * the location of the resource the rule monitors.
      */
-    metricResourceLocation?: pulumi.Input<string>;
+    metricResourceLocation?: pulumi.Input<string | undefined>;
     /**
      * the resource identifier of the resource the rule monitors.
      */
@@ -1858,6 +1912,20 @@ export interface MetricTriggerArgs {
 }
 
 /**
+ * Identity for the resource.
+ */
+export interface MicrosoftCommonIdentityArgs {
+    /**
+     * Type of managed service identity.
+     */
+    type: pulumi.Input<enums.IdentityType>;
+    /**
+     * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     */
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+/**
  * Settings for automatically discovering entities for the health model.
  */
 export interface ModelDiscoverySettingsArgs {
@@ -1868,7 +1936,7 @@ export interface ModelDiscoverySettingsArgs {
     /**
      * Which Managed Identity of the health model to use for discovery. Defaults to SystemAssigned, if not set. Can be set to 'SystemAssigned' or to the resource id of a user-assigned managed identity which is linked to the health model.
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * The scope from which entities should be automatically discovered. For example, the resource id of a Service Group.
      */
@@ -1882,12 +1950,12 @@ export interface MonitoringAccountDestinationArgs {
     /**
      * The resource ID of the monitoring account.
      */
-    accountResourceId?: pulumi.Input<string>;
+    accountResourceId?: pulumi.Input<string | undefined>;
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1901,7 +1969,7 @@ export interface NetworkingConfigurationArgs {
     /**
      * The address exposed on the cluster. Example: azuremonitorpipeline.contoso.com.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Networking routes configuration.
      */
@@ -1915,11 +1983,11 @@ export interface NetworkingRouteArgs {
     /**
      * Route path.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The port that will be configured externally. If not specified, it will use the port from the receiver definition.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The name of the previously defined receiver.
      */
@@ -1927,7 +1995,7 @@ export interface NetworkingRouteArgs {
     /**
      * Route subdomain.
      */
-    subdomain?: pulumi.Input<string>;
+    subdomain?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1950,21 +2018,21 @@ export interface PerfCounterDataSourceArgs {
      * Use a wildcard (*) to collect a counter for all instances.
      * To get a list of performance counters on Windows, run the command 'typeperf'.
      */
-    counterSpecifiers?: pulumi.Input<pulumi.Input<string>[]>;
+    counterSpecifiers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of seconds between consecutive counter measurements (samples).
      */
-    samplingFrequencyInSeconds?: pulumi.Input<number>;
+    samplingFrequencyInSeconds?: pulumi.Input<number | undefined>;
     /**
      * List of streams that this data source will be sent to.
      * A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
      */
-    streams?: pulumi.Input<pulumi.Input<string | enums.KnownPerfCounterDataSourceStreams>[]>;
+    streams?: pulumi.Input<pulumi.Input<string | enums.KnownPerfCounterDataSourceStreams>[] | undefined>;
 }
 
 /**
@@ -1992,7 +2060,7 @@ export interface PipelineArgs {
     /**
      * Reference to processors configured for the pipeline.
      */
-    processors?: pulumi.Input<pulumi.Input<string>[]>;
+    processors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Reference to receivers configured for the pipeline.
      */
@@ -2014,7 +2082,7 @@ export interface PipelineGroupPropertiesArgs {
     /**
      * Networking configurations for the pipeline group instance.
      */
-    networkingConfigurations?: pulumi.Input<pulumi.Input<NetworkingConfigurationArgs>[]>;
+    networkingConfigurations?: pulumi.Input<pulumi.Input<NetworkingConfigurationArgs>[] | undefined>;
     /**
      * The processors specified for a pipeline group instance.
      */
@@ -2026,7 +2094,7 @@ export interface PipelineGroupPropertiesArgs {
     /**
      * Defines the amount of replicas of the pipeline group instance.
      */
-    replicas?: pulumi.Input<number>;
+    replicas?: pulumi.Input<number | undefined>;
     /**
      * The service section for a given pipeline group instance.
      */
@@ -2038,10 +2106,10 @@ export interface PipelineGroupPropertiesArgs {
  */
 export interface PlatformTelemetryDataSourceArgs {
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of platform telemetry streams to collect
      */
@@ -2055,7 +2123,7 @@ export interface PredictiveAutoscalePolicyArgs {
     /**
      * the amount of time to specify by which instances are launched in advance. It must be between 1 minute and 60 minutes in ISO 8601 format.
      */
-    scaleLookAheadTime?: pulumi.Input<string>;
+    scaleLookAheadTime?: pulumi.Input<string | undefined>;
     /**
      * the predictive autoscale mode
      */
@@ -2069,15 +2137,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -2087,7 +2155,7 @@ export interface ProcessorArgs {
     /**
      * Batch processor configurations.
      */
-    batch?: pulumi.Input<BatchProcessorArgs>;
+    batch?: pulumi.Input<BatchProcessorArgs | undefined>;
     /**
      * The name of processor.
      */
@@ -2103,7 +2171,7 @@ export interface ProcessorArgs {
 export function processorArgsProvideDefaults(val: ProcessorArgs): ProcessorArgs {
     return {
         ...val,
-        batch: (val.batch ? pulumi.output(val.batch).apply(batchProcessorArgsProvideDefaults) : undefined),
+        batch: pulumi.output(val.batch).apply(v => v === undefined ? undefined : batchProcessorArgsProvideDefaults(v)),
     };
 }
 
@@ -2116,16 +2184,16 @@ export interface PrometheusForwarderDataSourceArgs {
      * Currently only one label is supported: 'microsoft_metrics_include_label'.
      * Label values are matched case-insensitively.
      */
-    labelIncludeFilter?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labelIncludeFilter?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of streams that this data source will be sent to.
      */
-    streams?: pulumi.Input<pulumi.Input<string | enums.KnownPrometheusForwarderDataSourceStreams>[]>;
+    streams?: pulumi.Input<pulumi.Input<string | enums.KnownPrometheusForwarderDataSourceStreams>[] | undefined>;
 }
 
 /**
@@ -2135,11 +2203,11 @@ export interface PrometheusMetricsSignalDefinitionPropertiesArgs {
     /**
      * Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
      */
-    dataUnit?: pulumi.Input<string>;
+    dataUnit?: pulumi.Input<string | undefined>;
     /**
      * Display name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Evaluation rules for the signal definition
      */
@@ -2151,7 +2219,7 @@ export interface PrometheusMetricsSignalDefinitionPropertiesArgs {
     /**
      * Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
      */
-    refreshInterval?: pulumi.Input<string | enums.RefreshInterval>;
+    refreshInterval?: pulumi.Input<string | enums.RefreshInterval | undefined>;
     /**
      * Supported signal kinds as discriminator
      * Expected value is 'PrometheusMetricsQuery'.
@@ -2160,11 +2228,11 @@ export interface PrometheusMetricsSignalDefinitionPropertiesArgs {
     /**
      * Optional set of labels (key-value pairs)
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Time range of signal. ISO duration format like PT10M.
      */
-    timeGrain?: pulumi.Input<string>;
+    timeGrain?: pulumi.Input<string | undefined>;
 }
 /**
  * prometheusMetricsSignalDefinitionPropertiesArgsProvideDefaults sets the appropriate defaults for PrometheusMetricsSignalDefinitionPropertiesArgs
@@ -2187,11 +2255,11 @@ export interface ReceiverArgs {
     /**
      * OTLP receiver configurations. This field is mandatory for OTLP and pipelineGroup receivers.
      */
-    otlp?: pulumi.Input<OtlpReceiverArgs>;
+    otlp?: pulumi.Input<OtlpReceiverArgs | undefined>;
     /**
      * Syslog configurations. This field is mandatory for syslog type receivers.
      */
-    syslog?: pulumi.Input<SyslogReceiverArgs>;
+    syslog?: pulumi.Input<SyslogReceiverArgs | undefined>;
     /**
      * The type of receiver.
      */
@@ -2199,7 +2267,7 @@ export interface ReceiverArgs {
     /**
      * UDP receiver configurations. This field is mandatory for UDP receivers.
      */
-    udp?: pulumi.Input<UdpReceiverArgs>;
+    udp?: pulumi.Input<UdpReceiverArgs | undefined>;
 }
 /**
  * receiverArgsProvideDefaults sets the appropriate defaults for ReceiverArgs
@@ -2207,8 +2275,8 @@ export interface ReceiverArgs {
 export function receiverArgsProvideDefaults(val: ReceiverArgs): ReceiverArgs {
     return {
         ...val,
-        syslog: (val.syslog ? pulumi.output(val.syslog).apply(syslogReceiverArgsProvideDefaults) : undefined),
-        udp: (val.udp ? pulumi.output(val.udp).apply(udpReceiverArgsProvideDefaults) : undefined),
+        syslog: pulumi.output(val.syslog).apply(v => v === undefined ? undefined : syslogReceiverArgsProvideDefaults(v)),
+        udp: pulumi.output(val.udp).apply(v => v === undefined ? undefined : udpReceiverArgsProvideDefaults(v)),
     };
 }
 
@@ -2273,7 +2341,7 @@ export interface RelationshipPropertiesArgs {
     /**
      * Display name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Resource name of the parent entity
      */
@@ -2281,7 +2349,7 @@ export interface RelationshipPropertiesArgs {
     /**
      * Optional set of labels (key-value pairs)
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -2308,7 +2376,7 @@ export interface ResourceGraphQueryDiscoveryRulePropertiesArgs {
     /**
      * Display name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
      */
@@ -2340,19 +2408,19 @@ export interface ResourceMetricSignalDefinitionPropertiesArgs {
     /**
      * Unit of the signal result (e.g. Bytes, MilliSeconds, Percent, Count))
      */
-    dataUnit?: pulumi.Input<string>;
+    dataUnit?: pulumi.Input<string | undefined>;
     /**
      * Optional: Dimension to split by
      */
-    dimension?: pulumi.Input<string>;
+    dimension?: pulumi.Input<string | undefined>;
     /**
      * Optional: Dimension filter to apply to the dimension. Must only be set if also Dimension is set.
      */
-    dimensionFilter?: pulumi.Input<string>;
+    dimensionFilter?: pulumi.Input<string | undefined>;
     /**
      * Display name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Evaluation rules for the signal definition
      */
@@ -2368,7 +2436,7 @@ export interface ResourceMetricSignalDefinitionPropertiesArgs {
     /**
      * Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
      */
-    refreshInterval?: pulumi.Input<string | enums.RefreshInterval>;
+    refreshInterval?: pulumi.Input<string | enums.RefreshInterval | undefined>;
     /**
      * Supported signal kinds as discriminator
      * Expected value is 'AzureResourceMetric'.
@@ -2377,7 +2445,7 @@ export interface ResourceMetricSignalDefinitionPropertiesArgs {
     /**
      * Optional set of labels (key-value pairs)
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Time range of signal. ISO duration format like PT10M.
      */
@@ -2414,11 +2482,11 @@ export interface RuleResolveConfigurationArgs {
     /**
      * The flag that indicates whether or not to auto resolve a fired alert.
      */
-    autoResolved?: pulumi.Input<boolean>;
+    autoResolved?: pulumi.Input<boolean | undefined>;
     /**
      * The duration a rule must evaluate as healthy before the fired alert is automatically resolved represented in ISO 8601 duration format.
      */
-    timeToResolve?: pulumi.Input<string>;
+    timeToResolve?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2440,7 +2508,7 @@ export interface ScaleActionArgs {
     /**
      * the number of instances that are involved in the scaling action. This value must be 1 or greater. The default value is 1.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 /**
  * scaleActionArgsProvideDefaults sets the appropriate defaults for ScaleActionArgs
@@ -2518,7 +2586,7 @@ export interface ScheduledQueryRuleCriteriaArgs {
     /**
      * A list of conditions to evaluate against the specified scopes
      */
-    allOf?: pulumi.Input<pulumi.Input<ConditionArgs>[]>;
+    allOf?: pulumi.Input<pulumi.Input<ConditionArgs>[] | undefined>;
 }
 
 /**
@@ -2532,11 +2600,11 @@ export interface SchemaMapArgs {
     /**
      * Resource Map captures information about the entity for which telemetry is recorded. For example, metrics exposed by a Kubernetes container can be linked to a resource that specifies the cluster, namespace, pod, and container name.Resource may capture an entire hierarchy of entity identification. It may describe the host in the cloud and specific container or an application running in the process.
      */
-    resourceMap?: pulumi.Input<pulumi.Input<ResourceMapArgs>[]>;
+    resourceMap?: pulumi.Input<pulumi.Input<ResourceMapArgs>[] | undefined>;
     /**
      * A scope map is a logical unit of the application code with which the emitted telemetry can be associated.
      */
-    scopeMap?: pulumi.Input<pulumi.Input<ScopeMapArgs>[]>;
+    scopeMap?: pulumi.Input<pulumi.Input<ScopeMapArgs>[] | undefined>;
 }
 
 /**
@@ -2560,11 +2628,25 @@ export interface ServiceArgs {
     /**
      * Persistence options to all pipelines in the instance.
      */
-    persistence?: pulumi.Input<PersistenceConfigurationsArgs>;
+    persistence?: pulumi.Input<PersistenceConfigurationsArgs | undefined>;
     /**
      * Pipelines belonging to a given pipeline group.
      */
     pipelines: pulumi.Input<pulumi.Input<PipelineArgs>[]>;
+}
+
+/**
+ * Represents a signal model used in SLI calculations.
+ */
+export interface SignalArgs {
+    /**
+     * Mathematical formula used to combine multiple metrics.
+     */
+    signalFormula: pulumi.Input<string>;
+    /**
+     * Sources of metrics used for SLIs.
+     */
+    signalSources: pulumi.Input<pulumi.Input<SignalSourceArgs>[]>;
 }
 
 /**
@@ -2584,19 +2666,19 @@ export interface SignalGroupArgs {
     /**
      * Log Analytics Signal Group
      */
-    azureLogAnalytics?: pulumi.Input<LogAnalyticsSignalGroupArgs>;
+    azureLogAnalytics?: pulumi.Input<LogAnalyticsSignalGroupArgs | undefined>;
     /**
      * Azure Monitor Workspace Signal Group
      */
-    azureMonitorWorkspace?: pulumi.Input<AzureMonitorWorkspaceSignalGroupArgs>;
+    azureMonitorWorkspace?: pulumi.Input<AzureMonitorWorkspaceSignalGroupArgs | undefined>;
     /**
      * Azure Resource Signal Group
      */
-    azureResource?: pulumi.Input<AzureResourceSignalGroupArgs>;
+    azureResource?: pulumi.Input<AzureResourceSignalGroupArgs | undefined>;
     /**
      * Settings for dependency signals to control how the health state of child entities influences the health state of the parent entity.
      */
-    dependencies?: pulumi.Input<DependenciesSignalGroupArgs>;
+    dependencies?: pulumi.Input<DependenciesSignalGroupArgs | undefined>;
 }
 /**
  * signalGroupArgsProvideDefaults sets the appropriate defaults for SignalGroupArgs
@@ -2604,8 +2686,102 @@ export interface SignalGroupArgs {
 export function signalGroupArgsProvideDefaults(val: SignalGroupArgs): SignalGroupArgs {
     return {
         ...val,
-        dependencies: (val.dependencies ? pulumi.output(val.dependencies).apply(dependenciesSignalGroupArgsProvideDefaults) : undefined),
+        dependencies: pulumi.output(val.dependencies).apply(v => v === undefined ? undefined : dependenciesSignalGroupArgsProvideDefaults(v)),
     };
+}
+
+/**
+ * Represents a signal source used in SLIs.
+ */
+export interface SignalSourceArgs {
+    /**
+     * Filters applied to modify signal values.
+     */
+    filters: pulumi.Input<pulumi.Input<ConditionV1Args>[]>;
+    /**
+     * Name of the metric.
+     */
+    metricName: pulumi.Input<string>;
+    /**
+     * Namespace of the metric.
+     */
+    metricNamespace: pulumi.Input<string>;
+    /**
+     * Unique identifier for the signal source.
+     */
+    signalSourceId: pulumi.Input<string>;
+    /**
+     * Managed identity for authenticating the signal source.
+     */
+    sourceAmwAccountManagedIdentity: pulumi.Input<string>;
+    /**
+     * Resource ID of the source AMW account.
+     */
+    sourceAmwAccountResourceId: pulumi.Input<string>;
+    /**
+     * Defines how measurements are aggregated across multiple time series.
+     */
+    spatialAggregation: pulumi.Input<SpatialAggregationArgs>;
+    /**
+     * Defines how measurements are aggregated over a specific time window within the same time series.
+     */
+    temporalAggregation: pulumi.Input<TemporalAggregationArgs>;
+}
+
+/**
+ * Defines the properties of an SLI.
+ */
+export interface SliPropertiesArgs {
+    /**
+     * Represents good signals used in request-based SLI calculations.
+     */
+    goodSignals?: pulumi.Input<SignalArgs | undefined>;
+    /**
+     * Signals used for window-based SLI calculations.
+     */
+    signals?: pulumi.Input<SignalArgs | undefined>;
+    /**
+     * Represents total signals used in request-based SLI calculations.
+     */
+    totalSignals?: pulumi.Input<SignalArgs | undefined>;
+    /**
+     * Defines the uptime criteria for window-based SLIs.
+     */
+    windowUptimeCriteria?: pulumi.Input<WindowUptimeCriteriaArgs | undefined>;
+}
+
+/**
+ * Defines the root level properties of an SLI resource.
+ */
+export interface SliResourceArgs {
+    /**
+     * Defines the SLO baseline associated with the SLI.
+     */
+    baselineProperties: pulumi.Input<BaselinePropertiesArgs>;
+    /**
+     * Specifies the category of the SLI, used to classify signals such as Availability and Latency.
+     */
+    category: pulumi.Input<string | enums.Category>;
+    /**
+     * A user-provided description of the SLI, with a maximum length of 1000 characters.
+     */
+    description: pulumi.Input<string>;
+    /**
+     * Destination AMW accounts.
+     */
+    destinationAmwAccounts: pulumi.Input<pulumi.Input<AmwAccountArgs>[]>;
+    /**
+     * A flag to determine whether alert is enabled.
+     */
+    enableAlert: pulumi.Input<boolean>;
+    /**
+     * Determines how the SLI is evaluated—either based on request counts or time windows.
+     */
+    evaluationType: pulumi.Input<string | enums.EvaluationType>;
+    /**
+     * Defines the SLI properties associated with the SLI.
+     */
+    sliProperties: pulumi.Input<SliPropertiesArgs>;
 }
 
 /**
@@ -2626,36 +2802,50 @@ export interface SmsReceiverArgs {
     phoneNumber: pulumi.Input<string>;
 }
 
+/**
+ * Represents the spatial aggregation model.
+ */
+export interface SpatialAggregationArgs {
+    /**
+     * Dimensions considered for spatial aggregation.
+     */
+    dimensions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Type of spatial aggregation.
+     */
+    type: pulumi.Input<string | enums.SpatialAggregationType>;
+}
+
 export interface StorageBlobDestinationArgs {
     /**
      * The container name of the Storage Blob.
      */
-    containerName?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the storage account.
      */
-    storageAccountResourceId?: pulumi.Input<string>;
+    storageAccountResourceId?: pulumi.Input<string | undefined>;
 }
 
 export interface StorageTableDestinationArgs {
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the storage account.
      */
-    storageAccountResourceId?: pulumi.Input<string>;
+    storageAccountResourceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Storage Table.
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2665,7 +2855,7 @@ export interface StreamDeclarationArgs {
     /**
      * List of columns used by data in this stream.
      */
-    columns?: pulumi.Input<pulumi.Input<ColumnDefinitionArgs>[]>;
+    columns?: pulumi.Input<pulumi.Input<ColumnDefinitionArgs>[] | undefined>;
 }
 
 /**
@@ -2675,11 +2865,11 @@ export interface SubscriptionLogSettingsArgs {
     /**
      * Name of a Subscription Diagnostic Log category for a resource type this setting is applied to.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * Name of a Subscription Diagnostic Log category group for a resource type this setting is applied to.
      */
-    categoryGroup?: pulumi.Input<string>;
+    categoryGroup?: pulumi.Input<string | undefined>;
     /**
      * a value indicating whether this log is enabled.
      */
@@ -2694,21 +2884,21 @@ export interface SyslogDataSourceArgs {
     /**
      * The list of facility names.
      */
-    facilityNames?: pulumi.Input<pulumi.Input<string | enums.KnownSyslogDataSourceFacilityNames>[]>;
+    facilityNames?: pulumi.Input<pulumi.Input<string | enums.KnownSyslogDataSourceFacilityNames>[] | undefined>;
     /**
      * The log levels to collect.
      */
-    logLevels?: pulumi.Input<pulumi.Input<string | enums.KnownSyslogDataSourceLogLevels>[]>;
+    logLevels?: pulumi.Input<pulumi.Input<string | enums.KnownSyslogDataSourceLogLevels>[] | undefined>;
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of streams that this data source will be sent to.
      * A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
      */
-    streams?: pulumi.Input<pulumi.Input<string | enums.KnownSyslogDataSourceStreams>[]>;
+    streams?: pulumi.Input<pulumi.Input<string | enums.KnownSyslogDataSourceStreams>[] | undefined>;
 }
 
 /**
@@ -2722,7 +2912,7 @@ export interface SyslogReceiverArgs {
     /**
      * Protocol to parse syslog messages. Default rfc3164
      */
-    protocol?: pulumi.Input<string | enums.SyslogProtocol>;
+    protocol?: pulumi.Input<string | enums.SyslogProtocol | undefined>;
 }
 /**
  * syslogReceiverArgsProvideDefaults sets the appropriate defaults for SyslogReceiverArgs
@@ -2742,6 +2932,20 @@ export interface TcpExporterArgs {
      * TCP url to export.
      */
     url: pulumi.Input<string>;
+}
+
+/**
+ * Represents temporal aggregation settings.
+ */
+export interface TemporalAggregationArgs {
+    /**
+     * Type of temporal aggregation.
+     */
+    type: pulumi.Input<string | enums.TemporalAggregationType>;
+    /**
+     * Time window size for aggregation, in minutes.
+     */
+    windowSizeMinutes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -2773,7 +2977,7 @@ export interface TimeWindowArgs {
     /**
      * the timezone of the start and end times for the profile. Some examples of valid time zones are: Dateline Standard Time, UTC-11, Hawaiian Standard Time, Alaskan Standard Time, Pacific Standard Time (Mexico), Pacific Standard Time, US Mountain Standard Time, Mountain Standard Time (Mexico), Mountain Standard Time, Central America Standard Time, Central Standard Time, Central Standard Time (Mexico), Canada Central Standard Time, SA Pacific Standard Time, Eastern Standard Time, US Eastern Standard Time, Venezuela Standard Time, Paraguay Standard Time, Atlantic Standard Time, Central Brazilian Standard Time, SA Western Standard Time, Pacific SA Standard Time, Newfoundland Standard Time, E. South America Standard Time, Argentina Standard Time, SA Eastern Standard Time, Greenland Standard Time, Montevideo Standard Time, Bahia Standard Time, UTC-02, Mid-Atlantic Standard Time, Azores Standard Time, Cape Verde Standard Time, Morocco Standard Time, UTC, GMT Standard Time, Greenwich Standard Time, W. Europe Standard Time, Central Europe Standard Time, Romance Standard Time, Central European Standard Time, W. Central Africa Standard Time, Namibia Standard Time, Jordan Standard Time, GTB Standard Time, Middle East Standard Time, Egypt Standard Time, Syria Standard Time, E. Europe Standard Time, South Africa Standard Time, FLE Standard Time, Turkey Standard Time, Israel Standard Time, Kaliningrad Standard Time, Libya Standard Time, Arabic Standard Time, Arab Standard Time, Belarus Standard Time, Russian Standard Time, E. Africa Standard Time, Iran Standard Time, Arabian Standard Time, Azerbaijan Standard Time, Russia Time Zone 3, Mauritius Standard Time, Georgian Standard Time, Caucasus Standard Time, Afghanistan Standard Time, West Asia Standard Time, Ekaterinburg Standard Time, Pakistan Standard Time, India Standard Time, Sri Lanka Standard Time, Nepal Standard Time, Central Asia Standard Time, Bangladesh Standard Time, N. Central Asia Standard Time, Myanmar Standard Time, SE Asia Standard Time, North Asia Standard Time, China Standard Time, North Asia East Standard Time, Singapore Standard Time, W. Australia Standard Time, Taipei Standard Time, Ulaanbaatar Standard Time, Tokyo Standard Time, Korea Standard Time, Yakutsk Standard Time, Cen. Australia Standard Time, AUS Central Standard Time, E. Australia Standard Time, AUS Eastern Standard Time, West Pacific Standard Time, Tasmania Standard Time, Magadan Standard Time, Vladivostok Standard Time, Russia Time Zone 10, Central Pacific Standard Time, Russia Time Zone 11, New Zealand Standard Time, UTC+12, Fiji Standard Time, Kamchatka Standard Time, Tonga Standard Time, Samoa Standard Time, Line Islands Standard Time
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2783,7 +2987,7 @@ export interface UdpReceiverArgs {
     /**
      * The encoding of the stream being received.
      */
-    encoding?: pulumi.Input<string | enums.StreamEncodingType>;
+    encoding?: pulumi.Input<string | enums.StreamEncodingType | undefined>;
     /**
      * TCP endpoint definition. Example: 0.0.0.0:<port>.
      */
@@ -2791,11 +2995,11 @@ export interface UdpReceiverArgs {
     /**
      * Json array mapper - allows this udp receiver to parse a value from a given source field as a json array, match a key to each parsed value and output the key-value map to a given output field.
      */
-    jsonArrayMapper?: pulumi.Input<JsonArrayMapperArgs>;
+    jsonArrayMapper?: pulumi.Input<JsonArrayMapperArgs | undefined>;
     /**
      * Max read queue length.
      */
-    readQueueLength?: pulumi.Input<number>;
+    readQueueLength?: pulumi.Input<number | undefined>;
 }
 /**
  * udpReceiverArgsProvideDefaults sets the appropriate defaults for UdpReceiverArgs
@@ -2804,7 +3008,7 @@ export function udpReceiverArgsProvideDefaults(val: UdpReceiverArgs): UdpReceive
     return {
         ...val,
         encoding: (val.encoding) ?? "nop",
-        jsonArrayMapper: (val.jsonArrayMapper ? pulumi.output(val.jsonArrayMapper).apply(jsonArrayMapperArgsProvideDefaults) : undefined),
+        jsonArrayMapper: pulumi.output(val.jsonArrayMapper).apply(v => v === undefined ? undefined : jsonArrayMapperArgsProvideDefaults(v)),
         readQueueLength: (val.readQueueLength) ?? 1000,
     };
 }
@@ -2834,11 +3038,11 @@ export interface WebhookNotificationArgs {
     /**
      * a property bag of settings. This value can be empty.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * the service address to receive the notification.
      */
-    serviceUri?: pulumi.Input<string>;
+    serviceUri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2848,11 +3052,11 @@ export interface WebhookReceiverArgs {
     /**
      * Indicates the identifier uri for aad auth.
      */
-    identifierUri?: pulumi.Input<string>;
+    identifierUri?: pulumi.Input<string | undefined>;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
-    managedIdentity?: pulumi.Input<string>;
+    managedIdentity?: pulumi.Input<string | undefined>;
     /**
      * The name of the webhook receiver. Names must be unique across all receivers within a tenant action group.
      */
@@ -2860,7 +3064,7 @@ export interface WebhookReceiverArgs {
     /**
      * Indicates the webhook app object Id for aad auth.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * The URI where webhooks should be sent.
      */
@@ -2868,15 +3072,15 @@ export interface WebhookReceiverArgs {
     /**
      * Indicates the tenant id for aad auth.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether or not use AAD authentication.
      */
-    useAadAuth?: pulumi.Input<boolean>;
+    useAadAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to use common alert schema.
      */
-    useCommonAlertSchema?: pulumi.Input<boolean>;
+    useCommonAlertSchema?: pulumi.Input<boolean | undefined>;
 }
 /**
  * webhookReceiverArgsProvideDefaults sets the appropriate defaults for WebhookReceiverArgs
@@ -2913,24 +3117,38 @@ export interface WebtestLocationAvailabilityCriteriaArgs {
 }
 
 /**
+ * Represents criteria for determining uptime in window-based SLIs.
+ */
+export interface WindowUptimeCriteriaArgs {
+    /**
+     * Comparison operator used for uptime evaluation.
+     */
+    comparator: pulumi.Input<string | enums.WindowUptimeCriteriaComparator>;
+    /**
+     * Threshold value used to determine uptime.
+     */
+    target: pulumi.Input<number>;
+}
+
+/**
  * Definition of which Windows Event Log events will be collected and how they will be collected.
  * Only collected from Windows machines.
  */
 export interface WindowsEventLogDataSourceArgs {
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of streams that this data source will be sent to.
      * A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
      */
-    streams?: pulumi.Input<pulumi.Input<string | enums.KnownWindowsEventLogDataSourceStreams>[]>;
+    streams?: pulumi.Input<pulumi.Input<string | enums.KnownWindowsEventLogDataSourceStreams>[] | undefined>;
     /**
      * A list of Windows Event Log queries in XPATH format.
      */
-    xPathQueries?: pulumi.Input<pulumi.Input<string>[]>;
+    xPathQueries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -2938,10 +3156,10 @@ export interface WindowsEventLogDataSourceArgs {
  */
 export interface WindowsFirewallLogsDataSourceArgs {
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Firewall logs streams
      */

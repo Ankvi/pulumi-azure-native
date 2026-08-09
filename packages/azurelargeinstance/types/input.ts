@@ -7,11 +7,11 @@ export interface DiskArgs {
     /**
      * Specifies the size of an empty data disk in gigabytes.
      */
-    diskSizeGB?: pulumi.Input<number>;
+    diskSizeGB?: pulumi.Input<number | undefined>;
     /**
      * The disk name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -21,11 +21,11 @@ export interface HardwareProfileArgs {
     /**
      * Specifies the Azure Large Instance SKU.
      */
-    azureLargeInstanceSize?: pulumi.Input<string | enums.AzureLargeInstanceSizeNamesEnum>;
+    azureLargeInstanceSize?: pulumi.Input<string | enums.AzureLargeInstanceSizeNamesEnum | undefined>;
     /**
      * Name of the hardware type (vendor and/or their product name)
      */
-    hardwareType?: pulumi.Input<string | enums.AzureLargeInstanceHardwareTypeNamesEnum>;
+    hardwareType?: pulumi.Input<string | enums.AzureLargeInstanceHardwareTypeNamesEnum | undefined>;
 }
 
 /**
@@ -35,7 +35,7 @@ export interface IpAddressArgs {
     /**
      * Specifies the IP address of the network interface.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -49,7 +49,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -59,11 +59,11 @@ export interface NetworkProfileArgs {
     /**
      * Specifies the circuit id for connecting to express route.
      */
-    circuitId?: pulumi.Input<string>;
+    circuitId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the network interfaces for the Azure Large Instance.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<IpAddressArgs>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<IpAddressArgs>[] | undefined>;
 }
 
 /**
@@ -73,19 +73,19 @@ export interface OsProfileArgs {
     /**
      * Specifies the host OS name of the Azure Large Instance.
      */
-    computerName?: pulumi.Input<string>;
+    computerName?: pulumi.Input<string | undefined>;
     /**
      * This property allows you to specify the type of the OS.
      */
-    osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string | undefined>;
     /**
      * Specifies the SSH public key used to access the operating system.
      */
-    sshPublicKey?: pulumi.Input<string>;
+    sshPublicKey?: pulumi.Input<string | undefined>;
     /**
      * Specifies version of operating system.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -95,11 +95,11 @@ export interface StorageBillingPropertiesArgs {
     /**
      * the billing mode for the storage instance
      */
-    billingMode?: pulumi.Input<string>;
+    billingMode?: pulumi.Input<string | undefined>;
     /**
      * the SKU type that is provisioned
      */
-    sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -109,12 +109,12 @@ export interface StorageProfileArgs {
     /**
      * IP Address to connect to storage.
      */
-    nfsIpAddress?: pulumi.Input<string>;
+    nfsIpAddress?: pulumi.Input<string | undefined>;
     /**
      * Specifies information about the operating system disk used by Azure Large
      * Instance.
      */
-    osDisks?: pulumi.Input<pulumi.Input<DiskArgs>[]>;
+    osDisks?: pulumi.Input<pulumi.Input<DiskArgs>[] | undefined>;
 }
 
 /**
@@ -124,25 +124,25 @@ export interface StoragePropertiesArgs {
     /**
      * the kind of storage instance
      */
-    generation?: pulumi.Input<string>;
+    generation?: pulumi.Input<string | undefined>;
     /**
      * the hardware type of the storage instance
      */
-    hardwareType?: pulumi.Input<string | enums.AzureLargeInstanceHardwareTypeNamesEnum>;
+    hardwareType?: pulumi.Input<string | enums.AzureLargeInstanceHardwareTypeNamesEnum | undefined>;
     /**
      * the offering type for which the resource is getting provisioned
      */
-    offeringType?: pulumi.Input<string>;
+    offeringType?: pulumi.Input<string | undefined>;
     /**
      * the billing related information for the resource
      */
-    storageBillingProperties?: pulumi.Input<StorageBillingPropertiesArgs>;
+    storageBillingProperties?: pulumi.Input<StorageBillingPropertiesArgs | undefined>;
     /**
      * the storage protocol for which the resource is getting provisioned
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * the workload for which the resource is getting provisioned
      */
-    workloadType?: pulumi.Input<string>;
+    workloadType?: pulumi.Input<string | undefined>;
 }

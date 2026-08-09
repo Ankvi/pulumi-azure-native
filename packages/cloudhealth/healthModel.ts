@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2026-01-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class HealthModel extends pulumi.CustomResource {
     /**
@@ -103,7 +103,7 @@ export class HealthModel extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cloudhealth/v20250501preview:HealthModel" }, { type: "azure-native:cloudhealth/v20260101preview:HealthModel" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cloudhealth/v20250501preview:HealthModel" }, { type: "azure-native:cloudhealth/v20260101preview:HealthModel" }, { type: "azure-native:cloudhealth/v20260501preview:HealthModel" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(HealthModel.__pulumiType, name, resourceInputs, opts);
     }
@@ -116,19 +116,19 @@ export interface HealthModelArgs {
     /**
      * Name of health model resource
      */
-    healthModelName?: pulumi.Input<string>;
+    healthModelName?: pulumi.Input<string | undefined>;
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.HealthModelPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.HealthModelPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -136,5 +136,5 @@ export interface HealthModelArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

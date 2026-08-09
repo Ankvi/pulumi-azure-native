@@ -60,11 +60,11 @@ export class Automation extends pulumi.CustomResource {
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
-     * Location where the resource is stored
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -76,11 +76,15 @@ export class Automation extends pulumi.CustomResource {
      */
     declare public readonly sources: pulumi.Output<types.outputs.AutomationSourceResponse[] | undefined>;
     /**
-     * A list of key value pairs that describe the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -111,6 +115,7 @@ export class Automation extends pulumi.CustomResource {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["actions"] = undefined /*out*/;
@@ -123,6 +128,7 @@ export class Automation extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["scopes"] = undefined /*out*/;
             resourceInputs["sources"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
@@ -140,41 +146,41 @@ export interface AutomationArgs {
     /**
      * A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
      */
-    actions?: pulumi.Input<pulumi.Input<types.inputs.AutomationActionEventHubArgs | types.inputs.AutomationActionLogicAppArgs | types.inputs.AutomationActionWorkspaceArgs>[]>;
+    actions?: pulumi.Input<pulumi.Input<types.inputs.AutomationActionEventHubArgs | types.inputs.AutomationActionLogicAppArgs | types.inputs.AutomationActionWorkspaceArgs>[] | undefined>;
     /**
      * The security automation name.
      */
-    automationName?: pulumi.Input<string>;
+    automationName?: pulumi.Input<string | undefined>;
     /**
      * The security automation description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the security automation is enabled.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Kind of the resource
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
-     * Location where the resource is stored
+     * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
-     * The name of the resource group within the user's subscription. The name is case insensitive.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
      */
-    scopes?: pulumi.Input<pulumi.Input<types.inputs.AutomationScopeArgs>[]>;
+    scopes?: pulumi.Input<pulumi.Input<types.inputs.AutomationScopeArgs>[] | undefined>;
     /**
      * A collection of the source event types which evaluate the security automation set of rules.
      */
-    sources?: pulumi.Input<pulumi.Input<types.inputs.AutomationSourceArgs>[]>;
+    sources?: pulumi.Input<pulumi.Input<types.inputs.AutomationSourceArgs>[] | undefined>;
     /**
-     * A list of key value pairs that describe the resource.
+     * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

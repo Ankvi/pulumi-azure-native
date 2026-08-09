@@ -7,7 +7,7 @@ export interface HealthBotPropertiesArgs {
     /**
      * KeyVault properties for the resource encryption.
      */
-    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs | undefined>;
 }
 
 /**
@@ -17,12 +17,12 @@ export interface IdentityArgs {
     /**
      * The identity type. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the Azure Health Bot
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
     /**
      * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -40,11 +40,11 @@ export interface KeyVaultPropertiesArgs {
     /**
      * The version of the key vault key.
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
     /**
      * The user assigned identity (ARM resource id) that has access to the key.
      */
-    userIdentity?: pulumi.Input<string>;
+    userIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**

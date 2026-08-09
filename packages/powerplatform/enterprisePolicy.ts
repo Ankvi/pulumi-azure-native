@@ -40,7 +40,7 @@ export class EnterprisePolicy extends pulumi.CustomResource {
     /**
      * The encryption settings for a configuration store.
      */
-    declare public readonly encryption: pulumi.Output<types.outputs.PropertiesResponseEncryption | undefined>;
+    declare public readonly encryption: pulumi.Output<types.outputs.PropertiesEncryptionResponse | undefined>;
     /**
      * The health status of the resource.
      */
@@ -60,7 +60,7 @@ export class EnterprisePolicy extends pulumi.CustomResource {
     /**
      * Settings concerning lockbox.
      */
-    declare public readonly lockbox: pulumi.Output<types.outputs.PropertiesResponseLockbox | undefined>;
+    declare public readonly lockbox: pulumi.Output<types.outputs.PropertiesLockboxResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -68,9 +68,9 @@ export class EnterprisePolicy extends pulumi.CustomResource {
     /**
      * Settings concerning network injection.
      */
-    declare public readonly networkInjection: pulumi.Output<types.outputs.PropertiesResponseNetworkInjection | undefined>;
+    declare public readonly networkInjection: pulumi.Output<types.outputs.PropertiesNetworkInjectionResponse | undefined>;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -147,19 +147,19 @@ export interface EnterprisePolicyArgs {
     /**
      * The encryption settings for a configuration store.
      */
-    encryption?: pulumi.Input<types.inputs.PropertiesEncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.PropertiesEncryptionArgs | undefined>;
     /**
-     * Name of the EnterprisePolicy.
+     * The EnterprisePolicy name.
      */
-    enterprisePolicyName?: pulumi.Input<string>;
+    enterprisePolicyName?: pulumi.Input<string | undefined>;
     /**
      * The health status of the resource.
      */
-    healthStatus?: pulumi.Input<string | types.enums.HealthStatus>;
+    healthStatus?: pulumi.Input<string | types.enums.HealthStatus | undefined>;
     /**
      * The identity of the EnterprisePolicy.
      */
-    identity?: pulumi.Input<types.inputs.EnterprisePolicyIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.EnterprisePolicyIdentityArgs | undefined>;
     /**
      * The kind (type) of Enterprise Policy.
      */
@@ -167,15 +167,15 @@ export interface EnterprisePolicyArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Settings concerning lockbox.
      */
-    lockbox?: pulumi.Input<types.inputs.PropertiesLockboxArgs>;
+    lockbox?: pulumi.Input<types.inputs.PropertiesLockboxArgs | undefined>;
     /**
      * Settings concerning network injection.
      */
-    networkInjection?: pulumi.Input<types.inputs.PropertiesNetworkInjectionArgs>;
+    networkInjection?: pulumi.Input<types.inputs.PropertiesNetworkInjectionArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -183,5 +183,5 @@ export interface EnterprisePolicyArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

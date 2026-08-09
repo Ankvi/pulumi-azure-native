@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2021-02-16-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-16-preview.
  *
- * Other available API versions: 2024-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-09-01, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datareplication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Vault extends pulumi.CustomResource {
     /**
@@ -94,7 +94,7 @@ export class Vault extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:datareplication/v20210216preview:Vault" }, { type: "azure-native:datareplication/v20240901:Vault" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:datareplication/v20210216preview:Vault" }, { type: "azure-native:datareplication/v20240901:Vault" }, { type: "azure-native:datareplication/v20260501:Vault" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Vault.__pulumiType, name, resourceInputs, opts);
     }
@@ -107,11 +107,11 @@ export interface VaultArgs {
     /**
      * Gets or sets the location of the vault.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Vault properties.
      */
-    properties?: pulumi.Input<types.inputs.VaultModelPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.VaultModelPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -119,9 +119,9 @@ export interface VaultArgs {
     /**
      * Gets or sets the resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The vault name.
      */
-    vaultName?: pulumi.Input<string>;
+    vaultName?: pulumi.Input<string | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getLogAnalyticExportRequestRateByInterval(args: GetLogAnalyticExportRequestRateByIntervalArgs, opts?: pulumi.InvokeOptions): Promise<GetLogAnalyticExportRequestRateByIntervalResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -81,7 +81,7 @@ export interface GetLogAnalyticExportRequestRateByIntervalResult {
  *
  * Uses Azure REST API version 2024-11-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getLogAnalyticExportRequestRateByIntervalOutput(args: GetLogAnalyticExportRequestRateByIntervalOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogAnalyticExportRequestRateByIntervalResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -111,23 +111,23 @@ export interface GetLogAnalyticExportRequestRateByIntervalOutputArgs {
     /**
      * Group query result by Client Application ID.
      */
-    groupByClientApplicationId?: pulumi.Input<boolean>;
+    groupByClientApplicationId?: pulumi.Input<boolean | undefined>;
     /**
      * Group query result by Operation Name.
      */
-    groupByOperationName?: pulumi.Input<boolean>;
+    groupByOperationName?: pulumi.Input<boolean | undefined>;
     /**
      * Group query result by Resource Name.
      */
-    groupByResourceName?: pulumi.Input<boolean>;
+    groupByResourceName?: pulumi.Input<boolean | undefined>;
     /**
      * Group query result by Throttle Policy applied.
      */
-    groupByThrottlePolicy?: pulumi.Input<boolean>;
+    groupByThrottlePolicy?: pulumi.Input<boolean | undefined>;
     /**
      * Group query result by User Agent.
      */
-    groupByUserAgent?: pulumi.Input<boolean>;
+    groupByUserAgent?: pulumi.Input<boolean | undefined>;
     /**
      * Interval value in minutes used to create LogAnalytics call rate logs.
      */

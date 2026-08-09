@@ -5,6 +5,8 @@ import * as types from "./types";
  * Tool tracked resource
  *
  * Uses Azure REST API version 2026-02-01-preview.
+ *
+ * Other available API versions: 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native discovery [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Tool extends pulumi.CustomResource {
     /**
@@ -95,7 +97,7 @@ export class Tool extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:discovery/v20260201preview:Tool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:discovery/v20260201preview:Tool" }, { type: "azure-native:discovery/v20260601:Tool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Tool.__pulumiType, name, resourceInputs, opts);
     }
@@ -108,11 +110,11 @@ export interface ToolArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.ToolPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ToolPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -120,9 +122,9 @@ export interface ToolArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the Tool
      */
-    toolName?: pulumi.Input<string>;
+    toolName?: pulumi.Input<string | undefined>;
 }

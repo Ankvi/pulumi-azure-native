@@ -116,11 +116,11 @@ export interface MigrationServiceArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the Migration Service.
      */
-    migrationServiceName?: pulumi.Input<string>;
+    migrationServiceName?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -128,5 +128,5 @@ export interface MigrationServiceArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

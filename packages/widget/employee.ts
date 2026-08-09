@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2021-11-01.
  *
- * Other available API versions: 2021-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native widget [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native widget [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Employee extends pulumi.CustomResource {
     /**
@@ -97,7 +97,7 @@ export class Employee extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:widget/v20211001preview:Employee" }, { type: "azure-native:widget/v20211101:Employee" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:widget/v20211101:Employee" }, { type: "azure-native:widget/v20241001preview:Employee" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Employee.__pulumiType, name, resourceInputs, opts);
     }
@@ -110,15 +110,15 @@ export interface EmployeeArgs {
     /**
      * The name of the Employee
      */
-    employeeName?: pulumi.Input<string>;
+    employeeName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.EmployeePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.EmployeePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -126,5 +126,5 @@ export interface EmployeeArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

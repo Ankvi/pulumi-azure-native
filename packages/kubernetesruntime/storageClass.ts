@@ -165,39 +165,39 @@ export interface StorageClassArgs {
     /**
      * The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce]
      */
-    accessModes?: pulumi.Input<pulumi.Input<string | types.enums.AccessMode>[]>;
+    accessModes?: pulumi.Input<pulumi.Input<string | types.enums.AccessMode>[] | undefined>;
     /**
      * Volume can be expanded or not
      */
-    allowVolumeExpansion?: pulumi.Input<string | types.enums.VolumeExpansion>;
+    allowVolumeExpansion?: pulumi.Input<string | types.enums.VolumeExpansion | undefined>;
     /**
      * Allow single data node failure
      */
-    dataResilience?: pulumi.Input<string | types.enums.DataResilienceTier>;
+    dataResilience?: pulumi.Input<string | types.enums.DataResilienceTier | undefined>;
     /**
      * Failover speed: NA, Slow, Fast
      */
-    failoverSpeed?: pulumi.Input<string | types.enums.FailoverTier>;
+    failoverSpeed?: pulumi.Input<string | types.enums.FailoverTier | undefined>;
     /**
      * Limitations of the storage class
      */
-    limitations?: pulumi.Input<pulumi.Input<string>[]>;
+    limitations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Additional mount options
      */
-    mountOptions?: pulumi.Input<pulumi.Input<string>[]>;
+    mountOptions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Performance tier
      */
-    performance?: pulumi.Input<string | types.enums.PerformanceTier>;
+    performance?: pulumi.Input<string | types.enums.PerformanceTier | undefined>;
     /**
      * Selection priority when multiple storage classes meet the criteria. 0: Highest, -1: Never use
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Provisioner name
      */
-    provisioner?: pulumi.Input<string>;
+    provisioner?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified Azure Resource manager identifier of the resource.
      */
@@ -205,7 +205,7 @@ export interface StorageClassArgs {
     /**
      * The name of the the storage class
      */
-    storageClassName?: pulumi.Input<string>;
+    storageClassName?: pulumi.Input<string | undefined>;
     /**
      * Properties of the StorageClass
      */
@@ -213,5 +213,5 @@ export interface StorageClassArgs {
     /**
      * Binding mode of volumes: Immediate, WaitForFirstConsumer
      */
-    volumeBindingMode?: pulumi.Input<string | types.enums.VolumeBindingMode>;
+    volumeBindingMode?: pulumi.Input<string | types.enums.VolumeBindingMode | undefined>;
 }

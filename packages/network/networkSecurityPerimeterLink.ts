@@ -5,7 +5,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  *
  * Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkSecurityPerimeterLink extends pulumi.CustomResource {
     /**
@@ -142,7 +142,7 @@ export class NetworkSecurityPerimeterLink extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20210201preview:NspLink" }, { type: "azure-native:network/v20230701preview:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20230701preview:NspLink" }, { type: "azure-native:network/v20230801preview:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20230801preview:NspLink" }, { type: "azure-native:network/v20240601preview:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20240701:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20241001:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20250101:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20250301:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20250501:NetworkSecurityPerimeterLink" }, { type: "azure-native:network:NspLink" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20210201preview:NspLink" }, { type: "azure-native:network/v20230701preview:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20230701preview:NspLink" }, { type: "azure-native:network/v20230801preview:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20230801preview:NspLink" }, { type: "azure-native:network/v20240601preview:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20240701:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20241001:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20250101:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20250301:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20250501:NetworkSecurityPerimeterLink" }, { type: "azure-native:network/v20250701:NetworkSecurityPerimeterLink" }, { type: "azure-native:network:NspLink" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkSecurityPerimeterLink.__pulumiType, name, resourceInputs, opts);
     }
@@ -155,19 +155,19 @@ export interface NetworkSecurityPerimeterLinkArgs {
     /**
      * Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
      */
-    autoApprovedRemotePerimeterResourceId?: pulumi.Input<string>;
+    autoApprovedRemotePerimeterResourceId?: pulumi.Input<string | undefined>;
     /**
      * A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the NSP link.
      */
-    linkName?: pulumi.Input<string>;
+    linkName?: pulumi.Input<string | undefined>;
     /**
      * Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
      */
-    localInboundProfiles?: pulumi.Input<pulumi.Input<string>[]>;
+    localInboundProfiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the network security perimeter.
      */
@@ -175,7 +175,7 @@ export interface NetworkSecurityPerimeterLinkArgs {
     /**
      * Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
      */
-    remoteInboundProfiles?: pulumi.Input<pulumi.Input<string>[]>;
+    remoteInboundProfiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the resource group.
      */

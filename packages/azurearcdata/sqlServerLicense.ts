@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-05-01-preview.
  *
- * Other available API versions: 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SqlServerLicense extends pulumi.CustomResource {
     /**
@@ -100,7 +100,7 @@ export class SqlServerLicense extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurearcdata/v20240501preview:SqlServerLicense" }, { type: "azure-native:azurearcdata/v20250301preview:SqlServerLicense" }, { type: "azure-native:azurearcdata/v20260101:SqlServerLicense" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurearcdata/v20240501preview:SqlServerLicense" }, { type: "azure-native:azurearcdata/v20250301preview:SqlServerLicense" }, { type: "azure-native:azurearcdata/v20260101:SqlServerLicense" }, { type: "azure-native:azurearcdata/v20260301preview:SqlServerLicense" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SqlServerLicense.__pulumiType, name, resourceInputs, opts);
     }
@@ -113,7 +113,7 @@ export interface SqlServerLicenseArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * SQL Server license properties
      */
@@ -125,9 +125,9 @@ export interface SqlServerLicenseArgs {
     /**
      * Name of SQL Server License
      */
-    sqlServerLicenseName?: pulumi.Input<string>;
+    sqlServerLicenseName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

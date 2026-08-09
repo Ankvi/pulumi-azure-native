@@ -64,7 +64,7 @@ export class RoleManagementPolicy extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lastModifiedDateTime: pulumi.Output<string>;
     /**
-     * The role management policy name.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -80,7 +80,11 @@ export class RoleManagementPolicy extends pulumi.CustomResource {
      */
     declare public readonly scope: pulumi.Output<string | undefined>;
     /**
-     * The role management policy type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -110,6 +114,7 @@ export class RoleManagementPolicy extends pulumi.CustomResource {
             resourceInputs["lastModifiedDateTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["policyProperties"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -123,6 +128,7 @@ export class RoleManagementPolicy extends pulumi.CustomResource {
             resourceInputs["policyProperties"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["scope"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -139,23 +145,23 @@ export interface RoleManagementPolicyArgs {
     /**
      * The role management policy description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The role management policy display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The role management policy is default policy.
      */
-    isOrganizationDefault?: pulumi.Input<boolean>;
+    isOrganizationDefault?: pulumi.Input<boolean | undefined>;
     /**
-     * The name (guid) of the role management policy to upsert.
+     * The name (guid) of the role management policy to get.
      */
-    roleManagementPolicyName?: pulumi.Input<string>;
+    roleManagementPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The rule applied to the policy.
      */
-    rules?: pulumi.Input<pulumi.Input<types.inputs.RoleManagementPolicyApprovalRuleArgs | types.inputs.RoleManagementPolicyAuthenticationContextRuleArgs | types.inputs.RoleManagementPolicyEnablementRuleArgs | types.inputs.RoleManagementPolicyExpirationRuleArgs | types.inputs.RoleManagementPolicyNotificationRuleArgs | types.inputs.RoleManagementPolicyPimOnlyModeRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<types.inputs.RoleManagementPolicyApprovalRuleArgs | types.inputs.RoleManagementPolicyAuthenticationContextRuleArgs | types.inputs.RoleManagementPolicyEnablementRuleArgs | types.inputs.RoleManagementPolicyExpirationRuleArgs | types.inputs.RoleManagementPolicyNotificationRuleArgs | types.inputs.RoleManagementPolicyPimOnlyModeRuleArgs>[] | undefined>;
     /**
      * The role management policy scope.
      */

@@ -91,7 +91,7 @@ export interface AlertProcessingRulePropertiesResponse {
     /**
      * Conditions on which alerts will be filtered.
      */
-    conditions?: ConditionResponseV1[];
+    conditions?: ConditionAlertProcessingRuleByNameResponse[];
     /**
      * Actions to be applied.Description of alert processing rule.
      */
@@ -120,23 +120,9 @@ export function alertProcessingRulePropertiesResponseProvideDefaults(val: AlertP
 }
 
 /**
- * condition to trigger an action rule
- */
-export interface ConditionResponse {
-    /**
-     * operator for a given condition
-     */
-    operator?: string;
-    /**
-     * list of values to match for a given condition.
-     */
-    values?: string[];
-}
-
-/**
  * Condition to trigger an alert processing rule.
  */
-export interface ConditionResponseV1 {
+export interface ConditionAlertProcessingRuleByNameResponse {
     /**
      * Field for a given condition.
      */
@@ -147,6 +133,20 @@ export interface ConditionResponseV1 {
     operator?: string;
     /**
      * List of values to match for a given condition.
+     */
+    values?: string[];
+}
+
+/**
+ * condition to trigger an action rule
+ */
+export interface ConditionResponse {
+    /**
+     * operator for a given condition
+     */
+    operator?: string;
+    /**
+     * list of values to match for a given condition.
      */
     values?: string[];
 }

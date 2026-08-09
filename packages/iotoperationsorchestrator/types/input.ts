@@ -25,7 +25,7 @@ export interface ComponentPropertiesArgs {
     /**
      * Component dependencies.
      */
-    dependencies?: pulumi.Input<pulumi.Input<string>[]>;
+    dependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the component.
      */
@@ -33,7 +33,7 @@ export interface ComponentPropertiesArgs {
     /**
      * Properties of the component.
      */
-    properties?: any;
+    properties?: any | undefined;
     /**
      * Component type.
      */
@@ -61,7 +61,7 @@ export interface ReconciliationPolicyArgs {
     /**
      * Policy interval.
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * Policy type
      */
@@ -75,7 +75,7 @@ export interface TargetSelectorPropertiesArgs {
     /**
      * Name of the target.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -85,5 +85,5 @@ export interface TopologiesPropertiesArgs {
     /**
      * bindings description.
      */
-    bindings?: pulumi.Input<pulumi.Input<BindingPropertiesArgs>[]>;
+    bindings?: pulumi.Input<pulumi.Input<BindingPropertiesArgs>[] | undefined>;
 }

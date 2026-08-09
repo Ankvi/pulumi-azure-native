@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -101,7 +101,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20170418:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20210430:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20211001:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20220301:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20221001:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20221201:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20230501:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20231001preview:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20240401preview:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20240601preview:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20241001:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20250401preview:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20250601:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20250701preview:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20250901:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20251001preview:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20170418:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20210430:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20211001:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20220301:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20221001:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20221201:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20230501:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20231001preview:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20240401preview:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20240601preview:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20241001:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20250401preview:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20250601:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20250701preview:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20250901:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20251001preview:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20251201:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20260115preview:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20260301:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20260315preview:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20260501:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20260515preview:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }
@@ -118,15 +118,15 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The location of the private endpoint connection
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the private endpoint connection associated with the Cognitive Services Account
      */
-    privateEndpointConnectionName?: pulumi.Input<string>;
+    privateEndpointConnectionName?: pulumi.Input<string | undefined>;
     /**
      * Resource properties.
      */
-    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

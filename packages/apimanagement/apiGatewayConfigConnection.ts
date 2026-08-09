@@ -5,7 +5,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
  *
- * Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ApiGatewayConfigConnection extends pulumi.CustomResource {
     /**
@@ -55,7 +55,7 @@ export class ApiGatewayConfigConnection extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The current provisioning state of the API Management gateway config connection 
+     * The current provisioning state of the API Management gateway config connection
      */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
@@ -106,7 +106,7 @@ export class ApiGatewayConfigConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:ApiGatewayConfigConnection" }, { type: "azure-native:apimanagement/v20240501:ApiGatewayConfigConnection" }, { type: "azure-native:apimanagement/v20240601preview:ApiGatewayConfigConnection" }, { type: "azure-native:apimanagement/v20241001preview:ApiGatewayConfigConnection" }, { type: "azure-native:apimanagement/v20250301preview:ApiGatewayConfigConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:ApiGatewayConfigConnection" }, { type: "azure-native:apimanagement/v20240501:ApiGatewayConfigConnection" }, { type: "azure-native:apimanagement/v20240601preview:ApiGatewayConfigConnection" }, { type: "azure-native:apimanagement/v20241001preview:ApiGatewayConfigConnection" }, { type: "azure-native:apimanagement/v20250301preview:ApiGatewayConfigConnection" }, { type: "azure-native:apimanagement/v20250901preview:ApiGatewayConfigConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ApiGatewayConfigConnection.__pulumiType, name, resourceInputs, opts);
     }
@@ -119,7 +119,7 @@ export interface ApiGatewayConfigConnectionArgs {
     /**
      * The name of the API Management gateway config connection.
      */
-    configConnectionName?: pulumi.Input<string>;
+    configConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The name of the API Management gateway.
      */
@@ -127,7 +127,7 @@ export interface ApiGatewayConfigConnectionArgs {
     /**
      * The hostnames of the data-plane gateway to which requests can be sent.
      */
-    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -135,5 +135,5 @@ export interface ApiGatewayConfigConnectionArgs {
     /**
      * The link to the API Management service workspace.
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
 }

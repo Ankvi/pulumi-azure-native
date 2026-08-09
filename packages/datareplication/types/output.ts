@@ -62,32 +62,6 @@ export interface AzStackHCIFabricModelCustomPropertiesResponse {
 }
 
 /**
- * Private endpoint connection details at member level.
- */
-export interface ConnectionDetailsResponse {
-    /**
-     * Gets or sets group id.
-     */
-    groupId?: string;
-    /**
-     * Gets or sets id.
-     */
-    id?: string;
-    /**
-     * Gets or sets link identifier.
-     */
-    linkIdentifier?: string;
-    /**
-     * Gets or sets member name.
-     */
-    memberName?: string;
-    /**
-     * Gets or sets private IP address.
-     */
-    privateIpAddress?: string;
-}
-
-/**
  * Dra model properties.
  */
 export interface DraModelPropertiesResponse {
@@ -273,36 +247,6 @@ export interface FabricModelResponseSystemData {
      * managedIdentity.
      */
     lastModifiedByType?: string;
-}
-
-/**
- * Represents of a connection's group information.
- */
-export interface GroupConnectivityInformationResponse {
-    /**
-     * Gets or sets customer visible FQDNs.
-     */
-    customerVisibleFqdns?: string[];
-    /**
-     * Gets or sets group id.
-     */
-    groupId?: string;
-    /**
-     * Gets or sets Internal Fqdn.
-     */
-    internalFqdn?: string;
-    /**
-     * Gets or sets member name.
-     */
-    memberName?: string;
-    /**
-     * Gets or sets the private link service arm region.
-     */
-    privateLinkServiceArmRegion?: string;
-    /**
-     * Gets or sets the redirect map id.
-     */
-    redirectMapId?: string;
 }
 
 /**
@@ -926,20 +870,6 @@ export interface PolicyModelResponseSystemData {
 }
 
 /**
- * Represents private endpoint connection proxy request.
- */
-export interface PrivateEndpointConnectionProxyPropertiesResponse {
-    /**
-     * Gets or sets the provisioning state of the private endpoint connection proxy.
-     */
-    provisioningState: string;
-    /**
-     * Represent remote private endpoint information for the private endpoint connection proxy.
-     */
-    remotePrivateEndpoint?: RemotePrivateEndpointResponse;
-}
-
-/**
  * Represents Private endpoint connection response properties.
  */
 export interface PrivateEndpointConnectionResponsePropertiesResponse {
@@ -968,24 +898,6 @@ export interface PrivateEndpointResponse {
 }
 
 /**
- * Represents of an NRP private link service connection.
- */
-export interface PrivateLinkServiceConnectionResponse {
-    /**
-     * Gets or sets group ids.
-     */
-    groupIds?: string[];
-    /**
-     * Gets or sets private link service connection name.
-     */
-    name?: string;
-    /**
-     * Gets or sets the request message for the private link service connection.
-     */
-    requestMessage?: string;
-}
-
-/**
  * Represents Private link service connection state.
  */
 export interface PrivateLinkServiceConnectionStateResponse {
@@ -1001,28 +913,6 @@ export interface PrivateLinkServiceConnectionStateResponse {
      * Gets or sets the status.
      */
     status?: string;
-}
-
-/**
- * Represents NRP private link service proxy.
- */
-export interface PrivateLinkServiceProxyResponse {
-    /**
-     * Gets or sets group connectivity information.
-     */
-    groupConnectivityInformation?: GroupConnectivityInformationResponse[];
-    /**
-     * Gets or sets private link service proxy id.
-     */
-    id?: string;
-    /**
-     * Represent remote private endpoint connection.
-     */
-    remotePrivateEndpointConnection?: RemotePrivateEndpointConnectionResponse;
-    /**
-     * Represents Private link service connection state.
-     */
-    remotePrivateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateResponse;
 }
 
 /**
@@ -1304,42 +1194,6 @@ export interface ProtectedItemModelResponseSystemData {
      * managedIdentity.
      */
     lastModifiedByType?: string;
-}
-
-/**
- * Represent remote private endpoint connection.
- */
-export interface RemotePrivateEndpointConnectionResponse {
-    /**
-     * Gets or sets the remote private endpoint connection id.
-     */
-    id?: string;
-}
-
-/**
- * Represent remote private endpoint information for the private endpoint connection proxy.
- */
-export interface RemotePrivateEndpointResponse {
-    /**
-     * Gets or sets the list of Connection Details. This is the connection details for private endpoint.
-     */
-    connectionDetails?: ConnectionDetailsResponse[];
-    /**
-     * Gets or sets private link service proxy id.
-     */
-    id: string;
-    /**
-     * Gets or sets the list of Manual Private Link Service Connections and gets populated for Manual approval flow.
-     */
-    manualPrivateLinkServiceConnections?: PrivateLinkServiceConnectionResponse[];
-    /**
-     * Gets or sets the list of Private Link Service Connections and gets populated for Auto approval flow.
-     */
-    privateLinkServiceConnections?: PrivateLinkServiceConnectionResponse[];
-    /**
-     * Gets or sets the list of private link service proxies.
-     */
-    privateLinkServiceProxies?: PrivateLinkServiceProxyResponse[];
 }
 
 /**

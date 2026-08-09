@@ -64,7 +64,7 @@ export class Credit extends pulumi.CustomResource {
      */
     declare public readonly endAt: pulumi.Output<string | undefined>;
     /**
-     * The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. 
+     * The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
@@ -106,7 +106,7 @@ export class Credit extends pulumi.CustomResource {
     /**
      * The reason for the credit. Not required if not applicable.
      */
-    declare public /*out*/ readonly reason: pulumi.Output<types.outputs.CreditReasonResponse | undefined>;
+    declare public readonly reason: pulumi.Output<types.outputs.CreditReasonResponse | undefined>;
     /**
      * Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
      */
@@ -166,6 +166,7 @@ export class Credit extends pulumi.CustomResource {
             resourceInputs["plan"] = args?.plan;
             resourceInputs["policies"] = args?.policies;
             resourceInputs["productCode"] = args?.productCode;
+            resourceInputs["reason"] = args?.reason;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["sku"] = args?.sku;
@@ -179,7 +180,6 @@ export class Credit extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
-            resourceInputs["reason"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
@@ -224,51 +224,55 @@ export interface CreditArgs {
     /**
      * Fully-qualified identifier of the billing account where the benefit is applied. Present only for Enterprise Agreement customers.
      */
-    billingAccountResourceId?: pulumi.Input<string>;
+    billingAccountResourceId?: pulumi.Input<string | undefined>;
     /**
      * Credit line-items/milestones/no-charge services breakdown
      */
-    breakdown?: pulumi.Input<pulumi.Input<types.inputs.CreditBreakdownItemArgs>[]>;
+    breakdown?: pulumi.Input<pulumi.Input<types.inputs.CreditBreakdownItemArgs>[] | undefined>;
     /**
      * The entire investment amount for the credit contract, including currency and amount
      */
-    credit?: pulumi.Input<types.inputs.CommitmentArgs>;
+    credit?: pulumi.Input<types.inputs.CommitmentArgs | undefined>;
     /**
      * Name of the credit
      */
-    creditName?: pulumi.Input<string>;
+    creditName?: pulumi.Input<string | undefined>;
     /**
      * End DateTime in UTC.
      */
-    endAt?: pulumi.Input<string>;
+    endAt?: pulumi.Input<string | undefined>;
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
      */
-    managedBy?: pulumi.Input<string>;
+    managedBy?: pulumi.Input<string | undefined>;
     /**
      * Plan for the resource.
      */
-    plan?: pulumi.Input<types.inputs.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs | undefined>;
     /**
      * Credit breakdown item representing a milestone, line-item, or no-charge service
      */
-    policies?: pulumi.Input<types.inputs.CreditPoliciesArgs>;
+    policies?: pulumi.Input<types.inputs.CreditPoliciesArgs | undefined>;
     /**
      * Product UPN for the credit type
      */
-    productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string | undefined>;
+    /**
+     * The reason for the credit. Not required if not applicable.
+     */
+    reason?: pulumi.Input<types.inputs.CreditReasonArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -276,25 +280,25 @@ export interface CreditArgs {
     /**
      * Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The resource model definition representing SKU
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Start DateTime.
      */
-    startAt?: pulumi.Input<string>;
+    startAt?: pulumi.Input<string | undefined>;
     /**
      * Status of the credit
      */
-    status?: pulumi.Input<string | types.enums.CreditStatus>;
+    status?: pulumi.Input<string | types.enums.CreditStatus | undefined>;
     /**
      * System identifier
      */
-    systemId?: pulumi.Input<string>;
+    systemId?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

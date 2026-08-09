@@ -737,7 +737,7 @@ export interface OfferDetailResponse {
     /**
      * SaaS Offer Status
      */
-    status?: string;
+    status: string;
     /**
      * Offer Plan Term Id
      */

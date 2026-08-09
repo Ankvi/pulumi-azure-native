@@ -7,19 +7,19 @@ export interface ACRPropertiesArgs {
     /**
      * Gets or sets the azure container registry name.
      */
-    registryName?: pulumi.Input<string>;
+    registryName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the resource group of the resource.
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the subscription id of the resource.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the tenant id.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -45,7 +45,7 @@ export interface AKSAssessmentSettingsArgs {
     /**
      * Gets or sets discount percentage.
      */
-    discountPercentage?: pulumi.Input<number>;
+    discountPercentage?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets environment type.
      */
@@ -57,7 +57,7 @@ export interface AKSAssessmentSettingsArgs {
     /**
      * Gets or sets performance data settings.
      */
-    performanceData?: pulumi.Input<PerfDataSettingsArgs>;
+    performanceData?: pulumi.Input<PerfDataSettingsArgs | undefined>;
     /**
      * Gets or sets pricing tier.
      */
@@ -69,7 +69,7 @@ export interface AKSAssessmentSettingsArgs {
     /**
      * Gets or sets scaling factor.
      */
-    scalingFactor?: pulumi.Input<number>;
+    scalingFactor?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets sizing criteria.
      */
@@ -83,19 +83,19 @@ export interface AKSDeploymentPropertiesArgs {
     /**
      * Gets or sets the AKS cluster name.
      */
-    aksClusterName?: pulumi.Input<string>;
+    aksClusterName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the resource group of the resource.
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the subscription id of the resource.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the tenant id.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -105,15 +105,15 @@ export interface AKSDeploymentSpecificationArgs {
     /**
      * Gets or sets the Merged Deployment and service Yaml.
      */
-    kubernetesObjectsYaml?: pulumi.Input<string>;
+    kubernetesObjectsYaml?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the load balancer type.
      */
-    loadBalancerType?: pulumi.Input<string | enums.LoadBalancerType>;
+    loadBalancerType?: pulumi.Input<string | enums.LoadBalancerType | undefined>;
     /**
      * Gets or sets the replica count to be created in AKS.
      */
-    replicaCount?: pulumi.Input<string>;
+    replicaCount?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -123,55 +123,55 @@ export interface ApacheTomcatAKSWorkloadDeploymentArgs {
     /**
      * Class for automation artifact.
      */
-    automationArtifactProperties?: pulumi.Input<AutomationArtifactArgs>;
+    automationArtifactProperties?: pulumi.Input<AutomationArtifactArgs | undefined>;
     /**
      * Gets or sets the bindings for the application.
      */
-    bindings?: pulumi.Input<pulumi.Input<BindingArgs>[]>;
+    bindings?: pulumi.Input<pulumi.Input<BindingArgs>[] | undefined>;
     /**
      * Gets or sets the build container images.
      */
-    buildContainerImages?: pulumi.Input<pulumi.Input<ContainerImagePropertiesArgs>[]>;
+    buildContainerImages?: pulumi.Input<pulumi.Input<ContainerImagePropertiesArgs>[] | undefined>;
     /**
      * Class for AKSDeployment Properties.
      */
-    clusterProperties?: pulumi.Input<AKSDeploymentPropertiesArgs>;
+    clusterProperties?: pulumi.Input<AKSDeploymentPropertiesArgs | undefined>;
     /**
      * Gets or sets application configuration.
      */
-    configurations?: pulumi.Input<pulumi.Input<WebApplicationConfigurationArgs>[]>;
+    configurations?: pulumi.Input<pulumi.Input<WebApplicationConfigurationArgs>[] | undefined>;
     /**
      * Class for container image properties.
      */
-    containerImageProperties?: pulumi.Input<ContainerImagePropertiesArgs>;
+    containerImageProperties?: pulumi.Input<ContainerImagePropertiesArgs | undefined>;
     /**
      * Gets or sets the deployment name prefix.
      */
-    deploymentNamePrefix?: pulumi.Input<string>;
+    deploymentNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * AKS Deployment Specification.
      */
-    deploymentSpec?: pulumi.Input<AKSDeploymentSpecificationArgs>;
+    deploymentSpec?: pulumi.Input<AKSDeploymentSpecificationArgs | undefined>;
     /**
      * Gets or sets application directories.
      */
-    directories?: pulumi.Input<pulumi.Input<WebApplicationDirectoryArgs>[]>;
+    directories?: pulumi.Input<pulumi.Input<WebApplicationDirectoryArgs>[] | undefined>;
     /**
      * Resource Requirements.
      */
-    limits?: pulumi.Input<ResourceRequirementsArgs>;
+    limits?: pulumi.Input<ResourceRequirementsArgs | undefined>;
     /**
      * Class for app insight monitoring properties.
      */
-    monitoringProperties?: pulumi.Input<AppInsightMonitoringPropertiesArgs>;
+    monitoringProperties?: pulumi.Input<AppInsightMonitoringPropertiesArgs | undefined>;
     /**
      * Resource Requirements.
      */
-    requests?: pulumi.Input<ResourceRequirementsArgs>;
+    requests?: pulumi.Input<ResourceRequirementsArgs | undefined>;
     /**
      * Gets or sets the target platform managed identity.
      */
-    targetPlatformIdentity?: pulumi.Input<string>;
+    targetPlatformIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,7 +181,7 @@ export interface ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesArgs {
     /**
      * ApacheTomcat web application.
      */
-    apacheTomcatAksWorkloadDeploymentProperties?: pulumi.Input<ApacheTomcatAKSWorkloadDeploymentArgs>;
+    apacheTomcatAksWorkloadDeploymentProperties?: pulumi.Input<ApacheTomcatAKSWorkloadDeploymentArgs | undefined>;
     /**
      * Gets or sets the instance type.
      * Expected value is 'ApacheTomcatAKSWorkloadDeploymentModelCustomProperties'.
@@ -196,59 +196,59 @@ export interface ApacheTomcatWebApplicationArgs {
     /**
      * Gets or sets the web application id.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the web application name.
      */
-    applicationName?: pulumi.Input<string>;
+    applicationName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets application scratch path.
      */
-    applicationScratchPath?: pulumi.Input<string>;
+    applicationScratchPath?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the bindings for the application.
      */
-    bindings?: pulumi.Input<pulumi.Input<BindingArgs>[]>;
+    bindings?: pulumi.Input<pulumi.Input<BindingArgs>[] | undefined>;
     /**
      * Gets or sets application configuration.
      */
-    configurations?: pulumi.Input<pulumi.Input<WebApplicationConfigurationArgs>[]>;
+    configurations?: pulumi.Input<pulumi.Input<WebApplicationConfigurationArgs>[] | undefined>;
     /**
      * Gets or sets application directories.
      */
-    directories?: pulumi.Input<pulumi.Input<WebApplicationDirectoryArgs>[]>;
+    directories?: pulumi.Input<pulumi.Input<WebApplicationDirectoryArgs>[] | undefined>;
     /**
      * Gets or sets the discovered frameworks of application.
      */
-    discoveredFrameworks?: pulumi.Input<pulumi.Input<WebApplicationFrameworkArgs>[]>;
+    discoveredFrameworks?: pulumi.Input<pulumi.Input<WebApplicationFrameworkArgs>[] | undefined>;
     /**
      * Gets or sets the display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Resource Requirements.
      */
-    limits?: pulumi.Input<ResourceRequirementsArgs>;
+    limits?: pulumi.Input<ResourceRequirementsArgs | undefined>;
     /**
      * Second level entity for virtual directories.
      */
-    path?: pulumi.Input<DirectoryPathArgs>;
+    path?: pulumi.Input<DirectoryPathArgs | undefined>;
     /**
      * Framework specific data for a web application.
      */
-    primaryFramework?: pulumi.Input<WebApplicationFrameworkArgs>;
+    primaryFramework?: pulumi.Input<WebApplicationFrameworkArgs | undefined>;
     /**
      * Resource Requirements.
      */
-    requests?: pulumi.Input<ResourceRequirementsArgs>;
+    requests?: pulumi.Input<ResourceRequirementsArgs | undefined>;
     /**
      * Gets or sets the web server id.
      */
-    webServerId?: pulumi.Input<string>;
+    webServerId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the web server name.
      */
-    webServerName?: pulumi.Input<string>;
+    webServerName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -258,7 +258,7 @@ export interface ApacheTomcatWorkloadInstanceModelCustomPropertiesArgs {
     /**
      * ApacheTomcat web application.
      */
-    apacheTomcatWebApplication?: pulumi.Input<ApacheTomcatWebApplicationArgs>;
+    apacheTomcatWebApplication?: pulumi.Input<ApacheTomcatWebApplicationArgs | undefined>;
     /**
      * Gets or sets the instance type.
      * Expected value is 'ApacheTomcatWorkloadInstanceModelCustomProperties'.
@@ -267,11 +267,11 @@ export interface ApacheTomcatWorkloadInstanceModelCustomPropertiesArgs {
     /**
      * Gets or sets the Web application ARM id.
      */
-    webAppArmId?: pulumi.Input<string>;
+    webAppArmId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the Web application site name.
      */
-    webAppSiteName?: pulumi.Input<string>;
+    webAppSiteName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -281,24 +281,24 @@ export interface AppInsightMonitoringPropertiesArgs {
     /**
      * Gets or sets the app insights name.
      */
-    appInsightsName?: pulumi.Input<string>;
+    appInsightsName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets a value indicating whether monitoring is enabled.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the region.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the resource group of the resource.
      */
-    resourceGroup?: pulumi.Input<string>;
-    secretStoreDetails?: pulumi.Input<SecretStoreDetailsArgs>;
+    resourceGroup?: pulumi.Input<string | undefined>;
+    secretStoreDetails?: pulumi.Input<SecretStoreDetailsArgs | undefined>;
     /**
      * Gets or sets the subscription id of the resource.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -408,7 +408,7 @@ export interface AssessmentScopeParametersArgs {
     /**
      * Gets or sets the server group id.
      */
-    serverGroupId?: pulumi.Input<string>;
+    serverGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -418,16 +418,16 @@ export interface AutomationArtifactArgs {
     /**
      * Gets or sets the artifacts.
      */
-    artifacts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    artifacts?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Azure file share profile for hydration of application folders not mounted on
      * the container file system.
      */
-    azureFileShareProfile?: pulumi.Input<AzureFileShareHydrationProfileArgs>;
+    azureFileShareProfile?: pulumi.Input<AzureFileShareHydrationProfileArgs | undefined>;
     /**
      * Gets or sets the status of automation artifacts.
      */
-    status?: pulumi.Input<string | enums.AutomationArtifactStatus>;
+    status?: pulumi.Input<string | enums.AutomationArtifactStatus | undefined>;
 }
 
 /**
@@ -437,7 +437,7 @@ export interface AvailabilitySetResourceSettingsArgs {
     /**
      * Gets or sets the target fault domain.
      */
-    faultDomain?: pulumi.Input<number>;
+    faultDomain?: pulumi.Input<number | undefined>;
     /**
      * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
      * Expected value is 'Microsoft.Compute/availabilitySets'.
@@ -446,19 +446,19 @@ export interface AvailabilitySetResourceSettingsArgs {
     /**
      * Gets or sets the Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Gets or sets the target resource group name.
      */
-    targetResourceGroupName?: pulumi.Input<string>;
+    targetResourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName?: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target update domain.
      */
-    updateDomain?: pulumi.Input<number>;
+    updateDomain?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -468,15 +468,15 @@ export interface AvsAssessmentPropertiesV2Args {
     /**
      * Gets or sets the machine assessment ARM ID for VM fallback.
      */
-    fallbackMachineAssessmentArmId?: pulumi.Input<string>;
+    fallbackMachineAssessmentArmId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the scope of assessment.
      */
-    scope?: pulumi.Input<ScopeArgs>;
+    scope?: pulumi.Input<ScopeArgs | undefined>;
     /**
      * Gets or sets the settings for the assessment.
      */
-    settings?: pulumi.Input<AvsAssessmentSettingsArgs>;
+    settings?: pulumi.Input<AvsAssessmentSettingsArgs | undefined>;
 }
 
 /**
@@ -486,80 +486,80 @@ export interface AvsAssessmentSettingsArgs {
     /**
      * AVS Assessment Scenario.
      */
-    avsAssessmentScenario?: pulumi.Input<string | enums.AvsAssessmentScenario>;
+    avsAssessmentScenario?: pulumi.Input<string | enums.AvsAssessmentScenario | undefined>;
     /**
      * Azure Location or Azure region where to which the machines will be migrated.
      */
-    azureLocation?: pulumi.Input<string>;
+    azureLocation?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the billing settings.
      */
-    billingSettings?: pulumi.Input<BillingSettingsArgs>;
+    billingSettings?: pulumi.Input<BillingSettingsArgs | undefined>;
     /**
      * Gets or sets the CPU headroom.
      */
-    cpuHeadroom?: pulumi.Input<number>;
+    cpuHeadroom?: pulumi.Input<number | undefined>;
     /**
      * Currency in which prices should be reported.
      */
-    currency?: pulumi.Input<string | enums.AzureCurrency>;
+    currency?: pulumi.Input<string | enums.AzureCurrency | undefined>;
     /**
      * De-duplication compression.
      */
-    dedupeCompression?: pulumi.Input<number>;
+    dedupeCompression?: pulumi.Input<number | undefined>;
     /**
      * Custom discount percentage.
      */
-    discountPercentage?: pulumi.Input<number>;
+    discountPercentage?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets user configurable setting to display the environment type.
      */
-    environmentType?: pulumi.Input<string | enums.EnvironmentType>;
+    environmentType?: pulumi.Input<string | enums.EnvironmentType | undefined>;
     /**
      * List of AVS external storage types.
      */
-    externalStorageTypes?: pulumi.Input<pulumi.Input<string | enums.ExternalStorageType>[]>;
+    externalStorageTypes?: pulumi.Input<pulumi.Input<string | enums.ExternalStorageType>[] | undefined>;
     /**
      * List of Failures to tolerate and RAID levels in a common property.
      */
-    failuresToTolerateAndRaidLevelList?: pulumi.Input<pulumi.Input<string | enums.FttAndRaidLevel>[]>;
+    failuresToTolerateAndRaidLevelList?: pulumi.Input<pulumi.Input<string | enums.FttAndRaidLevel>[] | undefined>;
     /**
      * Is Stretch Cluster Enabled.
      */
-    isStretchClusterEnabled?: pulumi.Input<boolean>;
+    isStretchClusterEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Is VCF license applied
      */
-    isVcfByolEnabled?: pulumi.Input<boolean>;
+    isVcfByolEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Memory overcommit.
      */
-    memOvercommit?: pulumi.Input<number>;
+    memOvercommit?: pulumi.Input<number | undefined>;
     /**
      * AVS node types.
      */
-    nodeTypes?: pulumi.Input<pulumi.Input<string | enums.AzureAvsNodeType>[]>;
+    nodeTypes?: pulumi.Input<pulumi.Input<string | enums.AzureAvsNodeType>[] | undefined>;
     /**
      * Gets or sets the performance data.
      */
-    performanceData?: pulumi.Input<PerformanceDataArgs>;
+    performanceData?: pulumi.Input<PerformanceDataArgs | undefined>;
     /**
      * Gets or sets the savings settings.
      */
-    savingsSettings?: pulumi.Input<SavingsSettingsArgs>;
+    savingsSettings?: pulumi.Input<SavingsSettingsArgs | undefined>;
     /**
      * Percentage of buffer that user wants on performance metrics when recommending
      * Azure sizes.
      */
-    scalingFactor?: pulumi.Input<number>;
+    scalingFactor?: pulumi.Input<number | undefined>;
     /**
      * Assessment sizing criterion.
      */
-    sizingCriterion?: pulumi.Input<string | enums.AssessmentSizingCriterion>;
+    sizingCriterion?: pulumi.Input<string | enums.AssessmentSizingCriterion | undefined>;
     /**
      * VCPU over subscription.
      */
-    vcpuOversubscription?: pulumi.Input<number>;
+    vcpuOversubscription?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -597,11 +597,11 @@ export interface AzureArcSettingsArgs {
     /**
      * Gets Azure arc labour cost percentage.
      */
-    laborCostPercentage?: pulumi.Input<number>;
+    laborCostPercentage?: pulumi.Input<number | undefined>;
     /**
      * Management settings.
      */
-    managementSettings?: pulumi.Input<AzureArcManagementSettingsArgs>;
+    managementSettings?: pulumi.Input<AzureArcManagementSettingsArgs | undefined>;
 }
 
 /**
@@ -612,23 +612,23 @@ export interface AzureFileShareHydrationProfileArgs {
     /**
      * Gets or sets the cloud directory path of the directory on azure file share.
      */
-    azureFileShareDirPath?: pulumi.Input<string>;
+    azureFileShareDirPath?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the name of the azure file share.
      */
-    azureFileShareName?: pulumi.Input<string>;
+    azureFileShareName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the name of the azure file share resource group.
      */
-    azureFileShareResourceGroup?: pulumi.Input<string>;
+    azureFileShareResourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the name of the azure file share storage account.
      */
-    azureFileShareStorageAccount?: pulumi.Input<string>;
+    azureFileShareStorageAccount?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the subscription id of the azure file share.
      */
-    azureFileShareSubscriptionId?: pulumi.Input<string>;
+    azureFileShareSubscriptionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -638,15 +638,15 @@ export interface AzureSettingsArgs {
     /**
      * Gets Avs labour cost percentage.
      */
-    avsLaborCostPercentage?: pulumi.Input<number>;
+    avsLaborCostPercentage?: pulumi.Input<number | undefined>;
     /**
      * Migration Strategy.
      */
-    businessCaseType?: pulumi.Input<string | enums.MigrationStrategy>;
+    businessCaseType?: pulumi.Input<string | enums.MigrationStrategy | undefined>;
     /**
      * Gets comfort factor.
      */
-    comfortFactor?: pulumi.Input<number>;
+    comfortFactor?: pulumi.Input<number | undefined>;
     /**
      * Business case Currency.
      */
@@ -654,43 +654,43 @@ export interface AzureSettingsArgs {
     /**
      * Gets azure Discount percentage.
      */
-    discountPercentage?: pulumi.Input<number>;
+    discountPercentage?: pulumi.Input<number | undefined>;
     /**
      * Gets IaaS labour cost percentage.
      */
-    iaasLaborCostPercentage?: pulumi.Input<number>;
+    iaasLaborCostPercentage?: pulumi.Input<number | undefined>;
     /**
      * Gets infrastructure growth rate.
      */
-    infrastructureGrowthRate?: pulumi.Input<number>;
+    infrastructureGrowthRate?: pulumi.Input<number | undefined>;
     /**
      * Gets network cost percentage.
      */
-    networkCostPercentage?: pulumi.Input<number>;
+    networkCostPercentage?: pulumi.Input<number | undefined>;
     /**
      * Gets PaaS labour cost percentage.
      */
-    paasLaborCostPercentage?: pulumi.Input<number>;
+    paasLaborCostPercentage?: pulumi.Input<number | undefined>;
     /**
      * Gets migration completion percentage per year.
      */
-    perYearMigrationCompletionPercentage?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    perYearMigrationCompletionPercentage?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
     /**
      * Gets end time to use for performance.
      */
-    performanceDataEndTime?: pulumi.Input<string>;
+    performanceDataEndTime?: pulumi.Input<string | undefined>;
     /**
      * Gets start time to use for performance.
      */
-    performanceDataStartTime?: pulumi.Input<string>;
+    performanceDataStartTime?: pulumi.Input<string | undefined>;
     /**
      * Gets utilization percentile for performance.
      */
-    performanceUtilizationPercentile?: pulumi.Input<number>;
+    performanceUtilizationPercentile?: pulumi.Input<number | undefined>;
     /**
      * Gets the business case savings option type.
      */
-    savingsOption?: pulumi.Input<string | enums.SavingsOption>;
+    savingsOption?: pulumi.Input<string | enums.SavingsOption | undefined>;
     /**
      * Gets or sets azure location.
      */
@@ -698,11 +698,11 @@ export interface AzureSettingsArgs {
     /**
      * Gets wACC percentage.
      */
-    wacc?: pulumi.Input<number>;
+    wacc?: pulumi.Input<number | undefined>;
     /**
      * Workload discovery source.
      */
-    workloadDiscoverySource?: pulumi.Input<string | enums.DiscoverySource>;
+    workloadDiscoverySource?: pulumi.Input<string | enums.DiscoverySource | undefined>;
 }
 /**
  * azureSettingsArgsProvideDefaults sets the appropriate defaults for AzureSettingsArgs
@@ -731,11 +731,11 @@ export interface BillingSettingsArgs {
     /**
      * Gets or sets the licensing program.
      */
-    licensingProgram?: pulumi.Input<string | enums.LicensingProgram>;
+    licensingProgram?: pulumi.Input<string | enums.LicensingProgram | undefined>;
     /**
      * Gets or sets the subscription ID for licensing program selected.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -745,27 +745,27 @@ export interface BindingArgs {
     /**
      * WebApplication certificate.
      */
-    cert?: pulumi.Input<CertArgs>;
+    cert?: pulumi.Input<CertArgs | undefined>;
     /**
      * Gets or sets the binding host name.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the IP Address.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the application port.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * WebApplication port mapping.
      */
-    portMapping?: pulumi.Input<PortMappingArgs>;
+    portMapping?: pulumi.Input<PortMappingArgs | undefined>;
     /**
      * Gets or sets the protocol.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -775,23 +775,23 @@ export interface CertArgs {
     /**
      * Gets or sets the Certificate data.
      */
-    certData?: pulumi.Input<string>;
+    certData?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets a value indicating whether certificate is needed or not.
      */
-    certNeeded?: pulumi.Input<boolean>;
+    certNeeded?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets a value indicating whether certificate is provided or not.
      */
-    certProvided?: pulumi.Input<boolean>;
+    certProvided?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the type of secret store for the certificate.
      */
-    secretStore?: pulumi.Input<string | enums.SecretStoreType>;
+    secretStore?: pulumi.Input<string | enums.SecretStoreType | undefined>;
 }
 
 export interface CollectorAgentPropertiesArgs {
-    spnDetails?: pulumi.Input<CollectorBodyAgentSpnPropertiesArgs>;
+    spnDetails?: pulumi.Input<CollectorBodyAgentSpnPropertiesArgs | undefined>;
 }
 
 /**
@@ -801,19 +801,19 @@ export interface CollectorAgentPropertiesBaseArgs {
     /**
      * Gets the collector agent id.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Gets the collector last heartbeat time.
      */
-    lastHeartbeatUtc?: pulumi.Input<string>;
+    lastHeartbeatUtc?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the SPN details.
      */
-    spnDetails?: pulumi.Input<CollectorAgentSpnPropertiesBaseArgs>;
+    spnDetails?: pulumi.Input<CollectorAgentSpnPropertiesBaseArgs | undefined>;
     /**
      * Gets the collector agent version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -823,54 +823,54 @@ export interface CollectorAgentSpnPropertiesBaseArgs {
     /**
      * Gets the AAD application id.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Gets the AAD audience url.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * Gets the AAD authority endpoint.
      */
-    authority?: pulumi.Input<string>;
+    authority?: pulumi.Input<string | undefined>;
     /**
      * Gets the object id of the AAD application.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * Gets the tenant id of the AAD application.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 export interface CollectorBodyAgentSpnPropertiesArgs {
     /**
      * Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Intended audience for the service principal.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * AAD Authority URL which was used to request the token for the service principal.
      */
-    authority?: pulumi.Input<string>;
+    authority?: pulumi.Input<string | undefined>;
     /**
      * Object Id of the service principal with which the on-premise management/data plane components would communicate with our Azure services.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * Tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 export interface CollectorPropertiesArgs {
-    agentProperties?: pulumi.Input<CollectorAgentPropertiesArgs>;
+    agentProperties?: pulumi.Input<CollectorAgentPropertiesArgs | undefined>;
     /**
      * The ARM id of the discovery service site.
      */
-    discoverySiteId?: pulumi.Input<string>;
+    discoverySiteId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -880,7 +880,7 @@ export interface CompoundAssessmentPropertiesArgs {
     /**
      * Fallback machine assessment ARM ID.
      */
-    fallbackMachineAssessmentArmId?: pulumi.Input<string>;
+    fallbackMachineAssessmentArmId?: pulumi.Input<string | undefined>;
     /**
      * ARM IDs of the target assessments.
      */
@@ -928,7 +928,7 @@ export interface ConnectionStateRequestBodyPropertiesArgs {
     /**
      * Private endpoint connection state.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs | undefined>;
 }
 
 /**
@@ -938,27 +938,27 @@ export interface ContainerImagePropertiesArgs {
     /**
      * Gets or sets the dockerfile for the container image.
      */
-    dockerfile?: pulumi.Input<string>;
+    dockerfile?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the container image name.
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the container image tag.
      */
-    imageTag?: pulumi.Input<string>;
+    imageTag?: pulumi.Input<string | undefined>;
     /**
      * Class for ACR Properties.
      */
-    registryProperties?: pulumi.Input<ACRPropertiesArgs>;
+    registryProperties?: pulumi.Input<ACRPropertiesArgs | undefined>;
     /**
      * Gets or sets the RunId.
      */
-    runId?: pulumi.Input<string>;
+    runId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the RunStatus.
      */
-    runStatus?: pulumi.Input<string>;
+    runStatus?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -968,11 +968,11 @@ export interface DirectoryPathArgs {
     /**
      * Gets or sets the physical path of the directory on the web server.
      */
-    physical?: pulumi.Input<string>;
+    physical?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the virtual path for the directory.
      */
-    virtual?: pulumi.Input<string>;
+    virtual?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1005,11 +1005,11 @@ export interface DiskEncryptionSetResourceSettingsArgs {
     /**
      * Gets or sets the target resource group name.
      */
-    targetResourceGroupName?: pulumi.Input<string>;
+    targetResourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName?: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1019,11 +1019,11 @@ export interface EntityUptimeArgs {
     /**
      * Gets the days per month.
      */
-    daysPerMonth?: pulumi.Input<number>;
+    daysPerMonth?: pulumi.Input<number | undefined>;
     /**
      * Gets the hours per day.
      */
-    hoursPerDay?: pulumi.Input<number>;
+    hoursPerDay?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1033,7 +1033,7 @@ export interface FacilitySettingsArgs {
     /**
      * The facilities cost.
      */
-    facilitiesCostPerKwh?: pulumi.Input<number>;
+    facilitiesCostPerKwh?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1043,36 +1043,36 @@ export interface GmsaAuthenticationPropertiesArgs {
     /**
      * Gets or sets the list of dns server that can resolve the Active Directory Domain Name/Address.
      */
-    adDomainControllerDns?: pulumi.Input<string>;
+    adDomainControllerDns?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the FQDN of the Active Directory Domain. For e.g. 'contoso.local', 'fareast.corp.microsoft.com' etc.
      */
-    adDomainFqdn?: pulumi.Input<string>;
-    akvProperties?: pulumi.Input<KeyVaultSecretStorePropertiesArgs>;
+    adDomainFqdn?: pulumi.Input<string | undefined>;
+    akvProperties?: pulumi.Input<KeyVaultSecretStorePropertiesArgs | undefined>;
     /**
      * Gets or sets the password of the user specified by RestApi.Controllers.V2022_05_01_preview.Models.WorkloadDeployment.Gmsa.GmsaAuthenticationProperties.DomainAdminUsername.
      */
-    domainAdminPassword?: pulumi.Input<string>;
+    domainAdminPassword?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the name of the user having admin rights on the Active Directory Domain Controller.
      */
-    domainAdminUsername?: pulumi.Input<string>;
+    domainAdminUsername?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the address of the Active Directory Domain Controller running Domain Services.
      */
-    domainControllerAddress?: pulumi.Input<string>;
+    domainControllerAddress?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the name to be used for GMSA.
      */
-    gmsaAccountName?: pulumi.Input<string>;
+    gmsaAccountName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the password of the user specified by RestApi.Controllers.V2022_05_01_preview.Models.WorkloadDeployment.Gmsa.GmsaAuthenticationProperties.GmsaUsername.
      */
-    gmsaUserPassword?: pulumi.Input<string>;
+    gmsaUserPassword?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets username of the user having authorization to access GMSA on Active Directory.
      */
-    gmsaUsername?: pulumi.Input<string>;
+    gmsaUsername?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1082,7 +1082,7 @@ export interface GroupPropertiesArgs {
     /**
      * The type of group.
      */
-    groupType?: pulumi.Input<string>;
+    groupType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1092,7 +1092,7 @@ export interface HeterogeneousAssessmentPropertiesArgs {
     /**
      * Arm id of partner assessments.
      */
-    assessmentArmIds?: pulumi.Input<pulumi.Input<string>[]>;
+    assessmentArmIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1134,59 +1134,59 @@ export interface IISAKSWorkloadDeploymentArgs {
     /**
      * Class for GMSA authentication details to configure Active Directory connectivity.
      */
-    authenticationProperties?: pulumi.Input<GmsaAuthenticationPropertiesArgs>;
+    authenticationProperties?: pulumi.Input<GmsaAuthenticationPropertiesArgs | undefined>;
     /**
      * Class for automation artifact.
      */
-    automationArtifactProperties?: pulumi.Input<AutomationArtifactArgs>;
+    automationArtifactProperties?: pulumi.Input<AutomationArtifactArgs | undefined>;
     /**
      * Gets or sets the bindings for the application.
      */
-    bindings?: pulumi.Input<pulumi.Input<BindingArgs>[]>;
+    bindings?: pulumi.Input<pulumi.Input<BindingArgs>[] | undefined>;
     /**
      * Gets or sets the build container images.
      */
-    buildContainerImages?: pulumi.Input<pulumi.Input<ContainerImagePropertiesArgs>[]>;
+    buildContainerImages?: pulumi.Input<pulumi.Input<ContainerImagePropertiesArgs>[] | undefined>;
     /**
      * Class for AKSDeployment Properties.
      */
-    clusterProperties?: pulumi.Input<AKSDeploymentPropertiesArgs>;
+    clusterProperties?: pulumi.Input<AKSDeploymentPropertiesArgs | undefined>;
     /**
      * Gets or sets application configuration.
      */
-    configurations?: pulumi.Input<pulumi.Input<WebApplicationConfigurationArgs>[]>;
+    configurations?: pulumi.Input<pulumi.Input<WebApplicationConfigurationArgs>[] | undefined>;
     /**
      * Class for container image properties.
      */
-    containerImageProperties?: pulumi.Input<ContainerImagePropertiesArgs>;
+    containerImageProperties?: pulumi.Input<ContainerImagePropertiesArgs | undefined>;
     /**
      * Gets or sets the deployment name prefix.
      */
-    deploymentNamePrefix?: pulumi.Input<string>;
+    deploymentNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * AKS Deployment Specification.
      */
-    deploymentSpec?: pulumi.Input<AKSDeploymentSpecificationArgs>;
+    deploymentSpec?: pulumi.Input<AKSDeploymentSpecificationArgs | undefined>;
     /**
      * Gets or sets application directories.
      */
-    directories?: pulumi.Input<pulumi.Input<WebApplicationDirectoryArgs>[]>;
+    directories?: pulumi.Input<pulumi.Input<WebApplicationDirectoryArgs>[] | undefined>;
     /**
      * Resource Requirements.
      */
-    limits?: pulumi.Input<ResourceRequirementsArgs>;
+    limits?: pulumi.Input<ResourceRequirementsArgs | undefined>;
     /**
      * Class for app insight monitoring properties.
      */
-    monitoringProperties?: pulumi.Input<AppInsightMonitoringPropertiesArgs>;
+    monitoringProperties?: pulumi.Input<AppInsightMonitoringPropertiesArgs | undefined>;
     /**
      * Resource Requirements.
      */
-    requests?: pulumi.Input<ResourceRequirementsArgs>;
+    requests?: pulumi.Input<ResourceRequirementsArgs | undefined>;
     /**
      * Gets or sets the target platform managed identity.
      */
-    targetPlatformIdentity?: pulumi.Input<string>;
+    targetPlatformIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1196,7 +1196,7 @@ export interface IISAKSWorkloadDeploymentModelCustomPropertiesArgs {
     /**
      * IIS AKS workload deployment.
      */
-    iisAksWorkloadDeploymentProperties?: pulumi.Input<IISAKSWorkloadDeploymentArgs>;
+    iisAksWorkloadDeploymentProperties?: pulumi.Input<IISAKSWorkloadDeploymentArgs | undefined>;
     /**
      * Gets or sets the instance type.
      * Expected value is 'IISAKSWorkloadDeploymentModelCustomProperties'.
@@ -1211,27 +1211,27 @@ export interface IISApplicationDetailsArgs {
     /**
      * Gets or sets the application pool name.
      */
-    applicationPoolName?: pulumi.Input<string>;
+    applicationPoolName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the list of directories.
      */
-    directories?: pulumi.Input<pulumi.Input<DirectoryPathArgs>[]>;
+    directories?: pulumi.Input<pulumi.Input<DirectoryPathArgs>[] | undefined>;
     /**
      * Gets or sets a value indicating whether 32 bit applications are allowed to run on 64 bit.
      */
-    enable32BitApiOnWin64?: pulumi.Input<boolean>;
+    enable32BitApiOnWin64?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the managed pipeline mode.
      */
-    managedPipelineMode?: pulumi.Input<string>;
+    managedPipelineMode?: pulumi.Input<string | undefined>;
     /**
      * Second level entity for virtual directories.
      */
-    path?: pulumi.Input<DirectoryPathArgs>;
+    path?: pulumi.Input<DirectoryPathArgs | undefined>;
     /**
      * Gets or sets the runtime version.
      */
-    runtimeVersion?: pulumi.Input<string>;
+    runtimeVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1241,11 +1241,11 @@ export interface IISVirtualApplicationDetailsArgs {
     /**
      * Gets or sets the list of directories.
      */
-    directories?: pulumi.Input<pulumi.Input<DirectoryPathArgs>[]>;
+    directories?: pulumi.Input<pulumi.Input<DirectoryPathArgs>[] | undefined>;
     /**
      * Second level entity for virtual directories.
      */
-    path?: pulumi.Input<DirectoryPathArgs>;
+    path?: pulumi.Input<DirectoryPathArgs | undefined>;
 }
 
 /**
@@ -1255,71 +1255,71 @@ export interface IISWebApplicationArgs {
     /**
      * Gets or sets the web application id.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the web application name.
      */
-    applicationName?: pulumi.Input<string>;
+    applicationName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets application scratch path.
      */
-    applicationScratchPath?: pulumi.Input<string>;
+    applicationScratchPath?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the list of applications for the IIS web site.
      */
-    applications?: pulumi.Input<pulumi.Input<IISApplicationDetailsArgs>[]>;
+    applications?: pulumi.Input<pulumi.Input<IISApplicationDetailsArgs>[] | undefined>;
     /**
      * Gets or sets the bindings for the application.
      */
-    bindings?: pulumi.Input<pulumi.Input<BindingArgs>[]>;
+    bindings?: pulumi.Input<pulumi.Input<BindingArgs>[] | undefined>;
     /**
      * Gets or sets application configuration.
      */
-    configurations?: pulumi.Input<pulumi.Input<WebApplicationConfigurationArgs>[]>;
+    configurations?: pulumi.Input<pulumi.Input<WebApplicationConfigurationArgs>[] | undefined>;
     /**
      * Gets or sets application directories.
      */
-    directories?: pulumi.Input<pulumi.Input<WebApplicationDirectoryArgs>[]>;
+    directories?: pulumi.Input<pulumi.Input<WebApplicationDirectoryArgs>[] | undefined>;
     /**
      * Gets or sets the discovered frameworks of application.
      */
-    discoveredFrameworks?: pulumi.Input<pulumi.Input<WebApplicationFrameworkArgs>[]>;
+    discoveredFrameworks?: pulumi.Input<pulumi.Input<WebApplicationFrameworkArgs>[] | undefined>;
     /**
      * Gets or sets the display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * IISWeb server.
      */
-    iisWebServer?: pulumi.Input<IISWebServerArgs>;
+    iisWebServer?: pulumi.Input<IISWebServerArgs | undefined>;
     /**
      * Resource Requirements.
      */
-    limits?: pulumi.Input<ResourceRequirementsArgs>;
+    limits?: pulumi.Input<ResourceRequirementsArgs | undefined>;
     /**
      * Second level entity for virtual directories.
      */
-    path?: pulumi.Input<DirectoryPathArgs>;
+    path?: pulumi.Input<DirectoryPathArgs | undefined>;
     /**
      * Framework specific data for a web application.
      */
-    primaryFramework?: pulumi.Input<WebApplicationFrameworkArgs>;
+    primaryFramework?: pulumi.Input<WebApplicationFrameworkArgs | undefined>;
     /**
      * Resource Requirements.
      */
-    requests?: pulumi.Input<ResourceRequirementsArgs>;
+    requests?: pulumi.Input<ResourceRequirementsArgs | undefined>;
     /**
      * Gets or sets the list of application units for the web site.
      */
-    virtualApplications?: pulumi.Input<pulumi.Input<IISVirtualApplicationDetailsArgs>[]>;
+    virtualApplications?: pulumi.Input<pulumi.Input<IISVirtualApplicationDetailsArgs>[] | undefined>;
     /**
      * Gets or sets the web server id.
      */
-    webServerId?: pulumi.Input<string>;
+    webServerId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the web server name.
      */
-    webServerName?: pulumi.Input<string>;
+    webServerName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1329,44 +1329,44 @@ export interface IISWebServerArgs {
     /**
      * Gets or sets the display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets list of ip addresses.
      */
-    ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    ipAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Gets or sets the list of machines.
      */
-    machines?: pulumi.Input<pulumi.Input<string>[]>;
-    operatingSystemDetails?: pulumi.Input<OperatingSystemDetailsArgs>;
+    machines?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    operatingSystemDetails?: pulumi.Input<OperatingSystemDetailsArgs | undefined>;
     /**
      * Gets or sets the server root configuration location.
      */
-    rootConfigurationLocation?: pulumi.Input<string>;
+    rootConfigurationLocation?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the run as account id.
      */
-    runAsAccountId?: pulumi.Input<string>;
+    runAsAccountId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the server FQDN.
      */
-    serverFqdn?: pulumi.Input<string>;
+    serverFqdn?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the web server id.
      */
-    serverId?: pulumi.Input<string>;
+    serverId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the web server name.
      */
-    serverName?: pulumi.Input<string>;
+    serverName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the server version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the list of web applications.
      */
-    webApplications?: pulumi.Input<pulumi.Input<string>[]>;
+    webApplications?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1376,15 +1376,15 @@ export interface IISWorkloadInstanceModelCustomPropertiesArgs {
     /**
      * Gets or sets the container Id.
      */
-    containerName?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the fileshare name.
      */
-    fileshareName?: pulumi.Input<string>;
+    fileshareName?: pulumi.Input<string | undefined>;
     /**
      * IISWeb application.
      */
-    iisWebApplication?: pulumi.Input<IISWebApplicationArgs>;
+    iisWebApplication?: pulumi.Input<IISWebApplicationArgs | undefined>;
     /**
      * Gets or sets the instance type.
      * Expected value is 'IISWorkloadInstanceModelCustomProperties'.
@@ -1393,11 +1393,11 @@ export interface IISWorkloadInstanceModelCustomPropertiesArgs {
     /**
      * Gets or sets the Web application ARM id.
      */
-    webAppArmId?: pulumi.Input<string>;
+    webAppArmId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the Web application site name.
      */
-    webAppSiteName?: pulumi.Input<string>;
+    webAppSiteName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1407,15 +1407,15 @@ export interface IdentityArgs {
     /**
      * Gets or sets the principal id.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the tenant id.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The type of identity used for the resource mover service.
      */
-    type?: pulumi.Input<string | enums.ResourceIdentityType>;
+    type?: pulumi.Input<string | enums.ResourceIdentityType | undefined>;
 }
 
 /**
@@ -1425,28 +1425,28 @@ export interface IdentityModelArgs {
     /**
      * Gets or sets the authority of the SPN with which MigrateAgent communicates to service.
      */
-    aadAuthority?: pulumi.Input<string>;
+    aadAuthority?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the client/application Id of the SPN with which MigrateAgent communicates to
      * service.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the audience of the SPN with which MigrateAgent communicates to service.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the object Id of the SPN with which MigrateAgent communicates to service.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the tenant Id of the SPN with which MigrateAgent communicates to service.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 export interface ImportCollectorPropertiesArgs {
-    discoverySiteId?: pulumi.Input<string>;
+    discoverySiteId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1456,7 +1456,7 @@ export interface ImportSqlCollectorPropertiesArgs {
     /**
      * The sql db extended details.
      */
-    discoverySiteId?: pulumi.Input<string>;
+    discoverySiteId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1471,20 +1471,20 @@ export interface KeyVaultResourceSettingsArgs {
     /**
      * Gets or sets the target resource group name.
      */
-    targetResourceGroupName?: pulumi.Input<string>;
+    targetResourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName?: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string | undefined>;
 }
 
 export interface KeyVaultSecretStorePropertiesArgs {
-    keyvaultName?: pulumi.Input<string>;
-    managedIdentityProperties?: pulumi.Input<ManagedIdentityPropertiesArgs>;
-    resourceGroup?: pulumi.Input<string>;
-    secretStoreId?: pulumi.Input<string>;
-    subscriptionId?: pulumi.Input<string>;
-    tenantId?: pulumi.Input<string>;
+    keyvaultName?: pulumi.Input<string | undefined>;
+    managedIdentityProperties?: pulumi.Input<ManagedIdentityPropertiesArgs | undefined>;
+    resourceGroup?: pulumi.Input<string | undefined>;
+    secretStoreId?: pulumi.Input<string | undefined>;
+    subscriptionId?: pulumi.Input<string | undefined>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1494,7 +1494,7 @@ export interface LBBackendAddressPoolResourceSettingsArgs {
     /**
      * Gets or sets the backend address pool name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1504,24 +1504,24 @@ export interface LBFrontendIPConfigurationResourceSettingsArgs {
     /**
      * Gets or sets the frontend IP configuration name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the IP address of the Load Balancer.This is only specified if a specific
      * private IP address shall be allocated from the subnet specified in subnetRef.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets PrivateIP allocation method (Static/Dynamic).
      */
-    privateIpAllocationMethod?: pulumi.Input<string>;
+    privateIpAllocationMethod?: pulumi.Input<string | undefined>;
     /**
      * Defines reference to subnet.
      */
-    subnet?: pulumi.Input<SubnetReferenceArgs>;
+    subnet?: pulumi.Input<SubnetReferenceArgs | undefined>;
     /**
      * Gets or sets the csv list of zones.
      */
-    zones?: pulumi.Input<string>;
+    zones?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1559,7 +1559,7 @@ export interface LoadBalancerBackendAddressPoolReferenceArgs {
     /**
      * Gets the name of the proxy resource on the target side.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets the ARM resource ID of the tracked resource being referenced.
      */
@@ -1573,7 +1573,7 @@ export interface LoadBalancerNatRuleReferenceArgs {
     /**
      * Gets the name of the proxy resource on the target side.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets the ARM resource ID of the tracked resource being referenced.
      */
@@ -1587,11 +1587,11 @@ export interface LoadBalancerResourceSettingsArgs {
     /**
      * Gets or sets the backend address pools of the load balancer.
      */
-    backendAddressPools?: pulumi.Input<pulumi.Input<LBBackendAddressPoolResourceSettingsArgs>[]>;
+    backendAddressPools?: pulumi.Input<pulumi.Input<LBBackendAddressPoolResourceSettingsArgs>[] | undefined>;
     /**
      * Gets or sets the frontend IP configurations of the load balancer.
      */
-    frontendIPConfigurations?: pulumi.Input<pulumi.Input<LBFrontendIPConfigurationResourceSettingsArgs>[]>;
+    frontendIPConfigurations?: pulumi.Input<pulumi.Input<LBFrontendIPConfigurationResourceSettingsArgs>[] | undefined>;
     /**
      * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
      * Expected value is 'Microsoft.Network/loadBalancers'.
@@ -1600,24 +1600,24 @@ export interface LoadBalancerResourceSettingsArgs {
     /**
      * Gets or sets load balancer sku (Basic/Standard).
      */
-    sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Gets or sets the target resource group name.
      */
-    targetResourceGroupName?: pulumi.Input<string>;
+    targetResourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName?: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
      *  precedence only if frontend IP configurations settings are not present.
      */
-    zones?: pulumi.Input<string>;
+    zones?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1627,79 +1627,79 @@ export interface MachineAssessmentSettingsArgs {
     /**
      * The disk type for the assessment.
      */
-    azureDiskTypes?: pulumi.Input<pulumi.Input<string | enums.AzureDiskType>[]>;
+    azureDiskTypes?: pulumi.Input<pulumi.Input<string | enums.AzureDiskType>[] | undefined>;
     /**
      * Gets or sets the user configurable setting to display the azure hybrid use
      * benefit.
      */
-    azureHybridUseBenefit?: pulumi.Input<string | enums.AzureHybridUseBenefit>;
+    azureHybridUseBenefit?: pulumi.Input<string | enums.AzureHybridUseBenefit | undefined>;
     /**
      * Azure Location or Azure region where to which the machines will be migrated.
      */
-    azureLocation?: pulumi.Input<string>;
+    azureLocation?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets Azure Pricing Tier - Free, Basic, etc.
      */
-    azurePricingTier?: pulumi.Input<string | enums.AzurePricingTier>;
+    azurePricingTier?: pulumi.Input<string | enums.AzurePricingTier | undefined>;
     /**
      * The azure security offering type.
      */
-    azureSecurityOfferingType?: pulumi.Input<string | enums.AzureSecurityOfferingType>;
+    azureSecurityOfferingType?: pulumi.Input<string | enums.AzureSecurityOfferingType | undefined>;
     /**
      * Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
      */
-    azureStorageRedundancy?: pulumi.Input<string | enums.AzureStorageRedundancy>;
+    azureStorageRedundancy?: pulumi.Input<string | enums.AzureStorageRedundancy | undefined>;
     /**
      * Gets or sets the Azure VM families.
      */
-    azureVmFamilies?: pulumi.Input<pulumi.Input<string | enums.AzureVmFamily>[]>;
+    azureVmFamilies?: pulumi.Input<pulumi.Input<string | enums.AzureVmFamily>[] | undefined>;
     /**
      * Gets or sets the Azure VM security options.
      */
-    azureVmSecurityOptions?: pulumi.Input<pulumi.Input<string | enums.AzureVmSecurityType>[]>;
+    azureVmSecurityOptions?: pulumi.Input<pulumi.Input<string | enums.AzureVmSecurityType>[] | undefined>;
     /**
      * Gets or sets the billing settings.
      */
-    billingSettings?: pulumi.Input<BillingSettingsArgs>;
+    billingSettings?: pulumi.Input<BillingSettingsArgs | undefined>;
     /**
      * Currency in which prices should be reported.
      */
-    currency?: pulumi.Input<string | enums.AzureCurrency>;
+    currency?: pulumi.Input<string | enums.AzureCurrency | undefined>;
     /**
      * Custom discount percentage.
      */
-    discountPercentage?: pulumi.Input<number>;
+    discountPercentage?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets user configurable setting to display the environment type.
      */
-    environmentType?: pulumi.Input<string | enums.EnvironmentType>;
+    environmentType?: pulumi.Input<string | enums.EnvironmentType | undefined>;
     /**
      * Gets or sets the user configurable setting to display the linux azure hybrid use
      * benefit.
      */
-    linuxAzureHybridUseBenefit?: pulumi.Input<string | enums.AzureHybridUseBenefit>;
+    linuxAzureHybridUseBenefit?: pulumi.Input<string | enums.AzureHybridUseBenefit | undefined>;
     /**
      * Gets or sets the performance data.
      */
-    performanceData?: pulumi.Input<PerformanceDataArgs>;
+    performanceData?: pulumi.Input<PerformanceDataArgs | undefined>;
     /**
      * Gets or sets the savings settings.
      */
-    savingsSettings?: pulumi.Input<SavingsSettingsArgs>;
+    savingsSettings?: pulumi.Input<SavingsSettingsArgs | undefined>;
     /**
      * Percentage of buffer that user wants on performance metrics when recommending
      * Azure sizes.
      */
-    scalingFactor?: pulumi.Input<number>;
+    scalingFactor?: pulumi.Input<number | undefined>;
     /**
      * Assessment sizing criterion.
      */
-    sizingCriterion?: pulumi.Input<string | enums.AssessmentSizingCriterion>;
+    sizingCriterion?: pulumi.Input<string | enums.AssessmentSizingCriterion | undefined>;
     /**
      * Gets or sets the duration for which the VMs are up in the on-premises
      * environment.
      */
-    vmUptime?: pulumi.Input<VmUptimeArgs>;
+    vmUptime?: pulumi.Input<VmUptimeArgs | undefined>;
 }
 
 /**
@@ -1709,20 +1709,20 @@ export interface MachineAssessmentV2PropertiesArgs {
     /**
      * Gets or sets the scope of assessment.
      */
-    scope?: pulumi.Input<ScopeArgs>;
+    scope?: pulumi.Input<ScopeArgs | undefined>;
     /**
      * Gets or sets the settings for the assessment.
      */
-    settings?: pulumi.Input<MachineAssessmentSettingsArgs>;
+    settings?: pulumi.Input<MachineAssessmentSettingsArgs | undefined>;
 }
 
 export interface ManagedIdentityPropertiesArgs {
-    clientId?: pulumi.Input<string>;
-    managedIdentityName?: pulumi.Input<string>;
-    principalId?: pulumi.Input<string>;
-    resourceGroup?: pulumi.Input<string>;
-    subscriptionId?: pulumi.Input<string>;
-    tenantId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
+    managedIdentityName?: pulumi.Input<string | undefined>;
+    principalId?: pulumi.Input<string | undefined>;
+    resourceGroup?: pulumi.Input<string | undefined>;
+    subscriptionId?: pulumi.Input<string | undefined>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1750,19 +1750,19 @@ export interface MigrateAgentModelPropertiesArgs {
     /**
      * Identity model.
      */
-    authenticationIdentity?: pulumi.Input<IdentityModelArgs>;
+    authenticationIdentity?: pulumi.Input<IdentityModelArgs | undefined>;
     /**
      * MigrateAgent model custom properties.
      */
-    customProperties?: pulumi.Input<VMwareMigrateAgentModelCustomPropertiesArgs>;
+    customProperties?: pulumi.Input<VMwareMigrateAgentModelCustomPropertiesArgs | undefined>;
     /**
      * Gets or sets the machine Id where MigrateAgent is running.
      */
-    machineId?: pulumi.Input<string>;
+    machineId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the machine name where MigrateAgent is running.
      */
-    machineName?: pulumi.Input<string>;
+    machineName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1772,30 +1772,30 @@ export interface MigrateProjectPropertiesArgs {
     /**
      * Provisioning state of the migrate project.
      */
-    provisioningState?: pulumi.Input<string | enums.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | enums.ProvisioningState | undefined>;
     /**
      * Gets or sets the state of public network access.
      */
-    publicNetworkAccess?: pulumi.Input<string>;
+    publicNetworkAccess?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the list of tools registered with the migrate project.
      */
-    registeredTools?: pulumi.Input<pulumi.Input<string>[]>;
+    registeredTools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Service endpoint.
      */
-    serviceEndpoint?: pulumi.Input<string>;
+    serviceEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Utility storage account id.
      */
-    utilityStorageAccountId?: pulumi.Input<string>;
+    utilityStorageAccountId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * Gets or sets the tags.
  */
 export interface MigrateProjectTagsArgs {
-    additionalProperties?: pulumi.Input<string>;
+    additionalProperties?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1805,15 +1805,15 @@ export interface MigrationConfigurationArgs {
     /**
      * Gets or sets the key vault resource Id.
      */
-    keyVaultResourceId?: pulumi.Input<string>;
+    keyVaultResourceId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the migration solution resource Id.
      */
-    migrationSolutionResourceId?: pulumi.Input<string>;
+    migrationSolutionResourceId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the storage account resource Id.
      */
-    storageAccountResourceId?: pulumi.Input<string>;
+    storageAccountResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1825,21 +1825,21 @@ export interface MigrationEntityGroupPropertiesArgs {
      */
     applicationDisplayName: pulumi.Input<string>;
     /**
-     * Application id 
+     * Application id
      */
     applicationId: pulumi.Input<string>;
     /**
      * Associated Assessment Id
      */
-    associatedAssessmentId?: pulumi.Input<string>;
+    associatedAssessmentId?: pulumi.Input<string | undefined>;
     /**
      * associated Wave Id
      */
-    associatedWaveIds?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedWaveIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Migration path
      */
-    migrationPath?: pulumi.Input<string>;
+    migrationPath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1849,23 +1849,23 @@ export interface MigrationEntityPropertiesArgs {
     /**
      * Assessed Entity ARM Id
      */
-    assessedEntityArmId?: pulumi.Input<string>;
+    assessedEntityArmId?: pulumi.Input<string | undefined>;
     /**
      * Associated Assessment Id
      */
-    associatedAssessmentId?: pulumi.Input<string>;
+    associatedAssessmentId?: pulumi.Input<string | undefined>;
     /**
-     * inventory resource id 
+     * inventory resource id
      */
     associatedInventoryResourceId: pulumi.Input<string>;
     /**
      * associated Migration Entity Group Id
      */
-    associatedMigrationEntityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedMigrationEntityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * associated Wave Id
      */
-    associatedWaveId?: pulumi.Input<string>;
+    associatedWaveId?: pulumi.Input<string | undefined>;
     /**
      * Display Name of the Workload.
      */
@@ -1873,27 +1873,27 @@ export interface MigrationEntityPropertiesArgs {
     /**
      * Migration path
      */
-    migrationPath?: pulumi.Input<string>;
+    migrationPath?: pulumi.Input<string | undefined>;
     /**
      * Migration specific properties for the entity.
      */
-    migrationSpecificProperties?: pulumi.Input<ServerMigrationSpecificPropertiesArgs>;
+    migrationSpecificProperties?: pulumi.Input<ServerMigrationSpecificPropertiesArgs | undefined>;
     /**
      * Migration Tool of the Migration Entity.
      */
-    migrationTool?: pulumi.Input<string>;
+    migrationTool?: pulumi.Input<string | undefined>;
     /**
      * ARM Resource Identifier for the partner resource.
      */
-    partnerResourceArmId?: pulumi.Input<string>;
+    partnerResourceArmId?: pulumi.Input<string | undefined>;
     /**
      * Target of the Migration Entity.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * target Azure Resource ARM Id.
      */
-    targetAzureResourceArmId?: pulumi.Input<string>;
+    targetAzureResourceArmId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1903,7 +1903,7 @@ export interface ModernizeProjectModelPropertiesArgs {
     /**
      * MigrationConfiguration properties.
      */
-    migrationConfiguration?: pulumi.Input<MigrationConfigurationArgs>;
+    migrationConfiguration?: pulumi.Input<MigrationConfigurationArgs | undefined>;
 }
 
 /**
@@ -1913,23 +1913,23 @@ export interface MoveCollectionPropertiesArgs {
     /**
      * Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted.
      */
-    moveRegion?: pulumi.Input<string>;
+    moveRegion?: pulumi.Input<string | undefined>;
     /**
      * Defines the MoveType.
      */
-    moveType?: pulumi.Input<string | enums.MoveType>;
+    moveType?: pulumi.Input<string | enums.MoveType | undefined>;
     /**
      * Gets or sets the source region.
      */
-    sourceRegion?: pulumi.Input<string>;
+    sourceRegion?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target region.
      */
-    targetRegion?: pulumi.Input<string>;
+    targetRegion?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the version of move collection.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1939,12 +1939,12 @@ export interface MoveResourceDependencyOverrideArgs {
     /**
      * Gets or sets the ARM ID of the dependent resource.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of
      * the dependent resource.
      */
-    targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1954,15 +1954,15 @@ export interface MoveResourcePropertiesArgs {
     /**
      * Gets or sets the move resource dependencies overrides.
      */
-    dependsOnOverrides?: pulumi.Input<pulumi.Input<MoveResourceDependencyOverrideArgs>[]>;
+    dependsOnOverrides?: pulumi.Input<pulumi.Input<MoveResourceDependencyOverrideArgs>[] | undefined>;
     /**
      * Gets or sets the existing target ARM Id of the resource.
      */
-    existingTargetId?: pulumi.Input<string>;
+    existingTargetId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the resource settings.
      */
-    resourceSettings?: pulumi.Input<AvailabilitySetResourceSettingsArgs | DiskEncryptionSetResourceSettingsArgs | KeyVaultResourceSettingsArgs | LoadBalancerResourceSettingsArgs | NetworkInterfaceResourceSettingsArgs | NetworkSecurityGroupResourceSettingsArgs | PublicIPAddressResourceSettingsArgs | ResourceGroupResourceSettingsArgs | SqlDatabaseResourceSettingsArgs | SqlElasticPoolResourceSettingsArgs | SqlServerResourceSettingsArgs | VirtualMachineResourceSettingsArgs | VirtualNetworkResourceSettingsArgs>;
+    resourceSettings?: pulumi.Input<AvailabilitySetResourceSettingsArgs | DiskEncryptionSetResourceSettingsArgs | KeyVaultResourceSettingsArgs | LoadBalancerResourceSettingsArgs | NetworkInterfaceResourceSettingsArgs | NetworkSecurityGroupResourceSettingsArgs | PublicIPAddressResourceSettingsArgs | ResourceGroupResourceSettingsArgs | SqlDatabaseResourceSettingsArgs | SqlElasticPoolResourceSettingsArgs | SqlServerResourceSettingsArgs | VirtualMachineResourceSettingsArgs | VirtualNetworkResourceSettingsArgs | undefined>;
     /**
      * Gets or sets the Source ARM Id of the resource.
      */
@@ -1976,11 +1976,11 @@ export interface NetworkInterfaceResourceSettingsArgs {
     /**
      * Gets or sets a value indicating whether accelerated networking is enabled.
      */
-    enableAcceleratedNetworking?: pulumi.Input<boolean>;
+    enableAcceleratedNetworking?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the IP configurations of the NIC.
      */
-    ipConfigurations?: pulumi.Input<pulumi.Input<NicIpConfigurationResourceSettingsArgs>[]>;
+    ipConfigurations?: pulumi.Input<pulumi.Input<NicIpConfigurationResourceSettingsArgs>[] | undefined>;
     /**
      * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
      * Expected value is 'Microsoft.Network/networkInterfaces'.
@@ -1989,15 +1989,15 @@ export interface NetworkInterfaceResourceSettingsArgs {
     /**
      * Gets or sets the Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Gets or sets the target resource group name.
      */
-    targetResourceGroupName?: pulumi.Input<string>;
+    targetResourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName?: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2012,19 +2012,19 @@ export interface NetworkSecurityGroupResourceSettingsArgs {
     /**
      * Gets or sets Security rules of network security group.
      */
-    securityRules?: pulumi.Input<pulumi.Input<NsgSecurityRuleArgs>[]>;
+    securityRules?: pulumi.Input<pulumi.Input<NsgSecurityRuleArgs>[] | undefined>;
     /**
      * Gets or sets the Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Gets or sets the target resource group name.
      */
-    targetResourceGroupName?: pulumi.Input<string>;
+    targetResourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName?: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2048,35 +2048,35 @@ export interface NicIpConfigurationResourceSettingsArgs {
     /**
      * Gets or sets the references of the load balancer backend address pools.
      */
-    loadBalancerBackendAddressPools?: pulumi.Input<pulumi.Input<LoadBalancerBackendAddressPoolReferenceArgs>[]>;
+    loadBalancerBackendAddressPools?: pulumi.Input<pulumi.Input<LoadBalancerBackendAddressPoolReferenceArgs>[] | undefined>;
     /**
      * Gets or sets the references of the load balancer NAT rules.
      */
-    loadBalancerNatRules?: pulumi.Input<pulumi.Input<LoadBalancerNatRuleReferenceArgs>[]>;
+    loadBalancerNatRules?: pulumi.Input<pulumi.Input<LoadBalancerNatRuleReferenceArgs>[] | undefined>;
     /**
      * Gets or sets the IP configuration name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets a value indicating whether this IP configuration is the primary.
      */
-    primary?: pulumi.Input<boolean>;
+    primary?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the private IP address of the network interface IP Configuration.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the private IP address allocation method.
      */
-    privateIpAllocationMethod?: pulumi.Input<string>;
+    privateIpAllocationMethod?: pulumi.Input<string | undefined>;
     /**
      * Defines reference to a public IP.
      */
-    publicIp?: pulumi.Input<PublicIpReferenceArgs>;
+    publicIp?: pulumi.Input<PublicIpReferenceArgs | undefined>;
     /**
      * Defines reference to subnet.
      */
-    subnet?: pulumi.Input<SubnetReferenceArgs>;
+    subnet?: pulumi.Input<SubnetReferenceArgs | undefined>;
 }
 
 /**
@@ -2097,53 +2097,53 @@ export interface NsgSecurityRuleArgs {
      * Gets or sets whether network traffic is allowed or denied.
      * Possible values are “Allow” and “Deny”.
      */
-    access?: pulumi.Input<string>;
+    access?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets a description for this rule. Restricted to 140 chars.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets destination address prefix. CIDR or source IP range.
      *  A “*” can also be used to match all source IPs. Default tags such
      * as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used.
      */
-    destinationAddressPrefix?: pulumi.Input<string>;
+    destinationAddressPrefix?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets Destination Port or Range. Integer or range between
      * 0 and 65535. A “*” can also be used to match all ports.
      */
-    destinationPortRange?: pulumi.Input<string>;
+    destinationPortRange?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the direction of the rule.InBound or Outbound. The
      * direction specifies if rule will be evaluated on incoming or outgoing traffic.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the Security rule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the priority of the rule. The value can be between
      * 100 and 4096. The priority number must be unique for each rule in the collection.
      * The lower the priority number, the higher the priority of the rule.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets Network protocol this rule applies to. Can be Tcp, Udp or All(*).
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets source address prefix. CIDR or source IP range. A
      * “*” can also be used to match all source IPs.  Default tags such as ‘VirtualNetwork’,
      * ‘AzureLoadBalancer’ and ‘Internet’ can also be used. If this is an ingress
      * rule, specifies where network traffic originates from.
      */
-    sourceAddressPrefix?: pulumi.Input<string>;
+    sourceAddressPrefix?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets Source Port or Range. Integer or range between 0 and
      * 65535. A “*” can also be used to match all ports.
      */
-    sourcePortRange?: pulumi.Input<string>;
+    sourcePortRange?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2165,7 +2165,7 @@ export interface OnPremiseSettingsArgs {
     /**
      * Management settings.
      */
-    managementSettings?: pulumi.Input<ManagementSettingsArgs>;
+    managementSettings?: pulumi.Input<ManagementSettingsArgs | undefined>;
     /**
      * Network settings.
      */
@@ -2181,10 +2181,10 @@ export interface OnPremiseSettingsArgs {
 }
 
 export interface OperatingSystemDetailsArgs {
-    os?: pulumi.Input<string | enums.OperatingSystemType>;
-    osArchitecture?: pulumi.Input<string>;
-    osName?: pulumi.Input<string>;
-    osVersion?: pulumi.Input<string>;
+    os?: pulumi.Input<string | enums.OperatingSystemType | undefined>;
+    osArchitecture?: pulumi.Input<string | undefined>;
+    osName?: pulumi.Input<string | undefined>;
+    osVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2216,11 +2216,11 @@ export interface PerfDataSettingsArgs {
     /**
      * Gets or sets perf data end time.
      */
-    perfDataEndTime?: pulumi.Input<string>;
+    perfDataEndTime?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets perf data start time.
      */
-    perfDataStartTime?: pulumi.Input<string>;
+    perfDataStartTime?: pulumi.Input<string | undefined>;
     /**
      * Gets perf data time range.
      */
@@ -2235,20 +2235,20 @@ export interface PerformanceDataArgs {
      * Percentile of the utilization data values to be considered while assessing
      * machines.
      */
-    percentile?: pulumi.Input<string | enums.Percentile>;
+    percentile?: pulumi.Input<string | enums.Percentile | undefined>;
     /**
      * Gets or sets the end time to consider performance data for assessment.
      */
-    perfDataEndTime?: pulumi.Input<string>;
+    perfDataEndTime?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the start time to consider performance data for assessment.
      */
-    perfDataStartTime?: pulumi.Input<string>;
+    perfDataStartTime?: pulumi.Input<string | undefined>;
     /**
      * Time Range for which the historic utilization data should be considered for
      * assessment.
      */
-    timeRange?: pulumi.Input<string | enums.TimeRange>;
+    timeRange?: pulumi.Input<string | enums.TimeRange | undefined>;
 }
 
 /**
@@ -2258,11 +2258,11 @@ export interface PortMappingArgs {
     /**
      * Gets or sets the External Port.
      */
-    externalPort?: pulumi.Input<number>;
+    externalPort?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the Internal Port.
      */
-    internalPort?: pulumi.Input<number>;
+    internalPort?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -2272,7 +2272,7 @@ export interface PrivateEndpointConnectionPropertiesArgs {
     /**
      * State of the private endpoint connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs | undefined>;
 }
 
 /**
@@ -2282,15 +2282,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | enums.Status>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | enums.Status | undefined>;
 }
 
 /**
@@ -2300,27 +2300,27 @@ export interface ProjectPropertiesArgs {
     /**
      * Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects.
      */
-    assessmentSolutionId?: pulumi.Input<string>;
+    assessmentSolutionId?: pulumi.Input<string | undefined>;
     /**
      * The ARM id of the storage account used for interactions when public access is disabled.
      */
-    customerStorageAccountArmId?: pulumi.Input<string>;
+    customerStorageAccountArmId?: pulumi.Input<string | undefined>;
     /**
      * The ARM id of service map workspace created by customer.
      */
-    customerWorkspaceId?: pulumi.Input<string>;
+    customerWorkspaceId?: pulumi.Input<string | undefined>;
     /**
      * Location of service map workspace created by customer.
      */
-    customerWorkspaceLocation?: pulumi.Input<string>;
+    customerWorkspaceLocation?: pulumi.Input<string | undefined>;
     /**
      * Assessment project status.
      */
-    projectStatus?: pulumi.Input<string | enums.ProjectStatus>;
+    projectStatus?: pulumi.Input<string | enums.ProjectStatus | undefined>;
     /**
      * This value can be set to 'enabled' to avoid breaking changes on existing customer resources and templates. If set to 'disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
      */
-    publicNetworkAccess?: pulumi.Input<string>;
+    publicNetworkAccess?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2330,15 +2330,15 @@ export interface PublicIPAddressResourceSettingsArgs {
     /**
      * Gets or sets the domain name label.
      */
-    domainNameLabel?: pulumi.Input<string>;
+    domainNameLabel?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the fully qualified domain name.
      */
-    fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets public IP allocation method.
      */
-    publicIpAllocationMethod?: pulumi.Input<string>;
+    publicIpAllocationMethod?: pulumi.Input<string | undefined>;
     /**
      * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
      * Expected value is 'Microsoft.Network/publicIPAddresses'.
@@ -2347,23 +2347,23 @@ export interface PublicIPAddressResourceSettingsArgs {
     /**
      * Gets or sets public IP sku.
      */
-    sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Gets or sets the target resource group name.
      */
-    targetResourceGroupName?: pulumi.Input<string>;
+    targetResourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName?: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets public IP zones.
      */
-    zones?: pulumi.Input<string>;
+    zones?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2388,18 +2388,18 @@ export interface ResourceGroupResourceSettingsArgs {
     /**
      * Gets or sets the target resource group name.
      */
-    targetResourceGroupName?: pulumi.Input<string>;
+    targetResourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName?: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string | undefined>;
 }
 
 export interface ResourceIdentityArgs {
-    principalId?: pulumi.Input<string>;
-    tenantId?: pulumi.Input<string>;
-    type?: pulumi.Input<string | enums.ResourceIdentityTypes>;
-    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserAssignedIdentityArgs>}>;
+    principalId?: pulumi.Input<string | undefined>;
+    tenantId?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string | enums.ResourceIdentityTypes | undefined>;
+    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserAssignedIdentityArgs>} | undefined>;
 }
 
 /**
@@ -2409,11 +2409,11 @@ export interface ResourceRequirementsArgs {
     /**
      * Gets or sets the Cpu requirement.
      */
-    cpu?: pulumi.Input<string>;
+    cpu?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the Memory requirement.
      */
-    memory?: pulumi.Input<string>;
+    memory?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2423,11 +2423,11 @@ export interface SavingsSettingsArgs {
     /**
      * Gets or sets the Azure offer code.
      */
-    azureOfferCode?: pulumi.Input<string | enums.AzureOffer>;
+    azureOfferCode?: pulumi.Input<string | enums.AzureOffer | undefined>;
     /**
      * Gets or sets the savings options.
      */
-    savingsOptions?: pulumi.Input<string | enums.SavingsOptions>;
+    savingsOptions?: pulumi.Input<string | enums.SavingsOptions | undefined>;
 }
 
 /**
@@ -2437,24 +2437,24 @@ export interface ScopeArgs {
     /**
      * The ARG query.
      */
-    azureResourceGraphQuery?: pulumi.Input<string>;
+    azureResourceGraphQuery?: pulumi.Input<string | undefined>;
     /**
      * The scope type
      */
-    scopeType?: pulumi.Input<string | enums.ScopeType>;
+    scopeType?: pulumi.Input<string | enums.ScopeType | undefined>;
     /**
      * The server group arm id.
      */
-    serverGroupId?: pulumi.Input<string>;
+    serverGroupId?: pulumi.Input<string | undefined>;
 }
 
 export interface SecretStoreDetailsArgs {
-    secretStore?: pulumi.Input<string | enums.SecretStoreType>;
-    secretStoreProperties?: pulumi.Input<SecretStorePropertiesArgs>;
+    secretStore?: pulumi.Input<string | enums.SecretStoreType | undefined>;
+    secretStoreProperties?: pulumi.Input<SecretStorePropertiesArgs | undefined>;
 }
 
 export interface SecretStorePropertiesArgs {
-    secretStoreId?: pulumi.Input<string>;
+    secretStoreId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2478,11 +2478,11 @@ export interface ServerMigrationSpecificPropertiesArgs {
     /**
      * A type definition that refers the id to an Azure Resource Manager resource.
      */
-    currentJobId?: pulumi.Input<string>;
+    currentJobId?: pulumi.Input<string | undefined>;
     /**
      * A type definition that refers the id to an Azure Resource Manager resource.
      */
-    drApplianceInventoryId?: pulumi.Input<string>;
+    drApplianceInventoryId?: pulumi.Input<string | undefined>;
     /**
      * Migration Specific Properties Instance Types.
      * Expected value is 'ServerMigration'.
@@ -2497,7 +2497,7 @@ export interface SettingsArgs {
     /**
      * Azure arc settings.
      */
-    azureArcSettings?: pulumi.Input<AzureArcSettingsArgs>;
+    azureArcSettings?: pulumi.Input<AzureArcSettingsArgs | undefined>;
     /**
      * Azure settings for a business case.
      */
@@ -2505,7 +2505,7 @@ export interface SettingsArgs {
     /**
      * On-premise settings.
      */
-    onPremiseSettings?: pulumi.Input<OnPremiseSettingsArgs>;
+    onPremiseSettings?: pulumi.Input<OnPremiseSettingsArgs | undefined>;
 }
 /**
  * settingsArgsProvideDefaults sets the appropriate defaults for SettingsArgs
@@ -2524,15 +2524,15 @@ export interface SolutionDetailsArgs {
     /**
      * Gets or sets the count of assessments reported by the solution.
      */
-    assessmentCount?: pulumi.Input<number>;
+    assessmentCount?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the extended details reported by the solution.
      */
-    extendedDetails?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extendedDetails?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Gets or sets the count of groups reported by the solution.
      */
-    groupCount?: pulumi.Input<number>;
+    groupCount?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -2542,27 +2542,27 @@ export interface SolutionPropertiesArgs {
     /**
      * Gets or sets the cleanup state of the solution.
      */
-    cleanupState?: pulumi.Input<string>;
+    cleanupState?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the details of the solution.
      */
-    details?: pulumi.Input<SolutionDetailsArgs>;
+    details?: pulumi.Input<SolutionDetailsArgs | undefined>;
     /**
      * Gets or sets the goal of the solution.
      */
-    goal?: pulumi.Input<string>;
+    goal?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the purpose of the solution.
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the current status of the solution.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the tool being used in the solution.
      */
-    tool?: pulumi.Input<string>;
+    tool?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2572,94 +2572,94 @@ export interface SqlAssessmentSettingsArgs {
     /**
      * Gets or sets user preference indicating intent of async commit mode.
      */
-    asyncCommitModeIntent?: pulumi.Input<string | enums.AsyncCommitModeIntent>;
+    asyncCommitModeIntent?: pulumi.Input<string | enums.AsyncCommitModeIntent | undefined>;
     /**
      * Azure Location or Azure region where to which the machines will be migrated.
      */
-    azureLocation?: pulumi.Input<string>;
+    azureLocation?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets a value indicating azure security offering type.
      */
-    azureSecurityOfferingType?: pulumi.Input<string | enums.AzureSecurityOfferingType>;
+    azureSecurityOfferingType?: pulumi.Input<string | enums.AzureSecurityOfferingType | undefined>;
     /**
      * Gets or sets user configurable SQL database settings.
      */
-    azureSqlDatabaseSettings?: pulumi.Input<SqlDbSettingsV3Args>;
+    azureSqlDatabaseSettings?: pulumi.Input<SqlDbSettingsV3Args | undefined>;
     /**
      * Gets or sets user configurable SQL managed instance settings.
      */
-    azureSqlManagedInstanceSettings?: pulumi.Input<SqlMiSettingsV3Args>;
+    azureSqlManagedInstanceSettings?: pulumi.Input<SqlMiSettingsV3Args | undefined>;
     /**
      * Gets or sets user configurable SQL VM settings.
      */
-    azureSqlVmSettings?: pulumi.Input<SqlVmSettingsArgs>;
+    azureSqlVmSettings?: pulumi.Input<SqlVmSettingsArgs | undefined>;
     /**
      * Gets or sets the billing settings.
      */
-    billingSettings?: pulumi.Input<BillingSettingsArgs>;
+    billingSettings?: pulumi.Input<BillingSettingsArgs | undefined>;
     /**
      * Currency in which prices should be reported.
      */
-    currency?: pulumi.Input<string | enums.AzureCurrency>;
+    currency?: pulumi.Input<string | enums.AzureCurrency | undefined>;
     /**
      * Gets or sets the Azure Location or Azure region where to which the machines
      * will be migrated.
      */
-    disasterRecoveryLocation?: pulumi.Input<string | enums.AzureLocation>;
+    disasterRecoveryLocation?: pulumi.Input<string | enums.AzureLocation | undefined>;
     /**
      * Custom discount percentage.
      */
-    discountPercentage?: pulumi.Input<number>;
+    discountPercentage?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets a value indicating whether HADR assessments needs to be created.
      */
-    enableHadrAssessment?: pulumi.Input<boolean>;
+    enableHadrAssessment?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the duration for which the entity (SQL, VMs) are up in the
      * on-premises environment.
      */
-    entityUptime?: pulumi.Input<EntityUptimeArgs>;
+    entityUptime?: pulumi.Input<EntityUptimeArgs | undefined>;
     /**
      * Gets or sets user configurable setting to display the environment type.
      */
-    environmentType?: pulumi.Input<string | enums.EnvironmentType>;
+    environmentType?: pulumi.Input<string | enums.EnvironmentType | undefined>;
     /**
      * Gets or sets a value indicating whether internet access is available.
      */
-    isInternetAccessAvailable?: pulumi.Input<boolean>;
+    isInternetAccessAvailable?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets user preference indicating intent of multi-subnet configuration.
      */
-    multiSubnetIntent?: pulumi.Input<string | enums.MultiSubnetIntent>;
+    multiSubnetIntent?: pulumi.Input<string | enums.MultiSubnetIntent | undefined>;
     /**
      * Gets or sets user configurable setting to display the azure hybrid use benefit.
      */
-    osLicense?: pulumi.Input<string | enums.OsLicense>;
+    osLicense?: pulumi.Input<string | enums.OsLicense | undefined>;
     /**
      * Gets or sets the performance data.
      */
-    performanceData?: pulumi.Input<PerformanceDataArgs>;
+    performanceData?: pulumi.Input<PerformanceDataArgs | undefined>;
     /**
      * Gets or sets SQL the preferred azure targets.
      */
-    preferredTargets?: pulumi.Input<pulumi.Input<string | enums.AzureTarget>[]>;
+    preferredTargets?: pulumi.Input<pulumi.Input<string | enums.AzureTarget>[] | undefined>;
     /**
      * Gets or sets the savings settings.
      */
-    savingsSettings?: pulumi.Input<SavingsSettingsArgs>;
+    savingsSettings?: pulumi.Input<SavingsSettingsArgs | undefined>;
     /**
      * Percentage of buffer that user wants on performance metrics when recommending
      * Azure sizes.
      */
-    scalingFactor?: pulumi.Input<number>;
+    scalingFactor?: pulumi.Input<number | undefined>;
     /**
      * Assessment sizing criterion.
      */
-    sizingCriterion?: pulumi.Input<string | enums.AssessmentSizingCriterion>;
+    sizingCriterion?: pulumi.Input<string | enums.AssessmentSizingCriterion | undefined>;
     /**
      * SQL server license.
      */
-    sqlServerLicense?: pulumi.Input<string | enums.SqlServerLicense>;
+    sqlServerLicense?: pulumi.Input<string | enums.SqlServerLicense | undefined>;
 }
 
 /**
@@ -2669,15 +2669,15 @@ export interface SqlAssessmentV3PropertiesArgs {
     /**
      * Gets or sets the machine assessment ARM ID for VM fallback.
      */
-    fallbackMachineAssessmentArmId?: pulumi.Input<string>;
+    fallbackMachineAssessmentArmId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the scope of assessment.
      */
-    scope?: pulumi.Input<ScopeArgs>;
+    scope?: pulumi.Input<ScopeArgs | undefined>;
     /**
      * Gets or sets the settings for the assessment.
      */
-    settings?: pulumi.Input<SqlAssessmentSettingsArgs>;
+    settings?: pulumi.Input<SqlAssessmentSettingsArgs | undefined>;
 }
 
 /**
@@ -2692,19 +2692,19 @@ export interface SqlDatabaseResourceSettingsArgs {
     /**
      * Gets or sets the Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Gets or sets the target resource group name.
      */
-    targetResourceGroupName?: pulumi.Input<string>;
+    targetResourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName?: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string | undefined>;
     /**
      * Defines the zone redundant resource setting.
      */
-    zoneRedundant?: pulumi.Input<string | enums.ZoneRedundant>;
+    zoneRedundant?: pulumi.Input<string | enums.ZoneRedundant | undefined>;
 }
 
 /**
@@ -2714,19 +2714,19 @@ export interface SqlDbSettingsArgs {
     /**
      * Gets or sets the azure SQL compute tier.
      */
-    azureSqlComputeTier?: pulumi.Input<string | enums.ComputeTier>;
+    azureSqlComputeTier?: pulumi.Input<string | enums.ComputeTier | undefined>;
     /**
      * Gets or sets the azure PAAS SQL instance type.
      */
-    azureSqlDataBaseType?: pulumi.Input<string | enums.AzureSqlDataBaseType>;
+    azureSqlDataBaseType?: pulumi.Input<string | enums.AzureSqlDataBaseType | undefined>;
     /**
      * Gets or sets the azure SQL purchase model.
      */
-    azureSqlPurchaseModel?: pulumi.Input<string | enums.AzureSqlPurchaseModel>;
+    azureSqlPurchaseModel?: pulumi.Input<string | enums.AzureSqlPurchaseModel | undefined>;
     /**
      * Gets or sets the azure SQL service tier.
      */
-    azureSqlServiceTier?: pulumi.Input<string | enums.AzureSqlServiceTier>;
+    azureSqlServiceTier?: pulumi.Input<string | enums.AzureSqlServiceTier | undefined>;
 }
 
 /**
@@ -2736,19 +2736,19 @@ export interface SqlDbSettingsV3Args {
     /**
      * Gets or sets the azure SQL compute tier.
      */
-    azureSqlComputeTier?: pulumi.Input<string | enums.ComputeTier>;
+    azureSqlComputeTier?: pulumi.Input<string | enums.ComputeTier | undefined>;
     /**
      * Gets or sets the azure PAAS SQL instance type.
      */
-    azureSqlDataBaseType?: pulumi.Input<string | enums.AzureSqlDataBaseType>;
+    azureSqlDataBaseType?: pulumi.Input<string | enums.AzureSqlDataBaseType | undefined>;
     /**
      * Gets or sets the azure SQL purchase model.
      */
-    azureSqlPurchaseModel?: pulumi.Input<string | enums.AzureSqlPurchaseModel>;
+    azureSqlPurchaseModel?: pulumi.Input<string | enums.AzureSqlPurchaseModel | undefined>;
     /**
      * Gets or sets the azure SQL service tier.
      */
-    azureSqlServiceTier?: pulumi.Input<string | enums.AzureSqlServiceTierV3>;
+    azureSqlServiceTier?: pulumi.Input<string | enums.AzureSqlServiceTierV3 | undefined>;
 }
 
 /**
@@ -2763,19 +2763,19 @@ export interface SqlElasticPoolResourceSettingsArgs {
     /**
      * Gets or sets the Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Gets or sets the target resource group name.
      */
-    targetResourceGroupName?: pulumi.Input<string>;
+    targetResourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName?: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string | undefined>;
     /**
      * Defines the zone redundant resource setting.
      */
-    zoneRedundant?: pulumi.Input<string | enums.ZoneRedundant>;
+    zoneRedundant?: pulumi.Input<string | enums.ZoneRedundant | undefined>;
 }
 
 /**
@@ -2785,11 +2785,11 @@ export interface SqlMiSettingsArgs {
     /**
      * Gets or sets the azure PAAS SQL instance type.
      */
-    azureSqlInstanceType?: pulumi.Input<string | enums.AzureSqlInstanceType>;
+    azureSqlInstanceType?: pulumi.Input<string | enums.AzureSqlInstanceType | undefined>;
     /**
      * Gets or sets the azure SQL service tier.
      */
-    azureSqlServiceTier?: pulumi.Input<string | enums.AzureSqlServiceTier>;
+    azureSqlServiceTier?: pulumi.Input<string | enums.AzureSqlServiceTier | undefined>;
 }
 
 /**
@@ -2799,11 +2799,11 @@ export interface SqlMiSettingsV3Args {
     /**
      * Gets or sets the azure PAAS SQL instance type.
      */
-    azureSqlInstanceType?: pulumi.Input<string | enums.AzureSqlInstanceType>;
+    azureSqlInstanceType?: pulumi.Input<string | enums.AzureSqlInstanceType | undefined>;
     /**
      * Gets or sets the azure SQL service tier.
      */
-    azureSqlServiceTier?: pulumi.Input<string | enums.AzureSqlServiceTierV3>;
+    azureSqlServiceTier?: pulumi.Input<string | enums.AzureSqlServiceTierV3 | undefined>;
 }
 
 /**
@@ -2836,11 +2836,11 @@ export interface SqlServerResourceSettingsArgs {
     /**
      * Gets or sets the target resource group name.
      */
-    targetResourceGroupName?: pulumi.Input<string>;
+    targetResourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName?: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2851,7 +2851,7 @@ export interface SqlVmSettingsArgs {
      * Gets or sets the Azure VM families (calling instance series to keep it
      * consistent with other targets).
      */
-    instanceSeries?: pulumi.Input<pulumi.Input<string | enums.AzureVmFamily>[]>;
+    instanceSeries?: pulumi.Input<pulumi.Input<string | enums.AzureVmFamily>[] | undefined>;
 }
 
 /**
@@ -2875,7 +2875,7 @@ export interface SubnetReferenceArgs {
     /**
      * Gets the name of the proxy resource on the target side.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets the ARM resource ID of the tracked resource being referenced.
      */
@@ -2889,15 +2889,15 @@ export interface SubnetResourceSettingsArgs {
     /**
      * Gets or sets address prefix for the subnet.
      */
-    addressPrefix?: pulumi.Input<string>;
+    addressPrefix?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the Subnet name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Defines reference to NSG.
      */
-    networkSecurityGroup?: pulumi.Input<NsgReferenceArgs>;
+    networkSecurityGroup?: pulumi.Input<NsgReferenceArgs | undefined>;
 }
 
 /**
@@ -2907,15 +2907,15 @@ export interface TargetAssessmentArmIdsArgs {
     /**
      * ARM ID for Azure Kubernetes Service assessment.
      */
-    aks?: pulumi.Input<string>;
+    aks?: pulumi.Input<string | undefined>;
     /**
      * ARM ID for Azure App Service assessment.
      */
-    azureAppService?: pulumi.Input<string>;
+    azureAppService?: pulumi.Input<string | undefined>;
     /**
      * ARM ID for Azure App Service Container assessment.
      */
-    azureAppServiceContainer?: pulumi.Input<string>;
+    azureAppServiceContainer?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2926,36 +2926,36 @@ export interface TargetStorageProfileArgs {
      * Azure file share profile for hydration of application folders not mounted on
      * the container file system.
      */
-    azureFileShareProfile?: pulumi.Input<AzureFileShareHydrationProfileArgs>;
+    azureFileShareProfile?: pulumi.Input<AzureFileShareHydrationProfileArgs | undefined>;
     /**
      * Gets or sets the storage provider type on the target.
      * Applicable when StorageProjectionType is not ContainerFileSystem.
      */
-    hydrationStorageProviderType?: pulumi.Input<string | enums.TargetHydrationStorageProviderType>;
+    hydrationStorageProviderType?: pulumi.Input<string | enums.TargetHydrationStorageProviderType | undefined>;
     /**
      * Gets or sets the target persistent volume id.
      * Applicable when StorageProjectionType is PersistentVolume and on using an
      * existing PersistentVolume.
      */
-    persistentVolumeId?: pulumi.Input<string>;
+    persistentVolumeId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target storage access type.
      */
-    storageAccessType?: pulumi.Input<string | enums.TargetStorageAccessType>;
+    storageAccessType?: pulumi.Input<string | enums.TargetStorageAccessType | undefined>;
     /**
      * Gets or sets the target projection type.
      */
-    storageProjectionType?: pulumi.Input<string | enums.TargetStorageProjectionType>;
+    storageProjectionType?: pulumi.Input<string | enums.TargetStorageProjectionType | undefined>;
     /**
      * Gets or sets the name of the projected volume on the target environment.
      */
-    targetName?: pulumi.Input<string>;
+    targetName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the storage size on the target.
      * Applicable when StorageProjectionType is PersistentVolume and on creating a new
      * PersistentVolume.
      */
-    targetSize?: pulumi.Input<string>;
+    targetSize?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2965,9 +2965,9 @@ export interface TaskPropertiesArgs {
     /**
      * Task Description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
-     * Task Dislay Name 
+     * Task Dislay Name
      */
     displayName: pulumi.Input<string>;
     /**
@@ -2981,7 +2981,7 @@ export interface TaskPropertiesArgs {
     /**
      * Task Stage
      */
-    stage?: pulumi.Input<string>;
+    stage?: pulumi.Input<string | undefined>;
     /**
      * Task Status
      */
@@ -3003,8 +3003,8 @@ export interface ThirdPartyManagementSettingsArgs {
 }
 
 export interface UserAssignedIdentityArgs {
-    clientId?: pulumi.Input<string>;
-    principalId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
+    principalId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -3014,7 +3014,7 @@ export interface VMwareMigrateAgentModelCustomPropertiesArgs {
     /**
      * Gets or sets the friendly name of the,of the MigrateAgent fabric.
      */
-    fabricFriendlyName?: pulumi.Input<string>;
+    fabricFriendlyName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the instance type.
      * Expected value is 'VMwareMigrateAgentModelCustomProperties'.
@@ -3023,7 +3023,7 @@ export interface VMwareMigrateAgentModelCustomPropertiesArgs {
     /**
      * Gets or sets the master Site Id of the Migrate Agent.
      */
-    vmwareSiteId?: pulumi.Input<string>;
+    vmwareSiteId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -3038,31 +3038,31 @@ export interface VirtualMachineResourceSettingsArgs {
     /**
      * Gets or sets the Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Gets or sets the target availability set id for virtual machines not in an availability set at source.
      */
-    targetAvailabilitySetId?: pulumi.Input<string>;
+    targetAvailabilitySetId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target availability zone.
      */
-    targetAvailabilityZone?: pulumi.Input<string | enums.TargetAvailabilityZone>;
+    targetAvailabilityZone?: pulumi.Input<string | enums.TargetAvailabilityZone | undefined>;
     /**
      * Gets or sets the target resource group name.
      */
-    targetResourceGroupName?: pulumi.Input<string>;
+    targetResourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName?: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target virtual machine size.
      */
-    targetVmSize?: pulumi.Input<string>;
+    targetVmSize?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets user-managed identities
      */
-    userManagedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userManagedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -3072,17 +3072,17 @@ export interface VirtualNetworkResourceSettingsArgs {
     /**
      * Gets or sets the address prefixes for the virtual network.
      */
-    addressSpace?: pulumi.Input<pulumi.Input<string>[]>;
+    addressSpace?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Gets or sets DHCPOptions that contains an array of DNS servers available to VMs
      * deployed in the virtual network.
      */
-    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Gets or sets a value indicating whether gets or sets whether the
      * DDOS protection should be switched on.
      */
-    enableDdosProtection?: pulumi.Input<boolean>;
+    enableDdosProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
      * Expected value is 'Microsoft.Network/virtualNetworks'.
@@ -3091,19 +3091,19 @@ export interface VirtualNetworkResourceSettingsArgs {
     /**
      * Gets or sets List of subnets in a VirtualNetwork.
      */
-    subnets?: pulumi.Input<pulumi.Input<SubnetResourceSettingsArgs>[]>;
+    subnets?: pulumi.Input<pulumi.Input<SubnetResourceSettingsArgs>[] | undefined>;
     /**
      * Gets or sets the Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Gets or sets the target resource group name.
      */
-    targetResourceGroupName?: pulumi.Input<string>;
+    targetResourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target Resource name.
      */
-    targetResourceName?: pulumi.Input<string>;
+    targetResourceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -3123,11 +3123,11 @@ export interface VmUptimeArgs {
     /**
      * Number of days in a month for VM uptime.
      */
-    daysPerMonth?: pulumi.Input<number>;
+    daysPerMonth?: pulumi.Input<number | undefined>;
     /**
      * Number of hours per day for VM uptime.
      */
-    hoursPerDay?: pulumi.Input<number>;
+    hoursPerDay?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -3141,7 +3141,7 @@ export interface WavePropertiesArgs {
     /**
      * Description of the wave.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display Name of the wave.
      */
@@ -3149,7 +3149,7 @@ export interface WavePropertiesArgs {
     /**
      * Planned completion date of the wave.
      */
-    plannedCompletionDate?: pulumi.Input<string>;
+    plannedCompletionDate?: pulumi.Input<string | undefined>;
     /**
      * Planned start date of the wave.
      */
@@ -3171,7 +3171,7 @@ export interface WebAppAssessmentSettingsArgs {
     /**
      * Azure Location or Azure region where to which the machines will be migrated.
      */
-    azureLocation?: pulumi.Input<string>;
+    azureLocation?: pulumi.Input<string | undefined>;
     /**
      * Azure security offering type.
      */
@@ -3179,36 +3179,36 @@ export interface WebAppAssessmentSettingsArgs {
     /**
      * Gets or sets the billing settings.
      */
-    billingSettings?: pulumi.Input<BillingSettingsArgs>;
+    billingSettings?: pulumi.Input<BillingSettingsArgs | undefined>;
     /**
      * Currency in which prices should be reported.
      */
-    currency?: pulumi.Input<string | enums.AzureCurrency>;
+    currency?: pulumi.Input<string | enums.AzureCurrency | undefined>;
     /**
      * Custom discount percentage.
      */
-    discountPercentage?: pulumi.Input<number>;
+    discountPercentage?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets user configurable setting to display the environment type.
      */
-    environmentType?: pulumi.Input<string | enums.EnvironmentType>;
+    environmentType?: pulumi.Input<string | enums.EnvironmentType | undefined>;
     /**
      * Gets or sets the performance data.
      */
-    performanceData?: pulumi.Input<PerformanceDataArgs>;
+    performanceData?: pulumi.Input<PerformanceDataArgs | undefined>;
     /**
      * Gets or sets the savings settings.
      */
-    savingsSettings?: pulumi.Input<SavingsSettingsArgs>;
+    savingsSettings?: pulumi.Input<SavingsSettingsArgs | undefined>;
     /**
      * Percentage of buffer that user wants on performance metrics when recommending
      * Azure sizes.
      */
-    scalingFactor?: pulumi.Input<number>;
+    scalingFactor?: pulumi.Input<number | undefined>;
     /**
      * Assessment sizing criterion.
      */
-    sizingCriterion?: pulumi.Input<string | enums.AssessmentSizingCriterion>;
+    sizingCriterion?: pulumi.Input<string | enums.AssessmentSizingCriterion | undefined>;
 }
 
 /**
@@ -3218,15 +3218,15 @@ export interface WebAppAssessmentV3PropertiesArgs {
     /**
      * Gets or sets the machine assessment ARM ID for VM fallback.
      */
-    fallbackMachineAssessmentArmId?: pulumi.Input<string>;
+    fallbackMachineAssessmentArmId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the scope of assessment.
      */
-    scope?: pulumi.Input<ScopeArgs>;
+    scope?: pulumi.Input<ScopeArgs | undefined>;
     /**
      * Gets or sets the settings for the assessment.
      */
-    settings?: pulumi.Input<WebAppAssessmentSettingsArgs>;
+    settings?: pulumi.Input<WebAppAssessmentSettingsArgs | undefined>;
 }
 
 /**
@@ -3236,40 +3236,40 @@ export interface WebApplicationConfigurationArgs {
     /**
      * Gets or sets the configuration file path.
      */
-    filePath?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the identifier for the configuration.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets a value indicating whether the configuration is edited or not by the user.
      */
-    isDeploymentTimeEditable?: pulumi.Input<boolean>;
+    isDeploymentTimeEditable?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the configuration local file path.
      */
-    localFilePath?: pulumi.Input<string>;
+    localFilePath?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the configuration name.
      */
-    name?: pulumi.Input<string>;
-    secretStoreDetails?: pulumi.Input<SecretStoreDetailsArgs>;
+    name?: pulumi.Input<string | undefined>;
+    secretStoreDetails?: pulumi.Input<SecretStoreDetailsArgs | undefined>;
     /**
      * Gets or sets the configuration section in the file.
      */
-    section?: pulumi.Input<string>;
+    section?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the configuration target file path.
      */
-    targetFilePath?: pulumi.Input<string>;
+    targetFilePath?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the configuration type.
      */
-    type?: pulumi.Input<string | enums.ConfigurationType>;
+    type?: pulumi.Input<string | enums.ConfigurationType | undefined>;
     /**
      * Gets or sets the configuration value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -3281,19 +3281,19 @@ export interface WebApplicationDirectoryArgs {
      * True when the directory is added as an optional directory, false when discovery is done
      * manually.
      */
-    isEditable?: pulumi.Input<boolean>;
+    isEditable?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the paths of the directory on the source machine.
      */
-    sourcePaths?: pulumi.Input<pulumi.Input<string>[]>;
+    sourcePaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Gets or sets the size of the directory on the source machine.
      */
-    sourceSize?: pulumi.Input<string>;
+    sourceSize?: pulumi.Input<string | undefined>;
     /**
      * Storage profile for the directory on the target container.
      */
-    storageProfile?: pulumi.Input<TargetStorageProfileArgs>;
+    storageProfile?: pulumi.Input<TargetStorageProfileArgs | undefined>;
 }
 
 /**
@@ -3303,11 +3303,11 @@ export interface WebApplicationFrameworkArgs {
     /**
      * Gets or sets Name of the framework.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets Version of the framework.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -3335,19 +3335,19 @@ export interface WorkloadDeploymentModelPropertiesArgs {
     /**
      * Workload deployment model custom properties.
      */
-    customProperties?: pulumi.Input<ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesArgs | IISAKSWorkloadDeploymentModelCustomPropertiesArgs>;
+    customProperties?: pulumi.Input<ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesArgs | IISAKSWorkloadDeploymentModelCustomPropertiesArgs | undefined>;
     /**
      * Gets or sets the display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the deployment target platform.
      */
-    targetPlatform?: pulumi.Input<string | enums.WorkloadDeploymentTarget>;
+    targetPlatform?: pulumi.Input<string | enums.WorkloadDeploymentTarget | undefined>;
     /**
      * Workload instance model properties.
      */
-    workloadInstanceProperties?: pulumi.Input<WorkloadInstanceModelPropertiesArgs>;
+    workloadInstanceProperties?: pulumi.Input<WorkloadInstanceModelPropertiesArgs | undefined>;
 }
 
 /**
@@ -3357,29 +3357,29 @@ export interface WorkloadInstanceModelPropertiesArgs {
     /**
      * Workload instance model custom properties.
      */
-    customProperties?: pulumi.Input<ApacheTomcatWorkloadInstanceModelCustomPropertiesArgs | IISWorkloadInstanceModelCustomPropertiesArgs>;
+    customProperties?: pulumi.Input<ApacheTomcatWorkloadInstanceModelCustomPropertiesArgs | IISWorkloadInstanceModelCustomPropertiesArgs | undefined>;
     /**
      * Gets or sets the display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Gets or Sets the master site name.
      */
-    masterSiteName?: pulumi.Input<string>;
+    masterSiteName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the migrate agent id associated with the workload instance.
      */
-    migrateAgentId?: pulumi.Input<string>;
+    migrateAgentId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the workload instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the source name.
      */
-    sourceName?: pulumi.Input<string>;
+    sourceName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the source platform.
      */
-    sourcePlatform?: pulumi.Input<string>;
+    sourcePlatform?: pulumi.Input<string | undefined>;
 }

@@ -122,19 +122,19 @@ export interface MonitorArgs {
     /**
      * Identity properties of the monitor resource.
      */
-    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs | undefined>;
     /**
      * The location of the monitor resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Monitor resource name
      */
-    monitorName?: pulumi.Input<string>;
+    monitorName?: pulumi.Input<string | undefined>;
     /**
      * Properties of the monitor resource.
      */
-    properties?: pulumi.Input<types.inputs.MonitorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MonitorPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -142,9 +142,9 @@ export interface MonitorArgs {
     /**
      * SKU of the monitor resource.
      */
-    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs | undefined>;
     /**
      * The tags of the monitor resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-03-30-preview.
  *
- * Other available API versions: 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-12-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class MigrationEntityGroup extends pulumi.CustomResource {
     /**
@@ -95,7 +95,7 @@ export class MigrationEntityGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20250330preview:MigrationEntityGroup" }, { type: "azure-native:migrate/v20251201preview:MigrationEntityGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20250330preview:MigrationEntityGroup" }, { type: "azure-native:migrate/v20251201preview:MigrationEntityGroup" }, { type: "azure-native:migrate/v20260201preview:MigrationEntityGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MigrationEntityGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -108,7 +108,7 @@ export interface MigrationEntityGroupArgs {
     /**
      * Migration Entity Group ARM name
      */
-    migrationEntityGroupName?: pulumi.Input<string>;
+    migrationEntityGroupName?: pulumi.Input<string | undefined>;
     /**
      * Migrate Project Name
      */
@@ -116,7 +116,7 @@ export interface MigrationEntityGroupArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.MigrationEntityGroupPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MigrationEntityGroupPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

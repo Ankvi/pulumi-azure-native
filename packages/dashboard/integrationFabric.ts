@@ -111,12 +111,12 @@ export interface IntegrationFabricArgs {
     /**
      * The integration fabric name of Azure Managed Grafana.
      */
-    integrationFabricName?: pulumi.Input<string>;
+    integrationFabricName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.IntegrationFabricPropertiesArgs>;
+    location?: pulumi.Input<string | undefined>;
+    properties?: pulumi.Input<types.inputs.IntegrationFabricPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -124,7 +124,7 @@ export interface IntegrationFabricArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The workspace name of Azure Managed Grafana.
      */

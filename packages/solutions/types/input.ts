@@ -53,15 +53,15 @@ export interface ApplicationJitAccessPolicyArgs {
     /**
      * JIT approval mode.
      */
-    jitApprovalMode?: pulumi.Input<string | enums.JitApprovalMode>;
+    jitApprovalMode?: pulumi.Input<string | enums.JitApprovalMode | undefined>;
     /**
      * The JIT approvers
      */
-    jitApprovers?: pulumi.Input<pulumi.Input<JitApproverDefinitionArgs>[]>;
+    jitApprovers?: pulumi.Input<pulumi.Input<JitApproverDefinitionArgs>[] | undefined>;
     /**
      * The maximum duration JIT access is granted. This is an ISO8601 time period value.
      */
-    maximumJitAccessDuration?: pulumi.Input<string>;
+    maximumJitAccessDuration?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -71,7 +71,7 @@ export interface ApplicationManagementPolicyArgs {
     /**
      * The managed application management mode.
      */
-    mode?: pulumi.Input<string | enums.ApplicationManagementMode>;
+    mode?: pulumi.Input<string | enums.ApplicationManagementMode | undefined>;
 }
 
 /**
@@ -101,11 +101,11 @@ export interface ApplicationPackageLockingPolicyDefinitionArgs {
     /**
      * The deny assignment excluded actions.
      */
-    allowedActions?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The deny assignment excluded data actions.
      */
-    allowedDataActions?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedDataActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -115,15 +115,15 @@ export interface ApplicationPolicyArgs {
     /**
      * The policy name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The policy parameters.
      */
-    parameters?: pulumi.Input<string>;
+    parameters?: pulumi.Input<string | undefined>;
     /**
      * The policy definition Id.
      */
-    policyDefinitionId?: pulumi.Input<string>;
+    policyDefinitionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -133,11 +133,11 @@ export interface IdentityArgs {
     /**
      * The identity type.
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
     /**
      * The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -147,7 +147,7 @@ export interface JitApproverDefinitionArgs {
     /**
      * The approver display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The approver service principal Id.
      */
@@ -155,7 +155,7 @@ export interface JitApproverDefinitionArgs {
     /**
      * The approver type.
      */
-    type?: pulumi.Input<string | enums.JitApproverType>;
+    type?: pulumi.Input<string | enums.JitApproverType | undefined>;
 }
 
 /**
@@ -202,7 +202,7 @@ export interface PlanArgs {
     /**
      * The promotion code.
      */
-    promotionCode?: pulumi.Input<string>;
+    promotionCode?: pulumi.Input<string | undefined>;
     /**
      * The publisher ID.
      */
@@ -220,15 +220,15 @@ export interface SkuArgs {
     /**
      * The SKU capacity.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * The SKU family.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * The SKU model.
      */
-    model?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
     /**
      * The SKU name.
      */
@@ -236,9 +236,9 @@ export interface SkuArgs {
     /**
      * The SKU size.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * The SKU tier.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }

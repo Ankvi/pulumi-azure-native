@@ -96,11 +96,11 @@ export interface IssueArgs {
     /**
      * The name of the IssueResource
      */
-    issueName?: pulumi.Input<string>;
+    issueName?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.IssuePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.IssuePropertiesArgs | undefined>;
     /**
      * The fully qualified Azure Resource manager identifier of the resource.
      */

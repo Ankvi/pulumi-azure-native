@@ -5,7 +5,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  *
  * Uses Azure REST API version 2025-01-01-preview.
  *
- * Other available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listInferenceGroupDeltaModelsAsync(args: ListInferenceGroupDeltaModelsAsyncArgs, opts?: pulumi.InvokeOptions): Promise<ListInferenceGroupDeltaModelsAsyncResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -69,7 +69,7 @@ export interface ListInferenceGroupDeltaModelsAsyncResult {
  *
  * Uses Azure REST API version 2025-01-01-preview.
  *
- * Other available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listInferenceGroupDeltaModelsAsyncOutput(args: ListInferenceGroupDeltaModelsAsyncOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListInferenceGroupDeltaModelsAsyncResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -88,7 +88,7 @@ export interface ListInferenceGroupDeltaModelsAsyncOutputArgs {
     /**
      * Gets or sets number of delta models to return. Default: -1, means that all will be returned.
      */
-    count?: pulumi.Input<number>;
+    count?: pulumi.Input<number | undefined>;
     /**
      * InferenceGroup name.
      */
@@ -104,11 +104,11 @@ export interface ListInferenceGroupDeltaModelsAsyncOutputArgs {
     /**
      * Gets or sets skip token for paginated response.
      */
-    skipToken?: pulumi.Input<string>;
+    skipToken?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets target base model.
      */
-    targetBaseModel?: pulumi.Input<string>;
+    targetBaseModel?: pulumi.Input<string | undefined>;
     /**
      * Name of Azure Machine Learning workspace.
      */

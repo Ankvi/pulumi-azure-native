@@ -7,7 +7,7 @@ export interface ApiEntityReferenceArgs {
     /**
      * The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -17,11 +17,11 @@ export interface ApplicationGatewayArgs {
     /**
      * List of Application Gateway Backend Address Pools.
      */
-    backendAddressPools?: pulumi.Input<pulumi.Input<ApplicationGatewayBackendAddressPoolArgs>[]>;
+    backendAddressPools?: pulumi.Input<pulumi.Input<ApplicationGatewayBackendAddressPoolArgs>[] | undefined>;
     /**
      * The Application Gateway ARM resource Id.
      */
-    resource?: pulumi.Input<string>;
+    resource?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -31,7 +31,7 @@ export interface ApplicationGatewayBackendAddressPoolArgs {
     /**
      * The application gateway backend address pool ARM resource Id.
      */
-    resource?: pulumi.Input<string>;
+    resource?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -41,7 +41,7 @@ export interface AzureFileVolumeArgs {
     /**
      * The flag indicating whether the Azure File shared mounted as a volume is read-only.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Azure File share to be mounted as a volume.
      */
@@ -49,11 +49,11 @@ export interface AzureFileVolumeArgs {
     /**
      * The storage account access key used to access the Azure File share.
      */
-    storageAccountKey?: pulumi.Input<string>;
+    storageAccountKey?: pulumi.Input<string | undefined>;
     /**
      * The reference to the storage account access key used to access the Azure File share.
      */
-    storageAccountKeyReference?: pulumi.Input<string>;
+    storageAccountKeyReference?: pulumi.Input<string | undefined>;
     /**
      * The name of the storage account that contains the Azure File share.
      */
@@ -67,7 +67,7 @@ export interface ConfidentialComputePropertiesArgs {
     /**
      * The base64 encoded confidential compute enforcement policy
      */
-    ccePolicy?: pulumi.Input<string>;
+    ccePolicy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -77,7 +77,7 @@ export interface ConfigMapArgs {
     /**
      * The key value pairs dictionary in the config map.
      */
-    keyValuePairs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    keyValuePairs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -87,23 +87,23 @@ export interface ContainerArgs {
     /**
      * The commands to execute within the container instance in exec form.
      */
-    command?: pulumi.Input<pulumi.Input<string>[]>;
+    command?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The config map.
      */
-    configMap?: pulumi.Input<ConfigMapArgs>;
+    configMap?: pulumi.Input<ConfigMapArgs | undefined>;
     /**
      * The environment variables to set in the container instance.
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<EnvironmentVariableArgs>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<EnvironmentVariableArgs>[] | undefined>;
     /**
      * The name of the image used to create the container instance.
      */
-    image?: pulumi.Input<string>;
+    image?: pulumi.Input<string | undefined>;
     /**
      * The liveness probe.
      */
-    livenessProbe?: pulumi.Input<ContainerProbeArgs>;
+    livenessProbe?: pulumi.Input<ContainerProbeArgs | undefined>;
     /**
      * The user-provided name of the container instance.
      */
@@ -111,23 +111,23 @@ export interface ContainerArgs {
     /**
      * The exposed ports on the container instance.
      */
-    ports?: pulumi.Input<pulumi.Input<ContainerPortArgs>[]>;
+    ports?: pulumi.Input<pulumi.Input<ContainerPortArgs>[] | undefined>;
     /**
      * The readiness probe.
      */
-    readinessProbe?: pulumi.Input<ContainerProbeArgs>;
+    readinessProbe?: pulumi.Input<ContainerProbeArgs | undefined>;
     /**
      * The resource requirements of the container instance.
      */
-    resources?: pulumi.Input<ResourceRequirementsArgs>;
+    resources?: pulumi.Input<ResourceRequirementsArgs | undefined>;
     /**
      * The container security properties.
      */
-    securityContext?: pulumi.Input<SecurityContextDefinitionArgs>;
+    securityContext?: pulumi.Input<SecurityContextDefinitionArgs | undefined>;
     /**
      * The volume mounts available to the container instance.
      */
-    volumeMounts?: pulumi.Input<pulumi.Input<VolumeMountArgs>[]>;
+    volumeMounts?: pulumi.Input<pulumi.Input<VolumeMountArgs>[] | undefined>;
 }
 
 /**
@@ -137,7 +137,7 @@ export interface ContainerExecArgs {
     /**
      * The commands to execute within the container.
      */
-    command?: pulumi.Input<pulumi.Input<string>[]>;
+    command?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -147,7 +147,7 @@ export interface ContainerGroupDiagnosticsArgs {
     /**
      * Container group log analytics information.
      */
-    logAnalytics?: pulumi.Input<LogAnalyticsArgs>;
+    logAnalytics?: pulumi.Input<LogAnalyticsArgs | undefined>;
 }
 
 /**
@@ -157,11 +157,11 @@ export interface ContainerGroupIdentityArgs {
     /**
      * The type of identity used for the container group. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the container group.
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
     /**
      * The list of user identities associated with the container group.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -171,11 +171,11 @@ export interface ContainerGroupProfileReferenceDefinitionArgs {
     /**
      * The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The container group profile reference revision.
      */
-    revision?: pulumi.Input<number>;
+    revision?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -183,25 +183,25 @@ export interface ContainerGroupProfileReferenceDefinitionArgs {
  */
 export interface ContainerGroupProfileStubArgs {
     /**
-     *  Container Group properties which can be set while creating or updating the NGroups.
+     * Container Group properties which can be set while creating or updating the NGroups.
      */
-    containerGroupProperties?: pulumi.Input<NGroupContainerGroupPropertiesArgs>;
+    containerGroupProperties?: pulumi.Input<NGroupContainerGroupPropertiesArgs | undefined>;
     /**
      * A network profile for network settings of a ContainerGroupProfile.
      */
-    networkProfile?: pulumi.Input<NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<NetworkProfileArgs | undefined>;
     /**
      * A reference to the container group profile ARM resource hosted in ACI RP.
      */
-    resource?: pulumi.Input<ApiEntityReferenceArgs>;
+    resource?: pulumi.Input<ApiEntityReferenceArgs | undefined>;
     /**
      * The revision of the CG profile is an optional property. If customer does not to provide a revision then NGroups will pickup the latest revision of CGProfile.
      */
-    revision?: pulumi.Input<number>;
+    revision?: pulumi.Input<number | undefined>;
     /**
      * Storage profile for storage related settings of a container group profile.
      */
-    storageProfile?: pulumi.Input<StorageProfileArgs>;
+    storageProfile?: pulumi.Input<StorageProfileArgs | undefined>;
 }
 
 /**
@@ -215,7 +215,7 @@ export interface ContainerGroupSubnetIdArgs {
     /**
      * Friendly name for the subnet.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -225,11 +225,11 @@ export interface ContainerHttpGetArgs {
     /**
      * The HTTP headers.
      */
-    httpHeaders?: pulumi.Input<pulumi.Input<HttpHeaderArgs>[]>;
+    httpHeaders?: pulumi.Input<pulumi.Input<HttpHeaderArgs>[] | undefined>;
     /**
      * The path to probe.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The port number to probe.
      */
@@ -237,7 +237,7 @@ export interface ContainerHttpGetArgs {
     /**
      * The scheme.
      */
-    scheme?: pulumi.Input<string | enums.Scheme>;
+    scheme?: pulumi.Input<string | enums.Scheme | undefined>;
 }
 
 /**
@@ -251,7 +251,7 @@ export interface ContainerPortArgs {
     /**
      * The protocol associated with the port.
      */
-    protocol?: pulumi.Input<string | enums.ContainerNetworkProtocol>;
+    protocol?: pulumi.Input<string | enums.ContainerNetworkProtocol | undefined>;
 }
 
 /**
@@ -261,31 +261,31 @@ export interface ContainerProbeArgs {
     /**
      * The execution command to probe
      */
-    exec?: pulumi.Input<ContainerExecArgs>;
+    exec?: pulumi.Input<ContainerExecArgs | undefined>;
     /**
      * The failure threshold.
      */
-    failureThreshold?: pulumi.Input<number>;
+    failureThreshold?: pulumi.Input<number | undefined>;
     /**
      * The Http Get settings to probe
      */
-    httpGet?: pulumi.Input<ContainerHttpGetArgs>;
+    httpGet?: pulumi.Input<ContainerHttpGetArgs | undefined>;
     /**
      * The initial delay seconds.
      */
-    initialDelaySeconds?: pulumi.Input<number>;
+    initialDelaySeconds?: pulumi.Input<number | undefined>;
     /**
      * The period seconds.
      */
-    periodSeconds?: pulumi.Input<number>;
+    periodSeconds?: pulumi.Input<number | undefined>;
     /**
      * The success threshold.
      */
-    successThreshold?: pulumi.Input<number>;
+    successThreshold?: pulumi.Input<number | undefined>;
     /**
      * The timeout seconds.
      */
-    timeoutSeconds?: pulumi.Input<number>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -303,11 +303,11 @@ export interface DeploymentExtensionSpecArgs {
     /**
      * Protected settings for the extension.
      */
-    protectedSettings?: any;
+    protectedSettings?: any | undefined;
     /**
      * Settings for the extension.
      */
-    settings?: any;
+    settings?: any | undefined;
     /**
      * Version of the extension being used.
      */
@@ -325,11 +325,11 @@ export interface DnsConfigurationArgs {
     /**
      * The DNS options for the container group.
      */
-    options?: pulumi.Input<string>;
+    options?: pulumi.Input<string | undefined>;
     /**
      * The DNS search domains for hostname lookup in the container group.
      */
-    searchDomains?: pulumi.Input<string>;
+    searchDomains?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -339,26 +339,26 @@ export interface ElasticProfileArgs {
     /**
      * Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
      */
-    containerGroupNamingPolicy?: pulumi.Input<ElasticProfileContainerGroupNamingPolicyArgs>;
-    desiredCount?: pulumi.Input<number>;
+    containerGroupNamingPolicy?: pulumi.Input<ElasticProfileContainerGroupNamingPolicyArgs | undefined>;
+    desiredCount?: pulumi.Input<number | undefined>;
     /**
      * Flag that indicates whether desiredCount should be maintained when customer deletes SPECIFIC container groups (CGs) from the NGroups. In this case, new CGs will be created by NGroup to compensate for the specific deleted ones.
      */
-    maintainDesiredCount?: pulumi.Input<boolean>;
+    maintainDesiredCount?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
  */
 export interface ElasticProfileContainerGroupNamingPolicyArgs {
-    guidNamingPolicy?: pulumi.Input<ElasticProfileGuidNamingPolicyArgs>;
+    guidNamingPolicy?: pulumi.Input<ElasticProfileContainerGroupNamingPolicyGuidNamingPolicyArgs | undefined>;
 }
 
-export interface ElasticProfileGuidNamingPolicyArgs {
+export interface ElasticProfileContainerGroupNamingPolicyGuidNamingPolicyArgs {
     /**
      * The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -368,7 +368,7 @@ export interface EncryptionPropertiesArgs {
     /**
      * The keyvault managed identity.
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * The encryption key name.
      */
@@ -394,25 +394,25 @@ export interface EnvironmentVariableArgs {
     /**
      * The value of the secure environment variable.
      */
-    secureValue?: pulumi.Input<string>;
+    secureValue?: pulumi.Input<string | undefined>;
     /**
      * The reference of the secure environment variable.
      */
-    secureValueReference?: pulumi.Input<string>;
+    secureValueReference?: pulumi.Input<string | undefined>;
     /**
      * The value of the environment variable.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
  * File shares that can be mounted on container groups.
  */
 export interface FileShareArgs {
-    name?: pulumi.Input<string>;
-    properties?: pulumi.Input<FileSharePropertiesArgs>;
-    resourceGroupName?: pulumi.Input<string>;
-    storageAccountName?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    properties?: pulumi.Input<FileSharePropertiesArgs | undefined>;
+    resourceGroupName?: pulumi.Input<string | undefined>;
+    storageAccountName?: pulumi.Input<string | undefined>;
 }
 /**
  * fileShareArgsProvideDefaults sets the appropriate defaults for FileShareArgs
@@ -420,7 +420,7 @@ export interface FileShareArgs {
 export function fileShareArgsProvideDefaults(val: FileShareArgs): FileShareArgs {
     return {
         ...val,
-        properties: (val.properties ? pulumi.output(val.properties).apply(fileSharePropertiesArgsProvideDefaults) : undefined),
+        properties: pulumi.output(val.properties).apply(v => v === undefined ? undefined : fileSharePropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -428,11 +428,11 @@ export interface FileSharePropertiesArgs {
     /**
      * Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
      */
-    shareAccessTier?: pulumi.Input<enums.AzureFileShareAccessTier>;
+    shareAccessTier?: pulumi.Input<enums.AzureFileShareAccessTier | undefined>;
     /**
-     *  Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+     * Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
      */
-    shareAccessType?: pulumi.Input<enums.AzureFileShareAccessType>;
+    shareAccessType?: pulumi.Input<enums.AzureFileShareAccessType | undefined>;
 }
 /**
  * fileSharePropertiesArgsProvideDefaults sets the appropriate defaults for FileSharePropertiesArgs
@@ -451,7 +451,7 @@ export interface GitRepoVolumeArgs {
     /**
      * Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
      */
-    directory?: pulumi.Input<string>;
+    directory?: pulumi.Input<string | undefined>;
     /**
      * Repository URL
      */
@@ -459,7 +459,7 @@ export interface GitRepoVolumeArgs {
     /**
      * Commit hash for the specified revision.
      */
-    revision?: pulumi.Input<string>;
+    revision?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -483,11 +483,11 @@ export interface HttpHeaderArgs {
     /**
      * The header name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The header value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -497,19 +497,19 @@ export interface ImageRegistryCredentialArgs {
     /**
      * The identity for the private registry.
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * The identity URL for the private registry.
      */
-    identityUrl?: pulumi.Input<string>;
+    identityUrl?: pulumi.Input<string | undefined>;
     /**
      * The password for the private registry.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The reference for the private registry password.
      */
-    passwordReference?: pulumi.Input<string>;
+    passwordReference?: pulumi.Input<string | undefined>;
     /**
      * The Docker image registry server without a protocol such as "http" and "https".
      */
@@ -517,7 +517,7 @@ export interface ImageRegistryCredentialArgs {
     /**
      * The username for the private registry.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -527,15 +527,15 @@ export interface InitContainerDefinitionArgs {
     /**
      * The command to execute within the init container in exec form.
      */
-    command?: pulumi.Input<pulumi.Input<string>[]>;
+    command?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The environment variables to set in the init container.
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<EnvironmentVariableArgs>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<EnvironmentVariableArgs>[] | undefined>;
     /**
      * The image of the init container.
      */
-    image?: pulumi.Input<string>;
+    image?: pulumi.Input<string | undefined>;
     /**
      * The name for the init container.
      */
@@ -543,11 +543,11 @@ export interface InitContainerDefinitionArgs {
     /**
      * The container security properties.
      */
-    securityContext?: pulumi.Input<SecurityContextDefinitionArgs>;
+    securityContext?: pulumi.Input<SecurityContextDefinitionArgs | undefined>;
     /**
      * The volume mounts available to the init container.
      */
-    volumeMounts?: pulumi.Input<pulumi.Input<VolumeMountArgs>[]>;
+    volumeMounts?: pulumi.Input<pulumi.Input<VolumeMountArgs>[] | undefined>;
 }
 
 /**
@@ -557,15 +557,15 @@ export interface IpAddressArgs {
     /**
      * The value representing the security enum. The 'Unsecure' value is the default value if not selected and means the object's domain name label is not secured against subdomain takeover. The 'TenantReuse' value is the default value if selected and means the object's domain name label can be reused within the same tenant. The 'SubscriptionReuse' value means the object's domain name label can be reused within the same subscription. The 'ResourceGroupReuse' value means the object's domain name label can be reused within the same resource group. The 'NoReuse' value means the object's domain name label cannot be reused within the same resource group, subscription, or tenant.
      */
-    autoGeneratedDomainNameLabelScope?: pulumi.Input<string | enums.DnsNameLabelReusePolicy>;
+    autoGeneratedDomainNameLabelScope?: pulumi.Input<string | enums.DnsNameLabelReusePolicy | undefined>;
     /**
      * The Dns name label for the IP.
      */
-    dnsNameLabel?: pulumi.Input<string>;
+    dnsNameLabel?: pulumi.Input<string | undefined>;
     /**
      * The IP exposed to the public internet.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * The list of ports exposed on the container group.
      */
@@ -592,7 +592,7 @@ export interface LoadBalancerArgs {
     /**
      * List of Load Balancer Backend Address Pools.
      */
-    backendAddressPools?: pulumi.Input<pulumi.Input<LoadBalancerBackendAddressPoolArgs>[]>;
+    backendAddressPools?: pulumi.Input<pulumi.Input<LoadBalancerBackendAddressPoolArgs>[] | undefined>;
 }
 
 /**
@@ -602,7 +602,7 @@ export interface LoadBalancerBackendAddressPoolArgs {
     /**
      * The Load Balancer backend address pool ARM resource Id.
      */
-    resource?: pulumi.Input<string>;
+    resource?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -612,11 +612,11 @@ export interface LogAnalyticsArgs {
     /**
      * The log type to be used.
      */
-    logType?: pulumi.Input<string | enums.LogAnalyticsLogType>;
+    logType?: pulumi.Input<string | enums.LogAnalyticsLogType | undefined>;
     /**
      * Metadata for log analytics.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The workspace id for log analytics
      */
@@ -628,7 +628,7 @@ export interface LogAnalyticsArgs {
     /**
      * The workspace resource id for log analytics
      */
-    workspaceResourceId?: pulumi.Input<string>;
+    workspaceResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -638,18 +638,18 @@ export interface NGroupCGPropertyContainerArgs {
     /**
      * container name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * container properties
      */
-    properties?: pulumi.Input<NGroupCGPropertyContainerPropertiesArgs>;
+    properties?: pulumi.Input<NGroupCGPropertyContainerPropertiesArgs | undefined>;
 }
 
 /**
  * container properties
  */
 export interface NGroupCGPropertyContainerPropertiesArgs {
-    volumeMounts?: pulumi.Input<pulumi.Input<VolumeMountArgs>[]>;
+    volumeMounts?: pulumi.Input<pulumi.Input<VolumeMountArgs>[] | undefined>;
 }
 
 /**
@@ -659,7 +659,7 @@ export interface NGroupCGPropertyVolumeArgs {
     /**
      * The Azure File volume.
      */
-    azureFile?: pulumi.Input<AzureFileVolumeArgs>;
+    azureFile?: pulumi.Input<AzureFileVolumeArgs | undefined>;
     /**
      * The name of the volume.
      */
@@ -673,15 +673,15 @@ export interface NGroupContainerGroupPropertiesArgs {
     /**
      * Contains information about Container which can be set while creating or updating the NGroups.
      */
-    containers?: pulumi.Input<pulumi.Input<NGroupCGPropertyContainerArgs>[]>;
+    containers?: pulumi.Input<pulumi.Input<NGroupCGPropertyContainerArgs>[] | undefined>;
     /**
      * Contains information about Virtual Network Subnet ARM Resource
      */
-    subnetIds?: pulumi.Input<pulumi.Input<ContainerGroupSubnetIdArgs>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<ContainerGroupSubnetIdArgs>[] | undefined>;
     /**
      * Contains information about the volumes that can be mounted by Containers in the Container Groups.
      */
-    volumes?: pulumi.Input<pulumi.Input<NGroupCGPropertyVolumeArgs>[]>;
+    volumes?: pulumi.Input<pulumi.Input<NGroupCGPropertyVolumeArgs>[] | undefined>;
 }
 
 /**
@@ -691,11 +691,11 @@ export interface NGroupIdentityArgs {
     /**
      * The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
     /**
      * The list of user identities associated with the NGroup.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -705,11 +705,11 @@ export interface NetworkProfileArgs {
     /**
      * Application Gateway the CG profile will use to interact with CGs in a backend pool
      */
-    applicationGateway?: pulumi.Input<ApplicationGatewayArgs>;
+    applicationGateway?: pulumi.Input<ApplicationGatewayArgs | undefined>;
     /**
      * LoadBalancer the CG profile will use to interact with CGs in a backend pool
      */
-    loadBalancer?: pulumi.Input<LoadBalancerArgs>;
+    loadBalancer?: pulumi.Input<LoadBalancerArgs | undefined>;
 }
 
 /**
@@ -719,7 +719,7 @@ export interface PlacementProfileArgs {
     /**
      * The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that.
      */
-    faultDomainCount?: pulumi.Input<number>;
+    faultDomainCount?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -733,7 +733,7 @@ export interface PortArgs {
     /**
      * The protocol associated with the port.
      */
-    protocol?: pulumi.Input<string | enums.ContainerGroupNetworkProtocol>;
+    protocol?: pulumi.Input<string | enums.ContainerGroupNetworkProtocol | undefined>;
 }
 
 /**
@@ -743,15 +743,15 @@ export interface ResourceLimitsArgs {
     /**
      * The CPU limit of this container instance.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * The GPU limit of this container instance.
      */
-    gpu?: pulumi.Input<GpuResourceArgs>;
+    gpu?: pulumi.Input<GpuResourceArgs | undefined>;
     /**
      * The memory limit in GB of this container instance.
      */
-    memoryInGB?: pulumi.Input<number>;
+    memoryInGB?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -765,7 +765,7 @@ export interface ResourceRequestsArgs {
     /**
      * The GPU request of this container instance.
      */
-    gpu?: pulumi.Input<GpuResourceArgs>;
+    gpu?: pulumi.Input<GpuResourceArgs | undefined>;
     /**
      * The memory request in GB of this container instance.
      */
@@ -779,7 +779,7 @@ export interface ResourceRequirementsArgs {
     /**
      * The resource limits of this container instance.
      */
-    limits?: pulumi.Input<ResourceLimitsArgs>;
+    limits?: pulumi.Input<ResourceLimitsArgs | undefined>;
     /**
      * The resource requests of this container instance.
      */
@@ -793,11 +793,11 @@ export interface SecurityContextCapabilitiesDefinitionArgs {
     /**
      * The capabilities to add to the container.
      */
-    add?: pulumi.Input<pulumi.Input<string>[]>;
+    add?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The capabilities to drop from the container.
      */
-    drop?: pulumi.Input<pulumi.Input<string>[]>;
+    drop?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -807,27 +807,27 @@ export interface SecurityContextDefinitionArgs {
     /**
      * A boolean value indicating whether the init process can elevate its privileges
      */
-    allowPrivilegeEscalation?: pulumi.Input<boolean>;
+    allowPrivilegeEscalation?: pulumi.Input<boolean | undefined>;
     /**
      * The capabilities to add or drop from a container.
      */
-    capabilities?: pulumi.Input<SecurityContextCapabilitiesDefinitionArgs>;
+    capabilities?: pulumi.Input<SecurityContextCapabilitiesDefinitionArgs | undefined>;
     /**
      * The flag to determine if the container permissions is elevated to Privileged.
      */
-    privileged?: pulumi.Input<boolean>;
+    privileged?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the User GID for the container.
      */
-    runAsGroup?: pulumi.Input<number>;
+    runAsGroup?: pulumi.Input<number | undefined>;
     /**
      * Sets the User UID for the container.
      */
-    runAsUser?: pulumi.Input<number>;
+    runAsUser?: pulumi.Input<number | undefined>;
     /**
      * a base64 encoded string containing the contents of the JSON in the seccomp profile
      */
-    seccompProfile?: pulumi.Input<string>;
+    seccompProfile?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -837,18 +837,18 @@ export interface StandbyPoolProfileDefinitionArgs {
     /**
      * The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
      */
-    failContainerGroupCreateOnReuseFailure?: pulumi.Input<boolean>;
+    failContainerGroupCreateOnReuseFailure?: pulumi.Input<boolean | undefined>;
     /**
      * The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
  * Storage profile for storage related settings of a container group profile.
  */
 export interface StorageProfileArgs {
-    fileShares?: pulumi.Input<pulumi.Input<FileShareArgs>[]>;
+    fileShares?: pulumi.Input<pulumi.Input<FileShareArgs>[] | undefined>;
 }
 
 /**
@@ -858,8 +858,8 @@ export interface UpdateProfileArgs {
     /**
      * This profile allows the customers to customize the rolling update.
      */
-    rollingUpdateProfile?: pulumi.Input<UpdateProfileRollingUpdateProfileArgs>;
-    updateMode?: pulumi.Input<string | enums.NGroupUpdateMode>;
+    rollingUpdateProfile?: pulumi.Input<UpdateProfileRollingUpdateProfileArgs | undefined>;
+    updateMode?: pulumi.Input<string | enums.NGroupUpdateMode | undefined>;
 }
 
 /**
@@ -869,19 +869,19 @@ export interface UpdateProfileRollingUpdateProfileArgs {
     /**
      * Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
      */
-    inPlaceUpdate?: pulumi.Input<boolean>;
+    inPlaceUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum percentage of total Container Groups which can be updated simultaneously by rolling update in one batch.
      */
-    maxBatchPercent?: pulumi.Input<number>;
+    maxBatchPercent?: pulumi.Input<number | undefined>;
     /**
      * Maximum percentage of the updated Container Groups which can be in unhealthy state after each batch is updated.
      */
-    maxUnhealthyPercent?: pulumi.Input<number>;
+    maxUnhealthyPercent?: pulumi.Input<number | undefined>;
     /**
      * The wait time between batches after completing the one batch of the rolling update and starting the next batch. The time duration should be specified in ISO 8601 format for duration.
      */
-    pauseTimeBetweenBatches?: pulumi.Input<string>;
+    pauseTimeBetweenBatches?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -891,15 +891,15 @@ export interface VolumeArgs {
     /**
      * The Azure File volume.
      */
-    azureFile?: pulumi.Input<AzureFileVolumeArgs>;
+    azureFile?: pulumi.Input<AzureFileVolumeArgs | undefined>;
     /**
      * The empty directory volume.
      */
-    emptyDir?: any;
+    emptyDir?: any | undefined;
     /**
      * The git repo volume.
      */
-    gitRepo?: pulumi.Input<GitRepoVolumeArgs>;
+    gitRepo?: pulumi.Input<GitRepoVolumeArgs | undefined>;
     /**
      * The name of the volume.
      */
@@ -907,11 +907,11 @@ export interface VolumeArgs {
     /**
      * The secret volume.
      */
-    secret?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    secret?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The secret reference volume.
      */
-    secretReference?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    secretReference?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -929,5 +929,5 @@ export interface VolumeMountArgs {
     /**
      * The flag indicating whether the volume mount is read-only.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
 }

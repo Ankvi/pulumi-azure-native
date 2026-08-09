@@ -7,9 +7,9 @@ export interface StatusMessageArgs {
     /**
      * The error code
      */
-    errorCode?: pulumi.Input<number>;
+    errorCode?: pulumi.Input<number | undefined>;
     /**
      * The error or status message
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
 }

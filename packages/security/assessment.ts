@@ -134,19 +134,19 @@ export interface AssessmentArgs {
     /**
      * Additional data regarding the assessment
      */
-    additionalData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    additionalData?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Assessment Key - Unique key for the assessment type
      */
-    assessmentName?: pulumi.Input<string>;
+    assessmentName?: pulumi.Input<string | undefined>;
     /**
      * Describes properties of an assessment metadata.
      */
-    metadata?: pulumi.Input<types.inputs.SecurityAssessmentMetadataPropertiesArgs>;
+    metadata?: pulumi.Input<types.inputs.SecurityAssessmentMetadataPropertiesArgs | undefined>;
     /**
      * Data regarding 3rd party partner integration
      */
-    partnersData?: pulumi.Input<types.inputs.SecurityAssessmentPartnerDataArgs>;
+    partnersData?: pulumi.Input<types.inputs.SecurityAssessmentPartnerDataArgs | undefined>;
     /**
      * Details of the resource that was assessed
      */

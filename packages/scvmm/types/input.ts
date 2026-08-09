@@ -7,19 +7,19 @@ export interface CheckpointArgs {
     /**
      * Gets ID of the checkpoint.
      */
-    checkpointID?: pulumi.Input<string>;
+    checkpointID?: pulumi.Input<string | undefined>;
     /**
      * Gets description of the checkpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Gets name of the checkpoint.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets ID of parent of the checkpoint.
      */
-    parentCheckpointID?: pulumi.Input<string>;
+    parentCheckpointID?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -29,11 +29,11 @@ export interface ExtendedLocationArgs {
     /**
      * The extended location name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The extended location type.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -43,7 +43,7 @@ export interface GuestAgentProfileArgs {
     /**
      * Gets or sets the Public Key provided by the client for enabling guest management.
      */
-    clientPublicKey?: pulumi.Input<string>;
+    clientPublicKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -67,31 +67,31 @@ export interface HardwareProfileArgs {
     /**
      * Gets or sets the number of vCPUs for the vm.
      */
-    cpuCount?: pulumi.Input<number>;
+    cpuCount?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets a value indicating whether to enable dynamic memory or not.
      */
-    dynamicMemoryEnabled?: pulumi.Input<string | enums.DynamicMemoryEnabled>;
+    dynamicMemoryEnabled?: pulumi.Input<string | enums.DynamicMemoryEnabled | undefined>;
     /**
      * Gets or sets the max dynamic memory for the vm.
      */
-    dynamicMemoryMaxMB?: pulumi.Input<number>;
+    dynamicMemoryMaxMB?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the min dynamic memory for the vm.
      */
-    dynamicMemoryMinMB?: pulumi.Input<number>;
+    dynamicMemoryMinMB?: pulumi.Input<number | undefined>;
     /**
      * Gets highly available property.
      */
-    isHighlyAvailable?: pulumi.Input<string>;
+    isHighlyAvailable?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets a value indicating whether to enable processor compatibility mode for live migration of VMs.
      */
-    limitCpuForMigration?: pulumi.Input<string | enums.LimitCpuForMigration>;
+    limitCpuForMigration?: pulumi.Input<string | enums.LimitCpuForMigration | undefined>;
     /**
      * MemoryMB is the size of a virtual machine's memory, in MB.
      */
-    memoryMB?: pulumi.Input<number>;
+    memoryMB?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -101,7 +101,7 @@ export interface HttpProxyConfigurationArgs {
     /**
      * Gets or sets httpsProxy url.
      */
-    httpsProxy?: pulumi.Input<string>;
+    httpsProxy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -121,43 +121,43 @@ export interface InfrastructureProfileArgs {
     /**
      * Gets or sets the bios guid for the vm.
      */
-    biosGuid?: pulumi.Input<string>;
+    biosGuid?: pulumi.Input<string | undefined>;
     /**
      * Type of checkpoint supported for the vm.
      */
-    checkpointType?: pulumi.Input<string>;
+    checkpointType?: pulumi.Input<string | undefined>;
     /**
      * Checkpoints in the vm.
      */
-    checkpoints?: pulumi.Input<pulumi.Input<CheckpointArgs>[]>;
+    checkpoints?: pulumi.Input<pulumi.Input<CheckpointArgs>[] | undefined>;
     /**
      * ARM Id of the cloud resource to use for deploying the vm.
      */
-    cloudId?: pulumi.Input<string>;
+    cloudId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the generation for the vm.
      */
-    generation?: pulumi.Input<number>;
+    generation?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the inventory Item ID for the resource.
      */
-    inventoryItemId?: pulumi.Input<string>;
+    inventoryItemId?: pulumi.Input<string | undefined>;
     /**
      * ARM Id of the template resource to use for deploying the vm.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * Unique ID of the virtual machine.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * VMName is the name of VM on the SCVMM server.
      */
-    vmName?: pulumi.Input<string>;
+    vmName?: pulumi.Input<string | undefined>;
     /**
      * ARM Id of the vmmServer resource in which this resource resides.
      */
-    vmmServerId?: pulumi.Input<string>;
+    vmmServerId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -167,31 +167,31 @@ export interface NetworkInterfacesArgs {
     /**
      * Gets or sets the ipv4 address type.
      */
-    ipv4AddressType?: pulumi.Input<string | enums.AllocationMethod>;
+    ipv4AddressType?: pulumi.Input<string | enums.AllocationMethod | undefined>;
     /**
      * Gets or sets the ipv6 address type.
      */
-    ipv6AddressType?: pulumi.Input<string | enums.AllocationMethod>;
+    ipv6AddressType?: pulumi.Input<string | enums.AllocationMethod | undefined>;
     /**
      * Gets or sets the nic MAC address.
      */
-    macAddress?: pulumi.Input<string>;
+    macAddress?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the mac address type.
      */
-    macAddressType?: pulumi.Input<string | enums.AllocationMethod>;
+    macAddressType?: pulumi.Input<string | enums.AllocationMethod | undefined>;
     /**
      * Gets or sets the name of the network interface.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the nic id.
      */
-    nicId?: pulumi.Input<string>;
+    nicId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the ARM Id of the Microsoft.ScVmm/virtualNetwork resource to connect the nic.
      */
-    virtualNetworkId?: pulumi.Input<string>;
+    virtualNetworkId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -201,7 +201,7 @@ export interface NetworkProfileArgs {
     /**
      * Gets or sets the list of network interfaces associated with the virtual machine.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<NetworkInterfacesArgs>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<NetworkInterfacesArgs>[] | undefined>;
 }
 
 /**
@@ -211,11 +211,11 @@ export interface OsProfileArgs {
     /**
      * Admin password of the virtual machine.
      */
-    adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets computer name.
      */
-    computerName?: pulumi.Input<string>;
+    computerName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -225,11 +225,11 @@ export interface OsProfileForVMInstanceArgs {
     /**
      * Admin password of the virtual machine.
      */
-    adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets computer name.
      */
-    computerName?: pulumi.Input<string>;
+    computerName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -239,7 +239,7 @@ export interface StorageProfileArgs {
     /**
      * Gets or sets the list of virtual disks associated with the virtual machine.
      */
-    disks?: pulumi.Input<pulumi.Input<VirtualDiskArgs>[]>;
+    disks?: pulumi.Input<pulumi.Input<VirtualDiskArgs>[] | undefined>;
 }
 
 /**
@@ -249,11 +249,11 @@ export interface StorageQoSPolicyDetailsArgs {
     /**
      * The ID of the QoS policy.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -263,11 +263,11 @@ export interface VMMServerPropertiesCredentialsArgs {
     /**
      * Credentials to use to connect to VMMServer.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Username to use to connect to VMMServer.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -277,43 +277,43 @@ export interface VirtualDiskArgs {
     /**
      * Gets or sets the disk bus.
      */
-    bus?: pulumi.Input<number>;
+    bus?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the disk bus type.
      */
-    busType?: pulumi.Input<string>;
+    busType?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets a value indicating diff disk.
      */
-    createDiffDisk?: pulumi.Input<string | enums.CreateDiffDisk>;
+    createDiffDisk?: pulumi.Input<string | enums.CreateDiffDisk | undefined>;
     /**
      * Gets or sets the disk id.
      */
-    diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the disk total size.
      */
-    diskSizeGB?: pulumi.Input<number>;
+    diskSizeGB?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the disk lun.
      */
-    lun?: pulumi.Input<number>;
+    lun?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the name of the disk.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The QoS policy for the disk.
      */
-    storageQoSPolicy?: pulumi.Input<StorageQoSPolicyDetailsArgs>;
+    storageQoSPolicy?: pulumi.Input<StorageQoSPolicyDetailsArgs | undefined>;
     /**
      * Gets or sets the disk id in the template.
      */
-    templateDiskId?: pulumi.Input<string>;
+    templateDiskId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the disk vhd type.
      */
-    vhdType?: pulumi.Input<string>;
+    vhdType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -323,11 +323,11 @@ export interface VirtualMachineInstancePropertiesAvailabilitySetsArgs {
     /**
      * Gets the ARM Id of the microsoft.scvmm/availabilitySets resource.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the name of the availability set.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -337,9 +337,9 @@ export interface VirtualMachinePropertiesAvailabilitySetsArgs {
     /**
      * Gets the ARM Id of the microsoft.scvmm/availabilitySets resource.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the name of the availability set.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
  *
- * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class User extends pulumi.CustomResource {
     /**
@@ -138,7 +138,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:User" }, { type: "azure-native:apimanagement/v20161010:User" }, { type: "azure-native:apimanagement/v20170301:User" }, { type: "azure-native:apimanagement/v20180101:User" }, { type: "azure-native:apimanagement/v20180601preview:User" }, { type: "azure-native:apimanagement/v20190101:User" }, { type: "azure-native:apimanagement/v20191201:User" }, { type: "azure-native:apimanagement/v20191201preview:User" }, { type: "azure-native:apimanagement/v20200601preview:User" }, { type: "azure-native:apimanagement/v20201201:User" }, { type: "azure-native:apimanagement/v20210101preview:User" }, { type: "azure-native:apimanagement/v20210401preview:User" }, { type: "azure-native:apimanagement/v20210801:User" }, { type: "azure-native:apimanagement/v20211201preview:User" }, { type: "azure-native:apimanagement/v20220401preview:User" }, { type: "azure-native:apimanagement/v20220801:User" }, { type: "azure-native:apimanagement/v20220901preview:User" }, { type: "azure-native:apimanagement/v20230301preview:User" }, { type: "azure-native:apimanagement/v20230501preview:User" }, { type: "azure-native:apimanagement/v20230901preview:User" }, { type: "azure-native:apimanagement/v20240501:User" }, { type: "azure-native:apimanagement/v20240601preview:User" }, { type: "azure-native:apimanagement/v20241001preview:User" }, { type: "azure-native:apimanagement/v20250301preview:User" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:User" }, { type: "azure-native:apimanagement/v20161010:User" }, { type: "azure-native:apimanagement/v20170301:User" }, { type: "azure-native:apimanagement/v20180101:User" }, { type: "azure-native:apimanagement/v20180601preview:User" }, { type: "azure-native:apimanagement/v20190101:User" }, { type: "azure-native:apimanagement/v20191201:User" }, { type: "azure-native:apimanagement/v20191201preview:User" }, { type: "azure-native:apimanagement/v20200601preview:User" }, { type: "azure-native:apimanagement/v20201201:User" }, { type: "azure-native:apimanagement/v20210101preview:User" }, { type: "azure-native:apimanagement/v20210401preview:User" }, { type: "azure-native:apimanagement/v20210801:User" }, { type: "azure-native:apimanagement/v20211201preview:User" }, { type: "azure-native:apimanagement/v20220401preview:User" }, { type: "azure-native:apimanagement/v20220801:User" }, { type: "azure-native:apimanagement/v20220901preview:User" }, { type: "azure-native:apimanagement/v20230301preview:User" }, { type: "azure-native:apimanagement/v20230501preview:User" }, { type: "azure-native:apimanagement/v20230901preview:User" }, { type: "azure-native:apimanagement/v20240501:User" }, { type: "azure-native:apimanagement/v20240601preview:User" }, { type: "azure-native:apimanagement/v20241001preview:User" }, { type: "azure-native:apimanagement/v20250301preview:User" }, { type: "azure-native:apimanagement/v20250901preview:User" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
@@ -151,11 +151,11 @@ export interface UserArgs {
     /**
      * Determines the type of application which send the create user request. Default is legacy portal.
      */
-    appType?: pulumi.Input<string | types.enums.AppType>;
+    appType?: pulumi.Input<string | types.enums.AppType | undefined>;
     /**
      * Determines the type of confirmation e-mail that will be sent to the newly created user.
      */
-    confirmation?: pulumi.Input<string | types.enums.Confirmation>;
+    confirmation?: pulumi.Input<string | types.enums.Confirmation | undefined>;
     /**
      * Email address. Must not be empty and must be unique within the service instance.
      */
@@ -167,7 +167,7 @@ export interface UserArgs {
     /**
      * Collection of user identities.
      */
-    identities?: pulumi.Input<pulumi.Input<types.inputs.UserIdentityContractArgs>[]>;
+    identities?: pulumi.Input<pulumi.Input<types.inputs.UserIdentityContractArgs>[] | undefined>;
     /**
      * Last name.
      */
@@ -175,15 +175,15 @@ export interface UserArgs {
     /**
      * Optional note about a user set by the administrator.
      */
-    note?: pulumi.Input<string>;
+    note?: pulumi.Input<string | undefined>;
     /**
      * Send an Email notification to the User.
      */
-    notify?: pulumi.Input<boolean>;
+    notify?: pulumi.Input<boolean | undefined>;
     /**
      * User Password. If no value is provided, a default password is generated.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -195,9 +195,9 @@ export interface UserArgs {
     /**
      * Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
      */
-    state?: pulumi.Input<string | types.enums.UserState>;
+    state?: pulumi.Input<string | types.enums.UserState | undefined>;
     /**
      * User identifier. Must be unique in the current API Management service instance.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }

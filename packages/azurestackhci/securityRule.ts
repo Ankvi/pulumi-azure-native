@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-01-preview.
  *
- * Other available API versions: 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SecurityRule extends pulumi.CustomResource {
     /**
@@ -161,7 +161,7 @@ export class SecurityRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20240201preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20240501preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20240715preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20240801preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20241001preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20250201preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20250401preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20250601preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20250901preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20260201preview:SecurityRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20240201preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20240501preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20240715preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20240801preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20241001preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20250201preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20250401preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20250601preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20250901preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20260201preview:SecurityRule" }, { type: "azure-native:azurestackhci/v20260401preview:SecurityRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SecurityRule.__pulumiType, name, resourceInputs, opts);
     }
@@ -178,15 +178,15 @@ export interface SecurityRuleArgs {
     /**
      * A description for this rule. Restricted to 140 chars.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination address prefixes. CIDR or destination IP ranges.
      */
-    destinationAddressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationAddressPrefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The destination port ranges. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */
-    destinationPortRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationPortRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
      */
@@ -194,7 +194,7 @@ export interface SecurityRuleArgs {
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * Name of the network security group
      */
@@ -214,13 +214,13 @@ export interface SecurityRuleArgs {
     /**
      * Name of the security rule.
      */
-    securityRuleName?: pulumi.Input<string>;
+    securityRuleName?: pulumi.Input<string | undefined>;
     /**
      * The CIDR or source IP ranges.
      */
-    sourceAddressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceAddressPrefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The source port ranges. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */
-    sourcePortRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    sourcePortRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

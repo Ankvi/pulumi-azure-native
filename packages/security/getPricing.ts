@@ -5,6 +5,8 @@ import * as types from "./types";
  * Get the Defender plans pricing configurations of the selected scope (valid scopes are resource id or a subscription id). At the resource level, supported resource types are 'VirtualMachines, VMSS and ARC Machines'.
  *
  * Uses Azure REST API version 2024-01-01.
+ *
+ * Other available API versions: 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPricing(args: GetPricingArgs, opts?: pulumi.InvokeOptions): Promise<GetPricingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -20,7 +22,7 @@ export interface GetPricingArgs {
      */
     pricingName: string;
     /**
-     * The scope id of the pricing. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or a specific resource (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}) - Supported resources are (VirtualMachines)
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scopeId: string;
 }
@@ -54,7 +56,7 @@ export interface GetPricingResult {
      */
     readonly freeTrialRemainingTime: string;
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -66,7 +68,7 @@ export interface GetPricingResult {
      */
     readonly inheritedFrom: string;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -86,7 +88,11 @@ export interface GetPricingResult {
      */
     readonly subPlan?: string;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -94,6 +100,8 @@ export interface GetPricingResult {
  * Get the Defender plans pricing configurations of the selected scope (valid scopes are resource id or a subscription id). At the resource level, supported resource types are 'VirtualMachines, VMSS and ARC Machines'.
  *
  * Uses Azure REST API version 2024-01-01.
+ *
+ * Other available API versions: 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getPricingOutput(args: GetPricingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPricingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -109,7 +117,7 @@ export interface GetPricingOutputArgs {
      */
     pricingName: pulumi.Input<string>;
     /**
-     * The scope id of the pricing. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or a specific resource (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}) - Supported resources are (VirtualMachines)
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scopeId: pulumi.Input<string>;
 }

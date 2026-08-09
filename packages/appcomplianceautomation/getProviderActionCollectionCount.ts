@@ -46,5 +46,5 @@ export interface GetProviderActionCollectionCountOutputArgs {
     /**
      * The resource type.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

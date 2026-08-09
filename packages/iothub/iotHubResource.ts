@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-30.
  *
- * Other available API versions: 2016-02-03, 2017-01-19, 2017-07-01, 2018-01-22, 2018-04-01, 2018-12-01-preview, 2019-03-22, 2019-03-22-preview, 2019-07-01-preview, 2019-11-04, 2020-03-01, 2020-04-01, 2020-06-15, 2020-07-10-preview, 2020-08-01, 2020-08-31, 2020-08-31-preview, 2021-02-01-preview, 2021-03-03-preview, 2021-03-31, 2021-07-01, 2021-07-01-preview, 2021-07-02, 2021-07-02-preview, 2022-04-30-preview, 2022-11-15-preview, 2023-06-30-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iothub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2016-02-03, 2017-01-19, 2017-07-01, 2018-01-22, 2018-04-01, 2018-12-01-preview, 2019-03-22, 2019-03-22-preview, 2019-07-01-preview, 2019-11-04, 2020-03-01, 2020-04-01, 2020-06-15, 2020-07-10-preview, 2020-08-01, 2020-08-31, 2020-08-31-preview, 2021-02-01-preview, 2021-03-03-preview, 2021-03-31, 2021-07-01, 2021-07-01-preview, 2021-07-02, 2021-07-02-preview, 2022-04-30-preview, 2022-11-15-preview, 2023-06-30-preview, 2025-08-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iothub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class IotHubResource extends pulumi.CustomResource {
     /**
@@ -95,7 +95,7 @@ export class IotHubResource extends pulumi.CustomResource {
             }
             resourceInputs["identity"] = args?.identity;
             resourceInputs["location"] = args?.location;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.iotHubPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.iotHubPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["resourceName"] = args?.resourceName;
             resourceInputs["sku"] = args?.sku;
@@ -118,7 +118,7 @@ export class IotHubResource extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devices/v20220430preview:IotHubResource" }, { type: "azure-native:devices/v20221115preview:IotHubResource" }, { type: "azure-native:devices/v20230630:IotHubResource" }, { type: "azure-native:devices/v20230630preview:IotHubResource" }, { type: "azure-native:devices:IotHubResource" }, { type: "azure-native:iothub/v20160203:IotHubResource" }, { type: "azure-native:iothub/v20170119:IotHubResource" }, { type: "azure-native:iothub/v20170701:IotHubResource" }, { type: "azure-native:iothub/v20180122:IotHubResource" }, { type: "azure-native:iothub/v20180401:IotHubResource" }, { type: "azure-native:iothub/v20181201preview:IotHubResource" }, { type: "azure-native:iothub/v20190322:IotHubResource" }, { type: "azure-native:iothub/v20190322preview:IotHubResource" }, { type: "azure-native:iothub/v20190701preview:IotHubResource" }, { type: "azure-native:iothub/v20191104:IotHubResource" }, { type: "azure-native:iothub/v20200301:IotHubResource" }, { type: "azure-native:iothub/v20200401:IotHubResource" }, { type: "azure-native:iothub/v20200615:IotHubResource" }, { type: "azure-native:iothub/v20200710preview:IotHubResource" }, { type: "azure-native:iothub/v20200801:IotHubResource" }, { type: "azure-native:iothub/v20200831:IotHubResource" }, { type: "azure-native:iothub/v20200831preview:IotHubResource" }, { type: "azure-native:iothub/v20210201preview:IotHubResource" }, { type: "azure-native:iothub/v20210303preview:IotHubResource" }, { type: "azure-native:iothub/v20210331:IotHubResource" }, { type: "azure-native:iothub/v20210701:IotHubResource" }, { type: "azure-native:iothub/v20210701preview:IotHubResource" }, { type: "azure-native:iothub/v20210702:IotHubResource" }, { type: "azure-native:iothub/v20210702preview:IotHubResource" }, { type: "azure-native:iothub/v20220430preview:IotHubResource" }, { type: "azure-native:iothub/v20221115preview:IotHubResource" }, { type: "azure-native:iothub/v20230630:IotHubResource" }, { type: "azure-native:iothub/v20230630preview:IotHubResource" }, { type: "azure-native:iothub/v20250801preview:IotHubResource" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devices/v20220430preview:IotHubResource" }, { type: "azure-native:devices/v20221115preview:IotHubResource" }, { type: "azure-native:devices/v20230630:IotHubResource" }, { type: "azure-native:devices/v20230630preview:IotHubResource" }, { type: "azure-native:devices:IotHubResource" }, { type: "azure-native:iothub/v20160203:IotHubResource" }, { type: "azure-native:iothub/v20170119:IotHubResource" }, { type: "azure-native:iothub/v20170701:IotHubResource" }, { type: "azure-native:iothub/v20180122:IotHubResource" }, { type: "azure-native:iothub/v20180401:IotHubResource" }, { type: "azure-native:iothub/v20181201preview:IotHubResource" }, { type: "azure-native:iothub/v20190322:IotHubResource" }, { type: "azure-native:iothub/v20190322preview:IotHubResource" }, { type: "azure-native:iothub/v20190701preview:IotHubResource" }, { type: "azure-native:iothub/v20191104:IotHubResource" }, { type: "azure-native:iothub/v20200301:IotHubResource" }, { type: "azure-native:iothub/v20200401:IotHubResource" }, { type: "azure-native:iothub/v20200615:IotHubResource" }, { type: "azure-native:iothub/v20200710preview:IotHubResource" }, { type: "azure-native:iothub/v20200801:IotHubResource" }, { type: "azure-native:iothub/v20200831:IotHubResource" }, { type: "azure-native:iothub/v20200831preview:IotHubResource" }, { type: "azure-native:iothub/v20210201preview:IotHubResource" }, { type: "azure-native:iothub/v20210303preview:IotHubResource" }, { type: "azure-native:iothub/v20210331:IotHubResource" }, { type: "azure-native:iothub/v20210701:IotHubResource" }, { type: "azure-native:iothub/v20210701preview:IotHubResource" }, { type: "azure-native:iothub/v20210702:IotHubResource" }, { type: "azure-native:iothub/v20210702preview:IotHubResource" }, { type: "azure-native:iothub/v20220430preview:IotHubResource" }, { type: "azure-native:iothub/v20221115preview:IotHubResource" }, { type: "azure-native:iothub/v20230630:IotHubResource" }, { type: "azure-native:iothub/v20230630preview:IotHubResource" }, { type: "azure-native:iothub/v20250801preview:IotHubResource" }, { type: "azure-native:iothub/v20260301preview:IotHubResource" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(IotHubResource.__pulumiType, name, resourceInputs, opts);
     }
@@ -131,15 +131,15 @@ export interface IotHubResourceArgs {
     /**
      * The managed identities for the IotHub.
      */
-    identity?: pulumi.Input<types.inputs.ArmIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ArmIdentityArgs | undefined>;
     /**
      * The resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * IotHub properties
      */
-    properties?: pulumi.Input<types.inputs.IotHubPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.IotHubPropertiesArgs | undefined>;
     /**
      * The name of the resource group that contains the IoT hub.
      */
@@ -147,7 +147,7 @@ export interface IotHubResourceArgs {
     /**
      * The name of the IoT hub.
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * IotHub SKU info
      */
@@ -155,5 +155,5 @@ export interface IotHubResourceArgs {
     /**
      * The resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

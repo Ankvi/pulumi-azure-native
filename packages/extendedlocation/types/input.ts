@@ -7,11 +7,11 @@ export interface CustomLocationPropertiesAuthenticationArgs {
     /**
      * The type of the Custom Locations authentication
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The kubeconfig value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -21,7 +21,7 @@ export interface IdentityArgs {
     /**
      * The identity type.
      */
-    type?: pulumi.Input<string | enums.ResourceIdentityType>;
+    type?: pulumi.Input<string | enums.ResourceIdentityType | undefined>;
 }
 
 /**
@@ -31,5 +31,5 @@ export interface ResourceSyncRulePropertiesSelectorArgs {
     /**
      * MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'.
      */
-    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    matchLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

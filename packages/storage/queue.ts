@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Queue extends pulumi.CustomResource {
     /**
@@ -86,7 +86,7 @@ export class Queue extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20190601:Queue" }, { type: "azure-native:storage/v20200801preview:Queue" }, { type: "azure-native:storage/v20210101:Queue" }, { type: "azure-native:storage/v20210201:Queue" }, { type: "azure-native:storage/v20210401:Queue" }, { type: "azure-native:storage/v20210601:Queue" }, { type: "azure-native:storage/v20210801:Queue" }, { type: "azure-native:storage/v20210901:Queue" }, { type: "azure-native:storage/v20220501:Queue" }, { type: "azure-native:storage/v20220901:Queue" }, { type: "azure-native:storage/v20230101:Queue" }, { type: "azure-native:storage/v20230401:Queue" }, { type: "azure-native:storage/v20230501:Queue" }, { type: "azure-native:storage/v20240101:Queue" }, { type: "azure-native:storage/v20250101:Queue" }, { type: "azure-native:storage/v20250601:Queue" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20190601:Queue" }, { type: "azure-native:storage/v20200801preview:Queue" }, { type: "azure-native:storage/v20210101:Queue" }, { type: "azure-native:storage/v20210201:Queue" }, { type: "azure-native:storage/v20210401:Queue" }, { type: "azure-native:storage/v20210601:Queue" }, { type: "azure-native:storage/v20210801:Queue" }, { type: "azure-native:storage/v20210901:Queue" }, { type: "azure-native:storage/v20220501:Queue" }, { type: "azure-native:storage/v20220901:Queue" }, { type: "azure-native:storage/v20230101:Queue" }, { type: "azure-native:storage/v20230401:Queue" }, { type: "azure-native:storage/v20230501:Queue" }, { type: "azure-native:storage/v20240101:Queue" }, { type: "azure-native:storage/v20250101:Queue" }, { type: "azure-native:storage/v20250601:Queue" }, { type: "azure-native:storage/v20250801:Queue" }, { type: "azure-native:storage/v20260401:Queue" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Queue.__pulumiType, name, resourceInputs, opts);
     }
@@ -103,11 +103,11 @@ export interface QueueArgs {
     /**
      * A name-value pair that represents queue metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.
      */
-    queueName?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

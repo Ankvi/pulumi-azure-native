@@ -129,7 +129,7 @@ export interface GetPolicyOutputArgs {
     /**
      * Specify the $expand query. Example: 'properties($select=description)'
      */
-    expand?: pulumi.Input<string>;
+    expand?: pulumi.Input<string | undefined>;
     /**
      * labs
      */

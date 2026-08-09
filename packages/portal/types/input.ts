@@ -7,7 +7,7 @@ export interface ConfigurationPropertiesArgs {
     /**
      * When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
      */
-    enforcePrivateMarkdownStorage?: pulumi.Input<boolean>;
+    enforcePrivateMarkdownStorage?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -21,11 +21,11 @@ export interface ConsoleCreatePropertiesArgs {
     /**
      * Provisioning state of the console.
      */
-    provisioningState?: pulumi.Input<string | enums.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | enums.ProvisioningState | undefined>;
     /**
      * Uri of the console.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -35,7 +35,7 @@ export interface DashboardLensArgs {
     /**
      * The dashboard len's metadata.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
      * The lens order.
      */
@@ -53,11 +53,11 @@ export interface DashboardPartMetadataArgs {
     /**
      * Inputs to dashboard part.
      */
-    inputs?: pulumi.Input<any[]>;
+    inputs?: pulumi.Input<any[] | undefined>;
     /**
      * Settings of dashboard part.
      */
-    settings?: pulumi.Input<{[key: string]: any}>;
+    settings?: pulumi.Input<{[key: string]: any} | undefined>;
     /**
      * The type of dashboard part.
      */
@@ -71,7 +71,7 @@ export interface DashboardPartsArgs {
     /**
      * The dashboard's part metadata.
      */
-    metadata?: pulumi.Input<DashboardPartMetadataArgs>;
+    metadata?: pulumi.Input<DashboardPartMetadataArgs | undefined>;
     /**
      * The dashboard's part position.
      */
@@ -89,7 +89,7 @@ export interface DashboardPartsPositionArgs {
     /**
      * The dashboard part's metadata.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
      * The dashboard's part row span.
      */
@@ -111,11 +111,11 @@ export interface DashboardPropertiesWithProvisioningStateArgs {
     /**
      * The dashboard lenses.
      */
-    lenses?: pulumi.Input<pulumi.Input<DashboardLensArgs>[]>;
+    lenses?: pulumi.Input<pulumi.Input<DashboardLensArgs>[] | undefined>;
     /**
      * The dashboard metadata.
      */
-    metadata?: any;
+    metadata?: any | undefined;
 }
 
 /**
@@ -125,15 +125,15 @@ export interface StorageProfileArgs {
     /**
      * Size of file share
      */
-    diskSizeInGB?: pulumi.Input<number>;
+    diskSizeInGB?: pulumi.Input<number | undefined>;
     /**
      * Name of the mounted file share. 63 characters or less, lowercase alphabet, numbers, and -
      */
-    fileShareName?: pulumi.Input<string>;
+    fileShareName?: pulumi.Input<string | undefined>;
     /**
      * Full resource ID of storage account.
      */
-    storageAccountResourceId?: pulumi.Input<string>;
+    storageAccountResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -143,11 +143,11 @@ export interface TerminalSettingsArgs {
     /**
      * Size of terminal font.
      */
-    fontSize?: pulumi.Input<string | enums.FontSize>;
+    fontSize?: pulumi.Input<string | enums.FontSize | undefined>;
     /**
      * Style of terminal font.
      */
-    fontStyle?: pulumi.Input<string | enums.FontStyle>;
+    fontStyle?: pulumi.Input<string | enums.FontStyle | undefined>;
 }
 
 /**

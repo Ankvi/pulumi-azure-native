@@ -58,9 +58,9 @@ export class ResourceSyncRule extends pulumi.CustomResource {
     /**
      * A label selector is composed of two parts, matchLabels and matchExpressions. The first part, matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'. The second part, matchExpressions is a list of resource selector requirements. Valid operators include In, NotIn, Exists, and DoesNotExist. The values set must be non-empty in the case of In and NotIn. The values set must be empty in the case of Exists and DoesNotExist. All of the requirements, from both matchLabels and matchExpressions must all be satisfied in order to match.
      */
-    declare public readonly selector: pulumi.Output<types.outputs.ResourceSyncRulePropertiesResponseSelector | undefined>;
+    declare public readonly selector: pulumi.Output<types.outputs.ResourceSyncRulePropertiesSelectorResponse | undefined>;
     /**
-     * Metadata pertaining to creation and last modification of the resource
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -132,15 +132,15 @@ export interface ResourceSyncRuleArgs {
     /**
      * Resource Sync Rule name.
      */
-    childResourceName?: pulumi.Input<string>;
+    childResourceName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Priority represents a priority of the Resource Sync Rule
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -152,13 +152,13 @@ export interface ResourceSyncRuleArgs {
     /**
      * A label selector is composed of two parts, matchLabels and matchExpressions. The first part, matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'. The second part, matchExpressions is a list of resource selector requirements. Valid operators include In, NotIn, Exists, and DoesNotExist. The values set must be non-empty in the case of In and NotIn. The values set must be empty in the case of Exists and DoesNotExist. All of the requirements, from both matchLabels and matchExpressions must all be satisfied in order to match.
      */
-    selector?: pulumi.Input<types.inputs.ResourceSyncRulePropertiesSelectorArgs>;
+    selector?: pulumi.Input<types.inputs.ResourceSyncRulePropertiesSelectorArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * For an unmapped custom resource, its labels will be used to find matching resource sync rules. If this resource sync rule is one of the matching rules with highest priority, then the unmapped custom resource will be projected to the target resource group associated with this resource sync rule. The user creating this resource sync rule should have write permissions on the target resource group and this write permission will be validated when creating the resource sync rule.
      */
-    targetResourceGroup?: pulumi.Input<string>;
+    targetResourceGroup?: pulumi.Input<string | undefined>;
 }

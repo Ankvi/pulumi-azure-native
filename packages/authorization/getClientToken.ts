@@ -42,5 +42,5 @@ export interface GetClientTokenOutputArgs {
     /**
      * Optional authentication endpoint. Defaults to the endpoint of Azure Resource Manager.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
 }

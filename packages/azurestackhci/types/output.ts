@@ -3,6 +3,24 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * The AdapterPropertyOverrides of a cluster.
  */
+export interface AdapterPropertyOverridesHciEdgeDeviceResponse {
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    jumboPacket: string;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    networkDirect: string;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+     */
+    networkDirectTechnology: string;
+}
+
+/**
+ * The AdapterPropertyOverrides of a cluster.
+ */
 export interface AdapterPropertyOverridesResponse {
     /**
      * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
@@ -16,24 +34,6 @@ export interface AdapterPropertyOverridesResponse {
      * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
      */
     networkDirectTechnology?: string;
-}
-
-/**
- * The AdapterPropertyOverrides of a cluster.
- */
-export interface AdapterPropertyOverridesResponseV1 {
-    /**
-     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-     */
-    jumboPacket: string;
-    /**
-     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-     */
-    networkDirect: string;
-    /**
-     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
-     */
-    networkDirectTechnology: string;
 }
 
 /**
@@ -265,7 +265,7 @@ export interface DeploymentClusterResponse {
      */
     witnessPath?: string;
     /**
-     * Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'. 
+     * Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'.
      */
     witnessType?: string;
 }
@@ -279,7 +279,7 @@ export interface DeploymentConfigurationResponse {
      */
     scaleUnits: ScaleUnitsResponse[];
     /**
-     * deployment template version 
+     * deployment template version
      */
     version?: string;
 }
@@ -289,7 +289,7 @@ export interface DeploymentConfigurationResponse {
  */
 export interface DeploymentDataResponse {
     /**
-     * The path to the Active Directory Organizational Unit container object prepared for the deployment. 
+     * The path to the Active Directory Organizational Unit container object prepared for the deployment.
      */
     adouPath?: string;
     /**
@@ -363,7 +363,7 @@ export function deploymentDataResponseProvideDefaults(val: DeploymentDataRespons
  */
 export interface DeploymentSecuritySettingsResponse {
     /**
-     * When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent. 
+     * When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent.
      */
     bitlockerBootVolume?: boolean;
     /**
@@ -874,7 +874,7 @@ export interface EdgeMachinePropertiesResponse {
      */
     lastSyncTimestamp: string;
     /**
-     * OS configuration status details 
+     * OS configuration status details
      */
     machineState: string;
     /**
@@ -1026,7 +1026,7 @@ export interface EdgeMachineReportedPropertiesResponse {
     /**
      * Extension details for edge machine.
      */
-    extensionProfile: ExtensionProfileResponseV1;
+    extensionProfile: ExtensionProfileEdgeMachineResponse;
     /**
      * Hardware related information for edge machine.
      */
@@ -1068,6 +1068,16 @@ export interface ErrorAdditionalInfoResponse {
 }
 
 /**
+ * details of validation failure
+ */
+export interface ErrorDetailHciEdgeDeviceResponse {
+    /**
+     * Exception details while installing extension.
+     */
+    exception: string;
+}
+
+/**
  * The error detail.
  */
 export interface ErrorDetailResponse {
@@ -1091,16 +1101,6 @@ export interface ErrorDetailResponse {
      * The error target.
      */
     target: string;
-}
-
-/**
- * details of validation failure
- */
-export interface ErrorDetailResponseV1 {
-    /**
-     * Exception details while installing extension.
-     */
-    exception: string;
 }
 
 /**
@@ -1168,21 +1168,21 @@ export interface ExtensionInstanceViewResponseStatus {
 /**
  * Extensions details for edge device.
  */
-export interface ExtensionProfileResponse {
+export interface ExtensionProfileEdgeMachineResponse {
     /**
      * List of Arc extensions installed on edge device.
      */
-    extensions: ExtensionResponse[];
+    extensions: HciEdgeDeviceArcExtensionResponse[];
 }
 
 /**
  * Extensions details for edge device.
  */
-export interface ExtensionProfileResponseV1 {
+export interface ExtensionProfileResponse {
     /**
      * List of Arc extensions installed on edge device.
      */
-    extensions: HciEdgeDeviceArcExtensionResponse[];
+    extensions: ExtensionResponse[];
 }
 
 /**
@@ -1192,7 +1192,7 @@ export interface ExtensionResponse {
     /**
      * Error details while installing Arc extension.
      */
-    errorDetails: ErrorDetailResponseV1[];
+    errorDetails: ErrorDetailHciEdgeDeviceResponse[];
     /**
      * Arc extension name installed on edge device.
      */
@@ -1237,7 +1237,7 @@ export interface FrontendIPConfigurationPropertiesResponse {
      */
     privateIPAllocationMethod?: string;
     /**
-     * Public IP 
+     * Public IP
      */
     publicIPAddress?: PublicIPAddressArmReferenceResponse;
     /**
@@ -1672,7 +1672,7 @@ export interface HciNetworkProfileResponse {
     /**
      * HostNetwork config to deploy AzureStackHCI Cluster.
      */
-    hostNetwork: HostNetworkResponseV1;
+    hostNetwork: HostNetworkHciEdgeDeviceResponse;
     /**
      * List of NIC Details of device.
      */
@@ -1853,6 +1853,28 @@ export interface HciValidationFailureDetailResponse {
 /**
  * The HostNetwork of a cluster.
  */
+export interface HostNetworkHciEdgeDeviceResponse {
+    /**
+     * Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+     */
+    enableStorageAutoIp: boolean;
+    /**
+     * The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+     */
+    intents: IntentsHciEdgeDeviceResponse[];
+    /**
+     * Defines how the storage adapters between nodes are connected either switch or switch less.
+     */
+    storageConnectivitySwitchless: boolean;
+    /**
+     * List of StorageNetworks config to deploy AzureStackHCI Cluster.
+     */
+    storageNetworks: StorageNetworksHciEdgeDeviceResponse[];
+}
+
+/**
+ * The HostNetwork of a cluster.
+ */
 export interface HostNetworkResponse {
     /**
      * Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
@@ -1880,28 +1902,6 @@ export function hostNetworkResponseProvideDefaults(val: HostNetworkResponse): Ho
         enableStorageAutoIp: (val.enableStorageAutoIp) ?? false,
         storageConnectivitySwitchless: (val.storageConnectivitySwitchless) ?? false,
     };
-}
-
-/**
- * The HostNetwork of a cluster.
- */
-export interface HostNetworkResponseV1 {
-    /**
-     * Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
-     */
-    enableStorageAutoIp: boolean;
-    /**
-     * The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
-     */
-    intents: IntentsResponseV1[];
-    /**
-     * Defines how the storage adapters between nodes are connected either switch or switch less.
-     */
-    storageConnectivitySwitchless: boolean;
-    /**
-     * List of StorageNetworks config to deploy AzureStackHCI Cluster.
-     */
-    storageNetworks: StorageNetworksResponseV1[];
 }
 
 /**
@@ -2081,6 +2081,72 @@ export interface InboundNATRuleResponse {
 }
 
 /**
+ * Inbound rule properties - extends InboundNATRuleProperties with additional status tracking
+ */
+export interface InboundRulePropertiesResponse {
+    /**
+     * IP configuration for the target backend.
+     */
+    backendIPConfiguration: IPConfigurationArmReferenceResponse;
+    /**
+     * backend Port for the inbound rule
+     */
+    backendPort: number;
+    /**
+     * Frontend Port for the inbound rule
+     */
+    frontendPort: number;
+    /**
+     * Protocol for the NAT rule
+     */
+    protocol: string;
+    /**
+     * Provisioning state of the inbound rule
+     */
+    provisioningState: string;
+    /**
+     * Public IP Address for this NAT rule
+     */
+    publicIPAddress: PublicIPAddressArmReferenceResponse;
+    /**
+     * The observed state of Inbound Rule
+     */
+    status: InboundRuleStatusResponse;
+}
+
+/**
+ * Provisioning status of Inbound Rule
+ */
+export interface InboundRuleStatusProvisioningStatusResponse {
+    /**
+     * The ID of the operation performed on the inbound rule
+     */
+    operationId?: string;
+    /**
+     * The status of the operation performed on the inbound rule [Succeeded, Failed, InProgress]
+     */
+    status: string;
+}
+
+/**
+ * The observed state of inbound rule
+ */
+export interface InboundRuleStatusResponse {
+    /**
+     * InboundRule provisioning error code
+     */
+    errorCode?: string;
+    /**
+     * Descriptive error message
+     */
+    errorMessage?: string;
+    /**
+     * InboundRule provisioning status
+     */
+    provisioningStatus?: InboundRuleStatusProvisioningStatusResponse;
+}
+
+/**
  * The InfrastructureNetwork of a AzureStackHCI Cluster.
  */
 export interface InfrastructureNetworkResponse {
@@ -2135,64 +2201,11 @@ export interface InstanceViewStatusResponse {
 /**
  * The Intents of a cluster.
  */
-export interface IntentsResponse {
-    /**
-     * Array of network interfaces used for the network intent.
-     */
-    adapter?: string[];
+export interface IntentsHciEdgeDeviceResponse {
     /**
      * Set Adapter PropertyOverrides for cluster.
      */
-    adapterPropertyOverrides?: AdapterPropertyOverridesResponse;
-    /**
-     * Name of the network intent you wish to create.
-     */
-    name?: string;
-    /**
-     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-     */
-    overrideAdapterProperty?: boolean;
-    /**
-     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-     */
-    overrideQosPolicy?: boolean;
-    /**
-     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-     */
-    overrideVirtualSwitchConfiguration?: boolean;
-    /**
-     * Set QoS PolicyOverrides for cluster.
-     */
-    qosPolicyOverrides?: QosPolicyOverridesResponse;
-    /**
-     * List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
-     */
-    trafficType?: string[];
-    /**
-     * Set virtualSwitch ConfigurationOverrides for cluster.
-     */
-    virtualSwitchConfigurationOverrides?: VirtualSwitchConfigurationOverridesResponse;
-}
-/**
- * intentsResponseProvideDefaults sets the appropriate defaults for IntentsResponse
- */
-export function intentsResponseProvideDefaults(val: IntentsResponse): IntentsResponse {
-    return {
-        ...val,
-        overrideAdapterProperty: (val.overrideAdapterProperty) ?? false,
-        overrideQosPolicy: (val.overrideQosPolicy) ?? false,
-        overrideVirtualSwitchConfiguration: (val.overrideVirtualSwitchConfiguration) ?? false,
-    };
-}
-
-/**
- * The Intents of a cluster.
- */
-export interface IntentsResponseV1 {
-    /**
-     * Set Adapter PropertyOverrides for cluster.
-     */
-    adapterPropertyOverrides: AdapterPropertyOverridesResponseV1;
+    adapterPropertyOverrides: AdapterPropertyOverridesHciEdgeDeviceResponse;
     /**
      * Array of adapters used for the network intent.
      */
@@ -2256,7 +2269,60 @@ export interface IntentsResponseV1 {
     /**
      * Set virtualSwitch ConfigurationOverrides for cluster.
      */
-    virtualSwitchConfigurationOverrides: VirtualSwitchConfigurationOverridesResponseV1;
+    virtualSwitchConfigurationOverrides: VirtualSwitchConfigurationOverridesHciEdgeDeviceResponse;
+}
+
+/**
+ * The Intents of a cluster.
+ */
+export interface IntentsResponse {
+    /**
+     * Array of network interfaces used for the network intent.
+     */
+    adapter?: string[];
+    /**
+     * Set Adapter PropertyOverrides for cluster.
+     */
+    adapterPropertyOverrides?: AdapterPropertyOverridesResponse;
+    /**
+     * Name of the network intent you wish to create.
+     */
+    name?: string;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    overrideAdapterProperty?: boolean;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    overrideQosPolicy?: boolean;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    overrideVirtualSwitchConfiguration?: boolean;
+    /**
+     * Set QoS PolicyOverrides for cluster.
+     */
+    qosPolicyOverrides?: QosPolicyOverridesResponse;
+    /**
+     * List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
+     */
+    trafficType?: string[];
+    /**
+     * Set virtualSwitch ConfigurationOverrides for cluster.
+     */
+    virtualSwitchConfigurationOverrides?: VirtualSwitchConfigurationOverridesResponse;
+}
+/**
+ * intentsResponseProvideDefaults sets the appropriate defaults for IntentsResponse
+ */
+export function intentsResponseProvideDefaults(val: IntentsResponse): IntentsResponse {
+    return {
+        ...val,
+        overrideAdapterProperty: (val.overrideAdapterProperty) ?? false,
+        overrideQosPolicy: (val.overrideQosPolicy) ?? false,
+        overrideVirtualSwitchConfiguration: (val.overrideVirtualSwitchConfiguration) ?? false,
+    };
 }
 
 /**
@@ -2853,7 +2919,7 @@ export interface NatGatewayArmReferenceResponse {
  */
 export interface NatGatewayPropertiesResponse {
     /**
-     * List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
+     * List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet. Removed in 2026-04-01-preview; use InboundRule Child resource instead.
      */
     inboundNATRules?: InboundNATRuleResponse[];
     /**
@@ -2875,7 +2941,7 @@ export interface NatGatewayPropertiesResponse {
 }
 
 /**
- * Provisioning status of Nat Gateway 
+ * Provisioning status of Nat Gateway
  */
 export interface NatGatewayStatusProvisioningStatusResponse {
     /**
@@ -4143,6 +4209,24 @@ export interface StepResponse {
 /**
  * The StorageAdapter physical nodes of a cluster.
  */
+export interface StorageAdapterIPInfoHciEdgeDeviceResponse {
+    /**
+     * The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+     */
+    ipv4Address: string;
+    /**
+     * storage adapter physical node name.
+     */
+    physicalNode: string;
+    /**
+     * The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+     */
+    subnetMask: string;
+}
+
+/**
+ * The StorageAdapter physical nodes of a cluster.
+ */
 export interface StorageAdapterIPInfoResponse {
     /**
      * The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
@@ -4156,24 +4240,6 @@ export interface StorageAdapterIPInfoResponse {
      * The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
      */
     subnetMask?: string;
-}
-
-/**
- * The StorageAdapter physical nodes of a cluster.
- */
-export interface StorageAdapterIPInfoResponseV1 {
-    /**
-     * The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
-     */
-    ipv4Address: string;
-    /**
-     * storage adapter physical node name.
-     */
-    physicalNode: string;
-    /**
-     * The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
-     */
-    subnetMask: string;
 }
 
 /**
@@ -4229,6 +4295,28 @@ export interface StorageContainerStatusResponse {
 /**
  * The StorageNetworks of a cluster.
  */
+export interface StorageNetworksHciEdgeDeviceResponse {
+    /**
+     * Name of the storage network.
+     */
+    name: string;
+    /**
+     * Name of the storage network adapter.
+     */
+    networkAdapterName: string;
+    /**
+     * List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
+     */
+    storageAdapterIPInfo: StorageAdapterIPInfoHciEdgeDeviceResponse[];
+    /**
+     * ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
+     */
+    storageVlanId: string;
+}
+
+/**
+ * The StorageNetworks of a cluster.
+ */
 export interface StorageNetworksResponse {
     /**
      * Name of the storage network.
@@ -4243,31 +4331,9 @@ export interface StorageNetworksResponse {
      */
     storageAdapterIPInfo?: StorageAdapterIPInfoResponse[];
     /**
-     * ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic. 
+     * ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
      */
     vlanId?: string;
-}
-
-/**
- * The StorageNetworks of a cluster.
- */
-export interface StorageNetworksResponseV1 {
-    /**
-     * Name of the storage network.
-     */
-    name: string;
-    /**
-     * Name of the storage network adapter.
-     */
-    networkAdapterName: string;
-    /**
-     * List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
-     */
-    storageAdapterIPInfo: StorageAdapterIPInfoResponseV1[];
-    /**
-     * ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic. 
-     */
-    storageVlanId: string;
 }
 
 /**
@@ -5074,23 +5140,12 @@ export interface VirtualMachinePropertiesResponseOsProfile {
      */
     osType?: string;
     /**
-     * Windows Configuration for the virtual machine 
+     * Windows Configuration for the virtual machine
      */
     windowsConfiguration?: VirtualMachinePropertiesResponseWindowsConfiguration;
 }
 
 export interface VirtualMachinePropertiesResponsePublicKeys {
-    /**
-     * KeyData - SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Li      nux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-     */
-    keyData?: string;
-    /**
-     * Path - Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
-     */
-    path?: string;
-}
-
-export interface VirtualMachinePropertiesResponsePublicKeysPublicKeys {
     /**
      * KeyData - SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Li      nux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
      */
@@ -5127,16 +5182,6 @@ export interface VirtualMachinePropertiesResponseSsh {
      * PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
      */
     publicKeys?: VirtualMachinePropertiesResponsePublicKeys[];
-}
-
-/**
- * SSH Configuration
- */
-export interface VirtualMachinePropertiesResponseSshSsh {
-    /**
-     * PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-     */
-    publicKeys?: VirtualMachinePropertiesResponsePublicKeysPublicKeys[];
 }
 
 /**
@@ -5178,7 +5223,7 @@ export function virtualMachinePropertiesResponseUefiSettingsProvideDefaults(val:
 }
 
 /**
- * Windows Configuration for the virtual machine 
+ * Windows Configuration for the virtual machine
  */
 export interface VirtualMachinePropertiesResponseWindowsConfiguration {
     /**
@@ -5192,7 +5237,7 @@ export interface VirtualMachinePropertiesResponseWindowsConfiguration {
     /**
      * SSH Configuration
      */
-    ssh?: VirtualMachinePropertiesResponseSshSsh;
+    ssh?: VirtualMachinePropertiesResponseSsh;
     /**
      * TimeZone for the virtual machine
      */
@@ -5448,6 +5493,20 @@ export interface VirtualNetworkSubnetStatusResponse {
 /**
  * The VirtualSwitchConfigurationOverrides of a cluster.
  */
+export interface VirtualSwitchConfigurationOverridesHciEdgeDeviceResponse {
+    /**
+     * Enable IoV for Virtual Switch
+     */
+    enableIov: string;
+    /**
+     * Load Balancing Algorithm for Virtual Switch
+     */
+    loadBalancingAlgorithm: string;
+}
+
+/**
+ * The VirtualSwitchConfigurationOverrides of a cluster.
+ */
 export interface VirtualSwitchConfigurationOverridesResponse {
     /**
      * Enable IoV for Virtual Switch
@@ -5457,20 +5516,6 @@ export interface VirtualSwitchConfigurationOverridesResponse {
      * Load Balancing Algorithm for Virtual Switch
      */
     loadBalancingAlgorithm?: string;
-}
-
-/**
- * The VirtualSwitchConfigurationOverrides of a cluster.
- */
-export interface VirtualSwitchConfigurationOverridesResponseV1 {
-    /**
-     * Enable IoV for Virtual Switch
-     */
-    enableIov: string;
-    /**
-     * Load Balancing Algorithm for Virtual Switch
-     */
-    loadBalancingAlgorithm: string;
 }
 
 /**

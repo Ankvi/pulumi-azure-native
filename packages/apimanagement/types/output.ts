@@ -127,8 +127,8 @@ export interface ApiManagementServiceIdentityResponse {
      */
     type: string;
     /**
-     * The list of user identities associated with the resource. The user identity 
-     * dictionary key references will be ARM resource ids in the form: 
+     * The list of user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
      *     providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
@@ -160,7 +160,7 @@ export interface ApiVersionConstraintResponse {
 }
 
 /**
- * An API Version Set contains the common configuration for a set of API Versions relating 
+ * An API Version Set contains the common configuration for a set of API Versions relating
  */
 export interface ApiVersionSetContractDetailsResponse {
     /**

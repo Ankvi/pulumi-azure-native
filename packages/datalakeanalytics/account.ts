@@ -282,11 +282,11 @@ export interface AccountArgs {
     /**
      * The name of the Data Lake Analytics account.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The list of compute policies associated with this account.
      */
-    computePolicies?: pulumi.Input<pulumi.Input<types.inputs.CreateComputePolicyWithAccountParametersArgs>[]>;
+    computePolicies?: pulumi.Input<pulumi.Input<types.inputs.CreateComputePolicyWithAccountParametersArgs>[] | undefined>;
     /**
      * The list of Data Lake Store accounts associated with this account.
      */
@@ -298,43 +298,43 @@ export interface AccountArgs {
     /**
      * The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
      */
-    firewallAllowAzureIps?: pulumi.Input<types.enums.FirewallAllowAzureIpsState>;
+    firewallAllowAzureIps?: pulumi.Input<types.enums.FirewallAllowAzureIpsState | undefined>;
     /**
      * The list of firewall rules associated with this account.
      */
-    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.CreateFirewallRuleWithAccountParametersArgs>[]>;
+    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.CreateFirewallRuleWithAccountParametersArgs>[] | undefined>;
     /**
      * The current state of the IP address firewall for this account.
      */
-    firewallState?: pulumi.Input<types.enums.FirewallState>;
+    firewallState?: pulumi.Input<types.enums.FirewallState | undefined>;
     /**
      * The resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The maximum supported degree of parallelism for this account.
      */
-    maxDegreeOfParallelism?: pulumi.Input<number>;
+    maxDegreeOfParallelism?: pulumi.Input<number | undefined>;
     /**
      * The maximum supported degree of parallelism per job for this account.
      */
-    maxDegreeOfParallelismPerJob?: pulumi.Input<number>;
+    maxDegreeOfParallelismPerJob?: pulumi.Input<number | undefined>;
     /**
      * The maximum supported jobs running under the account at the same time.
      */
-    maxJobCount?: pulumi.Input<number>;
+    maxJobCount?: pulumi.Input<number | undefined>;
     /**
      * The minimum supported priority per job for this account.
      */
-    minPriorityPerJob?: pulumi.Input<number>;
+    minPriorityPerJob?: pulumi.Input<number | undefined>;
     /**
      * The commitment tier for the next month.
      */
-    newTier?: pulumi.Input<types.enums.TierType>;
+    newTier?: pulumi.Input<types.enums.TierType | undefined>;
     /**
      * The number of days that job metadata is retained.
      */
-    queryStoreRetention?: pulumi.Input<number>;
+    queryStoreRetention?: pulumi.Input<number | undefined>;
     /**
      * The name of the Azure resource group.
      */
@@ -342,9 +342,9 @@ export interface AccountArgs {
     /**
      * The list of Azure Blob Storage accounts associated with this account.
      */
-    storageAccounts?: pulumi.Input<pulumi.Input<types.inputs.AddStorageAccountWithAccountParametersArgs>[]>;
+    storageAccounts?: pulumi.Input<pulumi.Input<types.inputs.AddStorageAccountWithAccountParametersArgs>[] | undefined>;
     /**
      * The resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

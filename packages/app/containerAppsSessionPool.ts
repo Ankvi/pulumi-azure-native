@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-02-preview.
  *
- * Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ContainerAppsSessionPool extends pulumi.CustomResource {
     /**
@@ -169,7 +169,7 @@ export class ContainerAppsSessionPool extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20240202preview:ContainerAppsSessionPool" }, { type: "azure-native:app/v20240802preview:ContainerAppsSessionPool" }, { type: "azure-native:app/v20241002preview:ContainerAppsSessionPool" }, { type: "azure-native:app/v20250101:ContainerAppsSessionPool" }, { type: "azure-native:app/v20250202preview:ContainerAppsSessionPool" }, { type: "azure-native:app/v20250701:ContainerAppsSessionPool" }, { type: "azure-native:app/v20251002preview:ContainerAppsSessionPool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20240202preview:ContainerAppsSessionPool" }, { type: "azure-native:app/v20240802preview:ContainerAppsSessionPool" }, { type: "azure-native:app/v20241002preview:ContainerAppsSessionPool" }, { type: "azure-native:app/v20250101:ContainerAppsSessionPool" }, { type: "azure-native:app/v20250202preview:ContainerAppsSessionPool" }, { type: "azure-native:app/v20250701:ContainerAppsSessionPool" }, { type: "azure-native:app/v20251002preview:ContainerAppsSessionPool" }, { type: "azure-native:app/v20260101:ContainerAppsSessionPool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ContainerAppsSessionPool.__pulumiType, name, resourceInputs, opts);
     }
@@ -182,35 +182,35 @@ export interface ContainerAppsSessionPoolArgs {
     /**
      * The container type of the sessions.
      */
-    containerType?: pulumi.Input<string | types.enums.ContainerType>;
+    containerType?: pulumi.Input<string | types.enums.ContainerType | undefined>;
     /**
      * The custom container configuration if the containerType is CustomContainer.
      */
-    customContainerTemplate?: pulumi.Input<types.inputs.CustomContainerTemplateArgs>;
+    customContainerTemplate?: pulumi.Input<types.inputs.CustomContainerTemplateArgs | undefined>;
     /**
      * The pool configuration if the poolManagementType is dynamic.
      */
-    dynamicPoolConfiguration?: pulumi.Input<types.inputs.DynamicPoolConfigurationArgs>;
+    dynamicPoolConfiguration?: pulumi.Input<types.inputs.DynamicPoolConfigurationArgs | undefined>;
     /**
      * Resource ID of the session pool's environment.
      */
-    environmentId?: pulumi.Input<string>;
+    environmentId?: pulumi.Input<string | undefined>;
     /**
      * Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Optional settings for a Managed Identity that is assigned to the Session pool.
      */
-    managedIdentitySettings?: pulumi.Input<pulumi.Input<types.inputs.ManagedIdentitySettingArgs>[]>;
+    managedIdentitySettings?: pulumi.Input<pulumi.Input<types.inputs.ManagedIdentitySettingArgs>[] | undefined>;
     /**
      * The pool management type of the session pool.
      */
-    poolManagementType?: pulumi.Input<string | types.enums.PoolManagementType>;
+    poolManagementType?: pulumi.Input<string | types.enums.PoolManagementType | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -218,21 +218,21 @@ export interface ContainerAppsSessionPoolArgs {
     /**
      * The scale configuration of the session pool.
      */
-    scaleConfiguration?: pulumi.Input<types.inputs.ScaleConfigurationArgs>;
+    scaleConfiguration?: pulumi.Input<types.inputs.ScaleConfigurationArgs | undefined>;
     /**
      * The secrets of the session pool.
      */
-    secrets?: pulumi.Input<pulumi.Input<types.inputs.SessionPoolSecretArgs>[]>;
+    secrets?: pulumi.Input<pulumi.Input<types.inputs.SessionPoolSecretArgs>[] | undefined>;
     /**
      * The network configuration of the sessions in the session pool.
      */
-    sessionNetworkConfiguration?: pulumi.Input<types.inputs.SessionNetworkConfigurationArgs>;
+    sessionNetworkConfiguration?: pulumi.Input<types.inputs.SessionNetworkConfigurationArgs | undefined>;
     /**
      * Name of the session pool.
      */
-    sessionPoolName?: pulumi.Input<string>;
+    sessionPoolName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

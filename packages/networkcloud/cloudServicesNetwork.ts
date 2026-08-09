@@ -9,7 +9,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CloudServicesNetwork extends pulumi.CustomResource {
     /**
@@ -175,7 +175,7 @@ export class CloudServicesNetwork extends pulumi.CustomResource {
             resourceInputs["virtualMachinesAssociatedIds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20231001preview:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20240601preview:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20240701:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20241001preview:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20250201:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20250701preview:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20250901:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20260101preview:CloudServicesNetwork" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20231001preview:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20240601preview:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20240701:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20241001preview:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20250201:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20250901:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20260101preview:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20260501preview:CloudServicesNetwork" }, { type: "azure-native:networkcloud/v20260701:CloudServicesNetwork" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CloudServicesNetwork.__pulumiType, name, resourceInputs, opts);
     }
@@ -188,15 +188,15 @@ export interface CloudServicesNetworkArgs {
     /**
      * The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint.
      */
-    additionalEgressEndpoints?: pulumi.Input<pulumi.Input<types.inputs.EgressEndpointArgs>[]>;
+    additionalEgressEndpoints?: pulumi.Input<pulumi.Input<types.inputs.EgressEndpointArgs>[] | undefined>;
     /**
      * The name of the cloud services network.
      */
-    cloudServicesNetworkName?: pulumi.Input<string>;
+    cloudServicesNetworkName?: pulumi.Input<string | undefined>;
     /**
      * The indicator of whether the platform default endpoints are allowed for the egress traffic.
      */
-    enableDefaultEgressEndpoints?: pulumi.Input<string | types.enums.CloudServicesNetworkEnableDefaultEgressEndpoints>;
+    enableDefaultEgressEndpoints?: pulumi.Input<string | types.enums.CloudServicesNetworkEnableDefaultEgressEndpoints | undefined>;
     /**
      * The extended location of the cluster associated with the resource.
      */
@@ -204,7 +204,7 @@ export interface CloudServicesNetworkArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -212,5 +212,5 @@ export interface CloudServicesNetworkArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

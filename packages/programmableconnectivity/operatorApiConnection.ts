@@ -178,15 +178,15 @@ export interface OperatorApiConnectionArgs {
     /**
      * Application ID of the App Developer that is registered with the Operator in a specific country/region.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Application secret linked to the 'appId'. This should be stored securely and is not returned back when the resource information is read.
      */
-    appSecret?: pulumi.Input<string>;
+    appSecret?: pulumi.Input<string | undefined>;
     /**
      * Details about the Application that would use the Operator's Network APIs.
      */
-    configuredApplication?: pulumi.Input<types.inputs.ApplicationPropertiesArgs>;
+    configuredApplication?: pulumi.Input<types.inputs.ApplicationPropertiesArgs | undefined>;
     /**
      * Reference to the APC Gateway resource ID.
      */
@@ -194,11 +194,11 @@ export interface OperatorApiConnectionArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Azure Programmable Connectivity (APC) Operator API Connection Name.
      */
-    operatorApiConnectionName?: pulumi.Input<string>;
+    operatorApiConnectionName?: pulumi.Input<string | undefined>;
     /**
      * Reference to the Operator API Plan Resource ID.
      */
@@ -210,9 +210,9 @@ export interface OperatorApiConnectionArgs {
     /**
      * Details about the SaaS offer purchased from the marketplace.
      */
-    saasProperties?: pulumi.Input<types.inputs.SaasPropertiesArgs>;
+    saasProperties?: pulumi.Input<types.inputs.SaasPropertiesArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

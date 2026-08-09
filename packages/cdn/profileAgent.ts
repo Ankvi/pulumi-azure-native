@@ -118,7 +118,7 @@ export interface ProfileAgentArgs {
     /**
      * Name of the web agent association.
      */
-    agentName?: pulumi.Input<string>;
+    agentName?: pulumi.Input<string | undefined>;
     /**
      * List of custom domains associated with this agent link.
      */

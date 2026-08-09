@@ -6,5 +6,5 @@ export interface DFPInstanceAdministratorsArgs {
     /**
      * An array of administrator user identities.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

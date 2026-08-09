@@ -40,7 +40,7 @@ export class MachineLearningDataset extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    declare public /*out*/ readonly identity: pulumi.Output<types.outputs.IdentityResponseV1 | undefined>;
+    declare public /*out*/ readonly identity: pulumi.Output<types.outputs.IdentityMachineLearningDatasetResponse | undefined>;
     /**
      * Specifies the location of the resource.
      */
@@ -56,7 +56,7 @@ export class MachineLearningDataset extends pulumi.CustomResource {
     /**
      * The sku of the workspace.
      */
-    declare public /*out*/ readonly sku: pulumi.Output<types.outputs.SkuResponseV1 | undefined>;
+    declare public /*out*/ readonly sku: pulumi.Output<types.outputs.SkuMachineLearningDatasetResponse | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -94,7 +94,7 @@ export class MachineLearningDataset extends pulumi.CustomResource {
             }
             resourceInputs["datasetName"] = args?.datasetName;
             resourceInputs["datasetType"] = args?.datasetType;
-            resourceInputs["parameters"] = args ? (args.parameters ? pulumi.output(args.parameters).apply(types.inputs.datasetCreateRequestParametersArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["parameters"] = args ? pulumi.output(args.parameters).apply(types.inputs.datasetCreateRequestParametersArgsProvideDefaults) : undefined;
             resourceInputs["registration"] = args?.registration;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["skipValidation"] = (args?.skipValidation) ?? false;
@@ -132,7 +132,7 @@ export interface MachineLearningDatasetArgs {
     /**
      * The Dataset name.
      */
-    datasetName?: pulumi.Input<string>;
+    datasetName?: pulumi.Input<string | undefined>;
     /**
      * Specifies dataset type.
      */
@@ -146,8 +146,8 @@ export interface MachineLearningDatasetArgs {
     /**
      * Skip validation that ensures data can be loaded from the dataset before registration.
      */
-    skipValidation?: pulumi.Input<boolean>;
-    timeSeries?: pulumi.Input<types.inputs.DatasetCreateRequestTimeSeriesArgs>;
+    skipValidation?: pulumi.Input<boolean | undefined>;
+    timeSeries?: pulumi.Input<types.inputs.DatasetCreateRequestTimeSeriesArgs | undefined>;
     /**
      * Name of Azure Machine Learning workspace.
      */

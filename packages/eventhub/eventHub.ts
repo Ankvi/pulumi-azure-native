@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01-preview.
  *
- * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview, 2025-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class EventHub extends pulumi.CustomResource {
     /**
@@ -143,7 +143,7 @@ export class EventHub extends pulumi.CustomResource {
             resourceInputs["userMetadata"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventhub/v20140901:EventHub" }, { type: "azure-native:eventhub/v20150801:EventHub" }, { type: "azure-native:eventhub/v20170401:EventHub" }, { type: "azure-native:eventhub/v20180101preview:EventHub" }, { type: "azure-native:eventhub/v20210101preview:EventHub" }, { type: "azure-native:eventhub/v20210601preview:EventHub" }, { type: "azure-native:eventhub/v20211101:EventHub" }, { type: "azure-native:eventhub/v20220101preview:EventHub" }, { type: "azure-native:eventhub/v20221001preview:EventHub" }, { type: "azure-native:eventhub/v20230101preview:EventHub" }, { type: "azure-native:eventhub/v20240101:EventHub" }, { type: "azure-native:eventhub/v20240501preview:EventHub" }, { type: "azure-native:eventhub/v20250501preview:EventHub" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventhub/v20140901:EventHub" }, { type: "azure-native:eventhub/v20150801:EventHub" }, { type: "azure-native:eventhub/v20170401:EventHub" }, { type: "azure-native:eventhub/v20180101preview:EventHub" }, { type: "azure-native:eventhub/v20210101preview:EventHub" }, { type: "azure-native:eventhub/v20210601preview:EventHub" }, { type: "azure-native:eventhub/v20211101:EventHub" }, { type: "azure-native:eventhub/v20220101preview:EventHub" }, { type: "azure-native:eventhub/v20221001preview:EventHub" }, { type: "azure-native:eventhub/v20230101preview:EventHub" }, { type: "azure-native:eventhub/v20240101:EventHub" }, { type: "azure-native:eventhub/v20240501preview:EventHub" }, { type: "azure-native:eventhub/v20250501preview:EventHub" }, { type: "azure-native:eventhub/v20260101:EventHub" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(EventHub.__pulumiType, name, resourceInputs, opts);
     }
@@ -156,15 +156,15 @@ export interface EventHubArgs {
     /**
      * Properties of capture description
      */
-    captureDescription?: pulumi.Input<types.inputs.CaptureDescriptionArgs>;
+    captureDescription?: pulumi.Input<types.inputs.CaptureDescriptionArgs | undefined>;
     /**
      * The Event Hub name
      */
-    eventHubName?: pulumi.Input<string>;
+    eventHubName?: pulumi.Input<string | undefined>;
     /**
      * Number of days to retain the events for this Event Hub, value should be 1 to 7 days
      */
-    messageRetentionInDays?: pulumi.Input<number>;
+    messageRetentionInDays?: pulumi.Input<number | undefined>;
     /**
      * The Namespace name
      */
@@ -172,7 +172,7 @@ export interface EventHubArgs {
     /**
      * Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
      */
-    partitionCount?: pulumi.Input<number>;
+    partitionCount?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource group within the azure subscription.
      */
@@ -180,13 +180,13 @@ export interface EventHubArgs {
     /**
      * Event Hub retention settings
      */
-    retentionDescription?: pulumi.Input<types.inputs.RetentionDescriptionArgs>;
+    retentionDescription?: pulumi.Input<types.inputs.RetentionDescriptionArgs | undefined>;
     /**
      * Enumerates the possible values for the status of the Event Hub.
      */
-    status?: pulumi.Input<types.enums.EntityStatus>;
+    status?: pulumi.Input<types.enums.EntityStatus | undefined>;
     /**
      * Gets and Sets Metadata of User.
      */
-    userMetadata?: pulumi.Input<string>;
+    userMetadata?: pulumi.Input<string | undefined>;
 }

@@ -156,11 +156,11 @@ export interface WorkspaceArgs {
     /**
      * The key vault identifier used for encrypted workspaces.
      */
-    keyVaultIdentifierId?: pulumi.Input<string>;
+    keyVaultIdentifierId?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource. This cannot be changed after the resource is created.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The email id of the owner for this workspace.
      */
@@ -172,11 +172,11 @@ export interface WorkspaceArgs {
     /**
      * The sku of the workspace.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * The tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The fully qualified arm id of the storage account associated with this workspace.
      */
@@ -184,5 +184,5 @@ export interface WorkspaceArgs {
     /**
      * The name of the machine learning workspace.
      */
-    workspaceName?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2022-09-09.
  *
- * Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-10-10, 2025-11-01-preview, 2026-01-01-preview, 2026-03-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ScalingPlan extends pulumi.CustomResource {
     /**
@@ -44,7 +44,7 @@ export class ScalingPlan extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. 
+     * The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
@@ -169,7 +169,7 @@ export class ScalingPlan extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:desktopvirtualization/v20201110preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20210114preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20210201preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20210309preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20210401preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20210712:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20210903preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20220210preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20220401preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20220909:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20221014preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20230707preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20230905:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20231004preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20231101preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20240116preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20240306preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20240403:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20240408preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20240808preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20241101preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20250301preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20250401preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20250801preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20250901preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20251101preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20260101preview:ScalingPlan" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:desktopvirtualization/v20201110preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20210114preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20210201preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20210309preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20210401preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20210712:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20210903preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20220210preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20220401preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20220909:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20221014preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20230707preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20230905:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20231004preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20231101preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20240116preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20240306preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20240403:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20240408preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20240808preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20241101preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20250301preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20250401preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20250801preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20250901preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20251010:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20251101preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20260101preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20260301preview:ScalingPlan" }, { type: "azure-native:desktopvirtualization/v20260401preview:ScalingPlan" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ScalingPlan.__pulumiType, name, resourceInputs, opts);
     }
@@ -182,37 +182,37 @@ export interface ScalingPlanArgs {
     /**
      * Description of scaling plan.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Exclusion tag for scaling plan.
      */
-    exclusionTag?: pulumi.Input<string>;
+    exclusionTag?: pulumi.Input<string | undefined>;
     /**
      * User friendly name of scaling plan.
      */
-    friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string | undefined>;
     /**
      * List of ScalingHostPoolReference definitions.
      */
-    hostPoolReferences?: pulumi.Input<pulumi.Input<types.inputs.ScalingHostPoolReferenceArgs>[]>;
+    hostPoolReferences?: pulumi.Input<pulumi.Input<types.inputs.ScalingHostPoolReferenceArgs>[] | undefined>;
     /**
      * HostPool type for desktop.
      */
-    hostPoolType?: pulumi.Input<string | types.enums.ScalingHostPoolType>;
-    identity?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetIdentityArgs>;
+    hostPoolType?: pulumi.Input<string | types.enums.ScalingHostPoolType | undefined>;
+    identity?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetIdentityArgs | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
      */
-    managedBy?: pulumi.Input<string>;
-    plan?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetPlanArgs>;
+    managedBy?: pulumi.Input<string | undefined>;
+    plan?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetPlanArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -220,16 +220,16 @@ export interface ScalingPlanArgs {
     /**
      * The name of the scaling plan.
      */
-    scalingPlanName?: pulumi.Input<string>;
+    scalingPlanName?: pulumi.Input<string | undefined>;
     /**
      * List of ScalingPlanPooledSchedule definitions.
      */
-    schedules?: pulumi.Input<pulumi.Input<types.inputs.ScalingScheduleArgs>[]>;
-    sku?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetSkuArgs>;
+    schedules?: pulumi.Input<pulumi.Input<types.inputs.ScalingScheduleArgs>[] | undefined>;
+    sku?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetSkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Timezone of the scaling plan.
      */

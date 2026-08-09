@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SensitivityLabel extends pulumi.CustomResource {
     /**
@@ -150,7 +150,7 @@ export class SensitivityLabel extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:SensitivityLabel" }, { type: "azure-native:sql/v20200202preview:SensitivityLabel" }, { type: "azure-native:sql/v20200801preview:SensitivityLabel" }, { type: "azure-native:sql/v20201101preview:SensitivityLabel" }, { type: "azure-native:sql/v20210201preview:SensitivityLabel" }, { type: "azure-native:sql/v20210501preview:SensitivityLabel" }, { type: "azure-native:sql/v20210801preview:SensitivityLabel" }, { type: "azure-native:sql/v20211101:SensitivityLabel" }, { type: "azure-native:sql/v20211101preview:SensitivityLabel" }, { type: "azure-native:sql/v20220201preview:SensitivityLabel" }, { type: "azure-native:sql/v20220501preview:SensitivityLabel" }, { type: "azure-native:sql/v20220801preview:SensitivityLabel" }, { type: "azure-native:sql/v20221101preview:SensitivityLabel" }, { type: "azure-native:sql/v20230201preview:SensitivityLabel" }, { type: "azure-native:sql/v20230501preview:SensitivityLabel" }, { type: "azure-native:sql/v20230801:SensitivityLabel" }, { type: "azure-native:sql/v20230801preview:SensitivityLabel" }, { type: "azure-native:sql/v20240501preview:SensitivityLabel" }, { type: "azure-native:sql/v20241101preview:SensitivityLabel" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:SensitivityLabel" }, { type: "azure-native:sql/v20200202preview:SensitivityLabel" }, { type: "azure-native:sql/v20200801preview:SensitivityLabel" }, { type: "azure-native:sql/v20201101preview:SensitivityLabel" }, { type: "azure-native:sql/v20210201preview:SensitivityLabel" }, { type: "azure-native:sql/v20210501preview:SensitivityLabel" }, { type: "azure-native:sql/v20210801preview:SensitivityLabel" }, { type: "azure-native:sql/v20211101:SensitivityLabel" }, { type: "azure-native:sql/v20211101preview:SensitivityLabel" }, { type: "azure-native:sql/v20220201preview:SensitivityLabel" }, { type: "azure-native:sql/v20220501preview:SensitivityLabel" }, { type: "azure-native:sql/v20220801preview:SensitivityLabel" }, { type: "azure-native:sql/v20221101preview:SensitivityLabel" }, { type: "azure-native:sql/v20230201preview:SensitivityLabel" }, { type: "azure-native:sql/v20230501preview:SensitivityLabel" }, { type: "azure-native:sql/v20230801:SensitivityLabel" }, { type: "azure-native:sql/v20230801preview:SensitivityLabel" }, { type: "azure-native:sql/v20240501preview:SensitivityLabel" }, { type: "azure-native:sql/v20241101preview:SensitivityLabel" }, { type: "azure-native:sql/v20250101:SensitivityLabel" }, { type: "azure-native:sql/v20250201preview:SensitivityLabel" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SensitivityLabel.__pulumiType, name, resourceInputs, opts);
     }
@@ -160,7 +160,7 @@ export class SensitivityLabel extends pulumi.CustomResource {
  * The set of arguments for constructing a SensitivityLabel resource.
  */
 export interface SensitivityLabelArgs {
-    clientClassificationSource?: pulumi.Input<string | types.enums.ClientClassificationSource>;
+    clientClassificationSource?: pulumi.Input<string | types.enums.ClientClassificationSource | undefined>;
     /**
      * The name of the column.
      */
@@ -172,20 +172,20 @@ export interface SensitivityLabelArgs {
     /**
      * The information type.
      */
-    informationType?: pulumi.Input<string>;
+    informationType?: pulumi.Input<string | undefined>;
     /**
      * The information type ID.
      */
-    informationTypeId?: pulumi.Input<string>;
+    informationTypeId?: pulumi.Input<string | undefined>;
     /**
      * The label ID.
      */
-    labelId?: pulumi.Input<string>;
+    labelId?: pulumi.Input<string | undefined>;
     /**
      * The label name.
      */
-    labelName?: pulumi.Input<string>;
-    rank?: pulumi.Input<types.enums.SensitivityLabelRank>;
+    labelName?: pulumi.Input<string | undefined>;
+    rank?: pulumi.Input<types.enums.SensitivityLabelRank | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -197,7 +197,7 @@ export interface SensitivityLabelArgs {
     /**
      * The source of the sensitivity label.
      */
-    sensitivityLabelSource?: pulumi.Input<string>;
+    sensitivityLabelSource?: pulumi.Input<string | undefined>;
     /**
      * The name of the server.
      */

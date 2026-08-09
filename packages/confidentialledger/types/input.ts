@@ -7,15 +7,15 @@ export interface AADBasedSecurityPrincipalArgs {
     /**
      * LedgerRole associated with the Security Principal of Ledger
      */
-    ledgerRoleName?: pulumi.Input<string | enums.LedgerRoleName>;
+    ledgerRoleName?: pulumi.Input<string | enums.LedgerRoleName | undefined>;
     /**
      * UUID/GUID based Principal Id of the Security Principal
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * UUID/GUID based Tenant Id of the Security Principal
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -25,11 +25,11 @@ export interface CertBasedSecurityPrincipalArgs {
     /**
      * Public key of the user cert (.pem or .cer)
      */
-    cert?: pulumi.Input<string>;
+    cert?: pulumi.Input<string | undefined>;
     /**
      * LedgerRole associated with the Security Principal of Ledger
      */
-    ledgerRoleName?: pulumi.Input<string | enums.LedgerRoleName>;
+    ledgerRoleName?: pulumi.Input<string | enums.LedgerRoleName | undefined>;
 }
 
 /**
@@ -39,7 +39,7 @@ export interface CertificateTagsArgs {
     /**
      * Additional tags for Managed CCF Certificates
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -49,11 +49,11 @@ export interface DeploymentTypeArgs {
     /**
      * Source Uri containing ManagedCCF code
      */
-    appSourceUri?: pulumi.Input<string>;
+    appSourceUri?: pulumi.Input<string | undefined>;
     /**
      * Unique name for the Managed CCF.
      */
-    languageRuntime?: pulumi.Input<string | enums.LanguageRuntime>;
+    languageRuntime?: pulumi.Input<string | enums.LanguageRuntime | undefined>;
 }
 
 /**
@@ -63,23 +63,23 @@ export interface LedgerPropertiesArgs {
     /**
      * Array of all AAD based Security Principals.
      */
-    aadBasedSecurityPrincipals?: pulumi.Input<pulumi.Input<AADBasedSecurityPrincipalArgs>[]>;
+    aadBasedSecurityPrincipals?: pulumi.Input<pulumi.Input<AADBasedSecurityPrincipalArgs>[] | undefined>;
     /**
      * Array of all cert based Security Principals.
      */
-    certBasedSecurityPrincipals?: pulumi.Input<pulumi.Input<CertBasedSecurityPrincipalArgs>[]>;
+    certBasedSecurityPrincipals?: pulumi.Input<pulumi.Input<CertBasedSecurityPrincipalArgs>[] | undefined>;
     /**
      * SKU associated with the ledger
      */
-    ledgerSku?: pulumi.Input<string | enums.LedgerSku>;
+    ledgerSku?: pulumi.Input<string | enums.LedgerSku | undefined>;
     /**
      * Type of Confidential Ledger
      */
-    ledgerType?: pulumi.Input<string | enums.LedgerType>;
+    ledgerType?: pulumi.Input<string | enums.LedgerType | undefined>;
     /**
      * Object representing RunningState for Ledger.
      */
-    runningState?: pulumi.Input<string | enums.RunningState>;
+    runningState?: pulumi.Input<string | enums.RunningState | undefined>;
 }
 
 /**
@@ -89,19 +89,19 @@ export interface ManagedCCFPropertiesArgs {
     /**
      * Deployment Type of Managed CCF
      */
-    deploymentType?: pulumi.Input<DeploymentTypeArgs>;
+    deploymentType?: pulumi.Input<DeploymentTypeArgs | undefined>;
     /**
      * List of member identity certificates for  Managed CCF
      */
-    memberIdentityCertificates?: pulumi.Input<pulumi.Input<MemberIdentityCertificateArgs>[]>;
+    memberIdentityCertificates?: pulumi.Input<pulumi.Input<MemberIdentityCertificateArgs>[] | undefined>;
     /**
      * Number of CCF nodes in the Managed CCF.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * Object representing RunningState for Managed CCF.
      */
-    runningState?: pulumi.Input<string | enums.RunningState>;
+    runningState?: pulumi.Input<string | enums.RunningState | undefined>;
 }
 
 /**
@@ -111,10 +111,10 @@ export interface MemberIdentityCertificateArgs {
     /**
      * Member Identity Certificate
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * Member Identity Certificate Encryption Key
      */
-    encryptionkey?: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<CertificateTagsArgs>[]>;
+    encryptionkey?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<pulumi.Input<CertificateTagsArgs>[] | undefined>;
 }

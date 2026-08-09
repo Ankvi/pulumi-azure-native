@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
  *
- * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkspaceGroup extends pulumi.CustomResource {
     /**
@@ -108,7 +108,7 @@ export class WorkspaceGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20230901preview:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20240501:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20250301preview:WorkspaceGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20230901preview:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20240501:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20250301preview:WorkspaceGroup" }, { type: "azure-native:apimanagement/v20250901preview:WorkspaceGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -121,7 +121,7 @@ export interface WorkspaceGroupArgs {
     /**
      * Group description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Group name.
      */
@@ -129,11 +129,11 @@ export interface WorkspaceGroupArgs {
     /**
      * Identifier of the external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the value is null.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Group identifier. Must be unique in the current API Management service instance.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -145,7 +145,7 @@ export interface WorkspaceGroupArgs {
     /**
      * Group type.
      */
-    type?: pulumi.Input<types.enums.GroupType>;
+    type?: pulumi.Input<types.enums.GroupType | undefined>;
     /**
      * Workspace identifier. Must be unique in the current API Management service instance.
      */

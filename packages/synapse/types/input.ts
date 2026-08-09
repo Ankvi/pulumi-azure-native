@@ -7,11 +7,11 @@ export interface AutoPausePropertiesArgs {
     /**
      * Number of minutes of idle time before the Big Data pool is automatically paused.
      */
-    delayInMinutes?: pulumi.Input<number>;
+    delayInMinutes?: pulumi.Input<number | undefined>;
     /**
      * Whether auto-pausing is enabled for the Big Data pool.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -21,15 +21,15 @@ export interface AutoScalePropertiesArgs {
     /**
      * Whether automatic scaling is enabled for the Big Data pool.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum number of nodes the Big Data pool can support.
      */
-    maxNodeCount?: pulumi.Input<number>;
+    maxNodeCount?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of nodes the Big Data pool can support.
      */
-    minNodeCount?: pulumi.Input<number>;
+    minNodeCount?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -39,7 +39,7 @@ export interface AzureSkuArgs {
     /**
      * The number of instances of the cluster.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * SKU name.
      */
@@ -84,7 +84,7 @@ export interface ComponentSetupArgs {
     /**
      * The license key to activate the component.
      */
-    licenseKey?: pulumi.Input<SecureStringArgs>;
+    licenseKey?: pulumi.Input<SecureStringArgs | undefined>;
     /**
      * The type of custom setup.
      * Expected value is 'ComponentSetup'.
@@ -99,7 +99,7 @@ export interface CspWorkspaceAdminPropertiesArgs {
     /**
      * AAD object ID of initial workspace admin
      */
-    initialWorkspaceAdminObjectId?: pulumi.Input<string>;
+    initialWorkspaceAdminObjectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -109,11 +109,11 @@ export interface CustomerManagedKeyDetailsArgs {
     /**
      * Key encryption key
      */
-    kekIdentity?: pulumi.Input<KekIdentityPropertiesArgs>;
+    kekIdentity?: pulumi.Input<KekIdentityPropertiesArgs | undefined>;
     /**
      * The key object of the workspace
      */
-    key?: pulumi.Input<WorkspaceKeyDetailsArgs>;
+    key?: pulumi.Input<WorkspaceKeyDetailsArgs | undefined>;
 }
 
 /**
@@ -123,19 +123,19 @@ export interface DataLakeStorageAccountDetailsArgs {
     /**
      * Account URL
      */
-    accountUrl?: pulumi.Input<string>;
+    accountUrl?: pulumi.Input<string | undefined>;
     /**
      * Create managed private endpoint to this storage account or not
      */
-    createManagedPrivateEndpoint?: pulumi.Input<boolean>;
+    createManagedPrivateEndpoint?: pulumi.Input<boolean | undefined>;
     /**
      * Filesystem name
      */
-    filesystem?: pulumi.Input<string>;
+    filesystem?: pulumi.Input<string | undefined>;
     /**
      * ARM resource Id of this storage account
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -145,15 +145,15 @@ export interface DynamicExecutorAllocationArgs {
     /**
      * Indicates whether Dynamic Executor Allocation is enabled or not.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum number of executors alloted
      */
-    maxExecutors?: pulumi.Input<number>;
+    maxExecutors?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of executors alloted
      */
-    minExecutors?: pulumi.Input<number>;
+    minExecutors?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -163,7 +163,7 @@ export interface EncryptionDetailsArgs {
     /**
      * Customer Managed Key Details
      */
-    cmk?: pulumi.Input<CustomerManagedKeyDetailsArgs>;
+    cmk?: pulumi.Input<CustomerManagedKeyDetailsArgs | undefined>;
 }
 
 /**
@@ -173,11 +173,11 @@ export interface EntityReferenceArgs {
     /**
      * The name of this referenced entity.
      */
-    referenceName?: pulumi.Input<string>;
+    referenceName?: pulumi.Input<string | undefined>;
     /**
      * The type of this referenced entity.
      */
-    type?: pulumi.Input<string | enums.IntegrationRuntimeEntityReferenceType>;
+    type?: pulumi.Input<string | enums.IntegrationRuntimeEntityReferenceType | undefined>;
 }
 
 /**
@@ -206,27 +206,27 @@ export interface IntegrationRuntimeComputePropertiesArgs {
     /**
      * Data flow properties for managed integration runtime.
      */
-    dataFlowProperties?: pulumi.Input<IntegrationRuntimeDataFlowPropertiesArgs>;
+    dataFlowProperties?: pulumi.Input<IntegrationRuntimeDataFlowPropertiesArgs | undefined>;
     /**
      * The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Maximum parallel executions count per node for managed integration runtime.
      */
-    maxParallelExecutionsPerNode?: pulumi.Input<number>;
+    maxParallelExecutionsPerNode?: pulumi.Input<number | undefined>;
     /**
      * The node size requirement to managed integration runtime.
      */
-    nodeSize?: pulumi.Input<string>;
+    nodeSize?: pulumi.Input<string | undefined>;
     /**
      * The required number of nodes for managed integration runtime.
      */
-    numberOfNodes?: pulumi.Input<number>;
+    numberOfNodes?: pulumi.Input<number | undefined>;
     /**
      * VNet properties for managed integration runtime.
      */
-    vNetProperties?: pulumi.Input<IntegrationRuntimeVNetPropertiesArgs>;
+    vNetProperties?: pulumi.Input<IntegrationRuntimeVNetPropertiesArgs | undefined>;
 }
 
 /**
@@ -236,11 +236,11 @@ export interface IntegrationRuntimeCustomSetupScriptPropertiesArgs {
     /**
      * The URI of the Azure blob container that contains the custom setup script.
      */
-    blobContainerUri?: pulumi.Input<string>;
+    blobContainerUri?: pulumi.Input<string | undefined>;
     /**
      * The SAS token of the Azure blob container.
      */
-    sasToken?: pulumi.Input<SecureStringArgs>;
+    sasToken?: pulumi.Input<SecureStringArgs | undefined>;
 }
 
 /**
@@ -250,7 +250,7 @@ export interface IntegrationRuntimeCustomerVirtualNetworkArgs {
     /**
      * The ID of subnet to which Azure-SSIS integration runtime will join.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -260,15 +260,15 @@ export interface IntegrationRuntimeDataFlowPropertiesArgs {
     /**
      * Compute type of the cluster which will execute data flow job.
      */
-    computeType?: pulumi.Input<string | enums.DataFlowComputeType>;
+    computeType?: pulumi.Input<string | enums.DataFlowComputeType | undefined>;
     /**
      * Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
      */
-    coreCount?: pulumi.Input<number>;
+    coreCount?: pulumi.Input<number | undefined>;
     /**
      * Time to live (in minutes) setting of the cluster which will execute data flow job.
      */
-    timeToLive?: pulumi.Input<number>;
+    timeToLive?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -278,15 +278,15 @@ export interface IntegrationRuntimeDataProxyPropertiesArgs {
     /**
      * The self-hosted integration runtime reference.
      */
-    connectVia?: pulumi.Input<EntityReferenceArgs>;
+    connectVia?: pulumi.Input<EntityReferenceArgs | undefined>;
     /**
      * The path to contain the staged data in the Blob storage.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The staging linked service reference.
      */
-    stagingLinkedService?: pulumi.Input<EntityReferenceArgs>;
+    stagingLinkedService?: pulumi.Input<EntityReferenceArgs | undefined>;
 }
 
 /**
@@ -296,19 +296,19 @@ export interface IntegrationRuntimeSsisCatalogInfoArgs {
     /**
      * The password of the administrator user account of the catalog database.
      */
-    catalogAdminPassword?: pulumi.Input<SecureStringArgs>;
+    catalogAdminPassword?: pulumi.Input<SecureStringArgs | undefined>;
     /**
      * The administrator user name of catalog database.
      */
-    catalogAdminUserName?: pulumi.Input<string>;
+    catalogAdminUserName?: pulumi.Input<string | undefined>;
     /**
      * The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
      */
-    catalogPricingTier?: pulumi.Input<string | enums.IntegrationRuntimeSsisCatalogPricingTier>;
+    catalogPricingTier?: pulumi.Input<string | enums.IntegrationRuntimeSsisCatalogPricingTier | undefined>;
     /**
      * The catalog database server URL.
      */
-    catalogServerEndpoint?: pulumi.Input<string>;
+    catalogServerEndpoint?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -318,27 +318,27 @@ export interface IntegrationRuntimeSsisPropertiesArgs {
     /**
      * Catalog information for managed dedicated integration runtime.
      */
-    catalogInfo?: pulumi.Input<IntegrationRuntimeSsisCatalogInfoArgs>;
+    catalogInfo?: pulumi.Input<IntegrationRuntimeSsisCatalogInfoArgs | undefined>;
     /**
      * Custom setup script properties for a managed dedicated integration runtime.
      */
-    customSetupScriptProperties?: pulumi.Input<IntegrationRuntimeCustomSetupScriptPropertiesArgs>;
+    customSetupScriptProperties?: pulumi.Input<IntegrationRuntimeCustomSetupScriptPropertiesArgs | undefined>;
     /**
      * Data proxy properties for a managed dedicated integration runtime.
      */
-    dataProxyProperties?: pulumi.Input<IntegrationRuntimeDataProxyPropertiesArgs>;
+    dataProxyProperties?: pulumi.Input<IntegrationRuntimeDataProxyPropertiesArgs | undefined>;
     /**
      * The edition for the SSIS Integration Runtime
      */
-    edition?: pulumi.Input<string | enums.IntegrationRuntimeEdition>;
+    edition?: pulumi.Input<string | enums.IntegrationRuntimeEdition | undefined>;
     /**
      * Custom setup without script properties for a SSIS integration runtime.
      */
-    expressCustomSetupProperties?: pulumi.Input<pulumi.Input<CmdkeySetupArgs | ComponentSetupArgs | EnvironmentVariableSetupArgs>[]>;
+    expressCustomSetupProperties?: pulumi.Input<pulumi.Input<CmdkeySetupArgs | ComponentSetupArgs | EnvironmentVariableSetupArgs>[] | undefined>;
     /**
      * License type for bringing your own license scenario.
      */
-    licenseType?: pulumi.Input<string | enums.IntegrationRuntimeLicenseType>;
+    licenseType?: pulumi.Input<string | enums.IntegrationRuntimeLicenseType | undefined>;
 }
 
 /**
@@ -348,19 +348,19 @@ export interface IntegrationRuntimeVNetPropertiesArgs {
     /**
      * Resource IDs of the public IP addresses that this integration runtime will use.
      */
-    publicIPs?: pulumi.Input<pulumi.Input<string>[]>;
+    publicIPs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the subnet this integration runtime will join.
      */
-    subnet?: pulumi.Input<string>;
+    subnet?: pulumi.Input<string | undefined>;
     /**
      * The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VNet that this integration runtime will join.
      */
-    vNetId?: pulumi.Input<string>;
+    vNetId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -370,11 +370,11 @@ export interface KekIdentityPropertiesArgs {
     /**
      * Boolean specifying whether to use system assigned identity or not
      */
-    useSystemAssignedIdentity?: any;
+    useSystemAssignedIdentity?: any | undefined;
     /**
      * User assigned identity resource Id
      */
-    userAssignedIdentity?: pulumi.Input<string>;
+    userAssignedIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -384,19 +384,19 @@ export interface LibraryInfoArgs {
     /**
      * Storage blob container name.
      */
-    containerName?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
     /**
      * Name of the library.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Storage blob path of library.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Type of the library.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -406,11 +406,11 @@ export interface LibraryRequirementsArgs {
     /**
      * The library requirements.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The filename of the library requirements file.
      */
-    filename?: pulumi.Input<string>;
+    filename?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -450,11 +450,11 @@ export interface ManagedIdentityArgs {
     /**
      * The type of managed identity for the workspace
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
     /**
      * The user assigned managed identities.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -464,27 +464,27 @@ export interface ManagedIntegrationRuntimeArgs {
     /**
      * The compute resource for managed integration runtime.
      */
-    computeProperties?: pulumi.Input<IntegrationRuntimeComputePropertiesArgs>;
+    computeProperties?: pulumi.Input<IntegrationRuntimeComputePropertiesArgs | undefined>;
     /**
      * The name of virtual network to which Azure-SSIS integration runtime will join
      */
-    customerVirtualNetwork?: pulumi.Input<IntegrationRuntimeCustomerVirtualNetworkArgs>;
+    customerVirtualNetwork?: pulumi.Input<IntegrationRuntimeCustomerVirtualNetworkArgs | undefined>;
     /**
      * Integration runtime description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The id of the managed virtual network.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The reference name of the managed virtual network
      */
-    referenceName?: pulumi.Input<string>;
+    referenceName?: pulumi.Input<string | undefined>;
     /**
      * SSIS properties for managed integration runtime.
      */
-    ssisProperties?: pulumi.Input<IntegrationRuntimeSsisPropertiesArgs>;
+    ssisProperties?: pulumi.Input<IntegrationRuntimeSsisPropertiesArgs | undefined>;
     /**
      * The type of integration runtime.
      * Expected value is 'Managed'.
@@ -499,15 +499,15 @@ export interface ManagedVirtualNetworkSettingsArgs {
     /**
      * Allowed Aad Tenant Ids For Linking
      */
-    allowedAadTenantIdsForLinking?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedAadTenantIdsForLinking?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Linked Access Check On Target Resource
      */
-    linkedAccessCheckOnTargetResource?: pulumi.Input<boolean>;
+    linkedAccessCheckOnTargetResource?: pulumi.Input<boolean | undefined>;
     /**
      * Prevent Data Exfiltration
      */
-    preventDataExfiltration?: pulumi.Input<boolean>;
+    preventDataExfiltration?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -539,7 +539,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Connection state of the private endpoint connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs | undefined>;
 }
 
 /**
@@ -549,11 +549,11 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * The private link service connection description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The private link service connection status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -563,7 +563,7 @@ export interface PurviewConfigurationArgs {
     /**
      * Purview Resource ID
      */
-    purviewResourceId?: pulumi.Input<string>;
+    purviewResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -588,11 +588,11 @@ export interface SelfHostedIntegrationRuntimeArgs {
     /**
      * Integration runtime description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Linked integration runtime type from data factory
      */
-    linkedInfo?: pulumi.Input<LinkedIntegrationRuntimeKeyAuthorizationArgs | LinkedIntegrationRuntimeRbacAuthorizationArgs>;
+    linkedInfo?: pulumi.Input<LinkedIntegrationRuntimeKeyAuthorizationArgs | LinkedIntegrationRuntimeRbacAuthorizationArgs | undefined>;
     /**
      * The type of integration runtime.
      * Expected value is 'SelfHosted'.
@@ -607,15 +607,15 @@ export interface SkuArgs {
     /**
      * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * The SKU name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The service tier
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -625,15 +625,15 @@ export interface SparkConfigPropertiesArgs {
     /**
      * The type of the spark config properties file.
      */
-    configurationType?: pulumi.Input<string | enums.ConfigurationType>;
+    configurationType?: pulumi.Input<string | enums.ConfigurationType | undefined>;
     /**
      * The spark config properties.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The filename of the spark config properties file.
      */
-    filename?: pulumi.Input<string>;
+    filename?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -653,27 +653,27 @@ export interface TableLevelSharingPropertiesArgs {
     /**
      * List of external tables exclude from the follower database
      */
-    externalTablesToExclude?: pulumi.Input<pulumi.Input<string>[]>;
+    externalTablesToExclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of external tables to include in the follower database
      */
-    externalTablesToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+    externalTablesToInclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of materialized views exclude from the follower database
      */
-    materializedViewsToExclude?: pulumi.Input<pulumi.Input<string>[]>;
+    materializedViewsToExclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of materialized views to include in the follower database
      */
-    materializedViewsToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+    materializedViewsToInclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of tables to exclude from the follower database
      */
-    tablesToExclude?: pulumi.Input<pulumi.Input<string>[]>;
+    tablesToExclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of tables to include in the follower database
      */
-    tablesToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+    tablesToInclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -683,7 +683,7 @@ export interface VirtualNetworkProfileArgs {
     /**
      * Subnet ID used for computes in workspace
      */
-    computeSubnetId?: pulumi.Input<string>;
+    computeSubnetId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -693,15 +693,15 @@ export interface VulnerabilityAssessmentRecurringScansPropertiesArgs {
     /**
      * Specifies that the schedule scan notification will be is sent to the subscription administrators.
      */
-    emailSubscriptionAdmins?: pulumi.Input<boolean>;
+    emailSubscriptionAdmins?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies an array of e-mail addresses to which the scan notification is sent.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Recurring scans state.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
 }
 /**
  * vulnerabilityAssessmentRecurringScansPropertiesArgsProvideDefaults sets the appropriate defaults for VulnerabilityAssessmentRecurringScansPropertiesArgs
@@ -720,11 +720,11 @@ export interface WorkspaceKeyDetailsArgs {
     /**
      * Workspace Key sub-resource key vault url
      */
-    keyVaultUrl?: pulumi.Input<string>;
+    keyVaultUrl?: pulumi.Input<string | undefined>;
     /**
      * Workspace Key sub-resource name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -734,37 +734,37 @@ export interface WorkspaceRepositoryConfigurationArgs {
     /**
      * Account name
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Collaboration branch
      */
-    collaborationBranch?: pulumi.Input<string>;
+    collaborationBranch?: pulumi.Input<string | undefined>;
     /**
      * GitHub Enterprise host name. For example: `https://github.mydomain.com`
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * The last commit ID
      */
-    lastCommitId?: pulumi.Input<string>;
+    lastCommitId?: pulumi.Input<string | undefined>;
     /**
      * VSTS project name
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Repository name
      */
-    repositoryName?: pulumi.Input<string>;
+    repositoryName?: pulumi.Input<string | undefined>;
     /**
      * Root folder to use in the repository
      */
-    rootFolder?: pulumi.Input<string>;
+    rootFolder?: pulumi.Input<string | undefined>;
     /**
      * The VSTS tenant ID
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

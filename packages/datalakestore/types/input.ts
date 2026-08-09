@@ -53,7 +53,7 @@ export interface EncryptionConfigArgs {
     /**
      * The Key Vault information for connecting to user managed encryption keys.
      */
-    keyVaultMetaInfo?: pulumi.Input<KeyVaultMetaInfoArgs>;
+    keyVaultMetaInfo?: pulumi.Input<KeyVaultMetaInfoArgs | undefined>;
     /**
      * The type of encryption configuration being used. Currently the only supported types are 'UserManaged' and 'ServiceManaged'.
      */

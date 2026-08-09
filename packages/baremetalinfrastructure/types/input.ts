@@ -7,7 +7,7 @@ export interface AzureBareMetalStorageInstanceIdentityArgs {
     /**
      * The type of identity used for the Azure Bare Metal Storage Instance. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Azure Bare Metal Storage Instance.
      */
-    type?: pulumi.Input<string | enums.ResourceIdentityType>;
+    type?: pulumi.Input<string | enums.ResourceIdentityType | undefined>;
 }
 
 /**
@@ -17,11 +17,11 @@ export interface DiskArgs {
     /**
      * Specifies the size of an empty data disk in gigabytes.
      */
-    diskSizeGB?: pulumi.Input<number>;
+    diskSizeGB?: pulumi.Input<number | undefined>;
     /**
      * The disk name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -31,11 +31,11 @@ export interface HardwareProfileArgs {
     /**
      * Specifies the Azure Bare Metal Instance SKU.
      */
-    azureBareMetalInstanceSize?: pulumi.Input<string | enums.AzureBareMetalInstanceSizeNamesEnum>;
+    azureBareMetalInstanceSize?: pulumi.Input<string | enums.AzureBareMetalInstanceSizeNamesEnum | undefined>;
     /**
      * Name of the hardware type (vendor and/or their product name)
      */
-    hardwareType?: pulumi.Input<string | enums.AzureBareMetalHardwareTypeNamesEnum>;
+    hardwareType?: pulumi.Input<string | enums.AzureBareMetalHardwareTypeNamesEnum | undefined>;
 }
 
 /**
@@ -45,7 +45,7 @@ export interface NetworkInterfaceArgs {
     /**
      * Specifies the IP address of the network interface.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -55,11 +55,11 @@ export interface NetworkProfileArgs {
     /**
      * Specifies the circuit id for connecting to express route.
      */
-    circuitId?: pulumi.Input<string>;
+    circuitId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the network interfaces for the Azure Bare Metal Instance.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<NetworkInterfaceArgs>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<NetworkInterfaceArgs>[] | undefined>;
 }
 
 /**
@@ -69,19 +69,19 @@ export interface OSProfileArgs {
     /**
      * Specifies the host OS name of the Azure Bare Metal instance.
      */
-    computerName?: pulumi.Input<string>;
+    computerName?: pulumi.Input<string | undefined>;
     /**
      * This property allows you to specify the type of the OS.
      */
-    osType?: pulumi.Input<string>;
+    osType?: pulumi.Input<string | undefined>;
     /**
      * Specifies the SSH public key used to access the operating system.
      */
-    sshPublicKey?: pulumi.Input<string>;
+    sshPublicKey?: pulumi.Input<string | undefined>;
     /**
      * Specifies version of operating system.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -91,11 +91,11 @@ export interface StorageBillingPropertiesArgs {
     /**
      * the SKU type that is provisioned
      */
-    azureBareMetalStorageInstanceSize?: pulumi.Input<string>;
+    azureBareMetalStorageInstanceSize?: pulumi.Input<string | undefined>;
     /**
      * the billing mode for the storage instance
      */
-    billingMode?: pulumi.Input<string>;
+    billingMode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -105,11 +105,11 @@ export interface StorageProfileArgs {
     /**
      * IP Address to connect to storage.
      */
-    nfsIpAddress?: pulumi.Input<string>;
+    nfsIpAddress?: pulumi.Input<string | undefined>;
     /**
      * Specifies information about the operating system disk used by bare metal instance.
      */
-    osDisks?: pulumi.Input<pulumi.Input<DiskArgs>[]>;
+    osDisks?: pulumi.Input<pulumi.Input<DiskArgs>[] | undefined>;
 }
 
 /**
@@ -119,29 +119,29 @@ export interface StoragePropertiesArgs {
     /**
      * the kind of storage instance
      */
-    generation?: pulumi.Input<string>;
+    generation?: pulumi.Input<string | undefined>;
     /**
      * the hardware type of the storage instance
      */
-    hardwareType?: pulumi.Input<string>;
+    hardwareType?: pulumi.Input<string | undefined>;
     /**
      * the offering type for which the resource is getting provisioned
      */
-    offeringType?: pulumi.Input<string>;
+    offeringType?: pulumi.Input<string | undefined>;
     /**
      * State of provisioning of the AzureBareMetalStorageInstance
      */
-    provisioningState?: pulumi.Input<string | enums.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | enums.ProvisioningState | undefined>;
     /**
      * the billing related information for the resource
      */
-    storageBillingProperties?: pulumi.Input<StorageBillingPropertiesArgs>;
+    storageBillingProperties?: pulumi.Input<StorageBillingPropertiesArgs | undefined>;
     /**
      * the storage protocol for which the resource is getting provisioned
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * the workload for which the resource is getting provisioned
      */
-    workloadType?: pulumi.Input<string>;
+    workloadType?: pulumi.Input<string | undefined>;
 }

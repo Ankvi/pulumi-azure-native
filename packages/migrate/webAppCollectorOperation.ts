@@ -126,15 +126,15 @@ export interface WebAppCollectorOperationArgs {
     /**
      * Gets or sets the collector agent properties.
      */
-    agentProperties?: pulumi.Input<types.inputs.CollectorAgentPropertiesBaseArgs>;
+    agentProperties?: pulumi.Input<types.inputs.CollectorAgentPropertiesBaseArgs | undefined>;
     /**
      * Web app collector ARM name.
      */
-    collectorName?: pulumi.Input<string>;
+    collectorName?: pulumi.Input<string | undefined>;
     /**
      * Gets the discovery site id.
      */
-    discoverySiteId?: pulumi.Input<string>;
+    discoverySiteId?: pulumi.Input<string | undefined>;
     /**
      * Assessment Project Name
      */

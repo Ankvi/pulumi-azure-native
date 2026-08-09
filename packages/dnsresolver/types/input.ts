@@ -7,11 +7,11 @@ export interface DnsSecurityRuleActionArgs {
     /**
      * The type of action to take.
      */
-    actionType?: pulumi.Input<string | enums.ActionType>;
+    actionType?: pulumi.Input<string | enums.ActionType | undefined>;
     /**
      * The response code for block actions.
      */
-    blockResponseCode?: pulumi.Input<string | enums.BlockResponseCode>;
+    blockResponseCode?: pulumi.Input<string | enums.BlockResponseCode | undefined>;
 }
 
 /**
@@ -21,11 +21,11 @@ export interface IpConfigurationArgs {
     /**
      * Private IP address of the IP configuration.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * Private IP address allocation method.
      */
-    privateIpAllocationMethod?: pulumi.Input<string | enums.IpAllocationMethod>;
+    privateIpAllocationMethod?: pulumi.Input<string | enums.IpAllocationMethod | undefined>;
     /**
      * The reference to the subnet bound to the IP configuration.
      */
@@ -65,7 +65,7 @@ export interface TargetDnsServerArgs {
     /**
      * DNS server port.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
 }
 /**
  * targetDnsServerArgsProvideDefaults sets the appropriate defaults for TargetDnsServerArgs

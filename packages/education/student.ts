@@ -180,11 +180,11 @@ export class Student extends pulumi.CustomResource {
  */
 export interface StudentArgs {
     /**
-     * The ID that uniquely identifies a billing account.
+     * The name of the billing account.
      */
     billingAccountName: pulumi.Input<string>;
     /**
-     * The ID that uniquely identifies a billing profile.
+     * The name of the billing profile.
      */
     billingProfileName: pulumi.Input<string>;
     /**
@@ -204,7 +204,7 @@ export interface StudentArgs {
      */
     firstName: pulumi.Input<string>;
     /**
-     * The ID that uniquely identifies an invoice section.
+     * The name of the invoice section.
      */
     invoiceSectionName: pulumi.Input<string>;
     /**
@@ -216,15 +216,15 @@ export interface StudentArgs {
      */
     role: pulumi.Input<string | types.enums.StudentRole>;
     /**
-     * Student alias.
+     * The student alias.
      */
-    studentAlias?: pulumi.Input<string>;
+    studentAlias?: pulumi.Input<string | undefined>;
     /**
      * Subscription alias
      */
-    subscriptionAlias?: pulumi.Input<string>;
+    subscriptionAlias?: pulumi.Input<string | undefined>;
     /**
      * subscription invite last sent date
      */
-    subscriptionInviteLastSentDate?: pulumi.Input<string>;
+    subscriptionInviteLastSentDate?: pulumi.Input<string | undefined>;
 }

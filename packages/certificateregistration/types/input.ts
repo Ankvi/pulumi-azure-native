@@ -7,9 +7,9 @@ export interface AppServiceCertificateArgs {
     /**
      * Key Vault resource Id.
      */
-    keyVaultId?: pulumi.Input<string>;
+    keyVaultId?: pulumi.Input<string | undefined>;
     /**
      * Key Vault secret name.
      */
-    keyVaultSecretName?: pulumi.Input<string>;
+    keyVaultSecretName?: pulumi.Input<string | undefined>;
 }

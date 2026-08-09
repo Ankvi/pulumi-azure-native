@@ -111,7 +111,7 @@ export interface WorkspaceArgs {
     /**
      * Workspace description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -127,5 +127,5 @@ export interface WorkspaceArgs {
     /**
      * The name of the workspace.
      */
-    workspaceName?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string | undefined>;
 }

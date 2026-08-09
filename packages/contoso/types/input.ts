@@ -6,13 +6,13 @@ export interface EmployeePropertiesArgs {
     /**
      * Age of employee
      */
-    age?: pulumi.Input<number>;
+    age?: pulumi.Input<number | undefined>;
     /**
      * City of employee
      */
-    city?: pulumi.Input<string>;
+    city?: pulumi.Input<string | undefined>;
     /**
      * Profile of employee
      */
-    profile?: pulumi.Input<string>;
+    profile?: pulumi.Input<string | undefined>;
 }

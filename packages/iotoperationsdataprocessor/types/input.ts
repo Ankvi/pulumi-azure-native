@@ -10,7 +10,7 @@ export interface DatasetPropertyKeyArgs {
     /**
      * If true the property will be used as a primary key. At most one primary key can exists.
      */
-    primaryKey?: pulumi.Input<boolean>;
+    primaryKey?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -34,7 +34,7 @@ export interface PipelineInputArgs {
     /**
      * Description for stage.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Next stage in the pipeline.
      */
@@ -52,11 +52,11 @@ export interface PipelineStageArgs {
     /**
      * Description for stage.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Next stage in the pipeline. Not required if output stage.
      */
-    next?: pulumi.Input<pulumi.Input<string>[]>;
+    next?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ARM resource type.
      */

@@ -5,7 +5,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class BlobContainerImmutabilityPolicy extends pulumi.CustomResource {
     /**
@@ -127,11 +127,11 @@ export interface BlobContainerImmutabilityPolicyArgs {
     /**
      * This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API.
      */
-    allowProtectedAppendWrites?: pulumi.Input<boolean>;
+    allowProtectedAppendWrites?: pulumi.Input<boolean | undefined>;
     /**
      * This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive.
      */
-    allowProtectedAppendWritesAll?: pulumi.Input<boolean>;
+    allowProtectedAppendWritesAll?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
      */
@@ -139,11 +139,11 @@ export interface BlobContainerImmutabilityPolicyArgs {
     /**
      * The immutability period for the blobs in the container since the policy creation, in days.
      */
-    immutabilityPeriodSinceCreationInDays?: pulumi.Input<number>;
+    immutabilityPeriodSinceCreationInDays?: pulumi.Input<number | undefined>;
     /**
      * The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
      */
-    immutabilityPolicyName?: pulumi.Input<string>;
+    immutabilityPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

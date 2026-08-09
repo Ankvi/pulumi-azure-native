@@ -9,7 +9,7 @@ export interface CaptureDescriptionResponse {
      */
     destination?: DestinationResponse;
     /**
-     * A value that indicates whether capture description is enabled. 
+     * A value that indicates whether capture description is enabled.
      */
     enabled?: boolean;
     /**
@@ -263,7 +263,7 @@ export interface RetentionDescriptionResponse {
      */
     cleanupPolicy?: string;
     /**
-     * Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue 
+     * Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
      */
     retentionTimeInHours?: number;
     /**

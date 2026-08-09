@@ -37,6 +37,50 @@ export interface ApplicationGatewayResponse {
 /**
  * The properties of the Azure File volume. Azure File shares are mounted as volumes.
  */
+export interface AzureFileVolumeContainerGroupProfileResponse {
+    /**
+     * The flag indicating whether the Azure File shared mounted as a volume is read-only.
+     */
+    readOnly?: boolean;
+    /**
+     * The name of the Azure File share to be mounted as a volume.
+     */
+    shareName: string;
+    /**
+     * The storage account access key used to access the Azure File share.
+     */
+    storageAccountKey?: string;
+    /**
+     * The name of the storage account that contains the Azure File share.
+     */
+    storageAccountName: string;
+}
+
+/**
+ * The properties of the Azure File volume. Azure File shares are mounted as volumes.
+ */
+export interface AzureFileVolumeContainerGroupResponse {
+    /**
+     * The flag indicating whether the Azure File shared mounted as a volume is read-only.
+     */
+    readOnly?: boolean;
+    /**
+     * The name of the Azure File share to be mounted as a volume.
+     */
+    shareName: string;
+    /**
+     * The storage account access key used to access the Azure File share.
+     */
+    storageAccountKey?: string;
+    /**
+     * The name of the storage account that contains the Azure File share.
+     */
+    storageAccountName: string;
+}
+
+/**
+ * The properties of the Azure File volume. Azure File shares are mounted as volumes.
+ */
 export interface AzureFileVolumeResponse {
     /**
      * The flag indicating whether the Azure File shared mounted as a volume is read-only.
@@ -61,50 +105,6 @@ export interface AzureFileVolumeResponse {
 }
 
 /**
- * The properties of the Azure File volume. Azure File shares are mounted as volumes.
- */
-export interface AzureFileVolumeResponseV1 {
-    /**
-     * The flag indicating whether the Azure File shared mounted as a volume is read-only.
-     */
-    readOnly?: boolean;
-    /**
-     * The name of the Azure File share to be mounted as a volume.
-     */
-    shareName: string;
-    /**
-     * The storage account access key used to access the Azure File share.
-     */
-    storageAccountKey?: string;
-    /**
-     * The name of the storage account that contains the Azure File share.
-     */
-    storageAccountName: string;
-}
-
-/**
- * The properties of the Azure File volume. Azure File shares are mounted as volumes.
- */
-export interface AzureFileVolumeResponseV2 {
-    /**
-     * The flag indicating whether the Azure File shared mounted as a volume is read-only.
-     */
-    readOnly?: boolean;
-    /**
-     * The name of the Azure File share to be mounted as a volume.
-     */
-    shareName: string;
-    /**
-     * The storage account access key used to access the Azure File share.
-     */
-    storageAccountKey?: string;
-    /**
-     * The name of the storage account that contains the Azure File share.
-     */
-    storageAccountName: string;
-}
-
-/**
  * The properties for confidential container group
  */
 export interface ConfidentialComputePropertiesResponse {
@@ -122,6 +122,114 @@ export interface ConfigMapResponse {
      * The key value pairs dictionary in the config map.
      */
     keyValuePairs?: {[key: string]: string};
+}
+
+/**
+ * A container instance.
+ */
+export interface ContainerContainerGroupProfileResponse {
+    /**
+     * The commands to execute within the container instance in exec form.
+     */
+    command?: string[];
+    /**
+     * The config map.
+     */
+    configMap?: ConfigMapResponse;
+    /**
+     * The environment variables to set in the container instance.
+     */
+    environmentVariables?: EnvironmentVariableContainerGroupProfileResponse[];
+    /**
+     * The name of the image used to create the container instance.
+     */
+    image?: string;
+    /**
+     * The instance view of the container instance. Only valid in response.
+     */
+    instanceView: ContainerPropertiesResponseInstanceView;
+    /**
+     * The liveness probe.
+     */
+    livenessProbe?: ContainerProbeResponse;
+    /**
+     * The user-provided name of the container instance.
+     */
+    name: string;
+    /**
+     * The exposed ports on the container instance.
+     */
+    ports?: ContainerPortResponse[];
+    /**
+     * The readiness probe.
+     */
+    readinessProbe?: ContainerProbeResponse;
+    /**
+     * The resource requirements of the container instance.
+     */
+    resources?: ResourceRequirementsResponse;
+    /**
+     * The container security properties.
+     */
+    securityContext?: SecurityContextDefinitionResponse;
+    /**
+     * The volume mounts available to the container instance.
+     */
+    volumeMounts?: VolumeMountResponse[];
+}
+
+/**
+ * A container instance.
+ */
+export interface ContainerContainerGroupResponse {
+    /**
+     * The commands to execute within the container instance in exec form.
+     */
+    command?: string[];
+    /**
+     * The config map.
+     */
+    configMap?: ConfigMapResponse;
+    /**
+     * The environment variables to set in the container instance.
+     */
+    environmentVariables?: EnvironmentVariableContainerGroupResponse[];
+    /**
+     * The name of the image used to create the container instance.
+     */
+    image?: string;
+    /**
+     * The instance view of the container instance. Only valid in response.
+     */
+    instanceView: ContainerPropertiesResponseInstanceView;
+    /**
+     * The liveness probe.
+     */
+    livenessProbe?: ContainerProbeResponse;
+    /**
+     * The user-provided name of the container instance.
+     */
+    name: string;
+    /**
+     * The exposed ports on the container instance.
+     */
+    ports?: ContainerPortResponse[];
+    /**
+     * The readiness probe.
+     */
+    readinessProbe?: ContainerProbeResponse;
+    /**
+     * The resource requirements of the container instance.
+     */
+    resources?: ResourceRequirementsResponse;
+    /**
+     * The container security properties.
+     */
+    securityContext?: SecurityContextDefinitionResponse;
+    /**
+     * The volume mounts available to the container instance.
+     */
+    volumeMounts?: VolumeMountResponse[];
 }
 
 /**
@@ -185,7 +293,7 @@ export interface ContainerGroupProfileReferenceDefinitionResponse {
  */
 export interface ContainerGroupProfileStubResponse {
     /**
-     *  Container Group properties which can be set while creating or updating the NGroups.
+     * Container Group properties which can be set while creating or updating the NGroups.
      */
     containerGroupProperties?: NGroupContainerGroupPropertiesResponse;
     /**
@@ -381,114 +489,6 @@ export interface ContainerResponse {
 }
 
 /**
- * A container instance.
- */
-export interface ContainerResponseV1 {
-    /**
-     * The commands to execute within the container instance in exec form.
-     */
-    command?: string[];
-    /**
-     * The config map.
-     */
-    configMap?: ConfigMapResponse;
-    /**
-     * The environment variables to set in the container instance.
-     */
-    environmentVariables?: EnvironmentVariableResponseV1[];
-    /**
-     * The name of the image used to create the container instance.
-     */
-    image?: string;
-    /**
-     * The instance view of the container instance. Only valid in response.
-     */
-    instanceView: ContainerPropertiesResponseInstanceView;
-    /**
-     * The liveness probe.
-     */
-    livenessProbe?: ContainerProbeResponse;
-    /**
-     * The user-provided name of the container instance.
-     */
-    name: string;
-    /**
-     * The exposed ports on the container instance.
-     */
-    ports?: ContainerPortResponse[];
-    /**
-     * The readiness probe.
-     */
-    readinessProbe?: ContainerProbeResponse;
-    /**
-     * The resource requirements of the container instance.
-     */
-    resources?: ResourceRequirementsResponse;
-    /**
-     * The container security properties.
-     */
-    securityContext?: SecurityContextDefinitionResponse;
-    /**
-     * The volume mounts available to the container instance.
-     */
-    volumeMounts?: VolumeMountResponse[];
-}
-
-/**
- * A container instance.
- */
-export interface ContainerResponseV2 {
-    /**
-     * The commands to execute within the container instance in exec form.
-     */
-    command?: string[];
-    /**
-     * The config map.
-     */
-    configMap?: ConfigMapResponse;
-    /**
-     * The environment variables to set in the container instance.
-     */
-    environmentVariables?: EnvironmentVariableResponseV2[];
-    /**
-     * The name of the image used to create the container instance.
-     */
-    image?: string;
-    /**
-     * The instance view of the container instance. Only valid in response.
-     */
-    instanceView: ContainerPropertiesResponseInstanceView;
-    /**
-     * The liveness probe.
-     */
-    livenessProbe?: ContainerProbeResponse;
-    /**
-     * The user-provided name of the container instance.
-     */
-    name: string;
-    /**
-     * The exposed ports on the container instance.
-     */
-    ports?: ContainerPortResponse[];
-    /**
-     * The readiness probe.
-     */
-    readinessProbe?: ContainerProbeResponse;
-    /**
-     * The resource requirements of the container instance.
-     */
-    resources?: ResourceRequirementsResponse;
-    /**
-     * The container security properties.
-     */
-    securityContext?: SecurityContextDefinitionResponse;
-    /**
-     * The volume mounts available to the container instance.
-     */
-    volumeMounts?: VolumeMountResponse[];
-}
-
-/**
  * The container instance state.
  */
 export interface ContainerStateResponse {
@@ -558,6 +558,20 @@ export interface DnsConfigurationResponse {
     searchDomains?: string;
 }
 
+export interface ElasticProfileContainerGroupNamingPolicyGuidNamingPolicyResponse {
+    /**
+     * The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
+     */
+    prefix?: string;
+}
+
+/**
+ * Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
+ */
+export interface ElasticProfileContainerGroupNamingPolicyResponse {
+    guidNamingPolicy?: ElasticProfileContainerGroupNamingPolicyGuidNamingPolicyResponse;
+}
+
 /**
  * Describes the elastic profile of the NGroup
  */
@@ -565,26 +579,12 @@ export interface ElasticProfileResponse {
     /**
      * Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
      */
-    containerGroupNamingPolicy?: ElasticProfileResponseContainerGroupNamingPolicy;
+    containerGroupNamingPolicy?: ElasticProfileContainerGroupNamingPolicyResponse;
     desiredCount?: number;
     /**
      * Flag that indicates whether desiredCount should be maintained when customer deletes SPECIFIC container groups (CGs) from the NGroups. In this case, new CGs will be created by NGroup to compensate for the specific deleted ones.
      */
     maintainDesiredCount?: boolean;
-}
-
-/**
- * Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
- */
-export interface ElasticProfileResponseContainerGroupNamingPolicy {
-    guidNamingPolicy?: ElasticProfileResponseGuidNamingPolicy;
-}
-
-export interface ElasticProfileResponseGuidNamingPolicy {
-    /**
-     * The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines.
-     */
-    prefix?: string;
 }
 
 /**
@@ -612,6 +612,42 @@ export interface EncryptionPropertiesResponse {
 /**
  * The environment variable to set within the container instance.
  */
+export interface EnvironmentVariableContainerGroupProfileResponse {
+    /**
+     * The name of the environment variable.
+     */
+    name: string;
+    /**
+     * The value of the secure environment variable.
+     */
+    secureValue?: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
+/**
+ * The environment variable to set within the container instance.
+ */
+export interface EnvironmentVariableContainerGroupResponse {
+    /**
+     * The name of the environment variable.
+     */
+    name: string;
+    /**
+     * The value of the secure environment variable.
+     */
+    secureValue?: string;
+    /**
+     * The value of the environment variable.
+     */
+    value?: string;
+}
+
+/**
+ * The environment variable to set within the container instance.
+ */
 export interface EnvironmentVariableResponse {
     /**
      * The name of the environment variable.
@@ -625,42 +661,6 @@ export interface EnvironmentVariableResponse {
      * The reference of the secure environment variable.
      */
     secureValueReference?: string;
-    /**
-     * The value of the environment variable.
-     */
-    value?: string;
-}
-
-/**
- * The environment variable to set within the container instance.
- */
-export interface EnvironmentVariableResponseV1 {
-    /**
-     * The name of the environment variable.
-     */
-    name: string;
-    /**
-     * The value of the secure environment variable.
-     */
-    secureValue?: string;
-    /**
-     * The value of the environment variable.
-     */
-    value?: string;
-}
-
-/**
- * The environment variable to set within the container instance.
- */
-export interface EnvironmentVariableResponseV2 {
-    /**
-     * The name of the environment variable.
-     */
-    name: string;
-    /**
-     * The value of the secure environment variable.
-     */
-    secureValue?: string;
     /**
      * The value of the environment variable.
      */
@@ -697,12 +697,32 @@ export interface EventResponse {
     type: string;
 }
 
+export interface FileSharePropertiesResponse {
+    /**
+     * Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
+     */
+    shareAccessTier?: string;
+    /**
+     * Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+     */
+    shareAccessType?: string;
+}
+/**
+ * fileSharePropertiesResponseProvideDefaults sets the appropriate defaults for FileSharePropertiesResponse
+ */
+export function fileSharePropertiesResponseProvideDefaults(val: FileSharePropertiesResponse): FileSharePropertiesResponse {
+    return {
+        ...val,
+        shareAccessTier: (val.shareAccessTier) ?? "TransactionOptimized",
+    };
+}
+
 /**
  * File shares that can be mounted on container groups.
  */
 export interface FileShareResponse {
     name?: string;
-    properties?: FileShareResponseProperties;
+    properties?: FileSharePropertiesResponse;
     resourceGroupName?: string;
     storageAccountName?: string;
 }
@@ -712,27 +732,7 @@ export interface FileShareResponse {
 export function fileShareResponseProvideDefaults(val: FileShareResponse): FileShareResponse {
     return {
         ...val,
-        properties: (val.properties ? fileShareResponsePropertiesProvideDefaults(val.properties) : undefined),
-    };
-}
-
-export interface FileShareResponseProperties {
-    /**
-     * Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
-     */
-    shareAccessTier?: string;
-    /**
-     *  Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
-     */
-    shareAccessType?: string;
-}
-/**
- * fileShareResponsePropertiesProvideDefaults sets the appropriate defaults for FileShareResponseProperties
- */
-export function fileShareResponsePropertiesProvideDefaults(val: FileShareResponseProperties): FileShareResponseProperties {
-    return {
-        ...val,
-        shareAccessTier: (val.shareAccessTier) ?? "TransactionOptimized",
+        properties: (val.properties ? fileSharePropertiesResponseProvideDefaults(val.properties) : undefined),
     };
 }
 
@@ -785,6 +785,58 @@ export interface HttpHeaderResponse {
 /**
  * Image registry credential.
  */
+export interface ImageRegistryCredentialContainerGroupProfileResponse {
+    /**
+     * The identity for the private registry.
+     */
+    identity?: string;
+    /**
+     * The identity URL for the private registry.
+     */
+    identityUrl?: string;
+    /**
+     * The password for the private registry.
+     */
+    password?: string;
+    /**
+     * The Docker image registry server without a protocol such as "http" and "https".
+     */
+    server: string;
+    /**
+     * The username for the private registry.
+     */
+    username?: string;
+}
+
+/**
+ * Image registry credential.
+ */
+export interface ImageRegistryCredentialContainerGroupResponse {
+    /**
+     * The identity for the private registry.
+     */
+    identity?: string;
+    /**
+     * The identity URL for the private registry.
+     */
+    identityUrl?: string;
+    /**
+     * The password for the private registry.
+     */
+    password?: string;
+    /**
+     * The Docker image registry server without a protocol such as "http" and "https".
+     */
+    server: string;
+    /**
+     * The username for the private registry.
+     */
+    username?: string;
+}
+
+/**
+ * Image registry credential.
+ */
 export interface ImageRegistryCredentialResponse {
     /**
      * The identity for the private registry.
@@ -813,55 +865,71 @@ export interface ImageRegistryCredentialResponse {
 }
 
 /**
- * Image registry credential.
+ * The init container definition.
  */
-export interface ImageRegistryCredentialResponseV1 {
+export interface InitContainerDefinitionContainerGroupProfileResponse {
     /**
-     * The identity for the private registry.
+     * The command to execute within the init container in exec form.
      */
-    identity?: string;
+    command?: string[];
     /**
-     * The identity URL for the private registry.
+     * The environment variables to set in the init container.
      */
-    identityUrl?: string;
+    environmentVariables?: EnvironmentVariableContainerGroupProfileResponse[];
     /**
-     * The password for the private registry.
+     * The image of the init container.
      */
-    password?: string;
+    image?: string;
     /**
-     * The Docker image registry server without a protocol such as "http" and "https".
+     * The instance view of the init container. Only valid in response.
      */
-    server: string;
+    instanceView: InitContainerPropertiesDefinitionResponseInstanceView;
     /**
-     * The username for the private registry.
+     * The name for the init container.
      */
-    username?: string;
+    name: string;
+    /**
+     * The container security properties.
+     */
+    securityContext?: SecurityContextDefinitionResponse;
+    /**
+     * The volume mounts available to the init container.
+     */
+    volumeMounts?: VolumeMountResponse[];
 }
 
 /**
- * Image registry credential.
+ * The init container definition.
  */
-export interface ImageRegistryCredentialResponseV2 {
+export interface InitContainerDefinitionContainerGroupResponse {
     /**
-     * The identity for the private registry.
+     * The command to execute within the init container in exec form.
      */
-    identity?: string;
+    command?: string[];
     /**
-     * The identity URL for the private registry.
+     * The environment variables to set in the init container.
      */
-    identityUrl?: string;
+    environmentVariables?: EnvironmentVariableContainerGroupResponse[];
     /**
-     * The password for the private registry.
+     * The image of the init container.
      */
-    password?: string;
+    image?: string;
     /**
-     * The Docker image registry server without a protocol such as "http" and "https".
+     * The instance view of the init container. Only valid in response.
      */
-    server: string;
+    instanceView: InitContainerPropertiesDefinitionResponseInstanceView;
     /**
-     * The username for the private registry.
+     * The name for the init container.
      */
-    username?: string;
+    name: string;
+    /**
+     * The container security properties.
+     */
+    securityContext?: SecurityContextDefinitionResponse;
+    /**
+     * The volume mounts available to the init container.
+     */
+    volumeMounts?: VolumeMountResponse[];
 }
 
 /**
@@ -1006,6 +1074,13 @@ export interface LogAnalyticsResponse {
 }
 
 /**
+ * container properties
+ */
+export interface NGroupCGPropertyContainerPropertiesResponse {
+    volumeMounts?: VolumeMountResponse[];
+}
+
+/**
  * Container properties that can be provided with NGroups object.
  */
 export interface NGroupCGPropertyContainerResponse {
@@ -1016,14 +1091,7 @@ export interface NGroupCGPropertyContainerResponse {
     /**
      * container properties
      */
-    properties?: NGroupCGPropertyContainerResponseProperties;
-}
-
-/**
- * container properties
- */
-export interface NGroupCGPropertyContainerResponseProperties {
-    volumeMounts?: VolumeMountResponse[];
+    properties?: NGroupCGPropertyContainerPropertiesResponse;
 }
 
 /**
@@ -1270,14 +1338,14 @@ export interface UpdateProfileResponse {
     /**
      * This profile allows the customers to customize the rolling update.
      */
-    rollingUpdateProfile?: UpdateProfileResponseRollingUpdateProfile;
+    rollingUpdateProfile?: UpdateProfileRollingUpdateProfileResponse;
     updateMode?: string;
 }
 
 /**
  * This profile allows the customers to customize the rolling update.
  */
-export interface UpdateProfileResponseRollingUpdateProfile {
+export interface UpdateProfileRollingUpdateProfileResponse {
     /**
      * Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones.
      */
@@ -1308,6 +1376,58 @@ export interface UserAssignedIdentitiesResponse {
      * The principal id of user assigned identity.
      */
     principalId: string;
+}
+
+/**
+ * The properties of the volume.
+ */
+export interface VolumeContainerGroupProfileResponse {
+    /**
+     * The Azure File volume.
+     */
+    azureFile?: AzureFileVolumeContainerGroupProfileResponse;
+    /**
+     * The empty directory volume.
+     */
+    emptyDir?: any;
+    /**
+     * The git repo volume.
+     */
+    gitRepo?: GitRepoVolumeResponse;
+    /**
+     * The name of the volume.
+     */
+    name: string;
+    /**
+     * The secret volume.
+     */
+    secret?: {[key: string]: string};
+}
+
+/**
+ * The properties of the volume.
+ */
+export interface VolumeContainerGroupResponse {
+    /**
+     * The Azure File volume.
+     */
+    azureFile?: AzureFileVolumeContainerGroupResponse;
+    /**
+     * The empty directory volume.
+     */
+    emptyDir?: any;
+    /**
+     * The git repo volume.
+     */
+    gitRepo?: GitRepoVolumeResponse;
+    /**
+     * The name of the volume.
+     */
+    name: string;
+    /**
+     * The secret volume.
+     */
+    secret?: {[key: string]: string};
 }
 
 /**
@@ -1356,56 +1476,4 @@ export interface VolumeResponse {
      * The secret reference volume.
      */
     secretReference?: {[key: string]: string};
-}
-
-/**
- * The properties of the volume.
- */
-export interface VolumeResponseV1 {
-    /**
-     * The Azure File volume.
-     */
-    azureFile?: AzureFileVolumeResponseV1;
-    /**
-     * The empty directory volume.
-     */
-    emptyDir?: any;
-    /**
-     * The git repo volume.
-     */
-    gitRepo?: GitRepoVolumeResponse;
-    /**
-     * The name of the volume.
-     */
-    name: string;
-    /**
-     * The secret volume.
-     */
-    secret?: {[key: string]: string};
-}
-
-/**
- * The properties of the volume.
- */
-export interface VolumeResponseV2 {
-    /**
-     * The Azure File volume.
-     */
-    azureFile?: AzureFileVolumeResponseV2;
-    /**
-     * The empty directory volume.
-     */
-    emptyDir?: any;
-    /**
-     * The git repo volume.
-     */
-    gitRepo?: GitRepoVolumeResponse;
-    /**
-     * The name of the volume.
-     */
-    name: string;
-    /**
-     * The secret volume.
-     */
-    secret?: {[key: string]: string};
 }

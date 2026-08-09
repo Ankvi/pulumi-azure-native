@@ -102,7 +102,7 @@ export interface StorageArgs {
     /**
      * Properties of the storage resource payload.
      */
-    properties?: pulumi.Input<types.inputs.StorageAccountArgs>;
+    properties?: pulumi.Input<types.inputs.StorageAccountArgs | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -114,5 +114,5 @@ export interface StorageArgs {
     /**
      * The name of the storage resource.
      */
-    storageName?: pulumi.Input<string>;
+    storageName?: pulumi.Input<string | undefined>;
 }

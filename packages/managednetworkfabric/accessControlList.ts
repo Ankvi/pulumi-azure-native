@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
  *
- * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AccessControlList extends pulumi.CustomResource {
     /**
@@ -154,7 +154,7 @@ export class AccessControlList extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:AccessControlList" }, { type: "azure-native:managednetworkfabric/v20230615:AccessControlList" }, { type: "azure-native:managednetworkfabric/v20240215preview:AccessControlList" }, { type: "azure-native:managednetworkfabric/v20240615preview:AccessControlList" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:AccessControlList" }, { type: "azure-native:managednetworkfabric/v20230615:AccessControlList" }, { type: "azure-native:managednetworkfabric/v20240215preview:AccessControlList" }, { type: "azure-native:managednetworkfabric/v20240615preview:AccessControlList" }, { type: "azure-native:managednetworkfabric/v20250715:AccessControlList" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessControlList.__pulumiType, name, resourceInputs, opts);
     }
@@ -167,15 +167,15 @@ export interface AccessControlListArgs {
     /**
      * Name of the Access Control List.
      */
-    accessControlListName?: pulumi.Input<string>;
+    accessControlListName?: pulumi.Input<string | undefined>;
     /**
      * Access Control List file URL.
      */
-    aclsUrl?: pulumi.Input<string>;
+    aclsUrl?: pulumi.Input<string | undefined>;
     /**
      * Switch configuration description.
      */
-    annotation?: pulumi.Input<string>;
+    annotation?: pulumi.Input<string | undefined>;
     /**
      * Input method to configure Access Control List.
      */
@@ -183,19 +183,19 @@ export interface AccessControlListArgs {
     /**
      * Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
      */
-    defaultAction?: pulumi.Input<string | types.enums.CommunityActionTypes>;
+    defaultAction?: pulumi.Input<string | types.enums.CommunityActionTypes | undefined>;
     /**
      * List of dynamic match configurations.
      */
-    dynamicMatchConfigurations?: pulumi.Input<pulumi.Input<types.inputs.CommonDynamicMatchConfigurationArgs>[]>;
+    dynamicMatchConfigurations?: pulumi.Input<pulumi.Input<types.inputs.CommonDynamicMatchConfigurationArgs>[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * List of match configurations.
      */
-    matchConfigurations?: pulumi.Input<pulumi.Input<types.inputs.AccessControlListMatchConfigurationArgs>[]>;
+    matchConfigurations?: pulumi.Input<pulumi.Input<types.inputs.AccessControlListMatchConfigurationArgs>[] | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -203,5 +203,5 @@ export interface AccessControlListArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

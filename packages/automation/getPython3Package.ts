@@ -27,7 +27,7 @@ export interface GetPython3PackageArgs {
      */
     packageName: string;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -139,7 +139,7 @@ export interface GetPython3PackageOutputArgs {
      */
     packageName: pulumi.Input<string>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

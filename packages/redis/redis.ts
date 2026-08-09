@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01.
  *
- * Other available API versions: 2015-08-01, 2016-04-01, 2017-02-01, 2017-10-01, 2018-03-01, 2019-07-01, 2020-06-01, 2020-12-01, 2021-06-01, 2022-05-01, 2022-06-01, 2023-04-01, 2023-05-01-preview, 2023-08-01, 2024-03-01, 2024-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redis [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2015-08-01, 2016-04-01, 2017-02-01, 2017-10-01, 2018-03-01, 2019-07-01, 2020-06-01, 2020-12-01, 2021-06-01, 2022-05-01, 2022-06-01, 2023-04-01, 2023-05-01-preview, 2023-08-01, 2024-03-01, 2024-04-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redis [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Redis extends pulumi.CustomResource {
     /**
@@ -243,7 +243,7 @@ export class Redis extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cache/v20200601:Redis" }, { type: "azure-native:cache/v20230401:Redis" }, { type: "azure-native:cache/v20230501preview:Redis" }, { type: "azure-native:cache/v20230801:Redis" }, { type: "azure-native:cache/v20240301:Redis" }, { type: "azure-native:cache/v20240401preview:Redis" }, { type: "azure-native:cache/v20241101:Redis" }, { type: "azure-native:cache:Redis" }, { type: "azure-native:redis/v20150801:Redis" }, { type: "azure-native:redis/v20160401:Redis" }, { type: "azure-native:redis/v20170201:Redis" }, { type: "azure-native:redis/v20171001:Redis" }, { type: "azure-native:redis/v20180301:Redis" }, { type: "azure-native:redis/v20190701:Redis" }, { type: "azure-native:redis/v20200601:Redis" }, { type: "azure-native:redis/v20201201:Redis" }, { type: "azure-native:redis/v20210601:Redis" }, { type: "azure-native:redis/v20220501:Redis" }, { type: "azure-native:redis/v20220601:Redis" }, { type: "azure-native:redis/v20230401:Redis" }, { type: "azure-native:redis/v20230501preview:Redis" }, { type: "azure-native:redis/v20230801:Redis" }, { type: "azure-native:redis/v20240301:Redis" }, { type: "azure-native:redis/v20240401preview:Redis" }, { type: "azure-native:redis/v20241101:Redis" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cache/v20200601:Redis" }, { type: "azure-native:cache/v20230401:Redis" }, { type: "azure-native:cache/v20230501preview:Redis" }, { type: "azure-native:cache/v20230801:Redis" }, { type: "azure-native:cache/v20240301:Redis" }, { type: "azure-native:cache/v20240401preview:Redis" }, { type: "azure-native:cache/v20241101:Redis" }, { type: "azure-native:cache:Redis" }, { type: "azure-native:redis/v20150801:Redis" }, { type: "azure-native:redis/v20160401:Redis" }, { type: "azure-native:redis/v20170201:Redis" }, { type: "azure-native:redis/v20171001:Redis" }, { type: "azure-native:redis/v20180301:Redis" }, { type: "azure-native:redis/v20190701:Redis" }, { type: "azure-native:redis/v20200601:Redis" }, { type: "azure-native:redis/v20201201:Redis" }, { type: "azure-native:redis/v20210601:Redis" }, { type: "azure-native:redis/v20220501:Redis" }, { type: "azure-native:redis/v20220601:Redis" }, { type: "azure-native:redis/v20230401:Redis" }, { type: "azure-native:redis/v20230501preview:Redis" }, { type: "azure-native:redis/v20230801:Redis" }, { type: "azure-native:redis/v20240301:Redis" }, { type: "azure-native:redis/v20240401preview:Redis" }, { type: "azure-native:redis/v20241101:Redis" }, { type: "azure-native:redis/v20250801preview:Redis" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Redis.__pulumiType, name, resourceInputs, opts);
     }
@@ -256,47 +256,47 @@ export interface RedisArgs {
     /**
      * Authentication to Redis through access keys is disabled when set as true. Default value is false.
      */
-    disableAccessKeyAuthentication?: pulumi.Input<boolean>;
+    disableAccessKeyAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the non-ssl Redis server port (6379) is enabled.
      */
-    enableNonSslPort?: pulumi.Input<boolean>;
+    enableNonSslPort?: pulumi.Input<boolean | undefined>;
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Optional: requires clients to use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1', '1.2')
      */
-    minimumTlsVersion?: pulumi.Input<string | types.enums.TlsVersion>;
+    minimumTlsVersion?: pulumi.Input<string | types.enums.TlsVersion | undefined>;
     /**
      * The name of the RedisResource
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
      */
-    redisConfiguration?: pulumi.Input<types.inputs.RedisCommonPropertiesRedisConfigurationArgs>;
+    redisConfiguration?: pulumi.Input<types.inputs.RedisCommonPropertiesRedisConfigurationArgs | undefined>;
     /**
      * Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.
      */
-    redisVersion?: pulumi.Input<string>;
+    redisVersion?: pulumi.Input<string | undefined>;
     /**
      * The number of replicas to be created per primary.
      */
-    replicasPerMaster?: pulumi.Input<number>;
+    replicasPerMaster?: pulumi.Input<number | undefined>;
     /**
      * The number of replicas to be created per primary.
      */
-    replicasPerPrimary?: pulumi.Input<number>;
+    replicasPerPrimary?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -304,7 +304,7 @@ export interface RedisArgs {
     /**
      * The number of shards to be created on a Premium Cluster Cache.
      */
-    shardCount?: pulumi.Input<number>;
+    shardCount?: pulumi.Input<number | undefined>;
     /**
      * The SKU of the Redis cache to deploy.
      */
@@ -312,29 +312,29 @@ export interface RedisArgs {
     /**
      * Static IP address. Optionally, may be specified when deploying a Redis cache inside an existing Azure Virtual Network; auto assigned by default.
      */
-    staticIP?: pulumi.Input<string>;
+    staticIP?: pulumi.Input<string | undefined>;
     /**
      * The full resource ID of a subnet in a virtual network to deploy the Redis cache in. Example format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A dictionary of tenant settings
      */
-    tenantSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tenantSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional: Specifies the update channel for the monthly Redis updates your Redis Cache will receive. Caches using 'Preview' update channel get latest Redis updates at least 4 weeks ahead of 'Stable' channel caches. Default value is 'Stable'.
      */
-    updateChannel?: pulumi.Input<string | types.enums.UpdateChannel>;
+    updateChannel?: pulumi.Input<string | types.enums.UpdateChannel | undefined>;
     /**
      * Optional: Specifies how availability zones are allocated to the Redis cache. 'Automatic' enables zone redundancy and Azure will automatically select zones based on regional availability and capacity. 'UserDefined' will select availability zones passed in by you using the 'zones' parameter. 'NoZones' will produce a non-zonal cache. If 'zonalAllocationPolicy' is not passed, it will be set to 'UserDefined' when zones are passed in, otherwise, it will be set to 'Automatic' in regions where zones are supported and 'NoZones' in regions where zones are not supported.
      */
-    zonalAllocationPolicy?: pulumi.Input<string | types.enums.ZonalAllocationPolicy>;
+    zonalAllocationPolicy?: pulumi.Input<string | types.enums.ZonalAllocationPolicy | undefined>;
     /**
      * A list of availability zones denoting where the resource needs to come from.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

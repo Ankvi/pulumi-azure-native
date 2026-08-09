@@ -105,11 +105,11 @@ export interface NetworkArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The identity of the network.
      */
-    networkResourceName?: pulumi.Input<string>;
+    networkResourceName?: pulumi.Input<string | undefined>;
     /**
      * Describes properties of a network resource.
      */
@@ -121,5 +121,5 @@ export interface NetworkArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

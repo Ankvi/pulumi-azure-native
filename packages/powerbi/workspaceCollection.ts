@@ -100,15 +100,15 @@ export interface WorkspaceCollectionArgs {
     /**
      * Azure location
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Azure resource group
      */
     resourceGroupName: pulumi.Input<string>;
-    sku?: pulumi.Input<types.inputs.AzureSkuArgs>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sku?: pulumi.Input<types.inputs.AzureSkuArgs | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Power BI Embedded Workspace Collection name
      */
-    workspaceCollectionName?: pulumi.Input<string>;
+    workspaceCollectionName?: pulumi.Input<string | undefined>;
 }

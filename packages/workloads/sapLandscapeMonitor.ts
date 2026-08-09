@@ -113,7 +113,7 @@ export interface SapLandscapeMonitorArgs {
     /**
      * Gets or sets the SID groupings by landscape and Environment.
      */
-    grouping?: pulumi.Input<types.inputs.SapLandscapeMonitorPropertiesGroupingArgs>;
+    grouping?: pulumi.Input<types.inputs.SapLandscapeMonitorPropertiesGroupingArgs | undefined>;
     /**
      * Name of the SAP monitor resource.
      */
@@ -125,5 +125,5 @@ export interface SapLandscapeMonitorArgs {
     /**
      * Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
      */
-    topMetricsThresholds?: pulumi.Input<pulumi.Input<types.inputs.SapLandscapeMonitorMetricThresholdsArgs>[]>;
+    topMetricsThresholds?: pulumi.Input<pulumi.Input<types.inputs.SapLandscapeMonitorMetricThresholdsArgs>[] | undefined>;
 }

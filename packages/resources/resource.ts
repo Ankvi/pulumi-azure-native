@@ -160,23 +160,23 @@ export interface ResourceArgs {
     /**
      * Resource extended location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
      * The kind of the resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Resource location
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * ID of the resource that manages this resource.
      */
-    managedBy?: pulumi.Input<string>;
+    managedBy?: pulumi.Input<string | undefined>;
     /**
      * The parent resource identity.
      */
@@ -184,11 +184,11 @@ export interface ResourceArgs {
     /**
      * The plan of the resource.
      */
-    plan?: pulumi.Input<types.inputs.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs | undefined>;
     /**
      * The resource properties.
      */
-    properties?: any;
+    properties?: any | undefined;
     /**
      * The name of the resource group for the resource. The name is case insensitive.
      */
@@ -196,7 +196,7 @@ export interface ResourceArgs {
     /**
      * The name of the resource to create.
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * The namespace of the resource provider.
      */
@@ -208,9 +208,9 @@ export interface ResourceArgs {
     /**
      * The SKU of the resource.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

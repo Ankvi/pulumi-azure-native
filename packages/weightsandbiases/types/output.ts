@@ -7,7 +7,7 @@ export interface InstancePropertiesResponse {
     /**
      * Marketplace details of the resource.
      */
-    marketplace: LiftrBaseMarketplaceDetailsResponse;
+    marketplace: MarketplaceDetailsResponse;
     /**
      * partner properties
      */
@@ -19,21 +19,43 @@ export interface InstancePropertiesResponse {
     /**
      * Single sign-on properties
      */
-    singleSignOnProperties?: LiftrBaseSingleSignOnPropertiesV2Response;
+    singleSignOnProperties?: SingleSignOnPropertiesV2Response;
     /**
      * Details of the user.
      */
-    user: LiftrBaseUserDetailsResponse;
+    user: UserDetailsResponse;
+}
+
+/**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityResponse {
+    /**
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+     */
+    tenantId: string;
+    /**
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+     */
+    type: string;
+    /**
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
 }
 
 /**
  * Marketplace details for an organization
  */
-export interface LiftrBaseMarketplaceDetailsResponse {
+export interface MarketplaceDetailsResponse {
     /**
      * Offer details for the marketplace that is selected by the user
      */
-    offerDetails: LiftrBaseOfferDetailsResponse;
+    offerDetails: OfferDetailsResponse;
     /**
      * Azure subscription id for the the marketplace offer is purchased from
      */
@@ -47,7 +69,7 @@ export interface LiftrBaseMarketplaceDetailsResponse {
 /**
  * Offer details for the marketplace that is selected by the user
  */
-export interface LiftrBaseOfferDetailsResponse {
+export interface OfferDetailsResponse {
     /**
      * Offer Id for the marketplace offer
      */
@@ -75,9 +97,23 @@ export interface LiftrBaseOfferDetailsResponse {
 }
 
 /**
+ * Partner's specific Properties
+ */
+export interface PartnerPropertiesResponse {
+    /**
+     * The region of the instance
+     */
+    region: string;
+    /**
+     * The subdomain of the instance
+     */
+    subdomain: string;
+}
+
+/**
  * Properties specific to Single Sign On Resource
  */
-export interface LiftrBaseSingleSignOnPropertiesV2Response {
+export interface SingleSignOnPropertiesV2Response {
     /**
      * List of AAD domains fetched from Microsoft Graph for user.
      */
@@ -98,68 +134,6 @@ export interface LiftrBaseSingleSignOnPropertiesV2Response {
      * URL for SSO to be used by the partner to redirect the user to their system
      */
     url?: string;
-}
-
-/**
- * User details for an organization
- */
-export interface LiftrBaseUserDetailsResponse {
-    /**
-     * Email address of the user
-     */
-    emailAddress?: string;
-    /**
-     * First name of the user
-     */
-    firstName?: string;
-    /**
-     * Last name of the user
-     */
-    lastName?: string;
-    /**
-     * User's phone number
-     */
-    phoneNumber?: string;
-    /**
-     * User's principal name
-     */
-    upn?: string;
-}
-
-/**
- * Managed service identity (system assigned and/or user assigned identities)
- */
-export interface ManagedServiceIdentityResponse {
-    /**
-     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-     */
-    principalId: string;
-    /**
-     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-     */
-    tenantId: string;
-    /**
-     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-     */
-    type: string;
-    /**
-     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-     */
-    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
-}
-
-/**
- * Partner's specific Properties
- */
-export interface PartnerPropertiesResponse {
-    /**
-     * The region of the instance
-     */
-    region: string;
-    /**
-     * The subdomain of the instance
-     */
-    subdomain: string;
 }
 
 /**
@@ -204,4 +178,30 @@ export interface UserAssignedIdentityResponse {
      * The principal ID of the assigned identity.
      */
     principalId: string;
+}
+
+/**
+ * User details for an organization
+ */
+export interface UserDetailsResponse {
+    /**
+     * Email address of the user
+     */
+    emailAddress?: string;
+    /**
+     * First name of the user
+     */
+    firstName?: string;
+    /**
+     * Last name of the user
+     */
+    lastName?: string;
+    /**
+     * User's phone number
+     */
+    phoneNumber?: string;
+    /**
+     * User's principal name
+     */
+    upn?: string;
 }

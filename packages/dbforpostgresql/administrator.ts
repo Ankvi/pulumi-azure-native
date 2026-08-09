@@ -106,7 +106,7 @@ export class Administrator extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20220308preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20221201:Administrator" }, { type: "azure-native:dbforpostgresql/v20230301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20230601preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20231201preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240801:Administrator" }, { type: "azure-native:dbforpostgresql/v20241101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250601preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250801:Administrator" }, { type: "azure-native:dbforpostgresql/v20260101preview:Administrator" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20220308preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20221201:Administrator" }, { type: "azure-native:dbforpostgresql/v20230301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20230601preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20231201preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240301preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20240801:Administrator" }, { type: "azure-native:dbforpostgresql/v20241101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250601preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20250801:Administrator" }, { type: "azure-native:dbforpostgresql/v20260101preview:Administrator" }, { type: "azure-native:dbforpostgresql/v20260401preview:Administrator" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Administrator.__pulumiType, name, resourceInputs, opts);
     }
@@ -119,15 +119,15 @@ export interface AdministratorArgs {
     /**
      * Object identifier of the Microsoft Entra principal.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Microsoft Entra principal.
      */
-    principalName?: pulumi.Input<string>;
+    principalName?: pulumi.Input<string | undefined>;
     /**
      * The type of Microsoft Entra principal to which the server administrator is associated.
      */
-    principalType?: pulumi.Input<string | types.enums.PrincipalType>;
+    principalType?: pulumi.Input<string | types.enums.PrincipalType | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -139,5 +139,5 @@ export interface AdministratorArgs {
     /**
      * Identifier of the tenant in which the Microsoft Entra principal exists.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

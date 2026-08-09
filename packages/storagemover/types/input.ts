@@ -7,7 +7,7 @@ export interface AzureKeyVaultSmbCredentialsArgs {
     /**
      * The Azure Key Vault secret URI which stores the password. Use empty string to clean-up existing value.
      */
-    passwordUri?: pulumi.Input<string>;
+    passwordUri?: pulumi.Input<string | undefined>;
     /**
      * The Credentials type.
      * Expected value is 'AzureKeyVaultSmb'.
@@ -16,7 +16,7 @@ export interface AzureKeyVaultSmbCredentialsArgs {
     /**
      * The Azure Key Vault secret URI which stores the username. Use empty string to clean-up existing value.
      */
-    usernameUri?: pulumi.Input<string>;
+    usernameUri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -30,7 +30,7 @@ export interface AzureStorageBlobContainerEndpointPropertiesArgs {
     /**
      * A description for the Endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Endpoint resource type.
      * Expected value is 'AzureStorageBlobContainer'.
@@ -49,7 +49,7 @@ export interface AzureStorageSmbFileShareEndpointPropertiesArgs {
     /**
      * A description for the Endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Endpoint resource type.
      * Expected value is 'AzureStorageSmbFileShare'.
@@ -72,11 +72,11 @@ export interface ConnectionPropertiesArgs {
     /**
      * A description for the Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of job definitions associated with this connection.
      */
-    jobList?: pulumi.Input<pulumi.Input<string>[]>;
+    jobList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The PrivateLinkServiceId for the connection.
      */
@@ -90,7 +90,7 @@ export interface NfsMountEndpointPropertiesArgs {
     /**
      * A description for the Endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Endpoint resource type.
      * Expected value is 'NfsMount'.
@@ -107,7 +107,7 @@ export interface NfsMountEndpointPropertiesArgs {
     /**
      * The NFS protocol version.
      */
-    nfsVersion?: pulumi.Input<string | enums.NfsVersion>;
+    nfsVersion?: pulumi.Input<string | enums.NfsVersion | undefined>;
 }
 
 /**
@@ -117,11 +117,11 @@ export interface SmbMountEndpointPropertiesArgs {
     /**
      * The Azure Key Vault secret URIs which store the required credentials to access the SMB share.
      */
-    credentials?: pulumi.Input<AzureKeyVaultSmbCredentialsArgs>;
+    credentials?: pulumi.Input<AzureKeyVaultSmbCredentialsArgs | undefined>;
     /**
      * A description for the Endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Endpoint resource type.
      * Expected value is 'SmbMount'.
@@ -148,7 +148,7 @@ export interface TimeArgs {
     /**
      * The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
      */
-    minute?: pulumi.Input<number>;
+    minute?: pulumi.Input<number | undefined>;
 }
 /**
  * timeArgsProvideDefaults sets the appropriate defaults for TimeArgs
@@ -167,7 +167,7 @@ export interface UploadLimitScheduleArgs {
     /**
      * The set of weekly repeating recurrences of the WAN-link upload limit schedule.
      */
-    weeklyRecurrences?: pulumi.Input<pulumi.Input<UploadLimitWeeklyRecurrenceArgs>[]>;
+    weeklyRecurrences?: pulumi.Input<pulumi.Input<UploadLimitWeeklyRecurrenceArgs>[] | undefined>;
 }
 
 /**

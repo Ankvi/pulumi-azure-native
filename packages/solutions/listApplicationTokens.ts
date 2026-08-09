@@ -71,7 +71,7 @@ export interface ListApplicationTokensOutputArgs {
     /**
      * The authorization audience.
      */
-    authorizationAudience?: pulumi.Input<string>;
+    authorizationAudience?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -79,5 +79,5 @@ export interface ListApplicationTokensOutputArgs {
     /**
      * The user assigned identities.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

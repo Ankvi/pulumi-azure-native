@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-computebulkactions",
-    "version": "3.18.0",
+    "version": "3.25.0",
     "description": "Pulumi Azure Native package for computebulkactions",
     "keywords": [
         "pulumi",

@@ -15,11 +15,11 @@ export interface StorageDiscoveryScopeArgs {
     /**
      * The storage account tags keys to filter
      */
-    tagKeysOnly?: pulumi.Input<pulumi.Input<string>[]>;
+    tagKeysOnly?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -29,7 +29,7 @@ export interface StorageDiscoveryWorkspacePropertiesArgs {
     /**
      * The description of the storage discovery workspace
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The scopes of the storage discovery workspace.
      */
@@ -37,7 +37,7 @@ export interface StorageDiscoveryWorkspacePropertiesArgs {
     /**
      * The storage discovery sku
      */
-    sku?: pulumi.Input<string | enums.StorageDiscoverySku>;
+    sku?: pulumi.Input<string | enums.StorageDiscoverySku | undefined>;
     /**
      * The view level storage discovery data estate
      */

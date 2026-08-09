@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01, 2025-08-01, 2025-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Agent extends pulumi.CustomResource {
     /**
@@ -170,7 +170,7 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["uptimeInSeconds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:Agent" }, { type: "azure-native:storagemover/v20230301:Agent" }, { type: "azure-native:storagemover/v20230701preview:Agent" }, { type: "azure-native:storagemover/v20231001:Agent" }, { type: "azure-native:storagemover/v20240701:Agent" }, { type: "azure-native:storagemover/v20250701:Agent" }, { type: "azure-native:storagemover/v20250801:Agent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:Agent" }, { type: "azure-native:storagemover/v20230301:Agent" }, { type: "azure-native:storagemover/v20230701preview:Agent" }, { type: "azure-native:storagemover/v20231001:Agent" }, { type: "azure-native:storagemover/v20240701:Agent" }, { type: "azure-native:storagemover/v20250701:Agent" }, { type: "azure-native:storagemover/v20250801:Agent" }, { type: "azure-native:storagemover/v20251201:Agent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Agent.__pulumiType, name, resourceInputs, opts);
     }
@@ -183,7 +183,7 @@ export interface AgentArgs {
     /**
      * The name of the Agent resource.
      */
-    agentName?: pulumi.Input<string>;
+    agentName?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified resource ID of the Hybrid Compute resource for the Agent.
      */
@@ -195,7 +195,7 @@ export interface AgentArgs {
     /**
      * A description for the Agent.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -207,5 +207,5 @@ export interface AgentArgs {
     /**
      * The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time.
      */
-    uploadLimitSchedule?: pulumi.Input<types.inputs.UploadLimitScheduleArgs>;
+    uploadLimitSchedule?: pulumi.Input<types.inputs.UploadLimitScheduleArgs | undefined>;
 }

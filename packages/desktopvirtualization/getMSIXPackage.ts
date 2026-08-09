@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-03.
  *
- * Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-10-10, 2025-11-01-preview, 2026-01-01-preview, 2026-03-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getMSIXPackage(args: GetMSIXPackageArgs, opts?: pulumi.InvokeOptions): Promise<GetMSIXPackageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -41,7 +41,7 @@ export interface GetMSIXPackageResult {
      */
     readonly azureApiVersion: string;
     /**
-     * User friendly Name to be displayed in the portal. 
+     * User friendly Name to be displayed in the portal.
      */
     readonly displayName?: string;
     /**
@@ -53,7 +53,7 @@ export interface GetMSIXPackageResult {
      */
     readonly imagePath?: string;
     /**
-     * Make this version of the package the active one across the hostpool. 
+     * Make this version of the package the active one across the hostpool.
      */
     readonly isActive?: boolean;
     /**
@@ -61,7 +61,7 @@ export interface GetMSIXPackageResult {
      */
     readonly isRegularRegistration?: boolean;
     /**
-     * Date Package was last updated, found in the appxmanifest.xml. 
+     * Date Package was last updated, found in the appxmanifest.xml.
      */
     readonly lastUpdated?: string;
     /**
@@ -69,23 +69,23 @@ export interface GetMSIXPackageResult {
      */
     readonly name: string;
     /**
-     * List of package applications. 
+     * List of package applications.
      */
     readonly packageApplications?: types.outputs.MsixPackageApplicationsResponse[];
     /**
-     * List of package dependencies. 
+     * List of package dependencies.
      */
     readonly packageDependencies?: types.outputs.MsixPackageDependenciesResponse[];
     /**
-     * Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
+     * Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
      */
     readonly packageFamilyName?: string;
     /**
-     * Package Name from appxmanifest.xml. 
+     * Package Name from appxmanifest.xml.
      */
     readonly packageName?: string;
     /**
-     * Relative Path to the package inside the image. 
+     * Relative Path to the package inside the image.
      */
     readonly packageRelativePath?: string;
     /**
@@ -97,7 +97,7 @@ export interface GetMSIXPackageResult {
      */
     readonly type: string;
     /**
-     * Package version found in the appxmanifest.xml. 
+     * Package version found in the appxmanifest.xml.
      */
     readonly version?: string;
 }
@@ -106,7 +106,7 @@ export interface GetMSIXPackageResult {
  *
  * Uses Azure REST API version 2024-04-03.
  *
- * Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-10-10, 2025-11-01-preview, 2026-01-01-preview, 2026-03-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getMSIXPackageOutput(args: GetMSIXPackageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMSIXPackageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

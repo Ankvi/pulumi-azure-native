@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CustomIPPrefix extends pulumi.CustomResource {
     /**
@@ -194,7 +194,7 @@ export class CustomIPPrefix extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200601:CustomIPPrefix" }, { type: "azure-native:network/v20200701:CustomIPPrefix" }, { type: "azure-native:network/v20200801:CustomIPPrefix" }, { type: "azure-native:network/v20201101:CustomIPPrefix" }, { type: "azure-native:network/v20210201:CustomIPPrefix" }, { type: "azure-native:network/v20210301:CustomIPPrefix" }, { type: "azure-native:network/v20210501:CustomIPPrefix" }, { type: "azure-native:network/v20210801:CustomIPPrefix" }, { type: "azure-native:network/v20220101:CustomIPPrefix" }, { type: "azure-native:network/v20220501:CustomIPPrefix" }, { type: "azure-native:network/v20220701:CustomIPPrefix" }, { type: "azure-native:network/v20220901:CustomIPPrefix" }, { type: "azure-native:network/v20221101:CustomIPPrefix" }, { type: "azure-native:network/v20230201:CustomIPPrefix" }, { type: "azure-native:network/v20230401:CustomIPPrefix" }, { type: "azure-native:network/v20230501:CustomIPPrefix" }, { type: "azure-native:network/v20230601:CustomIPPrefix" }, { type: "azure-native:network/v20230901:CustomIPPrefix" }, { type: "azure-native:network/v20231101:CustomIPPrefix" }, { type: "azure-native:network/v20240101:CustomIPPrefix" }, { type: "azure-native:network/v20240301:CustomIPPrefix" }, { type: "azure-native:network/v20240501:CustomIPPrefix" }, { type: "azure-native:network/v20240701:CustomIPPrefix" }, { type: "azure-native:network/v20241001:CustomIPPrefix" }, { type: "azure-native:network/v20250101:CustomIPPrefix" }, { type: "azure-native:network/v20250301:CustomIPPrefix" }, { type: "azure-native:network/v20250501:CustomIPPrefix" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200601:CustomIPPrefix" }, { type: "azure-native:network/v20200701:CustomIPPrefix" }, { type: "azure-native:network/v20200801:CustomIPPrefix" }, { type: "azure-native:network/v20201101:CustomIPPrefix" }, { type: "azure-native:network/v20210201:CustomIPPrefix" }, { type: "azure-native:network/v20210301:CustomIPPrefix" }, { type: "azure-native:network/v20210501:CustomIPPrefix" }, { type: "azure-native:network/v20210801:CustomIPPrefix" }, { type: "azure-native:network/v20220101:CustomIPPrefix" }, { type: "azure-native:network/v20220501:CustomIPPrefix" }, { type: "azure-native:network/v20220701:CustomIPPrefix" }, { type: "azure-native:network/v20220901:CustomIPPrefix" }, { type: "azure-native:network/v20221101:CustomIPPrefix" }, { type: "azure-native:network/v20230201:CustomIPPrefix" }, { type: "azure-native:network/v20230401:CustomIPPrefix" }, { type: "azure-native:network/v20230501:CustomIPPrefix" }, { type: "azure-native:network/v20230601:CustomIPPrefix" }, { type: "azure-native:network/v20230901:CustomIPPrefix" }, { type: "azure-native:network/v20231101:CustomIPPrefix" }, { type: "azure-native:network/v20240101:CustomIPPrefix" }, { type: "azure-native:network/v20240301:CustomIPPrefix" }, { type: "azure-native:network/v20240501:CustomIPPrefix" }, { type: "azure-native:network/v20240701:CustomIPPrefix" }, { type: "azure-native:network/v20241001:CustomIPPrefix" }, { type: "azure-native:network/v20250101:CustomIPPrefix" }, { type: "azure-native:network/v20250301:CustomIPPrefix" }, { type: "azure-native:network/v20250501:CustomIPPrefix" }, { type: "azure-native:network/v20250701:CustomIPPrefix" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CustomIPPrefix.__pulumiType, name, resourceInputs, opts);
     }
@@ -207,55 +207,55 @@ export interface CustomIPPrefixArgs {
     /**
      * The ASN for CIDR advertising. Should be an integer as string.
      */
-    asn?: pulumi.Input<string>;
+    asn?: pulumi.Input<string | undefined>;
     /**
      * Authorization message for WAN validation.
      */
-    authorizationMessage?: pulumi.Input<string>;
+    authorizationMessage?: pulumi.Input<string | undefined>;
     /**
      * The prefix range in CIDR notation. Should include the start address and the prefix length.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The commissioned state of the Custom IP Prefix.
      */
-    commissionedState?: pulumi.Input<string | types.enums.CommissionedState>;
+    commissionedState?: pulumi.Input<string | types.enums.CommissionedState | undefined>;
     /**
      * The name of the custom IP prefix.
      */
-    customIpPrefixName?: pulumi.Input<string>;
+    customIpPrefixName?: pulumi.Input<string | undefined>;
     /**
      * The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
      */
-    customIpPrefixParent?: pulumi.Input<types.inputs.SubResourceArgs>;
+    customIpPrefixParent?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * Whether to do express route advertise.
      */
-    expressRouteAdvertise?: pulumi.Input<boolean>;
+    expressRouteAdvertise?: pulumi.Input<boolean | undefined>;
     /**
      * The extended location of the custom IP prefix.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * The Geo for CIDR advertising. Should be an Geo code.
      */
-    geo?: pulumi.Input<string | types.enums.Geo>;
+    geo?: pulumi.Input<string | types.enums.Geo | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Whether to Advertise the range to Internet.
      */
-    noInternetAdvertise?: pulumi.Input<boolean>;
+    noInternetAdvertise?: pulumi.Input<boolean | undefined>;
     /**
      * Type of custom IP prefix. Should be Singular, Parent, or Child.
      */
-    prefixType?: pulumi.Input<string | types.enums.CustomIpPrefixType>;
+    prefixType?: pulumi.Input<string | types.enums.CustomIpPrefixType | undefined>;
     /**
      * The name of the resource group.
      */
@@ -263,13 +263,13 @@ export interface CustomIPPrefixArgs {
     /**
      * Signed message for WAN validation.
      */
-    signedMessage?: pulumi.Input<string>;
+    signedMessage?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A list of availability zones denoting the IP allocated for the resource needs to come from.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

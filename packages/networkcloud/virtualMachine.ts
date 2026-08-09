@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualMachine extends pulumi.CustomResource {
     /**
@@ -215,7 +215,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["placementHints"] = args?.placementHints;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["sshPublicKeys"] = args?.sshPublicKeys;
-            resourceInputs["storageProfile"] = args ? (args.storageProfile ? pulumi.output(args.storageProfile).apply(types.inputs.storageProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["storageProfile"] = args ? pulumi.output(args.storageProfile).apply(types.inputs.storageProfileArgsProvideDefaults) : undefined;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["userData"] = args?.userData;
             resourceInputs["virtioInterface"] = (args?.virtioInterface) ?? "Modern";
@@ -272,7 +272,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["volumes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:VirtualMachine" }, { type: "azure-native:networkcloud/v20231001preview:VirtualMachine" }, { type: "azure-native:networkcloud/v20240601preview:VirtualMachine" }, { type: "azure-native:networkcloud/v20240701:VirtualMachine" }, { type: "azure-native:networkcloud/v20241001preview:VirtualMachine" }, { type: "azure-native:networkcloud/v20250201:VirtualMachine" }, { type: "azure-native:networkcloud/v20250701preview:VirtualMachine" }, { type: "azure-native:networkcloud/v20250901:VirtualMachine" }, { type: "azure-native:networkcloud/v20260101preview:VirtualMachine" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:VirtualMachine" }, { type: "azure-native:networkcloud/v20231001preview:VirtualMachine" }, { type: "azure-native:networkcloud/v20240601preview:VirtualMachine" }, { type: "azure-native:networkcloud/v20240701:VirtualMachine" }, { type: "azure-native:networkcloud/v20241001preview:VirtualMachine" }, { type: "azure-native:networkcloud/v20250201:VirtualMachine" }, { type: "azure-native:networkcloud/v20250901:VirtualMachine" }, { type: "azure-native:networkcloud/v20260101preview:VirtualMachine" }, { type: "azure-native:networkcloud/v20260501preview:VirtualMachine" }, { type: "azure-native:networkcloud/v20260701:VirtualMachine" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualMachine.__pulumiType, name, resourceInputs, opts);
     }
@@ -289,7 +289,7 @@ export interface VirtualMachineArgs {
     /**
      * Selects the boot method for the virtual machine.
      */
-    bootMethod?: pulumi.Input<string | types.enums.VirtualMachineBootMethod>;
+    bootMethod?: pulumi.Input<string | types.enums.VirtualMachineBootMethod | undefined>;
     /**
      * The cloud service network that provides platform-level services for the virtual machine.
      */
@@ -297,7 +297,7 @@ export interface VirtualMachineArgs {
     /**
      * The extended location to use for creation of a VM console resource.
      */
-    consoleExtendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    consoleExtendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * The number of CPU cores in the virtual machine.
      */
@@ -309,11 +309,11 @@ export interface VirtualMachineArgs {
     /**
      * Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine.
      */
-    isolateEmulatorThread?: pulumi.Input<string | types.enums.VirtualMachineIsolateEmulatorThread>;
+    isolateEmulatorThread?: pulumi.Input<string | types.enums.VirtualMachineIsolateEmulatorThread | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The memory size of the virtual machine. Allocations are measured in gibibytes.
      */
@@ -321,15 +321,15 @@ export interface VirtualMachineArgs {
     /**
      * The list of network attachments to the virtual machine.
      */
-    networkAttachments?: pulumi.Input<pulumi.Input<types.inputs.NetworkAttachmentArgs>[]>;
+    networkAttachments?: pulumi.Input<pulumi.Input<types.inputs.NetworkAttachmentArgs>[] | undefined>;
     /**
      * The Base64 encoded cloud-init network data.
      */
-    networkData?: pulumi.Input<string>;
+    networkData?: pulumi.Input<string | undefined>;
     /**
      * The scheduling hints for the virtual machine.
      */
-    placementHints?: pulumi.Input<pulumi.Input<types.inputs.VirtualMachinePlacementHintArgs>[]>;
+    placementHints?: pulumi.Input<pulumi.Input<types.inputs.VirtualMachinePlacementHintArgs>[] | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -337,7 +337,7 @@ export interface VirtualMachineArgs {
     /**
      * The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.
      */
-    sshPublicKeys?: pulumi.Input<pulumi.Input<types.inputs.SshPublicKeyArgs>[]>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<types.inputs.SshPublicKeyArgs>[] | undefined>;
     /**
      * The storage profile that specifies size and other parameters about the disks related to the virtual machine.
      */
@@ -345,23 +345,23 @@ export interface VirtualMachineArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Base64 encoded cloud-init user data.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * Field Deprecated, use virtualizationModel instead. The type of the virtio interface.
      */
-    virtioInterface?: pulumi.Input<string | types.enums.VirtualMachineVirtioInterfaceType>;
+    virtioInterface?: pulumi.Input<string | types.enums.VirtualMachineVirtioInterfaceType | undefined>;
     /**
      * The name of the virtual machine.
      */
-    virtualMachineName?: pulumi.Input<string>;
+    virtualMachineName?: pulumi.Input<string | undefined>;
     /**
      * The type of the device model to use.
      */
-    vmDeviceModel?: pulumi.Input<string | types.enums.VirtualMachineDeviceModelType>;
+    vmDeviceModel?: pulumi.Input<string | types.enums.VirtualMachineDeviceModelType | undefined>;
     /**
      * The virtual machine image that is currently provisioned to the OS disk, using the full url and tag notation used to pull the image.
      */
@@ -369,5 +369,5 @@ export interface VirtualMachineArgs {
     /**
      * The credentials used to login to the image repository that has access to the specified image.
      */
-    vmImageRepositoryCredentials?: pulumi.Input<types.inputs.ImageRepositoryCredentialsArgs>;
+    vmImageRepositoryCredentials?: pulumi.Input<types.inputs.ImageRepositoryCredentialsArgs | undefined>;
 }

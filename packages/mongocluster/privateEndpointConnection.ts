@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01.
  *
- * Other available API versions: 2024-03-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-08-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mongocluster [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-03-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-08-01-preview, 2025-09-01, 2026-02-01-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mongocluster [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -89,7 +89,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:documentdb/v20240301preview:PrivateEndpointConnection" }, { type: "azure-native:documentdb/v20240601preview:PrivateEndpointConnection" }, { type: "azure-native:documentdb/v20240701:PrivateEndpointConnection" }, { type: "azure-native:documentdb/v20241001preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20240301preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20240601preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20240701:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20241001preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20250401preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20250701preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20250801preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20250901:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:documentdb/v20240301preview:PrivateEndpointConnection" }, { type: "azure-native:documentdb/v20240601preview:PrivateEndpointConnection" }, { type: "azure-native:documentdb/v20240701:PrivateEndpointConnection" }, { type: "azure-native:documentdb/v20241001preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20240301preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20240601preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20240701:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20241001preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20250401preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20250701preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20250801preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20250901:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20260201preview:PrivateEndpointConnection" }, { type: "azure-native:mongocluster/v20260601:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }
@@ -106,11 +106,11 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The name of the private endpoint connection associated with the Azure resource.
      */
-    privateEndpointConnectionName?: pulumi.Input<string>;
+    privateEndpointConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -111,11 +111,11 @@ export interface KeyGroupArgs {
     /**
      * Name of the KeyGroup under the profile.
      */
-    keyGroupName?: pulumi.Input<string>;
+    keyGroupName?: pulumi.Input<string | undefined>;
     /**
      * Names of UrlSigningKey type secret objects
      */
-    keyReferences?: pulumi.Input<pulumi.Input<types.inputs.ResourceReferenceArgs>[]>;
+    keyReferences?: pulumi.Input<pulumi.Input<types.inputs.ResourceReferenceArgs>[] | undefined>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
      */

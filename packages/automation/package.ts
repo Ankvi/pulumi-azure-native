@@ -157,7 +157,7 @@ export interface PackageArgs {
     /**
      * The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
      */
-    allOf?: pulumi.Input<types.inputs.TrackedResourceArgs>;
+    allOf?: pulumi.Input<types.inputs.TrackedResourceArgs | undefined>;
     /**
      * The name of the automation account.
      */
@@ -167,11 +167,11 @@ export interface PackageArgs {
      */
     contentLink: pulumi.Input<types.inputs.ContentLinkArgs>;
     /**
-     * The name of Package.
+     * The Package name.
      */
-    packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string | undefined>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**

@@ -38,6 +38,10 @@ export class GovernanceRule extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
+     * The governance rule conditionSets - see examples
+     */
+    declare public readonly conditionSets: pulumi.Output<any[]>;
+    /**
      * Description of the governance rule
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -70,7 +74,7 @@ export class GovernanceRule extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly metadata: pulumi.Output<types.outputs.GovernanceRuleMetadataResponse | undefined>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -94,11 +98,15 @@ export class GovernanceRule extends pulumi.CustomResource {
      */
     declare public readonly sourceResourceType: pulumi.Output<string>;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
      * The tenantId (GUID)
      */
     declare public /*out*/ readonly tenantId: pulumi.Output<string>;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -113,6 +121,9 @@ export class GovernanceRule extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if (args?.conditionSets === undefined && !opts.urn) {
+                throw new Error("Missing required property 'conditionSets'");
+            }
             if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
@@ -131,6 +142,7 @@ export class GovernanceRule extends pulumi.CustomResource {
             if (args?.sourceResourceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceResourceType'");
             }
+            resourceInputs["conditionSets"] = args?.conditionSets;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["excludedScopes"] = args?.excludedScopes;
@@ -148,10 +160,12 @@ export class GovernanceRule extends pulumi.CustomResource {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tenantId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["conditionSets"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["excludedScopes"] = undefined /*out*/;
@@ -166,6 +180,7 @@ export class GovernanceRule extends pulumi.CustomResource {
             resourceInputs["rulePriority"] = undefined /*out*/;
             resourceInputs["ruleType"] = undefined /*out*/;
             resourceInputs["sourceResourceType"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tenantId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
@@ -181,9 +196,13 @@ export class GovernanceRule extends pulumi.CustomResource {
  */
 export interface GovernanceRuleArgs {
     /**
+     * The governance rule conditionSets - see examples
+     */
+    conditionSets: pulumi.Input<any[]>;
+    /**
      * Description of the governance rule
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the governance rule
      */
@@ -191,23 +210,23 @@ export interface GovernanceRuleArgs {
     /**
      * Excluded scopes, filter out the descendants of the scope (on management scopes)
      */
-    excludedScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
      */
-    governanceEmailNotification?: pulumi.Input<types.inputs.GovernanceRuleEmailNotificationArgs>;
+    governanceEmailNotification?: pulumi.Input<types.inputs.GovernanceRuleEmailNotificationArgs | undefined>;
     /**
      * Defines whether the rule is management scope rule (master connector as a single scope or management scope)
      */
-    includeMemberScopes?: pulumi.Input<boolean>;
+    includeMemberScopes?: pulumi.Input<boolean | undefined>;
     /**
      * Defines whether the rule is active/inactive
      */
-    isDisabled?: pulumi.Input<boolean>;
+    isDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * Defines whether there is a grace period on the governance rule
      */
-    isGracePeriod?: pulumi.Input<boolean>;
+    isGracePeriod?: pulumi.Input<boolean | undefined>;
     /**
      * The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
      */
@@ -215,11 +234,11 @@ export interface GovernanceRuleArgs {
     /**
      * Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
      */
-    remediationTimeframe?: pulumi.Input<string>;
+    remediationTimeframe?: pulumi.Input<string | undefined>;
     /**
      * The governance rule key - unique key for the standard governance rule (GUID)
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * The governance rule priority, priority to the lower number. Rules with the same priority on the same scope will not be allowed
      */
@@ -229,7 +248,7 @@ export interface GovernanceRuleArgs {
      */
     ruleType: pulumi.Input<string | types.enums.GovernanceRuleType>;
     /**
-     * The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scope: pulumi.Input<string>;
     /**

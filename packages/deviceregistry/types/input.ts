@@ -11,11 +11,11 @@ export interface AuthenticationArgs {
     /**
      * Defines the username and password references when UsernamePassword user authentication mode is selected.
      */
-    usernamePasswordCredentials?: pulumi.Input<UsernamePasswordCredentialsArgs>;
+    usernamePasswordCredentials?: pulumi.Input<UsernamePasswordCredentialsArgs | undefined>;
     /**
      * Defines the certificate reference when Certificate user authentication mode is selected.
      */
-    x509Credentials?: pulumi.Input<X509CredentialsArgs>;
+    x509Credentials?: pulumi.Input<X509CredentialsArgs | undefined>;
 }
 /**
  * authenticationArgsProvideDefaults sets the appropriate defaults for AuthenticationArgs
@@ -68,7 +68,7 @@ export interface DataPointArgs {
     /**
      * Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
-    dataPointConfiguration?: pulumi.Input<string>;
+    dataPointConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
      */
@@ -80,7 +80,7 @@ export interface DataPointArgs {
     /**
      * An indication of how the data point should be mapped to OpenTelemetry.
      */
-    observabilityMode?: pulumi.Input<string | enums.DataPointObservabilityMode>;
+    observabilityMode?: pulumi.Input<string | enums.DataPointObservabilityMode | undefined>;
 }
 /**
  * dataPointArgsProvideDefaults sets the appropriate defaults for DataPointArgs
@@ -99,11 +99,11 @@ export interface DatasetArgs {
     /**
      * Array of data points that are part of the dataset. Each data point can have per-data point configuration.
      */
-    dataPoints?: pulumi.Input<pulumi.Input<DataPointArgs>[]>;
+    dataPoints?: pulumi.Input<pulumi.Input<DataPointArgs>[] | undefined>;
     /**
      * Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
      */
-    datasetConfiguration?: pulumi.Input<string>;
+    datasetConfiguration?: pulumi.Input<string | undefined>;
     /**
      * Name of the dataset.
      */
@@ -111,7 +111,7 @@ export interface DatasetArgs {
     /**
      * Object that describes the topic information for the specific dataset.
      */
-    topic?: pulumi.Input<TopicArgs>;
+    topic?: pulumi.Input<TopicArgs | undefined>;
 }
 /**
  * datasetArgsProvideDefaults sets the appropriate defaults for DatasetArgs
@@ -119,7 +119,7 @@ export interface DatasetArgs {
 export function datasetArgsProvideDefaults(val: DatasetArgs): DatasetArgs {
     return {
         ...val,
-        topic: (val.topic ? pulumi.output(val.topic).apply(topicArgsProvideDefaults) : undefined),
+        topic: pulumi.output(val.topic).apply(v => v === undefined ? undefined : topicArgsProvideDefaults(v)),
     };
 }
 
@@ -188,7 +188,7 @@ export interface DeviceMessagingEndpointArgs {
     /**
      * Type of connection used for the messaging endpoint.
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -212,7 +212,7 @@ export interface DiscoveredDataPointArgs {
     /**
      * Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
-    dataPointConfiguration?: pulumi.Input<string>;
+    dataPointConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
      */
@@ -220,7 +220,7 @@ export interface DiscoveredDataPointArgs {
     /**
      * UTC timestamp indicating when the data point was added or modified.
      */
-    lastUpdatedOn?: pulumi.Input<string>;
+    lastUpdatedOn?: pulumi.Input<string | undefined>;
     /**
      * The name of the data point.
      */
@@ -234,11 +234,11 @@ export interface DiscoveredDatasetArgs {
     /**
      * Array of data points that are part of the dataset. Each data point can have per-data point configuration.
      */
-    dataPoints?: pulumi.Input<pulumi.Input<DiscoveredDataPointArgs>[]>;
+    dataPoints?: pulumi.Input<pulumi.Input<DiscoveredDataPointArgs>[] | undefined>;
     /**
      * Stringified JSON that contains connector-specific properties that describes configuration for the specific dataset.
      */
-    datasetConfiguration?: pulumi.Input<string>;
+    datasetConfiguration?: pulumi.Input<string | undefined>;
     /**
      * Name of the dataset.
      */
@@ -246,7 +246,7 @@ export interface DiscoveredDatasetArgs {
     /**
      * Object that describes the topic information for the specific dataset.
      */
-    topic?: pulumi.Input<TopicArgs>;
+    topic?: pulumi.Input<TopicArgs | undefined>;
 }
 /**
  * discoveredDatasetArgsProvideDefaults sets the appropriate defaults for DiscoveredDatasetArgs
@@ -254,7 +254,7 @@ export interface DiscoveredDatasetArgs {
 export function discoveredDatasetArgsProvideDefaults(val: DiscoveredDatasetArgs): DiscoveredDatasetArgs {
     return {
         ...val,
-        topic: (val.topic ? pulumi.output(val.topic).apply(topicArgsProvideDefaults) : undefined),
+        topic: pulumi.output(val.topic).apply(v => v === undefined ? undefined : topicArgsProvideDefaults(v)),
     };
 }
 
@@ -265,7 +265,7 @@ export interface DiscoveredEventArgs {
     /**
      * Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
-    eventConfiguration?: pulumi.Input<string>;
+    eventConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
      */
@@ -273,7 +273,7 @@ export interface DiscoveredEventArgs {
     /**
      * UTC timestamp indicating when the event was added or modified.
      */
-    lastUpdatedOn?: pulumi.Input<string>;
+    lastUpdatedOn?: pulumi.Input<string | undefined>;
     /**
      * The name of the event.
      */
@@ -281,7 +281,7 @@ export interface DiscoveredEventArgs {
     /**
      * Object that describes the topic information for the specific event.
      */
-    topic?: pulumi.Input<TopicArgs>;
+    topic?: pulumi.Input<TopicArgs | undefined>;
 }
 /**
  * discoveredEventArgsProvideDefaults sets the appropriate defaults for DiscoveredEventArgs
@@ -289,7 +289,7 @@ export interface DiscoveredEventArgs {
 export function discoveredEventArgsProvideDefaults(val: DiscoveredEventArgs): DiscoveredEventArgs {
     return {
         ...val,
-        topic: (val.topic ? pulumi.output(val.topic).apply(topicArgsProvideDefaults) : undefined),
+        topic: pulumi.output(val.topic).apply(v => v === undefined ? undefined : topicArgsProvideDefaults(v)),
     };
 }
 
@@ -300,7 +300,7 @@ export interface DiscoveredInboundEndpointsArgs {
     /**
      * Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF).
      */
-    additionalConfiguration?: pulumi.Input<string>;
+    additionalConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com).
      */
@@ -312,15 +312,15 @@ export interface DiscoveredInboundEndpointsArgs {
     /**
      * The timestamp (in UTC) when the endpoint was discovered.
      */
-    lastUpdatedOn?: pulumi.Input<string>;
+    lastUpdatedOn?: pulumi.Input<string | undefined>;
     /**
      * List of supported authentication methods supported by device for Inbound connections.
      */
-    supportedAuthenticationMethods?: pulumi.Input<pulumi.Input<string | enums.AuthenticationMethod>[]>;
+    supportedAuthenticationMethods?: pulumi.Input<pulumi.Input<string | enums.AuthenticationMethod>[] | undefined>;
     /**
      * Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -330,11 +330,11 @@ export interface DiscoveredMessagingEndpointsArgs {
     /**
      * Set of endpoints to connect to the device.
      */
-    inbound?: pulumi.Input<{[key: string]: pulumi.Input<DiscoveredInboundEndpointsArgs>}>;
+    inbound?: pulumi.Input<{[key: string]: pulumi.Input<DiscoveredInboundEndpointsArgs>} | undefined>;
     /**
      * Set of endpoints a device can connect to.
      */
-    outbound?: pulumi.Input<DiscoveredOutboundEndpointsArgs>;
+    outbound?: pulumi.Input<DiscoveredOutboundEndpointsArgs | undefined>;
 }
 
 /**
@@ -354,7 +354,7 @@ export interface EventArgs {
     /**
      * Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
-    eventConfiguration?: pulumi.Input<string>;
+    eventConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
      */
@@ -366,11 +366,11 @@ export interface EventArgs {
     /**
      * An indication of how the event should be mapped to OpenTelemetry.
      */
-    observabilityMode?: pulumi.Input<string | enums.EventObservabilityMode>;
+    observabilityMode?: pulumi.Input<string | enums.EventObservabilityMode | undefined>;
     /**
      * Object that describes the topic information for the specific event.
      */
-    topic?: pulumi.Input<TopicArgs>;
+    topic?: pulumi.Input<TopicArgs | undefined>;
 }
 /**
  * eventArgsProvideDefaults sets the appropriate defaults for EventArgs
@@ -379,7 +379,7 @@ export function eventArgsProvideDefaults(val: EventArgs): EventArgs {
     return {
         ...val,
         observabilityMode: (val.observabilityMode) ?? "None",
-        topic: (val.topic ? pulumi.output(val.topic).apply(topicArgsProvideDefaults) : undefined),
+        topic: pulumi.output(val.topic).apply(v => v === undefined ? undefined : topicArgsProvideDefaults(v)),
     };
 }
 
@@ -447,11 +447,11 @@ export interface HostAuthenticationArgs {
     /**
      * Defines the username and password references when UsernamePassword user authentication mode is selected.
      */
-    usernamePasswordCredentials?: pulumi.Input<UsernamePasswordCredentialsArgs>;
+    usernamePasswordCredentials?: pulumi.Input<UsernamePasswordCredentialsArgs | undefined>;
     /**
      * Defines the certificate reference when Certificate user authentication mode is selected.
      */
-    x509Credentials?: pulumi.Input<X509CredentialsArgs>;
+    x509Credentials?: pulumi.Input<X509CredentialsArgs | undefined>;
 }
 /**
  * hostAuthenticationArgsProvideDefaults sets the appropriate defaults for HostAuthenticationArgs
@@ -470,7 +470,7 @@ export interface InboundEndpointsArgs {
     /**
      * Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF).
      */
-    additionalConfiguration?: pulumi.Input<string>;
+    additionalConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com).
      */
@@ -478,7 +478,7 @@ export interface InboundEndpointsArgs {
     /**
      * Defines the client authentication mechanism to the server.
      */
-    authentication?: pulumi.Input<HostAuthenticationArgs>;
+    authentication?: pulumi.Input<HostAuthenticationArgs | undefined>;
     /**
      * Type of connection endpoint.
      */
@@ -486,11 +486,11 @@ export interface InboundEndpointsArgs {
     /**
      * Defines server trust settings for the endpoint.
      */
-    trustSettings?: pulumi.Input<TrustSettingsArgs>;
+    trustSettings?: pulumi.Input<TrustSettingsArgs | undefined>;
     /**
      * Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 /**
  * inboundEndpointsArgsProvideDefaults sets the appropriate defaults for InboundEndpointsArgs
@@ -498,7 +498,7 @@ export interface InboundEndpointsArgs {
 export function inboundEndpointsArgsProvideDefaults(val: InboundEndpointsArgs): InboundEndpointsArgs {
     return {
         ...val,
-        authentication: (val.authentication ? pulumi.output(val.authentication).apply(hostAuthenticationArgsProvideDefaults) : undefined),
+        authentication: pulumi.output(val.authentication).apply(v => v === undefined ? undefined : hostAuthenticationArgsProvideDefaults(v)),
     };
 }
 
@@ -519,11 +519,11 @@ export interface ManagementActionArgs {
     /**
      * Stringified JSON that contains connector-specific configuration for the action.
      */
-    actionConfiguration?: pulumi.Input<string>;
+    actionConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The type of the action.
      */
-    actionType?: pulumi.Input<string | enums.ManagementActionType>;
+    actionType?: pulumi.Input<string | enums.ManagementActionType | undefined>;
     /**
      * Name of the action.
      */
@@ -535,15 +535,15 @@ export interface ManagementActionArgs {
     /**
      * Response timeout for the action.
      */
-    timeoutInSeconds?: pulumi.Input<number>;
+    timeoutInSeconds?: pulumi.Input<number | undefined>;
     /**
      * The MQTT topic path on which a client will receive the request for the action.
      */
-    topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string | undefined>;
     /**
      * URI or type definition ID.
      */
-    typeRef?: pulumi.Input<string>;
+    typeRef?: pulumi.Input<string | undefined>;
 }
 /**
  * managementActionArgsProvideDefaults sets the appropriate defaults for ManagementActionArgs
@@ -562,19 +562,19 @@ export interface ManagementGroupArgs {
     /**
      * Array of actions that are part of the management group. Each action can have an individual configuration.
      */
-    actions?: pulumi.Input<pulumi.Input<ManagementActionArgs>[]>;
+    actions?: pulumi.Input<pulumi.Input<ManagementActionArgs>[] | undefined>;
     /**
      * Default response timeout for all actions that are part of the management group.
      */
-    defaultTimeoutInSeconds?: pulumi.Input<number>;
+    defaultTimeoutInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
      */
-    defaultTopic?: pulumi.Input<string>;
+    defaultTopic?: pulumi.Input<string | undefined>;
     /**
      * Stringified JSON that contains connector-specific configuration for the management group.
      */
-    managementGroupConfiguration?: pulumi.Input<string>;
+    managementGroupConfiguration?: pulumi.Input<string | undefined>;
     /**
      * Name of the management group.
      */
@@ -582,7 +582,7 @@ export interface ManagementGroupArgs {
     /**
      * URI or type definition ID.
      */
-    typeRef?: pulumi.Input<string>;
+    typeRef?: pulumi.Input<string | undefined>;
 }
 /**
  * managementGroupArgsProvideDefaults sets the appropriate defaults for ManagementGroupArgs
@@ -601,7 +601,7 @@ export interface MessagingArgs {
     /**
      * Dictionary of messaging endpoints.
      */
-    endpoints?: pulumi.Input<{[key: string]: pulumi.Input<MessagingEndpointArgs>}>;
+    endpoints?: pulumi.Input<{[key: string]: pulumi.Input<MessagingEndpointArgs>} | undefined>;
 }
 
 /**
@@ -615,11 +615,11 @@ export interface MessagingEndpointArgs {
     /**
      * Type of connection used for messaging endpoint.
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * The messaging endpoint Azure resource Id.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -629,11 +629,11 @@ export interface MessagingEndpointsArgs {
     /**
      * Set of endpoints to connect to the device.
      */
-    inbound?: pulumi.Input<{[key: string]: pulumi.Input<InboundEndpointsArgs>}>;
+    inbound?: pulumi.Input<{[key: string]: pulumi.Input<InboundEndpointsArgs>} | undefined>;
     /**
      * Set of endpoints a device can connect to.
      */
-    outbound?: pulumi.Input<OutboundEndpointsArgs>;
+    outbound?: pulumi.Input<OutboundEndpointsArgs | undefined>;
 }
 
 /**
@@ -643,11 +643,11 @@ export interface MqttDestinationConfigurationArgs {
     /**
      * The MQTT QoS setting. Defaults to QoS 1.
      */
-    qos?: pulumi.Input<string | enums.MqttDestinationQos>;
+    qos?: pulumi.Input<string | enums.MqttDestinationQos | undefined>;
     /**
      * When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
      */
-    retain?: pulumi.Input<string | enums.TopicRetainType>;
+    retain?: pulumi.Input<string | enums.TopicRetainType | undefined>;
     /**
      * The MQTT topic.
      */
@@ -655,7 +655,7 @@ export interface MqttDestinationConfigurationArgs {
     /**
      * The MQTT TTL setting.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }
 /**
  * mqttDestinationConfigurationArgsProvideDefaults sets the appropriate defaults for MqttDestinationConfigurationArgs
@@ -675,19 +675,19 @@ export interface NamespaceDatasetArgs {
     /**
      * Array of data points that are part of the dataset. Each data point can have per-data point configuration.
      */
-    dataPoints?: pulumi.Input<pulumi.Input<NamespaceDatasetDataPointArgs>[]>;
+    dataPoints?: pulumi.Input<pulumi.Input<NamespaceDatasetDataPointArgs>[] | undefined>;
     /**
      * Reference to a data source for a given dataset.
      */
-    dataSource?: pulumi.Input<string>;
+    dataSource?: pulumi.Input<string | undefined>;
     /**
      * Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
      */
-    datasetConfiguration?: pulumi.Input<string>;
+    datasetConfiguration?: pulumi.Input<string | undefined>;
     /**
      * Destinations for a dataset.
      */
-    destinations?: pulumi.Input<pulumi.Input<DatasetBrokerStateStoreDestinationArgs | DatasetMqttDestinationArgs | DatasetStorageDestinationArgs>[]>;
+    destinations?: pulumi.Input<pulumi.Input<DatasetBrokerStateStoreDestinationArgs | DatasetMqttDestinationArgs | DatasetStorageDestinationArgs>[] | undefined>;
     /**
      * Name of the dataset.
      */
@@ -695,7 +695,7 @@ export interface NamespaceDatasetArgs {
     /**
      * URI or type definition ID.
      */
-    typeRef?: pulumi.Input<string>;
+    typeRef?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -705,7 +705,7 @@ export interface NamespaceDatasetDataPointArgs {
     /**
      * Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
-    dataPointConfiguration?: pulumi.Input<string>;
+    dataPointConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
      */
@@ -717,7 +717,7 @@ export interface NamespaceDatasetDataPointArgs {
     /**
      * URI or type definition ID.
      */
-    typeRef?: pulumi.Input<string>;
+    typeRef?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -727,23 +727,23 @@ export interface NamespaceDiscoveredDatasetArgs {
     /**
      * Array of data points that are part of the dataset. Each data point can have per-data point configuration.
      */
-    dataPoints?: pulumi.Input<pulumi.Input<NamespaceDiscoveredDatasetDataPointArgs>[]>;
+    dataPoints?: pulumi.Input<pulumi.Input<NamespaceDiscoveredDatasetDataPointArgs>[] | undefined>;
     /**
      * Reference to a data source for a given dataset.
      */
-    dataSource?: pulumi.Input<string>;
+    dataSource?: pulumi.Input<string | undefined>;
     /**
      * Stringified JSON that contains connector-specific properties that describes configuration for the specific dataset.
      */
-    datasetConfiguration?: pulumi.Input<string>;
+    datasetConfiguration?: pulumi.Input<string | undefined>;
     /**
      * Destinations for a dataset.
      */
-    destinations?: pulumi.Input<pulumi.Input<DatasetBrokerStateStoreDestinationArgs | DatasetMqttDestinationArgs | DatasetStorageDestinationArgs>[]>;
+    destinations?: pulumi.Input<pulumi.Input<DatasetBrokerStateStoreDestinationArgs | DatasetMqttDestinationArgs | DatasetStorageDestinationArgs>[] | undefined>;
     /**
      * Timestamp (in UTC) indicating when the dataset was added or modified.
      */
-    lastUpdatedOn?: pulumi.Input<string>;
+    lastUpdatedOn?: pulumi.Input<string | undefined>;
     /**
      * Name of the dataset.
      */
@@ -751,7 +751,7 @@ export interface NamespaceDiscoveredDatasetArgs {
     /**
      * URI or type definition ID.
      */
-    typeRef?: pulumi.Input<string>;
+    typeRef?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -761,7 +761,7 @@ export interface NamespaceDiscoveredDatasetDataPointArgs {
     /**
      * Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
-    dataPointConfiguration?: pulumi.Input<string>;
+    dataPointConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
      */
@@ -769,7 +769,7 @@ export interface NamespaceDiscoveredDatasetDataPointArgs {
     /**
      * UTC timestamp indicating when the data point was added or modified.
      */
-    lastUpdatedOn?: pulumi.Input<string>;
+    lastUpdatedOn?: pulumi.Input<string | undefined>;
     /**
      * The name of the data point.
      */
@@ -777,7 +777,7 @@ export interface NamespaceDiscoveredDatasetDataPointArgs {
     /**
      * URI or type definition ID.
      */
-    typeRef?: pulumi.Input<string>;
+    typeRef?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -787,15 +787,15 @@ export interface NamespaceDiscoveredEventArgs {
     /**
      * Array of data points that are part of the event. Each data point can have a per-data point configuration.
      */
-    dataPoints?: pulumi.Input<pulumi.Input<NamespaceDiscoveredEventDataPointArgs>[]>;
+    dataPoints?: pulumi.Input<pulumi.Input<NamespaceDiscoveredEventDataPointArgs>[] | undefined>;
     /**
      * Destinations for an event.
      */
-    destinations?: pulumi.Input<pulumi.Input<EventMqttDestinationArgs | EventStorageDestinationArgs>[]>;
+    destinations?: pulumi.Input<pulumi.Input<EventMqttDestinationArgs | EventStorageDestinationArgs>[] | undefined>;
     /**
      * Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
-    eventConfiguration?: pulumi.Input<string>;
+    eventConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
      */
@@ -803,7 +803,7 @@ export interface NamespaceDiscoveredEventArgs {
     /**
      * UTC timestamp indicating when the event was added or modified.
      */
-    lastUpdatedOn?: pulumi.Input<string>;
+    lastUpdatedOn?: pulumi.Input<string | undefined>;
     /**
      * The name of the event.
      */
@@ -811,7 +811,7 @@ export interface NamespaceDiscoveredEventArgs {
     /**
      * URI or type definition ID.
      */
-    typeRef?: pulumi.Input<string>;
+    typeRef?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -821,7 +821,7 @@ export interface NamespaceDiscoveredEventDataPointArgs {
     /**
      * Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
-    dataPointConfiguration?: pulumi.Input<string>;
+    dataPointConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
      */
@@ -829,7 +829,7 @@ export interface NamespaceDiscoveredEventDataPointArgs {
     /**
      * UTC timestamp indicating when the data point was added or modified.
      */
-    lastUpdatedOn?: pulumi.Input<string>;
+    lastUpdatedOn?: pulumi.Input<string | undefined>;
     /**
      * The name of the data point.
      */
@@ -843,15 +843,15 @@ export interface NamespaceDiscoveredManagementActionArgs {
     /**
      * Stringified JSON that contains connector-specific configuration for the action.
      */
-    actionConfiguration?: pulumi.Input<string>;
+    actionConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The type of the action.
      */
-    actionType?: pulumi.Input<string | enums.NamespaceDiscoveredManagementActionType>;
+    actionType?: pulumi.Input<string | enums.NamespaceDiscoveredManagementActionType | undefined>;
     /**
      * Timestamp (in UTC) indicating when the management action was added or modified.
      */
-    lastUpdatedOn?: pulumi.Input<string>;
+    lastUpdatedOn?: pulumi.Input<string | undefined>;
     /**
      * Name of the action.
      */
@@ -863,15 +863,15 @@ export interface NamespaceDiscoveredManagementActionArgs {
     /**
      * Response timeout for the action.
      */
-    timeoutInSeconds?: pulumi.Input<number>;
+    timeoutInSeconds?: pulumi.Input<number | undefined>;
     /**
      * The MQTT topic path on which a client will receive the request for the action.
      */
-    topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string | undefined>;
     /**
      * URI or type definition ID.
      */
-    typeRef?: pulumi.Input<string>;
+    typeRef?: pulumi.Input<string | undefined>;
 }
 /**
  * namespaceDiscoveredManagementActionArgsProvideDefaults sets the appropriate defaults for NamespaceDiscoveredManagementActionArgs
@@ -890,23 +890,23 @@ export interface NamespaceDiscoveredManagementGroupArgs {
     /**
      * Array of actions that are part of the management group. Each action can have an individual configuration.
      */
-    actions?: pulumi.Input<pulumi.Input<NamespaceDiscoveredManagementActionArgs>[]>;
+    actions?: pulumi.Input<pulumi.Input<NamespaceDiscoveredManagementActionArgs>[] | undefined>;
     /**
      * Default response timeout for all actions that are part of the management group.
      */
-    defaultTimeoutInSeconds?: pulumi.Input<number>;
+    defaultTimeoutInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Default MQTT topic path on which a client will receive the request for all actions that are part of the management group.
      */
-    defaultTopic?: pulumi.Input<string>;
+    defaultTopic?: pulumi.Input<string | undefined>;
     /**
      * Timestamp (in UTC) indicating when the management group was added or modified.
      */
-    lastUpdatedOn?: pulumi.Input<string>;
+    lastUpdatedOn?: pulumi.Input<string | undefined>;
     /**
      * Stringified JSON that contains connector-specific configuration for the management group.
      */
-    managementGroupConfiguration?: pulumi.Input<string>;
+    managementGroupConfiguration?: pulumi.Input<string | undefined>;
     /**
      * Name of the management group.
      */
@@ -914,7 +914,7 @@ export interface NamespaceDiscoveredManagementGroupArgs {
     /**
      * URI or type definition ID.
      */
-    typeRef?: pulumi.Input<string>;
+    typeRef?: pulumi.Input<string | undefined>;
 }
 /**
  * namespaceDiscoveredManagementGroupArgsProvideDefaults sets the appropriate defaults for NamespaceDiscoveredManagementGroupArgs
@@ -933,11 +933,11 @@ export interface NamespaceDiscoveredStreamArgs {
     /**
      * Destinations for a stream.
      */
-    destinations?: pulumi.Input<pulumi.Input<StreamMqttDestinationArgs | StreamStorageDestinationArgs>[]>;
+    destinations?: pulumi.Input<pulumi.Input<StreamMqttDestinationArgs | StreamStorageDestinationArgs>[] | undefined>;
     /**
      * Timestamp (in UTC) indicating when the stream was added or modified.
      */
-    lastUpdatedOn?: pulumi.Input<string>;
+    lastUpdatedOn?: pulumi.Input<string | undefined>;
     /**
      * Name of the stream definition.
      */
@@ -945,11 +945,11 @@ export interface NamespaceDiscoveredStreamArgs {
     /**
      * Stringified JSON that contains connector-specific configuration for the specific stream.
      */
-    streamConfiguration?: pulumi.Input<string>;
+    streamConfiguration?: pulumi.Input<string | undefined>;
     /**
      * URI or type definition ID.
      */
-    typeRef?: pulumi.Input<string>;
+    typeRef?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -959,15 +959,15 @@ export interface NamespaceEventArgs {
     /**
      * Array of data points that are part of the event. Each data point can have a per-data point configuration.
      */
-    dataPoints?: pulumi.Input<pulumi.Input<NamespaceEventDataPointArgs>[]>;
+    dataPoints?: pulumi.Input<pulumi.Input<NamespaceEventDataPointArgs>[] | undefined>;
     /**
      * Destinations for an event.
      */
-    destinations?: pulumi.Input<pulumi.Input<EventMqttDestinationArgs | EventStorageDestinationArgs>[]>;
+    destinations?: pulumi.Input<pulumi.Input<EventMqttDestinationArgs | EventStorageDestinationArgs>[] | undefined>;
     /**
      * Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
-    eventConfiguration?: pulumi.Input<string>;
+    eventConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
      */
@@ -979,7 +979,7 @@ export interface NamespaceEventArgs {
     /**
      * URI or type definition ID.
      */
-    typeRef?: pulumi.Input<string>;
+    typeRef?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -989,7 +989,7 @@ export interface NamespaceEventDataPointArgs {
     /**
      * Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
      */
-    dataPointConfiguration?: pulumi.Input<string>;
+    dataPointConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
      */
@@ -1007,7 +1007,7 @@ export interface NamespaceStreamArgs {
     /**
      * Destinations for a stream.
      */
-    destinations?: pulumi.Input<pulumi.Input<StreamMqttDestinationArgs | StreamStorageDestinationArgs>[]>;
+    destinations?: pulumi.Input<pulumi.Input<StreamMqttDestinationArgs | StreamStorageDestinationArgs>[] | undefined>;
     /**
      * Name of the stream definition.
      */
@@ -1015,11 +1015,11 @@ export interface NamespaceStreamArgs {
     /**
      * Stringified JSON that contains connector-specific configuration for the specific stream.
      */
-    streamConfiguration?: pulumi.Input<string>;
+    streamConfiguration?: pulumi.Input<string | undefined>;
     /**
      * URI or type definition ID.
      */
-    typeRef?: pulumi.Input<string>;
+    typeRef?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1033,7 +1033,7 @@ export interface OutboundEndpointsArgs {
     /**
      * Set of most recently removed endpoints.
      */
-    unassigned?: pulumi.Input<{[key: string]: pulumi.Input<DeviceMessagingEndpointArgs>}>;
+    unassigned?: pulumi.Input<{[key: string]: pulumi.Input<DeviceMessagingEndpointArgs>} | undefined>;
 }
 
 /**
@@ -1043,7 +1043,7 @@ export interface PolicyPropertiesArgs {
     /**
      * The certificate configuration.
      */
-    certificate?: pulumi.Input<CertificateConfigurationArgs>;
+    certificate?: pulumi.Input<CertificateConfigurationArgs | undefined>;
 }
 
 /**
@@ -1116,7 +1116,7 @@ export interface TopicArgs {
     /**
      * When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
      */
-    retain?: pulumi.Input<string | enums.TopicRetainType>;
+    retain?: pulumi.Input<string | enums.TopicRetainType | undefined>;
 }
 /**
  * topicArgsProvideDefaults sets the appropriate defaults for TopicArgs
@@ -1135,7 +1135,7 @@ export interface TrustSettingsArgs {
     /**
      * Defines a secret reference for certificates to trust.
      */
-    trustList?: pulumi.Input<string>;
+    trustList?: pulumi.Input<string | undefined>;
 }
 
 /**

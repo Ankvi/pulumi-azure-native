@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01-preview.
  *
- * Other available API versions: 2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-05-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-05-01-preview, 2025-06-01-preview, 2026-01-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PipelineRun extends pulumi.CustomResource {
     /**
@@ -88,7 +88,7 @@ export class PipelineRun extends pulumi.CustomResource {
             resourceInputs["forceUpdateTag"] = args?.forceUpdateTag;
             resourceInputs["pipelineRunName"] = args?.pipelineRunName;
             resourceInputs["registryName"] = args?.registryName;
-            resourceInputs["request"] = args ? (args.request ? pulumi.output(args.request).apply(types.inputs.pipelineRunRequestArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["request"] = args ? pulumi.output(args.request).apply(v => v === undefined ? undefined : types.inputs.pipelineRunRequestArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -107,7 +107,7 @@ export class PipelineRun extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20191201preview:PipelineRun" }, { type: "azure-native:containerregistry/v20201101preview:PipelineRun" }, { type: "azure-native:containerregistry/v20210601preview:PipelineRun" }, { type: "azure-native:containerregistry/v20210801preview:PipelineRun" }, { type: "azure-native:containerregistry/v20211201preview:PipelineRun" }, { type: "azure-native:containerregistry/v20220201preview:PipelineRun" }, { type: "azure-native:containerregistry/v20230101preview:PipelineRun" }, { type: "azure-native:containerregistry/v20230601preview:PipelineRun" }, { type: "azure-native:containerregistry/v20230801preview:PipelineRun" }, { type: "azure-native:containerregistry/v20231101preview:PipelineRun" }, { type: "azure-native:containerregistry/v20241101preview:PipelineRun" }, { type: "azure-native:containerregistry/v20250301preview:PipelineRun" }, { type: "azure-native:containerregistry/v20250501preview:PipelineRun" }, { type: "azure-native:containerregistry/v20250601preview:PipelineRun" }, { type: "azure-native:containerregistry/v20260101preview:PipelineRun" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20191201preview:PipelineRun" }, { type: "azure-native:containerregistry/v20201101preview:PipelineRun" }, { type: "azure-native:containerregistry/v20210601preview:PipelineRun" }, { type: "azure-native:containerregistry/v20210801preview:PipelineRun" }, { type: "azure-native:containerregistry/v20211201preview:PipelineRun" }, { type: "azure-native:containerregistry/v20220201preview:PipelineRun" }, { type: "azure-native:containerregistry/v20230101preview:PipelineRun" }, { type: "azure-native:containerregistry/v20230601preview:PipelineRun" }, { type: "azure-native:containerregistry/v20230801preview:PipelineRun" }, { type: "azure-native:containerregistry/v20231101preview:PipelineRun" }, { type: "azure-native:containerregistry/v20241101preview:PipelineRun" }, { type: "azure-native:containerregistry/v20250301preview:PipelineRun" }, { type: "azure-native:containerregistry/v20250501preview:PipelineRun" }, { type: "azure-native:containerregistry/v20250601preview:PipelineRun" }, { type: "azure-native:containerregistry/v20260101preview:PipelineRun" }, { type: "azure-native:containerregistry/v20260301preview:PipelineRun" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PipelineRun.__pulumiType, name, resourceInputs, opts);
     }
@@ -120,11 +120,11 @@ export interface PipelineRunArgs {
     /**
      * How the pipeline run should be forced to recreate even if the pipeline run configuration has not changed.
      */
-    forceUpdateTag?: pulumi.Input<string>;
+    forceUpdateTag?: pulumi.Input<string | undefined>;
     /**
      * The name of the pipeline run.
      */
-    pipelineRunName?: pulumi.Input<string>;
+    pipelineRunName?: pulumi.Input<string | undefined>;
     /**
      * The name of the container registry.
      */
@@ -132,7 +132,7 @@ export interface PipelineRunArgs {
     /**
      * The request parameters for a pipeline run.
      */
-    request?: pulumi.Input<types.inputs.PipelineRunRequestArgs>;
+    request?: pulumi.Input<types.inputs.PipelineRunRequestArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

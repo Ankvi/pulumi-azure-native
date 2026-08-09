@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2024-06-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-06-01-preview, 2024-12-01-preview, 2025-11-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Approval extends pulumi.CustomResource {
     /**
@@ -106,7 +106,7 @@ export class Approval extends pulumi.CustomResource {
             resourceInputs["createdAt"] = args?.createdAt;
             resourceInputs["grandparentResourceId"] = args?.grandparentResourceId;
             resourceInputs["parentResourceId"] = args?.parentResourceId;
-            resourceInputs["requestMetadata"] = args ? (args.requestMetadata ? pulumi.output(args.requestMetadata).apply(types.inputs.requestMetadataArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["requestMetadata"] = args ? pulumi.output(args.requestMetadata).apply(types.inputs.requestMetadataArgsProvideDefaults) : undefined;
             resourceInputs["resourceUri"] = args?.resourceUri;
             resourceInputs["stateChangedAt"] = args?.stateChangedAt;
             resourceInputs["ticketId"] = args?.ticketId;
@@ -130,7 +130,7 @@ export class Approval extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:mission/v20240601preview:Approval" }, { type: "azure-native:mission/v20241201preview:Approval" }, { type: "azure-native:mission/v20250501preview:Approval" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:mission/v20240601preview:Approval" }, { type: "azure-native:mission/v20241201preview:Approval" }, { type: "azure-native:mission/v20250501preview:Approval" }, { type: "azure-native:mission/v20251101preview:Approval" }, { type: "azure-native:mission/v20260301preview:Approval" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Approval.__pulumiType, name, resourceInputs, opts);
     }
@@ -143,23 +143,23 @@ export interface ApprovalArgs {
     /**
      * The name of the approvals resource.
      */
-    approvalName?: pulumi.Input<string>;
+    approvalName?: pulumi.Input<string | undefined>;
     /**
      * List of approvers for the approval request
      */
-    approvers?: pulumi.Input<pulumi.Input<types.inputs.ApproverArgs>[]>;
+    approvers?: pulumi.Input<pulumi.Input<types.inputs.ApproverArgs>[] | undefined>;
     /**
      * Approval request creation time
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Parameter for optimizing query results
      */
-    grandparentResourceId?: pulumi.Input<string>;
+    grandparentResourceId?: pulumi.Input<string | undefined>;
     /**
      * Parameter for optimizing query results
      */
-    parentResourceId?: pulumi.Input<string>;
+    parentResourceId?: pulumi.Input<string | undefined>;
     /**
      * Request metadata for the approval request.
      */
@@ -171,9 +171,9 @@ export interface ApprovalArgs {
     /**
      * Approval request state change time, time at which approval request state changed from pending to approved or rejected.
      */
-    stateChangedAt?: pulumi.Input<string>;
+    stateChangedAt?: pulumi.Input<string | undefined>;
     /**
      * Ticket ID for the approval request
      */
-    ticketId?: pulumi.Input<string>;
+    ticketId?: pulumi.Input<string | undefined>;
 }

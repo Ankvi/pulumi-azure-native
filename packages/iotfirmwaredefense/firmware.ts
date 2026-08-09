@@ -150,23 +150,23 @@ export interface FirmwareArgs {
     /**
      * User-specified description of the firmware.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * File name for a firmware that user uploaded.
      */
-    fileName?: pulumi.Input<string>;
+    fileName?: pulumi.Input<string | undefined>;
     /**
      * File size of the uploaded firmware image.
      */
-    fileSize?: pulumi.Input<number>;
+    fileSize?: pulumi.Input<number | undefined>;
     /**
      * The id of the firmware.
      */
-    firmwareId?: pulumi.Input<string>;
+    firmwareId?: pulumi.Input<string | undefined>;
     /**
      * Firmware model.
      */
-    model?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -174,19 +174,19 @@ export interface FirmwareArgs {
     /**
      * The status of firmware scan.
      */
-    status?: pulumi.Input<string | types.enums.Status>;
+    status?: pulumi.Input<string | types.enums.Status | undefined>;
     /**
      * A list of errors or other messages generated during firmware analysis
      */
-    statusMessages?: pulumi.Input<pulumi.Input<types.inputs.StatusMessageArgs>[]>;
+    statusMessages?: pulumi.Input<pulumi.Input<types.inputs.StatusMessageArgs>[] | undefined>;
     /**
      * Firmware vendor.
      */
-    vendor?: pulumi.Input<string>;
+    vendor?: pulumi.Input<string | undefined>;
     /**
      * Firmware version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The name of the firmware analysis workspace.
      */

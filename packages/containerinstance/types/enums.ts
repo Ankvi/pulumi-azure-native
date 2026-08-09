@@ -1,7 +1,19 @@
 export const AzureFileShareAccessTier = {
+    /**
+     * Cool
+     */
     Cool: "Cool",
+    /**
+     * Hot
+     */
     Hot: "Hot",
+    /**
+     * Premium
+     */
     Premium: "Premium",
+    /**
+     * TransactionOptimized
+     */
     TransactionOptimized: "TransactionOptimized",
 } as const;
 
@@ -11,12 +23,18 @@ export const AzureFileShareAccessTier = {
 export type AzureFileShareAccessTier = (typeof AzureFileShareAccessTier)[keyof typeof AzureFileShareAccessTier];
 
 export const AzureFileShareAccessType = {
+    /**
+     * Shared
+     */
     Shared: "Shared",
+    /**
+     * Exclusive
+     */
     Exclusive: "Exclusive",
 } as const;
 
 /**
- *  Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
+ * Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
  */
 export type AzureFileShareAccessType = (typeof AzureFileShareAccessType)[keyof typeof AzureFileShareAccessType];
 
@@ -57,7 +75,7 @@ export const ContainerGroupRestartPolicy = {
 } as const;
 
 /**
- * Restart policy for all containers within the container group. 
+ * Restart policy for all containers within the container group.
  * - `Always` Always restart
  * - `OnFailure` Restart on failure
  * - `Never` Never restart
@@ -120,7 +138,13 @@ export const LogAnalyticsLogType = {
 export type LogAnalyticsLogType = (typeof LogAnalyticsLogType)[keyof typeof LogAnalyticsLogType];
 
 export const NGroupUpdateMode = {
+    /**
+     * Manual
+     */
     Manual: "Manual",
+    /**
+     * Rolling
+     */
     Rolling: "Rolling",
 } as const;
 
@@ -147,9 +171,21 @@ export const Priority = {
 export type Priority = (typeof Priority)[keyof typeof Priority];
 
 export const ResourceIdentityType = {
+    /**
+     * SystemAssigned
+     */
     SystemAssigned: "SystemAssigned",
+    /**
+     * UserAssigned
+     */
     UserAssigned: "UserAssigned",
+    /**
+     * SystemAssigned, UserAssigned
+     */
     SystemAssigned_UserAssigned: "SystemAssigned, UserAssigned",
+    /**
+     * None
+     */
     None: "None",
 } as const;
 

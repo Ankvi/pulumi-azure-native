@@ -11,11 +11,11 @@ export interface DeliveryPackageInformationArgs {
     /**
      * The number of drives included in the package.
      */
-    driveCount?: pulumi.Input<number>;
+    driveCount?: pulumi.Input<number | undefined>;
     /**
      * The date when the package is shipped.
      */
-    shipDate?: pulumi.Input<string>;
+    shipDate?: pulumi.Input<string | undefined>;
     /**
      * The tracking number of the package.
      */
@@ -29,51 +29,51 @@ export interface DriveStatusArgs {
     /**
      * The BitLocker key used to encrypt the drive.
      */
-    bitLockerKey?: pulumi.Input<string>;
+    bitLockerKey?: pulumi.Input<string | undefined>;
     /**
      * Bytes successfully transferred for the drive.
      */
-    bytesSucceeded?: pulumi.Input<number>;
+    bytesSucceeded?: pulumi.Input<number | undefined>;
     /**
      * Detailed status about the data transfer process. This field is not returned in the response until the drive is in the Transferring state.
      */
-    copyStatus?: pulumi.Input<string>;
+    copyStatus?: pulumi.Input<string | undefined>;
     /**
      * The drive header hash value.
      */
-    driveHeaderHash?: pulumi.Input<string>;
+    driveHeaderHash?: pulumi.Input<string | undefined>;
     /**
      * The drive's hardware serial number, without spaces.
      */
-    driveId?: pulumi.Input<string>;
+    driveId?: pulumi.Input<string | undefined>;
     /**
      * A URI that points to the blob containing the error log for the data transfer operation.
      */
-    errorLogUri?: pulumi.Input<string>;
+    errorLogUri?: pulumi.Input<string | undefined>;
     /**
-     * The relative path of the manifest file on the drive. 
+     * The relative path of the manifest file on the drive.
      */
-    manifestFile?: pulumi.Input<string>;
+    manifestFile?: pulumi.Input<string | undefined>;
     /**
      * The Base16-encoded MD5 hash of the manifest file on the drive.
      */
-    manifestHash?: pulumi.Input<string>;
+    manifestHash?: pulumi.Input<string | undefined>;
     /**
-     * A URI that points to the blob containing the drive manifest file. 
+     * A URI that points to the blob containing the drive manifest file.
      */
-    manifestUri?: pulumi.Input<string>;
+    manifestUri?: pulumi.Input<string | undefined>;
     /**
-     * Percentage completed for the drive. 
+     * Percentage completed for the drive.
      */
-    percentComplete?: pulumi.Input<number>;
+    percentComplete?: pulumi.Input<number | undefined>;
     /**
-     * The drive's current state. 
+     * The drive's current state.
      */
-    state?: pulumi.Input<string | enums.DriveState>;
+    state?: pulumi.Input<string | enums.DriveState | undefined>;
     /**
-     * A URI that points to the blob containing the verbose log for the data transfer operation. 
+     * A URI that points to the blob containing the verbose log for the data transfer operation.
      */
-    verboseLogUri?: pulumi.Input<string>;
+    verboseLogUri?: pulumi.Input<string | undefined>;
 }
 /**
  * driveStatusArgsProvideDefaults sets the appropriate defaults for DriveStatusArgs
@@ -92,15 +92,15 @@ export interface EncryptionKeyDetailsArgs {
     /**
      * The type of kek encryption key
      */
-    kekType?: pulumi.Input<string | enums.EncryptionKekType>;
+    kekType?: pulumi.Input<string | enums.EncryptionKekType | undefined>;
     /**
-     * Specifies the url for kek encryption key. 
+     * Specifies the url for kek encryption key.
      */
-    kekUrl?: pulumi.Input<string>;
+    kekUrl?: pulumi.Input<string | undefined>;
     /**
-     * Specifies the keyvault resource id for kek encryption key. 
+     * Specifies the keyvault resource id for kek encryption key.
      */
-    kekVaultResourceID?: pulumi.Input<string>;
+    kekVaultResourceID?: pulumi.Input<string | undefined>;
 }
 /**
  * encryptionKeyDetailsArgsProvideDefaults sets the appropriate defaults for EncryptionKeyDetailsArgs
@@ -117,17 +117,17 @@ export function encryptionKeyDetailsArgsProvideDefaults(val: EncryptionKeyDetail
  */
 export interface ExportArgs {
     /**
-     * The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root. 
+     * The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root.
      */
-    blobListBlobPath?: pulumi.Input<string>;
+    blobListBlobPath?: pulumi.Input<string | undefined>;
     /**
      * A collection of blob-path strings.
      */
-    blobPath?: pulumi.Input<pulumi.Input<string>[]>;
+    blobPath?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A collection of blob-prefix strings.
      */
-    blobPathPrefix?: pulumi.Input<pulumi.Input<string>[]>;
+    blobPathPrefix?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -137,75 +137,75 @@ export interface JobDetailsArgs {
     /**
      * Default value is false. Indicates whether the manifest files on the drives should be copied to block blobs.
      */
-    backupDriveManifest?: pulumi.Input<boolean>;
+    backupDriveManifest?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether a request has been submitted to cancel the job.
      */
-    cancelRequested?: pulumi.Input<boolean>;
+    cancelRequested?: pulumi.Input<boolean | undefined>;
     /**
-     * Contains information about the package being shipped by the customer to the Microsoft data center. 
+     * Contains information about the package being shipped by the customer to the Microsoft data center.
      */
-    deliveryPackage?: pulumi.Input<DeliveryPackageInformationArgs>;
+    deliveryPackage?: pulumi.Input<DeliveryPackageInformationArgs | undefined>;
     /**
      * The virtual blob directory to which the copy logs and backups of drive manifest files (if enabled) will be stored.
      */
-    diagnosticsPath?: pulumi.Input<string>;
+    diagnosticsPath?: pulumi.Input<string | undefined>;
     /**
      * List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs.
      */
-    driveList?: pulumi.Input<pulumi.Input<DriveStatusArgs>[]>;
+    driveList?: pulumi.Input<pulumi.Input<DriveStatusArgs>[] | undefined>;
     /**
      * Contains information about the encryption key.
      */
-    encryptionKey?: pulumi.Input<EncryptionKeyDetailsArgs>;
+    encryptionKey?: pulumi.Input<EncryptionKeyDetailsArgs | undefined>;
     /**
      * A property containing information about the blobs to be exported for an export job. This property is included for export jobs only.
      */
-    export?: pulumi.Input<ExportArgs>;
+    export?: pulumi.Input<ExportArgs | undefined>;
     /**
      * A blob path that points to a block blob containing a list of blob names that were not exported due to insufficient drive space. If all blobs were exported successfully, then this element is not included in the response.
      */
-    incompleteBlobListUri?: pulumi.Input<string>;
+    incompleteBlobListUri?: pulumi.Input<string | undefined>;
     /**
      * The type of job
      */
-    jobType?: pulumi.Input<string>;
+    jobType?: pulumi.Input<string | undefined>;
     /**
      * Default value is Error. Indicates whether error logging or verbose logging will be enabled.
      */
-    logLevel?: pulumi.Input<string>;
+    logLevel?: pulumi.Input<string | undefined>;
     /**
      * Overall percentage completed for the job.
      */
-    percentComplete?: pulumi.Input<number>;
+    percentComplete?: pulumi.Input<number | undefined>;
     /**
      * Specifies the provisioning state of the job.
      */
-    provisioningState?: pulumi.Input<string>;
+    provisioningState?: pulumi.Input<string | undefined>;
     /**
-     * Specifies the return address information for the job. 
+     * Specifies the return address information for the job.
      */
-    returnAddress?: pulumi.Input<ReturnAddressArgs>;
+    returnAddress?: pulumi.Input<ReturnAddressArgs | undefined>;
     /**
-     * Contains information about the package being shipped from the Microsoft data center to the customer to return the drives. The format is the same as the deliveryPackage property above. This property is not included if the drives have not yet been returned. 
+     * Contains information about the package being shipped from the Microsoft data center to the customer to return the drives. The format is the same as the deliveryPackage property above. This property is not included if the drives have not yet been returned.
      */
-    returnPackage?: pulumi.Input<PackageInformationArgs>;
+    returnPackage?: pulumi.Input<PackageInformationArgs | undefined>;
     /**
-     * Specifies the return carrier and customer's account with the carrier. 
+     * Specifies the return carrier and customer's account with the carrier.
      */
-    returnShipping?: pulumi.Input<ReturnShippingArgs>;
+    returnShipping?: pulumi.Input<ReturnShippingArgs | undefined>;
     /**
-     * Contains information about the Microsoft datacenter to which the drives should be shipped. 
+     * Contains information about the Microsoft datacenter to which the drives should be shipped.
      */
-    shippingInformation?: pulumi.Input<ShippingInformationArgs>;
+    shippingInformation?: pulumi.Input<ShippingInformationArgs | undefined>;
     /**
      * Current state of the job.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The resource identifier of the storage account where data will be imported to or exported from.
      */
-    storageAccountId?: pulumi.Input<string>;
+    storageAccountId?: pulumi.Input<string | undefined>;
 }
 /**
  * jobDetailsArgsProvideDefaults sets the appropriate defaults for JobDetailsArgs
@@ -215,7 +215,7 @@ export function jobDetailsArgsProvideDefaults(val: JobDetailsArgs): JobDetailsAr
         ...val,
         backupDriveManifest: (val.backupDriveManifest) ?? false,
         cancelRequested: (val.cancelRequested) ?? false,
-        encryptionKey: (val.encryptionKey ? pulumi.output(val.encryptionKey).apply(encryptionKeyDetailsArgsProvideDefaults) : undefined),
+        encryptionKey: pulumi.output(val.encryptionKey).apply(v => v === undefined ? undefined : encryptionKeyDetailsArgsProvideDefaults(v)),
         state: (val.state) ?? "Creating",
     };
 }
@@ -251,7 +251,7 @@ export interface ReturnAddressArgs {
      */
     city: pulumi.Input<string>;
     /**
-     * The country or region to use when returning the drives. 
+     * The country or region to use when returning the drives.
      */
     countryOrRegion: pulumi.Input<string>;
     /**
@@ -267,21 +267,21 @@ export interface ReturnAddressArgs {
      */
     postalCode: pulumi.Input<string>;
     /**
-     * The name of the recipient who will receive the hard drives when they are returned. 
+     * The name of the recipient who will receive the hard drives when they are returned.
      */
     recipientName: pulumi.Input<string>;
     /**
      * The state or province to use when returning the drives.
      */
-    stateOrProvince?: pulumi.Input<string>;
+    stateOrProvince?: pulumi.Input<string | undefined>;
     /**
-     * The first line of the street address to use when returning the drives. 
+     * The first line of the street address to use when returning the drives.
      */
     streetAddress1: pulumi.Input<string>;
     /**
-     * The second line of the street address to use when returning the drives. 
+     * The second line of the street address to use when returning the drives.
      */
-    streetAddress2?: pulumi.Input<string>;
+    streetAddress2?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -305,33 +305,33 @@ export interface ShippingInformationArgs {
     /**
      * The city name to use when returning the drives.
      */
-    city?: pulumi.Input<string>;
+    city?: pulumi.Input<string | undefined>;
     /**
-     * The country or region to use when returning the drives. 
+     * The country or region to use when returning the drives.
      */
-    countryOrRegion?: pulumi.Input<string>;
+    countryOrRegion?: pulumi.Input<string | undefined>;
     /**
      * Phone number of the recipient of the returned drives.
      */
-    phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string | undefined>;
     /**
      * The postal code to use when returning the drives.
      */
-    postalCode?: pulumi.Input<string>;
+    postalCode?: pulumi.Input<string | undefined>;
     /**
-     * The name of the recipient who will receive the hard drives when they are returned. 
+     * The name of the recipient who will receive the hard drives when they are returned.
      */
-    recipientName?: pulumi.Input<string>;
+    recipientName?: pulumi.Input<string | undefined>;
     /**
      * The state or province to use when returning the drives.
      */
-    stateOrProvince?: pulumi.Input<string>;
+    stateOrProvince?: pulumi.Input<string | undefined>;
     /**
-     * The first line of the street address to use when returning the drives. 
+     * The first line of the street address to use when returning the drives.
      */
-    streetAddress1?: pulumi.Input<string>;
+    streetAddress1?: pulumi.Input<string | undefined>;
     /**
-     * The second line of the street address to use when returning the drives. 
+     * The second line of the street address to use when returning the drives.
      */
-    streetAddress2?: pulumi.Input<string>;
+    streetAddress2?: pulumi.Input<string | undefined>;
 }

@@ -1,0 +1,93 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Retrieves the resiliency information for the ExpressRoute gateway.
+ *
+ * Uses Azure REST API version 2025-07-01.
+ */
+export function getExpressRouteGatewayResiliencyInformation(args: GetExpressRouteGatewayResiliencyInformationArgs, opts?: pulumi.InvokeOptions): Promise<GetExpressRouteGatewayResiliencyInformationResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:network:getExpressRouteGatewayResiliencyInformation", {
+        "attemptRefresh": args.attemptRefresh,
+        "expressRouteGatewayName": args.expressRouteGatewayName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetExpressRouteGatewayResiliencyInformationArgs {
+    /**
+     * Whether to attempt a refresh of the resiliency information.
+     */
+    attemptRefresh?: boolean;
+    /**
+     * The name of the ExpressRoute gateway.
+     */
+    expressRouteGatewayName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * Gateway Resiliency Information
+ */
+export interface GetExpressRouteGatewayResiliencyInformationResult {
+    /**
+     * List of Resiliency based Recommendation Components for the gateway
+     */
+    readonly components?: types.outputs.ResiliencyRecommendationComponentsResponse[];
+    /**
+     * Timestamp denoting the last time when the resiliency score was computed for the gateway
+     */
+    readonly lastComputedTime?: string;
+    /**
+     * Maximum increase expected in the score if all of the recommendations are applied for the gateway
+     */
+    readonly maxScoreFromRecommendations?: string;
+    /**
+     * Minimum increase expected in the score if the at least one of the recommendations is applied for the gateway
+     */
+    readonly minScoreFromRecommendations?: string;
+    /**
+     * Timestamp denoting the next eligible time to re-compute the resiliency score for the gateway
+     */
+    readonly nextEligibleComputeTime?: string;
+    /**
+     * Current Resiliency Score for the gateway
+     */
+    readonly overallScore?: string;
+    /**
+     * Update in the Resiliency Score for the gateway from the last computed score
+     */
+    readonly scoreChange?: string;
+}
+/**
+ * Retrieves the resiliency information for the ExpressRoute gateway.
+ *
+ * Uses Azure REST API version 2025-07-01.
+ */
+export function getExpressRouteGatewayResiliencyInformationOutput(args: GetExpressRouteGatewayResiliencyInformationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExpressRouteGatewayResiliencyInformationResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azure-native:network:getExpressRouteGatewayResiliencyInformation", {
+        "attemptRefresh": args.attemptRefresh,
+        "expressRouteGatewayName": args.expressRouteGatewayName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetExpressRouteGatewayResiliencyInformationOutputArgs {
+    /**
+     * Whether to attempt a refresh of the resiliency information.
+     */
+    attemptRefresh?: pulumi.Input<boolean | undefined>;
+    /**
+     * The name of the ExpressRoute gateway.
+     */
+    expressRouteGatewayName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

@@ -25,15 +25,15 @@ export interface BudgetFilterArgs {
     /**
      * The logical "AND" expression. Must have at least 2 items.
      */
-    and?: pulumi.Input<pulumi.Input<BudgetFilterPropertiesArgs>[]>;
+    and?: pulumi.Input<pulumi.Input<BudgetFilterPropertiesArgs>[] | undefined>;
     /**
      * Has comparison expression for a dimension
      */
-    dimensions?: pulumi.Input<BudgetComparisonExpressionArgs>;
+    dimensions?: pulumi.Input<BudgetComparisonExpressionArgs | undefined>;
     /**
      * Has comparison expression for a tag
      */
-    tags?: pulumi.Input<BudgetComparisonExpressionArgs>;
+    tags?: pulumi.Input<BudgetComparisonExpressionArgs | undefined>;
 }
 
 /**
@@ -43,11 +43,11 @@ export interface BudgetFilterPropertiesArgs {
     /**
      * Has comparison expression for a dimension
      */
-    dimensions?: pulumi.Input<BudgetComparisonExpressionArgs>;
+    dimensions?: pulumi.Input<BudgetComparisonExpressionArgs | undefined>;
     /**
      * Has comparison expression for a tag
      */
-    tags?: pulumi.Input<BudgetComparisonExpressionArgs>;
+    tags?: pulumi.Input<BudgetComparisonExpressionArgs | undefined>;
 }
 
 /**
@@ -57,7 +57,7 @@ export interface BudgetTimePeriodArgs {
     /**
      * The end date for the budget. If not provided, we default this to 10 years from the start date.
      */
-    endDate?: pulumi.Input<string>;
+    endDate?: pulumi.Input<string | undefined>;
     /**
      * The start date for the budget.
      */
@@ -75,11 +75,11 @@ export interface NotificationArgs {
     /**
      * Action groups to send the budget notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id. Only supported at Subscription or Resource Group scopes.
      */
-    contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    contactGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Contact roles to send the budget notification to when the threshold is exceeded.
      */
-    contactRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    contactRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The notification is enabled or not.
      */
@@ -87,7 +87,7 @@ export interface NotificationArgs {
     /**
      * Language in which the recipient will receive the notification
      */
-    locale?: pulumi.Input<string | enums.CultureCode>;
+    locale?: pulumi.Input<string | enums.CultureCode | undefined>;
     /**
      * The comparison operator.
      */
@@ -99,7 +99,7 @@ export interface NotificationArgs {
     /**
      * The type of threshold
      */
-    thresholdType?: pulumi.Input<string | enums.ThresholdType>;
+    thresholdType?: pulumi.Input<string | enums.ThresholdType | undefined>;
 }
 /**
  * notificationArgsProvideDefaults sets the appropriate defaults for NotificationArgs

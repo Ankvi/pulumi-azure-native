@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
  *
- * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Subscription extends pulumi.CustomResource {
     /**
@@ -163,7 +163,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:Subscription" }, { type: "azure-native:apimanagement/v20161010:Subscription" }, { type: "azure-native:apimanagement/v20170301:Subscription" }, { type: "azure-native:apimanagement/v20180101:Subscription" }, { type: "azure-native:apimanagement/v20180601preview:Subscription" }, { type: "azure-native:apimanagement/v20190101:Subscription" }, { type: "azure-native:apimanagement/v20191201:Subscription" }, { type: "azure-native:apimanagement/v20191201preview:Subscription" }, { type: "azure-native:apimanagement/v20200601preview:Subscription" }, { type: "azure-native:apimanagement/v20201201:Subscription" }, { type: "azure-native:apimanagement/v20210101preview:Subscription" }, { type: "azure-native:apimanagement/v20210401preview:Subscription" }, { type: "azure-native:apimanagement/v20210801:Subscription" }, { type: "azure-native:apimanagement/v20211201preview:Subscription" }, { type: "azure-native:apimanagement/v20220401preview:Subscription" }, { type: "azure-native:apimanagement/v20220801:Subscription" }, { type: "azure-native:apimanagement/v20220901preview:Subscription" }, { type: "azure-native:apimanagement/v20230301preview:Subscription" }, { type: "azure-native:apimanagement/v20230501preview:Subscription" }, { type: "azure-native:apimanagement/v20230901preview:Subscription" }, { type: "azure-native:apimanagement/v20240501:Subscription" }, { type: "azure-native:apimanagement/v20240601preview:Subscription" }, { type: "azure-native:apimanagement/v20241001preview:Subscription" }, { type: "azure-native:apimanagement/v20250301preview:Subscription" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:Subscription" }, { type: "azure-native:apimanagement/v20161010:Subscription" }, { type: "azure-native:apimanagement/v20170301:Subscription" }, { type: "azure-native:apimanagement/v20180101:Subscription" }, { type: "azure-native:apimanagement/v20180601preview:Subscription" }, { type: "azure-native:apimanagement/v20190101:Subscription" }, { type: "azure-native:apimanagement/v20191201:Subscription" }, { type: "azure-native:apimanagement/v20191201preview:Subscription" }, { type: "azure-native:apimanagement/v20200601preview:Subscription" }, { type: "azure-native:apimanagement/v20201201:Subscription" }, { type: "azure-native:apimanagement/v20210101preview:Subscription" }, { type: "azure-native:apimanagement/v20210401preview:Subscription" }, { type: "azure-native:apimanagement/v20210801:Subscription" }, { type: "azure-native:apimanagement/v20211201preview:Subscription" }, { type: "azure-native:apimanagement/v20220401preview:Subscription" }, { type: "azure-native:apimanagement/v20220801:Subscription" }, { type: "azure-native:apimanagement/v20220901preview:Subscription" }, { type: "azure-native:apimanagement/v20230301preview:Subscription" }, { type: "azure-native:apimanagement/v20230501preview:Subscription" }, { type: "azure-native:apimanagement/v20230901preview:Subscription" }, { type: "azure-native:apimanagement/v20240501:Subscription" }, { type: "azure-native:apimanagement/v20240601preview:Subscription" }, { type: "azure-native:apimanagement/v20241001preview:Subscription" }, { type: "azure-native:apimanagement/v20250301preview:Subscription" }, { type: "azure-native:apimanagement/v20250901preview:Subscription" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Subscription.__pulumiType, name, resourceInputs, opts);
     }
@@ -176,29 +176,29 @@ export interface SubscriptionArgs {
     /**
      * Determines whether tracing can be enabled
      */
-    allowTracing?: pulumi.Input<boolean>;
+    allowTracing?: pulumi.Input<boolean | undefined>;
     /**
      * Determines the type of application which send the create user request. Default is legacy publisher portal.
      */
-    appType?: pulumi.Input<string>;
+    appType?: pulumi.Input<string | undefined>;
     /**
      * Subscription name.
      */
     displayName: pulumi.Input<string>;
     /**
-     * Notify change in Subscription State. 
-     *  - If false, do not send any email notification for change of state of subscription 
-     *  - If true, send email notification of change of state of subscription 
+     * Notify change in Subscription State.
+     *  - If false, do not send any email notification for change of state of subscription
+     *  - If true, send email notification of change of state of subscription
      */
-    notify?: pulumi.Input<boolean>;
+    notify?: pulumi.Input<boolean | undefined>;
     /**
      * User (user id path) for whom subscription is being created in form /users/{userId}
      */
-    ownerId?: pulumi.Input<string>;
+    ownerId?: pulumi.Input<string | undefined>;
     /**
      * Primary subscription key. If not specified during request key will be generated automatically.
      */
-    primaryKey?: pulumi.Input<string>;
+    primaryKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -210,7 +210,7 @@ export interface SubscriptionArgs {
     /**
      * Secondary subscription key. If not specified during request key will be generated automatically.
      */
-    secondaryKey?: pulumi.Input<string>;
+    secondaryKey?: pulumi.Input<string | undefined>;
     /**
      * The name of the API Management service.
      */
@@ -218,9 +218,9 @@ export interface SubscriptionArgs {
     /**
      * Subscription entity Identifier. The entity represents the association between a user and a product in API Management.
      */
-    sid?: pulumi.Input<string>;
+    sid?: pulumi.Input<string | undefined>;
     /**
      * Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated.
      */
-    state?: pulumi.Input<types.enums.SubscriptionState>;
+    state?: pulumi.Input<types.enums.SubscriptionState | undefined>;
 }

@@ -48,7 +48,7 @@ export interface ListActiveSecurityUserRulesResult {
     /**
      * Gets a page of active security user rules.
      */
-    readonly value?: (types.outputs.ActiveDefaultSecurityUserRuleResponseV1 | types.outputs.ActiveSecurityUserRuleResponseV1)[];
+    readonly value?: (types.outputs.ActiveDefaultSecurityUserRulelistActiveSecurityUserRulesResponse | types.outputs.ActiveSecurityUserRulelistActiveSecurityUserRulesResponse)[];
 }
 /**
  * Lists Active Security User Rules in a network manager.
@@ -75,7 +75,7 @@ export interface ListActiveSecurityUserRulesOutputArgs {
     /**
      * List of regions.
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the resource group.
      */
@@ -83,5 +83,5 @@ export interface ListActiveSecurityUserRulesOutputArgs {
     /**
      * When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
      */
-    skipToken?: pulumi.Input<string>;
+    skipToken?: pulumi.Input<string | undefined>;
 }

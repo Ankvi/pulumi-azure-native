@@ -305,7 +305,6 @@ export interface AksNetworkingConfigurationResponse {
 
 export interface AllFeaturesResponse {
     /**
-     *
      * Expected value is 'AllFeatures'.
      */
     filterType: "AllFeatures";
@@ -1401,7 +1400,6 @@ export interface BanditPolicyResponse {
      */
     evaluationInterval?: number;
     /**
-     *
      * Expected value is 'Bandit'.
      */
     policyType: "Bandit";
@@ -1628,7 +1626,6 @@ export function batchRetrySettingsResponseProvideDefaults(val: BatchRetrySetting
  */
 export interface BayesianSamplingAlgorithmResponse {
     /**
-     *
      * Expected value is 'Bayesian'.
      */
     samplingAlgorithmType: "Bayesian";
@@ -1747,7 +1744,6 @@ export interface CapacityReservationGroupResponse {
 
 export interface CategoricalDataDriftMetricThresholdResponse {
     /**
-     *
      * Expected value is 'Categorical'.
      */
     dataType: "Categorical";
@@ -1763,7 +1759,6 @@ export interface CategoricalDataDriftMetricThresholdResponse {
 
 export interface CategoricalDataQualityMetricThresholdResponse {
     /**
-     *
      * Expected value is 'Categorical'.
      */
     dataType: "Categorical";
@@ -1779,7 +1774,6 @@ export interface CategoricalDataQualityMetricThresholdResponse {
 
 export interface CategoricalPredictionDriftMetricThresholdResponse {
     /**
-     *
      * Expected value is 'Categorical'.
      */
     dataType: "Categorical";
@@ -2180,7 +2174,6 @@ export interface ColumnTransformerResponse {
  */
 export interface CommandJobLimitsResponse {
     /**
-     *
      * Expected value is 'Command'.
      */
     jobLimitsType: "Command";
@@ -2951,7 +2944,6 @@ export interface CosmosDbSettingsResponse {
 
 export interface CreateMonitorActionResponse {
     /**
-     *
      * Expected value is 'CreateMonitor'.
      */
     actionType: "CreateMonitor";
@@ -3012,7 +3004,6 @@ export interface CronTriggerResponse {
      */
     timeZone?: string;
     /**
-     *
      * Expected value is 'Cron'.
      */
     triggerType: "Cron";
@@ -3191,7 +3182,6 @@ export interface CustomMonitoringSignalResponse {
      */
     properties?: {[key: string]: string};
     /**
-     *
      * Expected value is 'Custom'.
      */
     signalType: "Custom";
@@ -3396,7 +3386,6 @@ export interface DataDriftMonitoringSignalResponse {
      */
     referenceData: FixedInputDataResponse | RollingInputDataResponse | StaticInputDataResponse;
     /**
-     *
      * Expected value is 'DataDrift'.
      */
     signalType: "DataDrift";
@@ -3566,7 +3555,6 @@ export interface DataQualityMonitoringSignalResponse {
      */
     referenceData: FixedInputDataResponse | RollingInputDataResponse | StaticInputDataResponse;
     /**
-     *
      * Expected value is 'DataQuality'.
      */
     signalType: "DataQuality";
@@ -3954,7 +3942,6 @@ export function datastoreResponseProvideDefaults(val: DatastoreResponse): Datast
 
 export interface DefaultScaleSettingsResponse {
     /**
-     *
      * Expected value is 'Default'.
      */
     scaleType: "Default";
@@ -4276,7 +4263,6 @@ export function endpointResponseProvideDefaults(val: EndpointResponse): Endpoint
 
 export interface EndpointScheduleActionResponse {
     /**
-     *
      * Expected value is 'InvokeBatchEndpoint'.
      */
     actionType: "InvokeBatchEndpoint";
@@ -4394,6 +4380,84 @@ export function environmentVariableResponseProvideDefaults(val: EnvironmentVaria
 /**
  * Environment version details.
  */
+export interface EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse {
+    /**
+     * AutoRebuild setting for the derived image
+     */
+    autoRebuild?: string;
+    /**
+     * Configuration settings for Docker build context.
+     */
+    build?: BuildContextResponse;
+    /**
+     * Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages.
+     * <see href="https://repo2docker.readthedocs.io/en/latest/config_files.html#environment-yml-install-a-conda-environment" />
+     */
+    condaFile?: string;
+    /**
+     * The asset description text.
+     */
+    description?: string;
+    /**
+     * Environment type is either user managed or curated by the Azure ML service
+     * <see href="https://docs.microsoft.com/en-us/azure/machine-learning/resource-curated-environments" />
+     */
+    environmentType: string;
+    /**
+     * Name of the image that will be used for the environment.
+     * <seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" />
+     */
+    image?: string;
+    /**
+     * Defines configuration specific to inference.
+     */
+    inferenceConfig?: InferenceContainerPropertiesRegistryEnvironmentVersionResponse;
+    /**
+     * If the name version are system generated (anonymous registration).
+     */
+    isAnonymous?: boolean;
+    /**
+     * Is the asset archived?
+     */
+    isArchived?: boolean;
+    /**
+     * The type of operating system.
+     */
+    osType?: string;
+    /**
+     * The asset property dictionary.
+     */
+    properties?: {[key: string]: string};
+    /**
+     * Provisioning state for the environment version.
+     */
+    provisioningState: string;
+    /**
+     * Stage in the environment lifecycle assigned to this environment
+     */
+    stage?: string;
+    /**
+     * Tag dictionary. Tags can be added, removed, and updated.
+     */
+    tags?: {[key: string]: string};
+}
+/**
+ * environmentVersionPropertiesRegistryEnvironmentVersionResponseProvideDefaults sets the appropriate defaults for EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse
+ */
+export function environmentVersionPropertiesRegistryEnvironmentVersionResponseProvideDefaults(val: EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse): EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse {
+    return {
+        ...val,
+        autoRebuild: (val.autoRebuild) ?? "Disabled",
+        build: (val.build ? buildContextResponseProvideDefaults(val.build) : undefined),
+        isAnonymous: (val.isAnonymous) ?? false,
+        isArchived: (val.isArchived) ?? false,
+        osType: (val.osType) ?? "Linux",
+    };
+}
+
+/**
+ * Environment version details.
+ */
 export interface EnvironmentVersionPropertiesResponse {
     /**
      * AutoRebuild setting for the derived image
@@ -4425,7 +4489,7 @@ export interface EnvironmentVersionPropertiesResponse {
     /**
      * Defines configuration specific to inference.
      */
-    inferenceConfig?: InferenceContainerPropertiesResponseV1;
+    inferenceConfig?: InferenceContainerPropertiesEnvironmentVersionResponse;
     /**
      * If the name version are system generated (anonymous registration).
      */
@@ -4459,84 +4523,6 @@ export interface EnvironmentVersionPropertiesResponse {
  * environmentVersionPropertiesResponseProvideDefaults sets the appropriate defaults for EnvironmentVersionPropertiesResponse
  */
 export function environmentVersionPropertiesResponseProvideDefaults(val: EnvironmentVersionPropertiesResponse): EnvironmentVersionPropertiesResponse {
-    return {
-        ...val,
-        autoRebuild: (val.autoRebuild) ?? "Disabled",
-        build: (val.build ? buildContextResponseProvideDefaults(val.build) : undefined),
-        isAnonymous: (val.isAnonymous) ?? false,
-        isArchived: (val.isArchived) ?? false,
-        osType: (val.osType) ?? "Linux",
-    };
-}
-
-/**
- * Environment version details.
- */
-export interface EnvironmentVersionPropertiesResponseV1 {
-    /**
-     * AutoRebuild setting for the derived image
-     */
-    autoRebuild?: string;
-    /**
-     * Configuration settings for Docker build context.
-     */
-    build?: BuildContextResponse;
-    /**
-     * Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages.
-     * <see href="https://repo2docker.readthedocs.io/en/latest/config_files.html#environment-yml-install-a-conda-environment" />
-     */
-    condaFile?: string;
-    /**
-     * The asset description text.
-     */
-    description?: string;
-    /**
-     * Environment type is either user managed or curated by the Azure ML service
-     * <see href="https://docs.microsoft.com/en-us/azure/machine-learning/resource-curated-environments" />
-     */
-    environmentType: string;
-    /**
-     * Name of the image that will be used for the environment.
-     * <seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" />
-     */
-    image?: string;
-    /**
-     * Defines configuration specific to inference.
-     */
-    inferenceConfig?: InferenceContainerPropertiesResponseV2;
-    /**
-     * If the name version are system generated (anonymous registration).
-     */
-    isAnonymous?: boolean;
-    /**
-     * Is the asset archived?
-     */
-    isArchived?: boolean;
-    /**
-     * The type of operating system.
-     */
-    osType?: string;
-    /**
-     * The asset property dictionary.
-     */
-    properties?: {[key: string]: string};
-    /**
-     * Provisioning state for the environment version.
-     */
-    provisioningState: string;
-    /**
-     * Stage in the environment lifecycle assigned to this environment
-     */
-    stage?: string;
-    /**
-     * Tag dictionary. Tags can be added, removed, and updated.
-     */
-    tags?: {[key: string]: string};
-}
-/**
- * environmentVersionPropertiesResponseV1ProvideDefaults sets the appropriate defaults for EnvironmentVersionPropertiesResponseV1
- */
-export function environmentVersionPropertiesResponseV1ProvideDefaults(val: EnvironmentVersionPropertiesResponseV1): EnvironmentVersionPropertiesResponseV1 {
     return {
         ...val,
         autoRebuild: (val.autoRebuild) ?? "Disabled",
@@ -4663,7 +4649,6 @@ export interface FeatureAttributionDriftMonitoringSignalResponse {
      */
     referenceData: FixedInputDataResponse | RollingInputDataResponse | StaticInputDataResponse;
     /**
-     *
      * Expected value is 'FeatureAttributionDrift'.
      */
     signalType: "FeatureAttributionDrift";
@@ -4752,7 +4737,6 @@ export interface FeatureSubsetResponse {
      */
     features: string[];
     /**
-     *
      * Expected value is 'FeatureSubset'.
      */
     filterType: "FeatureSubset";
@@ -5330,7 +5314,6 @@ export interface GlusterFsSectionResponse {
  */
 export interface GridSamplingAlgorithmResponse {
     /**
-     *
      * Expected value is 'Grid'.
      */
     samplingAlgorithmType: "Grid";
@@ -5480,6 +5463,50 @@ export interface IdentityForCmkResponse {
 /**
  * Identity for the resource.
  */
+export interface IdentityMachineLearningDatasetResponse {
+    /**
+     * The principal ID of resource identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of resource.
+     */
+    tenantId: string;
+    /**
+     * The identity type.
+     */
+    type?: string;
+    /**
+     * The user assigned identities associated with the resource.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityMachineLearningDatasetResponse};
+}
+
+/**
+ * Identity for the resource.
+ */
+export interface IdentityMachineLearningDatastoreResponse {
+    /**
+     * The principal ID of resource identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of resource.
+     */
+    tenantId: string;
+    /**
+     * The identity type.
+     */
+    type?: string;
+    /**
+     * The user assigned identities associated with the resource.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityMachineLearningDatastoreResponse};
+}
+
+/**
+ * Identity for the resource.
+ */
 export interface IdentityResponse {
     /**
      * The principal ID of resource identity.
@@ -5496,51 +5523,7 @@ export interface IdentityResponse {
     /**
      * The user assigned identities associated with the resource.
      */
-    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponseV1};
-}
-
-/**
- * Identity for the resource.
- */
-export interface IdentityResponseV1 {
-    /**
-     * The principal ID of resource identity.
-     */
-    principalId: string;
-    /**
-     * The tenant ID of resource.
-     */
-    tenantId: string;
-    /**
-     * The identity type.
-     */
-    type?: string;
-    /**
-     * The user assigned identities associated with the resource.
-     */
-    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponseV2};
-}
-
-/**
- * Identity for the resource.
- */
-export interface IdentityResponseV2 {
-    /**
-     * The principal ID of resource identity.
-     */
-    principalId: string;
-    /**
-     * The tenant ID of resource.
-     */
-    tenantId: string;
-    /**
-     * The identity type.
-     */
-    type?: string;
-    /**
-     * The user assigned identities associated with the resource.
-     */
-    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponseV3};
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityLinkedServiceResponse};
 }
 
 /**
@@ -5813,7 +5796,7 @@ export interface ImageMetadataResponse {
  * For more details on how to compose distribution expressions please check the documentation:
  * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters
  * For more information on the available settings please visit the official documentation:
- * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
+ * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.```
  */
 export interface ImageModelDistributionSettingsClassificationResponse {
     /**
@@ -5968,7 +5951,7 @@ export interface ImageModelDistributionSettingsClassificationResponse {
  * For more details on how to compose distribution expressions please check the documentation:
  * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters
  * For more information on the available settings please visit the official documentation:
- * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
+ * https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.```
  */
 export interface ImageModelDistributionSettingsObjectDetectionResponse {
     /**
@@ -6692,6 +6675,44 @@ export function indexColumnResponseProvideDefaults(val: IndexColumnResponse): In
     };
 }
 
+export interface InferenceContainerPropertiesEnvironmentVersionResponse {
+    /**
+     * The route to check the liveness of the inference server container.
+     */
+    livenessRoute?: RouteResponse;
+    /**
+     * The route to check the readiness of the inference server container.
+     */
+    readinessRoute?: RouteResponse;
+    /**
+     * The port to send the scoring requests to, within the inference server container.
+     */
+    scoringRoute?: RouteResponse;
+    /**
+     * The route to check the startup of the application in the container.
+     */
+    startupRoute?: RouteResponse;
+}
+
+export interface InferenceContainerPropertiesRegistryEnvironmentVersionResponse {
+    /**
+     * The route to check the liveness of the inference server container.
+     */
+    livenessRoute?: RouteResponse;
+    /**
+     * The route to check the readiness of the inference server container.
+     */
+    readinessRoute?: RouteResponse;
+    /**
+     * The port to send the scoring requests to, within the inference server container.
+     */
+    scoringRoute?: RouteResponse;
+    /**
+     * The route to check the startup of the application in the container.
+     */
+    startupRoute?: RouteResponse;
+}
+
 export interface InferenceContainerPropertiesResponse {
     /**
      * The route to check the liveness of the inference server container.
@@ -6705,44 +6726,6 @@ export interface InferenceContainerPropertiesResponse {
      * The port to send the scoring requests to, within the inference server container.
      */
     scoringRoute?: RouteResponse;
-}
-
-export interface InferenceContainerPropertiesResponseV1 {
-    /**
-     * The route to check the liveness of the inference server container.
-     */
-    livenessRoute?: RouteResponse;
-    /**
-     * The route to check the readiness of the inference server container.
-     */
-    readinessRoute?: RouteResponse;
-    /**
-     * The port to send the scoring requests to, within the inference server container.
-     */
-    scoringRoute?: RouteResponse;
-    /**
-     * The route to check the startup of the application in the container.
-     */
-    startupRoute?: RouteResponse;
-}
-
-export interface InferenceContainerPropertiesResponseV2 {
-    /**
-     * The route to check the liveness of the inference server container.
-     */
-    livenessRoute?: RouteResponse;
-    /**
-     * The route to check the readiness of the inference server container.
-     */
-    readinessRoute?: RouteResponse;
-    /**
-     * The port to send the scoring requests to, within the inference server container.
-     */
-    scoringRoute?: RouteResponse;
-    /**
-     * The route to check the startup of the application in the container.
-     */
-    startupRoute?: RouteResponse;
 }
 
 /**
@@ -6929,7 +6912,6 @@ export function jobResourceConfigurationResponseProvideDefaults(val: JobResource
 
 export interface JobScheduleActionResponse {
     /**
-     *
      * Expected value is 'CreateJob'.
      */
     actionType: "CreateJob";
@@ -7559,7 +7541,6 @@ export interface LiteralJobInputResponse {
  */
 export interface MLAssistConfigurationDisabledResponse {
     /**
-     *
      * Expected value is 'Disabled'.
      */
     mlAssist: "Disabled";
@@ -7574,7 +7555,6 @@ export interface MLAssistConfigurationEnabledResponse {
      */
     inferencingComputeBinding: string;
     /**
-     *
      * Expected value is 'Enabled'.
      */
     mlAssist: "Enabled";
@@ -8131,7 +8111,6 @@ export interface MedianStoppingPolicyResponse {
      */
     evaluationInterval?: number;
     /**
-     *
      * Expected value is 'MedianStopping'.
      */
     policyType: "MedianStopping";
@@ -8501,7 +8480,6 @@ export interface NotificationSettingResponse {
 
 export interface NumericalDataDriftMetricThresholdResponse {
     /**
-     *
      * Expected value is 'Numerical'.
      */
     dataType: "Numerical";
@@ -8517,7 +8495,6 @@ export interface NumericalDataDriftMetricThresholdResponse {
 
 export interface NumericalDataQualityMetricThresholdResponse {
     /**
-     *
      * Expected value is 'Numerical'.
      */
     dataType: "Numerical";
@@ -8533,7 +8510,6 @@ export interface NumericalDataQualityMetricThresholdResponse {
 
 export interface NumericalPredictionDriftMetricThresholdResponse {
     /**
-     *
      * Expected value is 'Numerical'.
      */
     dataType: "Numerical";
@@ -8981,7 +8957,6 @@ export interface PredictionDriftMonitoringSignalResponse {
      */
     referenceData: FixedInputDataResponse | RollingInputDataResponse | StaticInputDataResponse;
     /**
-     *
      * Expected value is 'PredictionDrift'.
      */
     signalType: "PredictionDrift";
@@ -9296,7 +9271,6 @@ export interface RandomSamplingAlgorithmResponse {
      */
     rule?: string;
     /**
-     *
      * Expected value is 'Random'.
      */
     samplingAlgorithmType: "Random";
@@ -9399,7 +9373,6 @@ export interface RecurrenceTriggerResponse {
      */
     timeZone?: string;
     /**
-     *
      * Expected value is 'Recurrence'.
      */
     triggerType: "Recurrence";
@@ -10146,6 +10119,34 @@ export interface SharedPrivateLinkResourceResponse {
 }
 
 /**
+ * Sku of the resource
+ */
+export interface SkuMachineLearningDatasetResponse {
+    /**
+     * Name of the sku
+     */
+    name?: string;
+    /**
+     * Tier of the sku like Basic or Enterprise
+     */
+    tier?: string;
+}
+
+/**
+ * Sku of the resource
+ */
+export interface SkuMachineLearningDatastoreResponse {
+    /**
+     * Name of the sku
+     */
+    name?: string;
+    /**
+     * Tier of the sku like Basic or Enterprise
+     */
+    tier?: string;
+}
+
+/**
  * The resource model definition representing SKU
  */
 export interface SkuResponse {
@@ -10162,39 +10163,11 @@ export interface SkuResponse {
      */
     name: string;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
     size?: string;
     /**
      * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-     */
-    tier?: string;
-}
-
-/**
- * Sku of the resource
- */
-export interface SkuResponseV1 {
-    /**
-     * Name of the sku
-     */
-    name?: string;
-    /**
-     * Tier of the sku like Basic or Enterprise
-     */
-    tier?: string;
-}
-
-/**
- * Sku of the resource
- */
-export interface SkuResponseV2 {
-    /**
-     * Name of the sku
-     */
-    name?: string;
-    /**
-     * Tier of the sku like Basic or Enterprise
      */
     tier?: string;
 }
@@ -10205,7 +10178,6 @@ export interface SparkJobPythonEntryResponse {
      */
     file: string;
     /**
-     *
      * Expected value is 'SparkJobPythonEntry'.
      */
     sparkJobEntryType: "SparkJobPythonEntry";
@@ -10346,7 +10318,6 @@ export interface SparkJobScalaEntryResponse {
      */
     className: string;
     /**
-     *
      * Expected value is 'SparkJobScalaEntry'.
      */
     sparkJobEntryType: "SparkJobScalaEntry";
@@ -10540,7 +10511,6 @@ export interface StringStringKeyValuePairResponse {
  */
 export interface SweepJobLimitsResponse {
     /**
-     *
      * Expected value is 'Sweep'.
      */
     jobLimitsType: "Sweep";
@@ -10960,7 +10930,6 @@ export interface TargetUtilizationScaleSettingsResponse {
      */
     pollingInterval?: string;
     /**
-     *
      * Expected value is 'TargetUtilization'.
      */
     scaleType: "TargetUtilization";
@@ -11182,7 +11151,6 @@ export interface TmpfsOptionsResponse {
 
 export interface TopNFeaturesByAttributionResponse {
     /**
-     *
      * Expected value is 'TopNByAttribution'.
      */
     filterType: "TopNByAttribution";
@@ -11315,7 +11283,6 @@ export interface TruncationSelectionPolicyResponse {
      */
     evaluationInterval?: number;
     /**
-     *
      * Expected value is 'TruncationSelection'.
      */
     policyType: "TruncationSelection";
@@ -11569,6 +11536,60 @@ export interface UserAccountCredentialsResponse {
 }
 
 /**
+ * User Assigned Identity
+ */
+export interface UserAssignedIdentityLinkedServiceResponse {
+    /**
+     * The clientId(aka appId) of the user assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the user assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the user assigned identity.
+     */
+    tenantId: string;
+}
+
+/**
+ * User Assigned Identity
+ */
+export interface UserAssignedIdentityMachineLearningDatasetResponse {
+    /**
+     * The clientId(aka appId) of the user assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the user assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the user assigned identity.
+     */
+    tenantId: string;
+}
+
+/**
+ * User Assigned Identity
+ */
+export interface UserAssignedIdentityMachineLearningDatastoreResponse {
+    /**
+     * The clientId(aka appId) of the user assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the user assigned identity.
+     */
+    principalId: string;
+    /**
+     * The tenant ID of the user assigned identity.
+     */
+    tenantId: string;
+}
+
+/**
  * User assigned identity properties
  */
 export interface UserAssignedIdentityResponse {
@@ -11580,60 +11601,6 @@ export interface UserAssignedIdentityResponse {
      * The principal ID of the assigned identity.
      */
     principalId: string;
-}
-
-/**
- * User Assigned Identity
- */
-export interface UserAssignedIdentityResponseV1 {
-    /**
-     * The clientId(aka appId) of the user assigned identity.
-     */
-    clientId: string;
-    /**
-     * The principal ID of the user assigned identity.
-     */
-    principalId: string;
-    /**
-     * The tenant ID of the user assigned identity.
-     */
-    tenantId: string;
-}
-
-/**
- * User Assigned Identity
- */
-export interface UserAssignedIdentityResponseV2 {
-    /**
-     * The clientId(aka appId) of the user assigned identity.
-     */
-    clientId: string;
-    /**
-     * The principal ID of the user assigned identity.
-     */
-    principalId: string;
-    /**
-     * The tenant ID of the user assigned identity.
-     */
-    tenantId: string;
-}
-
-/**
- * User Assigned Identity
- */
-export interface UserAssignedIdentityResponseV3 {
-    /**
-     * The clientId(aka appId) of the user assigned identity.
-     */
-    clientId: string;
-    /**
-     * The principal ID of the user assigned identity.
-     */
-    principalId: string;
-    /**
-     * The tenant ID of the user assigned identity.
-     */
-    tenantId: string;
 }
 
 /**

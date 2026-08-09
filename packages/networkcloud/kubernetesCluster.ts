@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class KubernetesCluster extends pulumi.CustomResource {
     /**
@@ -172,7 +172,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["kubernetesVersion"] = args?.kubernetesVersion;
             resourceInputs["location"] = args?.location;
             resourceInputs["managedResourceGroupConfiguration"] = args?.managedResourceGroupConfiguration;
-            resourceInputs["networkConfiguration"] = args ? (args.networkConfiguration ? pulumi.output(args.networkConfiguration).apply(types.inputs.networkConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["networkConfiguration"] = args ? pulumi.output(args.networkConfiguration).apply(types.inputs.networkConfigurationArgsProvideDefaults) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["attachedNetworkIds"] = undefined /*out*/;
@@ -218,7 +218,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:KubernetesCluster" }, { type: "azure-native:networkcloud/v20231001preview:KubernetesCluster" }, { type: "azure-native:networkcloud/v20240601preview:KubernetesCluster" }, { type: "azure-native:networkcloud/v20240701:KubernetesCluster" }, { type: "azure-native:networkcloud/v20241001preview:KubernetesCluster" }, { type: "azure-native:networkcloud/v20250201:KubernetesCluster" }, { type: "azure-native:networkcloud/v20250701preview:KubernetesCluster" }, { type: "azure-native:networkcloud/v20250901:KubernetesCluster" }, { type: "azure-native:networkcloud/v20260101preview:KubernetesCluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:KubernetesCluster" }, { type: "azure-native:networkcloud/v20231001preview:KubernetesCluster" }, { type: "azure-native:networkcloud/v20240601preview:KubernetesCluster" }, { type: "azure-native:networkcloud/v20240701:KubernetesCluster" }, { type: "azure-native:networkcloud/v20241001preview:KubernetesCluster" }, { type: "azure-native:networkcloud/v20250201:KubernetesCluster" }, { type: "azure-native:networkcloud/v20250901:KubernetesCluster" }, { type: "azure-native:networkcloud/v20260101preview:KubernetesCluster" }, { type: "azure-native:networkcloud/v20260501preview:KubernetesCluster" }, { type: "azure-native:networkcloud/v20260701:KubernetesCluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(KubernetesCluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -231,11 +231,11 @@ export interface KubernetesClusterArgs {
     /**
      * The Azure Active Directory Integration properties.
      */
-    aadConfiguration?: pulumi.Input<types.inputs.AadConfigurationArgs>;
+    aadConfiguration?: pulumi.Input<types.inputs.AadConfigurationArgs | undefined>;
     /**
      * The administrative credentials that will be applied to the control plane and agent pool nodes that do not specify their own values.
      */
-    administratorConfiguration?: pulumi.Input<types.inputs.AdministratorConfigurationArgs>;
+    administratorConfiguration?: pulumi.Input<types.inputs.AdministratorConfigurationArgs | undefined>;
     /**
      * The defining characteristics of the control plane for this Kubernetes Cluster.
      */
@@ -251,7 +251,7 @@ export interface KubernetesClusterArgs {
     /**
      * The name of the Kubernetes cluster.
      */
-    kubernetesClusterName?: pulumi.Input<string>;
+    kubernetesClusterName?: pulumi.Input<string | undefined>;
     /**
      * The Kubernetes version for this cluster.
      */
@@ -259,11 +259,11 @@ export interface KubernetesClusterArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The configuration of the managed resource group associated with the resource.
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedResourceGroupConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedResourceGroupConfigurationArgs | undefined>;
     /**
      * The configuration of the Kubernetes cluster networking, including the attachment of networks that span the cluster.
      */
@@ -275,5 +275,5 @@ export interface KubernetesClusterArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

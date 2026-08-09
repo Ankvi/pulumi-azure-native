@@ -177,7 +177,7 @@ export interface ScheduledTriggerArgs {
     /**
      * Synchronization mode
      */
-    synchronizationMode?: pulumi.Input<string | types.enums.SynchronizationMode>;
+    synchronizationMode?: pulumi.Input<string | types.enums.SynchronizationMode | undefined>;
     /**
      * Synchronization time
      */
@@ -185,5 +185,5 @@ export interface ScheduledTriggerArgs {
     /**
      * The name of the trigger.
      */
-    triggerName?: pulumi.Input<string>;
+    triggerName?: pulumi.Input<string | undefined>;
 }

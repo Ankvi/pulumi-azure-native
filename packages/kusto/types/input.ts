@@ -7,7 +7,7 @@ export interface AcceptedAudiencesArgs {
     /**
      * GUID or valid URL representing an accepted audience.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -17,7 +17,7 @@ export interface AzureSkuArgs {
     /**
      * The number of instances of the cluster.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * SKU name.
      */
@@ -35,15 +35,15 @@ export interface CalloutPolicyArgs {
     /**
      * Type of the callout service, specifying the kind of external resource or service being accessed.
      */
-    calloutType?: pulumi.Input<string | enums.CalloutType>;
+    calloutType?: pulumi.Input<string | enums.CalloutType | undefined>;
     /**
      * Regular expression or FQDN pattern for the callout URI.
      */
-    calloutUriRegex?: pulumi.Input<string>;
+    calloutUriRegex?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether outbound access is permitted for the specified URI pattern.
      */
-    outboundAccess?: pulumi.Input<string | enums.OutboundAccess>;
+    outboundAccess?: pulumi.Input<string | enums.OutboundAccess | undefined>;
 }
 
 /**
@@ -57,7 +57,7 @@ export interface IdentityArgs {
     /**
      * The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -67,19 +67,19 @@ export interface KeyVaultPropertiesArgs {
     /**
      * The name of the key vault key.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The Uri of the key vault.
      */
-    keyVaultUri?: pulumi.Input<string>;
+    keyVaultUri?: pulumi.Input<string | undefined>;
     /**
      * The version of the key vault key.
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
     /**
      * The user assigned identity (ARM resource id) that has access to the key.
      */
-    userIdentity?: pulumi.Input<string>;
+    userIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -89,15 +89,15 @@ export interface LanguageExtensionArgs {
     /**
      * The language extension custom image name.
      */
-    languageExtensionCustomImageName?: pulumi.Input<string>;
+    languageExtensionCustomImageName?: pulumi.Input<string | undefined>;
     /**
      * The language extension image name.
      */
-    languageExtensionImageName?: pulumi.Input<string | enums.LanguageExtensionImageName>;
+    languageExtensionImageName?: pulumi.Input<string | enums.LanguageExtensionImageName | undefined>;
     /**
      * The language extension name.
      */
-    languageExtensionName?: pulumi.Input<string | enums.LanguageExtensionName>;
+    languageExtensionName?: pulumi.Input<string | enums.LanguageExtensionName | undefined>;
 }
 
 /**
@@ -107,7 +107,7 @@ export interface LanguageExtensionsListArgs {
     /**
      * The list of language extensions.
      */
-    value?: pulumi.Input<pulumi.Input<LanguageExtensionArgs>[]>;
+    value?: pulumi.Input<pulumi.Input<LanguageExtensionArgs>[] | undefined>;
 }
 
 /**
@@ -139,11 +139,11 @@ export interface PrivateLinkServiceConnectionStatePropertyArgs {
     /**
      * The private link service connection description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The private link service connection status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -153,35 +153,35 @@ export interface TableLevelSharingPropertiesArgs {
     /**
      * List of external tables to exclude from the follower database
      */
-    externalTablesToExclude?: pulumi.Input<pulumi.Input<string>[]>;
+    externalTablesToExclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of external tables to include in the follower database
      */
-    externalTablesToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+    externalTablesToInclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of functions to exclude from the follower database
      */
-    functionsToExclude?: pulumi.Input<pulumi.Input<string>[]>;
+    functionsToExclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of functions to include in the follower database
      */
-    functionsToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+    functionsToInclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of materialized views to exclude from the follower database
      */
-    materializedViewsToExclude?: pulumi.Input<pulumi.Input<string>[]>;
+    materializedViewsToExclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of materialized views to include in the follower database
      */
-    materializedViewsToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+    materializedViewsToInclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of tables to exclude from the follower database
      */
-    tablesToExclude?: pulumi.Input<pulumi.Input<string>[]>;
+    tablesToExclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of tables to include in the follower database
      */
-    tablesToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+    tablesToInclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -191,7 +191,7 @@ export interface TrustedExternalTenantArgs {
     /**
      * GUID representing an external tenant.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -209,7 +209,7 @@ export interface VirtualNetworkConfigurationArgs {
     /**
      * When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
      */
-    state?: pulumi.Input<string | enums.VnetState>;
+    state?: pulumi.Input<string | enums.VnetState | undefined>;
     /**
      * The subnet resource id.
      */

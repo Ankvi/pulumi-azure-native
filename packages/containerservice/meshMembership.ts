@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-08-02-preview.
  *
- * Other available API versions: 2025-09-02-preview, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-09-02-preview, 2025-10-02-preview, 2026-01-02-preview, 2026-02-02-preview, 2026-03-02-preview, 2026-04-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class MeshMembership extends pulumi.CustomResource {
     /**
@@ -101,7 +101,7 @@ export class MeshMembership extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20250802preview:MeshMembership" }, { type: "azure-native:containerservice/v20250902preview:MeshMembership" }, { type: "azure-native:containerservice/v20251002preview:MeshMembership" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20250802preview:MeshMembership" }, { type: "azure-native:containerservice/v20250902preview:MeshMembership" }, { type: "azure-native:containerservice/v20251002preview:MeshMembership" }, { type: "azure-native:containerservice/v20260102preview:MeshMembership" }, { type: "azure-native:containerservice/v20260202preview:MeshMembership" }, { type: "azure-native:containerservice/v20260302preview:MeshMembership" }, { type: "azure-native:containerservice/v20260402preview:MeshMembership" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MeshMembership.__pulumiType, name, resourceInputs, opts);
     }
@@ -114,15 +114,15 @@ export interface MeshMembershipArgs {
     /**
      * The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
      */
-    managedBy?: pulumi.Input<string>;
+    managedBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the mesh membership.
      */
-    meshMembershipName?: pulumi.Input<string>;
+    meshMembershipName?: pulumi.Input<string | undefined>;
     /**
      * Mesh membership properties of a managed cluster.
      */
-    properties?: pulumi.Input<types.inputs.MeshMembershipPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MeshMembershipPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

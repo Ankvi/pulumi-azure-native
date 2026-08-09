@@ -207,21 +207,21 @@ export interface ActionConditionModelPropertiesResponse {
 /**
  * Definition of ActionDefinition
  */
-export interface ActionDefinitionResponse {
+export interface ActionDefinitionNetworkFirewallRuleGroupResponse {
     /**
      * Property publishMetricAction
      */
-    publishMetricAction?: PublishMetricActionResponse;
+    publishMetricAction?: PublishMetricActionNetworkFirewallRuleGroupResponse;
 }
 
 /**
  * Definition of ActionDefinition
  */
-export interface ActionDefinitionResponseV1 {
+export interface ActionDefinitionResponse {
     /**
      * Property publishMetricAction
      */
-    publishMetricAction?: PublishMetricActionResponseV1;
+    publishMetricAction?: PublishMetricActionResponse;
 }
 
 /**
@@ -743,7 +743,7 @@ export interface AuthenticateCognitoConfigResponse {
      */
     authenticationRequestExtraParams?: {[key: string]: string};
     /**
-     * The behavior if the user is not authenticated. The following are possible values:  +  deny```` - Return an HTTP 401 Unauthorized error.  +  allow```` - Allow the request to be forwarded to the target.  +  authenticate```` - Redirect the request to the IdP authorization endpoint. This is the default value.
+     * The behavior if the user is not authenticated. The following are possible values:  +  deny````  - Return an HTTP 401 Unauthorized error.  +  allow ```` - Allow the request to be forwarded to the target.  +  authenticate```` - Redirect the request to the IdP authorization endpoint. This is the default value.
      */
     onUnauthenticatedRequest?: string;
     /**
@@ -797,7 +797,7 @@ export interface AuthenticateOidcConfigResponse {
      */
     issuer?: string;
     /**
-     * The behavior if the user is not authenticated. The following are possible values:  +  deny```` - Return an HTTP 401 Unauthorized error.  +  allow```` - Allow the request to be forwarded to the target.  +  authenticate```` - Redirect the request to the IdP authorization endpoint. This is the default value.
+     * The behavior if the user is not authenticated. The following are possible values:  +  deny````  - Return an HTTP 401 Unauthorized error.  +  allow ```` - Allow the request to be forwarded to the target.  +  authenticate```` - Redirect the request to the IdP authorization endpoint. This is the default value.
      */
     onUnauthenticatedRequest?: string;
     /**
@@ -3068,7 +3068,7 @@ export interface AwsEc2NetworkInterfacePropertiesResponse {
     /**
      * One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet to associate with the network interface. If you're specifying a number of IPv6 addresses, use the Ipv6AddressCount property and don't specify this property.
      */
-    ipv6Addresses?: InstanceIpv6AddressResponseV1[];
+    ipv6Addresses?: InstanceIpv6AddressEc2NetworkInterfaceResponse[];
     /**
      * The number of IPv6 prefixes to assign to a network interface. When you specify a number of IPv6 prefixes, Amazon EC2 selects these prefixes from your existing subnet CIDR reservations, if available, or from free spaces in the subnet. By default, these will be /80 prefixes. You can't specify a count of IPv6 prefixes if you've specified one of the following: specific IPv6 prefixes, specific IPv6 addresses, or a count of IPv6 addresses.
      */
@@ -3913,7 +3913,7 @@ export interface AwsEfsFileSystemPropertiesResponse {
     /**
      * An array of ``LifecyclePolicy`` objects that define the file system's ``LifecycleConfiguration`` object. A ``LifecycleConfiguration`` object informs Lifecycle management of the following:  +  When to move files in the file system from primary storage to IA storage.  + When to move files in the file system from primary storage or IA storage to Archive storage. +  When to move files that are in IA or Archive storage to primary storage.    EFS requires that each ``LifecyclePolicy`` object have only a single transition. This means that in a request body, ``LifecyclePolicies`` needs to be structured as an array of ``LifecyclePolicy`` objects, one object for each transition, ``TransitionToIA``, ``TransitionToArchive`` ``TransitionToPrimaryStorageClass``. See the example requests in the following section for more information.
      */
-    lifecyclePolicies?: LifecyclePolicyResponseV1[];
+    lifecyclePolicies?: LifecyclePolicyEfsFileSystemResponse[];
     /**
      * The Performance mode of the file system. We recommend ``generalPurpose`` performance mode for all file systems. File systems using the ``maxIO`` performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. The performance mode can't be changed after the file system has been created. The ``maxIO`` mode is not supported on One Zone file systems.  Due to the higher per-operation latencies with Max I/O, we recommend using General Purpose performance mode for all file systems.  Default is ``generalPurpose``.
      */
@@ -4013,7 +4013,7 @@ export interface AwsEksClusterPropertiesResponse {
     /**
      * <p>The logging configuration for your cluster.</p>
      */
-    logging?: LoggingResponseV1;
+    logging?: LoggingEksClusterResponse;
     /**
      * <p>The name of your cluster.</p>
      */
@@ -4091,7 +4091,7 @@ export interface AwsEksNodegroupPropertiesResponse {
     /**
      * An object representing a node group's launch template specification. An object representing a launch template specification for AWS EKS Nodegroup.
      */
-    launchTemplate?: LaunchTemplateSpecificationResponseV1;
+    launchTemplate?: LaunchTemplateSpecificationEksNodegroupResponse;
     /**
      * The Amazon Resource Name (ARN) of the IAM role to associate with your node group.
      */
@@ -4259,7 +4259,7 @@ export interface AwsElasticLoadBalancingV2ListenerPropertiesResponse {
     /**
      * The default SSL server certificate for a secure listener. You must provide exactly one certificate if the listener protocol is HTTPS or TLS. To create a certificate list for a secure listener, use [AWS::ElasticLoadBalancingV2::ListenerCertificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenercertificate.html).
      */
-    certificates?: CertificateResponseV1[];
+    certificates?: CertificateElasticLoadBalancingV2ListenerResponse[];
     /**
      * The actions for the default rule. You cannot define a condition for a default rule. To create additional rules for an Application Load Balancer, use [AWS::ElasticLoadBalancingV2::ListenerRule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html).
      */
@@ -5086,7 +5086,7 @@ export interface AwsLambdaFunctionPropertiesResponse {
     /**
      * The size of the function's ``/tmp`` directory in MB. The default value is 512, but it can be any whole number between 512 and 10,240 MB. The size of the function's ``/tmp`` directory in MB. The default value is 512, but it can be any whole number between 512 and 10,240 MB.
      */
-    ephemeralStorage?: EphemeralStorageResponseV1;
+    ephemeralStorage?: EphemeralStorageLambdaFunctionResponse;
     /**
      * Connection settings for an Amazon EFS file system. To connect a function to a file system, a mount target must be available in every Availability Zone that your function connects to. If your template contains an [AWS::EFS::MountTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-mounttarget.html) resource, you must also specify a ``DependsOn`` attribute to ensure that the mount target is created or updated before the function. For more information about using the ``DependsOn`` attribute, see [DependsOn Attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html).
      */
@@ -5162,7 +5162,7 @@ export interface AwsLambdaFunctionPropertiesResponse {
     /**
      * For network connectivity to AWS resources in a VPC, specify a list of security groups and subnets in the VPC. When you connect a function to a VPC, it can access resources and the internet only through that VPC. For more information, see [Configuring a Lambda function to access resources in a VPC](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html). The VPC security groups and subnets that are attached to a Lambda function. When you connect a function to a VPC, Lambda creates an elastic network interface for each combination of security group and subnet in the function's VPC configuration. The function can only access resources and the internet through that VPC. For more information, see [VPC Settings](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).  When you delete a function, CFN monitors the state of its network interfaces and waits for Lambda to delete them before proceeding. If the VPC is defined in the same stack, the network interfaces need to be deleted by Lambda before CFN can delete the VPC's resources. To monitor network interfaces, CFN needs the ``ec2:DescribeNetworkInterfaces`` permission. It obtains this from the user or role that modifies the stack. If you don't provide this permission, CFN does not wait for network interfaces to be deleted.
      */
-    vpcConfig?: VpcConfigResponseV1;
+    vpcConfig?: VpcConfigLambdaFunctionResponse;
 }
 
 /**
@@ -5555,7 +5555,7 @@ export interface AwsNetworkFirewallFirewallPropertiesResponse {
     /**
      * Property subnetMappings
      */
-    subnetMappings?: SubnetMappingResponseV1[];
+    subnetMappings?: SubnetMappingNetworkFirewallFirewallResponse[];
     /**
      * Property tags
      */
@@ -6717,7 +6717,7 @@ export interface AwsRedshiftClusterParameterGroupPropertiesResponse {
     /**
      * An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.
      */
-    parameters?: ParameterResponseV1[];
+    parameters?: ParameterRedshiftClusterParameterGroupResponse[];
     /**
      * An array of key-value pairs to apply to this resource.
      */
@@ -7225,7 +7225,7 @@ export interface AwsS3BucketPropertiesResponse {
     /**
      * Configuration for replicating objects in an S3 bucket. To enable replication, you must also enable versioning by using the ``VersioningConfiguration`` property. Amazon S3 can store replicated objects in a single destination bucket or multiple destination buckets. The destination bucket or buckets must already exist. A container for replication rules. You can add up to 1,000 rules. The maximum size of a replication configuration is 2 MB. The latest version of the replication configuration XML is V2. For more information about XML V2 replication configurations, see [Replication configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-add-config.html) in the *Amazon S3 User Guide*.
      */
-    replicationConfiguration?: ReplicationConfigurationResponseV1;
+    replicationConfiguration?: ReplicationConfigurationS3BucketResponse;
     /**
      * An arbitrary set of tags (key-value pairs) for this S3 bucket.
      */
@@ -7453,7 +7453,7 @@ export interface AwsSnsTopicPropertiesResponse {
     /**
      * Property deliveryStatusLogging
      */
-    deliveryStatusLogging?: LoggingConfigResponseV1[];
+    deliveryStatusLogging?: LoggingConfigSnsTopicResponse[];
     /**
      * The display name to use for an SNS topic with SMS subscriptions. The display name must be maximum 100 characters long, including hyphens (-), underscores (_), spaces, and tabs.
      */
@@ -8213,21 +8213,21 @@ export interface CertificateDetailsResponse {
 /**
  * Definition of Certificate
  */
-export interface CertificateResponse {
+export interface CertificateElasticLoadBalancingV2ListenerResponse {
     /**
-     * <p>The Base64-encoded certificate data required to communicate with your cluster. Add this to the <code>certificate-authority-data</code> section of the <code>kubeconfig</code> file for your cluster.</p>
+     * The Amazon Resource Name (ARN) of the certificate.
      */
-    data?: string;
+    certificateArn?: string;
 }
 
 /**
  * Definition of Certificate
  */
-export interface CertificateResponseV1 {
+export interface CertificateResponse {
     /**
-     * The Amazon Resource Name (ARN) of the certificate.
+     * <p>The Base64-encoded certificate data required to communicate with your cluster. Add this to the <code>certificate-authority-data</code> section of the <code>kubeconfig</code> file for your cluster.</p>
      */
-    certificateArn?: string;
+    data?: string;
 }
 
 /**
@@ -9584,11 +9584,11 @@ export interface CsvResponse {
 /**
  * Definition of CustomAction
  */
-export interface CustomActionResponse {
+export interface CustomActionNetworkFirewallRuleGroupResponse {
     /**
      * Property actionDefinition
      */
-    actionDefinition?: ActionDefinitionResponse;
+    actionDefinition?: ActionDefinitionNetworkFirewallRuleGroupResponse;
     /**
      * Property actionName
      */
@@ -9598,11 +9598,11 @@ export interface CustomActionResponse {
 /**
  * Definition of CustomAction
  */
-export interface CustomActionResponseV1 {
+export interface CustomActionResponse {
     /**
      * Property actionDefinition
      */
-    actionDefinition?: ActionDefinitionResponseV1;
+    actionDefinition?: ActionDefinitionResponse;
     /**
      * Property actionName
      */
@@ -10185,21 +10185,7 @@ export interface DeviceTypeEnumValueResponse {
 /**
  * Definition of Dimension
  */
-export interface DimensionResponse {
-    /**
-     * The name of the dimension, from 1–255 characters in length. This dimension name must have been included when the metric was published.
-     */
-    name?: string;
-    /**
-     * The value for the dimension, from 1–255 characters in length.
-     */
-    value?: string;
-}
-
-/**
- * Definition of Dimension
- */
-export interface DimensionResponseV1 {
+export interface DimensionLogsMetricFilterResponse {
     /**
      * The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
      */
@@ -10213,7 +10199,7 @@ export interface DimensionResponseV1 {
 /**
  * Definition of Dimension
  */
-export interface DimensionResponseV2 {
+export interface DimensionNetworkFirewallFirewallPolicyResponse {
     /**
      * Property value
      */
@@ -10223,9 +10209,23 @@ export interface DimensionResponseV2 {
 /**
  * Definition of Dimension
  */
-export interface DimensionResponseV3 {
+export interface DimensionNetworkFirewallRuleGroupResponse {
     /**
      * Property value
+     */
+    value?: string;
+}
+
+/**
+ * Definition of Dimension
+ */
+export interface DimensionResponse {
+    /**
+     * The name of the dimension, from 1–255 characters in length. This dimension name must have been included when the metric was published.
+     */
+    name?: string;
+    /**
+     * The value for the dimension, from 1–255 characters in length.
      */
     value?: string;
 }
@@ -12346,7 +12346,7 @@ export interface EncryptionConfigurationResponse {
 /**
  * Definition of EncryptionConfiguration
  */
-export interface EncryptionConfigurationResponseV1 {
+export interface EncryptionConfigurationS3BucketResponse {
     /**
      * Specifies the ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket. Amazon S3 uses this key to encrypt replica objects. Amazon S3 only supports symmetric encryption KMS keys. For more information, see [Asymmetric keys in KMS](https://docs.aws.amazon.com//kms/latest/developerguide/symmetric-asymmetric.html) in the *Key Management Service Developer Guide*.
      */
@@ -12450,21 +12450,21 @@ export interface EnvironmentVariableTypeEnumValueResponse {
 /**
  * Definition of EphemeralStorage
  */
-export interface EphemeralStorageResponse {
+export interface EphemeralStorageLambdaFunctionResponse {
     /**
-     * The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is ``20`` GiB and the maximum supported value is ``200`` GiB.
+     * The size of the function's ``/tmp`` directory.
      */
-    sizeInGiB?: number;
+    size?: number;
 }
 
 /**
  * Definition of EphemeralStorage
  */
-export interface EphemeralStorageResponseV1 {
+export interface EphemeralStorageResponse {
     /**
-     * The size of the function's ``/tmp`` directory.
+     * The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is ``20`` GiB and the maximum supported value is ``200`` GiB.
      */
-    size?: number;
+    sizeInGiB?: number;
 }
 
 /**
@@ -12745,9 +12745,23 @@ export interface FilterResponse {
 }
 
 /**
+ * Definition of FilterRule
+ */
+export interface FilterRuleResponse {
+    /**
+     * The object key name prefix or suffix identifying one or more objects to which the filtering rule applies. The maximum length is 1,024 characters. Overlapping prefixes and suffixes are not supported. For more information, see [Configuring Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html) in the *Amazon S3 User Guide*.
+     */
+    name?: string;
+    /**
+     * The value that the filter searches for in object key names.
+     */
+    value?: string;
+}
+
+/**
  * Definition of Filter
  */
-export interface FilterResponseV1 {
+export interface FilterWafv2LoggingConfigurationResponse {
     /**
      * How to handle logs that satisfy the filter's conditions and requirement.
      */
@@ -12760,20 +12774,6 @@ export interface FilterResponseV1 {
      * Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
      */
     requirement?: string;
-}
-
-/**
- * Definition of FilterRule
- */
-export interface FilterRuleResponse {
-    /**
-     * The object key name prefix or suffix identifying one or more objects to which the filtering rule applies. The maximum length is 1,024 characters. Overlapping prefixes and suffixes are not supported. For more information, see [Configuring Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html) in the *Amazon S3 User Guide*.
-     */
-    name?: string;
-    /**
-     * The value that the filter searches for in object key names.
-     */
-    value?: string;
 }
 
 /**
@@ -14068,6 +14068,16 @@ export interface InstanceIpv4PrefixResponse {
 /**
  * Definition of InstanceIpv6Address
  */
+export interface InstanceIpv6AddressEc2NetworkInterfaceResponse {
+    /**
+     * Property ipv6Address
+     */
+    ipv6Address?: string;
+}
+
+/**
+ * Definition of InstanceIpv6Address
+ */
 export interface InstanceIpv6AddressResponse {
     /**
      * <p>The IPv6 address.</p>
@@ -14077,16 +14087,6 @@ export interface InstanceIpv6AddressResponse {
      * <p>Determines if an IPv6 address associated with a network interface is the primary IPv6 address. When you enable an IPv6 GUA address to be a primary IPv6, the first IPv6 GUA will be made the primary IPv6 address until the instance is terminated or the network interface is detached. For more information, see <a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html'>RunInstances</a>.</p>
      */
     isPrimaryIpv6?: boolean;
-}
-
-/**
- * Definition of InstanceIpv6Address
- */
-export interface InstanceIpv6AddressResponseV1 {
-    /**
-     * Property ipv6Address
-     */
-    ipv6Address?: string;
 }
 
 /**
@@ -15254,6 +15254,24 @@ export interface LaunchTemplateResponse {
 /**
  * Definition of LaunchTemplateSpecification
  */
+export interface LaunchTemplateSpecificationEksNodegroupResponse {
+    /**
+     * Property id
+     */
+    id?: string;
+    /**
+     * Property name
+     */
+    name?: string;
+    /**
+     * Property version
+     */
+    version?: string;
+}
+
+/**
+ * Definition of LaunchTemplateSpecification
+ */
 export interface LaunchTemplateSpecificationResponse {
     /**
      * The ID of the launch template. You must specify the ``LaunchTemplateID`` or the ``LaunchTemplateName``, but not both.
@@ -15265,24 +15283,6 @@ export interface LaunchTemplateSpecificationResponse {
     launchTemplateName?: string;
     /**
      * The version number of the launch template. Specifying ``$Latest`` or ``$Default`` for the template version number is not supported. However, you can specify ``LatestVersionNumber`` or ``DefaultVersionNumber`` using the ``Fn::GetAtt`` intrinsic function. For more information, see [Fn::GetAtt](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html).  For an example of using the ``Fn::GetAtt`` function, see the [Examples](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-autoscalinggroup.html#aws-resource-autoscaling-autoscalinggroup--examples) section of the ``AWS::AutoScaling::AutoScalingGroup`` resource.
-     */
-    version?: string;
-}
-
-/**
- * Definition of LaunchTemplateSpecification
- */
-export interface LaunchTemplateSpecificationResponseV1 {
-    /**
-     * Property id
-     */
-    id?: string;
-    /**
-     * Property name
-     */
-    name?: string;
-    /**
-     * Property version
      */
     version?: string;
 }
@@ -15394,21 +15394,7 @@ export interface LifecycleHookSpecificationResponse {
 /**
  * Definition of LifecyclePolicy
  */
-export interface LifecyclePolicyResponse {
-    /**
-     * The JSON repository policy text to apply to the repository. The JSON repository policy text to apply to the repository.
-     */
-    lifecyclePolicyText?: string;
-    /**
-     * The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed. The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
-     */
-    registryId?: string;
-}
-
-/**
- * Definition of LifecyclePolicy
- */
-export interface LifecyclePolicyResponseV1 {
+export interface LifecyclePolicyEfsFileSystemResponse {
     /**
      * The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
      */
@@ -15421,6 +15407,20 @@ export interface LifecyclePolicyResponseV1 {
      * Whether to move files back to primary (Standard) storage after they are accessed in IA or Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
      */
     transitionToPrimaryStorageClass?: string;
+}
+
+/**
+ * Definition of LifecyclePolicy
+ */
+export interface LifecyclePolicyResponse {
+    /**
+     * The JSON repository policy text to apply to the repository. The JSON repository policy text to apply to the repository.
+     */
+    lifecyclePolicyText?: string;
+    /**
+     * The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed. The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
+     */
+    registryId?: string;
 }
 
 /**
@@ -15698,7 +15698,7 @@ export interface LoggingConfigResponse {
 /**
  * Definition of LoggingConfig
  */
-export interface LoggingConfigResponseV1 {
+export interface LoggingConfigSnsTopicResponse {
     /**
      * Property failureFeedbackRoleArn
      */
@@ -15736,6 +15736,16 @@ export interface LoggingConfigurationResponse {
 }
 
 /**
+ * Definition of Logging
+ */
+export interface LoggingEksClusterResponse {
+    /**
+     * <p>The cluster control plane logging configuration for your cluster.</p>
+     */
+    clusterLogging?: LogSetupResponse[];
+}
+
+/**
  * Definition of LoggingFilterModelProperties
  */
 export interface LoggingFilterModelPropertiesResponse {
@@ -15746,7 +15756,7 @@ export interface LoggingFilterModelPropertiesResponse {
     /**
      * The filters that you want to apply to the logs.
      */
-    filters?: FilterResponseV1[];
+    filters?: FilterWafv2LoggingConfigurationResponse[];
 }
 
 /**
@@ -15779,16 +15789,6 @@ export interface LoggingResponse {
      * An optional string that you want CloudFront to prefix to the access log ``filenames`` for this distribution, for example, ``myprefix/``. If you want to enable logging, but you don't want to specify a prefix, you still must include an empty ``Prefix`` element in the ``Logging`` element.
      */
     prefix?: string;
-}
-
-/**
- * Definition of Logging
- */
-export interface LoggingResponseV1 {
-    /**
-     * <p>The cluster control plane logging configuration for your cluster.</p>
-     */
-    clusterLogging?: LogSetupResponse[];
 }
 
 /**
@@ -16339,7 +16339,7 @@ export interface MetricTransformationResponse {
     /**
      * The fields to use as dimensions for the metric. One metric filter can include as many as three dimensions.  Metrics extracted from log events are charged as custom metrics. To prevent unexpected high charges, do not specify high-cardinality fields such as ``IPAddress`` or ``requestID`` as dimensions. Each different value found for a dimension is treated as a separate metric and accrues charges as a separate custom metric.  CloudWatch Logs disables a metric filter if it generates 1000 different name/value pairs for your specified dimensions within a certain amount of time. This helps to prevent accidental high charges. You can also set up a billing alarm to alert you if your charges are higher than expected. For more information, see [Creating a Billing Alarm to Monitor Your Estimated Charges](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html).
      */
-    dimensions?: DimensionResponseV1[];
+    dimensions?: DimensionLogsMetricFilterResponse[];
     /**
      * The name of the CloudWatch metric.
      */
@@ -17395,13 +17395,13 @@ export interface ParameterGroupStatusResponse {
 /**
  * Definition of Parameter
  */
-export interface ParameterResponse {
+export interface ParameterRedshiftClusterParameterGroupResponse {
     /**
-     * The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.
+     * The name of the parameter.
      */
-    parameterKey?: string;
+    parameterName?: string;
     /**
-     * The input value associated with the parameter.
+     * The value of the parameter. If `ParameterName` is `wlm_json_configuration`, then the maximum size of `ParameterValue` is 8000 characters.
      */
     parameterValue?: string;
 }
@@ -17409,13 +17409,13 @@ export interface ParameterResponse {
 /**
  * Definition of Parameter
  */
-export interface ParameterResponseV1 {
+export interface ParameterResponse {
     /**
-     * The name of the parameter.
+     * The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.
      */
-    parameterName?: string;
+    parameterKey?: string;
     /**
-     * The value of the parameter. If `ParameterName` is `wlm_json_configuration`, then the maximum size of `ParameterValue` is 8000 characters.
+     * The input value associated with the parameter.
      */
     parameterValue?: string;
 }
@@ -18171,21 +18171,21 @@ export interface PublicAccessBlockConfigurationResponse {
 /**
  * Definition of PublishMetricAction
  */
-export interface PublishMetricActionResponse {
+export interface PublishMetricActionNetworkFirewallRuleGroupResponse {
     /**
      * Property dimensions
      */
-    dimensions?: DimensionResponseV2[];
+    dimensions?: DimensionNetworkFirewallRuleGroupResponse[];
 }
 
 /**
  * Definition of PublishMetricAction
  */
-export interface PublishMetricActionResponseV1 {
+export interface PublishMetricActionResponse {
     /**
      * Property dimensions
      */
-    dimensions?: DimensionResponseV3[];
+    dimensions?: DimensionNetworkFirewallFirewallPolicyResponse[];
 }
 
 /**
@@ -18898,7 +18898,7 @@ export interface ReplicationConfigurationResponse {
 /**
  * Definition of ReplicationConfiguration
  */
-export interface ReplicationConfigurationResponseV1 {
+export interface ReplicationConfigurationS3BucketResponse {
     /**
      * The Amazon Resource Name (ARN) of the IAMlong (IAM) role that Amazon S3 assumes when replicating objects. For more information, see [How to Set Up Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html) in the *Amazon S3 User Guide*.
      */
@@ -18934,7 +18934,7 @@ export interface ReplicationDestinationResponse {
 /**
  * Definition of ReplicationDestination
  */
-export interface ReplicationDestinationResponseV1 {
+export interface ReplicationDestinationS3BucketResponse {
     /**
      * Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object. Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object.
      */
@@ -18950,7 +18950,7 @@ export interface ReplicationDestinationResponseV1 {
     /**
      * Specifies encryption-related information. Specifies encryption-related information for an Amazon S3 bucket that is a destination for replicated objects.
      */
-    encryptionConfiguration?: EncryptionConfigurationResponseV1;
+    encryptionConfiguration?: EncryptionConfigurationS3BucketResponse;
     /**
      * A container specifying replication metrics-related settings enabling replication metrics and events. A container specifying replication metrics-related settings enabling replication metrics and events.
      */
@@ -19034,7 +19034,7 @@ export interface ReplicationRuleResponse {
     /**
      * A container for information about the replication destination and its configurations including enabling the S3 Replication Time Control (S3 RTC). A container for information about the replication destination and its configurations including enabling the S3 Replication Time Control (S3 RTC).
      */
-    destination?: ReplicationDestinationResponseV1;
+    destination?: ReplicationDestinationS3BucketResponse;
     /**
      * A filter that identifies the subset of objects to which the replication rule applies. A ``Filter`` must specify exactly one ``Prefix``, ``TagFilter``, or an ``And`` child element. The use of the filter field indicates that this is a V2 replication configuration. This field isn't supported in a V1 replication configuration.  V1 replication configuration only supports filtering by key prefix. To filter using a V1 replication configuration, add the ``Prefix`` directly as a child element of the ``Rule`` element. A filter that identifies the subset of objects to which the replication rule applies. A ``Filter`` must specify exactly one ``Prefix``, ``TagFilter``, or an ``And`` child element.
      */
@@ -20643,13 +20643,17 @@ export interface SingleHeaderModelPropertiesResponse {
 }
 
 /**
- * Definition of SnapStart
+ * Definition of SnapStartResponse
  */
 export interface SnapStartResponse {
     /**
-     * Set ``ApplyOn`` to ``PublishedVersions`` to create a snapshot of the initialized execution environment when you publish a function version.
+     * When set to ``PublishedVersions``, Lambda creates a snapshot of the execution environment when you publish a function version.
      */
-    applyOn?: string;
+    applyOn?: string | enums.SnapStartResponseApplyOn;
+    /**
+     * When you provide a [qualified Amazon Resource Name (ARN)](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html#versioning-versions-using), this response element indicates whether SnapStart is activated for the specified function version.
+     */
+    optimizationStatus?: string | enums.SnapStartResponseOptimizationStatus;
 }
 
 /**
@@ -21171,7 +21175,7 @@ export interface StatelessRulesAndCustomActionsResponse {
     /**
      * Property customActions
      */
-    customActions?: CustomActionResponseV1[];
+    customActions?: CustomActionNetworkFirewallRuleGroupResponse[];
     /**
      * Property statelessRules
      */
@@ -21249,6 +21253,20 @@ export interface StreamSpecificationResponse {
 /**
  * Definition of SubnetMapping
  */
+export interface SubnetMappingNetworkFirewallFirewallResponse {
+    /**
+     * A IPAddressType
+     */
+    ipAddressType?: string;
+    /**
+     * A SubnetId.
+     */
+    subnetId?: string;
+}
+
+/**
+ * Definition of SubnetMapping
+ */
 export interface SubnetMappingResponse {
     /**
      * [Network Load Balancers] The allocation ID of the Elastic IP address for an internet-facing load balancer.
@@ -21264,20 +21282,6 @@ export interface SubnetMappingResponse {
     privateIPv4Address?: string;
     /**
      * The ID of the subnet.
-     */
-    subnetId?: string;
-}
-
-/**
- * Definition of SubnetMapping
- */
-export interface SubnetMappingResponseV1 {
-    /**
-     * A IPAddressType
-     */
-    ipAddressType?: string;
-    /**
-     * A SubnetId.
      */
     subnetId?: string;
 }
@@ -22068,6 +22072,24 @@ export interface VolumeTypeEnumValueResponse {
 }
 
 /**
+ * Definition of VpcConfig
+ */
+export interface VpcConfigLambdaFunctionResponse {
+    /**
+     * Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
+     */
+    ipv6AllowedForDualStack?: boolean;
+    /**
+     * A list of VPC security group IDs.
+     */
+    securityGroupIds?: string[];
+    /**
+     * A list of VPC subnet IDs.
+     */
+    subnetIds?: string[];
+}
+
+/**
  * Definition of VpcConfigResponse
  */
 export interface VpcConfigResponse {
@@ -22137,24 +22159,6 @@ export interface VpcConfigResponseResponse {
      * <p>The VPC associated with your cluster.</p>
      */
     vpcId?: string;
-}
-
-/**
- * Definition of VpcConfig
- */
-export interface VpcConfigResponseV1 {
-    /**
-     * Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
-     */
-    ipv6AllowedForDualStack?: boolean;
-    /**
-     * A list of VPC security group IDs.
-     */
-    securityGroupIds?: string[];
-    /**
-     * A list of VPC subnet IDs.
-     */
-    subnetIds?: string[];
 }
 
 /**

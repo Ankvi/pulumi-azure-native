@@ -22,7 +22,7 @@ export interface AdhocBasedTaggingCriteriaArgs {
     /**
      * Retention tag information
      */
-    tagInfo?: pulumi.Input<RetentionTagArgs>;
+    tagInfo?: pulumi.Input<RetentionTagArgs | undefined>;
 }
 
 /**
@@ -62,14 +62,13 @@ export interface AzureBackupRuleArgs {
     /**
      * BackupParameters base
      */
-    backupParameters?: pulumi.Input<AzureBackupParamsArgs>;
+    backupParameters?: pulumi.Input<AzureBackupParamsArgs | undefined>;
     /**
      * DataStoreInfo base
      */
     dataStore: pulumi.Input<DataStoreInfoBaseArgs>;
     name: pulumi.Input<string>;
     /**
-     *
      * Expected value is 'AzureBackupRule'.
      */
     objectType: pulumi.Input<"AzureBackupRule">;
@@ -83,7 +82,7 @@ export interface AzureBackupRuleArgs {
  * Settings for Azure Monitor based alerts
  */
 export interface AzureMonitorAlertSettingsArgs {
-    alertsForAllJobFailures?: pulumi.Input<string | enums.AlertsState>;
+    alertsForAllJobFailures?: pulumi.Input<string | enums.AlertsState | undefined>;
 }
 
 /**
@@ -102,18 +101,17 @@ export interface AzureOperationalStoreParametersArgs {
     /**
      * Gets or sets the Snapshot Resource Group Uri.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * Azure retention rule
  */
 export interface AzureRetentionRuleArgs {
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     lifecycles: pulumi.Input<pulumi.Input<SourceLifeCycleArgs>[]>;
     name: pulumi.Input<string>;
     /**
-     *
      * Expected value is 'AzureRetentionRule'.
      */
     objectType: pulumi.Input<"AzureRetentionRule">;
@@ -130,20 +128,20 @@ export interface BackupInstanceArgs {
     /**
      * Gets or sets the data source set information.
      */
-    dataSourceSetInfo?: pulumi.Input<DatasourceSetArgs>;
+    dataSourceSetInfo?: pulumi.Input<DatasourceSetArgs | undefined>;
     /**
      * Credentials to use to authenticate with data source provider.
      */
-    datasourceAuthCredentials?: pulumi.Input<SecretStoreBasedAuthCredentialsArgs>;
+    datasourceAuthCredentials?: pulumi.Input<SecretStoreBasedAuthCredentialsArgs | undefined>;
     /**
      * Gets or sets the Backup Instance friendly name.
      */
-    friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string | undefined>;
     /**
      * Contains information of the Identity Details for the BI.
      * If it is null, default will be considered as System Assigned.
      */
-    identityDetails?: pulumi.Input<IdentityDetailsArgs>;
+    identityDetails?: pulumi.Input<IdentityDetailsArgs | undefined>;
     objectType: pulumi.Input<string>;
     /**
      * Gets or sets the policy information.
@@ -152,11 +150,11 @@ export interface BackupInstanceArgs {
     /**
      * ResourceGuardOperationRequests on which LAC check will be performed
      */
-    resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
      */
-    validationType?: pulumi.Input<string | enums.ValidationType>;
+    validationType?: pulumi.Input<string | enums.ValidationType | undefined>;
 }
 
 /**
@@ -168,7 +166,6 @@ export interface BackupPolicyArgs {
      */
     datasourceTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     *
      * Expected value is 'BackupPolicy'.
      */
     objectType: pulumi.Input<"BackupPolicy">;
@@ -183,29 +180,25 @@ export interface BackupPolicyArgs {
  */
 export interface BackupScheduleArgs {
     /**
-     * Repeating time interval which supports the ISO 8601 format and unsupported or partially supported formats.
+     * Repeating time intervals that define the backup schedule.
      *
-     * Supported ISO 8601 Time Formats
+     * Each value must follow the format: `R/YYYY-MM-DDThh:mm:ss[.fff][Z|(+/-)hh:mm]/Duration`
      *
-     * The following time formats were verified to be successfully parsed and supported:
-     * - T14:30:45.123 → Thh:mm:ss.sss (with milliseconds)
-     * - T14:30:45 → Thh:mm:ss (standard time format)
-     * - T14:30 → Thh:mm (hour and minute only)
+     * Only the exact formats listed below are supported. Other ISO 8601 variations are not accepted.
      *
-     * All of the above may include time zone indicators like 'Z', '+05:30', '-08:00'.
+     * Supported time formats:
+     * - `Thh:mm:ss.fff` (with milliseconds)
+     * - `Thh:mm:ss` (with seconds)
+     * - `Thh:mm` (hours and minutes only)
      *
-     * Examples of supported timestamps:
-     * - 2023-10-15T14:30:45Z
-     * - 2023-10-15T14:30:45.123+05:30
-     * - 2023-10-15T14:30Z
+     * A timezone indicator (`Z`, `+hh:mm`, or `-hh:mm`) may be appended to any of the above.
      *
-     * Unsupported or partially supported formats:
-     * - T143045.123 or T143045 (no colons)
-     * - T14.500 (decimal hours)
-     * - T14 (hour only)
-     * - T14:30.500 (minute fractions)
-     * - T24:00:00 (invalid)
-     * - T23:59:60 (leap second)
+     * Unsupported formats include compact notation such as `T1430`, `T143045`, or `T14.5`.
+     *
+     * Examples:
+     * - `R/2023-10-15T14:30:00Z/P1W`
+     * - `R/2023-10-15T14:30:45.123+05:30/P1D`
+     * - `R/2023-10-15T14:30Z/P1D`
      */
     repeatingTimeIntervals: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -222,7 +215,7 @@ export interface BackupScheduleArgs {
      * - 2023-10-15T14:30:45.123+05:30
      * - 2023-10-15T14:30-08:00
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -232,23 +225,23 @@ export interface BackupVaultArgs {
     /**
      * Feature Settings
      */
-    featureSettings?: pulumi.Input<FeatureSettingsArgs>;
+    featureSettings?: pulumi.Input<FeatureSettingsArgs | undefined>;
     /**
      * Monitoring Settings
      */
-    monitoringSettings?: pulumi.Input<MonitoringSettingsArgs>;
+    monitoringSettings?: pulumi.Input<MonitoringSettingsArgs | undefined>;
     /**
      * List of replicated regions for Backup Vault
      */
-    replicatedRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    replicatedRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ResourceGuardOperationRequests on which LAC check will be performed
      */
-    resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Security Settings
      */
-    securitySettings?: pulumi.Input<SecuritySettingsArgs>;
+    securitySettings?: pulumi.Input<SecuritySettingsArgs | undefined>;
     /**
      * Storage Settings
      */
@@ -277,11 +270,11 @@ export interface CmkKekIdentityArgs {
     /**
      * The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only.
      */
-    identityId?: pulumi.Input<string>;
+    identityId?: pulumi.Input<string | undefined>;
     /**
      * The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
      */
-    identityType?: pulumi.Input<string | enums.IdentityType>;
+    identityType?: pulumi.Input<string | enums.IdentityType | undefined>;
 }
 
 /**
@@ -291,7 +284,7 @@ export interface CmkKeyVaultPropertiesArgs {
     /**
      * The key uri of the Customer Managed Key
      */
-    keyUri?: pulumi.Input<string>;
+    keyUri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -309,7 +302,7 @@ export interface CrossRegionRestoreSettingsArgs {
     /**
      * CrossRegionRestore state
      */
-    state?: pulumi.Input<string | enums.CrossRegionRestoreState>;
+    state?: pulumi.Input<string | enums.CrossRegionRestoreState | undefined>;
 }
 
 /**
@@ -319,7 +312,7 @@ export interface CrossSubscriptionRestoreSettingsArgs {
     /**
      * CrossSubscriptionRestore state
      */
-    state?: pulumi.Input<string | enums.CrossSubscriptionRestoreState>;
+    state?: pulumi.Input<string | enums.CrossSubscriptionRestoreState | undefined>;
 }
 
 /**
@@ -329,7 +322,7 @@ export interface CustomCopyOptionArgs {
     /**
      * Data copied after given timespan
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * Type of the specific object - used for deserializing
      * Expected value is 'CustomCopyOption'.
@@ -358,11 +351,11 @@ export interface DatasourceArgs {
     /**
      * DatasourceType of the resource.
      */
-    datasourceType?: pulumi.Input<string>;
+    datasourceType?: pulumi.Input<string | undefined>;
     /**
      * Type of Datasource object, used to initialize the right inherited type
      */
-    objectType?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string | undefined>;
     /**
      * Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
      */
@@ -370,23 +363,23 @@ export interface DatasourceArgs {
     /**
      * Location of datasource.
      */
-    resourceLocation?: pulumi.Input<string>;
+    resourceLocation?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource in the context of parent.
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * Properties specific to data source
      */
-    resourceProperties?: pulumi.Input<DefaultResourcePropertiesArgs>;
+    resourceProperties?: pulumi.Input<DefaultResourcePropertiesArgs | undefined>;
     /**
      * Resource Type of Datasource.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * Uri of the resource.
      */
-    resourceUri?: pulumi.Input<string>;
+    resourceUri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -396,11 +389,11 @@ export interface DatasourceSetArgs {
     /**
      * DatasourceType of the resource.
      */
-    datasourceType?: pulumi.Input<string>;
+    datasourceType?: pulumi.Input<string | undefined>;
     /**
      * Type of Datasource object, used to initialize the right inherited type
      */
-    objectType?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string | undefined>;
     /**
      * Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
      */
@@ -408,23 +401,23 @@ export interface DatasourceSetArgs {
     /**
      * Location of datasource.
      */
-    resourceLocation?: pulumi.Input<string>;
+    resourceLocation?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource in the context of parent.
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * Properties specific to data source set
      */
-    resourceProperties?: pulumi.Input<DefaultResourcePropertiesArgs>;
+    resourceProperties?: pulumi.Input<DefaultResourcePropertiesArgs | undefined>;
     /**
      * Resource Type of Datasource.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * Uri of the resource.
      */
-    resourceUri?: pulumi.Input<string>;
+    resourceUri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -434,11 +427,11 @@ export interface DayArgs {
     /**
      * Date of the month
      */
-    date?: pulumi.Input<number>;
+    date?: pulumi.Input<number | undefined>;
     /**
      * Whether Date is last date of month
      */
-    isLast?: pulumi.Input<boolean>;
+    isLast?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -459,11 +452,11 @@ export interface DppIdentityDetailsArgs {
     /**
      * The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the user assigned identities.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -473,41 +466,41 @@ export interface EncryptionSettingsArgs {
     /**
      * Enabling/Disabling the Double Encryption state
      */
-    infrastructureEncryption?: pulumi.Input<string | enums.InfrastructureEncryptionState>;
+    infrastructureEncryption?: pulumi.Input<string | enums.InfrastructureEncryptionState | undefined>;
     /**
      * The details of the managed identity used for CMK
      */
-    kekIdentity?: pulumi.Input<CmkKekIdentityArgs>;
+    kekIdentity?: pulumi.Input<CmkKekIdentityArgs | undefined>;
     /**
      * The properties of the Key Vault which hosts CMK
      */
-    keyVaultProperties?: pulumi.Input<CmkKeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<CmkKeyVaultPropertiesArgs | undefined>;
     /**
      * Encryption state of the Backup Vault.
      */
-    state?: pulumi.Input<string | enums.EncryptionState>;
+    state?: pulumi.Input<string | enums.EncryptionState | undefined>;
 }
 
 /**
  * Class containing feature settings of vault
  */
 export interface FeatureSettingsArgs {
-    crossRegionRestoreSettings?: pulumi.Input<CrossRegionRestoreSettingsArgs>;
+    crossRegionRestoreSettings?: pulumi.Input<CrossRegionRestoreSettingsArgs | undefined>;
     /**
      * CrossSubscriptionRestore Settings
      */
-    crossSubscriptionRestoreSettings?: pulumi.Input<CrossSubscriptionRestoreSettingsArgs>;
+    crossSubscriptionRestoreSettings?: pulumi.Input<CrossSubscriptionRestoreSettingsArgs | undefined>;
 }
 
 export interface IdentityDetailsArgs {
     /**
      * Specifies if the BI is protected by System Identity.
      */
-    useSystemAssignedIdentity?: pulumi.Input<boolean>;
+    useSystemAssignedIdentity?: pulumi.Input<boolean | undefined>;
     /**
      * ARM URL for User Assigned Identity.
      */
-    userAssignedIdentityArmUrl?: pulumi.Input<string>;
+    userAssignedIdentityArmUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -528,7 +521,7 @@ export interface ImmutabilitySettingsArgs {
     /**
      * Immutability state
      */
-    state?: pulumi.Input<string | enums.ImmutabilityState>;
+    state?: pulumi.Input<string | enums.ImmutabilityState | undefined>;
 }
 
 /**
@@ -538,15 +531,15 @@ export interface KubernetesClusterBackupDatasourceParametersArgs {
     /**
      * Gets or sets the backup hook references. This property sets the hook reference to be executed during backup.
      */
-    backupHookReferences?: pulumi.Input<pulumi.Input<NamespacedNameResourceArgs>[]>;
+    backupHookReferences?: pulumi.Input<pulumi.Input<NamespacedNameResourceArgs>[] | undefined>;
     /**
      * Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during backup.
      */
-    excludedNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedNamespaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Gets or sets the exclude resource types property. This property sets the resource types to be excluded during backup.
      */
-    excludedResourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedResourceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during backup.
      */
@@ -554,19 +547,19 @@ export interface KubernetesClusterBackupDatasourceParametersArgs {
     /**
      * Gets or sets the include namespaces property. This property sets the namespaces to be included during backup.
      */
-    includedNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    includedNamespaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Gets or sets the include resource types property. This property sets the resource types to be included during backup.
      */
-    includedResourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    includedResourceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Gets or sets the include volume types property. This property sets the volume types to be included during backup.
      */
-    includedVolumeTypes?: pulumi.Input<pulumi.Input<string | enums.AKSVolumeTypes>[]>;
+    includedVolumeTypes?: pulumi.Input<pulumi.Input<string | enums.AKSVolumeTypes>[] | undefined>;
     /**
      * Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during backup.
      */
-    labelSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    labelSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of the specific object - used for deserializing
      * Expected value is 'KubernetesClusterBackupDatasourceParameters'.
@@ -585,7 +578,7 @@ export interface MonitoringSettingsArgs {
     /**
      * Settings for Azure Monitor based alerts
      */
-    azureMonitorAlertSettings?: pulumi.Input<AzureMonitorAlertSettingsArgs>;
+    azureMonitorAlertSettings?: pulumi.Input<AzureMonitorAlertSettingsArgs | undefined>;
 }
 
 /**
@@ -595,11 +588,11 @@ export interface NamespacedNameResourceArgs {
     /**
      * Name of the resource
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Namespace in which the resource exists
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -610,7 +603,7 @@ export interface PolicyInfoArgs {
     /**
      * Policy parameters for the backup instance
      */
-    policyParameters?: pulumi.Input<PolicyParametersArgs>;
+    policyParameters?: pulumi.Input<PolicyParametersArgs | undefined>;
 }
 
 /**
@@ -620,36 +613,36 @@ export interface PolicyParametersArgs {
     /**
      * Gets or sets the Backup Data Source Parameters
      */
-    backupDatasourceParametersList?: pulumi.Input<pulumi.Input<BlobBackupDatasourceParametersArgs | KubernetesClusterBackupDatasourceParametersArgs>[]>;
+    backupDatasourceParametersList?: pulumi.Input<pulumi.Input<BlobBackupDatasourceParametersArgs | KubernetesClusterBackupDatasourceParametersArgs>[] | undefined>;
     /**
      * Gets or sets the DataStore Parameters
      */
-    dataStoreParametersList?: pulumi.Input<pulumi.Input<AzureOperationalStoreParametersArgs>[]>;
+    dataStoreParametersList?: pulumi.Input<pulumi.Input<AzureOperationalStoreParametersArgs>[] | undefined>;
 }
 
 export interface ResourceGuardArgs {
     /**
      * List of critical operations which are not protected by this resourceGuard
      */
-    vaultCriticalOperationExclusionList?: pulumi.Input<pulumi.Input<string>[]>;
+    vaultCriticalOperationExclusionList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
  * VaultCritical Operation protected by a resource guard
  */
 export interface ResourceGuardOperationDetailArgs {
-    defaultResourceRequest?: pulumi.Input<string>;
-    vaultCriticalOperation?: pulumi.Input<string>;
+    defaultResourceRequest?: pulumi.Input<string | undefined>;
+    vaultCriticalOperation?: pulumi.Input<string | undefined>;
 }
 
 /**
  * ResourceGuardProxyBase object, used in ResourceGuardProxyBaseResource
  */
 export interface ResourceGuardProxyBaseArgs {
-    description?: pulumi.Input<string>;
-    lastUpdatedTime?: pulumi.Input<string>;
-    resourceGuardOperationDetails?: pulumi.Input<pulumi.Input<ResourceGuardOperationDetailArgs>[]>;
-    resourceGuardResourceId?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    lastUpdatedTime?: pulumi.Input<string | undefined>;
+    resourceGuardOperationDetails?: pulumi.Input<pulumi.Input<ResourceGuardOperationDetailArgs>[] | undefined>;
+    resourceGuardResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -670,19 +663,19 @@ export interface ScheduleBasedBackupCriteriaArgs {
      * it contains absolute values like "AllBackup" / "FirstOfDay" / "FirstOfWeek" / "FirstOfMonth"
      * and should be part of AbsoluteMarker enum
      */
-    absoluteCriteria?: pulumi.Input<pulumi.Input<string | enums.AbsoluteMarker>[]>;
+    absoluteCriteria?: pulumi.Input<pulumi.Input<string | enums.AbsoluteMarker>[] | undefined>;
     /**
      * This is day of the month from 1 to 28 other wise last of month
      */
-    daysOfMonth?: pulumi.Input<pulumi.Input<DayArgs>[]>;
+    daysOfMonth?: pulumi.Input<pulumi.Input<DayArgs>[] | undefined>;
     /**
      * It should be Sunday/Monday/T..../Saturday
      */
-    daysOfTheWeek?: pulumi.Input<pulumi.Input<string | enums.DayOfWeek>[]>;
+    daysOfTheWeek?: pulumi.Input<pulumi.Input<string | enums.DayOfWeek>[] | undefined>;
     /**
      * It should be January/February/....../December
      */
-    monthsOfYear?: pulumi.Input<pulumi.Input<string | enums.Month>[]>;
+    monthsOfYear?: pulumi.Input<pulumi.Input<string | enums.Month>[] | undefined>;
     /**
      * Type of the specific object - used for deserializing
      * Expected value is 'ScheduleBasedBackupCriteria'.
@@ -691,11 +684,11 @@ export interface ScheduleBasedBackupCriteriaArgs {
     /**
      * List of schedule times for backup
      */
-    scheduleTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    scheduleTimes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * It should be First/Second/Third/Fourth/Last
      */
-    weeksOfTheMonth?: pulumi.Input<pulumi.Input<string | enums.WeekNumber>[]>;
+    weeksOfTheMonth?: pulumi.Input<pulumi.Input<string | enums.WeekNumber>[] | undefined>;
 }
 
 /**
@@ -729,7 +722,7 @@ export interface SecretStoreBasedAuthCredentialsArgs {
     /**
      * Secret store resource
      */
-    secretStoreResource?: pulumi.Input<SecretStoreResourceArgs>;
+    secretStoreResource?: pulumi.Input<SecretStoreResourceArgs | undefined>;
 }
 
 /**
@@ -743,11 +736,11 @@ export interface SecretStoreResourceArgs {
     /**
      * Uri to get to the resource
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets value stored in secret store resource
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -757,15 +750,15 @@ export interface SecuritySettingsArgs {
     /**
      * Customer Managed Key details of the resource.
      */
-    encryptionSettings?: pulumi.Input<EncryptionSettingsArgs>;
+    encryptionSettings?: pulumi.Input<EncryptionSettingsArgs | undefined>;
     /**
      * Immutability Settings at vault level
      */
-    immutabilitySettings?: pulumi.Input<ImmutabilitySettingsArgs>;
+    immutabilitySettings?: pulumi.Input<ImmutabilitySettingsArgs | undefined>;
     /**
      * Soft delete related settings
      */
-    softDeleteSettings?: pulumi.Input<SoftDeleteSettingsArgs>;
+    softDeleteSettings?: pulumi.Input<SoftDeleteSettingsArgs | undefined>;
 }
 
 /**
@@ -775,11 +768,11 @@ export interface SoftDeleteSettingsArgs {
     /**
      * Soft delete retention duration
      */
-    retentionDurationInDays?: pulumi.Input<number>;
+    retentionDurationInDays?: pulumi.Input<number | undefined>;
     /**
      * State of soft delete
      */
-    state?: pulumi.Input<string | enums.SoftDeleteState>;
+    state?: pulumi.Input<string | enums.SoftDeleteState | undefined>;
 }
 
 /**
@@ -794,7 +787,7 @@ export interface SourceLifeCycleArgs {
      * DataStoreInfo base
      */
     sourceDataStore: pulumi.Input<DataStoreInfoBaseArgs>;
-    targetDataStoreCopySettings?: pulumi.Input<pulumi.Input<TargetCopySettingArgs>[]>;
+    targetDataStoreCopySettings?: pulumi.Input<pulumi.Input<TargetCopySettingArgs>[] | undefined>;
 }
 
 /**
@@ -804,11 +797,11 @@ export interface StorageSettingArgs {
     /**
      * Gets or sets the type of the datastore.
      */
-    datastoreType?: pulumi.Input<string | enums.StorageSettingStoreTypes>;
+    datastoreType?: pulumi.Input<string | enums.StorageSettingStoreTypes | undefined>;
     /**
      * Gets or sets the type.
      */
-    type?: pulumi.Input<string | enums.StorageSettingTypes>;
+    type?: pulumi.Input<string | enums.StorageSettingTypes | undefined>;
 }
 
 /**
@@ -818,7 +811,7 @@ export interface TaggingCriteriaArgs {
     /**
      * Criteria which decides whether the tag can be applied to a triggered backup.
      */
-    criteria?: pulumi.Input<pulumi.Input<ScheduleBasedBackupCriteriaArgs>[]>;
+    criteria?: pulumi.Input<pulumi.Input<ScheduleBasedBackupCriteriaArgs>[] | undefined>;
     /**
      * Specifies if tag is default.
      */

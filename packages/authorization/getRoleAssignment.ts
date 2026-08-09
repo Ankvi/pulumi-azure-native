@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * Get a role assignment by scope and name.
  *
@@ -22,7 +23,7 @@ export interface GetRoleAssignmentArgs {
      */
     roleAssignmentName: string;
     /**
-     * The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scope: string;
     /**
@@ -64,11 +65,11 @@ export interface GetRoleAssignmentResult {
      */
     readonly description?: string;
     /**
-     * The role assignment ID.
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
     /**
-     * The role assignment name.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -88,7 +89,11 @@ export interface GetRoleAssignmentResult {
      */
     readonly scope: string;
     /**
-     * The role assignment type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -122,11 +127,11 @@ export interface GetRoleAssignmentOutputArgs {
      */
     roleAssignmentName: pulumi.Input<string>;
     /**
-     * The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scope: pulumi.Input<string>;
     /**
      * Tenant ID for cross-tenant request
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

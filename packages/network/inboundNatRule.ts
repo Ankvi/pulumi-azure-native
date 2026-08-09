@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class InboundNatRule extends pulumi.CustomResource {
     /**
@@ -156,7 +156,7 @@ export class InboundNatRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20170601:InboundNatRule" }, { type: "azure-native:network/v20170801:InboundNatRule" }, { type: "azure-native:network/v20170901:InboundNatRule" }, { type: "azure-native:network/v20171001:InboundNatRule" }, { type: "azure-native:network/v20171101:InboundNatRule" }, { type: "azure-native:network/v20180101:InboundNatRule" }, { type: "azure-native:network/v20180201:InboundNatRule" }, { type: "azure-native:network/v20180401:InboundNatRule" }, { type: "azure-native:network/v20180601:InboundNatRule" }, { type: "azure-native:network/v20180701:InboundNatRule" }, { type: "azure-native:network/v20180801:InboundNatRule" }, { type: "azure-native:network/v20181001:InboundNatRule" }, { type: "azure-native:network/v20181101:InboundNatRule" }, { type: "azure-native:network/v20181201:InboundNatRule" }, { type: "azure-native:network/v20190201:InboundNatRule" }, { type: "azure-native:network/v20190401:InboundNatRule" }, { type: "azure-native:network/v20190601:InboundNatRule" }, { type: "azure-native:network/v20190701:InboundNatRule" }, { type: "azure-native:network/v20190801:InboundNatRule" }, { type: "azure-native:network/v20190901:InboundNatRule" }, { type: "azure-native:network/v20191101:InboundNatRule" }, { type: "azure-native:network/v20191201:InboundNatRule" }, { type: "azure-native:network/v20200301:InboundNatRule" }, { type: "azure-native:network/v20200401:InboundNatRule" }, { type: "azure-native:network/v20200501:InboundNatRule" }, { type: "azure-native:network/v20200601:InboundNatRule" }, { type: "azure-native:network/v20200701:InboundNatRule" }, { type: "azure-native:network/v20200801:InboundNatRule" }, { type: "azure-native:network/v20201101:InboundNatRule" }, { type: "azure-native:network/v20210201:InboundNatRule" }, { type: "azure-native:network/v20210301:InboundNatRule" }, { type: "azure-native:network/v20210501:InboundNatRule" }, { type: "azure-native:network/v20210801:InboundNatRule" }, { type: "azure-native:network/v20220101:InboundNatRule" }, { type: "azure-native:network/v20220501:InboundNatRule" }, { type: "azure-native:network/v20220701:InboundNatRule" }, { type: "azure-native:network/v20220901:InboundNatRule" }, { type: "azure-native:network/v20221101:InboundNatRule" }, { type: "azure-native:network/v20230201:InboundNatRule" }, { type: "azure-native:network/v20230401:InboundNatRule" }, { type: "azure-native:network/v20230501:InboundNatRule" }, { type: "azure-native:network/v20230601:InboundNatRule" }, { type: "azure-native:network/v20230901:InboundNatRule" }, { type: "azure-native:network/v20231101:InboundNatRule" }, { type: "azure-native:network/v20240101:InboundNatRule" }, { type: "azure-native:network/v20240301:InboundNatRule" }, { type: "azure-native:network/v20240501:InboundNatRule" }, { type: "azure-native:network/v20240701:InboundNatRule" }, { type: "azure-native:network/v20241001:InboundNatRule" }, { type: "azure-native:network/v20250101:InboundNatRule" }, { type: "azure-native:network/v20250301:InboundNatRule" }, { type: "azure-native:network/v20250501:InboundNatRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20170601:InboundNatRule" }, { type: "azure-native:network/v20170801:InboundNatRule" }, { type: "azure-native:network/v20170901:InboundNatRule" }, { type: "azure-native:network/v20171001:InboundNatRule" }, { type: "azure-native:network/v20171101:InboundNatRule" }, { type: "azure-native:network/v20180101:InboundNatRule" }, { type: "azure-native:network/v20180201:InboundNatRule" }, { type: "azure-native:network/v20180401:InboundNatRule" }, { type: "azure-native:network/v20180601:InboundNatRule" }, { type: "azure-native:network/v20180701:InboundNatRule" }, { type: "azure-native:network/v20180801:InboundNatRule" }, { type: "azure-native:network/v20181001:InboundNatRule" }, { type: "azure-native:network/v20181101:InboundNatRule" }, { type: "azure-native:network/v20181201:InboundNatRule" }, { type: "azure-native:network/v20190201:InboundNatRule" }, { type: "azure-native:network/v20190401:InboundNatRule" }, { type: "azure-native:network/v20190601:InboundNatRule" }, { type: "azure-native:network/v20190701:InboundNatRule" }, { type: "azure-native:network/v20190801:InboundNatRule" }, { type: "azure-native:network/v20190901:InboundNatRule" }, { type: "azure-native:network/v20191101:InboundNatRule" }, { type: "azure-native:network/v20191201:InboundNatRule" }, { type: "azure-native:network/v20200301:InboundNatRule" }, { type: "azure-native:network/v20200401:InboundNatRule" }, { type: "azure-native:network/v20200501:InboundNatRule" }, { type: "azure-native:network/v20200601:InboundNatRule" }, { type: "azure-native:network/v20200701:InboundNatRule" }, { type: "azure-native:network/v20200801:InboundNatRule" }, { type: "azure-native:network/v20201101:InboundNatRule" }, { type: "azure-native:network/v20210201:InboundNatRule" }, { type: "azure-native:network/v20210301:InboundNatRule" }, { type: "azure-native:network/v20210501:InboundNatRule" }, { type: "azure-native:network/v20210801:InboundNatRule" }, { type: "azure-native:network/v20220101:InboundNatRule" }, { type: "azure-native:network/v20220501:InboundNatRule" }, { type: "azure-native:network/v20220701:InboundNatRule" }, { type: "azure-native:network/v20220901:InboundNatRule" }, { type: "azure-native:network/v20221101:InboundNatRule" }, { type: "azure-native:network/v20230201:InboundNatRule" }, { type: "azure-native:network/v20230401:InboundNatRule" }, { type: "azure-native:network/v20230501:InboundNatRule" }, { type: "azure-native:network/v20230601:InboundNatRule" }, { type: "azure-native:network/v20230901:InboundNatRule" }, { type: "azure-native:network/v20231101:InboundNatRule" }, { type: "azure-native:network/v20240101:InboundNatRule" }, { type: "azure-native:network/v20240301:InboundNatRule" }, { type: "azure-native:network/v20240501:InboundNatRule" }, { type: "azure-native:network/v20240701:InboundNatRule" }, { type: "azure-native:network/v20241001:InboundNatRule" }, { type: "azure-native:network/v20250101:InboundNatRule" }, { type: "azure-native:network/v20250301:InboundNatRule" }, { type: "azure-native:network/v20250501:InboundNatRule" }, { type: "azure-native:network/v20250701:InboundNatRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(InboundNatRule.__pulumiType, name, resourceInputs, opts);
     }
@@ -169,47 +169,47 @@ export interface InboundNatRuleArgs {
     /**
      * A reference to backendAddressPool resource.
      */
-    backendAddressPool?: pulumi.Input<types.inputs.SubResourceArgs>;
+    backendAddressPool?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * The port used for the internal endpoint. Acceptable values range from 1 to 65535.
      */
-    backendPort?: pulumi.Input<number>;
+    backendPort?: pulumi.Input<number | undefined>;
     /**
      * Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
      */
-    enableFloatingIP?: pulumi.Input<boolean>;
+    enableFloatingIP?: pulumi.Input<boolean | undefined>;
     /**
      * Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
      */
-    enableTcpReset?: pulumi.Input<boolean>;
+    enableTcpReset?: pulumi.Input<boolean | undefined>;
     /**
      * A reference to frontend IP addresses.
      */
-    frontendIPConfiguration?: pulumi.Input<types.inputs.SubResourceArgs>;
+    frontendIPConfiguration?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
      */
-    frontendPort?: pulumi.Input<number>;
+    frontendPort?: pulumi.Input<number | undefined>;
     /**
      * The port range end for the external endpoint. This property is used together with BackendAddressPool and FrontendPortRangeStart. Individual inbound NAT rule port mappings will be created for each backend address from BackendAddressPool. Acceptable values range from 1 to 65534.
      */
-    frontendPortRangeEnd?: pulumi.Input<number>;
+    frontendPortRangeEnd?: pulumi.Input<number | undefined>;
     /**
      * The port range start for the external endpoint. This property is used together with BackendAddressPool and FrontendPortRangeEnd. Individual inbound NAT rule port mappings will be created for each backend address from BackendAddressPool. Acceptable values range from 1 to 65534.
      */
-    frontendPortRangeStart?: pulumi.Input<number>;
+    frontendPortRangeStart?: pulumi.Input<number | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
      */
-    idleTimeoutInMinutes?: pulumi.Input<number>;
+    idleTimeoutInMinutes?: pulumi.Input<number | undefined>;
     /**
      * The name of the inbound NAT rule.
      */
-    inboundNatRuleName?: pulumi.Input<string>;
+    inboundNatRuleName?: pulumi.Input<string | undefined>;
     /**
      * The name of the load balancer.
      */
@@ -217,11 +217,11 @@ export interface InboundNatRuleArgs {
     /**
      * The name of the resource that is unique within the set of inbound NAT rules used by the load balancer. This name can be used to access the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The reference to the transport protocol used by the load balancing rule.
      */
-    protocol?: pulumi.Input<string | types.enums.TransportProtocol>;
+    protocol?: pulumi.Input<string | types.enums.TransportProtocol | undefined>;
     /**
      * The name of the resource group.
      */

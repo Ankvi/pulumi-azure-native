@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01-preview.
  *
- * Other available API versions: 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview, 2025-06-01-preview, 2025-11-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-01-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview, 2025-06-01-preview, 2025-11-01, 2026-01-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConnectedRegistry extends pulumi.CustomResource {
     /**
@@ -130,7 +130,7 @@ export class ConnectedRegistry extends pulumi.CustomResource {
             resourceInputs["clientTokenIds"] = args?.clientTokenIds;
             resourceInputs["connectedRegistryName"] = args?.connectedRegistryName;
             resourceInputs["garbageCollection"] = args?.garbageCollection;
-            resourceInputs["logging"] = args ? (args.logging ? pulumi.output(args.logging).apply(types.inputs.loggingPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["logging"] = args ? pulumi.output(args.logging).apply(v => v === undefined ? undefined : types.inputs.loggingPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["mode"] = args?.mode;
             resourceInputs["notificationsList"] = args?.notificationsList;
             resourceInputs["parent"] = args?.parent;
@@ -167,7 +167,7 @@ export class ConnectedRegistry extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20201101preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20210601preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20210801preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20211201preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20220201preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20230101preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20230601preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20230801preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20231101preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20241101preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20250301preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20250401:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20250501preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20250601preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20251101:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20260101preview:ConnectedRegistry" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20201101preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20210601preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20210801preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20211201preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20220201preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20230101preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20230601preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20230801preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20231101preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20241101preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20250301preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20250401:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20250501preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20250601preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20251101:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20260101preview:ConnectedRegistry" }, { type: "azure-native:containerregistry/v20260301preview:ConnectedRegistry" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ConnectedRegistry.__pulumiType, name, resourceInputs, opts);
     }
@@ -180,19 +180,19 @@ export interface ConnectedRegistryArgs {
     /**
      * The list of the ACR token resource IDs used to authenticate clients to the connected registry.
      */
-    clientTokenIds?: pulumi.Input<pulumi.Input<string>[]>;
+    clientTokenIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the connected registry.
      */
-    connectedRegistryName?: pulumi.Input<string>;
+    connectedRegistryName?: pulumi.Input<string | undefined>;
     /**
      * The garbage collection properties of the connected registry.
      */
-    garbageCollection?: pulumi.Input<types.inputs.GarbageCollectionPropertiesArgs>;
+    garbageCollection?: pulumi.Input<types.inputs.GarbageCollectionPropertiesArgs | undefined>;
     /**
      * The logging properties of the connected registry.
      */
-    logging?: pulumi.Input<types.inputs.LoggingPropertiesArgs>;
+    logging?: pulumi.Input<types.inputs.LoggingPropertiesArgs | undefined>;
     /**
      * The mode of the connected registry resource that indicates the permissions of the registry.
      */
@@ -200,7 +200,7 @@ export interface ConnectedRegistryArgs {
     /**
      * The list of notifications subscription information for the connected registry.
      */
-    notificationsList?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The parent of the connected registry.
      */

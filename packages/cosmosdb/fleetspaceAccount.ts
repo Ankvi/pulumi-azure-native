@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-10-15.
  *
- * Other available API versions: 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-05-01-preview, 2025-11-01-preview, 2026-03-15, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FleetspaceAccount extends pulumi.CustomResource {
     /**
@@ -99,7 +99,7 @@ export class FleetspaceAccount extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cosmosdb/v20250501preview:FleetspaceAccount" }, { type: "azure-native:cosmosdb/v20251015:FleetspaceAccount" }, { type: "azure-native:cosmosdb/v20251101preview:FleetspaceAccount" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cosmosdb/v20250501preview:FleetspaceAccount" }, { type: "azure-native:cosmosdb/v20251015:FleetspaceAccount" }, { type: "azure-native:cosmosdb/v20251101preview:FleetspaceAccount" }, { type: "azure-native:cosmosdb/v20260315:FleetspaceAccount" }, { type: "azure-native:cosmosdb/v20260401preview:FleetspaceAccount" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FleetspaceAccount.__pulumiType, name, resourceInputs, opts);
     }
@@ -116,7 +116,7 @@ export interface FleetspaceAccountArgs {
     /**
      * Cosmos DB fleetspace account name.
      */
-    fleetspaceAccountName?: pulumi.Input<string>;
+    fleetspaceAccountName?: pulumi.Input<string | undefined>;
     /**
      * Cosmos DB fleetspace name. Needs to be unique under a fleet.
      */
@@ -124,7 +124,7 @@ export interface FleetspaceAccountArgs {
     /**
      * Configuration for fleetspace Account in the fleetspace.
      */
-    globalDatabaseAccountProperties?: pulumi.Input<types.inputs.FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs>;
+    globalDatabaseAccountProperties?: pulumi.Input<types.inputs.FleetspaceAccountPropertiesGlobalDatabaseAccountPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -102,7 +102,7 @@ export interface DatabaseMigrationsSqlVmArgs {
     /**
      * Database Migration Resource properties for SQL Virtual Machine.
      */
-    properties?: pulumi.Input<types.inputs.DatabaseMigrationPropertiesSqlVmArgs>;
+    properties?: pulumi.Input<types.inputs.DatabaseMigrationPropertiesSqlVmArgs | undefined>;
     /**
      * Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -111,5 +111,5 @@ export interface DatabaseMigrationsSqlVmArgs {
     /**
      * The name of the target database.
      */
-    targetDbName?: pulumi.Input<string>;
+    targetDbName?: pulumi.Input<string | undefined>;
 }

@@ -104,7 +104,7 @@ export interface FirewallRuleArgs {
     /**
      * Name of the firewall rule.
      */
-    firewallRuleName?: pulumi.Input<string>;
+    firewallRuleName?: pulumi.Input<string | undefined>;
     /**
      * Name of the database fleet.
      */
@@ -116,7 +116,7 @@ export interface FirewallRuleArgs {
     /**
      * A Firewall rule properties.
      */
-    properties?: pulumi.Input<types.inputs.FirewallRulePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.FirewallRulePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

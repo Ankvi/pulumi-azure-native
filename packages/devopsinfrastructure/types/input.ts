@@ -12,7 +12,7 @@ export interface AutomaticResourcePredictionsProfileArgs {
     /**
      * Determines the balance between cost and performance.
      */
-    predictionPreference?: pulumi.Input<string | enums.PredictionPreference>;
+    predictionPreference?: pulumi.Input<string | enums.PredictionPreference | undefined>;
 }
 
 /**
@@ -31,7 +31,7 @@ export interface AzureDevOpsOrganizationProfileArgs {
     /**
      * The type of permission which determines which accounts are admins on the Azure DevOps pool.
      */
-    permissionProfile?: pulumi.Input<AzureDevOpsPermissionProfileArgs>;
+    permissionProfile?: pulumi.Input<AzureDevOpsPermissionProfileArgs | undefined>;
 }
 
 /**
@@ -41,7 +41,7 @@ export interface AzureDevOpsPermissionProfileArgs {
     /**
      * Group email addresses
      */
-    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    groups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Determines who has admin permissions to the Azure DevOps pool.
      */
@@ -49,7 +49,7 @@ export interface AzureDevOpsPermissionProfileArgs {
     /**
      * User email addresses
      */
-    users?: pulumi.Input<pulumi.Input<string>[]>;
+    users?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -59,19 +59,19 @@ export interface DataDiskArgs {
     /**
      * The type of caching to be enabled for the data disks. The default value for caching is readwrite. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
      */
-    caching?: pulumi.Input<string | enums.CachingType>;
+    caching?: pulumi.Input<string | enums.CachingType | undefined>;
     /**
      * The initial disk size in gigabytes.
      */
-    diskSizeGiB?: pulumi.Input<number>;
+    diskSizeGiB?: pulumi.Input<number | undefined>;
     /**
      * The drive letter for the empty data disk. If not specified, it will be the first available letter.
      */
-    driveLetter?: pulumi.Input<string>;
+    driveLetter?: pulumi.Input<string | undefined>;
     /**
      * The storage Account type to be used for the data disk. If omitted, the default is "standard_lrs".
      */
-    storageAccountType?: pulumi.Input<string | enums.StorageAccountType>;
+    storageAccountType?: pulumi.Input<string | enums.StorageAccountType | undefined>;
 }
 
 /**
@@ -91,7 +91,7 @@ export interface GitHubOrganizationArgs {
     /**
      * Optional list of repositories in which the pool should be created.
      */
-    repositories?: pulumi.Input<pulumi.Input<string>[]>;
+    repositories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The GitHub organization URL in which the pool should be created.
      */
@@ -124,7 +124,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -155,15 +155,15 @@ export interface OrganizationArgs {
     /**
      * Determines if the pool should have open access to all projects in this organization.
      */
-    openAccess?: pulumi.Input<boolean>;
+    openAccess?: pulumi.Input<boolean | undefined>;
     /**
      * How many machines can be created at maximum in this organization out of the maximumConcurrency of the pool.
      */
-    parallelism?: pulumi.Input<number>;
+    parallelism?: pulumi.Input<number | undefined>;
     /**
      * Optional list of projects in which the pool should be created.
      */
-    projects?: pulumi.Input<pulumi.Input<string>[]>;
+    projects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Azure DevOps organization URL in which the pool should be created.
      */
@@ -177,11 +177,11 @@ export interface OsProfileArgs {
     /**
      * Determines how the service should be run. By default, this will be set to Service.
      */
-    logonType?: pulumi.Input<string | enums.LogonType>;
+    logonType?: pulumi.Input<string | enums.LogonType | undefined>;
     /**
      * The secret management settings of the machines in the pool.
      */
-    secretsManagementSettings?: pulumi.Input<SecretsManagementSettingsArgs>;
+    secretsManagementSettings?: pulumi.Input<SecretsManagementSettingsArgs | undefined>;
 }
 
 /**
@@ -191,23 +191,23 @@ export interface PoolImageArgs {
     /**
      * List of aliases to reference the image by.
      */
-    aliases?: pulumi.Input<pulumi.Input<string>[]>;
+    aliases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The percentage of the buffer to be allocated to this image.
      */
-    buffer?: pulumi.Input<string>;
+    buffer?: pulumi.Input<string | undefined>;
     /**
      * The ephemeral type of the image.
      */
-    ephemeralType?: pulumi.Input<string | enums.EphemeralType>;
+    ephemeralType?: pulumi.Input<string | enums.EphemeralType | undefined>;
     /**
      * The resource id of the image.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The image to use from a well-known set of images made available to customers.
      */
-    wellKnownImageName?: pulumi.Input<string>;
+    wellKnownImageName?: pulumi.Input<string | undefined>;
 }
 /**
  * poolImageArgsProvideDefaults sets the appropriate defaults for PoolImageArgs
@@ -226,11 +226,11 @@ export interface SecretsManagementSettingsArgs {
     /**
      * Where to store certificates on the machine.
      */
-    certificateStoreLocation?: pulumi.Input<string>;
+    certificateStoreLocation?: pulumi.Input<string | undefined>;
     /**
      * Name of the certificate store to use on the machine, currently 'My' and 'Root' are supported.
      */
-    certificateStoreName?: pulumi.Input<string | enums.CertificateStoreNameOption>;
+    certificateStoreName?: pulumi.Input<string | enums.CertificateStoreNameOption | undefined>;
     /**
      * Defines if the key of the certificates should be exportable.
      */
@@ -248,7 +248,7 @@ export interface StatefulArgs {
     /**
      * How long should the machine be kept around after it ran a workload when there are no stand-by agents. The maximum is one week.
      */
-    gracePeriodTimeSpan?: pulumi.Input<string>;
+    gracePeriodTimeSpan?: pulumi.Input<string | undefined>;
     /**
      * Discriminator property for AgentProfile.
      * Expected value is 'Stateful'.
@@ -257,15 +257,15 @@ export interface StatefulArgs {
     /**
      * How long should stateful machines be kept around. The maximum is one week.
      */
-    maxAgentLifetime?: pulumi.Input<string>;
+    maxAgentLifetime?: pulumi.Input<string | undefined>;
     /**
      * Defines pool buffer/stand-by agents.
      */
-    resourcePredictions?: any;
+    resourcePredictions?: any | undefined;
     /**
      * Defines how the pool buffer/stand-by agents is provided.
      */
-    resourcePredictionsProfile?: pulumi.Input<AutomaticResourcePredictionsProfileArgs | ManualResourcePredictionsProfileArgs>;
+    resourcePredictionsProfile?: pulumi.Input<AutomaticResourcePredictionsProfileArgs | ManualResourcePredictionsProfileArgs | undefined>;
 }
 
 /**
@@ -280,11 +280,11 @@ export interface StatelessAgentProfileArgs {
     /**
      * Defines pool buffer/stand-by agents.
      */
-    resourcePredictions?: any;
+    resourcePredictions?: any | undefined;
     /**
      * Defines how the pool buffer/stand-by agents is provided.
      */
-    resourcePredictionsProfile?: pulumi.Input<AutomaticResourcePredictionsProfileArgs | ManualResourcePredictionsProfileArgs>;
+    resourcePredictionsProfile?: pulumi.Input<AutomaticResourcePredictionsProfileArgs | ManualResourcePredictionsProfileArgs | undefined>;
 }
 
 /**
@@ -294,11 +294,11 @@ export interface StorageProfileArgs {
     /**
      * A list of empty data disks to attach.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<DataDiskArgs>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<DataDiskArgs>[] | undefined>;
     /**
      * The Azure SKU name of the machines in the pool.
      */
-    osDiskStorageAccountType?: pulumi.Input<string | enums.OsDiskStorageAccountType>;
+    osDiskStorageAccountType?: pulumi.Input<string | enums.OsDiskStorageAccountType | undefined>;
 }
 
 /**
@@ -317,11 +317,11 @@ export interface VmssFabricProfileArgs {
     /**
      * The network profile of the machines in the pool.
      */
-    networkProfile?: pulumi.Input<NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<NetworkProfileArgs | undefined>;
     /**
      * The OS profile of the machines in the pool.
      */
-    osProfile?: pulumi.Input<OsProfileArgs>;
+    osProfile?: pulumi.Input<OsProfileArgs | undefined>;
     /**
      * The Azure SKU of the machines in the pool.
      */
@@ -329,5 +329,5 @@ export interface VmssFabricProfileArgs {
     /**
      * The storage profile of the machines in the pool.
      */
-    storageProfile?: pulumi.Input<StorageProfileArgs>;
+    storageProfile?: pulumi.Input<StorageProfileArgs | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01, 2025-11-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualMachineExtension extends pulumi.CustomResource {
     /**
@@ -167,7 +167,7 @@ export class VirtualMachineExtension extends pulumi.CustomResource {
             resourceInputs["typeHandlerVersion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20150615:VirtualMachineExtension" }, { type: "azure-native:compute/v20160330:VirtualMachineExtension" }, { type: "azure-native:compute/v20160430preview:VirtualMachineExtension" }, { type: "azure-native:compute/v20170330:VirtualMachineExtension" }, { type: "azure-native:compute/v20171201:VirtualMachineExtension" }, { type: "azure-native:compute/v20180401:VirtualMachineExtension" }, { type: "azure-native:compute/v20180601:VirtualMachineExtension" }, { type: "azure-native:compute/v20181001:VirtualMachineExtension" }, { type: "azure-native:compute/v20190301:VirtualMachineExtension" }, { type: "azure-native:compute/v20190701:VirtualMachineExtension" }, { type: "azure-native:compute/v20191201:VirtualMachineExtension" }, { type: "azure-native:compute/v20200601:VirtualMachineExtension" }, { type: "azure-native:compute/v20201201:VirtualMachineExtension" }, { type: "azure-native:compute/v20210301:VirtualMachineExtension" }, { type: "azure-native:compute/v20210401:VirtualMachineExtension" }, { type: "azure-native:compute/v20210701:VirtualMachineExtension" }, { type: "azure-native:compute/v20211101:VirtualMachineExtension" }, { type: "azure-native:compute/v20220301:VirtualMachineExtension" }, { type: "azure-native:compute/v20220801:VirtualMachineExtension" }, { type: "azure-native:compute/v20221101:VirtualMachineExtension" }, { type: "azure-native:compute/v20230301:VirtualMachineExtension" }, { type: "azure-native:compute/v20230701:VirtualMachineExtension" }, { type: "azure-native:compute/v20230901:VirtualMachineExtension" }, { type: "azure-native:compute/v20240301:VirtualMachineExtension" }, { type: "azure-native:compute/v20240701:VirtualMachineExtension" }, { type: "azure-native:compute/v20241101:VirtualMachineExtension" }, { type: "azure-native:compute/v20250401:VirtualMachineExtension" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20150615:VirtualMachineExtension" }, { type: "azure-native:compute/v20160330:VirtualMachineExtension" }, { type: "azure-native:compute/v20160430preview:VirtualMachineExtension" }, { type: "azure-native:compute/v20170330:VirtualMachineExtension" }, { type: "azure-native:compute/v20171201:VirtualMachineExtension" }, { type: "azure-native:compute/v20180401:VirtualMachineExtension" }, { type: "azure-native:compute/v20180601:VirtualMachineExtension" }, { type: "azure-native:compute/v20181001:VirtualMachineExtension" }, { type: "azure-native:compute/v20190301:VirtualMachineExtension" }, { type: "azure-native:compute/v20190701:VirtualMachineExtension" }, { type: "azure-native:compute/v20191201:VirtualMachineExtension" }, { type: "azure-native:compute/v20200601:VirtualMachineExtension" }, { type: "azure-native:compute/v20201201:VirtualMachineExtension" }, { type: "azure-native:compute/v20210301:VirtualMachineExtension" }, { type: "azure-native:compute/v20210401:VirtualMachineExtension" }, { type: "azure-native:compute/v20210701:VirtualMachineExtension" }, { type: "azure-native:compute/v20211101:VirtualMachineExtension" }, { type: "azure-native:compute/v20220301:VirtualMachineExtension" }, { type: "azure-native:compute/v20220801:VirtualMachineExtension" }, { type: "azure-native:compute/v20221101:VirtualMachineExtension" }, { type: "azure-native:compute/v20230301:VirtualMachineExtension" }, { type: "azure-native:compute/v20230701:VirtualMachineExtension" }, { type: "azure-native:compute/v20230901:VirtualMachineExtension" }, { type: "azure-native:compute/v20240301:VirtualMachineExtension" }, { type: "azure-native:compute/v20240701:VirtualMachineExtension" }, { type: "azure-native:compute/v20241101:VirtualMachineExtension" }, { type: "azure-native:compute/v20250401:VirtualMachineExtension" }, { type: "azure-native:compute/v20251101:VirtualMachineExtension" }, { type: "azure-native:compute/v20260301:VirtualMachineExtension" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualMachineExtension.__pulumiType, name, resourceInputs, opts);
     }
@@ -180,39 +180,39 @@ export interface VirtualMachineExtensionArgs {
     /**
      * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
      */
-    autoUpgradeMinorVersion?: pulumi.Input<boolean>;
+    autoUpgradeMinorVersion?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
      */
-    enableAutomaticUpgrade?: pulumi.Input<boolean>;
+    enableAutomaticUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * How the extension handler should be forced to update even if the extension configuration has not changed.
      */
-    forceUpdateTag?: pulumi.Input<string>;
+    forceUpdateTag?: pulumi.Input<string | undefined>;
     /**
      * The virtual machine extension instance view.
      */
-    instanceView?: pulumi.Input<types.inputs.VirtualMachineExtensionInstanceViewArgs>;
+    instanceView?: pulumi.Input<types.inputs.VirtualMachineExtensionInstanceViewArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
      */
-    protectedSettings?: any;
+    protectedSettings?: any | undefined;
     /**
      * The extensions protected settings that are passed by reference, and consumed from key vault
      */
-    protectedSettingsFromKeyVault?: pulumi.Input<types.inputs.KeyVaultSecretReferenceArgs>;
+    protectedSettingsFromKeyVault?: pulumi.Input<types.inputs.KeyVaultSecretReferenceArgs | undefined>;
     /**
      * Collection of extension names after which this extension needs to be provisioned.
      */
-    provisionAfterExtensions?: pulumi.Input<pulumi.Input<string>[]>;
+    provisionAfterExtensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the extension handler publisher.
      */
-    publisher?: pulumi.Input<string>;
+    publisher?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -220,27 +220,27 @@ export interface VirtualMachineExtensionArgs {
     /**
      * Json formatted public settings for the extension.
      */
-    settings?: any;
+    settings?: any | undefined;
     /**
      * Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
      */
-    suppressFailures?: pulumi.Input<boolean>;
+    suppressFailures?: pulumi.Input<boolean | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the type of the extension; an example is "CustomScriptExtension".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Specifies the version of the script handler.
      */
-    typeHandlerVersion?: pulumi.Input<string>;
+    typeHandlerVersion?: pulumi.Input<string | undefined>;
     /**
      * The name of the virtual machine extension.
      */
-    vmExtensionName?: pulumi.Input<string>;
+    vmExtensionName?: pulumi.Input<string | undefined>;
     /**
      * The name of the virtual machine.
      */

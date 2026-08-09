@@ -263,7 +263,7 @@ export interface WorkloadImpactPropertiesResponse {
      */
     connectivity?: ConnectivityResponse;
     /**
-     * Time at which impact has ended 
+     * Time at which impact has ended
      */
     endDateTime?: string;
     /**
@@ -303,7 +303,7 @@ export interface WorkloadImpactPropertiesResponse {
      */
     reportedTimeUtc: string;
     /**
-     * Time at which impact was observed 
+     * Time at which impact was observed
      */
     startDateTime: string;
     /**

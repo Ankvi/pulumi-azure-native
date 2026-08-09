@@ -27,15 +27,15 @@ export interface AgentUpdatePropertiesResponse {
  */
 export interface AppAttachPackageInfoPropertiesResponse {
     /**
-     * Date certificate expires, found in the appxmanifest.xml. 
+     * Date certificate expires, found in the appxmanifest.xml.
      */
     certificateExpiry?: string;
     /**
-     * Certificate name found in the appxmanifest.xml. 
+     * Certificate name found in the appxmanifest.xml.
      */
     certificateName?: string;
     /**
-     * User friendly Name to be displayed in the portal. 
+     * User friendly Name to be displayed in the portal.
      */
     displayName?: string;
     /**
@@ -43,7 +43,7 @@ export interface AppAttachPackageInfoPropertiesResponse {
      */
     imagePath?: string;
     /**
-     * Make this version of the package the active one across the hostpool. 
+     * Make this version of the package the active one across the hostpool.
      */
     isActive?: boolean;
     /**
@@ -55,7 +55,7 @@ export interface AppAttachPackageInfoPropertiesResponse {
      */
     isRegularRegistration?: boolean;
     /**
-     * Date Package was last updated, found in the appxmanifest.xml. 
+     * Date Package was last updated, found in the appxmanifest.xml.
      */
     lastUpdated?: string;
     /**
@@ -63,31 +63,31 @@ export interface AppAttachPackageInfoPropertiesResponse {
      */
     packageAlias?: string;
     /**
-     * List of package applications. 
+     * List of package applications.
      */
     packageApplications?: MsixPackageApplicationsResponse[];
     /**
-     * List of package dependencies. 
+     * List of package dependencies.
      */
     packageDependencies?: MsixPackageDependenciesResponse[];
     /**
-     * Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
+     * Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
      */
     packageFamilyName?: string;
     /**
-     * Package Full Name from appxmanifest.xml. 
+     * Package Full Name from appxmanifest.xml.
      */
     packageFullName?: string;
     /**
-     * Package Name from appxmanifest.xml. 
+     * Package Name from appxmanifest.xml.
      */
     packageName?: string;
     /**
-     * Relative Path to the package inside the image. 
+     * Relative Path to the package inside the image.
      */
     packageRelativePath?: string;
     /**
-     * Package version found in the appxmanifest.xml. 
+     * Package version found in the appxmanifest.xml.
      */
     version?: string;
 }
@@ -303,7 +303,7 @@ export interface ResourceModelWithAllowedPropertySetResponsePlan {
      */
     name: string;
     /**
-     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. 
+     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
      */
     product: string;
     /**
@@ -334,7 +334,7 @@ export interface ResourceModelWithAllowedPropertySetResponseSku {
      */
     name: string;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
     size?: string;
     /**

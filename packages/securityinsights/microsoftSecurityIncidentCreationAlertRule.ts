@@ -173,11 +173,11 @@ export interface MicrosoftSecurityIncidentCreationAlertRuleArgs {
     /**
      * The Name of the alert rule template used to create this rule.
      */
-    alertRuleTemplateName?: pulumi.Input<string>;
+    alertRuleTemplateName?: pulumi.Input<string | undefined>;
     /**
      * The description of the alert rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name for alerts created by this alert rule.
      */
@@ -185,11 +185,11 @@ export interface MicrosoftSecurityIncidentCreationAlertRuleArgs {
     /**
      * the alerts' displayNames on which the cases will not be generated
      */
-    displayNamesExcludeFilter?: pulumi.Input<pulumi.Input<string>[]>;
+    displayNamesExcludeFilter?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * the alerts' displayNames on which the cases will be generated
      */
-    displayNamesFilter?: pulumi.Input<pulumi.Input<string>[]>;
+    displayNamesFilter?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Determines whether this alert rule is enabled or disabled.
      */
@@ -210,11 +210,11 @@ export interface MicrosoftSecurityIncidentCreationAlertRuleArgs {
     /**
      * Alert rule ID
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * the alerts' severities on which the cases will be generated
      */
-    severitiesFilter?: pulumi.Input<pulumi.Input<string | types.enums.AlertSeverity>[]>;
+    severitiesFilter?: pulumi.Input<pulumi.Input<string | types.enums.AlertSeverity>[] | undefined>;
     /**
      * The name of the workspace.
      */

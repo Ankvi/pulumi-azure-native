@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -237,12 +237,12 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["managedResourceGroupConfiguration"] = args?.managedResourceGroupConfiguration;
             resourceInputs["networkFabricId"] = args?.networkFabricId;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
-            resourceInputs["runtimeProtectionConfiguration"] = args ? (args.runtimeProtectionConfiguration ? pulumi.output(args.runtimeProtectionConfiguration).apply(types.inputs.runtimeProtectionConfigurationArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["secretArchive"] = args ? (args.secretArchive ? pulumi.output(args.secretArchive).apply(types.inputs.clusterSecretArchiveArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["runtimeProtectionConfiguration"] = args ? pulumi.output(args.runtimeProtectionConfiguration).apply(v => v === undefined ? undefined : types.inputs.runtimeProtectionConfigurationArgsProvideDefaults(v)) : undefined;
+            resourceInputs["secretArchive"] = args ? pulumi.output(args.secretArchive).apply(v => v === undefined ? undefined : types.inputs.clusterSecretArchiveArgsProvideDefaults(v)) : undefined;
             resourceInputs["secretArchiveSettings"] = args?.secretArchiveSettings;
             resourceInputs["tags"] = args?.tags;
-            resourceInputs["updateStrategy"] = args ? (args.updateStrategy ? pulumi.output(args.updateStrategy).apply(types.inputs.clusterUpdateStrategyArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["vulnerabilityScanningSettings"] = args ? (args.vulnerabilityScanningSettings ? pulumi.output(args.vulnerabilityScanningSettings).apply(types.inputs.vulnerabilityScanningSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["updateStrategy"] = args ? pulumi.output(args.updateStrategy).apply(v => v === undefined ? undefined : types.inputs.clusterUpdateStrategyArgsProvideDefaults(v)) : undefined;
+            resourceInputs["vulnerabilityScanningSettings"] = args ? pulumi.output(args.vulnerabilityScanningSettings).apply(v => v === undefined ? undefined : types.inputs.vulnerabilityScanningSettingsArgsProvideDefaults(v)) : undefined;
             resourceInputs["availableUpgradeVersions"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["clusterCapacity"] = undefined /*out*/;
@@ -303,7 +303,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["workloadResourceIds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:Cluster" }, { type: "azure-native:networkcloud/v20231001preview:Cluster" }, { type: "azure-native:networkcloud/v20240601preview:Cluster" }, { type: "azure-native:networkcloud/v20240701:Cluster" }, { type: "azure-native:networkcloud/v20241001preview:Cluster" }, { type: "azure-native:networkcloud/v20250201:Cluster" }, { type: "azure-native:networkcloud/v20250701preview:Cluster" }, { type: "azure-native:networkcloud/v20250901:Cluster" }, { type: "azure-native:networkcloud/v20260101preview:Cluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:Cluster" }, { type: "azure-native:networkcloud/v20231001preview:Cluster" }, { type: "azure-native:networkcloud/v20240601preview:Cluster" }, { type: "azure-native:networkcloud/v20240701:Cluster" }, { type: "azure-native:networkcloud/v20241001preview:Cluster" }, { type: "azure-native:networkcloud/v20250201:Cluster" }, { type: "azure-native:networkcloud/v20250901:Cluster" }, { type: "azure-native:networkcloud/v20260101preview:Cluster" }, { type: "azure-native:networkcloud/v20260501preview:Cluster" }, { type: "azure-native:networkcloud/v20260701:Cluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -320,23 +320,23 @@ export interface ClusterArgs {
     /**
      * The settings for the log analytics workspace used for output of logs from this cluster.
      */
-    analyticsOutputSettings?: pulumi.Input<types.inputs.AnalyticsOutputSettingsArgs>;
+    analyticsOutputSettings?: pulumi.Input<types.inputs.AnalyticsOutputSettingsArgs | undefined>;
     /**
      * Field Deprecated. The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
      */
-    analyticsWorkspaceId?: pulumi.Input<string>;
+    analyticsWorkspaceId?: pulumi.Input<string | undefined>;
     /**
      * The customer-provided location information to identify where the cluster resides.
      */
-    clusterLocation?: pulumi.Input<string>;
+    clusterLocation?: pulumi.Input<string | undefined>;
     /**
      * The name of the cluster.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * The service principal to be used by the cluster during Arc Appliance installation.
      */
-    clusterServicePrincipal?: pulumi.Input<types.inputs.ServicePrincipalInformationArgs>;
+    clusterServicePrincipal?: pulumi.Input<types.inputs.ServicePrincipalInformationArgs | undefined>;
     /**
      * The type of rack configuration for the cluster.
      */
@@ -348,16 +348,16 @@ export interface ClusterArgs {
     /**
      * The settings for commands run in this cluster, such as bare metal machine run read only commands and data extracts.
      */
-    commandOutputSettings?: pulumi.Input<types.inputs.CommandOutputSettingsArgs>;
+    commandOutputSettings?: pulumi.Input<types.inputs.CommandOutputSettingsArgs | undefined>;
     /**
      * The validation threshold indicating the allowable failures of compute machines during environment validation and deployment.
      */
-    computeDeploymentThreshold?: pulumi.Input<types.inputs.ValidationThresholdArgs>;
+    computeDeploymentThreshold?: pulumi.Input<types.inputs.ValidationThresholdArgs | undefined>;
     /**
      * The list of rack definitions for the compute racks in a multi-rack
      * cluster, or an empty list in a single-rack cluster.
      */
-    computeRackDefinitions?: pulumi.Input<pulumi.Input<types.inputs.RackDefinitionArgs>[]>;
+    computeRackDefinitions?: pulumi.Input<pulumi.Input<types.inputs.RackDefinitionArgs>[] | undefined>;
     /**
      * The extended location of the cluster manager associated with the cluster.
      */
@@ -365,15 +365,15 @@ export interface ClusterArgs {
     /**
      * The identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The configuration of the managed resource group associated with the resource.
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedResourceGroupConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedResourceGroupConfigurationArgs | undefined>;
     /**
      * The resource ID of the Network Fabric associated with the cluster.
      */
@@ -385,25 +385,25 @@ export interface ClusterArgs {
     /**
      * The settings for cluster runtime protection.
      */
-    runtimeProtectionConfiguration?: pulumi.Input<types.inputs.RuntimeProtectionConfigurationArgs>;
+    runtimeProtectionConfiguration?: pulumi.Input<types.inputs.RuntimeProtectionConfigurationArgs | undefined>;
     /**
      * The configuration for use of a key vault to store secrets for later retrieval by the operator.
      */
-    secretArchive?: pulumi.Input<types.inputs.ClusterSecretArchiveArgs>;
+    secretArchive?: pulumi.Input<types.inputs.ClusterSecretArchiveArgs | undefined>;
     /**
      * The settings for the secret archive used to hold credentials for the cluster.
      */
-    secretArchiveSettings?: pulumi.Input<types.inputs.SecretArchiveSettingsArgs>;
+    secretArchiveSettings?: pulumi.Input<types.inputs.SecretArchiveSettingsArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The strategy for updating the cluster.
      */
-    updateStrategy?: pulumi.Input<types.inputs.ClusterUpdateStrategyArgs>;
+    updateStrategy?: pulumi.Input<types.inputs.ClusterUpdateStrategyArgs | undefined>;
     /**
      * The settings for how security vulnerability scanning is applied to the cluster.
      */
-    vulnerabilityScanningSettings?: pulumi.Input<types.inputs.VulnerabilityScanningSettingsArgs>;
+    vulnerabilityScanningSettings?: pulumi.Input<types.inputs.VulnerabilityScanningSettingsArgs | undefined>;
 }

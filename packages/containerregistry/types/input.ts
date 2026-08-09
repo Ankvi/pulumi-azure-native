@@ -7,7 +7,7 @@ export interface AgentPropertiesArgs {
     /**
      * The CPU configuration in terms of number of cores required for the run.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -17,11 +17,11 @@ export interface ArchivePackageSourcePropertiesArgs {
     /**
      * The type of package source for a archive.
      */
-    type?: pulumi.Input<string | enums.PackageSourceType>;
+    type?: pulumi.Input<string | enums.PackageSourceType | undefined>;
     /**
      * The external repository url.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -31,7 +31,7 @@ export interface ArgumentArgs {
     /**
      * Flag to indicate whether the argument represents a secret and want to be removed from build logs.
      */
-    isSecret?: pulumi.Input<boolean>;
+    isSecret?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the argument.
      */
@@ -58,15 +58,15 @@ export interface AuthCredentialArgs {
     /**
      * The name of the credential.
      */
-    name?: pulumi.Input<string | enums.CredentialName>;
+    name?: pulumi.Input<string | enums.CredentialName | undefined>;
     /**
      * KeyVault Secret URI for accessing the password.
      */
-    passwordSecretIdentifier?: pulumi.Input<string>;
+    passwordSecretIdentifier?: pulumi.Input<string | undefined>;
     /**
      * KeyVault Secret URI for accessing the username.
      */
-    usernameSecretIdentifier?: pulumi.Input<string>;
+    usernameSecretIdentifier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -76,15 +76,15 @@ export interface AuthInfoArgs {
     /**
      * Time in seconds that the token remains valid
      */
-    expiresIn?: pulumi.Input<number>;
+    expiresIn?: pulumi.Input<number | undefined>;
     /**
      * The refresh token used to refresh the access token.
      */
-    refreshToken?: pulumi.Input<string>;
+    refreshToken?: pulumi.Input<string | undefined>;
     /**
      * The scope of the access token.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The access token used to access the source control provider.
      */
@@ -102,7 +102,7 @@ export interface AzureADAuthenticationAsArmPolicyArgs {
     /**
      * The value that indicates whether the policy is enabled or not.
      */
-    status?: pulumi.Input<string | enums.AzureADAuthenticationAsArmPolicyStatus>;
+    status?: pulumi.Input<string | enums.AzureADAuthenticationAsArmPolicyStatus | undefined>;
 }
 /**
  * azureADAuthenticationAsArmPolicyArgsProvideDefaults sets the appropriate defaults for AzureADAuthenticationAsArmPolicyArgs
@@ -129,15 +129,15 @@ export interface BaseImageTriggerArgs {
     /**
      * The current status of trigger.
      */
-    status?: pulumi.Input<string | enums.TriggerStatus>;
+    status?: pulumi.Input<string | enums.TriggerStatus | undefined>;
     /**
      * The endpoint URL for receiving update triggers.
      */
-    updateTriggerEndpoint?: pulumi.Input<string>;
+    updateTriggerEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Type of Payload body for Base image update triggers.
      */
-    updateTriggerPayloadType?: pulumi.Input<string | enums.UpdateTriggerPayloadType>;
+    updateTriggerPayloadType?: pulumi.Input<string | enums.UpdateTriggerPayloadType | undefined>;
 }
 /**
  * baseImageTriggerArgsProvideDefaults sets the appropriate defaults for BaseImageTriggerArgs
@@ -158,11 +158,11 @@ export interface CredentialsArgs {
      * for the dictionary item will be the registry login server (myregistry.azurecr.io) and
      * the value of the item will be the registry credentials for accessing the registry.
      */
-    customRegistries?: pulumi.Input<{[key: string]: pulumi.Input<CustomRegistryCredentialsArgs>}>;
+    customRegistries?: pulumi.Input<{[key: string]: pulumi.Input<CustomRegistryCredentialsArgs>} | undefined>;
     /**
      * Describes the credential parameters for accessing the source registry.
      */
-    sourceRegistry?: pulumi.Input<SourceRegistryCredentialsArgs>;
+    sourceRegistry?: pulumi.Input<SourceRegistryCredentialsArgs | undefined>;
 }
 
 /**
@@ -173,19 +173,19 @@ export interface CustomRegistryCredentialsArgs {
      * Indicates the managed identity assigned to the custom credential. If a user-assigned identity
      * this value is the Client ID. If a system-assigned identity, the value will be `system`. In
      * the case of a system-assigned identity, the Client ID will be determined by the runner. This
-     * identity may be used to authenticate to key vault to retrieve credentials or it may be the only 
+     * identity may be used to authenticate to key vault to retrieve credentials or it may be the only
      * source of authentication used for accessing the registry.
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
-     * The password for logging into the custom registry. The password is a secret 
+     * The password for logging into the custom registry. The password is a secret
      * object that allows multiple ways of providing the value for it.
      */
-    password?: pulumi.Input<SecretObjectArgs>;
+    password?: pulumi.Input<SecretObjectArgs | undefined>;
     /**
      * The username for logging into the custom registry.
      */
-    userName?: pulumi.Input<SecretObjectArgs>;
+    userName?: pulumi.Input<SecretObjectArgs | undefined>;
 }
 
 /**
@@ -195,19 +195,19 @@ export interface DockerBuildRequestArgs {
     /**
      * The machine configuration of the run agent.
      */
-    agentConfiguration?: pulumi.Input<AgentPropertiesArgs>;
+    agentConfiguration?: pulumi.Input<AgentPropertiesArgs | undefined>;
     /**
      * The dedicated agent pool for the run.
      */
-    agentPoolName?: pulumi.Input<string>;
+    agentPoolName?: pulumi.Input<string | undefined>;
     /**
      * The collection of override arguments to be used when executing the run.
      */
-    arguments?: pulumi.Input<pulumi.Input<ArgumentArgs>[]>;
+    arguments?: pulumi.Input<pulumi.Input<ArgumentArgs>[] | undefined>;
     /**
      * The properties that describes a set of credentials that will be used when this run is invoked.
      */
-    credentials?: pulumi.Input<CredentialsArgs>;
+    credentials?: pulumi.Input<CredentialsArgs | undefined>;
     /**
      * The Docker file path relative to the source location.
      */
@@ -215,23 +215,23 @@ export interface DockerBuildRequestArgs {
     /**
      * The fully qualified image names including the repository and tag.
      */
-    imageNames?: pulumi.Input<pulumi.Input<string>[]>;
+    imageNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The value that indicates whether archiving is enabled for the run or not.
      */
-    isArchiveEnabled?: pulumi.Input<boolean>;
+    isArchiveEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The value of this property indicates whether the image built should be pushed to the registry or not.
      */
-    isPushEnabled?: pulumi.Input<boolean>;
+    isPushEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The template that describes the repository and tag information for run log artifact.
      */
-    logTemplate?: pulumi.Input<string>;
+    logTemplate?: pulumi.Input<string | undefined>;
     /**
      * The value of this property indicates whether the image cache is enabled or not.
      */
-    noCache?: pulumi.Input<boolean>;
+    noCache?: pulumi.Input<boolean | undefined>;
     /**
      * The platform properties against which the run has to happen.
      */
@@ -240,15 +240,15 @@ export interface DockerBuildRequestArgs {
      * The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
      * If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
      */
-    sourceLocation?: pulumi.Input<string>;
+    sourceLocation?: pulumi.Input<string | undefined>;
     /**
      * The name of the target build stage for the docker build.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * Run timeout in seconds.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * The type of the run request.
      * Expected value is 'DockerBuildRequest'.
@@ -275,15 +275,15 @@ export interface DockerBuildStepArgs {
     /**
      * The collection of override arguments to be used when executing this build step.
      */
-    arguments?: pulumi.Input<pulumi.Input<ArgumentArgs>[]>;
+    arguments?: pulumi.Input<pulumi.Input<ArgumentArgs>[] | undefined>;
     /**
      * The token (git PAT or SAS token of storage account blob) associated with the context for a step.
      */
-    contextAccessToken?: pulumi.Input<string>;
+    contextAccessToken?: pulumi.Input<string | undefined>;
     /**
      * The URL(absolute or relative) of the source context for the task step.
      */
-    contextPath?: pulumi.Input<string>;
+    contextPath?: pulumi.Input<string | undefined>;
     /**
      * The Docker file path relative to the source context.
      */
@@ -291,19 +291,19 @@ export interface DockerBuildStepArgs {
     /**
      * The fully qualified image names including the repository and tag.
      */
-    imageNames?: pulumi.Input<pulumi.Input<string>[]>;
+    imageNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The value of this property indicates whether the image built should be pushed to the registry or not.
      */
-    isPushEnabled?: pulumi.Input<boolean>;
+    isPushEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The value of this property indicates whether the image cache is enabled or not.
      */
-    noCache?: pulumi.Input<boolean>;
+    noCache?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the target build stage for the docker build.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * The type of the step.
      * Expected value is 'Docker'.
@@ -328,15 +328,15 @@ export interface EncodedTaskRunRequestArgs {
     /**
      * The machine configuration of the run agent.
      */
-    agentConfiguration?: pulumi.Input<AgentPropertiesArgs>;
+    agentConfiguration?: pulumi.Input<AgentPropertiesArgs | undefined>;
     /**
      * The dedicated agent pool for the run.
      */
-    agentPoolName?: pulumi.Input<string>;
+    agentPoolName?: pulumi.Input<string | undefined>;
     /**
      * The properties that describes a set of credentials that will be used when this run is invoked.
      */
-    credentials?: pulumi.Input<CredentialsArgs>;
+    credentials?: pulumi.Input<CredentialsArgs | undefined>;
     /**
      * Base64 encoded value of the template/definition file content.
      */
@@ -344,15 +344,15 @@ export interface EncodedTaskRunRequestArgs {
     /**
      * Base64 encoded value of the parameters/values file content.
      */
-    encodedValuesContent?: pulumi.Input<string>;
+    encodedValuesContent?: pulumi.Input<string | undefined>;
     /**
      * The value that indicates whether archiving is enabled for the run or not.
      */
-    isArchiveEnabled?: pulumi.Input<boolean>;
+    isArchiveEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The template that describes the repository and tag information for run log artifact.
      */
-    logTemplate?: pulumi.Input<string>;
+    logTemplate?: pulumi.Input<string | undefined>;
     /**
      * The platform properties against which the run has to happen.
      */
@@ -361,11 +361,11 @@ export interface EncodedTaskRunRequestArgs {
      * The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
      * If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
      */
-    sourceLocation?: pulumi.Input<string>;
+    sourceLocation?: pulumi.Input<string | undefined>;
     /**
      * Run timeout in seconds.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * The type of the run request.
      * Expected value is 'EncodedTaskRunRequest'.
@@ -374,7 +374,7 @@ export interface EncodedTaskRunRequestArgs {
     /**
      * The collection of overridable values that can be passed when running a task.
      */
-    values?: pulumi.Input<pulumi.Input<SetValueArgs>[]>;
+    values?: pulumi.Input<pulumi.Input<SetValueArgs>[] | undefined>;
 }
 /**
  * encodedTaskRunRequestArgsProvideDefaults sets the appropriate defaults for EncodedTaskRunRequestArgs
@@ -394,11 +394,11 @@ export interface EncodedTaskStepArgs {
     /**
      * The token (git PAT or SAS token of storage account blob) associated with the context for a step.
      */
-    contextAccessToken?: pulumi.Input<string>;
+    contextAccessToken?: pulumi.Input<string | undefined>;
     /**
      * The URL(absolute or relative) of the source context for the task step.
      */
-    contextPath?: pulumi.Input<string>;
+    contextPath?: pulumi.Input<string | undefined>;
     /**
      * Base64 encoded value of the template/definition file content.
      */
@@ -406,7 +406,7 @@ export interface EncodedTaskStepArgs {
     /**
      * Base64 encoded value of the parameters/values file content.
      */
-    encodedValuesContent?: pulumi.Input<string>;
+    encodedValuesContent?: pulumi.Input<string | undefined>;
     /**
      * The type of the step.
      * Expected value is 'EncodedTask'.
@@ -415,18 +415,18 @@ export interface EncodedTaskStepArgs {
     /**
      * The collection of overridable values that can be passed when running a task.
      */
-    values?: pulumi.Input<pulumi.Input<SetValueArgs>[]>;
+    values?: pulumi.Input<pulumi.Input<SetValueArgs>[] | undefined>;
 }
 
 export interface EncryptionPropertyArgs {
     /**
      * Key vault properties.
      */
-    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs | undefined>;
     /**
      * Indicates whether or not the encryption is enabled for container registry.
      */
-    status?: pulumi.Input<string | enums.EncryptionStatus>;
+    status?: pulumi.Input<string | enums.EncryptionStatus | undefined>;
 }
 
 /**
@@ -440,13 +440,13 @@ export interface ExportPipelineTargetPropertiesArgs {
     /**
      * The type of target for the export pipeline.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The target uri of the export pipeline.
      * When 'AzureStorageBlob': "https://accountName.blob.core.windows.net/containerName/blobName"
      * When 'AzureStorageBlobContainer':  "https://accountName.blob.core.windows.net/containerName"
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -456,7 +456,7 @@ export interface ExportPolicyArgs {
     /**
      * The value that indicates whether the policy is enabled or not.
      */
-    status?: pulumi.Input<string | enums.ExportPolicyStatus>;
+    status?: pulumi.Input<string | enums.ExportPolicyStatus | undefined>;
 }
 /**
  * exportPolicyArgsProvideDefaults sets the appropriate defaults for ExportPolicyArgs
@@ -475,23 +475,23 @@ export interface FileTaskRunRequestArgs {
     /**
      * The machine configuration of the run agent.
      */
-    agentConfiguration?: pulumi.Input<AgentPropertiesArgs>;
+    agentConfiguration?: pulumi.Input<AgentPropertiesArgs | undefined>;
     /**
      * The dedicated agent pool for the run.
      */
-    agentPoolName?: pulumi.Input<string>;
+    agentPoolName?: pulumi.Input<string | undefined>;
     /**
      * The properties that describes a set of credentials that will be used when this run is invoked.
      */
-    credentials?: pulumi.Input<CredentialsArgs>;
+    credentials?: pulumi.Input<CredentialsArgs | undefined>;
     /**
      * The value that indicates whether archiving is enabled for the run or not.
      */
-    isArchiveEnabled?: pulumi.Input<boolean>;
+    isArchiveEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The template that describes the repository and tag information for run log artifact.
      */
-    logTemplate?: pulumi.Input<string>;
+    logTemplate?: pulumi.Input<string | undefined>;
     /**
      * The platform properties against which the run has to happen.
      */
@@ -500,7 +500,7 @@ export interface FileTaskRunRequestArgs {
      * The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
      * If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
      */
-    sourceLocation?: pulumi.Input<string>;
+    sourceLocation?: pulumi.Input<string | undefined>;
     /**
      * The template/definition file path relative to the source.
      */
@@ -508,7 +508,7 @@ export interface FileTaskRunRequestArgs {
     /**
      * Run timeout in seconds.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * The type of the run request.
      * Expected value is 'FileTaskRunRequest'.
@@ -517,11 +517,11 @@ export interface FileTaskRunRequestArgs {
     /**
      * The collection of overridable values that can be passed when running a task.
      */
-    values?: pulumi.Input<pulumi.Input<SetValueArgs>[]>;
+    values?: pulumi.Input<pulumi.Input<SetValueArgs>[] | undefined>;
     /**
      * The values/parameters file path relative to the source.
      */
-    valuesFilePath?: pulumi.Input<string>;
+    valuesFilePath?: pulumi.Input<string | undefined>;
 }
 /**
  * fileTaskRunRequestArgsProvideDefaults sets the appropriate defaults for FileTaskRunRequestArgs
@@ -541,11 +541,11 @@ export interface FileTaskStepArgs {
     /**
      * The token (git PAT or SAS token of storage account blob) associated with the context for a step.
      */
-    contextAccessToken?: pulumi.Input<string>;
+    contextAccessToken?: pulumi.Input<string | undefined>;
     /**
      * The URL(absolute or relative) of the source context for the task step.
      */
-    contextPath?: pulumi.Input<string>;
+    contextPath?: pulumi.Input<string | undefined>;
     /**
      * The task template/definition file path relative to the source context.
      */
@@ -558,11 +558,11 @@ export interface FileTaskStepArgs {
     /**
      * The collection of overridable values that can be passed when running a task.
      */
-    values?: pulumi.Input<pulumi.Input<SetValueArgs>[]>;
+    values?: pulumi.Input<pulumi.Input<SetValueArgs>[] | undefined>;
     /**
      * The task values/parameters file path relative to the source context.
      */
-    valuesFilePath?: pulumi.Input<string>;
+    valuesFilePath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -572,11 +572,11 @@ export interface GarbageCollectionPropertiesArgs {
     /**
      * Indicates whether garbage collection is enabled for the connected registry.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The cron expression indicating the schedule that the connected registry will run garbage collection.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -586,7 +586,7 @@ export interface IPRuleArgs {
     /**
      * The action of IP ACL rule.
      */
-    action?: pulumi.Input<string | enums.Action>;
+    action?: pulumi.Input<string | enums.Action | undefined>;
     /**
      * Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
      */
@@ -609,22 +609,22 @@ export interface IdentityPropertiesArgs {
     /**
      * The principal ID of resource identity.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * The tenant ID of resource.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The identity type.
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
     /**
-     * The list of user identities associated with the resource. The user identity 
-     * dictionary key references will be ARM resource ids in the form: 
+     * The list of user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
      *     providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserIdentityPropertiesArgs>}>;
+    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserIdentityPropertiesArgs>} | undefined>;
 }
 
 /**
@@ -638,13 +638,13 @@ export interface ImportPipelineSourcePropertiesArgs {
     /**
      * The type of source for the import pipeline.
      */
-    type?: pulumi.Input<string | enums.PipelineSourceType>;
+    type?: pulumi.Input<string | enums.PipelineSourceType | undefined>;
     /**
      * The source uri of the import pipeline.
      * When 'AzureStorageBlob': "https://accountName.blob.core.windows.net/containerName/blobName"
      * When 'AzureStorageBlobContainer': "https://accountName.blob.core.windows.net/containerName"
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 /**
  * importPipelineSourcePropertiesArgsProvideDefaults sets the appropriate defaults for ImportPipelineSourcePropertiesArgs
@@ -660,11 +660,11 @@ export interface KeyVaultPropertiesArgs {
     /**
      * The client id of the identity which will be used to access key vault.
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * Key vault uri to access the encryption key.
      */
-    keyIdentifier?: pulumi.Input<string>;
+    keyIdentifier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -674,11 +674,11 @@ export interface LoggingPropertiesArgs {
     /**
      * Indicates whether audit logs are enabled on the connected registry.
      */
-    auditLogStatus?: pulumi.Input<string | enums.AuditLogStatus>;
+    auditLogStatus?: pulumi.Input<string | enums.AuditLogStatus | undefined>;
     /**
      * The verbosity of logs persisted on the connected registry.
      */
-    logLevel?: pulumi.Input<string | enums.LogLevel>;
+    logLevel?: pulumi.Input<string | enums.LogLevel | undefined>;
 }
 /**
  * loggingPropertiesArgsProvideDefaults sets the appropriate defaults for LoggingPropertiesArgs
@@ -702,7 +702,7 @@ export interface NetworkRuleSetArgs {
     /**
      * The IP ACL rules.
      */
-    ipRules?: pulumi.Input<pulumi.Input<IPRuleArgs>[]>;
+    ipRules?: pulumi.Input<pulumi.Input<IPRuleArgs>[] | undefined>;
 }
 /**
  * networkRuleSetArgsProvideDefaults sets the appropriate defaults for NetworkRuleSetArgs
@@ -719,27 +719,27 @@ export interface OverrideTaskStepPropertiesArgs {
      * Gets or sets the collection of override arguments to be used when
      * executing a build step.
      */
-    arguments?: pulumi.Input<pulumi.Input<ArgumentArgs>[]>;
+    arguments?: pulumi.Input<pulumi.Input<ArgumentArgs>[] | undefined>;
     /**
      * The source context against which run has to be queued.
      */
-    contextPath?: pulumi.Input<string>;
+    contextPath?: pulumi.Input<string | undefined>;
     /**
      * The file against which run has to be queued.
      */
-    file?: pulumi.Input<string>;
+    file?: pulumi.Input<string | undefined>;
     /**
      * The name of the target build stage for the docker build.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * Base64 encoded update trigger token that will be attached with the base image trigger webhook.
      */
-    updateTriggerToken?: pulumi.Input<string>;
+    updateTriggerToken?: pulumi.Input<string | undefined>;
     /**
      * The collection of overridable values that can be passed when running a Task.
      */
-    values?: pulumi.Input<pulumi.Input<SetValueArgs>[]>;
+    values?: pulumi.Input<pulumi.Input<SetValueArgs>[] | undefined>;
 }
 
 /**
@@ -749,7 +749,7 @@ export interface ParentPropertiesArgs {
     /**
      * The resource ID of the parent to which the connected registry will be associated.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The sync properties of the connected registry with its parent.
      */
@@ -761,28 +761,28 @@ export interface ParentPropertiesArgs {
  */
 export interface PipelineRunRequestArgs {
     /**
-     * List of source artifacts to be transferred by the pipeline. 
+     * List of source artifacts to be transferred by the pipeline.
      * Specify an image by repository ('hello-world'). This will use the 'latest' tag.
      * Specify an image by tag ('hello-world:latest').
      * Specify an image by sha256-based manifest digest ('hello-world@sha256:abc123').
      */
-    artifacts?: pulumi.Input<pulumi.Input<string>[]>;
+    artifacts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The digest of the tar used to transfer the artifacts.
      */
-    catalogDigest?: pulumi.Input<string>;
+    catalogDigest?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the pipeline to run.
      */
-    pipelineResourceId?: pulumi.Input<string>;
+    pipelineResourceId?: pulumi.Input<string | undefined>;
     /**
      * The source properties of the pipeline run.
      */
-    source?: pulumi.Input<PipelineRunSourcePropertiesArgs>;
+    source?: pulumi.Input<PipelineRunSourcePropertiesArgs | undefined>;
     /**
      * The target properties of the pipeline run.
      */
-    target?: pulumi.Input<PipelineRunTargetPropertiesArgs>;
+    target?: pulumi.Input<PipelineRunTargetPropertiesArgs | undefined>;
 }
 /**
  * pipelineRunRequestArgsProvideDefaults sets the appropriate defaults for PipelineRunRequestArgs
@@ -790,8 +790,8 @@ export interface PipelineRunRequestArgs {
 export function pipelineRunRequestArgsProvideDefaults(val: PipelineRunRequestArgs): PipelineRunRequestArgs {
     return {
         ...val,
-        source: (val.source ? pulumi.output(val.source).apply(pipelineRunSourcePropertiesArgsProvideDefaults) : undefined),
-        target: (val.target ? pulumi.output(val.target).apply(pipelineRunTargetPropertiesArgsProvideDefaults) : undefined),
+        source: pulumi.output(val.source).apply(v => v === undefined ? undefined : pipelineRunSourcePropertiesArgsProvideDefaults(v)),
+        target: pulumi.output(val.target).apply(v => v === undefined ? undefined : pipelineRunTargetPropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -799,11 +799,11 @@ export interface PipelineRunSourcePropertiesArgs {
     /**
      * The name of the source.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of the source.
      */
-    type?: pulumi.Input<string | enums.PipelineRunSourceType>;
+    type?: pulumi.Input<string | enums.PipelineRunSourceType | undefined>;
 }
 /**
  * pipelineRunSourcePropertiesArgsProvideDefaults sets the appropriate defaults for PipelineRunSourcePropertiesArgs
@@ -819,11 +819,11 @@ export interface PipelineRunTargetPropertiesArgs {
     /**
      * The name of the target.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of the target.
      */
-    type?: pulumi.Input<string | enums.PipelineRunTargetType>;
+    type?: pulumi.Input<string | enums.PipelineRunTargetType | undefined>;
 }
 /**
  * pipelineRunTargetPropertiesArgsProvideDefaults sets the appropriate defaults for PipelineRunTargetPropertiesArgs
@@ -855,7 +855,7 @@ export interface PipelineTriggerPropertiesArgs {
     /**
      * The source trigger properties of the pipeline.
      */
-    sourceTrigger?: pulumi.Input<PipelineSourceTriggerPropertiesArgs>;
+    sourceTrigger?: pulumi.Input<PipelineSourceTriggerPropertiesArgs | undefined>;
 }
 /**
  * pipelineTriggerPropertiesArgsProvideDefaults sets the appropriate defaults for PipelineTriggerPropertiesArgs
@@ -863,7 +863,7 @@ export interface PipelineTriggerPropertiesArgs {
 export function pipelineTriggerPropertiesArgsProvideDefaults(val: PipelineTriggerPropertiesArgs): PipelineTriggerPropertiesArgs {
     return {
         ...val,
-        sourceTrigger: (val.sourceTrigger ? pulumi.output(val.sourceTrigger).apply(pipelineSourceTriggerPropertiesArgsProvideDefaults) : undefined),
+        sourceTrigger: pulumi.output(val.sourceTrigger).apply(v => v === undefined ? undefined : pipelineSourceTriggerPropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -874,7 +874,7 @@ export interface PlatformPropertiesArgs {
     /**
      * The OS architecture.
      */
-    architecture?: pulumi.Input<string | enums.Architecture>;
+    architecture?: pulumi.Input<string | enums.Architecture | undefined>;
     /**
      * The operating system type required for the run.
      */
@@ -882,7 +882,7 @@ export interface PlatformPropertiesArgs {
     /**
      * Variant of the CPU.
      */
-    variant?: pulumi.Input<string | enums.Variant>;
+    variant?: pulumi.Input<string | enums.Variant | undefined>;
 }
 
 /**
@@ -892,27 +892,27 @@ export interface PoliciesArgs {
     /**
      * The policy for using ARM audience token for a container registry.
      */
-    azureADAuthenticationAsArmPolicy?: pulumi.Input<AzureADAuthenticationAsArmPolicyArgs>;
+    azureADAuthenticationAsArmPolicy?: pulumi.Input<AzureADAuthenticationAsArmPolicyArgs | undefined>;
     /**
      * The export policy for a container registry.
      */
-    exportPolicy?: pulumi.Input<ExportPolicyArgs>;
+    exportPolicy?: pulumi.Input<ExportPolicyArgs | undefined>;
     /**
      * The quarantine policy for a container registry.
      */
-    quarantinePolicy?: pulumi.Input<QuarantinePolicyArgs>;
+    quarantinePolicy?: pulumi.Input<QuarantinePolicyArgs | undefined>;
     /**
      * The retention policy for a container registry.
      */
-    retentionPolicy?: pulumi.Input<RetentionPolicyArgs>;
+    retentionPolicy?: pulumi.Input<RetentionPolicyArgs | undefined>;
     /**
      * The soft delete policy for a container registry.
      */
-    softDeletePolicy?: pulumi.Input<SoftDeletePolicyArgs>;
+    softDeletePolicy?: pulumi.Input<SoftDeletePolicyArgs | undefined>;
     /**
      * The content trust policy for a container registry.
      */
-    trustPolicy?: pulumi.Input<TrustPolicyArgs>;
+    trustPolicy?: pulumi.Input<TrustPolicyArgs | undefined>;
 }
 /**
  * policiesArgsProvideDefaults sets the appropriate defaults for PoliciesArgs
@@ -920,12 +920,12 @@ export interface PoliciesArgs {
 export function policiesArgsProvideDefaults(val: PoliciesArgs): PoliciesArgs {
     return {
         ...val,
-        azureADAuthenticationAsArmPolicy: (val.azureADAuthenticationAsArmPolicy ? pulumi.output(val.azureADAuthenticationAsArmPolicy).apply(azureADAuthenticationAsArmPolicyArgsProvideDefaults) : undefined),
-        exportPolicy: (val.exportPolicy ? pulumi.output(val.exportPolicy).apply(exportPolicyArgsProvideDefaults) : undefined),
-        quarantinePolicy: (val.quarantinePolicy ? pulumi.output(val.quarantinePolicy).apply(quarantinePolicyArgsProvideDefaults) : undefined),
-        retentionPolicy: (val.retentionPolicy ? pulumi.output(val.retentionPolicy).apply(retentionPolicyArgsProvideDefaults) : undefined),
-        softDeletePolicy: (val.softDeletePolicy ? pulumi.output(val.softDeletePolicy).apply(softDeletePolicyArgsProvideDefaults) : undefined),
-        trustPolicy: (val.trustPolicy ? pulumi.output(val.trustPolicy).apply(trustPolicyArgsProvideDefaults) : undefined),
+        azureADAuthenticationAsArmPolicy: pulumi.output(val.azureADAuthenticationAsArmPolicy).apply(v => v === undefined ? undefined : azureADAuthenticationAsArmPolicyArgsProvideDefaults(v)),
+        exportPolicy: pulumi.output(val.exportPolicy).apply(v => v === undefined ? undefined : exportPolicyArgsProvideDefaults(v)),
+        quarantinePolicy: pulumi.output(val.quarantinePolicy).apply(v => v === undefined ? undefined : quarantinePolicyArgsProvideDefaults(v)),
+        retentionPolicy: pulumi.output(val.retentionPolicy).apply(v => v === undefined ? undefined : retentionPolicyArgsProvideDefaults(v)),
+        softDeletePolicy: pulumi.output(val.softDeletePolicy).apply(v => v === undefined ? undefined : softDeletePolicyArgsProvideDefaults(v)),
+        trustPolicy: pulumi.output(val.trustPolicy).apply(v => v === undefined ? undefined : trustPolicyArgsProvideDefaults(v)),
     };
 }
 
@@ -936,7 +936,7 @@ export interface PrivateEndpointArgs {
     /**
      * This is private endpoint resource created with Microsoft.Network resource provider.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -946,15 +946,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string | enums.ActionsRequired>;
+    actionsRequired?: pulumi.Input<string | enums.ActionsRequired | undefined>;
     /**
      * The description for connection status. For example if connection is rejected it can indicate reason for rejection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The private link service connection status.
      */
-    status?: pulumi.Input<string | enums.ConnectionStatus>;
+    status?: pulumi.Input<string | enums.ConnectionStatus | undefined>;
 }
 
 /**
@@ -964,7 +964,7 @@ export interface QuarantinePolicyArgs {
     /**
      * The value that indicates whether the policy is enabled or not.
      */
-    status?: pulumi.Input<string | enums.PolicyStatus>;
+    status?: pulumi.Input<string | enums.PolicyStatus | undefined>;
 }
 /**
  * quarantinePolicyArgsProvideDefaults sets the appropriate defaults for QuarantinePolicyArgs
@@ -983,11 +983,11 @@ export interface RetentionPolicyArgs {
     /**
      * The number of days to retain an untagged manifest after which it gets purged.
      */
-    days?: pulumi.Input<number>;
+    days?: pulumi.Input<number | undefined>;
     /**
      * The value that indicates whether the policy is enabled or not.
      */
-    status?: pulumi.Input<string | enums.PolicyStatus>;
+    status?: pulumi.Input<string | enums.PolicyStatus | undefined>;
 }
 /**
  * retentionPolicyArgsProvideDefaults sets the appropriate defaults for RetentionPolicyArgs
@@ -1008,13 +1008,13 @@ export interface SecretObjectArgs {
      * The type of the secret object which determines how the value of the secret object has to be
      * interpreted.
      */
-    type?: pulumi.Input<string | enums.SecretObjectType>;
+    type?: pulumi.Input<string | enums.SecretObjectType | undefined>;
     /**
      * The value of the secret. The format of this value will be determined
      * based on the type of the secret object. If the type is Opaque, the value will be
      * used as is without any modification.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1024,7 +1024,7 @@ export interface SetValueArgs {
     /**
      * Flag to indicate whether the value represents a secret or not.
      */
-    isSecret?: pulumi.Input<boolean>;
+    isSecret?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the overridable value.
      */
@@ -1061,11 +1061,11 @@ export interface SoftDeletePolicyArgs {
     /**
      * The number of days after which a soft-deleted item is permanently deleted.
      */
-    retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number | undefined>;
     /**
      * The value that indicates whether the policy is enabled or not.
      */
-    status?: pulumi.Input<string | enums.PolicyStatus>;
+    status?: pulumi.Input<string | enums.PolicyStatus | undefined>;
 }
 /**
  * softDeletePolicyArgsProvideDefaults sets the appropriate defaults for SoftDeletePolicyArgs
@@ -1085,7 +1085,7 @@ export interface SourcePropertiesArgs {
     /**
      * The branch name of the source code.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * The full URL to the source code repository
      */
@@ -1094,7 +1094,7 @@ export interface SourcePropertiesArgs {
      * The authorization properties for accessing the source code repository and to set up
      * webhooks for notifications.
      */
-    sourceControlAuthProperties?: pulumi.Input<AuthInfoArgs>;
+    sourceControlAuthProperties?: pulumi.Input<AuthInfoArgs | undefined>;
     /**
      * The type of source control service.
      */
@@ -1110,7 +1110,7 @@ export interface SourceRegistryCredentialsArgs {
      * will be generated using the given scope. These credentials will be used to login to
      * the source registry during the run.
      */
-    loginMode?: pulumi.Input<string | enums.SourceRegistryLoginMode>;
+    loginMode?: pulumi.Input<string | enums.SourceRegistryLoginMode | undefined>;
 }
 
 /**
@@ -1132,7 +1132,7 @@ export interface SourceTriggerArgs {
     /**
      * The current status of trigger.
      */
-    status?: pulumi.Input<string | enums.TriggerStatus>;
+    status?: pulumi.Input<string | enums.TriggerStatus | undefined>;
 }
 /**
  * sourceTriggerArgsProvideDefaults sets the appropriate defaults for SourceTriggerArgs
@@ -1155,11 +1155,11 @@ export interface SyncPropertiesArgs {
     /**
      * The cron expression indicating the schedule that the connected registry will sync with its parent.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * The time window during which sync is enabled for each schedule occurrence. Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601.
      */
-    syncWindow?: pulumi.Input<string>;
+    syncWindow?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the ACR token used to authenticate the connected registry to its parent during sync.
      */
@@ -1173,19 +1173,19 @@ export interface TaskRunRequestArgs {
     /**
      * The dedicated agent pool for the run.
      */
-    agentPoolName?: pulumi.Input<string>;
+    agentPoolName?: pulumi.Input<string | undefined>;
     /**
      * The value that indicates whether archiving is enabled for the run or not.
      */
-    isArchiveEnabled?: pulumi.Input<boolean>;
+    isArchiveEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The template that describes the repository and tag information for run log artifact.
      */
-    logTemplate?: pulumi.Input<string>;
+    logTemplate?: pulumi.Input<string | undefined>;
     /**
      * Set of overridable parameters that can be passed when running a Task.
      */
-    overrideTaskStepProperties?: pulumi.Input<OverrideTaskStepPropertiesArgs>;
+    overrideTaskStepProperties?: pulumi.Input<OverrideTaskStepPropertiesArgs | undefined>;
     /**
      * The resource ID of task against which run has to be queued.
      */
@@ -1221,7 +1221,7 @@ export interface TimerTriggerArgs {
     /**
      * The current status of trigger.
      */
-    status?: pulumi.Input<string | enums.TriggerStatus>;
+    status?: pulumi.Input<string | enums.TriggerStatus | undefined>;
 }
 /**
  * timerTriggerArgsProvideDefaults sets the appropriate defaults for TimerTriggerArgs
@@ -1240,24 +1240,24 @@ export interface TokenCertificateArgs {
     /**
      * Base 64 encoded string of the public certificate1 in PEM format that will be used for authenticating the token.
      */
-    encodedPemCertificate?: pulumi.Input<string>;
+    encodedPemCertificate?: pulumi.Input<string | undefined>;
     /**
      * The expiry datetime of the certificate.
      */
-    expiry?: pulumi.Input<string>;
-    name?: pulumi.Input<string | enums.TokenCertificateName>;
+    expiry?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | enums.TokenCertificateName | undefined>;
     /**
      * The thumbprint of the certificate.
      */
-    thumbprint?: pulumi.Input<string>;
+    thumbprint?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The properties of the credentials that can be used for authenticating the token.
  */
 export interface TokenCredentialsPropertiesArgs {
-    certificates?: pulumi.Input<pulumi.Input<TokenCertificateArgs>[]>;
-    passwords?: pulumi.Input<pulumi.Input<TokenPasswordArgs>[]>;
+    certificates?: pulumi.Input<pulumi.Input<TokenCertificateArgs>[] | undefined>;
+    passwords?: pulumi.Input<pulumi.Input<TokenPasswordArgs>[] | undefined>;
 }
 
 /**
@@ -1267,15 +1267,15 @@ export interface TokenPasswordArgs {
     /**
      * The creation datetime of the password.
      */
-    creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
     /**
      * The expiry datetime of the password.
      */
-    expiry?: pulumi.Input<string>;
+    expiry?: pulumi.Input<string | undefined>;
     /**
      * The password name "password1" or "password2"
      */
-    name?: pulumi.Input<string | enums.TokenPasswordName>;
+    name?: pulumi.Input<string | enums.TokenPasswordName | undefined>;
 }
 
 /**
@@ -1285,15 +1285,15 @@ export interface TriggerPropertiesArgs {
     /**
      * The trigger based on base image dependencies.
      */
-    baseImageTrigger?: pulumi.Input<BaseImageTriggerArgs>;
+    baseImageTrigger?: pulumi.Input<BaseImageTriggerArgs | undefined>;
     /**
      * The collection of triggers based on source code repository.
      */
-    sourceTriggers?: pulumi.Input<pulumi.Input<SourceTriggerArgs>[]>;
+    sourceTriggers?: pulumi.Input<pulumi.Input<SourceTriggerArgs>[] | undefined>;
     /**
      * The collection of timer triggers.
      */
-    timerTriggers?: pulumi.Input<pulumi.Input<TimerTriggerArgs>[]>;
+    timerTriggers?: pulumi.Input<pulumi.Input<TimerTriggerArgs>[] | undefined>;
 }
 /**
  * triggerPropertiesArgsProvideDefaults sets the appropriate defaults for TriggerPropertiesArgs
@@ -1301,7 +1301,7 @@ export interface TriggerPropertiesArgs {
 export function triggerPropertiesArgsProvideDefaults(val: TriggerPropertiesArgs): TriggerPropertiesArgs {
     return {
         ...val,
-        baseImageTrigger: (val.baseImageTrigger ? pulumi.output(val.baseImageTrigger).apply(baseImageTriggerArgsProvideDefaults) : undefined),
+        baseImageTrigger: pulumi.output(val.baseImageTrigger).apply(v => v === undefined ? undefined : baseImageTriggerArgsProvideDefaults(v)),
     };
 }
 
@@ -1312,11 +1312,11 @@ export interface TrustPolicyArgs {
     /**
      * The value that indicates whether the policy is enabled or not.
      */
-    status?: pulumi.Input<string | enums.PolicyStatus>;
+    status?: pulumi.Input<string | enums.PolicyStatus | undefined>;
     /**
      * The type of trust policy.
      */
-    type?: pulumi.Input<string | enums.TrustPolicyType>;
+    type?: pulumi.Input<string | enums.TrustPolicyType | undefined>;
 }
 /**
  * trustPolicyArgsProvideDefaults sets the appropriate defaults for TrustPolicyArgs
@@ -1333,9 +1333,9 @@ export interface UserIdentityPropertiesArgs {
     /**
      * The client id of user assigned identity.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The principal id of user assigned identity.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
 }

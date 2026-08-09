@@ -1,7 +1,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
- * Response containing ADO OAuth information
+ * Gets ADOOAuth info used to authenticate users with ADO.
  *
  * Uses Azure REST API version 2025-03-01-preview.
  *
@@ -40,7 +40,7 @@ export interface GetADOOAuthInfoResult {
     readonly token?: string;
 }
 /**
- * Response containing ADO OAuth information
+ * Gets ADOOAuth info used to authenticate users with ADO.
  *
  * Uses Azure REST API version 2025-03-01-preview.
  *
@@ -62,5 +62,5 @@ export interface GetADOOAuthInfoOutputArgs {
     /**
      * The URL the client will redirect to on successful authentication. If empty, no redirect will occur.
      */
-    redirectUrl?: pulumi.Input<string>;
+    redirectUrl?: pulumi.Input<string | undefined>;
 }

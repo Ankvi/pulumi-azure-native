@@ -11,11 +11,11 @@ export interface InstancePropertiesArgs {
     /**
      * partner properties
      */
-    partnerProperties?: pulumi.Input<PartnerPropertiesArgs>;
+    partnerProperties?: pulumi.Input<PartnerPropertiesArgs | undefined>;
     /**
      * Single sign-on properties
      */
-    singleSignOnProperties?: pulumi.Input<LiftrBaseSingleSignOnPropertiesV2Args>;
+    singleSignOnProperties?: pulumi.Input<LiftrBaseSingleSignOnPropertiesV2Args | undefined>;
     /**
      * Details of the user.
      */
@@ -33,7 +33,7 @@ export interface LiftrBaseMarketplaceDetailsArgs {
     /**
      * Azure subscription id for the the marketplace offer is purchased from
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -51,7 +51,7 @@ export interface LiftrBaseOfferDetailsArgs {
     /**
      * Plan Name for the marketplace offer
      */
-    planName?: pulumi.Input<string>;
+    planName?: pulumi.Input<string | undefined>;
     /**
      * Publisher Id for the marketplace offer
      */
@@ -59,11 +59,11 @@ export interface LiftrBaseOfferDetailsArgs {
     /**
      * Plan Display Name for the marketplace offer
      */
-    termId?: pulumi.Input<string>;
+    termId?: pulumi.Input<string | undefined>;
     /**
      * Plan Display Name for the marketplace offer
      */
-    termUnit?: pulumi.Input<string>;
+    termUnit?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -73,15 +73,15 @@ export interface LiftrBaseSingleSignOnPropertiesV2Args {
     /**
      * List of AAD domains fetched from Microsoft Graph for user.
      */
-    aadDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    aadDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * AAD enterprise application Id used to setup SSO
      */
-    enterpriseAppId?: pulumi.Input<string>;
+    enterpriseAppId?: pulumi.Input<string | undefined>;
     /**
      * State of the Single Sign On for the resource
      */
-    state?: pulumi.Input<string | enums.SingleSignOnStates>;
+    state?: pulumi.Input<string | enums.SingleSignOnStates | undefined>;
     /**
      * Type of Single Sign-On mechanism being used
      */
@@ -89,7 +89,7 @@ export interface LiftrBaseSingleSignOnPropertiesV2Args {
     /**
      * URL for SSO to be used by the partner to redirect the user to their system
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -99,23 +99,23 @@ export interface LiftrBaseUserDetailsArgs {
     /**
      * Email address of the user
      */
-    emailAddress?: pulumi.Input<string>;
+    emailAddress?: pulumi.Input<string | undefined>;
     /**
      * First name of the user
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * Last name of the user
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * User's phone number
      */
-    phoneNumber?: pulumi.Input<string>;
+    phoneNumber?: pulumi.Input<string | undefined>;
     /**
      * User's principal name
      */
-    upn?: pulumi.Input<string>;
+    upn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -129,7 +129,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

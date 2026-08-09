@@ -93,7 +93,7 @@ export class HciEdgeDevice extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20230801preview:EdgeDevice" }, { type: "azure-native:azurestackhci/v20230801preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20231101preview:EdgeDevice" }, { type: "azure-native:azurestackhci/v20231101preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20240101:EdgeDevice" }, { type: "azure-native:azurestackhci/v20240101:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20240215preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20240401:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20240901preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20241201preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20250201preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20250915preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20251001:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20251101preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20251201preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20260201:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20260215preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20260301preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci:EdgeDevice" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20230801preview:EdgeDevice" }, { type: "azure-native:azurestackhci/v20230801preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20231101preview:EdgeDevice" }, { type: "azure-native:azurestackhci/v20231101preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20240101:EdgeDevice" }, { type: "azure-native:azurestackhci/v20240101:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20240215preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20240401:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20240901preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20241201preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20250201preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20250915preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20251001:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20251101preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20251201preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20260201:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20260215preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20260301preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20260401preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20260430:HciEdgeDevice" }, { type: "azure-native:azurestackhci/v20260501preview:HciEdgeDevice" }, { type: "azure-native:azurestackhci:EdgeDevice" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(HciEdgeDevice.__pulumiType, name, resourceInputs, opts);
     }
@@ -106,7 +106,7 @@ export interface HciEdgeDeviceArgs {
     /**
      * Name of Device
      */
-    edgeDeviceName?: pulumi.Input<string>;
+    edgeDeviceName?: pulumi.Input<string | undefined>;
     /**
      * Edge device kind.
      * Expected value is 'HCI'.
@@ -115,7 +115,7 @@ export interface HciEdgeDeviceArgs {
     /**
      * properties for Arc-enabled edge device with HCI OS.
      */
-    properties?: pulumi.Input<types.inputs.HciEdgeDevicePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.HciEdgeDevicePropertiesArgs | undefined>;
     /**
      * The fully qualified Azure Resource manager identifier of the resource.
      */

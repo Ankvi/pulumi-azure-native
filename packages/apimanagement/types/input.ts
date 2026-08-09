@@ -7,7 +7,7 @@ export interface AdditionalLocationArgs {
     /**
      * Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in this additional location.
      */
-    disableGateway?: pulumi.Input<boolean>;
+    disableGateway?: pulumi.Input<boolean | undefined>;
     /**
      * The location name of the additional region among Azure Data center regions.
      */
@@ -15,11 +15,11 @@ export interface AdditionalLocationArgs {
     /**
      * Property can be used to enable NAT Gateway for this API Management service.
      */
-    natGatewayState?: pulumi.Input<string | enums.NatGatewayState>;
+    natGatewayState?: pulumi.Input<string | enums.NatGatewayState | undefined>;
     /**
      * Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the location. Supported only for Premium SKU being deployed in Virtual Network.
      */
-    publicIpAddressId?: pulumi.Input<string>;
+    publicIpAddressId?: pulumi.Input<string | undefined>;
     /**
      * SKU properties of the API Management service.
      */
@@ -27,11 +27,11 @@ export interface AdditionalLocationArgs {
     /**
      * Virtual network configuration for the location.
      */
-    virtualNetworkConfiguration?: pulumi.Input<VirtualNetworkConfigurationArgs>;
+    virtualNetworkConfiguration?: pulumi.Input<VirtualNetworkConfigurationArgs | undefined>;
     /**
      * A list of availability zones denoting where the resource needs to come from.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 /**
  * additionalLocationArgsProvideDefaults sets the appropriate defaults for AdditionalLocationArgs
@@ -51,15 +51,15 @@ export interface ApiContactInformationArgs {
     /**
      * The email address of the contact person/organization. MUST be in the format of an email address
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The identifying name of the contact person/organization
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL pointing to the contact information. MUST be in the format of a URL
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -69,11 +69,11 @@ export interface ApiCreateOrUpdatePropertiesWsdlSelectorArgs {
     /**
      * Name of endpoint(port) to import from WSDL
      */
-    wsdlEndpointName?: pulumi.Input<string>;
+    wsdlEndpointName?: pulumi.Input<string | undefined>;
     /**
      * Name of service to import from WSDL
      */
-    wsdlServiceName?: pulumi.Input<string>;
+    wsdlServiceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -83,11 +83,11 @@ export interface ApiLicenseInformationArgs {
     /**
      * The license name used for the API
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A URL to the license used for the API. MUST be in the format of a URL
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -97,7 +97,7 @@ export interface ApiManagementGatewaySkuPropertiesArgs {
     /**
      * Capacity of the SKU (number of deployed units of the SKU)
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Name of the Sku.
      */
@@ -113,12 +113,12 @@ export interface ApiManagementServiceIdentityArgs {
      */
     type: pulumi.Input<string | enums.ApimIdentityType>;
     /**
-     * The list of user identities associated with the resource. The user identity 
-     * dictionary key references will be ARM resource ids in the form: 
+     * The list of user identities associated with the resource. The user identity
+     * dictionary key references will be ARM resource ids in the form:
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
      *     providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserIdentityPropertiesArgs>}>;
+    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserIdentityPropertiesArgs>} | undefined>;
 }
 
 /**
@@ -142,37 +142,37 @@ export interface ApiVersionConstraintArgs {
     /**
      * Limit control plane API calls to API Management service with version equal to or newer than this value.
      */
-    minApiVersion?: pulumi.Input<string>;
+    minApiVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
- * An API Version Set contains the common configuration for a set of API Versions relating 
+ * An API Version Set contains the common configuration for a set of API Versions relating
  */
 export interface ApiVersionSetContractDetailsArgs {
     /**
      * Description of API Version Set.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Identifier for existing API Version Set. Omit this value to create a new Version Set.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The display Name of the API Version Set.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of HTTP header parameter that indicates the API Version if versioningScheme is set to `header`.
      */
-    versionHeaderName?: pulumi.Input<string>;
+    versionHeaderName?: pulumi.Input<string | undefined>;
     /**
      * Name of query parameter that indicates the API Version if versioningScheme is set to `query`.
      */
-    versionQueryName?: pulumi.Input<string>;
+    versionQueryName?: pulumi.Input<string | undefined>;
     /**
      * An value that determines where the API Version identifier will be located in a HTTP request.
      */
-    versioningScheme?: pulumi.Input<string | enums.VersioningScheme>;
+    versioningScheme?: pulumi.Input<string | enums.VersioningScheme | undefined>;
 }
 
 /**
@@ -182,19 +182,19 @@ export interface AuthenticationSettingsContractArgs {
     /**
      * OAuth2 Authentication settings
      */
-    oAuth2?: pulumi.Input<OAuth2AuthenticationSettingsContractArgs>;
+    oAuth2?: pulumi.Input<OAuth2AuthenticationSettingsContractArgs | undefined>;
     /**
      * Collection of OAuth2 authentication settings included into this API.
      */
-    oAuth2AuthenticationSettings?: pulumi.Input<pulumi.Input<OAuth2AuthenticationSettingsContractArgs>[]>;
+    oAuth2AuthenticationSettings?: pulumi.Input<pulumi.Input<OAuth2AuthenticationSettingsContractArgs>[] | undefined>;
     /**
      * OpenID Connect Authentication Settings
      */
-    openid?: pulumi.Input<OpenIdAuthenticationSettingsContractArgs>;
+    openid?: pulumi.Input<OpenIdAuthenticationSettingsContractArgs | undefined>;
     /**
      * Collection of Open ID Connect authentication settings included into this API.
      */
-    openidAuthenticationSettings?: pulumi.Input<pulumi.Input<OpenIdAuthenticationSettingsContractArgs>[]>;
+    openidAuthenticationSettings?: pulumi.Input<pulumi.Input<OpenIdAuthenticationSettingsContractArgs>[] | undefined>;
 }
 
 /**
@@ -204,11 +204,11 @@ export interface AuthorizationErrorArgs {
     /**
      * Error code
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * Error message
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -218,11 +218,11 @@ export interface AuthorizationProviderOAuth2GrantTypesArgs {
     /**
      * OAuth2 authorization code grant parameters
      */
-    authorizationCode?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    authorizationCode?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * OAuth2 client credential grant parameters
      */
-    clientCredentials?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    clientCredentials?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -232,11 +232,11 @@ export interface AuthorizationProviderOAuth2SettingsArgs {
     /**
      * OAuth2 settings
      */
-    grantTypes?: pulumi.Input<AuthorizationProviderOAuth2GrantTypesArgs>;
+    grantTypes?: pulumi.Input<AuthorizationProviderOAuth2GrantTypesArgs | undefined>;
     /**
      * Redirect URL to be set in the OAuth application.
      */
-    redirectUrl?: pulumi.Input<string>;
+    redirectUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -257,7 +257,7 @@ export interface BackendBaseParametersPoolArgs {
     /**
      * The list of backend entities belonging to a pool.
      */
-    services?: pulumi.Input<pulumi.Input<BackendPoolItemArgs>[]>;
+    services?: pulumi.Input<pulumi.Input<BackendPoolItemArgs>[] | undefined>;
 }
 
 /**
@@ -267,7 +267,7 @@ export interface BackendCircuitBreakerArgs {
     /**
      * The rules for tripping the backend.
      */
-    rules?: pulumi.Input<pulumi.Input<CircuitBreakerRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<CircuitBreakerRuleArgs>[] | undefined>;
 }
 
 /**
@@ -277,7 +277,7 @@ export interface BackendConfigurationArgs {
     /**
      * The default hostname of the data-plane gateway to which requests can be sent.
      */
-    subnet?: pulumi.Input<BackendSubnetConfigurationArgs>;
+    subnet?: pulumi.Input<BackendSubnetConfigurationArgs | undefined>;
 }
 
 /**
@@ -287,23 +287,23 @@ export interface BackendCredentialsContractArgs {
     /**
      * Authorization header authentication
      */
-    authorization?: pulumi.Input<BackendAuthorizationHeaderCredentialsArgs>;
+    authorization?: pulumi.Input<BackendAuthorizationHeaderCredentialsArgs | undefined>;
     /**
      * List of Client Certificate Thumbprints. Will be ignored if certificatesIds are provided.
      */
-    certificate?: pulumi.Input<pulumi.Input<string>[]>;
+    certificate?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of Client Certificate Ids.
      */
-    certificateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    certificateIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Header Parameter description.
      */
-    header?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    header?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
     /**
      * Query Parameter description.
      */
-    query?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    query?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
 }
 
 /**
@@ -317,11 +317,11 @@ export interface BackendPoolItemArgs {
     /**
      * The priority of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The weight of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -331,7 +331,7 @@ export interface BackendPropertiesArgs {
     /**
      * Backend Service Fabric Cluster Properties
      */
-    serviceFabricCluster?: pulumi.Input<BackendServiceFabricClusterPropertiesArgs>;
+    serviceFabricCluster?: pulumi.Input<BackendServiceFabricClusterPropertiesArgs | undefined>;
 }
 
 /**
@@ -341,7 +341,7 @@ export interface BackendProxyContractArgs {
     /**
      * Password to connect to the WebProxy Server
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * WebProxy Server AbsoluteUri property which includes the entire URI stored in the Uri instance, including all fragments and query strings.
      */
@@ -349,7 +349,7 @@ export interface BackendProxyContractArgs {
     /**
      * Username to connect to the WebProxy server
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -359,11 +359,11 @@ export interface BackendServiceFabricClusterPropertiesArgs {
     /**
      * The client certificate id for the management endpoint.
      */
-    clientCertificateId?: pulumi.Input<string>;
+    clientCertificateId?: pulumi.Input<string | undefined>;
     /**
      * The client certificate thumbprint for the management endpoint. Will be ignored if certificatesIds are provided
      */
-    clientCertificatethumbprint?: pulumi.Input<string>;
+    clientCertificatethumbprint?: pulumi.Input<string | undefined>;
     /**
      * The cluster management endpoint.
      */
@@ -371,15 +371,15 @@ export interface BackendServiceFabricClusterPropertiesArgs {
     /**
      * Maximum number of retries while attempting resolve the partition.
      */
-    maxPartitionResolutionRetries?: pulumi.Input<number>;
+    maxPartitionResolutionRetries?: pulumi.Input<number | undefined>;
     /**
      * Thumbprints of certificates cluster management service uses for tls communication
      */
-    serverCertificateThumbprints?: pulumi.Input<pulumi.Input<string>[]>;
+    serverCertificateThumbprints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Server X509 Certificate Names Collection
      */
-    serverX509Names?: pulumi.Input<pulumi.Input<X509CertificateNameArgs>[]>;
+    serverX509Names?: pulumi.Input<pulumi.Input<X509CertificateNameArgs>[] | undefined>;
 }
 
 /**
@@ -389,7 +389,7 @@ export interface BackendSubnetConfigurationArgs {
     /**
      * The ARM ID of the subnet in which the backend systems are hosted.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -399,11 +399,11 @@ export interface BackendTlsPropertiesArgs {
     /**
      * Flag indicating whether SSL certificate chain validation should be done when using self-signed certificates for this backend host.
      */
-    validateCertificateChain?: pulumi.Input<boolean>;
+    validateCertificateChain?: pulumi.Input<boolean | undefined>;
     /**
      * Flag indicating whether SSL certificate name validation should be done when using self-signed certificates for this backend host.
      */
-    validateCertificateName?: pulumi.Input<boolean>;
+    validateCertificateName?: pulumi.Input<boolean | undefined>;
 }
 /**
  * backendTlsPropertiesArgsProvideDefaults sets the appropriate defaults for BackendTlsPropertiesArgs
@@ -423,7 +423,7 @@ export interface BodyDiagnosticSettingsArgs {
     /**
      * Number of request body bytes to log.
      */
-    bytes?: pulumi.Input<number>;
+    bytes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -433,15 +433,15 @@ export interface CertificateConfigurationArgs {
     /**
      * Certificate information.
      */
-    certificate?: pulumi.Input<CertificateInformationArgs>;
+    certificate?: pulumi.Input<CertificateInformationArgs | undefined>;
     /**
      * Certificate Password.
      */
-    certificatePassword?: pulumi.Input<string>;
+    certificatePassword?: pulumi.Input<string | undefined>;
     /**
      * Base64 Encoded certificate.
      */
-    encodedCertificate?: pulumi.Input<string>;
+    encodedCertificate?: pulumi.Input<string | undefined>;
     /**
      * The System.Security.Cryptography.x509certificates.StoreName certificate store location. Only Root and CertificateAuthority are valid locations.
      */
@@ -473,23 +473,23 @@ export interface CircuitBreakerFailureConditionArgs {
     /**
      * The threshold for opening the circuit.
      */
-    count?: pulumi.Input<number>;
+    count?: pulumi.Input<number | undefined>;
     /**
      * The error reasons which are considered as failure.
      */
-    errorReasons?: pulumi.Input<pulumi.Input<string>[]>;
+    errorReasons?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The interval during which the failures are counted.
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * The threshold for opening the circuit.
      */
-    percentage?: pulumi.Input<number>;
+    percentage?: pulumi.Input<number | undefined>;
     /**
      * The status code ranges which are considered as failure.
      */
-    statusCodeRanges?: pulumi.Input<pulumi.Input<FailureStatusCodeRangeArgs>[]>;
+    statusCodeRanges?: pulumi.Input<pulumi.Input<FailureStatusCodeRangeArgs>[] | undefined>;
 }
 
 /**
@@ -499,19 +499,19 @@ export interface CircuitBreakerRuleArgs {
     /**
      * flag to accept Retry-After header from the backend.
      */
-    acceptRetryAfter?: pulumi.Input<boolean>;
+    acceptRetryAfter?: pulumi.Input<boolean | undefined>;
     /**
      * The conditions for tripping the circuit breaker.
      */
-    failureCondition?: pulumi.Input<CircuitBreakerFailureConditionArgs>;
+    failureCondition?: pulumi.Input<CircuitBreakerFailureConditionArgs | undefined>;
     /**
      * The rule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The duration for which the circuit will be tripped.
      */
-    tripDuration?: pulumi.Input<string>;
+    tripDuration?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -521,7 +521,7 @@ export interface ConfigurationApiArgs {
     /**
      * Indication whether or not the legacy Configuration API (v1) should be exposed on the API Management service. Value is optional but must be 'Enabled' or 'Disabled'. If 'Disabled', legacy Configuration API (v1) will not be available for self-hosted gateways. Default value is 'Enabled'
      */
-    legacyApi?: pulumi.Input<string | enums.LegacyApiState>;
+    legacyApi?: pulumi.Input<string | enums.LegacyApiState | undefined>;
 }
 /**
  * configurationApiArgsProvideDefaults sets the appropriate defaults for ConfigurationApiArgs
@@ -537,22 +537,22 @@ export interface DataMaskingArgs {
     /**
      * Masking settings for headers
      */
-    headers?: pulumi.Input<pulumi.Input<DataMaskingEntityArgs>[]>;
+    headers?: pulumi.Input<pulumi.Input<DataMaskingEntityArgs>[] | undefined>;
     /**
      * Masking settings for Url query parameters
      */
-    queryParams?: pulumi.Input<pulumi.Input<DataMaskingEntityArgs>[]>;
+    queryParams?: pulumi.Input<pulumi.Input<DataMaskingEntityArgs>[] | undefined>;
 }
 
 export interface DataMaskingEntityArgs {
     /**
      * Data masking mode.
      */
-    mode?: pulumi.Input<string | enums.DataMaskingMode>;
+    mode?: pulumi.Input<string | enums.DataMaskingMode | undefined>;
     /**
      * The name of an entity to mask (e.g. a name of a header or a query parameter).
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -562,15 +562,15 @@ export interface EmailTemplateParametersContractPropertiesArgs {
     /**
      * Template parameter description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Template parameter name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Template parameter title.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -580,18 +580,18 @@ export interface FailureStatusCodeRangeArgs {
     /**
      * The maximum http status code.
      */
-    max?: pulumi.Input<number>;
+    max?: pulumi.Input<number | undefined>;
     /**
      * The minimum http status code.
      */
-    min?: pulumi.Input<number>;
+    min?: pulumi.Input<number | undefined>;
 }
 
 export interface GatewayHostnameBindingKeyVaultArgs {
     /**
      * The default hostname of the data-plane gateway.
      */
-    identityClientId?: pulumi.Input<string>;
+    identityClientId?: pulumi.Input<string | undefined>;
     /**
      * The current provisioning state of the API Management gateway hostname binding.
      */
@@ -605,27 +605,27 @@ export interface HostnameConfigurationArgs {
     /**
      * Certificate information.
      */
-    certificate?: pulumi.Input<CertificateInformationArgs>;
+    certificate?: pulumi.Input<CertificateInformationArgs | undefined>;
     /**
      * Certificate Password.
      */
-    certificatePassword?: pulumi.Input<string>;
+    certificatePassword?: pulumi.Input<string | undefined>;
     /**
      * Certificate Source.
      */
-    certificateSource?: pulumi.Input<string | enums.CertificateSource>;
+    certificateSource?: pulumi.Input<string | enums.CertificateSource | undefined>;
     /**
      * Certificate Status.
      */
-    certificateStatus?: pulumi.Input<string | enums.CertificateStatus>;
+    certificateStatus?: pulumi.Input<string | enums.CertificateStatus | undefined>;
     /**
      * Specify true to setup the certificate associated with this Hostname as the Default SSL Certificate. If a client does not send the SNI header, then this will be the certificate that will be challenged. The property is useful if a service has multiple custom hostname enabled and it needs to decide on the default ssl certificate. The setting only applied to gateway Hostname Type.
      */
-    defaultSslBinding?: pulumi.Input<boolean>;
+    defaultSslBinding?: pulumi.Input<boolean | undefined>;
     /**
      * Base64 Encoded certificate.
      */
-    encodedCertificate?: pulumi.Input<string>;
+    encodedCertificate?: pulumi.Input<string | undefined>;
     /**
      * Hostname to configure on the Api Management service.
      */
@@ -633,15 +633,15 @@ export interface HostnameConfigurationArgs {
     /**
      * System or User Assigned Managed identity clientId as generated by Azure AD, which has GET access to the keyVault containing the SSL certificate.
      */
-    identityClientId?: pulumi.Input<string>;
+    identityClientId?: pulumi.Input<string | undefined>;
     /**
      * Url to the KeyVault Secret containing the Ssl Certificate. If absolute Url containing version is provided, auto-update of ssl certificate will not work. This requires Api Management service to be configured with aka.ms/apimmsi. The secret should be of type *application/x-pkcs12*
      */
-    keyVaultId?: pulumi.Input<string>;
+    keyVaultId?: pulumi.Input<string | undefined>;
     /**
      * Specify true to always negotiate client certificate on the hostname. Default Value is false.
      */
-    negotiateClientCertificate?: pulumi.Input<boolean>;
+    negotiateClientCertificate?: pulumi.Input<boolean | undefined>;
     /**
      * Hostname type.
      */
@@ -665,15 +665,15 @@ export interface HttpMessageDiagnosticArgs {
     /**
      * Body logging settings.
      */
-    body?: pulumi.Input<BodyDiagnosticSettingsArgs>;
+    body?: pulumi.Input<BodyDiagnosticSettingsArgs | undefined>;
     /**
      * Data masking settings.
      */
-    dataMasking?: pulumi.Input<DataMaskingArgs>;
+    dataMasking?: pulumi.Input<DataMaskingArgs | undefined>;
     /**
      * Array of HTTP Headers to log.
      */
-    headers?: pulumi.Input<pulumi.Input<string>[]>;
+    headers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -683,11 +683,11 @@ export interface KeyVaultContractCreatePropertiesArgs {
     /**
      * Null for SystemAssignedIdentity or Client Id for UserAssignedIdentity , which will be used to access key vault secret.
      */
-    identityClientId?: pulumi.Input<string>;
+    identityClientId?: pulumi.Input<string | undefined>;
     /**
      * Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
      */
-    secretIdentifier?: pulumi.Input<string>;
+    secretIdentifier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -697,11 +697,11 @@ export interface OAuth2AuthenticationSettingsContractArgs {
     /**
      * OAuth authorization server identifier.
      */
-    authorizationServerId?: pulumi.Input<string>;
+    authorizationServerId?: pulumi.Input<string | undefined>;
     /**
      * operations scope.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -711,11 +711,11 @@ export interface OpenIdAuthenticationSettingsContractArgs {
     /**
      * How to send token to the server.
      */
-    bearerTokenSendingMethods?: pulumi.Input<pulumi.Input<string | enums.BearerTokenSendingMethods>[]>;
+    bearerTokenSendingMethods?: pulumi.Input<pulumi.Input<string | enums.BearerTokenSendingMethods>[] | undefined>;
     /**
      * OAuth authorization server identifier.
      */
-    openidProviderId?: pulumi.Input<string>;
+    openidProviderId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -725,15 +725,15 @@ export interface ParameterContractArgs {
     /**
      * Default parameter value.
      */
-    defaultValue?: pulumi.Input<string>;
+    defaultValue?: pulumi.Input<string | undefined>;
     /**
      * Parameter description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Exampled defined for the parameter.
      */
-    examples?: pulumi.Input<{[key: string]: pulumi.Input<ParameterExampleContractArgs>}>;
+    examples?: pulumi.Input<{[key: string]: pulumi.Input<ParameterExampleContractArgs>} | undefined>;
     /**
      * Parameter name.
      */
@@ -741,11 +741,11 @@ export interface ParameterContractArgs {
     /**
      * Specifies whether parameter is required or not.
      */
-    required?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean | undefined>;
     /**
      * Schema identifier.
      */
-    schemaId?: pulumi.Input<string>;
+    schemaId?: pulumi.Input<string | undefined>;
     /**
      * Parameter type.
      */
@@ -753,11 +753,11 @@ export interface ParameterContractArgs {
     /**
      * Type name defined by the schema.
      */
-    typeName?: pulumi.Input<string>;
+    typeName?: pulumi.Input<string | undefined>;
     /**
      * Parameter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -767,19 +767,19 @@ export interface ParameterExampleContractArgs {
     /**
      * Long description for the example
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A URL that points to the literal example
      */
-    externalValue?: pulumi.Input<string>;
+    externalValue?: pulumi.Input<string | undefined>;
     /**
      * Short description for the example
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
     /**
      * Example value. May be a primitive value, or an object.
      */
-    value?: any;
+    value?: any | undefined;
 }
 
 /**
@@ -789,11 +789,11 @@ export interface PipelineDiagnosticSettingsArgs {
     /**
      * Diagnostic settings for request.
      */
-    request?: pulumi.Input<HttpMessageDiagnosticArgs>;
+    request?: pulumi.Input<HttpMessageDiagnosticArgs | undefined>;
     /**
      * Diagnostic settings for response.
      */
-    response?: pulumi.Input<HttpMessageDiagnosticArgs>;
+    response?: pulumi.Input<HttpMessageDiagnosticArgs | undefined>;
 }
 
 /**
@@ -803,7 +803,7 @@ export interface PrivateEndpointConnectionRequestPropertiesArgs {
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs | undefined>;
 }
 
 /**
@@ -813,15 +813,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -831,11 +831,11 @@ export interface RemotePrivateEndpointConnectionWrapperArgs {
     /**
      * Private Endpoint connection resource id
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Private Endpoint Connection Name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
@@ -843,7 +843,7 @@ export interface RemotePrivateEndpointConnectionWrapperArgs {
     /**
      * Private Endpoint Connection Resource Type
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -857,19 +857,19 @@ export interface RepresentationContractArgs {
     /**
      * Exampled defined for the representation.
      */
-    examples?: pulumi.Input<{[key: string]: pulumi.Input<ParameterExampleContractArgs>}>;
+    examples?: pulumi.Input<{[key: string]: pulumi.Input<ParameterExampleContractArgs>} | undefined>;
     /**
      * Collection of form parameters. Required if 'contentType' value is either 'application/x-www-form-urlencoded' or 'multipart/form-data'..
      */
-    formParameters?: pulumi.Input<pulumi.Input<ParameterContractArgs>[]>;
+    formParameters?: pulumi.Input<pulumi.Input<ParameterContractArgs>[] | undefined>;
     /**
      * Schema identifier. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
      */
-    schemaId?: pulumi.Input<string>;
+    schemaId?: pulumi.Input<string | undefined>;
     /**
      * Type name defined by the schema. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
      */
-    typeName?: pulumi.Input<string>;
+    typeName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -879,19 +879,19 @@ export interface RequestContractArgs {
     /**
      * Operation request description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Collection of operation request headers.
      */
-    headers?: pulumi.Input<pulumi.Input<ParameterContractArgs>[]>;
+    headers?: pulumi.Input<pulumi.Input<ParameterContractArgs>[] | undefined>;
     /**
      * Collection of operation request query parameters.
      */
-    queryParameters?: pulumi.Input<pulumi.Input<ParameterContractArgs>[]>;
+    queryParameters?: pulumi.Input<pulumi.Input<ParameterContractArgs>[] | undefined>;
     /**
      * Collection of operation request representations.
      */
-    representations?: pulumi.Input<pulumi.Input<RepresentationContractArgs>[]>;
+    representations?: pulumi.Input<pulumi.Input<RepresentationContractArgs>[] | undefined>;
 }
 
 /**
@@ -901,15 +901,15 @@ export interface ResourceLocationDataContractArgs {
     /**
      * The city or locality where the resource is located.
      */
-    city?: pulumi.Input<string>;
+    city?: pulumi.Input<string | undefined>;
     /**
      * The country or region where the resource is located.
      */
-    countryOrRegion?: pulumi.Input<string>;
+    countryOrRegion?: pulumi.Input<string | undefined>;
     /**
      * The district, state, or province where the resource is located.
      */
-    district?: pulumi.Input<string>;
+    district?: pulumi.Input<string | undefined>;
     /**
      * A canonical name for the geographic or physical location.
      */
@@ -923,15 +923,15 @@ export interface ResponseContractArgs {
     /**
      * Operation response description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Collection of operation response headers.
      */
-    headers?: pulumi.Input<pulumi.Input<ParameterContractArgs>[]>;
+    headers?: pulumi.Input<pulumi.Input<ParameterContractArgs>[] | undefined>;
     /**
      * Collection of operation response representations.
      */
-    representations?: pulumi.Input<pulumi.Input<RepresentationContractArgs>[]>;
+    representations?: pulumi.Input<pulumi.Input<RepresentationContractArgs>[] | undefined>;
     /**
      * Operation response HTTP status code.
      */
@@ -945,11 +945,11 @@ export interface SamplingSettingsArgs {
     /**
      * Rate of sampling for fixed-rate sampling.
      */
-    percentage?: pulumi.Input<number>;
+    percentage?: pulumi.Input<number | undefined>;
     /**
      * Sampling type.
      */
-    samplingType?: pulumi.Input<string | enums.SamplingType>;
+    samplingType?: pulumi.Input<string | enums.SamplingType | undefined>;
 }
 
 /**
@@ -959,11 +959,11 @@ export interface SubscriptionKeyParameterNamesContractArgs {
     /**
      * Subscription key header name.
      */
-    header?: pulumi.Input<string>;
+    header?: pulumi.Input<string | undefined>;
     /**
      * Subscription key query string parameter name.
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -987,22 +987,22 @@ export interface UserIdentityContractArgs {
     /**
      * Identifier value within provider.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Identity provider name.
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
 }
 
 export interface UserIdentityPropertiesArgs {
     /**
      * The client id of user assigned identity.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The principal id of user assigned identity.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1012,7 +1012,7 @@ export interface VirtualNetworkConfigurationArgs {
     /**
      * The full resource ID of a subnet in a virtual network to deploy the API Management service in.
      */
-    subnetResourceId?: pulumi.Input<string>;
+    subnetResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1022,7 +1022,7 @@ export interface WikiDocumentationContractArgs {
     /**
      * Documentation Identifier
      */
-    documentationId?: pulumi.Input<string>;
+    documentationId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1032,9 +1032,9 @@ export interface X509CertificateNameArgs {
     /**
      * Thumbprint for the Issuer of the Certificate.
      */
-    issuerCertificateThumbprint?: pulumi.Input<string>;
+    issuerCertificateThumbprint?: pulumi.Input<string | undefined>;
     /**
      * Common Name of the Certificate.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

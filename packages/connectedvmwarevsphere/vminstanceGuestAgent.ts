@@ -42,7 +42,7 @@ export class VMInstanceGuestAgent extends pulumi.CustomResource {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    declare public readonly credentials: pulumi.Output<types.outputs.GuestCredentialResponseV1 | undefined>;
+    declare public readonly credentials: pulumi.Output<types.outputs.GuestCredentialVMInstanceGuestAgentResponse | undefined>;
     /**
      * Gets the name of the corresponding resource in Kubernetes.
      */
@@ -145,19 +145,19 @@ export interface VMInstanceGuestAgentArgs {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    credentials?: pulumi.Input<types.inputs.GuestCredentialArgs>;
+    credentials?: pulumi.Input<types.inputs.GuestCredentialArgs | undefined>;
     /**
      * HTTP Proxy configuration for the VM.
      */
-    httpProxyConfig?: pulumi.Input<types.inputs.HttpProxyConfigurationArgs>;
+    httpProxyConfig?: pulumi.Input<types.inputs.HttpProxyConfigurationArgs | undefined>;
     /**
      * The resource id of the private link scope this machine is assigned to, if any.
      */
-    privateLinkScopeResourceId?: pulumi.Input<string>;
+    privateLinkScopeResourceId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the guest agent provisioning action.
      */
-    provisioningAction?: pulumi.Input<string | types.enums.ProvisioningAction>;
+    provisioningAction?: pulumi.Input<string | types.enums.ProvisioningAction | undefined>;
     /**
      * The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
      */

@@ -17,15 +17,15 @@ export function getGovernanceAssignment(args: GetGovernanceAssignmentArgs, opts?
 
 export interface GetGovernanceAssignmentArgs {
     /**
-     * The Assessment Key - A unique key for the assessment type
+     * The assessment key of the governance assignment.
      */
     assessmentName: string;
     /**
-     * The governance assignment key - the assessment key of the required governance assignment
+     * The governance assignment key.
      */
     assignmentKey: string;
     /**
-     * The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+     * The scope of the governance assignment.
      */
     scope: string;
 }
@@ -47,7 +47,7 @@ export interface GetGovernanceAssignmentResult {
      */
     readonly governanceEmailNotification?: types.outputs.GovernanceEmailNotificationResponse;
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -55,7 +55,7 @@ export interface GetGovernanceAssignmentResult {
      */
     readonly isGracePeriod?: boolean;
     /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -71,7 +71,11 @@ export interface GetGovernanceAssignmentResult {
      */
     readonly remediationEta?: types.outputs.RemediationEtaResponse;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -91,15 +95,15 @@ export function getGovernanceAssignmentOutput(args: GetGovernanceAssignmentOutpu
 
 export interface GetGovernanceAssignmentOutputArgs {
     /**
-     * The Assessment Key - A unique key for the assessment type
+     * The assessment key of the governance assignment.
      */
     assessmentName: pulumi.Input<string>;
     /**
-     * The governance assignment key - the assessment key of the required governance assignment
+     * The governance assignment key.
      */
     assignmentKey: pulumi.Input<string>;
     /**
-     * The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+     * The scope of the governance assignment.
      */
     scope: pulumi.Input<string>;
 }

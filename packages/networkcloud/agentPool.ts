@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AgentPool extends pulumi.CustomResource {
     /**
@@ -149,7 +149,7 @@ export class AgentPool extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vmSkuName'");
             }
             resourceInputs["administratorConfiguration"] = args?.administratorConfiguration;
-            resourceInputs["agentOptions"] = args ? (args.agentOptions ? pulumi.output(args.agentOptions).apply(types.inputs.agentOptionsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["agentOptions"] = args ? pulumi.output(args.agentOptions).apply(v => v === undefined ? undefined : types.inputs.agentOptionsArgsProvideDefaults(v)) : undefined;
             resourceInputs["agentPoolName"] = args?.agentPoolName;
             resourceInputs["attachedNetworkConfiguration"] = args?.attachedNetworkConfiguration;
             resourceInputs["availabilityZones"] = args?.availabilityZones;
@@ -198,7 +198,7 @@ export class AgentPool extends pulumi.CustomResource {
             resourceInputs["vmSkuName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:AgentPool" }, { type: "azure-native:networkcloud/v20231001preview:AgentPool" }, { type: "azure-native:networkcloud/v20240601preview:AgentPool" }, { type: "azure-native:networkcloud/v20240701:AgentPool" }, { type: "azure-native:networkcloud/v20241001preview:AgentPool" }, { type: "azure-native:networkcloud/v20250201:AgentPool" }, { type: "azure-native:networkcloud/v20250701preview:AgentPool" }, { type: "azure-native:networkcloud/v20250901:AgentPool" }, { type: "azure-native:networkcloud/v20260101preview:AgentPool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:AgentPool" }, { type: "azure-native:networkcloud/v20231001preview:AgentPool" }, { type: "azure-native:networkcloud/v20240601preview:AgentPool" }, { type: "azure-native:networkcloud/v20240701:AgentPool" }, { type: "azure-native:networkcloud/v20241001preview:AgentPool" }, { type: "azure-native:networkcloud/v20250201:AgentPool" }, { type: "azure-native:networkcloud/v20250901:AgentPool" }, { type: "azure-native:networkcloud/v20260101preview:AgentPool" }, { type: "azure-native:networkcloud/v20260501preview:AgentPool" }, { type: "azure-native:networkcloud/v20260701:AgentPool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AgentPool.__pulumiType, name, resourceInputs, opts);
     }
@@ -211,23 +211,23 @@ export interface AgentPoolArgs {
     /**
      * The administrator credentials to be used for the nodes in this agent pool.
      */
-    administratorConfiguration?: pulumi.Input<types.inputs.AdministratorConfigurationArgs>;
+    administratorConfiguration?: pulumi.Input<types.inputs.AdministratorConfigurationArgs | undefined>;
     /**
      * The configurations that will be applied to each agent in this agent pool.
      */
-    agentOptions?: pulumi.Input<types.inputs.AgentOptionsArgs>;
+    agentOptions?: pulumi.Input<types.inputs.AgentOptionsArgs | undefined>;
     /**
      * The name of the Kubernetes cluster agent pool.
      */
-    agentPoolName?: pulumi.Input<string>;
+    agentPoolName?: pulumi.Input<string | undefined>;
     /**
      * The configuration of networks being attached to the agent pool for use by the workloads that run on this Kubernetes cluster.
      */
-    attachedNetworkConfiguration?: pulumi.Input<types.inputs.AttachedNetworkConfigurationArgs>;
+    attachedNetworkConfiguration?: pulumi.Input<types.inputs.AttachedNetworkConfigurationArgs | undefined>;
     /**
      * The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of virtual machines that use this configuration.
      */
@@ -235,7 +235,7 @@ export interface AgentPoolArgs {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * The name of the Kubernetes cluster.
      */
@@ -243,11 +243,11 @@ export interface AgentPoolArgs {
     /**
      * The labels applied to the nodes in this agent pool.
      */
-    labels?: pulumi.Input<pulumi.Input<types.inputs.KubernetesLabelArgs>[]>;
+    labels?: pulumi.Input<pulumi.Input<types.inputs.KubernetesLabelArgs>[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
      */
@@ -259,15 +259,15 @@ export interface AgentPoolArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The taints applied to the nodes in this agent pool.
      */
-    taints?: pulumi.Input<pulumi.Input<types.inputs.KubernetesLabelArgs>[]>;
+    taints?: pulumi.Input<pulumi.Input<types.inputs.KubernetesLabelArgs>[] | undefined>;
     /**
      * The configuration of the agent pool.
      */
-    upgradeSettings?: pulumi.Input<types.inputs.AgentPoolUpgradeSettingsArgs>;
+    upgradeSettings?: pulumi.Input<types.inputs.AgentPoolUpgradeSettingsArgs | undefined>;
     /**
      * The name of the VM SKU that determines the size of resources allocated for node VMs.
      */

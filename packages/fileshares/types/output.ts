@@ -185,7 +185,7 @@ export interface FileShareSnapshotPropertiesResponse {
     /**
      * The initiator of the FileShareSnapshot. This is a user-defined value.
      */
-    initiatorId: string;
+    initiatorId?: string;
     /**
      * The metadata
      */

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
  *
- * Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkTap extends pulumi.CustomResource {
     /**
@@ -145,7 +145,7 @@ export class NetworkTap extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230615:NetworkTap" }, { type: "azure-native:managednetworkfabric/v20240215preview:NetworkTap" }, { type: "azure-native:managednetworkfabric/v20240615preview:NetworkTap" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230615:NetworkTap" }, { type: "azure-native:managednetworkfabric/v20240215preview:NetworkTap" }, { type: "azure-native:managednetworkfabric/v20240615preview:NetworkTap" }, { type: "azure-native:managednetworkfabric/v20250715:NetworkTap" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkTap.__pulumiType, name, resourceInputs, opts);
     }
@@ -158,7 +158,7 @@ export interface NetworkTapArgs {
     /**
      * Switch configuration description.
      */
-    annotation?: pulumi.Input<string>;
+    annotation?: pulumi.Input<string | undefined>;
     /**
      * List of destinations to send the filter traffic.
      */
@@ -166,7 +166,7 @@ export interface NetworkTapArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * ARM resource ID of the Network Packet Broker.
      */
@@ -174,11 +174,11 @@ export interface NetworkTapArgs {
     /**
      * Name of the Network Tap.
      */
-    networkTapName?: pulumi.Input<string>;
+    networkTapName?: pulumi.Input<string | undefined>;
     /**
      * Polling type.
      */
-    pollingType?: pulumi.Input<string | types.enums.PollingType>;
+    pollingType?: pulumi.Input<string | types.enums.PollingType | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -186,5 +186,5 @@ export interface NetworkTapArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

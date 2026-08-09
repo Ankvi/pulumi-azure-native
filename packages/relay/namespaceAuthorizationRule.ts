@@ -111,7 +111,7 @@ export interface NamespaceAuthorizationRuleArgs {
     /**
      * The authorization rule name.
      */
-    authorizationRuleName?: pulumi.Input<string>;
+    authorizationRuleName?: pulumi.Input<string | undefined>;
     /**
      * The namespace name
      */

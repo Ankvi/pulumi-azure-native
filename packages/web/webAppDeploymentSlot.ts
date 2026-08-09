@@ -1,11 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * User credentials used for publishing activity.
  *
- * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+ * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppDeploymentSlot extends pulumi.CustomResource {
     /**
@@ -71,7 +72,7 @@ export class WebAppDeploymentSlot extends pulumi.CustomResource {
      */
     declare public readonly message: pulumi.Output<string | undefined>;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -83,7 +84,11 @@ export class WebAppDeploymentSlot extends pulumi.CustomResource {
      */
     declare public readonly status: pulumi.Output<number | undefined>;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -122,6 +127,7 @@ export class WebAppDeploymentSlot extends pulumi.CustomResource {
             resourceInputs["startTime"] = args?.startTime;
             resourceInputs["status"] = args?.status;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["active"] = undefined /*out*/;
@@ -136,10 +142,11 @@ export class WebAppDeploymentSlot extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppDeploymentSlot" }, { type: "azure-native:web/v20160801:WebAppDeploymentSlot" }, { type: "azure-native:web/v20180201:WebAppDeploymentSlot" }, { type: "azure-native:web/v20181101:WebAppDeploymentSlot" }, { type: "azure-native:web/v20190801:WebAppDeploymentSlot" }, { type: "azure-native:web/v20200601:WebAppDeploymentSlot" }, { type: "azure-native:web/v20200901:WebAppDeploymentSlot" }, { type: "azure-native:web/v20201001:WebAppDeploymentSlot" }, { type: "azure-native:web/v20201201:WebAppDeploymentSlot" }, { type: "azure-native:web/v20210101:WebAppDeploymentSlot" }, { type: "azure-native:web/v20210115:WebAppDeploymentSlot" }, { type: "azure-native:web/v20210201:WebAppDeploymentSlot" }, { type: "azure-native:web/v20210301:WebAppDeploymentSlot" }, { type: "azure-native:web/v20220301:WebAppDeploymentSlot" }, { type: "azure-native:web/v20220901:WebAppDeploymentSlot" }, { type: "azure-native:web/v20230101:WebAppDeploymentSlot" }, { type: "azure-native:web/v20231201:WebAppDeploymentSlot" }, { type: "azure-native:web/v20240401:WebAppDeploymentSlot" }, { type: "azure-native:web/v20241101:WebAppDeploymentSlot" }, { type: "azure-native:web/v20250301:WebAppDeploymentSlot" }, { type: "azure-native:web/v20250501:WebAppDeploymentSlot" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppDeploymentSlot" }, { type: "azure-native:web/v20160801:WebAppDeploymentSlot" }, { type: "azure-native:web/v20180201:WebAppDeploymentSlot" }, { type: "azure-native:web/v20181101:WebAppDeploymentSlot" }, { type: "azure-native:web/v20190801:WebAppDeploymentSlot" }, { type: "azure-native:web/v20200601:WebAppDeploymentSlot" }, { type: "azure-native:web/v20200901:WebAppDeploymentSlot" }, { type: "azure-native:web/v20201001:WebAppDeploymentSlot" }, { type: "azure-native:web/v20201201:WebAppDeploymentSlot" }, { type: "azure-native:web/v20210101:WebAppDeploymentSlot" }, { type: "azure-native:web/v20210115:WebAppDeploymentSlot" }, { type: "azure-native:web/v20210201:WebAppDeploymentSlot" }, { type: "azure-native:web/v20210301:WebAppDeploymentSlot" }, { type: "azure-native:web/v20220301:WebAppDeploymentSlot" }, { type: "azure-native:web/v20220901:WebAppDeploymentSlot" }, { type: "azure-native:web/v20230101:WebAppDeploymentSlot" }, { type: "azure-native:web/v20231201:WebAppDeploymentSlot" }, { type: "azure-native:web/v20240401:WebAppDeploymentSlot" }, { type: "azure-native:web/v20241101:WebAppDeploymentSlot" }, { type: "azure-native:web/v20250301:WebAppDeploymentSlot" }, { type: "azure-native:web/v20250501:WebAppDeploymentSlot" }, { type: "azure-native:web/v20260301preview:WebAppDeploymentSlot" }, { type: "azure-native:web/v20260315:WebAppDeploymentSlot" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppDeploymentSlot.__pulumiType, name, resourceInputs, opts);
     }
@@ -152,57 +159,57 @@ export interface WebAppDeploymentSlotArgs {
     /**
      * True if deployment is currently active, false if completed and null if not started.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Who authored the deployment.
      */
-    author?: pulumi.Input<string>;
+    author?: pulumi.Input<string | undefined>;
     /**
      * Author email.
      */
-    authorEmail?: pulumi.Input<string>;
+    authorEmail?: pulumi.Input<string | undefined>;
     /**
      * Who performed the deployment.
      */
-    deployer?: pulumi.Input<string>;
+    deployer?: pulumi.Input<string | undefined>;
     /**
      * Details on deployment.
      */
-    details?: pulumi.Input<string>;
+    details?: pulumi.Input<string | undefined>;
     /**
      * End time.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
-     * ID of an existing deployment.
+     * Deployment ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Kind of resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Details about deployment status.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * Name of the app.
      */
     name: pulumi.Input<string>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * Name of the deployment slot. If a slot is not specified, the API creates a deployment for the production slot.
+     * Name of the deployment slot. If a slot is not specified, the API gets a deployment for the production slot.
      */
     slot: pulumi.Input<string>;
     /**
      * Start time.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Deployment status.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
 }

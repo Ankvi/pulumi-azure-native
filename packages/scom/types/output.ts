@@ -49,7 +49,7 @@ export interface DatabaseInstancePropertiesResponse {
  */
 export interface DomainControllerPropertiesResponse {
     /**
-     * IP address of DNS server 
+     * IP address of DNS server
      */
     dnsServer?: string;
     /**
@@ -80,11 +80,11 @@ export interface DomainUserCredentialsResponse {
      */
     keyVaultUrl?: string;
     /**
-     * Domain Password secret 
+     * Domain Password secret
      */
     passwordSecret?: string;
     /**
-     * Domain user name secret 
+     * Domain user name secret
      */
     userNameSecret?: string;
 }

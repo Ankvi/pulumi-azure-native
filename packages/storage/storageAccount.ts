@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class StorageAccount extends pulumi.CustomResource {
     /**
@@ -164,7 +164,7 @@ export class StorageAccount extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
-     * Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+     * Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. Minimum TLS version 1.3 version is not supported.
      */
     declare public readonly minimumTlsVersion: pulumi.Output<string | undefined>;
     /**
@@ -269,7 +269,7 @@ export class StorageAccount extends pulumi.CustomResource {
             resourceInputs["enableExtendedGroups"] = args?.enableExtendedGroups;
             resourceInputs["enableHttpsTrafficOnly"] = args?.enableHttpsTrafficOnly;
             resourceInputs["enableNfsV3"] = args?.enableNfsV3;
-            resourceInputs["encryption"] = args ? (args.encryption ? pulumi.output(args.encryption).apply(types.inputs.encryptionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["encryption"] = args ? pulumi.output(args.encryption).apply(v => v === undefined ? undefined : types.inputs.encryptionArgsProvideDefaults(v)) : undefined;
             resourceInputs["extendedLocation"] = args?.extendedLocation;
             resourceInputs["identity"] = args?.identity;
             resourceInputs["immutableStorageWithVersioning"] = args?.immutableStorageWithVersioning;
@@ -281,11 +281,11 @@ export class StorageAccount extends pulumi.CustomResource {
             resourceInputs["largeFileSharesState"] = args?.largeFileSharesState;
             resourceInputs["location"] = args?.location;
             resourceInputs["minimumTlsVersion"] = args?.minimumTlsVersion;
-            resourceInputs["networkRuleSet"] = args ? (args.networkRuleSet ? pulumi.output(args.networkRuleSet).apply(types.inputs.networkRuleSetArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["networkRuleSet"] = args ? pulumi.output(args.networkRuleSet).apply(v => v === undefined ? undefined : types.inputs.networkRuleSetArgsProvideDefaults(v)) : undefined;
             resourceInputs["publicNetworkAccess"] = args?.publicNetworkAccess;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["routingPreference"] = args?.routingPreference;
-            resourceInputs["sasPolicy"] = args ? (args.sasPolicy ? pulumi.output(args.sasPolicy).apply(types.inputs.sasPolicyArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sasPolicy"] = args ? pulumi.output(args.sasPolicy).apply(v => v === undefined ? undefined : types.inputs.sasPolicyArgsProvideDefaults(v)) : undefined;
             resourceInputs["sku"] = args?.sku;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["accountMigrationInProgress"] = undefined /*out*/;
@@ -361,7 +361,7 @@ export class StorageAccount extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20150501preview:StorageAccount" }, { type: "azure-native:storage/v20150615:StorageAccount" }, { type: "azure-native:storage/v20160101:StorageAccount" }, { type: "azure-native:storage/v20160501:StorageAccount" }, { type: "azure-native:storage/v20161201:StorageAccount" }, { type: "azure-native:storage/v20170601:StorageAccount" }, { type: "azure-native:storage/v20171001:StorageAccount" }, { type: "azure-native:storage/v20180201:StorageAccount" }, { type: "azure-native:storage/v20180301preview:StorageAccount" }, { type: "azure-native:storage/v20180701:StorageAccount" }, { type: "azure-native:storage/v20181101:StorageAccount" }, { type: "azure-native:storage/v20190401:StorageAccount" }, { type: "azure-native:storage/v20190601:StorageAccount" }, { type: "azure-native:storage/v20200801preview:StorageAccount" }, { type: "azure-native:storage/v20210101:StorageAccount" }, { type: "azure-native:storage/v20210201:StorageAccount" }, { type: "azure-native:storage/v20210401:StorageAccount" }, { type: "azure-native:storage/v20210601:StorageAccount" }, { type: "azure-native:storage/v20210801:StorageAccount" }, { type: "azure-native:storage/v20210901:StorageAccount" }, { type: "azure-native:storage/v20220501:StorageAccount" }, { type: "azure-native:storage/v20220901:StorageAccount" }, { type: "azure-native:storage/v20230101:StorageAccount" }, { type: "azure-native:storage/v20230401:StorageAccount" }, { type: "azure-native:storage/v20230501:StorageAccount" }, { type: "azure-native:storage/v20240101:StorageAccount" }, { type: "azure-native:storage/v20250101:StorageAccount" }, { type: "azure-native:storage/v20250601:StorageAccount" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20150501preview:StorageAccount" }, { type: "azure-native:storage/v20150615:StorageAccount" }, { type: "azure-native:storage/v20160101:StorageAccount" }, { type: "azure-native:storage/v20160501:StorageAccount" }, { type: "azure-native:storage/v20161201:StorageAccount" }, { type: "azure-native:storage/v20170601:StorageAccount" }, { type: "azure-native:storage/v20171001:StorageAccount" }, { type: "azure-native:storage/v20180201:StorageAccount" }, { type: "azure-native:storage/v20180301preview:StorageAccount" }, { type: "azure-native:storage/v20180701:StorageAccount" }, { type: "azure-native:storage/v20181101:StorageAccount" }, { type: "azure-native:storage/v20190401:StorageAccount" }, { type: "azure-native:storage/v20190601:StorageAccount" }, { type: "azure-native:storage/v20200801preview:StorageAccount" }, { type: "azure-native:storage/v20210101:StorageAccount" }, { type: "azure-native:storage/v20210201:StorageAccount" }, { type: "azure-native:storage/v20210401:StorageAccount" }, { type: "azure-native:storage/v20210601:StorageAccount" }, { type: "azure-native:storage/v20210801:StorageAccount" }, { type: "azure-native:storage/v20210901:StorageAccount" }, { type: "azure-native:storage/v20220501:StorageAccount" }, { type: "azure-native:storage/v20220901:StorageAccount" }, { type: "azure-native:storage/v20230101:StorageAccount" }, { type: "azure-native:storage/v20230401:StorageAccount" }, { type: "azure-native:storage/v20230501:StorageAccount" }, { type: "azure-native:storage/v20240101:StorageAccount" }, { type: "azure-native:storage/v20250101:StorageAccount" }, { type: "azure-native:storage/v20250601:StorageAccount" }, { type: "azure-native:storage/v20250801:StorageAccount" }, { type: "azure-native:storage/v20260401:StorageAccount" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StorageAccount.__pulumiType, name, resourceInputs, opts);
     }
@@ -374,87 +374,87 @@ export interface StorageAccountArgs {
     /**
      * Required for storage accounts where kind = BlobStorage. The access tier is used for billing. The 'Premium' access tier is the default value for premium block blobs storage account type and it cannot be changed for the premium block blobs storage account type.
      */
-    accessTier?: pulumi.Input<types.enums.AccessTier>;
+    accessTier?: pulumi.Input<types.enums.AccessTier | undefined>;
     /**
      * The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is false for this property.
      */
-    allowBlobPublicAccess?: pulumi.Input<boolean>;
+    allowBlobPublicAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false for new accounts to follow best security practices by default.
      */
-    allowCrossTenantReplication?: pulumi.Input<boolean>;
+    allowCrossTenantReplication?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.
      */
-    allowSharedKeyAccess?: pulumi.Input<boolean>;
+    allowSharedKeyAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet.
      */
-    allowedCopyScope?: pulumi.Input<string | types.enums.AllowedCopyScope>;
+    allowedCopyScope?: pulumi.Input<string | types.enums.AllowedCopyScope | undefined>;
     /**
      * Provides the identity based authentication settings for Azure Files.
      */
-    azureFilesIdentityBasedAuthentication?: pulumi.Input<types.inputs.AzureFilesIdentityBasedAuthenticationArgs>;
+    azureFilesIdentityBasedAuthentication?: pulumi.Input<types.inputs.AzureFilesIdentityBasedAuthenticationArgs | undefined>;
     /**
      * User domain assigned to the storage account. Name is the CNAME source. Only one custom domain is supported per storage account at this time. To clear the existing custom domain, use an empty string for the custom domain name property.
      */
-    customDomain?: pulumi.Input<types.inputs.CustomDomainArgs>;
+    customDomain?: pulumi.Input<types.inputs.CustomDomainArgs | undefined>;
     /**
      * A boolean flag which indicates whether the default authentication is OAuth or not. The default interpretation is false for this property.
      */
-    defaultToOAuthAuthentication?: pulumi.Input<boolean>;
+    defaultToOAuthAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
      */
-    dnsEndpointType?: pulumi.Input<string | types.enums.DnsEndpointType>;
+    dnsEndpointType?: pulumi.Input<string | types.enums.DnsEndpointType | undefined>;
     /**
      * Enables extended group support with local users feature, if set to true
      */
-    enableExtendedGroups?: pulumi.Input<boolean>;
+    enableExtendedGroups?: pulumi.Input<boolean | undefined>;
     /**
      * Allows https traffic only to storage service if sets to true. The default value is true since API version 2019-04-01.
      */
-    enableHttpsTrafficOnly?: pulumi.Input<boolean>;
+    enableHttpsTrafficOnly?: pulumi.Input<boolean | undefined>;
     /**
      * NFS 3.0 protocol support enabled if set to true.
      */
-    enableNfsV3?: pulumi.Input<boolean>;
+    enableNfsV3?: pulumi.Input<boolean | undefined>;
     /**
      * Encryption settings to be used for server-side encryption for the storage account.
      */
-    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs | undefined>;
     /**
      * Optional. Set the extended location of the resource. If not set, the storage account will be created in Azure main region. Otherwise it will be created in the specified extended location
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
      * The property is immutable and can only be set to true at the account creation time. When set to true, it enables object level immutability for all the new containers in the account by default.
      */
-    immutableStorageWithVersioning?: pulumi.Input<types.inputs.ImmutableStorageAccountArgs>;
+    immutableStorageWithVersioning?: pulumi.Input<types.inputs.ImmutableStorageAccountArgs | undefined>;
     /**
      * Account HierarchicalNamespace enabled if sets to true.
      */
-    isHnsEnabled?: pulumi.Input<boolean>;
+    isHnsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enables local users feature, if set to true
      */
-    isLocalUserEnabled?: pulumi.Input<boolean>;
+    isLocalUserEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enables Secure File Transfer Protocol, if set to true
      */
-    isSftpEnabled?: pulumi.Input<boolean>;
+    isSftpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * KeyPolicy assigned to the storage account.
      */
-    keyPolicy?: pulumi.Input<types.inputs.KeyPolicyArgs>;
+    keyPolicy?: pulumi.Input<types.inputs.KeyPolicyArgs | undefined>;
     /**
      * Required. Indicates the type of storage account.
      */
@@ -462,23 +462,23 @@ export interface StorageAccountArgs {
     /**
      * Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
      */
-    largeFileSharesState?: pulumi.Input<string | types.enums.LargeFileSharesState>;
+    largeFileSharesState?: pulumi.Input<string | types.enums.LargeFileSharesState | undefined>;
     /**
      * Required. Gets or sets the location of the resource. This will be one of the supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource cannot be changed once it is created, but if an identical geo region is specified on update, the request will succeed.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
-     * Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+     * Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. Minimum TLS version 1.3 version is not supported.
      */
-    minimumTlsVersion?: pulumi.Input<string | types.enums.MinimumTlsVersion>;
+    minimumTlsVersion?: pulumi.Input<string | types.enums.MinimumTlsVersion | undefined>;
     /**
      * Network rule set
      */
-    networkRuleSet?: pulumi.Input<types.inputs.NetworkRuleSetArgs>;
+    networkRuleSet?: pulumi.Input<types.inputs.NetworkRuleSetArgs | undefined>;
     /**
      * Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -486,11 +486,11 @@ export interface StorageAccountArgs {
     /**
      * Maintains information about the network routing choice opted by the user for data transfer
      */
-    routingPreference?: pulumi.Input<types.inputs.RoutingPreferenceArgs>;
+    routingPreference?: pulumi.Input<types.inputs.RoutingPreferenceArgs | undefined>;
     /**
      * SasPolicy assigned to the storage account.
      */
-    sasPolicy?: pulumi.Input<types.inputs.SasPolicyArgs>;
+    sasPolicy?: pulumi.Input<types.inputs.SasPolicyArgs | undefined>;
     /**
      * Required. Gets or sets the SKU name.
      */
@@ -498,5 +498,5 @@ export interface StorageAccountArgs {
     /**
      * Gets or sets a list of key value pairs that describe the resource. These tags can be used for viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key with a length no greater than 128 characters and a value with a length no greater than 256 characters.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

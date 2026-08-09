@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2024-11-01-preview.
  *
- * Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-10-10, 2025-11-01-preview, 2026-01-01-preview, 2026-03-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
@@ -239,7 +239,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:desktopvirtualization/v20230905:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20231004preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20231101preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240116preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240306preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240403:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240408preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240808preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20241101preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20250301preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20250401preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20250801preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20250901preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20251101preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20260101preview:ScalingPlanPersonalSchedule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:desktopvirtualization/v20230905:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20231004preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20231101preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240116preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240306preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240403:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240408preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20240808preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20241101preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20250301preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20250401preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20250801preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20250901preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20251010:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20251101preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20260101preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20260301preview:ScalingPlanPersonalSchedule" }, { type: "azure-native:desktopvirtualization/v20260401preview:ScalingPlanPersonalSchedule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ScalingPlanPersonalSchedule.__pulumiType, name, resourceInputs, opts);
     }
@@ -252,107 +252,107 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Set of days of the week on which this schedule is active.
      */
-    daysOfWeek?: pulumi.Input<pulumi.Input<string | types.enums.DayOfWeek>[]>;
+    daysOfWeek?: pulumi.Input<pulumi.Input<string | types.enums.DayOfWeek>[] | undefined>;
     /**
      * Action to be taken after a user disconnect during the off-peak period.
      */
-    offPeakActionOnDisconnect?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
+    offPeakActionOnDisconnect?: pulumi.Input<string | types.enums.SessionHandlingOperation | undefined>;
     /**
      * Action to be taken after a logoff during the off-peak period.
      */
-    offPeakActionOnLogoff?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
+    offPeakActionOnLogoff?: pulumi.Input<string | types.enums.SessionHandlingOperation | undefined>;
     /**
      * The time in minutes to wait before performing the desired session handling action when a user disconnects during the off-peak period.
      */
-    offPeakMinutesToWaitOnDisconnect?: pulumi.Input<number>;
+    offPeakMinutesToWaitOnDisconnect?: pulumi.Input<number | undefined>;
     /**
      * The time in minutes to wait before performing the desired session handling action when a user logs off during the off-peak period.
      */
-    offPeakMinutesToWaitOnLogoff?: pulumi.Input<number>;
+    offPeakMinutesToWaitOnLogoff?: pulumi.Input<number | undefined>;
     /**
      * Starting time for off-peak period.
      */
-    offPeakStartTime?: pulumi.Input<types.inputs.TimeArgs>;
+    offPeakStartTime?: pulumi.Input<types.inputs.TimeArgs | undefined>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
      */
-    offPeakStartVMOnConnect?: pulumi.Input<string | types.enums.SetStartVMOnConnect>;
+    offPeakStartVMOnConnect?: pulumi.Input<string | types.enums.SetStartVMOnConnect | undefined>;
     /**
      * Action to be taken after a user disconnect during the peak period.
      */
-    peakActionOnDisconnect?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
+    peakActionOnDisconnect?: pulumi.Input<string | types.enums.SessionHandlingOperation | undefined>;
     /**
      * Action to be taken after a logoff during the peak period.
      */
-    peakActionOnLogoff?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
+    peakActionOnLogoff?: pulumi.Input<string | types.enums.SessionHandlingOperation | undefined>;
     /**
      * The time in minutes to wait before performing the desired session handling action when a user disconnects during the peak period.
      */
-    peakMinutesToWaitOnDisconnect?: pulumi.Input<number>;
+    peakMinutesToWaitOnDisconnect?: pulumi.Input<number | undefined>;
     /**
      * The time in minutes to wait before performing the desired session handling action when a user logs off during the peak period.
      */
-    peakMinutesToWaitOnLogoff?: pulumi.Input<number>;
+    peakMinutesToWaitOnLogoff?: pulumi.Input<number | undefined>;
     /**
      * Starting time for peak period.
      */
-    peakStartTime?: pulumi.Input<types.inputs.TimeArgs>;
+    peakStartTime?: pulumi.Input<types.inputs.TimeArgs | undefined>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the peak phase.
      */
-    peakStartVMOnConnect?: pulumi.Input<string | types.enums.SetStartVMOnConnect>;
+    peakStartVMOnConnect?: pulumi.Input<string | types.enums.SetStartVMOnConnect | undefined>;
     /**
      * Action to be taken after a user disconnect during the ramp down period.
      */
-    rampDownActionOnDisconnect?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
+    rampDownActionOnDisconnect?: pulumi.Input<string | types.enums.SessionHandlingOperation | undefined>;
     /**
      * Action to be taken after a logoff during the ramp down period.
      */
-    rampDownActionOnLogoff?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
+    rampDownActionOnLogoff?: pulumi.Input<string | types.enums.SessionHandlingOperation | undefined>;
     /**
      * The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp down period.
      */
-    rampDownMinutesToWaitOnDisconnect?: pulumi.Input<number>;
+    rampDownMinutesToWaitOnDisconnect?: pulumi.Input<number | undefined>;
     /**
      * The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp down period.
      */
-    rampDownMinutesToWaitOnLogoff?: pulumi.Input<number>;
+    rampDownMinutesToWaitOnLogoff?: pulumi.Input<number | undefined>;
     /**
      * Starting time for ramp down period.
      */
-    rampDownStartTime?: pulumi.Input<types.inputs.TimeArgs>;
+    rampDownStartTime?: pulumi.Input<types.inputs.TimeArgs | undefined>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
      */
-    rampDownStartVMOnConnect?: pulumi.Input<string | types.enums.SetStartVMOnConnect>;
+    rampDownStartVMOnConnect?: pulumi.Input<string | types.enums.SetStartVMOnConnect | undefined>;
     /**
      * Action to be taken after a user disconnect during the ramp up period.
      */
-    rampUpActionOnDisconnect?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
+    rampUpActionOnDisconnect?: pulumi.Input<string | types.enums.SessionHandlingOperation | undefined>;
     /**
      * Action to be taken after a logoff during the ramp up period.
      */
-    rampUpActionOnLogoff?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
+    rampUpActionOnLogoff?: pulumi.Input<string | types.enums.SessionHandlingOperation | undefined>;
     /**
      * The desired startup behavior during the ramp up period for personal vms in the hostpool.
      */
-    rampUpAutoStartHosts?: pulumi.Input<string | types.enums.StartupBehavior>;
+    rampUpAutoStartHosts?: pulumi.Input<string | types.enums.StartupBehavior | undefined>;
     /**
      * The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp up period.
      */
-    rampUpMinutesToWaitOnDisconnect?: pulumi.Input<number>;
+    rampUpMinutesToWaitOnDisconnect?: pulumi.Input<number | undefined>;
     /**
      * The time in minutes to wait before performing the desired session handling action when a user logs off during the ramp up period.
      */
-    rampUpMinutesToWaitOnLogoff?: pulumi.Input<number>;
+    rampUpMinutesToWaitOnLogoff?: pulumi.Input<number | undefined>;
     /**
      * Starting time for ramp up period.
      */
-    rampUpStartTime?: pulumi.Input<types.inputs.TimeArgs>;
+    rampUpStartTime?: pulumi.Input<types.inputs.TimeArgs | undefined>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
      */
-    rampUpStartVMOnConnect?: pulumi.Input<string | types.enums.SetStartVMOnConnect>;
+    rampUpStartVMOnConnect?: pulumi.Input<string | types.enums.SetStartVMOnConnect | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -364,5 +364,5 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * The name of the ScalingPlanSchedule
      */
-    scalingPlanScheduleName?: pulumi.Input<string>;
+    scalingPlanScheduleName?: pulumi.Input<string | undefined>;
 }

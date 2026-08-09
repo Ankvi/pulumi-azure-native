@@ -103,8 +103,8 @@ export interface EnergyServiceArgs {
     /**
      * Geo-location where the resource lives.
      */
-    location?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.EnergyServicePropertiesArgs>;
+    location?: pulumi.Input<string | undefined>;
+    properties?: pulumi.Input<types.inputs.EnergyServicePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -112,9 +112,9 @@ export interface EnergyServiceArgs {
     /**
      * The resource name.
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

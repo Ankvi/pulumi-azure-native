@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class JobStep extends pulumi.CustomResource {
     /**
@@ -101,12 +101,12 @@ export class JobStep extends pulumi.CustomResource {
             if (args?.targetGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetGroup'");
             }
-            resourceInputs["action"] = args ? (args.action ? pulumi.output(args.action).apply(types.inputs.jobStepActionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["action"] = args ? pulumi.output(args.action).apply(types.inputs.jobStepActionArgsProvideDefaults) : undefined;
             resourceInputs["credential"] = args?.credential;
-            resourceInputs["executionOptions"] = args ? (args.executionOptions ? pulumi.output(args.executionOptions).apply(types.inputs.jobStepExecutionOptionsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["executionOptions"] = args ? pulumi.output(args.executionOptions).apply(v => v === undefined ? undefined : types.inputs.jobStepExecutionOptionsArgsProvideDefaults(v)) : undefined;
             resourceInputs["jobAgentName"] = args?.jobAgentName;
             resourceInputs["jobName"] = args?.jobName;
-            resourceInputs["output"] = args ? (args.output ? pulumi.output(args.output).apply(types.inputs.jobStepOutputArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["output"] = args ? pulumi.output(args.output).apply(v => v === undefined ? undefined : types.inputs.jobStepOutputArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["serverName"] = args?.serverName;
             resourceInputs["stepId"] = args?.stepId;
@@ -127,7 +127,7 @@ export class JobStep extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:JobStep" }, { type: "azure-native:sql/v20200202preview:JobStep" }, { type: "azure-native:sql/v20200801preview:JobStep" }, { type: "azure-native:sql/v20201101preview:JobStep" }, { type: "azure-native:sql/v20210201preview:JobStep" }, { type: "azure-native:sql/v20210501preview:JobStep" }, { type: "azure-native:sql/v20210801preview:JobStep" }, { type: "azure-native:sql/v20211101:JobStep" }, { type: "azure-native:sql/v20211101preview:JobStep" }, { type: "azure-native:sql/v20220201preview:JobStep" }, { type: "azure-native:sql/v20220501preview:JobStep" }, { type: "azure-native:sql/v20220801preview:JobStep" }, { type: "azure-native:sql/v20221101preview:JobStep" }, { type: "azure-native:sql/v20230201preview:JobStep" }, { type: "azure-native:sql/v20230501preview:JobStep" }, { type: "azure-native:sql/v20230801:JobStep" }, { type: "azure-native:sql/v20230801preview:JobStep" }, { type: "azure-native:sql/v20240501preview:JobStep" }, { type: "azure-native:sql/v20241101preview:JobStep" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:JobStep" }, { type: "azure-native:sql/v20200202preview:JobStep" }, { type: "azure-native:sql/v20200801preview:JobStep" }, { type: "azure-native:sql/v20201101preview:JobStep" }, { type: "azure-native:sql/v20210201preview:JobStep" }, { type: "azure-native:sql/v20210501preview:JobStep" }, { type: "azure-native:sql/v20210801preview:JobStep" }, { type: "azure-native:sql/v20211101:JobStep" }, { type: "azure-native:sql/v20211101preview:JobStep" }, { type: "azure-native:sql/v20220201preview:JobStep" }, { type: "azure-native:sql/v20220501preview:JobStep" }, { type: "azure-native:sql/v20220801preview:JobStep" }, { type: "azure-native:sql/v20221101preview:JobStep" }, { type: "azure-native:sql/v20230201preview:JobStep" }, { type: "azure-native:sql/v20230501preview:JobStep" }, { type: "azure-native:sql/v20230801:JobStep" }, { type: "azure-native:sql/v20230801preview:JobStep" }, { type: "azure-native:sql/v20240501preview:JobStep" }, { type: "azure-native:sql/v20241101preview:JobStep" }, { type: "azure-native:sql/v20250101:JobStep" }, { type: "azure-native:sql/v20250201preview:JobStep" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(JobStep.__pulumiType, name, resourceInputs, opts);
     }
@@ -144,11 +144,11 @@ export interface JobStepArgs {
     /**
      * The resource ID of the job credential that will be used to connect to the targets.
      */
-    credential?: pulumi.Input<string>;
+    credential?: pulumi.Input<string | undefined>;
     /**
      * Execution options for the job step.
      */
-    executionOptions?: pulumi.Input<types.inputs.JobStepExecutionOptionsArgs>;
+    executionOptions?: pulumi.Input<types.inputs.JobStepExecutionOptionsArgs | undefined>;
     /**
      * The name of the job agent.
      */
@@ -160,7 +160,7 @@ export interface JobStepArgs {
     /**
      * Output destination properties of the job step.
      */
-    output?: pulumi.Input<types.inputs.JobStepOutputArgs>;
+    output?: pulumi.Input<types.inputs.JobStepOutputArgs | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -172,11 +172,11 @@ export interface JobStepArgs {
     /**
      * The job step's index within the job. If not specified when creating the job step, it will be created as the last step. If not specified when updating the job step, the step id is not modified.
      */
-    stepId?: pulumi.Input<number>;
+    stepId?: pulumi.Input<number | undefined>;
     /**
      * The name of the job step.
      */
-    stepName?: pulumi.Input<string>;
+    stepName?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the target group that the job step will be executed on.
      */

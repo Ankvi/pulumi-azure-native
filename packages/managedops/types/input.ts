@@ -35,11 +35,11 @@ export interface DesiredConfigurationArgs {
     /**
      * Desired enablement state of the Defender Cloud Security Posture Management (CSPM) service.
      */
-    defenderCspm?: pulumi.Input<string | enums.DesiredEnablementState>;
+    defenderCspm?: pulumi.Input<string | enums.DesiredEnablementState | undefined>;
     /**
      * Desired enablement state of the Defender For Servers service.
      */
-    defenderForServers?: pulumi.Input<string | enums.DesiredEnablementState>;
+    defenderForServers?: pulumi.Input<string | enums.DesiredEnablementState | undefined>;
     /**
      * User assigned Managed Identity used to perform operations on machines managed by Ops360.
      */

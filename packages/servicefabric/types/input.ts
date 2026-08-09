@@ -30,11 +30,11 @@ export interface AdditionalNetworkInterfaceConfigurationArgs {
     /**
      * Specifies the DSCP configuration to apply to the network interface.
      */
-    dscpConfiguration?: pulumi.Input<SubResourceArgs>;
+    dscpConfiguration?: pulumi.Input<SubResourceArgs | undefined>;
     /**
      * Specifies whether the network interface is accelerated networking-enabled.
      */
-    enableAcceleratedNetworking?: pulumi.Input<boolean>;
+    enableAcceleratedNetworking?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the IP configurations of the network interface.
      */
@@ -56,7 +56,7 @@ export interface ApplicationHealthPolicyArgs {
     /**
      * The health policy used by default to evaluate the health of a service type.
      */
-    defaultServiceTypeHealthPolicy?: pulumi.Input<ServiceTypeHealthPolicyArgs>;
+    defaultServiceTypeHealthPolicy?: pulumi.Input<ServiceTypeHealthPolicyArgs | undefined>;
     /**
      * The maximum allowed percentage of unhealthy deployed applications. Allowed values are Byte values from zero to 100.
      * The percentage represents the maximum tolerated percentage of deployed applications that can be unhealthy before the application is considered in error.
@@ -67,7 +67,7 @@ export interface ApplicationHealthPolicyArgs {
     /**
      * The map with service type health policy per service type name. The map is empty by default.
      */
-    serviceTypeHealthPolicyMap?: pulumi.Input<{[key: string]: pulumi.Input<ServiceTypeHealthPolicyArgs>}>;
+    serviceTypeHealthPolicyMap?: pulumi.Input<{[key: string]: pulumi.Input<ServiceTypeHealthPolicyArgs>} | undefined>;
 }
 
 /**
@@ -87,31 +87,31 @@ export interface ApplicationUpgradePolicyArgs {
     /**
      * Defines a health policy used to evaluate the health of an application or one of its children entities.
      */
-    applicationHealthPolicy?: pulumi.Input<ApplicationHealthPolicyArgs>;
+    applicationHealthPolicy?: pulumi.Input<ApplicationHealthPolicyArgs | undefined>;
     /**
      * If true, then processes are forcefully restarted during upgrade even when the code version has not changed (the upgrade only changes configuration or data).
      */
-    forceRestart?: pulumi.Input<boolean>;
+    forceRestart?: pulumi.Input<boolean | undefined>;
     /**
      * Duration in seconds, to wait before a stateless instance is closed, to allow the active requests to drain gracefully. This would be effective when the instance is closing during the application/cluster upgrade, only for those instances which have a non-zero delay duration configured in the service description.
      */
-    instanceCloseDelayDuration?: pulumi.Input<number>;
+    instanceCloseDelayDuration?: pulumi.Input<number | undefined>;
     /**
      * Determines whether the application should be recreated on update. If value=true, the rest of the upgrade policy parameters are not allowed.
      */
-    recreateApplication?: pulumi.Input<boolean>;
+    recreateApplication?: pulumi.Input<boolean | undefined>;
     /**
      * The policy used for monitoring the application upgrade
      */
-    rollingUpgradeMonitoringPolicy?: pulumi.Input<RollingUpgradeMonitoringPolicyArgs>;
+    rollingUpgradeMonitoringPolicy?: pulumi.Input<RollingUpgradeMonitoringPolicyArgs | undefined>;
     /**
      * The mode used to monitor health during a rolling upgrade. The values are Monitored, and UnmonitoredAuto.
      */
-    upgradeMode?: pulumi.Input<string | enums.RollingUpgradeMode>;
+    upgradeMode?: pulumi.Input<string | enums.RollingUpgradeMode | undefined>;
     /**
      * The maximum amount of time to block processing of an upgrade domain and prevent loss of availability when there are unexpected issues. When this timeout expires, processing of the upgrade domain will proceed regardless of availability loss issues. The timeout is reset at the start of each upgrade domain. Valid values are between 0 and 42949672925 inclusive. (unsigned 32-bit integer).
      */
-    upgradeReplicaSetCheckTimeout?: pulumi.Input<number>;
+    upgradeReplicaSetCheckTimeout?: pulumi.Input<number | undefined>;
 }
 
 export interface ApplicationUserAssignedIdentityArgs {
@@ -190,15 +190,15 @@ export interface AzureActiveDirectoryArgs {
     /**
      * Azure active directory client application id.
      */
-    clientApplication?: pulumi.Input<string>;
+    clientApplication?: pulumi.Input<string | undefined>;
     /**
      * Azure active directory cluster application id.
      */
-    clusterApplication?: pulumi.Input<string>;
+    clusterApplication?: pulumi.Input<string | undefined>;
     /**
      * Azure active directory tenant id.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,7 +208,7 @@ export interface ClientCertificateArgs {
     /**
      * Certificate common name.
      */
-    commonName?: pulumi.Input<string>;
+    commonName?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the client certificate has admin access to the cluster. Non admin clients can perform only read only operations on the cluster.
      */
@@ -216,11 +216,11 @@ export interface ClientCertificateArgs {
     /**
      * Issuer thumbprint for the certificate. Only used together with CommonName.
      */
-    issuerThumbprint?: pulumi.Input<string>;
+    issuerThumbprint?: pulumi.Input<string | undefined>;
     /**
      * Certificate thumbprint.
      */
-    thumbprint?: pulumi.Input<string>;
+    thumbprint?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -295,7 +295,7 @@ export interface ClusterUpgradeDeltaHealthPolicyArgs {
      * The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits. System services are not included in this.
      * NOTE: This value will overwrite the value specified in properties.UpgradeDescription.HealthPolicy.MaxPercentUnhealthyApplications
      */
-    maxPercentDeltaUnhealthyApplications?: pulumi.Input<number>;
+    maxPercentDeltaUnhealthyApplications?: pulumi.Input<number | undefined>;
     /**
      * The maximum allowed percentage of nodes health degradation allowed during cluster upgrades.
      * The delta is measured between the state of the nodes at the beginning of upgrade and the state of the nodes at the time of the health evaluation.
@@ -307,7 +307,7 @@ export interface ClusterUpgradeDeltaHealthPolicyArgs {
      * The delta is measured between the state of the upgrade domain nodes at the beginning of upgrade and the state of the upgrade domain nodes at the time of the health evaluation.
      * The check is performed after every upgrade domain upgrade completion for all completed upgrade domains to make sure the state of the upgrade domains is within tolerated limits.
      */
-    maxPercentUpgradeDomainDeltaUnhealthyNodes?: pulumi.Input<number>;
+    maxPercentUpgradeDomainDeltaUnhealthyNodes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -317,26 +317,26 @@ export interface ClusterUpgradePolicyArgs {
     /**
      * The cluster delta health policy defines a health policy used to evaluate the health of the cluster during a cluster upgrade.
      */
-    deltaHealthPolicy?: pulumi.Input<ClusterUpgradeDeltaHealthPolicyArgs>;
+    deltaHealthPolicy?: pulumi.Input<ClusterUpgradeDeltaHealthPolicyArgs | undefined>;
     /**
      * If true, then processes are forcefully restarted during upgrade even when the code version has not changed (the upgrade only changes configuration or data).
      */
-    forceRestart?: pulumi.Input<boolean>;
+    forceRestart?: pulumi.Input<boolean | undefined>;
     /**
      * The cluster health policy defines a health policy used to evaluate the health of the cluster during a cluster upgrade.
      */
-    healthPolicy?: pulumi.Input<ClusterHealthPolicyArgs>;
+    healthPolicy?: pulumi.Input<ClusterHealthPolicyArgs | undefined>;
     /**
      * The cluster monitoring policy describes the parameters for monitoring an upgrade in Monitored mode.
      */
-    monitoringPolicy?: pulumi.Input<ClusterMonitoringPolicyArgs>;
+    monitoringPolicy?: pulumi.Input<ClusterMonitoringPolicyArgs | undefined>;
     /**
      * The maximum amount of time to block processing of an upgrade domain and prevent loss of availability when there are unexpected issues.
      * When this timeout expires, processing of the upgrade domain will proceed regardless of availability loss issues.
      * The timeout is reset at the start of each upgrade domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      * This value must be between 00:00:00 and 49710.06:28:15 (unsigned 32 bit integer for seconds)
      */
-    upgradeReplicaSetCheckTimeout?: pulumi.Input<string>;
+    upgradeReplicaSetCheckTimeout?: pulumi.Input<string | undefined>;
 }
 /**
  * clusterUpgradePolicyArgsProvideDefaults sets the appropriate defaults for ClusterUpgradePolicyArgs
@@ -344,7 +344,7 @@ export interface ClusterUpgradePolicyArgs {
 export function clusterUpgradePolicyArgsProvideDefaults(val: ClusterUpgradePolicyArgs): ClusterUpgradePolicyArgs {
     return {
         ...val,
-        healthPolicy: (val.healthPolicy ? pulumi.output(val.healthPolicy).apply(clusterHealthPolicyArgsProvideDefaults) : undefined),
+        healthPolicy: pulumi.output(val.healthPolicy).apply(v => v === undefined ? undefined : clusterHealthPolicyArgsProvideDefaults(v)),
     };
 }
 
@@ -369,19 +369,19 @@ export interface FrontendConfigurationArgs {
     /**
      * The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/applicationGateways/<applicationGatewayName>/backendAddressPools/<backendAddressPoolName>'.
      */
-    applicationGatewayBackendAddressPoolId?: pulumi.Input<string>;
+    applicationGatewayBackendAddressPoolId?: pulumi.Input<string | undefined>;
     /**
      * The IP address type of this frontend configuration. If omitted the default value is IPv4.
      */
-    ipAddressType?: pulumi.Input<string | enums.IPAddressType>;
+    ipAddressType?: pulumi.Input<string | enums.IPAddressType | undefined>;
     /**
      * The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/backendAddressPools/<backendAddressPoolName>'.
      */
-    loadBalancerBackendAddressPoolId?: pulumi.Input<string>;
+    loadBalancerBackendAddressPoolId?: pulumi.Input<string | undefined>;
     /**
      * The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<loadBalancerName>/inboundNatPools/<inboundNatPoolName>'.
      */
-    loadBalancerInboundNatPoolId?: pulumi.Input<string>;
+    loadBalancerInboundNatPoolId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -391,15 +391,15 @@ export interface IpConfigurationArgs {
     /**
      * Specifies an array of references to backend address pools of application gateways. A node type can reference backend address pools of multiple application gateways. Multiple node types cannot use the same application gateway.
      */
-    applicationGatewayBackendAddressPools?: pulumi.Input<pulumi.Input<SubResourceArgs>[]>;
+    applicationGatewayBackendAddressPools?: pulumi.Input<pulumi.Input<SubResourceArgs>[] | undefined>;
     /**
-     * Specifies an array of references to backend address pools of load balancers. A node type can reference backend address pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer.	
+     * Specifies an array of references to backend address pools of load balancers. A node type can reference backend address pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer.
      */
-    loadBalancerBackendAddressPools?: pulumi.Input<pulumi.Input<SubResourceArgs>[]>;
+    loadBalancerBackendAddressPools?: pulumi.Input<pulumi.Input<SubResourceArgs>[] | undefined>;
     /**
      * Specifies an array of references to inbound Nat pools of the load balancers. A node type can reference inbound nat pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer.
      */
-    loadBalancerInboundNatPools?: pulumi.Input<pulumi.Input<SubResourceArgs>[]>;
+    loadBalancerInboundNatPools?: pulumi.Input<pulumi.Input<SubResourceArgs>[] | undefined>;
     /**
      * Name of the network interface.
      */
@@ -407,15 +407,15 @@ export interface IpConfigurationArgs {
     /**
      * Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4.
      */
-    privateIPAddressVersion?: pulumi.Input<string | enums.PrivateIPAddressVersion>;
+    privateIPAddressVersion?: pulumi.Input<string | enums.PrivateIPAddressVersion | undefined>;
     /**
      * The public IP address configuration of the network interface.
      */
-    publicIPAddressConfiguration?: pulumi.Input<IpConfigurationPublicIPAddressConfigurationArgs>;
+    publicIPAddressConfiguration?: pulumi.Input<IpConfigurationPublicIPAddressConfigurationArgs | undefined>;
     /**
      * Specifies the subnet of the network interface.
      */
-    subnet?: pulumi.Input<SubResourceArgs>;
+    subnet?: pulumi.Input<SubResourceArgs | undefined>;
 }
 /**
  * ipConfigurationArgsProvideDefaults sets the appropriate defaults for IpConfigurationArgs
@@ -424,7 +424,7 @@ export function ipConfigurationArgsProvideDefaults(val: IpConfigurationArgs): Ip
     return {
         ...val,
         privateIPAddressVersion: (val.privateIPAddressVersion) ?? "IPv4",
-        publicIPAddressConfiguration: (val.publicIPAddressConfiguration ? pulumi.output(val.publicIPAddressConfiguration).apply(ipConfigurationPublicIPAddressConfigurationArgsProvideDefaults) : undefined),
+        publicIPAddressConfiguration: pulumi.output(val.publicIPAddressConfiguration).apply(v => v === undefined ? undefined : ipConfigurationPublicIPAddressConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -435,7 +435,7 @@ export interface IpConfigurationPublicIPAddressConfigurationArgs {
     /**
      * Specifies the list of IP tags associated with the public IP address.
      */
-    ipTags?: pulumi.Input<pulumi.Input<IpTagArgs>[]>;
+    ipTags?: pulumi.Input<pulumi.Input<IpTagArgs>[] | undefined>;
     /**
      * Name of the network interface.
      */
@@ -443,7 +443,7 @@ export interface IpConfigurationPublicIPAddressConfigurationArgs {
     /**
      * Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
      */
-    publicIPAddressVersion?: pulumi.Input<string | enums.PublicIPAddressVersion>;
+    publicIPAddressVersion?: pulumi.Input<string | enums.PublicIPAddressVersion | undefined>;
 }
 /**
  * ipConfigurationPublicIPAddressConfigurationArgsProvideDefaults sets the appropriate defaults for IpConfigurationPublicIPAddressConfigurationArgs
@@ -484,11 +484,11 @@ export interface LoadBalancingRuleArgs {
     /**
      * The load distribution policy for this rule.
      */
-    loadDistribution?: pulumi.Input<string>;
+    loadDistribution?: pulumi.Input<string | undefined>;
     /**
      * The prob port used by the load balancing rule. Acceptable values are between 1 and 65535.
      */
-    probePort?: pulumi.Input<number>;
+    probePort?: pulumi.Input<number | undefined>;
     /**
      * the reference to the load balancer probe used by the load balancing rule.
      */
@@ -496,7 +496,7 @@ export interface LoadBalancingRuleArgs {
     /**
      * The probe request path. Only supported for HTTP/HTTPS probes.
      */
-    probeRequestPath?: pulumi.Input<string>;
+    probeRequestPath?: pulumi.Input<string | undefined>;
     /**
      * The reference to the transport protocol used by the load balancing rule.
      */
@@ -510,12 +510,12 @@ export interface ManagedIdentityArgs {
     /**
      * The type of managed identity for the resource.
      */
-    type?: pulumi.Input<enums.ManagedIdentityType>;
+    type?: pulumi.Input<enums.ManagedIdentityType | undefined>;
     /**
      * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -544,23 +544,23 @@ export interface NetworkSecurityRuleArgs {
     /**
      * Network security rule description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
      */
-    destinationAddressPrefix?: pulumi.Input<string>;
+    destinationAddressPrefix?: pulumi.Input<string | undefined>;
     /**
      * The destination address prefixes. CIDR or destination IP ranges.
      */
-    destinationAddressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationAddressPrefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * he destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */
-    destinationPortRange?: pulumi.Input<string>;
+    destinationPortRange?: pulumi.Input<string | undefined>;
     /**
      * The destination port ranges.
      */
-    destinationPortRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationPortRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Network security rule direction.
      */
@@ -580,19 +580,19 @@ export interface NetworkSecurityRuleArgs {
     /**
      * The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
      */
-    sourceAddressPrefix?: pulumi.Input<string>;
+    sourceAddressPrefix?: pulumi.Input<string | undefined>;
     /**
      * The CIDR or source IP ranges.
      */
-    sourceAddressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceAddressPrefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */
-    sourcePortRange?: pulumi.Input<string>;
+    sourcePortRange?: pulumi.Input<string | undefined>;
     /**
      * The source port ranges.
      */
-    sourcePortRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    sourcePortRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -602,15 +602,15 @@ export interface NodeTypeNatConfigArgs {
     /**
      * The internal port for the NAT configuration.
      */
-    backendPort?: pulumi.Input<number>;
+    backendPort?: pulumi.Input<number | undefined>;
     /**
      * The port range end for the external endpoint.
      */
-    frontendPortRangeEnd?: pulumi.Input<number>;
+    frontendPortRangeEnd?: pulumi.Input<number | undefined>;
     /**
      * The port range start for the external endpoint.
      */
-    frontendPortRangeStart?: pulumi.Input<number>;
+    frontendPortRangeStart?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -624,11 +624,11 @@ export interface NodeTypeSkuArgs {
     /**
      * The sku name. <br /><br />Name is internally generated and is used in auto-scale scenarios.<br /> Property does not allow to be changed to other values than generated.<br /> To avoid deployment errors please omit the property.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the tier of the node type. <br /><br /> Possible Values:<br /> **Standard**
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -719,7 +719,7 @@ export interface ServiceEndpointArgs {
     /**
      * A list of locations.
      */
-    locations?: pulumi.Input<pulumi.Input<string>[]>;
+    locations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of the endpoint service.
      */
@@ -733,7 +733,7 @@ export interface ServiceLoadMetricArgs {
     /**
      * Used only for Stateless services. The default amount of load, as a number, that this service creates for this metric.
      */
-    defaultLoad?: pulumi.Input<number>;
+    defaultLoad?: pulumi.Input<number | undefined>;
     /**
      * The name of the metric. If the service chooses to report load during runtime, the load metric name should match the name that is specified in Name exactly. Note that metric names are case sensitive.
      */
@@ -741,15 +741,15 @@ export interface ServiceLoadMetricArgs {
     /**
      * Used only for Stateful services. The default amount of load, as a number, that this service creates for this metric when it is a Primary replica.
      */
-    primaryDefaultLoad?: pulumi.Input<number>;
+    primaryDefaultLoad?: pulumi.Input<number | undefined>;
     /**
      * Used only for Stateful services. The default amount of load, as a number, that this service creates for this metric when it is a Secondary replica.
      */
-    secondaryDefaultLoad?: pulumi.Input<number>;
+    secondaryDefaultLoad?: pulumi.Input<number | undefined>;
     /**
      * The service load metric relative weight, compared to other metrics configured for this service, as a number.
      */
-    weight?: pulumi.Input<string | enums.ServiceLoadMetricWeight>;
+    weight?: pulumi.Input<string | enums.ServiceLoadMetricWeight | undefined>;
 }
 
 /**
@@ -779,7 +779,7 @@ export interface ServicePlacementNonPartiallyPlaceServicePolicyArgs {
 }
 
 /**
- * Describes the policy to be used for placement of a Service Fabric service where the service's 
+ * Describes the policy to be used for placement of a Service Fabric service where the service's
  * Primary replicas should optimally be placed in a particular domain.
  *
  * This placement policy is usually used with fault domains in scenarios where the Service Fabric
@@ -927,19 +927,19 @@ export interface StatefulServicePropertiesArgs {
     /**
      * A list that describes the correlation of the service with other services.
      */
-    correlationScheme?: pulumi.Input<pulumi.Input<ServiceCorrelationArgs>[]>;
+    correlationScheme?: pulumi.Input<pulumi.Input<ServiceCorrelationArgs>[] | undefined>;
     /**
      * Specifies the move cost for the service.
      */
-    defaultMoveCost?: pulumi.Input<string | enums.MoveCost>;
+    defaultMoveCost?: pulumi.Input<string | enums.MoveCost | undefined>;
     /**
      * A flag indicating whether this is a persistent service which stores states on the local disk. If it is then the value of this property is true, if not it is false.
      */
-    hasPersistedState?: pulumi.Input<boolean>;
+    hasPersistedState?: pulumi.Input<boolean | undefined>;
     /**
      * The minimum replica set size as a number.
      */
-    minReplicaSetSize?: pulumi.Input<number>;
+    minReplicaSetSize?: pulumi.Input<number | undefined>;
     /**
      * Describes how the service is partitioned.
      */
@@ -947,25 +947,25 @@ export interface StatefulServicePropertiesArgs {
     /**
      * The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
      */
-    placementConstraints?: pulumi.Input<string>;
+    placementConstraints?: pulumi.Input<string | undefined>;
     /**
      * The maximum duration for which a partition is allowed to be in a state of quorum loss, represented in ISO 8601 format "hh:mm:ss".
      */
-    quorumLossWaitDuration?: pulumi.Input<string>;
+    quorumLossWaitDuration?: pulumi.Input<string | undefined>;
     /**
      * The duration between when a replica goes down and when a new replica is created, represented in ISO 8601 format "hh:mm:ss".
      */
-    replicaRestartWaitDuration?: pulumi.Input<string>;
+    replicaRestartWaitDuration?: pulumi.Input<string | undefined>;
     /**
      * Scaling policies for this service.
      */
-    scalingPolicies?: pulumi.Input<pulumi.Input<ScalingPolicyArgs>[]>;
+    scalingPolicies?: pulumi.Input<pulumi.Input<ScalingPolicyArgs>[] | undefined>;
     /**
      * Dns name used for the service. If this is specified, then the DNS name can be used to return the IP addresses of service endpoints for application layer protocols (e.g., HTTP).
      * When updating serviceDnsName, old name may be temporarily resolvable. However, rely on new name.
      * When removing serviceDnsName, removed name may temporarily be resolvable. Do not rely on the name being unresolvable.
      */
-    serviceDnsName?: pulumi.Input<string>;
+    serviceDnsName?: pulumi.Input<string | undefined>;
     /**
      * The kind of service (Stateless or Stateful).
      * Expected value is 'Stateful'.
@@ -974,19 +974,19 @@ export interface StatefulServicePropertiesArgs {
     /**
      * The service load metrics is given as an array of ServiceLoadMetric objects.
      */
-    serviceLoadMetrics?: pulumi.Input<pulumi.Input<ServiceLoadMetricArgs>[]>;
+    serviceLoadMetrics?: pulumi.Input<pulumi.Input<ServiceLoadMetricArgs>[] | undefined>;
     /**
      * The activation Mode of the service package
      */
-    servicePackageActivationMode?: pulumi.Input<string | enums.ServicePackageActivationMode>;
+    servicePackageActivationMode?: pulumi.Input<string | enums.ServicePackageActivationMode | undefined>;
     /**
      * A list that describes the correlation of the service with other services.
      */
-    servicePlacementPolicies?: pulumi.Input<pulumi.Input<ServicePlacementInvalidDomainPolicyArgs | ServicePlacementNonPartiallyPlaceServicePolicyArgs | ServicePlacementPreferPrimaryDomainPolicyArgs | ServicePlacementRequireDomainDistributionPolicyArgs | ServicePlacementRequiredDomainPolicyArgs>[]>;
+    servicePlacementPolicies?: pulumi.Input<pulumi.Input<ServicePlacementInvalidDomainPolicyArgs | ServicePlacementNonPartiallyPlaceServicePolicyArgs | ServicePlacementPreferPrimaryDomainPolicyArgs | ServicePlacementRequireDomainDistributionPolicyArgs | ServicePlacementRequiredDomainPolicyArgs>[] | undefined>;
     /**
      * The duration for which replicas can stay InBuild before reporting that build is stuck, represented in ISO 8601 format "hh:mm:ss".
      */
-    servicePlacementTimeLimit?: pulumi.Input<string>;
+    servicePlacementTimeLimit?: pulumi.Input<string | undefined>;
     /**
      * The name of the service type
      */
@@ -994,11 +994,11 @@ export interface StatefulServicePropertiesArgs {
     /**
      * The definition on how long StandBy replicas should be maintained before being removed, represented in ISO 8601 format "hh:mm:ss".
      */
-    standByReplicaKeepDuration?: pulumi.Input<string>;
+    standByReplicaKeepDuration?: pulumi.Input<string | undefined>;
     /**
      * The target replica set size as a number.
      */
-    targetReplicaSetSize?: pulumi.Input<number>;
+    targetReplicaSetSize?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1008,11 +1008,11 @@ export interface StatelessServicePropertiesArgs {
     /**
      * A list that describes the correlation of the service with other services.
      */
-    correlationScheme?: pulumi.Input<pulumi.Input<ServiceCorrelationArgs>[]>;
+    correlationScheme?: pulumi.Input<pulumi.Input<ServiceCorrelationArgs>[] | undefined>;
     /**
      * Specifies the move cost for the service.
      */
-    defaultMoveCost?: pulumi.Input<string | enums.MoveCost>;
+    defaultMoveCost?: pulumi.Input<string | enums.MoveCost | undefined>;
     /**
      * The instance count.
      */
@@ -1020,11 +1020,11 @@ export interface StatelessServicePropertiesArgs {
     /**
      * MinInstanceCount is the minimum number of instances that must be up to meet the EnsureAvailability safety check during operations like upgrade or deactivate node. The actual number that is used is max( MinInstanceCount, ceil( MinInstancePercentage/100.0 * InstanceCount) ). Note, if InstanceCount is set to -1, during MinInstanceCount computation -1 is first converted into the number of nodes on which the instances are allowed to be placed according to the placement constraints on the service.
      */
-    minInstanceCount?: pulumi.Input<number>;
+    minInstanceCount?: pulumi.Input<number | undefined>;
     /**
      * MinInstancePercentage is the minimum percentage of InstanceCount that must be up to meet the EnsureAvailability safety check during operations like upgrade or deactivate node. The actual number that is used is max( MinInstanceCount, ceil( MinInstancePercentage/100.0 * InstanceCount) ). Note, if InstanceCount is set to -1, during MinInstancePercentage computation, -1 is first converted into the number of nodes on which the instances are allowed to be placed according to the placement constraints on the service.
      */
-    minInstancePercentage?: pulumi.Input<number>;
+    minInstancePercentage?: pulumi.Input<number | undefined>;
     /**
      * Describes how the service is partitioned.
      */
@@ -1032,17 +1032,17 @@ export interface StatelessServicePropertiesArgs {
     /**
      * The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
      */
-    placementConstraints?: pulumi.Input<string>;
+    placementConstraints?: pulumi.Input<string | undefined>;
     /**
      * Scaling policies for this service.
      */
-    scalingPolicies?: pulumi.Input<pulumi.Input<ScalingPolicyArgs>[]>;
+    scalingPolicies?: pulumi.Input<pulumi.Input<ScalingPolicyArgs>[] | undefined>;
     /**
      * Dns name used for the service. If this is specified, then the DNS name can be used to return the IP addresses of service endpoints for application layer protocols (e.g., HTTP).
      * When updating serviceDnsName, old name may be temporarily resolvable. However, rely on new name.
      * When removing serviceDnsName, removed name may temporarily be resolvable. Do not rely on the name being unresolvable.
      */
-    serviceDnsName?: pulumi.Input<string>;
+    serviceDnsName?: pulumi.Input<string | undefined>;
     /**
      * The kind of service (Stateless or Stateful).
      * Expected value is 'Stateless'.
@@ -1051,15 +1051,15 @@ export interface StatelessServicePropertiesArgs {
     /**
      * The service load metrics is given as an array of ServiceLoadMetric objects.
      */
-    serviceLoadMetrics?: pulumi.Input<pulumi.Input<ServiceLoadMetricArgs>[]>;
+    serviceLoadMetrics?: pulumi.Input<pulumi.Input<ServiceLoadMetricArgs>[] | undefined>;
     /**
      * The activation Mode of the service package
      */
-    servicePackageActivationMode?: pulumi.Input<string | enums.ServicePackageActivationMode>;
+    servicePackageActivationMode?: pulumi.Input<string | enums.ServicePackageActivationMode | undefined>;
     /**
      * A list that describes the correlation of the service with other services.
      */
-    servicePlacementPolicies?: pulumi.Input<pulumi.Input<ServicePlacementInvalidDomainPolicyArgs | ServicePlacementNonPartiallyPlaceServicePolicyArgs | ServicePlacementPreferPrimaryDomainPolicyArgs | ServicePlacementRequireDomainDistributionPolicyArgs | ServicePlacementRequiredDomainPolicyArgs>[]>;
+    servicePlacementPolicies?: pulumi.Input<pulumi.Input<ServicePlacementInvalidDomainPolicyArgs | ServicePlacementNonPartiallyPlaceServicePolicyArgs | ServicePlacementPreferPrimaryDomainPolicyArgs | ServicePlacementRequireDomainDistributionPolicyArgs | ServicePlacementRequiredDomainPolicyArgs>[] | undefined>;
     /**
      * The name of the service type
      */
@@ -1076,7 +1076,7 @@ export interface SubResourceArgs {
      * A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
      * Example of a relative ID: $self/frontEndConfigurations/my-frontend.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1086,7 +1086,7 @@ export interface SubnetArgs {
     /**
      * Indicates wether to enable Ipv6 or not. If not provided, it will take the same configuration as the cluster.
      */
-    enableIpv6?: pulumi.Input<boolean>;
+    enableIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * Subnet name.
      */
@@ -1094,15 +1094,15 @@ export interface SubnetArgs {
     /**
      * Full resource id for the network security group.
      */
-    networkSecurityGroupId?: pulumi.Input<string>;
+    networkSecurityGroupId?: pulumi.Input<string | undefined>;
     /**
      * Enable or Disable apply network policies on private end point in the subnet.
      */
-    privateEndpointNetworkPolicies?: pulumi.Input<string | enums.PrivateEndpointNetworkPolicies>;
+    privateEndpointNetworkPolicies?: pulumi.Input<string | enums.PrivateEndpointNetworkPolicies | undefined>;
     /**
      * Enable or Disable apply network policies on private link service in the subnet.
      */
-    privateLinkServiceNetworkPolicies?: pulumi.Input<string | enums.PrivateLinkServiceNetworkPolicies>;
+    privateLinkServiceNetworkPolicies?: pulumi.Input<string | enums.PrivateLinkServiceNetworkPolicies | undefined>;
 }
 
 /**
@@ -1137,15 +1137,15 @@ export interface VMSSExtensionArgs {
     /**
      * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
      */
-    autoUpgradeMinorVersion?: pulumi.Input<boolean>;
+    autoUpgradeMinorVersion?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
      */
-    enableAutomaticUpgrade?: pulumi.Input<boolean>;
+    enableAutomaticUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
      */
-    forceUpdateTag?: pulumi.Input<string>;
+    forceUpdateTag?: pulumi.Input<string | undefined>;
     /**
      * The name of the extension.
      */
@@ -1153,11 +1153,11 @@ export interface VMSSExtensionArgs {
     /**
      * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
      */
-    protectedSettings?: any;
+    protectedSettings?: any | undefined;
     /**
      * Collection of extension names after which this extension needs to be provisioned.
      */
-    provisionAfterExtensions?: pulumi.Input<pulumi.Input<string>[]>;
+    provisionAfterExtensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the extension handler publisher.
      */
@@ -1165,11 +1165,11 @@ export interface VMSSExtensionArgs {
     /**
      * Json formatted public settings for the extension.
      */
-    settings?: any;
+    settings?: any | undefined;
     /**
      * Indicates the setup order for the extension.
      */
-    setupOrder?: pulumi.Input<pulumi.Input<string | enums.VmssExtensionSetupOrder>[]>;
+    setupOrder?: pulumi.Input<pulumi.Input<string | enums.VmssExtensionSetupOrder>[] | undefined>;
     /**
      * Specifies the type of the extension; an example is "CustomScriptExtension".
      */
@@ -1215,19 +1215,19 @@ export interface VmImagePlanArgs {
     /**
      * The plan ID.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
      */
-    product?: pulumi.Input<string>;
+    product?: pulumi.Input<string | undefined>;
     /**
      * The promotion code.
      */
-    promotionCode?: pulumi.Input<string>;
+    promotionCode?: pulumi.Input<string | undefined>;
     /**
      * The publisher ID.
      */
-    publisher?: pulumi.Input<string>;
+    publisher?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1237,7 +1237,7 @@ export interface VmManagedIdentityArgs {
     /**
      * The list of user identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

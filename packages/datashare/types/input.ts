@@ -7,7 +7,7 @@ export interface IdentityArgs {
     /**
      * Identity Type
      */
-    type?: pulumi.Input<string | enums.Type>;
+    type?: pulumi.Input<string | enums.Type | undefined>;
 }
 
 /**
@@ -17,25 +17,25 @@ export interface TableLevelSharingPropertiesArgs {
     /**
      * External tables to be excluded in the data set
      */
-    externalTablesToExclude?: pulumi.Input<pulumi.Input<string>[]>;
+    externalTablesToExclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * External tables to be included in the data set
      */
-    externalTablesToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+    externalTablesToInclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Materialized views to be excluded in the data set
      */
-    materializedViewsToExclude?: pulumi.Input<pulumi.Input<string>[]>;
+    materializedViewsToExclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Materialized views to be included in the data set
      */
-    materializedViewsToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+    materializedViewsToInclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Tables to be excluded in the data set
      */
-    tablesToExclude?: pulumi.Input<pulumi.Input<string>[]>;
+    tablesToExclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Tables to be included in the data set
      */
-    tablesToInclude?: pulumi.Input<pulumi.Input<string>[]>;
+    tablesToInclude?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

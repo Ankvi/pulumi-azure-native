@@ -83,11 +83,11 @@ export interface AS2MdnSettingsArgs {
     /**
      * The disposition notification to header value.
      */
-    dispositionNotificationTo?: pulumi.Input<string>;
+    dispositionNotificationTo?: pulumi.Input<string | undefined>;
     /**
      * The MDN text.
      */
-    mdnText?: pulumi.Input<string>;
+    mdnText?: pulumi.Input<string | undefined>;
     /**
      * The signing or hashing algorithm.
      */
@@ -99,7 +99,7 @@ export interface AS2MdnSettingsArgs {
     /**
      * The receipt delivery URL.
      */
-    receiptDeliveryUrl?: pulumi.Input<string>;
+    receiptDeliveryUrl?: pulumi.Input<string | undefined>;
     /**
      * The value indicating whether to send inbound MDN to message box.
      */
@@ -223,7 +223,7 @@ export interface AS2SecuritySettingsArgs {
     /**
      * The name of the encryption certificate.
      */
-    encryptionCertificateName?: pulumi.Input<string>;
+    encryptionCertificateName?: pulumi.Input<string | undefined>;
     /**
      * The value indicating whether to send or request a MDN.
      */
@@ -231,11 +231,11 @@ export interface AS2SecuritySettingsArgs {
     /**
      * The Sha2 algorithm format. Valid values are Sha2, ShaHashSize, ShaHyphenHashSize, Sha2UnderscoreHashSize.
      */
-    sha2AlgorithmFormat?: pulumi.Input<string>;
+    sha2AlgorithmFormat?: pulumi.Input<string | undefined>;
     /**
      * The name of the signing certificate.
      */
-    signingCertificateName?: pulumi.Input<string>;
+    signingCertificateName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -281,7 +281,7 @@ export interface AS2ValidationSettingsArgs {
     /**
      * The signing algorithm.
      */
-    signingAlgorithm?: pulumi.Input<string | enums.SigningAlgorithm>;
+    signingAlgorithm?: pulumi.Input<string | enums.SigningAlgorithm | undefined>;
 }
 
 /**
@@ -291,15 +291,15 @@ export interface AgreementContentArgs {
     /**
      * The AS2 agreement content.
      */
-    aS2?: pulumi.Input<AS2AgreementContentArgs>;
+    aS2?: pulumi.Input<AS2AgreementContentArgs | undefined>;
     /**
      * The EDIFACT agreement content.
      */
-    edifact?: pulumi.Input<EdifactAgreementContentArgs>;
+    edifact?: pulumi.Input<EdifactAgreementContentArgs | undefined>;
     /**
      * The X12 agreement content.
      */
-    x12?: pulumi.Input<X12AgreementContentArgs>;
+    x12?: pulumi.Input<X12AgreementContentArgs | undefined>;
 }
 
 /**
@@ -309,7 +309,7 @@ export interface AssemblyPropertiesArgs {
     /**
      * The assembly culture.
      */
-    assemblyCulture?: pulumi.Input<string>;
+    assemblyCulture?: pulumi.Input<string | undefined>;
     /**
      * The assembly name.
      */
@@ -317,29 +317,29 @@ export interface AssemblyPropertiesArgs {
     /**
      * The assembly public key token.
      */
-    assemblyPublicKeyToken?: pulumi.Input<string>;
+    assemblyPublicKeyToken?: pulumi.Input<string | undefined>;
     /**
      * The assembly version.
      */
-    assemblyVersion?: pulumi.Input<string>;
+    assemblyVersion?: pulumi.Input<string | undefined>;
     /**
      * The artifact changed time.
      */
-    changedTime?: pulumi.Input<string>;
-    content?: any;
+    changedTime?: pulumi.Input<string | undefined>;
+    content?: any | undefined;
     /**
      * The content link.
      */
-    contentLink?: pulumi.Input<ContentLinkArgs>;
+    contentLink?: pulumi.Input<ContentLinkArgs | undefined>;
     /**
      * The content type.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * The artifact creation time.
      */
-    createdTime?: pulumi.Input<string>;
-    metadata?: any;
+    createdTime?: pulumi.Input<string | undefined>;
+    metadata?: any | undefined;
 }
 
 /**
@@ -349,7 +349,7 @@ export interface B2BPartnerContentArgs {
     /**
      * The list of partner business identities.
      */
-    businessIdentities?: pulumi.Input<pulumi.Input<BusinessIdentityArgs>[]>;
+    businessIdentities?: pulumi.Input<pulumi.Input<BusinessIdentityArgs>[] | undefined>;
 }
 
 /**
@@ -363,12 +363,12 @@ export interface BatchConfigurationPropertiesArgs {
     /**
      * The artifact changed time.
      */
-    changedTime?: pulumi.Input<string>;
+    changedTime?: pulumi.Input<string | undefined>;
     /**
      * The artifact creation time.
      */
-    createdTime?: pulumi.Input<string>;
-    metadata?: any;
+    createdTime?: pulumi.Input<string | undefined>;
+    metadata?: any | undefined;
     /**
      * The batch release criteria.
      */
@@ -382,15 +382,15 @@ export interface BatchReleaseCriteriaArgs {
     /**
      * The batch size in bytes.
      */
-    batchSize?: pulumi.Input<number>;
+    batchSize?: pulumi.Input<number | undefined>;
     /**
      * The message count.
      */
-    messageCount?: pulumi.Input<number>;
+    messageCount?: pulumi.Input<number | undefined>;
     /**
      * The recurrence.
      */
-    recurrence?: pulumi.Input<WorkflowTriggerRecurrenceArgs>;
+    recurrence?: pulumi.Input<WorkflowTriggerRecurrenceArgs | undefined>;
 }
 
 /**
@@ -414,7 +414,7 @@ export interface ContentLinkArgs {
     /**
      * The content link URI.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -428,11 +428,11 @@ export interface EdifactAcknowledgementSettingsArgs {
     /**
      * The acknowledgement control number prefix.
      */
-    acknowledgementControlNumberPrefix?: pulumi.Input<string>;
+    acknowledgementControlNumberPrefix?: pulumi.Input<string | undefined>;
     /**
      * The acknowledgement control number suffix.
      */
-    acknowledgementControlNumberSuffix?: pulumi.Input<string>;
+    acknowledgementControlNumberSuffix?: pulumi.Input<string | undefined>;
     /**
      * The acknowledgement control number upper bound.
      */
@@ -500,19 +500,19 @@ export interface EdifactDelimiterOverrideArgs {
     /**
      * The message association assigned code.
      */
-    messageAssociationAssignedCode?: pulumi.Input<string>;
+    messageAssociationAssignedCode?: pulumi.Input<string | undefined>;
     /**
      * The message id.
      */
-    messageId?: pulumi.Input<string>;
+    messageId?: pulumi.Input<string | undefined>;
     /**
      * The message release.
      */
-    messageRelease?: pulumi.Input<string>;
+    messageRelease?: pulumi.Input<string | undefined>;
     /**
      * The message version.
      */
-    messageVersion?: pulumi.Input<string>;
+    messageVersion?: pulumi.Input<string | undefined>;
     /**
      * The release indicator.
      */
@@ -532,7 +532,7 @@ export interface EdifactDelimiterOverrideArgs {
     /**
      * The target namespace on which this delimiter settings has to be applied.
      */
-    targetNamespace?: pulumi.Input<string>;
+    targetNamespace?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -542,63 +542,63 @@ export interface EdifactEnvelopeOverrideArgs {
     /**
      * The application password.
      */
-    applicationPassword?: pulumi.Input<string>;
+    applicationPassword?: pulumi.Input<string | undefined>;
     /**
      * The association assigned code.
      */
-    associationAssignedCode?: pulumi.Input<string>;
+    associationAssignedCode?: pulumi.Input<string | undefined>;
     /**
      * The controlling agency code.
      */
-    controllingAgencyCode?: pulumi.Input<string>;
+    controllingAgencyCode?: pulumi.Input<string | undefined>;
     /**
      * The functional group id.
      */
-    functionalGroupId?: pulumi.Input<string>;
+    functionalGroupId?: pulumi.Input<string | undefined>;
     /**
      * The group header message release.
      */
-    groupHeaderMessageRelease?: pulumi.Input<string>;
+    groupHeaderMessageRelease?: pulumi.Input<string | undefined>;
     /**
      * The group header message version.
      */
-    groupHeaderMessageVersion?: pulumi.Input<string>;
+    groupHeaderMessageVersion?: pulumi.Input<string | undefined>;
     /**
      * The message association assigned code.
      */
-    messageAssociationAssignedCode?: pulumi.Input<string>;
+    messageAssociationAssignedCode?: pulumi.Input<string | undefined>;
     /**
      * The message id on which this envelope settings has to be applied.
      */
-    messageId?: pulumi.Input<string>;
+    messageId?: pulumi.Input<string | undefined>;
     /**
      * The message release version on which this envelope settings has to be applied.
      */
-    messageRelease?: pulumi.Input<string>;
+    messageRelease?: pulumi.Input<string | undefined>;
     /**
      * The message version on which this envelope settings has to be applied.
      */
-    messageVersion?: pulumi.Input<string>;
+    messageVersion?: pulumi.Input<string | undefined>;
     /**
      * The receiver application id.
      */
-    receiverApplicationId?: pulumi.Input<string>;
+    receiverApplicationId?: pulumi.Input<string | undefined>;
     /**
      * The receiver application qualifier.
      */
-    receiverApplicationQualifier?: pulumi.Input<string>;
+    receiverApplicationQualifier?: pulumi.Input<string | undefined>;
     /**
      * The sender application id.
      */
-    senderApplicationId?: pulumi.Input<string>;
+    senderApplicationId?: pulumi.Input<string | undefined>;
     /**
      * The sender application qualifier.
      */
-    senderApplicationQualifier?: pulumi.Input<string>;
+    senderApplicationQualifier?: pulumi.Input<string | undefined>;
     /**
      * The target namespace on which this envelope settings has to be applied.
      */
-    targetNamespace?: pulumi.Input<string>;
+    targetNamespace?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -608,7 +608,7 @@ export interface EdifactEnvelopeSettingsArgs {
     /**
      * The application reference id.
      */
-    applicationReferenceId?: pulumi.Input<string>;
+    applicationReferenceId?: pulumi.Input<string | undefined>;
     /**
      * The value indicating whether to apply delimiter string advice.
      */
@@ -616,7 +616,7 @@ export interface EdifactEnvelopeSettingsArgs {
     /**
      * The communication agreement id.
      */
-    communicationAgreementId?: pulumi.Input<string>;
+    communicationAgreementId?: pulumi.Input<string | undefined>;
     /**
      * The value indicating whether to create grouping segments.
      */
@@ -628,31 +628,31 @@ export interface EdifactEnvelopeSettingsArgs {
     /**
      * The functional group id.
      */
-    functionalGroupId?: pulumi.Input<string>;
+    functionalGroupId?: pulumi.Input<string | undefined>;
     /**
      * The group application password.
      */
-    groupApplicationPassword?: pulumi.Input<string>;
+    groupApplicationPassword?: pulumi.Input<string | undefined>;
     /**
      * The group application receiver id.
      */
-    groupApplicationReceiverId?: pulumi.Input<string>;
+    groupApplicationReceiverId?: pulumi.Input<string | undefined>;
     /**
      * The group application receiver qualifier.
      */
-    groupApplicationReceiverQualifier?: pulumi.Input<string>;
+    groupApplicationReceiverQualifier?: pulumi.Input<string | undefined>;
     /**
      * The group application sender id.
      */
-    groupApplicationSenderId?: pulumi.Input<string>;
+    groupApplicationSenderId?: pulumi.Input<string | undefined>;
     /**
      * The group application sender qualifier.
      */
-    groupApplicationSenderQualifier?: pulumi.Input<string>;
+    groupApplicationSenderQualifier?: pulumi.Input<string | undefined>;
     /**
      * The group association assigned code.
      */
-    groupAssociationAssignedCode?: pulumi.Input<string>;
+    groupAssociationAssignedCode?: pulumi.Input<string | undefined>;
     /**
      * The group control number lower bound.
      */
@@ -660,11 +660,11 @@ export interface EdifactEnvelopeSettingsArgs {
     /**
      * The group control number prefix.
      */
-    groupControlNumberPrefix?: pulumi.Input<string>;
+    groupControlNumberPrefix?: pulumi.Input<string | undefined>;
     /**
      * The group control number suffix.
      */
-    groupControlNumberSuffix?: pulumi.Input<string>;
+    groupControlNumberSuffix?: pulumi.Input<string | undefined>;
     /**
      * The group control number upper bound.
      */
@@ -672,15 +672,15 @@ export interface EdifactEnvelopeSettingsArgs {
     /**
      * The group controlling agency code.
      */
-    groupControllingAgencyCode?: pulumi.Input<string>;
+    groupControllingAgencyCode?: pulumi.Input<string | undefined>;
     /**
      * The group message release.
      */
-    groupMessageRelease?: pulumi.Input<string>;
+    groupMessageRelease?: pulumi.Input<string | undefined>;
     /**
      * The group message version.
      */
-    groupMessageVersion?: pulumi.Input<string>;
+    groupMessageVersion?: pulumi.Input<string | undefined>;
     /**
      * The interchange control number lower bound.
      */
@@ -688,11 +688,11 @@ export interface EdifactEnvelopeSettingsArgs {
     /**
      * The interchange control number prefix.
      */
-    interchangeControlNumberPrefix?: pulumi.Input<string>;
+    interchangeControlNumberPrefix?: pulumi.Input<string | undefined>;
     /**
      * The interchange control number suffix.
      */
-    interchangeControlNumberSuffix?: pulumi.Input<string>;
+    interchangeControlNumberSuffix?: pulumi.Input<string | undefined>;
     /**
      * The interchange control number upper bound.
      */
@@ -708,27 +708,27 @@ export interface EdifactEnvelopeSettingsArgs {
     /**
      * The processing priority code.
      */
-    processingPriorityCode?: pulumi.Input<string>;
+    processingPriorityCode?: pulumi.Input<string | undefined>;
     /**
      * The receiver internal identification.
      */
-    receiverInternalIdentification?: pulumi.Input<string>;
+    receiverInternalIdentification?: pulumi.Input<string | undefined>;
     /**
      * The receiver internal sub identification.
      */
-    receiverInternalSubIdentification?: pulumi.Input<string>;
+    receiverInternalSubIdentification?: pulumi.Input<string | undefined>;
     /**
      * The receiver reverse routing address.
      */
-    receiverReverseRoutingAddress?: pulumi.Input<string>;
+    receiverReverseRoutingAddress?: pulumi.Input<string | undefined>;
     /**
      * The recipient reference password qualifier.
      */
-    recipientReferencePasswordQualifier?: pulumi.Input<string>;
+    recipientReferencePasswordQualifier?: pulumi.Input<string | undefined>;
     /**
      * The recipient reference password value.
      */
-    recipientReferencePasswordValue?: pulumi.Input<string>;
+    recipientReferencePasswordValue?: pulumi.Input<string | undefined>;
     /**
      * The value indicating whether to rollover group control number.
      */
@@ -744,15 +744,15 @@ export interface EdifactEnvelopeSettingsArgs {
     /**
      * The sender internal identification.
      */
-    senderInternalIdentification?: pulumi.Input<string>;
+    senderInternalIdentification?: pulumi.Input<string | undefined>;
     /**
      * The sender internal sub identification.
      */
-    senderInternalSubIdentification?: pulumi.Input<string>;
+    senderInternalSubIdentification?: pulumi.Input<string | undefined>;
     /**
      * The sender reverse routing address.
      */
-    senderReverseRoutingAddress?: pulumi.Input<string>;
+    senderReverseRoutingAddress?: pulumi.Input<string | undefined>;
     /**
      * The transaction set control number lower bound.
      */
@@ -760,11 +760,11 @@ export interface EdifactEnvelopeSettingsArgs {
     /**
      * The transaction set control number prefix.
      */
-    transactionSetControlNumberPrefix?: pulumi.Input<string>;
+    transactionSetControlNumberPrefix?: pulumi.Input<string | undefined>;
     /**
      * The transaction set control number suffix.
      */
-    transactionSetControlNumberSuffix?: pulumi.Input<string>;
+    transactionSetControlNumberSuffix?: pulumi.Input<string | undefined>;
     /**
      * The transaction set control number upper bound.
      */
@@ -778,7 +778,7 @@ export interface EdifactFramingSettingsArgs {
     /**
      * The character encoding.
      */
-    characterEncoding?: pulumi.Input<string>;
+    characterEncoding?: pulumi.Input<string | undefined>;
     /**
      * The EDIFACT frame setting characterSet.
      */
@@ -818,7 +818,7 @@ export interface EdifactFramingSettingsArgs {
     /**
      * The service code list directory version.
      */
-    serviceCodeListDirectoryVersion?: pulumi.Input<string>;
+    serviceCodeListDirectoryVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -896,11 +896,11 @@ export interface EdifactProtocolSettingsArgs {
     /**
      * The EDIFACT delimiter override settings.
      */
-    edifactDelimiterOverrides?: pulumi.Input<pulumi.Input<EdifactDelimiterOverrideArgs>[]>;
+    edifactDelimiterOverrides?: pulumi.Input<pulumi.Input<EdifactDelimiterOverrideArgs>[] | undefined>;
     /**
      * The EDIFACT envelope override settings.
      */
-    envelopeOverrides?: pulumi.Input<pulumi.Input<EdifactEnvelopeOverrideArgs>[]>;
+    envelopeOverrides?: pulumi.Input<pulumi.Input<EdifactEnvelopeOverrideArgs>[] | undefined>;
     /**
      * The EDIFACT envelope settings.
      */
@@ -916,7 +916,7 @@ export interface EdifactProtocolSettingsArgs {
     /**
      * The EDIFACT message filter list.
      */
-    messageFilterList?: pulumi.Input<pulumi.Input<EdifactMessageIdentifierArgs>[]>;
+    messageFilterList?: pulumi.Input<pulumi.Input<EdifactMessageIdentifierArgs>[] | undefined>;
     /**
      * The EDIFACT processing Settings.
      */
@@ -928,7 +928,7 @@ export interface EdifactProtocolSettingsArgs {
     /**
      * The EDIFACT validation override settings.
      */
-    validationOverrides?: pulumi.Input<pulumi.Input<EdifactValidationOverrideArgs>[]>;
+    validationOverrides?: pulumi.Input<pulumi.Input<EdifactValidationOverrideArgs>[] | undefined>;
     /**
      * The EDIFACT validation settings.
      */
@@ -942,7 +942,7 @@ export interface EdifactSchemaReferenceArgs {
     /**
      * The association assigned code.
      */
-    associationAssignedCode?: pulumi.Input<string>;
+    associationAssignedCode?: pulumi.Input<string | undefined>;
     /**
      * The message id.
      */
@@ -962,11 +962,11 @@ export interface EdifactSchemaReferenceArgs {
     /**
      * The sender application id.
      */
-    senderApplicationId?: pulumi.Input<string>;
+    senderApplicationId?: pulumi.Input<string | undefined>;
     /**
      * The sender application qualifier.
      */
-    senderApplicationQualifier?: pulumi.Input<string>;
+    senderApplicationQualifier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1056,19 +1056,19 @@ export interface FlowAccessControlConfigurationArgs {
     /**
      * The access control configuration for workflow actions.
      */
-    actions?: pulumi.Input<FlowAccessControlConfigurationPolicyArgs>;
+    actions?: pulumi.Input<FlowAccessControlConfigurationPolicyArgs | undefined>;
     /**
      * The access control configuration for accessing workflow run contents.
      */
-    contents?: pulumi.Input<FlowAccessControlConfigurationPolicyArgs>;
+    contents?: pulumi.Input<FlowAccessControlConfigurationPolicyArgs | undefined>;
     /**
      * The access control configuration for invoking workflow triggers.
      */
-    triggers?: pulumi.Input<FlowAccessControlConfigurationPolicyArgs>;
+    triggers?: pulumi.Input<FlowAccessControlConfigurationPolicyArgs | undefined>;
     /**
      * The access control configuration for workflow management.
      */
-    workflowManagement?: pulumi.Input<FlowAccessControlConfigurationPolicyArgs>;
+    workflowManagement?: pulumi.Input<FlowAccessControlConfigurationPolicyArgs | undefined>;
 }
 
 /**
@@ -1078,11 +1078,11 @@ export interface FlowAccessControlConfigurationPolicyArgs {
     /**
      * The allowed caller IP address ranges.
      */
-    allowedCallerIpAddresses?: pulumi.Input<pulumi.Input<IpAddressRangeArgs>[]>;
+    allowedCallerIpAddresses?: pulumi.Input<pulumi.Input<IpAddressRangeArgs>[] | undefined>;
     /**
      * The authentication policies for workflow.
      */
-    openAuthenticationPolicies?: pulumi.Input<OpenAuthenticationAccessPoliciesArgs>;
+    openAuthenticationPolicies?: pulumi.Input<OpenAuthenticationAccessPoliciesArgs | undefined>;
 }
 
 /**
@@ -1092,11 +1092,11 @@ export interface FlowEndpointsArgs {
     /**
      * The access endpoint ip address.
      */
-    accessEndpointIpAddresses?: pulumi.Input<pulumi.Input<IpAddressArgs>[]>;
+    accessEndpointIpAddresses?: pulumi.Input<pulumi.Input<IpAddressArgs>[] | undefined>;
     /**
      * The outgoing ip address.
      */
-    outgoingIpAddresses?: pulumi.Input<pulumi.Input<IpAddressArgs>[]>;
+    outgoingIpAddresses?: pulumi.Input<pulumi.Input<IpAddressArgs>[] | undefined>;
 }
 
 /**
@@ -1106,11 +1106,11 @@ export interface FlowEndpointsConfigurationArgs {
     /**
      * The connector endpoints.
      */
-    connector?: pulumi.Input<FlowEndpointsArgs>;
+    connector?: pulumi.Input<FlowEndpointsArgs | undefined>;
     /**
      * The workflow endpoints.
      */
-    workflow?: pulumi.Input<FlowEndpointsArgs>;
+    workflow?: pulumi.Input<FlowEndpointsArgs | undefined>;
 }
 
 /**
@@ -1120,7 +1120,7 @@ export interface IntegrationAccountMapPropertiesParametersSchemaArgs {
     /**
      * The reference name.
      */
-    ref?: pulumi.Input<string>;
+    ref?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1140,7 +1140,7 @@ export interface IntegrationServiceEnvironmenEncryptionConfigurationArgs {
     /**
      * The encryption key reference.
      */
-    encryptionKeyReference?: pulumi.Input<IntegrationServiceEnvironmenEncryptionKeyReferenceArgs>;
+    encryptionKeyReference?: pulumi.Input<IntegrationServiceEnvironmenEncryptionKeyReferenceArgs | undefined>;
 }
 
 /**
@@ -1150,15 +1150,15 @@ export interface IntegrationServiceEnvironmenEncryptionKeyReferenceArgs {
     /**
      * Gets the key name in the Key Vault.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The key vault reference.
      */
-    keyVault?: pulumi.Input<ResourceReferenceArgs>;
+    keyVault?: pulumi.Input<ResourceReferenceArgs | undefined>;
     /**
      * Gets the version of the key specified in the keyName property.
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1168,7 +1168,7 @@ export interface IntegrationServiceEnvironmentAccessEndpointArgs {
     /**
      * The access endpoint type.
      */
-    type?: pulumi.Input<string | enums.IntegrationServiceEnvironmentAccessEndpointType>;
+    type?: pulumi.Input<string | enums.IntegrationServiceEnvironmentAccessEndpointType | undefined>;
 }
 
 /**
@@ -1178,7 +1178,7 @@ export interface IntegrationServiceEnvironmentManagedApiDeploymentParametersArgs
     /**
      * The integration service environment managed api content link for deployment.
      */
-    contentLinkDefinition?: pulumi.Input<ContentLinkArgs>;
+    contentLinkDefinition?: pulumi.Input<ContentLinkArgs | undefined>;
 }
 
 /**
@@ -1188,27 +1188,27 @@ export interface IntegrationServiceEnvironmentPropertiesArgs {
     /**
      * The encryption configuration.
      */
-    encryptionConfiguration?: pulumi.Input<IntegrationServiceEnvironmenEncryptionConfigurationArgs>;
+    encryptionConfiguration?: pulumi.Input<IntegrationServiceEnvironmenEncryptionConfigurationArgs | undefined>;
     /**
      * The endpoints configuration.
      */
-    endpointsConfiguration?: pulumi.Input<FlowEndpointsConfigurationArgs>;
+    endpointsConfiguration?: pulumi.Input<FlowEndpointsConfigurationArgs | undefined>;
     /**
      * Gets the tracking id.
      */
-    integrationServiceEnvironmentId?: pulumi.Input<string>;
+    integrationServiceEnvironmentId?: pulumi.Input<string | undefined>;
     /**
      * The network configuration.
      */
-    networkConfiguration?: pulumi.Input<NetworkConfigurationArgs>;
+    networkConfiguration?: pulumi.Input<NetworkConfigurationArgs | undefined>;
     /**
      * The provisioning state.
      */
-    provisioningState?: pulumi.Input<string | enums.WorkflowProvisioningState>;
+    provisioningState?: pulumi.Input<string | enums.WorkflowProvisioningState | undefined>;
     /**
      * The integration service environment state.
      */
-    state?: pulumi.Input<string | enums.WorkflowState>;
+    state?: pulumi.Input<string | enums.WorkflowState | undefined>;
 }
 
 /**
@@ -1218,11 +1218,11 @@ export interface IntegrationServiceEnvironmentSkuArgs {
     /**
      * The sku capacity.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * The sku name.
      */
-    name?: pulumi.Input<string | enums.IntegrationServiceEnvironmentSkuName>;
+    name?: pulumi.Input<string | enums.IntegrationServiceEnvironmentSkuName | undefined>;
 }
 
 /**
@@ -1232,7 +1232,7 @@ export interface IpAddressArgs {
     /**
      * The address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1242,7 +1242,7 @@ export interface IpAddressRangeArgs {
     /**
      * The IP address range.
      */
-    addressRange?: pulumi.Input<string>;
+    addressRange?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1260,7 +1260,7 @@ export interface KeyVaultKeyReferenceArgs {
     /**
      * The private key version in key vault.
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1270,7 +1270,7 @@ export interface KeyVaultKeyReferenceKeyVaultArgs {
     /**
      * The resource id.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1294,11 +1294,11 @@ export interface KeyVaultReferenceArgs {
     /**
      * The resource id.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The key vault name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1312,7 +1312,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1322,15 +1322,15 @@ export interface NetworkConfigurationArgs {
     /**
      * The access endpoint.
      */
-    accessEndpoint?: pulumi.Input<IntegrationServiceEnvironmentAccessEndpointArgs>;
+    accessEndpoint?: pulumi.Input<IntegrationServiceEnvironmentAccessEndpointArgs | undefined>;
     /**
      * The subnets.
      */
-    subnets?: pulumi.Input<pulumi.Input<ResourceReferenceArgs>[]>;
+    subnets?: pulumi.Input<pulumi.Input<ResourceReferenceArgs>[] | undefined>;
     /**
      * Gets the virtual network address space.
      */
-    virtualNetworkAddressSpace?: pulumi.Input<string>;
+    virtualNetworkAddressSpace?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1340,7 +1340,7 @@ export interface OpenAuthenticationAccessPoliciesArgs {
     /**
      * Open authentication policies.
      */
-    policies?: pulumi.Input<{[key: string]: pulumi.Input<OpenAuthenticationAccessPolicyArgs>}>;
+    policies?: pulumi.Input<{[key: string]: pulumi.Input<OpenAuthenticationAccessPolicyArgs>} | undefined>;
 }
 
 /**
@@ -1350,11 +1350,11 @@ export interface OpenAuthenticationAccessPolicyArgs {
     /**
      * The access policy claims.
      */
-    claims?: pulumi.Input<pulumi.Input<OpenAuthenticationPolicyClaimArgs>[]>;
+    claims?: pulumi.Input<pulumi.Input<OpenAuthenticationPolicyClaimArgs>[] | undefined>;
     /**
      * Type of provider for OAuth.
      */
-    type?: pulumi.Input<string | enums.OpenAuthenticationProviderType>;
+    type?: pulumi.Input<string | enums.OpenAuthenticationProviderType | undefined>;
 }
 
 /**
@@ -1364,11 +1364,11 @@ export interface OpenAuthenticationPolicyClaimArgs {
     /**
      * The name of the claim.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The value of the claim.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1378,7 +1378,7 @@ export interface PartnerContentArgs {
     /**
      * The B2B partner content.
      */
-    b2b?: pulumi.Input<B2BPartnerContentArgs>;
+    b2b?: pulumi.Input<B2BPartnerContentArgs | undefined>;
 }
 
 /**
@@ -1388,23 +1388,23 @@ export interface RecurrenceScheduleArgs {
     /**
      * The hours.
      */
-    hours?: pulumi.Input<pulumi.Input<number>[]>;
+    hours?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The minutes.
      */
-    minutes?: pulumi.Input<pulumi.Input<number>[]>;
+    minutes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The month days.
      */
-    monthDays?: pulumi.Input<pulumi.Input<number>[]>;
+    monthDays?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The monthly occurrences.
      */
-    monthlyOccurrences?: pulumi.Input<pulumi.Input<RecurrenceScheduleOccurrenceArgs>[]>;
+    monthlyOccurrences?: pulumi.Input<pulumi.Input<RecurrenceScheduleOccurrenceArgs>[] | undefined>;
     /**
      * The days of the week.
      */
-    weekDays?: pulumi.Input<pulumi.Input<enums.DaysOfWeek>[]>;
+    weekDays?: pulumi.Input<pulumi.Input<enums.DaysOfWeek>[] | undefined>;
 }
 
 /**
@@ -1414,11 +1414,11 @@ export interface RecurrenceScheduleOccurrenceArgs {
     /**
      * The day of the week.
      */
-    day?: pulumi.Input<enums.DayOfWeek>;
+    day?: pulumi.Input<enums.DayOfWeek | undefined>;
     /**
      * The occurrence.
      */
-    occurrence?: pulumi.Input<number>;
+    occurrence?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1428,7 +1428,7 @@ export interface ResourceReferenceArgs {
     /**
      * The resource id.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1508,7 +1508,7 @@ export interface RosettaNetPipBusinessDocumentArgs {
     /**
      * The business document description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The business document name.
      */
@@ -1534,7 +1534,7 @@ export interface RosettaNetPipRoleSettingsArgs {
     /**
      * The description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The role name.
      */
@@ -1560,19 +1560,19 @@ export interface WorkflowParameterArgs {
     /**
      * The description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The metadata.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
      * The type.
      */
-    type?: pulumi.Input<string | enums.ParameterType>;
+    type?: pulumi.Input<string | enums.ParameterType | undefined>;
     /**
      * The value.
      */
-    value?: any;
+    value?: any | undefined;
 }
 
 /**
@@ -1582,27 +1582,27 @@ export interface WorkflowTriggerRecurrenceArgs {
     /**
      * The end time.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The frequency.
      */
-    frequency?: pulumi.Input<string | enums.RecurrenceFrequency>;
+    frequency?: pulumi.Input<string | enums.RecurrenceFrequency | undefined>;
     /**
      * The interval.
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * The recurrence schedule.
      */
-    schedule?: pulumi.Input<RecurrenceScheduleArgs>;
+    schedule?: pulumi.Input<RecurrenceScheduleArgs | undefined>;
     /**
      * The start time.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * The time zone.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1616,11 +1616,11 @@ export interface X12AcknowledgementSettingsArgs {
     /**
      * The acknowledgement control number prefix.
      */
-    acknowledgementControlNumberPrefix?: pulumi.Input<string>;
+    acknowledgementControlNumberPrefix?: pulumi.Input<string | undefined>;
     /**
      * The acknowledgement control number suffix.
      */
-    acknowledgementControlNumberSuffix?: pulumi.Input<string>;
+    acknowledgementControlNumberSuffix?: pulumi.Input<string | undefined>;
     /**
      * The acknowledgement control number upper bound.
      */
@@ -1640,11 +1640,11 @@ export interface X12AcknowledgementSettingsArgs {
     /**
      * The functional acknowledgement version.
      */
-    functionalAcknowledgementVersion?: pulumi.Input<string>;
+    functionalAcknowledgementVersion?: pulumi.Input<string | undefined>;
     /**
      * The implementation acknowledgement version.
      */
-    implementationAcknowledgementVersion?: pulumi.Input<string>;
+    implementationAcknowledgementVersion?: pulumi.Input<string | undefined>;
     /**
      * The value indicating whether functional acknowledgement is needed.
      */
@@ -1700,11 +1700,11 @@ export interface X12DelimiterOverridesArgs {
     /**
      * The message id.
      */
-    messageId?: pulumi.Input<string>;
+    messageId?: pulumi.Input<string | undefined>;
     /**
      * The protocol version.
      */
-    protocolVersion?: pulumi.Input<string>;
+    protocolVersion?: pulumi.Input<string | undefined>;
     /**
      * The replacement character.
      */
@@ -1724,7 +1724,7 @@ export interface X12DelimiterOverridesArgs {
     /**
      * The target namespace on which this delimiter settings has to be applied.
      */
-    targetNamespace?: pulumi.Input<string>;
+    targetNamespace?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1738,7 +1738,7 @@ export interface X12EnvelopeOverrideArgs {
     /**
      * The functional identifier code.
      */
-    functionalIdentifierCode?: pulumi.Input<string>;
+    functionalIdentifierCode?: pulumi.Input<string | undefined>;
     /**
      * The header version.
      */
@@ -1792,7 +1792,7 @@ export interface X12EnvelopeSettingsArgs {
     /**
      * The functional group id.
      */
-    functionalGroupId?: pulumi.Input<string>;
+    functionalGroupId?: pulumi.Input<string | undefined>;
     /**
      * The group control number lower bound.
      */
@@ -1856,11 +1856,11 @@ export interface X12EnvelopeSettingsArgs {
     /**
      * The transaction set control number prefix.
      */
-    transactionSetControlNumberPrefix?: pulumi.Input<string>;
+    transactionSetControlNumberPrefix?: pulumi.Input<string | undefined>;
     /**
      * The transaction set control number suffix.
      */
-    transactionSetControlNumberSuffix?: pulumi.Input<string>;
+    transactionSetControlNumberSuffix?: pulumi.Input<string | undefined>;
     /**
      * The transaction set control number upper bound.
      */
@@ -1988,7 +1988,7 @@ export interface X12ProtocolSettingsArgs {
     /**
      * The X12 envelope override settings.
      */
-    envelopeOverrides?: pulumi.Input<pulumi.Input<X12EnvelopeOverrideArgs>[]>;
+    envelopeOverrides?: pulumi.Input<pulumi.Input<X12EnvelopeOverrideArgs>[] | undefined>;
     /**
      * The X12 envelope settings.
      */
@@ -2004,7 +2004,7 @@ export interface X12ProtocolSettingsArgs {
     /**
      * The X12 message filter list.
      */
-    messageFilterList?: pulumi.Input<pulumi.Input<X12MessageIdentifierArgs>[]>;
+    messageFilterList?: pulumi.Input<pulumi.Input<X12MessageIdentifierArgs>[] | undefined>;
     /**
      * The X12 processing settings.
      */
@@ -2020,7 +2020,7 @@ export interface X12ProtocolSettingsArgs {
     /**
      * The X12 validation override settings.
      */
-    validationOverrides?: pulumi.Input<pulumi.Input<X12ValidationOverrideArgs>[]>;
+    validationOverrides?: pulumi.Input<pulumi.Input<X12ValidationOverrideArgs>[] | undefined>;
     /**
      * The X12 validation settings.
      */
@@ -2028,7 +2028,7 @@ export interface X12ProtocolSettingsArgs {
     /**
      * The X12 delimiter override settings.
      */
-    x12DelimiterOverrides?: pulumi.Input<pulumi.Input<X12DelimiterOverridesArgs>[]>;
+    x12DelimiterOverrides?: pulumi.Input<pulumi.Input<X12DelimiterOverridesArgs>[] | undefined>;
 }
 
 /**
@@ -2050,7 +2050,7 @@ export interface X12SchemaReferenceArgs {
     /**
      * The sender application id.
      */
-    senderApplicationId?: pulumi.Input<string>;
+    senderApplicationId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2064,11 +2064,11 @@ export interface X12SecuritySettingsArgs {
     /**
      * The authorization value.
      */
-    authorizationValue?: pulumi.Input<string>;
+    authorizationValue?: pulumi.Input<string | undefined>;
     /**
      * The password value.
      */
-    passwordValue?: pulumi.Input<string>;
+    passwordValue?: pulumi.Input<string | undefined>;
     /**
      * The security qualifier.
      */

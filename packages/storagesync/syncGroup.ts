@@ -116,5 +116,5 @@ export interface SyncGroupArgs {
     /**
      * Name of Sync Group resource.
      */
-    syncGroupName?: pulumi.Input<string>;
+    syncGroupName?: pulumi.Input<string | undefined>;
 }

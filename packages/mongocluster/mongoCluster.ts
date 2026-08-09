@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01.
  *
- * Other available API versions: 2024-03-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-08-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mongocluster [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-03-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-08-01-preview, 2025-09-01, 2026-02-01-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mongocluster [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class MongoCluster extends pulumi.CustomResource {
     /**
@@ -97,7 +97,7 @@ export class MongoCluster extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:documentdb/v20230315preview:MongoCluster" }, { type: "azure-native:documentdb/v20230915preview:MongoCluster" }, { type: "azure-native:documentdb/v20231115preview:MongoCluster" }, { type: "azure-native:documentdb/v20240215preview:MongoCluster" }, { type: "azure-native:documentdb/v20240301preview:MongoCluster" }, { type: "azure-native:documentdb/v20240601preview:MongoCluster" }, { type: "azure-native:documentdb/v20240701:MongoCluster" }, { type: "azure-native:documentdb/v20241001preview:MongoCluster" }, { type: "azure-native:documentdb:MongoCluster" }, { type: "azure-native:mongocluster/v20240301preview:MongoCluster" }, { type: "azure-native:mongocluster/v20240601preview:MongoCluster" }, { type: "azure-native:mongocluster/v20240701:MongoCluster" }, { type: "azure-native:mongocluster/v20241001preview:MongoCluster" }, { type: "azure-native:mongocluster/v20250401preview:MongoCluster" }, { type: "azure-native:mongocluster/v20250701preview:MongoCluster" }, { type: "azure-native:mongocluster/v20250801preview:MongoCluster" }, { type: "azure-native:mongocluster/v20250901:MongoCluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:documentdb/v20230315preview:MongoCluster" }, { type: "azure-native:documentdb/v20230915preview:MongoCluster" }, { type: "azure-native:documentdb/v20231115preview:MongoCluster" }, { type: "azure-native:documentdb/v20240215preview:MongoCluster" }, { type: "azure-native:documentdb/v20240301preview:MongoCluster" }, { type: "azure-native:documentdb/v20240601preview:MongoCluster" }, { type: "azure-native:documentdb/v20240701:MongoCluster" }, { type: "azure-native:documentdb/v20241001preview:MongoCluster" }, { type: "azure-native:documentdb:MongoCluster" }, { type: "azure-native:mongocluster/v20240301preview:MongoCluster" }, { type: "azure-native:mongocluster/v20240601preview:MongoCluster" }, { type: "azure-native:mongocluster/v20240701:MongoCluster" }, { type: "azure-native:mongocluster/v20241001preview:MongoCluster" }, { type: "azure-native:mongocluster/v20250401preview:MongoCluster" }, { type: "azure-native:mongocluster/v20250701preview:MongoCluster" }, { type: "azure-native:mongocluster/v20250801preview:MongoCluster" }, { type: "azure-native:mongocluster/v20250901:MongoCluster" }, { type: "azure-native:mongocluster/v20260201preview:MongoCluster" }, { type: "azure-native:mongocluster/v20260601:MongoCluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MongoCluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -110,15 +110,15 @@ export interface MongoClusterArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the mongo cluster.
      */
-    mongoClusterName?: pulumi.Input<string>;
+    mongoClusterName?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.MongoClusterPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MongoClusterPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -126,5 +126,5 @@ export interface MongoClusterArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

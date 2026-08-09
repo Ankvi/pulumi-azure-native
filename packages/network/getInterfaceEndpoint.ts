@@ -67,7 +67,7 @@ export interface GetInterfaceEndpointResult {
     /**
      * Gets an array of references to the network interfaces created for this interface endpoint.
      */
-    readonly networkInterfaces: types.outputs.NetworkInterfaceResponse[];
+    readonly networkInterfaces: types.outputs.NetworkInterfaceInterfaceEndpointResponse[];
     /**
      * A read-only property that identifies who created this interface endpoint.
      */
@@ -79,7 +79,7 @@ export interface GetInterfaceEndpointResult {
     /**
      * The ID of the subnet from which the private IP will be allocated.
      */
-    readonly subnet?: types.outputs.SubnetResponse;
+    readonly subnet?: types.outputs.SubnetInterfaceEndpointResponse;
     /**
      * Resource tags.
      */
@@ -109,7 +109,7 @@ export interface GetInterfaceEndpointOutputArgs {
     /**
      * Expands referenced resources.
      */
-    expand?: pulumi.Input<string>;
+    expand?: pulumi.Input<string | undefined>;
     /**
      * The name of the interface endpoint.
      */

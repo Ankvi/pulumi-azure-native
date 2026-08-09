@@ -122,15 +122,15 @@ export interface SiteNetworkServiceArgs {
     /**
      * The managed identity of the Site network service, if configured.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Site network service properties.
      */
-    properties?: pulumi.Input<types.inputs.SiteNetworkServicePropertiesFormatArgs>;
+    properties?: pulumi.Input<types.inputs.SiteNetworkServicePropertiesFormatArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -138,13 +138,13 @@ export interface SiteNetworkServiceArgs {
     /**
      * The name of the site network service.
      */
-    siteNetworkServiceName?: pulumi.Input<string>;
+    siteNetworkServiceName?: pulumi.Input<string | undefined>;
     /**
      * Sku of the site network service.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

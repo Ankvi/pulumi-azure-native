@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class L3Network extends pulumi.CustomResource {
     /**
@@ -202,7 +202,7 @@ export class L3Network extends pulumi.CustomResource {
             resourceInputs["vlan"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:L3Network" }, { type: "azure-native:networkcloud/v20231001preview:L3Network" }, { type: "azure-native:networkcloud/v20240601preview:L3Network" }, { type: "azure-native:networkcloud/v20240701:L3Network" }, { type: "azure-native:networkcloud/v20241001preview:L3Network" }, { type: "azure-native:networkcloud/v20250201:L3Network" }, { type: "azure-native:networkcloud/v20250701preview:L3Network" }, { type: "azure-native:networkcloud/v20250901:L3Network" }, { type: "azure-native:networkcloud/v20260101preview:L3Network" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:L3Network" }, { type: "azure-native:networkcloud/v20231001preview:L3Network" }, { type: "azure-native:networkcloud/v20240601preview:L3Network" }, { type: "azure-native:networkcloud/v20240701:L3Network" }, { type: "azure-native:networkcloud/v20241001preview:L3Network" }, { type: "azure-native:networkcloud/v20250201:L3Network" }, { type: "azure-native:networkcloud/v20250901:L3Network" }, { type: "azure-native:networkcloud/v20260101preview:L3Network" }, { type: "azure-native:networkcloud/v20260501preview:L3Network" }, { type: "azure-native:networkcloud/v20260701:L3Network" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(L3Network.__pulumiType, name, resourceInputs, opts);
     }
@@ -219,29 +219,29 @@ export interface L3NetworkArgs {
     /**
      * Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
      */
-    hybridAksIpamEnabled?: pulumi.Input<string | types.enums.HybridAksIpamEnabled>;
+    hybridAksIpamEnabled?: pulumi.Input<string | types.enums.HybridAksIpamEnabled | undefined>;
     /**
      * Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
      */
-    hybridAksPluginType?: pulumi.Input<string | types.enums.HybridAksPluginType>;
+    hybridAksPluginType?: pulumi.Input<string | types.enums.HybridAksPluginType | undefined>;
     /**
      * The default interface name for this L3 network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
      */
-    interfaceName?: pulumi.Input<string>;
+    interfaceName?: pulumi.Input<string | undefined>;
     /**
      * The type of the IP address allocation, defaulted to "DualStack".
      */
-    ipAllocationType?: pulumi.Input<string | types.enums.IpAllocationType>;
+    ipAllocationType?: pulumi.Input<string | types.enums.IpAllocationType | undefined>;
     /**
      * The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type
      * is IPV4 or DualStack.
      */
-    ipv4ConnectedPrefix?: pulumi.Input<string>;
+    ipv4ConnectedPrefix?: pulumi.Input<string | undefined>;
     /**
      * The IPV6 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type
      * is IPV6 or DualStack.
      */
-    ipv6ConnectedPrefix?: pulumi.Input<string>;
+    ipv6ConnectedPrefix?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the Network Fabric l3IsolationDomain.
      */
@@ -249,11 +249,11 @@ export interface L3NetworkArgs {
     /**
      * The name of the L3 network.
      */
-    l3NetworkName?: pulumi.Input<string>;
+    l3NetworkName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -261,7 +261,7 @@ export interface L3NetworkArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VLAN from the l3IsolationDomain that is used for this network.
      */

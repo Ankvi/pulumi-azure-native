@@ -154,7 +154,7 @@ export interface ADLSGen2FileSystemDataSetArgs {
     /**
      * The name of the dataSet.
      */
-    dataSetName?: pulumi.Input<string>;
+    dataSetName?: pulumi.Input<string | undefined>;
     /**
      * The file system name.
      */

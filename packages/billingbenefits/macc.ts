@@ -72,7 +72,7 @@ export class Macc extends pulumi.CustomResource {
      */
     declare public readonly entityType: pulumi.Output<string>;
     /**
-     * The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. 
+     * The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
@@ -173,7 +173,7 @@ export class Macc extends pulumi.CustomResource {
             if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["allowContributors"] = args?.allowContributors;
+            resourceInputs["allowContributors"] = (args?.allowContributors) ?? false;
             resourceInputs["automaticShortfall"] = args?.automaticShortfall;
             resourceInputs["automaticShortfallSuppressReason"] = args?.automaticShortfallSuppressReason;
             resourceInputs["billingAccountResourceId"] = args?.billingAccountResourceId;
@@ -251,31 +251,31 @@ export interface MaccArgs {
     /**
      * Setting this to true means multi-entity.
      */
-    allowContributors?: pulumi.Input<boolean>;
+    allowContributors?: pulumi.Input<boolean | undefined>;
     /**
      * Setting this to 'Enable' enables automatic shortfall charging when commitment is not met.
      */
-    automaticShortfall?: pulumi.Input<string | types.enums.EnablementMode>;
+    automaticShortfall?: pulumi.Input<string | types.enums.EnablementMode | undefined>;
     /**
      * Optional field to record suppression reason for automatic shortfall.
      */
-    automaticShortfallSuppressReason?: pulumi.Input<types.inputs.AutomaticShortfallSuppressReasonArgs>;
+    automaticShortfallSuppressReason?: pulumi.Input<types.inputs.AutomaticShortfallSuppressReasonArgs | undefined>;
     /**
      * Fully-qualified identifier of the billing account where the MACC is applied. Present only for Enterprise Agreement customers. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}
      */
-    billingAccountResourceId?: pulumi.Input<string>;
+    billingAccountResourceId?: pulumi.Input<string | undefined>;
     /**
      * Commitment towards the benefit.
      */
-    commitment?: pulumi.Input<types.inputs.CommitmentArgs>;
+    commitment?: pulumi.Input<types.inputs.CommitmentArgs | undefined>;
     /**
      * Display name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Must be end of month. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
      */
-    endAt?: pulumi.Input<string>;
+    endAt?: pulumi.Input<string | undefined>;
     /**
      * Represents type of the object being operated on. Possible values are primary or contributor.
      */
@@ -283,43 +283,43 @@ export interface MaccArgs {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of primary MACC.
      */
-    maccName?: pulumi.Input<string>;
+    maccName?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
      */
-    managedBy?: pulumi.Input<string>;
+    managedBy?: pulumi.Input<string | undefined>;
     /**
      * List of milestones associated with this MACC.
      */
-    milestones?: pulumi.Input<pulumi.Input<types.inputs.MaccMilestoneArgs>[]>;
+    milestones?: pulumi.Input<pulumi.Input<types.inputs.MaccMilestoneArgs>[] | undefined>;
     /**
      * Plan for the resource.
      */
-    plan?: pulumi.Input<types.inputs.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs | undefined>;
     /**
      * Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}.
      */
-    primaryBillingAccountResourceId?: pulumi.Input<string>;
+    primaryBillingAccountResourceId?: pulumi.Input<string | undefined>;
     /**
      * Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}.
      */
-    primaryResourceId?: pulumi.Input<string>;
+    primaryResourceId?: pulumi.Input<string | undefined>;
     /**
      * Represents catalog UPN.
      */
-    productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -327,29 +327,29 @@ export interface MaccArgs {
     /**
      * This is the resource identifier of either the primary MACC or the contributor. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * MACC shortfall
      */
-    shortfall?: pulumi.Input<types.inputs.ShortfallArgs>;
+    shortfall?: pulumi.Input<types.inputs.ShortfallArgs | undefined>;
     /**
      * The resource model definition representing SKU
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Must be start of month. Timestamp must be in the ISO date format YYYY-MM-DDT00:00:00Z.
      */
-    startAt?: pulumi.Input<string>;
+    startAt?: pulumi.Input<string | undefined>;
     /**
      * Represents the current status of the MACC.
      */
-    status?: pulumi.Input<string | types.enums.MaccStatus>;
+    status?: pulumi.Input<string | types.enums.MaccStatus | undefined>;
     /**
      * This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC.
      */
-    systemId?: pulumi.Input<string>;
+    systemId?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

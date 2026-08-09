@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2026-01-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SignalDefinition extends pulumi.CustomResource {
     /**
@@ -89,7 +89,7 @@ export class SignalDefinition extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cloudhealth/v20250501preview:SignalDefinition" }, { type: "azure-native:cloudhealth/v20260101preview:SignalDefinition" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cloudhealth/v20250501preview:SignalDefinition" }, { type: "azure-native:cloudhealth/v20260101preview:SignalDefinition" }, { type: "azure-native:cloudhealth/v20260501preview:SignalDefinition" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SignalDefinition.__pulumiType, name, resourceInputs, opts);
     }
@@ -106,7 +106,7 @@ export interface SignalDefinitionArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.LogAnalyticsQuerySignalDefinitionPropertiesArgs | types.inputs.PrometheusMetricsSignalDefinitionPropertiesArgs | types.inputs.ResourceMetricSignalDefinitionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.LogAnalyticsQuerySignalDefinitionPropertiesArgs | types.inputs.PrometheusMetricsSignalDefinitionPropertiesArgs | types.inputs.ResourceMetricSignalDefinitionPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -114,5 +114,5 @@ export interface SignalDefinitionArgs {
     /**
      * Name of the signal definition. Must be unique within a health model.
      */
-    signalDefinitionName?: pulumi.Input<string>;
+    signalDefinitionName?: pulumi.Input<string | undefined>;
 }

@@ -7,7 +7,7 @@ export interface ResourceMetadataArgs {
     /**
      * Account Id. For example - the AWS account id.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
      */
@@ -15,15 +15,15 @@ export interface ResourceMetadataArgs {
     /**
      * Resource kind.
      */
-    resourceKind?: pulumi.Input<string>;
+    resourceKind?: pulumi.Input<string | undefined>;
     /**
      * Resource Origin.
      */
-    resourceOrigin?: pulumi.Input<string | enums.ResourceOrigin>;
+    resourceOrigin?: pulumi.Input<string | enums.ResourceOrigin | undefined>;
     /**
      * Resource type. e.g. "Microsoft.Compute/virtualMachines"
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -47,17 +47,17 @@ export interface StorageInfoArgs {
     /**
      * 'bring your own storage' account name
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The region of 'bring your own storage' account
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resourceGroup which 'bring your own storage' account belongs to
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * The subscription id which 'bring your own storage' account belongs to
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }

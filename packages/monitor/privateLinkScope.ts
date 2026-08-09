@@ -54,13 +54,13 @@ export class PrivateLinkScope extends pulumi.CustomResource {
     /**
      * List of private endpoint connections.
      */
-    declare public /*out*/ readonly privateEndpointConnections: pulumi.Output<types.outputs.PrivateEndpointConnectionResponseV1[]>;
+    declare public /*out*/ readonly privateEndpointConnections: pulumi.Output<types.outputs.PrivateEndpointConnectionPrivateLinkScopeResponse[]>;
     /**
      * Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.
      */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
-     * System data
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -129,7 +129,7 @@ export interface PrivateLinkScopeArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -137,9 +137,9 @@ export interface PrivateLinkScopeArgs {
     /**
      * The name of the Azure Monitor PrivateLinkScope resource.
      */
-    scopeName?: pulumi.Input<string>;
+    scopeName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

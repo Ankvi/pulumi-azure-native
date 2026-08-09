@@ -7,15 +7,15 @@ export interface AccountEncryptionArgs {
     /**
      * Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
      */
-    identity?: pulumi.Input<EncryptionIdentityArgs>;
+    identity?: pulumi.Input<EncryptionIdentityArgs | undefined>;
     /**
      * The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
      */
-    keySource?: pulumi.Input<string | enums.KeySource>;
+    keySource?: pulumi.Input<string | enums.KeySource | undefined>;
     /**
      * Properties provided by KeVault. Applicable if keySource is 'Microsoft.KeyVault'.
      */
-    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs | undefined>;
 }
 /**
  * accountEncryptionArgsProvideDefaults sets the appropriate defaults for AccountEncryptionArgs
@@ -34,87 +34,87 @@ export interface ActiveDirectoryArgs {
     /**
      * Id of the Active Directory
      */
-    activeDirectoryId?: pulumi.Input<string>;
+    activeDirectoryId?: pulumi.Input<string | undefined>;
     /**
      * Name of the active directory machine. This optional parameter is used only while creating kerberos volume
      */
-    adName?: pulumi.Input<string>;
+    adName?: pulumi.Input<string | undefined>;
     /**
      * Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
      */
-    administrators?: pulumi.Input<pulumi.Input<string>[]>;
+    administrators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If enabled, AES encryption will be enabled for SMB communication.
      */
-    aesEncryption?: pulumi.Input<boolean>;
+    aesEncryption?: pulumi.Input<boolean | undefined>;
     /**
      *  If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.
      */
-    allowLocalNfsUsersWithLdap?: pulumi.Input<boolean>;
+    allowLocalNfsUsersWithLdap?: pulumi.Input<boolean | undefined>;
     /**
      * Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
      */
-    backupOperators?: pulumi.Input<pulumi.Input<string>[]>;
+    backupOperators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
      */
-    dns?: pulumi.Input<string>;
+    dns?: pulumi.Input<string | undefined>;
     /**
      * Name of the Active Directory domain
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
      */
-    encryptDCConnections?: pulumi.Input<boolean>;
+    encryptDCConnections?: pulumi.Input<boolean | undefined>;
     /**
      * kdc server IP address for the active directory machine. This optional parameter is used only while creating kerberos volume.
      */
-    kdcIP?: pulumi.Input<string>;
+    kdcIP?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether or not the LDAP traffic needs to be secured via TLS.
      */
-    ldapOverTLS?: pulumi.Input<boolean>;
+    ldapOverTLS?: pulumi.Input<boolean | undefined>;
     /**
      * LDAP Search scope options
      */
-    ldapSearchScope?: pulumi.Input<LdapSearchScopeOptArgs>;
+    ldapSearchScope?: pulumi.Input<LdapSearchScopeOptArgs | undefined>;
     /**
      * Specifies whether or not the LDAP traffic needs to be signed.
      */
-    ldapSigning?: pulumi.Input<boolean>;
+    ldapSigning?: pulumi.Input<boolean | undefined>;
     /**
      * The Organizational Unit (OU) within the Windows Active Directory
      */
-    organizationalUnit?: pulumi.Input<string>;
+    organizationalUnit?: pulumi.Input<string | undefined>;
     /**
      * Plain text password of Active Directory domain administrator, value is masked in the response
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Comma separated list of IPv4 addresses of preferred servers for LDAP client. At most two comma separated IPv4 addresses can be passed.
      */
-    preferredServersForLdapClient?: pulumi.Input<string>;
+    preferredServersForLdapClient?: pulumi.Input<string | undefined>;
     /**
      * Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
      */
-    securityOperators?: pulumi.Input<pulumi.Input<string>[]>;
+    securityOperators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
      */
-    serverRootCACertificate?: pulumi.Input<string>;
+    serverRootCACertificate?: pulumi.Input<string | undefined>;
     /**
      * The Active Directory site the service will limit Domain Controller discovery to
      */
-    site?: pulumi.Input<string>;
+    site?: pulumi.Input<string | undefined>;
     /**
      * NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
      */
-    smbServerName?: pulumi.Input<string>;
+    smbServerName?: pulumi.Input<string | undefined>;
     /**
      * A domain user account with permission to create machine accounts
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 /**
  * activeDirectoryArgsProvideDefaults sets the appropriate defaults for ActiveDirectoryArgs
@@ -133,15 +133,15 @@ export interface ActiveDirectoryConfigPropertiesArgs {
     /**
      * Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
      */
-    administrators?: pulumi.Input<pulumi.Input<string>[]>;
+    administrators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
      */
-    backupOperators?: pulumi.Input<pulumi.Input<string>[]>;
+    backupOperators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An array of DNS server IP addresses(IPv4 only) for the Active Directory
      */
-    dns?: pulumi.Input<pulumi.Input<string>[]>;
+    dns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the Active Directory domain
      */
@@ -149,7 +149,7 @@ export interface ActiveDirectoryConfigPropertiesArgs {
     /**
      * The Organizational Unit (OU) within the Windows Active Directory
      */
-    organizationalUnit?: pulumi.Input<string>;
+    organizationalUnit?: pulumi.Input<string | undefined>;
     /**
      * Access password from Azure KeyVault Secrets to connect Active Directory
      */
@@ -157,19 +157,19 @@ export interface ActiveDirectoryConfigPropertiesArgs {
     /**
      * Domain Users in the Active directory to be given SecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
      */
-    securityOperators?: pulumi.Input<pulumi.Input<string>[]>;
+    securityOperators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Active Directory site the service will limit Domain Controller discovery to
      */
-    site?: pulumi.Input<string>;
+    site?: pulumi.Input<string | undefined>;
     /**
      * NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
      */
-    smbServerName?: pulumi.Input<string>;
+    smbServerName?: pulumi.Input<string | undefined>;
     /**
      * A domain user account with permission to create machine accounts
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,11 +179,11 @@ export interface BucketServerPropertiesArgs {
     /**
      * A base64-encoded PEM file, which includes both the bucket server's certificate and private key. It is used to authenticate the user and allows access to volume data in a read-only manner.
      */
-    certificateObject?: pulumi.Input<string>;
+    certificateObject?: pulumi.Input<string | undefined>;
     /**
      * The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
      */
-    fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,7 +197,7 @@ export interface CachePropertiesArgs {
     /**
      * Flag indicating whether a CIFS change notification is enabled for the cache.
      */
-    cifsChangeNotifications?: pulumi.Input<string | enums.CifsChangeNotifyState>;
+    cifsChangeNotifications?: pulumi.Input<string | enums.CifsChangeNotifyState | undefined>;
     /**
      * Source of key used to encrypt data in the cache. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
      */
@@ -205,7 +205,7 @@ export interface CachePropertiesArgs {
     /**
      * Set of export policy rules
      */
-    exportPolicy?: pulumi.Input<CachePropertiesExportPolicyArgs>;
+    exportPolicy?: pulumi.Input<CachePropertiesExportPolicyArgs | undefined>;
     /**
      * The file path of the Cache.
      */
@@ -213,23 +213,23 @@ export interface CachePropertiesArgs {
     /**
      * Flag indicating whether the global file lock is enabled for the cache.
      */
-    globalFileLocking?: pulumi.Input<string | enums.GlobalFileLockingState>;
+    globalFileLocking?: pulumi.Input<string | enums.GlobalFileLockingState | undefined>;
     /**
      * Describe if a cache is Kerberos enabled.
      */
-    kerberos?: pulumi.Input<string | enums.KerberosState>;
+    kerberos?: pulumi.Input<string | enums.KerberosState | undefined>;
     /**
      * The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
      */
-    keyVaultPrivateEndpointResourceId?: pulumi.Input<string>;
+    keyVaultPrivateEndpointResourceId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether LDAP is enabled or not for flexcache volume.
      */
-    ldap?: pulumi.Input<string | enums.LdapState>;
+    ldap?: pulumi.Input<string | enums.LdapState | undefined>;
     /**
      * Specifies the type of LDAP server for flexcache volume.
      */
-    ldapServerType?: pulumi.Input<string | enums.LdapServerType>;
+    ldapServerType?: pulumi.Input<string | enums.LdapServerType | undefined>;
     /**
      * Origin cluster information
      */
@@ -241,7 +241,7 @@ export interface CachePropertiesArgs {
     /**
      * Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol
      */
-    protocolTypes?: pulumi.Input<pulumi.Input<string | enums.ProtocolTypes>[]>;
+    protocolTypes?: pulumi.Input<pulumi.Input<string | enums.ProtocolTypes>[] | undefined>;
     /**
      * Maximum storage quota allowed for a file system in bytes. Valid values are in the range 50GiB to 1PiB. Values expressed in bytes as multiples of 1GiB.
      */
@@ -249,15 +249,15 @@ export interface CachePropertiesArgs {
     /**
      * SMB information for the cache
      */
-    smbSettings?: pulumi.Input<SmbSettingsArgs>;
+    smbSettings?: pulumi.Input<SmbSettingsArgs | undefined>;
     /**
      * Maximum throughput in MiB/s that can be achieved by this cache volume and this will be accepted as input only for manual qosType cache
      */
-    throughputMibps?: pulumi.Input<number>;
+    throughputMibps?: pulumi.Input<number | undefined>;
     /**
      * Flag indicating whether writeback is enabled for the cache.
      */
-    writeBack?: pulumi.Input<string | enums.EnableWriteBackState>;
+    writeBack?: pulumi.Input<string | enums.EnableWriteBackState | undefined>;
 }
 
 /**
@@ -267,7 +267,7 @@ export interface CachePropertiesExportPolicyArgs {
     /**
      * Export policy rule
      */
-    rules?: pulumi.Input<pulumi.Input<ExportPolicyRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<ExportPolicyRuleArgs>[] | undefined>;
 }
 
 /**
@@ -277,7 +277,7 @@ export interface CifsUserArgs {
     /**
      * The CIFS user's username
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -287,19 +287,19 @@ export interface DailyScheduleArgs {
     /**
      * Indicates which hour in UTC timezone a snapshot should be taken
      */
-    hour?: pulumi.Input<number>;
+    hour?: pulumi.Input<number | undefined>;
     /**
      * Indicates which minute snapshot should be taken
      */
-    minute?: pulumi.Input<number>;
+    minute?: pulumi.Input<number | undefined>;
     /**
      * Daily snapshot count to keep
      */
-    snapshotsToKeep?: pulumi.Input<number>;
+    snapshotsToKeep?: pulumi.Input<number | undefined>;
     /**
      * Resource size in bytes, current storage usage for the volume in bytes
      */
-    usedBytes?: pulumi.Input<number>;
+    usedBytes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -309,7 +309,7 @@ export interface ElasticAccountPropertiesArgs {
     /**
      * Encryption settings
      */
-    encryption?: pulumi.Input<ElasticEncryptionArgs>;
+    encryption?: pulumi.Input<ElasticEncryptionArgs | undefined>;
 }
 
 /**
@@ -319,19 +319,19 @@ export interface ElasticBackupPolicyPropertiesArgs {
     /**
      * Daily backups count to keep
      */
-    dailyBackupsToKeep?: pulumi.Input<number>;
+    dailyBackupsToKeep?: pulumi.Input<number | undefined>;
     /**
      * Monthly backups count to keep
      */
-    monthlyBackupsToKeep?: pulumi.Input<number>;
+    monthlyBackupsToKeep?: pulumi.Input<number | undefined>;
     /**
      * The property to identify whether Backup Policy is enabled or not
      */
-    policyState?: pulumi.Input<string | enums.ElasticBackupPolicyState>;
+    policyState?: pulumi.Input<string | enums.ElasticBackupPolicyState | undefined>;
     /**
      * Weekly backups count to keep
      */
-    weeklyBackupsToKeep?: pulumi.Input<number>;
+    weeklyBackupsToKeep?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -341,7 +341,7 @@ export interface ElasticBackupPropertiesArgs {
     /**
      * ResourceId used to identify the elastic snapshot resource. This is required when an existing snapshot needs to be used for creating a manual backup
      */
-    elasticSnapshotResourceId?: pulumi.Input<string>;
+    elasticSnapshotResourceId?: pulumi.Input<string | undefined>;
     /**
      * ResourceId used to identify the Elastic Volume
      */
@@ -349,11 +349,11 @@ export interface ElasticBackupPropertiesArgs {
     /**
      * Label for backup
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
      */
-    snapshotUsage?: pulumi.Input<string | enums.SnapshotUsage>;
+    snapshotUsage?: pulumi.Input<string | enums.SnapshotUsage | undefined>;
 }
 /**
  * elasticBackupPropertiesArgsProvideDefaults sets the appropriate defaults for ElasticBackupPropertiesArgs
@@ -372,11 +372,11 @@ export interface ElasticCapacityPoolPropertiesArgs {
     /**
      * The Azure Resource URI for an Active Directory configuration. This is used by all the SMB volumes within the pool
      */
-    activeDirectoryConfigResourceId?: pulumi.Input<string>;
+    activeDirectoryConfigResourceId?: pulumi.Input<string | undefined>;
     /**
      * Encryption settings
      */
-    encryption?: pulumi.Input<ElasticEncryptionConfigurationArgs>;
+    encryption?: pulumi.Input<ElasticEncryptionConfigurationArgs | undefined>;
     /**
      * The service level of the elastic capacity pool
      */
@@ -398,15 +398,15 @@ export interface ElasticEncryptionArgs {
     /**
      * Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
      */
-    identity?: pulumi.Input<ElasticEncryptionIdentityArgs>;
+    identity?: pulumi.Input<ElasticEncryptionIdentityArgs | undefined>;
     /**
      * The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
      */
-    keySource?: pulumi.Input<string | enums.KeySource>;
+    keySource?: pulumi.Input<string | enums.KeySource | undefined>;
     /**
      * Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
      */
-    keyVaultProperties?: pulumi.Input<ElasticKeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<ElasticKeyVaultPropertiesArgs | undefined>;
 }
 
 /**
@@ -430,7 +430,7 @@ export interface ElasticEncryptionIdentityArgs {
     /**
      * The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
      */
-    userAssignedIdentity?: pulumi.Input<string>;
+    userAssignedIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -440,7 +440,7 @@ export interface ElasticExportPolicyArgs {
     /**
      * Export policy rule
      */
-    rules?: pulumi.Input<pulumi.Input<ElasticExportPolicyRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<ElasticExportPolicyRuleArgs>[] | undefined>;
 }
 
 /**
@@ -450,27 +450,27 @@ export interface ElasticExportPolicyRuleArgs {
     /**
      * Client ingress specification for the export policy as list of IPv4 CIDRs, IPv4 host addresses and host names.
      */
-    allowedClients?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedClients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Allows clients to access the volume with the NFSv3 protocol. Enable only for NFSv3 type volumes
      */
-    nfsv3?: pulumi.Input<string | enums.ElasticNfsv3Access>;
+    nfsv3?: pulumi.Input<string | enums.ElasticNfsv3Access | undefined>;
     /**
      * Allows clients to access the volume with at least NFSv4.1 protocol.
      */
-    nfsv4?: pulumi.Input<string | enums.ElasticNfsv4Access>;
+    nfsv4?: pulumi.Input<string | enums.ElasticNfsv4Access | undefined>;
     /**
      * Indicates whether root access to the volume is granted to clients affected by this rule
      */
-    rootAccess?: pulumi.Input<string | enums.ElasticRootAccess>;
+    rootAccess?: pulumi.Input<string | enums.ElasticRootAccess | undefined>;
     /**
      * Controls the priority of the export policy rule. When connecting to the volume the rule with the lowest index that applies to the connecting client is used
      */
-    ruleIndex?: pulumi.Input<number>;
+    ruleIndex?: pulumi.Input<number | undefined>;
     /**
      * Specifies the Unix file access level for the volume. It encompasses both read-only and read-write permissions. Additionally, NoAccess can be set to block all access to the volume
      */
-    unixAccessRule?: pulumi.Input<string | enums.ElasticUnixAccessRule>;
+    unixAccessRule?: pulumi.Input<string | enums.ElasticUnixAccessRule | undefined>;
 }
 /**
  * elasticExportPolicyRuleArgsProvideDefaults sets the appropriate defaults for ElasticExportPolicyRuleArgs
@@ -492,15 +492,15 @@ export interface ElasticKeyVaultPropertiesArgs {
     /**
      * The name of KeyVault key.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of KeyVault.
      */
-    keyVaultResourceId?: pulumi.Input<string>;
+    keyVaultResourceId?: pulumi.Input<string | undefined>;
     /**
      * The Uri of KeyVault.
      */
-    keyVaultUri?: pulumi.Input<string>;
+    keyVaultUri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -510,7 +510,7 @@ export interface ElasticSmbPropertiesArgs {
     /**
      * Used to enable or disable encryption for in-flight SMB data volume. This flag can be modified during Elastic volume update operation as well. Only applicable for SMB protocol Elastic volumes.
      */
-    smbEncryption?: pulumi.Input<string | enums.ElasticSmbEncryption>;
+    smbEncryption?: pulumi.Input<string | enums.ElasticSmbEncryption | undefined>;
 }
 /**
  * elasticSmbPropertiesArgsProvideDefaults sets the appropriate defaults for ElasticSmbPropertiesArgs
@@ -529,15 +529,15 @@ export interface ElasticSnapshotPolicyDailyScheduleArgs {
     /**
      * Indicates which hour in UTC timezone a snapshot should be taken
      */
-    hour?: pulumi.Input<number>;
+    hour?: pulumi.Input<number | undefined>;
     /**
      * Indicates which minute snapshot should be taken
      */
-    minute?: pulumi.Input<number>;
+    minute?: pulumi.Input<number | undefined>;
     /**
      * Daily snapshot count to keep
      */
-    snapshotsToKeep?: pulumi.Input<number>;
+    snapshotsToKeep?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -547,11 +547,11 @@ export interface ElasticSnapshotPolicyHourlyScheduleArgs {
     /**
      * Indicates which minute snapshot should be taken
      */
-    minute?: pulumi.Input<number>;
+    minute?: pulumi.Input<number | undefined>;
     /**
      * Hourly snapshot count to keep
      */
-    snapshotsToKeep?: pulumi.Input<number>;
+    snapshotsToKeep?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -561,19 +561,19 @@ export interface ElasticSnapshotPolicyMonthlyScheduleArgs {
     /**
      * Indicates which days of the month snapshot (1-31) should be taken, accepts a list of integers
      */
-    daysOfMonth?: pulumi.Input<pulumi.Input<number>[]>;
+    daysOfMonth?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Indicates which hour in UTC timezone a snapshot should be taken
      */
-    hour?: pulumi.Input<number>;
+    hour?: pulumi.Input<number | undefined>;
     /**
      * Indicates which minute snapshot should be taken
      */
-    minute?: pulumi.Input<number>;
+    minute?: pulumi.Input<number | undefined>;
     /**
      * Monthly snapshot count to keep
      */
-    snapshotsToKeep?: pulumi.Input<number>;
+    snapshotsToKeep?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -583,23 +583,23 @@ export interface ElasticSnapshotPolicyPropertiesArgs {
     /**
      * Schedule for daily snapshots
      */
-    dailySchedule?: pulumi.Input<ElasticSnapshotPolicyDailyScheduleArgs>;
+    dailySchedule?: pulumi.Input<ElasticSnapshotPolicyDailyScheduleArgs | undefined>;
     /**
      * Schedule for hourly snapshots
      */
-    hourlySchedule?: pulumi.Input<ElasticSnapshotPolicyHourlyScheduleArgs>;
+    hourlySchedule?: pulumi.Input<ElasticSnapshotPolicyHourlyScheduleArgs | undefined>;
     /**
      * Schedule for monthly snapshots
      */
-    monthlySchedule?: pulumi.Input<ElasticSnapshotPolicyMonthlyScheduleArgs>;
+    monthlySchedule?: pulumi.Input<ElasticSnapshotPolicyMonthlyScheduleArgs | undefined>;
     /**
      * Configures if the snapshot policy is enabled on the volumes connected to the policy.
      */
-    policyStatus?: pulumi.Input<string | enums.PolicyStatus>;
+    policyStatus?: pulumi.Input<string | enums.PolicyStatus | undefined>;
     /**
      * Schedule for weekly snapshots
      */
-    weeklySchedule?: pulumi.Input<ElasticSnapshotPolicyWeeklyScheduleArgs>;
+    weeklySchedule?: pulumi.Input<ElasticSnapshotPolicyWeeklyScheduleArgs | undefined>;
 }
 
 /**
@@ -609,19 +609,19 @@ export interface ElasticSnapshotPolicyWeeklyScheduleArgs {
     /**
      * Indicates which weekday(s) snapshot(s) should be taken, accepts a list of week day names in english
      */
-    days?: pulumi.Input<pulumi.Input<string | enums.DayOfWeek>[]>;
+    days?: pulumi.Input<pulumi.Input<string | enums.DayOfWeek>[] | undefined>;
     /**
      * Indicates which hour in UTC timezone a snapshot should be taken
      */
-    hour?: pulumi.Input<number>;
+    hour?: pulumi.Input<number | undefined>;
     /**
      * Indicates which minute snapshot should be taken
      */
-    minute?: pulumi.Input<number>;
+    minute?: pulumi.Input<number | undefined>;
     /**
      * Weekly snapshot count to keep
      */
-    snapshotsToKeep?: pulumi.Input<number>;
+    snapshotsToKeep?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -631,15 +631,15 @@ export interface ElasticVolumeBackupPropertiesArgs {
     /**
      * ResourceId used to identify Elastic Backup Policy
      */
-    elasticBackupPolicyResourceId?: pulumi.Input<string>;
+    elasticBackupPolicyResourceId?: pulumi.Input<string | undefined>;
     /**
      * ResourceId used to identify Elastic Backup Vault
      */
-    elasticBackupVaultResourceId?: pulumi.Input<string>;
+    elasticBackupVaultResourceId?: pulumi.Input<string | undefined>;
     /**
      * The property to decide policy is enforced or not on the volume
      */
-    policyEnforcement?: pulumi.Input<string | enums.ElasticVolumePolicyEnforcement>;
+    policyEnforcement?: pulumi.Input<string | enums.ElasticVolumePolicyEnforcement | undefined>;
 }
 
 /**
@@ -649,11 +649,11 @@ export interface ElasticVolumeDataProtectionPropertiesArgs {
     /**
      * Used to configure backups on an elastic volume.
      */
-    backup?: pulumi.Input<ElasticVolumeBackupPropertiesArgs>;
+    backup?: pulumi.Input<ElasticVolumeBackupPropertiesArgs | undefined>;
     /**
      * Used to apply a snapshot policy to a volume.
      */
-    snapshot?: pulumi.Input<ElasticVolumeSnapshotPropertiesArgs>;
+    snapshot?: pulumi.Input<ElasticVolumeSnapshotPropertiesArgs | undefined>;
 }
 
 /**
@@ -663,15 +663,15 @@ export interface ElasticVolumePropertiesArgs {
     /**
      * Resource identifier used to identify the Elastic Backup.
      */
-    backupResourceId?: pulumi.Input<string>;
+    backupResourceId?: pulumi.Input<string | undefined>;
     /**
      * Data protection configuration option for the volume, including snapshot policies and backup.
      */
-    dataProtection?: pulumi.Input<ElasticVolumeDataProtectionPropertiesArgs>;
+    dataProtection?: pulumi.Input<ElasticVolumeDataProtectionPropertiesArgs | undefined>;
     /**
      * Set of export policy rules
      */
-    exportPolicy?: pulumi.Input<ElasticExportPolicyArgs>;
+    exportPolicy?: pulumi.Input<ElasticExportPolicyArgs | undefined>;
     /**
      * A unique file path for the volume. Used when creating mount targets. This needs to be unique within the elastic capacity pool.
      */
@@ -687,15 +687,15 @@ export interface ElasticVolumePropertiesArgs {
     /**
      * SMB Properties
      */
-    smbProperties?: pulumi.Input<ElasticSmbPropertiesArgs>;
+    smbProperties?: pulumi.Input<ElasticSmbPropertiesArgs | undefined>;
     /**
      * Controls the visibility of the volume's read-only snapshot directory, which provides access to each of the volume's snapshots.
      */
-    snapshotDirectoryVisibility?: pulumi.Input<string | enums.SnapshotDirectoryVisibility>;
+    snapshotDirectoryVisibility?: pulumi.Input<string | enums.SnapshotDirectoryVisibility | undefined>;
     /**
      * Resource identifier used to identify the Elastic Snapshot.
      */
-    snapshotResourceId?: pulumi.Input<string>;
+    snapshotResourceId?: pulumi.Input<string | undefined>;
 }
 /**
  * elasticVolumePropertiesArgsProvideDefaults sets the appropriate defaults for ElasticVolumePropertiesArgs
@@ -703,7 +703,7 @@ export interface ElasticVolumePropertiesArgs {
 export function elasticVolumePropertiesArgsProvideDefaults(val: ElasticVolumePropertiesArgs): ElasticVolumePropertiesArgs {
     return {
         ...val,
-        smbProperties: (val.smbProperties ? pulumi.output(val.smbProperties).apply(elasticSmbPropertiesArgsProvideDefaults) : undefined),
+        smbProperties: pulumi.output(val.smbProperties).apply(v => v === undefined ? undefined : elasticSmbPropertiesArgsProvideDefaults(v)),
     };
 }
 
@@ -714,7 +714,7 @@ export interface ElasticVolumeSnapshotPropertiesArgs {
     /**
      * Snapshot Policy ResourceId
      */
-    snapshotPolicyResourceId?: pulumi.Input<string>;
+    snapshotPolicyResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -724,7 +724,7 @@ export interface EncryptionIdentityArgs {
     /**
      * The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
      */
-    userAssignedIdentity?: pulumi.Input<string>;
+    userAssignedIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -734,79 +734,79 @@ export interface ExportPolicyRuleArgs {
     /**
      * Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
      */
-    allowedClients?: pulumi.Input<string>;
+    allowedClients?: pulumi.Input<string | undefined>;
     /**
      * This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
      */
-    chownMode?: pulumi.Input<string | enums.ChownMode>;
+    chownMode?: pulumi.Input<string | enums.ChownMode | undefined>;
     /**
      * Allows CIFS protocol
      */
-    cifs?: pulumi.Input<boolean>;
+    cifs?: pulumi.Input<boolean | undefined>;
     /**
      * Has root access to volume
      */
-    hasRootAccess?: pulumi.Input<boolean>;
+    hasRootAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
      */
-    kerberos5IReadOnly?: pulumi.Input<boolean>;
+    kerberos5IReadOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
      */
-    kerberos5IReadWrite?: pulumi.Input<boolean>;
+    kerberos5IReadWrite?: pulumi.Input<boolean | undefined>;
     /**
      * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
      */
-    kerberos5PReadOnly?: pulumi.Input<boolean>;
+    kerberos5PReadOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
      */
-    kerberos5PReadWrite?: pulumi.Input<boolean>;
+    kerberos5PReadWrite?: pulumi.Input<boolean | undefined>;
     /**
      * Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
      */
-    kerberos5ReadOnly?: pulumi.Input<boolean>;
+    kerberos5ReadOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
      */
-    kerberos5ReadWrite?: pulumi.Input<boolean>;
+    kerberos5ReadWrite?: pulumi.Input<boolean | undefined>;
     /**
      * Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
      */
-    kerberos5iReadOnly?: pulumi.Input<boolean>;
+    kerberos5iReadOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
      */
-    kerberos5iReadWrite?: pulumi.Input<boolean>;
+    kerberos5iReadWrite?: pulumi.Input<boolean | undefined>;
     /**
      * Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
      */
-    kerberos5pReadOnly?: pulumi.Input<boolean>;
+    kerberos5pReadOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
      */
-    kerberos5pReadWrite?: pulumi.Input<boolean>;
+    kerberos5pReadWrite?: pulumi.Input<boolean | undefined>;
     /**
      * Allows NFSv3 protocol. Enable only for NFSv3 type volumes
      */
-    nfsv3?: pulumi.Input<boolean>;
+    nfsv3?: pulumi.Input<boolean | undefined>;
     /**
      * Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
      */
-    nfsv41?: pulumi.Input<boolean>;
+    nfsv41?: pulumi.Input<boolean | undefined>;
     /**
      * Order index
      */
-    ruleIndex?: pulumi.Input<number>;
+    ruleIndex?: pulumi.Input<number | undefined>;
     /**
      * Read only access
      */
-    unixReadOnly?: pulumi.Input<boolean>;
+    unixReadOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Read and write access
      */
-    unixReadWrite?: pulumi.Input<boolean>;
+    unixReadWrite?: pulumi.Input<boolean | undefined>;
 }
 /**
  * exportPolicyRuleArgsProvideDefaults sets the appropriate defaults for ExportPolicyRuleArgs
@@ -836,11 +836,11 @@ export interface FileSystemUserArgs {
     /**
      * The effective CIFS username when accessing the volume data.
      */
-    cifsUser?: pulumi.Input<CifsUserArgs>;
+    cifsUser?: pulumi.Input<CifsUserArgs | undefined>;
     /**
      * The effective NFS User ID and Group ID when accessing the volume data.
      */
-    nfsUser?: pulumi.Input<NfsUserArgs>;
+    nfsUser?: pulumi.Input<NfsUserArgs | undefined>;
 }
 
 /**
@@ -850,15 +850,15 @@ export interface HourlyScheduleArgs {
     /**
      * Indicates which minute snapshot should be taken
      */
-    minute?: pulumi.Input<number>;
+    minute?: pulumi.Input<number | undefined>;
     /**
      * Hourly snapshot count to keep
      */
-    snapshotsToKeep?: pulumi.Input<number>;
+    snapshotsToKeep?: pulumi.Input<number | undefined>;
     /**
      * Resource size in bytes, current storage usage for the volume in bytes
      */
-    usedBytes?: pulumi.Input<number>;
+    usedBytes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -872,7 +872,7 @@ export interface KeyVaultPropertiesArgs {
     /**
      * The resource ID of KeyVault.
      */
-    keyVaultResourceId?: pulumi.Input<string>;
+    keyVaultResourceId?: pulumi.Input<string | undefined>;
     /**
      * The Uri of KeyVault.
      */
@@ -880,21 +880,21 @@ export interface KeyVaultPropertiesArgs {
 }
 
 /**
- * LDAP search scope 
+ * LDAP search scope
  */
 export interface LdapSearchScopeOptArgs {
     /**
      * This specifies the group DN, which overrides the base DN for group lookups.
      */
-    groupDN?: pulumi.Input<string>;
+    groupDN?: pulumi.Input<string | undefined>;
     /**
      * This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
      */
-    groupMembershipFilter?: pulumi.Input<string>;
+    groupMembershipFilter?: pulumi.Input<string | undefined>;
     /**
      * This specifies the user DN, which overrides the base DN for user lookups.
      */
-    userDN?: pulumi.Input<string>;
+    userDN?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -908,7 +908,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -918,23 +918,23 @@ export interface MonthlyScheduleArgs {
     /**
      * Indicates which days of the month snapshot should be taken. A comma delimited string.
      */
-    daysOfMonth?: pulumi.Input<string>;
+    daysOfMonth?: pulumi.Input<string | undefined>;
     /**
      * Indicates which hour in UTC timezone a snapshot should be taken
      */
-    hour?: pulumi.Input<number>;
+    hour?: pulumi.Input<number | undefined>;
     /**
      * Indicates which minute snapshot should be taken
      */
-    minute?: pulumi.Input<number>;
+    minute?: pulumi.Input<number | undefined>;
     /**
      * Monthly snapshot count to keep
      */
-    snapshotsToKeep?: pulumi.Input<number>;
+    snapshotsToKeep?: pulumi.Input<number | undefined>;
     /**
      * Resource size in bytes, current storage usage for the volume in bytes
      */
-    usedBytes?: pulumi.Input<number>;
+    usedBytes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -944,11 +944,11 @@ export interface NfsUserArgs {
     /**
      * The NFS user's GID
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * The NFS user's UID
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1012,23 +1012,23 @@ export interface ReplicationObjectArgs {
     /**
      * Indicates whether the local volume is the source or destination for the Volume Replication
      */
-    endpointType?: pulumi.Input<string | enums.EndpointType>;
+    endpointType?: pulumi.Input<string | enums.EndpointType | undefined>;
     /**
      * The full path to a volume that is to be migrated into ANF. Required for Migration volumes
      */
-    remotePath?: pulumi.Input<RemotePathArgs>;
+    remotePath?: pulumi.Input<RemotePathArgs | undefined>;
     /**
      * The remote region for the other end of the Volume Replication.
      */
-    remoteVolumeRegion?: pulumi.Input<string>;
+    remoteVolumeRegion?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the remote volume. Required for cross region and cross zone replication
      */
-    remoteVolumeResourceId?: pulumi.Input<string>;
+    remoteVolumeResourceId?: pulumi.Input<string | undefined>;
     /**
      * Schedule
      */
-    replicationSchedule?: pulumi.Input<string | enums.ReplicationSchedule>;
+    replicationSchedule?: pulumi.Input<string | enums.ReplicationSchedule | undefined>;
 }
 
 /**
@@ -1038,11 +1038,11 @@ export interface SecretPasswordArgs {
     /**
      * Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
      */
-    identity?: pulumi.Input<SecretPasswordIdentityArgs>;
+    identity?: pulumi.Input<SecretPasswordIdentityArgs | undefined>;
     /**
      * Properties provided by KeyVault.
      */
-    keyVaultProperties?: pulumi.Input<SecretPasswordKeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<SecretPasswordKeyVaultPropertiesArgs | undefined>;
 }
 
 /**
@@ -1052,7 +1052,7 @@ export interface SecretPasswordIdentityArgs {
     /**
      * The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
      */
-    userAssignedIdentity?: pulumi.Input<string>;
+    userAssignedIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1076,15 +1076,15 @@ export interface SmbSettingsArgs {
     /**
      * Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
      */
-    smbAccessBasedEnumeration?: pulumi.Input<string | enums.SmbAccessBasedEnumeration>;
+    smbAccessBasedEnumeration?: pulumi.Input<string | enums.SmbAccessBasedEnumeration | undefined>;
     /**
      * Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
      */
-    smbEncryption?: pulumi.Input<string | enums.SmbEncryptionState>;
+    smbEncryption?: pulumi.Input<string | enums.SmbEncryptionState | undefined>;
     /**
      * Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
      */
-    smbNonBrowsable?: pulumi.Input<string | enums.SmbNonBrowsable>;
+    smbNonBrowsable?: pulumi.Input<string | enums.SmbNonBrowsable | undefined>;
 }
 
 /**
@@ -1094,15 +1094,15 @@ export interface VolumeBackupPropertiesArgs {
     /**
      * Backup Policy Resource ID
      */
-    backupPolicyId?: pulumi.Input<string>;
+    backupPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Backup Vault Resource ID
      */
-    backupVaultId?: pulumi.Input<string>;
+    backupVaultId?: pulumi.Input<string | undefined>;
     /**
      * Policy Enforced
      */
-    policyEnforced?: pulumi.Input<boolean>;
+    policyEnforced?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1112,19 +1112,19 @@ export interface VolumeGroupMetaDataArgs {
     /**
      * Application specific identifier
      */
-    applicationIdentifier?: pulumi.Input<string>;
+    applicationIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Application Type
      */
-    applicationType?: pulumi.Input<string | enums.ApplicationType>;
+    applicationType?: pulumi.Input<string | enums.ApplicationType | undefined>;
     /**
      * Application specific placement rules for the volume group
      */
-    globalPlacementRules?: pulumi.Input<pulumi.Input<PlacementKeyValuePairsArgs>[]>;
+    globalPlacementRules?: pulumi.Input<pulumi.Input<PlacementKeyValuePairsArgs>[] | undefined>;
     /**
      * Group Description
      */
-    groupDescription?: pulumi.Input<string>;
+    groupDescription?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1134,34 +1134,34 @@ export interface VolumeGroupVolumePropertiesArgs {
     /**
      * Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
      */
-    avsDataStore?: pulumi.Input<string | enums.AvsDataStore>;
+    avsDataStore?: pulumi.Input<string | enums.AvsDataStore | undefined>;
     /**
      * Resource identifier used to identify the Backup.
      */
-    backupId?: pulumi.Input<string>;
+    backupId?: pulumi.Input<string | undefined>;
     /**
      * Pool Resource Id used in case of creating a volume through volume group
      */
-    capacityPoolResourceId?: pulumi.Input<string>;
+    capacityPoolResourceId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether Cool Access(tiering) is enabled for the volume.
      */
-    coolAccess?: pulumi.Input<boolean>;
+    coolAccess?: pulumi.Input<boolean | undefined>;
     /**
-     * coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are: 
+     * coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are:
      *  Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
      *  OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
      *  Never - No client-driven data is pulled from cool tier to standard storage.
      */
-    coolAccessRetrievalPolicy?: pulumi.Input<string | enums.CoolAccessRetrievalPolicy>;
+    coolAccessRetrievalPolicy?: pulumi.Input<string | enums.CoolAccessRetrievalPolicy | undefined>;
     /**
      * coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
      */
-    coolAccessTieringPolicy?: pulumi.Input<string | enums.CoolAccessTieringPolicy>;
+    coolAccessTieringPolicy?: pulumi.Input<string | enums.CoolAccessTieringPolicy | undefined>;
     /**
      * Specifies the number of days after which data that is not accessed by clients will be tiered.
      */
-    coolnessPeriod?: pulumi.Input<number>;
+    coolnessPeriod?: pulumi.Input<number | undefined>;
     /**
      * A unique file path for the volume. Used when creating mount targets
      */
@@ -1169,107 +1169,107 @@ export interface VolumeGroupVolumePropertiesArgs {
     /**
      * DataProtection type volumes include an object containing details of the replication
      */
-    dataProtection?: pulumi.Input<VolumePropertiesDataProtectionArgs>;
+    dataProtection?: pulumi.Input<VolumePropertiesDataProtectionArgs | undefined>;
     /**
      * Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.
      */
-    defaultGroupQuotaInKiBs?: pulumi.Input<number>;
+    defaultGroupQuotaInKiBs?: pulumi.Input<number | undefined>;
     /**
      * Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies .
      */
-    defaultUserQuotaInKiBs?: pulumi.Input<number>;
+    defaultUserQuotaInKiBs?: pulumi.Input<number | undefined>;
     /**
      * If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
      */
-    deleteBaseSnapshot?: pulumi.Input<boolean>;
+    deleteBaseSnapshot?: pulumi.Input<boolean | undefined>;
     /**
      * Flag indicating whether subvolume operations are enabled on the volume
      */
-    enableSubvolumes?: pulumi.Input<string | enums.EnableSubvolumes>;
+    enableSubvolumes?: pulumi.Input<string | enums.EnableSubvolumes | undefined>;
     /**
      * Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
      */
-    encryptionKeySource?: pulumi.Input<string | enums.EncryptionKeySource>;
+    encryptionKeySource?: pulumi.Input<string | enums.EncryptionKeySource | undefined>;
     /**
      * Set of export policy rules
      */
-    exportPolicy?: pulumi.Input<VolumePropertiesExportPolicyArgs>;
+    exportPolicy?: pulumi.Input<VolumePropertiesExportPolicyArgs | undefined>;
     /**
      * Specifies if default quota is enabled for the volume.
      */
-    isDefaultQuotaEnabled?: pulumi.Input<boolean>;
+    isDefaultQuotaEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether volume is a Large Volume or Regular Volume.
      */
-    isLargeVolume?: pulumi.Input<boolean>;
+    isLargeVolume?: pulumi.Input<boolean | undefined>;
     /**
      * Restoring
      */
-    isRestoring?: pulumi.Input<boolean>;
+    isRestoring?: pulumi.Input<boolean | undefined>;
     /**
      * Describe if a volume is KerberosEnabled. To be use with swagger version 2020-05-01 or later
      */
-    kerberosEnabled?: pulumi.Input<boolean>;
+    kerberosEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
      */
-    keyVaultPrivateEndpointResourceId?: pulumi.Input<string>;
+    keyVaultPrivateEndpointResourceId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether LDAP is enabled or not for a given NFS volume.
      */
-    ldapEnabled?: pulumi.Input<boolean>;
+    ldapEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Resource name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The original value of the network features type available to the volume at the time it was created.
      */
-    networkFeatures?: pulumi.Input<string | enums.NetworkFeatures>;
+    networkFeatures?: pulumi.Input<string | enums.NetworkFeatures | undefined>;
     /**
      * Application specific placement rules for the particular volume
      */
-    placementRules?: pulumi.Input<pulumi.Input<PlacementKeyValuePairsArgs>[]>;
+    placementRules?: pulumi.Input<pulumi.Input<PlacementKeyValuePairsArgs>[] | undefined>;
     /**
      * Set of protocol types, default NFSv3, CIFS for SMB protocol
      */
-    protocolTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    protocolTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Proximity placement group associated with the volume
      */
-    proximityPlacementGroup?: pulumi.Input<string>;
+    proximityPlacementGroup?: pulumi.Input<string | undefined>;
     /**
      * The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol
      */
-    securityStyle?: pulumi.Input<string | enums.SecurityStyle>;
+    securityStyle?: pulumi.Input<string | enums.SecurityStyle | undefined>;
     /**
      * The service level of the file system
      */
-    serviceLevel?: pulumi.Input<string | enums.ServiceLevel>;
+    serviceLevel?: pulumi.Input<string | enums.ServiceLevel | undefined>;
     /**
      * Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
      */
-    smbAccessBasedEnumeration?: pulumi.Input<string | enums.SmbAccessBasedEnumeration>;
+    smbAccessBasedEnumeration?: pulumi.Input<string | enums.SmbAccessBasedEnumeration | undefined>;
     /**
      * Enables continuously available share property for smb volume. Only applicable for SMB volume
      */
-    smbContinuouslyAvailable?: pulumi.Input<boolean>;
+    smbContinuouslyAvailable?: pulumi.Input<boolean | undefined>;
     /**
      * Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
      */
-    smbEncryption?: pulumi.Input<boolean>;
+    smbEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
      */
-    smbNonBrowsable?: pulumi.Input<string | enums.SmbNonBrowsable>;
+    smbNonBrowsable?: pulumi.Input<string | enums.SmbNonBrowsable | undefined>;
     /**
      * If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (defaults to true).
      */
-    snapshotDirectoryVisible?: pulumi.Input<boolean>;
+    snapshotDirectoryVisible?: pulumi.Input<boolean | undefined>;
     /**
      * Resource identifier used to identify the Snapshot.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
      */
@@ -1277,12 +1277,12 @@ export interface VolumeGroupVolumePropertiesArgs {
     /**
      * Resource tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    throughputMibps?: pulumi.Input<number>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    throughputMibps?: pulumi.Input<number | undefined>;
     /**
      * UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
      */
-    unixPermissions?: pulumi.Input<string>;
+    unixPermissions?: pulumi.Input<string | undefined>;
     /**
      * Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB.
      */
@@ -1290,15 +1290,15 @@ export interface VolumeGroupVolumePropertiesArgs {
     /**
      * Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
      */
-    volumeSpecName?: pulumi.Input<string>;
+    volumeSpecName?: pulumi.Input<string | undefined>;
     /**
      * What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
      */
-    volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string | undefined>;
     /**
      * Availability Zone
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 /**
  * volumeGroupVolumePropertiesArgsProvideDefaults sets the appropriate defaults for VolumeGroupVolumePropertiesArgs
@@ -1331,19 +1331,19 @@ export interface VolumePropertiesDataProtectionArgs {
     /**
      * Backup Properties
      */
-    backup?: pulumi.Input<VolumeBackupPropertiesArgs>;
+    backup?: pulumi.Input<VolumeBackupPropertiesArgs | undefined>;
     /**
      * Replication properties
      */
-    replication?: pulumi.Input<ReplicationObjectArgs>;
+    replication?: pulumi.Input<ReplicationObjectArgs | undefined>;
     /**
      * Snapshot properties.
      */
-    snapshot?: pulumi.Input<VolumeSnapshotPropertiesArgs>;
+    snapshot?: pulumi.Input<VolumeSnapshotPropertiesArgs | undefined>;
     /**
      * VolumeRelocation properties
      */
-    volumeRelocation?: pulumi.Input<VolumeRelocationPropertiesArgs>;
+    volumeRelocation?: pulumi.Input<VolumeRelocationPropertiesArgs | undefined>;
 }
 
 /**
@@ -1353,7 +1353,7 @@ export interface VolumePropertiesExportPolicyArgs {
     /**
      * Export policy rule
      */
-    rules?: pulumi.Input<pulumi.Input<ExportPolicyRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<ExportPolicyRuleArgs>[] | undefined>;
 }
 
 /**
@@ -1363,7 +1363,7 @@ export interface VolumeRelocationPropertiesArgs {
     /**
      * Has relocation been requested for this volume
      */
-    relocationRequested?: pulumi.Input<boolean>;
+    relocationRequested?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1373,7 +1373,7 @@ export interface VolumeSnapshotPropertiesArgs {
     /**
      * Snapshot Policy ResourceId
      */
-    snapshotPolicyId?: pulumi.Input<string>;
+    snapshotPolicyId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1383,21 +1383,21 @@ export interface WeeklyScheduleArgs {
     /**
      * Indicates which weekdays snapshot should be taken, accepts a comma separated list of week day names in english
      */
-    day?: pulumi.Input<string>;
+    day?: pulumi.Input<string | undefined>;
     /**
      * Indicates which hour in UTC timezone a snapshot should be taken
      */
-    hour?: pulumi.Input<number>;
+    hour?: pulumi.Input<number | undefined>;
     /**
      * Indicates which minute snapshot should be taken
      */
-    minute?: pulumi.Input<number>;
+    minute?: pulumi.Input<number | undefined>;
     /**
      * Weekly snapshot count to keep
      */
-    snapshotsToKeep?: pulumi.Input<number>;
+    snapshotsToKeep?: pulumi.Input<number | undefined>;
     /**
      * Resource size in bytes, current storage usage for the volume in bytes
      */
-    usedBytes?: pulumi.Input<number>;
+    usedBytes?: pulumi.Input<number | undefined>;
 }

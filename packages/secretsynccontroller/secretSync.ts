@@ -40,7 +40,7 @@ export class SecretSync extends pulumi.CustomResource {
     /**
      * The complex type of the extended location.
      */
-    declare public readonly extendedLocation: pulumi.Output<types.outputs.AzureResourceManagerCommonTypesExtendedLocationResponse | undefined>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * ForceSynchronization can be used to force the secret synchronization. The secret synchronization is triggered by changing the value in this field. This field is not used to resolve synchronization conflicts.
      */
@@ -162,11 +162,11 @@ export interface SecretSyncArgs {
     /**
      * The complex type of the extended location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs | undefined>;
     /**
      * ForceSynchronization can be used to force the secret synchronization. The secret synchronization is triggered by changing the value in this field. This field is not used to resolve synchronization conflicts.
      */
-    forceSynchronization?: pulumi.Input<string>;
+    forceSynchronization?: pulumi.Input<string | undefined>;
     /**
      * Type specifies the type of the Kubernetes secret object, e.g. "Opaque" or"kubernetes.io/tls". The controller must have permission to create secrets of the specified type.
      */
@@ -174,7 +174,7 @@ export interface SecretSyncArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * An array of SecretObjectData that maps secret data from the external secret provider to the Kubernetes secret. Each entry specifies the source secret in the external provider and the corresponding key in the Kubernetes secret.
      */
@@ -190,7 +190,7 @@ export interface SecretSyncArgs {
     /**
      * The name of the SecretSync
      */
-    secretSyncName?: pulumi.Input<string>;
+    secretSyncName?: pulumi.Input<string | undefined>;
     /**
      * ServiceAccountName specifies the name of the service account used to access the cloud provider secret store. The audience field in the service account token must be passed as parameter in the controller configuration. The audience is used when requesting a token from the API server for the service account; the supported audiences are defined by each provider.
      */
@@ -198,5 +198,5 @@ export interface SecretSyncArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

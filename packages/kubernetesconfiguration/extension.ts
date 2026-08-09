@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-05-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2022-04-02-preview, 2022-07-01, 2022-11-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetesconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-04-02-preview, 2022-07-01, 2022-11-01, 2024-11-01, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetesconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Extension extends pulumi.CustomResource {
     /**
@@ -193,7 +193,7 @@ export class Extension extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:kubernetesconfiguration/v20200701preview:Extension" }, { type: "azure-native:kubernetesconfiguration/v20210501preview:Extension" }, { type: "azure-native:kubernetesconfiguration/v20210901:Extension" }, { type: "azure-native:kubernetesconfiguration/v20211101preview:Extension" }, { type: "azure-native:kubernetesconfiguration/v20220101preview:Extension" }, { type: "azure-native:kubernetesconfiguration/v20220301:Extension" }, { type: "azure-native:kubernetesconfiguration/v20220402preview:Extension" }, { type: "azure-native:kubernetesconfiguration/v20220701:Extension" }, { type: "azure-native:kubernetesconfiguration/v20221101:Extension" }, { type: "azure-native:kubernetesconfiguration/v20230501:Extension" }, { type: "azure-native:kubernetesconfiguration/v20241101:Extension" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:kubernetesconfiguration/v20200701preview:Extension" }, { type: "azure-native:kubernetesconfiguration/v20210501preview:Extension" }, { type: "azure-native:kubernetesconfiguration/v20210901:Extension" }, { type: "azure-native:kubernetesconfiguration/v20211101preview:Extension" }, { type: "azure-native:kubernetesconfiguration/v20220101preview:Extension" }, { type: "azure-native:kubernetesconfiguration/v20220301:Extension" }, { type: "azure-native:kubernetesconfiguration/v20220402preview:Extension" }, { type: "azure-native:kubernetesconfiguration/v20220701:Extension" }, { type: "azure-native:kubernetesconfiguration/v20221101:Extension" }, { type: "azure-native:kubernetesconfiguration/v20230501:Extension" }, { type: "azure-native:kubernetesconfiguration/v20241101:Extension" }, { type: "azure-native:kubernetesconfiguration/v20250301:Extension" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Extension.__pulumiType, name, resourceInputs, opts);
     }
@@ -206,11 +206,11 @@ export interface ExtensionArgs {
     /**
      * Identity of the Extension resource in an AKS cluster
      */
-    aksAssignedIdentity?: pulumi.Input<types.inputs.ExtensionAksAssignedIdentityArgs>;
+    aksAssignedIdentity?: pulumi.Input<types.inputs.ExtensionAksAssignedIdentityArgs | undefined>;
     /**
      * Flag to note if this extension participates in auto upgrade of minor version, or not.
      */
-    autoUpgradeMinorVersion?: pulumi.Input<boolean>;
+    autoUpgradeMinorVersion?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the kubernetes cluster.
      */
@@ -226,31 +226,31 @@ export interface ExtensionArgs {
     /**
      * Configuration settings that are sensitive, as name-value pairs for configuring this extension.
      */
-    configurationProtectedSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configurationProtectedSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration settings, as name-value pairs for configuring this extension.
      */
-    configurationSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configurationSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the Extension.
      */
-    extensionName?: pulumi.Input<string>;
+    extensionName?: pulumi.Input<string | undefined>;
     /**
      * Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
      */
-    extensionType?: pulumi.Input<string>;
+    extensionType?: pulumi.Input<string | undefined>;
     /**
      * Identity of the Extension resource
      */
-    identity?: pulumi.Input<types.inputs.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
      * The plan information.
      */
-    plan?: pulumi.Input<types.inputs.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs | undefined>;
     /**
      * ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
      */
-    releaseTrain?: pulumi.Input<string>;
+    releaseTrain?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -258,13 +258,13 @@ export interface ExtensionArgs {
     /**
      * Scope at which the extension is installed.
      */
-    scope?: pulumi.Input<types.inputs.ScopeArgs>;
+    scope?: pulumi.Input<types.inputs.ScopeArgs | undefined>;
     /**
      * Status from this extension.
      */
-    statuses?: pulumi.Input<pulumi.Input<types.inputs.ExtensionStatusArgs>[]>;
+    statuses?: pulumi.Input<pulumi.Input<types.inputs.ExtensionStatusArgs>[] | undefined>;
     /**
      * User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

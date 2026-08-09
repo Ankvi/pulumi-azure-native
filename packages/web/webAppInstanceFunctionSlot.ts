@@ -1,11 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * Function information.
  *
- * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+ * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppInstanceFunctionSlot extends pulumi.CustomResource {
     /**
@@ -75,7 +76,7 @@ export class WebAppInstanceFunctionSlot extends pulumi.CustomResource {
      */
     declare public readonly language: pulumi.Output<string | undefined>;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -91,6 +92,10 @@ export class WebAppInstanceFunctionSlot extends pulumi.CustomResource {
      */
     declare public readonly secretsFileHref: pulumi.Output<string | undefined>;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
      * Test data used when testing via the Azure Portal.
      */
     declare public readonly testData: pulumi.Output<string | undefined>;
@@ -99,7 +104,7 @@ export class WebAppInstanceFunctionSlot extends pulumi.CustomResource {
      */
     declare public readonly testDataHref: pulumi.Output<string | undefined>;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -142,6 +147,7 @@ export class WebAppInstanceFunctionSlot extends pulumi.CustomResource {
             resourceInputs["testData"] = args?.testData;
             resourceInputs["testDataHref"] = args?.testDataHref;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -158,12 +164,13 @@ export class WebAppInstanceFunctionSlot extends pulumi.CustomResource {
             resourceInputs["scriptHref"] = undefined /*out*/;
             resourceInputs["scriptRootPathHref"] = undefined /*out*/;
             resourceInputs["secretsFileHref"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["testData"] = undefined /*out*/;
             resourceInputs["testDataHref"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20160801:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20180201:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20181101:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20190801:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20200601:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20200901:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20201001:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20201201:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20210101:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20210115:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20210201:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20210301:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20220301:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20220901:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20230101:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20231201:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20240401:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20241101:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20250301:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20250501:WebAppInstanceFunctionSlot" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20160801:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20180201:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20181101:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20190801:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20200601:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20200901:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20201001:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20201201:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20210101:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20210115:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20210201:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20210301:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20220301:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20220901:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20230101:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20231201:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20240401:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20241101:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20250301:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20250501:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20260301preview:WebAppInstanceFunctionSlot" }, { type: "azure-native:web/v20260315:WebAppInstanceFunctionSlot" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppInstanceFunctionSlot.__pulumiType, name, resourceInputs, opts);
     }
@@ -176,63 +183,63 @@ export interface WebAppInstanceFunctionSlotArgs {
     /**
      * Config information.
      */
-    config?: any;
+    config?: any | undefined;
     /**
      * Config URI.
      */
-    configHref?: pulumi.Input<string>;
+    configHref?: pulumi.Input<string | undefined>;
     /**
      * File list.
      */
-    files?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    files?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Function App ID.
      */
-    functionAppId?: pulumi.Input<string>;
+    functionAppId?: pulumi.Input<string | undefined>;
     /**
      * Function name.
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * Function URI.
      */
-    href?: pulumi.Input<string>;
+    href?: pulumi.Input<string | undefined>;
     /**
      * The invocation URL
      */
-    invokeUrlTemplate?: pulumi.Input<string>;
+    invokeUrlTemplate?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets a value indicating whether the function is disabled
      */
-    isDisabled?: pulumi.Input<boolean>;
+    isDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * Kind of resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The function language
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * Site name.
      */
     name: pulumi.Input<string>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * Script URI.
      */
-    scriptHref?: pulumi.Input<string>;
+    scriptHref?: pulumi.Input<string | undefined>;
     /**
      * Script root path URI.
      */
-    scriptRootPathHref?: pulumi.Input<string>;
+    scriptRootPathHref?: pulumi.Input<string | undefined>;
     /**
      * Secrets file URI.
      */
-    secretsFileHref?: pulumi.Input<string>;
+    secretsFileHref?: pulumi.Input<string | undefined>;
     /**
      * Name of the deployment slot.
      */
@@ -240,9 +247,9 @@ export interface WebAppInstanceFunctionSlotArgs {
     /**
      * Test data used when testing via the Azure Portal.
      */
-    testData?: pulumi.Input<string>;
+    testData?: pulumi.Input<string | undefined>;
     /**
      * Test data URI.
      */
-    testDataHref?: pulumi.Input<string>;
+    testDataHref?: pulumi.Input<string | undefined>;
 }

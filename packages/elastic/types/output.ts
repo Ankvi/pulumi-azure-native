@@ -386,7 +386,7 @@ export interface MonitoringTagRulesPropertiesResponse {
 /**
  * Definition of the properties for a TagRules resource.
  */
-export interface MonitoringTagRulesPropertiesResponseV1 {
+export interface MonitoringTagRulesPropertiesTagRuleResponse {
     /**
      * Rules for sending logs.
      */

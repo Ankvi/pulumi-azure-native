@@ -17,7 +17,7 @@ export interface DependencyProcessFilterArgs {
     /**
      * Process name filter
      */
-    processNameFilter?: pulumi.Input<ProcessNameFilterArgs>;
+    processNameFilter?: pulumi.Input<ProcessNameFilterArgs | undefined>;
 }
 
 /**

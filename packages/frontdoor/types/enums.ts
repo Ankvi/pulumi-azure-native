@@ -1,10 +1,32 @@
 export const ActionType = {
+    /**
+     * Allow
+     */
     Allow: "Allow",
+    /**
+     * Block
+     */
     Block: "Block",
+    /**
+     * Log
+     */
     Log: "Log",
+    /**
+     * Redirect
+     */
     Redirect: "Redirect",
+    /**
+     * AnomalyScoring
+     */
     AnomalyScoring: "AnomalyScoring",
+    /**
+     * JSChallenge
+     */
     JSChallenge: "JSChallenge",
+    /**
+     * CAPTCHA
+     */
+    CAPTCHA: "CAPTCHA",
 } as const;
 
 /**
@@ -13,7 +35,13 @@ export const ActionType = {
 export type ActionType = (typeof ActionType)[keyof typeof ActionType];
 
 export const BackendEnabledState = {
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
 } as const;
 
@@ -23,7 +51,13 @@ export const BackendEnabledState = {
 export type BackendEnabledState = (typeof BackendEnabledState)[keyof typeof BackendEnabledState];
 
 export const CustomRuleEnabledState = {
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
 } as const;
 
@@ -33,7 +67,13 @@ export const CustomRuleEnabledState = {
 export type CustomRuleEnabledState = (typeof CustomRuleEnabledState)[keyof typeof CustomRuleEnabledState];
 
 export const DynamicCompressionEnabled = {
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
 } as const;
 
@@ -43,7 +83,13 @@ export const DynamicCompressionEnabled = {
 export type DynamicCompressionEnabled = (typeof DynamicCompressionEnabled)[keyof typeof DynamicCompressionEnabled];
 
 export const EnforceCertificateNameCheckEnabledState = {
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
 } as const;
 
@@ -52,8 +98,79 @@ export const EnforceCertificateNameCheckEnabledState = {
  */
 export type EnforceCertificateNameCheckEnabledState = (typeof EnforceCertificateNameCheckEnabledState)[keyof typeof EnforceCertificateNameCheckEnabledState];
 
+export const ExceptionMatchVariable = {
+    /**
+     * Request Uri Exception Match Variable
+     */
+    RequestUri: "RequestUri",
+    /**
+     * Socket Address Exception Match Variable
+     */
+    SocketAddr: "SocketAddr",
+    /**
+     * Request Header Names Exception Match Variable
+     */
+    RequestHeaderNames: "RequestHeaderNames",
+} as const;
+
+/**
+ * The variable to be evaluated for excluding the request.
+ */
+export type ExceptionMatchVariable = (typeof ExceptionMatchVariable)[keyof typeof ExceptionMatchVariable];
+
+export const ExceptionSelectorMatchOperator = {
+    /**
+     * Equals Selector Match Operator
+     */
+    Equals: "Equals",
+} as const;
+
+/**
+ * Comparison operator to apply to the selector when specifying which elements
+ * in the collection this exception applies to.
+ */
+export type ExceptionSelectorMatchOperator = (typeof ExceptionSelectorMatchOperator)[keyof typeof ExceptionSelectorMatchOperator];
+
+export const ExceptionValueMatchOperator = {
+    /**
+     * Equals Exception Value Match Operator
+     */
+    Equals: "Equals",
+    /**
+     * Contains Exception Value Match Operator
+     */
+    Contains: "Contains",
+    /**
+     * StartsWith Exception Value Match Operator
+     */
+    StartsWith: "StartsWith",
+    /**
+     * EndsWith Exception Value Match Operator
+     */
+    EndsWith: "EndsWith",
+    /**
+     * EqualsAny Exception Value Match Operator
+     */
+    EqualsAny: "EqualsAny",
+    /**
+     * IPMatch Exception Value Match Operator
+     */
+    IPMatch: "IPMatch",
+} as const;
+
+/**
+ * Comparison operator to apply to the value to be matched.
+ */
+export type ExceptionValueMatchOperator = (typeof ExceptionValueMatchOperator)[keyof typeof ExceptionValueMatchOperator];
+
 export const FrontDoorEnabledState = {
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
 } as const;
 
@@ -63,8 +180,17 @@ export const FrontDoorEnabledState = {
 export type FrontDoorEnabledState = (typeof FrontDoorEnabledState)[keyof typeof FrontDoorEnabledState];
 
 export const FrontDoorForwardingProtocol = {
+    /**
+     * HttpOnly
+     */
     HttpOnly: "HttpOnly",
+    /**
+     * HttpsOnly
+     */
     HttpsOnly: "HttpsOnly",
+    /**
+     * MatchRequest
+     */
     MatchRequest: "MatchRequest",
 } as const;
 
@@ -74,7 +200,13 @@ export const FrontDoorForwardingProtocol = {
 export type FrontDoorForwardingProtocol = (typeof FrontDoorForwardingProtocol)[keyof typeof FrontDoorForwardingProtocol];
 
 export const FrontDoorHealthProbeMethod = {
+    /**
+     * GET
+     */
     GET: "GET",
+    /**
+     * HEAD
+     */
     HEAD: "HEAD",
 } as const;
 
@@ -84,7 +216,13 @@ export const FrontDoorHealthProbeMethod = {
 export type FrontDoorHealthProbeMethod = (typeof FrontDoorHealthProbeMethod)[keyof typeof FrontDoorHealthProbeMethod];
 
 export const FrontDoorProtocol = {
+    /**
+     * Http
+     */
     Http: "Http",
+    /**
+     * Https
+     */
     Https: "Https",
 } as const;
 
@@ -94,9 +232,21 @@ export const FrontDoorProtocol = {
 export type FrontDoorProtocol = (typeof FrontDoorProtocol)[keyof typeof FrontDoorProtocol];
 
 export const FrontDoorQuery = {
+    /**
+     * StripNone
+     */
     StripNone: "StripNone",
+    /**
+     * StripAll
+     */
     StripAll: "StripAll",
+    /**
+     * StripOnly
+     */
     StripOnly: "StripOnly",
+    /**
+     * StripAllExcept
+     */
     StripAllExcept: "StripAllExcept",
 } as const;
 
@@ -106,8 +256,17 @@ export const FrontDoorQuery = {
 export type FrontDoorQuery = (typeof FrontDoorQuery)[keyof typeof FrontDoorQuery];
 
 export const FrontDoorRedirectProtocol = {
+    /**
+     * HttpOnly
+     */
     HttpOnly: "HttpOnly",
+    /**
+     * HttpsOnly
+     */
     HttpsOnly: "HttpsOnly",
+    /**
+     * MatchRequest
+     */
     MatchRequest: "MatchRequest",
 } as const;
 
@@ -117,9 +276,21 @@ export const FrontDoorRedirectProtocol = {
 export type FrontDoorRedirectProtocol = (typeof FrontDoorRedirectProtocol)[keyof typeof FrontDoorRedirectProtocol];
 
 export const FrontDoorRedirectType = {
+    /**
+     * Moved
+     */
     Moved: "Moved",
+    /**
+     * Found
+     */
     Found: "Found",
+    /**
+     * TemporaryRedirect
+     */
     TemporaryRedirect: "TemporaryRedirect",
+    /**
+     * PermanentRedirect
+     */
     PermanentRedirect: "PermanentRedirect",
 } as const;
 
@@ -129,8 +300,17 @@ export const FrontDoorRedirectType = {
 export type FrontDoorRedirectType = (typeof FrontDoorRedirectType)[keyof typeof FrontDoorRedirectType];
 
 export const HeaderActionType = {
+    /**
+     * Append
+     */
     Append: "Append",
+    /**
+     * Delete
+     */
     Delete: "Delete",
+    /**
+     * Overwrite
+     */
     Overwrite: "Overwrite",
 } as const;
 
@@ -140,7 +320,13 @@ export const HeaderActionType = {
 export type HeaderActionType = (typeof HeaderActionType)[keyof typeof HeaderActionType];
 
 export const HealthProbeEnabled = {
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
 } as const;
 
@@ -150,7 +336,13 @@ export const HealthProbeEnabled = {
 export type HealthProbeEnabled = (typeof HealthProbeEnabled)[keyof typeof HealthProbeEnabled];
 
 export const ManagedRuleEnabledState = {
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
 } as const;
 
@@ -160,10 +352,25 @@ export const ManagedRuleEnabledState = {
 export type ManagedRuleEnabledState = (typeof ManagedRuleEnabledState)[keyof typeof ManagedRuleEnabledState];
 
 export const ManagedRuleExclusionMatchVariable = {
+    /**
+     * RequestHeaderNames
+     */
     RequestHeaderNames: "RequestHeaderNames",
+    /**
+     * RequestCookieNames
+     */
     RequestCookieNames: "RequestCookieNames",
+    /**
+     * QueryStringArgNames
+     */
     QueryStringArgNames: "QueryStringArgNames",
+    /**
+     * RequestBodyPostArgNames
+     */
     RequestBodyPostArgNames: "RequestBodyPostArgNames",
+    /**
+     * RequestBodyJsonArgNames
+     */
     RequestBodyJsonArgNames: "RequestBodyJsonArgNames",
 } as const;
 
@@ -173,10 +380,25 @@ export const ManagedRuleExclusionMatchVariable = {
 export type ManagedRuleExclusionMatchVariable = (typeof ManagedRuleExclusionMatchVariable)[keyof typeof ManagedRuleExclusionMatchVariable];
 
 export const ManagedRuleExclusionSelectorMatchOperator = {
+    /**
+     * Equals
+     */
     Equals: "Equals",
+    /**
+     * Contains
+     */
     Contains: "Contains",
+    /**
+     * StartsWith
+     */
     StartsWith: "StartsWith",
+    /**
+     * EndsWith
+     */
     EndsWith: "EndsWith",
+    /**
+     * EqualsAny
+     */
     EqualsAny: "EqualsAny",
 } as const;
 
@@ -186,8 +408,17 @@ export const ManagedRuleExclusionSelectorMatchOperator = {
 export type ManagedRuleExclusionSelectorMatchOperator = (typeof ManagedRuleExclusionSelectorMatchOperator)[keyof typeof ManagedRuleExclusionSelectorMatchOperator];
 
 export const ManagedRuleSetActionType = {
+    /**
+     * Block
+     */
     Block: "Block",
+    /**
+     * Log
+     */
     Log: "Log",
+    /**
+     * Redirect
+     */
     Redirect: "Redirect",
 } as const;
 
@@ -197,7 +428,13 @@ export const ManagedRuleSetActionType = {
 export type ManagedRuleSetActionType = (typeof ManagedRuleSetActionType)[keyof typeof ManagedRuleSetActionType];
 
 export const MatchProcessingBehavior = {
+    /**
+     * Continue
+     */
     Continue: "Continue",
+    /**
+     * Stop
+     */
     Stop: "Stop",
 } as const;
 
@@ -207,15 +444,46 @@ export const MatchProcessingBehavior = {
 export type MatchProcessingBehavior = (typeof MatchProcessingBehavior)[keyof typeof MatchProcessingBehavior];
 
 export const MatchVariable = {
+    /**
+     * RemoteAddr
+     */
     RemoteAddr: "RemoteAddr",
+    /**
+     * RequestMethod
+     */
     RequestMethod: "RequestMethod",
+    /**
+     * QueryString
+     */
     QueryString: "QueryString",
+    /**
+     * PostArgs
+     */
     PostArgs: "PostArgs",
+    /**
+     * RequestUri
+     */
     RequestUri: "RequestUri",
+    /**
+     * RequestHeader
+     */
     RequestHeader: "RequestHeader",
+    /**
+     * RequestBody
+     */
     RequestBody: "RequestBody",
+    /**
+     * Cookies
+     */
     Cookies: "Cookies",
+    /**
+     * SocketAddr
+     */
     SocketAddr: "SocketAddr",
+    /**
+     * JA4 Match Variable
+     */
+    JA4: "JA4",
 } as const;
 
 /**
@@ -224,18 +492,66 @@ export const MatchVariable = {
 export type MatchVariable = (typeof MatchVariable)[keyof typeof MatchVariable];
 
 export const Operator = {
+    /**
+     * Any
+     */
     Any: "Any",
+    /**
+     * IPMatch
+     */
     IPMatch: "IPMatch",
+    /**
+     * GeoMatch
+     */
     GeoMatch: "GeoMatch",
+    /**
+     * Equal
+     */
     Equal: "Equal",
+    /**
+     * Contains
+     */
     Contains: "Contains",
+    /**
+     * LessThan
+     */
     LessThan: "LessThan",
+    /**
+     * GreaterThan
+     */
     GreaterThan: "GreaterThan",
+    /**
+     * LessThanOrEqual
+     */
     LessThanOrEqual: "LessThanOrEqual",
+    /**
+     * GreaterThanOrEqual
+     */
     GreaterThanOrEqual: "GreaterThanOrEqual",
+    /**
+     * BeginsWith
+     */
     BeginsWith: "BeginsWith",
+    /**
+     * EndsWith
+     */
     EndsWith: "EndsWith",
+    /**
+     * RegEx
+     */
     RegEx: "RegEx",
+    /**
+     * ServiceTagMatch
+     */
+    ServiceTagMatch: "ServiceTagMatch",
+    /**
+     * Autonomous System Number Match Operator
+     */
+    AsnMatch: "AsnMatch",
+    /**
+     * Client Finger print Operator
+     */
+    ClientFingerprint: "ClientFingerprint",
 } as const;
 
 /**
@@ -244,7 +560,13 @@ export const Operator = {
 export type Operator = (typeof Operator)[keyof typeof Operator];
 
 export const PolicyEnabledState = {
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
 } as const;
 
@@ -254,7 +576,13 @@ export const PolicyEnabledState = {
 export type PolicyEnabledState = (typeof PolicyEnabledState)[keyof typeof PolicyEnabledState];
 
 export const PolicyMode = {
+    /**
+     * Prevention
+     */
     Prevention: "Prevention",
+    /**
+     * Detection
+     */
     Detection: "Detection",
 } as const;
 
@@ -264,7 +592,13 @@ export const PolicyMode = {
 export type PolicyMode = (typeof PolicyMode)[keyof typeof PolicyMode];
 
 export const PolicyRequestBodyCheck = {
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
 } as const;
 
@@ -274,7 +608,13 @@ export const PolicyRequestBodyCheck = {
 export type PolicyRequestBodyCheck = (typeof PolicyRequestBodyCheck)[keyof typeof PolicyRequestBodyCheck];
 
 export const RoutingRuleEnabledState = {
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
 } as const;
 
@@ -284,7 +624,13 @@ export const RoutingRuleEnabledState = {
 export type RoutingRuleEnabledState = (typeof RoutingRuleEnabledState)[keyof typeof RoutingRuleEnabledState];
 
 export const RuleType = {
+    /**
+     * MatchRule
+     */
     MatchRule: "MatchRule",
+    /**
+     * RateLimitRule
+     */
     RateLimitRule: "RateLimitRule",
 } as const;
 
@@ -294,17 +640,53 @@ export const RuleType = {
 export type RuleType = (typeof RuleType)[keyof typeof RuleType];
 
 export const RulesEngineMatchVariable = {
+    /**
+     * IsMobile
+     */
     IsMobile: "IsMobile",
+    /**
+     * RemoteAddr
+     */
     RemoteAddr: "RemoteAddr",
+    /**
+     * RequestMethod
+     */
     RequestMethod: "RequestMethod",
+    /**
+     * QueryString
+     */
     QueryString: "QueryString",
+    /**
+     * PostArgs
+     */
     PostArgs: "PostArgs",
+    /**
+     * RequestUri
+     */
     RequestUri: "RequestUri",
+    /**
+     * RequestPath
+     */
     RequestPath: "RequestPath",
+    /**
+     * RequestFilename
+     */
     RequestFilename: "RequestFilename",
+    /**
+     * RequestFilenameExtension
+     */
     RequestFilenameExtension: "RequestFilenameExtension",
+    /**
+     * RequestHeader
+     */
     RequestHeader: "RequestHeader",
+    /**
+     * RequestBody
+     */
     RequestBody: "RequestBody",
+    /**
+     * RequestScheme
+     */
     RequestScheme: "RequestScheme",
 } as const;
 
@@ -314,16 +696,49 @@ export const RulesEngineMatchVariable = {
 export type RulesEngineMatchVariable = (typeof RulesEngineMatchVariable)[keyof typeof RulesEngineMatchVariable];
 
 export const RulesEngineOperator = {
+    /**
+     * Any
+     */
     Any: "Any",
+    /**
+     * IPMatch
+     */
     IPMatch: "IPMatch",
+    /**
+     * GeoMatch
+     */
     GeoMatch: "GeoMatch",
+    /**
+     * Equal
+     */
     Equal: "Equal",
+    /**
+     * Contains
+     */
     Contains: "Contains",
+    /**
+     * LessThan
+     */
     LessThan: "LessThan",
+    /**
+     * GreaterThan
+     */
     GreaterThan: "GreaterThan",
+    /**
+     * LessThanOrEqual
+     */
     LessThanOrEqual: "LessThanOrEqual",
+    /**
+     * GreaterThanOrEqual
+     */
     GreaterThanOrEqual: "GreaterThanOrEqual",
+    /**
+     * BeginsWith
+     */
     BeginsWith: "BeginsWith",
+    /**
+     * EndsWith
+     */
     EndsWith: "EndsWith",
 } as const;
 
@@ -333,7 +748,13 @@ export const RulesEngineOperator = {
 export type RulesEngineOperator = (typeof RulesEngineOperator)[keyof typeof RulesEngineOperator];
 
 export const ScrubbingRuleEntryMatchOperator = {
+    /**
+     * EqualsAny
+     */
     EqualsAny: "EqualsAny",
+    /**
+     * Equals
+     */
     Equals: "Equals",
 } as const;
 
@@ -343,12 +764,33 @@ export const ScrubbingRuleEntryMatchOperator = {
 export type ScrubbingRuleEntryMatchOperator = (typeof ScrubbingRuleEntryMatchOperator)[keyof typeof ScrubbingRuleEntryMatchOperator];
 
 export const ScrubbingRuleEntryMatchVariable = {
+    /**
+     * RequestIPAddress
+     */
     RequestIPAddress: "RequestIPAddress",
+    /**
+     * RequestUri
+     */
     RequestUri: "RequestUri",
+    /**
+     * QueryStringArgNames
+     */
     QueryStringArgNames: "QueryStringArgNames",
+    /**
+     * RequestHeaderNames
+     */
     RequestHeaderNames: "RequestHeaderNames",
+    /**
+     * RequestCookieNames
+     */
     RequestCookieNames: "RequestCookieNames",
+    /**
+     * RequestBodyPostArgNames
+     */
     RequestBodyPostArgNames: "RequestBodyPostArgNames",
+    /**
+     * RequestBodyJsonArgNames
+     */
     RequestBodyJsonArgNames: "RequestBodyJsonArgNames",
 } as const;
 
@@ -358,7 +800,13 @@ export const ScrubbingRuleEntryMatchVariable = {
 export type ScrubbingRuleEntryMatchVariable = (typeof ScrubbingRuleEntryMatchVariable)[keyof typeof ScrubbingRuleEntryMatchVariable];
 
 export const ScrubbingRuleEntryState = {
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
 } as const;
 
@@ -367,8 +815,34 @@ export const ScrubbingRuleEntryState = {
  */
 export type ScrubbingRuleEntryState = (typeof ScrubbingRuleEntryState)[keyof typeof ScrubbingRuleEntryState];
 
+export const SensitivityType = {
+    /**
+     * Low Sensitivity - triggers the rule by larger spikes in traffic
+     */
+    Low: "Low",
+    /**
+     * Medium Sensitivity - triggers the rule by moderate spikes in traffic
+     */
+    Medium: "Medium",
+    /**
+     * High Sensitivity - triggers the rule by smaller spikes in traffic
+     */
+    High: "High",
+} as const;
+
+/**
+ * Describes the override sensitivity to be applied when rule matches.
+ */
+export type SensitivityType = (typeof SensitivityType)[keyof typeof SensitivityType];
+
 export const SessionAffinityEnabledState = {
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
 } as const;
 
@@ -378,8 +852,17 @@ export const SessionAffinityEnabledState = {
 export type SessionAffinityEnabledState = (typeof SessionAffinityEnabledState)[keyof typeof SessionAffinityEnabledState];
 
 export const SkuName = {
+    /**
+     * Classic_AzureFrontDoor
+     */
     Classic_AzureFrontDoor: "Classic_AzureFrontDoor",
+    /**
+     * Standard_AzureFrontDoor
+     */
     Standard_AzureFrontDoor: "Standard_AzureFrontDoor",
+    /**
+     * Premium_AzureFrontDoor
+     */
     Premium_AzureFrontDoor: "Premium_AzureFrontDoor",
 } as const;
 
@@ -389,7 +872,13 @@ export const SkuName = {
 export type SkuName = (typeof SkuName)[keyof typeof SkuName];
 
 export const State = {
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
 } as const;
 
@@ -399,11 +888,29 @@ export const State = {
 export type State = (typeof State)[keyof typeof State];
 
 export const Transform = {
+    /**
+     * Lowercase
+     */
     Lowercase: "Lowercase",
+    /**
+     * Uppercase
+     */
     Uppercase: "Uppercase",
+    /**
+     * Trim
+     */
     Trim: "Trim",
+    /**
+     * UrlDecode
+     */
     UrlDecode: "UrlDecode",
+    /**
+     * UrlEncode
+     */
     UrlEncode: "UrlEncode",
+    /**
+     * RemoveNulls
+     */
     RemoveNulls: "RemoveNulls",
 } as const;
 
@@ -413,11 +920,29 @@ export const Transform = {
 export type Transform = (typeof Transform)[keyof typeof Transform];
 
 export const TransformType = {
+    /**
+     * Lowercase
+     */
     Lowercase: "Lowercase",
+    /**
+     * Uppercase
+     */
     Uppercase: "Uppercase",
+    /**
+     * Trim
+     */
     Trim: "Trim",
+    /**
+     * UrlDecode
+     */
     UrlDecode: "UrlDecode",
+    /**
+     * UrlEncode
+     */
     UrlEncode: "UrlEncode",
+    /**
+     * RemoveNulls
+     */
     RemoveNulls: "RemoveNulls",
 } as const;
 
@@ -427,8 +952,17 @@ export const TransformType = {
 export type TransformType = (typeof TransformType)[keyof typeof TransformType];
 
 export const VariableName = {
+    /**
+     * SocketAddr
+     */
     SocketAddr: "SocketAddr",
+    /**
+     * GeoLocation
+     */
     GeoLocation: "GeoLocation",
+    /**
+     * None
+     */
     None: "None",
 } as const;
 
@@ -438,7 +972,13 @@ export const VariableName = {
 export type VariableName = (typeof VariableName)[keyof typeof VariableName];
 
 export const WebApplicationFirewallScrubbingState = {
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
 } as const;
 

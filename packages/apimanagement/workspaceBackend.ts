@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
  *
- * Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkspaceBackend extends pulumi.CustomResource {
     /**
@@ -121,7 +121,7 @@ export class WorkspaceBackend extends pulumi.CustomResource {
             resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["title"] = args?.title;
-            resourceInputs["tls"] = args ? (args.tls ? pulumi.output(args.tls).apply(types.inputs.backendTlsPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["tls"] = args ? pulumi.output(args.tls).apply(v => v === undefined ? undefined : types.inputs.backendTlsPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["type"] = args?.type;
             resourceInputs["url"] = args?.url;
             resourceInputs["workspaceId"] = args?.workspaceId;
@@ -144,7 +144,7 @@ export class WorkspaceBackend extends pulumi.CustomResource {
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:WorkspaceBackend" }, { type: "azure-native:apimanagement/v20240501:WorkspaceBackend" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceBackend" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceBackend" }, { type: "azure-native:apimanagement/v20250301preview:WorkspaceBackend" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230901preview:WorkspaceBackend" }, { type: "azure-native:apimanagement/v20240501:WorkspaceBackend" }, { type: "azure-native:apimanagement/v20240601preview:WorkspaceBackend" }, { type: "azure-native:apimanagement/v20241001preview:WorkspaceBackend" }, { type: "azure-native:apimanagement/v20250301preview:WorkspaceBackend" }, { type: "azure-native:apimanagement/v20250901preview:WorkspaceBackend" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceBackend.__pulumiType, name, resourceInputs, opts);
     }
@@ -157,32 +157,32 @@ export interface WorkspaceBackendArgs {
     /**
      * Identifier of the Backend entity. Must be unique in the current API Management service instance.
      */
-    backendId?: pulumi.Input<string>;
+    backendId?: pulumi.Input<string | undefined>;
     /**
      * Backend Circuit Breaker Configuration
      */
-    circuitBreaker?: pulumi.Input<types.inputs.BackendCircuitBreakerArgs>;
+    circuitBreaker?: pulumi.Input<types.inputs.BackendCircuitBreakerArgs | undefined>;
     /**
      * Backend Credentials Contract Properties
      */
-    credentials?: pulumi.Input<types.inputs.BackendCredentialsContractArgs>;
+    credentials?: pulumi.Input<types.inputs.BackendCredentialsContractArgs | undefined>;
     /**
      * Backend Description.
      */
-    description?: pulumi.Input<string>;
-    pool?: pulumi.Input<types.inputs.BackendBaseParametersPoolArgs>;
+    description?: pulumi.Input<string | undefined>;
+    pool?: pulumi.Input<types.inputs.BackendBaseParametersPoolArgs | undefined>;
     /**
      * Backend Properties contract
      */
-    properties?: pulumi.Input<types.inputs.BackendPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.BackendPropertiesArgs | undefined>;
     /**
      * Backend communication protocol. Required when backend type is 'Single'.
      */
-    protocol?: pulumi.Input<string | types.enums.BackendProtocol>;
+    protocol?: pulumi.Input<string | types.enums.BackendProtocol | undefined>;
     /**
      * Backend gateway Contract Properties
      */
-    proxy?: pulumi.Input<types.inputs.BackendProxyContractArgs>;
+    proxy?: pulumi.Input<types.inputs.BackendProxyContractArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -190,7 +190,7 @@ export interface WorkspaceBackendArgs {
     /**
      * Management Uri of the Resource in External System. This URL can be the Arm Resource Id of Logic Apps, Function Apps or API Apps.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the API Management service.
      */
@@ -198,19 +198,19 @@ export interface WorkspaceBackendArgs {
     /**
      * Backend Title.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * Backend TLS Properties
      */
-    tls?: pulumi.Input<types.inputs.BackendTlsPropertiesArgs>;
+    tls?: pulumi.Input<types.inputs.BackendTlsPropertiesArgs | undefined>;
     /**
      * Type of the backend. A backend can be either Single or Pool.
      */
-    type?: pulumi.Input<string | types.enums.BackendType>;
+    type?: pulumi.Input<string | types.enums.BackendType | undefined>;
     /**
      * Runtime Url of the Backend. Required when backend type is 'Single'.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Workspace identifier. Must be unique in the current API Management service instance.
      */

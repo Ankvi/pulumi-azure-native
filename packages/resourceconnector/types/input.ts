@@ -7,7 +7,7 @@ export interface AppliancePropertiesInfrastructureConfigArgs {
     /**
      * Information about the connected appliance.
      */
-    provider?: pulumi.Input<string | enums.Provider>;
+    provider?: pulumi.Input<string | enums.Provider | undefined>;
 }
 
 /**
@@ -17,5 +17,5 @@ export interface IdentityArgs {
     /**
      * The identity type.
      */
-    type?: pulumi.Input<string | enums.ResourceIdentityType>;
+    type?: pulumi.Input<string | enums.ResourceIdentityType | undefined>;
 }

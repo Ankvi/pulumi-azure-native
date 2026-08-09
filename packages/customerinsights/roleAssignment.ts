@@ -213,23 +213,23 @@ export interface RoleAssignmentArgs {
     /**
      * The assignment name
      */
-    assignmentName?: pulumi.Input<string>;
+    assignmentName?: pulumi.Input<string | undefined>;
     /**
      * Widget types set for the assignment.
      */
-    conflationPolicies?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
+    conflationPolicies?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs | undefined>;
     /**
      * Connectors set for the assignment.
      */
-    connectors?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
+    connectors?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs | undefined>;
     /**
      * Localized description for the metadata.
      */
-    description?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    description?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Localized display names for the metadata.
      */
-    displayName?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    displayName?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the hub.
      */
@@ -237,15 +237,15 @@ export interface RoleAssignmentArgs {
     /**
      * Interactions set for the assignment.
      */
-    interactions?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
+    interactions?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs | undefined>;
     /**
      * Kpis set for the assignment.
      */
-    kpis?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
+    kpis?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs | undefined>;
     /**
      * Links set for the assignment.
      */
-    links?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
+    links?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs | undefined>;
     /**
      * The principals being assigned to.
      */
@@ -253,15 +253,15 @@ export interface RoleAssignmentArgs {
     /**
      * Profiles set for the assignment.
      */
-    profiles?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
+    profiles?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs | undefined>;
     /**
      * The Role assignments set for the relationship links.
      */
-    relationshipLinks?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
+    relationshipLinks?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs | undefined>;
     /**
      * The Role assignments set for the relationships.
      */
-    relationships?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
+    relationships?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs | undefined>;
     /**
      * The name of the resource group.
      */
@@ -273,21 +273,21 @@ export interface RoleAssignmentArgs {
     /**
      * The Role assignments set for the assignment.
      */
-    roleAssignments?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
+    roleAssignments?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs | undefined>;
     /**
      * Sas Policies set for the assignment.
      */
-    sasPolicies?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
+    sasPolicies?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs | undefined>;
     /**
      * The Role assignments set for the assignment.
      */
-    segments?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
+    segments?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs | undefined>;
     /**
      * Views set for the assignment.
      */
-    views?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
+    views?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs | undefined>;
     /**
      * Widget types set for the assignment.
      */
-    widgetTypes?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
+    widgetTypes?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs | undefined>;
 }

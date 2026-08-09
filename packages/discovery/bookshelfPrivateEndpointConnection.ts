@@ -5,6 +5,8 @@ import * as types from "./types";
  * The Private Endpoint Connection resource for Bookshelf.
  *
  * Uses Azure REST API version 2026-02-01-preview.
+ *
+ * Other available API versions: 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native discovery [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class BookshelfPrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -87,7 +89,7 @@ export class BookshelfPrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:discovery/v20260201preview:BookshelfPrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:discovery/v20260201preview:BookshelfPrivateEndpointConnection" }, { type: "azure-native:discovery/v20260601:BookshelfPrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(BookshelfPrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }
@@ -104,11 +106,11 @@ export interface BookshelfPrivateEndpointConnectionArgs {
     /**
      * The name of the private endpoint connection associated with the Azure resource.
      */
-    privateEndpointConnectionName?: pulumi.Input<string>;
+    privateEndpointConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

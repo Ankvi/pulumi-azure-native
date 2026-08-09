@@ -93,7 +93,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterName"] = args?.clusterName;
             resourceInputs["identity"] = args?.identity;
             resourceInputs["location"] = args?.location;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.clusterCreatePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.clusterCreatePropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["zones"] = args?.zones;
@@ -128,19 +128,19 @@ export interface ClusterArgs {
     /**
      * The name of the cluster.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * The identity of the cluster, if configured.
      */
-    identity?: pulumi.Input<types.inputs.ClusterIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ClusterIdentityArgs | undefined>;
     /**
      * The location of the cluster.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The cluster create parameters.
      */
-    properties?: pulumi.Input<types.inputs.ClusterCreatePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ClusterCreatePropertiesArgs | undefined>;
     /**
      * The name of the resource group.
      */
@@ -148,9 +148,9 @@ export interface ClusterArgs {
     /**
      * The resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The availability zones.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

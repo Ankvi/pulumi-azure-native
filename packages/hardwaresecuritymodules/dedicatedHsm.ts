@@ -148,19 +148,19 @@ export interface DedicatedHsmArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Specifies the management network interfaces of the dedicated hsm.
      */
-    managementNetworkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
+    managementNetworkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs | undefined>;
     /**
      * Name of the dedicated Hsm
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the network interfaces of the dedicated hsm.
      */
-    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -172,13 +172,13 @@ export interface DedicatedHsmArgs {
     /**
      * This field will be used when RP does not support Availability zones.
      */
-    stampId?: pulumi.Input<string>;
+    stampId?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Dedicated Hsm zones.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

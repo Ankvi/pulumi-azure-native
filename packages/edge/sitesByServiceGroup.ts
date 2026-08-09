@@ -46,7 +46,7 @@ export class SitesByServiceGroup extends pulumi.CustomResource {
     /**
      * The resource-specific properties for this resource.
      */
-    declare public readonly properties: pulumi.Output<types.outputs.SitePropertiesResponseV1>;
+    declare public readonly properties: pulumi.Output<types.outputs.SitePropertiesSitesByServiceGroupResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -98,7 +98,7 @@ export interface SitesByServiceGroupArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.SitePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SitePropertiesArgs | undefined>;
     /**
      * The name of the service group
      */
@@ -106,5 +106,5 @@ export interface SitesByServiceGroupArgs {
     /**
      * The name of the Site
      */
-    siteName?: pulumi.Input<string>;
+    siteName?: pulumi.Input<string | undefined>;
 }

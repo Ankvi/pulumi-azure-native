@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConnectionMonitor extends pulumi.CustomResource {
     /**
@@ -174,7 +174,7 @@ export class ConnectionMonitor extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20171001:ConnectionMonitor" }, { type: "azure-native:network/v20171101:ConnectionMonitor" }, { type: "azure-native:network/v20180101:ConnectionMonitor" }, { type: "azure-native:network/v20180201:ConnectionMonitor" }, { type: "azure-native:network/v20180401:ConnectionMonitor" }, { type: "azure-native:network/v20180601:ConnectionMonitor" }, { type: "azure-native:network/v20180701:ConnectionMonitor" }, { type: "azure-native:network/v20180801:ConnectionMonitor" }, { type: "azure-native:network/v20181001:ConnectionMonitor" }, { type: "azure-native:network/v20181101:ConnectionMonitor" }, { type: "azure-native:network/v20181201:ConnectionMonitor" }, { type: "azure-native:network/v20190201:ConnectionMonitor" }, { type: "azure-native:network/v20190401:ConnectionMonitor" }, { type: "azure-native:network/v20190601:ConnectionMonitor" }, { type: "azure-native:network/v20190701:ConnectionMonitor" }, { type: "azure-native:network/v20190801:ConnectionMonitor" }, { type: "azure-native:network/v20190901:ConnectionMonitor" }, { type: "azure-native:network/v20191101:ConnectionMonitor" }, { type: "azure-native:network/v20191201:ConnectionMonitor" }, { type: "azure-native:network/v20200301:ConnectionMonitor" }, { type: "azure-native:network/v20200401:ConnectionMonitor" }, { type: "azure-native:network/v20200501:ConnectionMonitor" }, { type: "azure-native:network/v20200601:ConnectionMonitor" }, { type: "azure-native:network/v20200701:ConnectionMonitor" }, { type: "azure-native:network/v20200801:ConnectionMonitor" }, { type: "azure-native:network/v20201101:ConnectionMonitor" }, { type: "azure-native:network/v20210201:ConnectionMonitor" }, { type: "azure-native:network/v20210301:ConnectionMonitor" }, { type: "azure-native:network/v20210501:ConnectionMonitor" }, { type: "azure-native:network/v20210801:ConnectionMonitor" }, { type: "azure-native:network/v20220101:ConnectionMonitor" }, { type: "azure-native:network/v20220501:ConnectionMonitor" }, { type: "azure-native:network/v20220701:ConnectionMonitor" }, { type: "azure-native:network/v20220901:ConnectionMonitor" }, { type: "azure-native:network/v20221101:ConnectionMonitor" }, { type: "azure-native:network/v20230201:ConnectionMonitor" }, { type: "azure-native:network/v20230401:ConnectionMonitor" }, { type: "azure-native:network/v20230501:ConnectionMonitor" }, { type: "azure-native:network/v20230601:ConnectionMonitor" }, { type: "azure-native:network/v20230901:ConnectionMonitor" }, { type: "azure-native:network/v20231101:ConnectionMonitor" }, { type: "azure-native:network/v20240101:ConnectionMonitor" }, { type: "azure-native:network/v20240301:ConnectionMonitor" }, { type: "azure-native:network/v20240501:ConnectionMonitor" }, { type: "azure-native:network/v20240701:ConnectionMonitor" }, { type: "azure-native:network/v20241001:ConnectionMonitor" }, { type: "azure-native:network/v20250101:ConnectionMonitor" }, { type: "azure-native:network/v20250301:ConnectionMonitor" }, { type: "azure-native:network/v20250501:ConnectionMonitor" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20171001:ConnectionMonitor" }, { type: "azure-native:network/v20171101:ConnectionMonitor" }, { type: "azure-native:network/v20180101:ConnectionMonitor" }, { type: "azure-native:network/v20180201:ConnectionMonitor" }, { type: "azure-native:network/v20180401:ConnectionMonitor" }, { type: "azure-native:network/v20180601:ConnectionMonitor" }, { type: "azure-native:network/v20180701:ConnectionMonitor" }, { type: "azure-native:network/v20180801:ConnectionMonitor" }, { type: "azure-native:network/v20181001:ConnectionMonitor" }, { type: "azure-native:network/v20181101:ConnectionMonitor" }, { type: "azure-native:network/v20181201:ConnectionMonitor" }, { type: "azure-native:network/v20190201:ConnectionMonitor" }, { type: "azure-native:network/v20190401:ConnectionMonitor" }, { type: "azure-native:network/v20190601:ConnectionMonitor" }, { type: "azure-native:network/v20190701:ConnectionMonitor" }, { type: "azure-native:network/v20190801:ConnectionMonitor" }, { type: "azure-native:network/v20190901:ConnectionMonitor" }, { type: "azure-native:network/v20191101:ConnectionMonitor" }, { type: "azure-native:network/v20191201:ConnectionMonitor" }, { type: "azure-native:network/v20200301:ConnectionMonitor" }, { type: "azure-native:network/v20200401:ConnectionMonitor" }, { type: "azure-native:network/v20200501:ConnectionMonitor" }, { type: "azure-native:network/v20200601:ConnectionMonitor" }, { type: "azure-native:network/v20200701:ConnectionMonitor" }, { type: "azure-native:network/v20200801:ConnectionMonitor" }, { type: "azure-native:network/v20201101:ConnectionMonitor" }, { type: "azure-native:network/v20210201:ConnectionMonitor" }, { type: "azure-native:network/v20210301:ConnectionMonitor" }, { type: "azure-native:network/v20210501:ConnectionMonitor" }, { type: "azure-native:network/v20210801:ConnectionMonitor" }, { type: "azure-native:network/v20220101:ConnectionMonitor" }, { type: "azure-native:network/v20220501:ConnectionMonitor" }, { type: "azure-native:network/v20220701:ConnectionMonitor" }, { type: "azure-native:network/v20220901:ConnectionMonitor" }, { type: "azure-native:network/v20221101:ConnectionMonitor" }, { type: "azure-native:network/v20230201:ConnectionMonitor" }, { type: "azure-native:network/v20230401:ConnectionMonitor" }, { type: "azure-native:network/v20230501:ConnectionMonitor" }, { type: "azure-native:network/v20230601:ConnectionMonitor" }, { type: "azure-native:network/v20230901:ConnectionMonitor" }, { type: "azure-native:network/v20231101:ConnectionMonitor" }, { type: "azure-native:network/v20240101:ConnectionMonitor" }, { type: "azure-native:network/v20240301:ConnectionMonitor" }, { type: "azure-native:network/v20240501:ConnectionMonitor" }, { type: "azure-native:network/v20240701:ConnectionMonitor" }, { type: "azure-native:network/v20241001:ConnectionMonitor" }, { type: "azure-native:network/v20250101:ConnectionMonitor" }, { type: "azure-native:network/v20250301:ConnectionMonitor" }, { type: "azure-native:network/v20250501:ConnectionMonitor" }, { type: "azure-native:network/v20250701:ConnectionMonitor" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ConnectionMonitor.__pulumiType, name, resourceInputs, opts);
     }
@@ -187,31 +187,31 @@ export interface ConnectionMonitorArgs {
     /**
      * Determines if the connection monitor will start automatically once created.
      */
-    autoStart?: pulumi.Input<boolean>;
+    autoStart?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the connection monitor.
      */
-    connectionMonitorName?: pulumi.Input<string>;
+    connectionMonitorName?: pulumi.Input<string | undefined>;
     /**
      * Describes the destination of connection monitor.
      */
-    destination?: pulumi.Input<types.inputs.ConnectionMonitorDestinationArgs>;
+    destination?: pulumi.Input<types.inputs.ConnectionMonitorDestinationArgs | undefined>;
     /**
      * List of connection monitor endpoints.
      */
-    endpoints?: pulumi.Input<pulumi.Input<types.inputs.ConnectionMonitorEndpointArgs>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<types.inputs.ConnectionMonitorEndpointArgs>[] | undefined>;
     /**
      * Connection monitor location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Value indicating whether connection monitor V1 should be migrated to V2 format.
      */
-    migrate?: pulumi.Input<string>;
+    migrate?: pulumi.Input<string | undefined>;
     /**
      * Monitoring interval in seconds.
      */
-    monitoringIntervalInSeconds?: pulumi.Input<number>;
+    monitoringIntervalInSeconds?: pulumi.Input<number | undefined>;
     /**
      * The name of the Network Watcher resource.
      */
@@ -219,11 +219,11 @@ export interface ConnectionMonitorArgs {
     /**
      * Optional notes to be associated with the connection monitor.
      */
-    notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
     /**
      * List of connection monitor outputs.
      */
-    outputs?: pulumi.Input<pulumi.Input<types.inputs.ConnectionMonitorOutputArgs>[]>;
+    outputs?: pulumi.Input<pulumi.Input<types.inputs.ConnectionMonitorOutputArgs>[] | undefined>;
     /**
      * The name of the resource group containing Network Watcher.
      */
@@ -231,17 +231,17 @@ export interface ConnectionMonitorArgs {
     /**
      * Describes the source of connection monitor.
      */
-    source?: pulumi.Input<types.inputs.ConnectionMonitorSourceArgs>;
+    source?: pulumi.Input<types.inputs.ConnectionMonitorSourceArgs | undefined>;
     /**
      * Connection monitor tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of connection monitor test configurations.
      */
-    testConfigurations?: pulumi.Input<pulumi.Input<types.inputs.ConnectionMonitorTestConfigurationArgs>[]>;
+    testConfigurations?: pulumi.Input<pulumi.Input<types.inputs.ConnectionMonitorTestConfigurationArgs>[] | undefined>;
     /**
      * List of connection monitor test groups.
      */
-    testGroups?: pulumi.Input<pulumi.Input<types.inputs.ConnectionMonitorTestGroupArgs>[]>;
+    testGroups?: pulumi.Input<pulumi.Input<types.inputs.ConnectionMonitorTestGroupArgs>[] | undefined>;
 }

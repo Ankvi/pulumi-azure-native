@@ -149,16 +149,16 @@ export interface AssessmentsMetadataSubscriptionArgs {
     /**
      * The Assessment Key - Unique key for the assessment type
      */
-    assessmentMetadataName?: pulumi.Input<string>;
+    assessmentMetadataName?: pulumi.Input<string | undefined>;
     /**
      * BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
      */
     assessmentType: pulumi.Input<string | types.enums.AssessmentType>;
-    categories?: pulumi.Input<pulumi.Input<string | types.enums.Categories>[]>;
+    categories?: pulumi.Input<pulumi.Input<string | types.enums.Categories>[] | undefined>;
     /**
      * Human readable description of the assessment
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User friendly display name of the assessment
      */
@@ -166,22 +166,22 @@ export interface AssessmentsMetadataSubscriptionArgs {
     /**
      * The implementation effort required to remediate this assessment
      */
-    implementationEffort?: pulumi.Input<string | types.enums.ImplementationEffort>;
+    implementationEffort?: pulumi.Input<string | types.enums.ImplementationEffort | undefined>;
     /**
      * True if this assessment is in preview release status
      */
-    preview?: pulumi.Input<boolean>;
+    preview?: pulumi.Input<boolean | undefined>;
     /**
      * Human readable description of what you should do to mitigate this security issue
      */
-    remediationDescription?: pulumi.Input<string>;
+    remediationDescription?: pulumi.Input<string | undefined>;
     /**
      * The severity level of the assessment
      */
     severity: pulumi.Input<string | types.enums.Severity>;
-    threats?: pulumi.Input<pulumi.Input<string | types.enums.Threats>[]>;
+    threats?: pulumi.Input<pulumi.Input<string | types.enums.Threats>[] | undefined>;
     /**
      * The user impact of the assessment
      */
-    userImpact?: pulumi.Input<string | types.enums.UserImpact>;
+    userImpact?: pulumi.Input<string | types.enums.UserImpact | undefined>;
 }

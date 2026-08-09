@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
  *
- * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkFabricController extends pulumi.CustomResource {
     /**
@@ -175,7 +175,7 @@ export class NetworkFabricController extends pulumi.CustomResource {
             resourceInputs["workloadServices"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:NetworkFabricController" }, { type: "azure-native:managednetworkfabric/v20230615:NetworkFabricController" }, { type: "azure-native:managednetworkfabric/v20240215preview:NetworkFabricController" }, { type: "azure-native:managednetworkfabric/v20240615preview:NetworkFabricController" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:NetworkFabricController" }, { type: "azure-native:managednetworkfabric/v20230615:NetworkFabricController" }, { type: "azure-native:managednetworkfabric/v20240215preview:NetworkFabricController" }, { type: "azure-native:managednetworkfabric/v20240615preview:NetworkFabricController" }, { type: "azure-native:managednetworkfabric/v20250715:NetworkFabricController" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkFabricController.__pulumiType, name, resourceInputs, opts);
     }
@@ -188,39 +188,39 @@ export interface NetworkFabricControllerArgs {
     /**
      * Switch configuration description.
      */
-    annotation?: pulumi.Input<string>;
+    annotation?: pulumi.Input<string | undefined>;
     /**
      * As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute)
      */
-    infrastructureExpressRouteConnections?: pulumi.Input<pulumi.Input<types.inputs.ExpressRouteConnectionInformationArgs>[]>;
+    infrastructureExpressRouteConnections?: pulumi.Input<pulumi.Input<types.inputs.ExpressRouteConnectionInformationArgs>[] | undefined>;
     /**
      * IPv4 Network Fabric Controller Address Space.
      */
-    ipv4AddressSpace?: pulumi.Input<string>;
+    ipv4AddressSpace?: pulumi.Input<string | undefined>;
     /**
      * IPv6 Network Fabric Controller Address Space.
      */
-    ipv6AddressSpace?: pulumi.Input<string>;
+    ipv6AddressSpace?: pulumi.Input<string | undefined>;
     /**
      * A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints.
      */
-    isWorkloadManagementNetworkEnabled?: pulumi.Input<string | types.enums.IsWorkloadManagementNetworkEnabled>;
+    isWorkloadManagementNetworkEnabled?: pulumi.Input<string | types.enums.IsWorkloadManagementNetworkEnabled | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Managed Resource Group configuration properties.
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedResourceGroupConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedResourceGroupConfigurationArgs | undefined>;
     /**
      * Name of the Network Fabric Controller.
      */
-    networkFabricControllerName?: pulumi.Input<string>;
+    networkFabricControllerName?: pulumi.Input<string | undefined>;
     /**
      * Network Fabric Controller SKU.
      */
-    nfcSku?: pulumi.Input<string | types.enums.NfcSku>;
+    nfcSku?: pulumi.Input<string | types.enums.NfcSku | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -228,9 +228,9 @@ export interface NetworkFabricControllerArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute).
      */
-    workloadExpressRouteConnections?: pulumi.Input<pulumi.Input<types.inputs.ExpressRouteConnectionInformationArgs>[]>;
+    workloadExpressRouteConnections?: pulumi.Input<pulumi.Input<types.inputs.ExpressRouteConnectionInformationArgs>[] | undefined>;
 }

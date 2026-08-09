@@ -7,11 +7,11 @@ export interface IdentityConfigurationPropertiesArgs {
     /**
      * The name of the authentication policy registered in ADB2C for the Community Training Resource
      */
-    b2cAuthenticationPolicy?: pulumi.Input<string>;
+    b2cAuthenticationPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the password reset policy registered in ADB2C for the Community Training Resource
      */
-    b2cPasswordResetPolicy?: pulumi.Input<string>;
+    b2cPasswordResetPolicy?: pulumi.Input<string | undefined>;
     /**
      * The clientId of the application registered in the selected identity provider for the Community Training Resource
      */
@@ -23,7 +23,7 @@ export interface IdentityConfigurationPropertiesArgs {
     /**
      * The custom login parameters for the Community Training Resource
      */
-    customLoginParameters?: pulumi.Input<string>;
+    customLoginParameters?: pulumi.Input<string | undefined>;
     /**
      * The domain name of the selected identity provider for the Community Training Resource
      */
@@ -35,7 +35,7 @@ export interface IdentityConfigurationPropertiesArgs {
     /**
      * To indicate whether the Community Training Resource has Teams enabled
      */
-    teamsEnabled?: pulumi.Input<boolean>;
+    teamsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The tenantId of the selected identity provider for the Community Training Resource
      */
@@ -58,21 +58,21 @@ export interface SkuArgs {
     /**
      * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * If the service has different generations of hardware, for the same SKU, then that can be captured here.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * The name of the SKU. Ex - P3. It is typically a letter+number code
      */
     name: pulumi.Input<string>;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
      */
-    tier?: pulumi.Input<enums.SkuTier>;
+    tier?: pulumi.Input<enums.SkuTier | undefined>;
 }

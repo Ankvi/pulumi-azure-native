@@ -227,19 +227,19 @@ export interface VirtualMachineArgs {
     /**
      * Availability Sets in vm.
      */
-    availabilitySets?: pulumi.Input<pulumi.Input<types.inputs.VirtualMachinePropertiesAvailabilitySetsArgs>[]>;
+    availabilitySets?: pulumi.Input<pulumi.Input<types.inputs.VirtualMachinePropertiesAvailabilitySetsArgs>[] | undefined>;
     /**
      * Type of checkpoint supported for the vm.
      */
-    checkpointType?: pulumi.Input<string>;
+    checkpointType?: pulumi.Input<string | undefined>;
     /**
      * Checkpoints in the vm.
      */
-    checkpoints?: pulumi.Input<pulumi.Input<types.inputs.CheckpointArgs>[]>;
+    checkpoints?: pulumi.Input<pulumi.Input<types.inputs.CheckpointArgs>[] | undefined>;
     /**
      * ARM Id of the cloud resource to use for deploying the vm.
      */
-    cloudId?: pulumi.Input<string>;
+    cloudId?: pulumi.Input<string | undefined>;
     /**
      * The extended location.
      */
@@ -247,35 +247,35 @@ export interface VirtualMachineArgs {
     /**
      * Gets or sets the generation for the vm.
      */
-    generation?: pulumi.Input<number>;
+    generation?: pulumi.Input<number | undefined>;
     /**
      * Guest agent status properties.
      */
-    guestAgentProfile?: pulumi.Input<types.inputs.GuestAgentProfileArgs>;
+    guestAgentProfile?: pulumi.Input<types.inputs.GuestAgentProfileArgs | undefined>;
     /**
      * Hardware properties.
      */
-    hardwareProfile?: pulumi.Input<types.inputs.HardwareProfileArgs>;
+    hardwareProfile?: pulumi.Input<types.inputs.HardwareProfileArgs | undefined>;
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
      * Gets or sets the inventory Item ID for the resource.
      */
-    inventoryItemId?: pulumi.Input<string>;
+    inventoryItemId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Network properties.
      */
-    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs | undefined>;
     /**
      * OS properties.
      */
-    osProfile?: pulumi.Input<types.inputs.OsProfileArgs>;
+    osProfile?: pulumi.Input<types.inputs.OsProfileArgs | undefined>;
     /**
      * The name of the resource group.
      */
@@ -283,29 +283,29 @@ export interface VirtualMachineArgs {
     /**
      * Storage properties.
      */
-    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs | undefined>;
     /**
      * Resource tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ARM Id of the template resource to use for deploying the vm.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * Unique ID of the virtual machine.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * Name of the VirtualMachine.
      */
-    virtualMachineName?: pulumi.Input<string>;
+    virtualMachineName?: pulumi.Input<string | undefined>;
     /**
      * VMName is the name of VM on the SCVMM server.
      */
-    vmName?: pulumi.Input<string>;
+    vmName?: pulumi.Input<string | undefined>;
     /**
      * ARM Id of the vmmServer resource in which this resource resides.
      */
-    vmmServerId?: pulumi.Input<string>;
+    vmmServerId?: pulumi.Input<string | undefined>;
 }

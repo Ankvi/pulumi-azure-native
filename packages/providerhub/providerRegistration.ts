@@ -97,10 +97,10 @@ export interface ProviderRegistrationArgs {
     /**
      * Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
-    kind?: pulumi.Input<string | types.enums.ProviderRegistrationKind>;
-    properties?: pulumi.Input<types.inputs.ProviderRegistrationPropertiesArgs>;
+    kind?: pulumi.Input<string | types.enums.ProviderRegistrationKind | undefined>;
+    properties?: pulumi.Input<types.inputs.ProviderRegistrationPropertiesArgs | undefined>;
     /**
      * The name of the resource provider hosted within ProviderHub.
      */
-    providerNamespace?: pulumi.Input<string>;
+    providerNamespace?: pulumi.Input<string | undefined>;
 }

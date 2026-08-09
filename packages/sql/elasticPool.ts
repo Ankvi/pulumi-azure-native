@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2014-04-01, 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2014-04-01, 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ElasticPool extends pulumi.CustomResource {
     /**
@@ -93,12 +93,12 @@ export class ElasticPool extends pulumi.CustomResource {
     declare public readonly preferredEnclaveType: pulumi.Output<string | undefined>;
     /**
      * The elastic pool SKU.
-     * 
+     *
      * The list of SKUs may vary by region and support offer. To determine the SKUs (including the SKU name, tier/edition, family, and capacity) that are available to your subscription in an Azure region, use the `Capabilities_ListByLocation` REST API or the following command:
-     * 
+     *
      * ```azurecli
      * az sql elastic-pool list-editions -l <location> -o table
-     * ````
+     * ```
      */
     declare public readonly sku: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
@@ -179,7 +179,7 @@ export class ElasticPool extends pulumi.CustomResource {
             resourceInputs["zoneRedundant"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:ElasticPool" }, { type: "azure-native:sql/v20171001preview:ElasticPool" }, { type: "azure-native:sql/v20200202preview:ElasticPool" }, { type: "azure-native:sql/v20200801preview:ElasticPool" }, { type: "azure-native:sql/v20201101preview:ElasticPool" }, { type: "azure-native:sql/v20210201preview:ElasticPool" }, { type: "azure-native:sql/v20210501preview:ElasticPool" }, { type: "azure-native:sql/v20210801preview:ElasticPool" }, { type: "azure-native:sql/v20211101:ElasticPool" }, { type: "azure-native:sql/v20211101preview:ElasticPool" }, { type: "azure-native:sql/v20220201preview:ElasticPool" }, { type: "azure-native:sql/v20220501preview:ElasticPool" }, { type: "azure-native:sql/v20220801preview:ElasticPool" }, { type: "azure-native:sql/v20221101preview:ElasticPool" }, { type: "azure-native:sql/v20230201preview:ElasticPool" }, { type: "azure-native:sql/v20230501preview:ElasticPool" }, { type: "azure-native:sql/v20230801:ElasticPool" }, { type: "azure-native:sql/v20230801preview:ElasticPool" }, { type: "azure-native:sql/v20240501preview:ElasticPool" }, { type: "azure-native:sql/v20241101preview:ElasticPool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:ElasticPool" }, { type: "azure-native:sql/v20171001preview:ElasticPool" }, { type: "azure-native:sql/v20200202preview:ElasticPool" }, { type: "azure-native:sql/v20200801preview:ElasticPool" }, { type: "azure-native:sql/v20201101preview:ElasticPool" }, { type: "azure-native:sql/v20210201preview:ElasticPool" }, { type: "azure-native:sql/v20210501preview:ElasticPool" }, { type: "azure-native:sql/v20210801preview:ElasticPool" }, { type: "azure-native:sql/v20211101:ElasticPool" }, { type: "azure-native:sql/v20211101preview:ElasticPool" }, { type: "azure-native:sql/v20220201preview:ElasticPool" }, { type: "azure-native:sql/v20220501preview:ElasticPool" }, { type: "azure-native:sql/v20220801preview:ElasticPool" }, { type: "azure-native:sql/v20221101preview:ElasticPool" }, { type: "azure-native:sql/v20230201preview:ElasticPool" }, { type: "azure-native:sql/v20230501preview:ElasticPool" }, { type: "azure-native:sql/v20230801:ElasticPool" }, { type: "azure-native:sql/v20230801preview:ElasticPool" }, { type: "azure-native:sql/v20240501preview:ElasticPool" }, { type: "azure-native:sql/v20241101preview:ElasticPool" }, { type: "azure-native:sql/v20250101:ElasticPool" }, { type: "azure-native:sql/v20250201preview:ElasticPool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ElasticPool.__pulumiType, name, resourceInputs, opts);
     }
@@ -192,47 +192,47 @@ export interface ElasticPoolArgs {
     /**
      * Time in minutes after which elastic pool is automatically paused. A value of -1 means that automatic pause is disabled
      */
-    autoPauseDelay?: pulumi.Input<number>;
+    autoPauseDelay?: pulumi.Input<number | undefined>;
     /**
      * Specifies the availability zone the pool's primary replica is pinned to.
      */
-    availabilityZone?: pulumi.Input<string | types.enums.AvailabilityZoneType>;
+    availabilityZone?: pulumi.Input<string | types.enums.AvailabilityZoneType | undefined>;
     /**
      * The name of the elastic pool.
      */
-    elasticPoolName?: pulumi.Input<string>;
+    elasticPoolName?: pulumi.Input<string | undefined>;
     /**
      * The number of secondary replicas associated with the Business Critical, Premium, or Hyperscale edition elastic pool that are used to provide high availability. Applicable only to Hyperscale elastic pools.
      */
-    highAvailabilityReplicaCount?: pulumi.Input<number>;
+    highAvailabilityReplicaCount?: pulumi.Input<number | undefined>;
     /**
      * The license type to apply for this elastic pool.
      */
-    licenseType?: pulumi.Input<string | types.enums.ElasticPoolLicenseType>;
+    licenseType?: pulumi.Input<string | types.enums.ElasticPoolLicenseType | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Maintenance configuration id assigned to the elastic pool. This configuration defines the period when the maintenance updates will will occur.
      */
-    maintenanceConfigurationId?: pulumi.Input<string>;
+    maintenanceConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * The storage limit for the database elastic pool in bytes.
      */
-    maxSizeBytes?: pulumi.Input<number>;
+    maxSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * Minimal capacity that serverless pool will not shrink below, if not paused
      */
-    minCapacity?: pulumi.Input<number>;
+    minCapacity?: pulumi.Input<number | undefined>;
     /**
      * The per database settings for the elastic pool.
      */
-    perDatabaseSettings?: pulumi.Input<types.inputs.ElasticPoolPerDatabaseSettingsArgs>;
+    perDatabaseSettings?: pulumi.Input<types.inputs.ElasticPoolPerDatabaseSettingsArgs | undefined>;
     /**
      * Type of enclave requested on the elastic pool.
      */
-    preferredEnclaveType?: pulumi.Input<string | types.enums.AlwaysEncryptedEnclaveType>;
+    preferredEnclaveType?: pulumi.Input<string | types.enums.AlwaysEncryptedEnclaveType | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -243,20 +243,20 @@ export interface ElasticPoolArgs {
     serverName: pulumi.Input<string>;
     /**
      * The elastic pool SKU.
-     * 
+     *
      * The list of SKUs may vary by region and support offer. To determine the SKUs (including the SKU name, tier/edition, family, and capacity) that are available to your subscription in an Azure region, use the `Capabilities_ListByLocation` REST API or the following command:
-     * 
+     *
      * ```azurecli
      * az sql elastic-pool list-editions -l <location> -o table
-     * ````
+     * ```
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether or not this elastic pool is zone redundant, which means the replicas of this elastic pool will be spread across multiple availability zones.
      */
-    zoneRedundant?: pulumi.Input<boolean>;
+    zoneRedundant?: pulumi.Input<boolean | undefined>;
 }

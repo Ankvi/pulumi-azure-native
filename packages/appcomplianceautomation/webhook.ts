@@ -168,19 +168,19 @@ export interface WebhookArgs {
     /**
      * content type
      */
-    contentType?: pulumi.Input<string | types.enums.ContentType>;
+    contentType?: pulumi.Input<string | types.enums.ContentType | undefined>;
     /**
      * whether to enable ssl verification
      */
-    enableSslVerification?: pulumi.Input<string | types.enums.EnableSslVerification>;
+    enableSslVerification?: pulumi.Input<string | types.enums.EnableSslVerification | undefined>;
     /**
      * under which event notification should be sent.
      */
-    events?: pulumi.Input<pulumi.Input<string | types.enums.NotificationEvent>[]>;
+    events?: pulumi.Input<pulumi.Input<string | types.enums.NotificationEvent>[] | undefined>;
     /**
      * webhook payload url
      */
-    payloadUrl?: pulumi.Input<string>;
+    payloadUrl?: pulumi.Input<string | undefined>;
     /**
      * Report Name.
      */
@@ -188,21 +188,21 @@ export interface WebhookArgs {
     /**
      * whether to send notification under any event.
      */
-    sendAllEvents?: pulumi.Input<string | types.enums.SendAllEvents>;
+    sendAllEvents?: pulumi.Input<string | types.enums.SendAllEvents | undefined>;
     /**
      * Webhook status.
      */
-    status?: pulumi.Input<string | types.enums.WebhookStatus>;
+    status?: pulumi.Input<string | types.enums.WebhookStatus | undefined>;
     /**
      * whether to update webhookKey.
      */
-    updateWebhookKey?: pulumi.Input<string | types.enums.UpdateWebhookKey>;
+    updateWebhookKey?: pulumi.Input<string | types.enums.UpdateWebhookKey | undefined>;
     /**
      * webhook secret token. If not set, this field value is null; otherwise, please set a string value.
      */
-    webhookKey?: pulumi.Input<string>;
+    webhookKey?: pulumi.Input<string | undefined>;
     /**
      * Webhook Name.
      */
-    webhookName?: pulumi.Input<string>;
+    webhookName?: pulumi.Input<string | undefined>;
 }

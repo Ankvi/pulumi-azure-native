@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Configuration of App Service site logs.
  *
- * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+ * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppDiagnosticLogsConfiguration extends pulumi.CustomResource {
     /**
@@ -60,11 +60,15 @@ export class WebAppDiagnosticLogsConfiguration extends pulumi.CustomResource {
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -85,7 +89,7 @@ export class WebAppDiagnosticLogsConfiguration extends pulumi.CustomResource {
             if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["applicationLogs"] = args ? (args.applicationLogs ? pulumi.output(args.applicationLogs).apply(types.inputs.applicationLogsConfigArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["applicationLogs"] = args ? pulumi.output(args.applicationLogs).apply(v => v === undefined ? undefined : types.inputs.applicationLogsConfigArgsProvideDefaults(v)) : undefined;
             resourceInputs["detailedErrorMessages"] = args?.detailedErrorMessages;
             resourceInputs["failedRequestsTracing"] = args?.failedRequestsTracing;
             resourceInputs["httpLogs"] = args?.httpLogs;
@@ -93,6 +97,7 @@ export class WebAppDiagnosticLogsConfiguration extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["applicationLogs"] = undefined /*out*/;
@@ -102,10 +107,11 @@ export class WebAppDiagnosticLogsConfiguration extends pulumi.CustomResource {
             resourceInputs["httpLogs"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20160801:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20180201:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20181101:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20190801:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20200601:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20200901:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20201001:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20201201:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20210101:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20210115:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20210201:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20210301:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20220301:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20220901:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20230101:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20231201:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20240401:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20241101:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20250301:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20250501:WebAppDiagnosticLogsConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20160801:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20180201:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20181101:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20190801:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20200601:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20200901:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20201001:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20201201:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20210101:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20210115:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20210201:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20210301:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20220301:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20220901:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20230101:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20231201:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20240401:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20241101:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20250301:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20250501:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20260301preview:WebAppDiagnosticLogsConfiguration" }, { type: "azure-native:web/v20260315:WebAppDiagnosticLogsConfiguration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppDiagnosticLogsConfiguration.__pulumiType, name, resourceInputs, opts);
     }
@@ -118,29 +124,29 @@ export interface WebAppDiagnosticLogsConfigurationArgs {
     /**
      * Application logs configuration.
      */
-    applicationLogs?: pulumi.Input<types.inputs.ApplicationLogsConfigArgs>;
+    applicationLogs?: pulumi.Input<types.inputs.ApplicationLogsConfigArgs | undefined>;
     /**
      * Detailed error messages configuration.
      */
-    detailedErrorMessages?: pulumi.Input<types.inputs.EnabledConfigArgs>;
+    detailedErrorMessages?: pulumi.Input<types.inputs.EnabledConfigArgs | undefined>;
     /**
      * Failed requests tracing configuration.
      */
-    failedRequestsTracing?: pulumi.Input<types.inputs.EnabledConfigArgs>;
+    failedRequestsTracing?: pulumi.Input<types.inputs.EnabledConfigArgs | undefined>;
     /**
      * HTTP logs configuration.
      */
-    httpLogs?: pulumi.Input<types.inputs.HttpLogsConfigArgs>;
+    httpLogs?: pulumi.Input<types.inputs.HttpLogsConfigArgs | undefined>;
     /**
      * Kind of resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Name of the app.
      */
     name: pulumi.Input<string>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

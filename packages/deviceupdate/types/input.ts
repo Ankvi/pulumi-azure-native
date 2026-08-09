@@ -11,7 +11,7 @@ export interface DiagnosticStoragePropertiesArgs {
     /**
      * ConnectionString of the diagnostic storage account
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * ResourceId of the diagnostic storage account
      */
@@ -25,11 +25,11 @@ export interface EncryptionArgs {
     /**
      * The URI of the key vault
      */
-    keyVaultKeyUri?: pulumi.Input<string>;
+    keyVaultKeyUri?: pulumi.Input<string | undefined>;
     /**
      * The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account
      */
-    userAssignedIdentity?: pulumi.Input<string>;
+    userAssignedIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -39,15 +39,15 @@ export interface GroupConnectivityInformationArgs {
     /**
      * List of customer visible FQDNs.
      */
-    customerVisibleFqdns?: pulumi.Input<pulumi.Input<string>[]>;
+    customerVisibleFqdns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * PrivateLinkService ARM region.
      */
-    privateLinkServiceArmRegion?: pulumi.Input<string>;
+    privateLinkServiceArmRegion?: pulumi.Input<string | undefined>;
     /**
      * Redirect map ID.
      */
-    redirectMapId?: pulumi.Input<string>;
+    redirectMapId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -71,7 +71,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -81,7 +81,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Array of group IDs.
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
@@ -95,15 +95,15 @@ export interface PrivateLinkServiceConnectionArgs {
     /**
      * List of group IDs.
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Private link service connection name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Request message.
      */
-    requestMessage?: pulumi.Input<string>;
+    requestMessage?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -113,15 +113,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -131,15 +131,15 @@ export interface PrivateLinkServiceProxyArgs {
     /**
      * Group connectivity information.
      */
-    groupConnectivityInformation?: pulumi.Input<pulumi.Input<GroupConnectivityInformationArgs>[]>;
+    groupConnectivityInformation?: pulumi.Input<pulumi.Input<GroupConnectivityInformationArgs>[] | undefined>;
     /**
      * NRP resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Remote private link service connection state
      */
-    remotePrivateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs>;
+    remotePrivateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs | undefined>;
 }
 
 /**
@@ -149,33 +149,33 @@ export interface RemotePrivateEndpointArgs {
     /**
      * Remote endpoint resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Original resource ID needed by Microsoft.Network.
      */
-    immutableResourceId?: pulumi.Input<string>;
+    immutableResourceId?: pulumi.Input<string | undefined>;
     /**
      * Original subscription ID needed by Microsoft.Network.
      */
-    immutableSubscriptionId?: pulumi.Input<string>;
+    immutableSubscriptionId?: pulumi.Input<string | undefined>;
     /**
      * ARM location of the remote private endpoint.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * List of private link service connections that need manual approval.
      */
-    manualPrivateLinkServiceConnections?: pulumi.Input<pulumi.Input<PrivateLinkServiceConnectionArgs>[]>;
+    manualPrivateLinkServiceConnections?: pulumi.Input<pulumi.Input<PrivateLinkServiceConnectionArgs>[] | undefined>;
     /**
      * List of automatically approved private link service connections.
      */
-    privateLinkServiceConnections?: pulumi.Input<pulumi.Input<PrivateLinkServiceConnectionArgs>[]>;
+    privateLinkServiceConnections?: pulumi.Input<pulumi.Input<PrivateLinkServiceConnectionArgs>[] | undefined>;
     /**
      * List of private link service proxies.
      */
-    privateLinkServiceProxies?: pulumi.Input<pulumi.Input<PrivateLinkServiceProxyArgs>[]>;
+    privateLinkServiceProxies?: pulumi.Input<pulumi.Input<PrivateLinkServiceProxyArgs>[] | undefined>;
     /**
      * Virtual network traffic tag.
      */
-    vnetTrafficTag?: pulumi.Input<string>;
+    vnetTrafficTag?: pulumi.Input<string | undefined>;
 }

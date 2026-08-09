@@ -53,7 +53,6 @@ export interface GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResult {
      */
     readonly id: string;
     /**
-     *
      * Expected value is 'MongoToCosmosDbMongo'.
      */
     readonly kind: "MongoToCosmosDbMongo";

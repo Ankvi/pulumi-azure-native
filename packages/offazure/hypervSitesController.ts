@@ -148,23 +148,23 @@ export interface HypervSitesControllerArgs {
     /**
      * Gets or sets the on-premises agent details.
      */
-    agentDetails?: pulumi.Input<types.inputs.SiteAgentPropertiesArgs>;
+    agentDetails?: pulumi.Input<types.inputs.SiteAgentPropertiesArgs | undefined>;
     /**
      * Gets or sets the Appliance Name.
      */
-    applianceName?: pulumi.Input<string>;
+    applianceName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the ARM ID of migration hub solution for SDS.
      */
-    discoverySolutionId?: pulumi.Input<string>;
+    discoverySolutionId?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The status of the last operation.
      */
-    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -174,13 +174,13 @@ export interface HypervSitesControllerArgs {
      * communication
      *             to the service.
      */
-    servicePrincipalIdentityDetails?: pulumi.Input<types.inputs.SiteSpnPropertiesArgs>;
+    servicePrincipalIdentityDetails?: pulumi.Input<types.inputs.SiteSpnPropertiesArgs | undefined>;
     /**
      * Site name
      */
-    siteName?: pulumi.Input<string>;
+    siteName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

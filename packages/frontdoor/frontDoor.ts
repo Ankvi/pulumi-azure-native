@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Front Door represents a collection of backend endpoints to route traffic to along with rules that specify how traffic is sent there.
  *
- * Uses Azure REST API version 2021-06-01.
+ * Uses Azure REST API version 2025-11-01.
  *
- * Other available API versions: 2019-04-01, 2019-05-01, 2020-01-01, 2020-04-01, 2020-05-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-08-01, 2019-04-01, 2019-05-01, 2020-01-01, 2020-04-01, 2020-05-01, 2021-06-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native frontdoor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FrontDoor extends pulumi.CustomResource {
     /**
@@ -127,7 +127,7 @@ export class FrontDoor extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["backendPools"] = args?.backendPools;
-            resourceInputs["backendPoolsSettings"] = args ? (args.backendPoolsSettings ? pulumi.output(args.backendPoolsSettings).apply(types.inputs.backendPoolsSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["backendPoolsSettings"] = args ? pulumi.output(args.backendPoolsSettings).apply(v => v === undefined ? undefined : types.inputs.backendPoolsSettingsArgsProvideDefaults(v)) : undefined;
             resourceInputs["enabledState"] = args?.enabledState;
             resourceInputs["friendlyName"] = args?.friendlyName;
             resourceInputs["frontDoorName"] = args?.frontDoorName;
@@ -169,7 +169,7 @@ export class FrontDoor extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:frontdoor/v20190401:FrontDoor" }, { type: "azure-native:frontdoor/v20190501:FrontDoor" }, { type: "azure-native:frontdoor/v20200101:FrontDoor" }, { type: "azure-native:frontdoor/v20200401:FrontDoor" }, { type: "azure-native:frontdoor/v20200501:FrontDoor" }, { type: "azure-native:frontdoor/v20210601:FrontDoor" }, { type: "azure-native:frontdoor/v20251001:FrontDoor" }, { type: "azure-native:network/v20210601:FrontDoor" }, { type: "azure-native:network:FrontDoor" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:frontdoor/v20180801:FrontDoor" }, { type: "azure-native:frontdoor/v20190401:FrontDoor" }, { type: "azure-native:frontdoor/v20190501:FrontDoor" }, { type: "azure-native:frontdoor/v20200101:FrontDoor" }, { type: "azure-native:frontdoor/v20200401:FrontDoor" }, { type: "azure-native:frontdoor/v20200501:FrontDoor" }, { type: "azure-native:frontdoor/v20210601:FrontDoor" }, { type: "azure-native:frontdoor/v20251001:FrontDoor" }, { type: "azure-native:frontdoor/v20251101:FrontDoor" }, { type: "azure-native:network/v20210601:FrontDoor" }, { type: "azure-native:network:FrontDoor" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FrontDoor.__pulumiType, name, resourceInputs, opts);
     }
@@ -182,49 +182,49 @@ export interface FrontDoorArgs {
     /**
      * Backend pools available to routing rules.
      */
-    backendPools?: pulumi.Input<pulumi.Input<types.inputs.BackendPoolArgs>[]>;
+    backendPools?: pulumi.Input<pulumi.Input<types.inputs.BackendPoolArgs>[] | undefined>;
     /**
      * Settings for all backendPools
      */
-    backendPoolsSettings?: pulumi.Input<types.inputs.BackendPoolsSettingsArgs>;
+    backendPoolsSettings?: pulumi.Input<types.inputs.BackendPoolsSettingsArgs | undefined>;
     /**
      * Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
      */
-    enabledState?: pulumi.Input<string | types.enums.FrontDoorEnabledState>;
+    enabledState?: pulumi.Input<string | types.enums.FrontDoorEnabledState | undefined>;
     /**
      * A friendly name for the frontDoor
      */
-    friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string | undefined>;
     /**
      * Name of the Front Door which is globally unique.
      */
-    frontDoorName?: pulumi.Input<string>;
+    frontDoorName?: pulumi.Input<string | undefined>;
     /**
      * Frontend endpoints available to routing rules.
      */
-    frontendEndpoints?: pulumi.Input<pulumi.Input<types.inputs.FrontendEndpointArgs>[]>;
+    frontendEndpoints?: pulumi.Input<pulumi.Input<types.inputs.FrontendEndpointArgs>[] | undefined>;
     /**
      * Health probe settings associated with this Front Door instance.
      */
-    healthProbeSettings?: pulumi.Input<pulumi.Input<types.inputs.HealthProbeSettingsModelArgs>[]>;
+    healthProbeSettings?: pulumi.Input<pulumi.Input<types.inputs.HealthProbeSettingsModelArgs>[] | undefined>;
     /**
      * Load balancing settings associated with this Front Door instance.
      */
-    loadBalancingSettings?: pulumi.Input<pulumi.Input<types.inputs.LoadBalancingSettingsModelArgs>[]>;
+    loadBalancingSettings?: pulumi.Input<pulumi.Input<types.inputs.LoadBalancingSettingsModelArgs>[] | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
-     * Name of the Resource group within the Azure subscription.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * Routing rules associated with this Front Door.
      */
-    routingRules?: pulumi.Input<pulumi.Input<types.inputs.RoutingRuleArgs>[]>;
+    routingRules?: pulumi.Input<pulumi.Input<types.inputs.RoutingRuleArgs>[] | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -118,11 +118,11 @@ export interface BuildpackBindingArgs {
     /**
      * The name of the Buildpack Binding Name
      */
-    buildpackBindingName?: pulumi.Input<string>;
+    buildpackBindingName?: pulumi.Input<string | undefined>;
     /**
      * Properties of a buildpack binding
      */
-    properties?: pulumi.Input<types.inputs.BuildpackBindingPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.BuildpackBindingPropertiesArgs | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

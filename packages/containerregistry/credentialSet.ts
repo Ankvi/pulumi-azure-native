@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview, 2025-06-01-preview, 2025-11-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview, 2025-06-01-preview, 2025-11-01, 2026-01-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CredentialSet extends pulumi.CustomResource {
     /**
@@ -114,7 +114,7 @@ export class CredentialSet extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20230101preview:CredentialSet" }, { type: "azure-native:containerregistry/v20230601preview:CredentialSet" }, { type: "azure-native:containerregistry/v20230701:CredentialSet" }, { type: "azure-native:containerregistry/v20230801preview:CredentialSet" }, { type: "azure-native:containerregistry/v20231101preview:CredentialSet" }, { type: "azure-native:containerregistry/v20241101preview:CredentialSet" }, { type: "azure-native:containerregistry/v20250301preview:CredentialSet" }, { type: "azure-native:containerregistry/v20250401:CredentialSet" }, { type: "azure-native:containerregistry/v20250501preview:CredentialSet" }, { type: "azure-native:containerregistry/v20250601preview:CredentialSet" }, { type: "azure-native:containerregistry/v20251101:CredentialSet" }, { type: "azure-native:containerregistry/v20260101preview:CredentialSet" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20230101preview:CredentialSet" }, { type: "azure-native:containerregistry/v20230601preview:CredentialSet" }, { type: "azure-native:containerregistry/v20230701:CredentialSet" }, { type: "azure-native:containerregistry/v20230801preview:CredentialSet" }, { type: "azure-native:containerregistry/v20231101preview:CredentialSet" }, { type: "azure-native:containerregistry/v20241101preview:CredentialSet" }, { type: "azure-native:containerregistry/v20250301preview:CredentialSet" }, { type: "azure-native:containerregistry/v20250401:CredentialSet" }, { type: "azure-native:containerregistry/v20250501preview:CredentialSet" }, { type: "azure-native:containerregistry/v20250601preview:CredentialSet" }, { type: "azure-native:containerregistry/v20251101:CredentialSet" }, { type: "azure-native:containerregistry/v20260101preview:CredentialSet" }, { type: "azure-native:containerregistry/v20260301preview:CredentialSet" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CredentialSet.__pulumiType, name, resourceInputs, opts);
     }
@@ -128,19 +128,19 @@ export interface CredentialSetArgs {
      * List of authentication credentials stored for an upstream.
      * Usually consists of a primary and an optional secondary credential.
      */
-    authCredentials?: pulumi.Input<pulumi.Input<types.inputs.AuthCredentialArgs>[]>;
+    authCredentials?: pulumi.Input<pulumi.Input<types.inputs.AuthCredentialArgs>[] | undefined>;
     /**
      * The name of the credential set.
      */
-    credentialSetName?: pulumi.Input<string>;
+    credentialSetName?: pulumi.Input<string | undefined>;
     /**
      * Identities associated with the resource. This is used to access the KeyVault secrets.
      */
-    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs | undefined>;
     /**
      * The credentials are stored for this upstream or login server.
      */
-    loginServer?: pulumi.Input<string>;
+    loginServer?: pulumi.Input<string | undefined>;
     /**
      * The name of the container registry.
      */

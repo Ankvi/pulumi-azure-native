@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
  *
- * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DisasterRecoveryConfig extends pulumi.CustomResource {
     /**
@@ -119,7 +119,7 @@ export class DisasterRecoveryConfig extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:servicebus/v20170401:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20180101preview:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20210101preview:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20210601preview:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20211101:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20220101preview:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20221001preview:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20230101preview:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20240101:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20250501preview:DisasterRecoveryConfig" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:servicebus/v20170401:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20180101preview:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20210101preview:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20210601preview:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20211101:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20220101preview:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20221001preview:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20230101preview:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20240101:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20250501preview:DisasterRecoveryConfig" }, { type: "azure-native:servicebus/v20260101:DisasterRecoveryConfig" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DisasterRecoveryConfig.__pulumiType, name, resourceInputs, opts);
     }
@@ -132,11 +132,11 @@ export interface DisasterRecoveryConfigArgs {
     /**
      * The Disaster Recovery configuration name
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
      */
-    alternateName?: pulumi.Input<string>;
+    alternateName?: pulumi.Input<string | undefined>;
     /**
      * The namespace name
      */
@@ -144,7 +144,7 @@ export interface DisasterRecoveryConfigArgs {
     /**
      * ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
      */
-    partnerNamespace?: pulumi.Input<string>;
+    partnerNamespace?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

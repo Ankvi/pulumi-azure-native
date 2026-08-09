@@ -298,7 +298,7 @@ export interface ClientEncryptionPolicyResponse {
      */
     includedPaths: ClientEncryptionIncludedPathResponse[];
     /**
-     * Version of the client encryption policy definition. Supported versions are 1 and 2. Version 2 supports id and partition key path encryption. 
+     * Version of the client encryption policy definition. Supported versions are 1 and 2. Version 2 supports id and partition key path encryption.
      */
     policyFormatVersion: number;
 }
@@ -496,6 +496,37 @@ export interface ConsistencyPolicyResponse {
 /**
  * The configuration of the partition key to be used for partitioning data into multiple partitions
  */
+export interface ContainerPartitionKeyGremlinResourceGremlinGraphResponse {
+    /**
+     * Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
+     */
+    kind?: string;
+    /**
+     * List of paths using which data within the container can be partitioned
+     */
+    paths?: string[];
+    /**
+     * Indicates if the container is using a system generated partition key
+     */
+    systemKey: boolean;
+    /**
+     * Indicates the version of the partition key definition
+     */
+    version?: number;
+}
+/**
+ * containerPartitionKeyGremlinResourceGremlinGraphResponseProvideDefaults sets the appropriate defaults for ContainerPartitionKeyGremlinResourceGremlinGraphResponse
+ */
+export function containerPartitionKeyGremlinResourceGremlinGraphResponseProvideDefaults(val: ContainerPartitionKeyGremlinResourceGremlinGraphResponse): ContainerPartitionKeyGremlinResourceGremlinGraphResponse {
+    return {
+        ...val,
+        kind: (val.kind) ?? "Hash",
+    };
+}
+
+/**
+ * The configuration of the partition key to be used for partitioning data into multiple partitions
+ */
 export interface ContainerPartitionKeyResponse {
     /**
      * Indicates the kind of algorithm used for partitioning
@@ -519,7 +550,7 @@ export function containerPartitionKeyResponseProvideDefaults(val: ContainerParti
 /**
  * The configuration of the partition key to be used for partitioning data into multiple partitions
  */
-export interface ContainerPartitionKeyResponseV1 {
+export interface ContainerPartitionKeySqlResourceSqlContainerResponse {
     /**
      * Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
      */
@@ -538,40 +569,9 @@ export interface ContainerPartitionKeyResponseV1 {
     version?: number;
 }
 /**
- * containerPartitionKeyResponseV1ProvideDefaults sets the appropriate defaults for ContainerPartitionKeyResponseV1
+ * containerPartitionKeySqlResourceSqlContainerResponseProvideDefaults sets the appropriate defaults for ContainerPartitionKeySqlResourceSqlContainerResponse
  */
-export function containerPartitionKeyResponseV1ProvideDefaults(val: ContainerPartitionKeyResponseV1): ContainerPartitionKeyResponseV1 {
-    return {
-        ...val,
-        kind: (val.kind) ?? "Hash",
-    };
-}
-
-/**
- * The configuration of the partition key to be used for partitioning data into multiple partitions
- */
-export interface ContainerPartitionKeyResponseV2 {
-    /**
-     * Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
-     */
-    kind?: string;
-    /**
-     * List of paths using which data within the container can be partitioned
-     */
-    paths?: string[];
-    /**
-     * Indicates if the container is using a system generated partition key
-     */
-    systemKey: boolean;
-    /**
-     * Indicates the version of the partition key definition
-     */
-    version?: number;
-}
-/**
- * containerPartitionKeyResponseV2ProvideDefaults sets the appropriate defaults for ContainerPartitionKeyResponseV2
- */
-export function containerPartitionKeyResponseV2ProvideDefaults(val: ContainerPartitionKeyResponseV2): ContainerPartitionKeyResponseV2 {
+export function containerPartitionKeySqlResourceSqlContainerResponseProvideDefaults(val: ContainerPartitionKeySqlResourceSqlContainerResponse): ContainerPartitionKeySqlResourceSqlContainerResponse {
     return {
         ...val,
         kind: (val.kind) ?? "Hash",
@@ -941,13 +941,16 @@ export interface FullTextPolicyResponse {
     fullTextPaths?: FullTextPathResponse[];
 }
 
-export interface GarnetClusterResourceResponseEndPoints {
+/**
+ * Endpoint for clients to connect to the cluster.
+ */
+export interface GarnetClusterResourcePropertiesEndPointsItemResponse {
     /**
-     * Ipv4 address of the endpoint
+     * Ipv4 address of the endpoint.
      */
     ipAddress?: string;
     /**
-     * Port number
+     * Port number.
      */
     port?: number;
 }
@@ -955,7 +958,7 @@ export interface GarnetClusterResourceResponseEndPoints {
 /**
  * Properties of a Garnet cache cluster.
  */
-export interface GarnetClusterResourceResponseProperties {
+export interface GarnetClusterResourcePropertiesResponse {
     /**
      * Allocation state of the cluster and data center resources. Active implies the virtual machines of the cluster are allocated, deallocated implies virtual machines and resources are deallocated.
      */
@@ -969,19 +972,19 @@ export interface GarnetClusterResourceResponseProperties {
      */
     clusterType?: string;
     /**
-     * endpoints for clients to connect to the cluster.
+     * Endpoints for clients to connect to the cluster.
      */
-    endPoints: GarnetClusterResourceResponseEndPoints[];
+    endPoints: GarnetClusterResourcePropertiesEndPointsItemResponse[];
     /**
      * Extensions to be added or updated on cluster.
      */
     extensions?: string[];
     /**
-     * Number of nodes
+     * Number of nodes.
      */
     nodeCount?: number;
     /**
-     * Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2
+     * Virtual Machine SKU used for clusters. Default value is Standard_DS14_v2.
      */
     nodeSku?: string;
     /**
@@ -989,11 +992,11 @@ export interface GarnetClusterResourceResponseProperties {
      */
     provisionError?: ErrorDetailResponse;
     /**
-     * The status of the resource at the time the operation was called.
+     * The provisioning state of the resource.
      */
     provisioningState: string;
     /**
-     * Number of copies of data maintained by the cluster
+     * Number of copies of data maintained by the cluster.
      */
     replicationFactor?: number;
     /**
@@ -1168,11 +1171,11 @@ export interface GremlinGraphGetPropertiesResponseResource {
     /**
      * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
      */
-    indexingPolicy?: IndexingPolicyResponseV1;
+    indexingPolicy?: IndexingPolicyGremlinResourceGremlinGraphResponse;
     /**
      * The configuration of the partition key to be used for partitioning data into multiple partitions
      */
-    partitionKey?: ContainerPartitionKeyResponseV1;
+    partitionKey?: ContainerPartitionKeyGremlinResourceGremlinGraphResponse;
     /**
      * Parameters to indicate the information about the restore
      */
@@ -1197,8 +1200,8 @@ export function gremlinGraphGetPropertiesResponseResourceProvideDefaults(val: Gr
     return {
         ...val,
         conflictResolutionPolicy: (val.conflictResolutionPolicy ? conflictResolutionPolicyResponseProvideDefaults(val.conflictResolutionPolicy) : undefined),
-        indexingPolicy: (val.indexingPolicy ? indexingPolicyResponseV1ProvideDefaults(val.indexingPolicy) : undefined),
-        partitionKey: (val.partitionKey ? containerPartitionKeyResponseV1ProvideDefaults(val.partitionKey) : undefined),
+        indexingPolicy: (val.indexingPolicy ? indexingPolicyGremlinResourceGremlinGraphResponseProvideDefaults(val.indexingPolicy) : undefined),
+        partitionKey: (val.partitionKey ? containerPartitionKeyGremlinResourceGremlinGraphResponseProvideDefaults(val.partitionKey) : undefined),
     };
 }
 
@@ -1247,6 +1250,53 @@ export function indexesResponseProvideDefaults(val: IndexesResponse): IndexesRes
 /**
  * Cosmos DB indexing policy
  */
+export interface IndexingPolicyGremlinResourceGremlinGraphResponse {
+    /**
+     * Indicates if the indexing policy is automatic
+     */
+    automatic?: boolean;
+    /**
+     * List of composite path list
+     */
+    compositeIndexes?: CompositePathResponse[][];
+    /**
+     * List of paths to exclude from indexing
+     */
+    excludedPaths?: ExcludedPathResponse[];
+    /**
+     * List of paths to include in the full text indexing
+     */
+    fullTextIndexes?: FullTextIndexPathResponse[];
+    /**
+     * List of paths to include in the indexing
+     */
+    includedPaths?: IncludedPathResponse[];
+    /**
+     * Indicates the indexing mode.
+     */
+    indexingMode?: string;
+    /**
+     * List of spatial specifics
+     */
+    spatialIndexes?: SpatialSpecResponse[];
+    /**
+     * List of paths to include in the vector indexing
+     */
+    vectorIndexes?: VectorIndexResponse[];
+}
+/**
+ * indexingPolicyGremlinResourceGremlinGraphResponseProvideDefaults sets the appropriate defaults for IndexingPolicyGremlinResourceGremlinGraphResponse
+ */
+export function indexingPolicyGremlinResourceGremlinGraphResponseProvideDefaults(val: IndexingPolicyGremlinResourceGremlinGraphResponse): IndexingPolicyGremlinResourceGremlinGraphResponse {
+    return {
+        ...val,
+        indexingMode: (val.indexingMode) ?? "consistent",
+    };
+}
+
+/**
+ * Cosmos DB indexing policy
+ */
 export interface IndexingPolicyResponse {
     /**
      * Indicates if the indexing policy is automatic
@@ -1278,7 +1328,7 @@ export function indexingPolicyResponseProvideDefaults(val: IndexingPolicyRespons
 /**
  * Cosmos DB indexing policy
  */
-export interface IndexingPolicyResponseV1 {
+export interface IndexingPolicySqlResourceSqlContainerResponse {
     /**
      * Indicates if the indexing policy is automatic
      */
@@ -1313,56 +1363,9 @@ export interface IndexingPolicyResponseV1 {
     vectorIndexes?: VectorIndexResponse[];
 }
 /**
- * indexingPolicyResponseV1ProvideDefaults sets the appropriate defaults for IndexingPolicyResponseV1
+ * indexingPolicySqlResourceSqlContainerResponseProvideDefaults sets the appropriate defaults for IndexingPolicySqlResourceSqlContainerResponse
  */
-export function indexingPolicyResponseV1ProvideDefaults(val: IndexingPolicyResponseV1): IndexingPolicyResponseV1 {
-    return {
-        ...val,
-        indexingMode: (val.indexingMode) ?? "consistent",
-    };
-}
-
-/**
- * Cosmos DB indexing policy
- */
-export interface IndexingPolicyResponseV2 {
-    /**
-     * Indicates if the indexing policy is automatic
-     */
-    automatic?: boolean;
-    /**
-     * List of composite path list
-     */
-    compositeIndexes?: CompositePathResponse[][];
-    /**
-     * List of paths to exclude from indexing
-     */
-    excludedPaths?: ExcludedPathResponse[];
-    /**
-     * List of paths to include in the full text indexing
-     */
-    fullTextIndexes?: FullTextIndexPathResponse[];
-    /**
-     * List of paths to include in the indexing
-     */
-    includedPaths?: IncludedPathResponse[];
-    /**
-     * Indicates the indexing mode.
-     */
-    indexingMode?: string;
-    /**
-     * List of spatial specifics
-     */
-    spatialIndexes?: SpatialSpecResponse[];
-    /**
-     * List of paths to include in the vector indexing
-     */
-    vectorIndexes?: VectorIndexResponse[];
-}
-/**
- * indexingPolicyResponseV2ProvideDefaults sets the appropriate defaults for IndexingPolicyResponseV2
- */
-export function indexingPolicyResponseV2ProvideDefaults(val: IndexingPolicyResponseV2): IndexingPolicyResponseV2 {
+export function indexingPolicySqlResourceSqlContainerResponseProvideDefaults(val: IndexingPolicySqlResourceSqlContainerResponse): IndexingPolicySqlResourceSqlContainerResponse {
     return {
         ...val,
         indexingMode: (val.indexingMode) ?? "consistent",
@@ -1719,7 +1722,7 @@ export interface PermissionResponse {
 /**
  * The set of data plane operations permitted through this Role Definition.
  */
-export interface PermissionResponseV1 {
+export interface PermissionSqlResourceSqlRoleDefinitionResponse {
     /**
      * An array of data actions that are allowed.
      */
@@ -1959,11 +1962,11 @@ export interface SqlContainerGetPropertiesResponseResource {
     /**
      * The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container
      */
-    indexingPolicy?: IndexingPolicyResponseV2;
+    indexingPolicy?: IndexingPolicySqlResourceSqlContainerResponse;
     /**
      * The configuration of the partition key to be used for partitioning data into multiple partitions
      */
-    partitionKey?: ContainerPartitionKeyResponseV2;
+    partitionKey?: ContainerPartitionKeySqlResourceSqlContainerResponse;
     /**
      * Parameters to indicate the information about the restore
      */
@@ -1992,8 +1995,8 @@ export function sqlContainerGetPropertiesResponseResourceProvideDefaults(val: Sq
     return {
         ...val,
         conflictResolutionPolicy: (val.conflictResolutionPolicy ? conflictResolutionPolicyResponseProvideDefaults(val.conflictResolutionPolicy) : undefined),
-        indexingPolicy: (val.indexingPolicy ? indexingPolicyResponseV2ProvideDefaults(val.indexingPolicy) : undefined),
-        partitionKey: (val.partitionKey ? containerPartitionKeyResponseV2ProvideDefaults(val.partitionKey) : undefined),
+        indexingPolicy: (val.indexingPolicy ? indexingPolicySqlResourceSqlContainerResponseProvideDefaults(val.indexingPolicy) : undefined),
+        partitionKey: (val.partitionKey ? containerPartitionKeySqlResourceSqlContainerResponseProvideDefaults(val.partitionKey) : undefined),
     };
 }
 

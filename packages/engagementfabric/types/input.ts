@@ -10,5 +10,5 @@ export interface SKUArgs {
     /**
      * The price tier of the SKU
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }

@@ -11,11 +11,11 @@ export interface CorsRuleResponse {
 }
 
 /**
- * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+ * Sets the CORS rules. You can include up to five CorsRule elements in the request.
  */
 export interface CorsRulesResponse {
     /**
-     * The list of CORS rules. You can include up to five CorsRule elements in the request. 
+     * The list of CORS rules. You can include up to five CorsRule elements in the request.
      */
     corsRules?: CorsRuleResponse[];
 }

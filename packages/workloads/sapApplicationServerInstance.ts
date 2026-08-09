@@ -202,11 +202,11 @@ export interface SapApplicationServerInstanceArgs {
     /**
      * The name of SAP Application Server instance resource.
      */
-    applicationInstanceName?: pulumi.Input<string>;
+    applicationInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -218,5 +218,5 @@ export interface SapApplicationServerInstanceArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

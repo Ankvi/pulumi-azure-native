@@ -1,11 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * A domain specific resource identifier.
  *
- * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+ * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppDomainOwnershipIdentifier extends pulumi.CustomResource {
     /**
@@ -43,11 +44,15 @@ export class WebAppDomainOwnershipIdentifier extends pulumi.CustomResource {
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -78,16 +83,18 @@ export class WebAppDomainOwnershipIdentifier extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["value"] = args?.value;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20160801:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20180201:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20181101:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20190801:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20200601:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20200901:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20201001:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20201201:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20210101:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20210115:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20210201:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20210301:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20220301:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20220901:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20230101:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20231201:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20240401:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20241101:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20250301:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20250501:WebAppDomainOwnershipIdentifier" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20160801:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20180201:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20181101:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20190801:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20200601:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20200901:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20201001:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20201201:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20210101:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20210115:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20210201:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20210301:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20220301:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20220901:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20230101:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20231201:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20240401:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20241101:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20250301:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20250501:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20260301preview:WebAppDomainOwnershipIdentifier" }, { type: "azure-native:web/v20260315:WebAppDomainOwnershipIdentifier" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppDomainOwnershipIdentifier.__pulumiType, name, resourceInputs, opts);
     }
@@ -100,21 +107,21 @@ export interface WebAppDomainOwnershipIdentifierArgs {
     /**
      * Name of domain ownership identifier.
      */
-    domainOwnershipIdentifierName?: pulumi.Input<string>;
+    domainOwnershipIdentifierName?: pulumi.Input<string | undefined>;
     /**
      * Kind of resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Name of the app.
      */
     name: pulumi.Input<string>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * String representation of the identity.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }

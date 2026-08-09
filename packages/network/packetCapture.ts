@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PacketCapture extends pulumi.CustomResource {
     /**
@@ -116,7 +116,7 @@ export class PacketCapture extends pulumi.CustomResource {
                 throw new Error("Missing required property 'target'");
             }
             resourceInputs["bytesToCapturePerPacket"] = (args?.bytesToCapturePerPacket) ?? 0;
-            resourceInputs["captureSettings"] = args ? (args.captureSettings ? pulumi.output(args.captureSettings).apply(types.inputs.packetCaptureSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["captureSettings"] = args ? pulumi.output(args.captureSettings).apply(v => v === undefined ? undefined : types.inputs.packetCaptureSettingsArgsProvideDefaults(v)) : undefined;
             resourceInputs["continuousCapture"] = args?.continuousCapture;
             resourceInputs["filters"] = args?.filters;
             resourceInputs["networkWatcherName"] = args?.networkWatcherName;
@@ -149,7 +149,7 @@ export class PacketCapture extends pulumi.CustomResource {
             resourceInputs["totalBytesPerSession"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20160901:PacketCapture" }, { type: "azure-native:network/v20161201:PacketCapture" }, { type: "azure-native:network/v20170301:PacketCapture" }, { type: "azure-native:network/v20170601:PacketCapture" }, { type: "azure-native:network/v20170801:PacketCapture" }, { type: "azure-native:network/v20170901:PacketCapture" }, { type: "azure-native:network/v20171001:PacketCapture" }, { type: "azure-native:network/v20171101:PacketCapture" }, { type: "azure-native:network/v20180101:PacketCapture" }, { type: "azure-native:network/v20180201:PacketCapture" }, { type: "azure-native:network/v20180401:PacketCapture" }, { type: "azure-native:network/v20180601:PacketCapture" }, { type: "azure-native:network/v20180701:PacketCapture" }, { type: "azure-native:network/v20180801:PacketCapture" }, { type: "azure-native:network/v20181001:PacketCapture" }, { type: "azure-native:network/v20181101:PacketCapture" }, { type: "azure-native:network/v20181201:PacketCapture" }, { type: "azure-native:network/v20190201:PacketCapture" }, { type: "azure-native:network/v20190401:PacketCapture" }, { type: "azure-native:network/v20190601:PacketCapture" }, { type: "azure-native:network/v20190701:PacketCapture" }, { type: "azure-native:network/v20190801:PacketCapture" }, { type: "azure-native:network/v20190901:PacketCapture" }, { type: "azure-native:network/v20191101:PacketCapture" }, { type: "azure-native:network/v20191201:PacketCapture" }, { type: "azure-native:network/v20200301:PacketCapture" }, { type: "azure-native:network/v20200401:PacketCapture" }, { type: "azure-native:network/v20200501:PacketCapture" }, { type: "azure-native:network/v20200601:PacketCapture" }, { type: "azure-native:network/v20200701:PacketCapture" }, { type: "azure-native:network/v20200801:PacketCapture" }, { type: "azure-native:network/v20201101:PacketCapture" }, { type: "azure-native:network/v20210201:PacketCapture" }, { type: "azure-native:network/v20210301:PacketCapture" }, { type: "azure-native:network/v20210501:PacketCapture" }, { type: "azure-native:network/v20210801:PacketCapture" }, { type: "azure-native:network/v20220101:PacketCapture" }, { type: "azure-native:network/v20220501:PacketCapture" }, { type: "azure-native:network/v20220701:PacketCapture" }, { type: "azure-native:network/v20220901:PacketCapture" }, { type: "azure-native:network/v20221101:PacketCapture" }, { type: "azure-native:network/v20230201:PacketCapture" }, { type: "azure-native:network/v20230401:PacketCapture" }, { type: "azure-native:network/v20230501:PacketCapture" }, { type: "azure-native:network/v20230601:PacketCapture" }, { type: "azure-native:network/v20230901:PacketCapture" }, { type: "azure-native:network/v20231101:PacketCapture" }, { type: "azure-native:network/v20240101:PacketCapture" }, { type: "azure-native:network/v20240301:PacketCapture" }, { type: "azure-native:network/v20240501:PacketCapture" }, { type: "azure-native:network/v20240701:PacketCapture" }, { type: "azure-native:network/v20241001:PacketCapture" }, { type: "azure-native:network/v20250101:PacketCapture" }, { type: "azure-native:network/v20250301:PacketCapture" }, { type: "azure-native:network/v20250501:PacketCapture" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20160901:PacketCapture" }, { type: "azure-native:network/v20161201:PacketCapture" }, { type: "azure-native:network/v20170301:PacketCapture" }, { type: "azure-native:network/v20170601:PacketCapture" }, { type: "azure-native:network/v20170801:PacketCapture" }, { type: "azure-native:network/v20170901:PacketCapture" }, { type: "azure-native:network/v20171001:PacketCapture" }, { type: "azure-native:network/v20171101:PacketCapture" }, { type: "azure-native:network/v20180101:PacketCapture" }, { type: "azure-native:network/v20180201:PacketCapture" }, { type: "azure-native:network/v20180401:PacketCapture" }, { type: "azure-native:network/v20180601:PacketCapture" }, { type: "azure-native:network/v20180701:PacketCapture" }, { type: "azure-native:network/v20180801:PacketCapture" }, { type: "azure-native:network/v20181001:PacketCapture" }, { type: "azure-native:network/v20181101:PacketCapture" }, { type: "azure-native:network/v20181201:PacketCapture" }, { type: "azure-native:network/v20190201:PacketCapture" }, { type: "azure-native:network/v20190401:PacketCapture" }, { type: "azure-native:network/v20190601:PacketCapture" }, { type: "azure-native:network/v20190701:PacketCapture" }, { type: "azure-native:network/v20190801:PacketCapture" }, { type: "azure-native:network/v20190901:PacketCapture" }, { type: "azure-native:network/v20191101:PacketCapture" }, { type: "azure-native:network/v20191201:PacketCapture" }, { type: "azure-native:network/v20200301:PacketCapture" }, { type: "azure-native:network/v20200401:PacketCapture" }, { type: "azure-native:network/v20200501:PacketCapture" }, { type: "azure-native:network/v20200601:PacketCapture" }, { type: "azure-native:network/v20200701:PacketCapture" }, { type: "azure-native:network/v20200801:PacketCapture" }, { type: "azure-native:network/v20201101:PacketCapture" }, { type: "azure-native:network/v20210201:PacketCapture" }, { type: "azure-native:network/v20210301:PacketCapture" }, { type: "azure-native:network/v20210501:PacketCapture" }, { type: "azure-native:network/v20210801:PacketCapture" }, { type: "azure-native:network/v20220101:PacketCapture" }, { type: "azure-native:network/v20220501:PacketCapture" }, { type: "azure-native:network/v20220701:PacketCapture" }, { type: "azure-native:network/v20220901:PacketCapture" }, { type: "azure-native:network/v20221101:PacketCapture" }, { type: "azure-native:network/v20230201:PacketCapture" }, { type: "azure-native:network/v20230401:PacketCapture" }, { type: "azure-native:network/v20230501:PacketCapture" }, { type: "azure-native:network/v20230601:PacketCapture" }, { type: "azure-native:network/v20230901:PacketCapture" }, { type: "azure-native:network/v20231101:PacketCapture" }, { type: "azure-native:network/v20240101:PacketCapture" }, { type: "azure-native:network/v20240301:PacketCapture" }, { type: "azure-native:network/v20240501:PacketCapture" }, { type: "azure-native:network/v20240701:PacketCapture" }, { type: "azure-native:network/v20241001:PacketCapture" }, { type: "azure-native:network/v20250101:PacketCapture" }, { type: "azure-native:network/v20250301:PacketCapture" }, { type: "azure-native:network/v20250501:PacketCapture" }, { type: "azure-native:network/v20250701:PacketCapture" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PacketCapture.__pulumiType, name, resourceInputs, opts);
     }
@@ -162,19 +162,19 @@ export interface PacketCaptureArgs {
     /**
      * Number of bytes captured per packet, the remaining bytes are truncated.
      */
-    bytesToCapturePerPacket?: pulumi.Input<number>;
+    bytesToCapturePerPacket?: pulumi.Input<number | undefined>;
     /**
      * The capture setting holds the 'FileCount', 'FileSizeInBytes', 'SessionTimeLimitInSeconds' values.
      */
-    captureSettings?: pulumi.Input<types.inputs.PacketCaptureSettingsArgs>;
+    captureSettings?: pulumi.Input<types.inputs.PacketCaptureSettingsArgs | undefined>;
     /**
      * This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be consider as 'null', default value is 'null'.
      */
-    continuousCapture?: pulumi.Input<boolean>;
+    continuousCapture?: pulumi.Input<boolean | undefined>;
     /**
      * A list of packet capture filters.
      */
-    filters?: pulumi.Input<pulumi.Input<types.inputs.PacketCaptureFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<types.inputs.PacketCaptureFilterArgs>[] | undefined>;
     /**
      * The name of the network watcher.
      */
@@ -182,7 +182,7 @@ export interface PacketCaptureArgs {
     /**
      * The name of the packet capture session.
      */
-    packetCaptureName?: pulumi.Input<string>;
+    packetCaptureName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group.
      */
@@ -190,7 +190,7 @@ export interface PacketCaptureArgs {
     /**
      * A list of AzureVMSS instances which can be included or excluded to run packet capture. If both included and excluded are empty, then the packet capture will run on all instances of AzureVMSS.
      */
-    scope?: pulumi.Input<types.inputs.PacketCaptureMachineScopeArgs>;
+    scope?: pulumi.Input<types.inputs.PacketCaptureMachineScopeArgs | undefined>;
     /**
      * The storage location for a packet capture session.
      */
@@ -202,13 +202,13 @@ export interface PacketCaptureArgs {
     /**
      * Target type of the resource provided.
      */
-    targetType?: pulumi.Input<types.enums.PacketCaptureTargetType>;
+    targetType?: pulumi.Input<types.enums.PacketCaptureTargetType | undefined>;
     /**
      * Maximum duration of the capture session in seconds.
      */
-    timeLimitInSeconds?: pulumi.Input<number>;
+    timeLimitInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum size of the capture output.
      */
-    totalBytesPerSession?: pulumi.Input<number>;
+    totalBytesPerSession?: pulumi.Input<number | undefined>;
 }

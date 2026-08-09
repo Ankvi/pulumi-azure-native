@@ -64,7 +64,7 @@ export class RoleAssignment extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The role assignment name.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -84,7 +84,11 @@ export class RoleAssignment extends pulumi.CustomResource {
      */
     declare public readonly scope: pulumi.Output<string>;
     /**
-     * The role assignment type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -129,6 +133,7 @@ export class RoleAssignment extends pulumi.CustomResource {
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updatedBy"] = undefined /*out*/;
             resourceInputs["updatedOn"] = undefined /*out*/;
@@ -145,6 +150,7 @@ export class RoleAssignment extends pulumi.CustomResource {
             resourceInputs["principalType"] = undefined /*out*/;
             resourceInputs["roleDefinitionId"] = undefined /*out*/;
             resourceInputs["scope"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updatedBy"] = undefined /*out*/;
             resourceInputs["updatedOn"] = undefined /*out*/;
@@ -163,19 +169,19 @@ export interface RoleAssignmentArgs {
     /**
      * The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
      */
-    condition?: pulumi.Input<string>;
+    condition?: pulumi.Input<string | undefined>;
     /**
      * Version of the condition. Currently the only accepted value is '2.0'
      */
-    conditionVersion?: pulumi.Input<string>;
+    conditionVersion?: pulumi.Input<string | undefined>;
     /**
      * Id of the delegated managed identity resource
      */
-    delegatedManagedIdentityResourceId?: pulumi.Input<string>;
+    delegatedManagedIdentityResourceId?: pulumi.Input<string | undefined>;
     /**
      * Description of role assignment
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The principal ID.
      */
@@ -183,17 +189,17 @@ export interface RoleAssignmentArgs {
     /**
      * The principal type of the assigned principal ID.
      */
-    principalType?: pulumi.Input<string | types.enums.PrincipalType>;
+    principalType?: pulumi.Input<string | types.enums.PrincipalType | undefined>;
     /**
      * The name of the role assignment. It can be any valid GUID.
      */
-    roleAssignmentName?: pulumi.Input<string>;
+    roleAssignmentName?: pulumi.Input<string | undefined>;
     /**
      * The role definition ID.
      */
     roleDefinitionId: pulumi.Input<string>;
     /**
-     * The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scope: pulumi.Input<string>;
 }

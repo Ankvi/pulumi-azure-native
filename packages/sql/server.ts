@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2014-04-01, 2015-05-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2014-04-01, 2015-05-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  *
  * **Warning:** when `AzureADOnlyAuthentication` is enabled, the Azure SQL API rejects any `AdministratorLoginPassword`, even if it is the same as the current one.
  *
@@ -198,7 +198,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["workspaceFeature"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:Server" }, { type: "azure-native:sql/v20150501preview:Server" }, { type: "azure-native:sql/v20190601preview:Server" }, { type: "azure-native:sql/v20200202preview:Server" }, { type: "azure-native:sql/v20200801preview:Server" }, { type: "azure-native:sql/v20201101preview:Server" }, { type: "azure-native:sql/v20210201preview:Server" }, { type: "azure-native:sql/v20210501preview:Server" }, { type: "azure-native:sql/v20210801preview:Server" }, { type: "azure-native:sql/v20211101:Server" }, { type: "azure-native:sql/v20211101preview:Server" }, { type: "azure-native:sql/v20220201preview:Server" }, { type: "azure-native:sql/v20220501preview:Server" }, { type: "azure-native:sql/v20220801preview:Server" }, { type: "azure-native:sql/v20221101preview:Server" }, { type: "azure-native:sql/v20230201preview:Server" }, { type: "azure-native:sql/v20230501preview:Server" }, { type: "azure-native:sql/v20230801:Server" }, { type: "azure-native:sql/v20230801preview:Server" }, { type: "azure-native:sql/v20240501preview:Server" }, { type: "azure-native:sql/v20241101preview:Server" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:Server" }, { type: "azure-native:sql/v20150501preview:Server" }, { type: "azure-native:sql/v20190601preview:Server" }, { type: "azure-native:sql/v20200202preview:Server" }, { type: "azure-native:sql/v20200801preview:Server" }, { type: "azure-native:sql/v20201101preview:Server" }, { type: "azure-native:sql/v20210201preview:Server" }, { type: "azure-native:sql/v20210501preview:Server" }, { type: "azure-native:sql/v20210801preview:Server" }, { type: "azure-native:sql/v20211101:Server" }, { type: "azure-native:sql/v20211101preview:Server" }, { type: "azure-native:sql/v20220201preview:Server" }, { type: "azure-native:sql/v20220501preview:Server" }, { type: "azure-native:sql/v20220801preview:Server" }, { type: "azure-native:sql/v20221101preview:Server" }, { type: "azure-native:sql/v20230201preview:Server" }, { type: "azure-native:sql/v20230501preview:Server" }, { type: "azure-native:sql/v20230801:Server" }, { type: "azure-native:sql/v20230801preview:Server" }, { type: "azure-native:sql/v20240501preview:Server" }, { type: "azure-native:sql/v20241101preview:Server" }, { type: "azure-native:sql/v20250101:Server" }, { type: "azure-native:sql/v20250201preview:Server" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Server.__pulumiType, name, resourceInputs, opts);
     }
@@ -211,47 +211,47 @@ export interface ServerArgs {
     /**
      * Administrator username for the server. Once created it cannot be changed.
      */
-    administratorLogin?: pulumi.Input<string>;
+    administratorLogin?: pulumi.Input<string | undefined>;
     /**
      * The administrator login password (required for server creation).
      */
-    administratorLoginPassword?: pulumi.Input<string>;
+    administratorLoginPassword?: pulumi.Input<string | undefined>;
     /**
      * The Azure Active Directory administrator of the server. This can only be used at server create time. If used for server update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
      */
-    administrators?: pulumi.Input<types.inputs.ServerExternalAdministratorArgs>;
+    administrators?: pulumi.Input<types.inputs.ServerExternalAdministratorArgs | undefined>;
     /**
      * The Client id used for cross tenant CMK scenario
      */
-    federatedClientId?: pulumi.Input<string>;
+    federatedClientId?: pulumi.Input<string | undefined>;
     /**
      * The Azure Active Directory identity of the server.
      */
-    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs | undefined>;
     /**
      * Whether or not to enable IPv6 support for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
-    isIPv6Enabled?: pulumi.Input<string | types.enums.ServerNetworkAccessFlag>;
+    isIPv6Enabled?: pulumi.Input<string | types.enums.ServerNetworkAccessFlag | undefined>;
     /**
      * A CMK URI of the key to use for encryption.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Minimal TLS version. Allowed values: 'None', 1.0', '1.1', '1.2', '1.3'
      */
-    minimalTlsVersion?: pulumi.Input<string | types.enums.MinimalTlsVersion>;
+    minimalTlsVersion?: pulumi.Input<string | types.enums.MinimalTlsVersion | undefined>;
     /**
      * The resource id of a user assigned identity to be used by default.
      */
-    primaryUserAssignedIdentityId?: pulumi.Input<string>;
+    primaryUserAssignedIdentityId?: pulumi.Input<string | undefined>;
     /**
      * Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter'
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.ServerPublicNetworkAccessFlag>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.ServerPublicNetworkAccessFlag | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -259,17 +259,17 @@ export interface ServerArgs {
     /**
      * Whether or not to restrict outbound network access for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
-    restrictOutboundNetworkAccess?: pulumi.Input<string | types.enums.ServerNetworkAccessFlag>;
+    restrictOutboundNetworkAccess?: pulumi.Input<string | types.enums.ServerNetworkAccessFlag | undefined>;
     /**
      * The name of the server.
      */
-    serverName?: pulumi.Input<string>;
+    serverName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The version of the server.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

@@ -7,11 +7,11 @@ export interface AFDDomainHttpsCustomizedCipherSuiteSetArgs {
     /**
      * Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
      */
-    cipherSuiteSetForTls12?: pulumi.Input<pulumi.Input<string | enums.AfdCustomizedCipherSuiteForTls12>[]>;
+    cipherSuiteSetForTls12?: pulumi.Input<pulumi.Input<string | enums.AfdCustomizedCipherSuiteForTls12>[] | undefined>;
     /**
      * Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
      */
-    cipherSuiteSetForTls13?: pulumi.Input<pulumi.Input<string | enums.AfdCustomizedCipherSuiteForTls13>[]>;
+    cipherSuiteSetForTls13?: pulumi.Input<pulumi.Input<string | enums.AfdCustomizedCipherSuiteForTls13>[] | undefined>;
 }
 
 /**
@@ -25,19 +25,19 @@ export interface AFDDomainHttpsParametersArgs {
     /**
      * cipher suite set type that will be used for Https
      */
-    cipherSuiteSetType?: pulumi.Input<string | enums.AfdCipherSuiteSetType>;
+    cipherSuiteSetType?: pulumi.Input<string | enums.AfdCipherSuiteSetType | undefined>;
     /**
      * Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
      */
-    customizedCipherSuiteSet?: pulumi.Input<AFDDomainHttpsCustomizedCipherSuiteSetArgs>;
+    customizedCipherSuiteSet?: pulumi.Input<AFDDomainHttpsCustomizedCipherSuiteSetArgs | undefined>;
     /**
      * TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
      */
-    minimumTlsVersion?: pulumi.Input<enums.AfdMinimumTlsVersion>;
+    minimumTlsVersion?: pulumi.Input<enums.AfdMinimumTlsVersion | undefined>;
     /**
      * Resource reference to the secret. ie. subs/rg/profile/secret
      */
-    secret?: pulumi.Input<ResourceReferenceArgs>;
+    secret?: pulumi.Input<ResourceReferenceArgs | undefined>;
 }
 
 /**
@@ -47,7 +47,7 @@ export interface ActivatedResourceReferenceArgs {
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -57,15 +57,15 @@ export interface AfdRouteCacheConfigurationArgs {
     /**
      * compression settings.
      */
-    compressionSettings?: pulumi.Input<CompressionSettingsArgs>;
+    compressionSettings?: pulumi.Input<CompressionSettingsArgs | undefined>;
     /**
      * query parameters to include or exclude (comma separated).
      */
-    queryParameters?: pulumi.Input<string>;
+    queryParameters?: pulumi.Input<string | undefined>;
     /**
      * Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
      */
-    queryStringCachingBehavior?: pulumi.Input<string | enums.AfdQueryStringCachingBehavior>;
+    queryStringCachingBehavior?: pulumi.Input<string | enums.AfdQueryStringCachingBehavior | undefined>;
 }
 
 /**
@@ -89,7 +89,7 @@ export interface AzureFirstPartyManagedCertificateParametersArgs {
     /**
      * The list of SANs.
      */
-    subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
+    subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of the secret resource.
      * Expected value is 'AzureFirstPartyManagedCertificate'.
@@ -104,23 +104,23 @@ export interface CacheConfigurationArgs {
     /**
      * Caching behavior for the requests
      */
-    cacheBehavior?: pulumi.Input<string | enums.RuleCacheBehavior>;
+    cacheBehavior?: pulumi.Input<string | enums.RuleCacheBehavior | undefined>;
     /**
      * The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss
      */
-    cacheDuration?: pulumi.Input<string>;
+    cacheDuration?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether content compression is enabled. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
      */
-    isCompressionEnabled?: pulumi.Input<string | enums.RuleIsCompressionEnabled>;
+    isCompressionEnabled?: pulumi.Input<string | enums.RuleIsCompressionEnabled | undefined>;
     /**
      * query parameters to include or exclude (comma separated).
      */
-    queryParameters?: pulumi.Input<string>;
+    queryParameters?: pulumi.Input<string | undefined>;
     /**
      * Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
      */
-    queryStringCachingBehavior?: pulumi.Input<string | enums.RuleQueryStringCachingBehavior>;
+    queryStringCachingBehavior?: pulumi.Input<string | enums.RuleQueryStringCachingBehavior | undefined>;
 }
 
 /**
@@ -134,13 +134,12 @@ export interface CacheExpirationActionParametersArgs {
     /**
      * The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss
      */
-    cacheDuration?: pulumi.Input<string>;
+    cacheDuration?: pulumi.Input<string | undefined>;
     /**
      * The level at which the content needs to be cached.
      */
     cacheType: pulumi.Input<string | enums.CacheType>;
     /**
-     *
      * Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleCacheExpirationActionParameters">;
@@ -153,13 +152,12 @@ export interface CacheKeyQueryStringActionParametersArgs {
     /**
      * query parameters to include or exclude (comma separated).
      */
-    queryParameters?: pulumi.Input<string>;
+    queryParameters?: pulumi.Input<string | undefined>;
     /**
      * Caching behavior for the requests
      */
     queryStringBehavior: pulumi.Input<string | enums.QueryStringBehavior>;
     /**
-     *
      * Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleCacheKeyQueryStringBehaviorActionParameters">;
@@ -172,11 +170,11 @@ export interface ClientPortMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -184,9 +182,8 @@ export interface ClientPortMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleClientPortConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleClientPortConditionParameters">;
@@ -208,11 +205,11 @@ export interface CompressionSettingsArgs {
     /**
      * List of content types on which compression applies. The value should be a valid MIME type.
      */
-    contentTypesToCompress?: pulumi.Input<pulumi.Input<string>[]>;
+    contentTypesToCompress?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
      */
-    isCompressionEnabled?: pulumi.Input<boolean>;
+    isCompressionEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -222,11 +219,11 @@ export interface CookiesMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -234,13 +231,12 @@ export interface CookiesMatchConditionParametersArgs {
     /**
      * Name of Cookies to be matched
      */
-    selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string | undefined>;
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleCookiesConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleCookiesConditionParameters">;
@@ -266,7 +262,7 @@ export interface CustomRuleArgs {
     /**
      * Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
      */
-    enabledState?: pulumi.Input<string | enums.CustomRuleEnabledState>;
+    enabledState?: pulumi.Input<string | enums.CustomRuleEnabledState | undefined>;
     /**
      * List of match conditions.
      */
@@ -288,7 +284,7 @@ export interface CustomRuleListArgs {
     /**
      * List of rules
      */
-    rules?: pulumi.Input<pulumi.Input<CustomRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<CustomRuleArgs>[] | undefined>;
 }
 
 /**
@@ -302,7 +298,7 @@ export interface CustomerCertificateParametersArgs {
     /**
      * Version of the secret to be used
      */
-    secretVersion?: pulumi.Input<string>;
+    secretVersion?: pulumi.Input<string | undefined>;
     /**
      * The type of the secret resource.
      * Expected value is 'CustomerCertificate'.
@@ -311,7 +307,7 @@ export interface CustomerCertificateParametersArgs {
     /**
      * Whether to use the latest version for the certificate
      */
-    useLatestVersion?: pulumi.Input<boolean>;
+    useLatestVersion?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -321,7 +317,7 @@ export interface DeepCreatedOriginArgs {
     /**
      * Origin is enabled for load balancing or not. By default, origin is always enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The address of the origin. It can be a domain name, IPv4 address, or IPv6 address. This should be unique across all origins in an endpoint.
      */
@@ -329,11 +325,11 @@ export interface DeepCreatedOriginArgs {
     /**
      * The value of the HTTP port. Must be between 1 and 65535.
      */
-    httpPort?: pulumi.Input<number>;
+    httpPort?: pulumi.Input<number | undefined>;
     /**
      * The value of the HTTPS port. Must be between 1 and 65535.
      */
-    httpsPort?: pulumi.Input<number>;
+    httpsPort?: pulumi.Input<number | undefined>;
     /**
      * Origin name which must be unique within the endpoint.
      */
@@ -341,31 +337,31 @@ export interface DeepCreatedOriginArgs {
     /**
      * The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default.
      */
-    originHostHeader?: pulumi.Input<string>;
+    originHostHeader?: pulumi.Input<string | undefined>;
     /**
      * Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The Alias of the Private Link resource. Populating this optional field indicates that this origin is 'Private'
      */
-    privateLinkAlias?: pulumi.Input<string>;
+    privateLinkAlias?: pulumi.Input<string | undefined>;
     /**
      * A custom message to be included in the approval request to connect to the Private Link.
      */
-    privateLinkApprovalMessage?: pulumi.Input<string>;
+    privateLinkApprovalMessage?: pulumi.Input<string | undefined>;
     /**
      * The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated
      */
-    privateLinkLocation?: pulumi.Input<string>;
+    privateLinkLocation?: pulumi.Input<string | undefined>;
     /**
      * The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
      */
-    privateLinkResourceId?: pulumi.Input<string>;
+    privateLinkResourceId?: pulumi.Input<string | undefined>;
     /**
      * Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -375,7 +371,7 @@ export interface DeepCreatedOriginGroupArgs {
     /**
      * Health probe settings to the origin that is used to determine the health of the origin.
      */
-    healthProbeSettings?: pulumi.Input<HealthProbeParametersArgs>;
+    healthProbeSettings?: pulumi.Input<HealthProbeParametersArgs | undefined>;
     /**
      * Origin group name which must be unique within the endpoint.
      */
@@ -387,11 +383,11 @@ export interface DeepCreatedOriginGroupArgs {
     /**
      * The JSON object that contains the properties to determine origin health using real requests/responses.This property is currently not supported.
      */
-    responseBasedOriginErrorDetectionSettings?: pulumi.Input<ResponseBasedOriginErrorDetectionParametersArgs>;
+    responseBasedOriginErrorDetectionSettings?: pulumi.Input<ResponseBasedOriginErrorDetectionParametersArgs | undefined>;
     /**
      * Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
      */
-    trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: pulumi.Input<number>;
+    trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -405,11 +401,11 @@ export interface DeliveryRuleArgs {
     /**
      * A list of conditions that must be matched for the actions to be executed
      */
-    conditions?: pulumi.Input<pulumi.Input<DeliveryRuleClientPortConditionArgs | DeliveryRuleCookiesConditionArgs | DeliveryRuleHostNameConditionArgs | DeliveryRuleHttpVersionConditionArgs | DeliveryRuleIsDeviceConditionArgs | DeliveryRulePostArgsConditionArgs | DeliveryRuleQueryStringConditionArgs | DeliveryRuleRemoteAddressConditionArgs | DeliveryRuleRequestBodyConditionArgs | DeliveryRuleRequestHeaderConditionArgs | DeliveryRuleRequestMethodConditionArgs | DeliveryRuleRequestSchemeConditionArgs | DeliveryRuleRequestUriConditionArgs | DeliveryRuleServerPortConditionArgs | DeliveryRuleSocketAddrConditionArgs | DeliveryRuleSslProtocolConditionArgs | DeliveryRuleUrlFileExtensionConditionArgs | DeliveryRuleUrlFileNameConditionArgs | DeliveryRuleUrlPathConditionArgs>[]>;
+    conditions?: pulumi.Input<pulumi.Input<DeliveryRuleClientPortConditionArgs | DeliveryRuleCookiesConditionArgs | DeliveryRuleHostNameConditionArgs | DeliveryRuleHttpVersionConditionArgs | DeliveryRuleIsDeviceConditionArgs | DeliveryRulePostArgsConditionArgs | DeliveryRuleQueryStringConditionArgs | DeliveryRuleRemoteAddressConditionArgs | DeliveryRuleRequestBodyConditionArgs | DeliveryRuleRequestHeaderConditionArgs | DeliveryRuleRequestMethodConditionArgs | DeliveryRuleRequestSchemeConditionArgs | DeliveryRuleRequestUriConditionArgs | DeliveryRuleServerPortConditionArgs | DeliveryRuleSocketAddrConditionArgs | DeliveryRuleSslProtocolConditionArgs | DeliveryRuleUrlFileExtensionConditionArgs | DeliveryRuleUrlFileNameConditionArgs | DeliveryRuleUrlPathConditionArgs>[] | undefined>;
     /**
      * Name of the rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
      */
@@ -954,7 +950,7 @@ export interface EndpointPropertiesUpdateParametersDeliveryPolicyArgs {
     /**
      * User-friendly description of the policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A list of the delivery rules.
      */
@@ -968,7 +964,7 @@ export interface EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyL
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1002,14 +998,13 @@ export interface HeaderActionParametersArgs {
      */
     headerName: pulumi.Input<string>;
     /**
-     *
      * Expected value is 'DeliveryRuleHeaderActionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleHeaderActionParameters">;
     /**
      * Value for the specified action
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1019,19 +1014,19 @@ export interface HealthProbeParametersArgs {
     /**
      * The number of seconds between health probes.Default is 240sec.
      */
-    probeIntervalInSeconds?: pulumi.Input<number>;
+    probeIntervalInSeconds?: pulumi.Input<number | undefined>;
     /**
      * The path relative to the origin that is used to determine the health of the origin.
      */
-    probePath?: pulumi.Input<string>;
+    probePath?: pulumi.Input<string | undefined>;
     /**
      * Protocol to use for health probe.
      */
-    probeProtocol?: pulumi.Input<enums.ProbeProtocol>;
+    probeProtocol?: pulumi.Input<enums.ProbeProtocol | undefined>;
     /**
      * The type of health probe request that is made.
      */
-    probeRequestType?: pulumi.Input<enums.HealthProbeRequestType>;
+    probeRequestType?: pulumi.Input<enums.HealthProbeRequestType | undefined>;
 }
 
 /**
@@ -1041,11 +1036,11 @@ export interface HostNameMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1053,9 +1048,8 @@ export interface HostNameMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleHostNameConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleHostNameConditionParameters">;
@@ -1077,11 +1071,11 @@ export interface HttpErrorRangeParametersArgs {
     /**
      * The inclusive start of the http status code range.
      */
-    begin?: pulumi.Input<number>;
+    begin?: pulumi.Input<number | undefined>;
     /**
      * The inclusive end of the http status code range.
      */
-    end?: pulumi.Input<number>;
+    end?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1091,11 +1085,11 @@ export interface HttpVersionMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1103,9 +1097,8 @@ export interface HttpVersionMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleHttpVersionConditionParameters">;
@@ -1127,11 +1120,11 @@ export interface IsDeviceMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string | enums.IsDeviceMatchValue>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string | enums.IsDeviceMatchValue>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1139,9 +1132,8 @@ export interface IsDeviceMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleIsDeviceConditionParameters">;
@@ -1190,15 +1182,15 @@ export interface LoadBalancingSettingsParametersArgs {
     /**
      * The additional latency in milliseconds for probes to fall into the lowest latency bucket
      */
-    additionalLatencyInMilliseconds?: pulumi.Input<number>;
+    additionalLatencyInMilliseconds?: pulumi.Input<number | undefined>;
     /**
      * The number of samples to consider for load balancing decisions
      */
-    sampleSize?: pulumi.Input<number>;
+    sampleSize?: pulumi.Input<number | undefined>;
     /**
      * The number of samples within the sample period that must succeed
      */
-    successfulSamplesRequired?: pulumi.Input<number>;
+    successfulSamplesRequired?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1223,7 +1215,7 @@ export interface ManagedRuleGroupOverrideArgs {
     /**
      * List of rules that will be enabled. If none specified, all rules in the group will be disabled.
      */
-    rules?: pulumi.Input<pulumi.Input<ManagedRuleOverrideArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<ManagedRuleOverrideArgs>[] | undefined>;
 }
 
 /**
@@ -1233,11 +1225,11 @@ export interface ManagedRuleOverrideArgs {
     /**
      * Describes the override action to be applied when rule matches.
      */
-    action?: pulumi.Input<string | enums.ActionType>;
+    action?: pulumi.Input<string | enums.ActionType | undefined>;
     /**
      * Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
      */
-    enabledState?: pulumi.Input<string | enums.ManagedRuleEnabledState>;
+    enabledState?: pulumi.Input<string | enums.ManagedRuleEnabledState | undefined>;
     /**
      * Identifier for the managed rule.
      */
@@ -1251,11 +1243,11 @@ export interface ManagedRuleSetArgs {
     /**
      * Verizon only : If the rule set supports anomaly detection mode, this describes the threshold for blocking requests.
      */
-    anomalyScore?: pulumi.Input<number>;
+    anomalyScore?: pulumi.Input<number | undefined>;
     /**
      * Defines the rule overrides to apply to the rule set.
      */
-    ruleGroupOverrides?: pulumi.Input<pulumi.Input<ManagedRuleGroupOverrideArgs>[]>;
+    ruleGroupOverrides?: pulumi.Input<pulumi.Input<ManagedRuleGroupOverrideArgs>[] | undefined>;
     /**
      * Defines the rule set type to use.
      */
@@ -1273,7 +1265,7 @@ export interface ManagedRuleSetListArgs {
     /**
      * List of rule sets.
      */
-    managedRuleSets?: pulumi.Input<pulumi.Input<ManagedRuleSetArgs>[]>;
+    managedRuleSets?: pulumi.Input<pulumi.Input<ManagedRuleSetArgs>[] | undefined>;
 }
 
 /**
@@ -1287,7 +1279,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1305,7 +1297,7 @@ export interface MatchConditionArgs {
     /**
      * Describes if the result of this condition should be negated.
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1313,11 +1305,11 @@ export interface MatchConditionArgs {
     /**
      * Selector can used to match a specific key for QueryString, Cookies, RequestHeader or PostArgs.
      */
-    selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string | undefined>;
     /**
      * List of transforms.
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.TransformType>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.TransformType>[] | undefined>;
 }
 
 /**
@@ -1327,15 +1319,15 @@ export interface OriginAuthenticationPropertiesArgs {
     /**
      * The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The type of the authentication for the origin.
      */
-    type?: pulumi.Input<string | enums.OriginAuthenticationType>;
+    type?: pulumi.Input<string | enums.OriginAuthenticationType | undefined>;
     /**
      * The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
      */
-    userAssignedIdentity?: pulumi.Input<ResourceReferenceArgs>;
+    userAssignedIdentity?: pulumi.Input<ResourceReferenceArgs | undefined>;
 }
 
 /**
@@ -1345,11 +1337,11 @@ export interface OriginGroupOverrideArgs {
     /**
      * Protocol this rule will use when forwarding traffic to backends.
      */
-    forwardingProtocol?: pulumi.Input<string | enums.ForwardingProtocol>;
+    forwardingProtocol?: pulumi.Input<string | enums.ForwardingProtocol | undefined>;
     /**
      * defines the OriginGroup that would override the DefaultOriginGroup on route.
      */
-    originGroup?: pulumi.Input<ResourceReferenceArgs>;
+    originGroup?: pulumi.Input<ResourceReferenceArgs | undefined>;
 }
 
 /**
@@ -1376,7 +1368,6 @@ export interface OriginGroupOverrideActionParametersArgs {
      */
     originGroup: pulumi.Input<ResourceReferenceArgs>;
     /**
-     *
      * Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleOriginGroupOverrideActionParameters">;
@@ -1389,23 +1380,23 @@ export interface PolicySettingsArgs {
     /**
      * If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
      */
-    defaultCustomBlockResponseBody?: pulumi.Input<string>;
+    defaultCustomBlockResponseBody?: pulumi.Input<string | undefined>;
     /**
      * If the action type is block, this field defines the default customer overridable http response status code.
      */
-    defaultCustomBlockResponseStatusCode?: pulumi.Input<number>;
+    defaultCustomBlockResponseStatusCode?: pulumi.Input<number | undefined>;
     /**
      * If action type is redirect, this field represents the default redirect URL for the client.
      */
-    defaultRedirectUrl?: pulumi.Input<string>;
+    defaultRedirectUrl?: pulumi.Input<string | undefined>;
     /**
      * describes if the policy is in enabled state or disabled state
      */
-    enabledState?: pulumi.Input<string | enums.PolicyEnabledState>;
+    enabledState?: pulumi.Input<string | enums.PolicyEnabledState | undefined>;
     /**
      * Describes if it is in detection mode or prevention mode at policy level.
      */
-    mode?: pulumi.Input<string | enums.PolicyMode>;
+    mode?: pulumi.Input<string | enums.PolicyMode | undefined>;
 }
 
 /**
@@ -1415,11 +1406,11 @@ export interface PostArgsMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1427,13 +1418,12 @@ export interface PostArgsMatchConditionParametersArgs {
     /**
      * Name of PostArg to be matched
      */
-    selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string | undefined>;
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRulePostArgsConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRulePostArgsConditionParameters">;
@@ -1455,11 +1445,11 @@ export interface ProfileLogScrubbingArgs {
     /**
      * List of log scrubbing rules applied to the Azure Front Door profile logs.
      */
-    scrubbingRules?: pulumi.Input<pulumi.Input<ProfileScrubbingRulesArgs>[]>;
+    scrubbingRules?: pulumi.Input<pulumi.Input<ProfileScrubbingRulesArgs>[] | undefined>;
     /**
      * State of the log scrubbing config. Default value is Enabled.
      */
-    state?: pulumi.Input<string | enums.ProfileScrubbingState>;
+    state?: pulumi.Input<string | enums.ProfileScrubbingState | undefined>;
 }
 
 /**
@@ -1473,7 +1463,7 @@ export interface ProfileScrubbingRulesArgs {
     /**
      * When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
      */
-    selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string | undefined>;
     /**
      * When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
      */
@@ -1481,7 +1471,7 @@ export interface ProfileScrubbingRulesArgs {
     /**
      * Defines the state of a log scrubbing rule. Default value is enabled.
      */
-    state?: pulumi.Input<string | enums.ScrubbingRuleEntryState>;
+    state?: pulumi.Input<string | enums.ScrubbingRuleEntryState | undefined>;
 }
 
 /**
@@ -1491,11 +1481,11 @@ export interface QueryStringMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1503,9 +1493,8 @@ export interface QueryStringMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleQueryStringConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleQueryStringConditionParameters">;
@@ -1531,7 +1520,7 @@ export interface RateLimitRuleArgs {
     /**
      * Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
      */
-    enabledState?: pulumi.Input<string | enums.CustomRuleEnabledState>;
+    enabledState?: pulumi.Input<string | enums.CustomRuleEnabledState | undefined>;
     /**
      * List of match conditions.
      */
@@ -1561,7 +1550,7 @@ export interface RateLimitRuleListArgs {
     /**
      * List of rules
      */
-    rules?: pulumi.Input<pulumi.Input<RateLimitRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<RateLimitRuleArgs>[] | undefined>;
 }
 
 /**
@@ -1571,11 +1560,11 @@ export interface RemoteAddressMatchConditionParametersArgs {
     /**
      * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1583,9 +1572,8 @@ export interface RemoteAddressMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleRemoteAddressConditionParameters">;
@@ -1607,11 +1595,11 @@ export interface RequestBodyMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1619,9 +1607,8 @@ export interface RequestBodyMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleRequestBodyConditionParameters">;
@@ -1643,11 +1630,11 @@ export interface RequestHeaderMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1655,13 +1642,12 @@ export interface RequestHeaderMatchConditionParametersArgs {
     /**
      * Name of Header to be matched
      */
-    selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string | undefined>;
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleRequestHeaderConditionParameters">;
@@ -1683,11 +1669,11 @@ export interface RequestMethodMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string | enums.RequestMethodMatchValue>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string | enums.RequestMethodMatchValue>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1695,9 +1681,8 @@ export interface RequestMethodMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleRequestMethodConditionParameters">;
@@ -1719,11 +1704,11 @@ export interface RequestSchemeMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string | enums.RequestSchemeMatchValue>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string | enums.RequestSchemeMatchValue>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1731,9 +1716,8 @@ export interface RequestSchemeMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleRequestSchemeConditionParameters">;
@@ -1755,11 +1739,11 @@ export interface RequestUriMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1767,9 +1751,8 @@ export interface RequestUriMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleRequestUriConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleRequestUriConditionParameters">;
@@ -1791,7 +1774,7 @@ export interface ResourceReferenceArgs {
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1801,15 +1784,15 @@ export interface ResponseBasedOriginErrorDetectionParametersArgs {
     /**
      * The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
      */
-    httpErrorRanges?: pulumi.Input<pulumi.Input<HttpErrorRangeParametersArgs>[]>;
+    httpErrorRanges?: pulumi.Input<pulumi.Input<HttpErrorRangeParametersArgs>[] | undefined>;
     /**
      * Type of response errors for real user requests for which origin will be deemed unhealthy
      */
-    responseBasedDetectedErrorTypes?: pulumi.Input<enums.ResponseBasedDetectedErrorTypes>;
+    responseBasedDetectedErrorTypes?: pulumi.Input<enums.ResponseBasedDetectedErrorTypes | undefined>;
     /**
      * The percentage of failed requests in the sample where failover should trigger.
      */
-    responseBasedFailoverThresholdPercentage?: pulumi.Input<number>;
+    responseBasedFailoverThresholdPercentage?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1819,13 +1802,12 @@ export interface RouteConfigurationOverrideActionParametersArgs {
     /**
      * The caching configuration associated with this rule. To disable caching, do not provide a cacheConfiguration object.
      */
-    cacheConfiguration?: pulumi.Input<CacheConfigurationArgs>;
+    cacheConfiguration?: pulumi.Input<CacheConfigurationArgs | undefined>;
     /**
      * A reference to the origin group override configuration. Leave empty to use the default origin group on route.
      */
-    originGroupOverride?: pulumi.Input<OriginGroupOverrideArgs>;
+    originGroupOverride?: pulumi.Input<OriginGroupOverrideArgs | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleRouteConfigurationOverrideActionParameters">;
@@ -1838,11 +1820,11 @@ export interface SecurityPolicyWebApplicationFirewallAssociationArgs {
     /**
      * List of domains.
      */
-    domains?: pulumi.Input<pulumi.Input<ActivatedResourceReferenceArgs>[]>;
+    domains?: pulumi.Input<pulumi.Input<ActivatedResourceReferenceArgs>[] | undefined>;
     /**
      * List of paths
      */
-    patternsToMatch?: pulumi.Input<pulumi.Input<string>[]>;
+    patternsToMatch?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1852,7 +1834,7 @@ export interface SecurityPolicyWebApplicationFirewallParametersArgs {
     /**
      * Waf associations
      */
-    associations?: pulumi.Input<pulumi.Input<SecurityPolicyWebApplicationFirewallAssociationArgs>[]>;
+    associations?: pulumi.Input<pulumi.Input<SecurityPolicyWebApplicationFirewallAssociationArgs>[] | undefined>;
     /**
      * The type of the Security policy to create.
      * Expected value is 'WebApplicationFirewall'.
@@ -1861,7 +1843,7 @@ export interface SecurityPolicyWebApplicationFirewallParametersArgs {
     /**
      * Resource ID.
      */
-    wafPolicy?: pulumi.Input<ResourceReferenceArgs>;
+    wafPolicy?: pulumi.Input<ResourceReferenceArgs | undefined>;
 }
 
 /**
@@ -1871,11 +1853,11 @@ export interface ServerPortMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1883,9 +1865,8 @@ export interface ServerPortMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleServerPortConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleServerPortConditionParameters">;
@@ -1907,23 +1888,23 @@ export interface SharedPrivateLinkResourcePropertiesArgs {
     /**
      * The group id from the provider of resource the shared private link resource is for.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The resource id of the resource the shared private link resource is for.
      */
-    privateLink?: pulumi.Input<ResourceReferenceArgs>;
+    privateLink?: pulumi.Input<ResourceReferenceArgs | undefined>;
     /**
      * The location of the shared private link resource
      */
-    privateLinkLocation?: pulumi.Input<string>;
+    privateLinkLocation?: pulumi.Input<string | undefined>;
     /**
      * The request message for requesting approval of the shared private link resource.
      */
-    requestMessage?: pulumi.Input<string>;
+    requestMessage?: pulumi.Input<string | undefined>;
     /**
      * Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout.
      */
-    status?: pulumi.Input<enums.SharedPrivateLinkResourceStatus>;
+    status?: pulumi.Input<enums.SharedPrivateLinkResourceStatus | undefined>;
 }
 
 /**
@@ -1945,7 +1926,7 @@ export interface SkuArgs {
     /**
      * Name of the pricing tier.
      */
-    name?: pulumi.Input<string | enums.SkuName>;
+    name?: pulumi.Input<string | enums.SkuName | undefined>;
 }
 
 /**
@@ -1969,11 +1950,11 @@ export interface SocketAddrMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -1981,9 +1962,8 @@ export interface SocketAddrMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleSocketAddrConditionParameters">;
@@ -2005,11 +1985,11 @@ export interface SslProtocolMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string | enums.SslProtocol>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string | enums.SslProtocol>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -2017,9 +1997,8 @@ export interface SslProtocolMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleSslProtocolConditionParameters">;
@@ -2041,11 +2020,11 @@ export interface TargetEndpointArgs {
     /**
      * The Ports to be allowed for the FQDN.
      */
-    ports?: pulumi.Input<pulumi.Input<number>[]>;
+    ports?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The FQDN for traffic endpoint.
      */
-    targetFqdn?: pulumi.Input<string>;
+    targetFqdn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2055,11 +2034,11 @@ export interface UrlFileExtensionMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -2067,9 +2046,8 @@ export interface UrlFileExtensionMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleUrlFileExtensionMatchConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleUrlFileExtensionMatchConditionParameters">;
@@ -2091,11 +2069,11 @@ export interface UrlFileNameMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -2103,9 +2081,8 @@ export interface UrlFileNameMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleUrlFilenameConditionParameters">;
@@ -2127,11 +2104,11 @@ export interface UrlPathMatchConditionParametersArgs {
     /**
      * The match value for the condition of the delivery rule
      */
-    matchValues?: pulumi.Input<pulumi.Input<string>[]>;
+    matchValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Describes operator to be matched
      */
@@ -2139,9 +2116,8 @@ export interface UrlPathMatchConditionParametersArgs {
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleUrlPathMatchConditionParameters">;
@@ -2178,29 +2154,28 @@ export interface UrlRedirectActionParametersArgs {
     /**
      * Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
      */
-    customFragment?: pulumi.Input<string>;
+    customFragment?: pulumi.Input<string | undefined>;
     /**
      * Host to redirect. Leave empty to use the incoming host as the destination host.
      */
-    customHostname?: pulumi.Input<string>;
+    customHostname?: pulumi.Input<string | undefined>;
     /**
      * The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
      */
-    customPath?: pulumi.Input<string>;
+    customPath?: pulumi.Input<string | undefined>;
     /**
      * The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. ? and & will be added automatically so do not include them.
      */
-    customQueryString?: pulumi.Input<string>;
+    customQueryString?: pulumi.Input<string | undefined>;
     /**
      * Protocol to use for the redirect. The default value is MatchRequest
      */
-    destinationProtocol?: pulumi.Input<string | enums.DestinationProtocol>;
+    destinationProtocol?: pulumi.Input<string | enums.DestinationProtocol | undefined>;
     /**
      * The redirect type the rule will use when redirecting traffic.
      */
     redirectType: pulumi.Input<string | enums.RedirectType>;
     /**
-     *
      * Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleUrlRedirectActionParameters">;
@@ -2232,13 +2207,12 @@ export interface UrlRewriteActionParametersArgs {
     /**
      * Whether to preserve unmatched path. Default value is true.
      */
-    preserveUnmatchedPath?: pulumi.Input<boolean>;
+    preserveUnmatchedPath?: pulumi.Input<boolean | undefined>;
     /**
      * define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
      */
     sourcePattern: pulumi.Input<string>;
     /**
-     *
      * Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleUrlRewriteActionParameters">;
@@ -2266,13 +2240,12 @@ export interface UrlSigningActionParametersArgs {
     /**
      * Algorithm to use for URL signing
      */
-    algorithm?: pulumi.Input<string | enums.Algorithm>;
+    algorithm?: pulumi.Input<string | enums.Algorithm | undefined>;
     /**
      * Defines which query string parameters in the url to be considered for expires, key id etc.
      */
-    parameterNameOverride?: pulumi.Input<pulumi.Input<UrlSigningParamIdentifierArgs>[]>;
+    parameterNameOverride?: pulumi.Input<pulumi.Input<UrlSigningParamIdentifierArgs>[] | undefined>;
     /**
-     *
      * Expected value is 'DeliveryRuleUrlSigningActionParameters'.
      */
     typeName: pulumi.Input<"DeliveryRuleUrlSigningActionParameters">;

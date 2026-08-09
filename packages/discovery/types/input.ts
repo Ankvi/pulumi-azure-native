@@ -49,7 +49,7 @@ export interface BookshelfKeyVaultPropertiesArgs {
     /**
      * The Key Version in Key Vault
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -59,31 +59,31 @@ export interface BookshelfPropertiesArgs {
     /**
      * Whether or not to use a customer managed key when encrypting data at rest
      */
-    customerManagedKeys?: pulumi.Input<string | enums.CustomerManagedKeys>;
+    customerManagedKeys?: pulumi.Input<string | enums.CustomerManagedKeys | undefined>;
     /**
      * The key to use for encrypting data at rest when customer managed keys are enabled. Required if Customer Managed Keys is enabled.
      */
-    keyVaultProperties?: pulumi.Input<BookshelfKeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<BookshelfKeyVaultPropertiesArgs | undefined>;
     /**
      * The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled.
      */
-    logAnalyticsClusterId?: pulumi.Input<string>;
+    logAnalyticsClusterId?: pulumi.Input<string | undefined>;
     /**
      * Private Endpoint Subnet ID for private endpoint connections.
      */
-    privateEndpointSubnetId?: pulumi.Input<string>;
+    privateEndpointSubnetId?: pulumi.Input<string | undefined>;
     /**
      * Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible.
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess | undefined>;
     /**
      * Search Subnet ID for search resources.
      */
-    searchSubnetId?: pulumi.Input<string>;
+    searchSubnetId?: pulumi.Input<string | undefined>;
     /**
      * User assigned identity IDs to be used by knowledgebase workloads. The key value must be the resource ID of the identity resource.
      */
-    workloadIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    workloadIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -125,7 +125,7 @@ export interface KeyVaultPropertiesArgs {
     /**
      * The Key Version in Key Vault
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,11 +139,11 @@ export interface NodePoolPropertiesArgs {
     /**
      * The minimum number of nodes.
      */
-    minNodeCount?: pulumi.Input<number>;
+    minNodeCount?: pulumi.Input<number | undefined>;
     /**
      * The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'.
      */
-    scaleSetPriority?: pulumi.Input<string | enums.ScaleSetPriority>;
+    scaleSetPriority?: pulumi.Input<string | enums.ScaleSetPriority | undefined>;
     /**
      * The node pool subnet.
      */
@@ -181,15 +181,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -199,11 +199,11 @@ export interface ProjectPropertiesArgs {
     /**
      * Settings for the project.
      */
-    settings?: pulumi.Input<ProjectSettingsArgs>;
+    settings?: pulumi.Input<ProjectSettingsArgs | undefined>;
     /**
      * Allowed StorageContainers (Control plane resource references).
      */
-    storageContainerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    storageContainerIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -213,7 +213,7 @@ export interface ProjectSettingsArgs {
     /**
      * Default preferences to guide AI behaviors in this project.
      */
-    behaviorPreferences?: pulumi.Input<string>;
+    behaviorPreferences?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -227,7 +227,7 @@ export interface StorageAssetPropertiesArgs {
     /**
      * The path to the data within its parent container. This should be relative to the root of the parent container.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -257,7 +257,7 @@ export interface SupercomputerIdentitiesArgs {
     /**
      * User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource.
      */
-    workloadIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    workloadIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -267,11 +267,11 @@ export interface SupercomputerPropertiesArgs {
     /**
      * Whether or not to use a customer managed key when encrypting data at rest
      */
-    customerManagedKeys?: pulumi.Input<string | enums.CustomerManagedKeys>;
+    customerManagedKeys?: pulumi.Input<string | enums.CustomerManagedKeys | undefined>;
     /**
      * Disk Encryption Set ID to use for Customer Managed Keys encryption. Required if Customer Managed Keys is enabled.
      */
-    diskEncryptionSetId?: pulumi.Input<string>;
+    diskEncryptionSetId?: pulumi.Input<string | undefined>;
     /**
      * Dictionary of identity properties.
      */
@@ -279,18 +279,18 @@ export interface SupercomputerPropertiesArgs {
     /**
      * The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled.
      */
-    logAnalyticsClusterId?: pulumi.Input<string>;
+    logAnalyticsClusterId?: pulumi.Input<string | undefined>;
     /**
      * System Subnet ID associated with AKS apiserver. Must be delegated to Microsoft.ContainerService/managedClusters.
      *     It should have connectivity to the system subnet and nodepool subnets.
      */
-    managementSubnetId?: pulumi.Input<string>;
+    managementSubnetId?: pulumi.Input<string | undefined>;
     /**
      * Network egress type provisioned for the supercomputer workloads.
      *     Defaults to LoadBalancer if not specified.
      *     If None is specified, the customer is responsible for providing outbound connectivity for Supercomputer functionality.
      */
-    outboundType?: pulumi.Input<string | enums.NetworkEgressType>;
+    outboundType?: pulumi.Input<string | enums.NetworkEgressType | undefined>;
     /**
      * System Subnet ID associated with managed NodePool for system resources.
      *     It should have connectivity to the child NodePool subnets.
@@ -299,7 +299,7 @@ export interface SupercomputerPropertiesArgs {
     /**
      * The SKU to use for the system node pool.
      */
-    systemSku?: pulumi.Input<string | enums.SystemSku>;
+    systemSku?: pulumi.Input<string | enums.SystemSku | undefined>;
 }
 /**
  * supercomputerPropertiesArgsProvideDefaults sets the appropriate defaults for SupercomputerPropertiesArgs
@@ -322,7 +322,7 @@ export interface ToolPropertiesArgs {
     /**
      * Environment variables to make available
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The version of a resource definition
      */
@@ -336,31 +336,31 @@ export interface WorkspacePropertiesArgs {
     /**
      * Agent Subnet ID for agent resources.
      */
-    agentSubnetId?: pulumi.Input<string>;
+    agentSubnetId?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to use a customer managed key when encrypting data at rest
      */
-    customerManagedKeys?: pulumi.Input<string | enums.CustomerManagedKeys>;
+    customerManagedKeys?: pulumi.Input<string | enums.CustomerManagedKeys | undefined>;
     /**
      * The key to use for encrypting data at rest when customer managed keys are enabled.
      */
-    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs | undefined>;
     /**
      * The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled.
      */
-    logAnalyticsClusterId?: pulumi.Input<string>;
+    logAnalyticsClusterId?: pulumi.Input<string | undefined>;
     /**
      * Private Endpoint Subnet ID for private endpoint connections.
      */
-    privateEndpointSubnetId?: pulumi.Input<string>;
+    privateEndpointSubnetId?: pulumi.Input<string | undefined>;
     /**
      * Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible.
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess | undefined>;
     /**
      * List of linked SuperComputers.
      */
-    supercomputerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    supercomputerIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Identity IDs used for leveraging Workspace resources.
      */
@@ -368,5 +368,5 @@ export interface WorkspacePropertiesArgs {
     /**
      * Function Subnet ID for workspace resources.
      */
-    workspaceSubnetId?: pulumi.Input<string>;
+    workspaceSubnetId?: pulumi.Input<string | undefined>;
 }

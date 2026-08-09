@@ -7,47 +7,47 @@ export interface BackendArgs {
     /**
      * Location of the backend (IP address or FQDN)
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The value to use as the host header sent to the backend. If blank or unspecified, this defaults to the incoming host.
      */
-    backendHostHeader?: pulumi.Input<string>;
+    backendHostHeader?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable use of this backend. Permitted values are 'Enabled' or 'Disabled'
      */
-    enabledState?: pulumi.Input<string | enums.BackendEnabledState>;
+    enabledState?: pulumi.Input<string | enums.BackendEnabledState | undefined>;
     /**
      * The HTTP TCP port number. Must be between 1 and 65535.
      */
-    httpPort?: pulumi.Input<number>;
+    httpPort?: pulumi.Input<number | undefined>;
     /**
      * The HTTPS TCP port number. Must be between 1 and 65535.
      */
-    httpsPort?: pulumi.Input<number>;
+    httpsPort?: pulumi.Input<number | undefined>;
     /**
      * Priority to use for load balancing. Higher priorities will not be used for load balancing if any lower priority backend is healthy.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The Alias of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
      */
-    privateLinkAlias?: pulumi.Input<string>;
+    privateLinkAlias?: pulumi.Input<string | undefined>;
     /**
      * A custom message to be included in the approval request to connect to the Private Link
      */
-    privateLinkApprovalMessage?: pulumi.Input<string>;
+    privateLinkApprovalMessage?: pulumi.Input<string | undefined>;
     /**
      * The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated
      */
-    privateLinkLocation?: pulumi.Input<string>;
+    privateLinkLocation?: pulumi.Input<string | undefined>;
     /**
      * The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
      */
-    privateLinkResourceId?: pulumi.Input<string>;
+    privateLinkResourceId?: pulumi.Input<string | undefined>;
     /**
      * Weight of this endpoint for load balancing purposes.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -57,23 +57,23 @@ export interface BackendPoolArgs {
     /**
      * The set of backends for this pool
      */
-    backends?: pulumi.Input<pulumi.Input<BackendArgs>[]>;
+    backends?: pulumi.Input<pulumi.Input<BackendArgs>[] | undefined>;
     /**
      * L7 health probe settings for a backend pool
      */
-    healthProbeSettings?: pulumi.Input<SubResourceArgs>;
+    healthProbeSettings?: pulumi.Input<SubResourceArgs | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Load balancing settings for a backend pool
      */
-    loadBalancingSettings?: pulumi.Input<SubResourceArgs>;
+    loadBalancingSettings?: pulumi.Input<SubResourceArgs | undefined>;
     /**
      * Resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -83,11 +83,11 @@ export interface BackendPoolsSettingsArgs {
     /**
      * Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
      */
-    enforceCertificateNameCheck?: pulumi.Input<string | enums.EnforceCertificateNameCheckEnabledState>;
+    enforceCertificateNameCheck?: pulumi.Input<string | enums.EnforceCertificateNameCheckEnabledState | undefined>;
     /**
      * Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
      */
-    sendRecvTimeoutSeconds?: pulumi.Input<number>;
+    sendRecvTimeoutSeconds?: pulumi.Input<number | undefined>;
 }
 /**
  * backendPoolsSettingsArgsProvideDefaults sets the appropriate defaults for BackendPoolsSettingsArgs
@@ -106,19 +106,19 @@ export interface CacheConfigurationArgs {
     /**
      * The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year
      */
-    cacheDuration?: pulumi.Input<string>;
+    cacheDuration?: pulumi.Input<string | undefined>;
     /**
      * Whether to use dynamic compression for cached content
      */
-    dynamicCompression?: pulumi.Input<string | enums.DynamicCompressionEnabled>;
+    dynamicCompression?: pulumi.Input<string | enums.DynamicCompressionEnabled | undefined>;
     /**
      * Treatment of URL query terms when forming the cache key.
      */
-    queryParameterStripDirective?: pulumi.Input<string | enums.FrontDoorQuery>;
+    queryParameterStripDirective?: pulumi.Input<string | enums.FrontDoorQuery | undefined>;
     /**
      * query parameters to include or exclude (comma separated).
      */
-    queryParameters?: pulumi.Input<string>;
+    queryParameters?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -132,11 +132,11 @@ export interface CustomRuleArgs {
     /**
      * Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
      */
-    enabledState?: pulumi.Input<string | enums.CustomRuleEnabledState>;
+    enabledState?: pulumi.Input<string | enums.CustomRuleEnabledState | undefined>;
     /**
      * Describes the list of variables to group the rate limit requests
      */
-    groupBy?: pulumi.Input<pulumi.Input<GroupByVariableArgs>[]>;
+    groupBy?: pulumi.Input<pulumi.Input<GroupByVariableArgs>[] | undefined>;
     /**
      * List of match conditions.
      */
@@ -144,7 +144,7 @@ export interface CustomRuleArgs {
     /**
      * Describes the name of the rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
      */
@@ -152,11 +152,11 @@ export interface CustomRuleArgs {
     /**
      * Time window for resetting the rate limit count. Default is 1 minute.
      */
-    rateLimitDurationInMinutes?: pulumi.Input<number>;
+    rateLimitDurationInMinutes?: pulumi.Input<number | undefined>;
     /**
      * Number of allowed requests per client within the time window.
      */
-    rateLimitThreshold?: pulumi.Input<number>;
+    rateLimitThreshold?: pulumi.Input<number | undefined>;
     /**
      * Describes type of rule.
      */
@@ -170,7 +170,7 @@ export interface CustomRuleListArgs {
     /**
      * List of rules
      */
-    rules?: pulumi.Input<pulumi.Input<CustomRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<CustomRuleArgs>[] | undefined>;
 }
 
 /**
@@ -180,11 +180,11 @@ export interface EndpointArgs {
     /**
      * The endpoint URL
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The name of the endpoint
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -194,21 +194,20 @@ export interface ForwardingConfigurationArgs {
     /**
      * A reference to the BackendPool which this rule routes to.
      */
-    backendPool?: pulumi.Input<SubResourceArgs>;
+    backendPool?: pulumi.Input<SubResourceArgs | undefined>;
     /**
      * The caching configuration associated with this rule.
      */
-    cacheConfiguration?: pulumi.Input<CacheConfigurationArgs>;
+    cacheConfiguration?: pulumi.Input<CacheConfigurationArgs | undefined>;
     /**
      * A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.
      */
-    customForwardingPath?: pulumi.Input<string>;
+    customForwardingPath?: pulumi.Input<string | undefined>;
     /**
      * Protocol this rule will use when forwarding traffic to backends.
      */
-    forwardingProtocol?: pulumi.Input<string | enums.FrontDoorForwardingProtocol>;
+    forwardingProtocol?: pulumi.Input<string | enums.FrontDoorForwardingProtocol | undefined>;
     /**
-     *
      * Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration'.
      */
     odataType: pulumi.Input<"#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration">;
@@ -221,27 +220,27 @@ export interface FrontendEndpointArgs {
     /**
      * The host name of the frontendEndpoint. Must be a domain name.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
      */
-    sessionAffinityEnabledState?: pulumi.Input<string | enums.SessionAffinityEnabledState>;
+    sessionAffinityEnabledState?: pulumi.Input<string | enums.SessionAffinityEnabledState | undefined>;
     /**
      * UNUSED. This field will be ignored. The TTL to use in seconds for session affinity, if applicable.
      */
-    sessionAffinityTtlSeconds?: pulumi.Input<number>;
+    sessionAffinityTtlSeconds?: pulumi.Input<number | undefined>;
     /**
      * Defines the Web Application Firewall policy for each host (if applicable)
      */
-    webApplicationFirewallPolicyLink?: pulumi.Input<FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLinkArgs>;
+    webApplicationFirewallPolicyLink?: pulumi.Input<FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLinkArgs | undefined>;
 }
 
 /**
@@ -251,7 +250,7 @@ export interface FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLin
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -279,7 +278,7 @@ export interface HeaderActionArgs {
     /**
      * The value to update the given header name with. This value is not used if the actionType is Delete.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -289,31 +288,31 @@ export interface HealthProbeSettingsModelArgs {
     /**
      * Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
      */
-    enabledState?: pulumi.Input<string | enums.HealthProbeEnabled>;
+    enabledState?: pulumi.Input<string | enums.HealthProbeEnabled | undefined>;
     /**
      * Configures which HTTP method to use to probe the backends defined under backendPools.
      */
-    healthProbeMethod?: pulumi.Input<string | enums.FrontDoorHealthProbeMethod>;
+    healthProbeMethod?: pulumi.Input<string | enums.FrontDoorHealthProbeMethod | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The number of seconds between health probes.
      */
-    intervalInSeconds?: pulumi.Input<number>;
+    intervalInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The path to use for the health probe. Default is /
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Protocol scheme to use for this probe
      */
-    protocol?: pulumi.Input<string | enums.FrontDoorProtocol>;
+    protocol?: pulumi.Input<string | enums.FrontDoorProtocol | undefined>;
 }
 /**
  * healthProbeSettingsModelArgsProvideDefaults sets the appropriate defaults for HealthProbeSettingsModelArgs
@@ -332,23 +331,23 @@ export interface LoadBalancingSettingsModelArgs {
     /**
      * The additional latency in milliseconds for probes to fall into the lowest latency bucket
      */
-    additionalLatencyMilliseconds?: pulumi.Input<number>;
+    additionalLatencyMilliseconds?: pulumi.Input<number | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of samples to consider for load balancing decisions
      */
-    sampleSize?: pulumi.Input<number>;
+    sampleSize?: pulumi.Input<number | undefined>;
     /**
      * The number of samples within the sample period that must succeed
      */
-    successfulSamplesRequired?: pulumi.Input<number>;
+    successfulSamplesRequired?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -376,7 +375,7 @@ export interface ManagedRuleGroupOverrideArgs {
     /**
      * Describes the exclusions that are applied to all rules in the group.
      */
-    exclusions?: pulumi.Input<pulumi.Input<ManagedRuleExclusionArgs>[]>;
+    exclusions?: pulumi.Input<pulumi.Input<ManagedRuleExclusionArgs>[] | undefined>;
     /**
      * Describes the managed rule group to override.
      */
@@ -384,7 +383,7 @@ export interface ManagedRuleGroupOverrideArgs {
     /**
      * List of rules that will be disabled. If none specified, all rules in the group will be disabled.
      */
-    rules?: pulumi.Input<pulumi.Input<ManagedRuleOverrideArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<ManagedRuleOverrideArgs>[] | undefined>;
 }
 
 /**
@@ -394,19 +393,23 @@ export interface ManagedRuleOverrideArgs {
     /**
      * Describes the override action to be applied when rule matches.
      */
-    action?: pulumi.Input<string | enums.ActionType>;
+    action?: pulumi.Input<string | enums.ActionType | undefined>;
     /**
      * Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
      */
-    enabledState?: pulumi.Input<string | enums.ManagedRuleEnabledState>;
+    enabledState?: pulumi.Input<string | enums.ManagedRuleEnabledState | undefined>;
     /**
      * Describes the exclusions that are applied to this specific rule.
      */
-    exclusions?: pulumi.Input<pulumi.Input<ManagedRuleExclusionArgs>[]>;
+    exclusions?: pulumi.Input<pulumi.Input<ManagedRuleExclusionArgs>[] | undefined>;
     /**
      * Identifier for the managed rule.
      */
     ruleId: pulumi.Input<string>;
+    /**
+     * Describes the override sensitivity to be applied when rule matches.
+     */
+    sensitivity?: pulumi.Input<string | enums.SensitivityType | undefined>;
 }
 
 /**
@@ -416,15 +419,15 @@ export interface ManagedRuleSetArgs {
     /**
      * Describes the exclusions that are applied to all rules in the set.
      */
-    exclusions?: pulumi.Input<pulumi.Input<ManagedRuleExclusionArgs>[]>;
+    exclusions?: pulumi.Input<pulumi.Input<ManagedRuleExclusionArgs>[] | undefined>;
     /**
      * Defines the rule group overrides to apply to the rule set.
      */
-    ruleGroupOverrides?: pulumi.Input<pulumi.Input<ManagedRuleGroupOverrideArgs>[]>;
+    ruleGroupOverrides?: pulumi.Input<pulumi.Input<ManagedRuleGroupOverrideArgs>[] | undefined>;
     /**
      * Defines the rule set action.
      */
-    ruleSetAction?: pulumi.Input<string | enums.ManagedRuleSetActionType>;
+    ruleSetAction?: pulumi.Input<string | enums.ManagedRuleSetActionType | undefined>;
     /**
      * Defines the rule set type to use.
      */
@@ -436,13 +439,80 @@ export interface ManagedRuleSetArgs {
 }
 
 /**
+ * Excludes whole requests from managed rule evaluation according to match conditions.
+ */
+export interface ManagedRuleSetExceptionArgs {
+    /**
+     * List of values to be matched with.
+     */
+    matchValues: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The variable to be evaluated for excluding the request.
+     */
+    matchVariable: pulumi.Input<string | enums.ExceptionMatchVariable>;
+    /**
+     * Scope(s) of the exception.
+     */
+    scopes: pulumi.Input<pulumi.Input<ManagedRuleSetScopeArgs>[]>;
+    /**
+     * When matchVariable is a collection, operator used to specify which elements
+     * in the collection this exception applies to.
+     * Currently supported only for RequestHeaderNames.
+     */
+    selector?: pulumi.Input<string | undefined>;
+    /**
+     * Comparison operator to apply to the selector when specifying which elements
+     * in the collection this exception applies to.
+     */
+    selectorMatchOperator?: pulumi.Input<string | enums.ExceptionSelectorMatchOperator | undefined>;
+    /**
+     * Comparison operator to apply to the value to be matched.
+     */
+    valueMatchOperator: pulumi.Input<string | enums.ExceptionValueMatchOperator>;
+}
+
+/**
+ * Defines the list of exceptions for the managed rule sets.
+ */
+export interface ManagedRuleSetExceptionListArgs {
+    /**
+     * List of exceptions.
+     */
+    exceptions?: pulumi.Input<pulumi.Input<ManagedRuleSetExceptionArgs>[] | undefined>;
+}
+
+/**
  * Defines the list of managed rule sets for the policy.
  */
 export interface ManagedRuleSetListArgs {
     /**
+     * List of exceptions applied on the managed rule sets.
+     */
+    exceptionsList?: pulumi.Input<ManagedRuleSetExceptionListArgs | undefined>;
+    /**
      * List of rule sets.
      */
-    managedRuleSets?: pulumi.Input<pulumi.Input<ManagedRuleSetArgs>[]>;
+    managedRuleSets?: pulumi.Input<pulumi.Input<ManagedRuleSetArgs>[] | undefined>;
+}
+
+/**
+ * Defines the scope of the managed rules.
+ */
+export interface ManagedRuleSetScopeArgs {
+    /**
+     * List of rule group scopes.
+     */
+    ruleGroupScopes?: pulumi.Input<pulumi.Input<RuleGroupScopeArgs>[] | undefined>;
+    /**
+     * Defines the rule set type.
+     * Examples: DefaultRuleSet, Microsoft_DefaultRuleSet,
+     * Microsoft_BotManagerRuleSet, Microsoft_HTTPDDoSRuleSet, BotProtection
+     */
+    ruleSetType: pulumi.Input<string>;
+    /**
+     * Defines the version of the rule set.
+     */
+    ruleSetVersion: pulumi.Input<string>;
 }
 
 /**
@@ -460,7 +530,7 @@ export interface MatchConditionArgs {
     /**
      * Describes if the result of this condition should be negated.
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Comparison type to use for matching with the variable value.
      */
@@ -468,11 +538,11 @@ export interface MatchConditionArgs {
     /**
      * Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables. Default is null.
      */
-    selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string | undefined>;
     /**
      * List of transforms.
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.TransformType>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.TransformType>[] | undefined>;
 }
 
 /**
@@ -480,41 +550,45 @@ export interface MatchConditionArgs {
  */
 export interface PolicySettingsArgs {
     /**
+     * Defines the Captcha cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
+     */
+    captchaExpirationInMinutes?: pulumi.Input<number | undefined>;
+    /**
      * If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
      */
-    customBlockResponseBody?: pulumi.Input<string>;
+    customBlockResponseBody?: pulumi.Input<string | undefined>;
     /**
      * If the action type is block, customer can override the response status code.
      */
-    customBlockResponseStatusCode?: pulumi.Input<number>;
+    customBlockResponseStatusCode?: pulumi.Input<number | undefined>;
     /**
      * Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
      */
-    enabledState?: pulumi.Input<string | enums.PolicyEnabledState>;
+    enabledState?: pulumi.Input<string | enums.PolicyEnabledState | undefined>;
     /**
      * Defines the JavaScript challenge cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
      */
-    javascriptChallengeExpirationInMinutes?: pulumi.Input<number>;
+    javascriptChallengeExpirationInMinutes?: pulumi.Input<number | undefined>;
     /**
      * Describes if it is in detection mode or prevention mode at policy level.
      */
-    mode?: pulumi.Input<string | enums.PolicyMode>;
+    mode?: pulumi.Input<string | enums.PolicyMode | undefined>;
     /**
      * If action type is redirect, this field represents redirect URL for the client.
      */
-    redirectUrl?: pulumi.Input<string>;
+    redirectUrl?: pulumi.Input<string | undefined>;
     /**
      * Describes if policy managed rules will inspect the request body content.
      */
-    requestBodyCheck?: pulumi.Input<string | enums.PolicyRequestBodyCheck>;
+    requestBodyCheck?: pulumi.Input<string | enums.PolicyRequestBodyCheck | undefined>;
     /**
      * List of log scrubbing rules applied to the Web Application Firewall logs.
      */
-    scrubbingRules?: pulumi.Input<pulumi.Input<WebApplicationFirewallScrubbingRulesArgs>[]>;
+    scrubbingRules?: pulumi.Input<pulumi.Input<WebApplicationFirewallScrubbingRulesArgs>[] | undefined>;
     /**
      * State of the log scrubbing config. Default value is Enabled.
      */
-    state?: pulumi.Input<string | enums.WebApplicationFirewallScrubbingState>;
+    state?: pulumi.Input<string | enums.WebApplicationFirewallScrubbingState | undefined>;
 }
 
 /**
@@ -524,32 +598,31 @@ export interface RedirectConfigurationArgs {
     /**
      * Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
      */
-    customFragment?: pulumi.Input<string>;
+    customFragment?: pulumi.Input<string | undefined>;
     /**
      * Host to redirect. Leave empty to use the incoming host as the destination host.
      */
-    customHost?: pulumi.Input<string>;
+    customHost?: pulumi.Input<string | undefined>;
     /**
      * The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
      */
-    customPath?: pulumi.Input<string>;
+    customPath?: pulumi.Input<string | undefined>;
     /**
      * The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
      */
-    customQueryString?: pulumi.Input<string>;
+    customQueryString?: pulumi.Input<string | undefined>;
     /**
-     *
      * Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
      */
     odataType: pulumi.Input<"#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration">;
     /**
      * The protocol of the destination to where the traffic is redirected
      */
-    redirectProtocol?: pulumi.Input<string | enums.FrontDoorRedirectProtocol>;
+    redirectProtocol?: pulumi.Input<string | enums.FrontDoorRedirectProtocol | undefined>;
     /**
      * The redirect type the rule will use when redirecting traffic.
      */
-    redirectType?: pulumi.Input<string | enums.FrontDoorRedirectType>;
+    redirectType?: pulumi.Input<string | enums.FrontDoorRedirectType | undefined>;
 }
 
 /**
@@ -559,39 +632,39 @@ export interface RoutingRuleArgs {
     /**
      * Protocol schemes to match for this rule
      */
-    acceptedProtocols?: pulumi.Input<pulumi.Input<string | enums.FrontDoorProtocol>[]>;
+    acceptedProtocols?: pulumi.Input<pulumi.Input<string | enums.FrontDoorProtocol>[] | undefined>;
     /**
      * Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
      */
-    enabledState?: pulumi.Input<string | enums.RoutingRuleEnabledState>;
+    enabledState?: pulumi.Input<string | enums.RoutingRuleEnabledState | undefined>;
     /**
      * Frontend endpoints associated with this rule
      */
-    frontendEndpoints?: pulumi.Input<pulumi.Input<SubResourceArgs>[]>;
+    frontendEndpoints?: pulumi.Input<pulumi.Input<SubResourceArgs>[] | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The route patterns of the rule.
      */
-    patternsToMatch?: pulumi.Input<pulumi.Input<string>[]>;
+    patternsToMatch?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A reference to the routing configuration.
      */
-    routeConfiguration?: pulumi.Input<ForwardingConfigurationArgs | RedirectConfigurationArgs>;
+    routeConfiguration?: pulumi.Input<ForwardingConfigurationArgs | RedirectConfigurationArgs | undefined>;
     /**
      * A reference to a specific Rules Engine Configuration to apply to this route.
      */
-    rulesEngine?: pulumi.Input<SubResourceArgs>;
+    rulesEngine?: pulumi.Input<SubResourceArgs | undefined>;
     /**
      * Defines the Web Application Firewall policy for each routing rule (if applicable)
      */
-    webApplicationFirewallPolicyLink?: pulumi.Input<RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs>;
+    webApplicationFirewallPolicyLink?: pulumi.Input<RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs | undefined>;
 }
 
 /**
@@ -601,7 +674,31 @@ export interface RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+}
+
+/**
+ * Defines the scope of the rule group.
+ */
+export interface RuleGroupScopeArgs {
+    /**
+     * Defines the rule group name.
+     */
+    ruleGroupName: pulumi.Input<string>;
+    /**
+     * List of rule scopes.
+     */
+    ruleScopes?: pulumi.Input<pulumi.Input<RuleScopeArgs>[] | undefined>;
+}
+
+/**
+ * Defines the scope of the rule.
+ */
+export interface RuleScopeArgs {
+    /**
+     * Defines the rule id.
+     */
+    ruleId: pulumi.Input<string>;
 }
 
 /**
@@ -611,15 +708,15 @@ export interface RulesEngineActionArgs {
     /**
      * A list of header actions to apply from the request from AFD to the origin.
      */
-    requestHeaderActions?: pulumi.Input<pulumi.Input<HeaderActionArgs>[]>;
+    requestHeaderActions?: pulumi.Input<pulumi.Input<HeaderActionArgs>[] | undefined>;
     /**
      * A list of header actions to apply from the response from AFD to the client.
      */
-    responseHeaderActions?: pulumi.Input<pulumi.Input<HeaderActionArgs>[]>;
+    responseHeaderActions?: pulumi.Input<pulumi.Input<HeaderActionArgs>[] | undefined>;
     /**
      * Override the route configuration.
      */
-    routeConfigurationOverride?: pulumi.Input<ForwardingConfigurationArgs | RedirectConfigurationArgs>;
+    routeConfigurationOverride?: pulumi.Input<ForwardingConfigurationArgs | RedirectConfigurationArgs | undefined>;
 }
 
 /**
@@ -629,7 +726,7 @@ export interface RulesEngineMatchConditionArgs {
     /**
      * Describes if this is negate condition or not
      */
-    negateCondition?: pulumi.Input<boolean>;
+    negateCondition?: pulumi.Input<boolean | undefined>;
     /**
      * Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
      */
@@ -645,11 +742,11 @@ export interface RulesEngineMatchConditionArgs {
     /**
      * Name of selector in RequestHeader or RequestBody to be matched
      */
-    selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string | undefined>;
     /**
      * List of transforms
      */
-    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[]>;
+    transforms?: pulumi.Input<pulumi.Input<string | enums.Transform>[] | undefined>;
 }
 
 /**
@@ -663,17 +760,17 @@ export interface RulesEngineRuleArgs {
     /**
      * A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
      */
-    matchConditions?: pulumi.Input<pulumi.Input<RulesEngineMatchConditionArgs>[]>;
+    matchConditions?: pulumi.Input<pulumi.Input<RulesEngineMatchConditionArgs>[] | undefined>;
     /**
      * If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
      */
-    matchProcessingBehavior?: pulumi.Input<string | enums.MatchProcessingBehavior>;
+    matchProcessingBehavior?: pulumi.Input<string | enums.MatchProcessingBehavior | undefined>;
     /**
      * A name to refer to this specific rule.
      */
     name: pulumi.Input<string>;
     /**
-     * A priority assigned to this rule. 
+     * A priority assigned to this rule.
      */
     priority: pulumi.Input<number>;
 }
@@ -685,7 +782,7 @@ export interface SkuArgs {
     /**
      * Name of the pricing tier.
      */
-    name?: pulumi.Input<string | enums.SkuName>;
+    name?: pulumi.Input<string | enums.SkuName | undefined>;
 }
 
 /**
@@ -698,7 +795,7 @@ export interface SubResourceArgs {
      * A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
      * Example of a relative ID: $self/frontEndConfigurations/my-frontend.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -712,7 +809,7 @@ export interface WebApplicationFirewallScrubbingRulesArgs {
     /**
      * When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
      */
-    selector?: pulumi.Input<string>;
+    selector?: pulumi.Input<string | undefined>;
     /**
      * When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
      */
@@ -720,5 +817,5 @@ export interface WebApplicationFirewallScrubbingRulesArgs {
     /**
      * Defines the state of a log scrubbing rule. Default value is enabled.
      */
-    state?: pulumi.Input<string | enums.ScrubbingRuleEntryState>;
+    state?: pulumi.Input<string | enums.ScrubbingRuleEntryState | undefined>;
 }

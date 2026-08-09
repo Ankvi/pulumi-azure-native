@@ -5,6 +5,8 @@ import * as types from "./types";
  * Tool details.
  *
  * Uses Azure REST API version 2025-03-01-preview.
+ *
+ * Other available API versions: 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ApiTool extends pulumi.CustomResource {
     /**
@@ -103,7 +105,7 @@ export class ApiTool extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20250301preview:ApiTool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20250301preview:ApiTool" }, { type: "azure-native:apimanagement/v20250901preview:ApiTool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ApiTool.__pulumiType, name, resourceInputs, opts);
     }
@@ -120,15 +122,15 @@ export interface ApiToolArgs {
     /**
      * Description of the tool.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Tool Name. MCP tool name must contain only letters, numbers, underscores, and hyphens.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the operation this MCP tool is associated with in the form of /apis/{apiId}/operations/{operationId}.
      */
-    operationId?: pulumi.Input<string>;
+    operationId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -140,5 +142,5 @@ export interface ApiToolArgs {
     /**
      * Tool identifier within an API. Must be unique in the current API Management service instance.
      */
-    toolId?: pulumi.Input<string>;
+    toolId?: pulumi.Input<string | undefined>;
 }

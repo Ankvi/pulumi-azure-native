@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-10-15.
  *
- * Other available API versions: 2015-04-01, 2015-04-08, 2015-11-06, 2016-03-19, 2016-03-31, 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2015-04-01, 2015-04-08, 2015-11-06, 2016-03-19, 2016-03-31, 2019-08-01, 2019-12-12, 2020-03-01, 2020-04-01, 2020-06-01-preview, 2020-09-01, 2021-01-15, 2021-03-01-preview, 2021-03-15, 2021-04-01-preview, 2021-04-15, 2021-05-15, 2021-06-15, 2021-07-01-preview, 2021-10-15, 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview, 2026-03-15, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DatabaseAccount extends pulumi.CustomResource {
     /**
@@ -367,7 +367,7 @@ export class DatabaseAccount extends pulumi.CustomResource {
             resourceInputs["writeLocations"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cosmosdb/v20150401:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20150408:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20151106:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20160319:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20160331:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20190801:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20191212:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20200301:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20200401:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20200601preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20200901:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210115:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210301preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210315:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210401preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210415:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210515:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210615:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210701preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20211015:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20211015preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20211115preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20220215preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20220515:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20220515preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20220815:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20220815preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20221115:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20221115preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20230301preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20230315:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20230315preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20230415:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20230915:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20230915preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20231115:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20231115preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20240215preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20240515:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20240515preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20240815:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20240901preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20241115:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20241201preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20250415:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20250501preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20251015:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20251101preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20210401preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20230315preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20230415:DatabaseAccount" }, { type: "azure-native:documentdb/v20230915:DatabaseAccount" }, { type: "azure-native:documentdb/v20230915preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20231115:DatabaseAccount" }, { type: "azure-native:documentdb/v20231115preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20240215preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20240515:DatabaseAccount" }, { type: "azure-native:documentdb/v20240515preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20240815:DatabaseAccount" }, { type: "azure-native:documentdb/v20240901preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20241115:DatabaseAccount" }, { type: "azure-native:documentdb/v20241201preview:DatabaseAccount" }, { type: "azure-native:documentdb:DatabaseAccount" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cosmosdb/v20150401:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20150408:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20151106:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20160319:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20160331:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20190801:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20191212:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20200301:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20200401:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20200601preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20200901:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210115:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210301preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210315:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210401preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210415:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210515:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210615:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20210701preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20211015:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20211015preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20211115preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20220215preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20220515:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20220515preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20220815:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20220815preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20221115:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20221115preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20230301preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20230315:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20230315preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20230415:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20230915:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20230915preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20231115:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20231115preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20240215preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20240515:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20240515preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20240815:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20240901preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20241115:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20241201preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20250415:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20250501preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20251015:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20251101preview:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20260315:DatabaseAccount" }, { type: "azure-native:cosmosdb/v20260401preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20210401preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20230315preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20230415:DatabaseAccount" }, { type: "azure-native:documentdb/v20230915:DatabaseAccount" }, { type: "azure-native:documentdb/v20230915preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20231115:DatabaseAccount" }, { type: "azure-native:documentdb/v20231115preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20240215preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20240515:DatabaseAccount" }, { type: "azure-native:documentdb/v20240515preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20240815:DatabaseAccount" }, { type: "azure-native:documentdb/v20240901preview:DatabaseAccount" }, { type: "azure-native:documentdb/v20241115:DatabaseAccount" }, { type: "azure-native:documentdb/v20241201preview:DatabaseAccount" }, { type: "azure-native:documentdb:DatabaseAccount" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DatabaseAccount.__pulumiType, name, resourceInputs, opts);
     }
@@ -380,47 +380,47 @@ export interface DatabaseAccountArgs {
     /**
      * Cosmos DB database account name.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Analytical storage specific properties.
      */
-    analyticalStorageConfiguration?: pulumi.Input<types.inputs.AnalyticalStorageConfigurationArgs>;
+    analyticalStorageConfiguration?: pulumi.Input<types.inputs.AnalyticalStorageConfigurationArgs | undefined>;
     /**
      * API specific properties. Currently, supported only for MongoDB API.
      */
-    apiProperties?: pulumi.Input<types.inputs.ApiPropertiesArgs>;
+    apiProperties?: pulumi.Input<types.inputs.ApiPropertiesArgs | undefined>;
     /**
      * The object representing the policy for taking backups on an account.
      */
-    backupPolicy?: pulumi.Input<types.inputs.ContinuousModeBackupPolicyArgs | types.inputs.PeriodicModeBackupPolicyArgs>;
+    backupPolicy?: pulumi.Input<types.inputs.ContinuousModeBackupPolicyArgs | types.inputs.PeriodicModeBackupPolicyArgs | undefined>;
     /**
      * List of Cosmos DB capabilities for the account
      */
-    capabilities?: pulumi.Input<pulumi.Input<types.inputs.CapabilityArgs>[]>;
+    capabilities?: pulumi.Input<pulumi.Input<types.inputs.CapabilityArgs>[] | undefined>;
     /**
      * The object that represents all properties related to capacity enforcement on an account.
      */
-    capacity?: pulumi.Input<types.inputs.CapacityArgs>;
+    capacity?: pulumi.Input<types.inputs.CapacityArgs | undefined>;
     /**
      * The cassandra connector offer type for the Cosmos DB database C* account.
      */
-    connectorOffer?: pulumi.Input<string | types.enums.ConnectorOffer>;
+    connectorOffer?: pulumi.Input<string | types.enums.ConnectorOffer | undefined>;
     /**
      * The consistency policy for the Cosmos DB account.
      */
-    consistencyPolicy?: pulumi.Input<types.inputs.ConsistencyPolicyArgs>;
+    consistencyPolicy?: pulumi.Input<types.inputs.ConsistencyPolicyArgs | undefined>;
     /**
      * The CORS policy for the Cosmos DB database account.
      */
-    cors?: pulumi.Input<pulumi.Input<types.inputs.CorsPolicyArgs>[]>;
+    cors?: pulumi.Input<pulumi.Input<types.inputs.CorsPolicyArgs>[] | undefined>;
     /**
      * Enum to indicate the mode of account creation.
      */
-    createMode?: pulumi.Input<string | types.enums.CreateMode>;
+    createMode?: pulumi.Input<string | types.enums.CreateMode | undefined>;
     /**
      * Indicates the status of the Customer Managed Key feature on the account. In case there are errors, the property provides troubleshooting guidance.
      */
-    customerManagedKeyStatus?: pulumi.Input<string>;
+    customerManagedKeyStatus?: pulumi.Input<string | undefined>;
     /**
      * The offer type for the database
      */
@@ -428,79 +428,79 @@ export interface DatabaseAccountArgs {
     /**
      * The default identity for accessing key vault used in features like customer managed keys. The default identity needs to be explicitly set by the users. It can be "FirstPartyIdentity", "SystemAssignedIdentity" and more.
      */
-    defaultIdentity?: pulumi.Input<string>;
+    defaultIdentity?: pulumi.Input<string | undefined>;
     /**
      * Enum to indicate default Priority Level of request for Priority Based Execution.
      */
-    defaultPriorityLevel?: pulumi.Input<string | types.enums.DefaultPriorityLevel>;
+    defaultPriorityLevel?: pulumi.Input<string | types.enums.DefaultPriorityLevel | undefined>;
     /**
      * Disable write operations on metadata resources (databases, containers, throughput) via account keys
      */
-    disableKeyBasedMetadataWriteAccess?: pulumi.Input<boolean>;
+    disableKeyBasedMetadataWriteAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to indicate whether to enable storage analytics.
      */
-    enableAnalyticalStorage?: pulumi.Input<boolean>;
+    enableAnalyticalStorage?: pulumi.Input<boolean | undefined>;
     /**
      * Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
      */
-    enableAutomaticFailover?: pulumi.Input<boolean>;
+    enableAutomaticFailover?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to indicate enabling/disabling of Burst Capacity feature on the account
      */
-    enableBurstCapacity?: pulumi.Input<boolean>;
+    enableBurstCapacity?: pulumi.Input<boolean | undefined>;
     /**
      * Enables the cassandra connector on the Cosmos DB C* account
      */
-    enableCassandraConnector?: pulumi.Input<boolean>;
+    enableCassandraConnector?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to indicate whether Free Tier is enabled.
      */
-    enableFreeTier?: pulumi.Input<boolean>;
+    enableFreeTier?: pulumi.Input<boolean | undefined>;
     /**
      * Enables the account to write in multiple locations
      */
-    enableMultipleWriteLocations?: pulumi.Input<boolean>;
+    enableMultipleWriteLocations?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to indicate enabling/disabling of Partition Merge feature on the account
      */
-    enablePartitionMerge?: pulumi.Input<boolean>;
+    enablePartitionMerge?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to indicate enabling/disabling of PerRegionPerPartitionAutoscale feature on the account
      */
-    enablePerRegionPerPartitionAutoscale?: pulumi.Input<boolean>;
+    enablePerRegionPerPartitionAutoscale?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to indicate enabling/disabling of Priority Based Execution Preview feature on the account
      */
-    enablePriorityBasedExecution?: pulumi.Input<boolean>;
+    enablePriorityBasedExecution?: pulumi.Input<boolean | undefined>;
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * List of IpRules.
      */
-    ipRules?: pulumi.Input<pulumi.Input<types.inputs.IpAddressOrRangeArgs>[]>;
+    ipRules?: pulumi.Input<pulumi.Input<types.inputs.IpAddressOrRangeArgs>[] | undefined>;
     /**
      * Flag to indicate whether to enable/disable Virtual Network ACL rules.
      */
-    isVirtualNetworkFilterEnabled?: pulumi.Input<boolean>;
+    isVirtualNetworkFilterEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The URI of the key vault
      */
-    keyVaultKeyUri?: pulumi.Input<string>;
+    keyVaultKeyUri?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of database account. This can only be set at database account creation.
      */
-    kind?: pulumi.Input<string | types.enums.DatabaseAccountKind>;
+    kind?: pulumi.Input<string | types.enums.DatabaseAccountKind | undefined>;
     /**
      * The location of the resource group to which the resource belongs.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * An array that contains the georeplication locations enabled for the Cosmos DB account.
      */
@@ -508,19 +508,19 @@ export interface DatabaseAccountArgs {
     /**
      * Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
      */
-    minimalTlsVersion?: pulumi.Input<string | types.enums.MinimalTlsVersion>;
+    minimalTlsVersion?: pulumi.Input<string | types.enums.MinimalTlsVersion | undefined>;
     /**
      * Indicates what services are allowed to bypass firewall checks.
      */
-    networkAclBypass?: pulumi.Input<types.enums.NetworkAclBypass>;
+    networkAclBypass?: pulumi.Input<types.enums.NetworkAclBypass | undefined>;
     /**
      * An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account.
      */
-    networkAclBypassResourceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    networkAclBypassResourceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether requests from Public Network are allowed
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -528,13 +528,13 @@ export interface DatabaseAccountArgs {
     /**
      * Parameters to indicate the information about the restore.
      */
-    restoreParameters?: pulumi.Input<types.inputs.RestoreParametersArgs>;
+    restoreParameters?: pulumi.Input<types.inputs.RestoreParametersArgs | undefined>;
     /**
      * Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of Virtual Network ACL rules configured for the Cosmos DB account.
      */
-    virtualNetworkRules?: pulumi.Input<pulumi.Input<types.inputs.VirtualNetworkRuleArgs>[]>;
+    virtualNetworkRules?: pulumi.Input<pulumi.Input<types.inputs.VirtualNetworkRuleArgs>[] | undefined>;
 }

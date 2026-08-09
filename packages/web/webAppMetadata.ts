@@ -3,9 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * String dictionary resource.
  *
- * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+ * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppMetadata extends pulumi.CustomResource {
     /**
@@ -86,7 +86,7 @@ export class WebAppMetadata extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppMetadata" }, { type: "azure-native:web/v20160801:WebAppMetadata" }, { type: "azure-native:web/v20180201:WebAppMetadata" }, { type: "azure-native:web/v20181101:WebAppMetadata" }, { type: "azure-native:web/v20190801:WebAppMetadata" }, { type: "azure-native:web/v20200601:WebAppMetadata" }, { type: "azure-native:web/v20200901:WebAppMetadata" }, { type: "azure-native:web/v20201001:WebAppMetadata" }, { type: "azure-native:web/v20201201:WebAppMetadata" }, { type: "azure-native:web/v20210101:WebAppMetadata" }, { type: "azure-native:web/v20210115:WebAppMetadata" }, { type: "azure-native:web/v20210201:WebAppMetadata" }, { type: "azure-native:web/v20210301:WebAppMetadata" }, { type: "azure-native:web/v20220301:WebAppMetadata" }, { type: "azure-native:web/v20220901:WebAppMetadata" }, { type: "azure-native:web/v20230101:WebAppMetadata" }, { type: "azure-native:web/v20231201:WebAppMetadata" }, { type: "azure-native:web/v20240401:WebAppMetadata" }, { type: "azure-native:web/v20241101:WebAppMetadata" }, { type: "azure-native:web/v20250301:WebAppMetadata" }, { type: "azure-native:web/v20250501:WebAppMetadata" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppMetadata" }, { type: "azure-native:web/v20160801:WebAppMetadata" }, { type: "azure-native:web/v20180201:WebAppMetadata" }, { type: "azure-native:web/v20181101:WebAppMetadata" }, { type: "azure-native:web/v20190801:WebAppMetadata" }, { type: "azure-native:web/v20200601:WebAppMetadata" }, { type: "azure-native:web/v20200901:WebAppMetadata" }, { type: "azure-native:web/v20201001:WebAppMetadata" }, { type: "azure-native:web/v20201201:WebAppMetadata" }, { type: "azure-native:web/v20210101:WebAppMetadata" }, { type: "azure-native:web/v20210115:WebAppMetadata" }, { type: "azure-native:web/v20210201:WebAppMetadata" }, { type: "azure-native:web/v20210301:WebAppMetadata" }, { type: "azure-native:web/v20220301:WebAppMetadata" }, { type: "azure-native:web/v20220901:WebAppMetadata" }, { type: "azure-native:web/v20230101:WebAppMetadata" }, { type: "azure-native:web/v20231201:WebAppMetadata" }, { type: "azure-native:web/v20240401:WebAppMetadata" }, { type: "azure-native:web/v20241101:WebAppMetadata" }, { type: "azure-native:web/v20250301:WebAppMetadata" }, { type: "azure-native:web/v20250501:WebAppMetadata" }, { type: "azure-native:web/v20260301preview:WebAppMetadata" }, { type: "azure-native:web/v20260315:WebAppMetadata" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppMetadata.__pulumiType, name, resourceInputs, opts);
     }
@@ -99,7 +99,7 @@ export interface WebAppMetadataArgs {
     /**
      * Kind of resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Name of the app.
      */
@@ -107,9 +107,9 @@ export interface WebAppMetadataArgs {
     /**
      * Settings.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

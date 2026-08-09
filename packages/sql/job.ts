@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Job extends pulumi.CustomResource {
     /**
@@ -84,7 +84,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["jobAgentName"] = args?.jobAgentName;
             resourceInputs["jobName"] = args?.jobName;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
-            resourceInputs["schedule"] = args ? (args.schedule ? pulumi.output(args.schedule).apply(types.inputs.jobScheduleArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["schedule"] = args ? pulumi.output(args.schedule).apply(v => v === undefined ? undefined : types.inputs.jobScheduleArgsProvideDefaults(v)) : undefined;
             resourceInputs["serverName"] = args?.serverName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -99,7 +99,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:Job" }, { type: "azure-native:sql/v20200202preview:Job" }, { type: "azure-native:sql/v20200801preview:Job" }, { type: "azure-native:sql/v20201101preview:Job" }, { type: "azure-native:sql/v20210201preview:Job" }, { type: "azure-native:sql/v20210501preview:Job" }, { type: "azure-native:sql/v20210801preview:Job" }, { type: "azure-native:sql/v20211101:Job" }, { type: "azure-native:sql/v20211101preview:Job" }, { type: "azure-native:sql/v20220201preview:Job" }, { type: "azure-native:sql/v20220501preview:Job" }, { type: "azure-native:sql/v20220801preview:Job" }, { type: "azure-native:sql/v20221101preview:Job" }, { type: "azure-native:sql/v20230201preview:Job" }, { type: "azure-native:sql/v20230501preview:Job" }, { type: "azure-native:sql/v20230801:Job" }, { type: "azure-native:sql/v20230801preview:Job" }, { type: "azure-native:sql/v20240501preview:Job" }, { type: "azure-native:sql/v20241101preview:Job" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:Job" }, { type: "azure-native:sql/v20200202preview:Job" }, { type: "azure-native:sql/v20200801preview:Job" }, { type: "azure-native:sql/v20201101preview:Job" }, { type: "azure-native:sql/v20210201preview:Job" }, { type: "azure-native:sql/v20210501preview:Job" }, { type: "azure-native:sql/v20210801preview:Job" }, { type: "azure-native:sql/v20211101:Job" }, { type: "azure-native:sql/v20211101preview:Job" }, { type: "azure-native:sql/v20220201preview:Job" }, { type: "azure-native:sql/v20220501preview:Job" }, { type: "azure-native:sql/v20220801preview:Job" }, { type: "azure-native:sql/v20221101preview:Job" }, { type: "azure-native:sql/v20230201preview:Job" }, { type: "azure-native:sql/v20230501preview:Job" }, { type: "azure-native:sql/v20230801:Job" }, { type: "azure-native:sql/v20230801preview:Job" }, { type: "azure-native:sql/v20240501preview:Job" }, { type: "azure-native:sql/v20241101preview:Job" }, { type: "azure-native:sql/v20250101:Job" }, { type: "azure-native:sql/v20250201preview:Job" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Job.__pulumiType, name, resourceInputs, opts);
     }
@@ -112,7 +112,7 @@ export interface JobArgs {
     /**
      * User-defined description of the job.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the job agent.
      */
@@ -120,7 +120,7 @@ export interface JobArgs {
     /**
      * The name of the job to get.
      */
-    jobName?: pulumi.Input<string>;
+    jobName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -128,7 +128,7 @@ export interface JobArgs {
     /**
      * Schedule properties of the job.
      */
-    schedule?: pulumi.Input<types.inputs.JobScheduleArgs>;
+    schedule?: pulumi.Input<types.inputs.JobScheduleArgs | undefined>;
     /**
      * The name of the server.
      */

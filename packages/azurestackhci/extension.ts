@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-04-30, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Extension extends pulumi.CustomResource {
     /**
@@ -153,7 +153,7 @@ export class Extension extends pulumi.CustomResource {
             resourceInputs["typeHandlerVersion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210101preview:Extension" }, { type: "azure-native:azurestackhci/v20210901:Extension" }, { type: "azure-native:azurestackhci/v20210901preview:Extension" }, { type: "azure-native:azurestackhci/v20220101:Extension" }, { type: "azure-native:azurestackhci/v20220301:Extension" }, { type: "azure-native:azurestackhci/v20220501:Extension" }, { type: "azure-native:azurestackhci/v20220901:Extension" }, { type: "azure-native:azurestackhci/v20221001:Extension" }, { type: "azure-native:azurestackhci/v20221201:Extension" }, { type: "azure-native:azurestackhci/v20221215preview:Extension" }, { type: "azure-native:azurestackhci/v20230201:Extension" }, { type: "azure-native:azurestackhci/v20230301:Extension" }, { type: "azure-native:azurestackhci/v20230601:Extension" }, { type: "azure-native:azurestackhci/v20230801:Extension" }, { type: "azure-native:azurestackhci/v20230801preview:Extension" }, { type: "azure-native:azurestackhci/v20231101preview:Extension" }, { type: "azure-native:azurestackhci/v20240101:Extension" }, { type: "azure-native:azurestackhci/v20240215preview:Extension" }, { type: "azure-native:azurestackhci/v20240401:Extension" }, { type: "azure-native:azurestackhci/v20240901preview:Extension" }, { type: "azure-native:azurestackhci/v20241201preview:Extension" }, { type: "azure-native:azurestackhci/v20250201preview:Extension" }, { type: "azure-native:azurestackhci/v20250915preview:Extension" }, { type: "azure-native:azurestackhci/v20251001:Extension" }, { type: "azure-native:azurestackhci/v20251101preview:Extension" }, { type: "azure-native:azurestackhci/v20251201preview:Extension" }, { type: "azure-native:azurestackhci/v20260201:Extension" }, { type: "azure-native:azurestackhci/v20260215preview:Extension" }, { type: "azure-native:azurestackhci/v20260301preview:Extension" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210101preview:Extension" }, { type: "azure-native:azurestackhci/v20210901:Extension" }, { type: "azure-native:azurestackhci/v20210901preview:Extension" }, { type: "azure-native:azurestackhci/v20220101:Extension" }, { type: "azure-native:azurestackhci/v20220301:Extension" }, { type: "azure-native:azurestackhci/v20220501:Extension" }, { type: "azure-native:azurestackhci/v20220901:Extension" }, { type: "azure-native:azurestackhci/v20221001:Extension" }, { type: "azure-native:azurestackhci/v20221201:Extension" }, { type: "azure-native:azurestackhci/v20221215preview:Extension" }, { type: "azure-native:azurestackhci/v20230201:Extension" }, { type: "azure-native:azurestackhci/v20230301:Extension" }, { type: "azure-native:azurestackhci/v20230601:Extension" }, { type: "azure-native:azurestackhci/v20230801:Extension" }, { type: "azure-native:azurestackhci/v20230801preview:Extension" }, { type: "azure-native:azurestackhci/v20231101preview:Extension" }, { type: "azure-native:azurestackhci/v20240101:Extension" }, { type: "azure-native:azurestackhci/v20240215preview:Extension" }, { type: "azure-native:azurestackhci/v20240401:Extension" }, { type: "azure-native:azurestackhci/v20240901preview:Extension" }, { type: "azure-native:azurestackhci/v20241201preview:Extension" }, { type: "azure-native:azurestackhci/v20250201preview:Extension" }, { type: "azure-native:azurestackhci/v20250915preview:Extension" }, { type: "azure-native:azurestackhci/v20251001:Extension" }, { type: "azure-native:azurestackhci/v20251101preview:Extension" }, { type: "azure-native:azurestackhci/v20251201preview:Extension" }, { type: "azure-native:azurestackhci/v20260201:Extension" }, { type: "azure-native:azurestackhci/v20260215preview:Extension" }, { type: "azure-native:azurestackhci/v20260301preview:Extension" }, { type: "azure-native:azurestackhci/v20260401preview:Extension" }, { type: "azure-native:azurestackhci/v20260430:Extension" }, { type: "azure-native:azurestackhci/v20260501preview:Extension" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Extension.__pulumiType, name, resourceInputs, opts);
     }
@@ -170,7 +170,7 @@ export interface ExtensionArgs {
     /**
      * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
      */
-    autoUpgradeMinorVersion?: pulumi.Input<boolean>;
+    autoUpgradeMinorVersion?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the cluster.
      */
@@ -178,23 +178,23 @@ export interface ExtensionArgs {
     /**
      * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
      */
-    enableAutomaticUpgrade?: pulumi.Input<boolean>;
+    enableAutomaticUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the machine extension.
      */
-    extensionName?: pulumi.Input<string>;
+    extensionName?: pulumi.Input<string | undefined>;
     /**
      * How the extension handler should be forced to update even if the extension configuration has not changed.
      */
-    forceUpdateTag?: pulumi.Input<string>;
+    forceUpdateTag?: pulumi.Input<string | undefined>;
     /**
      * Protected settings (may contain secrets).
      */
-    protectedSettings?: any;
+    protectedSettings?: any | undefined;
     /**
      * The name of the extension handler publisher.
      */
-    publisher?: pulumi.Input<string>;
+    publisher?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -202,13 +202,13 @@ export interface ExtensionArgs {
     /**
      * Json formatted public settings for the extension.
      */
-    settings?: any;
+    settings?: any | undefined;
     /**
      * Specifies the type of the extension; an example is "CustomScriptExtension".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Specifies the version of the script handler. Latest version would be used if not specified.
      */
-    typeHandlerVersion?: pulumi.Input<string>;
+    typeHandlerVersion?: pulumi.Input<string | undefined>;
 }

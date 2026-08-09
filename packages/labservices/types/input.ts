@@ -7,27 +7,27 @@ export interface AutoShutdownProfileArgs {
     /**
      * The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
      */
-    disconnectDelay?: pulumi.Input<string>;
+    disconnectDelay?: pulumi.Input<string | undefined>;
     /**
      * The amount of time a VM will idle before it is shutdown if this behavior is enabled.
      */
-    idleDelay?: pulumi.Input<string>;
+    idleDelay?: pulumi.Input<string | undefined>;
     /**
      * The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
      */
-    noConnectDelay?: pulumi.Input<string>;
+    noConnectDelay?: pulumi.Input<string | undefined>;
     /**
      * Whether shutdown on disconnect is enabled
      */
-    shutdownOnDisconnect?: pulumi.Input<enums.EnableState>;
+    shutdownOnDisconnect?: pulumi.Input<enums.EnableState | undefined>;
     /**
      * Whether a VM will get shutdown when it has idled for a period of time.
      */
-    shutdownOnIdle?: pulumi.Input<enums.ShutdownOnIdleMode>;
+    shutdownOnIdle?: pulumi.Input<enums.ShutdownOnIdleMode | undefined>;
     /**
      * Whether a VM will get shutdown when it hasn't been connected to after a period of time.
      */
-    shutdownWhenNotConnected?: pulumi.Input<enums.EnableState>;
+    shutdownWhenNotConnected?: pulumi.Input<enums.EnableState | undefined>;
 }
 /**
  * autoShutdownProfileArgsProvideDefaults sets the appropriate defaults for AutoShutdownProfileArgs
@@ -48,19 +48,19 @@ export interface ConnectionProfileArgs {
     /**
      * The enabled access level for Client Access over RDP.
      */
-    clientRdpAccess?: pulumi.Input<enums.ConnectionType>;
+    clientRdpAccess?: pulumi.Input<enums.ConnectionType | undefined>;
     /**
      * The enabled access level for Client Access over SSH.
      */
-    clientSshAccess?: pulumi.Input<enums.ConnectionType>;
+    clientSshAccess?: pulumi.Input<enums.ConnectionType | undefined>;
     /**
      * The enabled access level for Web Access over RDP.
      */
-    webRdpAccess?: pulumi.Input<enums.ConnectionType>;
+    webRdpAccess?: pulumi.Input<enums.ConnectionType | undefined>;
     /**
      * The enabled access level for Web Access over SSH.
      */
-    webSshAccess?: pulumi.Input<enums.ConnectionType>;
+    webSshAccess?: pulumi.Input<enums.ConnectionType | undefined>;
 }
 /**
  * connectionProfileArgsProvideDefaults sets the appropriate defaults for ConnectionProfileArgs
@@ -82,7 +82,7 @@ export interface CredentialsArgs {
     /**
      * The password for the user. This is required for the TemplateVM createOption.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The username to use when signing in to lab VMs.
      */
@@ -96,7 +96,7 @@ export interface IdentityArgs {
     /**
      * The identity type.
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
 }
 
 /**
@@ -106,23 +106,23 @@ export interface ImageReferenceArgs {
     /**
      * Image resource ID
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The image offer if applicable.
      */
-    offer?: pulumi.Input<string>;
+    offer?: pulumi.Input<string | undefined>;
     /**
      * The image publisher
      */
-    publisher?: pulumi.Input<string>;
+    publisher?: pulumi.Input<string | undefined>;
     /**
      * The image SKU
      */
-    sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string | undefined>;
     /**
      * The image version specified on creation.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -132,15 +132,15 @@ export interface LabNetworkProfileArgs {
     /**
      * The external load balancer resource id
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * The external public IP resource id
      */
-    publicIpId?: pulumi.Input<string>;
+    publicIpId?: pulumi.Input<string | undefined>;
     /**
      * The external subnet resource id
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -150,7 +150,7 @@ export interface LabPlanNetworkProfileArgs {
     /**
      * The external subnet resource id
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -168,11 +168,11 @@ export interface RecurrencePatternArgs {
     /**
      * The interval to invoke the schedule on. For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days. When no interval is supplied, an interval of 1 is used.
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * The week days the schedule runs. Used for when the Frequency is set to Weekly.
      */
-    weekDays?: pulumi.Input<pulumi.Input<enums.WeekDay>[]>;
+    weekDays?: pulumi.Input<pulumi.Input<enums.WeekDay>[] | undefined>;
 }
 
 /**
@@ -182,23 +182,23 @@ export interface RosterProfileArgs {
     /**
      * The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
      */
-    activeDirectoryGroupId?: pulumi.Input<string>;
+    activeDirectoryGroupId?: pulumi.Input<string | undefined>;
     /**
      * The base URI identifying the lms instance.
      */
-    lmsInstance?: pulumi.Input<string>;
+    lmsInstance?: pulumi.Input<string | undefined>;
     /**
      * The unique id of the azure lab services tool in the lms.
      */
-    ltiClientId?: pulumi.Input<string>;
+    ltiClientId?: pulumi.Input<string | undefined>;
     /**
      * The unique context identifier for the lab in the lms.
      */
-    ltiContextId?: pulumi.Input<string>;
+    ltiContextId?: pulumi.Input<string | undefined>;
     /**
      * The uri of the names and roles service endpoint on the lms for the class attached to this lab.
      */
-    ltiRosterEndpoint?: pulumi.Input<string>;
+    ltiRosterEndpoint?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,7 +208,7 @@ export interface SecurityProfileArgs {
     /**
      * Whether any user or only specified users can register to a lab.
      */
-    openAccess?: pulumi.Input<enums.EnableState>;
+    openAccess?: pulumi.Input<enums.EnableState | undefined>;
 }
 
 /**
@@ -218,23 +218,23 @@ export interface SkuArgs {
     /**
      * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * If the service has different generations of hardware, for the same SKU, then that can be captured here.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * The name of the SKU. Ex - P3. It is typically a letter+number code
      */
     name: pulumi.Input<string>;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
      */
-    tier?: pulumi.Input<enums.SkuTier>;
+    tier?: pulumi.Input<enums.SkuTier | undefined>;
 }
 
 /**
@@ -244,19 +244,19 @@ export interface SupportInfoArgs {
     /**
      * Support contact email address.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Support instructions.
      */
-    instructions?: pulumi.Input<string>;
+    instructions?: pulumi.Input<string | undefined>;
     /**
      * Support contact phone number.
      */
-    phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string | undefined>;
     /**
      * Support web address.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -266,7 +266,7 @@ export interface VirtualMachineAdditionalCapabilitiesArgs {
     /**
      * Flag to pre-install dedicated GPU drivers.
      */
-    installGpuDrivers?: pulumi.Input<enums.EnableState>;
+    installGpuDrivers?: pulumi.Input<enums.EnableState | undefined>;
 }
 /**
  * virtualMachineAdditionalCapabilitiesArgsProvideDefaults sets the appropriate defaults for VirtualMachineAdditionalCapabilitiesArgs
@@ -285,7 +285,7 @@ export interface VirtualMachineProfileArgs {
     /**
      * Additional VM capabilities.
      */
-    additionalCapabilities?: pulumi.Input<VirtualMachineAdditionalCapabilitiesArgs>;
+    additionalCapabilities?: pulumi.Input<VirtualMachineAdditionalCapabilitiesArgs | undefined>;
     /**
      * Credentials for the admin user on the VM.
      */
@@ -301,7 +301,7 @@ export interface VirtualMachineProfileArgs {
     /**
      * Credentials for the non-admin user on the VM, if one exists.
      */
-    nonAdminUser?: pulumi.Input<CredentialsArgs>;
+    nonAdminUser?: pulumi.Input<CredentialsArgs | undefined>;
     /**
      * The SKU for the lab. Defines the type of virtual machines used in the lab.
      */
@@ -313,7 +313,7 @@ export interface VirtualMachineProfileArgs {
     /**
      * Enabling this option will use the same password for all user VMs.
      */
-    useSharedPassword?: pulumi.Input<enums.EnableState>;
+    useSharedPassword?: pulumi.Input<enums.EnableState | undefined>;
 }
 /**
  * virtualMachineProfileArgsProvideDefaults sets the appropriate defaults for VirtualMachineProfileArgs
@@ -321,7 +321,7 @@ export interface VirtualMachineProfileArgs {
 export function virtualMachineProfileArgsProvideDefaults(val: VirtualMachineProfileArgs): VirtualMachineProfileArgs {
     return {
         ...val,
-        additionalCapabilities: (val.additionalCapabilities ? pulumi.output(val.additionalCapabilities).apply(virtualMachineAdditionalCapabilitiesArgsProvideDefaults) : undefined),
+        additionalCapabilities: pulumi.output(val.additionalCapabilities).apply(v => v === undefined ? undefined : virtualMachineAdditionalCapabilitiesArgsProvideDefaults(v)),
         useSharedPassword: (val.useSharedPassword) ?? "Disabled",
     };
 }

@@ -165,19 +165,19 @@ export interface IntegrationAccountSchemaArgs {
     /**
      * The content.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The content type.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * The document name.
      */
-    documentName?: pulumi.Input<string>;
+    documentName?: pulumi.Input<string | undefined>;
     /**
      * The file name.
      */
-    fileName?: pulumi.Input<string>;
+    fileName?: pulumi.Input<string | undefined>;
     /**
      * The integration account name.
      */
@@ -185,11 +185,11 @@ export interface IntegrationAccountSchemaArgs {
     /**
      * The resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The metadata.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
      * The resource group name.
      */
@@ -197,7 +197,7 @@ export interface IntegrationAccountSchemaArgs {
     /**
      * The integration account schema name.
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * The schema type.
      */
@@ -205,9 +205,9 @@ export interface IntegrationAccountSchemaArgs {
     /**
      * The resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The target namespace of the schema.
      */
-    targetNamespace?: pulumi.Input<string>;
+    targetNamespace?: pulumi.Input<string | undefined>;
 }

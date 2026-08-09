@@ -98,15 +98,15 @@ export interface ProfessionalServiceSubscriptionLevelArgs {
     /**
      * Resource location. Only value allowed for ProfessionalService is 'global'
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Properties of the ProfessionalService resource that are relevant for creation.
      */
-    properties?: pulumi.Input<types.inputs.ProfessionalServiceCreationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ProfessionalServiceCreationPropertiesArgs | undefined>;
     /**
      * The name of the resource group.
      */
@@ -114,13 +114,13 @@ export interface ProfessionalServiceSubscriptionLevelArgs {
     /**
      * The name of the resource.
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * the resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
