@@ -56,7 +56,7 @@ export class ConnectorDryrun extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly prerequisiteResults: pulumi.Output<(types.outputs.BasicErrorDryrunPrerequisiteResultResponse | types.outputs.PermissionsMissingDryrunPrerequisiteResultResponse)[]>;
     /**
-     * The provisioning state. 
+     * The provisioning state.
      */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
@@ -121,7 +121,7 @@ export interface ConnectorDryrunArgs {
     /**
      * The name of dryrun.
      */
-    dryrunName?: pulumi.Input<string>;
+    dryrunName?: pulumi.Input<string | undefined>;
     /**
      * The name of Azure region.
      */
@@ -129,7 +129,7 @@ export interface ConnectorDryrunArgs {
     /**
      * The parameters of the dryrun
      */
-    parameters?: pulumi.Input<types.inputs.CreateOrUpdateDryrunParametersArgs>;
+    parameters?: pulumi.Input<types.inputs.CreateOrUpdateDryrunParametersArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -137,5 +137,5 @@ export interface ConnectorDryrunArgs {
     /**
      * The ID of the target subscription.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }

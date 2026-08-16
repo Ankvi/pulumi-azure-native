@@ -154,7 +154,7 @@ export interface SqlDBTableDataSetArgs {
     /**
      * The name of the dataSet.
      */
-    dataSetName?: pulumi.Input<string>;
+    dataSetName?: pulumi.Input<string | undefined>;
     /**
      * Database name of the source data set
      */

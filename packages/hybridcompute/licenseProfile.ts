@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-10. In version 2.x of the Azure Native provider, it used API version 2023-06-20-preview.
  *
- * Other available API versions: 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview, 2025-06-01, 2025-08-21-preview, 2025-09-16-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview, 2025-06-01, 2025-08-21-preview, 2025-09-16-preview, 2026-02-12-preview, 2026-06-04-preview, 2026-06-16-preview, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class LicenseProfile extends pulumi.CustomResource {
     /**
@@ -191,7 +191,7 @@ export class LicenseProfile extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20230620preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20231003preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20240331preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20240520preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20240710:LicenseProfile" }, { type: "azure-native:hybridcompute/v20240731preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20240910preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20241110preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20250113:LicenseProfile" }, { type: "azure-native:hybridcompute/v20250219preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20250601:LicenseProfile" }, { type: "azure-native:hybridcompute/v20250821preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20250916preview:LicenseProfile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20230620preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20231003preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20240331preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20240520preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20240710:LicenseProfile" }, { type: "azure-native:hybridcompute/v20240731preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20240910preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20241110preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20250113:LicenseProfile" }, { type: "azure-native:hybridcompute/v20250219preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20250601:LicenseProfile" }, { type: "azure-native:hybridcompute/v20250821preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20250916preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20260212preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20260604preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20260616preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20260715:LicenseProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LicenseProfile.__pulumiType, name, resourceInputs, opts);
     }
@@ -204,15 +204,15 @@ export interface LicenseProfileArgs {
     /**
      * The resource id of the license.
      */
-    assignedLicense?: pulumi.Input<string>;
+    assignedLicense?: pulumi.Input<string | undefined>;
     /**
      * The name of the license profile.
      */
-    licenseProfileName?: pulumi.Input<string>;
+    licenseProfileName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the hybrid machine.
      */
@@ -220,11 +220,11 @@ export interface LicenseProfileArgs {
     /**
      * The list of product features.
      */
-    productFeatures?: pulumi.Input<pulumi.Input<types.inputs.ProductFeatureArgs>[]>;
+    productFeatures?: pulumi.Input<pulumi.Input<types.inputs.ProductFeatureArgs>[] | undefined>;
     /**
      * Indicates the product type of the license.
      */
-    productType?: pulumi.Input<string | types.enums.LicenseProfileProductType>;
+    productType?: pulumi.Input<string | types.enums.LicenseProfileProductType | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -232,13 +232,13 @@ export interface LicenseProfileArgs {
     /**
      * Specifies if this machine is licensed as part of a Software Assurance agreement.
      */
-    softwareAssuranceCustomer?: pulumi.Input<boolean>;
+    softwareAssuranceCustomer?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates the subscription status of the product.
      */
-    subscriptionStatus?: pulumi.Input<string | types.enums.LicenseProfileSubscriptionStatus>;
+    subscriptionStatus?: pulumi.Input<string | types.enums.LicenseProfileSubscriptionStatus | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

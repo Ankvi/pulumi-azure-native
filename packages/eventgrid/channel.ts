@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
  *
- * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Channel extends pulumi.CustomResource {
     /**
@@ -120,7 +120,7 @@ export class Channel extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20211015preview:Channel" }, { type: "azure-native:eventgrid/v20220615:Channel" }, { type: "azure-native:eventgrid/v20230601preview:Channel" }, { type: "azure-native:eventgrid/v20231215preview:Channel" }, { type: "azure-native:eventgrid/v20240601preview:Channel" }, { type: "azure-native:eventgrid/v20241215preview:Channel" }, { type: "azure-native:eventgrid/v20250215:Channel" }, { type: "azure-native:eventgrid/v20250401preview:Channel" }, { type: "azure-native:eventgrid/v20250715preview:Channel" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20211015preview:Channel" }, { type: "azure-native:eventgrid/v20220615:Channel" }, { type: "azure-native:eventgrid/v20230601preview:Channel" }, { type: "azure-native:eventgrid/v20231215preview:Channel" }, { type: "azure-native:eventgrid/v20240601preview:Channel" }, { type: "azure-native:eventgrid/v20241215preview:Channel" }, { type: "azure-native:eventgrid/v20250215:Channel" }, { type: "azure-native:eventgrid/v20250401preview:Channel" }, { type: "azure-native:eventgrid/v20250715preview:Channel" }, { type: "azure-native:eventgrid/v20251115preview:Channel" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Channel.__pulumiType, name, resourceInputs, opts);
     }
@@ -133,20 +133,20 @@ export interface ChannelArgs {
     /**
      * Name of the channel.
      */
-    channelName?: pulumi.Input<string>;
+    channelName?: pulumi.Input<string | undefined>;
     /**
      * The type of the event channel which represents the direction flow of events.
      */
-    channelType?: pulumi.Input<string | types.enums.ChannelType>;
+    channelType?: pulumi.Input<string | types.enums.ChannelType | undefined>;
     /**
      * Expiration time of the channel. If this timer expires while the corresponding partner topic is never activated,
      * the channel and corresponding partner topic are deleted.
      */
-    expirationTimeIfNotActivatedUtc?: pulumi.Input<string>;
+    expirationTimeIfNotActivatedUtc?: pulumi.Input<string | undefined>;
     /**
      * Context or helpful message that can be used during the approval process by the subscriber.
      */
-    messageForActivation?: pulumi.Input<string>;
+    messageForActivation?: pulumi.Input<string | undefined>;
     /**
      * Name of the partner namespace.
      */
@@ -154,15 +154,15 @@ export interface ChannelArgs {
     /**
      * This property should be populated when channelType is PartnerTopic and represents information about the partner topic resource corresponding to the channel.
      */
-    partnerTopicInfo?: pulumi.Input<types.inputs.PartnerTopicInfoArgs>;
+    partnerTopicInfo?: pulumi.Input<types.inputs.PartnerTopicInfoArgs | undefined>;
     /**
      * Provisioning state of the channel.
      */
-    provisioningState?: pulumi.Input<string | types.enums.ChannelProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ChannelProvisioningState | undefined>;
     /**
      * The readiness state of the corresponding partner topic.
      */
-    readinessState?: pulumi.Input<string | types.enums.ReadinessState>;
+    readinessState?: pulumi.Input<string | types.enums.ReadinessState | undefined>;
     /**
      * The name of the resource group within the partners subscription.
      */

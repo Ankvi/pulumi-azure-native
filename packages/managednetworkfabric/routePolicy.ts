@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
  *
- * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RoutePolicy extends pulumi.CustomResource {
     /**
@@ -145,7 +145,7 @@ export class RoutePolicy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:RoutePolicy" }, { type: "azure-native:managednetworkfabric/v20230615:RoutePolicy" }, { type: "azure-native:managednetworkfabric/v20240215preview:RoutePolicy" }, { type: "azure-native:managednetworkfabric/v20240615preview:RoutePolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:RoutePolicy" }, { type: "azure-native:managednetworkfabric/v20230615:RoutePolicy" }, { type: "azure-native:managednetworkfabric/v20240215preview:RoutePolicy" }, { type: "azure-native:managednetworkfabric/v20240615preview:RoutePolicy" }, { type: "azure-native:managednetworkfabric/v20250715:RoutePolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RoutePolicy.__pulumiType, name, resourceInputs, opts);
     }
@@ -158,19 +158,19 @@ export interface RoutePolicyArgs {
     /**
      * AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
      */
-    addressFamilyType?: pulumi.Input<string | types.enums.AddressFamilyType>;
+    addressFamilyType?: pulumi.Input<string | types.enums.AddressFamilyType | undefined>;
     /**
      * Switch configuration description.
      */
-    annotation?: pulumi.Input<string>;
+    annotation?: pulumi.Input<string | undefined>;
     /**
      * Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
      */
-    defaultAction?: pulumi.Input<string | types.enums.CommunityActionTypes>;
+    defaultAction?: pulumi.Input<string | types.enums.CommunityActionTypes | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Arm Resource ID of Network Fabric.
      */
@@ -182,7 +182,7 @@ export interface RoutePolicyArgs {
     /**
      * Name of the Route Policy.
      */
-    routePolicyName?: pulumi.Input<string>;
+    routePolicyName?: pulumi.Input<string | undefined>;
     /**
      * Route Policy statements.
      */
@@ -190,5 +190,5 @@ export interface RoutePolicyArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

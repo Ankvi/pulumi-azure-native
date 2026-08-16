@@ -82,10 +82,10 @@ export class Deployment extends pulumi.CustomResource {
             }
             resourceInputs["appName"] = args?.appName;
             resourceInputs["deploymentName"] = args?.deploymentName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.deploymentResourcePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.deploymentResourcePropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["serviceName"] = args?.serviceName;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.skuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? pulumi.output(args.sku).apply(v => v === undefined ? undefined : types.inputs.skuArgsProvideDefaults(v)) : undefined;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -116,11 +116,11 @@ export interface DeploymentArgs {
     /**
      * The name of the Deployment resource.
      */
-    deploymentName?: pulumi.Input<string>;
+    deploymentName?: pulumi.Input<string | undefined>;
     /**
      * Properties of the Deployment resource
      */
-    properties?: pulumi.Input<types.inputs.DeploymentResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DeploymentResourcePropertiesArgs | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -132,5 +132,5 @@ export interface DeploymentArgs {
     /**
      * Sku of the Deployment resource
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
 }

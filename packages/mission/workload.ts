@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2024-06-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-06-01-preview, 2024-12-01-preview, 2025-11-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Workload extends pulumi.CustomResource {
     /**
@@ -113,7 +113,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:mission/v20240601preview:Workload" }, { type: "azure-native:mission/v20241201preview:Workload" }, { type: "azure-native:mission/v20250501preview:Workload" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:mission/v20240601preview:Workload" }, { type: "azure-native:mission/v20241201preview:Workload" }, { type: "azure-native:mission/v20250501preview:Workload" }, { type: "azure-native:mission/v20251101preview:Workload" }, { type: "azure-native:mission/v20260301preview:Workload" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Workload.__pulumiType, name, resourceInputs, opts);
     }
@@ -126,11 +126,11 @@ export interface WorkloadArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * List of resource group ids.
      */
-    resourceGroupCollection?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGroupCollection?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -138,7 +138,7 @@ export interface WorkloadArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the enclaveResource Resource
      */
@@ -146,5 +146,5 @@ export interface WorkloadArgs {
     /**
      * The name of the workloadResource Resource
      */
-    workloadName?: pulumi.Input<string>;
+    workloadName?: pulumi.Input<string | undefined>;
 }

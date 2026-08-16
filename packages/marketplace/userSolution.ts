@@ -89,10 +89,10 @@ export class UserSolution extends pulumi.CustomResource {
  * The set of arguments for constructing a UserSolution resource.
  */
 export interface UserSolutionArgs {
-    displayName?: pulumi.Input<string>;
-    products?: pulumi.Input<pulumi.Input<types.inputs.ProductArgs>[]>;
+    displayName?: pulumi.Input<string | undefined>;
+    products?: pulumi.Input<pulumi.Input<types.inputs.ProductArgs>[] | undefined>;
     /**
      * The solution id
      */
-    solutionId?: pulumi.Input<string>;
+    solutionId?: pulumi.Input<string | undefined>;
 }

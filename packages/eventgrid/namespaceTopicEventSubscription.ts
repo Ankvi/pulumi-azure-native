@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NamespaceTopicEventSubscription extends pulumi.CustomResource {
     /**
@@ -117,7 +117,7 @@ export class NamespaceTopicEventSubscription extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20230601preview:NamespaceTopicEventSubscription" }, { type: "azure-native:eventgrid/v20231215preview:NamespaceTopicEventSubscription" }, { type: "azure-native:eventgrid/v20240601preview:NamespaceTopicEventSubscription" }, { type: "azure-native:eventgrid/v20241215preview:NamespaceTopicEventSubscription" }, { type: "azure-native:eventgrid/v20250215:NamespaceTopicEventSubscription" }, { type: "azure-native:eventgrid/v20250401preview:NamespaceTopicEventSubscription" }, { type: "azure-native:eventgrid/v20250715preview:NamespaceTopicEventSubscription" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20230601preview:NamespaceTopicEventSubscription" }, { type: "azure-native:eventgrid/v20231215preview:NamespaceTopicEventSubscription" }, { type: "azure-native:eventgrid/v20240601preview:NamespaceTopicEventSubscription" }, { type: "azure-native:eventgrid/v20241215preview:NamespaceTopicEventSubscription" }, { type: "azure-native:eventgrid/v20250215:NamespaceTopicEventSubscription" }, { type: "azure-native:eventgrid/v20250401preview:NamespaceTopicEventSubscription" }, { type: "azure-native:eventgrid/v20250715preview:NamespaceTopicEventSubscription" }, { type: "azure-native:eventgrid/v20251115preview:NamespaceTopicEventSubscription" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NamespaceTopicEventSubscription.__pulumiType, name, resourceInputs, opts);
     }
@@ -130,23 +130,23 @@ export interface NamespaceTopicEventSubscriptionArgs {
     /**
      * Information about the delivery configuration of the event subscription.
      */
-    deliveryConfiguration?: pulumi.Input<types.inputs.DeliveryConfigurationArgs>;
+    deliveryConfiguration?: pulumi.Input<types.inputs.DeliveryConfigurationArgs | undefined>;
     /**
      * The event delivery schema for the event subscription.
      */
-    eventDeliverySchema?: pulumi.Input<string | types.enums.DeliverySchema>;
+    eventDeliverySchema?: pulumi.Input<string | types.enums.DeliverySchema | undefined>;
     /**
      * Name of the event subscription to be created. Event subscription names must be between 3 and 50 characters in length and use alphanumeric letters only.
      */
-    eventSubscriptionName?: pulumi.Input<string>;
+    eventSubscriptionName?: pulumi.Input<string | undefined>;
     /**
      * Expiration time of the event subscription.
      */
-    expirationTimeUtc?: pulumi.Input<string>;
+    expirationTimeUtc?: pulumi.Input<string | undefined>;
     /**
      * Information about the filter for the event subscription.
      */
-    filtersConfiguration?: pulumi.Input<types.inputs.FiltersConfigurationArgs>;
+    filtersConfiguration?: pulumi.Input<types.inputs.FiltersConfigurationArgs | undefined>;
     /**
      * Name of the namespace.
      */

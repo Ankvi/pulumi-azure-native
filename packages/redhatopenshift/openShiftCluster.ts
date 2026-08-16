@@ -164,31 +164,31 @@ export interface OpenShiftClusterArgs {
     /**
      * The cluster API server profile.
      */
-    apiserverProfile?: pulumi.Input<types.inputs.APIServerProfileArgs>;
+    apiserverProfile?: pulumi.Input<types.inputs.APIServerProfileArgs | undefined>;
     /**
      * The cluster profile.
      */
-    clusterProfile?: pulumi.Input<types.inputs.ClusterProfileArgs>;
+    clusterProfile?: pulumi.Input<types.inputs.ClusterProfileArgs | undefined>;
     /**
      * The cluster ingress profiles.
      */
-    ingressProfiles?: pulumi.Input<pulumi.Input<types.inputs.IngressProfileArgs>[]>;
+    ingressProfiles?: pulumi.Input<pulumi.Input<types.inputs.IngressProfileArgs>[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The cluster master profile.
      */
-    masterProfile?: pulumi.Input<types.inputs.MasterProfileArgs>;
+    masterProfile?: pulumi.Input<types.inputs.MasterProfileArgs | undefined>;
     /**
      * The cluster network profile.
      */
-    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs | undefined>;
     /**
      * The cluster provisioning state.
      */
-    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -196,17 +196,17 @@ export interface OpenShiftClusterArgs {
     /**
      * The name of the OpenShift cluster resource.
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * The cluster service principal profile.
      */
-    servicePrincipalProfile?: pulumi.Input<types.inputs.ServicePrincipalProfileArgs>;
+    servicePrincipalProfile?: pulumi.Input<types.inputs.ServicePrincipalProfileArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cluster worker profiles.
      */
-    workerProfiles?: pulumi.Input<pulumi.Input<types.inputs.WorkerProfileArgs>[]>;
+    workerProfiles?: pulumi.Input<pulumi.Input<types.inputs.WorkerProfileArgs>[] | undefined>;
 }

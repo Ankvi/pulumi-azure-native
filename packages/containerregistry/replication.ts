@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
  *
- * Other available API versions: 2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-09-01, 2021-12-01-preview, 2022-02-01-preview, 2022-12-01, 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview, 2025-06-01-preview, 2025-11-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-09-01, 2021-12-01-preview, 2022-02-01-preview, 2022-12-01, 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview, 2023-11-01-preview, 2025-03-01-preview, 2025-04-01, 2025-05-01-preview, 2025-06-01-preview, 2025-11-01, 2026-01-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Replication extends pulumi.CustomResource {
     /**
@@ -119,7 +119,7 @@ export class Replication extends pulumi.CustomResource {
             resourceInputs["zoneRedundancy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20171001:Replication" }, { type: "azure-native:containerregistry/v20190501:Replication" }, { type: "azure-native:containerregistry/v20191201preview:Replication" }, { type: "azure-native:containerregistry/v20201101preview:Replication" }, { type: "azure-native:containerregistry/v20210601preview:Replication" }, { type: "azure-native:containerregistry/v20210801preview:Replication" }, { type: "azure-native:containerregistry/v20210901:Replication" }, { type: "azure-native:containerregistry/v20211201preview:Replication" }, { type: "azure-native:containerregistry/v20220201preview:Replication" }, { type: "azure-native:containerregistry/v20221201:Replication" }, { type: "azure-native:containerregistry/v20230101preview:Replication" }, { type: "azure-native:containerregistry/v20230601preview:Replication" }, { type: "azure-native:containerregistry/v20230701:Replication" }, { type: "azure-native:containerregistry/v20230801preview:Replication" }, { type: "azure-native:containerregistry/v20231101preview:Replication" }, { type: "azure-native:containerregistry/v20241101preview:Replication" }, { type: "azure-native:containerregistry/v20250301preview:Replication" }, { type: "azure-native:containerregistry/v20250401:Replication" }, { type: "azure-native:containerregistry/v20250501preview:Replication" }, { type: "azure-native:containerregistry/v20250601preview:Replication" }, { type: "azure-native:containerregistry/v20251101:Replication" }, { type: "azure-native:containerregistry/v20260101preview:Replication" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20171001:Replication" }, { type: "azure-native:containerregistry/v20190501:Replication" }, { type: "azure-native:containerregistry/v20191201preview:Replication" }, { type: "azure-native:containerregistry/v20201101preview:Replication" }, { type: "azure-native:containerregistry/v20210601preview:Replication" }, { type: "azure-native:containerregistry/v20210801preview:Replication" }, { type: "azure-native:containerregistry/v20210901:Replication" }, { type: "azure-native:containerregistry/v20211201preview:Replication" }, { type: "azure-native:containerregistry/v20220201preview:Replication" }, { type: "azure-native:containerregistry/v20221201:Replication" }, { type: "azure-native:containerregistry/v20230101preview:Replication" }, { type: "azure-native:containerregistry/v20230601preview:Replication" }, { type: "azure-native:containerregistry/v20230701:Replication" }, { type: "azure-native:containerregistry/v20230801preview:Replication" }, { type: "azure-native:containerregistry/v20231101preview:Replication" }, { type: "azure-native:containerregistry/v20241101preview:Replication" }, { type: "azure-native:containerregistry/v20250301preview:Replication" }, { type: "azure-native:containerregistry/v20250401:Replication" }, { type: "azure-native:containerregistry/v20250501preview:Replication" }, { type: "azure-native:containerregistry/v20250601preview:Replication" }, { type: "azure-native:containerregistry/v20251101:Replication" }, { type: "azure-native:containerregistry/v20260101preview:Replication" }, { type: "azure-native:containerregistry/v20260301preview:Replication" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Replication.__pulumiType, name, resourceInputs, opts);
     }
@@ -132,11 +132,11 @@ export interface ReplicationArgs {
     /**
      * The location of the resource. This cannot be changed after the resource is created.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the replication's regional endpoint is enabled. Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications.
      */
-    regionEndpointEnabled?: pulumi.Input<boolean>;
+    regionEndpointEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the container registry.
      */
@@ -144,7 +144,7 @@ export interface ReplicationArgs {
     /**
      * The name of the replication.
      */
-    replicationName?: pulumi.Input<string>;
+    replicationName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -152,9 +152,9 @@ export interface ReplicationArgs {
     /**
      * The tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether or not zone redundancy is enabled for this container registry replication
      */
-    zoneRedundancy?: pulumi.Input<string | types.enums.ZoneRedundancy>;
+    zoneRedundancy?: pulumi.Input<string | types.enums.ZoneRedundancy | undefined>;
 }

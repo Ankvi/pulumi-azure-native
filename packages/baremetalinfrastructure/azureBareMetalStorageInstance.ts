@@ -122,19 +122,19 @@ export interface AzureBareMetalStorageInstanceArgs {
     /**
      * Name of the Azure Bare Metal Storage Instance, also known as the ResourceName.
      */
-    azureBareMetalStorageInstanceName?: pulumi.Input<string>;
+    azureBareMetalStorageInstanceName?: pulumi.Input<string | undefined>;
     /**
      * Specifies the AzureBareMetaStorageInstance unique ID.
      */
-    azureBareMetalStorageInstanceUniqueIdentifier?: pulumi.Input<string>;
+    azureBareMetalStorageInstanceUniqueIdentifier?: pulumi.Input<string | undefined>;
     /**
      * The identity of Azure Bare Metal Storage Instance, if configured.
      */
-    identity?: pulumi.Input<types.inputs.AzureBareMetalStorageInstanceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.AzureBareMetalStorageInstanceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -142,9 +142,9 @@ export interface AzureBareMetalStorageInstanceArgs {
     /**
      * Specifies the storage properties for the AzureBareMetalStorage instance.
      */
-    storageProperties?: pulumi.Input<types.inputs.StoragePropertiesArgs>;
+    storageProperties?: pulumi.Input<types.inputs.StoragePropertiesArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

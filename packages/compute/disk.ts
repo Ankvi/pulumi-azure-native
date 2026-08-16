@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
  *
- * Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02, 2026-03-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Disk extends pulumi.CustomResource {
     /**
@@ -316,7 +316,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20160430preview:Disk" }, { type: "azure-native:compute/v20170330:Disk" }, { type: "azure-native:compute/v20180401:Disk" }, { type: "azure-native:compute/v20180601:Disk" }, { type: "azure-native:compute/v20180930:Disk" }, { type: "azure-native:compute/v20190301:Disk" }, { type: "azure-native:compute/v20190701:Disk" }, { type: "azure-native:compute/v20191101:Disk" }, { type: "azure-native:compute/v20200501:Disk" }, { type: "azure-native:compute/v20200630:Disk" }, { type: "azure-native:compute/v20200930:Disk" }, { type: "azure-native:compute/v20201201:Disk" }, { type: "azure-native:compute/v20210401:Disk" }, { type: "azure-native:compute/v20210801:Disk" }, { type: "azure-native:compute/v20211201:Disk" }, { type: "azure-native:compute/v20220302:Disk" }, { type: "azure-native:compute/v20220702:Disk" }, { type: "azure-native:compute/v20230102:Disk" }, { type: "azure-native:compute/v20230402:Disk" }, { type: "azure-native:compute/v20231002:Disk" }, { type: "azure-native:compute/v20240302:Disk" }, { type: "azure-native:compute/v20250102:Disk" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20160430preview:Disk" }, { type: "azure-native:compute/v20170330:Disk" }, { type: "azure-native:compute/v20180401:Disk" }, { type: "azure-native:compute/v20180601:Disk" }, { type: "azure-native:compute/v20180930:Disk" }, { type: "azure-native:compute/v20190301:Disk" }, { type: "azure-native:compute/v20190701:Disk" }, { type: "azure-native:compute/v20191101:Disk" }, { type: "azure-native:compute/v20200501:Disk" }, { type: "azure-native:compute/v20200630:Disk" }, { type: "azure-native:compute/v20200930:Disk" }, { type: "azure-native:compute/v20201201:Disk" }, { type: "azure-native:compute/v20210401:Disk" }, { type: "azure-native:compute/v20210801:Disk" }, { type: "azure-native:compute/v20211201:Disk" }, { type: "azure-native:compute/v20220302:Disk" }, { type: "azure-native:compute/v20220702:Disk" }, { type: "azure-native:compute/v20230102:Disk" }, { type: "azure-native:compute/v20230402:Disk" }, { type: "azure-native:compute/v20231002:Disk" }, { type: "azure-native:compute/v20240302:Disk" }, { type: "azure-native:compute/v20250102:Disk" }, { type: "azure-native:compute/v20260302:Disk" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Disk.__pulumiType, name, resourceInputs, opts);
     }
@@ -329,11 +329,11 @@ export interface DiskArgs {
     /**
      * Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
      */
-    burstingEnabled?: pulumi.Input<boolean>;
+    burstingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Percentage complete for the background copy when a resource is created via the CopyStart operation.
      */
-    completionPercent?: pulumi.Input<number>;
+    completionPercent?: pulumi.Input<number | undefined>;
     /**
      * Disk source information. CreationData information cannot be changed after the disk has been created.
      */
@@ -341,79 +341,79 @@ export interface DiskArgs {
     /**
      * Additional authentication requirements when exporting or uploading to a disk or snapshot.
      */
-    dataAccessAuthMode?: pulumi.Input<string | types.enums.DataAccessAuthMode>;
+    dataAccessAuthMode?: pulumi.Input<string | types.enums.DataAccessAuthMode | undefined>;
     /**
      * ARM id of the DiskAccess resource for using private endpoints on disks.
      */
-    diskAccessId?: pulumi.Input<string>;
+    diskAccessId?: pulumi.Input<string | undefined>;
     /**
      * The total number of IOPS that will be allowed across all VMs mounting the shared disk as ReadOnly. One operation can transfer between 4k and 256k bytes.
      */
-    diskIOPSReadOnly?: pulumi.Input<number>;
+    diskIOPSReadOnly?: pulumi.Input<number | undefined>;
     /**
      * The number of IOPS allowed for this disk; only settable for UltraSSD disks. One operation can transfer between 4k and 256k bytes.
      */
-    diskIOPSReadWrite?: pulumi.Input<number>;
+    diskIOPSReadWrite?: pulumi.Input<number | undefined>;
     /**
      * The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
      */
-    diskMBpsReadOnly?: pulumi.Input<number>;
+    diskMBpsReadOnly?: pulumi.Input<number | undefined>;
     /**
      * The bandwidth allowed for this disk; only settable for UltraSSD disks. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
      */
-    diskMBpsReadWrite?: pulumi.Input<number>;
+    diskMBpsReadWrite?: pulumi.Input<number | undefined>;
     /**
      * The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
      */
-    diskName?: pulumi.Input<string>;
+    diskName?: pulumi.Input<string | undefined>;
     /**
      * If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
      */
-    diskSizeGB?: pulumi.Input<number>;
+    diskSizeGB?: pulumi.Input<number | undefined>;
     /**
      * Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.
      */
-    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs | undefined>;
     /**
      * Encryption settings collection used for Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot.
      */
-    encryptionSettingsCollection?: pulumi.Input<types.inputs.EncryptionSettingsCollectionArgs>;
+    encryptionSettingsCollection?: pulumi.Input<types.inputs.EncryptionSettingsCollectionArgs | undefined>;
     /**
      * The extended location where the disk will be created. Extended location cannot be changed.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
-    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGeneration>;
+    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGeneration | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time.
      */
-    maxShares?: pulumi.Input<number>;
+    maxShares?: pulumi.Input<number | undefined>;
     /**
      * Policy for accessing the disk via network.
      */
-    networkAccessPolicy?: pulumi.Input<string | types.enums.NetworkAccessPolicy>;
+    networkAccessPolicy?: pulumi.Input<string | types.enums.NetworkAccessPolicy | undefined>;
     /**
      * Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine.
      */
-    optimizedForFrequentAttach?: pulumi.Input<boolean>;
+    optimizedForFrequentAttach?: pulumi.Input<boolean | undefined>;
     /**
      * The Operating System type.
      */
-    osType?: pulumi.Input<types.enums.OperatingSystemTypes>;
+    osType?: pulumi.Input<types.enums.OperatingSystemTypes | undefined>;
     /**
      * Policy for controlling export on the disk.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}
      */
-    purchasePlan?: pulumi.Input<types.inputs.DiskPurchasePlanArgs>;
+    purchasePlan?: pulumi.Input<types.inputs.DiskPurchasePlanArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -421,29 +421,29 @@ export interface DiskArgs {
     /**
      * Contains the security related information for the resource.
      */
-    securityProfile?: pulumi.Input<types.inputs.DiskSecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.DiskSecurityProfileArgs | undefined>;
     /**
      * The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS.
      */
-    sku?: pulumi.Input<types.inputs.DiskSkuArgs>;
+    sku?: pulumi.Input<types.inputs.DiskSkuArgs | undefined>;
     /**
      * List of supported capabilities for the image from which the OS disk was created.
      */
-    supportedCapabilities?: pulumi.Input<types.inputs.SupportedCapabilitiesArgs>;
+    supportedCapabilities?: pulumi.Input<types.inputs.SupportedCapabilitiesArgs | undefined>;
     /**
      * Indicates the OS on a disk supports hibernation.
      */
-    supportsHibernation?: pulumi.Input<boolean>;
+    supportsHibernation?: pulumi.Input<boolean | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
     /**
      * The Logical zone list for Disk.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

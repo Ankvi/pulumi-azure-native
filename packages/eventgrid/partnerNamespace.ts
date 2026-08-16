@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
  *
- * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PartnerNamespace extends pulumi.CustomResource {
     /**
@@ -148,7 +148,7 @@ export class PartnerNamespace extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20200401preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20201015preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20210601preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20211015preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20220615:PartnerNamespace" }, { type: "azure-native:eventgrid/v20230601preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20231215preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20240601preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20241215preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20250215:PartnerNamespace" }, { type: "azure-native:eventgrid/v20250401preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20250715preview:PartnerNamespace" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20200401preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20201015preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20210601preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20211015preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20220615:PartnerNamespace" }, { type: "azure-native:eventgrid/v20230601preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20231215preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20240601preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20241215preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20250215:PartnerNamespace" }, { type: "azure-native:eventgrid/v20250401preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20250715preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20251115preview:PartnerNamespace" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PartnerNamespace.__pulumiType, name, resourceInputs, opts);
     }
@@ -161,38 +161,38 @@ export interface PartnerNamespaceArgs {
     /**
      * This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[]>;
+    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[] | undefined>;
     /**
      * Location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Minimum TLS version of the publisher allowed to publish to this partner namespace
      */
-    minimumTlsVersionAllowed?: pulumi.Input<string | types.enums.TlsVersion>;
+    minimumTlsVersionAllowed?: pulumi.Input<string | types.enums.TlsVersion | undefined>;
     /**
      * Name of the partner namespace.
      */
-    partnerNamespaceName?: pulumi.Input<string>;
+    partnerNamespaceName?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:
      * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.
      */
-    partnerRegistrationFullyQualifiedId?: pulumi.Input<string>;
+    partnerRegistrationFullyQualifiedId?: pulumi.Input<string | undefined>;
     /**
      * This determines if events published to this partner namespace should use the source attribute in the event payload
      * or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
      */
-    partnerTopicRoutingMode?: pulumi.Input<string | types.enums.PartnerTopicRoutingMode>;
+    partnerTopicRoutingMode?: pulumi.Input<string | types.enums.PartnerTopicRoutingMode | undefined>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
      * You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" />
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * The name of the resource group within the user's subscription.
      */
@@ -200,5 +200,5 @@ export interface PartnerNamespaceArgs {
     /**
      * Tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

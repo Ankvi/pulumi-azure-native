@@ -7,7 +7,7 @@ export interface AWSAuthModelArgs {
     /**
      * AWS STS assume role external ID. This is used to prevent the confused deputy problem: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html'
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * AWS STS assume role ARN
      */
@@ -26,7 +26,7 @@ export interface ActivityEntityQueriesPropertiesQueryDefinitionsArgs {
     /**
      * The Activity query to run on a given entity
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -36,7 +36,7 @@ export interface AddIncidentTaskActionPropertiesArgs {
     /**
      * The description of the task.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The title of the task.
      */
@@ -50,23 +50,23 @@ export interface AlertDetailsOverrideArgs {
     /**
      * the format containing columns name(s) to override the alert description
      */
-    alertDescriptionFormat?: pulumi.Input<string>;
+    alertDescriptionFormat?: pulumi.Input<string | undefined>;
     /**
      * the format containing columns name(s) to override the alert name
      */
-    alertDisplayNameFormat?: pulumi.Input<string>;
+    alertDisplayNameFormat?: pulumi.Input<string | undefined>;
     /**
      * List of additional dynamic properties to override
      */
-    alertDynamicProperties?: pulumi.Input<pulumi.Input<AlertPropertyMappingArgs>[]>;
+    alertDynamicProperties?: pulumi.Input<pulumi.Input<AlertPropertyMappingArgs>[] | undefined>;
     /**
      * the column name to take the alert severity from
      */
-    alertSeverityColumnName?: pulumi.Input<string>;
+    alertSeverityColumnName?: pulumi.Input<string | undefined>;
     /**
      * the column name to take the alert tactics from
      */
-    alertTacticsColumnName?: pulumi.Input<string>;
+    alertTacticsColumnName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -76,11 +76,11 @@ export interface AlertPropertyMappingArgs {
     /**
      * The V3 alert property
      */
-    alertProperty?: pulumi.Input<string | enums.AlertProperty>;
+    alertProperty?: pulumi.Input<string | enums.AlertProperty | undefined>;
     /**
      * the column name to use to override this property
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -104,7 +104,7 @@ export interface ApiKeyAuthModelArgs {
     /**
      * API Key Identifier
      */
-    apiKeyIdentifier?: pulumi.Input<string>;
+    apiKeyIdentifier?: pulumi.Input<string | undefined>;
     /**
      * API Key name
      */
@@ -112,7 +112,7 @@ export interface ApiKeyAuthModelArgs {
     /**
      * Flag to indicate if API key is set in HTTP POST payload
      */
-    isApiKeyInPostPayload?: pulumi.Input<boolean>;
+    isApiKeyInPostPayload?: pulumi.Input<boolean | undefined>;
     /**
      * Type of paging
      * Expected value is 'APIKey'.
@@ -127,7 +127,7 @@ export interface AssignmentItemArgs {
     /**
      * The resource id of the content item
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -137,7 +137,7 @@ export interface AutomationRuleAddIncidentTaskActionArgs {
     /**
      * Describes an automation rule action to add a task to an incident.
      */
-    actionConfiguration?: pulumi.Input<AddIncidentTaskActionPropertiesArgs>;
+    actionConfiguration?: pulumi.Input<AddIncidentTaskActionPropertiesArgs | undefined>;
     /**
      * The type of the automation rule action.
      * Expected value is 'AddIncidentTask'.
@@ -150,18 +150,18 @@ export interface AutomationRuleAddIncidentTaskActionArgs {
  * Describes an automation rule condition with boolean operators.
  */
 export interface AutomationRuleBooleanConditionArgs {
-    innerConditions?: pulumi.Input<pulumi.Input<BooleanConditionPropertiesArgs | PropertyArrayChangedConditionPropertiesArgs | PropertyArrayConditionPropertiesArgs | PropertyChangedConditionPropertiesArgs | PropertyConditionPropertiesArgs>[]>;
+    innerConditions?: pulumi.Input<pulumi.Input<BooleanConditionPropertiesArgs | PropertyArrayChangedConditionPropertiesArgs | PropertyArrayConditionPropertiesArgs | PropertyChangedConditionPropertiesArgs | PropertyConditionPropertiesArgs>[] | undefined>;
     /**
      * Describes a boolean condition operator.
      */
-    operator?: pulumi.Input<string | enums.AutomationRuleBooleanConditionSupportedOperator>;
+    operator?: pulumi.Input<string | enums.AutomationRuleBooleanConditionSupportedOperator | undefined>;
 }
 
 /**
  * Describes an automation rule action to modify an object's properties
  */
 export interface AutomationRuleModifyPropertiesActionArgs {
-    actionConfiguration?: pulumi.Input<IncidentPropertiesActionArgs>;
+    actionConfiguration?: pulumi.Input<IncidentPropertiesActionArgs | undefined>;
     /**
      * The type of the automation rule action.
      * Expected value is 'ModifyProperties'.
@@ -171,8 +171,8 @@ export interface AutomationRuleModifyPropertiesActionArgs {
 }
 
 export interface AutomationRulePropertyArrayChangedValuesConditionArgs {
-    arrayType?: pulumi.Input<string | enums.AutomationRulePropertyArrayChangedConditionSupportedArrayType>;
-    changeType?: pulumi.Input<string | enums.AutomationRulePropertyArrayChangedConditionSupportedChangeType>;
+    arrayType?: pulumi.Input<string | enums.AutomationRulePropertyArrayChangedConditionSupportedArrayType | undefined>;
+    changeType?: pulumi.Input<string | enums.AutomationRulePropertyArrayChangedConditionSupportedChangeType | undefined>;
 }
 
 /**
@@ -182,35 +182,35 @@ export interface AutomationRulePropertyArrayValuesConditionArgs {
     /**
      * Describes an array condition evaluation type.
      */
-    arrayConditionType?: pulumi.Input<string | enums.AutomationRulePropertyArrayConditionSupportedArrayConditionType>;
+    arrayConditionType?: pulumi.Input<string | enums.AutomationRulePropertyArrayConditionSupportedArrayConditionType | undefined>;
     /**
      * Describes an array condition evaluated array type.
      */
-    arrayType?: pulumi.Input<string | enums.AutomationRulePropertyArrayConditionSupportedArrayType>;
-    itemConditions?: pulumi.Input<pulumi.Input<BooleanConditionPropertiesArgs | PropertyArrayChangedConditionPropertiesArgs | PropertyArrayConditionPropertiesArgs | PropertyChangedConditionPropertiesArgs | PropertyConditionPropertiesArgs>[]>;
+    arrayType?: pulumi.Input<string | enums.AutomationRulePropertyArrayConditionSupportedArrayType | undefined>;
+    itemConditions?: pulumi.Input<pulumi.Input<BooleanConditionPropertiesArgs | PropertyArrayChangedConditionPropertiesArgs | PropertyArrayConditionPropertiesArgs | PropertyChangedConditionPropertiesArgs | PropertyConditionPropertiesArgs>[] | undefined>;
 }
 
 export interface AutomationRulePropertyValuesChangedConditionArgs {
-    changeType?: pulumi.Input<string | enums.AutomationRulePropertyChangedConditionSupportedChangedType>;
-    operator?: pulumi.Input<string | enums.AutomationRulePropertyConditionSupportedOperator>;
-    propertyName?: pulumi.Input<string | enums.AutomationRulePropertyChangedConditionSupportedPropertyType>;
-    propertyValues?: pulumi.Input<pulumi.Input<string>[]>;
+    changeType?: pulumi.Input<string | enums.AutomationRulePropertyChangedConditionSupportedChangedType | undefined>;
+    operator?: pulumi.Input<string | enums.AutomationRulePropertyConditionSupportedOperator | undefined>;
+    propertyName?: pulumi.Input<string | enums.AutomationRulePropertyChangedConditionSupportedPropertyType | undefined>;
+    propertyValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AutomationRulePropertyValuesConditionArgs {
-    operator?: pulumi.Input<string | enums.AutomationRulePropertyConditionSupportedOperator>;
+    operator?: pulumi.Input<string | enums.AutomationRulePropertyConditionSupportedOperator | undefined>;
     /**
      * The property to evaluate in an automation rule property condition.
      */
-    propertyName?: pulumi.Input<string | enums.AutomationRulePropertyConditionSupportedProperty>;
-    propertyValues?: pulumi.Input<pulumi.Input<string>[]>;
+    propertyName?: pulumi.Input<string | enums.AutomationRulePropertyConditionSupportedProperty | undefined>;
+    propertyValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
  * Describes an automation rule action to run a playbook
  */
 export interface AutomationRuleRunPlaybookActionArgs {
-    actionConfiguration?: pulumi.Input<PlaybookActionPropertiesArgs>;
+    actionConfiguration?: pulumi.Input<PlaybookActionPropertiesArgs | undefined>;
     /**
      * The type of the automation rule action.
      * Expected value is 'RunPlaybook'.
@@ -226,11 +226,11 @@ export interface AutomationRuleTriggeringLogicArgs {
     /**
      * The conditions to evaluate to determine if the automation rule should be triggered on a given object.
      */
-    conditions?: pulumi.Input<pulumi.Input<BooleanConditionPropertiesArgs | PropertyArrayChangedConditionPropertiesArgs | PropertyArrayConditionPropertiesArgs | PropertyChangedConditionPropertiesArgs | PropertyConditionPropertiesArgs>[]>;
+    conditions?: pulumi.Input<pulumi.Input<BooleanConditionPropertiesArgs | PropertyArrayChangedConditionPropertiesArgs | PropertyArrayConditionPropertiesArgs | PropertyChangedConditionPropertiesArgs | PropertyConditionPropertiesArgs>[] | undefined>;
     /**
      * Determines when the automation rule should automatically expire and be disabled.
      */
-    expirationTimeUtc?: pulumi.Input<string>;
+    expirationTimeUtc?: pulumi.Input<string | undefined>;
     /**
      * Determines whether the automation rule is enabled or disabled.
      */
@@ -260,20 +260,6 @@ export interface AwsCloudTrailDataConnectorDataTypesLogsArgs {
 }
 
 /**
- * Resources created in Azure DevOps repository.
- */
-export interface AzureDevOpsResourceInfoArgs {
-    /**
-     * Id of the pipeline created for the source-control.
-     */
-    pipelineId?: pulumi.Input<string>;
-    /**
-     * Id of the service-connection created for the source-control.
-     */
-    serviceConnectionId?: pulumi.Input<string>;
-}
-
-/**
  * Model for API authentication with basic flow - user name + password.
  */
 export interface BasicAuthModelArgs {
@@ -299,9 +285,8 @@ export interface BooleanConditionPropertiesArgs {
     /**
      * Describes an automation rule condition with boolean operators.
      */
-    conditionProperties?: pulumi.Input<AutomationRuleBooleanConditionArgs>;
+    conditionProperties?: pulumi.Input<AutomationRuleBooleanConditionArgs | undefined>;
     /**
-     *
      * Expected value is 'Boolean'.
      */
     conditionType: pulumi.Input<"Boolean">;
@@ -314,19 +299,19 @@ export interface CcpResponseConfigArgs {
     /**
      * The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
      */
-    compressionAlgo?: pulumi.Input<string>;
+    compressionAlgo?: pulumi.Input<string | undefined>;
     /**
      * The value indicating whether the response isn't an array of events / logs.  By setting this flag to true it means the remote server will response with an object which each property has as a value an array of events / logs.
      */
-    convertChildPropertiesToArray?: pulumi.Input<boolean>;
+    convertChildPropertiesToArray?: pulumi.Input<boolean | undefined>;
     /**
      * The csv delimiter, in case the response format is CSV.
      */
-    csvDelimiter?: pulumi.Input<string>;
+    csvDelimiter?: pulumi.Input<string | undefined>;
     /**
      * The character used to escape characters in CSV.
      */
-    csvEscape?: pulumi.Input<string>;
+    csvEscape?: pulumi.Input<string | undefined>;
     /**
      * The json paths, '$' char is the json root.
      */
@@ -334,27 +319,27 @@ export interface CcpResponseConfigArgs {
     /**
      * The response format. possible values are json,csv,xml
      */
-    format?: pulumi.Input<string>;
+    format?: pulumi.Input<string | undefined>;
     /**
      * The value indicating whether the response has CSV boundary in case the response in CSV format.
      */
-    hasCsvBoundary?: pulumi.Input<boolean>;
+    hasCsvBoundary?: pulumi.Input<boolean | undefined>;
     /**
      * The value indicating whether the response has headers in case the response in CSV format.
      */
-    hasCsvHeader?: pulumi.Input<boolean>;
+    hasCsvHeader?: pulumi.Input<boolean | undefined>;
     /**
      * The value indicating whether the remote server support Gzip and we should expect Gzip response.
      */
-    isGzipCompressed?: pulumi.Input<boolean>;
+    isGzipCompressed?: pulumi.Input<boolean | undefined>;
     /**
      * The value where the status message/code should appear in the response.
      */
-    successStatusJsonPath?: pulumi.Input<string>;
+    successStatusJsonPath?: pulumi.Input<string | undefined>;
     /**
      * The status value.
      */
-    successStatusValue?: pulumi.Input<string>;
+    successStatusValue?: pulumi.Input<string | undefined>;
 }
 /**
  * ccpResponseConfigArgsProvideDefaults sets the appropriate defaults for CcpResponseConfigArgs
@@ -375,19 +360,19 @@ export interface ClientInfoArgs {
     /**
      * The email of the client.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The name of the client.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The object id of the client.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * The user principal name of the client.
      */
-    userPrincipalName?: pulumi.Input<string>;
+    userPrincipalName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -402,7 +387,7 @@ export interface ConnectivityCriterionArgs {
     /**
      * Gets or sets the queries for checking connectivity.
      */
-    value?: pulumi.Input<pulumi.Input<string>[]>;
+    value?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -427,11 +412,11 @@ export interface ConnectorDefinitionsAvailabilityArgs {
     /**
      * Gets or sets a value indicating whether the connector is preview.
      */
-    isPreview?: pulumi.Input<boolean>;
+    isPreview?: pulumi.Input<boolean | undefined>;
     /**
      * The exposure status of the connector to the customers. Available values are 0-4 (0=None, 1=Available, 2=FeatureFlag, 3=Internal).
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -441,19 +426,19 @@ export interface ConnectorDefinitionsPermissionsArgs {
     /**
      * Gets or sets the customs permissions required for the user to create connections.
      */
-    customs?: pulumi.Input<pulumi.Input<CustomPermissionDetailsArgs>[]>;
+    customs?: pulumi.Input<pulumi.Input<CustomPermissionDetailsArgs>[] | undefined>;
     /**
      * Gets or sets the required licenses for the user to create connections.
      */
-    licenses?: pulumi.Input<pulumi.Input<string>[]>;
+    licenses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Gets or sets the resource provider permissions required for the user to create connections.
      */
-    resourceProvider?: pulumi.Input<pulumi.Input<ConnectorDefinitionsResourceProviderArgs>[]>;
+    resourceProvider?: pulumi.Input<pulumi.Input<ConnectorDefinitionsResourceProviderArgs>[] | undefined>;
     /**
      * Gets or sets the required tenant permissions for the connector.
      */
-    tenant?: pulumi.Input<pulumi.Input<string>[]>;
+    tenant?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -482,20 +467,6 @@ export interface ConnectorDefinitionsResourceProviderArgs {
      * The scope on which the user should have permissions, in order to be able to create connections.
      */
     scope: pulumi.Input<string | enums.ProviderPermissionsScope>;
-}
-
-/**
- * The mapping of content type to a repo path.
- */
-export interface ContentPathMapArgs {
-    /**
-     * Content type.
-     */
-    contentType?: pulumi.Input<string | enums.ContentType>;
-    /**
-     * The path to the content.
-     */
-    path?: pulumi.Input<string>;
 }
 
 /**
@@ -533,7 +504,7 @@ export interface CustomizableConnectorUiConfigArgs {
     /**
      * The exposure status of the connector to the customers.
      */
-    availability?: pulumi.Input<ConnectorDefinitionsAvailabilityArgs>;
+    availability?: pulumi.Input<ConnectorDefinitionsAvailabilityArgs | undefined>;
     /**
      * Gets or sets the way the connector checks whether the connector is connected.
      */
@@ -553,7 +524,7 @@ export interface CustomizableConnectorUiConfigArgs {
     /**
      * Gets or sets custom connector id. optional field.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the instruction steps to enable the connector.
      */
@@ -561,12 +532,12 @@ export interface CustomizableConnectorUiConfigArgs {
     /**
      * Gets or sets a value indicating whether to use 'OR'(SOME) or 'AND' between ConnectivityCriteria items.
      */
-    isConnectivityCriteriasMatchSome?: pulumi.Input<boolean>;
+    isConnectivityCriteriasMatchSome?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the connector logo to be used when displaying the connector within Azure Sentinel's connector's gallery.
      * The logo value should be in SVG format.
      */
-    logo?: pulumi.Input<string>;
+    logo?: pulumi.Input<string | undefined>;
     /**
      * The required Permissions for the connector.
      */
@@ -610,61 +581,17 @@ export interface DataConnectorDataTypeCommonArgs {
 }
 
 /**
- * Description about a deployment.
- */
-export interface DeploymentArgs {
-    /**
-     * Deployment identifier.
-     */
-    deploymentId?: pulumi.Input<string>;
-    /**
-     * Url to access repository action logs.
-     */
-    deploymentLogsUrl?: pulumi.Input<string>;
-    /**
-     * The outcome of the deployment.
-     */
-    deploymentResult?: pulumi.Input<string | enums.DeploymentResult>;
-    /**
-     * Current status of the deployment.
-     */
-    deploymentState?: pulumi.Input<string | enums.DeploymentState>;
-    /**
-     * The time when the deployment finished.
-     */
-    deploymentTime?: pulumi.Input<string>;
-}
-
-/**
- * Information regarding a deployment.
- */
-export interface DeploymentInfoArgs {
-    /**
-     * Deployment information.
-     */
-    deployment?: pulumi.Input<DeploymentArgs>;
-    /**
-     * Status while fetching the last deployment.
-     */
-    deploymentFetchStatus?: pulumi.Input<string | enums.DeploymentFetchStatus>;
-    /**
-     * Additional details about the deployment that can be shown to the user.
-     */
-    message?: pulumi.Input<string>;
-}
-
-/**
  * Single entity mapping for the alert rule
  */
 export interface EntityMappingArgs {
     /**
      * The V3 type of the mapped entity
      */
-    entityType?: pulumi.Input<string | enums.EntityMappingType>;
+    entityType?: pulumi.Input<string | enums.EntityMappingType | undefined>;
     /**
      * array of field mappings for the given entity mapping
      */
-    fieldMappings?: pulumi.Input<pulumi.Input<FieldMappingArgs>[]>;
+    fieldMappings?: pulumi.Input<pulumi.Input<FieldMappingArgs>[] | undefined>;
 }
 
 /**
@@ -674,7 +601,7 @@ export interface EventGroupingSettingsArgs {
     /**
      * The event grouping aggregation kinds
      */
-    aggregationKind?: pulumi.Input<string | enums.EventGroupingAggregationKind>;
+    aggregationKind?: pulumi.Input<string | enums.EventGroupingAggregationKind | undefined>;
 }
 
 /**
@@ -684,11 +611,11 @@ export interface FieldMappingArgs {
     /**
      * the column name to be mapped to the identifier
      */
-    columnName?: pulumi.Input<string>;
+    columnName?: pulumi.Input<string | undefined>;
     /**
      * the V3 identifier of the entity
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -698,15 +625,15 @@ export interface FileMetadataArgs {
     /**
      * The format of the file
      */
-    fileFormat?: pulumi.Input<string | enums.FileFormat>;
+    fileFormat?: pulumi.Input<string | enums.FileFormat | undefined>;
     /**
      * The name of the file.
      */
-    fileName?: pulumi.Input<string>;
+    fileName?: pulumi.Input<string | undefined>;
     /**
      * The size of the file.
      */
-    fileSize?: pulumi.Input<number>;
+    fileSize?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -739,11 +666,11 @@ export interface GenericBlobSbsAuthModelArgs {
     /**
      * Credentials for service bus namespace, keyvault uri for access key
      */
-    credentialsConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    credentialsConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Credentials for storage account, keyvault uri for access key
      */
-    storageAccountCredentialsConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    storageAccountCredentialsConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of paging
      * Expected value is 'ServiceBus'.
@@ -758,22 +685,12 @@ export interface GitHubAuthModelArgs {
     /**
      * The GitHubApp auth installation id.
      */
-    installationId?: pulumi.Input<string>;
+    installationId?: pulumi.Input<string | undefined>;
     /**
      * Type of paging
      * Expected value is 'GitHub'.
      */
     type: pulumi.Input<"GitHub">;
-}
-
-/**
- * Resources created in GitHub repository.
- */
-export interface GitHubResourceInfoArgs {
-    /**
-     * GitHub application installation id.
-     */
-    appInstallationId?: pulumi.Input<string>;
 }
 
 /**
@@ -806,15 +723,15 @@ export interface GroupingConfigurationArgs {
     /**
      * A list of alert details to group by (when matchingMethod is Selected)
      */
-    groupByAlertDetails?: pulumi.Input<pulumi.Input<string | enums.AlertDetail>[]>;
+    groupByAlertDetails?: pulumi.Input<pulumi.Input<string | enums.AlertDetail>[] | undefined>;
     /**
      * A list of custom details keys to group by (when matchingMethod is Selected). Only keys defined in the current alert rule may be used.
      */
-    groupByCustomDetails?: pulumi.Input<pulumi.Input<string>[]>;
+    groupByCustomDetails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of entity types to group by (when matchingMethod is Selected). Only entities defined in the current alert rule may be used.
      */
-    groupByEntities?: pulumi.Input<pulumi.Input<string | enums.EntityMappingType>[]>;
+    groupByEntities?: pulumi.Input<pulumi.Input<string | enums.EntityMappingType>[] | undefined>;
     /**
      * Limit the group to alerts created within the lookback duration (in ISO 8601 duration format)
      */
@@ -836,23 +753,23 @@ export interface HuntOwnerArgs {
     /**
      * The name of the user the hunt is assigned to.
      */
-    assignedTo?: pulumi.Input<string>;
+    assignedTo?: pulumi.Input<string | undefined>;
     /**
      * The email of the user the hunt is assigned to.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The object id of the user the hunt is assigned to.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * The type of the owner the hunt is assigned to.
      */
-    ownerType?: pulumi.Input<string | enums.OwnerType>;
+    ownerType?: pulumi.Input<string | enums.OwnerType | undefined>;
     /**
      * The user principal name of the user the hunt is assigned to.
      */
-    userPrincipalName?: pulumi.Input<string>;
+    userPrincipalName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -866,7 +783,7 @@ export interface IncidentConfigurationArgs {
     /**
      * Set how the alerts that are triggered by this analytics rule, are grouped into incidents
      */
-    groupingConfiguration?: pulumi.Input<GroupingConfigurationArgs>;
+    groupingConfiguration?: pulumi.Input<GroupingConfigurationArgs | undefined>;
 }
 
 /**
@@ -876,19 +793,19 @@ export interface IncidentInfoArgs {
     /**
      * Incident Id
      */
-    incidentId?: pulumi.Input<string>;
+    incidentId?: pulumi.Input<string | undefined>;
     /**
      * Relation Name
      */
-    relationName?: pulumi.Input<string>;
+    relationName?: pulumi.Input<string | undefined>;
     /**
      * The severity of the incident
      */
-    severity?: pulumi.Input<string | enums.IncidentSeverity>;
+    severity?: pulumi.Input<string | enums.IncidentSeverity | undefined>;
     /**
      * The title of the incident
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -908,54 +825,54 @@ export interface IncidentOwnerInfoArgs {
     /**
      * The name of the user the incident is assigned to.
      */
-    assignedTo?: pulumi.Input<string>;
+    assignedTo?: pulumi.Input<string | undefined>;
     /**
      * The email of the user the incident is assigned to.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The object id of the user the incident is assigned to.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * The type of the owner the incident is assigned to.
      */
-    ownerType?: pulumi.Input<string | enums.OwnerType>;
+    ownerType?: pulumi.Input<string | enums.OwnerType | undefined>;
     /**
      * The user principal name of the user the incident is assigned to.
      */
-    userPrincipalName?: pulumi.Input<string>;
+    userPrincipalName?: pulumi.Input<string | undefined>;
 }
 
 export interface IncidentPropertiesActionArgs {
     /**
      * The reason the incident was closed
      */
-    classification?: pulumi.Input<string | enums.IncidentClassification>;
+    classification?: pulumi.Input<string | enums.IncidentClassification | undefined>;
     /**
      * Describes the reason the incident was closed.
      */
-    classificationComment?: pulumi.Input<string>;
+    classificationComment?: pulumi.Input<string | undefined>;
     /**
      * The classification reason the incident was closed with
      */
-    classificationReason?: pulumi.Input<string | enums.IncidentClassificationReason>;
+    classificationReason?: pulumi.Input<string | enums.IncidentClassificationReason | undefined>;
     /**
      * List of labels to add to the incident.
      */
-    labels?: pulumi.Input<pulumi.Input<IncidentLabelArgs>[]>;
+    labels?: pulumi.Input<pulumi.Input<IncidentLabelArgs>[] | undefined>;
     /**
      * Information on the user an incident is assigned to
      */
-    owner?: pulumi.Input<IncidentOwnerInfoArgs>;
+    owner?: pulumi.Input<IncidentOwnerInfoArgs | undefined>;
     /**
      * The severity of the incident
      */
-    severity?: pulumi.Input<string | enums.IncidentSeverity>;
+    severity?: pulumi.Input<string | enums.IncidentSeverity | undefined>;
     /**
      * The status of the incident
      */
-    status?: pulumi.Input<string | enums.IncidentStatus>;
+    status?: pulumi.Input<string | enums.IncidentStatus | undefined>;
 }
 
 /**
@@ -965,20 +882,20 @@ export interface InstructionStepArgs {
     /**
      * Gets or sets the instruction step description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the inner instruction steps details.
      * For Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
      */
-    innerSteps?: pulumi.Input<pulumi.Input<InstructionStepArgs>[]>;
+    innerSteps?: pulumi.Input<pulumi.Input<InstructionStepArgs>[] | undefined>;
     /**
      * Gets or sets the instruction step details.
      */
-    instructions?: pulumi.Input<pulumi.Input<InstructionStepDetailsArgs>[]>;
+    instructions?: pulumi.Input<pulumi.Input<InstructionStepDetailsArgs>[] | undefined>;
     /**
      * Gets or sets the instruction step title.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1002,15 +919,15 @@ export interface JwtAuthModelArgs {
     /**
      * The custom headers we want to add once we send request to token endpoint.
      */
-    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Flag indicating whether we want to send the user name and password to token endpoint in the headers.
      */
-    isCredentialsInHeaders?: pulumi.Input<boolean>;
+    isCredentialsInHeaders?: pulumi.Input<boolean | undefined>;
     /**
      * Flag indicating whether the body request is JSON (header Content-Type = application/json), meaning its a Form URL encoded request (header Content-Type = application/x-www-form-urlencoded).
      */
-    isJsonRequest?: pulumi.Input<boolean>;
+    isJsonRequest?: pulumi.Input<boolean | undefined>;
     /**
      * The password
      */
@@ -1018,11 +935,11 @@ export interface JwtAuthModelArgs {
     /**
      * The custom query parameter we want to add once we send request to token endpoint.
      */
-    queryParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    queryParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Request timeout in seconds.
      */
-    requestTimeoutInSeconds?: pulumi.Input<number>;
+    requestTimeoutInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Token endpoint to request JWT
      */
@@ -1059,7 +976,7 @@ export interface MCASDataConnectorDataTypesArgs {
     /**
      * Discovery log data type connection.
      */
-    discoveryLogs?: pulumi.Input<DataConnectorDataTypeCommonArgs>;
+    discoveryLogs?: pulumi.Input<DataConnectorDataTypeCommonArgs | undefined>;
 }
 
 /**
@@ -1093,15 +1010,15 @@ export interface MetadataAuthorArgs {
     /**
      * Email of author contact
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Link for author/vendor page
      */
-    link?: pulumi.Input<string>;
+    link?: pulumi.Input<string | undefined>;
     /**
      * Name of the author. Company or person.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1111,11 +1028,11 @@ export interface MetadataCategoriesArgs {
     /**
      * domain for the solution content item
      */
-    domains?: pulumi.Input<pulumi.Input<string>[]>;
+    domains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Industry verticals for the solution content item
      */
-    verticals?: pulumi.Input<pulumi.Input<string>[]>;
+    verticals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1125,27 +1042,27 @@ export interface MetadataDependenciesArgs {
     /**
      * Id of the content item we depend on
      */
-    contentId?: pulumi.Input<string>;
+    contentId?: pulumi.Input<string | undefined>;
     /**
      * This is the list of dependencies we must fulfill, according to the AND/OR operator
      */
-    criteria?: pulumi.Input<pulumi.Input<MetadataDependenciesArgs>[]>;
+    criteria?: pulumi.Input<pulumi.Input<MetadataDependenciesArgs>[] | undefined>;
     /**
      * Type of the content item we depend on
      */
-    kind?: pulumi.Input<string | enums.Kind>;
+    kind?: pulumi.Input<string | enums.Kind | undefined>;
     /**
      * Name of the content item
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Operator used for list of dependencies in criteria array.
      */
-    operator?: pulumi.Input<string | enums.Operator>;
+    operator?: pulumi.Input<string | enums.Operator | undefined>;
     /**
      * Version of the the content item we depend on.  Can be blank, * or missing to indicate any version fulfills the dependency.  If version does not match our defined numeric format then an exact match is required.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1159,11 +1076,11 @@ export interface MetadataSourceArgs {
     /**
      * Name of the content source.  The repo name, solution name, LA workspace name etc.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ID of the content source.  The solution ID, workspace ID, etc
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1173,15 +1090,15 @@ export interface MetadataSupportArgs {
     /**
      * Email of support contact
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Link for support help, like to support page to open a ticket etc.
      */
-    link?: pulumi.Input<string>;
+    link?: pulumi.Input<string | undefined>;
     /**
      * Name of the support contact. Company or person.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Type of support for content item
      */
@@ -1206,23 +1123,23 @@ export interface OAuthModelArgs {
     /**
      * Access token prepend. Default is 'Bearer'.
      */
-    accessTokenPrepend?: pulumi.Input<string>;
+    accessTokenPrepend?: pulumi.Input<string | undefined>;
     /**
      * The user's authorization code.
      */
-    authorizationCode?: pulumi.Input<string>;
+    authorizationCode?: pulumi.Input<string | undefined>;
     /**
      * The authorization endpoint.
      */
-    authorizationEndpoint?: pulumi.Input<string>;
+    authorizationEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The authorization endpoint headers.
      */
-    authorizationEndpointHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    authorizationEndpointHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The authorization endpoint query parameters.
      */
-    authorizationEndpointQueryParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    authorizationEndpointQueryParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Application (client) ID that the OAuth provider assigned to your app.
      */
@@ -1238,19 +1155,19 @@ export interface OAuthModelArgs {
     /**
      * Indicating whether we want to send the clientId and clientSecret to token endpoint in the headers.
      */
-    isCredentialsInHeaders?: pulumi.Input<boolean>;
+    isCredentialsInHeaders?: pulumi.Input<boolean | undefined>;
     /**
      * A value indicating whether it's a JWT flow.
      */
-    isJwtBearerFlow?: pulumi.Input<boolean>;
+    isJwtBearerFlow?: pulumi.Input<boolean | undefined>;
     /**
      * The Application redirect url that the user config in the OAuth provider.
      */
-    redirectUri?: pulumi.Input<string>;
+    redirectUri?: pulumi.Input<string | undefined>;
     /**
      * The Application (client) Scope that the OAuth provider assigned to your app.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The token endpoint. Defines the OAuth2 refresh token.
      */
@@ -1258,11 +1175,11 @@ export interface OAuthModelArgs {
     /**
      * The token endpoint headers.
      */
-    tokenEndpointHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tokenEndpointHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The token endpoint query parameters.
      */
-    tokenEndpointQueryParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tokenEndpointQueryParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of paging
      * Expected value is 'OAuth2'.
@@ -1362,7 +1279,7 @@ export interface PlaybookActionPropertiesArgs {
     /**
      * The tenant id of the playbook resource.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1389,9 +1306,8 @@ export interface PremiumMdtiDataConnectorDataTypesConnectorArgs {
  * Describes an automation rule condition that evaluates an array property's value change
  */
 export interface PropertyArrayChangedConditionPropertiesArgs {
-    conditionProperties?: pulumi.Input<AutomationRulePropertyArrayChangedValuesConditionArgs>;
+    conditionProperties?: pulumi.Input<AutomationRulePropertyArrayChangedValuesConditionArgs | undefined>;
     /**
-     *
      * Expected value is 'PropertyArrayChanged'.
      */
     conditionType: pulumi.Input<"PropertyArrayChanged">;
@@ -1404,9 +1320,8 @@ export interface PropertyArrayConditionPropertiesArgs {
     /**
      * Describes an automation rule condition on array properties.
      */
-    conditionProperties?: pulumi.Input<AutomationRulePropertyArrayValuesConditionArgs>;
+    conditionProperties?: pulumi.Input<AutomationRulePropertyArrayValuesConditionArgs | undefined>;
     /**
-     *
      * Expected value is 'PropertyArray'.
      */
     conditionType: pulumi.Input<"PropertyArray">;
@@ -1416,9 +1331,8 @@ export interface PropertyArrayConditionPropertiesArgs {
  * Describes an automation rule condition that evaluates a property's value change
  */
 export interface PropertyChangedConditionPropertiesArgs {
-    conditionProperties?: pulumi.Input<AutomationRulePropertyValuesChangedConditionArgs>;
+    conditionProperties?: pulumi.Input<AutomationRulePropertyValuesChangedConditionArgs | undefined>;
     /**
-     *
      * Expected value is 'PropertyChanged'.
      */
     conditionType: pulumi.Input<"PropertyChanged">;
@@ -1428,9 +1342,8 @@ export interface PropertyChangedConditionPropertiesArgs {
  * Describes an automation rule condition that evaluates a property's value
  */
 export interface PropertyConditionPropertiesArgs {
-    conditionProperties?: pulumi.Input<AutomationRulePropertyValuesConditionArgs>;
+    conditionProperties?: pulumi.Input<AutomationRulePropertyValuesConditionArgs | undefined>;
     /**
-     *
      * Expected value is 'Property'.
      */
     conditionType: pulumi.Input<"Property">;
@@ -1443,23 +1356,45 @@ export interface RepositoryArgs {
     /**
      * Branch name of repository.
      */
-    branch?: pulumi.Input<string>;
-    /**
-     * Url to access repository action logs.
-     */
-    deploymentLogsUrl?: pulumi.Input<string>;
+    branch: pulumi.Input<string>;
     /**
      * Display url of repository.
      */
-    displayUrl?: pulumi.Input<string>;
-    /**
-     * Dictionary of source control content type and path mapping.
-     */
-    pathMapping?: pulumi.Input<pulumi.Input<ContentPathMapArgs>[]>;
+    displayUrl?: pulumi.Input<string | undefined>;
     /**
      * Url of repository.
      */
-    url?: pulumi.Input<string>;
+    url: pulumi.Input<string>;
+}
+
+/**
+ * Credentials to access repository.
+ */
+export interface RepositoryAccessArgs {
+    /**
+     * OAuth ClientId. Required when `kind` is `OAuth`
+     */
+    clientId?: pulumi.Input<string | undefined>;
+    /**
+     * OAuth Code. Required when `kind` is `OAuth`
+     */
+    code?: pulumi.Input<string | undefined>;
+    /**
+     * Application installation ID. Required when `kind` is `App`. Supported by `GitHub` only.
+     */
+    installationId?: pulumi.Input<string | undefined>;
+    /**
+     * The kind of repository access credentials
+     */
+    kind: pulumi.Input<string | enums.RepositoryAccessKind>;
+    /**
+     * OAuth State. Required when `kind` is `OAuth`
+     */
+    state?: pulumi.Input<string | undefined>;
+    /**
+     * Personal Access Token. Required when `kind` is `PAT`
+     */
+    token?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1467,17 +1402,9 @@ export interface RepositoryArgs {
  */
 export interface RepositoryResourceInfoArgs {
     /**
-     * Resources created in Azure DevOps for this source-control.
-     */
-    azureDevOpsResourceInfo?: pulumi.Input<AzureDevOpsResourceInfoArgs>;
-    /**
-     * Resources created in GitHub for this source-control.
-     */
-    gitHubResourceInfo?: pulumi.Input<GitHubResourceInfoArgs>;
-    /**
      * The webhook object created for the source-control.
      */
-    webhook?: pulumi.Input<WebhookArgs>;
+    webhook?: pulumi.Input<WebhookArgs | undefined>;
 }
 
 /**
@@ -1488,19 +1415,19 @@ export interface ResourceProviderRequiredPermissionsArgs {
     /**
      * Gets or sets a value indicating whether the permission is custom actions (POST).
      */
-    action?: pulumi.Input<boolean>;
+    action?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets a value indicating whether the permission is delete action (DELETE).
      */
-    delete?: pulumi.Input<boolean>;
+    delete?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets a value indicating whether the permission is read action (GET).
      */
-    read?: pulumi.Input<boolean>;
+    read?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets a value indicating whether the permission is write action (PUT or PATCH).
      */
-    write?: pulumi.Input<boolean>;
+    write?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1514,63 +1441,63 @@ export interface RestApiPollerRequestConfigArgs {
     /**
      * The query parameter name which the remote server expect to end query. This property goes hand to hand with `startTimeAttributeName`
      */
-    endTimeAttributeName?: pulumi.Input<string>;
+    endTimeAttributeName?: pulumi.Input<string | undefined>;
     /**
      * The header for the request for the remote server.
      */
-    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The HTTP method, default value GET.
      */
-    httpMethod?: pulumi.Input<string | enums.HttpMethodVerb>;
+    httpMethod?: pulumi.Input<string | enums.HttpMethodVerb | undefined>;
     /**
      * Flag to indicate if HTTP POST payload is in JSON format (vs form-urlencoded).
      */
-    isPostPayloadJson?: pulumi.Input<boolean>;
+    isPostPayloadJson?: pulumi.Input<boolean | undefined>;
     /**
      * The HTTP query parameters to RESTful API.
      */
-    queryParameters?: any;
+    queryParameters?: any | undefined;
     /**
      * the query parameters template. Defines the query parameters template to use when passing query parameters in advanced scenarios.
      */
-    queryParametersTemplate?: pulumi.Input<string>;
+    queryParametersTemplate?: pulumi.Input<string | undefined>;
     /**
      * The query time format. A remote server can have a query to pull data from range 'start' to 'end'. This property indicate what is the expected time format the remote server know to parse.
      */
-    queryTimeFormat?: pulumi.Input<string>;
+    queryTimeFormat?: pulumi.Input<string | undefined>;
     /**
      * The query parameter name which we need to send the server for query logs in time interval. Should be defined with `queryTimeIntervalPrepend` and `queryTimeIntervalDelimiter`
      */
-    queryTimeIntervalAttributeName?: pulumi.Input<string>;
+    queryTimeIntervalAttributeName?: pulumi.Input<string | undefined>;
     /**
      * The delimiter string between 2 QueryTimeFormat in the query parameter `queryTimeIntervalAttributeName`.
      */
-    queryTimeIntervalDelimiter?: pulumi.Input<string>;
+    queryTimeIntervalDelimiter?: pulumi.Input<string | undefined>;
     /**
      * The string prepend to the value of the query parameter in `queryTimeIntervalAttributeName`.
      */
-    queryTimeIntervalPrepend?: pulumi.Input<string>;
+    queryTimeIntervalPrepend?: pulumi.Input<string | undefined>;
     /**
      * The query window in minutes for the request.
      */
-    queryWindowInMin?: pulumi.Input<number>;
+    queryWindowInMin?: pulumi.Input<number | undefined>;
     /**
      * The Rate limit queries per second for the request..
      */
-    rateLimitQPS?: pulumi.Input<number>;
+    rateLimitQPS?: pulumi.Input<number | undefined>;
     /**
      * The retry count.
      */
-    retryCount?: pulumi.Input<number>;
+    retryCount?: pulumi.Input<number | undefined>;
     /**
      * The query parameter name which the remote server expect to start query. This property goes hand to hand with `endTimeAttributeName`.
      */
-    startTimeAttributeName?: pulumi.Input<string>;
+    startTimeAttributeName?: pulumi.Input<string | undefined>;
     /**
      * The timeout in seconds.
      */
-    timeoutInSeconds?: pulumi.Input<number>;
+    timeoutInSeconds?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1580,11 +1507,11 @@ export interface RestApiPollerRequestPagingConfigArgs {
     /**
      * Page size
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Page size parameter name
      */
-    pageSizeParameterName?: pulumi.Input<string>;
+    pageSizeParameterName?: pulumi.Input<string | undefined>;
     /**
      * Type of paging
      */
@@ -1598,11 +1525,21 @@ export interface SecurityMLAnalyticsSettingsDataSourceArgs {
     /**
      * The connector id that provides the following data types
      */
-    connectorId?: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string | undefined>;
     /**
      * The data types used by the security ml analytics settings
      */
-    dataTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    dataTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+/**
+ * Service principal metadata.
+ */
+export interface ServicePrincipalArgs {
+    /**
+     * Expiration time of service principal credentials.
+     */
+    credentialsExpireOn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1612,11 +1549,11 @@ export interface SessionAuthModelArgs {
     /**
      * HTTP request headers to session service endpoint.
      */
-    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicating whether API key is set in HTTP POST payload.
      */
-    isPostPayloadJson?: pulumi.Input<boolean>;
+    isPostPayloadJson?: pulumi.Input<boolean | undefined>;
     /**
      * The password attribute name.
      */
@@ -1624,19 +1561,19 @@ export interface SessionAuthModelArgs {
     /**
      * Query parameters to session service endpoint.
      */
-    queryParameters?: any;
+    queryParameters?: any | undefined;
     /**
      * Session id attribute name from HTTP response header.
      */
-    sessionIdName?: pulumi.Input<string>;
+    sessionIdName?: pulumi.Input<string | undefined>;
     /**
      * HTTP request URL to session service endpoint.
      */
-    sessionLoginRequestUri?: pulumi.Input<string>;
+    sessionLoginRequestUri?: pulumi.Input<string | undefined>;
     /**
      * Session timeout in minutes.
      */
-    sessionTimeoutInMinutes?: pulumi.Input<number>;
+    sessionTimeoutInMinutes?: pulumi.Input<number | undefined>;
     /**
      * Type of paging
      * Expected value is 'Session'.
@@ -1675,23 +1612,23 @@ export interface ThreatIntelligenceExternalReferenceArgs {
     /**
      * External reference description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * External reference ID
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * External reference hashes
      */
-    hashes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    hashes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * External reference source name
      */
-    sourceName?: pulumi.Input<string>;
+    sourceName?: pulumi.Input<string | undefined>;
     /**
      * External reference URL
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1701,15 +1638,15 @@ export interface ThreatIntelligenceGranularMarkingModelArgs {
     /**
      * Language granular marking model
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * marking reference granular marking model
      */
-    markingRef?: pulumi.Input<number>;
+    markingRef?: pulumi.Input<number | undefined>;
     /**
      * granular marking model selectors
      */
-    selectors?: pulumi.Input<pulumi.Input<string>[]>;
+    selectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1719,11 +1656,11 @@ export interface ThreatIntelligenceKillChainPhaseArgs {
     /**
      * Kill chainName name
      */
-    killChainName?: pulumi.Input<string>;
+    killChainName?: pulumi.Input<string | undefined>;
     /**
      * Phase name
      */
-    phaseName?: pulumi.Input<string>;
+    phaseName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1733,11 +1670,11 @@ export interface ThreatIntelligenceParsedPatternArgs {
     /**
      * Pattern type key
      */
-    patternTypeKey?: pulumi.Input<string>;
+    patternTypeKey?: pulumi.Input<string | undefined>;
     /**
      * Pattern type keys
      */
-    patternTypeValues?: pulumi.Input<pulumi.Input<ThreatIntelligenceParsedPatternTypeValueArgs>[]>;
+    patternTypeValues?: pulumi.Input<pulumi.Input<ThreatIntelligenceParsedPatternTypeValueArgs>[] | undefined>;
 }
 
 /**
@@ -1747,11 +1684,11 @@ export interface ThreatIntelligenceParsedPatternTypeValueArgs {
     /**
      * Value of parsed pattern
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * Type of the value
      */
-    valueType?: pulumi.Input<string>;
+    valueType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1761,7 +1698,7 @@ export interface UserInfoArgs {
     /**
      * The object id of the user.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1771,7 +1708,7 @@ export interface WatchlistUserInfoArgs {
     /**
      * The object id of the user.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1781,17 +1718,5 @@ export interface WebhookArgs {
     /**
      * A flag to instruct the backend service to rotate webhook secret.
      */
-    rotateWebhookSecret?: pulumi.Input<boolean>;
-    /**
-     * Unique identifier for the webhook.
-     */
-    webhookId?: pulumi.Input<string>;
-    /**
-     * Time when the webhook secret was updated.
-     */
-    webhookSecretUpdateTime?: pulumi.Input<string>;
-    /**
-     * URL that gets invoked by the webhook.
-     */
-    webhookUrl?: pulumi.Input<string>;
+    rotateWebhookSecret?: pulumi.Input<boolean | undefined>;
 }

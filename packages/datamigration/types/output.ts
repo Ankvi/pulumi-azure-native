@@ -719,7 +719,7 @@ export interface ConnectToSourceSqlServerTaskPropertiesResponse {
      */
     state: string;
     /**
-     * Task id 
+     * Task id
      */
     taskId?: string;
     /**
@@ -1558,7 +1558,6 @@ export interface DatabaseMigrationPropertiesSqlDbResponse {
      */
     endedOn: string;
     /**
-     *
      * Expected value is 'SqlDb'.
      */
     kind: "SqlDb";
@@ -1641,7 +1640,6 @@ export interface DatabaseMigrationPropertiesSqlMiResponse {
      */
     endedOn: string;
     /**
-     *
      * Expected value is 'SqlMi'.
      */
     kind: "SqlMi";
@@ -1716,7 +1714,6 @@ export interface DatabaseMigrationPropertiesSqlVmResponse {
      */
     endedOn: string;
     /**
-     *
      * Expected value is 'SqlVm'.
      */
     kind: "SqlVm";
@@ -2394,7 +2391,7 @@ export interface GetUserTablesSqlTaskPropertiesResponse {
      */
     state: string;
     /**
-     * Task id 
+     * Task id
      */
     taskId?: string;
     /**
@@ -2854,7 +2851,7 @@ export interface MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponse {
      */
     state: string;
     /**
-     * Task id 
+     * Task id
      */
     taskId?: string;
     /**
@@ -4245,8 +4242,8 @@ export interface MigrateSqlServerSqlDbTaskInputResponse {
      */
     targetConnectionInfo: SqlConnectionInfoResponse;
     /**
-     * Options for enabling various post migration validations. Available options, 
-     *  1.) Data Integrity Check: Performs a checksum based comparison on source and target tables after the migration to ensure the correctness of the data. 
+     * Options for enabling various post migration validations. Available options,
+     *  1.) Data Integrity Check: Performs a checksum based comparison on source and target tables after the migration to ensure the correctness of the data.
      *  2.) Schema Validation: Performs a thorough schema comparison between the source and target tables and provides a list of differences between the source and target database, 3.) Query Analysis: Executes a set of queries picked up automatically either from the Query Plan Cache or Query Store and execute them and compares the execution time between the source and target database.
      */
     validationOptions?: MigrationValidationOptionsResponse;
@@ -5743,7 +5740,7 @@ export interface MongoDbConnectionInfoResponse {
      */
     connectionString: string;
     /**
-     * Data source 
+     * Data source
      */
     dataSource?: string;
     /**
@@ -6158,7 +6155,7 @@ export interface MySqlConnectionInfoResponse {
      */
     authentication?: string;
     /**
-     * Data source 
+     * Data source
      */
     dataSource?: string;
     /**
@@ -6334,7 +6331,7 @@ export interface PostgreSqlConnectionInfoResponse {
      */
     authentication?: string;
     /**
-     * Data source 
+     * Data source
      */
     dataSource?: string;
     /**
@@ -7372,7 +7369,7 @@ export interface WaitStatisticsResponse {
      */
     waitCount?: number;
     /**
-     * Total wait time in millisecond(s) 
+     * Total wait time in millisecond(s)
      */
     waitTimeMs?: number;
     /**

@@ -28,7 +28,7 @@ export interface EventHandlerResponse {
 }
 
 /**
- * An Event Hub endpoint. 
+ * An Event Hub endpoint.
  * The managed identity of Web PubSub service must be enabled, and the identity should have the "Azure Event Hubs Data sender" role to access Event Hub.
  */
 export interface EventHubEndpointResponse {
@@ -41,7 +41,6 @@ export interface EventHubEndpointResponse {
      */
     fullyQualifiedNamespace: string;
     /**
-     *
      * Expected value is 'EventHub'.
      */
     type: "EventHub";
@@ -70,7 +69,6 @@ export interface EventNameFilterResponse {
      */
     systemEvents?: string[];
     /**
-     *
      * Expected value is 'EventName'.
      */
     type: "EventName";
@@ -321,7 +319,7 @@ export interface ResourceSkuResponse {
     /**
      * Optional, integer. The unit count of the resource.
      * 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.
-     * 
+     *
      * If present, following values are allowed:
      *     Free_F1: 1;
      *     Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;
@@ -335,7 +333,7 @@ export interface ResourceSkuResponse {
     family: string;
     /**
      * The name of the SKU. Required.
-     * 
+     *
      * Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2
      */
     name: string;
@@ -344,8 +342,8 @@ export interface ResourceSkuResponse {
      */
     size: string;
     /**
-     * Optional tier of this particular SKU. 'Standard' or 'Free'. 
-     * 
+     * Optional tier of this particular SKU. 'Standard' or 'Free'.
+     *
      * `Basic` is deprecated, use `Standard` instead.
      */
     tier?: string;
@@ -513,7 +511,7 @@ export interface WebPubSubNetworkACLsResponse {
  */
 export interface WebPubSubSocketIOSettingsResponse {
     /**
-     * The service mode of Web PubSub for Socket.IO. Values allowed: 
+     * The service mode of Web PubSub for Socket.IO. Values allowed:
      * "Default": have your own backend Socket.IO server
      * "Serverless": your application doesn't have a backend server
      */

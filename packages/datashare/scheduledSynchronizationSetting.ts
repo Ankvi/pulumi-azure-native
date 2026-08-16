@@ -165,7 +165,7 @@ export interface ScheduledSynchronizationSettingArgs {
     /**
      * The name of the synchronizationSetting.
      */
-    synchronizationSettingName?: pulumi.Input<string>;
+    synchronizationSettingName?: pulumi.Input<string | undefined>;
     /**
      * Synchronization time
      */

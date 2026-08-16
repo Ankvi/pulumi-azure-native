@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2018-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class InstancePool extends pulumi.CustomResource {
     /**
@@ -130,7 +130,7 @@ export class InstancePool extends pulumi.CustomResource {
             resourceInputs["vCores"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20180601preview:InstancePool" }, { type: "azure-native:sql/v20200202preview:InstancePool" }, { type: "azure-native:sql/v20200801preview:InstancePool" }, { type: "azure-native:sql/v20201101preview:InstancePool" }, { type: "azure-native:sql/v20210201preview:InstancePool" }, { type: "azure-native:sql/v20210501preview:InstancePool" }, { type: "azure-native:sql/v20210801preview:InstancePool" }, { type: "azure-native:sql/v20211101:InstancePool" }, { type: "azure-native:sql/v20211101preview:InstancePool" }, { type: "azure-native:sql/v20220201preview:InstancePool" }, { type: "azure-native:sql/v20220501preview:InstancePool" }, { type: "azure-native:sql/v20220801preview:InstancePool" }, { type: "azure-native:sql/v20221101preview:InstancePool" }, { type: "azure-native:sql/v20230201preview:InstancePool" }, { type: "azure-native:sql/v20230501preview:InstancePool" }, { type: "azure-native:sql/v20230801:InstancePool" }, { type: "azure-native:sql/v20230801preview:InstancePool" }, { type: "azure-native:sql/v20240501preview:InstancePool" }, { type: "azure-native:sql/v20241101preview:InstancePool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20180601preview:InstancePool" }, { type: "azure-native:sql/v20200202preview:InstancePool" }, { type: "azure-native:sql/v20200801preview:InstancePool" }, { type: "azure-native:sql/v20201101preview:InstancePool" }, { type: "azure-native:sql/v20210201preview:InstancePool" }, { type: "azure-native:sql/v20210501preview:InstancePool" }, { type: "azure-native:sql/v20210801preview:InstancePool" }, { type: "azure-native:sql/v20211101:InstancePool" }, { type: "azure-native:sql/v20211101preview:InstancePool" }, { type: "azure-native:sql/v20220201preview:InstancePool" }, { type: "azure-native:sql/v20220501preview:InstancePool" }, { type: "azure-native:sql/v20220801preview:InstancePool" }, { type: "azure-native:sql/v20221101preview:InstancePool" }, { type: "azure-native:sql/v20230201preview:InstancePool" }, { type: "azure-native:sql/v20230501preview:InstancePool" }, { type: "azure-native:sql/v20230801:InstancePool" }, { type: "azure-native:sql/v20230801preview:InstancePool" }, { type: "azure-native:sql/v20240501preview:InstancePool" }, { type: "azure-native:sql/v20241101preview:InstancePool" }, { type: "azure-native:sql/v20250101:InstancePool" }, { type: "azure-native:sql/v20250201preview:InstancePool" }, { type: "azure-native:sql/v20250801preview:InstancePool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(InstancePool.__pulumiType, name, resourceInputs, opts);
     }
@@ -143,7 +143,7 @@ export interface InstancePoolArgs {
     /**
      * The name of the instance pool to be created or updated.
      */
-    instancePoolName?: pulumi.Input<string>;
+    instancePoolName?: pulumi.Input<string | undefined>;
     /**
      * The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price).
      */
@@ -151,11 +151,11 @@ export interface InstancePoolArgs {
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Specifies maintenance configuration id to apply to this managed instance.
      */
-    maintenanceConfigurationId?: pulumi.Input<string>;
+    maintenanceConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -163,7 +163,7 @@ export interface InstancePoolArgs {
     /**
      * The name and tier of the SKU.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource ID of the subnet to place this instance pool in.
      */
@@ -171,7 +171,7 @@ export interface InstancePoolArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Count of vCores belonging to this instance pool.
      */

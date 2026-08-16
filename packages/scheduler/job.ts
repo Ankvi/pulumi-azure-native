@@ -96,11 +96,11 @@ export interface JobArgs {
     /**
      * The job name.
      */
-    jobName?: pulumi.Input<string>;
+    jobName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the job properties.
      */
-    properties?: pulumi.Input<types.inputs.JobPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.JobPropertiesArgs | undefined>;
     /**
      * The resource group name.
      */

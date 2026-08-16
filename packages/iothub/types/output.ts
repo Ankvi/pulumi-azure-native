@@ -587,7 +587,7 @@ export interface RoutingEventHubPropertiesResponse {
      */
     authenticationType?: string;
     /**
-     * The connection string of the event hub endpoint. 
+     * The connection string of the event hub endpoint.
      */
     connectionString?: string;
     /**

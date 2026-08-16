@@ -36,7 +36,7 @@ export class Assignment extends pulumi.CustomResource {
     /**
      * Additional data about the assignment
      */
-    declare public readonly additionalData: pulumi.Output<types.outputs.AssignmentPropertiesResponseAdditionalData | undefined>;
+    declare public readonly additionalData: pulumi.Output<types.outputs.AssignmentPropertiesAdditionalDataResponse | undefined>;
     /**
      * Component item with key as applied to this standard assignment over the given scope
      */
@@ -74,7 +74,7 @@ export class Assignment extends pulumi.CustomResource {
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
-     * Location where the resource is stored
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
@@ -82,7 +82,7 @@ export class Assignment extends pulumi.CustomResource {
      */
     declare public readonly metadata: pulumi.Output<any | undefined>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -94,11 +94,11 @@ export class Assignment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * A list of key value pairs that describe the resource.
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -168,57 +168,57 @@ export interface AssignmentArgs {
     /**
      * Additional data about the assignment
      */
-    additionalData?: pulumi.Input<types.inputs.AssignmentPropertiesAdditionalDataArgs>;
+    additionalData?: pulumi.Input<types.inputs.AssignmentPropertiesAdditionalDataArgs | undefined>;
     /**
      * Component item with key as applied to this standard assignment over the given scope
      */
-    assignedComponent?: pulumi.Input<types.inputs.AssignedComponentItemArgs>;
+    assignedComponent?: pulumi.Input<types.inputs.AssignedComponentItemArgs | undefined>;
     /**
      * Standard item with key as applied to this standard assignment over the given scope
      */
-    assignedStandard?: pulumi.Input<types.inputs.AssignedStandardItemArgs>;
+    assignedStandard?: pulumi.Input<types.inputs.CommonAssignedStandardItemArgs | undefined>;
     /**
      * The security assignment key - unique key for the standard assignment
      */
-    assignmentId?: pulumi.Input<string>;
+    assignmentId?: pulumi.Input<string | undefined>;
     /**
      * description of the standardAssignment
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * display name of the standardAssignment
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * expected effect of this assignment (Disable/Exempt/etc)
      */
-    effect?: pulumi.Input<string>;
+    effect?: pulumi.Input<string | undefined>;
     /**
      * Expiration date of this assignment as a full ISO date
      */
-    expiresOn?: pulumi.Input<string>;
+    expiresOn?: pulumi.Input<string | undefined>;
     /**
      * Kind of the resource
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
-     * Location where the resource is stored
+     * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
-     * The name of the resource group within the user's subscription. The name is case insensitive.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
-     * A list of key value pairs that describe the resource.
+     * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

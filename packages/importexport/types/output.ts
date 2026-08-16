@@ -65,7 +65,7 @@ export interface DriveStatusResponse {
      */
     errorLogUri?: string;
     /**
-     * The relative path of the manifest file on the drive. 
+     * The relative path of the manifest file on the drive.
      */
     manifestFile?: string;
     /**
@@ -73,19 +73,19 @@ export interface DriveStatusResponse {
      */
     manifestHash?: string;
     /**
-     * A URI that points to the blob containing the drive manifest file. 
+     * A URI that points to the blob containing the drive manifest file.
      */
     manifestUri?: string;
     /**
-     * Percentage completed for the drive. 
+     * Percentage completed for the drive.
      */
     percentComplete?: number;
     /**
-     * The drive's current state. 
+     * The drive's current state.
      */
     state?: string;
     /**
-     * A URI that points to the blob containing the verbose log for the data transfer operation. 
+     * A URI that points to the blob containing the verbose log for the data transfer operation.
      */
     verboseLogUri?: string;
 }
@@ -108,11 +108,11 @@ export interface EncryptionKeyDetailsResponse {
      */
     kekType?: string;
     /**
-     * Specifies the url for kek encryption key. 
+     * Specifies the url for kek encryption key.
      */
     kekUrl?: string;
     /**
-     * Specifies the keyvault resource id for kek encryption key. 
+     * Specifies the keyvault resource id for kek encryption key.
      */
     kekVaultResourceID?: string;
 }
@@ -131,7 +131,7 @@ export function encryptionKeyDetailsResponseProvideDefaults(val: EncryptionKeyDe
  */
 export interface ExportResponse {
     /**
-     * The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root. 
+     * The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root.
      */
     blobListBlobPath?: string;
     /**
@@ -145,15 +145,15 @@ export interface ExportResponse {
 }
 
 /**
- * Specifies the identity properties. 
+ * Specifies the identity properties.
  */
 export interface IdentityDetailsResponse {
     /**
-     * Specifies the principal id for the identity for the job. 
+     * Specifies the principal id for the identity for the job.
      */
     principalId: string;
     /**
-     * Specifies the tenant id for the identity for the job. 
+     * Specifies the tenant id for the identity for the job.
      */
     tenantId: string;
     /**
@@ -184,7 +184,7 @@ export interface JobDetailsResponse {
      */
     cancelRequested?: boolean;
     /**
-     * Contains information about the package being shipped by the customer to the Microsoft data center. 
+     * Contains information about the package being shipped by the customer to the Microsoft data center.
      */
     deliveryPackage?: DeliveryPackageInformationResponse;
     /**
@@ -224,19 +224,19 @@ export interface JobDetailsResponse {
      */
     provisioningState?: string;
     /**
-     * Specifies the return address information for the job. 
+     * Specifies the return address information for the job.
      */
     returnAddress?: ReturnAddressResponse;
     /**
-     * Contains information about the package being shipped from the Microsoft data center to the customer to return the drives. The format is the same as the deliveryPackage property above. This property is not included if the drives have not yet been returned. 
+     * Contains information about the package being shipped from the Microsoft data center to the customer to return the drives. The format is the same as the deliveryPackage property above. This property is not included if the drives have not yet been returned.
      */
     returnPackage?: PackageInformationResponse;
     /**
-     * Specifies the return carrier and customer's account with the carrier. 
+     * Specifies the return carrier and customer's account with the carrier.
      */
     returnShipping?: ReturnShippingResponse;
     /**
-     * Contains information about the Microsoft datacenter to which the drives should be shipped. 
+     * Contains information about the Microsoft datacenter to which the drives should be shipped.
      */
     shippingInformation?: ShippingInformationResponse;
     /**
@@ -292,7 +292,7 @@ export interface ReturnAddressResponse {
      */
     city: string;
     /**
-     * The country or region to use when returning the drives. 
+     * The country or region to use when returning the drives.
      */
     countryOrRegion: string;
     /**
@@ -308,7 +308,7 @@ export interface ReturnAddressResponse {
      */
     postalCode: string;
     /**
-     * The name of the recipient who will receive the hard drives when they are returned. 
+     * The name of the recipient who will receive the hard drives when they are returned.
      */
     recipientName: string;
     /**
@@ -316,11 +316,11 @@ export interface ReturnAddressResponse {
      */
     stateOrProvince?: string;
     /**
-     * The first line of the street address to use when returning the drives. 
+     * The first line of the street address to use when returning the drives.
      */
     streetAddress1: string;
     /**
-     * The second line of the street address to use when returning the drives. 
+     * The second line of the street address to use when returning the drives.
      */
     streetAddress2?: string;
 }
@@ -352,7 +352,7 @@ export interface ShippingInformationResponse {
      */
     city?: string;
     /**
-     * The country or region to use when returning the drives. 
+     * The country or region to use when returning the drives.
      */
     countryOrRegion?: string;
     /**
@@ -364,7 +364,7 @@ export interface ShippingInformationResponse {
      */
     postalCode?: string;
     /**
-     * The name of the recipient who will receive the hard drives when they are returned. 
+     * The name of the recipient who will receive the hard drives when they are returned.
      */
     recipientName?: string;
     /**
@@ -372,11 +372,11 @@ export interface ShippingInformationResponse {
      */
     stateOrProvince?: string;
     /**
-     * The first line of the street address to use when returning the drives. 
+     * The first line of the street address to use when returning the drives.
      */
     streetAddress1?: string;
     /**
-     * The second line of the street address to use when returning the drives. 
+     * The second line of the street address to use when returning the drives.
      */
     streetAddress2?: string;
 }

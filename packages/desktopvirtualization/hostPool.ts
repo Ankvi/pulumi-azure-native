@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2022-09-09.
  *
- * Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-10-10, 2025-11-01-preview, 2026-01-01-preview, 2026-03-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class HostPool extends pulumi.CustomResource {
     /**
@@ -64,7 +64,7 @@ export class HostPool extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. 
+     * The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
@@ -271,7 +271,7 @@ export class HostPool extends pulumi.CustomResource {
             resourceInputs["vmTemplate"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:desktopvirtualization/v20190123preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20190924preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20191210preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20200921preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20201019preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20201102preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20201110preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20210114preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20210201preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20210309preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20210401preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20210712:HostPool" }, { type: "azure-native:desktopvirtualization/v20210903preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20220210preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20220401preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20220909:HostPool" }, { type: "azure-native:desktopvirtualization/v20221014preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20230707preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20230905:HostPool" }, { type: "azure-native:desktopvirtualization/v20231004preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20231101preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20240116preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20240306preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20240403:HostPool" }, { type: "azure-native:desktopvirtualization/v20240408preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20240808preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20241101preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20250301preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20250401preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20250801preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20250901preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20251101preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20260101preview:HostPool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:desktopvirtualization/v20190123preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20190924preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20191210preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20200921preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20201019preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20201102preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20201110preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20210114preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20210201preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20210309preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20210401preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20210712:HostPool" }, { type: "azure-native:desktopvirtualization/v20210903preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20220210preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20220401preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20220909:HostPool" }, { type: "azure-native:desktopvirtualization/v20221014preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20230707preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20230905:HostPool" }, { type: "azure-native:desktopvirtualization/v20231004preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20231101preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20240116preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20240306preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20240403:HostPool" }, { type: "azure-native:desktopvirtualization/v20240408preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20240808preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20241101preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20250301preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20250401preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20250801preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20250901preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20251010:HostPool" }, { type: "azure-native:desktopvirtualization/v20251101preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20260101preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20260301preview:HostPool" }, { type: "azure-native:desktopvirtualization/v20260401preview:HostPool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(HostPool.__pulumiType, name, resourceInputs, opts);
     }
@@ -284,32 +284,32 @@ export interface HostPoolArgs {
     /**
      * The session host configuration for updating agent, monitoring agent, and stack component.
      */
-    agentUpdate?: pulumi.Input<types.inputs.AgentUpdatePropertiesArgs>;
+    agentUpdate?: pulumi.Input<types.inputs.AgentUpdatePropertiesArgs | undefined>;
     /**
      * Custom rdp property of HostPool.
      */
-    customRdpProperty?: pulumi.Input<string>;
+    customRdpProperty?: pulumi.Input<string | undefined>;
     /**
      * Description of HostPool.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Friendly name of HostPool.
      */
-    friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string | undefined>;
     /**
      * The name of the host pool within the specified resource group
      */
-    hostPoolName?: pulumi.Input<string>;
+    hostPoolName?: pulumi.Input<string | undefined>;
     /**
      * HostPool type for desktop.
      */
     hostPoolType: pulumi.Input<string | types.enums.HostPoolType>;
-    identity?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetIdentityArgs | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The type of the load balancer.
      */
@@ -317,20 +317,20 @@ export interface HostPoolArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
      */
-    managedBy?: pulumi.Input<string>;
+    managedBy?: pulumi.Input<string | undefined>;
     /**
      * The max session limit of HostPool.
      */
-    maxSessionLimit?: pulumi.Input<number>;
+    maxSessionLimit?: pulumi.Input<number | undefined>;
     /**
      * PersonalDesktopAssignment type for HostPool.
      */
-    personalDesktopAssignmentType?: pulumi.Input<string | types.enums.PersonalDesktopAssignmentType>;
-    plan?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetPlanArgs>;
+    personalDesktopAssignmentType?: pulumi.Input<string | types.enums.PersonalDesktopAssignmentType | undefined>;
+    plan?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetPlanArgs | undefined>;
     /**
      * The type of preferred application group type, default to Desktop Application Group
      */
@@ -338,11 +338,11 @@ export interface HostPoolArgs {
     /**
      * Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.HostpoolPublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.HostpoolPublicNetworkAccess | undefined>;
     /**
      * The registration info of HostPool.
      */
-    registrationInfo?: pulumi.Input<types.inputs.RegistrationInfoArgs>;
+    registrationInfo?: pulumi.Input<types.inputs.RegistrationInfoArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -350,38 +350,38 @@ export interface HostPoolArgs {
     /**
      * The ring number of HostPool.
      */
-    ring?: pulumi.Input<number>;
-    sku?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetSkuArgs>;
+    ring?: pulumi.Input<number | undefined>;
+    sku?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetSkuArgs | undefined>;
     /**
      * ClientId for the registered Relying Party used to issue WVD SSO certificates.
      */
-    ssoClientId?: pulumi.Input<string>;
+    ssoClientId?: pulumi.Input<string | undefined>;
     /**
      * Path to Azure KeyVault storing the secret used for communication to ADFS.
      */
-    ssoClientSecretKeyVaultPath?: pulumi.Input<string>;
+    ssoClientSecretKeyVaultPath?: pulumi.Input<string | undefined>;
     /**
      * The type of single sign on Secret Type.
      */
-    ssoSecretType?: pulumi.Input<string | types.enums.SSOSecretType>;
+    ssoSecretType?: pulumi.Input<string | types.enums.SSOSecretType | undefined>;
     /**
      * URL to customer ADFS server for signing WVD SSO certificates.
      */
-    ssoadfsAuthority?: pulumi.Input<string>;
+    ssoadfsAuthority?: pulumi.Input<string | undefined>;
     /**
      * The flag to turn on/off StartVMOnConnect feature.
      */
-    startVMOnConnect?: pulumi.Input<boolean>;
+    startVMOnConnect?: pulumi.Input<boolean | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Is validation environment.
      */
-    validationEnvironment?: pulumi.Input<boolean>;
+    validationEnvironment?: pulumi.Input<boolean | undefined>;
     /**
      * VM template for sessionhosts configuration within hostpool.
      */
-    vmTemplate?: pulumi.Input<string>;
+    vmTemplate?: pulumi.Input<string | undefined>;
 }

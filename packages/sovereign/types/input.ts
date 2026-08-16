@@ -49,11 +49,11 @@ export interface LandingZoneConfigurationResourcePropertiesArgs {
     /**
      * The Bastion subnet address. Specify the address using IPv4 CIDR notation.
      */
-    azureBastionSubnetCidrBlock?: pulumi.Input<string>;
+    azureBastionSubnetCidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The custom naming convention applied to specific resource types for this landing zone configuration, which overrides the default naming convention for those resource types. Example - 'customNamingConvention': [{'resourceType': 'azureFirewalls', 'formula': '{DeploymentPrefix}-afwl-{DeploymentSuffix}'}]
      */
-    customNamingConvention?: pulumi.Input<pulumi.Input<CustomNamingConventionArgs>[]>;
+    customNamingConvention?: pulumi.Input<pulumi.Input<CustomNamingConventionArgs>[] | undefined>;
     /**
      * Parameter used to deploy a DDoS protection plan: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing DDoS protection plan.
      */
@@ -61,19 +61,19 @@ export interface LandingZoneConfigurationResourcePropertiesArgs {
     /**
      * The assigned policies of the 'Decommissioned' management group and indicator to create it or not.
      */
-    decommissionedMgMetadata?: pulumi.Input<DecommissionedManagementGroupPropertiesArgs>;
+    decommissionedMgMetadata?: pulumi.Input<DecommissionedManagementGroupPropertiesArgs | undefined>;
     /**
      * The resource ID of the Bastion when reusing an existing one.
      */
-    existingAzureBastionId?: pulumi.Input<string>;
+    existingAzureBastionId?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the DDoS protection plan when reusing an existing one.
      */
-    existingDdosProtectionId?: pulumi.Input<string>;
+    existingDdosProtectionId?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the log analytics workspace when reusing an existing one.
      */
-    existingLogAnalyticsWorkspaceId?: pulumi.Input<string>;
+    existingLogAnalyticsWorkspaceId?: pulumi.Input<string | undefined>;
     /**
      * Parameter used for deploying a Firewall: Select 'No' to skip deployment, 'Standard' to deploy the Standard SKU, or 'Premium' to deploy the Premium SKU.
      */
@@ -81,7 +81,7 @@ export interface LandingZoneConfigurationResourcePropertiesArgs {
     /**
      * The Firewall subnet address used for deploying a firewall. Specify the Firewall subnet using IPv4 CIDR notation.
      */
-    firewallSubnetCidrBlock?: pulumi.Input<string>;
+    firewallSubnetCidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The gateway subnet address used for deploying a virtual network. Specify the subnet using IPv4 CIDR notation.
      */
@@ -93,11 +93,11 @@ export interface LandingZoneConfigurationResourcePropertiesArgs {
     /**
      * The child management groups of 'Landing Zones' management group and their assigned policies.
      */
-    landingZonesMgChildren?: pulumi.Input<pulumi.Input<LandingZoneManagementGroupPropertiesArgs>[]>;
+    landingZonesMgChildren?: pulumi.Input<pulumi.Input<LandingZoneManagementGroupPropertiesArgs>[] | undefined>;
     /**
      * The assigned policies of the 'Landing Zones' management group.
      */
-    landingZonesMgMetadata?: pulumi.Input<ManagementGroupPropertiesArgs>;
+    landingZonesMgMetadata?: pulumi.Input<ManagementGroupPropertiesArgs | undefined>;
     /**
      * Parameter used to deploy a log analytics workspace: Select 'Yes' to enable deployment, 'No' to skip it, or 'Existing' to reuse an existing log analytics workspace.
      */
@@ -113,39 +113,39 @@ export interface LandingZoneConfigurationResourcePropertiesArgs {
     /**
      * The default naming convention applied to all resources for this landing zone configuration. Example - {DeploymentPrefix}-Contoso-{ResourceTypeAbbreviation}{DeploymentSuffix}-{Environment}-testing
      */
-    namingConventionFormula?: pulumi.Input<string>;
+    namingConventionFormula?: pulumi.Input<string | undefined>;
     /**
      * The assigned policies of the 'Connectivity' management group under 'Platform' management group.
      */
-    platformConnectivityMgMetadata?: pulumi.Input<ManagementGroupPropertiesArgs>;
+    platformConnectivityMgMetadata?: pulumi.Input<ManagementGroupPropertiesArgs | undefined>;
     /**
      * The assigned policies of the 'Identity' management group under 'Platform' management group.
      */
-    platformIdentityMgMetadata?: pulumi.Input<ManagementGroupPropertiesArgs>;
+    platformIdentityMgMetadata?: pulumi.Input<ManagementGroupPropertiesArgs | undefined>;
     /**
      * The assigned policies of the 'Management' management group under 'Platform' management group.
      */
-    platformManagementMgMetadata?: pulumi.Input<ManagementGroupPropertiesArgs>;
+    platformManagementMgMetadata?: pulumi.Input<ManagementGroupPropertiesArgs | undefined>;
     /**
      * The names of the 'Platform' child management groups and their assigned policies, excluding the default ones: 'Connectivity', 'Identity', and 'Management'
      */
-    platformMgChildren?: pulumi.Input<pulumi.Input<PlatformManagementGroupPropertiesArgs>[]>;
+    platformMgChildren?: pulumi.Input<pulumi.Input<PlatformManagementGroupPropertiesArgs>[] | undefined>;
     /**
      * The assigned policies of the 'Platform' management group.
      */
-    platformMgMetadata?: pulumi.Input<ManagementGroupPropertiesArgs>;
+    platformMgMetadata?: pulumi.Input<ManagementGroupPropertiesArgs | undefined>;
     /**
      * The assigned policies of the 'Sandbox' management group and indicator to create it or not.
      */
-    sandboxMgMetadata?: pulumi.Input<SandboxManagementGroupPropertiesArgs>;
+    sandboxMgMetadata?: pulumi.Input<SandboxManagementGroupPropertiesArgs | undefined>;
     /**
      * Tags are key-value pairs that can be assigned to a resource to organize and manage it more effectively. Example: {'name': 'a tag name', 'value': 'a tag value'}
      */
-    tags?: pulumi.Input<pulumi.Input<TagsArgs>[]>;
+    tags?: pulumi.Input<pulumi.Input<TagsArgs>[] | undefined>;
     /**
      * The assigned policies of the parent management group.
      */
-    topLevelMgMetadata?: pulumi.Input<ManagementGroupPropertiesArgs>;
+    topLevelMgMetadata?: pulumi.Input<ManagementGroupPropertiesArgs | undefined>;
 }
 
 /**
@@ -177,7 +177,7 @@ export interface LandingZoneRegistrationResourcePropertiesArgs {
     /**
      * The managed identity to be assigned to this landing zone registration.
      */
-    managedIdentity?: pulumi.Input<ManagedIdentityPropertiesArgs>;
+    managedIdentity?: pulumi.Input<ManagedIdentityPropertiesArgs | undefined>;
 }
 
 /**
@@ -191,7 +191,7 @@ export interface ManagedIdentityPropertiesArgs {
     /**
      * The resource id of the managed identity.
      */
-    userAssignedIdentityResourceId?: pulumi.Input<string>;
+    userAssignedIdentityResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -205,7 +205,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -271,5 +271,5 @@ export interface TagsArgs {
     /**
      * A tag value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }

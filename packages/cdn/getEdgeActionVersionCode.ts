@@ -36,7 +36,7 @@ export interface GetEdgeActionVersionCodeArgs {
  */
 export interface GetEdgeActionVersionCodeResult {
     /**
-     * The version code deployment content 
+     * The version code deployment content
      */
     readonly content: string;
     /**

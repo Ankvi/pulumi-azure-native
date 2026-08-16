@@ -109,7 +109,7 @@ export interface RemediationFiltersResponse {
 /**
  * The remediation failure threshold settings
  */
-export interface RemediationPropertiesResponseFailureThreshold {
+export interface RemediationPropertiesFailureThresholdResponse {
     /**
      * A number between 0.0 to 1.0 representing the percentage failure threshold. The remediation will fail if the percentage of failed remediation operations (i.e. failed deployments) exceeds this threshold.
      */

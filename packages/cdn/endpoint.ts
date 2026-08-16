@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview, 2025-12-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Endpoint extends pulumi.CustomResource {
     /**
@@ -218,7 +218,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["webApplicationFirewallPolicyLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20150601:Endpoint" }, { type: "azure-native:cdn/v20160402:Endpoint" }, { type: "azure-native:cdn/v20161002:Endpoint" }, { type: "azure-native:cdn/v20170402:Endpoint" }, { type: "azure-native:cdn/v20171012:Endpoint" }, { type: "azure-native:cdn/v20190415:Endpoint" }, { type: "azure-native:cdn/v20190615:Endpoint" }, { type: "azure-native:cdn/v20190615preview:Endpoint" }, { type: "azure-native:cdn/v20191231:Endpoint" }, { type: "azure-native:cdn/v20200331:Endpoint" }, { type: "azure-native:cdn/v20200415:Endpoint" }, { type: "azure-native:cdn/v20200901:Endpoint" }, { type: "azure-native:cdn/v20210601:Endpoint" }, { type: "azure-native:cdn/v20220501preview:Endpoint" }, { type: "azure-native:cdn/v20221101preview:Endpoint" }, { type: "azure-native:cdn/v20230501:Endpoint" }, { type: "azure-native:cdn/v20230701preview:Endpoint" }, { type: "azure-native:cdn/v20240201:Endpoint" }, { type: "azure-native:cdn/v20240501preview:Endpoint" }, { type: "azure-native:cdn/v20240601preview:Endpoint" }, { type: "azure-native:cdn/v20240901:Endpoint" }, { type: "azure-native:cdn/v20250101preview:Endpoint" }, { type: "azure-native:cdn/v20250415:Endpoint" }, { type: "azure-native:cdn/v20250601:Endpoint" }, { type: "azure-native:cdn/v20250701preview:Endpoint" }, { type: "azure-native:cdn/v20250901preview:Endpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20150601:Endpoint" }, { type: "azure-native:cdn/v20160402:Endpoint" }, { type: "azure-native:cdn/v20161002:Endpoint" }, { type: "azure-native:cdn/v20170402:Endpoint" }, { type: "azure-native:cdn/v20171012:Endpoint" }, { type: "azure-native:cdn/v20190415:Endpoint" }, { type: "azure-native:cdn/v20190615:Endpoint" }, { type: "azure-native:cdn/v20190615preview:Endpoint" }, { type: "azure-native:cdn/v20191231:Endpoint" }, { type: "azure-native:cdn/v20200331:Endpoint" }, { type: "azure-native:cdn/v20200415:Endpoint" }, { type: "azure-native:cdn/v20200901:Endpoint" }, { type: "azure-native:cdn/v20210601:Endpoint" }, { type: "azure-native:cdn/v20220501preview:Endpoint" }, { type: "azure-native:cdn/v20221101preview:Endpoint" }, { type: "azure-native:cdn/v20230501:Endpoint" }, { type: "azure-native:cdn/v20230701preview:Endpoint" }, { type: "azure-native:cdn/v20240201:Endpoint" }, { type: "azure-native:cdn/v20240501preview:Endpoint" }, { type: "azure-native:cdn/v20240601preview:Endpoint" }, { type: "azure-native:cdn/v20240901:Endpoint" }, { type: "azure-native:cdn/v20250101preview:Endpoint" }, { type: "azure-native:cdn/v20250415:Endpoint" }, { type: "azure-native:cdn/v20250601:Endpoint" }, { type: "azure-native:cdn/v20250701preview:Endpoint" }, { type: "azure-native:cdn/v20250901preview:Endpoint" }, { type: "azure-native:cdn/v20251201:Endpoint" }, { type: "azure-native:cdn/v20260401preview:Endpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Endpoint.__pulumiType, name, resourceInputs, opts);
     }
@@ -231,55 +231,55 @@ export interface EndpointArgs {
     /**
      * List of content types on which compression applies. The value should be a valid MIME type.
      */
-    contentTypesToCompress?: pulumi.Input<pulumi.Input<string>[]>;
+    contentTypesToCompress?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A reference to the origin group.
      */
-    defaultOriginGroup?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
+    defaultOriginGroup?: pulumi.Input<types.inputs.ResourceReferenceArgs | undefined>;
     /**
      * A policy that specifies the delivery rules to be used for an endpoint.
      */
-    deliveryPolicy?: pulumi.Input<types.inputs.EndpointPropertiesUpdateParametersDeliveryPolicyArgs>;
+    deliveryPolicy?: pulumi.Input<types.inputs.EndpointPropertiesUpdateParametersDeliveryPolicyArgs | undefined>;
     /**
      * Name of the endpoint under the profile which is unique globally.
      */
-    endpointName?: pulumi.Input<string>;
+    endpointName?: pulumi.Input<string | undefined>;
     /**
      * List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
      */
-    geoFilters?: pulumi.Input<pulumi.Input<types.inputs.GeoFilterArgs>[]>;
+    geoFilters?: pulumi.Input<pulumi.Input<types.inputs.GeoFilterArgs>[] | undefined>;
     /**
      * Indicates whether content compression is enabled on CDN. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on CDN when requested content is smaller than 1 byte or larger than 1 MB.
      */
-    isCompressionEnabled?: pulumi.Input<boolean>;
+    isCompressionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether HTTP traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
      */
-    isHttpAllowed?: pulumi.Input<boolean>;
+    isHttpAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether HTTPS traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed.
      */
-    isHttpsAllowed?: pulumi.Input<boolean>;
+    isHttpsAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization.
      */
-    optimizationType?: pulumi.Input<string | types.enums.OptimizationType>;
+    optimizationType?: pulumi.Input<string | types.enums.OptimizationType | undefined>;
     /**
      * The origin groups comprising of origins that are used for load balancing the traffic based on availability.
      */
-    originGroups?: pulumi.Input<pulumi.Input<types.inputs.DeepCreatedOriginGroupArgs>[]>;
+    originGroups?: pulumi.Input<pulumi.Input<types.inputs.DeepCreatedOriginGroupArgs>[] | undefined>;
     /**
      * The host header value sent to the origin with each request. This property at Endpoint is only allowed when endpoint uses single origin and can be overridden by the same property specified at origin.If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default.
      */
-    originHostHeader?: pulumi.Input<string>;
+    originHostHeader?: pulumi.Input<string | undefined>;
     /**
      * A directory path on the origin that CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
      */
-    originPath?: pulumi.Input<string>;
+    originPath?: pulumi.Input<string | undefined>;
     /**
      * The source of the content being delivered via CDN.
      */
@@ -287,7 +287,7 @@ export interface EndpointArgs {
     /**
      * Path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the origin path. This property is only relevant when using a single origin.
      */
-    probePath?: pulumi.Input<string>;
+    probePath?: pulumi.Input<string | undefined>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
@@ -295,7 +295,7 @@ export interface EndpointArgs {
     /**
      * Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL.
      */
-    queryStringCachingBehavior?: pulumi.Input<types.enums.QueryStringCachingBehavior>;
+    queryStringCachingBehavior?: pulumi.Input<types.enums.QueryStringCachingBehavior | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -303,13 +303,13 @@ export interface EndpointArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of keys used to validate the signed URL hashes.
      */
-    urlSigningKeys?: pulumi.Input<pulumi.Input<types.inputs.UrlSigningKeyArgs>[]>;
+    urlSigningKeys?: pulumi.Input<pulumi.Input<types.inputs.UrlSigningKeyArgs>[] | undefined>;
     /**
      * Defines the Web Application Firewall policy for the endpoint (if applicable)
      */
-    webApplicationFirewallPolicyLink?: pulumi.Input<types.inputs.EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkArgs>;
+    webApplicationFirewallPolicyLink?: pulumi.Input<types.inputs.EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkArgs | undefined>;
 }

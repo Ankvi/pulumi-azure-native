@@ -7,14 +7,14 @@ export interface ControllerDetailsArgs {
     /**
      * controller arm resource id
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 export interface OrchestratorIdentityArgs {
     /**
      * The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
 }
 
 /**
@@ -24,5 +24,5 @@ export interface SubnetDetailsArgs {
     /**
      * subnet arm resource id
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }

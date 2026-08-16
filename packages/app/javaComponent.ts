@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-02-preview.
  *
- * Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class JavaComponent extends pulumi.CustomResource {
     /**
@@ -88,7 +88,7 @@ export class JavaComponent extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20231102preview:JavaComponent" }, { type: "azure-native:app/v20240202preview:JavaComponent" }, { type: "azure-native:app/v20240802preview:JavaComponent" }, { type: "azure-native:app/v20241002preview:JavaComponent" }, { type: "azure-native:app/v20250101:JavaComponent" }, { type: "azure-native:app/v20250202preview:JavaComponent" }, { type: "azure-native:app/v20250701:JavaComponent" }, { type: "azure-native:app/v20251002preview:JavaComponent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20231102preview:JavaComponent" }, { type: "azure-native:app/v20240202preview:JavaComponent" }, { type: "azure-native:app/v20240802preview:JavaComponent" }, { type: "azure-native:app/v20241002preview:JavaComponent" }, { type: "azure-native:app/v20250101:JavaComponent" }, { type: "azure-native:app/v20250202preview:JavaComponent" }, { type: "azure-native:app/v20250701:JavaComponent" }, { type: "azure-native:app/v20251002preview:JavaComponent" }, { type: "azure-native:app/v20260101:JavaComponent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(JavaComponent.__pulumiType, name, resourceInputs, opts);
     }
@@ -105,11 +105,11 @@ export interface JavaComponentArgs {
     /**
      * Name of the Java Component.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Java Component resource specific properties
      */
-    properties?: pulumi.Input<types.inputs.NacosComponentArgs | types.inputs.SpringBootAdminComponentArgs | types.inputs.SpringCloudConfigComponentArgs | types.inputs.SpringCloudEurekaComponentArgs | types.inputs.SpringCloudGatewayComponentArgs>;
+    properties?: pulumi.Input<types.inputs.NacosComponentArgs | types.inputs.SpringBootAdminComponentArgs | types.inputs.SpringCloudConfigComponentArgs | types.inputs.SpringCloudEurekaComponentArgs | types.inputs.SpringCloudGatewayComponentArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

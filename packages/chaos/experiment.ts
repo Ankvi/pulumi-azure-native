@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-22-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-15-preview.
  *
- * Other available API versions: 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-11-01-preview, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native chaos [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-04-15-preview, 2023-09-01-preview, 2023-10-27-preview, 2023-11-01, 2024-01-01, 2024-11-01-preview, 2025-01-01, 2026-05-01-preview, 2026-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native chaos [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Experiment extends pulumi.CustomResource {
     /**
@@ -106,7 +106,7 @@ export class Experiment extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:chaos/v20210915preview:Experiment" }, { type: "azure-native:chaos/v20220701preview:Experiment" }, { type: "azure-native:chaos/v20221001preview:Experiment" }, { type: "azure-native:chaos/v20230401preview:Experiment" }, { type: "azure-native:chaos/v20230415preview:Experiment" }, { type: "azure-native:chaos/v20230901preview:Experiment" }, { type: "azure-native:chaos/v20231027preview:Experiment" }, { type: "azure-native:chaos/v20231101:Experiment" }, { type: "azure-native:chaos/v20240101:Experiment" }, { type: "azure-native:chaos/v20240322preview:Experiment" }, { type: "azure-native:chaos/v20241101preview:Experiment" }, { type: "azure-native:chaos/v20250101:Experiment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:chaos/v20210915preview:Experiment" }, { type: "azure-native:chaos/v20220701preview:Experiment" }, { type: "azure-native:chaos/v20221001preview:Experiment" }, { type: "azure-native:chaos/v20230401preview:Experiment" }, { type: "azure-native:chaos/v20230415preview:Experiment" }, { type: "azure-native:chaos/v20230901preview:Experiment" }, { type: "azure-native:chaos/v20231027preview:Experiment" }, { type: "azure-native:chaos/v20231101:Experiment" }, { type: "azure-native:chaos/v20240101:Experiment" }, { type: "azure-native:chaos/v20240322preview:Experiment" }, { type: "azure-native:chaos/v20241101preview:Experiment" }, { type: "azure-native:chaos/v20250101:Experiment" }, { type: "azure-native:chaos/v20260501preview:Experiment" }, { type: "azure-native:chaos/v20260801preview:Experiment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Experiment.__pulumiType, name, resourceInputs, opts);
     }
@@ -119,15 +119,15 @@ export interface ExperimentArgs {
     /**
      * String that represents a Experiment resource name.
      */
-    experimentName?: pulumi.Input<string>;
+    experimentName?: pulumi.Input<string | undefined>;
     /**
      * The identity of the experiment resource.
      */
-    identity?: pulumi.Input<types.inputs.ExperimentIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ExperimentIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The properties of the experiment resource.
      */
@@ -139,5 +139,5 @@ export interface ExperimentArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

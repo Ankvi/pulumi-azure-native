@@ -7,7 +7,7 @@ export interface AutoScaleVCoreSkuArgs {
     /**
      * The capacity of an auto scale v-core resource.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Name of the SKU level.
      */
@@ -15,7 +15,7 @@ export interface AutoScaleVCoreSkuArgs {
     /**
      * The name of the Azure pricing tier to which the SKU applies.
      */
-    tier?: pulumi.Input<string | enums.VCoreSkuTier>;
+    tier?: pulumi.Input<string | enums.VCoreSkuTier | undefined>;
 }
 
 /**
@@ -25,7 +25,7 @@ export interface CapacitySkuArgs {
     /**
      * The capacity of the SKU.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Name of the SKU level.
      */
@@ -33,7 +33,7 @@ export interface CapacitySkuArgs {
     /**
      * The name of the Azure pricing tier to which the SKU applies.
      */
-    tier?: pulumi.Input<string | enums.CapacitySkuTier>;
+    tier?: pulumi.Input<string | enums.CapacitySkuTier | undefined>;
 }
 
 /**
@@ -43,5 +43,5 @@ export interface DedicatedCapacityAdministratorsArgs {
     /**
      * An array of administrator user identities.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

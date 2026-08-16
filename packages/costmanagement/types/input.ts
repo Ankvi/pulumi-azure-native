@@ -29,23 +29,23 @@ export interface BudgetFilterArgs {
      *
      *  Supported for CategoryType(s): Cost.
      */
-    and?: pulumi.Input<pulumi.Input<BudgetFilterPropertiesArgs>[]>;
+    and?: pulumi.Input<pulumi.Input<BudgetFilterPropertiesArgs>[] | undefined>;
     /**
      * Has comparison expression for a dimension.
      *
      *  Supported for CategoryType(s): Cost, ReservationUtilization.
      *
-     * Supported dimension names for **CategoryType: ReservationUtilization** 
+     * Supported dimension names for **CategoryType: ReservationUtilization**
      * - ReservationId
      * - ReservedResourceType
      */
-    dimensions?: pulumi.Input<BudgetComparisonExpressionArgs>;
+    dimensions?: pulumi.Input<BudgetComparisonExpressionArgs | undefined>;
     /**
      * Has comparison expression for a tag.
      *
      *  Supported for CategoryType(s): Cost.
      */
-    tags?: pulumi.Input<BudgetComparisonExpressionArgs>;
+    tags?: pulumi.Input<BudgetComparisonExpressionArgs | undefined>;
 }
 
 /**
@@ -59,17 +59,17 @@ export interface BudgetFilterPropertiesArgs {
      *
      *  Supported for CategoryType(s): Cost, ReservationUtilization.
      *
-     * Supported dimension names for **CategoryType: ReservationUtilization** 
+     * Supported dimension names for **CategoryType: ReservationUtilization**
      * - ReservationId
      * - ReservedResourceType
      */
-    dimensions?: pulumi.Input<BudgetComparisonExpressionArgs>;
+    dimensions?: pulumi.Input<BudgetComparisonExpressionArgs | undefined>;
     /**
      * Has comparison expression for a tag.
      *
      *  Supported for CategoryType(s): Cost.
      */
-    tags?: pulumi.Input<BudgetComparisonExpressionArgs>;
+    tags?: pulumi.Input<BudgetComparisonExpressionArgs | undefined>;
 }
 
 /**
@@ -87,7 +87,7 @@ export interface BudgetTimePeriodArgs {
      *
      * - Constraints for **CategoryType: ReservationUtilization** - End date cannot be more than 3 years after the start date.
      */
-    endDate?: pulumi.Input<string>;
+    endDate?: pulumi.Input<string | undefined>;
     /**
      * The start date for the budget.
      *
@@ -119,11 +119,11 @@ export interface CostAllocationRuleDetailsArgs {
     /**
      * Source resources for cost allocation. At this time, this list can contain no more than one element.
      */
-    sourceResources?: pulumi.Input<pulumi.Input<SourceCostAllocationResourceArgs>[]>;
+    sourceResources?: pulumi.Input<pulumi.Input<SourceCostAllocationResourceArgs>[] | undefined>;
     /**
      * Target resources for cost allocation. At this time, this list can contain no more than one element.
      */
-    targetResources?: pulumi.Input<pulumi.Input<TargetCostAllocationResourceArgs>[]>;
+    targetResources?: pulumi.Input<pulumi.Input<TargetCostAllocationResourceArgs>[] | undefined>;
 }
 
 /**
@@ -133,7 +133,7 @@ export interface CostAllocationRulePropertiesArgs {
     /**
      * Description of a cost allocation rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Resource information for the cost allocation rule
      */
@@ -165,11 +165,11 @@ export interface ExportDatasetArgs {
     /**
      * The export dataset configuration.
      */
-    configuration?: pulumi.Input<ExportDatasetConfigurationArgs>;
+    configuration?: pulumi.Input<ExportDatasetConfigurationArgs | undefined>;
     /**
      * The granularity of rows in the export. Currently only 'Daily' is supported.
      */
-    granularity?: pulumi.Input<string | enums.GranularityType>;
+    granularity?: pulumi.Input<string | enums.GranularityType | undefined>;
 }
 
 /**
@@ -179,7 +179,7 @@ export interface ExportDatasetConfigurationArgs {
     /**
      * Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples).
      */
-    columns?: pulumi.Input<pulumi.Input<string>[]>;
+    columns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -189,11 +189,11 @@ export interface ExportDefinitionArgs {
     /**
      * The definition for data in the export.
      */
-    dataSet?: pulumi.Input<ExportDatasetArgs>;
+    dataSet?: pulumi.Input<ExportDatasetArgs | undefined>;
     /**
      * Has time period for pulling data for the export.
      */
-    timePeriod?: pulumi.Input<ExportTimePeriodArgs>;
+    timePeriod?: pulumi.Input<ExportTimePeriodArgs | undefined>;
     /**
      * The time frame for pulling data for the export. If custom, then a specific time period must be provided.
      */
@@ -215,19 +215,19 @@ export interface ExportDeliveryDestinationArgs {
     /**
      * The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the directory where exports will be uploaded.
      */
-    rootFolderPath?: pulumi.Input<string>;
+    rootFolderPath?: pulumi.Input<string | undefined>;
     /**
      * A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
      */
-    sasToken?: pulumi.Input<string>;
+    sasToken?: pulumi.Input<string | undefined>;
     /**
      * The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
      */
-    storageAccount?: pulumi.Input<string>;
+    storageAccount?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -251,7 +251,7 @@ export interface ExportRecurrencePeriodArgs {
     /**
      * The end date of recurrence.
      */
-    to?: pulumi.Input<string>;
+    to?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -261,15 +261,15 @@ export interface ExportScheduleArgs {
     /**
      * The schedule recurrence.
      */
-    recurrence?: pulumi.Input<string | enums.RecurrenceType>;
+    recurrence?: pulumi.Input<string | enums.RecurrenceType | undefined>;
     /**
      * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
      */
-    recurrencePeriod?: pulumi.Input<ExportRecurrencePeriodArgs>;
+    recurrencePeriod?: pulumi.Input<ExportRecurrencePeriodArgs | undefined>;
     /**
      * The status of the export's schedule. If 'Inactive', the export's schedule is paused.
      */
-    status?: pulumi.Input<string | enums.StatusType>;
+    status?: pulumi.Input<string | enums.StatusType | undefined>;
 }
 
 /**
@@ -293,7 +293,7 @@ export interface FileDestinationArgs {
     /**
      * Destination of the view data. Currently only CSV format is supported.
      */
-    fileFormats?: pulumi.Input<pulumi.Input<string | enums.FileFormat>[]>;
+    fileFormats?: pulumi.Input<pulumi.Input<string | enums.FileFormat>[] | undefined>;
 }
 
 /**
@@ -303,15 +303,15 @@ export interface KpiPropertiesArgs {
     /**
      * show the KPI in the UI?
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * ID of resource related to metric (budget).
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * KPI type (Forecast, Budget).
      */
-    type?: pulumi.Input<string | enums.KpiTypeType>;
+    type?: pulumi.Input<string | enums.KpiTypeType | undefined>;
 }
 
 /**
@@ -331,13 +331,13 @@ export interface NotificationArgs {
      *
      *  Supported for CategoryType(s): Cost.
      */
-    contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    contactGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached.
      *
      *  Supported for CategoryType(s): Cost.
      */
-    contactRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    contactRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The notification is enabled or not.
      *
@@ -349,13 +349,13 @@ export interface NotificationArgs {
      *
      *  Supported for CategoryType(s): ReservationUtilization.
      */
-    frequency?: pulumi.Input<string | enums.Frequency>;
+    frequency?: pulumi.Input<string | enums.Frequency | undefined>;
     /**
-     * Language in which the recipient will receive the notification, 
+     * Language in which the recipient will receive the notification,
      *
      *  Supported for CategoryType(s): Cost, ReservationUtilization.
      */
-    locale?: pulumi.Input<string | enums.CultureCode>;
+    locale?: pulumi.Input<string | enums.CultureCode | undefined>;
     /**
      * The comparison operator.
      *
@@ -384,7 +384,7 @@ export interface NotificationArgs {
      *
      *  Supported for CategoryType(s): Cost.
      */
-    thresholdType?: pulumi.Input<string | enums.ThresholdType>;
+    thresholdType?: pulumi.Input<string | enums.ThresholdType | undefined>;
 }
 /**
  * notificationArgsProvideDefaults sets the appropriate defaults for NotificationArgs
@@ -403,15 +403,15 @@ export interface NotificationPropertiesArgs {
     /**
      * Locale of the email.
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * Optional message to be added in the email. Length is limited to 250 characters.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * Regional format used for formatting date/time and currency values in the email.
      */
-    regionalFormat?: pulumi.Input<string>;
+    regionalFormat?: pulumi.Input<string | undefined>;
     /**
      * Subject of the email. Length is limited to 70 characters.
      */
@@ -429,11 +429,11 @@ export interface PivotPropertiesArgs {
     /**
      * Data field to show in view.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Data type to show in view.
      */
-    type?: pulumi.Input<string | enums.PivotTypeType>;
+    type?: pulumi.Input<string | enums.PivotTypeType | undefined>;
 }
 
 /**
@@ -507,27 +507,27 @@ export interface ReportConfigDatasetArgs {
     /**
      * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
      */
-    aggregation?: pulumi.Input<{[key: string]: pulumi.Input<ReportConfigAggregationArgs>}>;
+    aggregation?: pulumi.Input<{[key: string]: pulumi.Input<ReportConfigAggregationArgs>} | undefined>;
     /**
      * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
      */
-    configuration?: pulumi.Input<ReportConfigDatasetConfigurationArgs>;
+    configuration?: pulumi.Input<ReportConfigDatasetConfigurationArgs | undefined>;
     /**
      * Has filter expression to use in the report.
      */
-    filter?: pulumi.Input<ReportConfigFilterArgs>;
+    filter?: pulumi.Input<ReportConfigFilterArgs | undefined>;
     /**
      * The granularity of rows in the report.
      */
-    granularity?: pulumi.Input<string | enums.ReportGranularityType>;
+    granularity?: pulumi.Input<string | enums.ReportGranularityType | undefined>;
     /**
      * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
      */
-    grouping?: pulumi.Input<pulumi.Input<ReportConfigGroupingArgs>[]>;
+    grouping?: pulumi.Input<pulumi.Input<ReportConfigGroupingArgs>[] | undefined>;
     /**
      * Array of order by expression to use in the report.
      */
-    sorting?: pulumi.Input<pulumi.Input<ReportConfigSortingArgs>[]>;
+    sorting?: pulumi.Input<pulumi.Input<ReportConfigSortingArgs>[] | undefined>;
 }
 
 /**
@@ -537,7 +537,7 @@ export interface ReportConfigDatasetConfigurationArgs {
     /**
      * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
      */
-    columns?: pulumi.Input<pulumi.Input<string>[]>;
+    columns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -547,19 +547,19 @@ export interface ReportConfigFilterArgs {
     /**
      * The logical "AND" expression. Must have at least 2 items.
      */
-    and?: pulumi.Input<pulumi.Input<ReportConfigFilterArgs>[]>;
+    and?: pulumi.Input<pulumi.Input<ReportConfigFilterArgs>[] | undefined>;
     /**
      * Has comparison expression for a dimension
      */
-    dimensions?: pulumi.Input<ReportConfigComparisonExpressionArgs>;
+    dimensions?: pulumi.Input<ReportConfigComparisonExpressionArgs | undefined>;
     /**
      * The logical "OR" expression. Must have at least 2 items.
      */
-    or?: pulumi.Input<pulumi.Input<ReportConfigFilterArgs>[]>;
+    or?: pulumi.Input<pulumi.Input<ReportConfigFilterArgs>[] | undefined>;
     /**
      * Has comparison expression for a tag
      */
-    tags?: pulumi.Input<ReportConfigComparisonExpressionArgs>;
+    tags?: pulumi.Input<ReportConfigComparisonExpressionArgs | undefined>;
 }
 
 /**
@@ -583,7 +583,7 @@ export interface ReportConfigSortingArgs {
     /**
      * Direction of sort.
      */
-    direction?: pulumi.Input<string | enums.ReportConfigSortingType>;
+    direction?: pulumi.Input<string | enums.ReportConfigSortingType | undefined>;
     /**
      * The name of the column to sort.
      */
@@ -611,23 +611,23 @@ export interface ReportDatasetArgs {
     /**
      * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
      */
-    aggregation?: pulumi.Input<{[key: string]: pulumi.Input<ReportAggregationArgs>}>;
+    aggregation?: pulumi.Input<{[key: string]: pulumi.Input<ReportAggregationArgs>} | undefined>;
     /**
      * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
      */
-    configuration?: pulumi.Input<ReportDatasetConfigurationArgs>;
+    configuration?: pulumi.Input<ReportDatasetConfigurationArgs | undefined>;
     /**
      * Has filter expression to use in the report.
      */
-    filter?: pulumi.Input<ReportFilterArgs>;
+    filter?: pulumi.Input<ReportFilterArgs | undefined>;
     /**
      * The granularity of rows in the report.
      */
-    granularity?: pulumi.Input<string | enums.GranularityType>;
+    granularity?: pulumi.Input<string | enums.GranularityType | undefined>;
     /**
      * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
      */
-    grouping?: pulumi.Input<pulumi.Input<ReportGroupingArgs>[]>;
+    grouping?: pulumi.Input<pulumi.Input<ReportGroupingArgs>[] | undefined>;
 }
 
 /**
@@ -637,7 +637,7 @@ export interface ReportDatasetConfigurationArgs {
     /**
      * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
      */
-    columns?: pulumi.Input<pulumi.Input<string>[]>;
+    columns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -647,11 +647,11 @@ export interface ReportDefinitionArgs {
     /**
      * Has definition for data in this report.
      */
-    dataset?: pulumi.Input<ReportDatasetArgs>;
+    dataset?: pulumi.Input<ReportDatasetArgs | undefined>;
     /**
      * Has time period for pulling data for the report.
      */
-    timePeriod?: pulumi.Input<ReportTimePeriodArgs>;
+    timePeriod?: pulumi.Input<ReportTimePeriodArgs | undefined>;
     /**
      * The time frame for pulling data for the report. If custom, then a specific time period must be provided.
      */
@@ -677,7 +677,7 @@ export interface ReportDeliveryDestinationArgs {
     /**
      * The name of the directory where reports will be uploaded.
      */
-    rootFolderPath?: pulumi.Input<string>;
+    rootFolderPath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -697,23 +697,23 @@ export interface ReportFilterArgs {
     /**
      * The logical "AND" expression. Must have at least 2 items.
      */
-    and?: pulumi.Input<pulumi.Input<ReportFilterArgs>[]>;
+    and?: pulumi.Input<pulumi.Input<ReportFilterArgs>[] | undefined>;
     /**
      * Has comparison expression for a dimension
      */
-    dimension?: pulumi.Input<ReportComparisonExpressionArgs>;
+    dimension?: pulumi.Input<ReportComparisonExpressionArgs | undefined>;
     /**
      * The logical "NOT" expression.
      */
-    not?: pulumi.Input<ReportFilterArgs>;
+    not?: pulumi.Input<ReportFilterArgs | undefined>;
     /**
      * The logical "OR" expression. Must have at least 2 items.
      */
-    or?: pulumi.Input<pulumi.Input<ReportFilterArgs>[]>;
+    or?: pulumi.Input<pulumi.Input<ReportFilterArgs>[] | undefined>;
     /**
      * Has comparison expression for a tag
      */
-    tag?: pulumi.Input<ReportComparisonExpressionArgs>;
+    tag?: pulumi.Input<ReportComparisonExpressionArgs | undefined>;
 }
 
 /**
@@ -741,7 +741,7 @@ export interface ReportRecurrencePeriodArgs {
     /**
      * The end date of recurrence.
      */
-    to?: pulumi.Input<string>;
+    to?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -755,11 +755,11 @@ export interface ReportScheduleArgs {
     /**
      * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
      */
-    recurrencePeriod?: pulumi.Input<ReportRecurrencePeriodArgs>;
+    recurrencePeriod?: pulumi.Input<ReportRecurrencePeriodArgs | undefined>;
     /**
      * The status of the schedule. Whether active or not. If inactive, the report's scheduled execution is paused.
      */
-    status?: pulumi.Input<string | enums.StatusType>;
+    status?: pulumi.Input<string | enums.StatusType | undefined>;
 }
 
 /**
@@ -783,11 +783,11 @@ export interface SchedulePropertiesArgs {
     /**
      * UTC day on which cost analysis data will be emailed. Must be between 1 and 31. This property is applicable when frequency is Monthly and overrides weeksOfMonth or daysOfWeek.
      */
-    dayOfMonth?: pulumi.Input<number>;
+    dayOfMonth?: pulumi.Input<number | undefined>;
     /**
      * Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly.
      */
-    daysOfWeek?: pulumi.Input<pulumi.Input<string | enums.DaysOfWeek>[]>;
+    daysOfWeek?: pulumi.Input<pulumi.Input<string | enums.DaysOfWeek>[] | undefined>;
     /**
      * The end date and time of the scheduled action (UTC).
      */
@@ -799,7 +799,7 @@ export interface SchedulePropertiesArgs {
     /**
      * UTC time at which cost analysis data will be emailed.
      */
-    hourOfDay?: pulumi.Input<number>;
+    hourOfDay?: pulumi.Input<number | undefined>;
     /**
      * The start date and time of the scheduled action (UTC).
      */
@@ -807,7 +807,7 @@ export interface SchedulePropertiesArgs {
     /**
      * Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek.
      */
-    weeksOfMonth?: pulumi.Input<pulumi.Input<string | enums.WeeksOfMonth>[]>;
+    weeksOfMonth?: pulumi.Input<pulumi.Input<string | enums.WeeksOfMonth>[] | undefined>;
 }
 
 export interface SettingsPropertiesCacheArgs {
@@ -826,11 +826,11 @@ export interface SettingsPropertiesCacheArgs {
     /**
      * Resource ID of the parent scope. For instance, subscription's resource ID for a resource group or a management group resource ID for a subscription.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Indicates the status of the scope. Status only applies to subscriptions and billing accounts.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of modern account. Allowed values include: Individual, Enterprise, Partner, Indirect, NotApplicable
      */

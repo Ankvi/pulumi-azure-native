@@ -94,7 +94,7 @@ export class PublicCloudConnector extends pulumi.CustomResource {
             if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["awsCloudProfile"] = args ? (args.awsCloudProfile ? pulumi.output(args.awsCloudProfile).apply(types.inputs.awsCloudProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["awsCloudProfile"] = args ? pulumi.output(args.awsCloudProfile).apply(types.inputs.awsCloudProfileArgsProvideDefaults) : undefined;
             resourceInputs["hostType"] = args?.hostType;
             resourceInputs["location"] = args?.location;
             resourceInputs["publicCloudConnector"] = args?.publicCloudConnector;
@@ -140,11 +140,11 @@ export interface PublicCloudConnectorArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Represent public cloud connectors resource.
      */
-    publicCloudConnector?: pulumi.Input<string>;
+    publicCloudConnector?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -152,5 +152,5 @@ export interface PublicCloudConnectorArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

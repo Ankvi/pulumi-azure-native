@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class BareMetalMachine extends pulumi.CustomResource {
     /**
@@ -326,7 +326,7 @@ export class BareMetalMachine extends pulumi.CustomResource {
             resourceInputs["virtualMachinesAssociatedIds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:BareMetalMachine" }, { type: "azure-native:networkcloud/v20231001preview:BareMetalMachine" }, { type: "azure-native:networkcloud/v20240601preview:BareMetalMachine" }, { type: "azure-native:networkcloud/v20240701:BareMetalMachine" }, { type: "azure-native:networkcloud/v20241001preview:BareMetalMachine" }, { type: "azure-native:networkcloud/v20250201:BareMetalMachine" }, { type: "azure-native:networkcloud/v20250701preview:BareMetalMachine" }, { type: "azure-native:networkcloud/v20250901:BareMetalMachine" }, { type: "azure-native:networkcloud/v20260101preview:BareMetalMachine" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:BareMetalMachine" }, { type: "azure-native:networkcloud/v20231001preview:BareMetalMachine" }, { type: "azure-native:networkcloud/v20240601preview:BareMetalMachine" }, { type: "azure-native:networkcloud/v20240701:BareMetalMachine" }, { type: "azure-native:networkcloud/v20241001preview:BareMetalMachine" }, { type: "azure-native:networkcloud/v20250201:BareMetalMachine" }, { type: "azure-native:networkcloud/v20250901:BareMetalMachine" }, { type: "azure-native:networkcloud/v20260101preview:BareMetalMachine" }, { type: "azure-native:networkcloud/v20260501preview:BareMetalMachine" }, { type: "azure-native:networkcloud/v20260701:BareMetalMachine" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(BareMetalMachine.__pulumiType, name, resourceInputs, opts);
     }
@@ -339,7 +339,7 @@ export interface BareMetalMachineArgs {
     /**
      * The name of the bare metal machine.
      */
-    bareMetalMachineName?: pulumi.Input<string>;
+    bareMetalMachineName?: pulumi.Input<string | undefined>;
     /**
      * The connection string for the baseboard management controller including IP address and protocol.
      */
@@ -363,11 +363,11 @@ export interface BareMetalMachineArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The cluster version that has been applied to this machine during deployment or a version update.
      */
-    machineClusterVersion?: pulumi.Input<string>;
+    machineClusterVersion?: pulumi.Input<string | undefined>;
     /**
      * The custom details provided by the customer.
      */
@@ -399,5 +399,5 @@ export interface BareMetalMachineArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

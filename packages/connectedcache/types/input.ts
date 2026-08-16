@@ -7,67 +7,67 @@ export interface AdditionalCacheNodePropertiesArgs {
     /**
      * Auto update or fast update version
      */
-    autoUpdateVersion?: pulumi.Input<string>;
+    autoUpdateVersion?: pulumi.Input<string | undefined>;
     /**
      * Cache node resource Bgp configuration.
      */
-    bgpConfiguration?: pulumi.Input<BgpConfigurationArgs>;
+    bgpConfiguration?: pulumi.Input<BgpConfigurationArgs | undefined>;
     /**
      * issues list to return the issues as part of the additional cache node properties
      */
-    cacheNodePropertiesDetailsIssuesList?: pulumi.Input<pulumi.Input<string>[]>;
+    cacheNodePropertiesDetailsIssuesList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Cache node resource drive configurations.
      */
-    driveConfiguration?: pulumi.Input<pulumi.Input<CacheNodeDriveConfigurationArgs>[]>;
+    driveConfiguration?: pulumi.Input<pulumi.Input<CacheNodeDriveConfigurationArgs>[] | undefined>;
     /**
      * Cache node resource requires a proxy
      */
-    isProxyRequired?: pulumi.Input<string | enums.ProxyRequired>;
+    isProxyRequired?: pulumi.Input<string | enums.ProxyRequired | undefined>;
     /**
      * Optional property #1 of Mcc response object
      */
-    optionalProperty1?: pulumi.Input<string>;
+    optionalProperty1?: pulumi.Input<string | undefined>;
     /**
      * Optional property #2 of Mcc response object
      */
-    optionalProperty2?: pulumi.Input<string>;
+    optionalProperty2?: pulumi.Input<string | undefined>;
     /**
      * Optional property #3 of Mcc response object
      */
-    optionalProperty3?: pulumi.Input<string>;
+    optionalProperty3?: pulumi.Input<string | undefined>;
     /**
      * Optional property #4 of Mcc response object
      */
-    optionalProperty4?: pulumi.Input<string>;
+    optionalProperty4?: pulumi.Input<string | undefined>;
     /**
      * Optional property #5 of Mcc response object
      */
-    optionalProperty5?: pulumi.Input<string>;
+    optionalProperty5?: pulumi.Input<string | undefined>;
     /**
      * Operating system of the cache node
      */
-    osType?: pulumi.Input<string | enums.OsType>;
+    osType?: pulumi.Input<string | enums.OsType | undefined>;
     /**
      * Cache node resource Mcc proxy Url
      */
-    proxyUrl?: pulumi.Input<string>;
+    proxyUrl?: pulumi.Input<string | undefined>;
     /**
      * proxyUrl configuration of the cache node
      */
-    proxyUrlConfiguration?: pulumi.Input<ProxyUrlConfigurationArgs>;
+    proxyUrlConfiguration?: pulumi.Input<ProxyUrlConfigurationArgs | undefined>;
     /**
      * Update Cycle Type
      */
-    updateCycleType?: pulumi.Input<string | enums.CycleType>;
+    updateCycleType?: pulumi.Input<string | enums.CycleType | undefined>;
     /**
      * Update related information details
      */
-    updateInfoDetails?: pulumi.Input<string>;
+    updateInfoDetails?: pulumi.Input<string | undefined>;
     /**
      * customer requested date time for mcc install of update cycle
      */
-    updateRequestedDateTime?: pulumi.Input<string>;
+    updateRequestedDateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -77,55 +77,55 @@ export interface AdditionalCustomerPropertiesArgs {
     /**
      * Customer resource Asn (autonomous system number).
      */
-    customerAsn?: pulumi.Input<string>;
+    customerAsn?: pulumi.Input<string | undefined>;
     /**
      * Customer resource contact email.
      */
-    customerEmail?: pulumi.Input<string>;
+    customerEmail?: pulumi.Input<string | undefined>;
     /**
      * Customer resource entitlement expiration date string.
      */
-    customerEntitlementExpiration?: pulumi.Input<string>;
+    customerEntitlementExpiration?: pulumi.Input<string | undefined>;
     /**
      * Customer resource entitlement Sku Guid.
      */
-    customerEntitlementSkuGuid?: pulumi.Input<string>;
+    customerEntitlementSkuGuid?: pulumi.Input<string | undefined>;
     /**
      * Customer resource entitlement Sku Id.
      */
-    customerEntitlementSkuId?: pulumi.Input<string>;
+    customerEntitlementSkuId?: pulumi.Input<string | undefined>;
     /**
      * Customer resource entitlement Sku name.
      */
-    customerEntitlementSkuName?: pulumi.Input<string>;
+    customerEntitlementSkuName?: pulumi.Input<string | undefined>;
     /**
      * Customer resource transit Asn (autonomous system number).
      */
-    customerTransitAsn?: pulumi.Input<string>;
+    customerTransitAsn?: pulumi.Input<string | undefined>;
     /**
      * Customer resource transit state.
      */
-    customerTransitState?: pulumi.Input<string | enums.CustomerTransitState>;
+    customerTransitState?: pulumi.Input<string | enums.CustomerTransitState | undefined>;
     /**
      * Optional property #1 of Mcc response object.
      */
-    optionalProperty1?: pulumi.Input<string>;
+    optionalProperty1?: pulumi.Input<string | undefined>;
     /**
      * Optional property #2 of Mcc response object.
      */
-    optionalProperty2?: pulumi.Input<string>;
+    optionalProperty2?: pulumi.Input<string | undefined>;
     /**
      * Optional property #3 of Mcc response object.
      */
-    optionalProperty3?: pulumi.Input<string>;
+    optionalProperty3?: pulumi.Input<string | undefined>;
     /**
      * Optional property #4 of Mcc response object.
      */
-    optionalProperty4?: pulumi.Input<string>;
+    optionalProperty4?: pulumi.Input<string | undefined>;
     /**
      * Optional property #5 of Mcc response object.
      */
-    optionalProperty5?: pulumi.Input<string>;
+    optionalProperty5?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -135,7 +135,7 @@ export interface BgpConfigurationArgs {
     /**
      * Asn to ip address mapping
      */
-    asnToIpAddressMapping?: pulumi.Input<string>;
+    asnToIpAddressMapping?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -145,19 +145,19 @@ export interface CacheNodeDriveConfigurationArgs {
     /**
      * corresponding nginx cache number. Valid cache numbers are 1 - 20
      */
-    cacheNumber?: pulumi.Input<number>;
+    cacheNumber?: pulumi.Input<number | undefined>;
     /**
      * full binding for corresponding nginx cache drive
      */
-    nginxMapping?: pulumi.Input<string>;
+    nginxMapping?: pulumi.Input<string | undefined>;
     /**
      * physical path location of the folder used for caching content
      */
-    physicalPath?: pulumi.Input<string>;
+    physicalPath?: pulumi.Input<string | undefined>;
     /**
      * physical size of the drive used for caching content
      */
-    sizeInGb?: pulumi.Input<number>;
+    sizeInGb?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -167,75 +167,75 @@ export interface CacheNodeEntityArgs {
     /**
      * Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc.
      */
-    autoUpdateRequestedDay?: pulumi.Input<number>;
+    autoUpdateRequestedDay?: pulumi.Input<number | undefined>;
     /**
      * Customer requested time of the day for mcc install of auto update cycle, should be hh:mm
      */
-    autoUpdateRequestedTime?: pulumi.Input<string>;
+    autoUpdateRequestedTime?: pulumi.Input<string | undefined>;
     /**
      * Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
      */
-    autoUpdateRequestedWeek?: pulumi.Input<number>;
+    autoUpdateRequestedWeek?: pulumi.Input<number | undefined>;
     /**
-     * Auto Update Ring Type which is slow or fast etc.
+     * Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01.
      */
-    autoUpdateRingType?: pulumi.Input<string | enums.AutoUpdateRingType>;
+    autoUpdateRingType?: pulumi.Input<string | enums.AutoUpdateRingType | undefined>;
     /**
      * Cache node resource identifier of the cache node
      */
-    cacheNodeId?: pulumi.Input<string>;
+    cacheNodeId?: pulumi.Input<string | undefined>;
     /**
      * Cache node resource name.
      */
-    cacheNodeName?: pulumi.Input<string>;
+    cacheNodeName?: pulumi.Input<string | undefined>;
     /**
      * Cache node resource comma separated values of Cidrs.
      */
-    cidrCsv?: pulumi.Input<pulumi.Input<string>[]>;
+    cidrCsv?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Cache node resource current Cidr range precedence selection type.
      */
-    cidrSelectionType?: pulumi.Input<number>;
+    cidrSelectionType?: pulumi.Input<number | undefined>;
     /**
      * Cache node resource customer resource Asn (autonomous system number)
      */
-    customerAsn?: pulumi.Input<number>;
+    customerAsn?: pulumi.Input<number | undefined>;
     /**
      * Cache node resource customer index as string.
      */
-    customerIndex?: pulumi.Input<string>;
+    customerIndex?: pulumi.Input<string | undefined>;
     /**
      * Cache node resource customer resource name.
      */
-    customerName?: pulumi.Input<string>;
+    customerName?: pulumi.Input<string | undefined>;
     /**
      * FQDN(fully qualified domain name) value of the mcc cache node
      */
-    fullyQualifiedDomainName?: pulumi.Input<string>;
+    fullyQualifiedDomainName?: pulumi.Input<string | undefined>;
     /**
      * Cache node resource Azure fully qualified resource Id.
      */
-    fullyQualifiedResourceId?: pulumi.Input<string>;
+    fullyQualifiedResourceId?: pulumi.Input<string | undefined>;
     /**
      * Cache node resource Ip address.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * Cache node resource flag for indicating if cache node is enabled.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Cache node resource flag for determining if managed by enterprise as boolean.
      */
-    isEnterpriseManaged?: pulumi.Input<boolean>;
+    isEnterpriseManaged?: pulumi.Input<boolean | undefined>;
     /**
      * Cache node resource maximum allowed egress in Mbps.
      */
-    maxAllowableEgressInMbps?: pulumi.Input<number>;
+    maxAllowableEgressInMbps?: pulumi.Input<number | undefined>;
     /**
      * Cache node resource flag for determining if customer will be migrated.
      */
-    shouldMigrate?: pulumi.Input<boolean>;
+    shouldMigrate?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -245,15 +245,15 @@ export interface CacheNodeOldResponseArgs {
     /**
      * statusCode used to get code details of Mcc response object
      */
-    statusCode?: pulumi.Input<string>;
+    statusCode?: pulumi.Input<string | undefined>;
     /**
      * statusDetails used to get inner details of Mcc response object
      */
-    statusDetails?: pulumi.Input<string>;
+    statusDetails?: pulumi.Input<string | undefined>;
     /**
      * statusText used to get status details in string format of Mcc response object
      */
-    statusText?: pulumi.Input<string>;
+    statusText?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -263,23 +263,23 @@ export interface CacheNodePropertyArgs {
     /**
      * Mcc cache node resource additional properties.
      */
-    additionalCacheNodeProperties?: pulumi.Input<AdditionalCacheNodePropertiesArgs>;
+    additionalCacheNodeProperties?: pulumi.Input<AdditionalCacheNodePropertiesArgs | undefined>;
     /**
      * Mcc cache node resource (cache node entity).
      */
-    cacheNode?: pulumi.Input<CacheNodeEntityArgs>;
+    cacheNode?: pulumi.Input<CacheNodeEntityArgs | undefined>;
     /**
      * Mcc response status code.
      */
-    statusCode?: pulumi.Input<string>;
+    statusCode?: pulumi.Input<string | undefined>;
     /**
      * Mcc response status details for retrieving response inner details.
      */
-    statusDetails?: pulumi.Input<string>;
+    statusDetails?: pulumi.Input<string | undefined>;
     /**
      * Mcc response status text as string for retrieving status details.
      */
-    statusText?: pulumi.Input<string>;
+    statusText?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -289,55 +289,55 @@ export interface CustomerEntityArgs {
     /**
      * Customer resource client tenant Id of subscription.
      */
-    clientTenantId?: pulumi.Input<string>;
+    clientTenantId?: pulumi.Input<string | undefined>;
     /**
      * Customer resource contact email.
      */
-    contactEmail?: pulumi.Input<string>;
+    contactEmail?: pulumi.Input<string | undefined>;
     /**
      * Customer resource contact full name.
      */
-    contactName?: pulumi.Input<string>;
+    contactName?: pulumi.Input<string | undefined>;
     /**
      * Customer resource contact phone.
      */
-    contactPhone?: pulumi.Input<string>;
+    contactPhone?: pulumi.Input<string | undefined>;
     /**
      * Customer resource name.
      */
-    customerName?: pulumi.Input<string>;
+    customerName?: pulumi.Input<string | undefined>;
     /**
      * Customer resource Azure fully qualified resource Id.
      */
-    fullyQualifiedResourceId?: pulumi.Input<string>;
+    fullyQualifiedResourceId?: pulumi.Input<string | undefined>;
     /**
      * Customer resource flag for enterprise management as boolean.
      */
-    isEnterpriseManaged?: pulumi.Input<boolean>;
+    isEnterpriseManaged?: pulumi.Input<boolean | undefined>;
     /**
      * Customer resource entitlement flag as boolean.
      */
-    isEntitled?: pulumi.Input<boolean>;
+    isEntitled?: pulumi.Input<boolean | undefined>;
     /**
      * Customer resource Mcc release version.
      */
-    releaseVersion?: pulumi.Input<number>;
+    releaseVersion?: pulumi.Input<number | undefined>;
     /**
      * Customer resource flag for resending signup code as boolean.
      */
-    resendSignupCode?: pulumi.Input<boolean>;
+    resendSignupCode?: pulumi.Input<boolean | undefined>;
     /**
      * Customer resource flag for migration.
      */
-    shouldMigrate?: pulumi.Input<boolean>;
+    shouldMigrate?: pulumi.Input<boolean | undefined>;
     /**
      * Customer resource flag for requiring verification of signup code as boolean.
      */
-    verifySignupCode?: pulumi.Input<boolean>;
+    verifySignupCode?: pulumi.Input<boolean | undefined>;
     /**
      * Customer resource phrase for verifying signup.
      */
-    verifySignupPhrase?: pulumi.Input<string>;
+    verifySignupPhrase?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -347,11 +347,11 @@ export interface CustomerPropertyArgs {
     /**
      * Mcc customer resource additional properties.
      */
-    additionalCustomerProperties?: pulumi.Input<AdditionalCustomerPropertiesArgs>;
+    additionalCustomerProperties?: pulumi.Input<AdditionalCustomerPropertiesArgs | undefined>;
     /**
      * Mcc customer resource (customer entity).
      */
-    customer?: pulumi.Input<CustomerEntityArgs>;
+    customer?: pulumi.Input<CustomerEntityArgs | undefined>;
 }
 
 /**
@@ -361,5 +361,5 @@ export interface ProxyUrlConfigurationArgs {
     /**
      * Host Proxy Address configuration along with port number. This can be a proxy or ip address. ex: xx.xx.xx.xxxx:80 or host name http://exampleproxy.com:80
      */
-    proxyUrl?: pulumi.Input<string>;
+    proxyUrl?: pulumi.Input<string | undefined>;
 }

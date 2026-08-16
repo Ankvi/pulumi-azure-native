@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2024-06-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-06-01-preview, 2024-12-01-preview, 2025-11-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualEnclave extends pulumi.CustomResource {
     /**
@@ -138,13 +138,13 @@ export class VirtualEnclave extends pulumi.CustomResource {
             }
             resourceInputs["bastionEnabled"] = (args?.bastionEnabled) ?? false;
             resourceInputs["communityResourceId"] = args?.communityResourceId;
-            resourceInputs["enclaveDefaultSettings"] = args ? (args.enclaveDefaultSettings ? pulumi.output(args.enclaveDefaultSettings).apply(types.inputs.enclaveDefaultSettingsModelArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["enclaveDefaultSettings"] = args ? pulumi.output(args.enclaveDefaultSettings).apply(v => v === undefined ? undefined : types.inputs.enclaveDefaultSettingsModelArgsProvideDefaults(v)) : undefined;
             resourceInputs["enclaveRoleAssignments"] = args?.enclaveRoleAssignments;
-            resourceInputs["enclaveVirtualNetwork"] = args ? (args.enclaveVirtualNetwork ? pulumi.output(args.enclaveVirtualNetwork).apply(types.inputs.enclaveVirtualNetworkModelArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["enclaveVirtualNetwork"] = args ? pulumi.output(args.enclaveVirtualNetwork).apply(types.inputs.enclaveVirtualNetworkModelArgsProvideDefaults) : undefined;
             resourceInputs["governedServiceList"] = args?.governedServiceList;
             resourceInputs["identity"] = args?.identity;
             resourceInputs["location"] = args?.location;
-            resourceInputs["maintenanceModeConfiguration"] = args ? (args.maintenanceModeConfiguration ? pulumi.output(args.maintenanceModeConfiguration).apply(types.inputs.maintenanceModeConfigurationModelArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["maintenanceModeConfiguration"] = args ? pulumi.output(args.maintenanceModeConfiguration).apply(v => v === undefined ? undefined : types.inputs.maintenanceModeConfigurationModelArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["virtualEnclaveName"] = args?.virtualEnclaveName;
@@ -181,7 +181,7 @@ export class VirtualEnclave extends pulumi.CustomResource {
             resourceInputs["workloadRoleAssignments"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:mission/v20240601preview:VirtualEnclave" }, { type: "azure-native:mission/v20241201preview:VirtualEnclave" }, { type: "azure-native:mission/v20250501preview:VirtualEnclave" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:mission/v20240601preview:VirtualEnclave" }, { type: "azure-native:mission/v20241201preview:VirtualEnclave" }, { type: "azure-native:mission/v20250501preview:VirtualEnclave" }, { type: "azure-native:mission/v20251101preview:VirtualEnclave" }, { type: "azure-native:mission/v20260301preview:VirtualEnclave" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualEnclave.__pulumiType, name, resourceInputs, opts);
     }
@@ -194,7 +194,7 @@ export interface VirtualEnclaveArgs {
     /**
      * Deploy Bastion service (True or False).
      */
-    bastionEnabled?: pulumi.Input<boolean>;
+    bastionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Community Resource Id.
      */
@@ -202,11 +202,11 @@ export interface VirtualEnclaveArgs {
     /**
      * Enclave default settings.
      */
-    enclaveDefaultSettings?: pulumi.Input<types.inputs.EnclaveDefaultSettingsModelArgs>;
+    enclaveDefaultSettings?: pulumi.Input<types.inputs.EnclaveDefaultSettingsModelArgs | undefined>;
     /**
      * Enclave role assignments
      */
-    enclaveRoleAssignments?: pulumi.Input<pulumi.Input<types.inputs.RoleAssignmentItemArgs>[]>;
+    enclaveRoleAssignments?: pulumi.Input<pulumi.Input<types.inputs.RoleAssignmentItemArgs>[] | undefined>;
     /**
      * Virtual Network.
      */
@@ -214,19 +214,19 @@ export interface VirtualEnclaveArgs {
     /**
      * Enclave specific policies
      */
-    governedServiceList?: pulumi.Input<pulumi.Input<types.inputs.GovernedServiceItemArgs>[]>;
+    governedServiceList?: pulumi.Input<pulumi.Input<types.inputs.GovernedServiceItemArgs>[] | undefined>;
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Maintenance Mode configuration.
      */
-    maintenanceModeConfiguration?: pulumi.Input<types.inputs.MaintenanceModeConfigurationModelArgs>;
+    maintenanceModeConfiguration?: pulumi.Input<types.inputs.MaintenanceModeConfigurationModelArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -234,13 +234,13 @@ export interface VirtualEnclaveArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the enclaveResource Resource
      */
-    virtualEnclaveName?: pulumi.Input<string>;
+    virtualEnclaveName?: pulumi.Input<string | undefined>;
     /**
      * Workload role assignments
      */
-    workloadRoleAssignments?: pulumi.Input<pulumi.Input<types.inputs.RoleAssignmentItemArgs>[]>;
+    workloadRoleAssignments?: pulumi.Input<pulumi.Input<types.inputs.RoleAssignmentItemArgs>[] | undefined>;
 }

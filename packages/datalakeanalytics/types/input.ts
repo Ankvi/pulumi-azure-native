@@ -11,7 +11,7 @@ export interface AddDataLakeStoreWithAccountParametersArgs {
     /**
      * The optional suffix for the Data Lake Store account.
      */
-    suffix?: pulumi.Input<string>;
+    suffix?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -29,7 +29,7 @@ export interface AddStorageAccountWithAccountParametersArgs {
     /**
      * The optional suffix for the storage account.
      */
-    suffix?: pulumi.Input<string>;
+    suffix?: pulumi.Input<string | undefined>;
 }
 /**
  * addStorageAccountWithAccountParametersArgsProvideDefaults sets the appropriate defaults for AddStorageAccountWithAccountParametersArgs
@@ -48,11 +48,11 @@ export interface CreateComputePolicyWithAccountParametersArgs {
     /**
      * The maximum degree of parallelism per job this user can use to submit jobs. This property, the min priority per job property, or both must be passed.
      */
-    maxDegreeOfParallelismPerJob?: pulumi.Input<number>;
+    maxDegreeOfParallelismPerJob?: pulumi.Input<number | undefined>;
     /**
      * The minimum priority per job this user can use to submit jobs. This property, the max degree of parallelism per job property, or both must be passed.
      */
-    minPriorityPerJob?: pulumi.Input<number>;
+    minPriorityPerJob?: pulumi.Input<number | undefined>;
     /**
      * The unique name of the compute policy to create.
      */

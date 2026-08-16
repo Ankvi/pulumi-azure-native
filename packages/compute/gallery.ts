@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2022-03-03.
  *
- * Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Gallery extends pulumi.CustomResource {
     /**
@@ -133,7 +133,7 @@ export class Gallery extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20180601:Gallery" }, { type: "azure-native:compute/v20190301:Gallery" }, { type: "azure-native:compute/v20190701:Gallery" }, { type: "azure-native:compute/v20191201:Gallery" }, { type: "azure-native:compute/v20200930:Gallery" }, { type: "azure-native:compute/v20210701:Gallery" }, { type: "azure-native:compute/v20211001:Gallery" }, { type: "azure-native:compute/v20220103:Gallery" }, { type: "azure-native:compute/v20220303:Gallery" }, { type: "azure-native:compute/v20220803:Gallery" }, { type: "azure-native:compute/v20230703:Gallery" }, { type: "azure-native:compute/v20240303:Gallery" }, { type: "azure-native:compute/v20250303:Gallery" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20180601:Gallery" }, { type: "azure-native:compute/v20190301:Gallery" }, { type: "azure-native:compute/v20190701:Gallery" }, { type: "azure-native:compute/v20191201:Gallery" }, { type: "azure-native:compute/v20200930:Gallery" }, { type: "azure-native:compute/v20210701:Gallery" }, { type: "azure-native:compute/v20211001:Gallery" }, { type: "azure-native:compute/v20220103:Gallery" }, { type: "azure-native:compute/v20220303:Gallery" }, { type: "azure-native:compute/v20220803:Gallery" }, { type: "azure-native:compute/v20230703:Gallery" }, { type: "azure-native:compute/v20240303:Gallery" }, { type: "azure-native:compute/v20250303:Gallery" }, { type: "azure-native:compute/v20251203:Gallery" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Gallery.__pulumiType, name, resourceInputs, opts);
     }
@@ -146,19 +146,19 @@ export interface GalleryArgs {
     /**
      * The description of this Shared Image Gallery resource. This property is updatable.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the Shared Image Gallery.
      */
-    galleryName?: pulumi.Input<string>;
+    galleryName?: pulumi.Input<string | undefined>;
     /**
      * The identity of the gallery, if configured.
      */
-    identity?: pulumi.Input<types.inputs.GalleryIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.GalleryIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -166,13 +166,13 @@ export interface GalleryArgs {
     /**
      * Profile for gallery sharing to subscription or tenant
      */
-    sharingProfile?: pulumi.Input<types.inputs.SharingProfileArgs>;
+    sharingProfile?: pulumi.Input<types.inputs.SharingProfileArgs | undefined>;
     /**
      * Contains information about the soft deletion policy of the gallery.
      */
-    softDeletePolicy?: pulumi.Input<types.inputs.SoftDeletePolicyArgs>;
+    softDeletePolicy?: pulumi.Input<types.inputs.SoftDeletePolicyArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

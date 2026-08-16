@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ContentTemplate extends pulumi.CustomResource {
     /**
@@ -275,7 +275,7 @@ export class ContentTemplate extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20230401preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20230501preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20230601preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20230701preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20230801preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20230901preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20231001preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20231101:ContentTemplate" }, { type: "azure-native:securityinsights/v20231201preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20240101preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20240301:ContentTemplate" }, { type: "azure-native:securityinsights/v20240401preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20240901:ContentTemplate" }, { type: "azure-native:securityinsights/v20241001preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20250101preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20250301:ContentTemplate" }, { type: "azure-native:securityinsights/v20250401preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20250601:ContentTemplate" }, { type: "azure-native:securityinsights/v20250701preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20250901:ContentTemplate" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20230401preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20230501preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20230601preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20230701preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20230801preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20230901preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20231001preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20231101:ContentTemplate" }, { type: "azure-native:securityinsights/v20231201preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20240101preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20240301:ContentTemplate" }, { type: "azure-native:securityinsights/v20240401preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20240901:ContentTemplate" }, { type: "azure-native:securityinsights/v20241001preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20250101preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20250301:ContentTemplate" }, { type: "azure-native:securityinsights/v20250401preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20250601:ContentTemplate" }, { type: "azure-native:securityinsights/v20250701preview:ContentTemplate" }, { type: "azure-native:securityinsights/v20250901:ContentTemplate" }, { type: "azure-native:securityinsights/v20251001preview:ContentTemplate" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ContentTemplate.__pulumiType, name, resourceInputs, opts);
     }
@@ -288,11 +288,11 @@ export interface ContentTemplateArgs {
     /**
      * The creator of the content item.
      */
-    author?: pulumi.Input<types.inputs.MetadataAuthorArgs>;
+    author?: pulumi.Input<types.inputs.MetadataAuthorArgs | undefined>;
     /**
      * Categories for the item
      */
-    categories?: pulumi.Input<types.inputs.MetadataCategoriesArgs>;
+    categories?: pulumi.Input<types.inputs.MetadataCategoriesArgs | undefined>;
     /**
      * Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
      */
@@ -308,15 +308,15 @@ export interface ContentTemplateArgs {
     /**
      * Schema version of the content. Can be used to distinguish between different flow based on the schema version
      */
-    contentSchemaVersion?: pulumi.Input<string>;
+    contentSchemaVersion?: pulumi.Input<string | undefined>;
     /**
      * The custom version of the content. A optional free text
      */
-    customVersion?: pulumi.Input<string>;
+    customVersion?: pulumi.Input<string | undefined>;
     /**
      * Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
      */
-    dependencies?: pulumi.Input<types.inputs.MetadataDependenciesArgs>;
+    dependencies?: pulumi.Input<types.inputs.MetadataDependenciesArgs | undefined>;
     /**
      * The display name of the template
      */
@@ -324,19 +324,19 @@ export interface ContentTemplateArgs {
     /**
      * first publish date content item
      */
-    firstPublishDate?: pulumi.Input<string>;
+    firstPublishDate?: pulumi.Input<string | undefined>;
     /**
      * the icon identifier. this id can later be fetched from the content metadata
      */
-    icon?: pulumi.Input<string>;
+    icon?: pulumi.Input<string | undefined>;
     /**
      * last publish date for the content item
      */
-    lastPublishDate?: pulumi.Input<string>;
+    lastPublishDate?: pulumi.Input<string | undefined>;
     /**
      * The JSON of the ARM template to deploy active content. Expandable.
      */
-    mainTemplate?: any;
+    mainTemplate?: any | undefined;
     /**
      * the package Id contains this template
      */
@@ -344,11 +344,11 @@ export interface ContentTemplateArgs {
     /**
      * the packageKind of the package contains this template
      */
-    packageKind?: pulumi.Input<string | types.enums.PackageKind>;
+    packageKind?: pulumi.Input<string | types.enums.PackageKind | undefined>;
     /**
      * the name of the package contains this template
      */
-    packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string | undefined>;
     /**
      * Version of the package.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
      */
@@ -356,15 +356,15 @@ export interface ContentTemplateArgs {
     /**
      * preview image file names. These will be taken from the solution artifacts
      */
-    previewImages?: pulumi.Input<pulumi.Input<string>[]>;
+    previewImages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * preview image file names. These will be taken from the solution artifacts. used for dark theme support
      */
-    previewImagesDark?: pulumi.Input<pulumi.Input<string>[]>;
+    previewImagesDark?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Providers for the content item
      */
-    providers?: pulumi.Input<pulumi.Input<string>[]>;
+    providers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -376,19 +376,19 @@ export interface ContentTemplateArgs {
     /**
      * Support information for the template - type, name, contact information
      */
-    support?: pulumi.Input<types.inputs.MetadataSupportArgs>;
+    support?: pulumi.Input<types.inputs.MetadataSupportArgs | undefined>;
     /**
      * template Id
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * the tactics the resource covers
      */
-    threatAnalysisTactics?: pulumi.Input<pulumi.Input<string>[]>;
+    threatAnalysisTactics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * the techniques the resource covers, these have to be aligned with the tactics being used
      */
-    threatAnalysisTechniques?: pulumi.Input<pulumi.Input<string>[]>;
+    threatAnalysisTechniques?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
      */

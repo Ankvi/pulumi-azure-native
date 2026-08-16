@@ -451,7 +451,7 @@ export interface IpConfigurationResponse {
      */
     applicationGatewayBackendAddressPools?: SubResourceResponse[];
     /**
-     * Specifies an array of references to backend address pools of load balancers. A node type can reference backend address pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer.	
+     * Specifies an array of references to backend address pools of load balancers. A node type can reference backend address pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer.
      */
     loadBalancerBackendAddressPools?: SubResourceResponse[];
     /**
@@ -889,7 +889,7 @@ export interface ServicePlacementNonPartiallyPlaceServicePolicyResponse {
 }
 
 /**
- * Describes the policy to be used for placement of a Service Fabric service where the service's 
+ * Describes the policy to be used for placement of a Service Fabric service where the service's
  * Primary replicas should optimally be placed in a particular domain.
  *
  * This placement policy is usually used with fault domains in scenarios where the Service Fabric

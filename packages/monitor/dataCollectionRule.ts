@@ -48,7 +48,7 @@ export class DataCollectionRule extends pulumi.CustomResource {
      */
     declare public readonly dataFlows: pulumi.Output<types.outputs.DataFlowResponse[] | undefined>;
     /**
-     * The specification of data sources. 
+     * The specification of data sources.
      * This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
      */
     declare public readonly dataSources: pulumi.Output<types.outputs.DataCollectionRuleResponseDataSources | undefined>;
@@ -177,40 +177,40 @@ export interface DataCollectionRuleArgs {
     /**
      * The resource ID of the data collection endpoint that this rule can be used with.
      */
-    dataCollectionEndpointId?: pulumi.Input<string>;
+    dataCollectionEndpointId?: pulumi.Input<string | undefined>;
     /**
      * The name of the data collection rule. The name is case insensitive.
      */
-    dataCollectionRuleName?: pulumi.Input<string>;
+    dataCollectionRuleName?: pulumi.Input<string | undefined>;
     /**
      * The specification of data flows.
      */
-    dataFlows?: pulumi.Input<pulumi.Input<types.inputs.DataFlowArgs>[]>;
+    dataFlows?: pulumi.Input<pulumi.Input<types.inputs.DataFlowArgs>[] | undefined>;
     /**
-     * The specification of data sources. 
+     * The specification of data sources.
      * This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
      */
-    dataSources?: pulumi.Input<types.inputs.DataCollectionRuleDataSourcesArgs>;
+    dataSources?: pulumi.Input<types.inputs.DataCollectionRuleDataSourcesArgs | undefined>;
     /**
      * Description of the data collection rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The specification of destinations.
      */
-    destinations?: pulumi.Input<types.inputs.DataCollectionRuleDestinationsArgs>;
+    destinations?: pulumi.Input<types.inputs.DataCollectionRuleDestinationsArgs | undefined>;
     /**
      * Managed service identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.DataCollectionRuleResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.DataCollectionRuleResourceIdentityArgs | undefined>;
     /**
      * The kind of the resource.
      */
-    kind?: pulumi.Input<string | types.enums.KnownDataCollectionRuleResourceKind>;
+    kind?: pulumi.Input<string | types.enums.KnownDataCollectionRuleResourceKind | undefined>;
     /**
      * The geo-location where the resource lives.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -218,9 +218,9 @@ export interface DataCollectionRuleArgs {
     /**
      * Declaration of custom streams used in this rule.
      */
-    streamDeclarations?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.StreamDeclarationArgs>}>;
+    streamDeclarations?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.StreamDeclarationArgs>} | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

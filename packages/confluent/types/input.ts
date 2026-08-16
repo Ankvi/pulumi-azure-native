@@ -12,15 +12,15 @@ export interface AzureBlobStorageSinkConnectorServiceInfoArgs {
     /**
      * Azure Blob Storage Account Key
      */
-    storageAccountKey?: pulumi.Input<string>;
+    storageAccountKey?: pulumi.Input<string | undefined>;
     /**
      * Azure Blob Storage Account Name
      */
-    storageAccountName?: pulumi.Input<string>;
+    storageAccountName?: pulumi.Input<string | undefined>;
     /**
      * Azure Blob Storage Account Container Name
      */
-    storageContainerName?: pulumi.Input<string>;
+    storageContainerName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -35,15 +35,15 @@ export interface AzureBlobStorageSourceConnectorServiceInfoArgs {
     /**
      * Azure Blob Storage Account Key
      */
-    storageAccountKey?: pulumi.Input<string>;
+    storageAccountKey?: pulumi.Input<string | undefined>;
     /**
      * Azure Blob Storage Account Name
      */
-    storageAccountName?: pulumi.Input<string>;
+    storageAccountName?: pulumi.Input<string | undefined>;
     /**
      * Azure Blob Storage Account Container Name
      */
-    storageContainerName?: pulumi.Input<string>;
+    storageContainerName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -58,23 +58,23 @@ export interface AzureCosmosDBSinkConnectorServiceInfoArgs {
     /**
      * Azure Cosmos Database Connection Endpoint
      */
-    cosmosConnectionEndpoint?: pulumi.Input<string>;
+    cosmosConnectionEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Azure Cosmos Database Containers Topic Mapping
      */
-    cosmosContainersTopicMapping?: pulumi.Input<string>;
+    cosmosContainersTopicMapping?: pulumi.Input<string | undefined>;
     /**
      * Azure Cosmos Database Name
      */
-    cosmosDatabaseName?: pulumi.Input<string>;
+    cosmosDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * Azure Cosmos Database Id Strategy
      */
-    cosmosIdStrategy?: pulumi.Input<string>;
+    cosmosIdStrategy?: pulumi.Input<string | undefined>;
     /**
      * Azure Cosmos Database Master Key
      */
-    cosmosMasterKey?: pulumi.Input<string>;
+    cosmosMasterKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -89,27 +89,27 @@ export interface AzureCosmosDBSourceConnectorServiceInfoArgs {
     /**
      * Azure Cosmos Database Connection Endpoint
      */
-    cosmosConnectionEndpoint?: pulumi.Input<string>;
+    cosmosConnectionEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Azure Cosmos Database Containers Topic Mapping
      */
-    cosmosContainersTopicMapping?: pulumi.Input<string>;
+    cosmosContainersTopicMapping?: pulumi.Input<string | undefined>;
     /**
      * Azure Cosmos Database Name
      */
-    cosmosDatabaseName?: pulumi.Input<string>;
+    cosmosDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * Azure Cosmos Database Master Key
      */
-    cosmosMasterKey?: pulumi.Input<string>;
+    cosmosMasterKey?: pulumi.Input<string | undefined>;
     /**
      * Azure Cosmos Database Message Key Enabled
      */
-    cosmosMessageKeyEnabled?: pulumi.Input<boolean>;
+    cosmosMessageKeyEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Azure Cosmos Database Message Key Field
      */
-    cosmosMessageKeyField?: pulumi.Input<string>;
+    cosmosMessageKeyField?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -124,19 +124,19 @@ export interface AzureSynapseAnalyticsSinkConnectorServiceInfoArgs {
     /**
      * Azure Synapse Dedicated SQL Pool Database Name
      */
-    synapseSqlDatabaseName?: pulumi.Input<string>;
+    synapseSqlDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * Azure Synapse SQL login details
      */
-    synapseSqlPassword?: pulumi.Input<string>;
+    synapseSqlPassword?: pulumi.Input<string | undefined>;
     /**
      * Azure Synapse Analytics SQL Server Name
      */
-    synapseSqlServerName?: pulumi.Input<string>;
+    synapseSqlServerName?: pulumi.Input<string | undefined>;
     /**
      * Azure Synapse SQL login details
      */
-    synapseSqlUser?: pulumi.Input<string>;
+    synapseSqlUser?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -146,7 +146,7 @@ export interface ClusterConfigEntityArgs {
     /**
      * The lifecycle phase of the cluster
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -156,11 +156,11 @@ export interface ClusterStatusEntityArgs {
     /**
      * The number of Confluent Kafka Units
      */
-    cku?: pulumi.Input<number>;
+    cku?: pulumi.Input<number | undefined>;
     /**
      * The lifecycle phase of the cluster
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,23 +170,23 @@ export interface ConnectorInfoBaseArgs {
     /**
      * Connector Class
      */
-    connectorClass?: pulumi.Input<string | enums.ConnectorClass>;
+    connectorClass?: pulumi.Input<string | enums.ConnectorClass | undefined>;
     /**
      * Connector Id
      */
-    connectorId?: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string | undefined>;
     /**
      * Connector Name
      */
-    connectorName?: pulumi.Input<string>;
+    connectorName?: pulumi.Input<string | undefined>;
     /**
      * Connector Status
      */
-    connectorState?: pulumi.Input<string | enums.ConnectorStatus>;
+    connectorState?: pulumi.Input<string | enums.ConnectorStatus | undefined>;
     /**
      * Connector Type
      */
-    connectorType?: pulumi.Input<string | enums.ConnectorType>;
+    connectorType?: pulumi.Input<string | enums.ConnectorType | undefined>;
 }
 
 /**
@@ -196,31 +196,31 @@ export interface KafkaAzureBlobStorageSinkConnectorInfoArgs {
     /**
      * Kafka API Key
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Kafka API Key Secret
      */
-    apiSecret?: pulumi.Input<string>;
+    apiSecret?: pulumi.Input<string | undefined>;
     /**
      * Kafka Auth Type
      */
-    authType?: pulumi.Input<string | enums.AuthType>;
+    authType?: pulumi.Input<string | enums.AuthType | undefined>;
     /**
      * Flush size
      */
-    flushSize?: pulumi.Input<string>;
+    flushSize?: pulumi.Input<string | undefined>;
     /**
      * Kafka Input Data Format Type
      */
-    inputFormat?: pulumi.Input<string | enums.DataFormatType>;
+    inputFormat?: pulumi.Input<string | enums.DataFormatType | undefined>;
     /**
      * Maximum Tasks
      */
-    maxTasks?: pulumi.Input<string>;
+    maxTasks?: pulumi.Input<string | undefined>;
     /**
      * Kafka Output Data Format Type
      */
-    outputFormat?: pulumi.Input<string | enums.DataFormatType>;
+    outputFormat?: pulumi.Input<string | enums.DataFormatType | undefined>;
     /**
      * Partner Connector type.
      * Expected value is 'KafkaAzureBlobStorageSink'.
@@ -229,19 +229,19 @@ export interface KafkaAzureBlobStorageSinkConnectorInfoArgs {
     /**
      * Kafka Service Account Id
      */
-    serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string | undefined>;
     /**
      * Time Interval
      */
-    timeInterval?: pulumi.Input<string>;
+    timeInterval?: pulumi.Input<string | undefined>;
     /**
      * Kafka topics list
      */
-    topics?: pulumi.Input<pulumi.Input<string>[]>;
+    topics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Kafka topics directory
      */
-    topicsDir?: pulumi.Input<string>;
+    topicsDir?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -251,27 +251,27 @@ export interface KafkaAzureBlobStorageSourceConnectorInfoArgs {
     /**
      * Kafka API Key
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Kafka API Secret
      */
-    apiSecret?: pulumi.Input<string>;
+    apiSecret?: pulumi.Input<string | undefined>;
     /**
      * Kafka Auth Type
      */
-    authType?: pulumi.Input<string | enums.AuthType>;
+    authType?: pulumi.Input<string | enums.AuthType | undefined>;
     /**
      * Kafka Input Data Format Type
      */
-    inputFormat?: pulumi.Input<string | enums.DataFormatType>;
+    inputFormat?: pulumi.Input<string | enums.DataFormatType | undefined>;
     /**
      * Maximum Tasks
      */
-    maxTasks?: pulumi.Input<string>;
+    maxTasks?: pulumi.Input<string | undefined>;
     /**
      * Kafka Output Data Format Type
      */
-    outputFormat?: pulumi.Input<string | enums.DataFormatType>;
+    outputFormat?: pulumi.Input<string | enums.DataFormatType | undefined>;
     /**
      * Partner Connector type.
      * Expected value is 'KafkaAzureBlobStorageSource'.
@@ -280,15 +280,15 @@ export interface KafkaAzureBlobStorageSourceConnectorInfoArgs {
     /**
      * Kafka Service Account Id
      */
-    serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string | undefined>;
     /**
      * Kafka topics Regex pattern
      */
-    topicRegex?: pulumi.Input<string>;
+    topicRegex?: pulumi.Input<string | undefined>;
     /**
      * Kafka topics directory
      */
-    topicsDir?: pulumi.Input<string>;
+    topicsDir?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -298,31 +298,31 @@ export interface KafkaAzureCosmosDBSinkConnectorInfoArgs {
     /**
      * Kafka API Key
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Kafka API Key Secret
      */
-    apiSecret?: pulumi.Input<string>;
+    apiSecret?: pulumi.Input<string | undefined>;
     /**
      * Kafka Auth Type
      */
-    authType?: pulumi.Input<string | enums.AuthType>;
+    authType?: pulumi.Input<string | enums.AuthType | undefined>;
     /**
      * Flush size
      */
-    flushSize?: pulumi.Input<string>;
+    flushSize?: pulumi.Input<string | undefined>;
     /**
      * Kafka Input Data Format Type
      */
-    inputFormat?: pulumi.Input<string | enums.DataFormatType>;
+    inputFormat?: pulumi.Input<string | enums.DataFormatType | undefined>;
     /**
      * Maximum Tasks
      */
-    maxTasks?: pulumi.Input<string>;
+    maxTasks?: pulumi.Input<string | undefined>;
     /**
      * Kafka Output Data Format Type
      */
-    outputFormat?: pulumi.Input<string | enums.DataFormatType>;
+    outputFormat?: pulumi.Input<string | enums.DataFormatType | undefined>;
     /**
      * Partner Connector type.
      * Expected value is 'KafkaAzureCosmosDBSink'.
@@ -331,19 +331,19 @@ export interface KafkaAzureCosmosDBSinkConnectorInfoArgs {
     /**
      * Kafka Service Account Id
      */
-    serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string | undefined>;
     /**
      * Time Interval
      */
-    timeInterval?: pulumi.Input<string>;
+    timeInterval?: pulumi.Input<string | undefined>;
     /**
      * Kafka topics list
      */
-    topics?: pulumi.Input<pulumi.Input<string>[]>;
+    topics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Kafka topics directory
      */
-    topicsDir?: pulumi.Input<string>;
+    topicsDir?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -353,27 +353,27 @@ export interface KafkaAzureCosmosDBSourceConnectorInfoArgs {
     /**
      * Kafka API Key
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Kafka API Secret
      */
-    apiSecret?: pulumi.Input<string>;
+    apiSecret?: pulumi.Input<string | undefined>;
     /**
      * Kafka Auth Type
      */
-    authType?: pulumi.Input<string | enums.AuthType>;
+    authType?: pulumi.Input<string | enums.AuthType | undefined>;
     /**
      * Kafka Input Data Format Type
      */
-    inputFormat?: pulumi.Input<string | enums.DataFormatType>;
+    inputFormat?: pulumi.Input<string | enums.DataFormatType | undefined>;
     /**
      * Maximum Tasks
      */
-    maxTasks?: pulumi.Input<string>;
+    maxTasks?: pulumi.Input<string | undefined>;
     /**
      * Kafka Output Data Format Type
      */
-    outputFormat?: pulumi.Input<string | enums.DataFormatType>;
+    outputFormat?: pulumi.Input<string | enums.DataFormatType | undefined>;
     /**
      * Partner Connector type.
      * Expected value is 'KafkaAzureCosmosDBSource'.
@@ -382,15 +382,15 @@ export interface KafkaAzureCosmosDBSourceConnectorInfoArgs {
     /**
      * Kafka Service Account Id
      */
-    serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string | undefined>;
     /**
      * Kafka topics Regex pattern
      */
-    topicRegex?: pulumi.Input<string>;
+    topicRegex?: pulumi.Input<string | undefined>;
     /**
      * Kafka topics directory
      */
-    topicsDir?: pulumi.Input<string>;
+    topicsDir?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -400,31 +400,31 @@ export interface KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs {
     /**
      * Kafka API Key
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Kafka API Key Secret
      */
-    apiSecret?: pulumi.Input<string>;
+    apiSecret?: pulumi.Input<string | undefined>;
     /**
      * Kafka Auth Type
      */
-    authType?: pulumi.Input<string | enums.AuthType>;
+    authType?: pulumi.Input<string | enums.AuthType | undefined>;
     /**
      * Flush size
      */
-    flushSize?: pulumi.Input<string>;
+    flushSize?: pulumi.Input<string | undefined>;
     /**
      * Kafka Input Data Format Type
      */
-    inputFormat?: pulumi.Input<string | enums.DataFormatType>;
+    inputFormat?: pulumi.Input<string | enums.DataFormatType | undefined>;
     /**
      * Maximum Tasks
      */
-    maxTasks?: pulumi.Input<string>;
+    maxTasks?: pulumi.Input<string | undefined>;
     /**
      * Kafka Output Data Format Type
      */
-    outputFormat?: pulumi.Input<string | enums.DataFormatType>;
+    outputFormat?: pulumi.Input<string | enums.DataFormatType | undefined>;
     /**
      * Partner Connector type.
      * Expected value is 'KafkaAzureSynapseAnalyticsSink'.
@@ -433,19 +433,19 @@ export interface KafkaAzureSynapseAnalyticsSinkConnectorInfoArgs {
     /**
      * Kafka Service Account Id
      */
-    serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string | undefined>;
     /**
      * Time Interval
      */
-    timeInterval?: pulumi.Input<string>;
+    timeInterval?: pulumi.Input<string | undefined>;
     /**
      * Kafka topics list
      */
-    topics?: pulumi.Input<pulumi.Input<string>[]>;
+    topics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Kafka topics directory
      */
-    topicsDir?: pulumi.Input<string>;
+    topicsDir?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -477,23 +477,19 @@ export interface OfferDetailArgs {
     /**
      * Private Offer Id
      */
-    privateOfferId?: pulumi.Input<string>;
+    privateOfferId?: pulumi.Input<string | undefined>;
     /**
      * Array of Private Offer Ids
      */
-    privateOfferIds?: pulumi.Input<pulumi.Input<string>[]>;
+    privateOfferIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Publisher Id
      */
     publisherId: pulumi.Input<string>;
     /**
-     * SaaS Offer Status
-     */
-    status?: pulumi.Input<string | enums.SaaSOfferStatus>;
-    /**
      * Offer Plan Term Id
      */
-    termId?: pulumi.Input<string>;
+    termId?: pulumi.Input<string | undefined>;
     /**
      * Offer Plan Term unit
      */
@@ -507,15 +503,15 @@ export interface SCClusterByokEntityArgs {
     /**
      * ID of the referred resource
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * API URL for accessing or modifying the referred object
      */
-    related?: pulumi.Input<string>;
+    related?: pulumi.Input<string | undefined>;
     /**
      * CRN reference to the referred resource
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -525,19 +521,19 @@ export interface SCClusterNetworkEnvironmentEntityArgs {
     /**
      * Environment of the referred resource
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * ID of the referred resource
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * API URL for accessing or modifying the referred object
      */
-    related?: pulumi.Input<string>;
+    related?: pulumi.Input<string | undefined>;
     /**
      * CRN reference to the referred resource
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -547,55 +543,55 @@ export interface SCClusterSpecEntityArgs {
     /**
      * The Kafka API cluster endpoint
      */
-    apiEndpoint?: pulumi.Input<string>;
+    apiEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The availability zone configuration of the cluster
      */
-    availability?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
     /**
      * Specification of the cluster byok
      */
-    byok?: pulumi.Input<SCClusterByokEntityArgs>;
+    byok?: pulumi.Input<SCClusterByokEntityArgs | undefined>;
     /**
      * The cloud service provider
      */
-    cloud?: pulumi.Input<string>;
+    cloud?: pulumi.Input<string | undefined>;
     /**
      * Specification of the cluster configuration
      */
-    config?: pulumi.Input<ClusterConfigEntityArgs>;
+    config?: pulumi.Input<ClusterConfigEntityArgs | undefined>;
     /**
      * Specification of the cluster environment
      */
-    environment?: pulumi.Input<SCClusterNetworkEnvironmentEntityArgs>;
+    environment?: pulumi.Input<SCClusterNetworkEnvironmentEntityArgs | undefined>;
     /**
      * The cluster HTTP request URL.
      */
-    httpEndpoint?: pulumi.Input<string>;
+    httpEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The bootstrap endpoint used by Kafka clients to connect to the cluster
      */
-    kafkaBootstrapEndpoint?: pulumi.Input<string>;
+    kafkaBootstrapEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The name of the cluster
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specification of the cluster network
      */
-    network?: pulumi.Input<SCClusterNetworkEnvironmentEntityArgs>;
+    network?: pulumi.Input<SCClusterNetworkEnvironmentEntityArgs | undefined>;
     /**
      * Stream governance configuration
      */
-    package?: pulumi.Input<string | enums.Package>;
+    package?: pulumi.Input<string | enums.Package | undefined>;
     /**
      * The cloud service provider region
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * type of zone availability
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -605,23 +601,23 @@ export interface SCMetadataEntityArgs {
     /**
      * Created Date Time
      */
-    createdTimestamp?: pulumi.Input<string>;
+    createdTimestamp?: pulumi.Input<string | undefined>;
     /**
      * Deleted Date time
      */
-    deletedTimestamp?: pulumi.Input<string>;
+    deletedTimestamp?: pulumi.Input<string | undefined>;
     /**
      * Resource name of the record
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * Self lookup url
      */
-    self?: pulumi.Input<string>;
+    self?: pulumi.Input<string | undefined>;
     /**
      * Updated Date time
      */
-    updatedTimestamp?: pulumi.Input<string>;
+    updatedTimestamp?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -631,7 +627,7 @@ export interface StreamGovernanceConfigArgs {
     /**
      * Stream governance configuration
      */
-    package?: pulumi.Input<string | enums.Package>;
+    package?: pulumi.Input<string | enums.Package | undefined>;
 }
 
 /**
@@ -641,11 +637,11 @@ export interface TopicMetadataEntityArgs {
     /**
      * Resource name of the record
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * Self lookup url
      */
-    self?: pulumi.Input<string>;
+    self?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -655,11 +651,11 @@ export interface TopicsInputConfigArgs {
     /**
      * Name of the topic input config
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Value of the topic input config
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -669,7 +665,7 @@ export interface TopicsRelatedLinkArgs {
     /**
      * Relationship of the topic
      */
-    related?: pulumi.Input<string>;
+    related?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -679,7 +675,7 @@ export interface UserDetailArgs {
     /**
      * AAD email address
      */
-    aadEmail?: pulumi.Input<string>;
+    aadEmail?: pulumi.Input<string | undefined>;
     /**
      * Email address
      */
@@ -687,13 +683,13 @@ export interface UserDetailArgs {
     /**
      * First name
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * Last name
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * User principal name
      */
-    userPrincipalName?: pulumi.Input<string>;
+    userPrincipalName?: pulumi.Input<string | undefined>;
 }

@@ -11,13 +11,13 @@ export interface CorsRuleArgs {
 }
 
 /**
- * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+ * Sets the CORS rules. You can include up to five CorsRule elements in the request.
  */
 export interface CorsRulesArgs {
     /**
-     * The list of CORS rules. You can include up to five CorsRule elements in the request. 
+     * The list of CORS rules. You can include up to five CorsRule elements in the request.
      */
-    corsRules?: pulumi.Input<pulumi.Input<CorsRuleArgs>[]>;
+    corsRules?: pulumi.Input<pulumi.Input<CorsRuleArgs>[] | undefined>;
 }
 
 /**
@@ -27,7 +27,7 @@ export interface CreatorPropertiesArgs {
     /**
      * The consumed storage unit size in bytes for the creator resource.
      */
-    consumedStorageUnitSizeInBytes?: pulumi.Input<number>;
+    consumedStorageUnitSizeInBytes?: pulumi.Input<number | undefined>;
     /**
      * The storage units to be allocated. Integer values from 1 to 100, inclusive.
      */
@@ -35,7 +35,7 @@ export interface CreatorPropertiesArgs {
     /**
      * The total allocated storage unit size in bytes for the creator resource.
      */
-    totalStorageUnitSizeInBytes?: pulumi.Input<number>;
+    totalStorageUnitSizeInBytes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -45,11 +45,11 @@ export interface EncryptionArgs {
     /**
      * All Customer-managed key encryption properties for the resource.
      */
-    customerManagedKeyEncryption?: pulumi.Input<EncryptionCustomerManagedKeyEncryptionArgs>;
+    customerManagedKeyEncryption?: pulumi.Input<EncryptionCustomerManagedKeyEncryptionArgs | undefined>;
     /**
      * (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled.
      */
-    infrastructureEncryption?: pulumi.Input<string | enums.InfrastructureEncryption>;
+    infrastructureEncryption?: pulumi.Input<string | enums.InfrastructureEncryption | undefined>;
 }
 
 /**
@@ -59,11 +59,11 @@ export interface EncryptionCustomerManagedKeyEncryptionArgs {
     /**
      * All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
      */
-    keyEncryptionKeyIdentity?: pulumi.Input<EncryptionKeyEncryptionKeyIdentityArgs>;
+    keyEncryptionKeyIdentity?: pulumi.Input<EncryptionKeyEncryptionKeyIdentityArgs | undefined>;
     /**
      * key encryption key Url, versioned or unversioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
      */
-    keyEncryptionKeyUrl?: pulumi.Input<string>;
+    keyEncryptionKeyUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -73,19 +73,19 @@ export interface EncryptionKeyEncryptionKeyIdentityArgs {
     /**
      * delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
      */
-    delegatedIdentityClientId?: pulumi.Input<string>;
+    delegatedIdentityClientId?: pulumi.Input<string | undefined>;
     /**
      * application client identity to use for accessing key encryption key Url in a different tenant. Ex: f83c6b1b-4d34-47e4-bb34-9d83df58b540
      */
-    federatedClientId?: pulumi.Input<string>;
+    federatedClientId?: pulumi.Input<string | undefined>;
     /**
      * The type of identity to use. Values can be systemAssignedIdentity, userAssignedIdentity, or delegatedResourceIdentity.
      */
-    identityType?: pulumi.Input<string>;
+    identityType?: pulumi.Input<string | undefined>;
     /**
      * User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.
      */
-    userAssignedIdentityResourceId?: pulumi.Input<string>;
+    userAssignedIdentityResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -113,7 +113,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -123,23 +123,23 @@ export interface MapsAccountPropertiesArgs {
     /**
      * Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
      */
-    cors?: pulumi.Input<CorsRulesArgs>;
+    cors?: pulumi.Input<CorsRulesArgs | undefined>;
     /**
      * Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys and Shared Access Signature Token authentication from any usage.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * All encryption configuration for a resource.
      */
-    encryption?: pulumi.Input<EncryptionArgs>;
+    encryption?: pulumi.Input<EncryptionArgs | undefined>;
     /**
      * The array of associated resources to the Maps account. Linked resource in the array cannot individually update, you must update all linked resources in the array together. These resources may be used on operations on the Azure Maps REST API. Access is controlled by the Maps Account Managed Identity(s) permissions to those resource(s).
      */
-    linkedResources?: pulumi.Input<pulumi.Input<LinkedResourceArgs>[]>;
+    linkedResources?: pulumi.Input<pulumi.Input<LinkedResourceArgs>[] | undefined>;
     /**
      * List of additional data processing regions for the Maps Account, which may result in requests being processed in another geography. Some features or results may be restricted to specific regions. By default, Maps REST APIs process requests according to the account location or the [geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).
      */
-    locations?: pulumi.Input<pulumi.Input<MapsAccountPropertiesLocationsArgs>[]>;
+    locations?: pulumi.Input<pulumi.Input<MapsAccountPropertiesLocationsArgs>[] | undefined>;
 }
 /**
  * mapsAccountPropertiesArgsProvideDefaults sets the appropriate defaults for MapsAccountPropertiesArgs
@@ -168,15 +168,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**

@@ -6,9 +6,9 @@ export interface SkuArgs {
     /**
      * Name of the sku
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Tier of the sku like Basic or Enterprise
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }

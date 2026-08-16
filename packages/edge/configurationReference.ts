@@ -98,11 +98,11 @@ export interface ConfigurationReferenceArgs {
     /**
      * The name of the ConfigurationReference
      */
-    configurationReferenceName?: pulumi.Input<string>;
+    configurationReferenceName?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.ConfigurationReferencePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConfigurationReferencePropertiesArgs | undefined>;
     /**
      * The fully qualified Azure Resource manager identifier of the resource.
      */

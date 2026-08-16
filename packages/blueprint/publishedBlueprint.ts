@@ -139,23 +139,23 @@ export interface PublishedBlueprintArgs {
     /**
      * Version-specific change notes.
      */
-    changeNotes?: pulumi.Input<string>;
+    changeNotes?: pulumi.Input<string | undefined>;
     /**
      * Multi-line explain this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * One-liner string explain this resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Parameters required by this blueprint definition.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterDefinitionArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterDefinitionArgs>} | undefined>;
     /**
      * Resource group placeholders defined by this blueprint definition.
      */
-    resourceGroups?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ResourceGroupDefinitionArgs>}>;
+    resourceGroups?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ResourceGroupDefinitionArgs>} | undefined>;
     /**
      * The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
      */
@@ -163,9 +163,9 @@ export interface PublishedBlueprintArgs {
     /**
      * The scope where this blueprint definition can be assigned.
      */
-    targetScope?: pulumi.Input<string | types.enums.BlueprintTargetScope>;
+    targetScope?: pulumi.Input<string | types.enums.BlueprintTargetScope | undefined>;
     /**
      * Version of the published blueprint definition.
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }

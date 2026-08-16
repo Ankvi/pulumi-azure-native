@@ -129,7 +129,7 @@ export interface AksAssessmentOperationArgs {
     /**
      * AKS Assessment Name.
      */
-    assessmentName?: pulumi.Input<string>;
+    assessmentName?: pulumi.Input<string | undefined>;
     /**
      * Assessment Project Name
      */
@@ -141,7 +141,7 @@ export interface AksAssessmentOperationArgs {
     /**
      * Gets or sets scope parameters to identify inventory items for assessment.
      */
-    scope?: pulumi.Input<types.inputs.AssessmentScopeParametersArgs>;
+    scope?: pulumi.Input<types.inputs.AssessmentScopeParametersArgs | undefined>;
     /**
      * Gets or sets AKS Assessment Settings.
      */

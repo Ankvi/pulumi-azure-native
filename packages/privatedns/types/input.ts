@@ -7,7 +7,7 @@ export interface ARecordArgs {
     /**
      * The IPv4 address of this A record.
      */
-    ipv4Address?: pulumi.Input<string>;
+    ipv4Address?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -17,7 +17,7 @@ export interface AaaaRecordArgs {
     /**
      * The IPv6 address of this AAAA record.
      */
-    ipv6Address?: pulumi.Input<string>;
+    ipv6Address?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -27,7 +27,7 @@ export interface CnameRecordArgs {
     /**
      * The canonical name for this CNAME record.
      */
-    cname?: pulumi.Input<string>;
+    cname?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -37,11 +37,11 @@ export interface MxRecordArgs {
     /**
      * The domain name of the mail host for this MX record.
      */
-    exchange?: pulumi.Input<string>;
+    exchange?: pulumi.Input<string | undefined>;
     /**
      * The preference value for this MX record.
      */
-    preference?: pulumi.Input<number>;
+    preference?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -51,7 +51,7 @@ export interface PtrRecordArgs {
     /**
      * The PTR target domain name for this PTR record.
      */
-    ptrdname?: pulumi.Input<string>;
+    ptrdname?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -61,31 +61,31 @@ export interface SoaRecordArgs {
     /**
      * The email contact for this SOA record.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The expire time for this SOA record.
      */
-    expireTime?: pulumi.Input<number>;
+    expireTime?: pulumi.Input<number | undefined>;
     /**
      * The domain name of the authoritative name server for this SOA record.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
      */
-    minimumTtl?: pulumi.Input<number>;
+    minimumTtl?: pulumi.Input<number | undefined>;
     /**
      * The refresh value for this SOA record.
      */
-    refreshTime?: pulumi.Input<number>;
+    refreshTime?: pulumi.Input<number | undefined>;
     /**
      * The retry time for this SOA record.
      */
-    retryTime?: pulumi.Input<number>;
+    retryTime?: pulumi.Input<number | undefined>;
     /**
      * The serial number for this SOA record.
      */
-    serialNumber?: pulumi.Input<number>;
+    serialNumber?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -95,19 +95,19 @@ export interface SrvRecordArgs {
     /**
      * The port value for this SRV record.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The priority value for this SRV record.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The target domain name for this SRV record.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * The weight value for this SRV record.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -120,7 +120,7 @@ export interface SubResourceArgs {
      * A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
      * Example of a relative ID: $self/frontEndConfigurations/my-frontend.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -130,5 +130,5 @@ export interface TxtRecordArgs {
     /**
      * The text value of this TXT record.
      */
-    value?: pulumi.Input<pulumi.Input<string>[]>;
+    value?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

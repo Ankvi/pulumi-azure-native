@@ -49,7 +49,7 @@ export interface GetSapInstanceResult {
     /**
      * Defines the errors related to SAP Instance resource.
      */
-    readonly errors: types.outputs.SAPMigrateErrorResponse;
+    readonly errors: types.outputs.SAPMigrateErrorSapInstanceResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */

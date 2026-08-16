@@ -58,7 +58,7 @@ export class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResourc
      */
     declare public readonly interval: pulumi.Output<number | undefined>;
     /**
-     * The access review history definition unique id.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -94,7 +94,11 @@ export class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResourc
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * The resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -134,6 +138,7 @@ export class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResourc
             resourceInputs["reviewHistoryPeriodEndDateTime"] = undefined /*out*/;
             resourceInputs["reviewHistoryPeriodStartDateTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["userPrincipalName"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -151,6 +156,7 @@ export class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResourc
             resourceInputs["reviewHistoryPeriodStartDateTime"] = undefined /*out*/;
             resourceInputs["scopes"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["userPrincipalName"] = undefined /*out*/;
         }
@@ -168,27 +174,27 @@ export interface ScopeAccessReviewHistoryDefinitionByIdArgs {
     /**
      * Collection of review decisions which the history data should be filtered on. For example if Approve and Deny are supplied the data will only contain review results in which the decision maker approved or denied a review request.
      */
-    decisions?: pulumi.Input<pulumi.Input<string | types.enums.AccessReviewResult>[]>;
+    decisions?: pulumi.Input<pulumi.Input<string | types.enums.AccessReviewResult>[] | undefined>;
     /**
      * The display name for the history definition.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The id of the access review history definition.
      */
-    historyDefinitionId?: pulumi.Input<string>;
+    historyDefinitionId?: pulumi.Input<string | undefined>;
     /**
      * Set of access review history instances for this history definition.
      */
-    instances?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewHistoryInstanceArgs>[]>;
+    instances?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewHistoryInstanceArgs>[] | undefined>;
     /**
      * The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * Access Review History Definition recurrence settings.
      */
-    range?: pulumi.Input<types.inputs.AccessReviewRecurrenceRangeArgs>;
+    range?: pulumi.Input<types.inputs.AccessReviewRecurrenceRangeArgs | undefined>;
     /**
      * The scope of the resource.
      */
@@ -196,9 +202,9 @@ export interface ScopeAccessReviewHistoryDefinitionByIdArgs {
     /**
      * A collection of scopes used when selecting review history data
      */
-    scopes?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewScopeArgs>[]>;
+    scopes?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewScopeArgs>[] | undefined>;
     /**
      * The recurrence type : weekly, monthly, etc.
      */
-    type?: pulumi.Input<string | types.enums.AccessReviewRecurrencePatternType>;
+    type?: pulumi.Input<string | types.enums.AccessReviewRecurrencePatternType | undefined>;
 }

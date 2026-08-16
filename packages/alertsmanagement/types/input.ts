@@ -11,19 +11,19 @@ export interface ActionGroupArgs {
     /**
      * conditions on which alerts will be filtered
      */
-    conditions?: pulumi.Input<ConditionsArgs>;
+    conditions?: pulumi.Input<ConditionsArgs | undefined>;
     /**
      * Description of action rule
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * scope on which action rule will apply
      */
-    scope?: pulumi.Input<ScopeArgs>;
+    scope?: pulumi.Input<ScopeArgs | undefined>;
     /**
      * Indicates if the given action rule is enabled or disabled
      */
-    status?: pulumi.Input<string | enums.ActionRuleStatus>;
+    status?: pulumi.Input<string | enums.ActionRuleStatus | undefined>;
     /**
      * Indicates type of action rule
      * Expected value is 'ActionGroup'.
@@ -38,11 +38,11 @@ export interface ActionGroupsInformationArgs {
     /**
      * An optional custom email subject to use in email notifications.
      */
-    customEmailSubject?: pulumi.Input<string>;
+    customEmailSubject?: pulumi.Input<string | undefined>;
     /**
      * An optional custom web-hook payload to use in web-hook notifications.
      */
-    customWebhookPayload?: pulumi.Input<string>;
+    customWebhookPayload?: pulumi.Input<string | undefined>;
     /**
      * The Action Group resource IDs.
      */
@@ -75,19 +75,19 @@ export interface AlertProcessingRulePropertiesArgs {
     /**
      * Conditions on which alerts will be filtered.
      */
-    conditions?: pulumi.Input<pulumi.Input<ConditionArgs>[]>;
+    conditions?: pulumi.Input<pulumi.Input<ConditionArgs>[] | undefined>;
     /**
      * Actions to be applied.Description of alert processing rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the given alert processing rule is enabled or disabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Scheduling for alert processing rule.
      */
-    schedule?: pulumi.Input<ScheduleArgs>;
+    schedule?: pulumi.Input<ScheduleArgs | undefined>;
     /**
      * Scopes on which alert processing rule will apply.
      */
@@ -110,15 +110,15 @@ export interface ConditionArgs {
     /**
      * Field for a given condition.
      */
-    field?: pulumi.Input<string | enums.Field>;
+    field?: pulumi.Input<string | enums.Field | undefined>;
     /**
      * Operator for a given condition.
      */
-    operator?: pulumi.Input<string | enums.Operator>;
+    operator?: pulumi.Input<string | enums.Operator | undefined>;
     /**
      * List of values to match for a given condition.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -128,35 +128,35 @@ export interface ConditionsArgs {
     /**
      * filter alerts by alert context (payload)
      */
-    alertContext?: pulumi.Input<ConditionArgs>;
+    alertContext?: pulumi.Input<ConditionArgs | undefined>;
     /**
      * filter alerts by alert rule id
      */
-    alertRuleId?: pulumi.Input<ConditionArgs>;
+    alertRuleId?: pulumi.Input<ConditionArgs | undefined>;
     /**
      * filter alerts by alert rule name
      */
-    alertRuleName?: pulumi.Input<ConditionArgs>;
+    alertRuleName?: pulumi.Input<ConditionArgs | undefined>;
     /**
      * filter alerts by alert rule description
      */
-    description?: pulumi.Input<ConditionArgs>;
+    description?: pulumi.Input<ConditionArgs | undefined>;
     /**
      * filter alerts by monitor condition
      */
-    monitorCondition?: pulumi.Input<ConditionArgs>;
+    monitorCondition?: pulumi.Input<ConditionArgs | undefined>;
     /**
      * filter alerts by monitor service
      */
-    monitorService?: pulumi.Input<ConditionArgs>;
+    monitorService?: pulumi.Input<ConditionArgs | undefined>;
     /**
      * filter alerts by severity
      */
-    severity?: pulumi.Input<ConditionArgs>;
+    severity?: pulumi.Input<ConditionArgs | undefined>;
     /**
      * filter alerts by target resource type
      */
-    targetResourceType?: pulumi.Input<ConditionArgs>;
+    targetResourceType?: pulumi.Input<ConditionArgs | undefined>;
 }
 
 /**
@@ -166,7 +166,7 @@ export interface DailyRecurrenceArgs {
     /**
      * End time for recurrence.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies when the recurrence should be applied.
      * Expected value is 'Daily'.
@@ -175,7 +175,7 @@ export interface DailyRecurrenceArgs {
     /**
      * Start time for recurrence.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -189,7 +189,7 @@ export interface DetectorArgs {
     /**
      * The detector's parameters.'
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: any} | undefined>;
 }
 
 /**
@@ -199,19 +199,19 @@ export interface DiagnosticsArgs {
     /**
      * conditions on which alerts will be filtered
      */
-    conditions?: pulumi.Input<ConditionsArgs>;
+    conditions?: pulumi.Input<ConditionsArgs | undefined>;
     /**
      * Description of action rule
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * scope on which action rule will apply
      */
-    scope?: pulumi.Input<ScopeArgs>;
+    scope?: pulumi.Input<ScopeArgs | undefined>;
     /**
      * Indicates if the given action rule is enabled or disabled
      */
-    status?: pulumi.Input<string | enums.ActionRuleStatus>;
+    status?: pulumi.Input<string | enums.ActionRuleStatus | undefined>;
     /**
      * Indicates type of action rule
      * Expected value is 'Diagnostics'.
@@ -252,7 +252,7 @@ export interface MonthlyRecurrenceArgs {
     /**
      * End time for recurrence.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies when the recurrence should be applied.
      * Expected value is 'Monthly'.
@@ -261,7 +261,7 @@ export interface MonthlyRecurrenceArgs {
     /**
      * Start time for recurrence.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -271,19 +271,19 @@ export interface PrometheusRuleArgs {
     /**
      * Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    actions?: pulumi.Input<pulumi.Input<PrometheusRuleGroupActionArgs>[]>;
+    actions?: pulumi.Input<pulumi.Input<PrometheusRuleGroupActionArgs>[] | undefined>;
     /**
      * Alert rule name.
      */
-    alert?: pulumi.Input<string>;
+    alert?: pulumi.Input<string | undefined>;
     /**
      * The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links. The annotation values can be templated.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Enable/disable rule.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The PromQL expression to evaluate. https://prometheus.io/docs/prometheus/latest/querying/basics/. Evaluated periodically as given by 'interval', and the result recorded as a new set of time series with the metric name as given by 'record'.
      */
@@ -291,23 +291,23 @@ export interface PrometheusRuleArgs {
     /**
      * The amount of time alert must be active before firing.
      */
-    for?: pulumi.Input<string>;
+    for?: pulumi.Input<string | undefined>;
     /**
      * Labels to add or overwrite before storing the result.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Recorded metrics name.
      */
-    record?: pulumi.Input<string>;
+    record?: pulumi.Input<string | undefined>;
     /**
      * Defines the configuration for resolving fired alerts. Only relevant for alerts.
      */
-    resolveConfiguration?: pulumi.Input<PrometheusRuleResolveConfigurationArgs>;
+    resolveConfiguration?: pulumi.Input<PrometheusRuleResolveConfigurationArgs | undefined>;
     /**
      * The severity of the alerts fired by the rule. Must be between 0 and 4.
      */
-    severity?: pulumi.Input<number>;
+    severity?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -317,11 +317,11 @@ export interface PrometheusRuleGroupActionArgs {
     /**
      * The resource id of the action group to use.
      */
-    actionGroupId?: pulumi.Input<string>;
+    actionGroupId?: pulumi.Input<string | undefined>;
     /**
      * The properties of an action group object.
      */
-    actionProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    actionProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -331,11 +331,11 @@ export interface PrometheusRuleResolveConfigurationArgs {
     /**
      * Enable alert auto-resolution.
      */
-    autoResolved?: pulumi.Input<boolean>;
+    autoResolved?: pulumi.Input<boolean | undefined>;
     /**
      * Alert auto-resolution timeout.
      */
-    timeToResolve?: pulumi.Input<string>;
+    timeToResolve?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -356,19 +356,19 @@ export interface ScheduleArgs {
     /**
      * Scheduling effective from time. Date-Time in ISO-8601 format without timezone suffix.
      */
-    effectiveFrom?: pulumi.Input<string>;
+    effectiveFrom?: pulumi.Input<string | undefined>;
     /**
      * Scheduling effective until time. Date-Time in ISO-8601 format without timezone suffix.
      */
-    effectiveUntil?: pulumi.Input<string>;
+    effectiveUntil?: pulumi.Input<string | undefined>;
     /**
      * List of recurrences.
      */
-    recurrences?: pulumi.Input<pulumi.Input<DailyRecurrenceArgs | MonthlyRecurrenceArgs | WeeklyRecurrenceArgs>[]>;
+    recurrences?: pulumi.Input<pulumi.Input<DailyRecurrenceArgs | MonthlyRecurrenceArgs | WeeklyRecurrenceArgs>[] | undefined>;
     /**
      * Scheduling time zone.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -378,11 +378,11 @@ export interface ScopeArgs {
     /**
      * type of target scope
      */
-    scopeType?: pulumi.Input<string | enums.ScopeType>;
+    scopeType?: pulumi.Input<string | enums.ScopeType | undefined>;
     /**
      * list of ARM IDs of the given scope type which will be the target of the given action rule.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -392,19 +392,19 @@ export interface SuppressionArgs {
     /**
      * conditions on which alerts will be filtered
      */
-    conditions?: pulumi.Input<ConditionsArgs>;
+    conditions?: pulumi.Input<ConditionsArgs | undefined>;
     /**
      * Description of action rule
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * scope on which action rule will apply
      */
-    scope?: pulumi.Input<ScopeArgs>;
+    scope?: pulumi.Input<ScopeArgs | undefined>;
     /**
      * Indicates if the given action rule is enabled or disabled
      */
-    status?: pulumi.Input<string | enums.ActionRuleStatus>;
+    status?: pulumi.Input<string | enums.ActionRuleStatus | undefined>;
     /**
      * suppression configuration for the action rule
      */
@@ -427,7 +427,7 @@ export interface SuppressionConfigArgs {
     /**
      * suppression schedule configuration
      */
-    schedule?: pulumi.Input<SuppressionScheduleArgs>;
+    schedule?: pulumi.Input<SuppressionScheduleArgs | undefined>;
 }
 
 /**
@@ -437,23 +437,23 @@ export interface SuppressionScheduleArgs {
     /**
      * End date for suppression
      */
-    endDate?: pulumi.Input<string>;
+    endDate?: pulumi.Input<string | undefined>;
     /**
      * End date for suppression
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies the values for recurrence pattern
      */
-    recurrenceValues?: pulumi.Input<pulumi.Input<number>[]>;
+    recurrenceValues?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Start date for suppression
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * Start time for suppression
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -463,7 +463,7 @@ export interface ThrottlingInformationArgs {
     /**
      * The required duration (in ISO8601 format) to wait before notifying on the alert rule again. The time granularity must be in minutes and minimum value is 0 minutes
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -477,7 +477,7 @@ export interface WeeklyRecurrenceArgs {
     /**
      * End time for recurrence.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies when the recurrence should be applied.
      * Expected value is 'Weekly'.
@@ -486,5 +486,5 @@ export interface WeeklyRecurrenceArgs {
     /**
      * Start time for recurrence.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }

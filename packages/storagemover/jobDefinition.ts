@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01, 2025-08-01, 2025-12-01, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class JobDefinition extends pulumi.CustomResource {
     /**
@@ -180,7 +180,7 @@ export class JobDefinition extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:JobDefinition" }, { type: "azure-native:storagemover/v20230301:JobDefinition" }, { type: "azure-native:storagemover/v20230701preview:JobDefinition" }, { type: "azure-native:storagemover/v20231001:JobDefinition" }, { type: "azure-native:storagemover/v20240701:JobDefinition" }, { type: "azure-native:storagemover/v20250701:JobDefinition" }, { type: "azure-native:storagemover/v20250801:JobDefinition" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:JobDefinition" }, { type: "azure-native:storagemover/v20230301:JobDefinition" }, { type: "azure-native:storagemover/v20230701preview:JobDefinition" }, { type: "azure-native:storagemover/v20231001:JobDefinition" }, { type: "azure-native:storagemover/v20240701:JobDefinition" }, { type: "azure-native:storagemover/v20250701:JobDefinition" }, { type: "azure-native:storagemover/v20250801:JobDefinition" }, { type: "azure-native:storagemover/v20251201:JobDefinition" }, { type: "azure-native:storagemover/v20260501:JobDefinition" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(JobDefinition.__pulumiType, name, resourceInputs, opts);
     }
@@ -193,7 +193,7 @@ export interface JobDefinitionArgs {
     /**
      * Name of the Agent to assign for new Job Runs of this Job Definition.
      */
-    agentName?: pulumi.Input<string>;
+    agentName?: pulumi.Input<string | undefined>;
     /**
      * Strategy to use for copy.
      */
@@ -201,11 +201,11 @@ export interface JobDefinitionArgs {
     /**
      * A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the Job Definition resource.
      */
-    jobDefinitionName?: pulumi.Input<string>;
+    jobDefinitionName?: pulumi.Input<string | undefined>;
     /**
      * The name of the Project resource.
      */
@@ -221,7 +221,7 @@ export interface JobDefinitionArgs {
     /**
      * The subpath to use when reading from the source Endpoint.
      */
-    sourceSubpath?: pulumi.Input<string>;
+    sourceSubpath?: pulumi.Input<string | undefined>;
     /**
      * The name of the Storage Mover resource.
      */
@@ -233,5 +233,5 @@ export interface JobDefinitionArgs {
     /**
      * The subpath to use when writing to the target Endpoint.
      */
-    targetSubpath?: pulumi.Input<string>;
+    targetSubpath?: pulumi.Input<string | undefined>;
 }

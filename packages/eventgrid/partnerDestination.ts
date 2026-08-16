@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-12-15-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PartnerDestination extends pulumi.CustomResource {
     /**
@@ -134,7 +134,7 @@ export class PartnerDestination extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20211015preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20230601preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20231215preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20240601preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20241215preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20250401preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20250715preview:PartnerDestination" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20211015preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20230601preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20231215preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20240601preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20241215preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20250401preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20250715preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20251115preview:PartnerDestination" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PartnerDestination.__pulumiType, name, resourceInputs, opts);
     }
@@ -147,36 +147,36 @@ export interface PartnerDestinationArgs {
     /**
      * Activation state of the partner destination.
      */
-    activationState?: pulumi.Input<string | types.enums.PartnerDestinationActivationState>;
+    activationState?: pulumi.Input<string | types.enums.PartnerDestinationActivationState | undefined>;
     /**
      * Endpoint Base URL of the partner destination
      */
-    endpointBaseUrl?: pulumi.Input<string>;
+    endpointBaseUrl?: pulumi.Input<string | undefined>;
     /**
      * Endpoint context associated with this partner destination.
      */
-    endpointServiceContext?: pulumi.Input<string>;
+    endpointServiceContext?: pulumi.Input<string | undefined>;
     /**
      * Expiration time of the partner destination. If this timer expires and the partner destination was never activated,
      * the partner destination and corresponding channel are deleted.
      */
-    expirationTimeIfNotActivatedUtc?: pulumi.Input<string>;
+    expirationTimeIfNotActivatedUtc?: pulumi.Input<string | undefined>;
     /**
      * Location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Context or helpful message that can be used during the approval process.
      */
-    messageForActivation?: pulumi.Input<string>;
+    messageForActivation?: pulumi.Input<string | undefined>;
     /**
      * Name of the partner destination.
      */
-    partnerDestinationName?: pulumi.Input<string>;
+    partnerDestinationName?: pulumi.Input<string | undefined>;
     /**
      * The immutable Id of the corresponding partner registration.
      */
-    partnerRegistrationImmutableId?: pulumi.Input<string>;
+    partnerRegistrationImmutableId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group within the user's subscription.
      */
@@ -184,5 +184,5 @@ export interface PartnerDestinationArgs {
     /**
      * Tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

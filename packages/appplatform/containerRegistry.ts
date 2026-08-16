@@ -102,11 +102,11 @@ export interface ContainerRegistryArgs {
     /**
      * The name of the container registry.
      */
-    containerRegistryName?: pulumi.Input<string>;
+    containerRegistryName?: pulumi.Input<string | undefined>;
     /**
      * Properties of the container registry resource payload.
      */
-    properties?: pulumi.Input<types.inputs.ContainerRegistryPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ContainerRegistryPropertiesArgs | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

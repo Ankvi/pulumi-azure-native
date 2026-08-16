@@ -147,17 +147,17 @@ export interface DscNodeConfigurationArgs {
     /**
      * If a new build version of NodeConfiguration is required.
      */
-    incrementNodeConfigurationBuild?: pulumi.Input<boolean>;
+    incrementNodeConfigurationBuild?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the node configuration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Dsc node configuration name.
      */
-    nodeConfigurationName?: pulumi.Input<string>;
+    nodeConfigurationName?: pulumi.Input<string | undefined>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -167,5 +167,5 @@ export interface DscNodeConfigurationArgs {
     /**
      * Gets or sets the tags attached to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

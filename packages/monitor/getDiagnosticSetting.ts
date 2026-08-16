@@ -20,7 +20,7 @@ export interface GetDiagnosticSettingArgs {
      */
     name: string;
     /**
-     * The identifier of the resource.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     resourceUri: string;
 }
@@ -42,7 +42,7 @@ export interface GetDiagnosticSettingResult {
      */
     readonly eventHubName?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -52,7 +52,7 @@ export interface GetDiagnosticSettingResult {
     /**
      * The list of logs settings.
      */
-    readonly logs?: types.outputs.LogSettingsResponse[];
+    readonly logs?: types.outputs.DiagnosticsLogSettingsResponse[];
     /**
      * The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
      */
@@ -60,7 +60,7 @@ export interface GetDiagnosticSettingResult {
     /**
      * The list of metric settings.
      */
-    readonly metrics?: types.outputs.MetricSettingsResponse[];
+    readonly metrics?: types.outputs.DiagnosticsMetricSettingsResponse[];
     /**
      * The name of the resource
      */
@@ -74,7 +74,7 @@ export interface GetDiagnosticSettingResult {
      */
     readonly storageAccountId?: string;
     /**
-     * The system metadata related to this resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
@@ -105,7 +105,7 @@ export interface GetDiagnosticSettingOutputArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The identifier of the resource.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     resourceUri: pulumi.Input<string>;
 }

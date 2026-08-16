@@ -15,7 +15,7 @@ export function listDiagnosticSettingsCategory(args: ListDiagnosticSettingsCateg
 
 export interface ListDiagnosticSettingsCategoryArgs {
     /**
-     * The identifier of the resource.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     resourceUri: string;
 }
@@ -24,6 +24,10 @@ export interface ListDiagnosticSettingsCategoryArgs {
  * Represents a collection of diagnostic setting category resources.
  */
 export interface ListDiagnosticSettingsCategoryResult {
+    /**
+     * The URL to get the next set of results.
+     */
+    readonly nextLink?: string;
     /**
      * The collection of diagnostic settings category resources.
      */
@@ -43,7 +47,7 @@ export function listDiagnosticSettingsCategoryOutput(args: ListDiagnosticSetting
 
 export interface ListDiagnosticSettingsCategoryOutputArgs {
     /**
-     * The identifier of the resource.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     resourceUri: pulumi.Input<string>;
 }

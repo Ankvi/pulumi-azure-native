@@ -129,7 +129,7 @@ export interface GetBudgetResult {
      * - BillingMonth*
      * - BillingQuarter*
      * - BillingAnnual*
-     *
+     *   
      *   *only supported for Web Direct customers.
      *
      *  Supported timeGrainTypes for **CategoryType: ReservationUtilization**

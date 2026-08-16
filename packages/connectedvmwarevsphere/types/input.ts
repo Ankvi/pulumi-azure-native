@@ -7,11 +7,11 @@ export interface ExtendedLocationArgs {
     /**
      * The extended location name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The extended location type.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -21,7 +21,7 @@ export interface GuestAgentProfileArgs {
     /**
      * Gets or sets the Public Key provided by the client for enabling guest management.
      */
-    clientPublicKey?: pulumi.Input<string>;
+    clientPublicKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -31,15 +31,15 @@ export interface GuestCredentialArgs {
     /**
      * Gets or sets the password to connect with the guest.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Private key used to authenticate to a virtual machine through ssh.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets username to connect with the guest.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -49,15 +49,15 @@ export interface HardwareProfileArgs {
     /**
      * Gets or sets memory size in MBs for the vm.
      */
-    memorySizeMB?: pulumi.Input<number>;
+    memorySizeMB?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the number of vCPUs for the vm.
      */
-    numCPUs?: pulumi.Input<number>;
+    numCPUs?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the number of cores per socket for the vm. Defaults to 1 if unspecified.
      */
-    numCoresPerSocket?: pulumi.Input<number>;
+    numCoresPerSocket?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -67,7 +67,7 @@ export interface HttpProxyConfigurationArgs {
     /**
      * Gets or sets httpsProxy url.
      */
-    httpsProxy?: pulumi.Input<string>;
+    httpsProxy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -87,23 +87,23 @@ export interface InfrastructureProfileArgs {
     /**
      * Firmware type
      */
-    firmwareType?: pulumi.Input<string | enums.FirmwareType>;
+    firmwareType?: pulumi.Input<string | enums.FirmwareType | undefined>;
     /**
      * Gets or sets the inventory Item ID for the virtual machine.
      */
-    inventoryItemId?: pulumi.Input<string>;
+    inventoryItemId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the SMBIOS UUID of the vm.
      */
-    smbiosUuid?: pulumi.Input<string>;
+    smbiosUuid?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the ARM Id of the template resource to deploy the virtual machine.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
      */
-    vCenterId?: pulumi.Input<string>;
+    vCenterId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -113,27 +113,27 @@ export interface NetworkInterfaceArgs {
     /**
      * Gets or sets the device key value.
      */
-    deviceKey?: pulumi.Input<number>;
+    deviceKey?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the ipsettings.
      */
-    ipSettings?: pulumi.Input<NicIPSettingsArgs>;
+    ipSettings?: pulumi.Input<NicIPSettingsArgs | undefined>;
     /**
      * Gets or sets the name of the network interface.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the ARM Id of the network resource to connect the virtual machine.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * NIC type
      */
-    nicType?: pulumi.Input<string | enums.NICType>;
+    nicType?: pulumi.Input<string | enums.NICType | undefined>;
     /**
      * Gets or sets the power on boot.
      */
-    powerOnBoot?: pulumi.Input<string | enums.PowerOnBootOption>;
+    powerOnBoot?: pulumi.Input<string | enums.PowerOnBootOption | undefined>;
 }
 
 /**
@@ -143,7 +143,7 @@ export interface NetworkProfileArgs {
     /**
      * Gets or sets the list of network interfaces associated with the virtual machine.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<NetworkInterfaceArgs>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<NetworkInterfaceArgs>[] | undefined>;
 }
 
 /**
@@ -153,23 +153,23 @@ export interface NicIPSettingsArgs {
     /**
      * Gets or sets the nic allocation method.
      */
-    allocationMethod?: pulumi.Input<string | enums.IPAddressAllocationMethod>;
+    allocationMethod?: pulumi.Input<string | enums.IPAddressAllocationMethod | undefined>;
     /**
      * Gets or sets the dns servers.
      */
-    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Gets or sets the gateway.
      */
-    gateway?: pulumi.Input<pulumi.Input<string>[]>;
+    gateway?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Gets or sets the ip address for the nic.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the mask.
      */
-    subnetMask?: pulumi.Input<string>;
+    subnetMask?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,31 +179,31 @@ export interface OsProfileArgs {
     /**
      * Gets or sets administrator password.
      */
-    adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets administrator username.
      */
-    adminUsername?: pulumi.Input<string>;
+    adminUsername?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets computer name.
      */
-    computerName?: pulumi.Input<string>;
+    computerName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the guestId.
      */
-    guestId?: pulumi.Input<string>;
+    guestId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the linux configuration for update management.
      */
-    linuxConfiguration?: pulumi.Input<OsProfileLinuxConfigurationArgs>;
+    linuxConfiguration?: pulumi.Input<OsProfileLinuxConfigurationArgs | undefined>;
     /**
      * Gets or sets the type of the os.
      */
-    osType?: pulumi.Input<string | enums.OsType>;
+    osType?: pulumi.Input<string | enums.OsType | undefined>;
     /**
      * Specifies the windows configuration for update management.
      */
-    windowsConfiguration?: pulumi.Input<OsProfileWindowsConfigurationArgs>;
+    windowsConfiguration?: pulumi.Input<OsProfileWindowsConfigurationArgs | undefined>;
 }
 
 /**
@@ -213,27 +213,27 @@ export interface OsProfileForVMInstanceArgs {
     /**
      * Sets administrator password.
      */
-    adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets administrator username.
      */
-    adminUsername?: pulumi.Input<string>;
+    adminUsername?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets computer name.
      */
-    computerName?: pulumi.Input<string>;
+    computerName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the guestId.
      */
-    guestId?: pulumi.Input<string>;
+    guestId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the type of the os.
      */
-    osType?: pulumi.Input<string | enums.OsType>;
+    osType?: pulumi.Input<string | enums.OsType | undefined>;
     /**
      * Windows Configuration.
      */
-    windowsConfiguration?: pulumi.Input<WindowsConfigurationArgs>;
+    windowsConfiguration?: pulumi.Input<WindowsConfigurationArgs | undefined>;
 }
 
 /**
@@ -243,11 +243,11 @@ export interface OsProfileLinuxConfigurationArgs {
     /**
      * Specifies the assessment mode.
      */
-    assessmentMode?: pulumi.Input<string>;
+    assessmentMode?: pulumi.Input<string | undefined>;
     /**
      * Specifies the patch mode.
      */
-    patchMode?: pulumi.Input<string>;
+    patchMode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -257,11 +257,11 @@ export interface OsProfileWindowsConfigurationArgs {
     /**
      * Specifies the assessment mode.
      */
-    assessmentMode?: pulumi.Input<string>;
+    assessmentMode?: pulumi.Input<string | undefined>;
     /**
      * Specifies the patch mode.
      */
-    patchMode?: pulumi.Input<string>;
+    patchMode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -271,19 +271,19 @@ export interface PlacementProfileArgs {
     /**
      * Gets or sets the ARM Id of the cluster resource on which this virtual machine will deploy.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the ARM Id of the datastore resource on which the data for the virtual machine will be kept.
      */
-    datastoreId?: pulumi.Input<string>;
+    datastoreId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the ARM Id of the host resource on which this virtual machine will deploy.
      */
-    hostId?: pulumi.Input<string>;
+    hostId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will deploy.
      */
-    resourcePoolId?: pulumi.Input<string>;
+    resourcePoolId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -293,7 +293,7 @@ export interface SecurityProfileArgs {
     /**
      * Specifies the security settings like secure boot used while creating the virtual machine.
      */
-    uefiSettings?: pulumi.Input<UefiSettingsArgs>;
+    uefiSettings?: pulumi.Input<UefiSettingsArgs | undefined>;
 }
 
 /**
@@ -303,7 +303,7 @@ export interface StorageProfileArgs {
     /**
      * Gets or sets the list of virtual disks associated with the virtual machine.
      */
-    disks?: pulumi.Input<pulumi.Input<VirtualDiskArgs>[]>;
+    disks?: pulumi.Input<pulumi.Input<VirtualDiskArgs>[] | undefined>;
 }
 
 /**
@@ -313,7 +313,7 @@ export interface UefiSettingsArgs {
     /**
      * Specifies whether secure boot should be enabled on the virtual machine.
      */
-    secureBootEnabled?: pulumi.Input<boolean>;
+    secureBootEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -323,11 +323,11 @@ export interface VICredentialArgs {
     /**
      * Gets or sets the password to connect with the vCenter.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets username to connect with the vCenter.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -337,35 +337,35 @@ export interface VirtualDiskArgs {
     /**
      * Gets or sets the controller id.
      */
-    controllerKey?: pulumi.Input<number>;
+    controllerKey?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the device key value.
      */
-    deviceKey?: pulumi.Input<number>;
+    deviceKey?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the device name.
      */
-    deviceName?: pulumi.Input<string>;
+    deviceName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the disk mode.
      */
-    diskMode?: pulumi.Input<string | enums.DiskMode>;
+    diskMode?: pulumi.Input<string | enums.DiskMode | undefined>;
     /**
      * Gets or sets the disk total size.
      */
-    diskSizeGB?: pulumi.Input<number>;
+    diskSizeGB?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the disk backing type.
      */
-    diskType?: pulumi.Input<string | enums.DiskType>;
+    diskType?: pulumi.Input<string | enums.DiskType | undefined>;
     /**
      * Gets or sets the name of the virtual disk.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the unit number of the disk on the controller.
      */
-    unitNumber?: pulumi.Input<number>;
+    unitNumber?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -375,45 +375,45 @@ export interface WindowsConfigurationArgs {
     /**
      * Sets a value indicating whether auto logon is enabled.
      */
-    autoLogon?: pulumi.Input<boolean>;
+    autoLogon?: pulumi.Input<boolean | undefined>;
     /**
      * Sets auto logon count.
      */
-    autoLogonCount?: pulumi.Input<number>;
+    autoLogonCount?: pulumi.Input<number | undefined>;
     /**
      * Sets domain name that vm should join.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * Sets domain user password.
      */
-    domainUserPassword?: pulumi.Input<string>;
+    domainUserPassword?: pulumi.Input<string | undefined>;
     /**
      * Sets domain username.
      */
-    domainUsername?: pulumi.Input<string>;
+    domainUsername?: pulumi.Input<string | undefined>;
     /**
      * Sets first logon commands
      */
-    firstLogonCommands?: pulumi.Input<pulumi.Input<string>[]>;
+    firstLogonCommands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Sets full name of the owner of the vm.
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Sets org name to which the owner of the vm belongs.
      */
-    orgName?: pulumi.Input<string>;
+    orgName?: pulumi.Input<string | undefined>;
     /**
      * Sets product id of the vm.
      */
-    productId?: pulumi.Input<string>;
+    productId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Time zone name correspond to time zones listed at Microsoft Time Zone name values(https://learn.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * Sets work group name that vm should join.
      */
-    workGroupName?: pulumi.Input<string>;
+    workGroupName?: pulumi.Input<string | undefined>;
 }

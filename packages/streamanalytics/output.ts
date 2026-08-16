@@ -126,7 +126,7 @@ export interface OutputArgs {
     /**
      * Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
      */
-    datasource?: pulumi.Input<types.inputs.AzureDataLakeStoreOutputDataSourceArgs | types.inputs.AzureFunctionOutputDataSourceArgs | types.inputs.AzureSqlDatabaseOutputDataSourceArgs | types.inputs.AzureSynapseOutputDataSourceArgs | types.inputs.AzureTableOutputDataSourceArgs | types.inputs.BlobOutputDataSourceArgs | types.inputs.DocumentDbOutputDataSourceArgs | types.inputs.EventHubOutputDataSourceArgs | types.inputs.EventHubV2OutputDataSourceArgs | types.inputs.GatewayMessageBusOutputDataSourceArgs | types.inputs.PowerBIOutputDataSourceArgs | types.inputs.ServiceBusQueueOutputDataSourceArgs | types.inputs.ServiceBusTopicOutputDataSourceArgs>;
+    datasource?: pulumi.Input<types.inputs.AzureDataLakeStoreOutputDataSourceArgs | types.inputs.AzureFunctionOutputDataSourceArgs | types.inputs.AzureSqlDatabaseOutputDataSourceArgs | types.inputs.AzureSynapseOutputDataSourceArgs | types.inputs.AzureTableOutputDataSourceArgs | types.inputs.BlobOutputDataSourceArgs | types.inputs.DocumentDbOutputDataSourceArgs | types.inputs.EventHubOutputDataSourceArgs | types.inputs.EventHubV2OutputDataSourceArgs | types.inputs.GatewayMessageBusOutputDataSourceArgs | types.inputs.PowerBIOutputDataSourceArgs | types.inputs.ServiceBusQueueOutputDataSourceArgs | types.inputs.ServiceBusTopicOutputDataSourceArgs | undefined>;
     /**
      * The name of the streaming job.
      */
@@ -134,11 +134,11 @@ export interface OutputArgs {
     /**
      * Resource name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the output.
      */
-    outputName?: pulumi.Input<string>;
+    outputName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -146,13 +146,13 @@ export interface OutputArgs {
     /**
      * Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
      */
-    serialization?: pulumi.Input<types.inputs.AvroSerializationArgs | types.inputs.CsvSerializationArgs | types.inputs.JsonSerializationArgs | types.inputs.ParquetSerializationArgs>;
+    serialization?: pulumi.Input<types.inputs.AvroSerializationArgs | types.inputs.CsvSerializationArgs | types.inputs.JsonSerializationArgs | types.inputs.ParquetSerializationArgs | undefined>;
     /**
      * The size window to constrain a Stream Analytics output to.
      */
-    sizeWindow?: pulumi.Input<number>;
+    sizeWindow?: pulumi.Input<number | undefined>;
     /**
      * The time frame for filtering Stream Analytics job outputs.
      */
-    timeWindow?: pulumi.Input<string>;
+    timeWindow?: pulumi.Input<string | undefined>;
 }

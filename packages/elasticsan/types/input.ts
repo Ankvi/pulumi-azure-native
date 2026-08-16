@@ -7,7 +7,7 @@ export interface EncryptionIdentityArgs {
     /**
      * Resource identifier of the UserAssigned identity to be associated with server-side encryption on the volume group.
      */
-    encryptionUserAssignedIdentity?: pulumi.Input<string>;
+    encryptionUserAssignedIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -17,11 +17,11 @@ export interface EncryptionPropertiesArgs {
     /**
      * The identity to be used with service-side encryption at rest.
      */
-    encryptionIdentity?: pulumi.Input<EncryptionIdentityArgs>;
+    encryptionIdentity?: pulumi.Input<EncryptionIdentityArgs | undefined>;
     /**
      * Properties provided by key vault.
      */
-    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs | undefined>;
 }
 
 /**
@@ -35,7 +35,7 @@ export interface IdentityArgs {
     /**
      * Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group. The key is the ARM resource identifier of the identity.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -45,15 +45,15 @@ export interface KeyVaultPropertiesArgs {
     /**
      * The name of KeyVault key.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The Uri of KeyVault.
      */
-    keyVaultUri?: pulumi.Input<string>;
+    keyVaultUri?: pulumi.Input<string | undefined>;
     /**
      * The version of KeyVault key.
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -63,7 +63,7 @@ export interface ManagedByInfoArgs {
     /**
      * Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -73,7 +73,7 @@ export interface NetworkRuleSetArgs {
     /**
      * The list of virtual network rules.
      */
-    virtualNetworkRules?: pulumi.Input<pulumi.Input<VirtualNetworkRuleArgs>[]>;
+    virtualNetworkRules?: pulumi.Input<pulumi.Input<VirtualNetworkRuleArgs>[] | undefined>;
 }
 
 /**
@@ -83,15 +83,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -105,7 +105,7 @@ export interface SkuArgs {
     /**
      * The sku tier.
      */
-    tier?: pulumi.Input<string | enums.SkuTier>;
+    tier?: pulumi.Input<string | enums.SkuTier | undefined>;
 }
 
 /**
@@ -125,11 +125,11 @@ export interface SourceCreationDataArgs {
     /**
      * This enumerates the possible sources of a volume creation.
      */
-    createSource?: pulumi.Input<string | enums.VolumeCreateOption>;
+    createSource?: pulumi.Input<string | enums.VolumeCreateOption | undefined>;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface VirtualNetworkRuleArgs {
     /**
      * The action of virtual network rule.
      */
-    action?: pulumi.Input<string | enums.Action>;
+    action?: pulumi.Input<string | enums.Action | undefined>;
     /**
      * Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
      */

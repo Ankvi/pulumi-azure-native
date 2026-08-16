@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ClientGroup extends pulumi.CustomResource {
     /**
@@ -102,7 +102,7 @@ export class ClientGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20230601preview:ClientGroup" }, { type: "azure-native:eventgrid/v20231215preview:ClientGroup" }, { type: "azure-native:eventgrid/v20240601preview:ClientGroup" }, { type: "azure-native:eventgrid/v20241215preview:ClientGroup" }, { type: "azure-native:eventgrid/v20250215:ClientGroup" }, { type: "azure-native:eventgrid/v20250401preview:ClientGroup" }, { type: "azure-native:eventgrid/v20250715preview:ClientGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20230601preview:ClientGroup" }, { type: "azure-native:eventgrid/v20231215preview:ClientGroup" }, { type: "azure-native:eventgrid/v20240601preview:ClientGroup" }, { type: "azure-native:eventgrid/v20241215preview:ClientGroup" }, { type: "azure-native:eventgrid/v20250215:ClientGroup" }, { type: "azure-native:eventgrid/v20250401preview:ClientGroup" }, { type: "azure-native:eventgrid/v20250715preview:ClientGroup" }, { type: "azure-native:eventgrid/v20251115preview:ClientGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ClientGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -115,11 +115,11 @@ export interface ClientGroupArgs {
     /**
      * The client group name.
      */
-    clientGroupName?: pulumi.Input<string>;
+    clientGroupName?: pulumi.Input<string | undefined>;
     /**
      * Description for the Client Group resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the namespace.
      */
@@ -128,7 +128,7 @@ export interface ClientGroupArgs {
      * The grouping query for the clients.
      * Example : attributes.keyName IN ['a', 'b', 'c'].
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group within the user's subscription.
      */

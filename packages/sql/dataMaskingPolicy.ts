@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2014-04-01, 2021-11-01, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2014-04-01, 2021-11-01, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DataMaskingPolicy extends pulumi.CustomResource {
     /**
@@ -120,7 +120,7 @@ export class DataMaskingPolicy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:DataMaskingPolicy" }, { type: "azure-native:sql/v20211101:DataMaskingPolicy" }, { type: "azure-native:sql/v20220201preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20220501preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20220801preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20221101preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20230201preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20230501preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20230801:DataMaskingPolicy" }, { type: "azure-native:sql/v20230801preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20240501preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20241101preview:DataMaskingPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:DataMaskingPolicy" }, { type: "azure-native:sql/v20211101:DataMaskingPolicy" }, { type: "azure-native:sql/v20220201preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20220501preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20220801preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20221101preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20230201preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20230501preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20230801:DataMaskingPolicy" }, { type: "azure-native:sql/v20230801preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20240501preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20241101preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20250101:DataMaskingPolicy" }, { type: "azure-native:sql/v20250201preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20250801preview:DataMaskingPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DataMaskingPolicy.__pulumiType, name, resourceInputs, opts);
     }
@@ -133,7 +133,7 @@ export interface DataMaskingPolicyArgs {
     /**
      * The name of the database for which the data masking policy applies.
      */
-    dataMaskingPolicyName?: pulumi.Input<string>;
+    dataMaskingPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The state of the data masking policy.
      */
@@ -145,7 +145,7 @@ export interface DataMaskingPolicyArgs {
     /**
      * The list of the exempt principals. Specifies the semicolon-separated list of database users for which the data masking policy does not apply. The specified users receive data results without masking for all of the database queries.
      */
-    exemptPrincipals?: pulumi.Input<string>;
+    exemptPrincipals?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

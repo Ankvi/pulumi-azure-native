@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2022-03-03.
  *
- * Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class GalleryImage extends pulumi.CustomResource {
     /**
@@ -200,7 +200,7 @@ export class GalleryImage extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20180601:GalleryImage" }, { type: "azure-native:compute/v20190301:GalleryImage" }, { type: "azure-native:compute/v20190701:GalleryImage" }, { type: "azure-native:compute/v20191201:GalleryImage" }, { type: "azure-native:compute/v20200930:GalleryImage" }, { type: "azure-native:compute/v20210701:GalleryImage" }, { type: "azure-native:compute/v20211001:GalleryImage" }, { type: "azure-native:compute/v20220103:GalleryImage" }, { type: "azure-native:compute/v20220303:GalleryImage" }, { type: "azure-native:compute/v20220803:GalleryImage" }, { type: "azure-native:compute/v20230703:GalleryImage" }, { type: "azure-native:compute/v20240303:GalleryImage" }, { type: "azure-native:compute/v20250303:GalleryImage" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20180601:GalleryImage" }, { type: "azure-native:compute/v20190301:GalleryImage" }, { type: "azure-native:compute/v20190701:GalleryImage" }, { type: "azure-native:compute/v20191201:GalleryImage" }, { type: "azure-native:compute/v20200930:GalleryImage" }, { type: "azure-native:compute/v20210701:GalleryImage" }, { type: "azure-native:compute/v20211001:GalleryImage" }, { type: "azure-native:compute/v20220103:GalleryImage" }, { type: "azure-native:compute/v20220303:GalleryImage" }, { type: "azure-native:compute/v20220803:GalleryImage" }, { type: "azure-native:compute/v20230703:GalleryImage" }, { type: "azure-native:compute/v20240303:GalleryImage" }, { type: "azure-native:compute/v20250303:GalleryImage" }, { type: "azure-native:compute/v20251203:GalleryImage" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GalleryImage.__pulumiType, name, resourceInputs, opts);
     }
@@ -213,35 +213,35 @@ export interface GalleryImageArgs {
     /**
      * Optional. Must be set to true if the gallery image features are being updated.
      */
-    allowUpdateImage?: pulumi.Input<boolean>;
+    allowUpdateImage?: pulumi.Input<boolean | undefined>;
     /**
      * The architecture of the image. Applicable to OS disks only.
      */
-    architecture?: pulumi.Input<string | types.enums.Architecture>;
+    architecture?: pulumi.Input<string | types.enums.Architecture | undefined>;
     /**
      * The description of this gallery image definition resource. This property is updatable.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Describes the disallowed disk types.
      */
-    disallowed?: pulumi.Input<types.inputs.DisallowedArgs>;
+    disallowed?: pulumi.Input<types.inputs.DisallowedArgs | undefined>;
     /**
      * The end of life date of the gallery image definition. This property can be used for decommissioning purposes. This property is updatable.
      */
-    endOfLifeDate?: pulumi.Input<string>;
+    endOfLifeDate?: pulumi.Input<string | undefined>;
     /**
      * The Eula agreement for the gallery image definition.
      */
-    eula?: pulumi.Input<string>;
+    eula?: pulumi.Input<string | undefined>;
     /**
      * A list of gallery image features.
      */
-    features?: pulumi.Input<pulumi.Input<types.inputs.GalleryImageFeatureArgs>[]>;
+    features?: pulumi.Input<pulumi.Input<types.inputs.GalleryImageFeatureArgs>[] | undefined>;
     /**
      * The name of the gallery image definition to be retrieved.
      */
-    galleryImageName?: pulumi.Input<string>;
+    galleryImageName?: pulumi.Input<string | undefined>;
     /**
      * The name of the Shared Image Gallery.
      */
@@ -249,7 +249,7 @@ export interface GalleryImageArgs {
     /**
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
-    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGeneration>;
+    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGeneration | undefined>;
     /**
      * This is the gallery image definition identifier.
      */
@@ -257,7 +257,7 @@ export interface GalleryImageArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * This property allows the user to specify whether the virtual machines created under this image are 'Generalized' or 'Specialized'.
      */
@@ -269,19 +269,19 @@ export interface GalleryImageArgs {
     /**
      * The privacy statement uri.
      */
-    privacyStatementUri?: pulumi.Input<string>;
+    privacyStatementUri?: pulumi.Input<string | undefined>;
     /**
      * Describes the gallery image definition purchase plan. This is used by marketplace images.
      */
-    purchasePlan?: pulumi.Input<types.inputs.ImagePurchasePlanArgs>;
+    purchasePlan?: pulumi.Input<types.inputs.ImagePurchasePlanArgs | undefined>;
     /**
      * The properties describe the recommended machine configuration for this Image Definition. These properties are updatable.
      */
-    recommended?: pulumi.Input<types.inputs.RecommendedMachineConfigurationArgs>;
+    recommended?: pulumi.Input<types.inputs.RecommendedMachineConfigurationArgs | undefined>;
     /**
      * The release note uri.
      */
-    releaseNoteUri?: pulumi.Input<string>;
+    releaseNoteUri?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -289,5 +289,5 @@ export interface GalleryImageArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

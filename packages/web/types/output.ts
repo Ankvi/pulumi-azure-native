@@ -1,6 +1,16 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * The properties of an AI gateway.
+ */
+export interface AiGatewayPropertiesResponse {
+    /**
+     * The description of the resource.
+     */
+    aiGatewayId: string;
+}
+
+/**
  * The configuration settings of the Allowed Audiences validation flow.
  */
 export interface AllowedAudiencesValidationResponse {
@@ -72,6 +82,26 @@ export interface ApiConnectionTestLinkResponse {
      * Test link request URI
      */
     requestUri?: string;
+}
+
+/**
+ * Information about the formal API definition for the app.
+ */
+export interface ApiDefinitionInfoResponse {
+    /**
+     * The URL of the API definition.
+     */
+    url?: string;
+}
+
+/**
+ * Azure API management (APIM) configuration linked to the app.
+ */
+export interface ApiManagementConfigResponse {
+    /**
+     * APIM-Api Identifier.
+     */
+    id?: string;
 }
 
 /**
@@ -319,7 +349,7 @@ export interface AseV3NetworkingConfigurationResponse {
      */
     ftpEnabled?: boolean;
     /**
-     * Resource Id.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
@@ -333,7 +363,7 @@ export interface AseV3NetworkingConfigurationResponse {
     kind?: string;
     linuxOutboundIpAddresses: string[];
     /**
-     * Resource Name.
+     * The name of the resource
      */
     name: string;
     /**
@@ -341,7 +371,11 @@ export interface AseV3NetworkingConfigurationResponse {
      */
     remoteDebugEnabled?: boolean;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
     windowsOutboundIpAddresses: string[];
@@ -368,6 +402,84 @@ export interface AuthPlatformResponse {
 }
 
 /**
+ * Actions which to take by the auto-heal module when a rule is triggered.
+ */
+export interface AutoHealActionsResponse {
+    /**
+     * Predefined action to be taken.
+     */
+    actionType?: string;
+    /**
+     * Custom action to be taken.
+     */
+    customAction?: AutoHealCustomActionResponse;
+    /**
+     * Minimum time the process must execute
+     * before taking the action
+     */
+    minProcessExecutionTime?: string;
+}
+
+/**
+ * Custom action to be executed
+ * when an auto heal rule is triggered.
+ */
+export interface AutoHealCustomActionResponse {
+    /**
+     * Executable to be run.
+     */
+    exe?: string;
+    /**
+     * Parameters for the executable.
+     */
+    parameters?: string;
+}
+
+/**
+ * Rules that can be defined for auto-heal.
+ */
+export interface AutoHealRulesResponse {
+    /**
+     * Actions to be executed when a rule is triggered.
+     */
+    actions?: AutoHealActionsResponse;
+    /**
+     * Conditions that describe when to execute the auto-heal actions.
+     */
+    triggers?: AutoHealTriggersResponse;
+}
+
+/**
+ * Triggers for auto-heal.
+ */
+export interface AutoHealTriggersResponse {
+    /**
+     * A rule based on private bytes.
+     */
+    privateBytesInKB?: number;
+    /**
+     * A rule based on total requests.
+     */
+    requests?: RequestsBasedTriggerResponse;
+    /**
+     * A rule based on request execution time.
+     */
+    slowRequests?: SlowRequestsBasedTriggerResponse;
+    /**
+     * A rule based on multiple Slow Requests Rule with path
+     */
+    slowRequestsWithPath?: SlowRequestsBasedTriggerResponse[];
+    /**
+     * A rule based on status codes.
+     */
+    statusCodes?: StatusCodesBasedTriggerResponse[];
+    /**
+     * A rule based on status codes ranges.
+     */
+    statusCodesRange?: StatusCodesRangeBasedTriggerResponse[];
+}
+
+/**
  * The configuration settings of the Azure Active Directory login flow.
  */
 export interface AzureActiveDirectoryLoginResponse {
@@ -388,7 +500,7 @@ export interface AzureActiveDirectoryLoginResponse {
 export interface AzureActiveDirectoryRegistrationResponse {
     /**
      * The Client ID of this relying party application, known as the client_id.
-     * This setting is required for enabling OpenID Connection authentication with Azure Active Directory or 
+     * This setting is required for enabling OpenID Connection authentication with Azure Active Directory or
      * other 3rd party OpenID Connect providers.
      * More information on OpenID Connect: http://openid.net/specs/openid-connect-core-1_0.html
      */
@@ -626,7 +738,7 @@ export interface BackupItemResponse {
      */
     finishedTimeStamp: string;
     /**
-     * Resource Id.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
@@ -642,7 +754,7 @@ export interface BackupItemResponse {
      */
     log: string;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     name: string;
     /**
@@ -662,7 +774,11 @@ export interface BackupItemResponse {
      */
     storageAccountUrl: string;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
     /**
@@ -956,6 +1072,23 @@ export interface CookieExpirationResponse {
 }
 
 /**
+ * Cross-Origin Resource Sharing (CORS) settings for the app.
+ */
+export interface CorsSettingsResponse {
+    /**
+     * Gets or sets the list of origins that should be allowed to make cross-origin
+     * calls (for example: http://example.com:12345). Use "*" to allow all.
+     */
+    allowedOrigins?: string[];
+    /**
+     * Gets or sets whether CORS requests with credentials are allowed. See
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials
+     * for more details.
+     */
+    supportCredentials?: boolean;
+}
+
+/**
  * Custom API properties
  */
 export interface CustomApiPropertiesDefinitionResponse {
@@ -1022,7 +1155,7 @@ export interface CustomDnsSuffixConfigurationResponse {
      */
     dnsSuffix?: string;
     /**
-     * Resource Id.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
@@ -1034,13 +1167,17 @@ export interface CustomDnsSuffixConfigurationResponse {
      */
     kind?: string;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     name: string;
     provisioningDetails: string;
     provisioningState: string;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
 }
@@ -1166,6 +1303,14 @@ export interface DefaultAuthorizationPolicyResponse {
     allowedPrincipals?: AllowedPrincipalsResponse;
 }
 
+export interface DefaultIdentityResponse {
+    /**
+     * Type of managed service identity.
+     */
+    identityType?: string;
+    userAssignedIdentityResourceId?: string;
+}
+
 /**
  * Enabled configuration.
  */
@@ -1226,6 +1371,16 @@ export interface ErrorEntityResponse {
 }
 
 /**
+ * Routing rules in production experiments.
+ */
+export interface ExperimentsResponse {
+    /**
+     * List of ramp-up rules.
+     */
+    rampUpRules?: RampUpRuleResponse[];
+}
+
+/**
  * The expression.
  */
 export interface ExpressionResponse {
@@ -1241,6 +1396,9 @@ export interface ExpressionResponse {
      * The text.
      */
     text?: string;
+    /**
+     * Anything
+     */
     value?: any;
 }
 
@@ -1264,6 +1422,9 @@ export interface ExpressionRootResponse {
      * The text.
      */
     text?: string;
+    /**
+     * Anything
+     */
     value?: any;
 }
 
@@ -1392,6 +1553,10 @@ export interface FunctionAppConfigResponse {
      * Function app scale and concurrency settings.
      */
     scaleAndConcurrency?: FunctionsScaleAndConcurrencyResponse;
+    /**
+     * Function app site update strategy configuration.
+     */
+    siteUpdateStrategy?: FunctionsSiteUpdateStrategyResponse;
 }
 
 /**
@@ -1415,13 +1580,13 @@ export interface FunctionsDeploymentResponse {
     /**
      * Storage for deployed package used by the function app.
      */
-    storage?: FunctionsDeploymentResponseStorage;
+    storage?: FunctionsDeploymentStorageResponse;
 }
 
 /**
  * Authentication method to access the storage account for deployment.
  */
-export interface FunctionsDeploymentResponseAuthentication {
+export interface FunctionsDeploymentStorageAuthenticationResponse {
     /**
      * Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
      */
@@ -1439,11 +1604,11 @@ export interface FunctionsDeploymentResponseAuthentication {
 /**
  * Storage for deployed package used by the function app.
  */
-export interface FunctionsDeploymentResponseStorage {
+export interface FunctionsDeploymentStorageResponse {
     /**
      * Authentication method to access the storage account for deployment.
      */
-    authentication?: FunctionsDeploymentResponseAuthentication;
+    authentication?: FunctionsDeploymentStorageAuthenticationResponse;
     /**
      * Property to select Azure Storage type. Available options: blobContainer.
      */
@@ -1481,19 +1646,19 @@ export interface FunctionsScaleAndConcurrencyResponse {
      */
     instanceMemoryMB?: number;
     /**
-     * The maximum number of instances for the function app.
+     * The maximum number of on demand instances per function group.
      */
     maximumInstanceCount?: number;
     /**
      * Scale and concurrency settings for the function app triggers.
      */
-    triggers?: FunctionsScaleAndConcurrencyResponseTriggers;
+    triggers?: FunctionsScaleAndConcurrencyTriggersResponse;
 }
 
 /**
  * Scale and concurrency settings for the HTTP trigger.
  */
-export interface FunctionsScaleAndConcurrencyResponseHttp {
+export interface FunctionsScaleAndConcurrencyTriggersHttpResponse {
     /**
      * The maximum number of concurrent HTTP trigger invocations per instance.
      */
@@ -1503,11 +1668,21 @@ export interface FunctionsScaleAndConcurrencyResponseHttp {
 /**
  * Scale and concurrency settings for the function app triggers.
  */
-export interface FunctionsScaleAndConcurrencyResponseTriggers {
+export interface FunctionsScaleAndConcurrencyTriggersResponse {
     /**
      * Scale and concurrency settings for the HTTP trigger.
      */
-    http?: FunctionsScaleAndConcurrencyResponseHttp;
+    http?: FunctionsScaleAndConcurrencyTriggersHttpResponse;
+}
+
+/**
+ * Function app site update strategy configuration for deployments and site config updates.
+ */
+export interface FunctionsSiteUpdateStrategyResponse {
+    /**
+     * Function app site update strategy type. Available options: Recreate, RollingUpdate
+     */
+    type?: string;
 }
 
 /**
@@ -1633,6 +1808,25 @@ export interface GoogleResponse {
 }
 
 /**
+ * The IIS handler mappings used to define which handler processes HTTP requests with certain extension.
+ * For example, it is used to configure php-cgi.exe process to handle all HTTP requests with *.php extension.
+ */
+export interface HandlerMappingResponse {
+    /**
+     * Command-line arguments to be passed to the script processor.
+     */
+    arguments?: string;
+    /**
+     * Requests with this extension will be handled using the specified FastCGI application.
+     */
+    extension?: string;
+    /**
+     * The absolute path to the FastCGI application.
+     */
+    scriptProcessor?: string;
+}
+
+/**
  * SSL-enabled hostname.
  */
 export interface HostNameSslStateResponse {
@@ -1727,7 +1921,7 @@ export interface HttpSettingsRoutesResponse {
  */
 export interface IdentifierResponse {
     /**
-     * Resource Id.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
@@ -1735,11 +1929,15 @@ export interface IdentifierResponse {
      */
     kind?: string;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     name: string;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
     /**
@@ -1792,6 +1990,102 @@ export interface IdentityProvidersResponse {
 }
 
 /**
+ * Server farm install script configuration.
+ */
+export interface InstallScriptResponse {
+    /**
+     * Name of the install script.
+     */
+    name?: string;
+    /**
+     * Source of the install script.
+     */
+    source?: InstallScriptSourceResponse;
+}
+
+/**
+ * Object to hold install script reference.
+ */
+export interface InstallScriptSourceResponse {
+    /**
+     * Install script source URI where the install script file will be fetched from.
+     */
+    sourceUri?: string;
+    /**
+     * Type of the install script.
+     */
+    type?: string;
+}
+
+/**
+ * IP security restriction on an app.
+ */
+export interface IpSecurityRestrictionResponse {
+    /**
+     * Allow or Deny access for this IP range.
+     */
+    action?: string;
+    /**
+     * IP restriction rule description.
+     */
+    description?: string;
+    /**
+     * IP restriction rule headers.
+     * X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).
+     * The matching logic is ..
+     * - If the property is null or empty (default), all hosts(or lack of) are allowed.
+     * - A value is compared using ordinal-ignore-case (excluding port number).
+     * - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com
+     *   but not the root domain contoso.com or multi-level foo.bar.contoso.com
+     * - Unicode host names are allowed but are converted to Punycode for matching.
+     *
+     * X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).
+     * The matching logic is ..
+     * - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.
+     * - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.
+     *
+     * X-Azure-FDID and X-FD-HealthProbe.
+     * The matching logic is exact match.
+     */
+    headers?: {[key: string]: string[]};
+    /**
+     * IP address the security restriction is valid for.
+     * It can be in form of pure ipv4 address (required SubnetMask property) or
+     * CIDR notation such as ipv4/mask (leading bit match). For CIDR,
+     * SubnetMask property must not be specified.
+     */
+    ipAddress?: string;
+    /**
+     * IP restriction rule name.
+     */
+    name?: string;
+    /**
+     * Priority of IP restriction rule.
+     */
+    priority?: number;
+    /**
+     * Subnet mask for the range of IP addresses the restriction is valid for.
+     */
+    subnetMask?: string;
+    /**
+     * (internal) Subnet traffic tag
+     */
+    subnetTrafficTag?: number;
+    /**
+     * Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+     */
+    tag?: string;
+    /**
+     * Virtual network resource id
+     */
+    vnetSubnetResourceId?: string;
+    /**
+     * (internal) Vnet traffic tag
+     */
+    vnetTrafficTag?: number;
+}
+
+/**
  * The configuration settings of the checks that should be made while validating the JWT Claims.
  */
 export interface JwtClaimChecksResponse {
@@ -1803,6 +2097,20 @@ export interface JwtClaimChecksResponse {
      * The list of the allowed groups.
      */
     allowedGroups?: string[];
+}
+
+/**
+ * Object to hold key vault reference and the resolution status
+ */
+export interface KeyVaultReferenceWithStatusResponse {
+    /**
+     * Reference status of the key vault secret.
+     */
+    referenceStatus?: string;
+    /**
+     * Key vault secret URI.
+     */
+    secretUri?: string;
 }
 
 /**
@@ -2068,6 +2376,105 @@ export interface PrivateLinkConnectionStateResponse {
 }
 
 /**
+ * Push settings for the App.
+ */
+export interface PushSettingsResponse {
+    /**
+     * Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
+     */
+    dynamicTagsJson?: string;
+    /**
+     * Resource Id.
+     */
+    id: string;
+    /**
+     * Gets or sets a flag indicating whether the Push endpoint is enabled.
+     */
+    isPushEnabled: boolean;
+    /**
+     * Kind of resource.
+     */
+    kind?: string;
+    /**
+     * Resource Name.
+     */
+    name: string;
+    /**
+     * Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+     */
+    tagWhitelistJson?: string;
+    /**
+     * Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
+     * Tags can consist of alphanumeric characters and the following:
+     * '_', '@', '#', '.', ':', '-'.
+     * Validation should be performed at the PushRequestHandler.
+     */
+    tagsRequiringAuth?: string;
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+
+/**
+ * Routing rules for ramp up testing. This rule allows to redirect static traffic % to a slot or to gradually change routing % based on performance.
+ */
+export interface RampUpRuleResponse {
+    /**
+     * Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
+     */
+    actionHostName?: string;
+    /**
+     * Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
+     */
+    changeDecisionCallbackUrl?: string;
+    /**
+     * Specifies interval in minutes to reevaluate ReroutePercentage.
+     */
+    changeIntervalInMinutes?: number;
+    /**
+     * In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or
+     * <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm
+     * can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
+     */
+    changeStep?: number;
+    /**
+     * Specifies upper boundary below which ReroutePercentage will stay.
+     */
+    maxReroutePercentage?: number;
+    /**
+     * Specifies lower boundary above which ReroutePercentage will stay.
+     */
+    minReroutePercentage?: number;
+    /**
+     * Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
+     */
+    name?: string;
+    /**
+     * Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
+     */
+    reroutePercentage?: number;
+}
+
+/**
+ * Server farm registry adapter configuration.
+ */
+export interface RegistryAdapterResponse {
+    /**
+     * Key vault reference to the value that will be placed in the registry location
+     */
+    keyVaultSecretReference?: KeyVaultReferenceWithStatusResponse;
+    /**
+     * Registry key for the adapter.
+     */
+    registryKey?: string;
+    /**
+     * Type of the registry adapter.
+     */
+    type?: string;
+}
+
+/**
  * A remote private endpoint connection
  */
 export interface RemotePrivateEndpointConnectionResponse {
@@ -2100,6 +2507,20 @@ export interface RemotePrivateEndpointConnectionResponse {
      * Resource type.
      */
     type: string;
+}
+
+/**
+ * Trigger based on total requests.
+ */
+export interface RequestsBasedTriggerResponse {
+    /**
+     * Request Count.
+     */
+    count?: number;
+    /**
+     * Time interval.
+     */
+    timeInterval?: string;
 }
 
 /**
@@ -2190,6 +2611,319 @@ export interface ServerFarmInstanceResponse {
     status?: string;
 }
 
+/**
+ * Network settings for an app service plan.
+ */
+export interface ServerFarmNetworkSettingsResponse {
+    /**
+     * Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration. This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
+     */
+    virtualNetworkSubnetId?: string;
+}
+
+/**
+ * Configuration of an App Service app.
+ */
+export interface SiteConfigResponse {
+    /**
+     * Flag to use Managed Identity Creds for ACR pull
+     */
+    acrUseManagedIdentityCreds?: boolean;
+    /**
+     * If using user managed identity, the user managed identity ClientId
+     */
+    acrUserManagedIdentityID?: string;
+    /**
+     * <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
+     */
+    alwaysOn?: boolean;
+    /**
+     * Information about the formal API definition for the app.
+     */
+    apiDefinition?: ApiDefinitionInfoResponse;
+    /**
+     * Azure API management settings linked to the app.
+     */
+    apiManagementConfig?: ApiManagementConfigResponse;
+    /**
+     * App command line to launch.
+     */
+    appCommandLine?: string;
+    /**
+     * <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
+     */
+    autoHealEnabled?: boolean;
+    /**
+     * Auto Heal rules.
+     */
+    autoHealRules?: AutoHealRulesResponse;
+    /**
+     * Auto-swap slot name.
+     */
+    autoSwapSlotName?: string;
+    /**
+     * List of Azure Storage Accounts.
+     */
+    azureStorageAccounts?: {[key: string]: AzureStorageInfoValueResponse};
+    /**
+     * Cross-Origin Resource Sharing (CORS) settings.
+     */
+    cors?: CorsSettingsResponse;
+    /**
+     * Default documents.
+     */
+    defaultDocuments?: string[];
+    /**
+     * <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
+     */
+    detailedErrorLoggingEnabled?: boolean;
+    /**
+     * Document root.
+     */
+    documentRoot?: string;
+    /**
+     * Maximum number of workers that a site can scale out to.
+     * This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
+     */
+    elasticWebAppScaleLimit?: number;
+    /**
+     * This is work around for polymorphic types.
+     */
+    experiments?: ExperimentsResponse;
+    /**
+     * State of FTP / FTPS service
+     */
+    ftpsState?: string;
+    /**
+     * Maximum number of workers that a site can scale out to.
+     * This setting only applies to the Consumption and Elastic Premium Plans
+     */
+    functionAppScaleLimit?: number;
+    /**
+     * Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,
+     * the ScaleController will not monitor event sources directly, but will instead call to the
+     * runtime to get scale status.
+     */
+    functionsRuntimeScaleMonitoringEnabled?: boolean;
+    /**
+     * Handler mappings.
+     */
+    handlerMappings?: HandlerMappingResponse[];
+    /**
+     * Health check path
+     */
+    healthCheckPath?: string;
+    /**
+     * Http20Enabled: configures a web site to allow clients to connect over http2.0
+     */
+    http20Enabled?: boolean;
+    /**
+     * Http20ProxyFlag: Configures a website to allow http2.0 to pass be proxied all the way to the app. 0 = disabled, 1 = pass through all http2 traffic, 2 = pass through gRPC only.
+     */
+    http20ProxyFlag?: number;
+    /**
+     * <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
+     */
+    httpLoggingEnabled?: boolean;
+    /**
+     * IP security restrictions for main.
+     */
+    ipSecurityRestrictions?: IpSecurityRestrictionResponse[];
+    /**
+     * Default action for main access restriction if no rules are matched.
+     */
+    ipSecurityRestrictionsDefaultAction?: string;
+    /**
+     * Java container.
+     */
+    javaContainer?: string;
+    /**
+     * Java container version.
+     */
+    javaContainerVersion?: string;
+    /**
+     * Java version.
+     */
+    javaVersion?: string;
+    /**
+     * Identity to use for Key Vault Reference authentication.
+     */
+    keyVaultReferenceIdentity?: string;
+    /**
+     * Site limits.
+     */
+    limits?: SiteLimitsResponse;
+    /**
+     * Linux App Framework and version
+     */
+    linuxFxVersion?: string;
+    /**
+     * Site load balancing.
+     */
+    loadBalancing?: string;
+    /**
+     * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
+     */
+    localMySqlEnabled?: boolean;
+    /**
+     * HTTP logs directory size limit.
+     */
+    logsDirectorySizeLimit?: number;
+    /**
+     * Site MachineKey.
+     */
+    machineKey: SiteMachineKeyResponse;
+    /**
+     * Managed pipeline mode.
+     */
+    managedPipelineMode?: string;
+    /**
+     * Managed Service Identity Id
+     */
+    managedServiceIdentityId?: number;
+    /**
+     * The minimum strength TLS cipher suite allowed for an application
+     */
+    minTlsCipherSuite?: string;
+    /**
+     * MinTlsVersion: configures the minimum version of TLS required for SSL requests
+     */
+    minTlsVersion?: string;
+    /**
+     * Number of minimum instance count for a site
+     * This setting only applies to the Elastic Plans
+     */
+    minimumElasticInstanceCount?: number;
+    /**
+     * .NET Framework version.
+     */
+    netFrameworkVersion?: string;
+    /**
+     * Version of Node.js.
+     */
+    nodeVersion?: string;
+    /**
+     * Number of workers.
+     */
+    numberOfWorkers?: number;
+    /**
+     * Version of PHP.
+     */
+    phpVersion?: string;
+    /**
+     * Version of PowerShell.
+     */
+    powerShellVersion?: string;
+    /**
+     * Number of preWarmed instances.
+     * This setting only applies to the Consumption and Elastic Plans
+     */
+    preWarmedInstanceCount?: number;
+    /**
+     * Property to allow or block all public traffic.
+     */
+    publicNetworkAccess?: string;
+    /**
+     * Publishing user name.
+     */
+    publishingUsername?: string;
+    /**
+     * Push endpoint settings.
+     */
+    push?: PushSettingsResponse;
+    /**
+     * Version of Python.
+     */
+    pythonVersion?: string;
+    /**
+     * <code>true</code> if remote debugging is enabled; otherwise, <code>false</code>.
+     */
+    remoteDebuggingEnabled?: boolean;
+    /**
+     * Remote debugging version.
+     */
+    remoteDebuggingVersion?: string;
+    /**
+     * <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
+     */
+    requestTracingEnabled?: boolean;
+    /**
+     * Request tracing expiration time.
+     */
+    requestTracingExpirationTime?: string;
+    /**
+     * IP security restrictions for scm.
+     */
+    scmIpSecurityRestrictions?: IpSecurityRestrictionResponse[];
+    /**
+     * Default action for scm access restriction if no rules are matched.
+     */
+    scmIpSecurityRestrictionsDefaultAction?: string;
+    /**
+     * IP security restrictions for scm to use main.
+     */
+    scmIpSecurityRestrictionsUseMain?: boolean;
+    /**
+     * ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+     */
+    scmMinTlsVersion?: string;
+    /**
+     * SCM type.
+     */
+    scmType?: string;
+    /**
+     * Tracing options.
+     */
+    tracingOptions?: string;
+    /**
+     * <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
+     */
+    use32BitWorkerProcess?: boolean;
+    /**
+     * Virtual applications.
+     */
+    virtualApplications?: VirtualApplicationResponse[];
+    /**
+     * Virtual Network name.
+     */
+    vnetName?: string;
+    /**
+     * The number of private ports assigned to this app. These will be assigned dynamically on runtime.
+     */
+    vnetPrivatePortsCount?: number;
+    /**
+     * Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
+     */
+    vnetRouteAllEnabled?: boolean;
+    /**
+     * <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
+     */
+    webSocketsEnabled?: boolean;
+    /**
+     * Sets the time zone a site uses for generating timestamps. Compatible with Linux and Windows App Service. Setting the WEBSITE_TIME_ZONE app setting takes precedence over this config. For Linux, expects tz database values https://www.iana.org/time-zones (for a quick reference see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). For Windows, expects one of the time zones listed under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones
+     */
+    websiteTimeZone?: string;
+    /**
+     * Xenon App Framework and version
+     */
+    windowsFxVersion?: string;
+    /**
+     * Explicit Managed Service Identity Id
+     */
+    xManagedServiceIdentityId?: number;
+}
+/**
+ * siteConfigResponseProvideDefaults sets the appropriate defaults for SiteConfigResponse
+ */
+export function siteConfigResponseProvideDefaults(val: SiteConfigResponse): SiteConfigResponse {
+    return {
+        ...val,
+        http20Enabled: (val.http20Enabled) ?? true,
+        localMySqlEnabled: (val.localMySqlEnabled) ?? false,
+        netFrameworkVersion: (val.netFrameworkVersion) ?? "v4.6",
+    };
+}
+
 export interface SiteDnsConfigResponse {
     /**
      * Alternate DNS server to be used by apps. This property replicates the WEBSITE_DNS_ALT_SERVER app setting.
@@ -2215,6 +2949,46 @@ export interface SiteDnsConfigResponse {
      * List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
      */
     dnsServers?: string[];
+}
+
+/**
+ * Metric limits set on an app.
+ */
+export interface SiteLimitsResponse {
+    /**
+     * Maximum allowed disk size usage in MB.
+     */
+    maxDiskSizeInMb?: number;
+    /**
+     * Maximum allowed memory usage in MB.
+     */
+    maxMemoryInMb?: number;
+    /**
+     * Maximum allowed CPU usage percentage.
+     */
+    maxPercentageCpu?: number;
+}
+
+/**
+ * MachineKey of an app.
+ */
+export interface SiteMachineKeyResponse {
+    /**
+     * Algorithm used for decryption.
+     */
+    decryption?: string;
+    /**
+     * Decryption key.
+     */
+    decryptionKey?: string;
+    /**
+     * MachineKey validation.
+     */
+    validation?: string;
+    /**
+     * Validation key.
+     */
+    validationKey?: string;
 }
 
 /**
@@ -2297,6 +3071,28 @@ export interface SlotSwapStatusResponse {
      * The time the last successful slot swap completed.
      */
     timestampUtc: string;
+}
+
+/**
+ * Trigger based on request execution time.
+ */
+export interface SlowRequestsBasedTriggerResponse {
+    /**
+     * Request Count.
+     */
+    count?: number;
+    /**
+     * Request Path.
+     */
+    path?: string;
+    /**
+     * Time interval.
+     */
+    timeInterval?: string;
+    /**
+     * Time taken.
+     */
+    timeTaken?: string;
 }
 
 /**
@@ -2476,6 +3272,111 @@ export interface StaticSiteUserProvidedFunctionAppResponse {
 }
 
 /**
+ * Trigger based on status code.
+ */
+export interface StatusCodesBasedTriggerResponse {
+    /**
+     * Request Count.
+     */
+    count?: number;
+    /**
+     * Request Path
+     */
+    path?: string;
+    /**
+     * HTTP status code.
+     */
+    status?: number;
+    /**
+     * Request Sub Status.
+     */
+    subStatus?: number;
+    /**
+     * Time interval.
+     */
+    timeInterval?: string;
+    /**
+     * Win32 error code.
+     */
+    win32Status?: number;
+}
+
+/**
+ * Trigger based on range of status codes.
+ */
+export interface StatusCodesRangeBasedTriggerResponse {
+    /**
+     * Request Count.
+     */
+    count?: number;
+    path?: string;
+    /**
+     * HTTP status code.
+     */
+    statusCodes?: string;
+    /**
+     * Time interval.
+     */
+    timeInterval?: string;
+}
+
+/**
+ * Server farm storage mount configuration.
+ */
+export interface StorageMountResponse {
+    /**
+     * KV reference to the credentials to connect to the share.
+     */
+    credentialsKeyVaultReference?: KeyVaultReferenceWithStatusResponse;
+    /**
+     * Path on worker where storage will be mounted.
+     */
+    destinationPath?: string;
+    /**
+     * Name of the storage mount.
+     */
+    name?: string;
+    /**
+     * Source of the fileshare/storage.
+     */
+    source?: string;
+    /**
+     * Type of the storage mount.
+     */
+    type?: string;
+}
+
+/**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
+}
+
+/**
  * The configuration settings of the token store.
  */
 export interface TokenStoreResponse {
@@ -2485,7 +3386,7 @@ export interface TokenStoreResponse {
     azureBlobStorage?: BlobStorageTokenStoreResponse;
     /**
      * <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
-     *  The default is <code>false</code>.
+     * The default is <code>false</code>.
      */
     enabled?: boolean;
     /**
@@ -2545,6 +3446,42 @@ export interface UserAssignedIdentityResponse {
 }
 
 /**
+ * Virtual application in an app.
+ */
+export interface VirtualApplicationResponse {
+    /**
+     * Physical path.
+     */
+    physicalPath?: string;
+    /**
+     * <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
+     */
+    preloadEnabled?: boolean;
+    /**
+     * Virtual directories for virtual application.
+     */
+    virtualDirectories?: VirtualDirectoryResponse[];
+    /**
+     * Virtual path.
+     */
+    virtualPath?: string;
+}
+
+/**
+ * Directory for virtual application.
+ */
+export interface VirtualDirectoryResponse {
+    /**
+     * Physical path.
+     */
+    physicalPath?: string;
+    /**
+     * Path to virtual application.
+     */
+    virtualPath?: string;
+}
+
+/**
  * Specification for using a Virtual Network.
  */
 export interface VirtualNetworkProfileResponse {
@@ -2575,7 +3512,7 @@ export interface VnetRouteResponse {
      */
     endAddress?: string;
     /**
-     * Resource Id.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
@@ -2583,7 +3520,7 @@ export interface VnetRouteResponse {
      */
     kind?: string;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     name: string;
     /**
@@ -2600,7 +3537,11 @@ export interface VnetRouteResponse {
      */
     startAddress?: string;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
 }
@@ -2627,11 +3568,11 @@ export interface VolumeMountResponse {
 /**
  * Additional workflow properties.
  */
-export interface WorkflowEnvelopeResponseProperties {
+export interface WorkflowEnvelopePropertiesResponse {
     /**
      * Gets or sets the files.
      */
-    files?: {[key: string]: any};
+    files?: any;
     /**
      * Gets or sets the state of the workflow.
      */

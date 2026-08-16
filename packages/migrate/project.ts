@@ -108,19 +108,19 @@ export interface ProjectArgs {
     /**
      * For optimistic concurrency control.
      */
-    eTag?: pulumi.Input<string>;
+    eTag?: pulumi.Input<string | undefined>;
     /**
      * Azure location in which project is created.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the Azure Migrate project.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Properties of the project.
      */
-    properties?: pulumi.Input<types.inputs.ProjectPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ProjectPropertiesArgs | undefined>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */
@@ -128,5 +128,5 @@ export interface ProjectArgs {
     /**
      * Tags provided by Azure Tagging service.
      */
-    tags?: any;
+    tags?: any | undefined;
 }

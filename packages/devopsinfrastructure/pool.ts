@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-01-21. In version 2.x of the Azure Native provider, it used API version 2023-10-30-preview.
  *
- * Other available API versions: 2023-10-30-preview, 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19, 2025-09-20. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devopsinfrastructure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-10-30-preview, 2023-12-13-preview, 2024-03-26-preview, 2024-04-04-preview, 2024-10-19, 2025-09-20, 2026-04-17-preview, 2026-06-02, 2026-07-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devopsinfrastructure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Pool extends pulumi.CustomResource {
     /**
@@ -148,7 +148,7 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devopsinfrastructure/v20231030preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20231213preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20240326preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20240404preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20241019:Pool" }, { type: "azure-native:devopsinfrastructure/v20250121:Pool" }, { type: "azure-native:devopsinfrastructure/v20250920:Pool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devopsinfrastructure/v20231030preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20231213preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20240326preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20240404preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20241019:Pool" }, { type: "azure-native:devopsinfrastructure/v20250121:Pool" }, { type: "azure-native:devopsinfrastructure/v20250920:Pool" }, { type: "azure-native:devopsinfrastructure/v20260417preview:Pool" }, { type: "azure-native:devopsinfrastructure/v20260602:Pool" }, { type: "azure-native:devopsinfrastructure/v20260703preview:Pool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Pool.__pulumiType, name, resourceInputs, opts);
     }
@@ -173,11 +173,11 @@ export interface PoolArgs {
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Defines how many resources can there be created at any given time.
      */
@@ -189,11 +189,11 @@ export interface PoolArgs {
     /**
      * Name of the pool. It needs to be globally unique.
      */
-    poolName?: pulumi.Input<string>;
+    poolName?: pulumi.Input<string | undefined>;
     /**
      * The status of the current operation.
      */
-    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -201,5 +201,5 @@ export interface PoolArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -5,7 +5,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WorkloadClassifier extends pulumi.CustomResource {
     /**
@@ -123,7 +123,7 @@ export class WorkloadClassifier extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20190601preview:WorkloadClassifier" }, { type: "azure-native:sql/v20200202preview:WorkloadClassifier" }, { type: "azure-native:sql/v20200801preview:WorkloadClassifier" }, { type: "azure-native:sql/v20201101preview:WorkloadClassifier" }, { type: "azure-native:sql/v20210201preview:WorkloadClassifier" }, { type: "azure-native:sql/v20210501preview:WorkloadClassifier" }, { type: "azure-native:sql/v20210801preview:WorkloadClassifier" }, { type: "azure-native:sql/v20211101:WorkloadClassifier" }, { type: "azure-native:sql/v20211101preview:WorkloadClassifier" }, { type: "azure-native:sql/v20220201preview:WorkloadClassifier" }, { type: "azure-native:sql/v20220501preview:WorkloadClassifier" }, { type: "azure-native:sql/v20220801preview:WorkloadClassifier" }, { type: "azure-native:sql/v20221101preview:WorkloadClassifier" }, { type: "azure-native:sql/v20230201preview:WorkloadClassifier" }, { type: "azure-native:sql/v20230501preview:WorkloadClassifier" }, { type: "azure-native:sql/v20230801:WorkloadClassifier" }, { type: "azure-native:sql/v20230801preview:WorkloadClassifier" }, { type: "azure-native:sql/v20240501preview:WorkloadClassifier" }, { type: "azure-native:sql/v20241101preview:WorkloadClassifier" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20190601preview:WorkloadClassifier" }, { type: "azure-native:sql/v20200202preview:WorkloadClassifier" }, { type: "azure-native:sql/v20200801preview:WorkloadClassifier" }, { type: "azure-native:sql/v20201101preview:WorkloadClassifier" }, { type: "azure-native:sql/v20210201preview:WorkloadClassifier" }, { type: "azure-native:sql/v20210501preview:WorkloadClassifier" }, { type: "azure-native:sql/v20210801preview:WorkloadClassifier" }, { type: "azure-native:sql/v20211101:WorkloadClassifier" }, { type: "azure-native:sql/v20211101preview:WorkloadClassifier" }, { type: "azure-native:sql/v20220201preview:WorkloadClassifier" }, { type: "azure-native:sql/v20220501preview:WorkloadClassifier" }, { type: "azure-native:sql/v20220801preview:WorkloadClassifier" }, { type: "azure-native:sql/v20221101preview:WorkloadClassifier" }, { type: "azure-native:sql/v20230201preview:WorkloadClassifier" }, { type: "azure-native:sql/v20230501preview:WorkloadClassifier" }, { type: "azure-native:sql/v20230801:WorkloadClassifier" }, { type: "azure-native:sql/v20230801preview:WorkloadClassifier" }, { type: "azure-native:sql/v20240501preview:WorkloadClassifier" }, { type: "azure-native:sql/v20241101preview:WorkloadClassifier" }, { type: "azure-native:sql/v20250101:WorkloadClassifier" }, { type: "azure-native:sql/v20250201preview:WorkloadClassifier" }, { type: "azure-native:sql/v20250801preview:WorkloadClassifier" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkloadClassifier.__pulumiType, name, resourceInputs, opts);
     }
@@ -136,7 +136,7 @@ export interface WorkloadClassifierArgs {
     /**
      * The workload classifier context.
      */
-    context?: pulumi.Input<string>;
+    context?: pulumi.Input<string | undefined>;
     /**
      * The name of the database.
      */
@@ -144,15 +144,15 @@ export interface WorkloadClassifierArgs {
     /**
      * The workload classifier end time for classification.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The workload classifier importance.
      */
-    importance?: pulumi.Input<string>;
+    importance?: pulumi.Input<string | undefined>;
     /**
      * The workload classifier label.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The workload classifier member name.
      */
@@ -168,11 +168,11 @@ export interface WorkloadClassifierArgs {
     /**
      * The workload classifier start time for classification.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the workload classifier to create/update.
      */
-    workloadClassifierName?: pulumi.Input<string>;
+    workloadClassifierName?: pulumi.Input<string | undefined>;
     /**
      * The name of the workload group from which to receive the classifier from.
      */

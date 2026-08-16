@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-08-01.
  *
- * Other available API versions: 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-06-01-preview, 2026-01-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class BackupsAutomaticAndOnDemand extends pulumi.CustomResource {
     /**
@@ -101,7 +101,7 @@ export class BackupsAutomaticAndOnDemand extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20240301preview:Backup" }, { type: "azure-native:dbforpostgresql/v20240301preview:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql/v20240801:Backup" }, { type: "azure-native:dbforpostgresql/v20240801:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql/v20241101preview:Backup" }, { type: "azure-native:dbforpostgresql/v20241101preview:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql/v20250101preview:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql/v20250601preview:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql/v20250801:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql/v20260101preview:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql:Backup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20240301preview:Backup" }, { type: "azure-native:dbforpostgresql/v20240301preview:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql/v20240801:Backup" }, { type: "azure-native:dbforpostgresql/v20240801:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql/v20241101preview:Backup" }, { type: "azure-native:dbforpostgresql/v20241101preview:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql/v20250101preview:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql/v20250601preview:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql/v20250801:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql/v20260101preview:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql/v20260401preview:BackupsAutomaticAndOnDemand" }, { type: "azure-native:dbforpostgresql:Backup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(BackupsAutomaticAndOnDemand.__pulumiType, name, resourceInputs, opts);
     }
@@ -114,7 +114,7 @@ export interface BackupsAutomaticAndOnDemandArgs {
     /**
      * Name of the backup.
      */
-    backupName?: pulumi.Input<string>;
+    backupName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -46,32 +46,6 @@ export interface AzStackHCIFabricModelCustomPropertiesArgs {
 }
 
 /**
- * Private endpoint connection details at member level.
- */
-export interface ConnectionDetailsArgs {
-    /**
-     * Gets or sets group id.
-     */
-    groupId?: pulumi.Input<string>;
-    /**
-     * Gets or sets id.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Gets or sets link identifier.
-     */
-    linkIdentifier?: pulumi.Input<string>;
-    /**
-     * Gets or sets member name.
-     */
-    memberName?: pulumi.Input<string>;
-    /**
-     * Gets or sets private IP address.
-     */
-    privateIpAddress?: pulumi.Input<string>;
-}
-
-/**
  * Dra model properties.
  */
 export interface DraModelPropertiesArgs {
@@ -134,36 +108,6 @@ export interface FabricModelPropertiesArgs {
 }
 
 /**
- * Represents of a connection's group information.
- */
-export interface GroupConnectivityInformationArgs {
-    /**
-     * Gets or sets customer visible FQDNs.
-     */
-    customerVisibleFqdns?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Gets or sets group id.
-     */
-    groupId?: pulumi.Input<string>;
-    /**
-     * Gets or sets Internal Fqdn.
-     */
-    internalFqdn?: pulumi.Input<string>;
-    /**
-     * Gets or sets member name.
-     */
-    memberName?: pulumi.Input<string>;
-    /**
-     * Gets or sets the private link service arm region.
-     */
-    privateLinkServiceArmRegion?: pulumi.Input<string>;
-    /**
-     * Gets or sets the redirect map id.
-     */
-    redirectMapId?: pulumi.Input<string>;
-}
-
-/**
  * HyperV migrate fabric model custom properties.
  */
 export interface HyperVMigrateFabricModelCustomPropertiesArgs {
@@ -202,7 +146,7 @@ export interface HyperVToAzStackHCIDiskInputArgs {
      * Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
      * disk.
      */
-    isDynamic?: pulumi.Input<boolean>;
+    isDynamic?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets a value indicating whether disk is os disk.
      */
@@ -210,7 +154,7 @@ export interface HyperVToAzStackHCIDiskInputArgs {
     /**
      * Gets or sets the target storage account ARM Id.
      */
-    storageContainerId?: pulumi.Input<string>;
+    storageContainerId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -274,7 +218,7 @@ export interface HyperVToAzStackHCIProtectedItemModelCustomPropertiesArgs {
     /**
      * Protected item dynamic memory config.
      */
-    dynamicMemoryConfig?: pulumi.Input<ProtectedItemDynamicMemoryConfigArgs>;
+    dynamicMemoryConfig?: pulumi.Input<ProtectedItemDynamicMemoryConfigArgs | undefined>;
     /**
      * Gets or sets the ARM Id of the discovered machine.
      */
@@ -291,7 +235,7 @@ export interface HyperVToAzStackHCIProtectedItemModelCustomPropertiesArgs {
     /**
      * Gets or sets a value indicating whether memory is dynamical.
      */
-    isDynamicRam?: pulumi.Input<boolean>;
+    isDynamicRam?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the list of VM NIC to replicate.
      */
@@ -315,7 +259,7 @@ export interface HyperVToAzStackHCIProtectedItemModelCustomPropertiesArgs {
     /**
      * Gets or sets the target CPU cores.
      */
-    targetCpuCores?: pulumi.Input<number>;
+    targetCpuCores?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the target DRA name.
      */
@@ -327,11 +271,11 @@ export interface HyperVToAzStackHCIProtectedItemModelCustomPropertiesArgs {
     /**
      * Gets or sets the target memory in mega-bytes.
      */
-    targetMemoryInMegaBytes?: pulumi.Input<number>;
+    targetMemoryInMegaBytes?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the target network Id within AzStackHCI Cluster.
      */
-    targetNetworkId?: pulumi.Input<string>;
+    targetNetworkId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target resource group ARM Id.
      */
@@ -339,11 +283,11 @@ export interface HyperVToAzStackHCIProtectedItemModelCustomPropertiesArgs {
     /**
      * Gets or sets the target VM display name.
      */
-    targetVmName?: pulumi.Input<string>;
+    targetVmName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target test network Id within AzStackHCI Cluster.
      */
-    testNetworkId?: pulumi.Input<string>;
+    testNetworkId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -366,11 +310,11 @@ export interface HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesArgs
     /**
      * Gets or sets the storage account Id.
      */
-    storageAccountId?: pulumi.Input<string>;
+    storageAccountId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the Sas Secret of storage account.
      */
-    storageAccountSasSecretName?: pulumi.Input<string>;
+    storageAccountSasSecretName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -416,17 +360,7 @@ export interface PrivateEndpointArgs {
     /**
      * Gets or sets the id.
      */
-    id?: pulumi.Input<string>;
-}
-
-/**
- * Represents private endpoint connection proxy request.
- */
-export interface PrivateEndpointConnectionProxyPropertiesArgs {
-    /**
-     * Represent remote private endpoint information for the private endpoint connection proxy.
-     */
-    remotePrivateEndpoint?: pulumi.Input<RemotePrivateEndpointArgs>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -436,29 +370,11 @@ export interface PrivateEndpointConnectionResponsePropertiesArgs {
     /**
      * Represent private Endpoint network resource that is linked to the Private Endpoint connection.
      */
-    privateEndpoint?: pulumi.Input<PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<PrivateEndpointArgs | undefined>;
     /**
      * Represents Private link service connection state.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs>;
-}
-
-/**
- * Represents of an NRP private link service connection.
- */
-export interface PrivateLinkServiceConnectionArgs {
-    /**
-     * Gets or sets group ids.
-     */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Gets or sets private link service connection name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Gets or sets the request message for the private link service connection.
-     */
-    requestMessage?: pulumi.Input<string>;
+    privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs | undefined>;
 }
 
 /**
@@ -468,37 +384,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * Gets or sets actions required.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the status.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointConnectionStatus>;
-}
-
-/**
- * Represents NRP private link service proxy.
- */
-export interface PrivateLinkServiceProxyArgs {
-    /**
-     * Gets or sets group connectivity information.
-     */
-    groupConnectivityInformation?: pulumi.Input<pulumi.Input<GroupConnectivityInformationArgs>[]>;
-    /**
-     * Gets or sets private link service proxy id.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Represent remote private endpoint connection.
-     */
-    remotePrivateEndpointConnection?: pulumi.Input<RemotePrivateEndpointConnectionArgs>;
-    /**
-     * Represents Private link service connection state.
-     */
-    remotePrivateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs>;
+    status?: pulumi.Input<string | enums.PrivateEndpointConnectionStatus | undefined>;
 }
 
 /**
@@ -535,42 +429,6 @@ export interface ProtectedItemModelPropertiesArgs {
      * Gets or sets the replication extension name.
      */
     replicationExtensionName: pulumi.Input<string>;
-}
-
-/**
- * Represent remote private endpoint information for the private endpoint connection proxy.
- */
-export interface RemotePrivateEndpointArgs {
-    /**
-     * Gets or sets the list of Connection Details. This is the connection details for private endpoint.
-     */
-    connectionDetails?: pulumi.Input<pulumi.Input<ConnectionDetailsArgs>[]>;
-    /**
-     * Gets or sets private link service proxy id.
-     */
-    id: pulumi.Input<string>;
-    /**
-     * Gets or sets the list of Manual Private Link Service Connections and gets populated for Manual approval flow.
-     */
-    manualPrivateLinkServiceConnections?: pulumi.Input<pulumi.Input<PrivateLinkServiceConnectionArgs>[]>;
-    /**
-     * Gets or sets the list of Private Link Service Connections and gets populated for Auto approval flow.
-     */
-    privateLinkServiceConnections?: pulumi.Input<pulumi.Input<PrivateLinkServiceConnectionArgs>[]>;
-    /**
-     * Gets or sets the list of private link service proxies.
-     */
-    privateLinkServiceProxies?: pulumi.Input<pulumi.Input<PrivateLinkServiceProxyArgs>[]>;
-}
-
-/**
- * Represent remote private endpoint connection.
- */
-export interface RemotePrivateEndpointConnectionArgs {
-    /**
-     * Gets or sets the remote private endpoint connection id.
-     */
-    id?: pulumi.Input<string>;
 }
 
 /**
@@ -674,7 +532,7 @@ export interface VMwareToAzStackHCIDiskInputArgs {
      * Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
      * disk.
      */
-    isDynamic?: pulumi.Input<boolean>;
+    isDynamic?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets a value indicating whether disk is os disk.
      */
@@ -682,7 +540,7 @@ export interface VMwareToAzStackHCIDiskInputArgs {
     /**
      * Gets or sets the target storage account ARM Id.
      */
-    storageContainerId?: pulumi.Input<string>;
+    storageContainerId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -750,7 +608,7 @@ export interface VMwareToAzStackHCIProtectedItemModelCustomPropertiesArgs {
     /**
      * Protected item dynamic memory config.
      */
-    dynamicMemoryConfig?: pulumi.Input<ProtectedItemDynamicMemoryConfigArgs>;
+    dynamicMemoryConfig?: pulumi.Input<ProtectedItemDynamicMemoryConfigArgs | undefined>;
     /**
      * Gets or sets the ARM Id of the discovered machine.
      */
@@ -767,7 +625,7 @@ export interface VMwareToAzStackHCIProtectedItemModelCustomPropertiesArgs {
     /**
      * Gets or sets a value indicating whether memory is dynamical.
      */
-    isDynamicRam?: pulumi.Input<boolean>;
+    isDynamicRam?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the list of VM NIC to replicate.
      */
@@ -775,7 +633,7 @@ export interface VMwareToAzStackHCIProtectedItemModelCustomPropertiesArgs {
     /**
      * Gets or sets a value indicating whether auto resync is to be done.
      */
-    performAutoResync?: pulumi.Input<boolean>;
+    performAutoResync?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the run as account Id.
      */
@@ -795,7 +653,7 @@ export interface VMwareToAzStackHCIProtectedItemModelCustomPropertiesArgs {
     /**
      * Gets or sets the target CPU cores.
      */
-    targetCpuCores?: pulumi.Input<number>;
+    targetCpuCores?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the target DRA name.
      */
@@ -807,11 +665,11 @@ export interface VMwareToAzStackHCIProtectedItemModelCustomPropertiesArgs {
     /**
      * Gets or sets the target memory in mega-bytes.
      */
-    targetMemoryInMegaBytes?: pulumi.Input<number>;
+    targetMemoryInMegaBytes?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the target network Id within AzStackHCI Cluster.
      */
-    targetNetworkId?: pulumi.Input<string>;
+    targetNetworkId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target resource group ARM Id.
      */
@@ -819,11 +677,11 @@ export interface VMwareToAzStackHCIProtectedItemModelCustomPropertiesArgs {
     /**
      * Gets or sets the target VM display name.
      */
-    targetVmName?: pulumi.Input<string>;
+    targetVmName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target test network Id within AzStackHCI Cluster.
      */
-    testNetworkId?: pulumi.Input<string>;
+    testNetworkId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -842,11 +700,11 @@ export interface VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesArgs
     /**
      * Gets or sets the storage account Id.
      */
-    storageAccountId?: pulumi.Input<string>;
+    storageAccountId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the Sas Secret of storage account.
      */
-    storageAccountSasSecretName?: pulumi.Input<string>;
+    storageAccountSasSecretName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the ARM Id of the source VMware fabric.
      */
@@ -860,5 +718,5 @@ export interface VaultModelPropertiesArgs {
     /**
      * Gets or sets the type of vault.
      */
-    vaultType?: pulumi.Input<string | enums.ReplicationVaultType>;
+    vaultType?: pulumi.Input<string | enums.ReplicationVaultType | undefined>;
 }

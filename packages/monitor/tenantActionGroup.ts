@@ -54,11 +54,11 @@ export class TenantActionGroup extends pulumi.CustomResource {
      */
     declare public readonly groupShortName: pulumi.Output<string>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string>;
     /**
-     * Azure resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -66,11 +66,15 @@ export class TenantActionGroup extends pulumi.CustomResource {
      */
     declare public readonly smsReceivers: pulumi.Output<types.outputs.SmsReceiverResponse[] | undefined>;
     /**
-     * Resource tags
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Azure resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -80,7 +84,7 @@ export class TenantActionGroup extends pulumi.CustomResource {
     /**
      * The list of webhook receivers that are part of this tenant action group.
      */
-    declare public readonly webhookReceivers: pulumi.Output<types.outputs.WebhookReceiverResponseV1[] | undefined>;
+    declare public readonly webhookReceivers: pulumi.Output<types.outputs.WebhookReceiverTenantActionGroupResponse[] | undefined>;
 
     /**
      * Create a TenantActionGroup resource with the given unique name, arguments, and options.
@@ -115,6 +119,7 @@ export class TenantActionGroup extends pulumi.CustomResource {
             resourceInputs["webhookReceivers"] = args?.webhookReceivers;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -125,6 +130,7 @@ export class TenantActionGroup extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["smsReceivers"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["voiceReceivers"] = undefined /*out*/;
@@ -144,11 +150,11 @@ export interface TenantActionGroupArgs {
     /**
      * The list of AzureAppPush receivers that are part of this tenant action group.
      */
-    azureAppPushReceivers?: pulumi.Input<pulumi.Input<types.inputs.AzureAppPushReceiverArgs>[]>;
+    azureAppPushReceivers?: pulumi.Input<pulumi.Input<types.inputs.MicrosoftCommonAzureAppPushReceiverArgs>[] | undefined>;
     /**
      * The list of email receivers that are part of this tenant action group.
      */
-    emailReceivers?: pulumi.Input<pulumi.Input<types.inputs.EmailReceiverArgs>[]>;
+    emailReceivers?: pulumi.Input<pulumi.Input<types.inputs.MicrosoftCommonEmailReceiverArgs>[] | undefined>;
     /**
      * Indicates whether this tenant action group is enabled. If a tenant action group is not enabled, then none of its receivers will receive communications.
      */
@@ -158,31 +164,31 @@ export interface TenantActionGroupArgs {
      */
     groupShortName: pulumi.Input<string>;
     /**
-     * Resource location
+     * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
-     * The management group id.
+     * The management group ID.
      */
     managementGroupId: pulumi.Input<string>;
     /**
      * The list of SMS receivers that are part of this tenant action group.
      */
-    smsReceivers?: pulumi.Input<pulumi.Input<types.inputs.SmsReceiverArgs>[]>;
+    smsReceivers?: pulumi.Input<pulumi.Input<types.inputs.MicrosoftCommonSmsReceiverArgs>[] | undefined>;
     /**
-     * Resource tags
+     * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the action group.
      */
-    tenantActionGroupName?: pulumi.Input<string>;
+    tenantActionGroupName?: pulumi.Input<string | undefined>;
     /**
      * The list of voice receivers that are part of this tenant action group.
      */
-    voiceReceivers?: pulumi.Input<pulumi.Input<types.inputs.VoiceReceiverArgs>[]>;
+    voiceReceivers?: pulumi.Input<pulumi.Input<types.inputs.MicrosoftCommonVoiceReceiverArgs>[] | undefined>;
     /**
      * The list of webhook receivers that are part of this tenant action group.
      */
-    webhookReceivers?: pulumi.Input<pulumi.Input<types.inputs.WebhookReceiverArgs>[]>;
+    webhookReceivers?: pulumi.Input<pulumi.Input<types.inputs.WebhookReceiverArgs>[] | undefined>;
 }

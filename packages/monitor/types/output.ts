@@ -111,9 +111,9 @@ export interface AlertRuleAllOfConditionResponse {
  * Each condition can be of one of the following types:
  * __Important__: Each type has its unique subset of properties. Properties from different types CANNOT exist in one condition.
  *    * __Leaf Condition -__ must contain 'field' and either 'equals' or 'containsAny'.
- *   _Please note, 'anyOf' should __not__ be set in a Leaf Condition._
+ *        _Please note, 'anyOf' should __not__ be set in a Leaf Condition._
  *   * __AnyOf Condition -__ must contain __only__ 'anyOf' (which is an array of Leaf Conditions).
- *   _Please note, 'field', 'equals' and 'containsAny' should __not__ be set in an AnyOf Condition._
+ *       _Please note, 'field', 'equals' and 'containsAny' should __not__ be set in an AnyOf Condition._
  */
 export interface AlertRuleAnyOfOrLeafConditionResponse {
     /**
@@ -153,6 +153,20 @@ export interface AlertRuleLeafConditionResponse {
      * The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
      */
     field?: string;
+}
+
+/**
+ * Represents an Azure Monitor Workspace (AMW) account used for emitting metrics.
+ */
+export interface AmwAccountResponse {
+    /**
+     * The ARM resource ID of the managed identity with access to the source account.
+     */
+    identity: string;
+    /**
+     * The ARM resource ID of the account where metrics are emitted.
+     */
+    resourceId: string;
 }
 
 /**
@@ -242,7 +256,7 @@ export interface AutomationRunbookReceiverResponse {
      */
     isGlobalRunbook: boolean;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: string;
     /**
@@ -381,7 +395,7 @@ export interface AzureAppPushReceiverResponse {
      */
     emailAddress: string;
     /**
-     * The name of the Azure mobile app push receiver. Names must be unique across all receivers within a tenant action group.
+     * The name of the Azure mobile app push receiver. Names must be unique across all receivers within an action group.
      */
     name: string;
 }
@@ -403,7 +417,7 @@ export interface AzureFunctionReceiverResponse {
      */
     httpTriggerUrl: string;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: string;
     /**
@@ -521,20 +535,6 @@ export interface AzureMonitorWorkspaceSignalGroupResponse {
 }
 
 /**
- * The complex type of the extended location.
- */
-export interface AzureResourceManagerCommonTypesExtendedLocationResponse {
-    /**
-     * The name of the extended location.
-     */
-    name: string;
-    /**
-     * The type of the extended location.
-     */
-    type: string;
-}
-
-/**
  * A grouping of signal assignments for an Azure resource
  */
 export interface AzureResourceSignalGroupResponse {
@@ -550,6 +550,34 @@ export interface AzureResourceSignalGroupResponse {
      * Signal definitions which are assigned to this signal group. All assignments are combined with an OR operator.
      */
     signalAssignments?: SignalAssignmentResponse[];
+}
+
+/**
+ * Defines the properties of a baseline.
+ */
+export interface BaselinePropertiesResponse {
+    /**
+     * Defines the baseline target, which is compared against the SLI value to determine compliance.
+     */
+    baseline: BaselineResponse;
+}
+
+/**
+ * Defines the target parameters for a Slo baseline.
+ */
+export interface BaselineResponse {
+    /**
+     * Specifies how evaluation is calculated, either based on calendar days or a rolling window.
+     */
+    evaluationCalculationType: string;
+    /**
+     * The time frame (in days) used for SLI evaluation.
+     */
+    evaluationPeriodDays: number;
+    /**
+     * The user-defined or Azure-defined target value used for comparison against the SLI value.
+     */
+    value: number;
 }
 
 /**
@@ -629,6 +657,30 @@ export function concurrencyConfigurationResponseProvideDefaults(val: Concurrency
 }
 
 /**
+ * The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
+ */
+export interface ConditionFailingPeriodsResponse {
+    /**
+     * The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
+     */
+    minFailingPeriodsToAlert?: number;
+    /**
+     * The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
+     */
+    numberOfEvaluationPeriods?: number;
+}
+/**
+ * conditionFailingPeriodsResponseProvideDefaults sets the appropriate defaults for ConditionFailingPeriodsResponse
+ */
+export function conditionFailingPeriodsResponseProvideDefaults(val: ConditionFailingPeriodsResponse): ConditionFailingPeriodsResponse {
+    return {
+        ...val,
+        minFailingPeriodsToAlert: (val.minFailingPeriodsToAlert) ?? 1,
+        numberOfEvaluationPeriods: (val.numberOfEvaluationPeriods) ?? 1,
+    };
+}
+
+/**
  * A condition of the scheduled query rule.
  */
 export interface ConditionResponse {
@@ -647,7 +699,7 @@ export interface ConditionResponse {
     /**
      * The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
      */
-    failingPeriods?: ConditionResponseFailingPeriods;
+    failingPeriods?: ConditionFailingPeriodsResponse;
     /**
      * Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format). Relevant only for dynamic threshold rules of the kind LogAlert.
      */
@@ -691,32 +743,34 @@ export interface ConditionResponse {
 export function conditionResponseProvideDefaults(val: ConditionResponse): ConditionResponse {
     return {
         ...val,
-        failingPeriods: (val.failingPeriods ? conditionResponseFailingPeriodsProvideDefaults(val.failingPeriods) : undefined),
+        failingPeriods: (val.failingPeriods ? conditionFailingPeriodsResponseProvideDefaults(val.failingPeriods) : undefined),
     };
 }
 
 /**
- * The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
+ * Represents a filtering condition.
  */
-export interface ConditionResponseFailingPeriods {
+export interface ConditionSliResponse {
     /**
-     * The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
+     * Dimension name used in filtering.
      */
-    minFailingPeriodsToAlert?: number;
+    dimensionName?: string;
     /**
-     * The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
+     * Operator used in the filtering condition.
      */
-    numberOfEvaluationPeriods?: number;
-}
-/**
- * conditionResponseFailingPeriodsProvideDefaults sets the appropriate defaults for ConditionResponseFailingPeriods
- */
-export function conditionResponseFailingPeriodsProvideDefaults(val: ConditionResponseFailingPeriods): ConditionResponseFailingPeriods {
-    return {
-        ...val,
-        minFailingPeriodsToAlert: (val.minFailingPeriodsToAlert) ?? 1,
-        numberOfEvaluationPeriods: (val.numberOfEvaluationPeriods) ?? 1,
-    };
+    operator: string;
+    /**
+     * Defines the sampling type.
+     */
+    samplingType?: string;
+    /**
+     * Scalar function applied for filtering.
+     */
+    scalarFunction?: string;
+    /**
+     * Value used in filtering. For most operators (eq, ne, lt, lte, gt, gte, startswith, notstartswith, contains, notcontains) this is a single value (for example "GetContosoUsers"). For the `in` and `notin` operators, multiple values must be joined by the delimiter `^^` (for example "east^^west^^north").
+     */
+    value: string;
 }
 
 /**
@@ -936,7 +990,7 @@ export interface DataCollectionRuleResourceResponseSystemData {
 }
 
 /**
- * The specification of data sources. 
+ * The specification of data sources.
  * This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
  */
 export interface DataCollectionRuleResponseDataSources {
@@ -1069,7 +1123,7 @@ export interface DataImportSourcesResponseEventHub {
      */
     consumerGroup?: string;
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -1121,7 +1175,7 @@ export function dependenciesSignalGroupResponseProvideDefaults(val: Dependencies
  */
 export interface DestinationsSpecResponseAzureMonitorMetrics {
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -1140,7 +1194,7 @@ export interface DiagnosticSettingsCategoryResourceResponse {
      */
     categoryType?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     id: string;
     /**
@@ -1148,13 +1202,57 @@ export interface DiagnosticSettingsCategoryResourceResponse {
      */
     name: string;
     /**
-     * The system metadata related to this resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     systemData: SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
+}
+
+/**
+ * Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
+ */
+export interface DiagnosticsLogSettingsResponse {
+    /**
+     * Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+     */
+    category?: string;
+    /**
+     * Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+     */
+    categoryGroup?: string;
+    /**
+     * a value indicating whether this log is enabled.
+     */
+    enabled: boolean;
+    /**
+     * the retention policy for this log.
+     */
+    retentionPolicy?: RetentionPolicyResponse;
+}
+
+/**
+ * Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
+ */
+export interface DiagnosticsMetricSettingsResponse {
+    /**
+     * Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
+     */
+    category?: string;
+    /**
+     * a value indicating whether this category is enabled.
+     */
+    enabled: boolean;
+    /**
+     * the retention policy for this category.
+     */
+    retentionPolicy?: RetentionPolicyResponse;
+    /**
+     * the timegrain of the metric in ISO8601 format.
+     */
+    timeGrain?: string;
 }
 
 /**
@@ -1313,7 +1411,7 @@ export interface EmailReceiverResponse {
      */
     emailAddress: string;
     /**
-     * The name of the email receiver. Names must be unique across all receivers within a tenant action group.
+     * The name of the email receiver. Names must be unique across all receivers within an action group.
      */
     name: string;
     /**
@@ -1456,7 +1554,7 @@ export interface EventHubDestinationResponse {
      */
     eventHubResourceId?: string;
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -1468,7 +1566,7 @@ export interface EventHubDirectDestinationResponse {
      */
     eventHubResourceId?: string;
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -1487,7 +1585,7 @@ export interface EventHubReceiverResponse {
      */
     eventHubNameSpace: string;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: string;
     /**
@@ -1515,6 +1613,20 @@ export function eventHubReceiverResponseProvideDefaults(val: EventHubReceiverRes
         ...val,
         useCommonAlertSchema: (val.useCommonAlertSchema) ?? false,
     };
+}
+
+/**
+ * Represents the current execution state of an SLI.
+ */
+export interface ExecutionStateResponse {
+    /**
+     * A descriptive message related to the execution state.
+     */
+    message?: string;
+    /**
+     * The execution state value.
+     */
+    state: string;
 }
 
 /**
@@ -1549,6 +1661,20 @@ export function exporterResponseProvideDefaults(val: ExporterResponse): Exporter
 }
 
 /**
+ * The complex type of the extended location.
+ */
+export interface ExtendedLocationResponse {
+    /**
+     * The name of the extended location.
+     */
+    name: string;
+    /**
+     * The type of the extended location.
+     */
+    type: string;
+}
+
+/**
  * Definition of which data will be collected from a separate VM extension that integrates with the Azure Monitor Agent.
  * Collected from either Windows and Linux machines, depending on which extension is defined.
  */
@@ -1566,7 +1692,7 @@ export interface ExtensionDataSourceResponse {
      */
     inputDataSources?: string[];
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -1640,7 +1766,7 @@ export interface IisLogsDataSourceResponse {
      */
     logDirectories?: string[];
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -1876,7 +2002,7 @@ export interface LocationSpecResponse {
  */
 export interface LogAnalyticsDestinationResponse {
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -1991,7 +2117,7 @@ export interface LogFilesDataSourceResponse {
      */
     format: string;
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -2017,28 +2143,6 @@ export interface LogFilesDataSourceResponseSettings {
 }
 
 /**
- * Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
- */
-export interface LogSettingsResponse {
-    /**
-     * Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-     */
-    category?: string;
-    /**
-     * Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-     */
-    categoryGroup?: string;
-    /**
-     * a value indicating whether this log is enabled.
-     */
-    enabled: boolean;
-    /**
-     * the retention policy for this log.
-     */
-    retentionPolicy?: RetentionPolicyResponse;
-}
-
-/**
  * A logic app receiver.
  */
 export interface LogicAppReceiverResponse {
@@ -2047,7 +2151,7 @@ export interface LogicAppReceiverResponse {
      */
     callbackUrl: string;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: string;
     /**
@@ -2155,7 +2259,7 @@ export interface MetricAlertActionResponse {
  */
 export interface MetricAlertMultipleResourceMultipleMetricCriteriaResponse {
     /**
-     * the list of multiple metric criteria for this 'all of' operation. 
+     * the list of multiple metric criteria for this 'all of' operation.
      */
     allOf?: (DynamicMetricCriteriaResponse | MetricCriteriaResponse)[];
     /**
@@ -2170,7 +2274,7 @@ export interface MetricAlertMultipleResourceMultipleMetricCriteriaResponse {
  */
 export interface MetricAlertSingleResourceMultipleMetricCriteriaResponse {
     /**
-     * The list of metric criteria for this 'all of' operation. 
+     * The list of metric criteria for this 'all of' operation.
      */
     allOf?: MetricCriteriaResponse[];
     /**
@@ -2242,25 +2346,17 @@ export interface MetricDimensionResponse {
 }
 
 /**
- * Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
+ * Defines a metric in the destination AMW account.
  */
-export interface MetricSettingsResponse {
+export interface MetricResponse {
     /**
-     * Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
+     * The name of the metric.
      */
-    category?: string;
+    metricName: string;
     /**
-     * a value indicating whether this category is enabled.
+     * The namespace of the metric.
      */
-    enabled: boolean;
-    /**
-     * the retention policy for this category.
-     */
-    retentionPolicy?: RetentionPolicyResponse;
-    /**
-     * the timegrain of the metric in ISO8601 format.
-     */
-    timeGrain?: string;
+    metricNamespace: string;
 }
 
 /**
@@ -2348,7 +2444,7 @@ export interface MonitoringAccountDestinationResponse {
      */
     accountResourceId?: string;
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -2430,7 +2526,7 @@ export interface PerfCounterDataSourceResponse {
      */
     counterSpecifiers?: string[];
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -2520,7 +2616,7 @@ export interface PipelineResponse {
  */
 export interface PlatformTelemetryDataSourceResponse {
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -2583,41 +2679,11 @@ export interface PrivateEndpointConnectionResponse {
 }
 
 /**
- * The Private Endpoint Connection resource.
- */
-export interface PrivateEndpointConnectionResponseV1 {
-    /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-     */
-    id: string;
-    /**
-     * The name of the resource
-     */
-    name: string;
-    /**
-     * The resource of private end point.
-     */
-    privateEndpoint?: PrivateEndpointResponse;
-    /**
-     * A collection of information about the state of the connection between service consumer and provider.
-     */
-    privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse;
-    /**
-     * The provisioning state of the private endpoint connection resource.
-     */
-    provisioningState: string;
-    /**
-     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-     */
-    type: string;
-}
-
-/**
- * The Private Endpoint resource.
+ * The private endpoint resource.
  */
 export interface PrivateEndpointResponse {
     /**
-     * The ARM identifier for Private Endpoint
+     * The ARM identifier for private endpoint.
      */
     id: string;
 }
@@ -2689,7 +2755,7 @@ export interface PrometheusForwarderDataSourceResponse {
      */
     labelIncludeFilter?: {[key: string]: string};
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -3294,6 +3360,134 @@ export function signalGroupResponseProvideDefaults(val: SignalGroupResponse): Si
 }
 
 /**
+ * Represents a signal model used in SLI calculations.
+ */
+export interface SignalResponse {
+    /**
+     * Mathematical formula used to combine multiple metrics.
+     */
+    signalFormula: string;
+    /**
+     * Sources of metrics used for SLIs.
+     */
+    signalSources: SignalSourceResponse[];
+}
+
+/**
+ * Represents a signal source used in SLIs.
+ */
+export interface SignalSourceResponse {
+    /**
+     * Filters applied to modify signal values.
+     */
+    filters: ConditionSliResponse[];
+    /**
+     * Name of the metric.
+     */
+    metricName: string;
+    /**
+     * Namespace of the metric.
+     */
+    metricNamespace: string;
+    /**
+     * Unique identifier for the signal source.
+     */
+    signalSourceId: string;
+    /**
+     * Managed identity for authenticating the signal source.
+     */
+    sourceAmwAccountManagedIdentity: string;
+    /**
+     * Resource ID of the source AMW account.
+     */
+    sourceAmwAccountResourceId: string;
+    /**
+     * Defines how measurements are aggregated across multiple time series.
+     */
+    spatialAggregation: SpatialAggregationResponse;
+    /**
+     * Defines how measurements are aggregated over a specific time window within the same time series.
+     */
+    temporalAggregation: TemporalAggregationResponse;
+}
+
+/**
+ * Defines the properties of an SLI.
+ */
+export interface SliPropertiesResponse {
+    /**
+     * Represents good signals used in request-based SLI calculations.
+     */
+    goodSignals?: SignalResponse;
+    /**
+     * Signals used for window-based SLI calculations.
+     */
+    signals?: SignalResponse;
+    /**
+     * Represents total signals used in request-based SLI calculations.
+     */
+    totalSignals?: SignalResponse;
+    /**
+     * Defines the uptime criteria for window-based SLIs.
+     */
+    windowUptimeCriteria?: WindowUptimeCriteriaResponse;
+}
+
+/**
+ * Defines the root level properties of an SLI resource.
+ */
+export interface SliResourceResponse {
+    /**
+     * Defines the SLO baseline associated with the SLI.
+     */
+    baselineProperties: BaselinePropertiesResponse;
+    /**
+     * Specifies the category of the SLI, used to classify signals such as Availability and Latency.
+     */
+    category: string;
+    /**
+     * A user-provided description of the SLI, with a maximum length of 1000 characters.
+     */
+    description: string;
+    /**
+     * Destination AMW accounts.
+     */
+    destinationAmwAccounts: AmwAccountResponse[];
+    /**
+     * The destination Azure Monitor Workspace (AMW) accounts where the SLI emits metrics.
+     */
+    destinationMetrics: MetricResponse[];
+    /**
+     * A flag to determine whether alert is enabled.
+     */
+    enableAlert: boolean;
+    /**
+     * Determines how the SLI is evaluated—either based on request counts or time windows.
+     */
+    evaluationType: string;
+    /**
+     * Indicates the current execution status of the SLI resource in ARM responses.
+     */
+    executionState: ExecutionStateResponse;
+    /**
+     * Indicates the provisioning status of the last operation.
+     */
+    provisioningState: any;
+    /**
+     * Defines the SLI properties associated with the SLI.
+     */
+    sliProperties: SliPropertiesResponse;
+    /**
+     * The streaming rule Id associated with the Sli resource.
+     */
+    streamingRuleId: string;
+    /**
+     * The streaming rule last updated timestamp associated with the Sli resource.
+     */
+    streamingRuleLastUpdatedTimestamp: string;
+}
+
+/**
  * An SMS receiver.
  */
 export interface SmsReceiverResponse {
@@ -3302,7 +3496,7 @@ export interface SmsReceiverResponse {
      */
     countryCode: string;
     /**
-     * The name of the SMS receiver. Names must be unique across all receivers within a tenant action group.
+     * The name of the SMS receiver. Names must be unique across all receivers within an action group.
      */
     name: string;
     /**
@@ -3315,13 +3509,27 @@ export interface SmsReceiverResponse {
     status: string;
 }
 
+/**
+ * Represents the spatial aggregation model.
+ */
+export interface SpatialAggregationResponse {
+    /**
+     * Dimensions considered for spatial aggregation.
+     */
+    dimensions: string[];
+    /**
+     * Type of spatial aggregation.
+     */
+    type: string;
+}
+
 export interface StorageBlobDestinationResponse {
     /**
      * The container name of the Storage Blob.
      */
     containerName?: string;
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -3333,7 +3541,7 @@ export interface StorageBlobDestinationResponse {
 
 export interface StorageTableDestinationResponse {
     /**
-     * A friendly name for the destination. 
+     * A friendly name for the destination.
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -3389,7 +3597,7 @@ export interface SyslogDataSourceResponse {
      */
     logLevels?: string[];
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -3461,6 +3669,20 @@ export interface TcpExporterResponse {
      * TCP url to export.
      */
     url: string;
+}
+
+/**
+ * Represents temporal aggregation settings.
+ */
+export interface TemporalAggregationResponse {
+    /**
+     * Type of temporal aggregation.
+     */
+    type: string;
+    /**
+     * Time window size for aggregation, in minutes.
+     */
+    windowSizeMinutes?: number;
 }
 
 /**
@@ -3543,15 +3765,15 @@ export interface UserAssignedIdentityResponse {
 }
 
 /**
- * User assigned identity properties.
+ * Properties of the user assigned identity.
  */
 export interface UserIdentityPropertiesResponse {
     /**
-     * The client id of user assigned identity.
+     * The client ID of resource identity.
      */
     clientId: string;
     /**
-     * The principal id of user assigned identity.
+     * The principal ID of resource identity.
      */
     principalId: string;
 }
@@ -3565,7 +3787,7 @@ export interface VoiceReceiverResponse {
      */
     countryCode: string;
     /**
-     * The name of the voice receiver. Names must be unique across all receivers within a tenant action group.
+     * The name of the voice receiver. Names must be unique across all receivers within an action group.
      */
     name: string;
     /**
@@ -3597,7 +3819,7 @@ export interface WebhookReceiverResponse {
      */
     identifierUri?: string;
     /**
-     * The principal id of the managed identity. The value can be "None", "SystemAssigned" 
+     * The principal id of the managed identity. The value can be "None", "SystemAssigned"
      */
     managedIdentity?: string;
     /**
@@ -3639,7 +3861,7 @@ export function webhookReceiverResponseProvideDefaults(val: WebhookReceiverRespo
 /**
  * A webhook receiver.
  */
-export interface WebhookReceiverResponseV1 {
+export interface WebhookReceiverTenantActionGroupResponse {
     /**
      * Indicates the identifier uri for aad auth.
      */
@@ -3670,9 +3892,9 @@ export interface WebhookReceiverResponseV1 {
     useCommonAlertSchema?: boolean;
 }
 /**
- * webhookReceiverResponseV1ProvideDefaults sets the appropriate defaults for WebhookReceiverResponseV1
+ * webhookReceiverTenantActionGroupResponseProvideDefaults sets the appropriate defaults for WebhookReceiverTenantActionGroupResponse
  */
-export function webhookReceiverResponseV1ProvideDefaults(val: WebhookReceiverResponseV1): WebhookReceiverResponseV1 {
+export function webhookReceiverTenantActionGroupResponseProvideDefaults(val: WebhookReceiverTenantActionGroupResponse): WebhookReceiverTenantActionGroupResponse {
     return {
         ...val,
         useAadAuth: (val.useAadAuth) ?? false,
@@ -3704,12 +3926,26 @@ export interface WebtestLocationAvailabilityCriteriaResponse {
 }
 
 /**
+ * Represents criteria for determining uptime in window-based SLIs.
+ */
+export interface WindowUptimeCriteriaResponse {
+    /**
+     * Comparison operator used for uptime evaluation.
+     */
+    comparator: string;
+    /**
+     * Threshold value used to determine uptime.
+     */
+    target: number;
+}
+
+/**
  * Definition of which Windows Event Log events will be collected and how they will be collected.
  * Only collected from Windows machines.
  */
 export interface WindowsEventLogDataSourceResponse {
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
     name?: string;
@@ -3729,7 +3965,7 @@ export interface WindowsEventLogDataSourceResponse {
  */
 export interface WindowsFirewallLogsDataSourceResponse {
     /**
-     * A friendly name for the data source. 
+     * A friendly name for the data source.
      * This name should be unique across all data sources (regardless of type) within the data collection rule.
      */
     name?: string;

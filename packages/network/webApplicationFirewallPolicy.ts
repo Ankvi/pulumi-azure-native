@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebApplicationFirewallPolicy extends pulumi.CustomResource {
     /**
@@ -118,7 +118,7 @@ export class WebApplicationFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["managedRules"] = args?.managedRules;
             resourceInputs["policyName"] = args?.policyName;
-            resourceInputs["policySettings"] = args ? (args.policySettings ? pulumi.output(args.policySettings).apply(types.inputs.policySettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["policySettings"] = args ? pulumi.output(args.policySettings).apply(v => v === undefined ? undefined : types.inputs.policySettingsArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["applicationGatewayForContainers"] = undefined /*out*/;
@@ -149,7 +149,7 @@ export class WebApplicationFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20181201:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20190201:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20190401:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20190601:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20190701:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20190801:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20190901:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20191101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20191201:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20200301:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20200401:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20200501:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20200601:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20200701:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20200801:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20201101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20210201:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20210301:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20210501:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20210801:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20220101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20220501:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20220701:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20220901:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20221101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20230201:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20230401:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20230501:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20230601:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20230901:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20231101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20240101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20240301:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20240501:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20240701:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20241001:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20250101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20250301:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20250501:WebApplicationFirewallPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20181201:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20190201:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20190401:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20190601:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20190701:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20190801:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20190901:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20191101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20191201:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20200301:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20200401:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20200501:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20200601:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20200701:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20200801:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20201101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20210201:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20210301:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20210501:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20210801:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20220101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20220501:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20220701:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20220901:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20221101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20230201:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20230401:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20230501:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20230601:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20230901:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20231101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20240101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20240301:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20240501:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20240701:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20241001:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20250101:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20250301:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20250501:WebApplicationFirewallPolicy" }, { type: "azure-native:network/v20250701:WebApplicationFirewallPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebApplicationFirewallPolicy.__pulumiType, name, resourceInputs, opts);
     }
@@ -162,15 +162,15 @@ export interface WebApplicationFirewallPolicyArgs {
     /**
      * The custom rules inside the policy.
      */
-    customRules?: pulumi.Input<pulumi.Input<types.inputs.WebApplicationFirewallCustomRuleArgs>[]>;
+    customRules?: pulumi.Input<pulumi.Input<types.inputs.WebApplicationFirewallCustomRuleArgs>[] | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Describes the managedRules structure.
      */
@@ -178,11 +178,11 @@ export interface WebApplicationFirewallPolicyArgs {
     /**
      * The name of the policy.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The PolicySettings for policy.
      */
-    policySettings?: pulumi.Input<types.inputs.PolicySettingsArgs>;
+    policySettings?: pulumi.Input<types.inputs.PolicySettingsArgs | undefined>;
     /**
      * The name of the resource group.
      */
@@ -190,5 +190,5 @@ export interface WebApplicationFirewallPolicyArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

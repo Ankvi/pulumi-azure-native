@@ -138,23 +138,23 @@ export interface IotConnectorArgs {
     /**
      * Device Mappings.
      */
-    deviceMapping?: pulumi.Input<types.inputs.IotMappingPropertiesArgs>;
+    deviceMapping?: pulumi.Input<types.inputs.IotMappingPropertiesArgs | undefined>;
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    identity?: pulumi.Input<types.inputs.ServiceManagedIdentityIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ServiceManagedIdentityIdentityArgs | undefined>;
     /**
      * Source configuration.
      */
-    ingestionEndpointConfiguration?: pulumi.Input<types.inputs.IotEventHubIngestionEndpointConfigurationArgs>;
+    ingestionEndpointConfiguration?: pulumi.Input<types.inputs.IotEventHubIngestionEndpointConfigurationArgs | undefined>;
     /**
      * The name of IoT Connector resource.
      */
-    iotConnectorName?: pulumi.Input<string>;
+    iotConnectorName?: pulumi.Input<string | undefined>;
     /**
      * The resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the service instance.
      */
@@ -162,7 +162,7 @@ export interface IotConnectorArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of workspace resource.
      */

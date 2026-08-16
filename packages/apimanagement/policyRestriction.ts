@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
  *
- * Other available API versions: 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PolicyRestriction extends pulumi.CustomResource {
     /**
@@ -89,7 +89,7 @@ export class PolicyRestriction extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230501preview:PolicyRestriction" }, { type: "azure-native:apimanagement/v20230901preview:PolicyRestriction" }, { type: "azure-native:apimanagement/v20240501:PolicyRestriction" }, { type: "azure-native:apimanagement/v20240601preview:PolicyRestriction" }, { type: "azure-native:apimanagement/v20241001preview:PolicyRestriction" }, { type: "azure-native:apimanagement/v20250301preview:PolicyRestriction" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20230501preview:PolicyRestriction" }, { type: "azure-native:apimanagement/v20230901preview:PolicyRestriction" }, { type: "azure-native:apimanagement/v20240501:PolicyRestriction" }, { type: "azure-native:apimanagement/v20240601preview:PolicyRestriction" }, { type: "azure-native:apimanagement/v20241001preview:PolicyRestriction" }, { type: "azure-native:apimanagement/v20250301preview:PolicyRestriction" }, { type: "azure-native:apimanagement/v20250901preview:PolicyRestriction" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicyRestriction.__pulumiType, name, resourceInputs, opts);
     }
@@ -102,11 +102,11 @@ export interface PolicyRestrictionArgs {
     /**
      * Policy restrictions after an entity level
      */
-    policyRestrictionId?: pulumi.Input<string>;
+    policyRestrictionId?: pulumi.Input<string | undefined>;
     /**
      * Indicates if base policy should be enforced for the policy document.
      */
-    requireBase?: pulumi.Input<string | types.enums.PolicyRestrictionRequireBase>;
+    requireBase?: pulumi.Input<string | types.enums.PolicyRestrictionRequireBase | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -114,7 +114,7 @@ export interface PolicyRestrictionArgs {
     /**
      * Path to the policy document.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The name of the API Management service.
      */

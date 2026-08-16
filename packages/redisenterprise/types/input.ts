@@ -7,7 +7,7 @@ export interface AccessPolicyAssignmentPropertiesUserArgs {
     /**
      * The object ID of the user.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -17,11 +17,11 @@ export interface ClusterPropertiesCustomerManagedKeyEncryptionArgs {
     /**
      * All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
      */
-    keyEncryptionKeyIdentity?: pulumi.Input<ClusterPropertiesKeyEncryptionKeyIdentityArgs>;
+    keyEncryptionKeyIdentity?: pulumi.Input<ClusterPropertiesKeyEncryptionKeyIdentityArgs | undefined>;
     /**
      * Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78
      */
-    keyEncryptionKeyUrl?: pulumi.Input<string>;
+    keyEncryptionKeyUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -31,7 +31,7 @@ export interface ClusterPropertiesEncryptionArgs {
     /**
      * All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
      */
-    customerManagedKeyEncryption?: pulumi.Input<ClusterPropertiesCustomerManagedKeyEncryptionArgs>;
+    customerManagedKeyEncryption?: pulumi.Input<ClusterPropertiesCustomerManagedKeyEncryptionArgs | undefined>;
 }
 
 /**
@@ -41,11 +41,11 @@ export interface ClusterPropertiesKeyEncryptionKeyIdentityArgs {
     /**
      * Only userAssignedIdentity is supported in this API version; other types may be supported in the future
      */
-    identityType?: pulumi.Input<string | enums.CmkIdentityType>;
+    identityType?: pulumi.Input<string | enums.CmkIdentityType | undefined>;
     /**
      * User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
      */
-    userAssignedIdentityResourceId?: pulumi.Input<string>;
+    userAssignedIdentityResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -55,11 +55,11 @@ export interface DatabasePropertiesGeoReplicationArgs {
     /**
      * Name for the group of linked database resources
      */
-    groupNickname?: pulumi.Input<string>;
+    groupNickname?: pulumi.Input<string | undefined>;
     /**
      * List of database resources to link with this database
      */
-    linkedDatabases?: pulumi.Input<pulumi.Input<LinkedDatabaseArgs>[]>;
+    linkedDatabases?: pulumi.Input<pulumi.Input<LinkedDatabaseArgs>[] | undefined>;
 }
 
 /**
@@ -69,7 +69,7 @@ export interface LinkedDatabaseArgs {
     /**
      * Resource ID of a database resource to link with this database.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -83,7 +83,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -93,7 +93,7 @@ export interface ModuleArgs {
     /**
      * Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
      */
-    args?: pulumi.Input<string>;
+    args?: pulumi.Input<string | undefined>;
     /**
      * The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
      */
@@ -107,19 +107,19 @@ export interface PersistenceArgs {
     /**
      * Sets whether AOF is enabled. Note that at most one of AOF or RDB persistence may be enabled.
      */
-    aofEnabled?: pulumi.Input<boolean>;
+    aofEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact.
      */
-    aofFrequency?: pulumi.Input<string | enums.AofFrequency>;
+    aofFrequency?: pulumi.Input<string | enums.AofFrequency | undefined>;
     /**
      * Sets whether RDB is enabled. Note that at most one of AOF or RDB persistence may be enabled.
      */
-    rdbEnabled?: pulumi.Input<boolean>;
+    rdbEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the frequency at which a snapshot of the database is created.
      */
-    rdbFrequency?: pulumi.Input<string | enums.RdbFrequency>;
+    rdbFrequency?: pulumi.Input<string | enums.RdbFrequency | undefined>;
 }
 
 /**
@@ -129,15 +129,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -147,7 +147,7 @@ export interface SkuArgs {
     /**
      * This property is only used with Enterprise and EnterpriseFlash SKUs. Determines the size of the cluster. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for EnterpriseFlash SKUs.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5', etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported in the future.
      */

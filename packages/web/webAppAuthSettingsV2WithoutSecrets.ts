@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Configuration settings for the Azure App Service Authentication / Authorization V2 feature.
  *
- * Uses Azure REST API version 2024-11-01.
+ * Uses Azure REST API version 2025-05-01.
  *
- * Other available API versions: 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppAuthSettingsV2WithoutSecrets extends pulumi.CustomResource {
     /**
@@ -52,7 +52,7 @@ export class WebAppAuthSettingsV2WithoutSecrets extends pulumi.CustomResource {
      */
     declare public readonly identityProviders: pulumi.Output<types.outputs.IdentityProvidersResponse | undefined>;
     /**
-     * Kind of resource.
+     * Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
@@ -60,7 +60,7 @@ export class WebAppAuthSettingsV2WithoutSecrets extends pulumi.CustomResource {
      */
     declare public readonly login: pulumi.Output<types.outputs.LoginResponse | undefined>;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -68,7 +68,11 @@ export class WebAppAuthSettingsV2WithoutSecrets extends pulumi.CustomResource {
      */
     declare public readonly platform: pulumi.Output<types.outputs.AuthPlatformResponse | undefined>;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -98,6 +102,7 @@ export class WebAppAuthSettingsV2WithoutSecrets extends pulumi.CustomResource {
             resourceInputs["platform"] = args?.platform;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -108,10 +113,11 @@ export class WebAppAuthSettingsV2WithoutSecrets extends pulumi.CustomResource {
             resourceInputs["login"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["platform"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20200601:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20200901:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20201001:WebAppAuthSettingsV2" }, { type: "azure-native:web/v20201001:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20201201:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20210101:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20210115:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20210201:WebAppAuthSettingsV2" }, { type: "azure-native:web/v20210201:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20210301:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20220301:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20220901:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20230101:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20231201:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20240401:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20241101:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20250301:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20250501:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web:WebAppAuthSettingsV2" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20200601:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20200901:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20201001:WebAppAuthSettingsV2" }, { type: "azure-native:web/v20201001:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20201201:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20210101:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20210115:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20210201:WebAppAuthSettingsV2" }, { type: "azure-native:web/v20210201:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20210301:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20220301:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20220901:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20230101:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20231201:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20240401:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20241101:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20250301:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20250501:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20260301preview:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20260315:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web/v20260715:WebAppAuthSettingsV2WithoutSecrets" }, { type: "azure-native:web:WebAppAuthSettingsV2" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppAuthSettingsV2WithoutSecrets.__pulumiType, name, resourceInputs, opts);
     }
@@ -124,33 +130,33 @@ export interface WebAppAuthSettingsV2WithoutSecretsArgs {
     /**
      * The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
      */
-    globalValidation?: pulumi.Input<types.inputs.GlobalValidationArgs>;
+    globalValidation?: pulumi.Input<types.inputs.GlobalValidationArgs | undefined>;
     /**
      * The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
      */
-    httpSettings?: pulumi.Input<types.inputs.HttpSettingsArgs>;
+    httpSettings?: pulumi.Input<types.inputs.HttpSettingsArgs | undefined>;
     /**
      * The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
      */
-    identityProviders?: pulumi.Input<types.inputs.IdentityProvidersArgs>;
+    identityProviders?: pulumi.Input<types.inputs.IdentityProvidersV1Args | undefined>;
     /**
-     * Kind of resource.
+     * Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The configuration settings of the login flow of users using App Service Authentication/Authorization.
      */
-    login?: pulumi.Input<types.inputs.LoginArgs>;
+    login?: pulumi.Input<types.inputs.LoginArgs | undefined>;
     /**
-     * Name of web app.
+     * Name of the app.
      */
     name: pulumi.Input<string>;
     /**
      * The configuration settings of the platform of App Service Authentication/Authorization.
      */
-    platform?: pulumi.Input<types.inputs.AuthPlatformArgs>;
+    platform?: pulumi.Input<types.inputs.AuthPlatformArgs | undefined>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

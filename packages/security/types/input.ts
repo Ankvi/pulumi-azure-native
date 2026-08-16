@@ -7,7 +7,7 @@ export interface AccessTokenAuthenticationArgs {
     /**
      * The access token that will be used while authenticating with the onboarded environment
      */
-    accessToken?: pulumi.Input<string>;
+    accessToken?: pulumi.Input<string | undefined>;
     /**
      * The authentication type
      * Expected value is 'AccessToken'.
@@ -16,7 +16,7 @@ export interface AccessTokenAuthenticationArgs {
     /**
      * The user name that will be used while authenticating with the onboarded environment
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -26,15 +26,15 @@ export interface AdditionalWorkspacesPropertiesArgs {
     /**
      * List of data types sent to workspace
      */
-    dataTypes?: pulumi.Input<pulumi.Input<string | enums.AdditionalWorkspaceDataType>[]>;
+    dataTypes?: pulumi.Input<pulumi.Input<string | enums.AdditionalWorkspaceDataType>[] | undefined>;
     /**
      * Workspace type.
      */
-    type?: pulumi.Input<string | enums.AdditionalWorkspaceType>;
+    type?: pulumi.Input<string | enums.AdditionalWorkspaceType | undefined>;
     /**
      * Workspace resource id
      */
-    workspace?: pulumi.Input<string>;
+    workspace?: pulumi.Input<string | undefined>;
 }
 /**
  * additionalWorkspacesPropertiesArgsProvideDefaults sets the appropriate defaults for AdditionalWorkspacesPropertiesArgs
@@ -72,11 +72,11 @@ export interface ArcAutoProvisioningConfigurationArgs {
     /**
      * Optional Arc private link scope resource id to link the Arc agent
      */
-    privateLinkScope?: pulumi.Input<string>;
+    privateLinkScope?: pulumi.Input<string | undefined>;
     /**
      * Optional HTTP proxy endpoint to use for the Arc agent
      */
-    proxy?: pulumi.Input<string>;
+    proxy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -86,7 +86,7 @@ export interface AssessmentStatusArgs {
     /**
      * Programmatic code for the cause of the assessment status
      */
-    cause?: pulumi.Input<string>;
+    cause?: pulumi.Input<string | undefined>;
     /**
      * Programmatic code for the status of the assessment
      */
@@ -94,7 +94,7 @@ export interface AssessmentStatusArgs {
     /**
      * Human readable description of the assessment status
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -104,7 +104,7 @@ export interface AssignedAssessmentItemArgs {
     /**
      * Unique key to a security assessment object
      */
-    assessmentKey?: pulumi.Input<string>;
+    assessmentKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -114,17 +114,7 @@ export interface AssignedComponentItemArgs {
     /**
      * unique key to a security assessment object
      */
-    key?: pulumi.Input<string>;
-}
-
-/**
- * Describe the properties of a of a standard assignments object reference
- */
-export interface AssignedStandardItemArgs {
-    /**
-     * Full resourceId of the Microsoft.Security/standard object
-     */
-    id?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -134,7 +124,7 @@ export interface AssignmentPropertiesAdditionalDataArgs {
     /**
      * Exemption category of this assignment
      */
-    exemptionCategory?: pulumi.Input<string>;
+    exemptionCategory?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -144,11 +134,11 @@ export interface AttestationEvidenceArgs {
     /**
      * The description of the evidence
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The source url of the evidence
      */
-    sourceUrl?: pulumi.Input<string>;
+    sourceUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,10 +147,10 @@ export interface AttestationEvidenceArgs {
 export interface AuthorizationArgs {
     /**
      * Gets or sets one-time OAuth code to exchange for refresh and access tokens.
-     * 
+     *
      * Only used during PUT/PATCH operations. The secret is cleared during GET.
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -168,22 +158,22 @@ export interface AuthorizationArgs {
  */
 export interface AutomationActionEventHubArgs {
     /**
-     * The type of the action that will be triggered by the Automation
+     * Enum. Indicates the action type.
      * Expected value is 'EventHub'.
      */
     actionType: pulumi.Input<"EventHub">;
     /**
      * The target Event Hub connection string (it will not be included in any response).
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The target Event Hub Azure Resource ID.
      */
-    eventHubResourceId?: pulumi.Input<string>;
+    eventHubResourceId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the trusted service is enabled or not.
      */
-    isTrustedServiceEnabled?: pulumi.Input<boolean>;
+    isTrustedServiceEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -191,18 +181,18 @@ export interface AutomationActionEventHubArgs {
  */
 export interface AutomationActionLogicAppArgs {
     /**
-     * The type of the action that will be triggered by the Automation
+     * Enum. Indicates the action type.
      * Expected value is 'LogicApp'.
      */
     actionType: pulumi.Input<"LogicApp">;
     /**
      * The triggered Logic App Azure Resource ID. This can also reside on other subscriptions, given that you have permissions to trigger the Logic App
      */
-    logicAppResourceId?: pulumi.Input<string>;
+    logicAppResourceId?: pulumi.Input<string | undefined>;
     /**
      * The Logic App trigger URI endpoint (it will not be included in any response).
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -210,21 +200,21 @@ export interface AutomationActionLogicAppArgs {
  */
 export interface AutomationActionWorkspaceArgs {
     /**
-     * The type of the action that will be triggered by the Automation
+     * Enum. Indicates the action type.
      * Expected value is 'Workspace'.
      */
     actionType: pulumi.Input<"Workspace">;
     /**
      * The fully qualified Log Analytics Workspace Azure Resource ID.
      */
-    workspaceResourceId?: pulumi.Input<string>;
+    workspaceResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
- * A rule set which evaluates all its rules upon an event interception. Only when all the included rules in the rule set will be evaluated as 'true', will the event trigger the defined actions. 
+ * A rule set which evaluates all its rules upon an event interception. Only when all the included rules in the rule set will be evaluated as 'true', will the event trigger the defined actions.
  */
 export interface AutomationRuleSetArgs {
-    rules?: pulumi.Input<pulumi.Input<AutomationTriggeringRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<AutomationTriggeringRuleArgs>[] | undefined>;
 }
 
 /**
@@ -234,11 +224,11 @@ export interface AutomationScopeArgs {
     /**
      * The resources scope description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The resources scope path. Can be the subscription on which the automation is defined on or a resource group under that subscription (fully qualified Azure resource IDs).
      */
-    scopePath?: pulumi.Input<string>;
+    scopePath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -248,11 +238,11 @@ export interface AutomationSourceArgs {
     /**
      * A valid event source type.
      */
-    eventSource?: pulumi.Input<string | enums.EventSource>;
+    eventSource?: pulumi.Input<string | enums.EventSource | undefined>;
     /**
      * A set of rules which evaluate upon event interception. A logical disjunction is applied between defined rule sets (logical 'or').
      */
-    ruleSets?: pulumi.Input<pulumi.Input<AutomationRuleSetArgs>[]>;
+    ruleSets?: pulumi.Input<pulumi.Input<AutomationRuleSetArgs>[] | undefined>;
 }
 
 /**
@@ -262,19 +252,19 @@ export interface AutomationTriggeringRuleArgs {
     /**
      * The expected value.
      */
-    expectedValue?: pulumi.Input<string>;
+    expectedValue?: pulumi.Input<string | undefined>;
     /**
      * A valid comparer operator to use. A case-insensitive comparison will be applied for String PropertyType.
      */
-    operator?: pulumi.Input<string | enums.Operator>;
+    operator?: pulumi.Input<string | enums.Operator | undefined>;
     /**
      * The JPath of the entity model property that should be checked.
      */
-    propertyJPath?: pulumi.Input<string>;
+    propertyJPath?: pulumi.Input<string | undefined>;
     /**
      * The data type of the compared operands (string, integer, floating point number or a boolean [true/false]]
      */
-    propertyType?: pulumi.Input<string | enums.PropertyType>;
+    propertyType?: pulumi.Input<string | enums.PropertyType | undefined>;
 }
 
 /**
@@ -289,15 +279,15 @@ export interface AwsEnvironmentDataArgs {
     /**
      * The AWS account's organizational data
      */
-    organizationalData?: pulumi.Input<AwsOrganizationalDataMasterArgs | AwsOrganizationalDataMemberArgs>;
+    organizationalData?: pulumi.Input<AwsOrganizationalDataMasterArgs | AwsOrganizationalDataMemberArgs | undefined>;
     /**
      * list of regions to scan
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Scan interval in hours (value should be between 1-hour to 24-hours)
      */
-    scanInterval?: pulumi.Input<number>;
+    scanInterval?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -307,7 +297,7 @@ export interface AwsOrganizationalDataMasterArgs {
     /**
      * If the multi cloud account is of membership type organization, list of accounts excluded from offering
      */
-    excludedAccountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedAccountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The multi cloud account's membership type in the organization
      * Expected value is 'Organization'.
@@ -316,7 +306,7 @@ export interface AwsOrganizationalDataMasterArgs {
     /**
      * If the multi cloud account is of membership type organization, this will be the name of the onboarding stackset
      */
-    stacksetName?: pulumi.Input<string>;
+    stacksetName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -331,7 +321,7 @@ export interface AwsOrganizationalDataMemberArgs {
     /**
      * If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
      */
-    parentHierarchyId?: pulumi.Input<string>;
+    parentHierarchyId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -357,13 +347,23 @@ export interface AzureResourceDetailsArgs {
 }
 
 /**
+ * Describe the properties of a of a standard assignments object reference
+ */
+export interface CommonAssignedStandardItemArgs {
+    /**
+     * Full resourceId of the Microsoft.Security/standard object
+     */
+    id?: pulumi.Input<string | undefined>;
+}
+
+/**
  * The CSPM monitoring for AWS offering
  */
 export interface CspmMonitorAwsOfferingArgs {
     /**
      * The native cloud connection configuration
      */
-    nativeCloudConnection?: pulumi.Input<CspmMonitorAwsOfferingNativeCloudConnectionArgs>;
+    nativeCloudConnection?: pulumi.Input<CspmMonitorAwsOfferingNativeCloudConnectionArgs | undefined>;
     /**
      * The type of the security offering.
      * Expected value is 'CspmMonitorAws'.
@@ -378,7 +378,7 @@ export interface CspmMonitorAwsOfferingNativeCloudConnectionArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -410,7 +410,7 @@ export interface CspmMonitorGcpOfferingArgs {
     /**
      * The native cloud connection configuration
      */
-    nativeCloudConnection?: pulumi.Input<CspmMonitorGcpOfferingNativeCloudConnectionArgs>;
+    nativeCloudConnection?: pulumi.Input<CspmMonitorGcpOfferingNativeCloudConnectionArgs | undefined>;
     /**
      * The type of the security offering.
      * Expected value is 'CspmMonitorGcp'.
@@ -425,11 +425,11 @@ export interface CspmMonitorGcpOfferingNativeCloudConnectionArgs {
     /**
      * The service account email address in GCP for this offering
      */
-    serviceAccountEmailAddress?: pulumi.Input<string>;
+    serviceAccountEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * The GCP workload identity provider id for the offering
      */
-    workloadIdentityProviderId?: pulumi.Input<string>;
+    workloadIdentityProviderId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -472,23 +472,23 @@ export interface DefenderCspmAwsOfferingArgs {
     /**
      * Defenders CSPM Permissions Management offering configurations
      */
-    ciem?: pulumi.Input<DefenderCspmAwsOfferingCiemArgs>;
+    ciem?: pulumi.Input<DefenderCspmAwsOfferingCiemArgs | undefined>;
     /**
      * The Microsoft Defender Data Sensitivity discovery configuration
      */
-    dataSensitivityDiscovery?: pulumi.Input<DefenderCspmAwsOfferingDataSensitivityDiscoveryArgs>;
+    dataSensitivityDiscovery?: pulumi.Input<DefenderCspmAwsOfferingDataSensitivityDiscoveryArgs | undefined>;
     /**
      * The databases DSPM configuration
      */
-    databasesDspm?: pulumi.Input<DefenderCspmAwsOfferingDatabasesDspmArgs>;
+    databasesDspm?: pulumi.Input<DefenderCspmAwsOfferingDatabasesDspmArgs | undefined>;
     /**
      * The Microsoft Defender container agentless discovery K8s configuration
      */
-    mdcContainersAgentlessDiscoveryK8s?: pulumi.Input<DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs>;
+    mdcContainersAgentlessDiscoveryK8S?: pulumi.Input<DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8SArgs | undefined>;
     /**
      * The Microsoft Defender container image assessment configuration
      */
-    mdcContainersImageAssessment?: pulumi.Input<DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs>;
+    mdcContainersImageAssessment?: pulumi.Input<DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs | undefined>;
     /**
      * The type of the security offering.
      * Expected value is 'DefenderCspmAws'.
@@ -497,7 +497,7 @@ export interface DefenderCspmAwsOfferingArgs {
     /**
      * The Microsoft Defender for CSPM offering VM scanning configuration
      */
-    vmScanners?: pulumi.Input<DefenderCspmAwsOfferingVmScannersArgs>;
+    vmScanners?: pulumi.Input<DefenderCspmAwsOfferingVmScannersArgs | undefined>;
 }
 
 /**
@@ -507,35 +507,35 @@ export interface DefenderCspmAwsOfferingCiemArgs {
     /**
      * Defender CSPM Permissions Management discovery configuration
      */
-    ciemDiscovery?: pulumi.Input<DefenderCspmAwsOfferingCiemDiscoveryArgs>;
+    ciemDiscovery?: pulumi.Input<DefenderCspmAwsOfferingCiemCiemDiscoveryArgs | undefined>;
     /**
      * AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
      */
-    ciemOidc?: pulumi.Input<DefenderCspmAwsOfferingCiemOidcArgs>;
+    ciemOidc?: pulumi.Input<DefenderCspmAwsOfferingCiemCiemOidcArgs | undefined>;
 }
 
 /**
  * Defender CSPM Permissions Management discovery configuration
  */
-export interface DefenderCspmAwsOfferingCiemDiscoveryArgs {
+export interface DefenderCspmAwsOfferingCiemCiemDiscoveryArgs {
     /**
      * The cloud role ARN in AWS for Permissions Management discovery
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
 }
 
 /**
  * AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
  */
-export interface DefenderCspmAwsOfferingCiemOidcArgs {
+export interface DefenderCspmAwsOfferingCiemCiemOidcArgs {
     /**
      * the azure active directory app name used of authenticating against AWS
      */
-    azureActiveDirectoryAppName?: pulumi.Input<string>;
+    azureActiveDirectoryAppName?: pulumi.Input<string | undefined>;
     /**
      * The cloud role ARN in AWS for Permissions Management used for oidc connection
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -545,11 +545,11 @@ export interface DefenderCspmAwsOfferingDataSensitivityDiscoveryArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Is Microsoft Defender Data Sensitivity discovery enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -559,25 +559,25 @@ export interface DefenderCspmAwsOfferingDatabasesDspmArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Is databases DSPM protection enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * The Microsoft Defender container agentless discovery K8s configuration
  */
-export interface DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs {
+export interface DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8SArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Is Microsoft Defender container agentless discovery K8s enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -587,11 +587,11 @@ export interface DefenderCspmAwsOfferingMdcContainersImageAssessmentArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Is Microsoft Defender container image assessment enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -601,15 +601,15 @@ export interface DefenderCspmAwsOfferingVmScannersArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Configuration for VM scanning
      */
-    configuration?: pulumi.Input<VmScannersBaseConfigurationArgs>;
+    configuration?: pulumi.Input<VmScannersBaseConfigurationArgs | undefined>;
     /**
      * Is VM scanning enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -630,19 +630,19 @@ export interface DefenderCspmGcpOfferingArgs {
     /**
      * GCP Defenders CSPM Permissions Management OIDC (Open ID connect) connection configurations
      */
-    ciemDiscovery?: pulumi.Input<DefenderCspmGcpOfferingCiemDiscoveryArgs>;
+    ciemDiscovery?: pulumi.Input<DefenderCspmGcpOfferingCiemDiscoveryArgs | undefined>;
     /**
      * The Microsoft Defender Data Sensitivity discovery configuration
      */
-    dataSensitivityDiscovery?: pulumi.Input<DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs>;
+    dataSensitivityDiscovery?: pulumi.Input<DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs | undefined>;
     /**
      * The Microsoft Defender Container agentless discovery configuration
      */
-    mdcContainersAgentlessDiscoveryK8s?: pulumi.Input<DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs>;
+    mdcContainersAgentlessDiscoveryK8S?: pulumi.Input<DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8SArgs | undefined>;
     /**
      * The Microsoft Defender Container image assessment configuration
      */
-    mdcContainersImageAssessment?: pulumi.Input<DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs>;
+    mdcContainersImageAssessment?: pulumi.Input<DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs | undefined>;
     /**
      * The type of the security offering.
      * Expected value is 'DefenderCspmGcp'.
@@ -651,7 +651,7 @@ export interface DefenderCspmGcpOfferingArgs {
     /**
      * The Microsoft Defender for CSPM VM scanning configuration
      */
-    vmScanners?: pulumi.Input<DefenderCspmGcpOfferingVmScannersArgs>;
+    vmScanners?: pulumi.Input<DefenderCspmGcpOfferingVmScannersArgs | undefined>;
 }
 
 /**
@@ -661,15 +661,15 @@ export interface DefenderCspmGcpOfferingCiemDiscoveryArgs {
     /**
      * the azure active directory app name used of authenticating against GCP workload identity federation
      */
-    azureActiveDirectoryAppName?: pulumi.Input<string>;
+    azureActiveDirectoryAppName?: pulumi.Input<string | undefined>;
     /**
      * The service account email address in GCP for Permissions Management offering
      */
-    serviceAccountEmailAddress?: pulumi.Input<string>;
+    serviceAccountEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * The GCP workload identity provider id for Permissions Management offering
      */
-    workloadIdentityProviderId?: pulumi.Input<string>;
+    workloadIdentityProviderId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -679,33 +679,33 @@ export interface DefenderCspmGcpOfferingDataSensitivityDiscoveryArgs {
     /**
      * Is Microsoft Defender Data Sensitivity discovery enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The service account email address in GCP for this feature
      */
-    serviceAccountEmailAddress?: pulumi.Input<string>;
+    serviceAccountEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * The workload identity provider id in GCP for this feature
      */
-    workloadIdentityProviderId?: pulumi.Input<string>;
+    workloadIdentityProviderId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The Microsoft Defender Container agentless discovery configuration
  */
-export interface DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs {
+export interface DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8SArgs {
     /**
      * Is Microsoft Defender container agentless discovery enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The service account email address in GCP for this feature
      */
-    serviceAccountEmailAddress?: pulumi.Input<string>;
+    serviceAccountEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * The workload identity provider id in GCP for this feature
      */
-    workloadIdentityProviderId?: pulumi.Input<string>;
+    workloadIdentityProviderId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -715,15 +715,15 @@ export interface DefenderCspmGcpOfferingMdcContainersImageAssessmentArgs {
     /**
      * Is Microsoft Defender container image assessment enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The service account email address in GCP for this feature
      */
-    serviceAccountEmailAddress?: pulumi.Input<string>;
+    serviceAccountEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * The workload identity provider id in GCP for this feature
      */
-    workloadIdentityProviderId?: pulumi.Input<string>;
+    workloadIdentityProviderId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -733,11 +733,11 @@ export interface DefenderCspmGcpOfferingVmScannersArgs {
     /**
      * Configuration for VM scanning
      */
-    configuration?: pulumi.Input<VmScannersBaseConfigurationArgs>;
+    configuration?: pulumi.Input<VmScannersBaseConfigurationArgs | undefined>;
     /**
      * Is VM scanning enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -747,7 +747,7 @@ export interface DefenderCspmJFrogOfferingArgs {
     /**
      * The Microsoft Defender Container image assessment configuration
      */
-    mdcContainersImageAssessment?: pulumi.Input<DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs>;
+    mdcContainersImageAssessment?: pulumi.Input<DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs | undefined>;
     /**
      * The type of the security offering.
      * Expected value is 'DefenderCspmJFrog'.
@@ -762,7 +762,7 @@ export interface DefenderCspmJFrogOfferingMdcContainersImageAssessmentArgs {
     /**
      * Is Microsoft Defender container image assessment enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -772,11 +772,11 @@ export interface DefenderFoDatabasesAwsOfferingArgs {
     /**
      * The ARC autoprovisioning configuration
      */
-    arcAutoProvisioning?: pulumi.Input<DefenderFoDatabasesAwsOfferingArcAutoProvisioningArgs>;
+    arcAutoProvisioning?: pulumi.Input<DefenderFoDatabasesAwsOfferingArcAutoProvisioningArgs | undefined>;
     /**
      * The databases data security posture management (DSPM) configuration
      */
-    databasesDspm?: pulumi.Input<DefenderFoDatabasesAwsOfferingDatabasesDspmArgs>;
+    databasesDspm?: pulumi.Input<DefenderFoDatabasesAwsOfferingDatabasesDspmArgs | undefined>;
     /**
      * The type of the security offering.
      * Expected value is 'DefenderForDatabasesAws'.
@@ -785,7 +785,7 @@ export interface DefenderFoDatabasesAwsOfferingArgs {
     /**
      * The RDS configuration
      */
-    rds?: pulumi.Input<DefenderFoDatabasesAwsOfferingRdsArgs>;
+    rds?: pulumi.Input<DefenderFoDatabasesAwsOfferingRdsArgs | undefined>;
 }
 
 /**
@@ -795,15 +795,15 @@ export interface DefenderFoDatabasesAwsOfferingArcAutoProvisioningArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Configuration for servers Arc auto provisioning for a given environment
      */
-    configuration?: pulumi.Input<ArcAutoProvisioningConfigurationArgs>;
+    configuration?: pulumi.Input<ArcAutoProvisioningConfigurationArgs | undefined>;
     /**
      * Is arc auto provisioning enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -813,11 +813,11 @@ export interface DefenderFoDatabasesAwsOfferingDatabasesDspmArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Is databases data security posture management (DSPM) protection enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -827,11 +827,11 @@ export interface DefenderFoDatabasesAwsOfferingRdsArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Is RDS protection enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -841,47 +841,47 @@ export interface DefenderForContainersAwsOfferingArgs {
     /**
      * The cloudwatch to kinesis connection configuration
      */
-    cloudWatchToKinesis?: pulumi.Input<DefenderForContainersAwsOfferingCloudWatchToKinesisArgs>;
+    cloudWatchToKinesis?: pulumi.Input<DefenderForContainersAwsOfferingCloudWatchToKinesisArgs | undefined>;
     /**
      * The externalId used by the data reader to prevent the confused deputy attack
      */
-    dataCollectionExternalId?: pulumi.Input<string>;
+    dataCollectionExternalId?: pulumi.Input<string | undefined>;
     /**
      * Is audit logs data collection enabled
      */
-    enableAuditLogsAutoProvisioning?: pulumi.Input<boolean>;
+    enableAuditLogsAutoProvisioning?: pulumi.Input<boolean | undefined>;
     /**
      * Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
      */
-    enableDefenderAgentAutoProvisioning?: pulumi.Input<boolean>;
+    enableDefenderAgentAutoProvisioning?: pulumi.Input<boolean | undefined>;
     /**
      * Is Policy Kubernetes agent auto provisioning enabled
      */
-    enablePolicyAgentAutoProvisioning?: pulumi.Input<boolean>;
+    enablePolicyAgentAutoProvisioning?: pulumi.Input<boolean | undefined>;
     /**
      * The kinesis to s3 connection configuration
      */
-    kinesisToS3?: pulumi.Input<DefenderForContainersAwsOfferingKinesisToS3Args>;
+    kinesisToS3?: pulumi.Input<DefenderForContainersAwsOfferingKinesisToS3Args | undefined>;
     /**
      * The retention time in days of kube audit logs set on the CloudWatch log group
      */
-    kubeAuditRetentionTime?: pulumi.Input<number>;
+    kubeAuditRetentionTime?: pulumi.Input<number | undefined>;
     /**
      * The kubernetes data collection connection configuration
      */
-    kubernetesDataCollection?: pulumi.Input<DefenderForContainersAwsOfferingKubernetesDataCollectionArgs>;
+    kubernetesDataCollection?: pulumi.Input<DefenderForContainersAwsOfferingKubernetesDataCollectionArgs | undefined>;
     /**
      * The kubernetes service connection configuration
      */
-    kubernetesService?: pulumi.Input<DefenderForContainersAwsOfferingKubernetesServiceArgs>;
+    kubernetesService?: pulumi.Input<DefenderForContainersAwsOfferingKubernetesServiceArgs | undefined>;
     /**
      * The Microsoft Defender container agentless discovery K8s configuration
      */
-    mdcContainersAgentlessDiscoveryK8s?: pulumi.Input<DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs>;
+    mdcContainersAgentlessDiscoveryK8S?: pulumi.Input<DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8SArgs | undefined>;
     /**
      * The Microsoft Defender container image assessment configuration
      */
-    mdcContainersImageAssessment?: pulumi.Input<DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs>;
+    mdcContainersImageAssessment?: pulumi.Input<DefenderForContainersAwsOfferingMdcContainersImageAssessmentArgs | undefined>;
     /**
      * The type of the security offering.
      * Expected value is 'DefenderForContainersAws'.
@@ -890,7 +890,7 @@ export interface DefenderForContainersAwsOfferingArgs {
     /**
      * The Microsoft Defender for Container K8s VM host scanning configuration
      */
-    vmScanners?: pulumi.Input<DefenderForContainersAwsOfferingVmScannersArgs>;
+    vmScanners?: pulumi.Input<DefenderForContainersAwsOfferingVmScannersArgs | undefined>;
 }
 
 /**
@@ -900,7 +900,7 @@ export interface DefenderForContainersAwsOfferingCloudWatchToKinesisArgs {
     /**
      * The cloud role ARN in AWS used by CloudWatch to transfer data into Kinesis
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -910,7 +910,7 @@ export interface DefenderForContainersAwsOfferingKinesisToS3Args {
     /**
      * The cloud role ARN in AWS used by Kinesis to transfer data into S3
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -920,7 +920,7 @@ export interface DefenderForContainersAwsOfferingKubernetesDataCollectionArgs {
     /**
      * The cloud role ARN in AWS for this feature used for reading data
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -930,21 +930,21 @@ export interface DefenderForContainersAwsOfferingKubernetesServiceArgs {
     /**
      * The cloud role ARN in AWS for this feature used for provisioning resources
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The Microsoft Defender container agentless discovery K8s configuration
  */
-export interface DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8sArgs {
+export interface DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8SArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Is Microsoft Defender container agentless discovery K8s enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -954,11 +954,11 @@ export interface DefenderForContainersAwsOfferingMdcContainersImageAssessmentArg
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Is Microsoft Defender container image assessment enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -968,15 +968,15 @@ export interface DefenderForContainersAwsOfferingVmScannersArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Configuration for VM scanning
      */
-    configuration?: pulumi.Input<VmScannersBaseConfigurationArgs>;
+    configuration?: pulumi.Input<VmScannersBaseConfigurationArgs | undefined>;
     /**
      * Is VM scanning enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -997,31 +997,31 @@ export interface DefenderForContainersGcpOfferingArgs {
     /**
      * The native cloud connection configuration
      */
-    dataPipelineNativeCloudConnection?: pulumi.Input<DefenderForContainersGcpOfferingDataPipelineNativeCloudConnectionArgs>;
+    dataPipelineNativeCloudConnection?: pulumi.Input<DefenderForContainersGcpOfferingDataPipelineNativeCloudConnectionArgs | undefined>;
     /**
      * Is audit logs data collection enabled
      */
-    enableAuditLogsAutoProvisioning?: pulumi.Input<boolean>;
+    enableAuditLogsAutoProvisioning?: pulumi.Input<boolean | undefined>;
     /**
      * Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
      */
-    enableDefenderAgentAutoProvisioning?: pulumi.Input<boolean>;
+    enableDefenderAgentAutoProvisioning?: pulumi.Input<boolean | undefined>;
     /**
      * Is Policy Kubernetes agent auto provisioning enabled
      */
-    enablePolicyAgentAutoProvisioning?: pulumi.Input<boolean>;
+    enablePolicyAgentAutoProvisioning?: pulumi.Input<boolean | undefined>;
     /**
      * The Microsoft Defender Container agentless discovery configuration
      */
-    mdcContainersAgentlessDiscoveryK8s?: pulumi.Input<DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs>;
+    mdcContainersAgentlessDiscoveryK8S?: pulumi.Input<DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8SArgs | undefined>;
     /**
      * The Microsoft Defender Container image assessment configuration
      */
-    mdcContainersImageAssessment?: pulumi.Input<DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs>;
+    mdcContainersImageAssessment?: pulumi.Input<DefenderForContainersGcpOfferingMdcContainersImageAssessmentArgs | undefined>;
     /**
      * The native cloud connection configuration
      */
-    nativeCloudConnection?: pulumi.Input<DefenderForContainersGcpOfferingNativeCloudConnectionArgs>;
+    nativeCloudConnection?: pulumi.Input<DefenderForContainersGcpOfferingNativeCloudConnectionArgs | undefined>;
     /**
      * The type of the security offering.
      * Expected value is 'DefenderForContainersGcp'.
@@ -1030,7 +1030,7 @@ export interface DefenderForContainersGcpOfferingArgs {
     /**
      * The Microsoft Defender for Container K8s VM host scanning configuration
      */
-    vmScanners?: pulumi.Input<DefenderForContainersGcpOfferingVmScannersArgs>;
+    vmScanners?: pulumi.Input<DefenderForContainersGcpOfferingVmScannersArgs | undefined>;
 }
 
 /**
@@ -1040,29 +1040,29 @@ export interface DefenderForContainersGcpOfferingDataPipelineNativeCloudConnecti
     /**
      * The data collection service account email address in GCP for this offering
      */
-    serviceAccountEmailAddress?: pulumi.Input<string>;
+    serviceAccountEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * The data collection GCP workload identity provider id for this offering
      */
-    workloadIdentityProviderId?: pulumi.Input<string>;
+    workloadIdentityProviderId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The Microsoft Defender Container agentless discovery configuration
  */
-export interface DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8sArgs {
+export interface DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8SArgs {
     /**
      * Is Microsoft Defender container agentless discovery enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The service account email address in GCP for this feature
      */
-    serviceAccountEmailAddress?: pulumi.Input<string>;
+    serviceAccountEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * The workload identity provider id in GCP for this feature
      */
-    workloadIdentityProviderId?: pulumi.Input<string>;
+    workloadIdentityProviderId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1072,15 +1072,15 @@ export interface DefenderForContainersGcpOfferingMdcContainersImageAssessmentArg
     /**
      * Is Microsoft Defender container image assessment enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The service account email address in GCP for this feature
      */
-    serviceAccountEmailAddress?: pulumi.Input<string>;
+    serviceAccountEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * The workload identity provider id in GCP for this feature
      */
-    workloadIdentityProviderId?: pulumi.Input<string>;
+    workloadIdentityProviderId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1090,11 +1090,11 @@ export interface DefenderForContainersGcpOfferingNativeCloudConnectionArgs {
     /**
      * The service account email address in GCP for this offering
      */
-    serviceAccountEmailAddress?: pulumi.Input<string>;
+    serviceAccountEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * The GCP workload identity provider id for this offering
      */
-    workloadIdentityProviderId?: pulumi.Input<string>;
+    workloadIdentityProviderId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1104,11 +1104,11 @@ export interface DefenderForContainersGcpOfferingVmScannersArgs {
     /**
      * Configuration for VM scanning
      */
-    configuration?: pulumi.Input<VmScannersBaseConfigurationArgs>;
+    configuration?: pulumi.Input<VmScannersBaseConfigurationArgs | undefined>;
     /**
      * Is VM scanning enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1129,11 +1129,11 @@ export interface DefenderForDatabasesGcpOfferingArgs {
     /**
      * The ARC autoprovisioning configuration
      */
-    arcAutoProvisioning?: pulumi.Input<DefenderForDatabasesGcpOfferingArcAutoProvisioningArgs>;
+    arcAutoProvisioning?: pulumi.Input<DefenderForDatabasesGcpOfferingArcAutoProvisioningArgs | undefined>;
     /**
      * The native cloud connection configuration
      */
-    defenderForDatabasesArcAutoProvisioning?: pulumi.Input<DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioningArgs>;
+    defenderForDatabasesArcAutoProvisioning?: pulumi.Input<DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvisioningArgs | undefined>;
     /**
      * The type of the security offering.
      * Expected value is 'DefenderForDatabasesGcp'.
@@ -1148,11 +1148,11 @@ export interface DefenderForDatabasesGcpOfferingArcAutoProvisioningArgs {
     /**
      * Configuration for servers Arc auto provisioning for a given environment
      */
-    configuration?: pulumi.Input<ArcAutoProvisioningConfigurationArgs>;
+    configuration?: pulumi.Input<ArcAutoProvisioningConfigurationArgs | undefined>;
     /**
      * Is arc auto provisioning enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1162,11 +1162,11 @@ export interface DefenderForDatabasesGcpOfferingDefenderForDatabasesArcAutoProvi
     /**
      * The service account email address in GCP for this offering
      */
-    serviceAccountEmailAddress?: pulumi.Input<string>;
+    serviceAccountEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * The GCP workload identity provider id for this offering
      */
-    workloadIdentityProviderId?: pulumi.Input<string>;
+    workloadIdentityProviderId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1176,15 +1176,15 @@ export interface DefenderForServersAwsOfferingArgs {
     /**
      * The ARC autoprovisioning configuration
      */
-    arcAutoProvisioning?: pulumi.Input<DefenderForServersAwsOfferingArcAutoProvisioningArgs>;
+    arcAutoProvisioning?: pulumi.Input<DefenderForServersAwsOfferingArcAutoProvisioningArgs | undefined>;
     /**
      * The Defender for servers connection configuration
      */
-    defenderForServers?: pulumi.Input<DefenderForServersAwsOfferingDefenderForServersArgs>;
+    defenderForServers?: pulumi.Input<DefenderForServersAwsOfferingDefenderForServersArgs | undefined>;
     /**
      * The Microsoft Defender for Endpoint autoprovisioning configuration
      */
-    mdeAutoProvisioning?: pulumi.Input<DefenderForServersAwsOfferingMdeAutoProvisioningArgs>;
+    mdeAutoProvisioning?: pulumi.Input<DefenderForServersAwsOfferingMdeAutoProvisioningArgs | undefined>;
     /**
      * The type of the security offering.
      * Expected value is 'DefenderForServersAws'.
@@ -1193,15 +1193,15 @@ export interface DefenderForServersAwsOfferingArgs {
     /**
      * configuration for the servers offering subPlan
      */
-    subPlan?: pulumi.Input<DefenderForServersAwsOfferingSubPlanArgs>;
+    subPlan?: pulumi.Input<DefenderForServersAwsOfferingSubPlanArgs | undefined>;
     /**
      * The Vulnerability Assessment autoprovisioning configuration
      */
-    vaAutoProvisioning?: pulumi.Input<DefenderForServersAwsOfferingVaAutoProvisioningArgs>;
+    vaAutoProvisioning?: pulumi.Input<DefenderForServersAwsOfferingVaAutoProvisioningArgs | undefined>;
     /**
      * The Microsoft Defender for Server VM scanning configuration
      */
-    vmScanners?: pulumi.Input<DefenderForServersAwsOfferingVmScannersArgs>;
+    vmScanners?: pulumi.Input<DefenderForServersAwsOfferingVmScannersArgs | undefined>;
 }
 
 /**
@@ -1211,25 +1211,15 @@ export interface DefenderForServersAwsOfferingArcAutoProvisioningArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Configuration for servers Arc auto provisioning for a given environment
      */
-    configuration?: pulumi.Input<ArcAutoProvisioningConfigurationArgs>;
+    configuration?: pulumi.Input<ArcAutoProvisioningConfigurationArgs | undefined>;
     /**
      * Is arc auto provisioning enabled
      */
-    enabled?: pulumi.Input<boolean>;
-}
-
-/**
- * configuration for Vulnerability Assessment autoprovisioning
- */
-export interface DefenderForServersAwsOfferingConfigurationArgs {
-    /**
-     * The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-     */
-    type?: pulumi.Input<string | enums.Type>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1239,7 +1229,7 @@ export interface DefenderForServersAwsOfferingDefenderForServersArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1249,11 +1239,11 @@ export interface DefenderForServersAwsOfferingMdeAutoProvisioningArgs {
     /**
      * configuration for Microsoft Defender for Endpoint autoprovisioning
      */
-    configuration?: any;
+    configuration?: any | undefined;
     /**
      * Is Microsoft Defender for Endpoint auto provisioning enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1263,7 +1253,7 @@ export interface DefenderForServersAwsOfferingSubPlanArgs {
     /**
      * The available sub plans
      */
-    type?: pulumi.Input<string | enums.SubPlan>;
+    type?: pulumi.Input<string | enums.SubPlan | undefined>;
 }
 
 /**
@@ -1273,11 +1263,21 @@ export interface DefenderForServersAwsOfferingVaAutoProvisioningArgs {
     /**
      * configuration for Vulnerability Assessment autoprovisioning
      */
-    configuration?: pulumi.Input<DefenderForServersAwsOfferingConfigurationArgs>;
+    configuration?: pulumi.Input<DefenderForServersAwsOfferingVaAutoProvisioningConfigurationArgs | undefined>;
     /**
      * Is Vulnerability Assessment auto provisioning enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
+/**
+ * configuration for Vulnerability Assessment autoprovisioning
+ */
+export interface DefenderForServersAwsOfferingVaAutoProvisioningConfigurationArgs {
+    /**
+     * The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+     */
+    type?: pulumi.Input<string | enums.Type | undefined>;
 }
 
 /**
@@ -1287,15 +1287,15 @@ export interface DefenderForServersAwsOfferingVmScannersArgs {
     /**
      * The cloud role ARN in AWS for this feature
      */
-    cloudRoleArn?: pulumi.Input<string>;
+    cloudRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Configuration for VM scanning
      */
-    configuration?: pulumi.Input<VmScannersBaseConfigurationArgs>;
+    configuration?: pulumi.Input<VmScannersBaseConfigurationArgs | undefined>;
     /**
      * Is VM scanning enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1305,15 +1305,15 @@ export interface DefenderForServersGcpOfferingArgs {
     /**
      * The ARC autoprovisioning configuration
      */
-    arcAutoProvisioning?: pulumi.Input<DefenderForServersGcpOfferingArcAutoProvisioningArgs>;
+    arcAutoProvisioning?: pulumi.Input<DefenderForServersGcpOfferingArcAutoProvisioningArgs | undefined>;
     /**
      * The Defender for servers connection configuration
      */
-    defenderForServers?: pulumi.Input<DefenderForServersGcpOfferingDefenderForServersArgs>;
+    defenderForServers?: pulumi.Input<DefenderForServersGcpOfferingDefenderForServersArgs | undefined>;
     /**
      * The Microsoft Defender for Endpoint autoprovisioning configuration
      */
-    mdeAutoProvisioning?: pulumi.Input<DefenderForServersGcpOfferingMdeAutoProvisioningArgs>;
+    mdeAutoProvisioning?: pulumi.Input<DefenderForServersGcpOfferingMdeAutoProvisioningArgs | undefined>;
     /**
      * The type of the security offering.
      * Expected value is 'DefenderForServersGcp'.
@@ -1322,15 +1322,15 @@ export interface DefenderForServersGcpOfferingArgs {
     /**
      * configuration for the servers offering subPlan
      */
-    subPlan?: pulumi.Input<DefenderForServersGcpOfferingSubPlanArgs>;
+    subPlan?: pulumi.Input<DefenderForServersGcpOfferingSubPlanArgs | undefined>;
     /**
      * The Vulnerability Assessment autoprovisioning configuration
      */
-    vaAutoProvisioning?: pulumi.Input<DefenderForServersGcpOfferingVaAutoProvisioningArgs>;
+    vaAutoProvisioning?: pulumi.Input<DefenderForServersGcpOfferingVaAutoProvisioningArgs | undefined>;
     /**
      * The Microsoft Defender for Server VM scanning configuration
      */
-    vmScanners?: pulumi.Input<DefenderForServersGcpOfferingVmScannersArgs>;
+    vmScanners?: pulumi.Input<DefenderForServersGcpOfferingVmScannersArgs | undefined>;
 }
 
 /**
@@ -1340,21 +1340,11 @@ export interface DefenderForServersGcpOfferingArcAutoProvisioningArgs {
     /**
      * Configuration for servers Arc auto provisioning for a given environment
      */
-    configuration?: pulumi.Input<ArcAutoProvisioningConfigurationArgs>;
+    configuration?: pulumi.Input<ArcAutoProvisioningConfigurationArgs | undefined>;
     /**
      * Is arc auto provisioning enabled
      */
-    enabled?: pulumi.Input<boolean>;
-}
-
-/**
- * configuration for Vulnerability Assessment autoprovisioning
- */
-export interface DefenderForServersGcpOfferingConfigurationArgs {
-    /**
-     * The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-     */
-    type?: pulumi.Input<string | enums.Type>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1364,11 +1354,11 @@ export interface DefenderForServersGcpOfferingDefenderForServersArgs {
     /**
      * The service account email address in GCP for this feature
      */
-    serviceAccountEmailAddress?: pulumi.Input<string>;
+    serviceAccountEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * The workload identity provider id in GCP for this feature
      */
-    workloadIdentityProviderId?: pulumi.Input<string>;
+    workloadIdentityProviderId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1378,11 +1368,11 @@ export interface DefenderForServersGcpOfferingMdeAutoProvisioningArgs {
     /**
      * configuration for Microsoft Defender for Endpoint autoprovisioning
      */
-    configuration?: any;
+    configuration?: any | undefined;
     /**
      * Is Microsoft Defender for Endpoint auto provisioning enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1392,7 +1382,7 @@ export interface DefenderForServersGcpOfferingSubPlanArgs {
     /**
      * The available sub plans
      */
-    type?: pulumi.Input<string | enums.SubPlan>;
+    type?: pulumi.Input<string | enums.SubPlan | undefined>;
 }
 
 /**
@@ -1402,11 +1392,21 @@ export interface DefenderForServersGcpOfferingVaAutoProvisioningArgs {
     /**
      * configuration for Vulnerability Assessment autoprovisioning
      */
-    configuration?: pulumi.Input<DefenderForServersGcpOfferingConfigurationArgs>;
+    configuration?: pulumi.Input<DefenderForServersGcpOfferingVaAutoProvisioningConfigurationArgs | undefined>;
     /**
      * Is Vulnerability Assessment auto provisioning enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
+/**
+ * configuration for Vulnerability Assessment autoprovisioning
+ */
+export interface DefenderForServersGcpOfferingVaAutoProvisioningConfigurationArgs {
+    /**
+     * The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+     */
+    type?: pulumi.Input<string | enums.Type | undefined>;
 }
 
 /**
@@ -1416,11 +1416,11 @@ export interface DefenderForServersGcpOfferingVmScannersArgs {
     /**
      * Configuration for VM scanning
      */
-    configuration?: pulumi.Input<VmScannersBaseConfigurationArgs>;
+    configuration?: pulumi.Input<VmScannersBaseConfigurationArgs | undefined>;
     /**
      * Is VM scanning enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1430,19 +1430,19 @@ export interface DefenderForStorageSettingPropertiesArgs {
     /**
      * Indicates whether Defender for Storage is enabled on this storage account.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Properties of Malware Scanning.
      */
-    malwareScanning?: pulumi.Input<MalwareScanningPropertiesArgs>;
+    malwareScanning?: pulumi.Input<MalwareScanningPropertiesArgs | undefined>;
     /**
      * Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
      */
-    overrideSubscriptionLevelSettings?: pulumi.Input<boolean>;
+    overrideSubscriptionLevelSettings?: pulumi.Input<boolean | undefined>;
     /**
      * Properties of Sensitive Data Discovery.
      */
-    sensitiveDataDiscovery?: pulumi.Input<SensitiveDataDiscoveryPropertiesArgs>;
+    sensitiveDataDiscovery?: pulumi.Input<SensitiveDataDiscoveryPropertiesArgs | undefined>;
 }
 
 /**
@@ -1471,14 +1471,14 @@ export interface DevOpsConfigurationPropertiesArgs {
     /**
      * Authorization payload.
      */
-    authorization?: pulumi.Input<AuthorizationArgs>;
+    authorization?: pulumi.Input<AuthorizationArgs | undefined>;
     /**
      * AutoDiscovery states.
      */
-    autoDiscovery?: pulumi.Input<string | enums.AutoDiscovery>;
+    autoDiscovery?: pulumi.Input<string | enums.AutoDiscovery | undefined>;
     /**
      * The provisioning state of the resource.
-     * 
+     *
      * Pending - Provisioning pending.
      * Failed - Provisioning failed.
      * Succeeded - Successful provisioning.
@@ -1487,12 +1487,12 @@ export interface DevOpsConfigurationPropertiesArgs {
      * DeletionSuccess - Deletion successful.
      * DeletionFailure - Deletion failure.
      */
-    provisioningState?: pulumi.Input<string | enums.DevOpsProvisioningState>;
+    provisioningState?: pulumi.Input<string | enums.DevOpsProvisioningState | undefined>;
     /**
      * List of top-level inventory to select when AutoDiscovery is disabled.
      * This field is ignored when AutoDiscovery is enabled.
      */
-    topLevelInventoryList?: pulumi.Input<pulumi.Input<string>[]>;
+    topLevelInventoryList?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1502,7 +1502,7 @@ export interface DockerHubEnvironmentDataArgs {
     /**
      * The Docker Hub organization authentication details
      */
-    authentication?: pulumi.Input<AccessTokenAuthenticationArgs>;
+    authentication?: pulumi.Input<AccessTokenAuthenticationArgs | undefined>;
     /**
      * The type of the environment data.
      * Expected value is 'DockerHubOrganization'.
@@ -1511,7 +1511,7 @@ export interface DockerHubEnvironmentDataArgs {
     /**
      * Scan interval in hours (value should be between 1-hour to 24-hours)
      */
-    scanInterval?: pulumi.Input<number>;
+    scanInterval?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1521,13 +1521,13 @@ export interface ExtensionArgs {
     /**
      * Property values associated with the extension.
      */
-    additionalExtensionProperties?: any;
+    additionalExtensionProperties?: any | undefined;
     /**
      * Indicates whether the extension is enabled.
      */
     isEnabled: pulumi.Input<string | enums.IsEnabled>;
     /**
-     * The extension name. Supported values are: <br><br>**AgentlessDiscoveryForKubernetes** - Provides zero footprint, API-based discovery of Kubernetes clusters, their configurations and deployments. The collected data is used to create a contextualized security graph for Kubernetes clusters, provide risk hunting capabilities, and visualize risks and threats to  Kubernetes environments and workloads.<br>Available for CloudPosture plan and Containers plan.<br><br>**OnUploadMalwareScanning** - Limits the GB to be scanned per month for each storage account within the subscription. Once this limit reached on a given storage account, Blobs won't be scanned during current calendar month.<br>Available for StorageAccounts plan (DefenderForStorageV2 sub plans).<br><br>**SensitiveDataDiscovery** - Sensitive data discovery identifies Blob storage container with sensitive data such as credentials, credit cards, and more, to help prioritize and investigate security events.<br>Available for StorageAccounts plan (DefenderForStorageV2 sub plan) and CloudPosture plan.<br><br>**ContainerRegistriesVulnerabilityAssessments** - Provides vulnerability management for images stored in your container registries.<br>Available for CloudPosture plan and Containers plan.<br><br>**MdeDesignatedSubscription** - Direct onboarding is a seamless integration between Defender for Endpoint and Defender for Cloud that doesn’t require extra software deployment on your servers. The onboarded resources will be presented under a designated Azure Subscription you configure<br>Available for VirtualMachines plan (P1 and P2 sub plans).<br><br>**AgentlessVmScanning** - Scans your machines for installed software, vulnerabilities, malware and secret scanning without relying on agents or impacting machine performance. Learn more here https://learn.microsoft.com/en-us/azure/defender-for-cloud/concept-agentless-data-collection.<br>Available for CloudPosture plan, VirtualMachines plan (P2 sub plan) and Containers plan.<br><br>**EntraPermissionsManagement** - Permissions Management provides Cloud Infrastructure Entitlement Management (CIEM) capabilities that helps organizations to manage and control user access and entitlements in their cloud infrastructure - important attack vector for cloud environments.<br>Permissions Management analyzes all permissions and active usage, and suggests recommendations to reduce permissions to enforce the principle of least privilege. Learn more here https://learn.microsoft.com/en-us/azure/defender-for-cloud/permissions-management.<br>Available for CloudPosture plan. <br><br>**FileIntegrityMonitoring** - File integrity monitoring (FIM), examines operating system files.<br>Windows registries, Linux system files, in real time, for changes that might indicate an attack.<br>Available for VirtualMachines plan (P2 sub plan). <br><br>**ContainerSensor** - The sensor is based on IG and provides a rich threat detection suite for Kubernetes clusters, nodes, and workloads, powered by Microsoft leading threat intelligence, provides mapping to MITRE ATT&CK framework.<br>Available for Containers plan. <br><br>**AIPromptEvidence** - Exposes the prompts passed between the user and the AI model as alert evidence. This helps classify and triage the alerts with relevant user context. The prompt snippets will include only segments of the user prompt or model response that were deemed suspicious and relevant for security classifications. The prompt evidence will be available through Defender portal as part of each alert.<br>Available for AI plan. <br><br>
+     * The extension name. Supported values are: <br><br>**AgentlessDiscoveryForKubernetes** - Provides zero footprint, API-based discovery of Kubernetes clusters, their configurations and deployments. The collected data is used to create a contextualized security graph for Kubernetes clusters, provide risk hunting capabilities, and visualize risks and threats to  Kubernetes environments and workloads.<br>Available for CloudPosture plan and Containers plan.<br><br>**OnUploadMalwareScanning** - Limits the GB to be scanned per month for each storage account within the subscription. Once this limit reached on a given storage account, Blobs won't be scanned during current calendar month.<br>Available for StorageAccounts plan (DefenderForStorageV2 sub plans).<br><br>**SensitiveDataDiscovery** - Sensitive data discovery identifies Blob storage container with sensitive data such as credentials, credit cards, and more, to help prioritize and investigate security events.<br>Available for StorageAccounts plan (DefenderForStorageV2 sub plan) and CloudPosture plan.<br><br>**ContainerRegistriesVulnerabilityAssessments** - Provides vulnerability management for images stored in your container registries.<br>Available for CloudPosture plan and Containers plan.<br><br>**MdeDesignatedSubscription** - Direct onboarding is a seamless integration between Defender for Endpoint and Defender for Cloud that doesn't require extra software deployment on your servers. The onboarded resources will be presented under a designated Azure Subscription you configure<br>Available for VirtualMachines plan (P1 and P2 sub plans).<br><br>**AgentlessVmScanning** - Scans your machines for installed software, vulnerabilities, malware and secret scanning without relying on agents or impacting machine performance. Learn more here https://learn.microsoft.com/en-us/azure/defender-for-cloud/concept-agentless-data-collection.<br>Available for CloudPosture plan, VirtualMachines plan (P2 sub plan) and Containers plan.<br><br>**EntraPermissionsManagement** - Permissions Management provides Cloud Infrastructure Entitlement Management (CIEM) capabilities that helps organizations to manage and control user access and entitlements in their cloud infrastructure - important attack vector for cloud environments.<br>Permissions Management analyzes all permissions and active usage, and suggests recommendations to reduce permissions to enforce the principle of least privilege. Learn more here https://learn.microsoft.com/en-us/azure/defender-for-cloud/permissions-management.<br>Available for CloudPosture plan. <br><br>**FileIntegrityMonitoring** - File integrity monitoring (FIM), examines operating system files.<br>Windows registries, Linux system files, in real time, for changes that might indicate an attack.<br>Available for VirtualMachines plan (P2 sub plan). <br><br>**ContainerSensor** - The sensor is based on IG and provides a rich threat detection suite for Kubernetes clusters, nodes, and workloads, powered by Microsoft leading threat intelligence, provides mapping to MITRE ATT&CK framework.<br>Available for Containers plan. <br><br>**AIPromptEvidence** - Exposes the prompts passed between the user and the AI model as alert evidence. This helps classify and triage the alerts with relevant user context. The prompt snippets will include only segments of the user prompt or model response that were deemed suspicious and relevant for security classifications. The prompt evidence will be available through Defender portal as part of each alert.<br>Available for AI plan. <br><br>
      */
     name: pulumi.Input<string>;
 }
@@ -1539,7 +1539,7 @@ export interface GcpOrganizationalDataMemberArgs {
     /**
      * The GCP management project number from organizational onboarding
      */
-    managementProjectNumber?: pulumi.Input<string>;
+    managementProjectNumber?: pulumi.Input<string | undefined>;
     /**
      * The multi cloud account's membership type in the organization
      * Expected value is 'Member'.
@@ -1548,7 +1548,7 @@ export interface GcpOrganizationalDataMemberArgs {
     /**
      * If the multi cloud account is not of membership type organization, this will be the ID of the project's parent
      */
-    parentHierarchyId?: pulumi.Input<string>;
+    parentHierarchyId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1558,7 +1558,7 @@ export interface GcpOrganizationalDataOrganizationArgs {
     /**
      * If the multi cloud account is of membership type organization, list of accounts excluded from offering
      */
-    excludedProjectNumbers?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedProjectNumbers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The multi cloud account's membership type in the organization
      * Expected value is 'Organization'.
@@ -1567,11 +1567,11 @@ export interface GcpOrganizationalDataOrganizationArgs {
     /**
      * The service account email address which represents the organization level permissions container.
      */
-    serviceAccountEmailAddress?: pulumi.Input<string>;
+    serviceAccountEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * The GCP workload identity provider id which represents the permissions required to auto provision security connectors
      */
-    workloadIdentityProviderId?: pulumi.Input<string>;
+    workloadIdentityProviderId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1581,11 +1581,11 @@ export interface GcpProjectDetailsArgs {
     /**
      * The GCP Project id
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The unique GCP Project number
      */
-    projectNumber?: pulumi.Input<string>;
+    projectNumber?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1600,15 +1600,15 @@ export interface GcpProjectEnvironmentDataArgs {
     /**
      * The Gcp project's organizational data
      */
-    organizationalData?: pulumi.Input<GcpOrganizationalDataMemberArgs | GcpOrganizationalDataOrganizationArgs>;
+    organizationalData?: pulumi.Input<GcpOrganizationalDataMemberArgs | GcpOrganizationalDataOrganizationArgs | undefined>;
     /**
      * The Gcp project's details
      */
-    projectDetails?: pulumi.Input<GcpProjectDetailsArgs>;
+    projectDetails?: pulumi.Input<GcpProjectDetailsArgs | undefined>;
     /**
      * Scan interval in hours (value should be between 1-hour to 24-hours)
      */
-    scanInterval?: pulumi.Input<number>;
+    scanInterval?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1640,15 +1640,15 @@ export interface GovernanceAssignmentAdditionalDataArgs {
     /**
      * Ticket link associated with this governance assignment - for example: https://snow.com
      */
-    ticketLink?: pulumi.Input<string>;
+    ticketLink?: pulumi.Input<string | undefined>;
     /**
      * Ticket number associated with this governance assignment
      */
-    ticketNumber?: pulumi.Input<number>;
+    ticketNumber?: pulumi.Input<number | undefined>;
     /**
      * The ticket status associated with this governance assignment - for example: Active
      */
-    ticketStatus?: pulumi.Input<string>;
+    ticketStatus?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1658,11 +1658,11 @@ export interface GovernanceEmailNotificationArgs {
     /**
      * Exclude manager from weekly email notification.
      */
-    disableManagerEmailNotification?: pulumi.Input<boolean>;
+    disableManagerEmailNotification?: pulumi.Input<boolean | undefined>;
     /**
      * Exclude  owner from weekly email notification.
      */
-    disableOwnerEmailNotification?: pulumi.Input<boolean>;
+    disableOwnerEmailNotification?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1672,11 +1672,11 @@ export interface GovernanceRuleEmailNotificationArgs {
     /**
      * Defines whether manager email notifications are disabled
      */
-    disableManagerEmailNotification?: pulumi.Input<boolean>;
+    disableManagerEmailNotification?: pulumi.Input<boolean | undefined>;
     /**
      * Defines whether owner email notifications are disabled
      */
-    disableOwnerEmailNotification?: pulumi.Input<boolean>;
+    disableOwnerEmailNotification?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1686,11 +1686,11 @@ export interface GovernanceRuleOwnerSourceArgs {
     /**
      * The owner type for the governance rule owner source
      */
-    type?: pulumi.Input<string | enums.GovernanceRuleOwnerSourceType>;
+    type?: pulumi.Input<string | enums.GovernanceRuleOwnerSourceType | undefined>;
     /**
      * The source value e.g. tag key like owner name or email address
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1705,7 +1705,7 @@ export interface JFrogEnvironmentDataArgs {
     /**
      * Scan interval in hours (value should be between 1-hour to 24-hours)
      */
-    scanInterval?: pulumi.Input<number>;
+    scanInterval?: pulumi.Input<number | undefined>;
 }
 
 export interface JitNetworkAccessPolicyVirtualMachineArgs {
@@ -1720,18 +1720,18 @@ export interface JitNetworkAccessPolicyVirtualMachineArgs {
     /**
      * Public IP address of the Azure Firewall that is linked to this policy, if applicable
      */
-    publicIpAddress?: pulumi.Input<string>;
+    publicIpAddress?: pulumi.Input<string | undefined>;
 }
 
 export interface JitNetworkAccessPortRuleArgs {
     /**
      * Mutually exclusive with the "allowedSourceAddressPrefixes" parameter. Should be an IP address or CIDR, for example "192.168.0.3" or "192.168.0.0/16".
      */
-    allowedSourceAddressPrefix?: pulumi.Input<string>;
+    allowedSourceAddressPrefix?: pulumi.Input<string | undefined>;
     /**
      * Mutually exclusive with the "allowedSourceAddressPrefix" parameter.
      */
-    allowedSourceAddressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedSourceAddressPrefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Maximum duration requests can be made for. In ISO 8601 duration format. Minimum 5 minutes, maximum 1 day
      */
@@ -1744,7 +1744,7 @@ export interface JitNetworkAccessRequestArgs {
     /**
      * The justification for making the initiate request
      */
-    justification?: pulumi.Input<string>;
+    justification?: pulumi.Input<string | undefined>;
     /**
      * The identity of the person who made the request
      */
@@ -1760,11 +1760,11 @@ export interface JitNetworkAccessRequestPortArgs {
     /**
      * Mutually exclusive with the "allowedSourceAddressPrefixes" parameter. Should be an IP address or CIDR, for example "192.168.0.3" or "192.168.0.0/16".
      */
-    allowedSourceAddressPrefix?: pulumi.Input<string>;
+    allowedSourceAddressPrefix?: pulumi.Input<string | undefined>;
     /**
      * Mutually exclusive with the "allowedSourceAddressPrefix" parameter.
      */
-    allowedSourceAddressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedSourceAddressPrefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The date & time at which the request ends in UTC
      */
@@ -1772,7 +1772,7 @@ export interface JitNetworkAccessRequestPortArgs {
     /**
      * The port which is mapped to this port's `number` in the Azure Firewall, if applicable
      */
-    mappedPort?: pulumi.Input<number>;
+    mappedPort?: pulumi.Input<number | undefined>;
     number: pulumi.Input<number>;
     /**
      * The status of the port
@@ -1802,11 +1802,11 @@ export interface MalwareScanningPropertiesArgs {
     /**
      * Properties of On Upload malware scanning.
      */
-    onUpload?: pulumi.Input<OnUploadPropertiesArgs>;
+    onUpload?: pulumi.Input<OnUploadPropertiesArgs | undefined>;
     /**
      * Optional. Resource id of an Event Grid Topic to send scan results to.
      */
-    scanResultsEventGridTopicResourceId?: pulumi.Input<string>;
+    scanResultsEventGridTopicResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1816,7 +1816,7 @@ export interface NotificationsSourceAlertArgs {
     /**
      * Defines the minimal alert severity which will be sent as email notifications
      */
-    minimalSeverity?: pulumi.Input<string | enums.MinimalSeverity>;
+    minimalSeverity?: pulumi.Input<string | enums.MinimalSeverity | undefined>;
     /**
      * The source type that will trigger the notification
      * Expected value is 'Alert'.
@@ -1831,7 +1831,7 @@ export interface NotificationsSourceAttackPathArgs {
     /**
      * Defines the minimal attach path risk level which will be sent as email notifications
      */
-    minimalRiskLevel?: pulumi.Input<string | enums.MinimalRiskLevel>;
+    minimalRiskLevel?: pulumi.Input<string | enums.MinimalRiskLevel | undefined>;
     /**
      * The source type that will trigger the notification
      * Expected value is 'AttackPath'.
@@ -1908,11 +1908,11 @@ export interface OnUploadPropertiesArgs {
     /**
      * Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
      */
-    capGBPerMonth?: pulumi.Input<number>;
+    capGBPerMonth?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether On Upload malware scanning should be enabled.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1922,7 +1922,7 @@ export interface PartialAssessmentPropertiesArgs {
     /**
      * The assessment key
      */
-    assessmentKey?: pulumi.Input<string>;
+    assessmentKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1932,15 +1932,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -1987,7 +1987,7 @@ export interface ScopeElementArgs {
     /**
      * The alert entity type to suppress by.
      */
-    field?: pulumi.Input<string>;
+    field?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2001,7 +2001,7 @@ export interface SecurityAssessmentMetadataPartnerDataArgs {
     /**
      * Name of the product of the partner that created the assessment
      */
-    productName?: pulumi.Input<string>;
+    productName?: pulumi.Input<string | undefined>;
     /**
      * Secret to authenticate the partner and verify it created the assessment - write only
      */
@@ -2016,11 +2016,11 @@ export interface SecurityAssessmentMetadataPropertiesArgs {
      * BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
      */
     assessmentType: pulumi.Input<string | enums.AssessmentType>;
-    categories?: pulumi.Input<pulumi.Input<string | enums.Categories>[]>;
+    categories?: pulumi.Input<pulumi.Input<string | enums.Categories>[] | undefined>;
     /**
      * Human readable description of the assessment
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User friendly display name of the assessment
      */
@@ -2028,32 +2028,32 @@ export interface SecurityAssessmentMetadataPropertiesArgs {
     /**
      * The implementation effort required to remediate this assessment
      */
-    implementationEffort?: pulumi.Input<string | enums.ImplementationEffort>;
+    implementationEffort?: pulumi.Input<string | enums.ImplementationEffort | undefined>;
     /**
      * Describes the partner that created the assessment
      */
-    partnerData?: pulumi.Input<SecurityAssessmentMetadataPartnerDataArgs>;
+    partnerData?: pulumi.Input<SecurityAssessmentMetadataPartnerDataArgs | undefined>;
     /**
      * True if this assessment is in preview release status
      */
-    preview?: pulumi.Input<boolean>;
+    preview?: pulumi.Input<boolean | undefined>;
     /**
      * Human readable description of what you should do to mitigate this security issue
      */
-    remediationDescription?: pulumi.Input<string>;
+    remediationDescription?: pulumi.Input<string | undefined>;
     /**
      * The severity level of the assessment
      */
     severity: pulumi.Input<string | enums.Severity>;
-    threats?: pulumi.Input<pulumi.Input<string | enums.Threats>[]>;
+    threats?: pulumi.Input<pulumi.Input<string | enums.Threats>[] | undefined>;
     /**
      * The user impact of the assessment
      */
-    userImpact?: pulumi.Input<string | enums.UserImpact>;
+    userImpact?: pulumi.Input<string | enums.UserImpact | undefined>;
 }
 
 export interface SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs {
-    gA?: pulumi.Input<string>;
+    gA?: pulumi.Input<string | undefined>;
     public: pulumi.Input<string>;
 }
 
@@ -2076,13 +2076,13 @@ export interface SecurityAssessmentPartnerDataArgs {
  */
 export interface SecurityContactPropertiesNotificationsByRoleArgs {
     /**
-     * Defines which RBAC roles will get email notifications from Microsoft Defender for Cloud. List of allowed RBAC roles: 
+     * Defines which RBAC roles will get email notifications from Microsoft Defender for Cloud. List of allowed RBAC roles:
      */
-    roles?: pulumi.Input<pulumi.Input<string | enums.SecurityContactRole>[]>;
+    roles?: pulumi.Input<pulumi.Input<string | enums.SecurityContactRole>[] | undefined>;
     /**
      * Defines whether to send email notifications from AMicrosoft Defender for Cloud to persons with specific RBAC roles on the subscription.
      */
-    state?: pulumi.Input<string | enums.State>;
+    state?: pulumi.Input<string | enums.State | undefined>;
 }
 
 /**
@@ -2092,7 +2092,7 @@ export interface SensitiveDataDiscoveryPropertiesArgs {
     /**
      * Indicates whether Sensitive Data Discovery should be enabled.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -2102,15 +2102,15 @@ export interface StandardAssignmentPropertiesAttestationDataArgs {
     /**
      * Component item with key as applied to this standard assignment over the given scope
      */
-    assignedAssessment?: pulumi.Input<AssignedAssessmentItemArgs>;
+    assignedAssessment?: pulumi.Input<AssignedAssessmentItemArgs | undefined>;
     /**
      * Attest category of this assignment
      */
-    complianceState?: pulumi.Input<string | enums.AttestationComplianceState>;
+    complianceState?: pulumi.Input<string | enums.AttestationComplianceState | undefined>;
     /**
      * Array of links to attestation evidence
      */
-    evidence?: pulumi.Input<pulumi.Input<AttestationEvidenceArgs>[]>;
+    evidence?: pulumi.Input<pulumi.Input<AttestationEvidenceArgs>[] | undefined>;
 }
 
 /**
@@ -2120,11 +2120,11 @@ export interface StandardAssignmentPropertiesExemptionDataArgs {
     /**
      * Component item with key as applied to this standard assignment over the given scope
      */
-    assignedAssessment?: pulumi.Input<AssignedAssessmentItemArgs>;
+    assignedAssessment?: pulumi.Input<AssignedAssessmentItemArgs | undefined>;
     /**
      * Exemption category of this assignment
      */
-    exemptionCategory?: pulumi.Input<string | enums.ExemptionCategory>;
+    exemptionCategory?: pulumi.Input<string | enums.ExemptionCategory | undefined>;
 }
 
 /**
@@ -2134,7 +2134,7 @@ export interface StandardComponentPropertiesArgs {
     /**
      * Component Key matching componentMetadata
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
 }
 
 export interface SuppressionAlertsScopeArgs {
@@ -2142,6 +2142,16 @@ export interface SuppressionAlertsScopeArgs {
      * All the conditions inside need to be true in order to suppress the alert
      */
     allOf: pulumi.Input<pulumi.Input<ScopeElementArgs>[]>;
+}
+
+/**
+ * Managed service identity (either system assigned, or none)
+ */
+export interface SystemAssignedServiceIdentityArgs {
+    /**
+     * Type of managed service identity (either system assigned, or none).
+     */
+    type: pulumi.Input<string | enums.SystemAssignedServiceIdentityType>;
 }
 
 /**
@@ -2215,9 +2225,9 @@ export interface VmScannersBaseConfigurationArgs {
     /**
      * Tags that indicates that a resource should not be scanned
      */
-    exclusionTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    exclusionTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The scanning mode for the VM scan.
      */
-    scanningMode?: pulumi.Input<string | enums.ScanningMode>;
+    scanningMode?: pulumi.Input<string | enums.ScanningMode | undefined>;
 }

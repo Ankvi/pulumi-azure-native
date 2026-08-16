@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2023-03-01, 2023-08-01-preview, 2023-09-01-preview, 2024-06-01, 2024-06-15-preview, 2025-02-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-03-01, 2023-08-01-preview, 2023-09-01-preview, 2024-06-01, 2024-06-15-preview, 2025-02-01-preview, 2025-06-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConfigurationStore extends pulumi.CustomResource {
     /**
@@ -167,7 +167,7 @@ export class ConfigurationStore extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:appconfiguration/v20190201preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20191001:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20191101preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20200601:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20200701preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20210301preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20211001preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20220301preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20220501:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20230301:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20230801preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20230901preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20240501:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20240601:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20240615preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20250201preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20250601preview:ConfigurationStore" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:appconfiguration/v20190201preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20191001:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20191101preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20200601:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20200701preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20210301preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20211001preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20220301preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20220501:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20230301:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20230801preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20230901preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20240501:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20240601:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20240615preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20250201preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20250601preview:ConfigurationStore" }, { type: "azure-native:appconfiguration/v20250801preview:ConfigurationStore" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ConfigurationStore.__pulumiType, name, resourceInputs, opts);
     }
@@ -180,39 +180,39 @@ export interface ConfigurationStoreArgs {
     /**
      * The name of the configuration store.
      */
-    configStoreName?: pulumi.Input<string>;
+    configStoreName?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the configuration store need to be recovered.
      */
-    createMode?: pulumi.Input<types.enums.CreateMode>;
+    createMode?: pulumi.Input<types.enums.CreateMode | undefined>;
     /**
      * Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM).
      */
-    dataPlaneProxy?: pulumi.Input<types.inputs.DataPlaneProxyPropertiesArgs>;
+    dataPlaneProxy?: pulumi.Input<types.inputs.DataPlaneProxyPropertiesArgs | undefined>;
     /**
      * Disables all authentication methods other than AAD authentication.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Property specifying whether protection against purge is enabled for this configuration store.
      */
-    enablePurgeProtection?: pulumi.Input<boolean>;
+    enablePurgeProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The encryption settings of the configuration store.
      */
-    encryption?: pulumi.Input<types.inputs.EncryptionPropertiesArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionPropertiesArgs | undefined>;
     /**
      * The managed identity information, if configured.
      */
-    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Control permission for data plane traffic coming from public networks while private endpoint is enabled.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * The name of the resource group to which the container registry belongs.
      */
@@ -224,9 +224,9 @@ export interface ConfigurationStoreArgs {
     /**
      * The amount of time in days that the configuration store will be retained when it is soft deleted.
      */
-    softDeleteRetentionInDays?: pulumi.Input<number>;
+    softDeleteRetentionInDays?: pulumi.Input<number | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

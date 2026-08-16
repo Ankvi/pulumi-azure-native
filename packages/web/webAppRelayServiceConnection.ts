@@ -1,11 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * Hybrid Connection for an App Service app.
  *
- * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+ * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppRelayServiceConnection extends pulumi.CustomResource {
     /**
@@ -47,14 +48,18 @@ export class WebAppRelayServiceConnection extends pulumi.CustomResource {
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly port: pulumi.Output<number | undefined>;
     declare public readonly resourceConnectionString: pulumi.Output<string | undefined>;
     declare public readonly resourceType: pulumi.Output<string | undefined>;
     /**
-     * Resource type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -86,6 +91,7 @@ export class WebAppRelayServiceConnection extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -98,10 +104,11 @@ export class WebAppRelayServiceConnection extends pulumi.CustomResource {
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["resourceConnectionString"] = undefined /*out*/;
             resourceInputs["resourceType"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20160801:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20180201:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20181101:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20190801:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20200601:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20200901:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20201001:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20201201:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20210101:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20210115:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20210201:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20210301:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20220301:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20220901:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20230101:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20231201:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20240401:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20241101:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20250301:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20250501:WebAppRelayServiceConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20150801:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20160801:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20180201:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20181101:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20190801:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20200601:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20200901:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20201001:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20201201:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20210101:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20210115:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20210201:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20210301:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20220301:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20220901:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20230101:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20231201:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20240401:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20241101:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20250301:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20250501:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20260301preview:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20260315:WebAppRelayServiceConnection" }, { type: "azure-native:web/v20260715:WebAppRelayServiceConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppRelayServiceConnection.__pulumiType, name, resourceInputs, opts);
     }
@@ -111,23 +118,23 @@ export class WebAppRelayServiceConnection extends pulumi.CustomResource {
  * The set of arguments for constructing a WebAppRelayServiceConnection resource.
  */
 export interface WebAppRelayServiceConnectionArgs {
-    biztalkUri?: pulumi.Input<string>;
-    entityConnectionString?: pulumi.Input<string>;
-    entityName?: pulumi.Input<string>;
-    hostname?: pulumi.Input<string>;
+    biztalkUri?: pulumi.Input<string | undefined>;
+    entityConnectionString?: pulumi.Input<string | undefined>;
+    entityName?: pulumi.Input<string | undefined>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Kind of resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Name of the app.
      */
     name: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
-    resourceConnectionString?: pulumi.Input<string>;
+    port?: pulumi.Input<number | undefined>;
+    resourceConnectionString?: pulumi.Input<string | undefined>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
 }

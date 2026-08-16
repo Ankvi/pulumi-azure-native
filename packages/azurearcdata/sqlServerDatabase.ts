@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-15-preview.
  *
- * Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SqlServerDatabase extends pulumi.CustomResource {
     /**
@@ -104,7 +104,7 @@ export class SqlServerDatabase extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurearcdata/v20220615preview:SqlServerDatabase" }, { type: "azure-native:azurearcdata/v20230115preview:SqlServerDatabase" }, { type: "azure-native:azurearcdata/v20240101:SqlServerDatabase" }, { type: "azure-native:azurearcdata/v20240501preview:SqlServerDatabase" }, { type: "azure-native:azurearcdata/v20250301preview:SqlServerDatabase" }, { type: "azure-native:azurearcdata/v20260101:SqlServerDatabase" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurearcdata/v20220615preview:SqlServerDatabase" }, { type: "azure-native:azurearcdata/v20230115preview:SqlServerDatabase" }, { type: "azure-native:azurearcdata/v20240101:SqlServerDatabase" }, { type: "azure-native:azurearcdata/v20240501preview:SqlServerDatabase" }, { type: "azure-native:azurearcdata/v20250301preview:SqlServerDatabase" }, { type: "azure-native:azurearcdata/v20260101:SqlServerDatabase" }, { type: "azure-native:azurearcdata/v20260301preview:SqlServerDatabase" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SqlServerDatabase.__pulumiType, name, resourceInputs, opts);
     }
@@ -117,11 +117,11 @@ export interface SqlServerDatabaseArgs {
     /**
      * Name of the database
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Properties of Arc Sql Server database
      */
@@ -137,5 +137,5 @@ export interface SqlServerDatabaseArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

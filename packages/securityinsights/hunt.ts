@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Hunt extends pulumi.CustomResource {
     /**
@@ -64,7 +64,7 @@ export class Hunt extends pulumi.CustomResource {
      */
     declare public readonly hypothesisStatus: pulumi.Output<string | undefined>;
     /**
-     * List of labels relevant to this hunt 
+     * List of labels relevant to this hunt
      */
     declare public readonly labels: pulumi.Output<string[] | undefined>;
     /**
@@ -143,7 +143,7 @@ export class Hunt extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20230401preview:Hunt" }, { type: "azure-native:securityinsights/v20230501preview:Hunt" }, { type: "azure-native:securityinsights/v20230601preview:Hunt" }, { type: "azure-native:securityinsights/v20230701preview:Hunt" }, { type: "azure-native:securityinsights/v20230801preview:Hunt" }, { type: "azure-native:securityinsights/v20230901preview:Hunt" }, { type: "azure-native:securityinsights/v20231001preview:Hunt" }, { type: "azure-native:securityinsights/v20231201preview:Hunt" }, { type: "azure-native:securityinsights/v20240101preview:Hunt" }, { type: "azure-native:securityinsights/v20240401preview:Hunt" }, { type: "azure-native:securityinsights/v20241001preview:Hunt" }, { type: "azure-native:securityinsights/v20250101preview:Hunt" }, { type: "azure-native:securityinsights/v20250401preview:Hunt" }, { type: "azure-native:securityinsights/v20250701preview:Hunt" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20230401preview:Hunt" }, { type: "azure-native:securityinsights/v20230501preview:Hunt" }, { type: "azure-native:securityinsights/v20230601preview:Hunt" }, { type: "azure-native:securityinsights/v20230701preview:Hunt" }, { type: "azure-native:securityinsights/v20230801preview:Hunt" }, { type: "azure-native:securityinsights/v20230901preview:Hunt" }, { type: "azure-native:securityinsights/v20231001preview:Hunt" }, { type: "azure-native:securityinsights/v20231201preview:Hunt" }, { type: "azure-native:securityinsights/v20240101preview:Hunt" }, { type: "azure-native:securityinsights/v20240401preview:Hunt" }, { type: "azure-native:securityinsights/v20241001preview:Hunt" }, { type: "azure-native:securityinsights/v20250101preview:Hunt" }, { type: "azure-native:securityinsights/v20250401preview:Hunt" }, { type: "azure-native:securityinsights/v20250701preview:Hunt" }, { type: "azure-native:securityinsights/v20251001preview:Hunt" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Hunt.__pulumiType, name, resourceInputs, opts);
     }
@@ -156,11 +156,11 @@ export interface HuntArgs {
     /**
      * A list of mitre attack tactics the hunt is associated with
      */
-    attackTactics?: pulumi.Input<pulumi.Input<string | types.enums.AttackTactic>[]>;
+    attackTactics?: pulumi.Input<pulumi.Input<string | types.enums.AttackTactic>[] | undefined>;
     /**
      * A list of a mitre attack techniques the hunt is associated with
      */
-    attackTechniques?: pulumi.Input<pulumi.Input<string>[]>;
+    attackTechniques?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the hunt
      */
@@ -172,19 +172,19 @@ export interface HuntArgs {
     /**
      * The hunt id (GUID)
      */
-    huntId?: pulumi.Input<string>;
+    huntId?: pulumi.Input<string | undefined>;
     /**
      * The hypothesis status of the hunt.
      */
-    hypothesisStatus?: pulumi.Input<string | types.enums.HypothesisStatus>;
+    hypothesisStatus?: pulumi.Input<string | types.enums.HypothesisStatus | undefined>;
     /**
-     * List of labels relevant to this hunt 
+     * List of labels relevant to this hunt
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes a user that the hunt is assigned to
      */
-    owner?: pulumi.Input<types.inputs.HuntOwnerArgs>;
+    owner?: pulumi.Input<types.inputs.HuntOwnerArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -192,7 +192,7 @@ export interface HuntArgs {
     /**
      * The status of the hunt.
      */
-    status?: pulumi.Input<string | types.enums.Status>;
+    status?: pulumi.Input<string | types.enums.Status | undefined>;
     /**
      * The name of the workspace.
      */

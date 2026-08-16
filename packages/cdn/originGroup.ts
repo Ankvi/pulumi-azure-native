@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview, 2025-12-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class OriginGroup extends pulumi.CustomResource {
     /**
@@ -123,7 +123,7 @@ export class OriginGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20191231:OriginGroup" }, { type: "azure-native:cdn/v20200331:OriginGroup" }, { type: "azure-native:cdn/v20200415:OriginGroup" }, { type: "azure-native:cdn/v20200901:OriginGroup" }, { type: "azure-native:cdn/v20210601:OriginGroup" }, { type: "azure-native:cdn/v20220501preview:OriginGroup" }, { type: "azure-native:cdn/v20221101preview:OriginGroup" }, { type: "azure-native:cdn/v20230501:OriginGroup" }, { type: "azure-native:cdn/v20230701preview:OriginGroup" }, { type: "azure-native:cdn/v20240201:OriginGroup" }, { type: "azure-native:cdn/v20240501preview:OriginGroup" }, { type: "azure-native:cdn/v20240601preview:OriginGroup" }, { type: "azure-native:cdn/v20240901:OriginGroup" }, { type: "azure-native:cdn/v20250101preview:OriginGroup" }, { type: "azure-native:cdn/v20250415:OriginGroup" }, { type: "azure-native:cdn/v20250601:OriginGroup" }, { type: "azure-native:cdn/v20250701preview:OriginGroup" }, { type: "azure-native:cdn/v20250901preview:OriginGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20191231:OriginGroup" }, { type: "azure-native:cdn/v20200331:OriginGroup" }, { type: "azure-native:cdn/v20200415:OriginGroup" }, { type: "azure-native:cdn/v20200901:OriginGroup" }, { type: "azure-native:cdn/v20210601:OriginGroup" }, { type: "azure-native:cdn/v20220501preview:OriginGroup" }, { type: "azure-native:cdn/v20221101preview:OriginGroup" }, { type: "azure-native:cdn/v20230501:OriginGroup" }, { type: "azure-native:cdn/v20230701preview:OriginGroup" }, { type: "azure-native:cdn/v20240201:OriginGroup" }, { type: "azure-native:cdn/v20240501preview:OriginGroup" }, { type: "azure-native:cdn/v20240601preview:OriginGroup" }, { type: "azure-native:cdn/v20240901:OriginGroup" }, { type: "azure-native:cdn/v20250101preview:OriginGroup" }, { type: "azure-native:cdn/v20250415:OriginGroup" }, { type: "azure-native:cdn/v20250601:OriginGroup" }, { type: "azure-native:cdn/v20250701preview:OriginGroup" }, { type: "azure-native:cdn/v20250901preview:OriginGroup" }, { type: "azure-native:cdn/v20251201:OriginGroup" }, { type: "azure-native:cdn/v20260401preview:OriginGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(OriginGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -140,15 +140,15 @@ export interface OriginGroupArgs {
     /**
      * Health probe settings to the origin that is used to determine the health of the origin.
      */
-    healthProbeSettings?: pulumi.Input<types.inputs.HealthProbeParametersArgs>;
+    healthProbeSettings?: pulumi.Input<types.inputs.HealthProbeParametersArgs | undefined>;
     /**
      * Name of the origin group which is unique within the endpoint.
      */
-    originGroupName?: pulumi.Input<string>;
+    originGroupName?: pulumi.Input<string | undefined>;
     /**
      * The source of the content being delivered via CDN within given origin group.
      */
-    origins?: pulumi.Input<pulumi.Input<types.inputs.ResourceReferenceArgs>[]>;
+    origins?: pulumi.Input<pulumi.Input<types.inputs.ResourceReferenceArgs>[] | undefined>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
@@ -160,9 +160,9 @@ export interface OriginGroupArgs {
     /**
      * The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
      */
-    responseBasedOriginErrorDetectionSettings?: pulumi.Input<types.inputs.ResponseBasedOriginErrorDetectionParametersArgs>;
+    responseBasedOriginErrorDetectionSettings?: pulumi.Input<types.inputs.ResponseBasedOriginErrorDetectionParametersArgs | undefined>;
     /**
      * Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
      */
-    trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: pulumi.Input<number>;
+    trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: pulumi.Input<number | undefined>;
 }

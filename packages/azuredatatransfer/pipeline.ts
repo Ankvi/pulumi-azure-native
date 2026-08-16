@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-27. In version 2.x of the Azure Native provider, it used API version 2023-10-11-preview.
  *
- * Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Pipeline extends pulumi.CustomResource {
     /**
@@ -97,7 +97,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azuredatatransfer/v20231011preview:Pipeline" }, { type: "azure-native:azuredatatransfer/v20240125:Pipeline" }, { type: "azure-native:azuredatatransfer/v20240507:Pipeline" }, { type: "azure-native:azuredatatransfer/v20240911:Pipeline" }, { type: "azure-native:azuredatatransfer/v20240927:Pipeline" }, { type: "azure-native:azuredatatransfer/v20250301preview:Pipeline" }, { type: "azure-native:azuredatatransfer/v20250411preview:Pipeline" }, { type: "azure-native:azuredatatransfer/v20250521:Pipeline" }, { type: "azure-native:azuredatatransfer/v20250530preview:Pipeline" }, { type: "azure-native:azuredatatransfer/v20251010preview:Pipeline" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azuredatatransfer/v20231011preview:Pipeline" }, { type: "azure-native:azuredatatransfer/v20240125:Pipeline" }, { type: "azure-native:azuredatatransfer/v20240507:Pipeline" }, { type: "azure-native:azuredatatransfer/v20240911:Pipeline" }, { type: "azure-native:azuredatatransfer/v20240927:Pipeline" }, { type: "azure-native:azuredatatransfer/v20250301preview:Pipeline" }, { type: "azure-native:azuredatatransfer/v20250411preview:Pipeline" }, { type: "azure-native:azuredatatransfer/v20250521:Pipeline" }, { type: "azure-native:azuredatatransfer/v20250530preview:Pipeline" }, { type: "azure-native:azuredatatransfer/v20251010preview:Pipeline" }, { type: "azure-native:azuredatatransfer/v20260206preview:Pipeline" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Pipeline.__pulumiType, name, resourceInputs, opts);
     }
@@ -110,15 +110,15 @@ export interface PipelineArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name for the pipeline that is to be requested.
      */
-    pipelineName?: pulumi.Input<string>;
+    pipelineName?: pulumi.Input<string | undefined>;
     /**
      * Properties of pipeline
      */
-    properties?: pulumi.Input<types.inputs.PipelinePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PipelinePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -126,5 +126,5 @@ export interface PipelineArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

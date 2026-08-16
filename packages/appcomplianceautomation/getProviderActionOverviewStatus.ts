@@ -47,5 +47,5 @@ export interface GetProviderActionOverviewStatusOutputArgs {
     /**
      * The resource type.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

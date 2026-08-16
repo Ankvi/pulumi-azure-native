@@ -1,5 +1,11 @@
 export const AccessReviewRecurrencePatternType = {
+    /**
+     * weekly
+     */
     Weekly: "weekly",
+    /**
+     * absoluteMonthly
+     */
     AbsoluteMonthly: "absoluteMonthly",
 } as const;
 
@@ -9,8 +15,17 @@ export const AccessReviewRecurrencePatternType = {
 export type AccessReviewRecurrencePatternType = (typeof AccessReviewRecurrencePatternType)[keyof typeof AccessReviewRecurrencePatternType];
 
 export const AccessReviewRecurrenceRangeType = {
+    /**
+     * endDate
+     */
     EndDate: "endDate",
+    /**
+     * noEnd
+     */
     NoEnd: "noEnd",
+    /**
+     * numbered
+     */
     Numbered: "numbered",
 } as const;
 
@@ -20,10 +35,25 @@ export const AccessReviewRecurrenceRangeType = {
 export type AccessReviewRecurrenceRangeType = (typeof AccessReviewRecurrenceRangeType)[keyof typeof AccessReviewRecurrenceRangeType];
 
 export const AccessReviewResult = {
+    /**
+     * Approve
+     */
     Approve: "Approve",
+    /**
+     * Deny
+     */
     Deny: "Deny",
+    /**
+     * NotReviewed
+     */
     NotReviewed: "NotReviewed",
+    /**
+     * DontKnow
+     */
     DontKnow: "DontKnow",
+    /**
+     * NotNotified
+     */
     NotNotified: "NotNotified",
 } as const;
 
@@ -33,9 +63,21 @@ export const AccessReviewResult = {
 export type AccessReviewResult = (typeof AccessReviewResult)[keyof typeof AccessReviewResult];
 
 export const ApprovalMode = {
+    /**
+     * SingleStage
+     */
     SingleStage: "SingleStage",
+    /**
+     * Serial
+     */
     Serial: "Serial",
+    /**
+     * Parallel
+     */
     Parallel: "Parallel",
+    /**
+     * NoApproval
+     */
     NoApproval: "NoApproval",
 } as const;
 
@@ -73,8 +115,17 @@ export const AssignmentType = {
 export type AssignmentType = (typeof AssignmentType)[keyof typeof AssignmentType];
 
 export const DefaultDecisionType = {
+    /**
+     * Approve
+     */
     Approve: "Approve",
+    /**
+     * Deny
+     */
     Deny: "Deny",
+    /**
+     * Recommendation
+     */
     Recommendation: "Recommendation",
 } as const;
 
@@ -83,9 +134,34 @@ export const DefaultDecisionType = {
  */
 export type DefaultDecisionType = (typeof DefaultDecisionType)[keyof typeof DefaultDecisionType];
 
+export const DenyAssignmentEffect = {
+    /**
+     * enforced
+     */
+    Enforced: "enforced",
+    /**
+     * audit
+     */
+    Audit: "audit",
+} as const;
+
+/**
+ * The effect of the deny assignment. 'enforced' blocks access, 'audit' logs without blocking.
+ */
+export type DenyAssignmentEffect = (typeof DenyAssignmentEffect)[keyof typeof DenyAssignmentEffect];
+
 export const EnablementRules = {
+    /**
+     * MultiFactorAuthentication
+     */
     MultiFactorAuthentication: "MultiFactorAuthentication",
+    /**
+     * Justification
+     */
     Justification: "Justification",
+    /**
+     * Ticketing
+     */
     Ticketing: "Ticketing",
 } as const;
 
@@ -115,7 +191,13 @@ export const EnforcementMode = {
 export type EnforcementMode = (typeof EnforcementMode)[keyof typeof EnforcementMode];
 
 export const ExcludedPrincipalTypes = {
+    /**
+     * ServicePrincipalsAsTarget
+     */
     ServicePrincipalsAsTarget: "ServicePrincipalsAsTarget",
+    /**
+     * ServicePrincipalsAsRequestor
+     */
     ServicePrincipalsAsRequestor: "ServicePrincipalsAsRequestor",
 } as const;
 
@@ -149,6 +231,9 @@ export const LockLevel = {
 export type LockLevel = (typeof LockLevel)[keyof typeof LockLevel];
 
 export const NotificationDeliveryMechanism = {
+    /**
+     * Email
+     */
     Email: "Email",
 } as const;
 
@@ -158,8 +243,17 @@ export const NotificationDeliveryMechanism = {
 export type NotificationDeliveryMechanism = (typeof NotificationDeliveryMechanism)[keyof typeof NotificationDeliveryMechanism];
 
 export const NotificationLevel = {
+    /**
+     * None
+     */
     None: "None",
+    /**
+     * Critical
+     */
     Critical: "Critical",
+    /**
+     * All
+     */
     All: "All",
 } as const;
 
@@ -185,8 +279,17 @@ export const OverrideKind = {
 export type OverrideKind = (typeof OverrideKind)[keyof typeof OverrideKind];
 
 export const PIMOnlyMode = {
+    /**
+     * Disabled
+     */
     Disabled: "Disabled",
+    /**
+     * Enabled
+     */
     Enabled: "Enabled",
+    /**
+     * ReportOnly
+     */
     ReportOnly: "ReportOnly",
 } as const;
 
@@ -223,11 +326,34 @@ export const PolicyType = {
 export type PolicyType = (typeof PolicyType)[keyof typeof PolicyType];
 
 export const PrincipalType = {
+    /**
+     * User
+     */
     User: "User",
+    /**
+     * Group
+     */
     Group: "Group",
+    /**
+     * ServicePrincipal
+     */
     ServicePrincipal: "ServicePrincipal",
+    /**
+     * ForeignGroup
+     */
     ForeignGroup: "ForeignGroup",
+    /**
+     * Device
+     */
     Device: "Device",
+    /**
+     * Agent identity derived from a user.
+     */
+    AgentUser: "AgentUser",
+    /**
+     * Agent identity derived from a service principal.
+     */
+    AgentServicePrincipal: "AgentServicePrincipal",
 } as const;
 
 /**
@@ -243,8 +369,17 @@ export const PublicNetworkAccessOptions = {
 export type PublicNetworkAccessOptions = (typeof PublicNetworkAccessOptions)[keyof typeof PublicNetworkAccessOptions];
 
 export const RecipientType = {
+    /**
+     * Requestor
+     */
     Requestor: "Requestor",
+    /**
+     * Approver
+     */
     Approver: "Approver",
+    /**
+     * Admin
+     */
     Admin: "Admin",
 } as const;
 
@@ -291,11 +426,29 @@ export const ResourceIdentityType = {
 export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];
 
 export const RoleManagementPolicyRuleType = {
+    /**
+     * RoleManagementPolicyApprovalRule
+     */
     RoleManagementPolicyApprovalRule: "RoleManagementPolicyApprovalRule",
+    /**
+     * RoleManagementPolicyAuthenticationContextRule
+     */
     RoleManagementPolicyAuthenticationContextRule: "RoleManagementPolicyAuthenticationContextRule",
+    /**
+     * RoleManagementPolicyEnablementRule
+     */
     RoleManagementPolicyEnablementRule: "RoleManagementPolicyEnablementRule",
+    /**
+     * RoleManagementPolicyExpirationRule
+     */
     RoleManagementPolicyExpirationRule: "RoleManagementPolicyExpirationRule",
+    /**
+     * RoleManagementPolicyNotificationRule
+     */
     RoleManagementPolicyNotificationRule: "RoleManagementPolicyNotificationRule",
+    /**
+     * RoleManagementPolicyPimOnlyModeRule
+     */
     RoleManagementPolicyPimOnlyModeRule: "RoleManagementPolicyPimOnlyModeRule",
 } as const;
 
@@ -340,12 +493,37 @@ export const Type = {
 export type Type = (typeof Type)[keyof typeof Type];
 
 export const UserType = {
+    /**
+     * User
+     */
     User: "User",
+    /**
+     * Group
+     */
     Group: "Group",
-    ServicePrincipal: "ServicePrincipal",
 } as const;
 
 /**
  * The type of user.
  */
 export type UserType = (typeof UserType)[keyof typeof UserType];
+
+export const UsersOrServicePrincipalSetUserType = {
+    /**
+     * User
+     */
+    User: "User",
+    /**
+     * Group
+     */
+    Group: "Group",
+    /**
+     * ServicePrincipal
+     */
+    ServicePrincipal: "ServicePrincipal",
+} as const;
+
+/**
+ * The type of user.
+ */
+export type UsersOrServicePrincipalSetUserType = (typeof UsersOrServicePrincipalSetUserType)[keyof typeof UsersOrServicePrincipalSetUserType];

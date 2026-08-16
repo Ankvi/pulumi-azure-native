@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-04-01, 2023-09-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ConfigurationAssignmentsForSubscription extends pulumi.CustomResource {
     /**
@@ -99,7 +99,7 @@ export class ConfigurationAssignmentsForSubscription extends pulumi.CustomResour
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:maintenance/v20230401:ConfigurationAssignmentsForSubscription" }, { type: "azure-native:maintenance/v20230901preview:ConfigurationAssignmentsForSubscription" }, { type: "azure-native:maintenance/v20231001preview:ConfigurationAssignmentsForSubscription" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:maintenance/v20230401:ConfigurationAssignmentsForSubscription" }, { type: "azure-native:maintenance/v20230901preview:ConfigurationAssignmentsForSubscription" }, { type: "azure-native:maintenance/v20231001preview:ConfigurationAssignmentsForSubscription" }, { type: "azure-native:maintenance/v20251001preview:ConfigurationAssignmentsForSubscription" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ConfigurationAssignmentsForSubscription.__pulumiType, name, resourceInputs, opts);
     }
@@ -112,21 +112,21 @@ export interface ConfigurationAssignmentsForSubscriptionArgs {
     /**
      * The name of the ConfigurationAssignment
      */
-    configurationAssignmentName?: pulumi.Input<string>;
+    configurationAssignmentName?: pulumi.Input<string | undefined>;
     /**
      * Properties of the configuration assignment
      */
-    filter?: pulumi.Input<types.inputs.ConfigurationAssignmentFilterPropertiesArgs>;
+    filter?: pulumi.Input<types.inputs.ConfigurationAssignmentFilterPropertiesArgs | undefined>;
     /**
      * Location of the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The maintenance configuration Id
      */
-    maintenanceConfigurationId?: pulumi.Input<string>;
+    maintenanceConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * The unique resourceId
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }

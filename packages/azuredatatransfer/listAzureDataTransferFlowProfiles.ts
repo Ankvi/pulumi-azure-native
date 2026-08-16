@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-30-preview.
  *
- * Other available API versions: 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listAzureDataTransferFlowProfiles(args?: ListAzureDataTransferFlowProfilesArgs, opts?: pulumi.InvokeOptions): Promise<ListAzureDataTransferFlowProfilesResult> {
     args = args || {};
@@ -37,7 +37,7 @@ export interface ListAzureDataTransferFlowProfilesResult {
  *
  * Uses Azure REST API version 2025-05-30-preview.
  *
- * Other available API versions: 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listAzureDataTransferFlowProfilesOutput(args?: ListAzureDataTransferFlowProfilesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListAzureDataTransferFlowProfilesResult> {
     args = args || {};
@@ -51,5 +51,5 @@ export interface ListAzureDataTransferFlowProfilesOutputArgs {
     /**
      * The name of the pipeline for which to retrieve associated FlowProfiles.
      */
-    pipeline?: pulumi.Input<string>;
+    pipeline?: pulumi.Input<string | undefined>;
 }

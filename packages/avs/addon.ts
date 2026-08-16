@@ -102,7 +102,7 @@ export interface AddonArgs {
     /**
      * Name of the addon.
      */
-    addonName?: pulumi.Input<string>;
+    addonName?: pulumi.Input<string | undefined>;
     /**
      * Name of the private cloud
      */
@@ -110,7 +110,7 @@ export interface AddonArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.AddonArcPropertiesArgs | types.inputs.AddonHcxPropertiesArgs | types.inputs.AddonSrmPropertiesArgs | types.inputs.AddonVrPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AddonArcPropertiesArgs | types.inputs.AddonHcxPropertiesArgs | types.inputs.AddonSrmPropertiesArgs | types.inputs.AddonVrPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

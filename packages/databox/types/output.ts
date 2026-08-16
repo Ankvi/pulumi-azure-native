@@ -213,7 +213,7 @@ export interface CopyProgressResponse {
      */
     invalidFilesProcessed: number;
     /**
-     * To indicate if enumeration of data is in progress. 
+     * To indicate if enumeration of data is in progress.
      * Until this is true, the TotalBytesToProcess may not be valid.
      */
     isEnumerationInProgress: boolean;
@@ -365,7 +365,7 @@ export interface DataBoxCustomerDiskCopyProgressResponse {
      */
     invalidFilesProcessed: number;
     /**
-     * To indicate if enumeration of data is in progress. 
+     * To indicate if enumeration of data is in progress.
      * Until this is true, the TotalBytesToProcess may not be valid.
      */
     isEnumerationInProgress: boolean;
@@ -652,7 +652,7 @@ export interface DataBoxDiskGranularCopyProgressResponse {
      */
     invalidFilesProcessed: number;
     /**
-     * To indicate if enumeration of data is in progress. 
+     * To indicate if enumeration of data is in progress.
      * Until this is true, the TotalBytesToProcess may not be valid.
      */
     isEnumerationInProgress: boolean;

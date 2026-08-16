@@ -7,15 +7,15 @@ export interface AgentUpgradeArgs {
     /**
      * The correlation ID passed in from RSM per upgrade.
      */
-    correlationId?: pulumi.Input<string>;
+    correlationId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the version info w.r.t AgentUpgrade for the machine.
      */
-    desiredVersion?: pulumi.Input<string>;
+    desiredVersion?: pulumi.Input<string | undefined>;
     /**
      * Specifies if RSM should try to upgrade this machine
      */
-    enableAutomaticUpgrade?: pulumi.Input<boolean>;
+    enableAutomaticUpgrade?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -25,7 +25,7 @@ export interface HybridComputePrivateLinkScopePropertiesArgs {
     /**
      * Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessType>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessType | undefined>;
 }
 
 /**
@@ -35,7 +35,7 @@ export interface IdentityArgs {
     /**
      * The identity type.
      */
-    type?: pulumi.Input<enums.ResourceIdentityType>;
+    type?: pulumi.Input<enums.ResourceIdentityType | undefined>;
 }
 
 /**
@@ -45,11 +45,11 @@ export interface LicenseArgs {
     /**
      * Describes the properties of a License.
      */
-    licenseDetails?: pulumi.Input<LicenseDetailsArgs>;
+    licenseDetails?: pulumi.Input<LicenseDetailsArgs | undefined>;
     /**
      * The type of the license resource.
      */
-    licenseType?: pulumi.Input<string | enums.LicenseType>;
+    licenseType?: pulumi.Input<string | enums.LicenseType | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -57,11 +57,11 @@ export interface LicenseArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Describes the tenant id.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -71,27 +71,27 @@ export interface LicenseDetailsArgs {
     /**
      * Describes the edition of the license. The values are either Standard or Datacenter.
      */
-    edition?: pulumi.Input<string | enums.LicenseEdition>;
+    edition?: pulumi.Input<string | enums.LicenseEdition | undefined>;
     /**
      * Describes the number of processors.
      */
-    processors?: pulumi.Input<number>;
+    processors?: pulumi.Input<number | undefined>;
     /**
      * Describes the state of the license.
      */
-    state?: pulumi.Input<string | enums.LicenseState>;
+    state?: pulumi.Input<string | enums.LicenseState | undefined>;
     /**
      * Describes the license target server.
      */
-    target?: pulumi.Input<string | enums.LicenseTarget>;
+    target?: pulumi.Input<string | enums.LicenseTarget | undefined>;
     /**
      * Describes the license core type (pCore or vCore).
      */
-    type?: pulumi.Input<string | enums.LicenseCoreType>;
+    type?: pulumi.Input<string | enums.LicenseCoreType | undefined>;
     /**
      * A list of volume license details.
      */
-    volumeLicenseDetails?: pulumi.Input<pulumi.Input<VolumeLicenseDetailsArgs>[]>;
+    volumeLicenseDetails?: pulumi.Input<pulumi.Input<VolumeLicenseDetailsArgs>[] | undefined>;
 }
 
 /**
@@ -101,23 +101,23 @@ export interface LicenseProfileMachineInstanceViewArgs {
     /**
      * Properties for the Machine ESU profile.
      */
-    esuProfile?: pulumi.Input<LicenseProfileMachineInstanceViewEsuPropertiesArgs>;
+    esuProfile?: pulumi.Input<LicenseProfileMachineInstanceViewEsuPropertiesArgs | undefined>;
     /**
      * The list of product features.
      */
-    productFeatures?: pulumi.Input<pulumi.Input<ProductFeatureArgs>[]>;
+    productFeatures?: pulumi.Input<pulumi.Input<ProductFeatureArgs>[] | undefined>;
     /**
      * Indicates the product type of the license.
      */
-    productType?: pulumi.Input<string | enums.LicenseProfileProductType>;
+    productType?: pulumi.Input<string | enums.LicenseProfileProductType | undefined>;
     /**
      * Specifies if this machine is licensed as part of a Software Assurance agreement.
      */
-    softwareAssuranceCustomer?: pulumi.Input<boolean>;
+    softwareAssuranceCustomer?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates the subscription status of the product.
      */
-    subscriptionStatus?: pulumi.Input<string | enums.LicenseProfileSubscriptionStatus>;
+    subscriptionStatus?: pulumi.Input<string | enums.LicenseProfileSubscriptionStatus | undefined>;
 }
 
 /**
@@ -127,11 +127,11 @@ export interface LicenseProfileMachineInstanceViewEsuPropertiesArgs {
     /**
      * The assigned license resource.
      */
-    assignedLicense?: pulumi.Input<LicenseArgs>;
+    assignedLicense?: pulumi.Input<LicenseArgs | undefined>;
     /**
      * Describes the license assignment state (Assigned or NotAssigned).
      */
-    licenseAssignmentState?: pulumi.Input<string | enums.LicenseAssignmentState>;
+    licenseAssignmentState?: pulumi.Input<string | enums.LicenseAssignmentState | undefined>;
 }
 
 /**
@@ -141,15 +141,15 @@ export interface LocationDataArgs {
     /**
      * The city or locality where the resource is located.
      */
-    city?: pulumi.Input<string>;
+    city?: pulumi.Input<string | undefined>;
     /**
      * The country or region where the resource is located
      */
-    countryOrRegion?: pulumi.Input<string>;
+    countryOrRegion?: pulumi.Input<string | undefined>;
     /**
      * The district, state, or province where the resource is located.
      */
-    district?: pulumi.Input<string>;
+    district?: pulumi.Input<string | undefined>;
     /**
      * A canonical name for the geographic or physical location.
      */
@@ -163,19 +163,19 @@ export interface MachineExtensionInstanceViewArgs {
     /**
      * The machine extension name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Instance view status.
      */
-    status?: pulumi.Input<MachineExtensionInstanceViewStatusArgs>;
+    status?: pulumi.Input<MachineExtensionInstanceViewStatusArgs | undefined>;
     /**
      * Specifies the type of the extension; an example is "CustomScriptExtension".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Specifies the version of the script handler.
      */
-    typeHandlerVersion?: pulumi.Input<string>;
+    typeHandlerVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,23 +185,23 @@ export interface MachineExtensionInstanceViewStatusArgs {
     /**
      * The status code.
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * The short localizable label for the status.
      */
-    displayStatus?: pulumi.Input<string>;
+    displayStatus?: pulumi.Input<string | undefined>;
     /**
      * The level code.
      */
-    level?: pulumi.Input<string | enums.StatusLevelTypes>;
+    level?: pulumi.Input<string | enums.StatusLevelTypes | undefined>;
     /**
      * The detailed status message, including for alerts and error messages.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The time of the status.
      */
-    time?: pulumi.Input<string>;
+    time?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,39 +211,39 @@ export interface MachineExtensionPropertiesArgs {
     /**
      * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
      */
-    autoUpgradeMinorVersion?: pulumi.Input<boolean>;
+    autoUpgradeMinorVersion?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
      */
-    enableAutomaticUpgrade?: pulumi.Input<boolean>;
+    enableAutomaticUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * How the extension handler should be forced to update even if the extension configuration has not changed.
      */
-    forceUpdateTag?: pulumi.Input<string>;
+    forceUpdateTag?: pulumi.Input<string | undefined>;
     /**
      * The machine extension instance view.
      */
-    instanceView?: pulumi.Input<MachineExtensionInstanceViewArgs>;
+    instanceView?: pulumi.Input<MachineExtensionInstanceViewArgs | undefined>;
     /**
      * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
      */
-    protectedSettings?: any;
+    protectedSettings?: any | undefined;
     /**
      * The name of the extension handler publisher.
      */
-    publisher?: pulumi.Input<string>;
+    publisher?: pulumi.Input<string | undefined>;
     /**
      * Json formatted public settings for the extension.
      */
-    settings?: any;
+    settings?: any | undefined;
     /**
      * Specifies the type of the extension; an example is "CustomScriptExtension".
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Specifies the version of the script handler.
      */
-    typeHandlerVersion?: pulumi.Input<string>;
+    typeHandlerVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -253,19 +253,19 @@ export interface MachineRunCommandScriptSourceArgs {
     /**
      * Specifies the commandId of predefined built-in script.
      */
-    commandId?: pulumi.Input<string>;
+    commandId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the script content to be executed on the machine.
      */
-    script?: pulumi.Input<string>;
+    script?: pulumi.Input<string | undefined>;
     /**
      * Specifies the script download location. It can be either SAS URI of an Azure storage blob with read access or public URI.
      */
-    scriptUri?: pulumi.Input<string>;
+    scriptUri?: pulumi.Input<string | undefined>;
     /**
      * User-assigned managed identity that has access to scriptUri in case of Azure storage blob. Use an empty object in case of system-assigned identity. Make sure the Azure storage blob exists, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
      */
-    scriptUriManagedIdentity?: pulumi.Input<RunCommandManagedIdentityArgs>;
+    scriptUriManagedIdentity?: pulumi.Input<RunCommandManagedIdentityArgs | undefined>;
 }
 
 /**
@@ -275,11 +275,11 @@ export interface OSProfileArgs {
     /**
      * Specifies the linux configuration for update management.
      */
-    linuxConfiguration?: pulumi.Input<OSProfileLinuxConfigurationArgs>;
+    linuxConfiguration?: pulumi.Input<OSProfileLinuxConfigurationArgs | undefined>;
     /**
      * Specifies the windows configuration for update management.
      */
-    windowsConfiguration?: pulumi.Input<OSProfileWindowsConfigurationArgs>;
+    windowsConfiguration?: pulumi.Input<OSProfileWindowsConfigurationArgs | undefined>;
 }
 
 /**
@@ -289,15 +289,15 @@ export interface OSProfileLinuxConfigurationArgs {
     /**
      * Specifies the assessment mode.
      */
-    assessmentMode?: pulumi.Input<string | enums.AssessmentModeTypes>;
+    assessmentMode?: pulumi.Input<string | enums.AssessmentModeTypes | undefined>;
     /**
      * Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
      */
-    enableHotpatching?: pulumi.Input<boolean>;
+    enableHotpatching?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the patch mode.
      */
-    patchMode?: pulumi.Input<string | enums.PatchModeTypes>;
+    patchMode?: pulumi.Input<string | enums.PatchModeTypes | undefined>;
 }
 
 /**
@@ -307,15 +307,15 @@ export interface OSProfileWindowsConfigurationArgs {
     /**
      * Specifies the assessment mode.
      */
-    assessmentMode?: pulumi.Input<string | enums.AssessmentModeTypes>;
+    assessmentMode?: pulumi.Input<string | enums.AssessmentModeTypes | undefined>;
     /**
      * Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
      */
-    enableHotpatching?: pulumi.Input<boolean>;
+    enableHotpatching?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the patch mode.
      */
-    patchMode?: pulumi.Input<string | enums.PatchModeTypes>;
+    patchMode?: pulumi.Input<string | enums.PatchModeTypes | undefined>;
 }
 
 /**
@@ -325,11 +325,11 @@ export interface PrivateEndpointConnectionPropertiesArgs {
     /**
      * Private endpoint which the connection belongs to.
      */
-    privateEndpoint?: pulumi.Input<PrivateEndpointPropertyArgs>;
+    privateEndpoint?: pulumi.Input<PrivateEndpointPropertyArgs | undefined>;
     /**
      * Connection state of the private endpoint connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStatePropertyArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStatePropertyArgs | undefined>;
 }
 
 /**
@@ -339,7 +339,7 @@ export interface PrivateEndpointPropertyArgs {
     /**
      * Resource id of the private endpoint.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -363,11 +363,11 @@ export interface ProductFeatureArgs {
     /**
      * Product feature name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates the current status of the product features.
      */
-    subscriptionStatus?: pulumi.Input<string | enums.LicenseProfileSubscriptionStatus>;
+    subscriptionStatus?: pulumi.Input<string | enums.LicenseProfileSubscriptionStatus | undefined>;
 }
 
 /**
@@ -391,11 +391,11 @@ export interface RunCommandManagedIdentityArgs {
     /**
      * Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -405,11 +405,11 @@ export interface ServiceStatusArgs {
     /**
      * The behavior of the service when the Arc-enabled machine starts up.
      */
-    startupType?: pulumi.Input<string>;
+    startupType?: pulumi.Input<string | undefined>;
     /**
      * The current status of the service.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -419,20 +419,20 @@ export interface ServiceStatusesArgs {
     /**
      * The state of the extension service on the Arc-enabled machine.
      */
-    extensionService?: pulumi.Input<ServiceStatusArgs>;
+    extensionService?: pulumi.Input<ServiceStatusArgs | undefined>;
     /**
      * The state of the guest configuration service on the Arc-enabled machine.
      */
-    guestConfigurationService?: pulumi.Input<ServiceStatusArgs>;
+    guestConfigurationService?: pulumi.Input<ServiceStatusArgs | undefined>;
 }
 
 export interface VolumeLicenseDetailsArgs {
     /**
      * The invoice id for the volume license.
      */
-    invoiceId?: pulumi.Input<string>;
+    invoiceId?: pulumi.Input<string | undefined>;
     /**
      * Describes the program year the volume license is for.
      */
-    programYear?: pulumi.Input<string | enums.ProgramYear>;
+    programYear?: pulumi.Input<string | enums.ProgramYear | undefined>;
 }

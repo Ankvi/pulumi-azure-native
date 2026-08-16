@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
  *
- * Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NeighborGroup extends pulumi.CustomResource {
     /**
@@ -124,7 +124,7 @@ export class NeighborGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230615:NeighborGroup" }, { type: "azure-native:managednetworkfabric/v20240215preview:NeighborGroup" }, { type: "azure-native:managednetworkfabric/v20240615preview:NeighborGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230615:NeighborGroup" }, { type: "azure-native:managednetworkfabric/v20240215preview:NeighborGroup" }, { type: "azure-native:managednetworkfabric/v20240615preview:NeighborGroup" }, { type: "azure-native:managednetworkfabric/v20250715:NeighborGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NeighborGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -137,7 +137,7 @@ export interface NeighborGroupArgs {
     /**
      * Switch configuration description.
      */
-    annotation?: pulumi.Input<string>;
+    annotation?: pulumi.Input<string | undefined>;
     /**
      * An array of destination IPv4 Addresses or IPv6 Addresses.
      */
@@ -145,11 +145,11 @@ export interface NeighborGroupArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the Neighbor Group.
      */
-    neighborGroupName?: pulumi.Input<string>;
+    neighborGroupName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -157,5 +157,5 @@ export interface NeighborGroupArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

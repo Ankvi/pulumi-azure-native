@@ -53,7 +53,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -67,47 +67,47 @@ export interface MdsResourcePropertiesArgs {
     /**
      * AKS Admin Group Id.
      */
-    aksAdminGroupId?: pulumi.Input<string>;
+    aksAdminGroupId?: pulumi.Input<string | undefined>;
     /**
      * Profile of CMK Settings.
      */
-    cmkProfile?: pulumi.Input<CmkProfileArgs>;
+    cmkProfile?: pulumi.Input<CmkProfileArgs | undefined>;
     /**
      * Deny Assignments exclusion list.
      */
-    denyAssignmentExclusions?: pulumi.Input<pulumi.Input<DenyAssignmentExclusionArgs>[]>;
+    denyAssignmentExclusions?: pulumi.Input<pulumi.Input<DenyAssignmentExclusionArgs>[] | undefined>;
     /**
      * Enable Copilot.
      */
-    enableCopilot?: pulumi.Input<boolean>;
+    enableCopilot?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Diagnostic Settings.
      */
-    enableDiagnosticSettings?: pulumi.Input<boolean>;
+    enableDiagnosticSettings?: pulumi.Input<boolean | undefined>;
     /**
      * Profile of Fabric resources.
      */
-    fabricProfile?: pulumi.Input<FabricProfileArgs>;
+    fabricProfile?: pulumi.Input<FabricProfileArgs | undefined>;
     /**
      * Profile of OpenAI Resource.
      */
-    openAIProfile?: pulumi.Input<OpenAIProfileArgs>;
+    openAIProfile?: pulumi.Input<OpenAIProfileArgs | undefined>;
     /**
      * Zone redundancy state for resources
      */
-    redundancyState?: pulumi.Input<string | enums.RedundancyState>;
+    redundancyState?: pulumi.Input<string | enums.RedundancyState | undefined>;
     /**
      * State of the resource
      */
-    resourceState?: pulumi.Input<string | enums.ResourceState>;
+    resourceState?: pulumi.Input<string | enums.ResourceState | undefined>;
     /**
      * Profile of User Managed OpenAI Resource.
      */
-    userManagedOpenAIProfile?: pulumi.Input<UserManagedOpenAIProfileArgs>;
+    userManagedOpenAIProfile?: pulumi.Input<UserManagedOpenAIProfileArgs | undefined>;
     /**
      * Mds Resource Version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 /**
  * mdsResourcePropertiesArgsProvideDefaults sets the appropriate defaults for MdsResourcePropertiesArgs
@@ -126,35 +126,35 @@ export interface OpenAIProfileArgs {
     /**
      * Embedding Model Capacity
      */
-    embeddingModelCapacity?: pulumi.Input<number>;
+    embeddingModelCapacity?: pulumi.Input<number | undefined>;
     /**
      * Embedding Model Name
      */
-    embeddingModelName?: pulumi.Input<string>;
+    embeddingModelName?: pulumi.Input<string | undefined>;
     /**
      * Embedding Model SKU Name
      */
-    embeddingModelSkuName?: pulumi.Input<string>;
+    embeddingModelSkuName?: pulumi.Input<string | undefined>;
     /**
      * Embedding Model Version
      */
-    embeddingModelVersion?: pulumi.Input<string>;
+    embeddingModelVersion?: pulumi.Input<string | undefined>;
     /**
      * GPT Model Capacity
      */
-    gptModelCapacity?: pulumi.Input<number>;
+    gptModelCapacity?: pulumi.Input<number | undefined>;
     /**
      * GPT Model Name
      */
-    gptModelName?: pulumi.Input<string>;
+    gptModelName?: pulumi.Input<string | undefined>;
     /**
      * GPT Model SKU Name
      */
-    gptModelSkuName?: pulumi.Input<string>;
+    gptModelSkuName?: pulumi.Input<string | undefined>;
     /**
      * GPT Model Version
      */
-    gptModelVersion?: pulumi.Input<string>;
+    gptModelVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -164,23 +164,23 @@ export interface SkuArgs {
     /**
      * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * If the service has different generations of hardware, for the same SKU, then that can be captured here.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * The name of the SKU. E.g. P3. It is typically a letter+number code
      */
     name: pulumi.Input<string>;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
      */
-    tier?: pulumi.Input<enums.SkuTier>;
+    tier?: pulumi.Input<enums.SkuTier | undefined>;
 }
 
 /**

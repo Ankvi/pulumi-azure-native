@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-11-01-preview.
  *
- * Other available API versions: 2025-05-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-05-01-preview, 2025-12-01-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Discount extends pulumi.CustomResource {
     /**
@@ -133,7 +133,7 @@ export class Discount extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:billingbenefits/v20241101preview:Discount" }, { type: "azure-native:billingbenefits/v20250501preview:Discount" }, { type: "azure-native:billingbenefits/v20251201preview:Discount" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:billingbenefits/v20241101preview:Discount" }, { type: "azure-native:billingbenefits/v20250501preview:Discount" }, { type: "azure-native:billingbenefits/v20251201preview:Discount" }, { type: "azure-native:billingbenefits/v20260601:Discount" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Discount.__pulumiType, name, resourceInputs, opts);
     }
@@ -146,31 +146,31 @@ export interface DiscountArgs {
     /**
      * Name of the discount
      */
-    discountName?: pulumi.Input<string>;
+    discountName?: pulumi.Input<string | undefined>;
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
      */
-    managedBy?: pulumi.Input<string>;
+    managedBy?: pulumi.Input<string | undefined>;
     /**
      * Plan for the resource.
      */
-    plan?: pulumi.Input<types.inputs.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs | undefined>;
     /**
      * Discount properties
      */
-    properties?: pulumi.Input<types.inputs.EntityTypeAffiliateDiscountArgs | types.inputs.EntityTypePrimaryDiscountArgs>;
+    properties?: pulumi.Input<types.inputs.EntityTypeAffiliateDiscountArgs | types.inputs.EntityTypePrimaryDiscountArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -178,9 +178,9 @@ export interface DiscountArgs {
     /**
      * The resource model definition representing SKU
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

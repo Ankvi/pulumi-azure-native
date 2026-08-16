@@ -154,7 +154,7 @@ export interface CloudArgs {
     /**
      * Name of the Cloud.
      */
-    cloudName?: pulumi.Input<string>;
+    cloudName?: pulumi.Input<string | undefined>;
     /**
      * The extended location.
      */
@@ -162,11 +162,11 @@ export interface CloudArgs {
     /**
      * Gets or sets the inventory Item ID for the resource.
      */
-    inventoryItemId?: pulumi.Input<string>;
+    inventoryItemId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group.
      */
@@ -174,13 +174,13 @@ export interface CloudArgs {
     /**
      * Resource tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Unique ID of the cloud.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * ARM Id of the vmmServer resource in which this resource resides.
      */
-    vmmServerId?: pulumi.Input<string>;
+    vmmServerId?: pulumi.Input<string | undefined>;
 }

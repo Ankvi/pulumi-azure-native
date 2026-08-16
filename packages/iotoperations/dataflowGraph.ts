@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-07-01-preview.
  *
- * Other available API versions: 2025-10-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DataflowGraph extends pulumi.CustomResource {
     /**
@@ -84,7 +84,7 @@ export class DataflowGraph extends pulumi.CustomResource {
             resourceInputs["dataflowProfileName"] = args?.dataflowProfileName;
             resourceInputs["extendedLocation"] = args?.extendedLocation;
             resourceInputs["instanceName"] = args?.instanceName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.dataflowGraphPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.dataflowGraphPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -99,7 +99,7 @@ export class DataflowGraph extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20250701preview:DataflowGraph" }, { type: "azure-native:iotoperations/v20251001:DataflowGraph" }, { type: "azure-native:iotoperations/v20260301:DataflowGraph" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20250701preview:DataflowGraph" }, { type: "azure-native:iotoperations/v20251001:DataflowGraph" }, { type: "azure-native:iotoperations/v20260301:DataflowGraph" }, { type: "azure-native:iotoperations/v20260701:DataflowGraph" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DataflowGraph.__pulumiType, name, resourceInputs, opts);
     }
@@ -112,7 +112,7 @@ export interface DataflowGraphArgs {
     /**
      * Name of Instance dataflowEndpoint resource.
      */
-    dataflowGraphName?: pulumi.Input<string>;
+    dataflowGraphName?: pulumi.Input<string | undefined>;
     /**
      * Name of Instance dataflowProfile resource
      */
@@ -120,7 +120,7 @@ export interface DataflowGraphArgs {
     /**
      * Edge location of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * Name of instance.
      */
@@ -128,7 +128,7 @@ export interface DataflowGraphArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.DataflowGraphPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DataflowGraphPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

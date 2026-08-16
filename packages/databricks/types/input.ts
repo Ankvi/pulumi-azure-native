@@ -7,14 +7,14 @@ export interface AddressSpaceArgs {
     /**
      * A list of address blocks reserved for this virtual network in CIDR notation.
      */
-    addressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    addressPrefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
  * Status of automated cluster updates feature.
  */
 export interface AutomaticClusterUpdateDefinitionArgs {
-    value?: pulumi.Input<string | enums.AutomaticClusterUpdateValue>;
+    value?: pulumi.Input<string | enums.AutomaticClusterUpdateValue | undefined>;
 }
 
 /**
@@ -24,22 +24,22 @@ export interface ComplianceSecurityProfileDefinitionArgs {
     /**
      * Compliance standards associated with the workspace.
      */
-    complianceStandards?: pulumi.Input<pulumi.Input<string | enums.ComplianceStandard>[]>;
-    value?: pulumi.Input<string | enums.ComplianceSecurityProfileValue>;
+    complianceStandards?: pulumi.Input<pulumi.Input<string | enums.ComplianceStandard>[] | undefined>;
+    value?: pulumi.Input<string | enums.ComplianceSecurityProfileValue | undefined>;
 }
 
 /**
- * These properties lets user specify default catalog properties during workspace creation.
+ * These properties lets user specify default catalog properties during workspace creation. Not allowed in Serverless ComputeMode workspace.
  */
 export interface DefaultCatalogPropertiesArgs {
     /**
      * Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
      */
-    initialName?: pulumi.Input<string>;
+    initialName?: pulumi.Input<string | undefined>;
     /**
      * Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
      */
-    initialType?: pulumi.Input<string | enums.InitialType>;
+    initialType?: pulumi.Input<string | enums.InitialType | undefined>;
 }
 /**
  * defaultCatalogPropertiesArgsProvideDefaults sets the appropriate defaults for DefaultCatalogPropertiesArgs
@@ -58,19 +58,19 @@ export interface EncryptionArgs {
     /**
      * The name of KeyVault key.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault
      */
-    keySource?: pulumi.Input<string | enums.KeySource>;
+    keySource?: pulumi.Input<string | enums.KeySource | undefined>;
     /**
      * The Uri of KeyVault.
      */
-    keyVaultUri?: pulumi.Input<string>;
+    keyVaultUri?: pulumi.Input<string | undefined>;
     /**
      * The version of KeyVault key.
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
 }
 /**
  * encryptionArgsProvideDefaults sets the appropriate defaults for EncryptionArgs
@@ -87,13 +87,13 @@ export function encryptionArgsProvideDefaults(val: EncryptionArgs): EncryptionAr
  */
 export interface EncryptionEntitiesDefinitionArgs {
     /**
-     * Encryption properties for the databricks managed disks.
+     * Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace.
      */
-    managedDisk?: pulumi.Input<ManagedDiskEncryptionArgs>;
+    managedDisk?: pulumi.Input<ManagedDiskEncryptionArgs | undefined>;
     /**
-     * Encryption properties for the databricks managed services.
+     * Encryption properties for the databricks managed services. Supported in both Serverless and Hybrid ComputeMode.
      */
-    managedServices?: pulumi.Input<EncryptionV2Args>;
+    managedServices?: pulumi.Input<EncryptionV2Args | undefined>;
 }
 
 /**
@@ -107,7 +107,7 @@ export interface EncryptionV2Args {
     /**
      * Key Vault input properties for encryption.
      */
-    keyVaultProperties?: pulumi.Input<EncryptionV2KeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<EncryptionV2KeyVaultPropertiesArgs | undefined>;
 }
 
 /**
@@ -135,22 +135,22 @@ export interface EnhancedSecurityComplianceDefinitionArgs {
     /**
      * Status of automated cluster updates feature.
      */
-    automaticClusterUpdate?: pulumi.Input<AutomaticClusterUpdateDefinitionArgs>;
+    automaticClusterUpdate?: pulumi.Input<AutomaticClusterUpdateDefinitionArgs | undefined>;
     /**
      * Status of Compliance Security Profile feature.
      */
-    complianceSecurityProfile?: pulumi.Input<ComplianceSecurityProfileDefinitionArgs>;
+    complianceSecurityProfile?: pulumi.Input<ComplianceSecurityProfileDefinitionArgs | undefined>;
     /**
      * Status of Enhanced Security Monitoring feature.
      */
-    enhancedSecurityMonitoring?: pulumi.Input<EnhancedSecurityMonitoringDefinitionArgs>;
+    enhancedSecurityMonitoring?: pulumi.Input<EnhancedSecurityMonitoringDefinitionArgs | undefined>;
 }
 
 /**
  * Status of Enhanced Security Monitoring feature.
  */
 export interface EnhancedSecurityMonitoringDefinitionArgs {
-    value?: pulumi.Input<string | enums.EnhancedSecurityMonitoringValue>;
+    value?: pulumi.Input<string | enums.EnhancedSecurityMonitoringValue | undefined>;
 }
 
 /**
@@ -158,7 +158,7 @@ export interface EnhancedSecurityMonitoringDefinitionArgs {
  */
 export interface ManagedDiskEncryptionArgs {
     /**
-     * The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+     * The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.
      */
     keySource: pulumi.Input<string | enums.EncryptionKeySource>;
     /**
@@ -168,7 +168,7 @@ export interface ManagedDiskEncryptionArgs {
     /**
      * Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
      */
-    rotationToLatestKeyVersionEnabled?: pulumi.Input<boolean>;
+    rotationToLatestKeyVersionEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -200,17 +200,17 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
- * The properties of a private endpoint connection
+ * The properties of a private endpoint connection.
  */
 export interface PrivateEndpointConnectionPropertiesArgs {
     /**
      * GroupIds from the private link service resource.
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Private endpoint connection state
      */
@@ -218,17 +218,17 @@ export interface PrivateEndpointConnectionPropertiesArgs {
 }
 
 /**
- * The current state of a private endpoint connection
+ * The current state of a private endpoint connection.
  */
 export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * Actions required for a private endpoint connection
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The description for the current state of a private endpoint connection
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The status of a private endpoint connection
      */
@@ -246,27 +246,27 @@ export interface SkuArgs {
     /**
      * The SKU tier.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }
 
 /**
- *  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+ * The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
  */
 export interface VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkArgs {
     /**
      * The Id of the databricks virtual network.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
- *  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+ * The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
  */
 export interface VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkArgs {
     /**
      * The Id of the remote virtual network.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -274,75 +274,79 @@ export interface VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkArgs {
  */
 export interface WorkspaceCustomBooleanParameterArgs {
     /**
+     * The type of variable that this is
+     */
+    type?: pulumi.Input<string | enums.CustomParameterType | undefined>;
+    /**
      * The value which should be used for this field.
      */
     value: pulumi.Input<boolean>;
 }
 
 /**
- * Custom Parameters used for Cluster Creation.
+ * Custom Parameters used for Workspace Creation. Not allowed in Serverless ComputeMode workspace.
  */
 export interface WorkspaceCustomParametersArgs {
     /**
-     * The ID of a Azure Machine Learning workspace to link with Databricks workspace
+     * The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace.
      */
-    amlWorkspaceId?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
+    amlWorkspaceId?: pulumi.Input<WorkspaceCustomStringParameterArgs | undefined>;
     /**
-     * The name of the Private Subnet within the Virtual Network
+     * The name of the Private Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
      */
-    customPrivateSubnetName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
+    customPrivateSubnetName?: pulumi.Input<WorkspaceCustomStringParameterArgs | undefined>;
     /**
-     * The name of a Public Subnet within the Virtual Network
+     * The name of a Public Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
      */
-    customPublicSubnetName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
+    customPublicSubnetName?: pulumi.Input<WorkspaceCustomStringParameterArgs | undefined>;
     /**
-     * The ID of a Virtual Network where this Databricks Cluster should be created
+     * The ID of a Virtual Network where this Databricks Cluster should be created. Not allowed in Serverless ComputeMode workspace.
      */
-    customVirtualNetworkId?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
+    customVirtualNetworkId?: pulumi.Input<WorkspaceCustomStringParameterArgs | undefined>;
     /**
-     * Boolean indicating whether the public IP should be disabled. Default value is true
+     * Boolean indicating whether the public IP should be disabled. Default value is true. Not allowed in Serverless ComputeMode workspace.
      */
-    enableNoPublicIp?: pulumi.Input<WorkspaceNoPublicIPBooleanParameterArgs>;
+    enableNoPublicIp?: pulumi.Input<WorkspaceNoPublicIPBooleanParameterArgs | undefined>;
     /**
-     * Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
+     * Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.Not allowed in Serverless ComputeMode workspace.
      */
-    encryption?: pulumi.Input<WorkspaceEncryptionParameterArgs>;
+    encryption?: pulumi.Input<WorkspaceEncryptionParameterArgs | undefined>;
     /**
-     * Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP).
+     * Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP). Not allowed in Serverless ComputeMode workspace.
      */
-    loadBalancerBackendPoolName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
+    loadBalancerBackendPoolName?: pulumi.Input<WorkspaceCustomStringParameterArgs | undefined>;
     /**
-     * Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace.
+     * Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace. Not allowed in Serverless ComputeMode workspace.
      */
-    loadBalancerId?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
+    loadBalancerId?: pulumi.Input<WorkspaceCustomStringParameterArgs | undefined>;
     /**
-     * Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets.
+     * Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets. Not allowed in Serverless ComputeMode workspace.
      */
-    natGatewayName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
+    natGatewayName?: pulumi.Input<WorkspaceCustomStringParameterArgs | undefined>;
     /**
-     * Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
+     * Prepare the workspace for encryption. Enables the Managed Identity for managed storage account. Not allowed in Serverless ComputeMode workspace.
      */
-    prepareEncryption?: pulumi.Input<WorkspaceCustomBooleanParameterArgs>;
+    prepareEncryption?: pulumi.Input<WorkspaceCustomBooleanParameterArgs | undefined>;
     /**
-     * Name of the Public IP for No Public IP workspace with managed vNet.
+     * Name of the Public IP for No Public IP workspace with managed vNet. Not allowed in Serverless ComputeMode workspace.
      */
-    publicIpName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
+    publicIpName?: pulumi.Input<WorkspaceCustomStringParameterArgs | undefined>;
     /**
-     * A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+     * A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest. Not allowed in Serverless ComputeMode workspace.
      */
-    requireInfrastructureEncryption?: pulumi.Input<WorkspaceCustomBooleanParameterArgs>;
+    requireInfrastructureEncryption?: pulumi.Input<WorkspaceCustomBooleanParameterArgs | undefined>;
     /**
-     * Default DBFS storage account name.
+     * Default DBFS storage account name. Not allowed in Serverless ComputeMode workspace.
      */
-    storageAccountName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
+    storageAccountName?: pulumi.Input<WorkspaceCustomStringParameterArgs | undefined>;
     /**
-     * Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs.
+     * Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs. Not allowed in Serverless ComputeMode workspace.
      */
-    storageAccountSkuName?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
+    storageAccountSkuName?: pulumi.Input<WorkspaceCustomStringParameterArgs | undefined>;
     /**
-     * Address prefix for Managed virtual network. Default value for this input is 10.139.
+     * Address prefix for Managed virtual network. Default value for this input is 10.139. Not allowed in Serverless ComputeMode workspace.
      */
-    vnetAddressPrefix?: pulumi.Input<WorkspaceCustomStringParameterArgs>;
+    vnetAddressPrefix?: pulumi.Input<WorkspaceCustomStringParameterArgs | undefined>;
 }
 /**
  * workspaceCustomParametersArgsProvideDefaults sets the appropriate defaults for WorkspaceCustomParametersArgs
@@ -350,7 +354,7 @@ export interface WorkspaceCustomParametersArgs {
 export function workspaceCustomParametersArgsProvideDefaults(val: WorkspaceCustomParametersArgs): WorkspaceCustomParametersArgs {
     return {
         ...val,
-        encryption: (val.encryption ? pulumi.output(val.encryption).apply(workspaceEncryptionParameterArgsProvideDefaults) : undefined),
+        encryption: pulumi.output(val.encryption).apply(v => v === undefined ? undefined : workspaceEncryptionParameterArgsProvideDefaults(v)),
     };
 }
 
@@ -358,6 +362,10 @@ export function workspaceCustomParametersArgsProvideDefaults(val: WorkspaceCusto
  * The Value.
  */
 export interface WorkspaceCustomStringParameterArgs {
+    /**
+     * The type of variable that this is
+     */
+    type?: pulumi.Input<string | enums.CustomParameterType | undefined>;
     /**
      * The value which should be used for this field.
      */
@@ -369,9 +377,13 @@ export interface WorkspaceCustomStringParameterArgs {
  */
 export interface WorkspaceEncryptionParameterArgs {
     /**
+     * The type of variable that this is
+     */
+    type?: pulumi.Input<string | enums.CustomParameterType | undefined>;
+    /**
      * The value which should be used for this field.
      */
-    value?: pulumi.Input<EncryptionArgs>;
+    value?: pulumi.Input<EncryptionArgs | undefined>;
 }
 /**
  * workspaceEncryptionParameterArgsProvideDefaults sets the appropriate defaults for WorkspaceEncryptionParameterArgs
@@ -379,7 +391,7 @@ export interface WorkspaceEncryptionParameterArgs {
 export function workspaceEncryptionParameterArgsProvideDefaults(val: WorkspaceEncryptionParameterArgs): WorkspaceEncryptionParameterArgs {
     return {
         ...val,
-        value: (val.value ? pulumi.output(val.value).apply(encryptionArgsProvideDefaults) : undefined),
+        value: pulumi.output(val.value).apply(v => v === undefined ? undefined : encryptionArgsProvideDefaults(v)),
     };
 }
 
@@ -388,13 +400,17 @@ export function workspaceEncryptionParameterArgsProvideDefaults(val: WorkspaceEn
  */
 export interface WorkspaceNoPublicIPBooleanParameterArgs {
     /**
+     * The type of variable that this is
+     */
+    type?: pulumi.Input<string | enums.CustomParameterType | undefined>;
+    /**
      * The value which should be used for this field.
      */
     value: pulumi.Input<boolean>;
 }
 
 /**
- * Access Connector Resource that is going to be associated with Databricks Workspace
+ * Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
  */
 export interface WorkspacePropertiesAccessConnectorArgs {
     /**
@@ -408,11 +424,11 @@ export interface WorkspacePropertiesAccessConnectorArgs {
     /**
      * The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
      */
-    userAssignedIdentityId?: pulumi.Input<string>;
+    userAssignedIdentityId?: pulumi.Input<string | undefined>;
 }
 
 /**
- * Encryption properties for databricks workspace
+ * Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
  */
 export interface WorkspacePropertiesEncryptionArgs {
     /**

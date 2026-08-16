@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
  *
- * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class L3IsolationDomain extends pulumi.CustomResource {
     /**
@@ -148,7 +148,7 @@ export class L3IsolationDomain extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:L3IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20230615:L3IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20240215preview:L3IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20240615preview:L3IsolationDomain" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:L3IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20230615:L3IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20240215preview:L3IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20240615preview:L3IsolationDomain" }, { type: "azure-native:managednetworkfabric/v20250715:L3IsolationDomain" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(L3IsolationDomain.__pulumiType, name, resourceInputs, opts);
     }
@@ -161,23 +161,23 @@ export interface L3IsolationDomainArgs {
     /**
      * Aggregate route configurations.
      */
-    aggregateRouteConfiguration?: pulumi.Input<types.inputs.AggregateRouteConfigurationArgs>;
+    aggregateRouteConfiguration?: pulumi.Input<types.inputs.AggregateRouteConfigurationArgs | undefined>;
     /**
      * Switch configuration description.
      */
-    annotation?: pulumi.Input<string>;
+    annotation?: pulumi.Input<string | undefined>;
     /**
      * Connected Subnet RoutePolicy
      */
-    connectedSubnetRoutePolicy?: pulumi.Input<types.inputs.ConnectedSubnetRoutePolicyArgs>;
+    connectedSubnetRoutePolicy?: pulumi.Input<types.inputs.ConnectedSubnetRoutePolicyArgs | undefined>;
     /**
      * Name of the L3 Isolation Domain.
      */
-    l3IsolationDomainName?: pulumi.Input<string>;
+    l3IsolationDomainName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * ARM Resource ID of the Network Fabric.
      */
@@ -185,11 +185,11 @@ export interface L3IsolationDomainArgs {
     /**
      * Advertise Connected Subnets. Ex: "True" | "False".
      */
-    redistributeConnectedSubnets?: pulumi.Input<string | types.enums.RedistributeConnectedSubnets>;
+    redistributeConnectedSubnets?: pulumi.Input<string | types.enums.RedistributeConnectedSubnets | undefined>;
     /**
      * Advertise Static Routes. Ex: "True" | "False".
      */
-    redistributeStaticRoutes?: pulumi.Input<string | types.enums.RedistributeStaticRoutes>;
+    redistributeStaticRoutes?: pulumi.Input<string | types.enums.RedistributeStaticRoutes | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -197,5 +197,5 @@ export interface L3IsolationDomainArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -66,7 +66,7 @@ export interface GetConnectorDryrunResult {
      */
     readonly prerequisiteResults: (types.outputs.BasicErrorDryrunPrerequisiteResultResponse | types.outputs.PermissionsMissingDryrunPrerequisiteResultResponse)[];
     /**
-     * The provisioning state. 
+     * The provisioning state.
      */
     readonly provisioningState: string;
     /**
@@ -111,5 +111,5 @@ export interface GetConnectorDryrunOutputArgs {
     /**
      * The ID of the target subscription.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }

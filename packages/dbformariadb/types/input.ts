@@ -4,7 +4,7 @@ export interface PrivateEndpointPropertyArgs {
     /**
      * Resource id of the private endpoint.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 export interface PrivateLinkServiceConnectionStatePropertyArgs {
@@ -38,23 +38,23 @@ export interface ServerPropertiesForDefaultCreateArgs {
     /**
      * Enforce a minimal Tls version for the server.
      */
-    minimalTlsVersion?: pulumi.Input<string | enums.MinimalTlsVersionEnum>;
+    minimalTlsVersion?: pulumi.Input<string | enums.MinimalTlsVersionEnum | undefined>;
     /**
      * Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessEnum>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessEnum | undefined>;
     /**
      * Enable ssl enforcement or not when connect to server.
      */
-    sslEnforcement?: pulumi.Input<enums.SslEnforcementEnum>;
+    sslEnforcement?: pulumi.Input<enums.SslEnforcementEnum | undefined>;
     /**
      * Storage profile of a server.
      */
-    storageProfile?: pulumi.Input<StorageProfileArgs>;
+    storageProfile?: pulumi.Input<StorageProfileArgs | undefined>;
     /**
      * Server version.
      */
-    version?: pulumi.Input<string | enums.ServerVersion>;
+    version?: pulumi.Input<string | enums.ServerVersion | undefined>;
 }
 
 /**
@@ -69,11 +69,11 @@ export interface ServerPropertiesForGeoRestoreArgs {
     /**
      * Enforce a minimal Tls version for the server.
      */
-    minimalTlsVersion?: pulumi.Input<string | enums.MinimalTlsVersionEnum>;
+    minimalTlsVersion?: pulumi.Input<string | enums.MinimalTlsVersionEnum | undefined>;
     /**
      * Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessEnum>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessEnum | undefined>;
     /**
      * The source server id to restore from.
      */
@@ -81,15 +81,15 @@ export interface ServerPropertiesForGeoRestoreArgs {
     /**
      * Enable ssl enforcement or not when connect to server.
      */
-    sslEnforcement?: pulumi.Input<enums.SslEnforcementEnum>;
+    sslEnforcement?: pulumi.Input<enums.SslEnforcementEnum | undefined>;
     /**
      * Storage profile of a server.
      */
-    storageProfile?: pulumi.Input<StorageProfileArgs>;
+    storageProfile?: pulumi.Input<StorageProfileArgs | undefined>;
     /**
      * Server version.
      */
-    version?: pulumi.Input<string | enums.ServerVersion>;
+    version?: pulumi.Input<string | enums.ServerVersion | undefined>;
 }
 
 /**
@@ -104,11 +104,11 @@ export interface ServerPropertiesForReplicaArgs {
     /**
      * Enforce a minimal Tls version for the server.
      */
-    minimalTlsVersion?: pulumi.Input<string | enums.MinimalTlsVersionEnum>;
+    minimalTlsVersion?: pulumi.Input<string | enums.MinimalTlsVersionEnum | undefined>;
     /**
      * Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessEnum>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessEnum | undefined>;
     /**
      * The master server id to create replica from.
      */
@@ -116,15 +116,15 @@ export interface ServerPropertiesForReplicaArgs {
     /**
      * Enable ssl enforcement or not when connect to server.
      */
-    sslEnforcement?: pulumi.Input<enums.SslEnforcementEnum>;
+    sslEnforcement?: pulumi.Input<enums.SslEnforcementEnum | undefined>;
     /**
      * Storage profile of a server.
      */
-    storageProfile?: pulumi.Input<StorageProfileArgs>;
+    storageProfile?: pulumi.Input<StorageProfileArgs | undefined>;
     /**
      * Server version.
      */
-    version?: pulumi.Input<string | enums.ServerVersion>;
+    version?: pulumi.Input<string | enums.ServerVersion | undefined>;
 }
 
 /**
@@ -139,11 +139,11 @@ export interface ServerPropertiesForRestoreArgs {
     /**
      * Enforce a minimal Tls version for the server.
      */
-    minimalTlsVersion?: pulumi.Input<string | enums.MinimalTlsVersionEnum>;
+    minimalTlsVersion?: pulumi.Input<string | enums.MinimalTlsVersionEnum | undefined>;
     /**
      * Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessEnum>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccessEnum | undefined>;
     /**
      * Restore point creation time (ISO8601 format), specifying the time to restore from.
      */
@@ -155,15 +155,15 @@ export interface ServerPropertiesForRestoreArgs {
     /**
      * Enable ssl enforcement or not when connect to server.
      */
-    sslEnforcement?: pulumi.Input<enums.SslEnforcementEnum>;
+    sslEnforcement?: pulumi.Input<enums.SslEnforcementEnum | undefined>;
     /**
      * Storage profile of a server.
      */
-    storageProfile?: pulumi.Input<StorageProfileArgs>;
+    storageProfile?: pulumi.Input<StorageProfileArgs | undefined>;
     /**
      * Server version.
      */
-    version?: pulumi.Input<string | enums.ServerVersion>;
+    version?: pulumi.Input<string | enums.ServerVersion | undefined>;
 }
 
 /**
@@ -173,11 +173,11 @@ export interface SkuArgs {
     /**
      * The scale up/out capacity, representing server's compute units.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * The family of hardware.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
      */
@@ -185,11 +185,11 @@ export interface SkuArgs {
     /**
      * The size code, to be interpreted by resource as appropriate.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * The tier of the particular SKU, e.g. Basic.
      */
-    tier?: pulumi.Input<string | enums.SkuTier>;
+    tier?: pulumi.Input<string | enums.SkuTier | undefined>;
 }
 
 /**
@@ -199,17 +199,17 @@ export interface StorageProfileArgs {
     /**
      * Backup retention days for the server.
      */
-    backupRetentionDays?: pulumi.Input<number>;
+    backupRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * Enable Geo-redundant or not for server backup.
      */
-    geoRedundantBackup?: pulumi.Input<string | enums.GeoRedundantBackup>;
+    geoRedundantBackup?: pulumi.Input<string | enums.GeoRedundantBackup | undefined>;
     /**
      * Enable Storage Auto Grow.
      */
-    storageAutogrow?: pulumi.Input<string | enums.StorageAutogrow>;
+    storageAutogrow?: pulumi.Input<string | enums.StorageAutogrow | undefined>;
     /**
      * Max storage allowed for a server.
      */
-    storageMB?: pulumi.Input<number>;
+    storageMB?: pulumi.Input<number | undefined>;
 }

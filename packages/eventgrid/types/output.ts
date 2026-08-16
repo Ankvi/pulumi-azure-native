@@ -943,7 +943,7 @@ export interface PartnerTopicInfoResponse {
      */
     azureSubscriptionId?: string;
     /**
-     * Event Type Information for the partner topic. This information is provided by the publisher and can be used by the 
+     * Event Type Information for the partner topic. This information is provided by the publisher and can be used by the
      * subscriber to view different types of events that are published.
      */
     eventTypeInfo?: EventTypeInfoResponse;

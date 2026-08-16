@@ -108,15 +108,15 @@ export interface ManagementAssociationArgs {
     /**
      * Resource location
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * User ManagementAssociation Name.
      */
-    managementAssociationName?: pulumi.Input<string>;
+    managementAssociationName?: pulumi.Input<string | undefined>;
     /**
      * Properties for ManagementAssociation object supported by the OperationsManagement resource provider.
      */
-    properties?: pulumi.Input<types.inputs.ManagementAssociationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagementAssociationPropertiesArgs | undefined>;
     /**
      * Provider name for the parent resource.
      */

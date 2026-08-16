@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkSecurityPerimeterAssociation extends pulumi.CustomResource {
     /**
@@ -120,7 +120,7 @@ export class NetworkSecurityPerimeterAssociation extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20210201preview:NspAssociation" }, { type: "azure-native:network/v20230701preview:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20230701preview:NspAssociation" }, { type: "azure-native:network/v20230801preview:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20230801preview:NspAssociation" }, { type: "azure-native:network/v20240601preview:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20240701:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20241001:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20250101:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20250301:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20250501:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network:NspAssociation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20210201preview:NspAssociation" }, { type: "azure-native:network/v20230701preview:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20230701preview:NspAssociation" }, { type: "azure-native:network/v20230801preview:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20230801preview:NspAssociation" }, { type: "azure-native:network/v20240601preview:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20240701:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20241001:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20250101:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20250301:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20250501:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network/v20250701:NetworkSecurityPerimeterAssociation" }, { type: "azure-native:network:NspAssociation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkSecurityPerimeterAssociation.__pulumiType, name, resourceInputs, opts);
     }
@@ -133,19 +133,19 @@ export interface NetworkSecurityPerimeterAssociationArgs {
     /**
      * Access mode on the association.
      */
-    accessMode?: pulumi.Input<string | types.enums.AssociationAccessMode>;
+    accessMode?: pulumi.Input<string | types.enums.AssociationAccessMode | undefined>;
     /**
      * The name of the NSP association.
      */
-    associationName?: pulumi.Input<string>;
+    associationName?: pulumi.Input<string | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the network security perimeter.
      */
@@ -153,11 +153,11 @@ export interface NetworkSecurityPerimeterAssociationArgs {
     /**
      * The PaaS resource to be associated.
      */
-    privateLinkResource?: pulumi.Input<types.inputs.SubResourceArgs>;
+    privateLinkResource?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * Profile id to which the PaaS resource is associated.
      */
-    profile?: pulumi.Input<types.inputs.SubResourceArgs>;
+    profile?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * The name of the resource group.
      */
@@ -165,5 +165,5 @@ export interface NetworkSecurityPerimeterAssociationArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

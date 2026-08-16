@@ -102,7 +102,7 @@ export interface AssociatedTenantArgs {
     /**
      * The ID that uniquely identifies a tenant.
      */
-    associatedTenantName?: pulumi.Input<string>;
+    associatedTenantName?: pulumi.Input<string | undefined>;
     /**
      * The ID that uniquely identifies a billing account.
      */
@@ -110,9 +110,9 @@ export interface AssociatedTenantArgs {
     /**
      * An associated tenant.
      */
-    properties?: pulumi.Input<types.inputs.AssociatedTenantPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AssociatedTenantPropertiesArgs | undefined>;
     /**
      * Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

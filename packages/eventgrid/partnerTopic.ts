@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
  *
- * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PartnerTopic extends pulumi.CustomResource {
     /**
@@ -147,7 +147,7 @@ export class PartnerTopic extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20211015preview:PartnerTopic" }, { type: "azure-native:eventgrid/v20220615:PartnerTopic" }, { type: "azure-native:eventgrid/v20230601preview:PartnerTopic" }, { type: "azure-native:eventgrid/v20231215preview:PartnerTopic" }, { type: "azure-native:eventgrid/v20240601preview:PartnerTopic" }, { type: "azure-native:eventgrid/v20241215preview:PartnerTopic" }, { type: "azure-native:eventgrid/v20250215:PartnerTopic" }, { type: "azure-native:eventgrid/v20250401preview:PartnerTopic" }, { type: "azure-native:eventgrid/v20250715preview:PartnerTopic" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20211015preview:PartnerTopic" }, { type: "azure-native:eventgrid/v20220615:PartnerTopic" }, { type: "azure-native:eventgrid/v20230601preview:PartnerTopic" }, { type: "azure-native:eventgrid/v20231215preview:PartnerTopic" }, { type: "azure-native:eventgrid/v20240601preview:PartnerTopic" }, { type: "azure-native:eventgrid/v20241215preview:PartnerTopic" }, { type: "azure-native:eventgrid/v20250215:PartnerTopic" }, { type: "azure-native:eventgrid/v20250401preview:PartnerTopic" }, { type: "azure-native:eventgrid/v20250715preview:PartnerTopic" }, { type: "azure-native:eventgrid/v20251115preview:PartnerTopic" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PartnerTopic.__pulumiType, name, resourceInputs, opts);
     }
@@ -160,41 +160,41 @@ export interface PartnerTopicArgs {
     /**
      * Activation state of the partner topic.
      */
-    activationState?: pulumi.Input<string | types.enums.PartnerTopicActivationState>;
+    activationState?: pulumi.Input<string | types.enums.PartnerTopicActivationState | undefined>;
     /**
      * Event Type information from the corresponding event channel.
      */
-    eventTypeInfo?: pulumi.Input<types.inputs.EventTypeInfoArgs>;
+    eventTypeInfo?: pulumi.Input<types.inputs.EventTypeInfoArgs | undefined>;
     /**
      * Expiration time of the partner topic. If this timer expires while the partner topic is still never activated,
      * the partner topic and corresponding event channel are deleted.
      */
-    expirationTimeIfNotActivatedUtc?: pulumi.Input<string>;
+    expirationTimeIfNotActivatedUtc?: pulumi.Input<string | undefined>;
     /**
      * Identity information for the Partner Topic resource.
      */
-    identity?: pulumi.Input<types.inputs.IdentityInfoArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityInfoArgs | undefined>;
     /**
      * Location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Context or helpful message that can be used during the approval process by the subscriber.
      */
-    messageForActivation?: pulumi.Input<string>;
+    messageForActivation?: pulumi.Input<string | undefined>;
     /**
      * The immutableId of the corresponding partner registration.
      */
-    partnerRegistrationImmutableId?: pulumi.Input<string>;
+    partnerRegistrationImmutableId?: pulumi.Input<string | undefined>;
     /**
      * Friendly description about the topic. This can be set by the publisher/partner to show custom description for the customer partner topic.
      * This will be helpful to remove any ambiguity of the origin of creation of the partner topic for the customer.
      */
-    partnerTopicFriendlyDescription?: pulumi.Input<string>;
+    partnerTopicFriendlyDescription?: pulumi.Input<string | undefined>;
     /**
      * Name of the partner topic.
      */
-    partnerTopicName?: pulumi.Input<string>;
+    partnerTopicName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group within the user's subscription.
      */
@@ -202,9 +202,9 @@ export interface PartnerTopicArgs {
     /**
      * Source associated with this partner topic. This represents a unique partner resource.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

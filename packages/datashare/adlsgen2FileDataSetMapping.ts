@@ -188,7 +188,7 @@ export interface ADLSGen2FileDataSetMappingArgs {
     /**
      * The name of the data set mapping to be created.
      */
-    dataSetMappingName?: pulumi.Input<string>;
+    dataSetMappingName?: pulumi.Input<string | undefined>;
     /**
      * File path within the file system.
      */
@@ -205,7 +205,7 @@ export interface ADLSGen2FileDataSetMappingArgs {
     /**
      * Type of output file
      */
-    outputType?: pulumi.Input<string | types.enums.OutputType>;
+    outputType?: pulumi.Input<string | types.enums.OutputType | undefined>;
     /**
      * Resource group of storage account.
      */

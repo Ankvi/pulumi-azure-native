@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview, 2025-12-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AFDCustomDomain extends pulumi.CustomResource {
     /**
@@ -142,7 +142,7 @@ export class AFDCustomDomain extends pulumi.CustomResource {
             resourceInputs["validationProperties"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:AFDCustomDomain" }, { type: "azure-native:cdn/v20210601:AFDCustomDomain" }, { type: "azure-native:cdn/v20220501preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20221101preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20230501:AFDCustomDomain" }, { type: "azure-native:cdn/v20230701preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20240201:AFDCustomDomain" }, { type: "azure-native:cdn/v20240501preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20240601preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20240901:AFDCustomDomain" }, { type: "azure-native:cdn/v20250101preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20250415:AFDCustomDomain" }, { type: "azure-native:cdn/v20250601:AFDCustomDomain" }, { type: "azure-native:cdn/v20250701preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20250901preview:AFDCustomDomain" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:AFDCustomDomain" }, { type: "azure-native:cdn/v20210601:AFDCustomDomain" }, { type: "azure-native:cdn/v20220501preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20221101preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20230501:AFDCustomDomain" }, { type: "azure-native:cdn/v20230701preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20240201:AFDCustomDomain" }, { type: "azure-native:cdn/v20240501preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20240601preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20240901:AFDCustomDomain" }, { type: "azure-native:cdn/v20250101preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20250415:AFDCustomDomain" }, { type: "azure-native:cdn/v20250601:AFDCustomDomain" }, { type: "azure-native:cdn/v20250701preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20250901preview:AFDCustomDomain" }, { type: "azure-native:cdn/v20251201:AFDCustomDomain" }, { type: "azure-native:cdn/v20260401preview:AFDCustomDomain" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AFDCustomDomain.__pulumiType, name, resourceInputs, opts);
     }
@@ -155,15 +155,15 @@ export interface AFDCustomDomainArgs {
     /**
      * Resource reference to the Azure DNS zone
      */
-    azureDnsZone?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
+    azureDnsZone?: pulumi.Input<types.inputs.ResourceReferenceArgs | undefined>;
     /**
      * Name of the domain under the profile which is unique globally.
      */
-    customDomainName?: pulumi.Input<string>;
+    customDomainName?: pulumi.Input<string | undefined>;
     /**
      * Key-Value pair representing migration properties for domains.
      */
-    extendedProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extendedProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The host name of the domain. Must be a domain name.
      */
@@ -171,7 +171,7 @@ export interface AFDCustomDomainArgs {
     /**
      * Resource reference to the Azure resource where custom domain ownership was prevalidated
      */
-    preValidatedCustomDomainResourceId?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
+    preValidatedCustomDomainResourceId?: pulumi.Input<types.inputs.ResourceReferenceArgs | undefined>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
@@ -183,5 +183,5 @@ export interface AFDCustomDomainArgs {
     /**
      * The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
      */
-    tlsSettings?: pulumi.Input<types.inputs.AFDDomainHttpsParametersArgs>;
+    tlsSettings?: pulumi.Input<types.inputs.AFDDomainHttpsParametersArgs | undefined>;
 }

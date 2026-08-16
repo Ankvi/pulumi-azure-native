@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-03-01, 2023-07-01-preview, 2023-10-01, 2025-07-01, 2025-08-01, 2025-12-01, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class StorageMover extends pulumi.CustomResource {
     /**
@@ -103,7 +103,7 @@ export class StorageMover extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:StorageMover" }, { type: "azure-native:storagemover/v20230301:StorageMover" }, { type: "azure-native:storagemover/v20230701preview:StorageMover" }, { type: "azure-native:storagemover/v20231001:StorageMover" }, { type: "azure-native:storagemover/v20240701:StorageMover" }, { type: "azure-native:storagemover/v20250701:StorageMover" }, { type: "azure-native:storagemover/v20250801:StorageMover" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:StorageMover" }, { type: "azure-native:storagemover/v20230301:StorageMover" }, { type: "azure-native:storagemover/v20230701preview:StorageMover" }, { type: "azure-native:storagemover/v20231001:StorageMover" }, { type: "azure-native:storagemover/v20240701:StorageMover" }, { type: "azure-native:storagemover/v20250701:StorageMover" }, { type: "azure-native:storagemover/v20250801:StorageMover" }, { type: "azure-native:storagemover/v20251201:StorageMover" }, { type: "azure-native:storagemover/v20260501:StorageMover" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StorageMover.__pulumiType, name, resourceInputs, opts);
     }
@@ -116,11 +116,11 @@ export interface StorageMoverArgs {
     /**
      * A description for the Storage Mover.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -128,9 +128,9 @@ export interface StorageMoverArgs {
     /**
      * The name of the Storage Mover resource.
      */
-    storageMoverName?: pulumi.Input<string>;
+    storageMoverName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

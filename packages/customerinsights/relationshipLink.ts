@@ -166,11 +166,11 @@ export interface RelationshipLinkArgs {
     /**
      * Localized descriptions for the Relationship Link.
      */
-    description?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    description?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Localized display name for the Relationship Link.
      */
-    displayName?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    displayName?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the hub.
      */
@@ -182,7 +182,7 @@ export interface RelationshipLinkArgs {
     /**
      * The mappings between Interaction and Relationship fields.
      */
-    mappings?: pulumi.Input<pulumi.Input<types.inputs.RelationshipLinkFieldMappingArgs>[]>;
+    mappings?: pulumi.Input<pulumi.Input<types.inputs.RelationshipLinkFieldMappingArgs>[] | undefined>;
     /**
      * The property references for the Profile of the Relationship.
      */
@@ -194,7 +194,7 @@ export interface RelationshipLinkArgs {
     /**
      * The name of the relationship link.
      */
-    relationshipLinkName?: pulumi.Input<string>;
+    relationshipLinkName?: pulumi.Input<string | undefined>;
     /**
      * The Relationship associated with the Link.
      */

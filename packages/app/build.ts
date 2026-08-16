@@ -138,7 +138,7 @@ export interface BuildArgs {
     /**
      * The name of a build.
      */
-    buildName?: pulumi.Input<string>;
+    buildName?: pulumi.Input<string | undefined>;
     /**
      * The name of the builder.
      */
@@ -146,11 +146,11 @@ export interface BuildArgs {
     /**
      * Configuration of the build.
      */
-    configuration?: pulumi.Input<types.inputs.BuildConfigurationArgs>;
+    configuration?: pulumi.Input<types.inputs.BuildConfigurationArgs | undefined>;
     /**
      * Container registry that the final image will be uploaded to.
      */
-    destinationContainerRegistry?: pulumi.Input<types.inputs.ContainerRegistryWithCustomImageArgs>;
+    destinationContainerRegistry?: pulumi.Input<types.inputs.ContainerRegistryWithCustomImageArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

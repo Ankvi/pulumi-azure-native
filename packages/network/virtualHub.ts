@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-06-01, 2018-07-01, 2018-08-01, 2018-10-01, 2018-11-01, 2018-12-01, 2019-02-01, 2019-04-01, 2019-06-01, 2019-07-01, 2019-08-01, 2019-09-01, 2019-11-01, 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualHub extends pulumi.CustomResource {
     /**
@@ -230,7 +230,7 @@ export class VirtualHub extends pulumi.CustomResource {
             resourceInputs["vpnGateway"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180401:VirtualHub" }, { type: "azure-native:network/v20180601:VirtualHub" }, { type: "azure-native:network/v20180701:VirtualHub" }, { type: "azure-native:network/v20180801:VirtualHub" }, { type: "azure-native:network/v20181001:VirtualHub" }, { type: "azure-native:network/v20181101:VirtualHub" }, { type: "azure-native:network/v20181201:VirtualHub" }, { type: "azure-native:network/v20190201:VirtualHub" }, { type: "azure-native:network/v20190401:VirtualHub" }, { type: "azure-native:network/v20190601:VirtualHub" }, { type: "azure-native:network/v20190701:VirtualHub" }, { type: "azure-native:network/v20190801:VirtualHub" }, { type: "azure-native:network/v20190901:VirtualHub" }, { type: "azure-native:network/v20191101:VirtualHub" }, { type: "azure-native:network/v20191201:VirtualHub" }, { type: "azure-native:network/v20200301:VirtualHub" }, { type: "azure-native:network/v20200401:VirtualHub" }, { type: "azure-native:network/v20200501:VirtualHub" }, { type: "azure-native:network/v20200601:VirtualHub" }, { type: "azure-native:network/v20200701:VirtualHub" }, { type: "azure-native:network/v20200801:VirtualHub" }, { type: "azure-native:network/v20201101:VirtualHub" }, { type: "azure-native:network/v20210201:VirtualHub" }, { type: "azure-native:network/v20210301:VirtualHub" }, { type: "azure-native:network/v20210501:VirtualHub" }, { type: "azure-native:network/v20210801:VirtualHub" }, { type: "azure-native:network/v20220101:VirtualHub" }, { type: "azure-native:network/v20220501:VirtualHub" }, { type: "azure-native:network/v20220701:VirtualHub" }, { type: "azure-native:network/v20220901:VirtualHub" }, { type: "azure-native:network/v20221101:VirtualHub" }, { type: "azure-native:network/v20230201:VirtualHub" }, { type: "azure-native:network/v20230401:VirtualHub" }, { type: "azure-native:network/v20230501:VirtualHub" }, { type: "azure-native:network/v20230601:VirtualHub" }, { type: "azure-native:network/v20230901:VirtualHub" }, { type: "azure-native:network/v20231101:VirtualHub" }, { type: "azure-native:network/v20240101:VirtualHub" }, { type: "azure-native:network/v20240301:VirtualHub" }, { type: "azure-native:network/v20240501:VirtualHub" }, { type: "azure-native:network/v20240701:VirtualHub" }, { type: "azure-native:network/v20241001:VirtualHub" }, { type: "azure-native:network/v20250101:VirtualHub" }, { type: "azure-native:network/v20250301:VirtualHub" }, { type: "azure-native:network/v20250501:VirtualHub" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180401:VirtualHub" }, { type: "azure-native:network/v20180601:VirtualHub" }, { type: "azure-native:network/v20180701:VirtualHub" }, { type: "azure-native:network/v20180801:VirtualHub" }, { type: "azure-native:network/v20181001:VirtualHub" }, { type: "azure-native:network/v20181101:VirtualHub" }, { type: "azure-native:network/v20181201:VirtualHub" }, { type: "azure-native:network/v20190201:VirtualHub" }, { type: "azure-native:network/v20190401:VirtualHub" }, { type: "azure-native:network/v20190601:VirtualHub" }, { type: "azure-native:network/v20190701:VirtualHub" }, { type: "azure-native:network/v20190801:VirtualHub" }, { type: "azure-native:network/v20190901:VirtualHub" }, { type: "azure-native:network/v20191101:VirtualHub" }, { type: "azure-native:network/v20191201:VirtualHub" }, { type: "azure-native:network/v20200301:VirtualHub" }, { type: "azure-native:network/v20200401:VirtualHub" }, { type: "azure-native:network/v20200501:VirtualHub" }, { type: "azure-native:network/v20200601:VirtualHub" }, { type: "azure-native:network/v20200701:VirtualHub" }, { type: "azure-native:network/v20200801:VirtualHub" }, { type: "azure-native:network/v20201101:VirtualHub" }, { type: "azure-native:network/v20210201:VirtualHub" }, { type: "azure-native:network/v20210301:VirtualHub" }, { type: "azure-native:network/v20210501:VirtualHub" }, { type: "azure-native:network/v20210801:VirtualHub" }, { type: "azure-native:network/v20220101:VirtualHub" }, { type: "azure-native:network/v20220501:VirtualHub" }, { type: "azure-native:network/v20220701:VirtualHub" }, { type: "azure-native:network/v20220901:VirtualHub" }, { type: "azure-native:network/v20221101:VirtualHub" }, { type: "azure-native:network/v20230201:VirtualHub" }, { type: "azure-native:network/v20230401:VirtualHub" }, { type: "azure-native:network/v20230501:VirtualHub" }, { type: "azure-native:network/v20230601:VirtualHub" }, { type: "azure-native:network/v20230901:VirtualHub" }, { type: "azure-native:network/v20231101:VirtualHub" }, { type: "azure-native:network/v20240101:VirtualHub" }, { type: "azure-native:network/v20240301:VirtualHub" }, { type: "azure-native:network/v20240501:VirtualHub" }, { type: "azure-native:network/v20240701:VirtualHub" }, { type: "azure-native:network/v20241001:VirtualHub" }, { type: "azure-native:network/v20250101:VirtualHub" }, { type: "azure-native:network/v20250301:VirtualHub" }, { type: "azure-native:network/v20250501:VirtualHub" }, { type: "azure-native:network/v20250701:VirtualHub" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualHub.__pulumiType, name, resourceInputs, opts);
     }
@@ -243,39 +243,39 @@ export interface VirtualHubArgs {
     /**
      * Address-prefix for this VirtualHub.
      */
-    addressPrefix?: pulumi.Input<string>;
+    addressPrefix?: pulumi.Input<string | undefined>;
     /**
      * Flag to control transit for VirtualRouter hub.
      */
-    allowBranchToBranchTraffic?: pulumi.Input<boolean>;
+    allowBranchToBranchTraffic?: pulumi.Input<boolean | undefined>;
     /**
      * The azureFirewall associated with this VirtualHub.
      */
-    azureFirewall?: pulumi.Input<types.inputs.SubResourceArgs>;
+    azureFirewall?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * The expressRouteGateway associated with this VirtualHub.
      */
-    expressRouteGateway?: pulumi.Input<types.inputs.SubResourceArgs>;
+    expressRouteGateway?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * The hubRoutingPreference of this VirtualHub.
      */
-    hubRoutingPreference?: pulumi.Input<string | types.enums.HubRoutingPreference>;
+    hubRoutingPreference?: pulumi.Input<string | types.enums.HubRoutingPreference | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The P2SVpnGateway associated with this VirtualHub.
      */
-    p2SVpnGateway?: pulumi.Input<types.inputs.SubResourceArgs>;
+    p2SVpnGateway?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * The preferred gateway to route on-prem traffic
      */
-    preferredRoutingGateway?: pulumi.Input<string | types.enums.PreferredRoutingGateway>;
+    preferredRoutingGateway?: pulumi.Input<string | types.enums.PreferredRoutingGateway | undefined>;
     /**
      * The resource group name of the VirtualHub.
      */
@@ -283,50 +283,50 @@ export interface VirtualHubArgs {
     /**
      * The routeTable associated with this virtual hub.
      */
-    routeTable?: pulumi.Input<types.inputs.VirtualHubRouteTableArgs>;
+    routeTable?: pulumi.Input<types.inputs.VirtualHubRouteTableArgs | undefined>;
     /**
      * The securityPartnerProvider associated with this VirtualHub.
      */
-    securityPartnerProvider?: pulumi.Input<types.inputs.SubResourceArgs>;
+    securityPartnerProvider?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * The Security Provider name.
      */
-    securityProviderName?: pulumi.Input<string>;
+    securityProviderName?: pulumi.Input<string | undefined>;
     /**
      * The sku of this VirtualHub.
      */
-    sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the VirtualHub.
      */
-    virtualHubName?: pulumi.Input<string>;
+    virtualHubName?: pulumi.Input<string | undefined>;
     /**
      * List of all virtual hub route table v2s associated with this VirtualHub.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    virtualHubRouteTableV2s?: pulumi.Input<pulumi.Input<types.inputs.VirtualHubRouteTableV2Args>[]>;
+    virtualHubRouteTableV2s?: pulumi.Input<pulumi.Input<types.inputs.VirtualHubRouteTableV2Args>[] | undefined>;
     /**
      * VirtualRouter ASN.
      */
-    virtualRouterAsn?: pulumi.Input<number>;
+    virtualRouterAsn?: pulumi.Input<number | undefined>;
     /**
      * The VirtualHub Router autoscale configuration.
      */
-    virtualRouterAutoScaleConfiguration?: pulumi.Input<types.inputs.VirtualRouterAutoScaleConfigurationArgs>;
+    virtualRouterAutoScaleConfiguration?: pulumi.Input<types.inputs.VirtualRouterAutoScaleConfigurationArgs | undefined>;
     /**
      * VirtualRouter IPs.
      */
-    virtualRouterIps?: pulumi.Input<pulumi.Input<string>[]>;
+    virtualRouterIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The VirtualWAN to which the VirtualHub belongs.
      */
-    virtualWan?: pulumi.Input<types.inputs.SubResourceArgs>;
+    virtualWan?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * The VpnGateway associated with this VirtualHub.
      */
-    vpnGateway?: pulumi.Input<types.inputs.SubResourceArgs>;
+    vpnGateway?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
 }

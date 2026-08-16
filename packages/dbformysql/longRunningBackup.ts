@@ -5,6 +5,8 @@ import * as types from "./types";
  * Server backup properties
  *
  * Uses Azure REST API version 2025-06-01-preview.
+ *
+ * Other available API versions: 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class LongRunningBackup extends pulumi.CustomResource {
     /**
@@ -108,7 +110,7 @@ export class LongRunningBackup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbformysql/v20250601preview:LongRunningBackup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbformysql/v20250601preview:LongRunningBackup" }, { type: "azure-native:dbformysql/v20251201preview:LongRunningBackup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LongRunningBackup.__pulumiType, name, resourceInputs, opts);
     }
@@ -121,16 +123,16 @@ export interface LongRunningBackupArgs {
     /**
      * The name of the backup.
      */
-    backupName?: pulumi.Input<string>;
+    backupName?: pulumi.Input<string | undefined>;
     /**
      * Backup name
      */
-    backupNameV2?: pulumi.Input<string>;
-    backupType?: pulumi.Input<string | types.enums.BackupType>;
+    backupNameV2?: pulumi.Input<string | undefined>;
+    backupType?: pulumi.Input<string | types.enums.BackupType | undefined>;
     /**
      * Backup completed time (ISO8601 format).
      */
-    completedTime?: pulumi.Input<string>;
+    completedTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -142,5 +144,5 @@ export interface LongRunningBackupArgs {
     /**
      * Backup source
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }

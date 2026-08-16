@@ -41,7 +41,7 @@ export interface GetFactoryDataPlaneAccessArgs {
      */
     profileName?: string;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
     /**
@@ -89,11 +89,11 @@ export interface GetFactoryDataPlaneAccessOutputArgs {
     /**
      * The resource path to get access relative to factory. Currently only empty string is supported which corresponds to the factory resource.
      */
-    accessResourcePath?: pulumi.Input<string>;
+    accessResourcePath?: pulumi.Input<string | undefined>;
     /**
      * Expiration time for the token. Maximum duration for the token is eight hours and by default the token will expire in eight hours.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * The factory name.
      */
@@ -101,17 +101,17 @@ export interface GetFactoryDataPlaneAccessOutputArgs {
     /**
      * The string with permissions for Data Plane access. Currently only 'r' is supported which grants read only access.
      */
-    permissions?: pulumi.Input<string>;
+    permissions?: pulumi.Input<string | undefined>;
     /**
      * The name of the profile. Currently only the default is supported. The default value is DefaultProfile.
      */
-    profileName?: pulumi.Input<string>;
+    profileName?: pulumi.Input<string | undefined>;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * Start time for the token. If not specified the current time will be used.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }

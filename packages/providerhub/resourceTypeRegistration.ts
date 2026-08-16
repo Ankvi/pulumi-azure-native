@@ -101,8 +101,8 @@ export interface ResourceTypeRegistrationArgs {
     /**
      * Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
-    kind?: pulumi.Input<string | types.enums.ResourceTypeRegistrationKind>;
-    properties?: pulumi.Input<types.inputs.ResourceTypeRegistrationPropertiesArgs>;
+    kind?: pulumi.Input<string | types.enums.ResourceTypeRegistrationKind | undefined>;
+    properties?: pulumi.Input<types.inputs.ResourceTypeRegistrationPropertiesArgs | undefined>;
     /**
      * The name of the resource provider hosted within ProviderHub.
      */
@@ -110,5 +110,5 @@ export interface ResourceTypeRegistrationArgs {
     /**
      * The resource type.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
 }

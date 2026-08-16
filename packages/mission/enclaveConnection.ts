@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2024-06-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-06-01-preview, 2024-12-01-preview, 2025-11-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native mission [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class EnclaveConnection extends pulumi.CustomResource {
     /**
@@ -142,7 +142,7 @@ export class EnclaveConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:mission/v20240601preview:EnclaveConnection" }, { type: "azure-native:mission/v20241201preview:EnclaveConnection" }, { type: "azure-native:mission/v20250501preview:EnclaveConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:mission/v20240601preview:EnclaveConnection" }, { type: "azure-native:mission/v20241201preview:EnclaveConnection" }, { type: "azure-native:mission/v20250501preview:EnclaveConnection" }, { type: "azure-native:mission/v20251101preview:EnclaveConnection" }, { type: "azure-native:mission/v20260301preview:EnclaveConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(EnclaveConnection.__pulumiType, name, resourceInputs, opts);
     }
@@ -163,11 +163,11 @@ export interface EnclaveConnectionArgs {
     /**
      * The name of the Enclave Connection Resource
      */
-    enclaveConnectionName?: pulumi.Input<string>;
+    enclaveConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -175,7 +175,7 @@ export interface EnclaveConnectionArgs {
     /**
      * Source CIDR.
      */
-    sourceCidr?: pulumi.Input<string>;
+    sourceCidr?: pulumi.Input<string | undefined>;
     /**
      * Source Resource Id.
      */
@@ -183,5 +183,5 @@ export interface EnclaveConnectionArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

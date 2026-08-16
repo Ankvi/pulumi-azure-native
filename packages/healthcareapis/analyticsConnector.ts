@@ -151,7 +151,7 @@ export interface AnalyticsConnectorArgs {
     /**
      * The name of Analytics Connector resource.
      */
-    analyticsConnectorName?: pulumi.Input<string>;
+    analyticsConnectorName?: pulumi.Input<string | undefined>;
     /**
      * Data destination configuration for Analytics Connector.
      */
@@ -167,11 +167,11 @@ export interface AnalyticsConnectorArgs {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    identity?: pulumi.Input<types.inputs.ServiceManagedIdentityIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ServiceManagedIdentityIdentityArgs | undefined>;
     /**
      * The resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the service instance.
      */
@@ -179,7 +179,7 @@ export interface AnalyticsConnectorArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of workspace resource.
      */

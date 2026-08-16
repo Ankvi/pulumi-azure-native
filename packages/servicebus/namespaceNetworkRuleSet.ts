@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
  *
- * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NamespaceNetworkRuleSet extends pulumi.CustomResource {
     /**
@@ -118,7 +118,7 @@ export class NamespaceNetworkRuleSet extends pulumi.CustomResource {
             resourceInputs["virtualNetworkRules"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:servicebus/v20170401:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20180101preview:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20210101preview:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20210601preview:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20211101:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20220101preview:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20221001preview:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20230101preview:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20240101:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20250501preview:NamespaceNetworkRuleSet" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:servicebus/v20170401:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20180101preview:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20210101preview:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20210601preview:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20211101:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20220101preview:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20221001preview:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20230101preview:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20240101:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20250501preview:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20260101:NamespaceNetworkRuleSet" }, { type: "azure-native:servicebus/v20260701preview:NamespaceNetworkRuleSet" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NamespaceNetworkRuleSet.__pulumiType, name, resourceInputs, opts);
     }
@@ -131,11 +131,11 @@ export interface NamespaceNetworkRuleSetArgs {
     /**
      * Default Action for Network Rule Set
      */
-    defaultAction?: pulumi.Input<string | types.enums.DefaultAction>;
+    defaultAction?: pulumi.Input<string | types.enums.DefaultAction | undefined>;
     /**
      * List of IpRules
      */
-    ipRules?: pulumi.Input<pulumi.Input<types.inputs.NWRuleSetIpRulesArgs>[]>;
+    ipRules?: pulumi.Input<pulumi.Input<types.inputs.NWRuleSetIpRulesArgs>[] | undefined>;
     /**
      * The namespace name
      */
@@ -143,7 +143,7 @@ export interface NamespaceNetworkRuleSetArgs {
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccessFlag>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccessFlag | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -151,9 +151,9 @@ export interface NamespaceNetworkRuleSetArgs {
     /**
      * Value that indicates whether Trusted Service Access is Enabled or not.
      */
-    trustedServiceAccessEnabled?: pulumi.Input<boolean>;
+    trustedServiceAccessEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * List VirtualNetwork Rules
      */
-    virtualNetworkRules?: pulumi.Input<pulumi.Input<types.inputs.NWRuleSetVirtualNetworkRulesArgs>[]>;
+    virtualNetworkRules?: pulumi.Input<pulumi.Input<types.inputs.NWRuleSetVirtualNetworkRulesArgs>[] | undefined>;
 }

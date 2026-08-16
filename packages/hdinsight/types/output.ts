@@ -649,7 +649,7 @@ export interface NetworkPropertiesResponse {
      */
     privateLink?: string;
     /**
-     * Gets or sets the IP tag for the public IPs created along with the HDInsight Clusters. 
+     * Gets or sets the IP tag for the public IPs created along with the HDInsight Clusters.
      */
     publicIpTag?: IpTagResponse;
     /**
@@ -958,7 +958,7 @@ export interface StorageAccountResponse {
      */
     container?: string;
     /**
-     * Enable secure channel or not, it's an optional field. Default value is false when cluster version < 5.1 and true when cluster version >= 5.1 , 
+     * Enable secure channel or not, it's an optional field. Default value is false when cluster version < 5.1 and true when cluster version >= 5.1 ,
      */
     enableSecureChannel?: boolean;
     /**

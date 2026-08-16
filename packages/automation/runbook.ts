@@ -217,43 +217,43 @@ export interface RunbookArgs {
     /**
      * Gets or sets the description of the runbook.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the draft runbook properties.
      */
-    draft?: pulumi.Input<types.inputs.RunbookDraftArgs>;
+    draft?: pulumi.Input<types.inputs.RunbookDraftArgs | undefined>;
     /**
      * Gets or sets the location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the activity-level tracing options of the runbook.
      */
-    logActivityTrace?: pulumi.Input<number>;
+    logActivityTrace?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets progress log option.
      */
-    logProgress?: pulumi.Input<boolean>;
+    logProgress?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets verbose log option.
      */
-    logVerbose?: pulumi.Input<boolean>;
+    logVerbose?: pulumi.Input<boolean | undefined>;
     /**
      * Gets or sets the name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the published runbook content link.
      */
-    publishContentLink?: pulumi.Input<types.inputs.ContentLinkArgs>;
+    publishContentLink?: pulumi.Input<types.inputs.ContentLinkArgs | undefined>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * The runbook name.
      */
-    runbookName?: pulumi.Input<string>;
+    runbookName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the type of the runbook.
      */
@@ -261,9 +261,9 @@ export interface RunbookArgs {
     /**
      * Environment of the runbook.
      */
-    runtimeEnvironment?: pulumi.Input<string>;
+    runtimeEnvironment?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the tags attached to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

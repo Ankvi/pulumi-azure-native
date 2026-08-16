@@ -138,19 +138,19 @@ export interface GuestAgentArgs {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    credentials?: pulumi.Input<types.inputs.GuestCredentialArgs>;
+    credentials?: pulumi.Input<types.inputs.GuestCredentialArgs | undefined>;
     /**
      * Name of the guestAgents.
      */
-    guestAgentName?: pulumi.Input<string>;
+    guestAgentName?: pulumi.Input<string | undefined>;
     /**
      * HTTP Proxy configuration for the VM.
      */
-    httpProxyConfig?: pulumi.Input<types.inputs.HttpProxyConfigurationArgs>;
+    httpProxyConfig?: pulumi.Input<types.inputs.HttpProxyConfigurationArgs | undefined>;
     /**
      * Gets or sets the guest agent provisioning action.
      */
-    provisioningAction?: pulumi.Input<string | types.enums.ProvisioningAction>;
+    provisioningAction?: pulumi.Input<string | types.enums.ProvisioningAction | undefined>;
     /**
      * The name of the resource group.
      */

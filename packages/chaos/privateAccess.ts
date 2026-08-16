@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-22-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-27-preview.
  *
- * Other available API versions: 2023-10-27-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native chaos [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-10-27-preview, 2024-11-01-preview, 2026-05-01-preview, 2026-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native chaos [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateAccess extends pulumi.CustomResource {
     /**
@@ -109,7 +109,7 @@ export class PrivateAccess extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:chaos/v20231027preview:PrivateAccess" }, { type: "azure-native:chaos/v20240322preview:PrivateAccess" }, { type: "azure-native:chaos/v20241101preview:PrivateAccess" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:chaos/v20231027preview:PrivateAccess" }, { type: "azure-native:chaos/v20240322preview:PrivateAccess" }, { type: "azure-native:chaos/v20241101preview:PrivateAccess" }, { type: "azure-native:chaos/v20260501preview:PrivateAccess" }, { type: "azure-native:chaos/v20260801preview:PrivateAccess" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateAccess.__pulumiType, name, resourceInputs, opts);
     }
@@ -122,15 +122,15 @@ export interface PrivateAccessArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
      */
-    privateAccessName?: pulumi.Input<string>;
+    privateAccessName?: pulumi.Input<string | undefined>;
     /**
      * Public Network Access Control for PrivateAccess resource.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccessOption>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccessOption | undefined>;
     /**
      * String that represents an Azure resource group.
      */
@@ -138,5 +138,5 @@ export interface PrivateAccessArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

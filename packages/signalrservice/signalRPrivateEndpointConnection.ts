@@ -120,15 +120,15 @@ export interface SignalRPrivateEndpointConnectionArgs {
     /**
      * Private endpoint
      */
-    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs | undefined>;
     /**
      * The name of the private endpoint connection associated with the Azure resource.
      */
-    privateEndpointConnectionName?: pulumi.Input<string>;
+    privateEndpointConnectionName?: pulumi.Input<string | undefined>;
     /**
      * Connection state of the private endpoint connection
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

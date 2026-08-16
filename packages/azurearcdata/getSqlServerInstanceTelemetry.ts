@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-03-01-preview.
  *
- * Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSqlServerInstanceTelemetry(args: GetSqlServerInstanceTelemetryArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlServerInstanceTelemetryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -79,7 +79,7 @@ export interface GetSqlServerInstanceTelemetryResult {
  *
  * Uses Azure REST API version 2025-03-01-preview.
  *
- * Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSqlServerInstanceTelemetryOutput(args: GetSqlServerInstanceTelemetryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSqlServerInstanceTelemetryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -99,11 +99,11 @@ export interface GetSqlServerInstanceTelemetryOutputArgs {
     /**
      * The aggregation type to use for the numerical columns in the dataset.
      */
-    aggregationType?: pulumi.Input<string | types.enums.AggregationType>;
+    aggregationType?: pulumi.Input<string | types.enums.AggregationType | undefined>;
     /**
      * The list of database names to return telemetry for. If not specified, telemetry for all databases will be aggregated and returned.
      */
-    databaseNames?: pulumi.Input<pulumi.Input<string>[]>;
+    databaseNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the telemetry dataset to retrieve.
      */
@@ -111,11 +111,11 @@ export interface GetSqlServerInstanceTelemetryOutputArgs {
     /**
      * The end time for the time range to fetch telemetry for. If not specified, the current time is used.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The time granularity to fetch telemetry for. This is an ISO8601 duration. Examples: PT15M, PT1H, P1D
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure resource group
      */
@@ -127,5 +127,5 @@ export interface GetSqlServerInstanceTelemetryOutputArgs {
     /**
      * The start time for the time range to fetch telemetry for. If not specified, the current time minus 1 hour is used.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }

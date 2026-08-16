@@ -37,11 +37,11 @@ export interface NfsStorageClassTypePropertiesArgs {
     /**
      * Mounted folder permissions. Default is 0. If set as non-zero, driver will perform `chmod` after mount
      */
-    mountPermissions?: pulumi.Input<string>;
+    mountPermissions?: pulumi.Input<string | undefined>;
     /**
      * The action to take when a NFS volume is deleted. Default is Delete
      */
-    onDelete?: pulumi.Input<string | enums.NfsDirectoryActionOnVolumeDeletion>;
+    onDelete?: pulumi.Input<string | enums.NfsDirectoryActionOnVolumeDeletion | undefined>;
     /**
      * NFS Server
      */
@@ -53,7 +53,7 @@ export interface NfsStorageClassTypePropertiesArgs {
     /**
      * Sub directory under share. If the sub directory doesn't exist, driver will create it
      */
-    subDir?: pulumi.Input<string>;
+    subDir?: pulumi.Input<string | undefined>;
     /**
      * Type of a storage class
      * Expected value is 'NFS'.
@@ -83,11 +83,11 @@ export interface SmbStorageClassTypePropertiesArgs {
     /**
      * Server domain
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Server password
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * SMB Source
      */
@@ -95,7 +95,7 @@ export interface SmbStorageClassTypePropertiesArgs {
     /**
      * Sub directory under share. If the sub directory doesn't exist, driver will create it
      */
-    subDir?: pulumi.Input<string>;
+    subDir?: pulumi.Input<string | undefined>;
     /**
      * Type of a storage class
      * Expected value is 'SMB'.
@@ -104,5 +104,5 @@ export interface SmbStorageClassTypePropertiesArgs {
     /**
      * Server username
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

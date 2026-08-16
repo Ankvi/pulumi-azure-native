@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-01-01-preview.
  *
- * Other available API versions: 2025-03-01-preview, 2025-07-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-03-01-preview, 2025-07-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-12-15-preview, 2026-01-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-04-01, 2026-04-15-preview, 2026-05-01, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CapacityPoolBucket extends pulumi.CustomResource {
     /**
@@ -125,7 +125,7 @@ export class CapacityPoolBucket extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20250101preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20250301preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20250701preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20250801preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20250901preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20251215preview:CapacityPoolBucket" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:netapp/v20250101preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20250301preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20250701preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20250801preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20250901preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20251215preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20260101:CapacityPoolBucket" }, { type: "azure-native:netapp/v20260115preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20260301:CapacityPoolBucket" }, { type: "azure-native:netapp/v20260315preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20260401:CapacityPoolBucket" }, { type: "azure-native:netapp/v20260415preview:CapacityPoolBucket" }, { type: "azure-native:netapp/v20260501:CapacityPoolBucket" }, { type: "azure-native:netapp/v20260515preview:CapacityPoolBucket" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CapacityPoolBucket.__pulumiType, name, resourceInputs, opts);
     }
@@ -142,15 +142,15 @@ export interface CapacityPoolBucketArgs {
     /**
      * The name of the bucket
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
      */
-    fileSystemUser?: pulumi.Input<types.inputs.FileSystemUserArgs>;
+    fileSystemUser?: pulumi.Input<types.inputs.FileSystemUserArgs | undefined>;
     /**
      * The volume path mounted inside the bucket. The default is the root path '/' if no value is provided when the bucket is created.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The name of the capacity pool
      */
@@ -162,7 +162,7 @@ export interface CapacityPoolBucketArgs {
     /**
      * Properties of the server managing the lifecycle of volume buckets
      */
-    server?: pulumi.Input<types.inputs.BucketServerPropertiesArgs>;
+    server?: pulumi.Input<types.inputs.BucketServerPropertiesArgs | undefined>;
     /**
      * The name of the volume
      */

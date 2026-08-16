@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-09-01-preview.
  *
- * Other available API versions: 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualNetworkSubnet extends pulumi.CustomResource {
     /**
@@ -95,7 +95,7 @@ export class VirtualNetworkSubnet extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20250901preview:VirtualNetworkSubnet" }, { type: "azure-native:azurestackhci/v20260201preview:VirtualNetworkSubnet" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20250901preview:VirtualNetworkSubnet" }, { type: "azure-native:azurestackhci/v20260201preview:VirtualNetworkSubnet" }, { type: "azure-native:azurestackhci/v20260401preview:VirtualNetworkSubnet" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualNetworkSubnet.__pulumiType, name, resourceInputs, opts);
     }
@@ -108,11 +108,11 @@ export interface VirtualNetworkSubnetArgs {
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.VirtualNetworkSubnetPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.VirtualNetworkSubnetPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -120,7 +120,7 @@ export interface VirtualNetworkSubnetArgs {
     /**
      * Name of the virtual network subnet
      */
-    subnetName?: pulumi.Input<string>;
+    subnetName?: pulumi.Input<string | undefined>;
     /**
      * Name of the virtual network
      */

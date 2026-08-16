@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
  *
- * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Product extends pulumi.CustomResource {
     /**
@@ -122,7 +122,7 @@ export class Product extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:Product" }, { type: "azure-native:apimanagement/v20161010:Product" }, { type: "azure-native:apimanagement/v20170301:Product" }, { type: "azure-native:apimanagement/v20180101:Product" }, { type: "azure-native:apimanagement/v20180601preview:Product" }, { type: "azure-native:apimanagement/v20190101:Product" }, { type: "azure-native:apimanagement/v20191201:Product" }, { type: "azure-native:apimanagement/v20191201preview:Product" }, { type: "azure-native:apimanagement/v20200601preview:Product" }, { type: "azure-native:apimanagement/v20201201:Product" }, { type: "azure-native:apimanagement/v20210101preview:Product" }, { type: "azure-native:apimanagement/v20210401preview:Product" }, { type: "azure-native:apimanagement/v20210801:Product" }, { type: "azure-native:apimanagement/v20211201preview:Product" }, { type: "azure-native:apimanagement/v20220401preview:Product" }, { type: "azure-native:apimanagement/v20220801:Product" }, { type: "azure-native:apimanagement/v20220901preview:Product" }, { type: "azure-native:apimanagement/v20230301preview:Product" }, { type: "azure-native:apimanagement/v20230501preview:Product" }, { type: "azure-native:apimanagement/v20230901preview:Product" }, { type: "azure-native:apimanagement/v20240501:Product" }, { type: "azure-native:apimanagement/v20240601preview:Product" }, { type: "azure-native:apimanagement/v20241001preview:Product" }, { type: "azure-native:apimanagement/v20250301preview:Product" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:Product" }, { type: "azure-native:apimanagement/v20161010:Product" }, { type: "azure-native:apimanagement/v20170301:Product" }, { type: "azure-native:apimanagement/v20180101:Product" }, { type: "azure-native:apimanagement/v20180601preview:Product" }, { type: "azure-native:apimanagement/v20190101:Product" }, { type: "azure-native:apimanagement/v20191201:Product" }, { type: "azure-native:apimanagement/v20191201preview:Product" }, { type: "azure-native:apimanagement/v20200601preview:Product" }, { type: "azure-native:apimanagement/v20201201:Product" }, { type: "azure-native:apimanagement/v20210101preview:Product" }, { type: "azure-native:apimanagement/v20210401preview:Product" }, { type: "azure-native:apimanagement/v20210801:Product" }, { type: "azure-native:apimanagement/v20211201preview:Product" }, { type: "azure-native:apimanagement/v20220401preview:Product" }, { type: "azure-native:apimanagement/v20220801:Product" }, { type: "azure-native:apimanagement/v20220901preview:Product" }, { type: "azure-native:apimanagement/v20230301preview:Product" }, { type: "azure-native:apimanagement/v20230501preview:Product" }, { type: "azure-native:apimanagement/v20230901preview:Product" }, { type: "azure-native:apimanagement/v20240501:Product" }, { type: "azure-native:apimanagement/v20240601preview:Product" }, { type: "azure-native:apimanagement/v20241001preview:Product" }, { type: "azure-native:apimanagement/v20250301preview:Product" }, { type: "azure-native:apimanagement/v20250901preview:Product" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Product.__pulumiType, name, resourceInputs, opts);
     }
@@ -135,11 +135,11 @@ export interface ProductArgs {
     /**
      * whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false.
      */
-    approvalRequired?: pulumi.Input<boolean>;
+    approvalRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Product description. May include HTML formatting tags.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Product name.
      */
@@ -147,7 +147,7 @@ export interface ProductArgs {
     /**
      * Product identifier. Must be unique in the current API Management service instance.
      */
-    productId?: pulumi.Input<string>;
+    productId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -159,17 +159,17 @@ export interface ProductArgs {
     /**
      * whether product is published or not. Published products are discoverable by users of developer portal. Non published products are visible only to administrators. Default state of Product is notPublished.
      */
-    state?: pulumi.Input<types.enums.ProductState>;
+    state?: pulumi.Input<types.enums.ProductState | undefined>;
     /**
      * Whether a product subscription is required for accessing APIs included in this product. If true, the product is referred to as "protected" and a valid subscription key is required for a request to an API included in the product to succeed. If false, the product is referred to as "open" and requests to an API included in the product can be made without a subscription key. If property is omitted when creating a new product it's value is assumed to be true.
      */
-    subscriptionRequired?: pulumi.Input<boolean>;
+    subscriptionRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the number of subscriptions a user can have to this product at the same time. Set to null or omit to allow unlimited per user subscriptions. Can be present only if subscriptionRequired property is present and has a value of false.
      */
-    subscriptionsLimit?: pulumi.Input<number>;
+    subscriptionsLimit?: pulumi.Input<number | undefined>;
     /**
      * Product terms of use. Developers trying to subscribe to the product will be presented and required to accept these terms before they can complete the subscription process.
      */
-    terms?: pulumi.Input<string>;
+    terms?: pulumi.Input<string | undefined>;
 }

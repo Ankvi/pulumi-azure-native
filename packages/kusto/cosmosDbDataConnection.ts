@@ -163,7 +163,7 @@ export class CosmosDbDataConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:kusto/v20190121:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20190515:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20190907:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20191109:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20200215:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20200215:EventGridDataConnection" }, { type: "azure-native:kusto/v20200614:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20200918:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20210101:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20210827:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20220201:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20220707:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20221111:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20221229:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20221229:EventGridDataConnection" }, { type: "azure-native:kusto/v20221229:EventHubDataConnection" }, { type: "azure-native:kusto/v20221229:IotHubDataConnection" }, { type: "azure-native:kusto/v20230502:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20230502:EventGridDataConnection" }, { type: "azure-native:kusto/v20230502:EventHubDataConnection" }, { type: "azure-native:kusto/v20230502:IotHubDataConnection" }, { type: "azure-native:kusto/v20230815:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20230815:EventGridDataConnection" }, { type: "azure-native:kusto/v20230815:EventHubDataConnection" }, { type: "azure-native:kusto/v20230815:IotHubDataConnection" }, { type: "azure-native:kusto/v20240413:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20240413:EventGridDataConnection" }, { type: "azure-native:kusto/v20240413:EventHubDataConnection" }, { type: "azure-native:kusto/v20240413:IotHubDataConnection" }, { type: "azure-native:kusto:EventGridDataConnection" }, { type: "azure-native:kusto:EventHubDataConnection" }, { type: "azure-native:kusto:IotHubDataConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:kusto/v20190121:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20190515:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20190907:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20191109:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20200215:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20200215:EventGridDataConnection" }, { type: "azure-native:kusto/v20200614:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20200918:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20210101:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20210827:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20220201:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20220707:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20221111:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20221229:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20221229:EventGridDataConnection" }, { type: "azure-native:kusto/v20221229:EventHubDataConnection" }, { type: "azure-native:kusto/v20221229:IotHubDataConnection" }, { type: "azure-native:kusto/v20230502:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20230502:EventGridDataConnection" }, { type: "azure-native:kusto/v20230502:EventHubDataConnection" }, { type: "azure-native:kusto/v20230502:IotHubDataConnection" }, { type: "azure-native:kusto/v20230815:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20230815:EventGridDataConnection" }, { type: "azure-native:kusto/v20230815:EventHubDataConnection" }, { type: "azure-native:kusto/v20230815:IotHubDataConnection" }, { type: "azure-native:kusto/v20240413:CosmosDbDataConnection" }, { type: "azure-native:kusto/v20240413:EventGridDataConnection" }, { type: "azure-native:kusto/v20240413:EventHubDataConnection" }, { type: "azure-native:kusto/v20240413:IotHubDataConnection" }, { type: "azure-native:kusto/v20250214:CosmosDbDataConnection" }, { type: "azure-native:kusto:EventGridDataConnection" }, { type: "azure-native:kusto:EventHubDataConnection" }, { type: "azure-native:kusto:IotHubDataConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CosmosDbDataConnection.__pulumiType, name, resourceInputs, opts);
     }
@@ -192,7 +192,7 @@ export interface CosmosDbDataConnectionArgs {
     /**
      * The name of the data connection.
      */
-    dataConnectionName?: pulumi.Input<string>;
+    dataConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The name of the database in the Kusto cluster.
      */
@@ -205,7 +205,7 @@ export interface CosmosDbDataConnectionArgs {
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of a managed system or user-assigned identity. The identity is used to authenticate with Cosmos DB.
      */
@@ -213,7 +213,7 @@ export interface CosmosDbDataConnectionArgs {
     /**
      * The name of an existing mapping rule to use when ingesting the retrieved data.
      */
-    mappingRuleName?: pulumi.Input<string>;
+    mappingRuleName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -221,7 +221,7 @@ export interface CosmosDbDataConnectionArgs {
     /**
      * Optional. If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date.
      */
-    retrievalStartDate?: pulumi.Input<string>;
+    retrievalStartDate?: pulumi.Input<string | undefined>;
     /**
      * The case-sensitive name of the existing target table in your cluster. Retrieved data is ingested into this table.
      */

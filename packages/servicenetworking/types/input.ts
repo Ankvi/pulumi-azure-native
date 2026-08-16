@@ -17,7 +17,7 @@ export interface SecurityPolicyConfigurationsArgs {
     /**
      * Contains reference to a WAF-type security policy.
      */
-    wafSecurityPolicy?: pulumi.Input<WafSecurityPolicyArgs>;
+    wafSecurityPolicy?: pulumi.Input<WafSecurityPolicyArgs | undefined>;
 }
 
 /**

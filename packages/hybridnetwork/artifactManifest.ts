@@ -118,7 +118,7 @@ export interface ArtifactManifestArgs {
     /**
      * The name of the artifact manifest.
      */
-    artifactManifestName?: pulumi.Input<string>;
+    artifactManifestName?: pulumi.Input<string | undefined>;
     /**
      * The name of the artifact store.
      */
@@ -126,11 +126,11 @@ export interface ArtifactManifestArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Artifact manifest properties.
      */
-    properties?: pulumi.Input<types.inputs.ArtifactManifestPropertiesFormatArgs>;
+    properties?: pulumi.Input<types.inputs.ArtifactManifestPropertiesFormatArgs | undefined>;
     /**
      * The name of the publisher.
      */
@@ -142,5 +142,5 @@ export interface ArtifactManifestArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

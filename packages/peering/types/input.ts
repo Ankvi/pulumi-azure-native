@@ -7,39 +7,39 @@ export interface BgpSessionArgs {
     /**
      * The maximum number of prefixes advertised over the IPv4 session.
      */
-    maxPrefixesAdvertisedV4?: pulumi.Input<number>;
+    maxPrefixesAdvertisedV4?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of prefixes advertised over the IPv6 session.
      */
-    maxPrefixesAdvertisedV6?: pulumi.Input<number>;
+    maxPrefixesAdvertisedV6?: pulumi.Input<number | undefined>;
     /**
      * The MD5 authentication key of the session.
      */
-    md5AuthenticationKey?: pulumi.Input<string>;
+    md5AuthenticationKey?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 session address on Microsoft's end.
      */
-    microsoftSessionIPv4Address?: pulumi.Input<string>;
+    microsoftSessionIPv4Address?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 session address on Microsoft's end.
      */
-    microsoftSessionIPv6Address?: pulumi.Input<string>;
+    microsoftSessionIPv6Address?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 session address on peer's end.
      */
-    peerSessionIPv4Address?: pulumi.Input<string>;
+    peerSessionIPv4Address?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 session address on peer's end.
      */
-    peerSessionIPv6Address?: pulumi.Input<string>;
+    peerSessionIPv6Address?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 prefix that contains both ends' IPv4 addresses.
      */
-    sessionPrefixV4?: pulumi.Input<string>;
+    sessionPrefixV4?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 prefix that contains both ends' IPv6 addresses.
      */
-    sessionPrefixV6?: pulumi.Input<string>;
+    sessionPrefixV6?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -49,15 +49,15 @@ export interface ContactDetailArgs {
     /**
      * The e-mail address of the contact.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The phone number of the contact.
      */
-    phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string | undefined>;
     /**
      * The role of the contact.
      */
-    role?: pulumi.Input<string | enums.Role>;
+    role?: pulumi.Input<string | enums.Role | undefined>;
 }
 
 /**
@@ -67,27 +67,27 @@ export interface DirectConnectionArgs {
     /**
      * The bandwidth of the connection.
      */
-    bandwidthInMbps?: pulumi.Input<number>;
+    bandwidthInMbps?: pulumi.Input<number | undefined>;
     /**
      * The BGP session associated with the connection.
      */
-    bgpSession?: pulumi.Input<BgpSessionArgs>;
+    bgpSession?: pulumi.Input<BgpSessionArgs | undefined>;
     /**
      * The unique identifier (GUID) for the connection.
      */
-    connectionIdentifier?: pulumi.Input<string>;
+    connectionIdentifier?: pulumi.Input<string | undefined>;
     /**
      * The PeeringDB.com ID of the facility at which the connection has to be set up.
      */
-    peeringDBFacilityId?: pulumi.Input<number>;
+    peeringDBFacilityId?: pulumi.Input<number | undefined>;
     /**
      * The field indicating if Microsoft provides session ip addresses.
      */
-    sessionAddressProvider?: pulumi.Input<string | enums.SessionAddressProvider>;
+    sessionAddressProvider?: pulumi.Input<string | enums.SessionAddressProvider | undefined>;
     /**
      * The flag that indicates whether or not the connection is used for peering service.
      */
-    useForPeeringService?: pulumi.Input<boolean>;
+    useForPeeringService?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -97,15 +97,15 @@ export interface ExchangeConnectionArgs {
     /**
      * The BGP session associated with the connection.
      */
-    bgpSession?: pulumi.Input<BgpSessionArgs>;
+    bgpSession?: pulumi.Input<BgpSessionArgs | undefined>;
     /**
      * The unique identifier (GUID) for the connection.
      */
-    connectionIdentifier?: pulumi.Input<string>;
+    connectionIdentifier?: pulumi.Input<string | undefined>;
     /**
      * The PeeringDB.com ID of the facility at which the connection has to be set up.
      */
-    peeringDBFacilityId?: pulumi.Input<number>;
+    peeringDBFacilityId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -115,15 +115,15 @@ export interface PeeringPropertiesDirectArgs {
     /**
      * The set of connections that constitute a direct peering.
      */
-    connections?: pulumi.Input<pulumi.Input<DirectConnectionArgs>[]>;
+    connections?: pulumi.Input<pulumi.Input<DirectConnectionArgs>[] | undefined>;
     /**
      * The type of direct peering.
      */
-    directPeeringType?: pulumi.Input<string | enums.DirectPeeringType>;
+    directPeeringType?: pulumi.Input<string | enums.DirectPeeringType | undefined>;
     /**
      * The reference of the peer ASN.
      */
-    peerAsn?: pulumi.Input<SubResourceArgs>;
+    peerAsn?: pulumi.Input<SubResourceArgs | undefined>;
 }
 
 /**
@@ -133,11 +133,11 @@ export interface PeeringPropertiesExchangeArgs {
     /**
      * The set of connections that constitute an exchange peering.
      */
-    connections?: pulumi.Input<pulumi.Input<ExchangeConnectionArgs>[]>;
+    connections?: pulumi.Input<pulumi.Input<ExchangeConnectionArgs>[] | undefined>;
     /**
      * The reference of the peer ASN.
      */
-    peerAsn?: pulumi.Input<SubResourceArgs>;
+    peerAsn?: pulumi.Input<SubResourceArgs | undefined>;
 }
 
 /**
@@ -147,7 +147,7 @@ export interface PeeringServiceSkuArgs {
     /**
      * The name of the peering service SKU.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,7 +157,7 @@ export interface PeeringSkuArgs {
     /**
      * The name of the peering SKU.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,5 +170,5 @@ export interface SubResourceArgs {
      * A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
      * Example of a relative ID: $self/frontEndConfigurations/my-frontend.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }

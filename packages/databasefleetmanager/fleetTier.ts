@@ -104,7 +104,7 @@ export interface FleetTierArgs {
     /**
      * A Fleet tier properties.
      */
-    properties?: pulumi.Input<types.inputs.FleetTierPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.FleetTierPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -112,5 +112,5 @@ export interface FleetTierArgs {
     /**
      * Name of the tier.
      */
-    tierName?: pulumi.Input<string>;
+    tierName?: pulumi.Input<string | undefined>;
 }

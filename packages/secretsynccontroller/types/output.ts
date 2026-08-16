@@ -3,7 +3,7 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * The complex type of the extended location.
  */
-export interface AzureResourceManagerCommonTypesExtendedLocationResponse {
+export interface ExtendedLocationResponse {
     /**
      * The name of the extended location.
      */

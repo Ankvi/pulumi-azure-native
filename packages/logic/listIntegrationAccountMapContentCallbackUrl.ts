@@ -97,7 +97,7 @@ export interface ListIntegrationAccountMapContentCallbackUrlOutputArgs {
     /**
      * The key type.
      */
-    keyType?: pulumi.Input<string | types.enums.KeyType>;
+    keyType?: pulumi.Input<string | types.enums.KeyType | undefined>;
     /**
      * The integration account map name.
      */
@@ -105,7 +105,7 @@ export interface ListIntegrationAccountMapContentCallbackUrlOutputArgs {
     /**
      * The expiry time.
      */
-    notAfter?: pulumi.Input<string>;
+    notAfter?: pulumi.Input<string | undefined>;
     /**
      * The resource group name.
      */

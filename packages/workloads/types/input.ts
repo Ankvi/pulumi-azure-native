@@ -7,11 +7,11 @@ export interface AlertQueryParameterArgs {
     /**
      * The name of the alert query parameter.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The value of the alert query parameter.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -21,55 +21,55 @@ export interface AlertRulePropertiesArgs {
     /**
      * Action Group resource Ids to invoke when the alert fires
      */
-    actionGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    actionGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The alert query parameters.
      */
-    alertQueryParameters?: pulumi.Input<pulumi.Input<AlertQueryParameterArgs>[]>;
+    alertQueryParameters?: pulumi.Input<pulumi.Input<AlertQueryParameterArgs>[] | undefined>;
     /**
      * The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
      */
-    autoMitigate?: pulumi.Input<string | enums.AlertAutoMitigate>;
+    autoMitigate?: pulumi.Input<string | enums.AlertAutoMitigate | undefined>;
     /**
      * Evaluation of metric on a particular column.
      */
-    dimension?: pulumi.Input<string>;
+    dimension?: pulumi.Input<string | undefined>;
     /**
      * How often the scheduled query rule is evaluated.
      */
-    evaluationFrequency?: pulumi.Input<number>;
+    evaluationFrequency?: pulumi.Input<number | undefined>;
     /**
      * The operator for failing periods.
      */
-    failingPeriodsOperator?: pulumi.Input<string | enums.ConditionalOperator>;
+    failingPeriodsOperator?: pulumi.Input<string | enums.ConditionalOperator | undefined>;
     /**
      * The number of failing periods to trigger an alert.
      */
-    failingPeriodsToAlert?: pulumi.Input<number>;
+    failingPeriodsToAlert?: pulumi.Input<number | undefined>;
     /**
      * Mute actions for the chosen period of time after the alert is fired.
      */
-    muteActionsDuration?: pulumi.Input<number>;
+    muteActionsDuration?: pulumi.Input<number | undefined>;
     /**
      * Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest.
      */
-    severity?: pulumi.Input<number>;
+    severity?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the alert is in an enabled state.
      */
-    status?: pulumi.Input<string | enums.AlertRuleStatus>;
+    status?: pulumi.Input<string | enums.AlertRuleStatus | undefined>;
     /**
      * The threshold of the alert.
      */
-    threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number | undefined>;
     /**
      * The threshold operator of the alert.
      */
-    thresholdOperator?: pulumi.Input<string | enums.ConditionalOperator>;
+    thresholdOperator?: pulumi.Input<string | enums.ConditionalOperator | undefined>;
     /**
      * The period of time on which the Alert query will be executed.
      */
-    windowSize?: pulumi.Input<number>;
+    windowSize?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -79,11 +79,11 @@ export interface AppServicePlanConfigurationArgs {
     /**
      * The number of workers in app service plan. If this is not set or set to 0, auto scale will be configured for the app service plan, otherwise, instance count is set to this number.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * The App Service plan tier.
      */
-    tier?: pulumi.Input<string | enums.AppServicePlanTier>;
+    tier?: pulumi.Input<string | enums.AppServicePlanTier | undefined>;
 }
 
 /**
@@ -111,11 +111,11 @@ export interface ApplicationServerFullResourceNamesArgs {
     /**
      * The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
      */
-    availabilitySetName?: pulumi.Input<string>;
+    availabilitySetName?: pulumi.Input<string | undefined>;
     /**
      * The list of virtual machine naming details.
      */
-    virtualMachines?: pulumi.Input<pulumi.Input<VirtualMachineResourceNamesArgs>[]>;
+    virtualMachines?: pulumi.Input<pulumi.Input<VirtualMachineResourceNamesArgs>[] | undefined>;
 }
 
 /**
@@ -143,15 +143,15 @@ export interface CentralServerFullResourceNamesArgs {
     /**
      * The full name for availability set. In case name is not provided, it will be defaulted to {SID}-ASCS-AvSet.
      */
-    availabilitySetName?: pulumi.Input<string>;
+    availabilitySetName?: pulumi.Input<string | undefined>;
     /**
      * The resource names object for load balancer and related resources.
      */
-    loadBalancer?: pulumi.Input<LoadBalancerResourceNamesArgs>;
+    loadBalancer?: pulumi.Input<LoadBalancerResourceNamesArgs | undefined>;
     /**
      * The list of names for all ASCS virtual machines to be deployed. The number of entries in this list should be equal to the number VMs to be created for ASCS layer. At maximum, there can be two virtual machines at this layer: ASCS and ERS.
      */
-    virtualMachines?: pulumi.Input<pulumi.Input<VirtualMachineResourceNamesArgs>[]>;
+    virtualMachines?: pulumi.Input<pulumi.Input<VirtualMachineResourceNamesArgs>[] | undefined>;
 }
 
 /**
@@ -166,11 +166,11 @@ export interface CreateAndMountFileShareConfigurationArgs {
     /**
      * The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * The name of file share storage account name . A custom name is used in case of missing input.
      */
-    storageAccountName?: pulumi.Input<string>;
+    storageAccountName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,7 +185,7 @@ export interface DBBackupPolicyPropertiesArgs {
     /**
      * Fix the policy inconsistency
      */
-    makePolicyConsistent?: pulumi.Input<boolean>;
+    makePolicyConsistent?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the DB backup policy.
      */
@@ -193,23 +193,23 @@ export interface DBBackupPolicyPropertiesArgs {
     /**
      * Number of items associated with this policy.
      */
-    protectedItemsCount?: pulumi.Input<number>;
+    protectedItemsCount?: pulumi.Input<number | undefined>;
     /**
      * ResourceGuard Operation Requests
      */
-    resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Common settings for the backup management
      */
-    settings?: pulumi.Input<SettingsArgs>;
+    settings?: pulumi.Input<SettingsArgs | undefined>;
     /**
      * List of sub-protection policies which includes schedule and retention
      */
-    subProtectionPolicy?: pulumi.Input<pulumi.Input<SubProtectionPolicyArgs>[]>;
+    subProtectionPolicy?: pulumi.Input<pulumi.Input<SubProtectionPolicyArgs>[] | undefined>;
     /**
      * Type of workload for the backup management
      */
-    workLoadType?: pulumi.Input<string | enums.WorkloadType>;
+    workLoadType?: pulumi.Input<string | enums.WorkloadType | undefined>;
 }
 
 /**
@@ -219,7 +219,7 @@ export interface DailyRetentionFormatArgs {
     /**
      * List of days of the month.
      */
-    daysOfTheMonth?: pulumi.Input<pulumi.Input<DayArgs>[]>;
+    daysOfTheMonth?: pulumi.Input<pulumi.Input<DayArgs>[] | undefined>;
 }
 
 /**
@@ -229,11 +229,11 @@ export interface DailyRetentionScheduleArgs {
     /**
      * Retention duration of retention Policy.
      */
-    retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+    retentionDuration?: pulumi.Input<RetentionDurationArgs | undefined>;
     /**
      * Retention times of retention policy.
      */
-    retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    retentionTimes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -243,7 +243,7 @@ export interface DailyScheduleArgs {
     /**
      * List of times of day this schedule has to be run.
      */
-    scheduleRunTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    scheduleRunTimes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -253,11 +253,11 @@ export interface DatabaseConfigurationArgs {
     /**
      * The database type.
      */
-    databaseType?: pulumi.Input<string | enums.SAPDatabaseType>;
+    databaseType?: pulumi.Input<string | enums.SAPDatabaseType | undefined>;
     /**
      * Gets or sets the disk configuration.
      */
-    diskConfiguration?: pulumi.Input<DiskConfigurationArgs>;
+    diskConfiguration?: pulumi.Input<DiskConfigurationArgs | undefined>;
     /**
      * The number of database VMs.
      */
@@ -279,15 +279,15 @@ export interface DatabaseServerFullResourceNamesArgs {
     /**
      * The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
      */
-    availabilitySetName?: pulumi.Input<string>;
+    availabilitySetName?: pulumi.Input<string | undefined>;
     /**
      * The resource names object for load balancer and related resources.
      */
-    loadBalancer?: pulumi.Input<LoadBalancerResourceNamesArgs>;
+    loadBalancer?: pulumi.Input<LoadBalancerResourceNamesArgs | undefined>;
     /**
      * The list of virtual machine naming details.
      */
-    virtualMachines?: pulumi.Input<pulumi.Input<VirtualMachineResourceNamesArgs>[]>;
+    virtualMachines?: pulumi.Input<pulumi.Input<VirtualMachineResourceNamesArgs>[] | undefined>;
 }
 
 /**
@@ -297,11 +297,11 @@ export interface DayArgs {
     /**
      * Date of the month
      */
-    date?: pulumi.Input<number>;
+    date?: pulumi.Input<number | undefined>;
     /**
      * Whether Date is last date of month
      */
-    isLast?: pulumi.Input<boolean>;
+    isLast?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -311,27 +311,27 @@ export interface Db2ProviderInstancePropertiesArgs {
     /**
      * Gets or sets the db2 database name.
      */
-    dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the db2 database password.
      */
-    dbPassword?: pulumi.Input<string>;
+    dbPassword?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the key vault URI to secret with the database password.
      */
-    dbPasswordUri?: pulumi.Input<string>;
+    dbPasswordUri?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the db2 database sql port.
      */
-    dbPort?: pulumi.Input<string>;
+    dbPort?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the db2 database user name.
      */
-    dbUsername?: pulumi.Input<string>;
+    dbUsername?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target virtual machine name.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * The provider type. For example, the value can be SapHana.
      * Expected value is 'Db2'.
@@ -340,15 +340,15 @@ export interface Db2ProviderInstancePropertiesArgs {
     /**
      * Gets or sets the SAP System Identifier
      */
-    sapSid?: pulumi.Input<string>;
+    sapSid?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the blob URI to SSL certificate for the DB2 Database.
      */
-    sslCertificateUri?: pulumi.Input<string>;
+    sslCertificateUri?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets certificate preference if secure communication is enabled.
      */
-    sslPreference?: pulumi.Input<string | enums.SslPreference>;
+    sslPreference?: pulumi.Input<string | enums.SslPreference | undefined>;
 }
 
 /**
@@ -358,11 +358,11 @@ export interface DeployerVmPackagesArgs {
     /**
      * The deployer VM packages storage account id
      */
-    storageAccountId?: pulumi.Input<string>;
+    storageAccountId?: pulumi.Input<string | undefined>;
     /**
      * The URL to the deployer VM packages file.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -372,7 +372,7 @@ export interface DeploymentConfigurationArgs {
     /**
      * The geo-location where the SAP system is to be created.
      */
-    appLocation?: pulumi.Input<string>;
+    appLocation?: pulumi.Input<string | undefined>;
     /**
      * The configuration Type.
      * Expected value is 'Deployment'.
@@ -381,11 +381,11 @@ export interface DeploymentConfigurationArgs {
     /**
      * The infrastructure configuration.
      */
-    infrastructureConfiguration?: pulumi.Input<SingleServerConfigurationArgs | ThreeTierConfigurationArgs>;
+    infrastructureConfiguration?: pulumi.Input<SingleServerConfigurationArgs | ThreeTierConfigurationArgs | undefined>;
     /**
      * The software configuration.
      */
-    softwareConfiguration?: pulumi.Input<ExternalInstallationSoftwareConfigurationArgs | SAPInstallWithoutOSConfigSoftwareConfigurationArgs | ServiceInitiatedSoftwareConfigurationArgs>;
+    softwareConfiguration?: pulumi.Input<ExternalInstallationSoftwareConfigurationArgs | SAPInstallWithoutOSConfigSoftwareConfigurationArgs | ServiceInitiatedSoftwareConfigurationArgs | undefined>;
 }
 
 /**
@@ -395,7 +395,7 @@ export interface DeploymentWithOSConfigurationArgs {
     /**
      * The geo-location where the SAP system is to be created.
      */
-    appLocation?: pulumi.Input<string>;
+    appLocation?: pulumi.Input<string | undefined>;
     /**
      * The configuration Type.
      * Expected value is 'DeploymentWithOSConfig'.
@@ -404,15 +404,15 @@ export interface DeploymentWithOSConfigurationArgs {
     /**
      * The infrastructure configuration.
      */
-    infrastructureConfiguration?: pulumi.Input<SingleServerConfigurationArgs | ThreeTierConfigurationArgs>;
+    infrastructureConfiguration?: pulumi.Input<SingleServerConfigurationArgs | ThreeTierConfigurationArgs | undefined>;
     /**
      * The OS and SAP configuration.
      */
-    osSapConfiguration?: pulumi.Input<OsSapConfigurationArgs>;
+    osSapConfiguration?: pulumi.Input<OsSapConfigurationArgs | undefined>;
     /**
      * The software configuration.
      */
-    softwareConfiguration?: pulumi.Input<ExternalInstallationSoftwareConfigurationArgs | SAPInstallWithoutOSConfigSoftwareConfigurationArgs | ServiceInitiatedSoftwareConfigurationArgs>;
+    softwareConfiguration?: pulumi.Input<ExternalInstallationSoftwareConfigurationArgs | SAPInstallWithoutOSConfigSoftwareConfigurationArgs | ServiceInitiatedSoftwareConfigurationArgs | undefined>;
 }
 
 /**
@@ -422,7 +422,7 @@ export interface DiscoveryConfigurationArgs {
     /**
      * The virtual machine ID of the Central Server.
      */
-    centralServerVmId?: pulumi.Input<string>;
+    centralServerVmId?: pulumi.Input<string | undefined>;
     /**
      * The configuration Type.
      * Expected value is 'Discovery'.
@@ -431,7 +431,7 @@ export interface DiscoveryConfigurationArgs {
     /**
      * The custom storage account name for the storage account created by the service in the managed resource group created as part of VIS deployment.<br><br>Refer to the storage account naming rules [here](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).<br><br>If not provided, the service will create the storage account with a random name.
      */
-    managedRgStorageAccountName?: pulumi.Input<string>;
+    managedRgStorageAccountName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -441,7 +441,7 @@ export interface DiskConfigurationArgs {
     /**
      * The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
      */
-    diskVolumeConfigurations?: pulumi.Input<{[key: string]: pulumi.Input<DiskVolumeConfigurationArgs>}>;
+    diskVolumeConfigurations?: pulumi.Input<{[key: string]: pulumi.Input<DiskVolumeConfigurationArgs>} | undefined>;
 }
 
 /**
@@ -465,7 +465,7 @@ export interface DiskSkuArgs {
     /**
      * Defines the disk sku name.
      */
-    name?: pulumi.Input<string | enums.DiskSkuName>;
+    name?: pulumi.Input<string | enums.DiskSkuName | undefined>;
 }
 
 /**
@@ -475,15 +475,15 @@ export interface DiskVolumeConfigurationArgs {
     /**
      * The total number of disks required for the concerned volume.
      */
-    count?: pulumi.Input<number>;
+    count?: pulumi.Input<number | undefined>;
     /**
      * The disk size in GB.
      */
-    sizeGB?: pulumi.Input<number>;
+    sizeGB?: pulumi.Input<number | undefined>;
     /**
      * The disk SKU details.
      */
-    sku?: pulumi.Input<DiskSkuArgs>;
+    sku?: pulumi.Input<DiskSkuArgs | undefined>;
 }
 
 /**
@@ -522,7 +522,7 @@ export interface ExternalInstallationSoftwareConfigurationArgs {
     /**
      * The resource ID of the virtual machine containing the central server instance.
      */
-    centralServerVmId?: pulumi.Input<string>;
+    centralServerVmId?: pulumi.Input<string | undefined>;
     /**
      * The SAP software installation Type.
      * Expected value is 'External'.
@@ -546,7 +546,7 @@ export interface HanaBackupDataArgs {
     /**
      * Defines the policy properties for database backup.
      */
-    dbInstanceSnapshotBackupPolicy?: pulumi.Input<DBBackupPolicyPropertiesArgs>;
+    dbInstanceSnapshotBackupPolicy?: pulumi.Input<DBBackupPolicyPropertiesArgs | undefined>;
     /**
      * Name of the HANA Database User Store Key.
      */
@@ -554,7 +554,7 @@ export interface HanaBackupDataArgs {
     /**
      * Gets or sets the database instance number.
      */
-    instanceNumber?: pulumi.Input<string>;
+    instanceNumber?: pulumi.Input<string | undefined>;
     /**
      * The properties of the recovery services vault used for backup.
      */
@@ -562,7 +562,7 @@ export interface HanaBackupDataArgs {
     /**
      * Path of the SSL key store.
      */
-    sslConfiguration?: pulumi.Input<SSLConfigurationArgs>;
+    sslConfiguration?: pulumi.Input<SSLConfigurationArgs | undefined>;
 }
 
 /**
@@ -572,27 +572,27 @@ export interface HanaDbProviderInstancePropertiesArgs {
     /**
      * Gets or sets the hana database name.
      */
-    dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the database password.
      */
-    dbPassword?: pulumi.Input<string>;
+    dbPassword?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the key vault URI to secret with the database password.
      */
-    dbPasswordUri?: pulumi.Input<string>;
+    dbPasswordUri?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the database user name.
      */
-    dbUsername?: pulumi.Input<string>;
+    dbUsername?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target virtual machine size.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the database instance number.
      */
-    instanceNumber?: pulumi.Input<string>;
+    instanceNumber?: pulumi.Input<string | undefined>;
     /**
      * The provider type. For example, the value can be SapHana.
      * Expected value is 'SapHana'.
@@ -601,23 +601,23 @@ export interface HanaDbProviderInstancePropertiesArgs {
     /**
      * Gets or sets the SAP System Identifier.
      */
-    sapSid?: pulumi.Input<string>;
+    sapSid?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the database sql port.
      */
-    sqlPort?: pulumi.Input<string>;
+    sqlPort?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the blob URI to SSL certificate for the DB.
      */
-    sslCertificateUri?: pulumi.Input<string>;
+    sslCertificateUri?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the hostname(s) in the SSL certificate.
      */
-    sslHostNameInCertificate?: pulumi.Input<string>;
+    sslHostNameInCertificate?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets certificate preference if secure communication is enabled.
      */
-    sslPreference?: pulumi.Input<string | enums.SslPreference>;
+    sslPreference?: pulumi.Input<string | enums.SslPreference | undefined>;
 }
 
 /**
@@ -652,15 +652,15 @@ export interface HourlyScheduleArgs {
      * Interval at which backup needs to be triggered. For hourly the value
      *  can be 4/6/8/12
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * To specify duration of the backup window
      */
-    scheduleWindowDuration?: pulumi.Input<number>;
+    scheduleWindowDuration?: pulumi.Input<number | undefined>;
     /**
      * To specify start time of the backup window
      */
-    scheduleWindowStartTime?: pulumi.Input<string>;
+    scheduleWindowStartTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -670,23 +670,23 @@ export interface ImageReferenceArgs {
     /**
      * Specifies the ARM resource ID of the Azure Compute Gallery image version used for creating ACSS VMs. You will need to provide this input when you choose to deploy virtual machines in ACSS with OS image from the Azure Compute gallery.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Specifies the offer of the platform image or marketplace image used to create the virtual machine.
      */
-    offer?: pulumi.Input<string>;
+    offer?: pulumi.Input<string | undefined>;
     /**
      * The image publisher.
      */
-    publisher?: pulumi.Input<string>;
+    publisher?: pulumi.Input<string | undefined>;
     /**
      * The image SKU.
      */
-    sku?: pulumi.Input<string>;
+    sku?: pulumi.Input<string | undefined>;
     /**
      * Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -696,11 +696,11 @@ export interface InstantRPAdditionalDetailsArgs {
     /**
      * Azure backup resource group name prefix.
      */
-    azureBackupRGNamePrefix?: pulumi.Input<string>;
+    azureBackupRGNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * Azure backup resource group name suffix.
      */
-    azureBackupRGNameSuffix?: pulumi.Input<string>;
+    azureBackupRGNameSuffix?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -710,7 +710,7 @@ export interface LinuxConfigurationArgs {
     /**
      * Specifies whether password authentication should be disabled.
      */
-    disablePasswordAuthentication?: pulumi.Input<boolean>;
+    disablePasswordAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * The OS Type
      * Expected value is 'Linux'.
@@ -719,11 +719,11 @@ export interface LinuxConfigurationArgs {
     /**
      * Specifies the ssh key configuration for a Linux OS. (This property is deprecated, please use 'sshKeyPair' instead)
      */
-    ssh?: pulumi.Input<SshConfigurationArgs>;
+    ssh?: pulumi.Input<SshConfigurationArgs | undefined>;
     /**
      * The SSH Key-pair used to authenticate with the VM's.
      */
-    sshKeyPair?: pulumi.Input<SshKeyPairArgs>;
+    sshKeyPair?: pulumi.Input<SshKeyPairArgs | undefined>;
 }
 
 /**
@@ -733,19 +733,19 @@ export interface LoadBalancerResourceNamesArgs {
     /**
      * The list of backend pool names. Currently, ACSS deploys only one backend pool and hence, size of this list should be 1
      */
-    backendPoolNames?: pulumi.Input<pulumi.Input<string>[]>;
+    backendPoolNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of frontend IP configuration names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
      */
-    frontendIpConfigurationNames?: pulumi.Input<pulumi.Input<string>[]>;
+    frontendIpConfigurationNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of health probe names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
      */
-    healthProbeNames?: pulumi.Input<pulumi.Input<string>[]>;
+    healthProbeNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
      */
-    loadBalancerName?: pulumi.Input<string>;
+    loadBalancerName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -755,7 +755,7 @@ export interface LogSchedulePolicyArgs {
     /**
      * Frequency of the log schedule operation of this policy in minutes.
      */
-    scheduleFrequencyInMins?: pulumi.Input<number>;
+    scheduleFrequencyInMins?: pulumi.Input<number | undefined>;
     /**
      * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
      * Expected value is 'LogSchedulePolicy'.
@@ -770,11 +770,11 @@ export interface LongTermRetentionPolicyArgs {
     /**
      * Daily retention schedule of the protection policy.
      */
-    dailySchedule?: pulumi.Input<DailyRetentionScheduleArgs>;
+    dailySchedule?: pulumi.Input<DailyRetentionScheduleArgs | undefined>;
     /**
      * Monthly retention schedule of the protection policy.
      */
-    monthlySchedule?: pulumi.Input<MonthlyRetentionScheduleArgs>;
+    monthlySchedule?: pulumi.Input<MonthlyRetentionScheduleArgs | undefined>;
     /**
      * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
      * Expected value is 'LongTermRetentionPolicy'.
@@ -783,11 +783,11 @@ export interface LongTermRetentionPolicyArgs {
     /**
      * Weekly retention schedule of the protection policy.
      */
-    weeklySchedule?: pulumi.Input<WeeklyRetentionScheduleArgs>;
+    weeklySchedule?: pulumi.Input<WeeklyRetentionScheduleArgs | undefined>;
     /**
      * Yearly retention schedule of the protection policy.
      */
-    yearlySchedule?: pulumi.Input<YearlyRetentionScheduleArgs>;
+    yearlySchedule?: pulumi.Input<YearlyRetentionScheduleArgs | undefined>;
 }
 
 /**
@@ -808,7 +808,7 @@ export interface ManagedRGConfigurationArgs {
     /**
      * Managed resource group name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -818,7 +818,7 @@ export interface ManagedResourceGroupConfigurationArgs {
     /**
      * Managed resource group name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -832,7 +832,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -842,23 +842,23 @@ export interface MonthlyRetentionScheduleArgs {
     /**
      * Retention duration of retention Policy.
      */
-    retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+    retentionDuration?: pulumi.Input<RetentionDurationArgs | undefined>;
     /**
      * Daily retention format for monthly retention policy.
      */
-    retentionScheduleDaily?: pulumi.Input<DailyRetentionFormatArgs>;
+    retentionScheduleDaily?: pulumi.Input<DailyRetentionFormatArgs | undefined>;
     /**
      * Retention schedule format type for monthly retention policy.
      */
-    retentionScheduleFormatType?: pulumi.Input<string | enums.RetentionScheduleFormat>;
+    retentionScheduleFormatType?: pulumi.Input<string | enums.RetentionScheduleFormat | undefined>;
     /**
      * Weekly retention format for monthly retention policy.
      */
-    retentionScheduleWeekly?: pulumi.Input<WeeklyRetentionFormatArgs>;
+    retentionScheduleWeekly?: pulumi.Input<WeeklyRetentionFormatArgs | undefined>;
     /**
      * Retention times of retention policy.
      */
-    retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    retentionTimes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -887,23 +887,23 @@ export interface MsSqlServerProviderInstancePropertiesArgs {
     /**
      * Gets or sets the database password.
      */
-    dbPassword?: pulumi.Input<string>;
+    dbPassword?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the key vault URI to secret with the database password.
      */
-    dbPasswordUri?: pulumi.Input<string>;
+    dbPasswordUri?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the database sql port.
      */
-    dbPort?: pulumi.Input<string>;
+    dbPort?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the database user name.
      */
-    dbUsername?: pulumi.Input<string>;
+    dbUsername?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the SQL server host name.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * The provider type. For example, the value can be SapHana.
      * Expected value is 'MsSqlServer'.
@@ -912,15 +912,15 @@ export interface MsSqlServerProviderInstancePropertiesArgs {
     /**
      * Gets or sets the SAP System Identifier
      */
-    sapSid?: pulumi.Input<string>;
+    sapSid?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the blob URI to SSL certificate for the SQL Database.
      */
-    sslCertificateUri?: pulumi.Input<string>;
+    sslCertificateUri?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets certificate preference if secure communication is enabled.
      */
-    sslPreference?: pulumi.Input<string | enums.SslPreference>;
+    sslPreference?: pulumi.Input<string | enums.SslPreference | undefined>;
 }
 
 /**
@@ -930,7 +930,7 @@ export interface NetworkConfigurationArgs {
     /**
      * Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed
      */
-    isSecondaryIpEnabled?: pulumi.Input<boolean>;
+    isSecondaryIpEnabled?: pulumi.Input<boolean | undefined>;
 }
 /**
  * networkConfigurationArgsProvideDefaults sets the appropriate defaults for NetworkConfigurationArgs
@@ -949,7 +949,7 @@ export interface NetworkInterfaceResourceNamesArgs {
     /**
      * The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
      */
-    networkInterfaceName?: pulumi.Input<string>;
+    networkInterfaceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -978,15 +978,15 @@ export interface OSProfileArgs {
     /**
      * Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://learn.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
      */
-    adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of the administrator account. <br><br> This property cannot be updated after the VM is created. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters.
      */
-    adminUsername?: pulumi.Input<string>;
+    adminUsername?: pulumi.Input<string | undefined>;
     /**
      * Specifies Windows operating system settings on the virtual machine.
      */
-    osConfiguration?: pulumi.Input<LinuxConfigurationArgs | WindowsConfigurationArgs>;
+    osConfiguration?: pulumi.Input<LinuxConfigurationArgs | WindowsConfigurationArgs | undefined>;
 }
 
 /**
@@ -996,27 +996,27 @@ export interface OracleProviderInstancePropertiesArgs {
     /**
      * Gets or sets the oracle database name.
      */
-    dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the oracle database password.
      */
-    dbPassword?: pulumi.Input<string>;
+    dbPassword?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the key vault URI to secret with the database password.
      */
-    dbPasswordUri?: pulumi.Input<string>;
+    dbPasswordUri?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the oracle database sql port.
      */
-    dbPort?: pulumi.Input<string>;
+    dbPort?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the oracle database user name.
      */
-    dbUsername?: pulumi.Input<string>;
+    dbUsername?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target virtual machine name.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * The provider type. For example, the value can be SapHana.
      * Expected value is 'Oracle'.
@@ -1025,15 +1025,15 @@ export interface OracleProviderInstancePropertiesArgs {
     /**
      * Gets or sets the SAP System Identifier
      */
-    sapSid?: pulumi.Input<string>;
+    sapSid?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the blob URI to SSL certificate for the Oracle Database.
      */
-    sslCertificateUri?: pulumi.Input<string>;
+    sslCertificateUri?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets certificate preference if secure communication is enabled.
      */
-    sslPreference?: pulumi.Input<string | enums.SslPreference>;
+    sslPreference?: pulumi.Input<string | enums.SslPreference | undefined>;
 }
 
 /**
@@ -1043,11 +1043,11 @@ export interface OsSapConfigurationArgs {
     /**
      * The url and storage account ID where deployer VM packages are uploaded
      */
-    deployerVmPackages?: pulumi.Input<DeployerVmPackagesArgs>;
+    deployerVmPackages?: pulumi.Input<DeployerVmPackagesArgs | undefined>;
     /**
      * The FQDN to set for the SAP system
      */
-    sapFqdn?: pulumi.Input<string>;
+    sapFqdn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1057,15 +1057,15 @@ export interface PrometheusHaClusterProviderInstancePropertiesArgs {
     /**
      * Gets or sets the clusterName.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the target machine name.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * URL of the Node Exporter endpoint.
      */
-    prometheusUrl?: pulumi.Input<string>;
+    prometheusUrl?: pulumi.Input<string | undefined>;
     /**
      * The provider type. For example, the value can be SapHana.
      * Expected value is 'PrometheusHaCluster'.
@@ -1074,15 +1074,15 @@ export interface PrometheusHaClusterProviderInstancePropertiesArgs {
     /**
      * Gets or sets the cluster sid.
      */
-    sid?: pulumi.Input<string>;
+    sid?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
      */
-    sslCertificateUri?: pulumi.Input<string>;
+    sslCertificateUri?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets certificate preference if secure communication is enabled.
      */
-    sslPreference?: pulumi.Input<string | enums.SslPreference>;
+    sslPreference?: pulumi.Input<string | enums.SslPreference | undefined>;
 }
 
 /**
@@ -1092,7 +1092,7 @@ export interface PrometheusOsProviderInstancePropertiesArgs {
     /**
      * URL of the Node Exporter endpoint
      */
-    prometheusUrl?: pulumi.Input<string>;
+    prometheusUrl?: pulumi.Input<string | undefined>;
     /**
      * The provider type. For example, the value can be SapHana.
      * Expected value is 'PrometheusOS'.
@@ -1101,15 +1101,15 @@ export interface PrometheusOsProviderInstancePropertiesArgs {
     /**
      * Gets or sets the SAP System Identifier
      */
-    sapSid?: pulumi.Input<string>;
+    sapSid?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
      */
-    sslCertificateUri?: pulumi.Input<string>;
+    sslCertificateUri?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets certificate preference if secure communication is enabled.
      */
-    sslPreference?: pulumi.Input<string | enums.SslPreference>;
+    sslPreference?: pulumi.Input<string | enums.SslPreference | undefined>;
 }
 
 /**
@@ -1120,11 +1120,11 @@ export interface RetentionDurationArgs {
      * Count of duration types. Retention duration is obtained by the counting the duration type Count times.
      * For example, when Count = 3 and DurationType = Weeks, retention duration will be three weeks.
      */
-    count?: pulumi.Input<number>;
+    count?: pulumi.Input<number | undefined>;
     /**
      * Retention duration type of retention policy.
      */
-    durationType?: pulumi.Input<string | enums.RetentionDurationType>;
+    durationType?: pulumi.Input<string | enums.RetentionDurationType | undefined>;
 }
 
 /**
@@ -1138,7 +1138,7 @@ export interface SAPInstallWithoutOSConfigSoftwareConfigurationArgs {
     /**
      * Gets or sets the HA software configuration.
      */
-    highAvailabilitySoftwareConfiguration?: pulumi.Input<HighAvailabilitySoftwareConfigurationArgs>;
+    highAvailabilitySoftwareConfiguration?: pulumi.Input<HighAvailabilitySoftwareConfigurationArgs | undefined>;
     /**
      * The SAP bits storage account id.
      */
@@ -1165,7 +1165,7 @@ export interface SAPVirtualInstanceIdentityArgs {
     /**
      * The identities assigned to this resource by the user.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1175,19 +1175,19 @@ export interface SSLConfigurationArgs {
     /**
      * Specify the crypto provider being used (commoncrypto/openssl). If this argument is not provided, it is automatically determined by searching in the configuration files.
      */
-    sslCryptoProvider?: pulumi.Input<string | enums.SslCryptoProvider>;
+    sslCryptoProvider?: pulumi.Input<string | enums.SslCryptoProvider | undefined>;
     /**
      * Specify the hostname as mentioned in the SSL certificate. If this argument is not provided, it is automatically determined by searching in the SSL certificate.
      */
-    sslHostNameInCertificate?: pulumi.Input<string>;
+    sslHostNameInCertificate?: pulumi.Input<string | undefined>;
     /**
      * Specify the name of the keystore file that contains the client's identity (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
      */
-    sslKeyStore?: pulumi.Input<string>;
+    sslKeyStore?: pulumi.Input<string | undefined>;
     /**
      * Specify the name of the trust store file that contains the server’s public certificates (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
      */
-    sslTrustStore?: pulumi.Input<string>;
+    sslTrustStore?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1197,19 +1197,19 @@ export interface SapLandscapeMonitorMetricThresholdsArgs {
     /**
      * Gets or sets the threshold value for Green.
      */
-    green?: pulumi.Input<number>;
+    green?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the name of the threshold.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the threshold value for Red.
      */
-    red?: pulumi.Input<number>;
+    red?: pulumi.Input<number | undefined>;
     /**
      * Gets or sets the threshold value for Yellow.
      */
-    yellow?: pulumi.Input<number>;
+    yellow?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1219,11 +1219,11 @@ export interface SapLandscapeMonitorPropertiesGroupingArgs {
     /**
      * Gets or sets the list of landscape to SID mappings.
      */
-    landscape?: pulumi.Input<pulumi.Input<SapLandscapeMonitorSidMappingArgs>[]>;
+    landscape?: pulumi.Input<pulumi.Input<SapLandscapeMonitorSidMappingArgs>[] | undefined>;
     /**
      * Gets or sets the list of Sap Applications to SID mappings.
      */
-    sapApplication?: pulumi.Input<pulumi.Input<SapLandscapeMonitorSidMappingArgs>[]>;
+    sapApplication?: pulumi.Input<pulumi.Input<SapLandscapeMonitorSidMappingArgs>[] | undefined>;
 }
 
 /**
@@ -1233,11 +1233,11 @@ export interface SapLandscapeMonitorSidMappingArgs {
     /**
      * Gets or sets the name of the grouping.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the list of SID's.
      */
-    topSid?: pulumi.Input<pulumi.Input<string>[]>;
+    topSid?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1252,47 +1252,47 @@ export interface SapNetWeaverProviderInstancePropertiesArgs {
     /**
      * Gets or sets the SAP Client ID.
      */
-    sapClientId?: pulumi.Input<string>;
+    sapClientId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the list of HostFile Entries
      */
-    sapHostFileEntries?: pulumi.Input<pulumi.Input<string>[]>;
+    sapHostFileEntries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Gets or sets the target virtual machine IP Address/FQDN.
      */
-    sapHostname?: pulumi.Input<string>;
+    sapHostname?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the instance number of SAP NetWeaver.
      */
-    sapInstanceNr?: pulumi.Input<string>;
+    sapInstanceNr?: pulumi.Input<string | undefined>;
     /**
      * Sets the SAP password.
      */
-    sapPassword?: pulumi.Input<string>;
+    sapPassword?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the key vault URI to secret with the SAP password.
      */
-    sapPasswordUri?: pulumi.Input<string>;
+    sapPasswordUri?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the SAP HTTP port number.
      */
-    sapPortNumber?: pulumi.Input<string>;
+    sapPortNumber?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the SAP System Identifier
      */
-    sapSid?: pulumi.Input<string>;
+    sapSid?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the SAP user name.
      */
-    sapUsername?: pulumi.Input<string>;
+    sapUsername?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the blob URI to SSL certificate for the SAP system.
      */
-    sslCertificateUri?: pulumi.Input<string>;
+    sslCertificateUri?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets certificate preference if secure communication is enabled.
      */
-    sslPreference?: pulumi.Input<string | enums.SslPreference>;
+    sslPreference?: pulumi.Input<string | enums.SslPreference | undefined>;
 }
 
 /**
@@ -1306,7 +1306,7 @@ export interface ServiceInitiatedSoftwareConfigurationArgs {
     /**
      * Gets or sets the HA software configuration.
      */
-    highAvailabilitySoftwareConfiguration?: pulumi.Input<HighAvailabilitySoftwareConfigurationArgs>;
+    highAvailabilitySoftwareConfiguration?: pulumi.Input<HighAvailabilitySoftwareConfigurationArgs | undefined>;
     /**
      * The SAP bits storage account id.
      */
@@ -1338,15 +1338,15 @@ export interface SettingsArgs {
      * Workload compression flag. This has been added so that 'isSqlCompression'
      * will be deprecated once clients upgrade to consider this flag.
      */
-    isCompression?: pulumi.Input<boolean>;
+    isCompression?: pulumi.Input<boolean | undefined>;
     /**
      * SQL compression flag
      */
-    issqlcompression?: pulumi.Input<boolean>;
+    issqlcompression?: pulumi.Input<boolean | undefined>;
     /**
      * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1356,11 +1356,11 @@ export interface SharedStorageResourceNamesArgs {
     /**
      * The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
      */
-    sharedStorageAccountName?: pulumi.Input<string>;
+    sharedStorageAccountName?: pulumi.Input<string | undefined>;
     /**
      * The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
      */
-    sharedStorageAccountPrivateEndPointName?: pulumi.Input<string>;
+    sharedStorageAccountPrivateEndPointName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1370,7 +1370,7 @@ export interface SimpleRetentionPolicyArgs {
     /**
      * Retention duration of the protection policy.
      */
-    retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+    retentionDuration?: pulumi.Input<RetentionDurationArgs | undefined>;
     /**
      * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
      * Expected value is 'SimpleRetentionPolicy'.
@@ -1385,7 +1385,7 @@ export interface SimpleSchedulePolicyArgs {
     /**
      * Hourly Schedule of this Policy
      */
-    hourlySchedule?: pulumi.Input<HourlyScheduleArgs>;
+    hourlySchedule?: pulumi.Input<HourlyScheduleArgs | undefined>;
     /**
      * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
      * Expected value is 'SimpleSchedulePolicy'.
@@ -1394,19 +1394,19 @@ export interface SimpleSchedulePolicyArgs {
     /**
      * List of days of week this schedule has to be run.
      */
-    scheduleRunDays?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[]>;
+    scheduleRunDays?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[] | undefined>;
     /**
      * Frequency of the schedule operation of this policy.
      */
-    scheduleRunFrequency?: pulumi.Input<string | enums.ScheduleRunType>;
+    scheduleRunFrequency?: pulumi.Input<string | enums.ScheduleRunType | undefined>;
     /**
      * List of times of day this schedule has to be run.
      */
-    scheduleRunTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    scheduleRunTimes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * At every number weeks this schedule has to be run.
      */
-    scheduleWeeklyFrequency?: pulumi.Input<number>;
+    scheduleWeeklyFrequency?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1416,11 +1416,11 @@ export interface SimpleSchedulePolicyV2Args {
     /**
      * Daily schedule of this policy
      */
-    dailySchedule?: pulumi.Input<DailyScheduleArgs>;
+    dailySchedule?: pulumi.Input<DailyScheduleArgs | undefined>;
     /**
      * hourly schedule of this policy
      */
-    hourlySchedule?: pulumi.Input<HourlyScheduleArgs>;
+    hourlySchedule?: pulumi.Input<HourlyScheduleArgs | undefined>;
     /**
      * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
      * Expected value is 'SimpleSchedulePolicyV2'.
@@ -1429,11 +1429,11 @@ export interface SimpleSchedulePolicyV2Args {
     /**
      * Frequency of the schedule operation of this policy.
      */
-    scheduleRunFrequency?: pulumi.Input<string | enums.ScheduleRunType>;
+    scheduleRunFrequency?: pulumi.Input<string | enums.ScheduleRunType | undefined>;
     /**
      * Weekly schedule of this policy
      */
-    weeklySchedule?: pulumi.Input<WeeklyScheduleArgs>;
+    weeklySchedule?: pulumi.Input<WeeklyScheduleArgs | undefined>;
 }
 
 /**
@@ -1447,15 +1447,15 @@ export interface SingleServerConfigurationArgs {
     /**
      * The set of custom names to be used for underlying azure resources that are part of the SAP system.
      */
-    customResourceNames?: pulumi.Input<SingleServerFullResourceNamesArgs>;
+    customResourceNames?: pulumi.Input<SingleServerFullResourceNamesArgs | undefined>;
     /**
      * The database type.
      */
-    databaseType?: pulumi.Input<string | enums.SAPDatabaseType>;
+    databaseType?: pulumi.Input<string | enums.SAPDatabaseType | undefined>;
     /**
      * Gets or sets the disk configuration.
      */
-    dbDiskConfiguration?: pulumi.Input<DiskConfigurationArgs>;
+    dbDiskConfiguration?: pulumi.Input<DiskConfigurationArgs | undefined>;
     /**
      * The type of SAP deployment, single server or Three tier.
      * Expected value is 'SingleServer'.
@@ -1464,7 +1464,7 @@ export interface SingleServerConfigurationArgs {
     /**
      * Network configuration for the server
      */
-    networkConfiguration?: pulumi.Input<NetworkConfigurationArgs>;
+    networkConfiguration?: pulumi.Input<NetworkConfigurationArgs | undefined>;
     /**
      * The subnet id.
      */
@@ -1480,7 +1480,7 @@ export interface SingleServerConfigurationArgs {
 export function singleServerConfigurationArgsProvideDefaults(val: SingleServerConfigurationArgs): SingleServerConfigurationArgs {
     return {
         ...val,
-        networkConfiguration: (val.networkConfiguration ? pulumi.output(val.networkConfiguration).apply(networkConfigurationArgsProvideDefaults) : undefined),
+        networkConfiguration: pulumi.output(val.networkConfiguration).apply(v => v === undefined ? undefined : networkConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -1496,7 +1496,7 @@ export interface SingleServerFullResourceNamesArgs {
     /**
      * The resource names object for virtual machine and related resources.
      */
-    virtualMachine?: pulumi.Input<VirtualMachineResourceNamesArgs>;
+    virtualMachine?: pulumi.Input<VirtualMachineResourceNamesArgs | undefined>;
 }
 
 /**
@@ -1517,15 +1517,15 @@ export interface SnapshotBackupAdditionalDetailsArgs {
     /**
      * Instant RP details for the snapshot.
      */
-    instantRPDetails?: pulumi.Input<string>;
+    instantRPDetails?: pulumi.Input<string | undefined>;
     /**
      * Retention range for instant Rp in days.
      */
-    instantRpRetentionRangeInDays?: pulumi.Input<number>;
+    instantRpRetentionRangeInDays?: pulumi.Input<number | undefined>;
     /**
      * User Assigned managed identity details used for snapshot policy.
      */
-    userAssignedManagedIdentityDetails?: pulumi.Input<UserAssignedManagedIdentityDetailsArgs>;
+    userAssignedManagedIdentityDetails?: pulumi.Input<UserAssignedManagedIdentityDetailsArgs | undefined>;
 }
 
 /**
@@ -1554,7 +1554,7 @@ export interface SshConfigurationArgs {
     /**
      * The list of SSH public keys used to authenticate with linux based VMs.
      */
-    publicKeys?: pulumi.Input<pulumi.Input<SshPublicKeyArgs>[]>;
+    publicKeys?: pulumi.Input<pulumi.Input<SshPublicKeyArgs>[] | undefined>;
 }
 
 /**
@@ -1564,11 +1564,11 @@ export interface SshKeyPairArgs {
     /**
      * SSH private key.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * SSH public key
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1578,7 +1578,7 @@ export interface SshPublicKeyArgs {
     /**
      * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
      */
-    keyData?: pulumi.Input<string>;
+    keyData?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1588,7 +1588,7 @@ export interface StorageConfigurationArgs {
     /**
      * The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
      */
-    transportFileShareConfiguration?: pulumi.Input<CreateAndMountFileShareConfigurationArgs | MountFileShareConfigurationArgs | SkipFileShareConfigurationArgs>;
+    transportFileShareConfiguration?: pulumi.Input<CreateAndMountFileShareConfigurationArgs | MountFileShareConfigurationArgs | SkipFileShareConfigurationArgs | undefined>;
 }
 
 /**
@@ -1598,25 +1598,25 @@ export interface SubProtectionPolicyArgs {
     /**
      * Type of backup policy type
      */
-    policyType?: pulumi.Input<string | enums.PolicyType>;
+    policyType?: pulumi.Input<string | enums.PolicyType | undefined>;
     /**
      * Retention policy with the details on backup copy retention ranges.
      */
-    retentionPolicy?: pulumi.Input<LongTermRetentionPolicyArgs | SimpleRetentionPolicyArgs>;
+    retentionPolicy?: pulumi.Input<LongTermRetentionPolicyArgs | SimpleRetentionPolicyArgs | undefined>;
     /**
      * Backup schedule specified as part of backup policy.
      */
-    schedulePolicy?: pulumi.Input<LogSchedulePolicyArgs | LongTermSchedulePolicyArgs | SimpleSchedulePolicyArgs | SimpleSchedulePolicyV2Args>;
+    schedulePolicy?: pulumi.Input<LogSchedulePolicyArgs | LongTermSchedulePolicyArgs | SimpleSchedulePolicyArgs | SimpleSchedulePolicyV2Args | undefined>;
     /**
      * Hana DB instance snapshot backup additional details.
      */
-    snapshotBackupAdditionalDetails?: pulumi.Input<SnapshotBackupAdditionalDetailsArgs>;
+    snapshotBackupAdditionalDetails?: pulumi.Input<SnapshotBackupAdditionalDetailsArgs | undefined>;
     /**
      * Tiering policy to automatically move RPs to another tier.
      * Key is Target Tier, defined in RecoveryPointTierType enum.
      * Tiering policy specifies the criteria to move RP to the target tier.
      */
-    tieringPolicy?: pulumi.Input<{[key: string]: pulumi.Input<TieringPolicyArgs>}>;
+    tieringPolicy?: pulumi.Input<{[key: string]: pulumi.Input<TieringPolicyArgs>} | undefined>;
 }
 
 /**
@@ -1638,7 +1638,7 @@ export interface ThreeTierConfigurationArgs {
     /**
      * The set of custom names to be used for underlying azure resources that are part of the SAP system.
      */
-    customResourceNames?: pulumi.Input<ThreeTierFullResourceNamesArgs>;
+    customResourceNames?: pulumi.Input<ThreeTierFullResourceNamesArgs | undefined>;
     /**
      * The database configuration.
      */
@@ -1651,15 +1651,15 @@ export interface ThreeTierConfigurationArgs {
     /**
      * The high availability configuration.
      */
-    highAvailabilityConfig?: pulumi.Input<HighAvailabilityConfigurationArgs>;
+    highAvailabilityConfig?: pulumi.Input<HighAvailabilityConfigurationArgs | undefined>;
     /**
      * Network configuration common to all servers
      */
-    networkConfiguration?: pulumi.Input<NetworkConfigurationArgs>;
+    networkConfiguration?: pulumi.Input<NetworkConfigurationArgs | undefined>;
     /**
      * The storage configuration.
      */
-    storageConfiguration?: pulumi.Input<StorageConfigurationArgs>;
+    storageConfiguration?: pulumi.Input<StorageConfigurationArgs | undefined>;
 }
 /**
  * threeTierConfigurationArgsProvideDefaults sets the appropriate defaults for ThreeTierConfigurationArgs
@@ -1667,7 +1667,7 @@ export interface ThreeTierConfigurationArgs {
 export function threeTierConfigurationArgsProvideDefaults(val: ThreeTierConfigurationArgs): ThreeTierConfigurationArgs {
     return {
         ...val,
-        networkConfiguration: (val.networkConfiguration ? pulumi.output(val.networkConfiguration).apply(networkConfigurationArgsProvideDefaults) : undefined),
+        networkConfiguration: pulumi.output(val.networkConfiguration).apply(v => v === undefined ? undefined : networkConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -1678,15 +1678,15 @@ export interface ThreeTierFullResourceNamesArgs {
     /**
      * The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
      */
-    applicationServer?: pulumi.Input<ApplicationServerFullResourceNamesArgs>;
+    applicationServer?: pulumi.Input<ApplicationServerFullResourceNamesArgs | undefined>;
     /**
      * The full resource names object for central server layer resources.
      */
-    centralServer?: pulumi.Input<CentralServerFullResourceNamesArgs>;
+    centralServer?: pulumi.Input<CentralServerFullResourceNamesArgs | undefined>;
     /**
      * The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
      */
-    databaseServer?: pulumi.Input<DatabaseServerFullResourceNamesArgs>;
+    databaseServer?: pulumi.Input<DatabaseServerFullResourceNamesArgs | undefined>;
     /**
      * The pattern type to be used for resource naming.
      * Expected value is 'FullResourceName'.
@@ -1695,7 +1695,7 @@ export interface ThreeTierFullResourceNamesArgs {
     /**
      * The resource names object for shared storage.
      */
-    sharedStorage?: pulumi.Input<SharedStorageResourceNamesArgs>;
+    sharedStorage?: pulumi.Input<SharedStorageResourceNamesArgs | undefined>;
 }
 
 /**
@@ -1707,39 +1707,39 @@ export interface TieringPolicyArgs {
      * Number of days/weeks/months/years to retain backups in current tier before tiering.
      * Used only if TieringMode is set to TierAfter
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Retention duration type: days/weeks/months/years
      * Used only if TieringMode is set to TierAfter
      */
-    durationType?: pulumi.Input<string | enums.RetentionDurationType>;
+    durationType?: pulumi.Input<string | enums.RetentionDurationType | undefined>;
     /**
      * Tiering Mode to control automatic tiering of recovery points. Supported values are:
      * 1. TierRecommended: Tier all recovery points recommended to be tiered
      * 2. TierAfter: Tier all recovery points after a fixed period, as specified in duration + durationType below.
      * 3. DoNotTier: Do not tier any recovery points
      */
-    tieringMode?: pulumi.Input<string | enums.TieringMode>;
+    tieringMode?: pulumi.Input<string | enums.TieringMode | undefined>;
 }
 
 /**
  * User assigned managed identity properties.
  */
 export interface UserAssignedIdentityPropertiesArgs {
-    clientId?: pulumi.Input<string>;
-    principalId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
+    principalId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * User assigned managed identity details.
  */
 export interface UserAssignedManagedIdentityDetailsArgs {
-    identityArmId?: pulumi.Input<string>;
-    identityName?: pulumi.Input<string>;
+    identityArmId?: pulumi.Input<string | undefined>;
+    identityName?: pulumi.Input<string | undefined>;
     /**
      * User assigned managed identity properties.
      */
-    userAssignedIdentityProperties?: pulumi.Input<UserAssignedIdentityPropertiesArgs>;
+    userAssignedIdentityProperties?: pulumi.Input<UserAssignedIdentityPropertiesArgs | undefined>;
 }
 
 /**
@@ -1753,7 +1753,7 @@ export interface UserAssignedServiceIdentityArgs {
     /**
      * User assigned identities dictionary
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1772,7 +1772,7 @@ export interface VMBackupDataArgs {
     /**
      * Defines the disk exclusion properties for virtual machine backup.
      */
-    diskExclusionProperties?: pulumi.Input<DiskExclusionPropertiesArgs>;
+    diskExclusionProperties?: pulumi.Input<DiskExclusionPropertiesArgs | undefined>;
     /**
      * The properties of the recovery services vault used for backup.
      */
@@ -1791,11 +1791,11 @@ export interface VMBackupPolicyPropertiesArgs {
     /**
      * Instant recovery point additional details.
      */
-    instantRPDetails?: pulumi.Input<InstantRPAdditionalDetailsArgs>;
+    instantRPDetails?: pulumi.Input<InstantRPAdditionalDetailsArgs | undefined>;
     /**
      * Instant RP retention policy range in days
      */
-    instantRpRetentionRangeInDays?: pulumi.Input<number>;
+    instantRpRetentionRangeInDays?: pulumi.Input<number | undefined>;
     /**
      * The name of the VM Backup policy.
      */
@@ -1803,33 +1803,33 @@ export interface VMBackupPolicyPropertiesArgs {
     /**
      * The policy type.
      */
-    policyType?: pulumi.Input<string | enums.IAASVMPolicyType>;
+    policyType?: pulumi.Input<string | enums.IAASVMPolicyType | undefined>;
     /**
      * Number of items associated with this policy.
      */
-    protectedItemsCount?: pulumi.Input<number>;
+    protectedItemsCount?: pulumi.Input<number | undefined>;
     /**
      * ResourceGuard Operation Requests
      */
-    resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Retention policy with the details on backup copy retention ranges.
      */
-    retentionPolicy?: pulumi.Input<LongTermRetentionPolicyArgs | SimpleRetentionPolicyArgs>;
+    retentionPolicy?: pulumi.Input<LongTermRetentionPolicyArgs | SimpleRetentionPolicyArgs | undefined>;
     /**
      * Backup schedule specified as part of backup policy.
      */
-    schedulePolicy?: pulumi.Input<LogSchedulePolicyArgs | LongTermSchedulePolicyArgs | SimpleSchedulePolicyArgs | SimpleSchedulePolicyV2Args>;
+    schedulePolicy?: pulumi.Input<LogSchedulePolicyArgs | LongTermSchedulePolicyArgs | SimpleSchedulePolicyArgs | SimpleSchedulePolicyV2Args | undefined>;
     /**
      * Tiering policy to automatically move RPs to another tier
      * Key is Target Tier, defined in RecoveryPointTierType enum.
      * Tiering policy specifies the criteria to move RP to the target tier.
      */
-    tieringPolicy?: pulumi.Input<{[key: string]: pulumi.Input<TieringPolicyArgs>}>;
+    tieringPolicy?: pulumi.Input<{[key: string]: pulumi.Input<TieringPolicyArgs>} | undefined>;
     /**
      * Time zone optional input as string. For example: "Pacific Standard Time".
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1857,23 +1857,23 @@ export interface VirtualMachineResourceNamesArgs {
     /**
      * The full resource names for virtual machine data disks. This is a dictionary containing list of names of data disks per volume. Currently supported volumes for database layer are ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os', 'backup']. For application and cs layers, only 'default' volume is supported
      */
-    dataDiskNames?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    dataDiskNames?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
     /**
      * The full name for virtual-machine's host (computer name). Currently, ACSS only supports host names which are less than or equal to 13 characters long. If this value is not provided, vmName will be used as host name.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * The list of network interface name objects for the selected virtual machine. Currently, only one network interface is supported per virtual machine.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<NetworkInterfaceResourceNamesArgs>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<NetworkInterfaceResourceNamesArgs>[] | undefined>;
     /**
      * The full name for OS disk attached to the VM. If this value is not provided, it will be named by ARM as per its default naming standards (prefixed with vm name). There is only one OS disk attached per Virtual Machine.
      */
-    osDiskName?: pulumi.Input<string>;
+    osDiskName?: pulumi.Input<string | undefined>;
     /**
      * The full name for virtual machine. The length of this field can be upto 64 characters. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}vm. In case of HA-AvZone systems, default name will be {SID}{app/ascs/db}z{a/b}vm with an incrementor at the end in case of more than 1 vm per layer. For distributed and HA-AvSet systems, default name will be {SID}{app/ascs/db}vm with an incrementor at the end in case of more than 1 vm per layer.
      */
-    vmName?: pulumi.Input<string>;
+    vmName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1883,11 +1883,11 @@ export interface WeeklyRetentionFormatArgs {
     /**
      * List of days of the week.
      */
-    daysOfTheWeek?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[]>;
+    daysOfTheWeek?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[] | undefined>;
     /**
      * List of weeks of month.
      */
-    weeksOfTheMonth?: pulumi.Input<pulumi.Input<enums.WeekOfMonth>[]>;
+    weeksOfTheMonth?: pulumi.Input<pulumi.Input<enums.WeekOfMonth>[] | undefined>;
 }
 
 /**
@@ -1897,15 +1897,15 @@ export interface WeeklyRetentionScheduleArgs {
     /**
      * List of days of week for weekly retention policy.
      */
-    daysOfTheWeek?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[]>;
+    daysOfTheWeek?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[] | undefined>;
     /**
      * Retention duration of retention Policy.
      */
-    retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+    retentionDuration?: pulumi.Input<RetentionDurationArgs | undefined>;
     /**
      * Retention times of retention policy.
      */
-    retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    retentionTimes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1915,11 +1915,11 @@ export interface WeeklyScheduleArgs {
     /**
      * Schedule run days.
      */
-    scheduleRunDays?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[]>;
+    scheduleRunDays?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[] | undefined>;
     /**
      * List of times of day this schedule has to be run.
      */
-    scheduleRunTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    scheduleRunTimes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1940,25 +1940,25 @@ export interface YearlyRetentionScheduleArgs {
     /**
      * List of months of year of yearly retention policy.
      */
-    monthsOfYear?: pulumi.Input<pulumi.Input<enums.MonthOfYear>[]>;
+    monthsOfYear?: pulumi.Input<pulumi.Input<enums.MonthOfYear>[] | undefined>;
     /**
      * Retention duration of retention Policy.
      */
-    retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+    retentionDuration?: pulumi.Input<RetentionDurationArgs | undefined>;
     /**
      * Daily retention format for yearly retention policy.
      */
-    retentionScheduleDaily?: pulumi.Input<DailyRetentionFormatArgs>;
+    retentionScheduleDaily?: pulumi.Input<DailyRetentionFormatArgs | undefined>;
     /**
      * Retention schedule format for yearly retention policy.
      */
-    retentionScheduleFormatType?: pulumi.Input<string | enums.RetentionScheduleFormat>;
+    retentionScheduleFormatType?: pulumi.Input<string | enums.RetentionScheduleFormat | undefined>;
     /**
      * Weekly retention format for yearly retention policy.
      */
-    retentionScheduleWeekly?: pulumi.Input<WeeklyRetentionFormatArgs>;
+    retentionScheduleWeekly?: pulumi.Input<WeeklyRetentionFormatArgs | undefined>;
     /**
      * Retention times of retention policy.
      */
-    retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    retentionTimes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

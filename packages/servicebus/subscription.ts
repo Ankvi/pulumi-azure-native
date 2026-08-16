@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
  *
- * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Subscription extends pulumi.CustomResource {
     /**
@@ -207,7 +207,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:servicebus/v20140901:Subscription" }, { type: "azure-native:servicebus/v20150801:Subscription" }, { type: "azure-native:servicebus/v20170401:Subscription" }, { type: "azure-native:servicebus/v20180101preview:Subscription" }, { type: "azure-native:servicebus/v20210101preview:Subscription" }, { type: "azure-native:servicebus/v20210601preview:Subscription" }, { type: "azure-native:servicebus/v20211101:Subscription" }, { type: "azure-native:servicebus/v20220101preview:Subscription" }, { type: "azure-native:servicebus/v20221001preview:Subscription" }, { type: "azure-native:servicebus/v20230101preview:Subscription" }, { type: "azure-native:servicebus/v20240101:Subscription" }, { type: "azure-native:servicebus/v20250501preview:Subscription" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:servicebus/v20140901:Subscription" }, { type: "azure-native:servicebus/v20150801:Subscription" }, { type: "azure-native:servicebus/v20170401:Subscription" }, { type: "azure-native:servicebus/v20180101preview:Subscription" }, { type: "azure-native:servicebus/v20210101preview:Subscription" }, { type: "azure-native:servicebus/v20210601preview:Subscription" }, { type: "azure-native:servicebus/v20211101:Subscription" }, { type: "azure-native:servicebus/v20220101preview:Subscription" }, { type: "azure-native:servicebus/v20221001preview:Subscription" }, { type: "azure-native:servicebus/v20230101preview:Subscription" }, { type: "azure-native:servicebus/v20240101:Subscription" }, { type: "azure-native:servicebus/v20250501preview:Subscription" }, { type: "azure-native:servicebus/v20260101:Subscription" }, { type: "azure-native:servicebus/v20260701preview:Subscription" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Subscription.__pulumiType, name, resourceInputs, opts);
     }
@@ -220,51 +220,51 @@ export interface SubscriptionArgs {
     /**
      * ISO 8061 timeSpan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
      */
-    autoDeleteOnIdle?: pulumi.Input<string>;
+    autoDeleteOnIdle?: pulumi.Input<string | undefined>;
     /**
      * Properties specific to client affine subscriptions.
      */
-    clientAffineProperties?: pulumi.Input<types.inputs.SBClientAffinePropertiesArgs>;
+    clientAffineProperties?: pulumi.Input<types.inputs.SBClientAffinePropertiesArgs | undefined>;
     /**
      * Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
      */
-    deadLetteringOnFilterEvaluationExceptions?: pulumi.Input<boolean>;
+    deadLetteringOnFilterEvaluationExceptions?: pulumi.Input<boolean | undefined>;
     /**
      * Value that indicates whether a subscription has dead letter support when a message expires.
      */
-    deadLetteringOnMessageExpiration?: pulumi.Input<boolean>;
+    deadLetteringOnMessageExpiration?: pulumi.Input<boolean | undefined>;
     /**
      * ISO 8061 Default message timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself.
      */
-    defaultMessageTimeToLive?: pulumi.Input<string>;
+    defaultMessageTimeToLive?: pulumi.Input<string | undefined>;
     /**
      * ISO 8601 timeSpan structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
      */
-    duplicateDetectionHistoryTimeWindow?: pulumi.Input<string>;
+    duplicateDetectionHistoryTimeWindow?: pulumi.Input<string | undefined>;
     /**
      * Value that indicates whether server-side batched operations are enabled.
      */
-    enableBatchedOperations?: pulumi.Input<boolean>;
+    enableBatchedOperations?: pulumi.Input<boolean | undefined>;
     /**
      * Queue/Topic name to forward the Dead Letter message
      */
-    forwardDeadLetteredMessagesTo?: pulumi.Input<string>;
+    forwardDeadLetteredMessagesTo?: pulumi.Input<string | undefined>;
     /**
      * Queue/Topic name to forward the messages
      */
-    forwardTo?: pulumi.Input<string>;
+    forwardTo?: pulumi.Input<string | undefined>;
     /**
      * Value that indicates whether the subscription has an affinity to the client id.
      */
-    isClientAffine?: pulumi.Input<boolean>;
+    isClientAffine?: pulumi.Input<boolean | undefined>;
     /**
      * ISO 8061 lock duration timespan for the subscription. The default value is 1 minute.
      */
-    lockDuration?: pulumi.Input<string>;
+    lockDuration?: pulumi.Input<string | undefined>;
     /**
      * Number of maximum deliveries.
      */
-    maxDeliveryCount?: pulumi.Input<number>;
+    maxDeliveryCount?: pulumi.Input<number | undefined>;
     /**
      * The namespace name
      */
@@ -272,7 +272,7 @@ export interface SubscriptionArgs {
     /**
      * Value indicating if a subscription supports the concept of sessions.
      */
-    requiresSession?: pulumi.Input<boolean>;
+    requiresSession?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -280,11 +280,11 @@ export interface SubscriptionArgs {
     /**
      * Enumerates the possible values for the status of a messaging entity.
      */
-    status?: pulumi.Input<types.enums.EntityStatus>;
+    status?: pulumi.Input<types.enums.EntityStatus | undefined>;
     /**
      * The subscription name.
      */
-    subscriptionName?: pulumi.Input<string>;
+    subscriptionName?: pulumi.Input<string | undefined>;
     /**
      * The topic name.
      */

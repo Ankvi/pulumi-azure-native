@@ -163,7 +163,7 @@ export interface GetLabOutputArgs {
     /**
      * Specify the $expand query. Example: 'properties($select=defaultStorageAccount)'
      */
-    expand?: pulumi.Input<string>;
+    expand?: pulumi.Input<string | undefined>;
     /**
      * The name of the lab.
      */

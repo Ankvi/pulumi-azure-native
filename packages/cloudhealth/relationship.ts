@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2026-01-01-preview, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudhealth [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Relationship extends pulumi.CustomResource {
     /**
@@ -89,7 +89,7 @@ export class Relationship extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cloudhealth/v20250501preview:Relationship" }, { type: "azure-native:cloudhealth/v20260101preview:Relationship" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cloudhealth/v20250501preview:Relationship" }, { type: "azure-native:cloudhealth/v20260101preview:Relationship" }, { type: "azure-native:cloudhealth/v20260501preview:Relationship" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Relationship.__pulumiType, name, resourceInputs, opts);
     }
@@ -106,11 +106,11 @@ export interface RelationshipArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.RelationshipPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.RelationshipPropertiesArgs | undefined>;
     /**
      * Name of the relationship. Must be unique within a health model. For example, a concatenation of parentEntityName and childEntityName can be used as the name.
      */
-    relationshipName?: pulumi.Input<string>;
+    relationshipName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

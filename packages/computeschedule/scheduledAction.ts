@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-04-15-preview.
  *
- * Other available API versions: 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native computeschedule [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2026-01-01-preview, 2026-03-01-preview, 2026-04-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native computeschedule [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ScheduledAction extends pulumi.CustomResource {
     /**
@@ -79,7 +79,7 @@ export class ScheduledAction extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["location"] = args?.location;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.scheduledActionPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.scheduledActionPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["scheduledActionName"] = args?.scheduledActionName;
             resourceInputs["tags"] = args?.tags;
@@ -97,7 +97,7 @@ export class ScheduledAction extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:computeschedule/v20250415preview:ScheduledAction" }, { type: "azure-native:computeschedule/v20260101preview:ScheduledAction" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:computeschedule/v20250415preview:ScheduledAction" }, { type: "azure-native:computeschedule/v20260101preview:ScheduledAction" }, { type: "azure-native:computeschedule/v20260301preview:ScheduledAction" }, { type: "azure-native:computeschedule/v20260415preview:ScheduledAction" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ScheduledAction.__pulumiType, name, resourceInputs, opts);
     }
@@ -110,11 +110,11 @@ export interface ScheduledActionArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.ScheduledActionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ScheduledActionPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -122,9 +122,9 @@ export interface ScheduledActionArgs {
     /**
      * The name of the ScheduledAction
      */
-    scheduledActionName?: pulumi.Input<string>;
+    scheduledActionName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

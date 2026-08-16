@@ -7,15 +7,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * actions required
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * description string
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * state status
      */
-    status?: pulumi.Input<string | enums.PrivateLinkServiceConnectionStateStatus>;
+    status?: pulumi.Input<string | enums.PrivateLinkServiceConnectionStateStatus | undefined>;
 }
 
 /**
@@ -25,11 +25,11 @@ export interface SiteAgentPropertiesArgs {
     /**
      * Gets or sets the key vault ARM Id.
      */
-    keyVaultId?: pulumi.Input<string>;
+    keyVaultId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the key vault URI.
      */
-    keyVaultUri?: pulumi.Input<string>;
+    keyVaultUri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -39,15 +39,15 @@ export interface SiteAppliancePropertiesArgs {
     /**
      * Gets or sets the on-premises agent details.
      */
-    agentDetails?: pulumi.Input<SiteAgentPropertiesArgs>;
+    agentDetails?: pulumi.Input<SiteAgentPropertiesArgs | undefined>;
     /**
      * Gets or sets the Appliance Name.
      */
-    applianceName?: pulumi.Input<string>;
+    applianceName?: pulumi.Input<string | undefined>;
     /**
-     *  Gets or sets the service principal identity details used by agent for  communication              to the service.  
+     *  Gets or sets the service principal identity details used by agent for  communication              to the service.
      */
-    servicePrincipalIdentityDetails?: pulumi.Input<SiteSpnPropertiesArgs>;
+    servicePrincipalIdentityDetails?: pulumi.Input<SiteSpnPropertiesArgs | undefined>;
 }
 
 /**
@@ -57,19 +57,19 @@ export interface SitePropertiesArgs {
     /**
      * On-premises agent details.
      */
-    agentDetails?: pulumi.Input<SiteAgentPropertiesArgs>;
+    agentDetails?: pulumi.Input<SiteAgentPropertiesArgs | undefined>;
     /**
      * Appliance Name.
      */
-    applianceName?: pulumi.Input<string>;
+    applianceName?: pulumi.Input<string | undefined>;
     /**
      * ARM ID of migration hub solution for SDS.
      */
-    discoverySolutionId?: pulumi.Input<string>;
+    discoverySolutionId?: pulumi.Input<string | undefined>;
     /**
      * Service principal identity details used by agent for communication to the service.
      */
-    servicePrincipalIdentityDetails?: pulumi.Input<SiteSpnPropertiesArgs>;
+    servicePrincipalIdentityDetails?: pulumi.Input<SiteSpnPropertiesArgs | undefined>;
 }
 
 /**
@@ -81,35 +81,35 @@ export interface SiteSpnPropertiesArgs {
      * the
      *             service principal.
      */
-    aadAuthority?: pulumi.Input<string>;
+    aadAuthority?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the application/client Id for the service principal with which
      * the
      *             on-premise management/data plane components would communicate
-     * with our Azure 
+     * with our Azure
      *             services.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the intended audience for the service principal.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the object Id of the service principal with which the on-premise
      *
      *            management/data plane components would communicate with our Azure
      * services.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the raw certificate data for building certificate expiry flows.
      */
-    rawCertData?: pulumi.Input<string>;
+    rawCertData?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the tenant Id for the service principal with which the
      * on-premise
      *             management/data plane components would communicate with
      * our Azure services.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

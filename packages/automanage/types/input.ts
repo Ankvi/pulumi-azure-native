@@ -6,7 +6,7 @@ export interface ConfigurationProfileAssignmentPropertiesArgs {
     /**
      * The Automanage configurationProfile ARM Resource URI.
      */
-    configurationProfile?: pulumi.Input<string>;
+    configurationProfile?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -16,5 +16,5 @@ export interface ConfigurationProfilePropertiesArgs {
     /**
      * configuration dictionary of the configuration profile.
      */
-    configuration?: any;
+    configuration?: any | undefined;
 }

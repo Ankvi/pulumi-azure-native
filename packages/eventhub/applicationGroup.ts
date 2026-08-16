@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01-preview.
  *
- * Other available API versions: 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ApplicationGroup extends pulumi.CustomResource {
     /**
@@ -110,7 +110,7 @@ export class ApplicationGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventhub/v20220101preview:ApplicationGroup" }, { type: "azure-native:eventhub/v20221001preview:ApplicationGroup" }, { type: "azure-native:eventhub/v20230101preview:ApplicationGroup" }, { type: "azure-native:eventhub/v20240101:ApplicationGroup" }, { type: "azure-native:eventhub/v20240501preview:ApplicationGroup" }, { type: "azure-native:eventhub/v20250501preview:ApplicationGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventhub/v20220101preview:ApplicationGroup" }, { type: "azure-native:eventhub/v20221001preview:ApplicationGroup" }, { type: "azure-native:eventhub/v20230101preview:ApplicationGroup" }, { type: "azure-native:eventhub/v20240101:ApplicationGroup" }, { type: "azure-native:eventhub/v20240501preview:ApplicationGroup" }, { type: "azure-native:eventhub/v20250501preview:ApplicationGroup" }, { type: "azure-native:eventhub/v20260101:ApplicationGroup" }, { type: "azure-native:eventhub/v20260701preview:ApplicationGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ApplicationGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -121,9 +121,9 @@ export class ApplicationGroup extends pulumi.CustomResource {
  */
 export interface ApplicationGroupArgs {
     /**
-     * The Application Group name 
+     * The Application Group name
      */
-    applicationGroupName?: pulumi.Input<string>;
+    applicationGroupName?: pulumi.Input<string | undefined>;
     /**
      * The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or AAD(AADAppID=Guid)
      */
@@ -131,7 +131,7 @@ export interface ApplicationGroupArgs {
     /**
      * Determines if Application Group is allowed to create connection with namespace or not. Once the isEnabled is set to false, all the existing connections of application group gets dropped and no new connections will be allowed
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Namespace name
      */
@@ -139,7 +139,7 @@ export interface ApplicationGroupArgs {
     /**
      * List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
      */
-    policies?: pulumi.Input<pulumi.Input<types.inputs.ThrottlingPolicyArgs>[]>;
+    policies?: pulumi.Input<pulumi.Input<types.inputs.ThrottlingPolicyArgs>[] | undefined>;
     /**
      * Name of the resource group within the azure subscription.
      */

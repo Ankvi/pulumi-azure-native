@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RaiBlocklistItem extends pulumi.CustomResource {
     /**
@@ -105,7 +105,7 @@ export class RaiBlocklistItem extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20231001preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20240401preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20240601preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20241001:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20250401preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20250601:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20250701preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20250901:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20251001preview:RaiBlocklistItem" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20231001preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20240401preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20240601preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20241001:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20250401preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20250601:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20250701preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20250901:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20251001preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20251201:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20260115preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20260301:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20260315preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20260501:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20260515preview:RaiBlocklistItem" }, { type: "azure-native:cognitiveservices/v20260701:RaiBlocklistItem" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RaiBlocklistItem.__pulumiType, name, resourceInputs, opts);
     }
@@ -122,11 +122,11 @@ export interface RaiBlocklistItemArgs {
     /**
      * Properties of Cognitive Services RaiBlocklist Item.
      */
-    properties?: pulumi.Input<types.inputs.RaiBlocklistItemPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.RaiBlocklistItemPropertiesArgs | undefined>;
     /**
      * The name of the RaiBlocklist Item associated with the custom blocklist
      */
-    raiBlocklistItemName?: pulumi.Input<string>;
+    raiBlocklistItemName?: pulumi.Input<string | undefined>;
     /**
      * The name of the RaiBlocklist associated with the Cognitive Services Account
      */
@@ -138,5 +138,5 @@ export interface RaiBlocklistItemArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

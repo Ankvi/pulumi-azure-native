@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VirtualMachineInstance extends pulumi.CustomResource {
     /**
@@ -128,14 +128,14 @@ export class VirtualMachineInstance extends pulumi.CustomResource {
             }
             resourceInputs["createFromLocal"] = (args?.createFromLocal) ?? false;
             resourceInputs["extendedLocation"] = args?.extendedLocation;
-            resourceInputs["hardwareProfile"] = args ? (args.hardwareProfile ? pulumi.output(args.hardwareProfile).apply(types.inputs.virtualMachineInstancePropertiesHardwareProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["hardwareProfile"] = args ? pulumi.output(args.hardwareProfile).apply(v => v === undefined ? undefined : types.inputs.virtualMachineInstancePropertiesHardwareProfileArgsProvideDefaults(v)) : undefined;
             resourceInputs["httpProxyConfig"] = args?.httpProxyConfig;
             resourceInputs["identity"] = args?.identity;
             resourceInputs["networkProfile"] = args?.networkProfile;
-            resourceInputs["osProfile"] = args ? (args.osProfile ? pulumi.output(args.osProfile).apply(types.inputs.virtualMachineInstancePropertiesOsProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["osProfile"] = args ? pulumi.output(args.osProfile).apply(v => v === undefined ? undefined : types.inputs.virtualMachineInstancePropertiesOsProfileArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceUid"] = args?.resourceUid;
             resourceInputs["resourceUri"] = args?.resourceUri;
-            resourceInputs["securityProfile"] = args ? (args.securityProfile ? pulumi.output(args.securityProfile).apply(types.inputs.virtualMachineInstancePropertiesSecurityProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["securityProfile"] = args ? pulumi.output(args.securityProfile).apply(v => v === undefined ? undefined : types.inputs.virtualMachineInstancePropertiesSecurityProfileArgsProvideDefaults(v)) : undefined;
             resourceInputs["storageProfile"] = args?.storageProfile;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["guestAgentInstallStatus"] = undefined /*out*/;
@@ -168,7 +168,7 @@ export class VirtualMachineInstance extends pulumi.CustomResource {
             resourceInputs["vmId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20230701preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20230901preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20240101:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20240201preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20240501preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20240715preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20240801preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20241001preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20250201preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20250401preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20250601preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20250901preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20260201preview:VirtualMachineInstance" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20230701preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20230901preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20240101:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20240201preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20240501preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20240715preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20240801preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20241001preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20250201preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20250401preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20250601preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20250901preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20260201preview:VirtualMachineInstance" }, { type: "azure-native:azurestackhci/v20260401preview:VirtualMachineInstance" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VirtualMachineInstance.__pulumiType, name, resourceInputs, opts);
     }
@@ -181,35 +181,35 @@ export interface VirtualMachineInstanceArgs {
     /**
      * Boolean indicating whether this is an existing local virtual machine or if one should be created.
      */
-    createFromLocal?: pulumi.Input<boolean>;
+    createFromLocal?: pulumi.Input<boolean | undefined>;
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * HardwareProfile - Specifies the hardware settings for the virtual machine instance.
      */
-    hardwareProfile?: pulumi.Input<types.inputs.VirtualMachineInstancePropertiesHardwareProfileArgs>;
+    hardwareProfile?: pulumi.Input<types.inputs.VirtualMachineInstancePropertiesHardwareProfileArgs | undefined>;
     /**
      * HTTP Proxy configuration for the VM.
      */
-    httpProxyConfig?: pulumi.Input<types.inputs.HttpProxyConfigurationArgs>;
+    httpProxyConfig?: pulumi.Input<types.inputs.HttpProxyConfigurationArgs | undefined>;
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * NetworkProfile - describes the network configuration the virtual machine instance
      */
-    networkProfile?: pulumi.Input<types.inputs.VirtualMachineInstancePropertiesNetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.VirtualMachineInstancePropertiesNetworkProfileArgs | undefined>;
     /**
      * OsProfile - describes the configuration of the operating system and sets login data
      */
-    osProfile?: pulumi.Input<types.inputs.VirtualMachineInstancePropertiesOsProfileArgs>;
+    osProfile?: pulumi.Input<types.inputs.VirtualMachineInstancePropertiesOsProfileArgs | undefined>;
     /**
      * Unique identifier defined by ARC to identify the guest of the VM.
      */
-    resourceUid?: pulumi.Input<string>;
+    resourceUid?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified Azure Resource manager identifier of the resource.
      */
@@ -217,9 +217,9 @@ export interface VirtualMachineInstanceArgs {
     /**
      * SecurityProfile - Specifies the security settings for the virtual machine instance.
      */
-    securityProfile?: pulumi.Input<types.inputs.VirtualMachineInstancePropertiesSecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.VirtualMachineInstancePropertiesSecurityProfileArgs | undefined>;
     /**
      * StorageProfile - contains information about the disks and storage information for the virtual machine instance
      */
-    storageProfile?: pulumi.Input<types.inputs.VirtualMachineInstancePropertiesStorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.VirtualMachineInstancePropertiesStorageProfileArgs | undefined>;
 }

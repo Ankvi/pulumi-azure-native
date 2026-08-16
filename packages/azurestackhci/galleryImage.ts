@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
  *
- * Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class GalleryImage extends pulumi.CustomResource {
     /**
@@ -160,7 +160,7 @@ export class GalleryImage extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210701preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20210901preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20210901preview:GalleryimageRetrieve" }, { type: "azure-native:azurestackhci/v20221215preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20230701preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20230901preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20240101:GalleryImage" }, { type: "azure-native:azurestackhci/v20240201preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20240501preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20240715preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20240801preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20241001preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20250201preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20250401preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20250601preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20250901preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20260201preview:GalleryImage" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210701preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20210901preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20210901preview:GalleryimageRetrieve" }, { type: "azure-native:azurestackhci/v20221215preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20230701preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20230901preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20240101:GalleryImage" }, { type: "azure-native:azurestackhci/v20240201preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20240501preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20240715preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20240801preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20241001preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20250201preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20250401preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20250601preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20250901preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20260201preview:GalleryImage" }, { type: "azure-native:azurestackhci/v20260401preview:GalleryImage" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GalleryImage.__pulumiType, name, resourceInputs, opts);
     }
@@ -173,35 +173,35 @@ export interface GalleryImageArgs {
     /**
      * Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
      */
-    cloudInitDataSource?: pulumi.Input<string | types.enums.CloudInitDataSource>;
+    cloudInitDataSource?: pulumi.Input<string | types.enums.CloudInitDataSource | undefined>;
     /**
      * Storage ContainerID of the storage container to be used for gallery image
      */
-    containerId?: pulumi.Input<string>;
+    containerId?: pulumi.Input<string | undefined>;
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * Name of the gallery image
      */
-    galleryImageName?: pulumi.Input<string>;
+    galleryImageName?: pulumi.Input<string | undefined>;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
-    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGeneration>;
+    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGeneration | undefined>;
     /**
      * This is the gallery image definition identifier.
      */
-    identifier?: pulumi.Input<types.inputs.GalleryImageIdentifierArgs>;
+    identifier?: pulumi.Input<types.inputs.GalleryImageIdentifierArgs | undefined>;
     /**
      * location of the image the gallery image should be created from
      */
-    imagePath?: pulumi.Input<string>;
+    imagePath?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Operating system type that the gallery image uses [Windows, Linux]
      */
@@ -213,13 +213,13 @@ export interface GalleryImageArgs {
     /**
      * Resource ID of the source virtual machine from whose OS disk the gallery image is created.
      */
-    sourceVirtualMachineId?: pulumi.Input<string>;
+    sourceVirtualMachineId?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies information about the gallery image version that you want to create or update.
      */
-    version?: pulumi.Input<types.inputs.GalleryImageVersionArgs>;
+    version?: pulumi.Input<types.inputs.GalleryImageVersionArgs | undefined>;
 }

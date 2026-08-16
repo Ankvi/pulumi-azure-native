@@ -60,7 +60,7 @@ export class PrivateLinkScopedResource extends pulumi.CustomResource {
      */
     declare public readonly subscriptionLocation: pulumi.Output<string | undefined>;
     /**
-     * System data
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -119,15 +119,15 @@ export interface PrivateLinkScopedResourceArgs {
     /**
      * The kind of scoped Azure monitor resource.
      */
-    kind?: pulumi.Input<string | types.enums.ScopedResourceKind>;
+    kind?: pulumi.Input<string | types.enums.ScopedResourceKind | undefined>;
     /**
      * The resource id of the scoped Azure monitor resource.
      */
-    linkedResourceId?: pulumi.Input<string>;
+    linkedResourceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the scoped resource object.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -139,5 +139,5 @@ export interface PrivateLinkScopedResourceArgs {
     /**
      * The location of a scoped subscription. Only needs to be specified for metric dataplane subscriptions.
      */
-    subscriptionLocation?: pulumi.Input<string>;
+    subscriptionLocation?: pulumi.Input<string | undefined>;
 }

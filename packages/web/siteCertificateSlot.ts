@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * SSL certificate for an app.
  *
- * Uses Azure REST API version 2024-11-01.
+ * Uses Azure REST API version 2025-05-01.
  *
- * Other available API versions: 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SiteCertificateSlot extends pulumi.CustomResource {
     /**
@@ -92,11 +92,11 @@ export class SiteCertificateSlot extends pulumi.CustomResource {
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
-     * Resource Location.
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string>;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -128,6 +128,10 @@ export class SiteCertificateSlot extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly subjectName: pulumi.Output<string>;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
      * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
@@ -136,7 +140,7 @@ export class SiteCertificateSlot extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly thumbprint: pulumi.Output<string>;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -191,6 +195,7 @@ export class SiteCertificateSlot extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["siteName"] = undefined /*out*/;
             resourceInputs["subjectName"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["thumbprint"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["valid"] = undefined /*out*/;
@@ -218,13 +223,14 @@ export class SiteCertificateSlot extends pulumi.CustomResource {
             resourceInputs["serverFarmId"] = undefined /*out*/;
             resourceInputs["siteName"] = undefined /*out*/;
             resourceInputs["subjectName"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["thumbprint"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["valid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20241101:SiteCertificateSlot" }, { type: "azure-native:web/v20250301:SiteCertificateSlot" }, { type: "azure-native:web/v20250501:SiteCertificateSlot" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20241101:SiteCertificateSlot" }, { type: "azure-native:web/v20250301:SiteCertificateSlot" }, { type: "azure-native:web/v20250501:SiteCertificateSlot" }, { type: "azure-native:web/v20260301preview:SiteCertificateSlot" }, { type: "azure-native:web/v20260315:SiteCertificateSlot" }, { type: "azure-native:web/v20260715:SiteCertificateSlot" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SiteCertificateSlot.__pulumiType, name, resourceInputs, opts);
     }
@@ -237,35 +243,35 @@ export interface SiteCertificateSlotArgs {
     /**
      * CNAME of the certificate to be issued via free certificate
      */
-    canonicalName?: pulumi.Input<string>;
+    canonicalName?: pulumi.Input<string | undefined>;
     /**
      * Name of the certificate.
      */
-    certificateName?: pulumi.Input<string>;
+    certificateName?: pulumi.Input<string | undefined>;
     /**
      * Method of domain validation for free cert
      */
-    domainValidationMethod?: pulumi.Input<string>;
+    domainValidationMethod?: pulumi.Input<string | undefined>;
     /**
      * Host names the certificate applies to.
      */
-    hostNames?: pulumi.Input<pulumi.Input<string>[]>;
+    hostNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Azure Key Vault Csm resource Id.
      */
-    keyVaultId?: pulumi.Input<string>;
+    keyVaultId?: pulumi.Input<string | undefined>;
     /**
      * Azure Key Vault secret name.
      */
-    keyVaultSecretName?: pulumi.Input<string>;
+    keyVaultSecretName?: pulumi.Input<string | undefined>;
     /**
      * Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
-     * Resource Location.
+     * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the site.
      */
@@ -273,11 +279,11 @@ export interface SiteCertificateSlotArgs {
     /**
      * Certificate password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Pfx blob.
      */
-    pfxBlob?: pulumi.Input<string>;
+    pfxBlob?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -285,7 +291,7 @@ export interface SiteCertificateSlotArgs {
     /**
      * Resource ID of the associated App Service plan.
      */
-    serverFarmId?: pulumi.Input<string>;
+    serverFarmId?: pulumi.Input<string | undefined>;
     /**
      * Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
      */
@@ -293,5 +299,5 @@ export interface SiteCertificateSlotArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

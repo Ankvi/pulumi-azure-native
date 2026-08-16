@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class LocalUser extends pulumi.CustomResource {
     /**
@@ -155,7 +155,7 @@ export class LocalUser extends pulumi.CustomResource {
             resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20210801:LocalUser" }, { type: "azure-native:storage/v20210901:LocalUser" }, { type: "azure-native:storage/v20220501:LocalUser" }, { type: "azure-native:storage/v20220901:LocalUser" }, { type: "azure-native:storage/v20230101:LocalUser" }, { type: "azure-native:storage/v20230401:LocalUser" }, { type: "azure-native:storage/v20230501:LocalUser" }, { type: "azure-native:storage/v20240101:LocalUser" }, { type: "azure-native:storage/v20250101:LocalUser" }, { type: "azure-native:storage/v20250601:LocalUser" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20210801:LocalUser" }, { type: "azure-native:storage/v20210901:LocalUser" }, { type: "azure-native:storage/v20220501:LocalUser" }, { type: "azure-native:storage/v20220901:LocalUser" }, { type: "azure-native:storage/v20230101:LocalUser" }, { type: "azure-native:storage/v20230401:LocalUser" }, { type: "azure-native:storage/v20230501:LocalUser" }, { type: "azure-native:storage/v20240101:LocalUser" }, { type: "azure-native:storage/v20250101:LocalUser" }, { type: "azure-native:storage/v20250601:LocalUser" }, { type: "azure-native:storage/v20250801:LocalUser" }, { type: "azure-native:storage/v20260401:LocalUser" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LocalUser.__pulumiType, name, resourceInputs, opts);
     }
@@ -172,39 +172,39 @@ export interface LocalUserArgs {
     /**
      * Indicates whether ACL authorization is allowed for this user. Set it to false to disallow using ACL authorization.
      */
-    allowAclAuthorization?: pulumi.Input<boolean>;
+    allowAclAuthorization?: pulumi.Input<boolean | undefined>;
     /**
      * Supplementary group membership. Only applicable for local users enabled for NFSv3 access.
      */
-    extendedGroups?: pulumi.Input<pulumi.Input<number>[]>;
+    extendedGroups?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * An identifier for associating a group of users.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether shared key exists. Set it to false to remove existing shared key.
      */
-    hasSharedKey?: pulumi.Input<boolean>;
+    hasSharedKey?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether ssh key exists. Set it to false to remove existing SSH key.
      */
-    hasSshKey?: pulumi.Input<boolean>;
+    hasSshKey?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether ssh password exists. Set it to false to remove existing SSH password.
      */
-    hasSshPassword?: pulumi.Input<boolean>;
+    hasSshPassword?: pulumi.Input<boolean | undefined>;
     /**
      * Optional, local user home directory.
      */
-    homeDirectory?: pulumi.Input<string>;
+    homeDirectory?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the local user is enabled for access with NFSv3 protocol.
      */
-    isNFSv3Enabled?: pulumi.Input<boolean>;
+    isNFSv3Enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The permission scopes of the local user.
      */
-    permissionScopes?: pulumi.Input<pulumi.Input<types.inputs.PermissionScopeArgs>[]>;
+    permissionScopes?: pulumi.Input<pulumi.Input<types.inputs.PermissionScopeArgs>[] | undefined>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -212,9 +212,9 @@ export interface LocalUserArgs {
     /**
      * Optional, local user ssh authorized keys for SFTP.
      */
-    sshAuthorizedKeys?: pulumi.Input<pulumi.Input<types.inputs.SshPublicKeyArgs>[]>;
+    sshAuthorizedKeys?: pulumi.Input<pulumi.Input<types.inputs.SshPublicKeyArgs>[] | undefined>;
     /**
      * The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-27. In version 2.x of the Azure Native provider, it used API version 2023-10-11-preview.
  *
- * Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Flow extends pulumi.CustomResource {
     /**
@@ -113,7 +113,7 @@ export class Flow extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azuredatatransfer/v20231011preview:Flow" }, { type: "azure-native:azuredatatransfer/v20240125:Flow" }, { type: "azure-native:azuredatatransfer/v20240507:Flow" }, { type: "azure-native:azuredatatransfer/v20240911:Flow" }, { type: "azure-native:azuredatatransfer/v20240927:Flow" }, { type: "azure-native:azuredatatransfer/v20250301preview:Flow" }, { type: "azure-native:azuredatatransfer/v20250411preview:Flow" }, { type: "azure-native:azuredatatransfer/v20250521:Flow" }, { type: "azure-native:azuredatatransfer/v20250530preview:Flow" }, { type: "azure-native:azuredatatransfer/v20251010preview:Flow" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azuredatatransfer/v20231011preview:Flow" }, { type: "azure-native:azuredatatransfer/v20240125:Flow" }, { type: "azure-native:azuredatatransfer/v20240507:Flow" }, { type: "azure-native:azuredatatransfer/v20240911:Flow" }, { type: "azure-native:azuredatatransfer/v20240927:Flow" }, { type: "azure-native:azuredatatransfer/v20250301preview:Flow" }, { type: "azure-native:azuredatatransfer/v20250411preview:Flow" }, { type: "azure-native:azuredatatransfer/v20250521:Flow" }, { type: "azure-native:azuredatatransfer/v20250530preview:Flow" }, { type: "azure-native:azuredatatransfer/v20251010preview:Flow" }, { type: "azure-native:azuredatatransfer/v20260206preview:Flow" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Flow.__pulumiType, name, resourceInputs, opts);
     }
@@ -130,23 +130,23 @@ export interface FlowArgs {
     /**
      * The name for the flow that is to be onboarded.
      */
-    flowName?: pulumi.Input<string>;
+    flowName?: pulumi.Input<string | undefined>;
     /**
      * The managed identity of the flow resource, if configured.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Plan for the resource.
      */
-    plan?: pulumi.Input<types.inputs.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs | undefined>;
     /**
      * Properties of flow
      */
-    properties?: pulumi.Input<types.inputs.FlowPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.FlowPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -154,5 +154,5 @@ export interface FlowArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -236,19 +236,19 @@ export interface DeviceArgs {
     /**
      * The details of data-residency related properties for this resource
      */
-    dataResidency?: pulumi.Input<types.inputs.DataResidencyArgs>;
+    dataResidency?: pulumi.Input<types.inputs.DataResidencyArgs | undefined>;
     /**
      * The device name.
      */
-    deviceName?: pulumi.Input<string>;
+    deviceName?: pulumi.Input<string | undefined>;
     /**
      * Msi identity of the resource
      */
-    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs | undefined>;
     /**
      * The location of the device. This is a supported and registered Azure geographical region (for example, West US, East US, or Southeast Asia). The geographical region of a device cannot be changed once it is created, but if an identical geographical region is specified on update, the request will succeed.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource group name.
      */
@@ -256,9 +256,9 @@ export interface DeviceArgs {
     /**
      * The SKU type.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * The list of tags that describe the device. These tags can be used to view and group this device (across resource groups).
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

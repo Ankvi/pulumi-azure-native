@@ -113,7 +113,7 @@ export interface EdgeSiteArgs {
     /**
      * Edge site name.
      */
-    edgeSiteName?: pulumi.Input<string>;
+    edgeSiteName?: pulumi.Input<string | undefined>;
     /**
      * A reference to global communications site.
      */
@@ -121,7 +121,7 @@ export interface EdgeSiteArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -129,5 +129,5 @@ export interface EdgeSiteArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

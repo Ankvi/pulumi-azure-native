@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-11-01, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class HybridConnection extends pulumi.CustomResource {
     /**
@@ -119,7 +119,7 @@ export class HybridConnection extends pulumi.CustomResource {
             resourceInputs["userMetadata"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:relay/v20160701:HybridConnection" }, { type: "azure-native:relay/v20170401:HybridConnection" }, { type: "azure-native:relay/v20211101:HybridConnection" }, { type: "azure-native:relay/v20240101:HybridConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:relay/v20160701:HybridConnection" }, { type: "azure-native:relay/v20170401:HybridConnection" }, { type: "azure-native:relay/v20211101:HybridConnection" }, { type: "azure-native:relay/v20240101:HybridConnection" }, { type: "azure-native:relay/v20260101:HybridConnection" }, { type: "azure-native:relay/v20260701preview:HybridConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(HybridConnection.__pulumiType, name, resourceInputs, opts);
     }
@@ -132,7 +132,7 @@ export interface HybridConnectionArgs {
     /**
      * The hybrid connection name.
      */
-    hybridConnectionName?: pulumi.Input<string>;
+    hybridConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The namespace name
      */
@@ -140,7 +140,7 @@ export interface HybridConnectionArgs {
     /**
      * Returns true if client authorization is needed for this hybrid connection; otherwise, false.
      */
-    requiresClientAuthorization?: pulumi.Input<boolean>;
+    requiresClientAuthorization?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -148,5 +148,5 @@ export interface HybridConnectionArgs {
     /**
      * The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
      */
-    userMetadata?: pulumi.Input<string>;
+    userMetadata?: pulumi.Input<string | undefined>;
 }

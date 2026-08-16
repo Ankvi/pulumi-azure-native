@@ -5,6 +5,8 @@ import * as types from "./types";
  * Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2024-01-01.
+ *
+ * Other available API versions: 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Pricing extends pulumi.CustomResource {
     /**
@@ -66,7 +68,7 @@ export class Pricing extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly inheritedFrom: pulumi.Output<string>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -86,7 +88,11 @@ export class Pricing extends pulumi.CustomResource {
      */
     declare public readonly subPlan: pulumi.Output<string | undefined>;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -122,6 +128,7 @@ export class Pricing extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["replacedBy"] = undefined /*out*/;
             resourceInputs["resourcesCoverageStatus"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -137,10 +144,11 @@ export class Pricing extends pulumi.CustomResource {
             resourceInputs["replacedBy"] = undefined /*out*/;
             resourceInputs["resourcesCoverageStatus"] = undefined /*out*/;
             resourceInputs["subPlan"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:security/v20240101:Pricing" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:security/v20240101:Pricing" }, { type: "azure-native:security/v20251001preview:Pricing" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Pricing.__pulumiType, name, resourceInputs, opts);
     }
@@ -153,25 +161,25 @@ export interface PricingArgs {
     /**
      * If set to "False", it allows the descendants of this scope to override the pricing configuration set on this scope (allows setting inherited="False"). If set to "True", it prevents overrides and forces this pricing configuration on all the descendants of this scope. This field is only available for subscription-level pricing.
      */
-    enforce?: pulumi.Input<string | types.enums.Enforce>;
+    enforce?: pulumi.Input<string | types.enums.Enforce | undefined>;
     /**
      * Optional. List of extensions offered under a plan.
      */
-    extensions?: pulumi.Input<pulumi.Input<types.inputs.ExtensionArgs>[]>;
+    extensions?: pulumi.Input<pulumi.Input<types.inputs.ExtensionArgs>[] | undefined>;
     /**
      * name of the pricing configuration
      */
-    pricingName?: pulumi.Input<string>;
+    pricingName?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the Defender plan is enabled on the selected scope. Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
      */
     pricingTier: pulumi.Input<string | types.enums.PricingTier>;
     /**
-     * The scope id of the pricing. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or a specific resource (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}) - Supported resources are (VirtualMachines)
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scopeId: pulumi.Input<string>;
     /**
      * The sub-plan selected for a Standard pricing configuration, when more than one sub-plan is available. Each sub-plan enables a set of security features. When not specified, full plan is applied. For VirtualMachines plan, available sub plans are 'P1' & 'P2', where for resource level only 'P1' sub plan is supported.
      */
-    subPlan?: pulumi.Input<string>;
+    subPlan?: pulumi.Input<string | undefined>;
 }

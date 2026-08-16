@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-03-30-preview.
  *
- * Other available API versions: 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-12-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Wave extends pulumi.CustomResource {
     /**
@@ -95,7 +95,7 @@ export class Wave extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20250330preview:Wave" }, { type: "azure-native:migrate/v20251201preview:Wave" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20250330preview:Wave" }, { type: "azure-native:migrate/v20251201preview:Wave" }, { type: "azure-native:migrate/v20260201preview:Wave" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Wave.__pulumiType, name, resourceInputs, opts);
     }
@@ -112,7 +112,7 @@ export interface WaveArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.WavePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.WavePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -120,5 +120,5 @@ export interface WaveArgs {
     /**
      * Migration Wave Resource
      */
-    waveName?: pulumi.Input<string>;
+    waveName?: pulumi.Input<string | undefined>;
 }

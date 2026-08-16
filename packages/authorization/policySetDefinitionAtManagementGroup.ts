@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
  *
- * Other available API versions: 2020-09-01, 2021-06-01, 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-09-01, 2021-06-01, 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PolicySetDefinitionAtManagementGroup extends pulumi.CustomResource {
     /**
@@ -136,7 +136,7 @@ export class PolicySetDefinitionAtManagementGroup extends pulumi.CustomResource 
             resourceInputs["versions"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20170601preview:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20180301:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20180501:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20190101:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20190601:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20190901:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20200301:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20200901:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20210601:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20230401:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20240501:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20250101:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20250301:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20251101:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20251201preview:PolicySetDefinitionAtManagementGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20170601preview:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20180301:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20180501:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20190101:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20190601:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20190901:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20200301:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20200901:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20210601:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20230401:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20240501:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20250101:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20250301:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20251101:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20251201preview:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20260101preview:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20260601:PolicySetDefinitionAtManagementGroup" }, { type: "azure-native:authorization/v20260701:PolicySetDefinitionAtManagementGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicySetDefinitionAtManagementGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -149,11 +149,11 @@ export interface PolicySetDefinitionAtManagementGroupArgs {
     /**
      * The policy set definition description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the policy set definition.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the management group.
      */
@@ -161,15 +161,15 @@ export interface PolicySetDefinitionAtManagementGroupArgs {
     /**
      * The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
      * The policy set definition parameters that can be used in policy definition references.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterDefinitionsValueArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterDefinitionsValueArgs>} | undefined>;
     /**
      * The metadata describing groups of policy definition references within the policy set definition.
      */
-    policyDefinitionGroups?: pulumi.Input<pulumi.Input<types.inputs.PolicyDefinitionGroupArgs>[]>;
+    policyDefinitionGroups?: pulumi.Input<pulumi.Input<types.inputs.PolicyDefinitionGroupArgs>[] | undefined>;
     /**
      * An array of policy definition references.
      */
@@ -177,17 +177,17 @@ export interface PolicySetDefinitionAtManagementGroupArgs {
     /**
      * The name of the policy set definition to create.
      */
-    policySetDefinitionName?: pulumi.Input<string>;
+    policySetDefinitionName?: pulumi.Input<string | undefined>;
     /**
      * The type of policy set definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
      */
-    policyType?: pulumi.Input<string | types.enums.PolicyType>;
+    policyType?: pulumi.Input<string | types.enums.PolicyType | undefined>;
     /**
      * The policy set definition version in #.#.# format.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * A list of available versions for this policy set definition.
      */
-    versions?: pulumi.Input<pulumi.Input<string>[]>;
+    versions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

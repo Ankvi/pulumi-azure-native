@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class LoadBalancerBackendAddressPool extends pulumi.CustomResource {
     /**
@@ -156,7 +156,7 @@ export class LoadBalancerBackendAddressPool extends pulumi.CustomResource {
             resourceInputs["virtualNetwork"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200401:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20200501:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20200601:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20200701:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20200801:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20201101:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20210201:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20210301:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20210501:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20210801:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20220101:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20220501:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20220701:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20220901:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20221101:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20230201:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20230401:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20230501:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20230601:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20230901:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20231101:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20240101:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20240301:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20240501:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20240701:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20241001:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20250101:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20250301:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20250501:LoadBalancerBackendAddressPool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20200401:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20200501:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20200601:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20200701:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20200801:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20201101:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20210201:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20210301:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20210501:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20210801:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20220101:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20220501:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20220701:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20220901:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20221101:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20230201:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20230401:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20230501:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20230601:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20230901:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20231101:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20240101:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20240301:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20240501:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20240701:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20241001:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20250101:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20250301:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20250501:LoadBalancerBackendAddressPool" }, { type: "azure-native:network/v20250701:LoadBalancerBackendAddressPool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LoadBalancerBackendAddressPool.__pulumiType, name, resourceInputs, opts);
     }
@@ -169,19 +169,19 @@ export interface LoadBalancerBackendAddressPoolArgs {
     /**
      * The name of the backend address pool.
      */
-    backendAddressPoolName?: pulumi.Input<string>;
+    backendAddressPoolName?: pulumi.Input<string | undefined>;
     /**
      * Amount of seconds Load Balancer waits for before sending RESET to client and backend address.
      */
-    drainPeriodInSeconds?: pulumi.Input<number>;
+    drainPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * An array of backend addresses.
      */
-    loadBalancerBackendAddresses?: pulumi.Input<pulumi.Input<types.inputs.LoadBalancerBackendAddressArgs>[]>;
+    loadBalancerBackendAddresses?: pulumi.Input<pulumi.Input<types.inputs.LoadBalancerBackendAddressArgs>[] | undefined>;
     /**
      * The name of the load balancer.
      */
@@ -189,11 +189,11 @@ export interface LoadBalancerBackendAddressPoolArgs {
     /**
      * The location of the backend address pool.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource that is unique within the set of backend address pools used by the load balancer. This name can be used to access the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group.
      */
@@ -201,13 +201,13 @@ export interface LoadBalancerBackendAddressPoolArgs {
     /**
      * Backend address synchronous mode for the backend pool
      */
-    syncMode?: pulumi.Input<string | types.enums.SyncMode>;
+    syncMode?: pulumi.Input<string | types.enums.SyncMode | undefined>;
     /**
      * An array of gateway load balancer tunnel interfaces.
      */
-    tunnelInterfaces?: pulumi.Input<pulumi.Input<types.inputs.GatewayLoadBalancerTunnelInterfaceArgs>[]>;
+    tunnelInterfaces?: pulumi.Input<pulumi.Input<types.inputs.GatewayLoadBalancerTunnelInterfaceArgs>[] | undefined>;
     /**
      * A reference to a virtual network.
      */
-    virtualNetwork?: pulumi.Input<types.inputs.SubResourceArgs>;
+    virtualNetwork?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
 }

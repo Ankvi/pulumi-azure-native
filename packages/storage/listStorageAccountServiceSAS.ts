@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listStorageAccountServiceSAS(args: ListStorageAccountServiceSASArgs, opts?: pulumi.InvokeOptions): Promise<ListStorageAccountServiceSASResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -131,7 +131,7 @@ export interface ListStorageAccountServiceSASResult {
  *
  * Uses Azure REST API version 2024-01-01.
  *
- * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function listStorageAccountServiceSASOutput(args: ListStorageAccountServiceSASOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<ListStorageAccountServiceSASResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -167,7 +167,7 @@ export interface ListStorageAccountServiceSASOutputArgs {
     /**
      * The response header override for cache control.
      */
-    cacheControl?: pulumi.Input<string>;
+    cacheControl?: pulumi.Input<string | undefined>;
     /**
      * The canonical path to the signed resource.
      */
@@ -175,51 +175,51 @@ export interface ListStorageAccountServiceSASOutputArgs {
     /**
      * The response header override for content disposition.
      */
-    contentDisposition?: pulumi.Input<string>;
+    contentDisposition?: pulumi.Input<string | undefined>;
     /**
      * The response header override for content encoding.
      */
-    contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string | undefined>;
     /**
      * The response header override for content language.
      */
-    contentLanguage?: pulumi.Input<string>;
+    contentLanguage?: pulumi.Input<string | undefined>;
     /**
      * The response header override for content type.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * An IP address or a range of IP addresses from which to accept requests.
      */
-    iPAddressOrRange?: pulumi.Input<string>;
+    iPAddressOrRange?: pulumi.Input<string | undefined>;
     /**
      * A unique value up to 64 characters in length that correlates to an access policy specified for the container, queue, or table.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * The key to sign the account SAS token with.
      */
-    keyToSign?: pulumi.Input<string>;
+    keyToSign?: pulumi.Input<string | undefined>;
     /**
      * The end of partition key.
      */
-    partitionKeyEnd?: pulumi.Input<string>;
+    partitionKeyEnd?: pulumi.Input<string | undefined>;
     /**
      * The start of partition key.
      */
-    partitionKeyStart?: pulumi.Input<string>;
+    partitionKeyStart?: pulumi.Input<string | undefined>;
     /**
      * The signed permissions for the service SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p).
      */
-    permissions?: pulumi.Input<string | types.enums.Permissions>;
+    permissions?: pulumi.Input<string | types.enums.Permissions | undefined>;
     /**
      * The protocol permitted for a request made with the account SAS.
      */
-    protocols?: pulumi.Input<types.enums.HttpProtocol>;
+    protocols?: pulumi.Input<types.enums.HttpProtocol | undefined>;
     /**
      * The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share (s).
      */
-    resource?: pulumi.Input<string | types.enums.SignedResource>;
+    resource?: pulumi.Input<string | types.enums.SignedResource | undefined>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -227,17 +227,17 @@ export interface ListStorageAccountServiceSASOutputArgs {
     /**
      * The end of row key.
      */
-    rowKeyEnd?: pulumi.Input<string>;
+    rowKeyEnd?: pulumi.Input<string | undefined>;
     /**
      * The start of row key.
      */
-    rowKeyStart?: pulumi.Input<string>;
+    rowKeyStart?: pulumi.Input<string | undefined>;
     /**
      * The time at which the shared access signature becomes invalid.
      */
-    sharedAccessExpiryTime?: pulumi.Input<string>;
+    sharedAccessExpiryTime?: pulumi.Input<string | undefined>;
     /**
      * The time at which the SAS becomes valid.
      */
-    sharedAccessStartTime?: pulumi.Input<string>;
+    sharedAccessStartTime?: pulumi.Input<string | undefined>;
 }

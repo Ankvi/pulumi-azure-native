@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-30-preview.
  *
- * Other available API versions: 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-10-10-preview, 2026-02-06-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FlowProfile extends pulumi.CustomResource {
     /**
@@ -89,7 +89,7 @@ export class FlowProfile extends pulumi.CustomResource {
             resourceInputs["identity"] = args?.identity;
             resourceInputs["location"] = args?.location;
             resourceInputs["pipelineName"] = args?.pipelineName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.flowProfilePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.flowProfilePropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -107,7 +107,7 @@ export class FlowProfile extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azuredatatransfer/v20250530preview:FlowProfile" }, { type: "azure-native:azuredatatransfer/v20251010preview:FlowProfile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azuredatatransfer/v20250530preview:FlowProfile" }, { type: "azure-native:azuredatatransfer/v20251010preview:FlowProfile" }, { type: "azure-native:azuredatatransfer/v20260206preview:FlowProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FlowProfile.__pulumiType, name, resourceInputs, opts);
     }
@@ -120,15 +120,15 @@ export interface FlowProfileArgs {
     /**
      * The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
      */
-    flowProfileName?: pulumi.Input<string>;
+    flowProfileName?: pulumi.Input<string | undefined>;
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the pipeline on which to operate.
      */
@@ -136,7 +136,7 @@ export interface FlowProfileArgs {
     /**
      * The set of configuration properties that define the behavior and rules of the FlowProfile.
      */
-    properties?: pulumi.Input<types.inputs.FlowProfilePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.FlowProfilePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -144,5 +144,5 @@ export interface FlowProfileArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

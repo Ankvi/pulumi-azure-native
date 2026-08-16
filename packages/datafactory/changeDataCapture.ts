@@ -46,15 +46,15 @@ export class ChangeDataCapture extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Etag identifies change in the resource.
+     * "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The folder that this CDC is in. If not specified, CDC will appear at the root level.
      */
-    declare public readonly folder: pulumi.Output<types.outputs.ChangeDataCaptureResponseFolder | undefined>;
+    declare public readonly folder: pulumi.Output<types.outputs.ChangeDataCaptureFolderResponse | undefined>;
     /**
-     * The resource name.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -70,11 +70,15 @@ export class ChangeDataCapture extends pulumi.CustomResource {
      */
     declare public readonly status: pulumi.Output<string | undefined>;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
      * List of target connections that can be used as sources in the CDC.
      */
     declare public readonly targetConnectionsInfo: pulumi.Output<types.outputs.MapperTargetConnectionsInfoResponse[]>;
     /**
-     * The resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -117,6 +121,7 @@ export class ChangeDataCapture extends pulumi.CustomResource {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["allowVNetOverride"] = undefined /*out*/;
@@ -128,6 +133,7 @@ export class ChangeDataCapture extends pulumi.CustomResource {
             resourceInputs["policy"] = undefined /*out*/;
             resourceInputs["sourceConnectionsInfo"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["targetConnectionsInfo"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
@@ -145,15 +151,15 @@ export interface ChangeDataCaptureArgs {
     /**
      * A boolean to determine if the vnet configuration needs to be overwritten.
      */
-    allowVNetOverride?: pulumi.Input<boolean>;
+    allowVNetOverride?: pulumi.Input<boolean | undefined>;
     /**
      * The change data capture name.
      */
-    changeDataCaptureName?: pulumi.Input<string>;
+    changeDataCaptureName?: pulumi.Input<string | undefined>;
     /**
      * The description of the change data capture.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The factory name.
      */
@@ -161,13 +167,13 @@ export interface ChangeDataCaptureArgs {
     /**
      * The folder that this CDC is in. If not specified, CDC will appear at the root level.
      */
-    folder?: pulumi.Input<types.inputs.ChangeDataCaptureFolderArgs>;
+    folder?: pulumi.Input<types.inputs.ChangeDataCaptureFolderArgs | undefined>;
     /**
      * CDC policy
      */
     policy: pulumi.Input<types.inputs.MapperPolicyArgs>;
     /**
-     * The resource group name.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
@@ -177,7 +183,7 @@ export interface ChangeDataCaptureArgs {
     /**
      * Status of the CDC as to if it is running or stopped.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * List of target connections that can be used as sources in the CDC.
      */

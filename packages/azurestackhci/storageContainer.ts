@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
  *
- * Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-15-preview, 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview, 2024-07-15-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-06-01-preview, 2025-09-01-preview, 2026-02-01-preview, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class StorageContainer extends pulumi.CustomResource {
     /**
@@ -118,7 +118,7 @@ export class StorageContainer extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210901preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20210901preview:StoragecontainerRetrieve" }, { type: "azure-native:azurestackhci/v20221215preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20230701preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20230901preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20240101:StorageContainer" }, { type: "azure-native:azurestackhci/v20240201preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20240501preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20240715preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20240801preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20241001preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20250201preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20250401preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20250601preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20250901preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20260201preview:StorageContainer" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20210901preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20210901preview:StoragecontainerRetrieve" }, { type: "azure-native:azurestackhci/v20221215preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20230701preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20230901preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20240101:StorageContainer" }, { type: "azure-native:azurestackhci/v20240201preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20240501preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20240715preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20240801preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20241001preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20250201preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20250401preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20250601preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20250901preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20260201preview:StorageContainer" }, { type: "azure-native:azurestackhci/v20260401preview:StorageContainer" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StorageContainer.__pulumiType, name, resourceInputs, opts);
     }
@@ -131,11 +131,11 @@ export interface StorageContainerArgs {
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Path of the storage container on the disk
      */
@@ -147,9 +147,9 @@ export interface StorageContainerArgs {
     /**
      * Name of the storage container
      */
-    storageContainerName?: pulumi.Input<string>;
+    storageContainerName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

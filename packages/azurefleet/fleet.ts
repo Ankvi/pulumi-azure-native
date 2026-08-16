@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2024-05-01-preview.
  *
- * Other available API versions: 2024-05-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurefleet [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-05-01-preview, 2026-04-01-preview, 2026-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurefleet [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Fleet extends pulumi.CustomResource {
     /**
@@ -169,7 +169,7 @@ export class Fleet extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurefleet/v20231101preview:Fleet" }, { type: "azure-native:azurefleet/v20240501preview:Fleet" }, { type: "azure-native:azurefleet/v20241101:Fleet" }, { type: "azure-native:azurefleet/v20250701preview:Fleet" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurefleet/v20231101preview:Fleet" }, { type: "azure-native:azurefleet/v20240501preview:Fleet" }, { type: "azure-native:azurefleet/v20241101:Fleet" }, { type: "azure-native:azurefleet/v20260401preview:Fleet" }, { type: "azure-native:azurefleet/v20260601preview:Fleet" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Fleet.__pulumiType, name, resourceInputs, opts);
     }
@@ -182,7 +182,7 @@ export interface FleetArgs {
     /**
      * Represents the configuration for additional locations where Fleet resources may be deployed.
      */
-    additionalLocationsProfile?: pulumi.Input<types.inputs.AdditionalLocationsProfileArgs>;
+    additionalLocationsProfile?: pulumi.Input<types.inputs.AdditionalLocationsProfileArgs | undefined>;
     /**
      * Compute Profile to use for running user's workloads.
      */
@@ -190,23 +190,23 @@ export interface FleetArgs {
     /**
      * The name of the Compute Fleet
      */
-    fleetName?: pulumi.Input<string>;
+    fleetName?: pulumi.Input<string | undefined>;
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Details of the resource plan.
      */
-    plan?: pulumi.Input<types.inputs.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs | undefined>;
     /**
      * Configuration Options for Regular instances in Compute Fleet.
      */
-    regularPriorityProfile?: pulumi.Input<types.inputs.RegularPriorityProfileArgs>;
+    regularPriorityProfile?: pulumi.Input<types.inputs.RegularPriorityProfileArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -214,15 +214,15 @@ export interface FleetArgs {
     /**
      * Configuration Options for Spot instances in Compute Fleet.
      */
-    spotPriorityProfile?: pulumi.Input<types.inputs.SpotPriorityProfileArgs>;
+    spotPriorityProfile?: pulumi.Input<types.inputs.SpotPriorityProfileArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Attribute based Fleet.
      */
-    vmAttributes?: pulumi.Input<types.inputs.VMAttributesArgs>;
+    vmAttributes?: pulumi.Input<types.inputs.VMAttributesArgs | undefined>;
     /**
      * List of VM sizes supported for Compute Fleet
      */
@@ -230,5 +230,5 @@ export interface FleetArgs {
     /**
      * Zones in which the Compute Fleet is available
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

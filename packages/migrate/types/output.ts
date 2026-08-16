@@ -2308,7 +2308,7 @@ export interface MachineAssessmentSettingsResponse {
      * Gets or sets the duration for which the VMs are up in the on-premises
      * environment.
      */
-    vmUptime?: VmUptimeResponseV2;
+    vmUptime?: VmUptimeMachineAssessmentsV2OperationResponse;
 }
 
 /**
@@ -2446,35 +2446,9 @@ export interface MigrateAgentModelResponseSystemData {
 }
 
 /**
- * Class for migrate project properties.
- */
-export interface MigrateProjectPropertiesResponse {
-    /**
-     * Gets the last time the project summary was refreshed.
-     */
-    lastSummaryRefreshedTime: string;
-    /**
-     * Provisioning state of the migrate project.
-     */
-    provisioningState?: string;
-    /**
-     * Gets the refresh summary state.
-     */
-    refreshSummaryState: string;
-    /**
-     * Gets or sets the list of tools registered with the migrate project.
-     */
-    registeredTools?: string[];
-    /**
-     * Gets the summary of the migrate project.
-     */
-    summary: {[key: string]: DatabaseProjectSummaryResponse | ServersProjectSummaryResponse};
-}
-
-/**
  * Properties of a migrate project.
  */
-export interface MigrateProjectPropertiesResponseV1 {
+export interface MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse {
     /**
      * Last summary refresh time.
      */
@@ -2482,7 +2456,7 @@ export interface MigrateProjectPropertiesResponseV1 {
     /**
      * Gets the private endpoint connections.
      */
-    privateEndpointConnections: PrivateEndpointConnectionResponseV1[];
+    privateEndpointConnections: PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse[];
     /**
      * Gets or sets the state of public network access.
      */
@@ -2507,6 +2481,32 @@ export interface MigrateProjectPropertiesResponseV1 {
      * Utility storage account id.
      */
     utilityStorageAccountId?: string;
+}
+
+/**
+ * Class for migrate project properties.
+ */
+export interface MigrateProjectPropertiesResponse {
+    /**
+     * Gets the last time the project summary was refreshed.
+     */
+    lastSummaryRefreshedTime: string;
+    /**
+     * Provisioning state of the migrate project.
+     */
+    provisioningState?: string;
+    /**
+     * Gets the refresh summary state.
+     */
+    refreshSummaryState: string;
+    /**
+     * Gets or sets the list of tools registered with the migrate project.
+     */
+    registeredTools?: string[];
+    /**
+     * Gets the summary of the migrate project.
+     */
+    summary: {[key: string]: DatabaseProjectSummaryResponse | ServersProjectSummaryResponse};
 }
 
 /**
@@ -2543,7 +2543,7 @@ export interface MigrationEntityGroupPropertiesResponse {
      */
     applicationDisplayName: string;
     /**
-     * Application id 
+     * Application id
      */
     applicationId: string;
     /**
@@ -2585,7 +2585,7 @@ export interface MigrationEntityPropertiesResponse {
      */
     associatedAssessmentId?: string;
     /**
-     * inventory resource id 
+     * inventory resource id
      */
     associatedInventoryResourceId: string;
     /**
@@ -3201,6 +3201,62 @@ export interface PortMappingResponse {
 }
 
 /**
+ * REST model used to encapsulate the user visible state of a PrivateEndpoint.
+ */
+export interface PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse {
+    /**
+     * Gets the tag for optimistic concurrency control.
+     */
+    eTag: string;
+    /**
+     * Relative URL to get this Sites.
+     */
+    id: string;
+    /**
+     * Gets the name of the resource.
+     */
+    name: string;
+    /**
+     * Gets the properties of the object.
+     */
+    properties: PrivateEndpointConnectionPropertiesResponse;
+    /**
+     * Metadata pertaining to creation and last modification of the resource.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * Gets the resource type.
+     */
+    type: string;
+}
+
+/**
+ * A private endpoint connection for a project.
+ */
+export interface PrivateEndpointConnectionProjectResponse {
+    /**
+     * For optimistic concurrency control.
+     */
+    eTag?: string;
+    /**
+     * Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
+     */
+    id: string;
+    /**
+     * Name of the private endpoint endpoint connection.
+     */
+    name: string;
+    /**
+     * Properties of the private endpoint endpoint connection.
+     */
+    properties: PrivateEndpointConnectionPropertiesResponse;
+    /**
+     * Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
+     */
+    type: string;
+}
+
+/**
  * Private endpoint connection properties.
  */
 export interface PrivateEndpointConnectionPropertiesResponse {
@@ -3252,62 +3308,6 @@ export interface PrivateEndpointConnectionResponse {
     systemData: SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-     */
-    type: string;
-}
-
-/**
- * REST model used to encapsulate the user visible state of a PrivateEndpoint.
- */
-export interface PrivateEndpointConnectionResponseV1 {
-    /**
-     * Gets the tag for optimistic concurrency control.
-     */
-    eTag: string;
-    /**
-     * Relative URL to get this Sites.
-     */
-    id: string;
-    /**
-     * Gets the name of the resource.
-     */
-    name: string;
-    /**
-     * Gets the properties of the object.
-     */
-    properties: PrivateEndpointConnectionPropertiesResponse;
-    /**
-     * Metadata pertaining to creation and last modification of the resource.
-     */
-    systemData: SystemDataResponse;
-    /**
-     * Gets the resource type.
-     */
-    type: string;
-}
-
-/**
- * A private endpoint connection for a project.
- */
-export interface PrivateEndpointConnectionResponseV2 {
-    /**
-     * For optimistic concurrency control.
-     */
-    eTag?: string;
-    /**
-     * Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
-     */
-    id: string;
-    /**
-     * Name of the private endpoint endpoint connection.
-     */
-    name: string;
-    /**
-     * Properties of the private endpoint endpoint connection.
-     */
-    properties: PrivateEndpointConnectionPropertiesResponse;
-    /**
-     * Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
      */
     type: string;
 }
@@ -3383,7 +3383,7 @@ export interface ProjectPropertiesResponse {
     /**
      * The list of private endpoint connections to the project.
      */
-    privateEndpointConnections: PrivateEndpointConnectionResponseV2[];
+    privateEndpointConnections: PrivateEndpointConnectionProjectResponse[];
     /**
      * Assessment project status.
      */
@@ -4214,7 +4214,7 @@ export interface TaskPropertiesResponse {
      */
     description?: string;
     /**
-     * Task Dislay Name 
+     * Task Dislay Name
      */
     displayName: string;
     /**
@@ -4375,35 +4375,35 @@ export interface VirtualizationSoftwareSettingsResponse {
     vMwareCloudFoundationLicenseCost: number;
 }
 
+/**
+ * Details on the total up-time for the VM.
+ */
+export interface VmUptimeAssessmentsOperationResponse {
+    /**
+     * Number of days in a month for VM uptime.
+     */
+    daysPerMonth?: number;
+    /**
+     * Number of hours per day for VM uptime.
+     */
+    hoursPerDay?: number;
+}
+
+/**
+ * Details on the total up-time for the VM.
+ */
+export interface VmUptimeMachineAssessmentsV2OperationResponse {
+    /**
+     * Number of days in a month for VM uptime.
+     */
+    daysPerMonth?: number;
+    /**
+     * Number of hours per day for VM uptime.
+     */
+    hoursPerDay?: number;
+}
+
 export interface VmUptimeResponse {
-    /**
-     * Number of days in a month for VM uptime.
-     */
-    daysPerMonth?: number;
-    /**
-     * Number of hours per day for VM uptime.
-     */
-    hoursPerDay?: number;
-}
-
-/**
- * Details on the total up-time for the VM.
- */
-export interface VmUptimeResponseV1 {
-    /**
-     * Number of days in a month for VM uptime.
-     */
-    daysPerMonth?: number;
-    /**
-     * Number of hours per day for VM uptime.
-     */
-    hoursPerDay?: number;
-}
-
-/**
- * Details on the total up-time for the VM.
- */
-export interface VmUptimeResponseV2 {
     /**
      * Number of days in a month for VM uptime.
      */

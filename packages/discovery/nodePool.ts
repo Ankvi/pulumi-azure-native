@@ -5,6 +5,8 @@ import * as types from "./types";
  * NodePool tracked resource
  *
  * Uses Azure REST API version 2026-02-01-preview.
+ *
+ * Other available API versions: 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native discovery [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NodePool extends pulumi.CustomResource {
     /**
@@ -81,7 +83,7 @@ export class NodePool extends pulumi.CustomResource {
             }
             resourceInputs["location"] = args?.location;
             resourceInputs["nodePoolName"] = args?.nodePoolName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.nodePoolPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.nodePoolPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["supercomputerName"] = args?.supercomputerName;
             resourceInputs["tags"] = args?.tags;
@@ -99,7 +101,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:discovery/v20260201preview:NodePool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:discovery/v20260201preview:NodePool" }, { type: "azure-native:discovery/v20260601:NodePool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NodePool.__pulumiType, name, resourceInputs, opts);
     }
@@ -112,15 +114,15 @@ export interface NodePoolArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the NodePool
      */
-    nodePoolName?: pulumi.Input<string>;
+    nodePoolName?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.NodePoolPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.NodePoolPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -132,5 +134,5 @@ export interface NodePoolArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

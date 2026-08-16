@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
  *
- * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ApiManagementService extends pulumi.CustomResource {
     /**
@@ -234,7 +234,7 @@ export class ApiManagementService extends pulumi.CustomResource {
             resourceInputs["additionalLocations"] = args?.additionalLocations;
             resourceInputs["apiVersionConstraint"] = args?.apiVersionConstraint;
             resourceInputs["certificates"] = args?.certificates;
-            resourceInputs["configurationApi"] = args ? (args.configurationApi ? pulumi.output(args.configurationApi).apply(types.inputs.configurationApiArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["configurationApi"] = args ? pulumi.output(args.configurationApi).apply(v => v === undefined ? undefined : types.inputs.configurationApiArgsProvideDefaults(v)) : undefined;
             resourceInputs["customProperties"] = args?.customProperties;
             resourceInputs["developerPortalStatus"] = (args?.developerPortalStatus) ?? "Enabled";
             resourceInputs["disableGateway"] = (args?.disableGateway) ?? false;
@@ -322,7 +322,7 @@ export class ApiManagementService extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:ApiManagementService" }, { type: "azure-native:apimanagement/v20161010:ApiManagementService" }, { type: "azure-native:apimanagement/v20170301:ApiManagementService" }, { type: "azure-native:apimanagement/v20180101:ApiManagementService" }, { type: "azure-native:apimanagement/v20180601preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20190101:ApiManagementService" }, { type: "azure-native:apimanagement/v20191201:ApiManagementService" }, { type: "azure-native:apimanagement/v20191201preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20200601preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20201201:ApiManagementService" }, { type: "azure-native:apimanagement/v20210101preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20210401preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20210801:ApiManagementService" }, { type: "azure-native:apimanagement/v20211201preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20220401preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20220801:ApiManagementService" }, { type: "azure-native:apimanagement/v20220901preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20230301preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20230501preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20230901preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20240501:ApiManagementService" }, { type: "azure-native:apimanagement/v20240601preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20241001preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20250301preview:ApiManagementService" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:ApiManagementService" }, { type: "azure-native:apimanagement/v20161010:ApiManagementService" }, { type: "azure-native:apimanagement/v20170301:ApiManagementService" }, { type: "azure-native:apimanagement/v20180101:ApiManagementService" }, { type: "azure-native:apimanagement/v20180601preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20190101:ApiManagementService" }, { type: "azure-native:apimanagement/v20191201:ApiManagementService" }, { type: "azure-native:apimanagement/v20191201preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20200601preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20201201:ApiManagementService" }, { type: "azure-native:apimanagement/v20210101preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20210401preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20210801:ApiManagementService" }, { type: "azure-native:apimanagement/v20211201preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20220401preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20220801:ApiManagementService" }, { type: "azure-native:apimanagement/v20220901preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20230301preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20230501preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20230901preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20240501:ApiManagementService" }, { type: "azure-native:apimanagement/v20240601preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20241001preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20250301preview:ApiManagementService" }, { type: "azure-native:apimanagement/v20250901preview:ApiManagementService" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ApiManagementService.__pulumiType, name, resourceInputs, opts);
     }
@@ -335,71 +335,71 @@ export interface ApiManagementServiceArgs {
     /**
      * Additional datacenter locations of the API Management service.
      */
-    additionalLocations?: pulumi.Input<pulumi.Input<types.inputs.AdditionalLocationArgs>[]>;
+    additionalLocations?: pulumi.Input<pulumi.Input<types.inputs.AdditionalLocationArgs>[] | undefined>;
     /**
      * Control Plane Apis version constraint for the API Management service.
      */
-    apiVersionConstraint?: pulumi.Input<types.inputs.ApiVersionConstraintArgs>;
+    apiVersionConstraint?: pulumi.Input<types.inputs.ApiVersionConstraintArgs | undefined>;
     /**
      * List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
      */
-    certificates?: pulumi.Input<pulumi.Input<types.inputs.CertificateConfigurationArgs>[]>;
+    certificates?: pulumi.Input<pulumi.Input<types.inputs.CertificateConfigurationArgs>[] | undefined>;
     /**
      * Configuration API configuration of the API Management service.
      */
-    configurationApi?: pulumi.Input<types.inputs.ConfigurationApiArgs>;
+    configurationApi?: pulumi.Input<types.inputs.ConfigurationApiArgs | undefined>;
     /**
      * Custom properties of the API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.</br>Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1, 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable any of the following ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.</br> Note: The following ciphers can't be disabled since they are required by internal platform components: TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
      */
-    customProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Status of developer portal in this API Management service.
      */
-    developerPortalStatus?: pulumi.Input<string | types.enums.DeveloperPortalStatus>;
+    developerPortalStatus?: pulumi.Input<string | types.enums.DeveloperPortalStatus | undefined>;
     /**
      * Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in master region.
      */
-    disableGateway?: pulumi.Input<boolean>;
+    disableGateway?: pulumi.Input<boolean | undefined>;
     /**
      * Property only meant to be used for Consumption SKU Service. This enforces a client certificate to be presented on each request to the gateway. This also enables the ability to authenticate the certificate in the policy on the gateway.
      */
-    enableClientCertificate?: pulumi.Input<boolean>;
+    enableClientCertificate?: pulumi.Input<boolean | undefined>;
     /**
      * Custom hostname configuration of the API Management service.
      */
-    hostnameConfigurations?: pulumi.Input<pulumi.Input<types.inputs.HostnameConfigurationArgs>[]>;
+    hostnameConfigurations?: pulumi.Input<pulumi.Input<types.inputs.HostnameConfigurationArgs>[] | undefined>;
     /**
      * Managed service identity of the Api Management service.
      */
-    identity?: pulumi.Input<types.inputs.ApiManagementServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ApiManagementServiceIdentityArgs | undefined>;
     /**
      * Status of legacy portal in the API Management service.
      */
-    legacyPortalStatus?: pulumi.Input<string | types.enums.LegacyPortalStatus>;
+    legacyPortalStatus?: pulumi.Input<string | types.enums.LegacyPortalStatus | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Property can be used to enable NAT Gateway for this API Management service.
      */
-    natGatewayState?: pulumi.Input<string | types.enums.NatGatewayState>;
+    natGatewayState?: pulumi.Input<string | types.enums.NatGatewayState | undefined>;
     /**
      * Email address from which the notification will be sent.
      */
-    notificationSenderEmail?: pulumi.Input<string>;
+    notificationSenderEmail?: pulumi.Input<string | undefined>;
     /**
      * List of Private Endpoint Connections of this service.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.RemotePrivateEndpointConnectionWrapperArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.RemotePrivateEndpointConnectionWrapperArgs>[] | undefined>;
     /**
      * Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the region. Supported only for Developer and Premium SKU being deployed in Virtual Network.
      */
-    publicIpAddressId?: pulumi.Input<string>;
+    publicIpAddressId?: pulumi.Input<string | undefined>;
     /**
      * Whether or not public endpoint access is allowed for this API Management service.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * Publisher email.
      */
@@ -415,11 +415,11 @@ export interface ApiManagementServiceArgs {
     /**
      * Undelete Api Management Service if it was previously soft-deleted. If this flag is specified and set to True all other properties will be ignored.
      */
-    restore?: pulumi.Input<boolean>;
+    restore?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the API Management service.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * SKU properties of the API Management service.
      */
@@ -427,17 +427,17 @@ export interface ApiManagementServiceArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Virtual network configuration of the API Management service.
      */
-    virtualNetworkConfiguration?: pulumi.Input<types.inputs.VirtualNetworkConfigurationArgs>;
+    virtualNetworkConfiguration?: pulumi.Input<types.inputs.VirtualNetworkConfigurationArgs | undefined>;
     /**
      * The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      */
-    virtualNetworkType?: pulumi.Input<string | types.enums.VirtualNetworkType>;
+    virtualNetworkType?: pulumi.Input<string | types.enums.VirtualNetworkType | undefined>;
     /**
      * A list of availability zones denoting where the resource needs to come from.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

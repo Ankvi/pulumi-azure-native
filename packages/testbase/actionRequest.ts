@@ -110,8 +110,8 @@ export class ActionRequest extends pulumi.CustomResource {
  * The set of arguments for constructing a ActionRequest resource.
  */
 export interface ActionRequestArgs {
-    actionRequestName?: pulumi.Input<string>;
-    preReleaseAccessRequestSpec?: pulumi.Input<types.inputs.PreReleaseAccessRequestSpecArgs>;
+    actionRequestName?: pulumi.Input<string | undefined>;
+    preReleaseAccessRequestSpec?: pulumi.Input<types.inputs.PreReleaseAccessRequestSpecArgs | undefined>;
     requestType: pulumi.Input<string | types.enums.RequestTypes>;
     /**
      * The name of the resource group. The name is case insensitive.

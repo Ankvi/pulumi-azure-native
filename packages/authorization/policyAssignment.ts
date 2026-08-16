@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2022-06-01.
  *
- * Other available API versions: 2020-09-01, 2021-06-01, 2022-06-01, 2023-04-01, 2024-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2020-09-01, 2021-06-01, 2022-06-01, 2023-04-01, 2024-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PolicyAssignment extends pulumi.CustomResource {
     /**
@@ -186,7 +186,7 @@ export class PolicyAssignment extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20151001preview:PolicyAssignment" }, { type: "azure-native:authorization/v20160401:PolicyAssignment" }, { type: "azure-native:authorization/v20161201:PolicyAssignment" }, { type: "azure-native:authorization/v20170601preview:PolicyAssignment" }, { type: "azure-native:authorization/v20180301:PolicyAssignment" }, { type: "azure-native:authorization/v20180501:PolicyAssignment" }, { type: "azure-native:authorization/v20190101:PolicyAssignment" }, { type: "azure-native:authorization/v20190601:PolicyAssignment" }, { type: "azure-native:authorization/v20190901:PolicyAssignment" }, { type: "azure-native:authorization/v20200301:PolicyAssignment" }, { type: "azure-native:authorization/v20200901:PolicyAssignment" }, { type: "azure-native:authorization/v20210601:PolicyAssignment" }, { type: "azure-native:authorization/v20220601:PolicyAssignment" }, { type: "azure-native:authorization/v20230401:PolicyAssignment" }, { type: "azure-native:authorization/v20240401:PolicyAssignment" }, { type: "azure-native:authorization/v20240501:PolicyAssignment" }, { type: "azure-native:authorization/v20250101:PolicyAssignment" }, { type: "azure-native:authorization/v20250301:PolicyAssignment" }, { type: "azure-native:authorization/v20251101:PolicyAssignment" }, { type: "azure-native:authorization/v20251201preview:PolicyAssignment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20151001preview:PolicyAssignment" }, { type: "azure-native:authorization/v20160401:PolicyAssignment" }, { type: "azure-native:authorization/v20161201:PolicyAssignment" }, { type: "azure-native:authorization/v20170601preview:PolicyAssignment" }, { type: "azure-native:authorization/v20180301:PolicyAssignment" }, { type: "azure-native:authorization/v20180501:PolicyAssignment" }, { type: "azure-native:authorization/v20190101:PolicyAssignment" }, { type: "azure-native:authorization/v20190601:PolicyAssignment" }, { type: "azure-native:authorization/v20190901:PolicyAssignment" }, { type: "azure-native:authorization/v20200301:PolicyAssignment" }, { type: "azure-native:authorization/v20200901:PolicyAssignment" }, { type: "azure-native:authorization/v20210601:PolicyAssignment" }, { type: "azure-native:authorization/v20220601:PolicyAssignment" }, { type: "azure-native:authorization/v20230401:PolicyAssignment" }, { type: "azure-native:authorization/v20240401:PolicyAssignment" }, { type: "azure-native:authorization/v20240501:PolicyAssignment" }, { type: "azure-native:authorization/v20250101:PolicyAssignment" }, { type: "azure-native:authorization/v20250301:PolicyAssignment" }, { type: "azure-native:authorization/v20251101:PolicyAssignment" }, { type: "azure-native:authorization/v20251201preview:PolicyAssignment" }, { type: "azure-native:authorization/v20260101preview:PolicyAssignment" }, { type: "azure-native:authorization/v20260601:PolicyAssignment" }, { type: "azure-native:authorization/v20260701:PolicyAssignment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicyAssignment.__pulumiType, name, resourceInputs, opts);
     }
@@ -199,63 +199,63 @@ export interface PolicyAssignmentArgs {
     /**
      * The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
      */
-    assignmentType?: pulumi.Input<string | types.enums.AssignmentType>;
+    assignmentType?: pulumi.Input<string | types.enums.AssignmentType | undefined>;
     /**
      * The version of the policy definition to use.
      */
-    definitionVersion?: pulumi.Input<string>;
+    definitionVersion?: pulumi.Input<string | undefined>;
     /**
      * This message will be part of response in case of policy violation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the policy assignment.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
      */
-    enforcementMode?: pulumi.Input<string | types.enums.EnforcementMode>;
+    enforcementMode?: pulumi.Input<string | types.enums.EnforcementMode | undefined>;
     /**
      * The managed identity associated with the policy assignment.
      */
-    identity?: pulumi.Input<types.inputs.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
      * The location of the policy assignment. Only required when utilizing managed identity.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
      * The messages that describe why a resource is non-compliant with the policy.
      */
-    nonComplianceMessages?: pulumi.Input<pulumi.Input<types.inputs.NonComplianceMessageArgs>[]>;
+    nonComplianceMessages?: pulumi.Input<pulumi.Input<types.inputs.NonComplianceMessageArgs>[] | undefined>;
     /**
      * The policy's excluded scopes.
      */
-    notScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    notScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The policy property value override.
      */
-    overrides?: pulumi.Input<pulumi.Input<types.inputs.OverrideArgs>[]>;
+    overrides?: pulumi.Input<pulumi.Input<types.inputs.OverrideArgs>[] | undefined>;
     /**
      * The parameter values for the assigned policy rule. The keys are the parameter names.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterValuesValueArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterValuesValueArgs>} | undefined>;
     /**
      * The name of the policy assignment.
      */
-    policyAssignmentName?: pulumi.Input<string>;
+    policyAssignmentName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the policy definition or policy set definition being assigned.
      */
-    policyDefinitionId?: pulumi.Input<string>;
+    policyDefinitionId?: pulumi.Input<string | undefined>;
     /**
      * The resource selector list to filter policies by resource properties.
      */
-    resourceSelectors?: pulumi.Input<pulumi.Input<types.inputs.ResourceSelectorArgs>[]>;
+    resourceSelectors?: pulumi.Input<pulumi.Input<types.inputs.ResourceSelectorArgs>[] | undefined>;
     /**
      * The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
      */

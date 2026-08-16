@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
  *
- * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class IdentityProvider extends pulumi.CustomResource {
     /**
@@ -143,7 +143,7 @@ export class IdentityProvider extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:IdentityProvider" }, { type: "azure-native:apimanagement/v20161010:IdentityProvider" }, { type: "azure-native:apimanagement/v20170301:IdentityProvider" }, { type: "azure-native:apimanagement/v20180101:IdentityProvider" }, { type: "azure-native:apimanagement/v20180601preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20190101:IdentityProvider" }, { type: "azure-native:apimanagement/v20191201:IdentityProvider" }, { type: "azure-native:apimanagement/v20191201preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20200601preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20201201:IdentityProvider" }, { type: "azure-native:apimanagement/v20210101preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20210401preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20210801:IdentityProvider" }, { type: "azure-native:apimanagement/v20211201preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20220401preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20220801:IdentityProvider" }, { type: "azure-native:apimanagement/v20220901preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20230301preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20230501preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20230901preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20240501:IdentityProvider" }, { type: "azure-native:apimanagement/v20240601preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20241001preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20250301preview:IdentityProvider" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20160707:IdentityProvider" }, { type: "azure-native:apimanagement/v20161010:IdentityProvider" }, { type: "azure-native:apimanagement/v20170301:IdentityProvider" }, { type: "azure-native:apimanagement/v20180101:IdentityProvider" }, { type: "azure-native:apimanagement/v20180601preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20190101:IdentityProvider" }, { type: "azure-native:apimanagement/v20191201:IdentityProvider" }, { type: "azure-native:apimanagement/v20191201preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20200601preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20201201:IdentityProvider" }, { type: "azure-native:apimanagement/v20210101preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20210401preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20210801:IdentityProvider" }, { type: "azure-native:apimanagement/v20211201preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20220401preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20220801:IdentityProvider" }, { type: "azure-native:apimanagement/v20220901preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20230301preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20230501preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20230901preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20240501:IdentityProvider" }, { type: "azure-native:apimanagement/v20240601preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20241001preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20250301preview:IdentityProvider" }, { type: "azure-native:apimanagement/v20250901preview:IdentityProvider" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(IdentityProvider.__pulumiType, name, resourceInputs, opts);
     }
@@ -156,11 +156,11 @@ export interface IdentityProviderArgs {
     /**
      * List of Allowed Tenants when configuring Azure Active Directory login.
      */
-    allowedTenants?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedTenants?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * OpenID Connect discovery endpoint hostname for AAD or AAD B2C.
      */
-    authority?: pulumi.Input<string>;
+    authority?: pulumi.Input<string | undefined>;
     /**
      * Client Id of the Application in the external Identity Provider. It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.
      */
@@ -168,7 +168,7 @@ export interface IdentityProviderArgs {
     /**
      * The client library to be used in the developer portal. Only applies to AAD and AAD B2C Identity Provider.
      */
-    clientLibrary?: pulumi.Input<string>;
+    clientLibrary?: pulumi.Input<string | undefined>;
     /**
      * Client secret of the Application in external Identity Provider, used to authenticate login request. For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
      */
@@ -176,15 +176,15 @@ export interface IdentityProviderArgs {
     /**
      * Identity Provider Type identifier.
      */
-    identityProviderName?: pulumi.Input<string>;
+    identityProviderName?: pulumi.Input<string | undefined>;
     /**
      * Password Reset Policy Name. Only applies to AAD B2C Identity Provider.
      */
-    passwordResetPolicyName?: pulumi.Input<string>;
+    passwordResetPolicyName?: pulumi.Input<string | undefined>;
     /**
      * Profile Editing Policy Name. Only applies to AAD B2C Identity Provider.
      */
-    profileEditingPolicyName?: pulumi.Input<string>;
+    profileEditingPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -196,17 +196,17 @@ export interface IdentityProviderArgs {
     /**
      * Signin Policy Name. Only applies to AAD B2C Identity Provider.
      */
-    signinPolicyName?: pulumi.Input<string>;
+    signinPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The TenantId to use instead of Common when logging into Active Directory
      */
-    signinTenant?: pulumi.Input<string>;
+    signinTenant?: pulumi.Input<string | undefined>;
     /**
      * Signup Policy Name. Only applies to AAD B2C Identity Provider.
      */
-    signupPolicyName?: pulumi.Input<string>;
+    signupPolicyName?: pulumi.Input<string | undefined>;
     /**
      * Identity Provider Type identifier.
      */
-    type?: pulumi.Input<string | types.enums.IdentityProviderType>;
+    type?: pulumi.Input<string | types.enums.IdentityProviderType | undefined>;
 }

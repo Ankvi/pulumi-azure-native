@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
  *
- * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -103,7 +103,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20200401preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20200601:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20201015preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20210601preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20211015preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20211201:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20220615:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20230601preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20231215preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20240601preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20241215preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20250215:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20250401preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20250715preview:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20200401preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20200601:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20201015preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20210601preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20211015preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20211201:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20220615:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20230601preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20231215preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20240601preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20241215preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20250215:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20250401preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20250715preview:PrivateEndpointConnection" }, { type: "azure-native:eventgrid/v20251115preview:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }
@@ -116,7 +116,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * GroupIds from the private link service resource.
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the parent resource (namely, either, the topic name, domain name, or partner namespace name or namespace name).
      */
@@ -128,19 +128,19 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The Private Endpoint resource for this Connection.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs | undefined>;
     /**
      * The name of the private endpoint connection connection.
      */
-    privateEndpointConnectionName?: pulumi.Input<string>;
+    privateEndpointConnectionName?: pulumi.Input<string | undefined>;
     /**
      * Details about the state of the connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.ConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.ConnectionStateArgs | undefined>;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */
-    provisioningState?: pulumi.Input<string | types.enums.ResourceProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ResourceProvisioningState | undefined>;
     /**
      * The name of the resource group within the user's subscription.
      */

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-31-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-03-preview.
  *
- * Other available API versions: 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview, 2025-06-01, 2025-08-21-preview, 2025-09-16-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview, 2025-06-01, 2025-08-21-preview, 2025-09-16-preview, 2026-02-12-preview, 2026-06-04-preview, 2026-06-16-preview, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class MachineRunCommand extends pulumi.CustomResource {
     /**
@@ -44,7 +44,7 @@ export class MachineRunCommand extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly azureApiVersion: pulumi.Output<string>;
     /**
-     * User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged 
+     * User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
      */
     declare public readonly errorBlobManagedIdentity: pulumi.Output<types.outputs.RunCommandManagedIdentityResponse | undefined>;
     /**
@@ -64,11 +64,11 @@ export class MachineRunCommand extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged 
+     * User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
      */
     declare public readonly outputBlobManagedIdentity: pulumi.Output<types.outputs.RunCommandManagedIdentityResponse | undefined>;
     /**
-     * Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter. 
+     * Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.
      */
     declare public readonly outputBlobUri: pulumi.Output<string | undefined>;
     /**
@@ -173,7 +173,7 @@ export class MachineRunCommand extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20231003preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20240331preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20240520preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20240731preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20240910preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20241110preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20250113:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20250219preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20250601:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20250821preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20250916preview:MachineRunCommand" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20231003preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20240331preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20240520preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20240731preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20240910preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20241110preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20250113:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20250219preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20250601:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20250821preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20250916preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20260212preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20260604preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20260616preview:MachineRunCommand" }, { type: "azure-native:hybridcompute/v20260715:MachineRunCommand" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MachineRunCommand.__pulumiType, name, resourceInputs, opts);
     }
@@ -186,39 +186,39 @@ export interface MachineRunCommandArgs {
     /**
      * Optional. If set to true, provisioning will complete as soon as script starts and will not wait for script to complete.
      */
-    asyncExecution?: pulumi.Input<boolean>;
+    asyncExecution?: pulumi.Input<boolean | undefined>;
     /**
-     * User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged 
+     * User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
      */
-    errorBlobManagedIdentity?: pulumi.Input<types.inputs.RunCommandManagedIdentityArgs>;
+    errorBlobManagedIdentity?: pulumi.Input<types.inputs.RunCommandManagedIdentityArgs | undefined>;
     /**
      * Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
      */
-    errorBlobUri?: pulumi.Input<string>;
+    errorBlobUri?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the hybrid machine.
      */
     machineName: pulumi.Input<string>;
     /**
-     * User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged 
+     * User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
      */
-    outputBlobManagedIdentity?: pulumi.Input<types.inputs.RunCommandManagedIdentityArgs>;
+    outputBlobManagedIdentity?: pulumi.Input<types.inputs.RunCommandManagedIdentityArgs | undefined>;
     /**
-     * Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter. 
+     * Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter.
      */
-    outputBlobUri?: pulumi.Input<string>;
-    /**
-     * The parameters used by the script.
-     */
-    parameters?: pulumi.Input<pulumi.Input<types.inputs.RunCommandInputParameterArgs>[]>;
+    outputBlobUri?: pulumi.Input<string | undefined>;
     /**
      * The parameters used by the script.
      */
-    protectedParameters?: pulumi.Input<pulumi.Input<types.inputs.RunCommandInputParameterArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<types.inputs.RunCommandInputParameterArgs>[] | undefined>;
+    /**
+     * The parameters used by the script.
+     */
+    protectedParameters?: pulumi.Input<pulumi.Input<types.inputs.RunCommandInputParameterArgs>[] | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -226,25 +226,25 @@ export interface MachineRunCommandArgs {
     /**
      * Specifies the user account password on the machine when executing the run command.
      */
-    runAsPassword?: pulumi.Input<string>;
+    runAsPassword?: pulumi.Input<string | undefined>;
     /**
      * Specifies the user account on the machine when executing the run command.
      */
-    runAsUser?: pulumi.Input<string>;
+    runAsUser?: pulumi.Input<string | undefined>;
     /**
      * The name of the run command.
      */
-    runCommandName?: pulumi.Input<string>;
+    runCommandName?: pulumi.Input<string | undefined>;
     /**
      * The source of the run command script.
      */
-    source?: pulumi.Input<types.inputs.MachineRunCommandScriptSourceArgs>;
+    source?: pulumi.Input<types.inputs.MachineRunCommandScriptSourceArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The timeout in seconds to execute the run command.
      */
-    timeoutInSeconds?: pulumi.Input<number>;
+    timeoutInSeconds?: pulumi.Input<number | undefined>;
 }

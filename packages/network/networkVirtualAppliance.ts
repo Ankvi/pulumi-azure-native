@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-12-01, 2020-03-01, 2020-04-01, 2020-05-01, 2020-06-01, 2020-07-01, 2020-08-01, 2020-11-01, 2021-02-01, 2021-03-01, 2021-05-01, 2021-08-01, 2022-01-01, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkVirtualAppliance extends pulumi.CustomResource {
     /**
@@ -212,7 +212,7 @@ export class NetworkVirtualAppliance extends pulumi.CustomResource {
             resourceInputs["virtualHub"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20191201:NetworkVirtualAppliance" }, { type: "azure-native:network/v20200301:NetworkVirtualAppliance" }, { type: "azure-native:network/v20200401:NetworkVirtualAppliance" }, { type: "azure-native:network/v20200501:NetworkVirtualAppliance" }, { type: "azure-native:network/v20200601:NetworkVirtualAppliance" }, { type: "azure-native:network/v20200701:NetworkVirtualAppliance" }, { type: "azure-native:network/v20200801:NetworkVirtualAppliance" }, { type: "azure-native:network/v20201101:NetworkVirtualAppliance" }, { type: "azure-native:network/v20210201:NetworkVirtualAppliance" }, { type: "azure-native:network/v20210301:NetworkVirtualAppliance" }, { type: "azure-native:network/v20210501:NetworkVirtualAppliance" }, { type: "azure-native:network/v20210801:NetworkVirtualAppliance" }, { type: "azure-native:network/v20220101:NetworkVirtualAppliance" }, { type: "azure-native:network/v20220501:NetworkVirtualAppliance" }, { type: "azure-native:network/v20220701:NetworkVirtualAppliance" }, { type: "azure-native:network/v20220901:NetworkVirtualAppliance" }, { type: "azure-native:network/v20221101:NetworkVirtualAppliance" }, { type: "azure-native:network/v20230201:NetworkVirtualAppliance" }, { type: "azure-native:network/v20230401:NetworkVirtualAppliance" }, { type: "azure-native:network/v20230501:NetworkVirtualAppliance" }, { type: "azure-native:network/v20230601:NetworkVirtualAppliance" }, { type: "azure-native:network/v20230901:NetworkVirtualAppliance" }, { type: "azure-native:network/v20231101:NetworkVirtualAppliance" }, { type: "azure-native:network/v20240101:NetworkVirtualAppliance" }, { type: "azure-native:network/v20240301:NetworkVirtualAppliance" }, { type: "azure-native:network/v20240501:NetworkVirtualAppliance" }, { type: "azure-native:network/v20240701:NetworkVirtualAppliance" }, { type: "azure-native:network/v20241001:NetworkVirtualAppliance" }, { type: "azure-native:network/v20250101:NetworkVirtualAppliance" }, { type: "azure-native:network/v20250301:NetworkVirtualAppliance" }, { type: "azure-native:network/v20250501:NetworkVirtualAppliance" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20191201:NetworkVirtualAppliance" }, { type: "azure-native:network/v20200301:NetworkVirtualAppliance" }, { type: "azure-native:network/v20200401:NetworkVirtualAppliance" }, { type: "azure-native:network/v20200501:NetworkVirtualAppliance" }, { type: "azure-native:network/v20200601:NetworkVirtualAppliance" }, { type: "azure-native:network/v20200701:NetworkVirtualAppliance" }, { type: "azure-native:network/v20200801:NetworkVirtualAppliance" }, { type: "azure-native:network/v20201101:NetworkVirtualAppliance" }, { type: "azure-native:network/v20210201:NetworkVirtualAppliance" }, { type: "azure-native:network/v20210301:NetworkVirtualAppliance" }, { type: "azure-native:network/v20210501:NetworkVirtualAppliance" }, { type: "azure-native:network/v20210801:NetworkVirtualAppliance" }, { type: "azure-native:network/v20220101:NetworkVirtualAppliance" }, { type: "azure-native:network/v20220501:NetworkVirtualAppliance" }, { type: "azure-native:network/v20220701:NetworkVirtualAppliance" }, { type: "azure-native:network/v20220901:NetworkVirtualAppliance" }, { type: "azure-native:network/v20221101:NetworkVirtualAppliance" }, { type: "azure-native:network/v20230201:NetworkVirtualAppliance" }, { type: "azure-native:network/v20230401:NetworkVirtualAppliance" }, { type: "azure-native:network/v20230501:NetworkVirtualAppliance" }, { type: "azure-native:network/v20230601:NetworkVirtualAppliance" }, { type: "azure-native:network/v20230901:NetworkVirtualAppliance" }, { type: "azure-native:network/v20231101:NetworkVirtualAppliance" }, { type: "azure-native:network/v20240101:NetworkVirtualAppliance" }, { type: "azure-native:network/v20240301:NetworkVirtualAppliance" }, { type: "azure-native:network/v20240501:NetworkVirtualAppliance" }, { type: "azure-native:network/v20240701:NetworkVirtualAppliance" }, { type: "azure-native:network/v20241001:NetworkVirtualAppliance" }, { type: "azure-native:network/v20250101:NetworkVirtualAppliance" }, { type: "azure-native:network/v20250301:NetworkVirtualAppliance" }, { type: "azure-native:network/v20250501:NetworkVirtualAppliance" }, { type: "azure-native:network/v20250701:NetworkVirtualAppliance" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkVirtualAppliance.__pulumiType, name, resourceInputs, opts);
     }
@@ -225,51 +225,51 @@ export interface NetworkVirtualApplianceArgs {
     /**
      * Details required for Additional Network Interface.
      */
-    additionalNics?: pulumi.Input<pulumi.Input<types.inputs.VirtualApplianceAdditionalNicPropertiesArgs>[]>;
+    additionalNics?: pulumi.Input<pulumi.Input<types.inputs.VirtualApplianceAdditionalNicPropertiesArgs>[] | undefined>;
     /**
      * BootStrapConfigurationBlobs storage URLs.
      */
-    bootStrapConfigurationBlobs?: pulumi.Input<pulumi.Input<string>[]>;
+    bootStrapConfigurationBlobs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * CloudInitConfiguration string in plain text.
      */
-    cloudInitConfiguration?: pulumi.Input<string>;
+    cloudInitConfiguration?: pulumi.Input<string | undefined>;
     /**
      * CloudInitConfigurationBlob storage URLs.
      */
-    cloudInitConfigurationBlobs?: pulumi.Input<pulumi.Input<string>[]>;
+    cloudInitConfigurationBlobs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The delegation for the Virtual Appliance
      */
-    delegation?: pulumi.Input<types.inputs.DelegationPropertiesArgs>;
+    delegation?: pulumi.Input<types.inputs.DelegationPropertiesArgs | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The service principal that has read access to cloud-init and config blob.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs | undefined>;
     /**
      * List of Resource Uri of Public IPs for Internet Ingress Scenario.
      */
-    internetIngressPublicIps?: pulumi.Input<pulumi.Input<types.inputs.InternetIngressPublicIpsPropertiesArgs>[]>;
+    internetIngressPublicIps?: pulumi.Input<pulumi.Input<types.inputs.InternetIngressPublicIpsPropertiesArgs>[] | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Network Profile containing configurations for Public and Private NIC.
      */
-    networkProfile?: pulumi.Input<types.inputs.NetworkVirtualAppliancePropertiesFormatNetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkVirtualAppliancePropertiesFormatNetworkProfileArgs | undefined>;
     /**
      * The name of Network Virtual Appliance.
      */
-    networkVirtualApplianceName?: pulumi.Input<string>;
+    networkVirtualApplianceName?: pulumi.Input<string | undefined>;
     /**
      * Network Virtual Appliance SKU.
      */
-    nvaSku?: pulumi.Input<types.inputs.VirtualApplianceSkuPropertiesArgs>;
+    nvaSku?: pulumi.Input<types.inputs.VirtualApplianceSkuPropertiesArgs | undefined>;
     /**
      * The name of the resource group.
      */
@@ -277,17 +277,17 @@ export interface NetworkVirtualApplianceArgs {
     /**
      * Public key for SSH login.
      */
-    sshPublicKey?: pulumi.Input<string>;
+    sshPublicKey?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
      */
-    virtualApplianceAsn?: pulumi.Input<number>;
+    virtualApplianceAsn?: pulumi.Input<number | undefined>;
     /**
      * The Virtual Hub where Network Virtual Appliance is being deployed.
      */
-    virtualHub?: pulumi.Input<types.inputs.SubResourceArgs>;
+    virtualHub?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
 }

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-07-01, 2025-09-01, 2026-01-01-preview, 2026-05-01-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class BareMetalMachineKeySet extends pulumi.CustomResource {
     /**
@@ -189,7 +189,7 @@ export class BareMetalMachineKeySet extends pulumi.CustomResource {
             resourceInputs["userListStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20231001preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20240601preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20240701:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20241001preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20250201:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20250701preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20250901:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20260101preview:BareMetalMachineKeySet" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:networkcloud/v20230701:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20231001preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20240601preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20240701:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20241001preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20250201:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20250901:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20260101preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20260501preview:BareMetalMachineKeySet" }, { type: "azure-native:networkcloud/v20260701:BareMetalMachineKeySet" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(BareMetalMachineKeySet.__pulumiType, name, resourceInputs, opts);
     }
@@ -206,7 +206,7 @@ export interface BareMetalMachineKeySetArgs {
     /**
      * The name of the bare metal machine key set.
      */
-    bareMetalMachineKeySetName?: pulumi.Input<string>;
+    bareMetalMachineKeySetName?: pulumi.Input<string | undefined>;
     /**
      * The name of the cluster.
      */
@@ -226,11 +226,11 @@ export interface BareMetalMachineKeySetArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the group that users will be assigned to on the operating system of the machines.
      */
-    osGroupName?: pulumi.Input<string>;
+    osGroupName?: pulumi.Input<string | undefined>;
     /**
      * The access level allowed for the users in this key set.
      */
@@ -242,7 +242,7 @@ export interface BareMetalMachineKeySetArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The unique list of permitted users.
      */

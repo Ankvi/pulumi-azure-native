@@ -7,7 +7,7 @@ export interface DataPlaneAadOrApiKeyAuthOptionArgs {
     /**
      * Describes what response the data plane API of a search service would send for requests that failed authentication.
      */
-    aadAuthFailureMode?: pulumi.Input<enums.AadAuthFailureMode>;
+    aadAuthFailureMode?: pulumi.Input<enums.AadAuthFailureMode | undefined>;
 }
 
 /**
@@ -17,11 +17,11 @@ export interface DataPlaneAuthOptionsArgs {
     /**
      * Indicates that either the API key or an access token from a Microsoft Entra ID tenant can be used for authentication.
      */
-    aadOrApiKey?: pulumi.Input<DataPlaneAadOrApiKeyAuthOptionArgs>;
+    aadOrApiKey?: pulumi.Input<DataPlaneAadOrApiKeyAuthOptionArgs | undefined>;
     /**
      * Indicates that only the API key can be used for authentication.
      */
-    apiKeyOnly?: any;
+    apiKeyOnly?: any | undefined;
 }
 
 /**
@@ -31,7 +31,7 @@ export interface EncryptionWithCmkArgs {
     /**
      * Describes how a search service should enforce compliance if it finds objects that aren't encrypted with the customer-managed key.
      */
-    enforcement?: pulumi.Input<enums.SearchEncryptionWithCmk>;
+    enforcement?: pulumi.Input<enums.SearchEncryptionWithCmk | undefined>;
 }
 
 /**
@@ -45,7 +45,7 @@ export interface IdentityArgs {
     /**
      * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -55,7 +55,7 @@ export interface IpRuleArgs {
     /**
      * Value corresponding to a single IPv4 address (eg., 123.1.2.3) or an IP range in CIDR format (eg., 123.1.2.3/24) to be allowed.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -65,11 +65,11 @@ export interface NetworkRuleSetArgs {
     /**
      * Possible origins of inbound traffic that can bypass the rules defined in the 'ipRules' section.
      */
-    bypass?: pulumi.Input<string | enums.SearchBypass>;
+    bypass?: pulumi.Input<string | enums.SearchBypass | undefined>;
     /**
      * A list of IP restriction rules that defines the inbound network(s) with allowing access to the search service endpoint. At the meantime, all other public IP networks are blocked by the firewall. These restriction rules are applied only when the 'publicNetworkAccess' of the search service is 'enabled'; otherwise, traffic over public interface is not allowed even with any public IP rules, and private endpoint connections would be the exclusive access method.
      */
-    ipRules?: pulumi.Input<pulumi.Input<IpRuleArgs>[]>;
+    ipRules?: pulumi.Input<pulumi.Input<IpRuleArgs>[] | undefined>;
 }
 
 /**
@@ -79,19 +79,19 @@ export interface PrivateEndpointConnectionPropertiesArgs {
     /**
      * The group ID of the Azure resource for which the private link service is for.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The private endpoint resource from Microsoft.Network provider.
      */
-    privateEndpoint?: pulumi.Input<PrivateEndpointConnectionPropertiesPrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<PrivateEndpointConnectionPropertiesPrivateEndpointArgs | undefined>;
     /**
      * Describes the current state of an existing Azure Private Link service connection to the private endpoint.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateArgs | undefined>;
     /**
      * The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled.
      */
-    provisioningState?: pulumi.Input<string | enums.PrivateLinkServiceConnectionProvisioningState>;
+    provisioningState?: pulumi.Input<string | enums.PrivateLinkServiceConnectionProvisioningState | undefined>;
 }
 /**
  * privateEndpointConnectionPropertiesArgsProvideDefaults sets the appropriate defaults for PrivateEndpointConnectionPropertiesArgs
@@ -99,7 +99,7 @@ export interface PrivateEndpointConnectionPropertiesArgs {
 export function privateEndpointConnectionPropertiesArgsProvideDefaults(val: PrivateEndpointConnectionPropertiesArgs): PrivateEndpointConnectionPropertiesArgs {
     return {
         ...val,
-        privateLinkServiceConnectionState: (val.privateLinkServiceConnectionState ? pulumi.output(val.privateLinkServiceConnectionState).apply(privateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateArgsProvideDefaults) : undefined),
+        privateLinkServiceConnectionState: pulumi.output(val.privateLinkServiceConnectionState).apply(v => v === undefined ? undefined : privateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateArgsProvideDefaults(v)),
     };
 }
 
@@ -110,7 +110,7 @@ export interface PrivateEndpointConnectionPropertiesPrivateEndpointArgs {
     /**
      * The resource ID of the private endpoint resource from Microsoft.Network provider.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -120,15 +120,15 @@ export interface PrivateEndpointConnectionPropertiesPrivateLinkServiceConnection
     /**
      * A description of any extra actions that may be required.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The description for the private link service connection state.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
      */
-    status?: pulumi.Input<enums.PrivateLinkServiceConnectionStatus>;
+    status?: pulumi.Input<enums.PrivateLinkServiceConnectionStatus | undefined>;
 }
 /**
  * privateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateArgsProvideDefaults sets the appropriate defaults for PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateArgs
@@ -147,27 +147,27 @@ export interface SharedPrivateLinkResourcePropertiesArgs {
     /**
      * The group ID from the provider of resource the shared private link resource is for.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the resource the shared private link resource is for.
      */
-    privateLinkResourceId?: pulumi.Input<string>;
+    privateLinkResourceId?: pulumi.Input<string | undefined>;
     /**
      * The provisioning state of the shared private link resource. Valid values are Updating, Deleting, Failed, Succeeded or Incomplete.
      */
-    provisioningState?: pulumi.Input<string | enums.SharedPrivateLinkResourceProvisioningState>;
+    provisioningState?: pulumi.Input<string | enums.SharedPrivateLinkResourceProvisioningState | undefined>;
     /**
      * The message for requesting approval of the shared private link resource.
      */
-    requestMessage?: pulumi.Input<string>;
+    requestMessage?: pulumi.Input<string | undefined>;
     /**
      * Optional. Can be used to specify the Azure Resource Manager location of the resource for which a shared private link is being created. This is only required for those resources whose DNS configuration are regional (such as Azure Kubernetes Service).
      */
-    resourceRegion?: pulumi.Input<string>;
+    resourceRegion?: pulumi.Input<string | undefined>;
     /**
      * Status of the shared private link resource. Valid values are Pending, Approved, Rejected or Disconnected.
      */
-    status?: pulumi.Input<string | enums.SharedPrivateLinkResourceStatus>;
+    status?: pulumi.Input<string | enums.SharedPrivateLinkResourceStatus | undefined>;
 }
 
 /**
@@ -175,7 +175,7 @@ export interface SharedPrivateLinkResourcePropertiesArgs {
  */
 export interface SkuArgs {
     /**
-     * The SKU of the search service. Valid values include: 'free': Shared service. 'basic': Dedicated service with up to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12 replicas. 'standard2': Similar to standard, but with more capacity per search unit. 'standard3': The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity'). 'storage_optimized_l1': Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2': Supports 2TB per partition, up to 12 partitions.'
+     * The SKU of the search service. Valid values include: 'free': Shared service. 'basic': Dedicated service with up to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12 replicas. 'standard2': Similar to standard, but with more capacity per search unit. 'standard3': The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity'). 'storage_optimized_l1': Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2': Supports 2TB per partition, up to 12 partitions. 'serverless': Serverless tier with auto-scaling capabilities.
      */
-    name?: pulumi.Input<string | enums.SkuName>;
+    name?: pulumi.Input<string | enums.SkuName | undefined>;
 }

@@ -5,7 +5,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class BackupShortTermRetentionPolicy extends pulumi.CustomResource {
     /**
@@ -92,7 +92,7 @@ export class BackupShortTermRetentionPolicy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20171001preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20200202preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20200801preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20201101preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20210201preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20210501preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20210801preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20211101:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20211101preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20220201preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20220501preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20220801preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20221101preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20230201preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20230501preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20230801:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20230801preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20240501preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20241101preview:BackupShortTermRetentionPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20171001preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20200202preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20200801preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20201101preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20210201preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20210501preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20210801preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20211101:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20211101preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20220201preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20220501preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20220801preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20221101preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20230201preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20230501preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20230801:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20230801preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20240501preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20241101preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20250101:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20250201preview:BackupShortTermRetentionPolicy" }, { type: "azure-native:sql/v20250801preview:BackupShortTermRetentionPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(BackupShortTermRetentionPolicy.__pulumiType, name, resourceInputs, opts);
     }
@@ -109,11 +109,11 @@ export interface BackupShortTermRetentionPolicyArgs {
     /**
      * The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.
      */
-    diffBackupIntervalInHours?: pulumi.Input<number>;
+    diffBackupIntervalInHours?: pulumi.Input<number | undefined>;
     /**
      * The policy name. Should always be "default".
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -121,7 +121,7 @@ export interface BackupShortTermRetentionPolicyArgs {
     /**
      * The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
      */
-    retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number | undefined>;
     /**
      * The name of the server.
      */

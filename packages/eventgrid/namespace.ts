@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Namespace extends pulumi.CustomResource {
     /**
@@ -130,7 +130,7 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["sku"] = args?.sku;
             resourceInputs["tags"] = args?.tags;
-            resourceInputs["topicSpacesConfiguration"] = args ? (args.topicSpacesConfiguration ? pulumi.output(args.topicSpacesConfiguration).apply(types.inputs.topicSpacesConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["topicSpacesConfiguration"] = args ? pulumi.output(args.topicSpacesConfiguration).apply(v => v === undefined ? undefined : types.inputs.topicSpacesConfigurationArgsProvideDefaults(v)) : undefined;
             resourceInputs["topicsConfiguration"] = args?.topicsConfiguration;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -156,7 +156,7 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20230601preview:Namespace" }, { type: "azure-native:eventgrid/v20231215preview:Namespace" }, { type: "azure-native:eventgrid/v20240601preview:Namespace" }, { type: "azure-native:eventgrid/v20241215preview:Namespace" }, { type: "azure-native:eventgrid/v20250215:Namespace" }, { type: "azure-native:eventgrid/v20250401preview:Namespace" }, { type: "azure-native:eventgrid/v20250715preview:Namespace" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20230601preview:Namespace" }, { type: "azure-native:eventgrid/v20231215preview:Namespace" }, { type: "azure-native:eventgrid/v20240601preview:Namespace" }, { type: "azure-native:eventgrid/v20241215preview:Namespace" }, { type: "azure-native:eventgrid/v20250215:Namespace" }, { type: "azure-native:eventgrid/v20250401preview:Namespace" }, { type: "azure-native:eventgrid/v20250715preview:Namespace" }, { type: "azure-native:eventgrid/v20251115preview:Namespace" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Namespace.__pulumiType, name, resourceInputs, opts);
     }
@@ -169,11 +169,11 @@ export interface NamespaceArgs {
     /**
      * Identity information for the Namespace resource.
      */
-    identity?: pulumi.Input<types.inputs.IdentityInfoArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityInfoArgs | undefined>;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[]>;
+    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[] | undefined>;
     /**
      * This is an optional property and it allows the user to specify if the namespace resource supports zone-redundancy capability or not. If this
      * property is not specified explicitly by the user, its default value depends on the following conditions:
@@ -181,28 +181,28 @@ export interface NamespaceArgs {
      *     b. For non-Availability Zones enabled regions - The default property value would be false.
      * Once specified, this property cannot be updated.
      */
-    isZoneRedundant?: pulumi.Input<boolean>;
+    isZoneRedundant?: pulumi.Input<boolean | undefined>;
     /**
      * Location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported.
      */
-    minimumTlsVersionAllowed?: pulumi.Input<string | types.enums.TlsVersion>;
+    minimumTlsVersionAllowed?: pulumi.Input<string | types.enums.TlsVersion | undefined>;
     /**
      * Name of the namespace.
      */
-    namespaceName?: pulumi.Input<string>;
+    namespaceName?: pulumi.Input<string | undefined>;
     /**
      * List of private endpoint connections.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[] | undefined>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
      * You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceProperties.InboundIpRules" />
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * The name of the resource group within the user's subscription.
      */
@@ -210,17 +210,17 @@ export interface NamespaceArgs {
     /**
      * Represents available Sku pricing tiers.
      */
-    sku?: pulumi.Input<types.inputs.NamespaceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.NamespaceSkuArgs | undefined>;
     /**
      * Tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Topic spaces configuration information for the namespace resource
      */
-    topicSpacesConfiguration?: pulumi.Input<types.inputs.TopicSpacesConfigurationArgs>;
+    topicSpacesConfiguration?: pulumi.Input<types.inputs.TopicSpacesConfigurationArgs | undefined>;
     /**
      * Topics configuration information for the namespace resource
      */
-    topicsConfiguration?: pulumi.Input<types.inputs.TopicsConfigurationArgs>;
+    topicsConfiguration?: pulumi.Input<types.inputs.TopicsConfigurationArgs | undefined>;
 }

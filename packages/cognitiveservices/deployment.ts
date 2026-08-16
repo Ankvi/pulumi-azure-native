@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Deployment extends pulumi.CustomResource {
     /**
@@ -107,7 +107,7 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20211001:Deployment" }, { type: "azure-native:cognitiveservices/v20220301:Deployment" }, { type: "azure-native:cognitiveservices/v20221001:Deployment" }, { type: "azure-native:cognitiveservices/v20221201:Deployment" }, { type: "azure-native:cognitiveservices/v20230501:Deployment" }, { type: "azure-native:cognitiveservices/v20231001preview:Deployment" }, { type: "azure-native:cognitiveservices/v20240401preview:Deployment" }, { type: "azure-native:cognitiveservices/v20240601preview:Deployment" }, { type: "azure-native:cognitiveservices/v20241001:Deployment" }, { type: "azure-native:cognitiveservices/v20250401preview:Deployment" }, { type: "azure-native:cognitiveservices/v20250601:Deployment" }, { type: "azure-native:cognitiveservices/v20250701preview:Deployment" }, { type: "azure-native:cognitiveservices/v20250901:Deployment" }, { type: "azure-native:cognitiveservices/v20251001preview:Deployment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20211001:Deployment" }, { type: "azure-native:cognitiveservices/v20220301:Deployment" }, { type: "azure-native:cognitiveservices/v20221001:Deployment" }, { type: "azure-native:cognitiveservices/v20221201:Deployment" }, { type: "azure-native:cognitiveservices/v20230501:Deployment" }, { type: "azure-native:cognitiveservices/v20231001preview:Deployment" }, { type: "azure-native:cognitiveservices/v20240401preview:Deployment" }, { type: "azure-native:cognitiveservices/v20240601preview:Deployment" }, { type: "azure-native:cognitiveservices/v20241001:Deployment" }, { type: "azure-native:cognitiveservices/v20250401preview:Deployment" }, { type: "azure-native:cognitiveservices/v20250601:Deployment" }, { type: "azure-native:cognitiveservices/v20250701preview:Deployment" }, { type: "azure-native:cognitiveservices/v20250901:Deployment" }, { type: "azure-native:cognitiveservices/v20251001preview:Deployment" }, { type: "azure-native:cognitiveservices/v20251201:Deployment" }, { type: "azure-native:cognitiveservices/v20260115preview:Deployment" }, { type: "azure-native:cognitiveservices/v20260301:Deployment" }, { type: "azure-native:cognitiveservices/v20260315preview:Deployment" }, { type: "azure-native:cognitiveservices/v20260501:Deployment" }, { type: "azure-native:cognitiveservices/v20260515preview:Deployment" }, { type: "azure-native:cognitiveservices/v20260701:Deployment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Deployment.__pulumiType, name, resourceInputs, opts);
     }
@@ -124,11 +124,11 @@ export interface DeploymentArgs {
     /**
      * The name of the deployment associated with the Cognitive Services Account
      */
-    deploymentName?: pulumi.Input<string>;
+    deploymentName?: pulumi.Input<string | undefined>;
     /**
      * Properties of Cognitive Services account deployment.
      */
-    properties?: pulumi.Input<types.inputs.DeploymentPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DeploymentPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -136,9 +136,9 @@ export interface DeploymentArgs {
     /**
      * The resource model definition representing SKU
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

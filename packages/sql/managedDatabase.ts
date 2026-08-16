@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2017-03-01-preview, 2018-06-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2017-03-01-preview, 2018-06-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedDatabase extends pulumi.CustomResource {
     /**
@@ -151,7 +151,7 @@ export class ManagedDatabase extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:ManagedDatabase" }, { type: "azure-native:sql/v20180601preview:ManagedDatabase" }, { type: "azure-native:sql/v20190601preview:ManagedDatabase" }, { type: "azure-native:sql/v20200202preview:ManagedDatabase" }, { type: "azure-native:sql/v20200801preview:ManagedDatabase" }, { type: "azure-native:sql/v20201101preview:ManagedDatabase" }, { type: "azure-native:sql/v20210201preview:ManagedDatabase" }, { type: "azure-native:sql/v20210501preview:ManagedDatabase" }, { type: "azure-native:sql/v20210801preview:ManagedDatabase" }, { type: "azure-native:sql/v20211101:ManagedDatabase" }, { type: "azure-native:sql/v20211101preview:ManagedDatabase" }, { type: "azure-native:sql/v20220201preview:ManagedDatabase" }, { type: "azure-native:sql/v20220501preview:ManagedDatabase" }, { type: "azure-native:sql/v20220801preview:ManagedDatabase" }, { type: "azure-native:sql/v20221101preview:ManagedDatabase" }, { type: "azure-native:sql/v20230201preview:ManagedDatabase" }, { type: "azure-native:sql/v20230501preview:ManagedDatabase" }, { type: "azure-native:sql/v20230801:ManagedDatabase" }, { type: "azure-native:sql/v20230801preview:ManagedDatabase" }, { type: "azure-native:sql/v20240501preview:ManagedDatabase" }, { type: "azure-native:sql/v20241101preview:ManagedDatabase" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:ManagedDatabase" }, { type: "azure-native:sql/v20180601preview:ManagedDatabase" }, { type: "azure-native:sql/v20190601preview:ManagedDatabase" }, { type: "azure-native:sql/v20200202preview:ManagedDatabase" }, { type: "azure-native:sql/v20200801preview:ManagedDatabase" }, { type: "azure-native:sql/v20201101preview:ManagedDatabase" }, { type: "azure-native:sql/v20210201preview:ManagedDatabase" }, { type: "azure-native:sql/v20210501preview:ManagedDatabase" }, { type: "azure-native:sql/v20210801preview:ManagedDatabase" }, { type: "azure-native:sql/v20211101:ManagedDatabase" }, { type: "azure-native:sql/v20211101preview:ManagedDatabase" }, { type: "azure-native:sql/v20220201preview:ManagedDatabase" }, { type: "azure-native:sql/v20220501preview:ManagedDatabase" }, { type: "azure-native:sql/v20220801preview:ManagedDatabase" }, { type: "azure-native:sql/v20221101preview:ManagedDatabase" }, { type: "azure-native:sql/v20230201preview:ManagedDatabase" }, { type: "azure-native:sql/v20230501preview:ManagedDatabase" }, { type: "azure-native:sql/v20230801:ManagedDatabase" }, { type: "azure-native:sql/v20230801preview:ManagedDatabase" }, { type: "azure-native:sql/v20240501preview:ManagedDatabase" }, { type: "azure-native:sql/v20241101preview:ManagedDatabase" }, { type: "azure-native:sql/v20250101:ManagedDatabase" }, { type: "azure-native:sql/v20250201preview:ManagedDatabase" }, { type: "azure-native:sql/v20250801preview:ManagedDatabase" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedDatabase.__pulumiType, name, resourceInputs, opts);
     }
@@ -164,51 +164,51 @@ export interface ManagedDatabaseArgs {
     /**
      * Whether to auto complete restore of this managed database.
      */
-    autoCompleteRestore?: pulumi.Input<boolean>;
+    autoCompleteRestore?: pulumi.Input<boolean | undefined>;
     /**
      * Collation of the metadata catalog.
      */
-    catalogCollation?: pulumi.Input<string | types.enums.CatalogCollationType>;
+    catalogCollation?: pulumi.Input<string | types.enums.CatalogCollationType | undefined>;
     /**
      * Collation of the managed database.
      */
-    collation?: pulumi.Input<string>;
+    collation?: pulumi.Input<string | undefined>;
     /**
      * Managed database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. SourceDatabaseName, SourceManagedInstanceName and PointInTime must be specified. RestoreExternalBackup: Create a database by restoring from external backup files. Collation, StorageContainerUri and StorageContainerSasToken must be specified. Recovery: Creates a database by restoring a geo-replicated backup. RecoverableDatabaseId must be specified as the recoverable database resource ID to restore. RestoreLongTermRetentionBackup: Create a database by restoring from a long term retention backup (longTermRetentionBackupResourceId required).
      */
-    createMode?: pulumi.Input<string | types.enums.ManagedDatabaseCreateMode>;
+    createMode?: pulumi.Input<string | types.enums.ManagedDatabaseCreateMode | undefined>;
     /**
      * The restorable cross-subscription dropped database resource id to restore when creating this database.
      */
-    crossSubscriptionRestorableDroppedDatabaseId?: pulumi.Input<string>;
+    crossSubscriptionRestorableDroppedDatabaseId?: pulumi.Input<string | undefined>;
     /**
      * The resource identifier of the cross-subscription source database associated with create operation of this database.
      */
-    crossSubscriptionSourceDatabaseId?: pulumi.Input<string>;
+    crossSubscriptionSourceDatabaseId?: pulumi.Input<string | undefined>;
     /**
      * Target managed instance id used in cross-subscription restore.
      */
-    crossSubscriptionTargetManagedInstanceId?: pulumi.Input<string>;
+    crossSubscriptionTargetManagedInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the database.
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
     /**
      * Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
      */
-    isLedgerOn?: pulumi.Input<boolean>;
+    isLedgerOn?: pulumi.Input<boolean | undefined>;
     /**
      * Last backup file name for restore of this managed database.
      */
-    lastBackupName?: pulumi.Input<string>;
+    lastBackupName?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the Long Term Retention backup to be used for restore of this managed database.
      */
-    longTermRetentionBackupResourceId?: pulumi.Input<string>;
+    longTermRetentionBackupResourceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the managed instance.
      */
@@ -216,7 +216,7 @@ export interface ManagedDatabaseArgs {
     /**
      * The resource identifier of the recoverable database associated with create operation of this database.
      */
-    recoverableDatabaseId?: pulumi.Input<string>;
+    recoverableDatabaseId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -224,29 +224,29 @@ export interface ManagedDatabaseArgs {
     /**
      * The restorable dropped database resource id to restore when creating this database.
      */
-    restorableDroppedDatabaseId?: pulumi.Input<string>;
+    restorableDroppedDatabaseId?: pulumi.Input<string | undefined>;
     /**
      * Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database.
      */
-    restorePointInTime?: pulumi.Input<string>;
+    restorePointInTime?: pulumi.Input<string | undefined>;
     /**
      * The resource identifier of the source database associated with create operation of this database.
      */
-    sourceDatabaseId?: pulumi.Input<string>;
+    sourceDatabaseId?: pulumi.Input<string | undefined>;
     /**
      * Conditional. If createMode is RestoreExternalBackup, this value is used. Specifies the identity used for storage container authentication. Can be 'SharedAccessSignature' or 'ManagedIdentity'; if not specified 'SharedAccessSignature' is assumed.
      */
-    storageContainerIdentity?: pulumi.Input<string>;
+    storageContainerIdentity?: pulumi.Input<string | undefined>;
     /**
      * Conditional. If createMode is RestoreExternalBackup and storageContainerIdentity is not ManagedIdentity, this value is required. Specifies the storage container sas token.
      */
-    storageContainerSasToken?: pulumi.Input<string>;
+    storageContainerSasToken?: pulumi.Input<string | undefined>;
     /**
      * Conditional. If createMode is RestoreExternalBackup, this value is required. Specifies the uri of the storage container where backups for this restore are stored.
      */
-    storageContainerUri?: pulumi.Input<string>;
+    storageContainerUri?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

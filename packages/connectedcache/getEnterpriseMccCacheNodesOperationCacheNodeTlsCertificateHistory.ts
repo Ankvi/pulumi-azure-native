@@ -5,6 +5,8 @@ import * as types from "./types";
  * This api gets ispCacheNode resource tls certificate histrory information
  *
  * Uses Azure REST API version 2024-11-30-preview.
+ *
+ * Other available API versions: 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistory(args: GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,6 +69,8 @@ export interface GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHisto
  * This api gets ispCacheNode resource tls certificate histrory information
  *
  * Uses Azure REST API version 2024-11-30-preview.
+ *
+ * Other available API versions: 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryOutput(args: GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnterpriseMccCacheNodesOperationCacheNodeTlsCertificateHistoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

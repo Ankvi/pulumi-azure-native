@@ -47,7 +47,7 @@ export interface ListApplianceKeysResult {
     /**
      * Map of Customer User Public, Private SSH Keys and Certificate when available.
      */
-    readonly sshKeys: {[key: string]: types.outputs.SSHKeyResponseV1};
+    readonly sshKeys: {[key: string]: types.outputs.SSHKeylistApplianceKeysResponse};
 }
 /**
  * Returns the cluster customer credentials for the dedicated appliance.
@@ -69,7 +69,7 @@ export interface ListApplianceKeysOutputArgs {
     /**
      * This sets the type of artifact being returned, when empty no artifact endpoint is returned.
      */
-    artifactType?: pulumi.Input<string>;
+    artifactType?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

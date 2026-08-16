@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-15-preview.
  *
- * Other available API versions: 2023-03-15-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01, 2025-03-01, 2025-04-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-03-15-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01, 2025-03-01, 2025-04-01-preview, 2025-08-01-preview, 2026-02-01-preview, 2026-03-02-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class UpdateRun extends pulumi.CustomResource {
     /**
@@ -83,7 +83,7 @@ export class UpdateRun extends pulumi.CustomResource {
      *
      * Setting both "updateStrategyId" and "strategy" is invalid.
      *
-     * UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field. 
+     * UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field.
      * Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.
      * UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
      */
@@ -135,7 +135,7 @@ export class UpdateRun extends pulumi.CustomResource {
             resourceInputs["updateStrategyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20230315preview:UpdateRun" }, { type: "azure-native:containerservice/v20230615preview:UpdateRun" }, { type: "azure-native:containerservice/v20230815preview:UpdateRun" }, { type: "azure-native:containerservice/v20231015:UpdateRun" }, { type: "azure-native:containerservice/v20240202preview:UpdateRun" }, { type: "azure-native:containerservice/v20240401:UpdateRun" }, { type: "azure-native:containerservice/v20240502preview:UpdateRun" }, { type: "azure-native:containerservice/v20250301:UpdateRun" }, { type: "azure-native:containerservice/v20250401preview:UpdateRun" }, { type: "azure-native:containerservice/v20250801preview:UpdateRun" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20230315preview:UpdateRun" }, { type: "azure-native:containerservice/v20230615preview:UpdateRun" }, { type: "azure-native:containerservice/v20230815preview:UpdateRun" }, { type: "azure-native:containerservice/v20231015:UpdateRun" }, { type: "azure-native:containerservice/v20240202preview:UpdateRun" }, { type: "azure-native:containerservice/v20240401:UpdateRun" }, { type: "azure-native:containerservice/v20240502preview:UpdateRun" }, { type: "azure-native:containerservice/v20250301:UpdateRun" }, { type: "azure-native:containerservice/v20250401preview:UpdateRun" }, { type: "azure-native:containerservice/v20250801preview:UpdateRun" }, { type: "azure-native:containerservice/v20260201preview:UpdateRun" }, { type: "azure-native:containerservice/v20260302preview:UpdateRun" }, { type: "azure-native:containerservice/v20260601:UpdateRun" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(UpdateRun.__pulumiType, name, resourceInputs, opts);
     }
@@ -162,11 +162,11 @@ export interface UpdateRunArgs {
      * If not set, all members will be updated sequentially. The UpdateRun status will show a single UpdateStage and a single UpdateGroup targeting all members.
      * The strategy of the UpdateRun can be modified until the run is started.
      */
-    strategy?: pulumi.Input<types.inputs.UpdateRunStrategyArgs>;
+    strategy?: pulumi.Input<types.inputs.UpdateRunStrategyArgs | undefined>;
     /**
      * The name of the UpdateRun resource.
      */
-    updateRunName?: pulumi.Input<string>;
+    updateRunName?: pulumi.Input<string | undefined>;
     /**
      * The resource id of the FleetUpdateStrategy resource to reference.
      *
@@ -177,9 +177,9 @@ export interface UpdateRunArgs {
      *
      * Setting both "updateStrategyId" and "strategy" is invalid.
      *
-     * UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field. 
+     * UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field.
      * Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.
      * UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
      */
-    updateStrategyId?: pulumi.Input<string>;
+    updateStrategyId?: pulumi.Input<string | undefined>;
 }

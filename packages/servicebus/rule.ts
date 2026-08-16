@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
  *
- * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Rule extends pulumi.CustomResource {
     /**
@@ -95,13 +95,13 @@ export class Rule extends pulumi.CustomResource {
             if (args?.topicName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
-            resourceInputs["action"] = args ? (args.action ? pulumi.output(args.action).apply(types.inputs.actionArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["correlationFilter"] = args ? (args.correlationFilter ? pulumi.output(args.correlationFilter).apply(types.inputs.correlationFilterArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["action"] = args ? pulumi.output(args.action).apply(v => v === undefined ? undefined : types.inputs.actionArgsProvideDefaults(v)) : undefined;
+            resourceInputs["correlationFilter"] = args ? pulumi.output(args.correlationFilter).apply(v => v === undefined ? undefined : types.inputs.correlationFilterArgsProvideDefaults(v)) : undefined;
             resourceInputs["filterType"] = args?.filterType;
             resourceInputs["namespaceName"] = args?.namespaceName;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["ruleName"] = args?.ruleName;
-            resourceInputs["sqlFilter"] = args ? (args.sqlFilter ? pulumi.output(args.sqlFilter).apply(types.inputs.sqlFilterArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sqlFilter"] = args ? pulumi.output(args.sqlFilter).apply(v => v === undefined ? undefined : types.inputs.sqlFilterArgsProvideDefaults(v)) : undefined;
             resourceInputs["subscriptionName"] = args?.subscriptionName;
             resourceInputs["topicName"] = args?.topicName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -121,7 +121,7 @@ export class Rule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:servicebus/v20170401:Rule" }, { type: "azure-native:servicebus/v20180101preview:Rule" }, { type: "azure-native:servicebus/v20210101preview:Rule" }, { type: "azure-native:servicebus/v20210601preview:Rule" }, { type: "azure-native:servicebus/v20211101:Rule" }, { type: "azure-native:servicebus/v20220101preview:Rule" }, { type: "azure-native:servicebus/v20221001preview:Rule" }, { type: "azure-native:servicebus/v20230101preview:Rule" }, { type: "azure-native:servicebus/v20240101:Rule" }, { type: "azure-native:servicebus/v20250501preview:Rule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:servicebus/v20170401:Rule" }, { type: "azure-native:servicebus/v20180101preview:Rule" }, { type: "azure-native:servicebus/v20210101preview:Rule" }, { type: "azure-native:servicebus/v20210601preview:Rule" }, { type: "azure-native:servicebus/v20211101:Rule" }, { type: "azure-native:servicebus/v20220101preview:Rule" }, { type: "azure-native:servicebus/v20221001preview:Rule" }, { type: "azure-native:servicebus/v20230101preview:Rule" }, { type: "azure-native:servicebus/v20240101:Rule" }, { type: "azure-native:servicebus/v20250501preview:Rule" }, { type: "azure-native:servicebus/v20260101:Rule" }, { type: "azure-native:servicebus/v20260701preview:Rule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Rule.__pulumiType, name, resourceInputs, opts);
     }
@@ -134,15 +134,15 @@ export interface RuleArgs {
     /**
      * Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
      */
-    action?: pulumi.Input<types.inputs.ActionArgs>;
+    action?: pulumi.Input<types.inputs.ActionArgs | undefined>;
     /**
      * Properties of correlationFilter
      */
-    correlationFilter?: pulumi.Input<types.inputs.CorrelationFilterArgs>;
+    correlationFilter?: pulumi.Input<types.inputs.CorrelationFilterArgs | undefined>;
     /**
      * Filter type that is evaluated against a BrokeredMessage.
      */
-    filterType?: pulumi.Input<types.enums.FilterType>;
+    filterType?: pulumi.Input<types.enums.FilterType | undefined>;
     /**
      * The namespace name
      */
@@ -154,11 +154,11 @@ export interface RuleArgs {
     /**
      * The rule name.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * Properties of sqlFilter
      */
-    sqlFilter?: pulumi.Input<types.inputs.SqlFilterArgs>;
+    sqlFilter?: pulumi.Input<types.inputs.SqlFilterArgs | undefined>;
     /**
      * The subscription name.
      */

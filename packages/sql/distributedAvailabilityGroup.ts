@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DistributedAvailabilityGroup extends pulumi.CustomResource {
     /**
@@ -142,7 +142,7 @@ export class DistributedAvailabilityGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20210501preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20210801preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20211101:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20211101preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20220201preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20220501preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20220801preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20221101preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20230201preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20230501preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20230801:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20230801preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20240501preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20241101preview:DistributedAvailabilityGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20210501preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20210801preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20211101:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20211101preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20220201preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20220501preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20220801preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20221101preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20230201preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20230501preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20230801:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20230801preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20240501preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20241101preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20250101:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20250201preview:DistributedAvailabilityGroup" }, { type: "azure-native:sql/v20250801preview:DistributedAvailabilityGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DistributedAvailabilityGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -155,23 +155,23 @@ export interface DistributedAvailabilityGroupArgs {
     /**
      * Databases in the distributed availability group
      */
-    databases?: pulumi.Input<pulumi.Input<types.inputs.DistributedAvailabilityGroupDatabaseArgs>[]>;
+    databases?: pulumi.Input<pulumi.Input<types.inputs.DistributedAvailabilityGroupDatabaseArgs>[] | undefined>;
     /**
      * The distributed availability group name.
      */
-    distributedAvailabilityGroupName?: pulumi.Input<string>;
+    distributedAvailabilityGroupName?: pulumi.Input<string | undefined>;
     /**
      * The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.
      */
-    failoverMode?: pulumi.Input<string | types.enums.FailoverModeType>;
+    failoverMode?: pulumi.Input<string | types.enums.FailoverModeType | undefined>;
     /**
      * Managed instance side availability group name
      */
-    instanceAvailabilityGroupName?: pulumi.Input<string>;
+    instanceAvailabilityGroupName?: pulumi.Input<string | undefined>;
     /**
      * Managed instance side link role
      */
-    instanceLinkRole?: pulumi.Input<string | types.enums.LinkRole>;
+    instanceLinkRole?: pulumi.Input<string | types.enums.LinkRole | undefined>;
     /**
      * The name of the managed instance.
      */
@@ -179,15 +179,15 @@ export interface DistributedAvailabilityGroupArgs {
     /**
      * SQL server side availability group name
      */
-    partnerAvailabilityGroupName?: pulumi.Input<string>;
+    partnerAvailabilityGroupName?: pulumi.Input<string | undefined>;
     /**
      * SQL server side endpoint - IP or DNS resolvable name
      */
-    partnerEndpoint?: pulumi.Input<string>;
+    partnerEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Replication mode of the link
      */
-    replicationMode?: pulumi.Input<string | types.enums.ReplicationModeType>;
+    replicationMode?: pulumi.Input<string | types.enums.ReplicationModeType | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -195,5 +195,5 @@ export interface DistributedAvailabilityGroupArgs {
     /**
      * Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
      */
-    seedingMode?: pulumi.Input<string | types.enums.SeedingModeType>;
+    seedingMode?: pulumi.Input<string | types.enums.SeedingModeType | undefined>;
 }

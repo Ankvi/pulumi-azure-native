@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ContentPackage extends pulumi.CustomResource {
     /**
@@ -242,7 +242,7 @@ export class ContentPackage extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20230401preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230501preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230601preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230701preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230801preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230901preview:ContentPackage" }, { type: "azure-native:securityinsights/v20231001preview:ContentPackage" }, { type: "azure-native:securityinsights/v20231101:ContentPackage" }, { type: "azure-native:securityinsights/v20231201preview:ContentPackage" }, { type: "azure-native:securityinsights/v20240101preview:ContentPackage" }, { type: "azure-native:securityinsights/v20240301:ContentPackage" }, { type: "azure-native:securityinsights/v20240401preview:ContentPackage" }, { type: "azure-native:securityinsights/v20240901:ContentPackage" }, { type: "azure-native:securityinsights/v20241001preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250101preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250301:ContentPackage" }, { type: "azure-native:securityinsights/v20250401preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250601:ContentPackage" }, { type: "azure-native:securityinsights/v20250701preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250901:ContentPackage" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20230401preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230501preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230601preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230701preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230801preview:ContentPackage" }, { type: "azure-native:securityinsights/v20230901preview:ContentPackage" }, { type: "azure-native:securityinsights/v20231001preview:ContentPackage" }, { type: "azure-native:securityinsights/v20231101:ContentPackage" }, { type: "azure-native:securityinsights/v20231201preview:ContentPackage" }, { type: "azure-native:securityinsights/v20240101preview:ContentPackage" }, { type: "azure-native:securityinsights/v20240301:ContentPackage" }, { type: "azure-native:securityinsights/v20240401preview:ContentPackage" }, { type: "azure-native:securityinsights/v20240901:ContentPackage" }, { type: "azure-native:securityinsights/v20241001preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250101preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250301:ContentPackage" }, { type: "azure-native:securityinsights/v20250401preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250601:ContentPackage" }, { type: "azure-native:securityinsights/v20250701preview:ContentPackage" }, { type: "azure-native:securityinsights/v20250901:ContentPackage" }, { type: "azure-native:securityinsights/v20251001preview:ContentPackage" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ContentPackage.__pulumiType, name, resourceInputs, opts);
     }
@@ -255,11 +255,11 @@ export interface ContentPackageArgs {
     /**
      * The author of the package
      */
-    author?: pulumi.Input<types.inputs.MetadataAuthorArgs>;
+    author?: pulumi.Input<types.inputs.MetadataAuthorArgs | undefined>;
     /**
      * The categories of the package
      */
-    categories?: pulumi.Input<types.inputs.MetadataCategoriesArgs>;
+    categories?: pulumi.Input<types.inputs.MetadataCategoriesArgs | undefined>;
     /**
      * The content id of the package
      */
@@ -275,15 +275,15 @@ export interface ContentPackageArgs {
     /**
      * The version of the content schema.
      */
-    contentSchemaVersion?: pulumi.Input<string>;
+    contentSchemaVersion?: pulumi.Input<string | undefined>;
     /**
      * The support tier of the package
      */
-    dependencies?: pulumi.Input<types.inputs.MetadataDependenciesArgs>;
+    dependencies?: pulumi.Input<types.inputs.MetadataDependenciesArgs | undefined>;
     /**
      * The description of the package
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the package
      */
@@ -291,43 +291,43 @@ export interface ContentPackageArgs {
     /**
      * first publish date package item
      */
-    firstPublishDate?: pulumi.Input<string>;
+    firstPublishDate?: pulumi.Input<string | undefined>;
     /**
      * the icon identifier. this id can later be fetched from the content metadata
      */
-    icon?: pulumi.Input<string>;
+    icon?: pulumi.Input<string | undefined>;
     /**
      * Flag indicates if this template is deprecated
      */
-    isDeprecated?: pulumi.Input<string | types.enums.Flag>;
+    isDeprecated?: pulumi.Input<string | types.enums.Flag | undefined>;
     /**
      * Flag indicates if this package is among the featured list.
      */
-    isFeatured?: pulumi.Input<string | types.enums.Flag>;
+    isFeatured?: pulumi.Input<string | types.enums.Flag | undefined>;
     /**
      * Flag indicates if this is a newly published package.
      */
-    isNew?: pulumi.Input<string | types.enums.Flag>;
+    isNew?: pulumi.Input<string | types.enums.Flag | undefined>;
     /**
      * Flag indicates if this package is in preview.
      */
-    isPreview?: pulumi.Input<string | types.enums.Flag>;
+    isPreview?: pulumi.Input<string | types.enums.Flag | undefined>;
     /**
      * last publish date for the package item
      */
-    lastPublishDate?: pulumi.Input<string>;
+    lastPublishDate?: pulumi.Input<string | undefined>;
     /**
      * package Id
      */
-    packageId?: pulumi.Input<string>;
+    packageId?: pulumi.Input<string | undefined>;
     /**
      * Providers for the package item
      */
-    providers?: pulumi.Input<pulumi.Input<string>[]>;
+    providers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The publisher display name of the package
      */
-    publisherDisplayName?: pulumi.Input<string>;
+    publisherDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -335,19 +335,19 @@ export interface ContentPackageArgs {
     /**
      * The source of the package
      */
-    source?: pulumi.Input<types.inputs.MetadataSourceArgs>;
+    source?: pulumi.Input<types.inputs.MetadataSourceArgs | undefined>;
     /**
      * The support tier of the package
      */
-    support?: pulumi.Input<types.inputs.MetadataSupportArgs>;
+    support?: pulumi.Input<types.inputs.MetadataSupportArgs | undefined>;
     /**
      * the tactics the resource covers
      */
-    threatAnalysisTactics?: pulumi.Input<pulumi.Input<string>[]>;
+    threatAnalysisTactics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * the techniques the resource covers, these have to be aligned with the tactics being used
      */
-    threatAnalysisTechniques?: pulumi.Input<pulumi.Input<string>[]>;
+    threatAnalysisTechniques?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * the latest version number of the package
      */

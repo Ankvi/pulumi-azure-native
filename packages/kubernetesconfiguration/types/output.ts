@@ -498,7 +498,7 @@ export interface PlanResponse {
      */
     name: string;
     /**
-     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. 
+     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
      */
     product: string;
     /**
@@ -652,11 +652,11 @@ export interface ScopeResponse {
  */
 export interface ServicePrincipalDefinitionResponse {
     /**
-     * Base64-encoded certificate used to authenticate a Service Principal 
+     * Base64-encoded certificate used to authenticate a Service Principal
      */
     clientCertificate?: string;
     /**
-     * The password for the certificate used to authenticate a Service Principal 
+     * The password for the certificate used to authenticate a Service Principal
      */
     clientCertificatePassword?: string;
     /**

@@ -2,7 +2,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
+ * Concrete proxy resource types can be created by aliasing this type using a specific property type.
+ *
  * Uses Azure REST API version 2025-10-01-preview.
+ *
+ * Other available API versions: 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class OutboundRule extends pulumi.CustomResource {
     /**
@@ -42,7 +46,7 @@ export class OutboundRule extends pulumi.CustomResource {
     /**
      * Outbound Rule for the managed network of a cognitive services account.
      */
-    declare public readonly properties: pulumi.Output<types.outputs.FqdnOutboundRuleResponse>;
+    declare public readonly properties: pulumi.Output<types.outputs.FqdnOutboundRuleResponse | types.outputs.PrivateEndpointOutboundRuleResponse | types.outputs.ServiceTagOutboundRuleResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -92,7 +96,7 @@ export class OutboundRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20251001preview:OutboundRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20251001preview:OutboundRule" }, { type: "azure-native:cognitiveservices/v20251201:OutboundRule" }, { type: "azure-native:cognitiveservices/v20260115preview:OutboundRule" }, { type: "azure-native:cognitiveservices/v20260301:OutboundRule" }, { type: "azure-native:cognitiveservices/v20260315preview:OutboundRule" }, { type: "azure-native:cognitiveservices/v20260501:OutboundRule" }, { type: "azure-native:cognitiveservices/v20260515preview:OutboundRule" }, { type: "azure-native:cognitiveservices/v20260701:OutboundRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(OutboundRule.__pulumiType, name, resourceInputs, opts);
     }
@@ -113,7 +117,7 @@ export interface OutboundRuleArgs {
     /**
      * Outbound Rule for the managed network of a cognitive services account.
      */
-    properties: pulumi.Input<types.inputs.FqdnOutboundRuleArgs>;
+    properties: pulumi.Input<types.inputs.FqdnOutboundRuleArgs | types.inputs.PrivateEndpointOutboundRuleArgs | types.inputs.ServiceTagOutboundRuleArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -121,5 +125,5 @@ export interface OutboundRuleArgs {
     /**
      * Name of the cognitive services account managed network outbound rule
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
 }

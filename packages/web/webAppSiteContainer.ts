@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Container of a site
  *
- * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01.
+ * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01.
  *
- * Other available API versions: 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppSiteContainer extends pulumi.CustomResource {
     /**
@@ -72,7 +72,7 @@ export class WebAppSiteContainer extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lastModifiedTime: pulumi.Output<string>;
     /**
-     * Resource Name.
+     * The name of the resource
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -84,11 +84,15 @@ export class WebAppSiteContainer extends pulumi.CustomResource {
      */
     declare public readonly startUpCommand: pulumi.Output<string | undefined>;
     /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
      * Target Port
      */
     declare public readonly targetPort: pulumi.Output<string | undefined>;
     /**
-     * Resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -145,6 +149,7 @@ export class WebAppSiteContainer extends pulumi.CustomResource {
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["authType"] = undefined /*out*/;
@@ -159,6 +164,7 @@ export class WebAppSiteContainer extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["passwordSecret"] = undefined /*out*/;
             resourceInputs["startUpCommand"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["targetPort"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["userManagedIdentityClientId"] = undefined /*out*/;
@@ -166,7 +172,7 @@ export class WebAppSiteContainer extends pulumi.CustomResource {
             resourceInputs["volumeMounts"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20231201:WebAppSiteContainer" }, { type: "azure-native:web/v20240401:WebAppSiteContainer" }, { type: "azure-native:web/v20241101:WebAppSiteContainer" }, { type: "azure-native:web/v20250301:WebAppSiteContainer" }, { type: "azure-native:web/v20250501:WebAppSiteContainer" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20231201:WebAppSiteContainer" }, { type: "azure-native:web/v20240401:WebAppSiteContainer" }, { type: "azure-native:web/v20241101:WebAppSiteContainer" }, { type: "azure-native:web/v20250301:WebAppSiteContainer" }, { type: "azure-native:web/v20250501:WebAppSiteContainer" }, { type: "azure-native:web/v20260301preview:WebAppSiteContainer" }, { type: "azure-native:web/v20260315:WebAppSiteContainer" }, { type: "azure-native:web/v20260715:WebAppSiteContainer" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppSiteContainer.__pulumiType, name, resourceInputs, opts);
     }
@@ -179,15 +185,15 @@ export interface WebAppSiteContainerArgs {
     /**
      * Auth Type
      */
-    authType?: pulumi.Input<types.enums.AuthType>;
+    authType?: pulumi.Input<types.enums.AuthType | undefined>;
     /**
      * Site Container Name
      */
-    containerName?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
     /**
      * List of environment variables
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<types.inputs.EnvironmentVariableArgs>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<types.inputs.EnvironmentVariableArgs>[] | undefined>;
     /**
      * Image Name
      */
@@ -195,7 +201,7 @@ export interface WebAppSiteContainerArgs {
     /**
      * <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise.
      */
-    inheritAppSettingsAndConnectionStrings?: pulumi.Input<boolean>;
+    inheritAppSettingsAndConnectionStrings?: pulumi.Input<boolean | undefined>;
     /**
      * <code>true</code> if the container is the main site container; <code>false</code> otherwise.
      */
@@ -203,7 +209,7 @@ export interface WebAppSiteContainerArgs {
     /**
      * Kind of resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Name of the app.
      */
@@ -211,29 +217,29 @@ export interface WebAppSiteContainerArgs {
     /**
      * Password Secret
      */
-    passwordSecret?: pulumi.Input<string>;
+    passwordSecret?: pulumi.Input<string | undefined>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * StartUp Command
      */
-    startUpCommand?: pulumi.Input<string>;
+    startUpCommand?: pulumi.Input<string | undefined>;
     /**
      * Target Port
      */
-    targetPort?: pulumi.Input<string>;
+    targetPort?: pulumi.Input<string | undefined>;
     /**
      * UserManagedIdentity ClientId
      */
-    userManagedIdentityClientId?: pulumi.Input<string>;
+    userManagedIdentityClientId?: pulumi.Input<string | undefined>;
     /**
      * User Name
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
     /**
      * List of volume mounts
      */
-    volumeMounts?: pulumi.Input<pulumi.Input<types.inputs.VolumeMountArgs>[]>;
+    volumeMounts?: pulumi.Input<pulumi.Input<types.inputs.VolumeMountArgs>[] | undefined>;
 }

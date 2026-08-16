@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-04-03. In version 2.x of the Azure Native provider, it used API version 2023-04-03.
  *
- * Other available API versions: 2023-10-01-preview, 2025-05-03-preview, 2025-10-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-10-01-preview, 2025-05-03-preview, 2025-10-03, 2025-10-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class AzureMonitorWorkspace extends pulumi.CustomResource {
     /**
@@ -133,7 +133,7 @@ export class AzureMonitorWorkspace extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:monitor/v20210603preview:AzureMonitorWorkspace" }, { type: "azure-native:monitor/v20230403:AzureMonitorWorkspace" }, { type: "azure-native:monitor/v20231001preview:AzureMonitorWorkspace" }, { type: "azure-native:monitor/v20250503preview:AzureMonitorWorkspace" }, { type: "azure-native:monitor/v20251003preview:AzureMonitorWorkspace" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:monitor/v20210603preview:AzureMonitorWorkspace" }, { type: "azure-native:monitor/v20230403:AzureMonitorWorkspace" }, { type: "azure-native:monitor/v20231001preview:AzureMonitorWorkspace" }, { type: "azure-native:monitor/v20250503preview:AzureMonitorWorkspace" }, { type: "azure-native:monitor/v20251003:AzureMonitorWorkspace" }, { type: "azure-native:monitor/v20251003preview:AzureMonitorWorkspace" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AzureMonitorWorkspace.__pulumiType, name, resourceInputs, opts);
     }
@@ -146,15 +146,15 @@ export interface AzureMonitorWorkspaceArgs {
     /**
      * The name of the Azure Monitor Workspace. The name is case insensitive
      */
-    azureMonitorWorkspaceName?: pulumi.Input<string>;
+    azureMonitorWorkspaceName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets allow or disallow public network access to Azure Monitor Workspace
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -162,5 +162,5 @@ export interface AzureMonitorWorkspaceArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

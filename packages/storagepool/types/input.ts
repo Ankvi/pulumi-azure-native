@@ -49,5 +49,5 @@ export interface SkuArgs {
     /**
      * Sku tier
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }

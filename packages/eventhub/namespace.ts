@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01-preview.
  *
- * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Namespace extends pulumi.CustomResource {
     /**
@@ -153,7 +153,7 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["alternateName"] = args?.alternateName;
             resourceInputs["clusterArmId"] = args?.clusterArmId;
             resourceInputs["disableLocalAuth"] = args?.disableLocalAuth;
-            resourceInputs["encryption"] = args ? (args.encryption ? pulumi.output(args.encryption).apply(types.inputs.encryptionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["encryption"] = args ? pulumi.output(args.encryption).apply(v => v === undefined ? undefined : types.inputs.encryptionArgsProvideDefaults(v)) : undefined;
             resourceInputs["identity"] = args?.identity;
             resourceInputs["isAutoInflateEnabled"] = args?.isAutoInflateEnabled;
             resourceInputs["kafkaEnabled"] = args?.kafkaEnabled;
@@ -205,7 +205,7 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["zoneRedundant"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventhub/v20140901:Namespace" }, { type: "azure-native:eventhub/v20150801:Namespace" }, { type: "azure-native:eventhub/v20170401:Namespace" }, { type: "azure-native:eventhub/v20180101preview:Namespace" }, { type: "azure-native:eventhub/v20210101preview:Namespace" }, { type: "azure-native:eventhub/v20210601preview:Namespace" }, { type: "azure-native:eventhub/v20211101:Namespace" }, { type: "azure-native:eventhub/v20220101preview:Namespace" }, { type: "azure-native:eventhub/v20221001preview:Namespace" }, { type: "azure-native:eventhub/v20230101preview:Namespace" }, { type: "azure-native:eventhub/v20240101:Namespace" }, { type: "azure-native:eventhub/v20240501preview:Namespace" }, { type: "azure-native:eventhub/v20250501preview:Namespace" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventhub/v20140901:Namespace" }, { type: "azure-native:eventhub/v20150801:Namespace" }, { type: "azure-native:eventhub/v20170401:Namespace" }, { type: "azure-native:eventhub/v20180101preview:Namespace" }, { type: "azure-native:eventhub/v20210101preview:Namespace" }, { type: "azure-native:eventhub/v20210601preview:Namespace" }, { type: "azure-native:eventhub/v20211101:Namespace" }, { type: "azure-native:eventhub/v20220101preview:Namespace" }, { type: "azure-native:eventhub/v20221001preview:Namespace" }, { type: "azure-native:eventhub/v20230101preview:Namespace" }, { type: "azure-native:eventhub/v20240101:Namespace" }, { type: "azure-native:eventhub/v20240501preview:Namespace" }, { type: "azure-native:eventhub/v20250501preview:Namespace" }, { type: "azure-native:eventhub/v20260101:Namespace" }, { type: "azure-native:eventhub/v20260701preview:Namespace" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Namespace.__pulumiType, name, resourceInputs, opts);
     }
@@ -218,56 +218,56 @@ export interface NamespaceArgs {
     /**
      * Alternate name specified when alias and namespace names are same.
      */
-    alternateName?: pulumi.Input<string>;
+    alternateName?: pulumi.Input<string | undefined>;
     /**
      * Cluster ARM ID of the Namespace.
      */
-    clusterArmId?: pulumi.Input<string>;
+    clusterArmId?: pulumi.Input<string | undefined>;
     /**
      * This property disables SAS authentication for the Event Hubs namespace.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Properties of BYOK Encryption description
      */
-    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs | undefined>;
     /**
      * Properties of BYOK Identity description
      */
-    identity?: pulumi.Input<types.inputs.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
      * Value that indicates whether AutoInflate is enabled for eventhub namespace.
      */
-    isAutoInflateEnabled?: pulumi.Input<boolean>;
+    isAutoInflateEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Value that indicates whether Kafka is enabled for eventhub namespace.
      */
-    kafkaEnabled?: pulumi.Input<boolean>;
+    kafkaEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)
      */
-    maximumThroughputUnits?: pulumi.Input<number>;
+    maximumThroughputUnits?: pulumi.Input<number | undefined>;
     /**
      * The minimum TLS version for the cluster to support, e.g. '1.2'
      */
-    minimumTlsVersion?: pulumi.Input<string | types.enums.TlsVersion>;
+    minimumTlsVersion?: pulumi.Input<string | types.enums.TlsVersion | undefined>;
     /**
      * The Namespace name
      */
-    namespaceName?: pulumi.Input<string>;
+    namespaceName?: pulumi.Input<string | undefined>;
     /**
      * List of private endpoint connections.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[] | undefined>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * Name of the resource group within the azure subscription.
      */
@@ -275,13 +275,13 @@ export interface NamespaceArgs {
     /**
      * Properties of sku resource
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
      */
-    zoneRedundant?: pulumi.Input<boolean>;
+    zoneRedundant?: pulumi.Input<boolean | undefined>;
 }

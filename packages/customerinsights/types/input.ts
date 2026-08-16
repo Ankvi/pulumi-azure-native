@@ -11,7 +11,7 @@ export interface AssignmentPrincipalArgs {
     /**
      * Other metadata for the principal.
      */
-    principalMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    principalMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Type of the principal ID.
      */
@@ -25,7 +25,7 @@ export interface ConnectorMappingAvailabilityArgs {
     /**
      * The frequency to update.
      */
-    frequency?: pulumi.Input<enums.FrequencyTypes>;
+    frequency?: pulumi.Input<enums.FrequencyTypes | undefined>;
     /**
      * The interval of the given frequency to use.
      */
@@ -39,11 +39,11 @@ export interface ConnectorMappingCompleteOperationArgs {
     /**
      * The type of completion operation.
      */
-    completionOperationType?: pulumi.Input<enums.CompletionOperationTypes>;
+    completionOperationType?: pulumi.Input<enums.CompletionOperationTypes | undefined>;
     /**
      * The destination folder where files will be moved to once the import is done.
      */
-    destinationFolder?: pulumi.Input<string>;
+    destinationFolder?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -53,7 +53,7 @@ export interface ConnectorMappingErrorManagementArgs {
     /**
      * The error limit allowed while importing data.
      */
-    errorLimit?: pulumi.Input<number>;
+    errorLimit?: pulumi.Input<number | undefined>;
     /**
      * The type of error management to use for the mapping.
      */
@@ -67,15 +67,15 @@ export interface ConnectorMappingFormatArgs {
     /**
      * The oData language.
      */
-    acceptLanguage?: pulumi.Input<string>;
+    acceptLanguage?: pulumi.Input<string | undefined>;
     /**
      * Character separating array elements.
      */
-    arraySeparator?: pulumi.Input<string>;
+    arraySeparator?: pulumi.Input<string | undefined>;
     /**
      * The character that signifies a break between columns.
      */
-    columnDelimiter?: pulumi.Input<string>;
+    columnDelimiter?: pulumi.Input<string | undefined>;
     /**
      * The type mapping format.
      */
@@ -83,11 +83,11 @@ export interface ConnectorMappingFormatArgs {
     /**
      * Quote character, used to indicate enquoted fields.
      */
-    quoteCharacter?: pulumi.Input<string>;
+    quoteCharacter?: pulumi.Input<string | undefined>;
     /**
      * Escape character for quotes, can be the same as the quoteCharacter.
      */
-    quoteEscapeCharacter?: pulumi.Input<string>;
+    quoteEscapeCharacter?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -109,11 +109,11 @@ export interface ConnectorMappingPropertiesArgs {
     /**
      * The file filter for the mapping.
      */
-    fileFilter?: pulumi.Input<string>;
+    fileFilter?: pulumi.Input<string | undefined>;
     /**
      * The folder path for the mapping.
      */
-    folderPath?: pulumi.Input<string>;
+    folderPath?: pulumi.Input<string | undefined>;
     /**
      * The format of mapping property.
      */
@@ -121,7 +121,7 @@ export interface ConnectorMappingPropertiesArgs {
     /**
      * If the file contains a header or not.
      */
-    hasHeader?: pulumi.Input<boolean>;
+    hasHeader?: pulumi.Input<boolean | undefined>;
     /**
      * Ingestion mapping information at property level.
      */
@@ -139,11 +139,11 @@ export interface ConnectorMappingStructureArgs {
     /**
      * Custom format specifier for input parsing.
      */
-    customFormatSpecifier?: pulumi.Input<string>;
+    customFormatSpecifier?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the column is encrypted.
      */
-    isEncrypted?: pulumi.Input<boolean>;
+    isEncrypted?: pulumi.Input<boolean | undefined>;
     /**
      * The property name of the mapping entity.
      */
@@ -157,15 +157,15 @@ export interface HubBillingInfoFormatArgs {
     /**
      * The maximum number of units can be used.  One unit is 10,000 Profiles and 100,000 Interactions.
      */
-    maxUnits?: pulumi.Input<number>;
+    maxUnits?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of units will be billed. One unit is 10,000 Profiles and 100,000 Interactions.
      */
-    minUnits?: pulumi.Input<number>;
+    minUnits?: pulumi.Input<number | undefined>;
     /**
      * The sku name.
      */
-    skuName?: pulumi.Input<string>;
+    skuName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -249,15 +249,15 @@ export interface PredictionGradesArgs {
     /**
      * Name of the grade.
      */
-    gradeName?: pulumi.Input<string>;
+    gradeName?: pulumi.Input<string | undefined>;
     /**
      * Maximum score threshold.
      */
-    maxScoreThreshold?: pulumi.Input<number>;
+    maxScoreThreshold?: pulumi.Input<number | undefined>;
     /**
      * Minimum score threshold.
      */
-    minScoreThreshold?: pulumi.Input<number>;
+    minScoreThreshold?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -285,11 +285,11 @@ export interface ProfileEnumValidValuesFormatArgs {
     /**
      * Localized names of the enum member.
      */
-    localizedValueNames?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    localizedValueNames?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The integer value of the enum member.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -299,11 +299,11 @@ export interface PropertyDefinitionArgs {
     /**
      * Array value separator for properties with isArray set.
      */
-    arrayValueSeparator?: pulumi.Input<string>;
+    arrayValueSeparator?: pulumi.Input<string | undefined>;
     /**
      * Describes valid values for an enum property.
      */
-    enumValidValues?: pulumi.Input<pulumi.Input<ProfileEnumValidValuesFormatArgs>[]>;
+    enumValidValues?: pulumi.Input<pulumi.Input<ProfileEnumValidValuesFormatArgs>[] | undefined>;
     /**
      * Name of the property.
      */
@@ -315,47 +315,47 @@ export interface PropertyDefinitionArgs {
     /**
      * Indicates if the property is actually an array of the fieldType above on the data api.
      */
-    isArray?: pulumi.Input<boolean>;
+    isArray?: pulumi.Input<boolean | undefined>;
     /**
      * Whether property is available in graph or not.
      */
-    isAvailableInGraph?: pulumi.Input<boolean>;
+    isAvailableInGraph?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the property is an enum.
      */
-    isEnum?: pulumi.Input<boolean>;
+    isEnum?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the property is an flag enum.
      */
-    isFlagEnum?: pulumi.Input<boolean>;
+    isFlagEnum?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the property is an Image.
      */
-    isImage?: pulumi.Input<boolean>;
+    isImage?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the property is a localized string.
      */
-    isLocalizedString?: pulumi.Input<boolean>;
+    isLocalizedString?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the property is a name or a part of name.
      */
-    isName?: pulumi.Input<boolean>;
+    isName?: pulumi.Input<boolean | undefined>;
     /**
      * Whether property value is required on instances, IsRequired field only for Interaction. Profile Instance will not check for required field.
      */
-    isRequired?: pulumi.Input<boolean>;
+    isRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Max length of string. Used only if type is string.
      */
-    maxLength?: pulumi.Input<number>;
+    maxLength?: pulumi.Input<number | undefined>;
     /**
      * The ID associated with the property.
      */
-    propertyId?: pulumi.Input<string>;
+    propertyId?: pulumi.Input<string | undefined>;
     /**
      * URL encoded schema.org item prop link for the property.
      */
-    schemaItemPropLink?: pulumi.Input<string>;
+    schemaItemPropLink?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -369,7 +369,7 @@ export interface RelationshipLinkFieldMappingArgs {
     /**
      * Link type.
      */
-    linkType?: pulumi.Input<enums.LinkTypes>;
+    linkType?: pulumi.Input<enums.LinkTypes | undefined>;
     /**
      * The field name on the Relationship metadata.
      */
@@ -407,11 +407,11 @@ export interface ResourceSetDescriptionArgs {
     /**
      * The elements included in the set.
      */
-    elements?: pulumi.Input<pulumi.Input<string>[]>;
+    elements?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The elements that are not included in the set, in case elements contains '*' indicating 'all'.
      */
-    exceptions?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -421,11 +421,11 @@ export interface StrongIdArgs {
     /**
      * Localized descriptions.
      */
-    description?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    description?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Localized display name.
      */
-    displayName?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    displayName?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The properties which make up the unique ID.
      */
@@ -443,7 +443,7 @@ export interface TypePropertiesMappingArgs {
     /**
      * Link type.
      */
-    linkType?: pulumi.Input<enums.LinkTypes>;
+    linkType?: pulumi.Input<enums.LinkTypes | undefined>;
     /**
      *  Property name on the source Entity Type.
      */

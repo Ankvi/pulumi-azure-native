@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
  *
- * Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview, 2026-01-01-preview, 2026-06-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PolicySetDefinitionVersionAtManagementGroup extends pulumi.CustomResource {
     /**
@@ -134,7 +134,7 @@ export class PolicySetDefinitionVersionAtManagementGroup extends pulumi.CustomRe
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20230401:PolicySetDefinitionVersionAtManagementGroup" }, { type: "azure-native:authorization/v20240501:PolicySetDefinitionVersionAtManagementGroup" }, { type: "azure-native:authorization/v20250101:PolicySetDefinitionVersionAtManagementGroup" }, { type: "azure-native:authorization/v20250301:PolicySetDefinitionVersionAtManagementGroup" }, { type: "azure-native:authorization/v20251101:PolicySetDefinitionVersionAtManagementGroup" }, { type: "azure-native:authorization/v20251201preview:PolicySetDefinitionVersionAtManagementGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20230401:PolicySetDefinitionVersionAtManagementGroup" }, { type: "azure-native:authorization/v20240501:PolicySetDefinitionVersionAtManagementGroup" }, { type: "azure-native:authorization/v20250101:PolicySetDefinitionVersionAtManagementGroup" }, { type: "azure-native:authorization/v20250301:PolicySetDefinitionVersionAtManagementGroup" }, { type: "azure-native:authorization/v20251101:PolicySetDefinitionVersionAtManagementGroup" }, { type: "azure-native:authorization/v20251201preview:PolicySetDefinitionVersionAtManagementGroup" }, { type: "azure-native:authorization/v20260101preview:PolicySetDefinitionVersionAtManagementGroup" }, { type: "azure-native:authorization/v20260601:PolicySetDefinitionVersionAtManagementGroup" }, { type: "azure-native:authorization/v20260701:PolicySetDefinitionVersionAtManagementGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicySetDefinitionVersionAtManagementGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -147,11 +147,11 @@ export interface PolicySetDefinitionVersionAtManagementGroupArgs {
     /**
      * The policy set definition description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the policy set definition.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the management group. The name is case insensitive.
      */
@@ -159,19 +159,19 @@ export interface PolicySetDefinitionVersionAtManagementGroupArgs {
     /**
      * The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
      */
-    metadata?: any;
+    metadata?: any | undefined;
     /**
      * The policy set definition parameters that can be used in policy definition references.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterDefinitionsValueArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterDefinitionsValueArgs>} | undefined>;
     /**
      * The metadata describing groups of policy definition references within the policy set definition.
      */
-    policyDefinitionGroups?: pulumi.Input<pulumi.Input<types.inputs.PolicyDefinitionGroupArgs>[]>;
+    policyDefinitionGroups?: pulumi.Input<pulumi.Input<types.inputs.PolicyDefinitionGroupArgs>[] | undefined>;
     /**
      * The policy set definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
      */
-    policyDefinitionVersion?: pulumi.Input<string>;
+    policyDefinitionVersion?: pulumi.Input<string | undefined>;
     /**
      * An array of policy definition references.
      */
@@ -183,9 +183,9 @@ export interface PolicySetDefinitionVersionAtManagementGroupArgs {
     /**
      * The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
      */
-    policyType?: pulumi.Input<string | types.enums.PolicyType>;
+    policyType?: pulumi.Input<string | types.enums.PolicyType | undefined>;
     /**
      * The policy set definition version in #.#.# format.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

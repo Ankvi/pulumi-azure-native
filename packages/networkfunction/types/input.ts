@@ -7,11 +7,11 @@ export interface EmissionPoliciesPropertiesFormatArgs {
     /**
      * Emission policy destinations.
      */
-    emissionDestinations?: pulumi.Input<pulumi.Input<EmissionPolicyDestinationArgs>[]>;
+    emissionDestinations?: pulumi.Input<pulumi.Input<EmissionPolicyDestinationArgs>[] | undefined>;
     /**
      * Emission format type.
      */
-    emissionType?: pulumi.Input<string | enums.EmissionType>;
+    emissionType?: pulumi.Input<string | enums.EmissionType | undefined>;
 }
 
 /**
@@ -21,7 +21,7 @@ export interface EmissionPolicyDestinationArgs {
     /**
      * Emission destination type.
      */
-    destinationType?: pulumi.Input<string | enums.DestinationType>;
+    destinationType?: pulumi.Input<string | enums.DestinationType | undefined>;
 }
 
 /**
@@ -31,11 +31,11 @@ export interface IngestionPolicyPropertiesFormatArgs {
     /**
      * Ingestion Sources.
      */
-    ingestionSources?: pulumi.Input<pulumi.Input<IngestionSourcesPropertiesFormatArgs>[]>;
+    ingestionSources?: pulumi.Input<pulumi.Input<IngestionSourcesPropertiesFormatArgs>[] | undefined>;
     /**
      * The ingestion type.
      */
-    ingestionType?: pulumi.Input<string | enums.IngestionType>;
+    ingestionType?: pulumi.Input<string | enums.IngestionType | undefined>;
 }
 
 /**
@@ -45,9 +45,9 @@ export interface IngestionSourcesPropertiesFormatArgs {
     /**
      * Resource ID.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Ingestion source type.
      */
-    sourceType?: pulumi.Input<string | enums.SourceType>;
+    sourceType?: pulumi.Input<string | enums.SourceType | undefined>;
 }

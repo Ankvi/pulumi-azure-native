@@ -111,19 +111,19 @@ export interface SiteArgs {
     /**
      * eTag for concurrency control.
      */
-    eTag?: pulumi.Input<string>;
+    eTag?: pulumi.Input<string | undefined>;
     /**
      * Azure location in which Sites is created.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the VMware site.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Nested properties of VMWare site.
      */
-    properties?: pulumi.Input<types.inputs.SitePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SitePropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -131,6 +131,6 @@ export interface SiteArgs {
     /**
      * Site name.
      */
-    siteName?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    siteName?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -7,19 +7,19 @@ export interface AddressArgs {
     /**
      * The address line1.
      */
-    addressLine1?: pulumi.Input<string>;
+    addressLine1?: pulumi.Input<string | undefined>;
     /**
      * The address line2.
      */
-    addressLine2?: pulumi.Input<string>;
+    addressLine2?: pulumi.Input<string | undefined>;
     /**
      * The address line3.
      */
-    addressLine3?: pulumi.Input<string>;
+    addressLine3?: pulumi.Input<string | undefined>;
     /**
      * The city name.
      */
-    city?: pulumi.Input<string>;
+    city?: pulumi.Input<string | undefined>;
     /**
      * The country name.
      */
@@ -27,11 +27,11 @@ export interface AddressArgs {
     /**
      * The postal code.
      */
-    postalCode?: pulumi.Input<string>;
+    postalCode?: pulumi.Input<string | undefined>;
     /**
      * The state name.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -45,7 +45,7 @@ export interface AsymmetricEncryptedSecretArgs {
     /**
      * Thumbprint certificate used to encrypt \"Value\". If the value is unencrypted, it will be null.
      */
-    encryptionCertThumbprint?: pulumi.Input<string>;
+    encryptionCertThumbprint?: pulumi.Input<string | undefined>;
     /**
      * The value of the secret.
      */
@@ -59,7 +59,7 @@ export interface AuthenticationArgs {
     /**
      * Symmetric key for authentication.
      */
-    symmetricKey?: pulumi.Input<SymmetricKeyArgs>;
+    symmetricKey?: pulumi.Input<SymmetricKeyArgs | undefined>;
 }
 
 /**
@@ -137,7 +137,7 @@ export interface DataResidencyArgs {
     /**
      * DataResidencyType enum
      */
-    type?: pulumi.Input<string | enums.DataResidencyType>;
+    type?: pulumi.Input<string | enums.DataResidencyType | undefined>;
 }
 
 /**
@@ -161,7 +161,7 @@ export interface ImageRepositoryCredentialArgs {
     /**
      * Repository user password.
      */
-    password?: pulumi.Input<AsymmetricEncryptedSecretArgs>;
+    password?: pulumi.Input<AsymmetricEncryptedSecretArgs | undefined>;
     /**
      * Repository user name.
      */
@@ -175,7 +175,7 @@ export interface IoTDeviceInfoArgs {
     /**
      * Encrypted IoT device/IoT edge device connection string.
      */
-    authentication?: pulumi.Input<AuthenticationArgs>;
+    authentication?: pulumi.Input<AuthenticationArgs | undefined>;
     /**
      * ID of the IoT device/edge device.
      */
@@ -187,7 +187,7 @@ export interface IoTDeviceInfoArgs {
     /**
      * Id for the IoT hub associated to the device.
      */
-    ioTHostHubId?: pulumi.Input<string>;
+    ioTHostHubId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -201,7 +201,7 @@ export interface IoTEdgeAgentInfoArgs {
     /**
      * Image repository details.
      */
-    imageRepository?: pulumi.Input<ImageRepositoryCredentialArgs>;
+    imageRepository?: pulumi.Input<ImageRepositoryCredentialArgs | undefined>;
     /**
      * Image Tag.
      */
@@ -239,7 +239,7 @@ export interface KubernetesRoleResourcesArgs {
     /**
      * Kubernetes role storage resource
      */
-    storage?: pulumi.Input<KubernetesRoleStorageArgs>;
+    storage?: pulumi.Input<KubernetesRoleStorageArgs | undefined>;
 }
 
 /**
@@ -249,7 +249,7 @@ export interface KubernetesRoleStorageArgs {
     /**
      * Mount points of shares in role(s).
      */
-    endpoints?: pulumi.Input<pulumi.Input<MountPointMapArgs>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<MountPointMapArgs>[] | undefined>;
 }
 
 /**
@@ -263,11 +263,11 @@ export interface MetricConfigurationArgs {
     /**
      * The MDM account to which the counters should be pushed.
      */
-    mdmAccount?: pulumi.Input<string>;
+    mdmAccount?: pulumi.Input<string | undefined>;
     /**
      * The MDM namespace to which the counters should be pushed. This is required if MDMAccount is specified
      */
-    metricNameSpace?: pulumi.Input<string>;
+    metricNameSpace?: pulumi.Input<string | undefined>;
     /**
      * The Resource ID on which the metrics should be pushed.
      */
@@ -281,15 +281,15 @@ export interface MetricCounterArgs {
     /**
      * The additional dimensions to be added to metric.
      */
-    additionalDimensions?: pulumi.Input<pulumi.Input<MetricDimensionArgs>[]>;
+    additionalDimensions?: pulumi.Input<pulumi.Input<MetricDimensionArgs>[] | undefined>;
     /**
      * The dimension filter.
      */
-    dimensionFilter?: pulumi.Input<pulumi.Input<MetricDimensionArgs>[]>;
+    dimensionFilter?: pulumi.Input<pulumi.Input<MetricDimensionArgs>[] | undefined>;
     /**
      * The instance from which counter should be collected.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The counter name.
      */
@@ -345,7 +345,7 @@ export interface PeriodicTimerSourceInfoArgs {
     /**
      * Topic where periodic events are published to IoT device.
      */
-    topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -355,19 +355,19 @@ export interface RefreshDetailsArgs {
     /**
      * Indicates the relative path of the error xml for the last refresh job on this particular share or container, if any. This could be a failed job or a successful job.
      */
-    errorManifestFile?: pulumi.Input<string>;
+    errorManifestFile?: pulumi.Input<string | undefined>;
     /**
      * If a refresh job is currently in progress on this share or container, this field indicates the ARM resource ID of that job. The field is empty if no job is in progress.
      */
-    inProgressRefreshJobId?: pulumi.Input<string>;
+    inProgressRefreshJobId?: pulumi.Input<string | undefined>;
     /**
      * Indicates the completed time for the last refresh job on this particular share or container, if any.This could be a failed job or a successful job.
      */
-    lastCompletedRefreshJobTimeInUTC?: pulumi.Input<string>;
+    lastCompletedRefreshJobTimeInUTC?: pulumi.Input<string | undefined>;
     /**
      * Indicates the id of the last refresh job on this particular share or container,if any. This could be a failed job or a successful job.
      */
-    lastJob?: pulumi.Input<string>;
+    lastJob?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -377,7 +377,7 @@ export interface ResourceIdentityArgs {
     /**
      * Identity type
      */
-    type?: pulumi.Input<string | enums.MsiIdentityType>;
+    type?: pulumi.Input<string | enums.MsiIdentityType | undefined>;
 }
 
 /**
@@ -397,11 +397,11 @@ export interface SkuArgs {
     /**
      * SKU name.
      */
-    name?: pulumi.Input<string | enums.SkuName>;
+    name?: pulumi.Input<string | enums.SkuName | undefined>;
     /**
      * The SKU tier. This is based on the SKU name.
      */
-    tier?: pulumi.Input<string | enums.SkuTier>;
+    tier?: pulumi.Input<string | enums.SkuTier | undefined>;
 }
 
 /**
@@ -411,7 +411,7 @@ export interface SymmetricKeyArgs {
     /**
      * Connection string based on the symmetric key.
      */
-    connectionString?: pulumi.Input<AsymmetricEncryptedSecretArgs>;
+    connectionString?: pulumi.Input<AsymmetricEncryptedSecretArgs | undefined>;
 }
 
 /**

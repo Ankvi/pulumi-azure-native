@@ -7,11 +7,11 @@ export interface CustomerManagedKeyEncryptionArgs {
     /**
      * All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
      */
-    keyEncryptionKeyIdentity?: pulumi.Input<CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs>;
+    keyEncryptionKeyIdentity?: pulumi.Input<CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs | undefined>;
     /**
      * key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
      */
-    keyEncryptionKeyUrl?: pulumi.Input<string>;
+    keyEncryptionKeyUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -21,15 +21,15 @@ export interface CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs {
     /**
      * delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
      */
-    delegatedIdentityClientId?: pulumi.Input<string>;
+    delegatedIdentityClientId?: pulumi.Input<string | undefined>;
     /**
      * Values can be systemAssignedIdentity or userAssignedIdentity
      */
-    identityType?: pulumi.Input<string | enums.IdentityType>;
+    identityType?: pulumi.Input<string | enums.IdentityType | undefined>;
     /**
      * user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity.
      */
-    userAssignedIdentityResourceId?: pulumi.Input<string>;
+    userAssignedIdentityResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -39,14 +39,14 @@ export interface DevCenterProjectCatalogSettingsArgs {
     /**
      * Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
      */
-    catalogItemSyncEnableStatus?: pulumi.Input<string | enums.CatalogItemSyncEnableStatus>;
+    catalogItemSyncEnableStatus?: pulumi.Input<string | enums.CatalogItemSyncEnableStatus | undefined>;
 }
 
 export interface EncryptionArgs {
     /**
      * All Customer-managed key encryption properties for the resource.
      */
-    customerManagedKeyEncryption?: pulumi.Input<CustomerManagedKeyEncryptionArgs>;
+    customerManagedKeyEncryption?: pulumi.Input<CustomerManagedKeyEncryptionArgs | undefined>;
 }
 
 /**
@@ -56,19 +56,19 @@ export interface GitCatalogArgs {
     /**
      * Git branch.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * The folder where the catalog items can be found inside the repository.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * A reference to the Key Vault secret containing a security token to authenticate to a Git repository.
      */
-    secretIdentifier?: pulumi.Input<string>;
+    secretIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Git URI.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -78,7 +78,7 @@ export interface ImageReferenceArgs {
     /**
      * Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -92,7 +92,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -102,7 +102,7 @@ export interface ProjectCatalogSettingsArgs {
     /**
      * Indicates catalog item types that can be synced.
      */
-    catalogItemSyncTypes?: pulumi.Input<pulumi.Input<string | enums.CatalogItemType>[]>;
+    catalogItemSyncTypes?: pulumi.Input<pulumi.Input<string | enums.CatalogItemType>[] | undefined>;
 }
 
 /**
@@ -112,7 +112,7 @@ export interface ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentArgs
     /**
      * A map of roles to assign to the environment creator.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -122,11 +122,11 @@ export interface ResourcePolicyArgs {
     /**
      * Optional. When specified, this expression is used to filter the resources.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * Resources that are included and shared as a part of a project policy.
      */
-    resources?: pulumi.Input<string>;
+    resources?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -136,23 +136,23 @@ export interface SkuArgs {
     /**
      * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * If the service has different generations of hardware, for the same SKU, then that can be captured here.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * The name of the SKU. E.g. P3. It is typically a letter+number code
      */
     name: pulumi.Input<string>;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
      */
-    tier?: pulumi.Input<enums.SkuTier>;
+    tier?: pulumi.Input<enums.SkuTier | undefined>;
 }
 
 /**
@@ -162,11 +162,11 @@ export interface StopOnDisconnectConfigurationArgs {
     /**
      * The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
      */
-    gracePeriodMinutes?: pulumi.Input<number>;
+    gracePeriodMinutes?: pulumi.Input<number | undefined>;
     /**
      * Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
      */
-    status?: pulumi.Input<string | enums.StopOnDisconnectEnableStatus>;
+    status?: pulumi.Input<string | enums.StopOnDisconnectEnableStatus | undefined>;
 }
 
 /**
@@ -176,5 +176,5 @@ export interface UserRoleAssignmentArgs {
     /**
      * A map of roles to assign to the parent user.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

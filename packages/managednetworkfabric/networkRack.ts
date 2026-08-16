@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
  *
- * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkRack extends pulumi.CustomResource {
     /**
@@ -124,7 +124,7 @@ export class NetworkRack extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:NetworkRack" }, { type: "azure-native:managednetworkfabric/v20230615:NetworkRack" }, { type: "azure-native:managednetworkfabric/v20240215preview:NetworkRack" }, { type: "azure-native:managednetworkfabric/v20240615preview:NetworkRack" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:NetworkRack" }, { type: "azure-native:managednetworkfabric/v20230615:NetworkRack" }, { type: "azure-native:managednetworkfabric/v20240215preview:NetworkRack" }, { type: "azure-native:managednetworkfabric/v20240615preview:NetworkRack" }, { type: "azure-native:managednetworkfabric/v20250715:NetworkRack" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkRack.__pulumiType, name, resourceInputs, opts);
     }
@@ -137,11 +137,11 @@ export interface NetworkRackArgs {
     /**
      * Switch configuration description.
      */
-    annotation?: pulumi.Input<string>;
+    annotation?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * ARM resource ID of the Network Fabric.
      */
@@ -149,11 +149,11 @@ export interface NetworkRackArgs {
     /**
      * Name of the Network Rack.
      */
-    networkRackName?: pulumi.Input<string>;
+    networkRackName?: pulumi.Input<string | undefined>;
     /**
      * Network Rack SKU name.
      */
-    networkRackType?: pulumi.Input<string | types.enums.NetworkRackType>;
+    networkRackType?: pulumi.Input<string | types.enums.NetworkRackType | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -161,5 +161,5 @@ export interface NetworkRackArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

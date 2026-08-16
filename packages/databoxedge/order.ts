@@ -170,9 +170,9 @@ export interface OrderArgs {
     /**
      * ShipmentType of the order
      */
-    shipmentType?: pulumi.Input<string | types.enums.ShipmentType>;
+    shipmentType?: pulumi.Input<string | types.enums.ShipmentType | undefined>;
     /**
      * The shipping address.
      */
-    shippingAddress?: pulumi.Input<types.inputs.AddressArgs>;
+    shippingAddress?: pulumi.Input<types.inputs.AddressArgs | undefined>;
 }

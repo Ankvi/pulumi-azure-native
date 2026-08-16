@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
  *
- * Other available API versions: 2024-09-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-09-01-preview, 2024-11-01-preview, 2026-06-01-preview, 2026-07-01, 2026-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NGroup extends pulumi.CustomResource {
     /**
@@ -52,11 +52,11 @@ export class NGroup extends pulumi.CustomResource {
      */
     declare public readonly identity: pulumi.Output<types.outputs.NGroupIdentityResponse | undefined>;
     /**
-     * The resource location.
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
-     * The resource name.
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -68,15 +68,15 @@ export class NGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * The resource tags.
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -84,7 +84,7 @@ export class NGroup extends pulumi.CustomResource {
      */
     declare public readonly updateProfile: pulumi.Output<types.outputs.UpdateProfileResponse | undefined>;
     /**
-     * The zones for the container group.
+     * The availability zones.
      */
     declare public readonly zones: pulumi.Output<string[] | undefined>;
 
@@ -133,7 +133,7 @@ export class NGroup extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerinstance/v20240901preview:NGroup" }, { type: "azure-native:containerinstance/v20241101preview:NGroup" }, { type: "azure-native:containerinstance/v20250901:NGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerinstance/v20240901preview:NGroup" }, { type: "azure-native:containerinstance/v20241101preview:NGroup" }, { type: "azure-native:containerinstance/v20250901:NGroup" }, { type: "azure-native:containerinstance/v20260601preview:NGroup" }, { type: "azure-native:containerinstance/v20260701:NGroup" }, { type: "azure-native:containerinstance/v20260801preview:NGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -146,41 +146,41 @@ export interface NGroupArgs {
     /**
      * The Container Group Profiles that could be used in the NGroups resource.
      */
-    containerGroupProfiles?: pulumi.Input<pulumi.Input<types.inputs.ContainerGroupProfileStubArgs>[]>;
+    containerGroupProfiles?: pulumi.Input<pulumi.Input<types.inputs.ContainerGroupProfileStubArgs>[] | undefined>;
     /**
      * The elastic profile.
      */
-    elasticProfile?: pulumi.Input<types.inputs.ElasticProfileArgs>;
+    elasticProfile?: pulumi.Input<types.inputs.ElasticProfileArgs | undefined>;
     /**
      * The identity of the NGroup, if configured.
      */
-    identity?: pulumi.Input<types.inputs.NGroupIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.NGroupIdentityArgs | undefined>;
     /**
-     * The resource location.
+     * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The NGroups name.
      */
-    ngroupsName?: pulumi.Input<string>;
+    ngroupsName?: pulumi.Input<string | undefined>;
     /**
      * Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
      */
-    placementProfile?: pulumi.Input<types.inputs.PlacementProfileArgs>;
+    placementProfile?: pulumi.Input<types.inputs.PlacementProfileArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The resource tags.
+     * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Used by the customer to specify the way to update the Container Groups in NGroup.
      */
-    updateProfile?: pulumi.Input<types.inputs.UpdateProfileArgs>;
+    updateProfile?: pulumi.Input<types.inputs.UpdateProfileArgs | undefined>;
     /**
-     * The zones for the container group.
+     * The availability zones.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

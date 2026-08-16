@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview, 2025-12-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Route extends pulumi.CustomResource {
     /**
@@ -167,7 +167,7 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:Route" }, { type: "azure-native:cdn/v20210601:Route" }, { type: "azure-native:cdn/v20220501preview:Route" }, { type: "azure-native:cdn/v20221101preview:Route" }, { type: "azure-native:cdn/v20230501:Route" }, { type: "azure-native:cdn/v20230701preview:Route" }, { type: "azure-native:cdn/v20240201:Route" }, { type: "azure-native:cdn/v20240501preview:Route" }, { type: "azure-native:cdn/v20240601preview:Route" }, { type: "azure-native:cdn/v20240901:Route" }, { type: "azure-native:cdn/v20250101preview:Route" }, { type: "azure-native:cdn/v20250415:Route" }, { type: "azure-native:cdn/v20250601:Route" }, { type: "azure-native:cdn/v20250701preview:Route" }, { type: "azure-native:cdn/v20250901preview:Route" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:Route" }, { type: "azure-native:cdn/v20210601:Route" }, { type: "azure-native:cdn/v20220501preview:Route" }, { type: "azure-native:cdn/v20221101preview:Route" }, { type: "azure-native:cdn/v20230501:Route" }, { type: "azure-native:cdn/v20230701preview:Route" }, { type: "azure-native:cdn/v20240201:Route" }, { type: "azure-native:cdn/v20240501preview:Route" }, { type: "azure-native:cdn/v20240601preview:Route" }, { type: "azure-native:cdn/v20240901:Route" }, { type: "azure-native:cdn/v20250101preview:Route" }, { type: "azure-native:cdn/v20250415:Route" }, { type: "azure-native:cdn/v20250601:Route" }, { type: "azure-native:cdn/v20250701preview:Route" }, { type: "azure-native:cdn/v20250901preview:Route" }, { type: "azure-native:cdn/v20251201:Route" }, { type: "azure-native:cdn/v20260401preview:Route" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Route.__pulumiType, name, resourceInputs, opts);
     }
@@ -180,15 +180,15 @@ export interface RouteArgs {
     /**
      * The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object.
      */
-    cacheConfiguration?: pulumi.Input<types.inputs.AfdRouteCacheConfigurationArgs>;
+    cacheConfiguration?: pulumi.Input<types.inputs.AfdRouteCacheConfigurationArgs | undefined>;
     /**
      * Domains referenced by this endpoint.
      */
-    customDomains?: pulumi.Input<pulumi.Input<types.inputs.ActivatedResourceReferenceArgs>[]>;
+    customDomains?: pulumi.Input<pulumi.Input<types.inputs.ActivatedResourceReferenceArgs>[] | undefined>;
     /**
      * Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
      */
-    enabledState?: pulumi.Input<string | types.enums.EnabledState>;
+    enabledState?: pulumi.Input<string | types.enums.EnabledState | undefined>;
     /**
      * Name of the endpoint under the profile which is unique globally.
      */
@@ -196,27 +196,27 @@ export interface RouteArgs {
     /**
      * Protocol this rule will use when forwarding traffic to backends.
      */
-    forwardingProtocol?: pulumi.Input<string | types.enums.ForwardingProtocol>;
+    forwardingProtocol?: pulumi.Input<string | types.enums.ForwardingProtocol | undefined>;
     /**
      * Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
      */
-    httpsRedirect?: pulumi.Input<string | types.enums.HttpsRedirect>;
+    httpsRedirect?: pulumi.Input<string | types.enums.HttpsRedirect | undefined>;
     /**
      * whether this route will be linked to the default endpoint domain.
      */
-    linkToDefaultDomain?: pulumi.Input<string | types.enums.LinkToDefaultDomain>;
+    linkToDefaultDomain?: pulumi.Input<string | types.enums.LinkToDefaultDomain | undefined>;
     /**
      * A reference to the origin group.
      */
-    originGroup?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
+    originGroup?: pulumi.Input<types.inputs.ResourceReferenceArgs | undefined>;
     /**
      * A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
      */
-    originPath?: pulumi.Input<string>;
+    originPath?: pulumi.Input<string | undefined>;
     /**
      * The route patterns of the rule.
      */
-    patternsToMatch?: pulumi.Input<pulumi.Input<string>[]>;
+    patternsToMatch?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
@@ -228,13 +228,13 @@ export interface RouteArgs {
     /**
      * Name of the routing rule.
      */
-    routeName?: pulumi.Input<string>;
+    routeName?: pulumi.Input<string | undefined>;
     /**
      * rule sets referenced by this endpoint.
      */
-    ruleSets?: pulumi.Input<pulumi.Input<types.inputs.ResourceReferenceArgs>[]>;
+    ruleSets?: pulumi.Input<pulumi.Input<types.inputs.ResourceReferenceArgs>[] | undefined>;
     /**
      * List of supported protocols for this route.
      */
-    supportedProtocols?: pulumi.Input<pulumi.Input<string | types.enums.AFDEndpointProtocols>[]>;
+    supportedProtocols?: pulumi.Input<pulumi.Input<string | types.enums.AFDEndpointProtocols>[] | undefined>;
 }

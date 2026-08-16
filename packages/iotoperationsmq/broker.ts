@@ -150,14 +150,14 @@ export class Broker extends pulumi.CustomResource {
             resourceInputs["brokerImage"] = args?.brokerImage;
             resourceInputs["brokerName"] = args?.brokerName;
             resourceInputs["brokerNodeTolerations"] = args?.brokerNodeTolerations;
-            resourceInputs["cardinality"] = args ? (args.cardinality ? pulumi.output(args.cardinality).apply(types.inputs.cardinalityArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["diagnostics"] = args ? (args.diagnostics ? pulumi.output(args.diagnostics).apply(types.inputs.brokerDiagnosticsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["cardinality"] = args ? pulumi.output(args.cardinality).apply(v => v === undefined ? undefined : types.inputs.cardinalityArgsProvideDefaults(v)) : undefined;
+            resourceInputs["diagnostics"] = args ? pulumi.output(args.diagnostics).apply(v => v === undefined ? undefined : types.inputs.brokerDiagnosticsArgsProvideDefaults(v)) : undefined;
             resourceInputs["diskBackedMessageBufferSettings"] = args?.diskBackedMessageBufferSettings;
             resourceInputs["encryptInternalTraffic"] = (args?.encryptInternalTraffic) ?? true;
             resourceInputs["extendedLocation"] = args?.extendedLocation;
             resourceInputs["healthManagerImage"] = args?.healthManagerImage;
             resourceInputs["healthManagerNodeTolerations"] = args?.healthManagerNodeTolerations;
-            resourceInputs["internalCerts"] = args ? (args.internalCerts ? pulumi.output(args.internalCerts).apply(types.inputs.certManagerCertOptionsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["internalCerts"] = args ? pulumi.output(args.internalCerts).apply(v => v === undefined ? undefined : types.inputs.certManagerCertOptionsArgsProvideDefaults(v)) : undefined;
             resourceInputs["location"] = args?.location;
             resourceInputs["memoryProfile"] = (args?.memoryProfile) ?? "medium";
             resourceInputs["mode"] = args?.mode;
@@ -213,27 +213,27 @@ export interface BrokerArgs {
     /**
      * Name of MQ broker resource
      */
-    brokerName?: pulumi.Input<string>;
+    brokerName?: pulumi.Input<string | undefined>;
     /**
      * The details of Node Tolerations for Broker Pods.
      */
-    brokerNodeTolerations?: pulumi.Input<types.inputs.NodeTolerationsArgs>;
+    brokerNodeTolerations?: pulumi.Input<types.inputs.NodeTolerationsArgs | undefined>;
     /**
      * The cardinality details of the broker.
      */
-    cardinality?: pulumi.Input<types.inputs.CardinalityArgs>;
+    cardinality?: pulumi.Input<types.inputs.CardinalityArgs | undefined>;
     /**
      * The diagnostic details of the broker deployment.
      */
-    diagnostics?: pulumi.Input<types.inputs.BrokerDiagnosticsArgs>;
+    diagnostics?: pulumi.Input<types.inputs.BrokerDiagnosticsArgs | undefined>;
     /**
      * The settings of the disk-backed message buffer.
      */
-    diskBackedMessageBufferSettings?: pulumi.Input<types.inputs.DiskBackedMessageBufferSettingsArgs>;
+    diskBackedMessageBufferSettings?: pulumi.Input<types.inputs.DiskBackedMessageBufferSettingsArgs | undefined>;
     /**
      * The setting to enable or disable encryption of internal Traffic.
      */
-    encryptInternalTraffic?: pulumi.Input<boolean>;
+    encryptInternalTraffic?: pulumi.Input<boolean | undefined>;
     /**
      * Extended Location
      */
@@ -245,19 +245,19 @@ export interface BrokerArgs {
     /**
      * The details of Node Tolerations for Health Manager Pods.
      */
-    healthManagerNodeTolerations?: pulumi.Input<types.inputs.NodeTolerationsArgs>;
+    healthManagerNodeTolerations?: pulumi.Input<types.inputs.NodeTolerationsArgs | undefined>;
     /**
      * Details of the internal CA cert that will be used to secure communication between pods.
      */
-    internalCerts?: pulumi.Input<types.inputs.CertManagerCertOptionsArgs>;
+    internalCerts?: pulumi.Input<types.inputs.CertManagerCertOptionsArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Memory profile of broker.
      */
-    memoryProfile?: pulumi.Input<string | types.enums.BrokerMemoryProfile>;
+    memoryProfile?: pulumi.Input<string | types.enums.BrokerMemoryProfile | undefined>;
     /**
      * The Running Mode of the Broker Deployment.
      */
@@ -273,5 +273,5 @@ export interface BrokerArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

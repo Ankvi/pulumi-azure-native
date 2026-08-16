@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
  *
- * Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Topic extends pulumi.CustomResource {
     /**
@@ -145,7 +145,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20240701:Topic" }, { type: "azure-native:confluent/v20250717preview:Topic" }, { type: "azure-native:confluent/v20250818preview:Topic" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20240701:Topic" }, { type: "azure-native:confluent/v20250717preview:Topic" }, { type: "azure-native:confluent/v20250818preview:Topic" }, { type: "azure-native:confluent/v20260501preview:Topic" }, { type: "azure-native:confluent/v20260602preview:Topic" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Topic.__pulumiType, name, resourceInputs, opts);
     }
@@ -162,7 +162,7 @@ export interface TopicArgs {
     /**
      * Config Specification of the topic
      */
-    configs?: pulumi.Input<types.inputs.TopicsRelatedLinkArgs>;
+    configs?: pulumi.Input<types.inputs.TopicsRelatedLinkArgs | undefined>;
     /**
      * Confluent environment id
      */
@@ -170,15 +170,15 @@ export interface TopicArgs {
     /**
      * Input Config Specification of the topic
      */
-    inputConfigs?: pulumi.Input<pulumi.Input<types.inputs.TopicsInputConfigArgs>[]>;
+    inputConfigs?: pulumi.Input<pulumi.Input<types.inputs.TopicsInputConfigArgs>[] | undefined>;
     /**
      * Type of topic
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Metadata of the record
      */
-    metadata?: pulumi.Input<types.inputs.TopicMetadataEntityArgs>;
+    metadata?: pulumi.Input<types.inputs.TopicMetadataEntityArgs | undefined>;
     /**
      * Organization resource name
      */
@@ -186,19 +186,19 @@ export interface TopicArgs {
     /**
      * Partition Specification of the topic
      */
-    partitions?: pulumi.Input<types.inputs.TopicsRelatedLinkArgs>;
+    partitions?: pulumi.Input<types.inputs.TopicsRelatedLinkArgs | undefined>;
     /**
      * Partition count of the topic
      */
-    partitionsCount?: pulumi.Input<string>;
+    partitionsCount?: pulumi.Input<string | undefined>;
     /**
      * Partition Reassignment Specification of the topic
      */
-    partitionsReassignments?: pulumi.Input<types.inputs.TopicsRelatedLinkArgs>;
+    partitionsReassignments?: pulumi.Input<types.inputs.TopicsRelatedLinkArgs | undefined>;
     /**
      * Replication factor of the topic
      */
-    replicationFactor?: pulumi.Input<string>;
+    replicationFactor?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -206,9 +206,9 @@ export interface TopicArgs {
     /**
      * Topic Id returned by Confluent
      */
-    topicId?: pulumi.Input<string>;
+    topicId?: pulumi.Input<string | undefined>;
     /**
      * Confluent kafka or schema registry topic name
      */
-    topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string | undefined>;
 }

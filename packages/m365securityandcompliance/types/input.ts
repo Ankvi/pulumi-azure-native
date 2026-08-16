@@ -17,15 +17,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -45,15 +45,15 @@ export interface ServiceAuthenticationConfigurationInfoArgs {
     /**
      * The audience url for the service
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * The authority url for the service
      */
-    authority?: pulumi.Input<string>;
+    authority?: pulumi.Input<string | undefined>;
     /**
      * If the SMART on FHIR proxy is enabled
      */
-    smartProxyEnabled?: pulumi.Input<boolean>;
+    smartProxyEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -63,23 +63,23 @@ export interface ServiceCorsConfigurationInfoArgs {
     /**
      * If credentials are allowed via CORS.
      */
-    allowCredentials?: pulumi.Input<boolean>;
+    allowCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * The headers to be allowed via CORS.
      */
-    headers?: pulumi.Input<pulumi.Input<string>[]>;
+    headers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The max age to be allowed via CORS.
      */
-    maxAge?: pulumi.Input<number>;
+    maxAge?: pulumi.Input<number | undefined>;
     /**
      * The methods to be allowed via CORS.
      */
-    methods?: pulumi.Input<pulumi.Input<string>[]>;
+    methods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The origins to be allowed via CORS.
      */
-    origins?: pulumi.Input<pulumi.Input<string>[]>;
+    origins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -89,11 +89,11 @@ export interface ServiceCosmosDbConfigurationInfoArgs {
     /**
      * The URI of the customer-managed key for the backing database.
      */
-    keyVaultKeyUri?: pulumi.Input<string>;
+    keyVaultKeyUri?: pulumi.Input<string | undefined>;
     /**
      * The provisioned throughput for the backing database.
      */
-    offerThroughput?: pulumi.Input<number>;
+    offerThroughput?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -103,7 +103,7 @@ export interface ServiceExportConfigurationInfoArgs {
     /**
      * The name of the default export storage account.
      */
-    storageAccountName?: pulumi.Input<string>;
+    storageAccountName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -113,31 +113,31 @@ export interface ServicesPropertiesArgs {
     /**
      * The access policies of the service instance.
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<ServiceAccessPolicyEntryArgs>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<ServiceAccessPolicyEntryArgs>[] | undefined>;
     /**
      * The authentication configuration for the service instance.
      */
-    authenticationConfiguration?: pulumi.Input<ServiceAuthenticationConfigurationInfoArgs>;
+    authenticationConfiguration?: pulumi.Input<ServiceAuthenticationConfigurationInfoArgs | undefined>;
     /**
      * The settings for the CORS configuration of the service instance.
      */
-    corsConfiguration?: pulumi.Input<ServiceCorsConfigurationInfoArgs>;
+    corsConfiguration?: pulumi.Input<ServiceCorsConfigurationInfoArgs | undefined>;
     /**
      * The settings for the Cosmos DB database backing the service.
      */
-    cosmosDbConfiguration?: pulumi.Input<ServiceCosmosDbConfigurationInfoArgs>;
+    cosmosDbConfiguration?: pulumi.Input<ServiceCosmosDbConfigurationInfoArgs | undefined>;
     /**
      * The settings for the export operation of the service instance.
      */
-    exportConfiguration?: pulumi.Input<ServiceExportConfigurationInfoArgs>;
+    exportConfiguration?: pulumi.Input<ServiceExportConfigurationInfoArgs | undefined>;
     /**
      * The list of private endpoint connections that are set up for this resource.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<PrivateEndpointConnectionArgs>[] | undefined>;
     /**
      * Control permission for data plane traffic coming from public networks while private endpoint is enabled.
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess | undefined>;
 }
 
 /**
@@ -147,5 +147,5 @@ export interface ServicesResourceIdentityArgs {
     /**
      * Type of identity being specified, currently SystemAssigned and None are allowed.
      */
-    type?: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+    type?: pulumi.Input<string | enums.ManagedServiceIdentityType | undefined>;
 }

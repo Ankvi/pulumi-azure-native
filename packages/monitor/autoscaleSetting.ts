@@ -117,27 +117,27 @@ export interface AutoscaleSettingArgs {
     /**
      * The autoscale setting name.
      */
-    autoscaleSettingName?: pulumi.Input<string>;
+    autoscaleSettingName?: pulumi.Input<string | undefined>;
     /**
      * the enabled flag. Specifies whether automatic scaling is enabled for the resource. The default value is 'false'.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Resource location
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * the name of the autoscale setting.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * the collection of notifications.
      */
-    notifications?: pulumi.Input<pulumi.Input<types.inputs.AutoscaleNotificationArgs>[]>;
+    notifications?: pulumi.Input<pulumi.Input<types.inputs.AutoscaleNotificationArgs>[] | undefined>;
     /**
      * the predictive autoscale policy mode.
      */
-    predictiveAutoscalePolicy?: pulumi.Input<types.inputs.PredictiveAutoscalePolicyArgs>;
+    predictiveAutoscalePolicy?: pulumi.Input<types.inputs.PredictiveAutoscalePolicyArgs | undefined>;
     /**
      * the collection of automatic scaling profiles that specify different scaling parameters for different time periods. A maximum of 20 profiles can be specified.
      */
@@ -149,13 +149,13 @@ export interface AutoscaleSettingArgs {
     /**
      * Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * the location of the resource that the autoscale setting should be added to.
      */
-    targetResourceLocation?: pulumi.Input<string>;
+    targetResourceLocation?: pulumi.Input<string | undefined>;
     /**
      * the resource identifier of the resource that the autoscale setting should be added to.
      */
-    targetResourceUri?: pulumi.Input<string>;
+    targetResourceUri?: pulumi.Input<string | undefined>;
 }

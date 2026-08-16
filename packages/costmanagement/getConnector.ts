@@ -36,7 +36,7 @@ export interface GetConnectorResult {
     /**
      * Collection information
      */
-    readonly collection: types.outputs.ConnectorCollectionInfoResponse;
+    readonly collection: types.outputs.ConnectorCollectionInfoConnectorResponse;
     /**
      * Connector definition creation datetime
      */

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-09-01.
  *
- * Other available API versions: 2024-09-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-09-01-preview, 2024-11-01-preview, 2026-06-01-preview, 2026-07-01, 2026-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNGroup(args: GetNGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -44,7 +44,7 @@ export interface GetNGroupResult {
      */
     readonly elasticProfile?: types.outputs.ElasticProfileResponse;
     /**
-     * The resource id.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -52,11 +52,11 @@ export interface GetNGroupResult {
      */
     readonly identity?: types.outputs.NGroupIdentityResponse;
     /**
-     * The resource location.
+     * The geo-location where the resource lives
      */
     readonly location?: string;
     /**
-     * The resource name.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -68,15 +68,15 @@ export interface GetNGroupResult {
      */
     readonly provisioningState: string;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
-     * The resource tags.
+     * Resource tags.
      */
     readonly tags?: {[key: string]: string};
     /**
-     * The resource type.
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -84,7 +84,7 @@ export interface GetNGroupResult {
      */
     readonly updateProfile?: types.outputs.UpdateProfileResponse;
     /**
-     * The zones for the container group.
+     * The availability zones.
      */
     readonly zones?: string[];
 }
@@ -93,7 +93,7 @@ export interface GetNGroupResult {
  *
  * Uses Azure REST API version 2025-09-01.
  *
- * Other available API versions: 2024-09-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-09-01-preview, 2024-11-01-preview, 2026-06-01-preview, 2026-07-01, 2026-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getNGroupOutput(args: GetNGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

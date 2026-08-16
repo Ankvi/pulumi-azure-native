@@ -120,7 +120,7 @@ export class NspAssociation extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NspAssociation" }, { type: "azure-native:network/v20230701preview:NspAssociation" }, { type: "azure-native:network/v20230801preview:NspAssociation" }, { type: "azure-native:network/v20240601preview:NspAssociation" }, { type: "azure-native:network/v20240701:NspAssociation" }, { type: "azure-native:network/v20241001:NspAssociation" }, { type: "azure-native:network/v20250101:NspAssociation" }, { type: "azure-native:network/v20250301:NspAssociation" }, { type: "azure-native:network/v20250501:NspAssociation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NspAssociation" }, { type: "azure-native:network/v20230701preview:NspAssociation" }, { type: "azure-native:network/v20230801preview:NspAssociation" }, { type: "azure-native:network/v20240601preview:NspAssociation" }, { type: "azure-native:network/v20240701:NspAssociation" }, { type: "azure-native:network/v20241001:NspAssociation" }, { type: "azure-native:network/v20250101:NspAssociation" }, { type: "azure-native:network/v20250301:NspAssociation" }, { type: "azure-native:network/v20250501:NspAssociation" }, { type: "azure-native:network/v20250701:NspAssociation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NspAssociation.__pulumiType, name, resourceInputs, opts);
     }
@@ -133,23 +133,23 @@ export interface NspAssociationArgs {
     /**
      * Access mode on the association.
      */
-    accessMode?: pulumi.Input<string | types.enums.AssociationAccessMode>;
+    accessMode?: pulumi.Input<string | types.enums.AssociationAccessMode | undefined>;
     /**
      * The name of the NSP association.
      */
-    associationName?: pulumi.Input<string>;
+    associationName?: pulumi.Input<string | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the network security perimeter.
      */
@@ -157,11 +157,11 @@ export interface NspAssociationArgs {
     /**
      * The PaaS resource to be associated.
      */
-    privateLinkResource?: pulumi.Input<types.inputs.SubResourceArgs>;
+    privateLinkResource?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * Profile id to which the PaaS resource is associated.
      */
-    profile?: pulumi.Input<types.inputs.SubResourceArgs>;
+    profile?: pulumi.Input<types.inputs.SubResourceArgs | undefined>;
     /**
      * The name of the resource group.
      */
@@ -169,5 +169,5 @@ export interface NspAssociationArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

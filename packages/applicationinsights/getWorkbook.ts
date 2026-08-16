@@ -57,13 +57,13 @@ export interface GetWorkbookResult {
      */
     readonly etag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
      * Identity used for BYOS
      */
-    readonly identity?: types.outputs.WorkbookResourceResponseIdentity;
+    readonly identity?: types.outputs.WorkbookResourceIdentityResponse;
     /**
      * The kind of workbook. Only valid value is shared.
      */
@@ -93,7 +93,7 @@ export interface GetWorkbookResult {
      */
     readonly storageUri?: string;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
@@ -137,7 +137,7 @@ export interface GetWorkbookOutputArgs {
     /**
      * Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks.
      */
-    canFetchContent?: pulumi.Input<boolean>;
+    canFetchContent?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

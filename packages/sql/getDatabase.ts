@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01.
  *
- * Other available API versions: 2014-04-01, 2017-03-01-preview, 2017-10-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2014-04-01, 2017-03-01-preview, 2017-10-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -116,9 +116,9 @@ export interface GetDatabaseResult {
     readonly federatedClientId?: string;
     /**
      * Specifies the behavior when monthly free limits are exhausted for the free database.
-     * 
+     *
      * AutoPause: The database will be auto paused upon exhaustion of free limits for remainder of the month.
-     * 
+     *
      * BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed.
      */
     readonly freeLimitExhaustionBehavior?: string;
@@ -168,11 +168,11 @@ export interface GetDatabaseResult {
     readonly managedBy: string;
     /**
      * Whether or not customer controlled manual cutover needs to be done during Update Database operation to Hyperscale tier.
-     * 
+     *
      * This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier.
-     * 
+     *
      * When manualCutover is specified, the scaling operation will wait for user input to trigger cutover to Hyperscale database.
-     * 
+     *
      * To trigger cutover, please provide 'performCutover' parameter when the Scaling operation is in Waiting state.
      */
     readonly manualCutover?: boolean;
@@ -198,11 +198,11 @@ export interface GetDatabaseResult {
     readonly pausedDate: string;
     /**
      * To trigger customer controlled manual cutover during the wait state while Scaling operation is in progress.
-     * 
+     *
      * This property parameter is only applicable for scaling operations that are initiated along with 'manualCutover' parameter.
-     * 
+     *
      * This property is only applicable when scaling database from Business Critical/General Purpose/Premium/Standard tier to Hyperscale tier is already in progress.
-     * 
+     *
      * When performCutover is specified, the scaling operation will trigger cutover and perform role-change to Hyperscale database.
      */
     readonly performCutover?: boolean;
@@ -232,16 +232,16 @@ export interface GetDatabaseResult {
     readonly secondaryType?: string;
     /**
      * The database SKU.
-     * 
+     *
      * The list of SKUs may vary by region and support offer. To determine the SKUs (including the SKU name, tier/edition, family, and capacity) that are available to your subscription in an Azure region, use the `Capabilities_ListByLocation` REST API or one of the following commands:
-     * 
+     *
      * ```azurecli
      * az sql db list-editions -l <location> -o table
-     * ````
-     * 
+     * ```
+     *
      * ```powershell
      * Get-AzSqlServerServiceObjective -Location <location>
-     * ````
+     * ```
      */
     readonly sku?: types.outputs.SkuResponse;
     /**
@@ -270,7 +270,7 @@ export interface GetDatabaseResult {
  *
  * Uses Azure REST API version 2023-08-01.
  *
- * Other available API versions: 2014-04-01, 2017-03-01-preview, 2017-10-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2014-04-01, 2017-03-01-preview, 2017-10-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -291,11 +291,11 @@ export interface GetDatabaseOutputArgs {
     /**
      * The child resources to include in the response.
      */
-    expand?: pulumi.Input<string>;
+    expand?: pulumi.Input<string | undefined>;
     /**
      * An OData filter expression that filters elements in the collection.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

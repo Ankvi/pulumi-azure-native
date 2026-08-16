@@ -7,11 +7,11 @@ export interface DataPlaneProxyPropertiesArgs {
     /**
      * The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
      */
-    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode>;
+    authenticationMode?: pulumi.Input<string | enums.AuthenticationMode | undefined>;
     /**
      * The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
      */
-    privateLinkDelegation?: pulumi.Input<string | enums.PrivateLinkDelegation>;
+    privateLinkDelegation?: pulumi.Input<string | enums.PrivateLinkDelegation | undefined>;
 }
 
 /**
@@ -21,7 +21,7 @@ export interface EncryptionPropertiesArgs {
     /**
      * Key vault properties.
      */
-    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs | undefined>;
 }
 
 /**
@@ -31,11 +31,11 @@ export interface KeyVaultPropertiesArgs {
     /**
      * The client id of the identity which will be used to access key vault.
      */
-    identityClientId?: pulumi.Input<string>;
+    identityClientId?: pulumi.Input<string | undefined>;
     /**
      * The URI of the key vault key used to encrypt data.
      */
-    keyIdentifier?: pulumi.Input<string>;
+    keyIdentifier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -45,7 +45,7 @@ export interface PrivateEndpointArgs {
     /**
      * The resource Id for private endpoint
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -55,11 +55,11 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * The private link service connection description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The private link service connection status.
      */
-    status?: pulumi.Input<string | enums.ConnectionStatus>;
+    status?: pulumi.Input<string | enums.ConnectionStatus | undefined>;
 }
 
 /**
@@ -69,11 +69,11 @@ export interface ResourceIdentityArgs {
     /**
      * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
      */
-    type?: pulumi.Input<string | enums.IdentityType>;
+    type?: pulumi.Input<string | enums.IdentityType | undefined>;
     /**
      * The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

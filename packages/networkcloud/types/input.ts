@@ -7,11 +7,14 @@ export interface AadConfigurationArgs {
     adminGroupObjectIds: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+/**
+ * AccessBridgeSecurityRule captures an individual access rule enforced by the bridge.
+ */
 export interface AccessBridgeSecurityRuleArgs {
     /**
      * The user provided value describing this rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The direction of allowed network traffic based on the rule.
      */
@@ -19,11 +22,11 @@ export interface AccessBridgeSecurityRuleArgs {
     /**
      * The set of IPv4 addresses permitted as the source or destination of the security rule. For as single address, utilize a /32 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 10.10.10.10-10.10.10.20 or 10.10.10.10/24.
      */
-    ipv4Addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4Addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The set of IPv6 addresses permitted as the source or destination of the security rule. For as single address, utilize a /128 (CIDR notation). One or both Ipv4Addresses and Ipv6Addresses must be specified. Example formats: 2001:db8:abcd::1-2001:db8:abcd::ff or 2001:db8:abcd::1/64.
      */
-    ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6Addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The source or destination port or port range. Example 24562 or 24562-24570.
      */
@@ -45,11 +48,11 @@ export interface AdministratorConfigurationArgs {
     /**
      * The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.
      */
-    adminUsername?: pulumi.Input<string>;
+    adminUsername?: pulumi.Input<string | undefined>;
     /**
      * The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
      */
-    sshPublicKeys?: pulumi.Input<pulumi.Input<SshPublicKeyArgs>[]>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<SshPublicKeyArgs>[] | undefined>;
 }
 
 export interface AgentOptionsArgs {
@@ -60,7 +63,7 @@ export interface AgentOptionsArgs {
     /**
      * The size of the hugepages to allocate.
      */
-    hugepagesSize?: pulumi.Input<string | enums.HugepagesSize>;
+    hugepagesSize?: pulumi.Input<string | enums.HugepagesSize | undefined>;
 }
 /**
  * agentOptionsArgsProvideDefaults sets the appropriate defaults for AgentOptionsArgs
@@ -76,41 +79,55 @@ export interface AgentPoolUpgradeSettingsArgs {
     /**
      * The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.
      */
-    drainTimeout?: pulumi.Input<number>;
+    drainTimeout?: pulumi.Input<number | undefined>;
     /**
      * The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
      */
-    maxSurge?: pulumi.Input<string>;
+    maxSurge?: pulumi.Input<string | undefined>;
     /**
      * The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
      */
-    maxUnavailable?: pulumi.Input<string>;
+    maxUnavailable?: pulumi.Input<string | undefined>;
 }
 
 export interface AnalyticsOutputSettingsArgs {
     /**
      * The resource ID of the analytics workspace that is to be used by the specified identity.
      */
-    analyticsWorkspaceId?: pulumi.Input<string>;
+    analyticsWorkspaceId?: pulumi.Input<string | undefined>;
     /**
      * The selection of the managed identity to use with this analytics workspace. The identity type must be either system assigned or user assigned.
      */
-    associatedIdentity?: pulumi.Input<IdentitySelectorArgs>;
+    associatedIdentity?: pulumi.Input<IdentitySelectorArgs | undefined>;
 }
 
 export interface AttachedNetworkConfigurationArgs {
     /**
      * The list of Layer 2 Networks and related configuration for attachment.
      */
-    l2Networks?: pulumi.Input<pulumi.Input<L2NetworkAttachmentConfigurationArgs>[]>;
+    l2Networks?: pulumi.Input<pulumi.Input<L2NetworkAttachmentConfigurationArgs>[] | undefined>;
     /**
      * The list of Layer 3 Networks and related configuration for attachment.
      */
-    l3Networks?: pulumi.Input<pulumi.Input<L3NetworkAttachmentConfigurationArgs>[]>;
+    l3Networks?: pulumi.Input<pulumi.Input<L3NetworkAttachmentConfigurationArgs>[] | undefined>;
     /**
      * The list of Trunked Networks and related configuration for attachment.
      */
-    trunkedNetworks?: pulumi.Input<pulumi.Input<TrunkedNetworkAttachmentConfigurationArgs>[]>;
+    trunkedNetworks?: pulumi.Input<pulumi.Input<TrunkedNetworkAttachmentConfigurationArgs>[] | undefined>;
+}
+
+/**
+ * The complex type of the extended location.
+ */
+export interface AzureResourceManagerCommonTypesExtendedLocationArgs {
+    /**
+     * The name of the extended location.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The type of the extended location.
+     */
+    type: pulumi.Input<string | enums.ExtendedLocationType>;
 }
 
 export interface BareMetalMachineConfigurationDataArgs {
@@ -129,12 +146,12 @@ export interface BareMetalMachineConfigurationDataArgs {
     /**
      * The free-form additional information about the machine, e.g. an asset tag.
      */
-    machineDetails?: pulumi.Input<string>;
+    machineDetails?: pulumi.Input<string | undefined>;
     /**
      * The user-provided name for the bare metal machine created from this specification.
      * If not provided, the machine name will be generated programmatically.
      */
-    machineName?: pulumi.Input<string>;
+    machineName?: pulumi.Input<string | undefined>;
     /**
      * The slot the physical machine is in the rack based on the BOM configuration.
      */
@@ -149,11 +166,11 @@ export interface BgpAdvertisementArgs {
     /**
      * The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
      */
-    advertiseToFabric?: pulumi.Input<string | enums.AdvertiseToFabric>;
+    advertiseToFabric?: pulumi.Input<string | enums.AdvertiseToFabric | undefined>;
     /**
      * The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.
      */
-    communities?: pulumi.Input<pulumi.Input<string>[]>;
+    communities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The names of the IP address pools associated with this announcement.
      */
@@ -161,7 +178,7 @@ export interface BgpAdvertisementArgs {
     /**
      * The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.
      */
-    peers?: pulumi.Input<pulumi.Input<string>[]>;
+    peers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 /**
  * bgpAdvertisementArgsProvideDefaults sets the appropriate defaults for BgpAdvertisementArgs
@@ -177,19 +194,19 @@ export interface BgpServiceLoadBalancerConfigurationArgs {
     /**
      * The association of IP address pools to the communities and peers, allowing for announcement of IPs.
      */
-    bgpAdvertisements?: pulumi.Input<pulumi.Input<BgpAdvertisementArgs>[]>;
+    bgpAdvertisements?: pulumi.Input<pulumi.Input<BgpAdvertisementArgs>[] | undefined>;
     /**
      * The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
      */
-    bgpPeers?: pulumi.Input<pulumi.Input<ServiceLoadBalancerBgpPeerArgs>[]>;
+    bgpPeers?: pulumi.Input<pulumi.Input<ServiceLoadBalancerBgpPeerArgs>[] | undefined>;
     /**
      * The indicator to specify if the load balancer peers with the network fabric.
      */
-    fabricPeeringEnabled?: pulumi.Input<string | enums.FabricPeeringEnabled>;
+    fabricPeeringEnabled?: pulumi.Input<string | enums.FabricPeeringEnabled | undefined>;
     /**
      * The list of pools of IP addresses that can be allocated to load balancer services.
      */
-    ipAddressPools?: pulumi.Input<pulumi.Input<IpAddressPoolArgs>[]>;
+    ipAddressPools?: pulumi.Input<pulumi.Input<IpAddressPoolArgs>[] | undefined>;
 }
 /**
  * bgpServiceLoadBalancerConfigurationArgsProvideDefaults sets the appropriate defaults for BgpServiceLoadBalancerConfigurationArgs
@@ -209,7 +226,7 @@ export interface ClusterSecretArchiveArgs {
     /**
      * The indicator if the specified key vault should be used to archive the secrets of the cluster.
      */
-    useKeyVault?: pulumi.Input<string | enums.ClusterSecretArchiveEnabled>;
+    useKeyVault?: pulumi.Input<string | enums.ClusterSecretArchiveEnabled | undefined>;
 }
 /**
  * clusterSecretArchiveArgsProvideDefaults sets the appropriate defaults for ClusterSecretArchiveArgs
@@ -226,7 +243,7 @@ export interface ClusterUpdateStrategyArgs {
      * The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
      * Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
      */
-    maxUnavailable?: pulumi.Input<number>;
+    maxUnavailable?: pulumi.Input<number | undefined>;
     /**
      * The mode of operation for runtime protection.
      */
@@ -242,7 +259,7 @@ export interface ClusterUpdateStrategyArgs {
     /**
      * The time to wait between the increments of update defined by the strategy.
      */
-    waitTimeMinutes?: pulumi.Input<number>;
+    waitTimeMinutes?: pulumi.Input<number | undefined>;
 }
 /**
  * clusterUpdateStrategyArgsProvideDefaults sets the appropriate defaults for ClusterUpdateStrategyArgs
@@ -258,22 +275,22 @@ export interface CommandOutputSettingsArgs {
     /**
      * The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned.
      */
-    associatedIdentity?: pulumi.Input<IdentitySelectorArgs>;
+    associatedIdentity?: pulumi.Input<IdentitySelectorArgs | undefined>;
     /**
      * The URL of the storage account container that is to be used by the specified identities.
      */
-    containerUrl?: pulumi.Input<string>;
+    containerUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface ControlPlaneNodeConfigurationArgs {
     /**
      * The administrator credentials to be used for the nodes in the control plane.
      */
-    administratorConfiguration?: pulumi.Input<AdministratorConfigurationArgs>;
+    administratorConfiguration?: pulumi.Input<AdministratorConfigurationArgs | undefined>;
     /**
      * The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane. If not specified, all availability zones will be used.
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of virtual machines that use this configuration.
      */
@@ -303,7 +320,7 @@ export interface EndpointDependencyArgs {
     /**
      * The port of this endpoint.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
 }
 
 export interface ExtendedLocationArgs {
@@ -321,11 +338,11 @@ export interface IdentitySelectorArgs {
     /**
      * The type of managed identity that is being selected.
      */
-    identityType?: pulumi.Input<string | enums.ManagedServiceIdentitySelectorType>;
+    identityType?: pulumi.Input<string | enums.ManagedServiceIdentitySelectorType | undefined>;
     /**
      * The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
      */
-    userAssignedIdentityResourceId?: pulumi.Input<string>;
+    userAssignedIdentityResourceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ImageRepositoryCredentialsArgs {
@@ -347,19 +364,19 @@ export interface InitialAgentPoolConfigurationArgs {
     /**
      * The administrator credentials to be used for the nodes in this agent pool.
      */
-    administratorConfiguration?: pulumi.Input<AdministratorConfigurationArgs>;
+    administratorConfiguration?: pulumi.Input<AdministratorConfigurationArgs | undefined>;
     /**
      * The configurations that will be applied to each agent in this agent pool.
      */
-    agentOptions?: pulumi.Input<AgentOptionsArgs>;
+    agentOptions?: pulumi.Input<AgentOptionsArgs | undefined>;
     /**
      * The configuration of networks being attached to the agent pool for use by the workloads that run on this Kubernetes cluster.
      */
-    attachedNetworkConfiguration?: pulumi.Input<AttachedNetworkConfigurationArgs>;
+    attachedNetworkConfiguration?: pulumi.Input<AttachedNetworkConfigurationArgs | undefined>;
     /**
      * The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
      */
-    availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of virtual machines that use this configuration.
      */
@@ -367,7 +384,7 @@ export interface InitialAgentPoolConfigurationArgs {
     /**
      * The labels applied to the nodes in this agent pool.
      */
-    labels?: pulumi.Input<pulumi.Input<KubernetesLabelArgs>[]>;
+    labels?: pulumi.Input<pulumi.Input<KubernetesLabelArgs>[] | undefined>;
     /**
      * The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
      */
@@ -379,11 +396,11 @@ export interface InitialAgentPoolConfigurationArgs {
     /**
      * The taints applied to the nodes in this agent pool.
      */
-    taints?: pulumi.Input<pulumi.Input<KubernetesLabelArgs>[]>;
+    taints?: pulumi.Input<pulumi.Input<KubernetesLabelArgs>[] | undefined>;
     /**
      * The configuration of the agent pool.
      */
-    upgradeSettings?: pulumi.Input<AgentPoolUpgradeSettingsArgs>;
+    upgradeSettings?: pulumi.Input<AgentPoolUpgradeSettingsArgs | undefined>;
     /**
      * The name of the VM SKU that determines the size of resources allocated for node VMs.
      */
@@ -395,7 +412,7 @@ export interface InitialAgentPoolConfigurationArgs {
 export function initialAgentPoolConfigurationArgsProvideDefaults(val: InitialAgentPoolConfigurationArgs): InitialAgentPoolConfigurationArgs {
     return {
         ...val,
-        agentOptions: (val.agentOptions ? pulumi.output(val.agentOptions).apply(agentOptionsArgsProvideDefaults) : undefined),
+        agentOptions: pulumi.output(val.agentOptions).apply(v => v === undefined ? undefined : agentOptionsArgsProvideDefaults(v)),
     };
 }
 
@@ -407,7 +424,7 @@ export interface IpAddressPoolArgs {
     /**
      * The indicator to determine if automatic allocation from the pool should occur.
      */
-    autoAssign?: pulumi.Input<string | enums.BfdEnabled>;
+    autoAssign?: pulumi.Input<string | enums.BfdEnabled | undefined>;
     /**
      * The name used to identify this IP address pool for association with a BGP advertisement.
      */
@@ -415,7 +432,7 @@ export interface IpAddressPoolArgs {
     /**
      * The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
      */
-    onlyUseHostIps?: pulumi.Input<string | enums.BfdEnabled>;
+    onlyUseHostIps?: pulumi.Input<string | enums.BfdEnabled | undefined>;
 }
 /**
  * ipAddressPoolArgsProvideDefaults sets the appropriate defaults for IpAddressPoolArgs
@@ -436,7 +453,7 @@ export interface KeySetUserArgs {
     /**
      * The free-form description for this user.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
      */
@@ -444,7 +461,7 @@ export interface KeySetUserArgs {
     /**
      * The user principal name (email format) used to validate this user's group membership.
      */
-    userPrincipalName?: pulumi.Input<string>;
+    userPrincipalName?: pulumi.Input<string | undefined>;
 }
 
 export interface KubernetesLabelArgs {
@@ -466,7 +483,7 @@ export interface L2NetworkAttachmentConfigurationArgs {
     /**
      * The indicator of how this network will be utilized by the Kubernetes cluster.
      */
-    pluginType?: pulumi.Input<string | enums.KubernetesPluginType>;
+    pluginType?: pulumi.Input<string | enums.KubernetesPluginType | undefined>;
 }
 /**
  * l2networkAttachmentConfigurationArgsProvideDefaults sets the appropriate defaults for L2NetworkAttachmentConfigurationArgs
@@ -482,14 +499,14 @@ export interface L2ServiceLoadBalancerConfigurationArgs {
     /**
      * The list of pools of IP addresses that can be allocated to load balancer services.
      */
-    ipAddressPools?: pulumi.Input<pulumi.Input<IpAddressPoolArgs>[]>;
+    ipAddressPools?: pulumi.Input<pulumi.Input<IpAddressPoolArgs>[] | undefined>;
 }
 
 export interface L3NetworkAttachmentConfigurationArgs {
     /**
      * The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
      */
-    ipamEnabled?: pulumi.Input<string | enums.L3NetworkConfigurationIpamEnabled>;
+    ipamEnabled?: pulumi.Input<string | enums.L3NetworkConfigurationIpamEnabled | undefined>;
     /**
      * The resource ID of the network that is being configured for attachment.
      */
@@ -497,7 +514,7 @@ export interface L3NetworkAttachmentConfigurationArgs {
     /**
      * The indicator of how this network will be utilized by the Kubernetes cluster.
      */
-    pluginType?: pulumi.Input<string | enums.KubernetesPluginType>;
+    pluginType?: pulumi.Input<string | enums.KubernetesPluginType | undefined>;
 }
 /**
  * l3networkAttachmentConfigurationArgsProvideDefaults sets the appropriate defaults for L3NetworkAttachmentConfigurationArgs
@@ -514,11 +531,11 @@ export interface ManagedResourceGroupConfigurationArgs {
     /**
      * The location of the managed resource group. If not specified, the location of the parent resource is chosen.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name for the managed resource group. If not specified, the unique name is automatically generated.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -532,7 +549,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface NetworkAttachmentArgs {
@@ -545,7 +562,7 @@ export interface NetworkAttachmentArgs {
      * The indicator of whether this is the default gateway.
      * Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
      */
-    defaultGateway?: pulumi.Input<string | enums.DefaultGateway>;
+    defaultGateway?: pulumi.Input<string | enums.DefaultGateway | undefined>;
     /**
      * The IP allocation mechanism for the virtual machine.
      * Dynamic and Static are only valid for l3Network which may also specify Disabled.
@@ -562,7 +579,7 @@ export interface NetworkAttachmentArgs {
      * Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network.
      * Disabled - this field will be empty.
      */
-    ipv4Address?: pulumi.Input<string>;
+    ipv4Address?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 address of the virtual machine.
      *
@@ -573,25 +590,25 @@ export interface NetworkAttachmentArgs {
      * Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network.
      * Disabled - this field will be empty.
      */
-    ipv6Address?: pulumi.Input<string>;
+    ipv6Address?: pulumi.Input<string | undefined>;
     /**
      * The associated network's interface name.
      * If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.
      * If the user doesn’t specify this value, the default interface name of the network resource will be used.
      * For a CloudServicesNetwork resource, this name will be ignored.
      */
-    networkAttachmentName?: pulumi.Input<string>;
+    networkAttachmentName?: pulumi.Input<string | undefined>;
 }
 
 export interface NetworkConfigurationArgs {
     /**
      * The configuration of networks being attached to the cluster for use by the workloads that run on this Kubernetes cluster.
      */
-    attachedNetworkConfiguration?: pulumi.Input<AttachedNetworkConfigurationArgs>;
+    attachedNetworkConfiguration?: pulumi.Input<AttachedNetworkConfigurationArgs | undefined>;
     /**
      * The configuration of the BGP service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
      */
-    bgpServiceLoadBalancerConfiguration?: pulumi.Input<BgpServiceLoadBalancerConfigurationArgs>;
+    bgpServiceLoadBalancerConfiguration?: pulumi.Input<BgpServiceLoadBalancerConfigurationArgs | undefined>;
     /**
      * The resource ID of the associated Cloud Services network.
      */
@@ -603,19 +620,19 @@ export interface NetworkConfigurationArgs {
     /**
      * The IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in service CIDR.
      */
-    dnsServiceIp?: pulumi.Input<string>;
+    dnsServiceIp?: pulumi.Input<string | undefined>;
     /**
      * The configuration of the Layer 2 service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
      */
-    l2ServiceLoadBalancerConfiguration?: pulumi.Input<L2ServiceLoadBalancerConfigurationArgs>;
+    l2ServiceLoadBalancerConfiguration?: pulumi.Input<L2ServiceLoadBalancerConfigurationArgs | undefined>;
     /**
      * The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
      */
-    podCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    podCidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
      */
-    serviceCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceCidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 /**
  * networkConfigurationArgsProvideDefaults sets the appropriate defaults for NetworkConfigurationArgs
@@ -623,7 +640,7 @@ export interface NetworkConfigurationArgs {
 export function networkConfigurationArgsProvideDefaults(val: NetworkConfigurationArgs): NetworkConfigurationArgs {
     return {
         ...val,
-        bgpServiceLoadBalancerConfiguration: (val.bgpServiceLoadBalancerConfiguration ? pulumi.output(val.bgpServiceLoadBalancerConfiguration).apply(bgpServiceLoadBalancerConfigurationArgsProvideDefaults) : undefined),
+        bgpServiceLoadBalancerConfiguration: pulumi.output(val.bgpServiceLoadBalancerConfiguration).apply(v => v === undefined ? undefined : bgpServiceLoadBalancerConfigurationArgsProvideDefaults(v)),
     };
 }
 
@@ -631,11 +648,11 @@ export interface OsDiskArgs {
     /**
      * The strategy for creating the OS disk.
      */
-    createOption?: pulumi.Input<string | enums.OsDiskCreateOption>;
+    createOption?: pulumi.Input<string | enums.OsDiskCreateOption | undefined>;
     /**
      * The strategy for deleting the OS disk.
      */
-    deleteOption?: pulumi.Input<string | enums.OsDiskDeleteOption>;
+    deleteOption?: pulumi.Input<string | enums.OsDiskDeleteOption | undefined>;
     /**
      * The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes.
      */
@@ -656,11 +673,11 @@ export interface RackDefinitionArgs {
     /**
      * The zone name used for this rack when created. Availability zones are used for workload placement.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * The unordered list of bare metal machine configuration.
      */
-    bareMetalMachineConfigurationData?: pulumi.Input<pulumi.Input<BareMetalMachineConfigurationDataArgs>[]>;
+    bareMetalMachineConfigurationData?: pulumi.Input<pulumi.Input<BareMetalMachineConfigurationDataArgs>[] | undefined>;
     /**
      * The resource ID of the network rack that matches this rack definition.
      */
@@ -668,7 +685,7 @@ export interface RackDefinitionArgs {
     /**
      * The free-form description of the rack's location.
      */
-    rackLocation?: pulumi.Input<string>;
+    rackLocation?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the rack within Network Cloud cluster. An alternate unique alphanumeric value other than a serial number may be provided if desired.
      */
@@ -680,14 +697,14 @@ export interface RackDefinitionArgs {
     /**
      * The list of storage appliance configuration data for this rack.
      */
-    storageApplianceConfigurationData?: pulumi.Input<pulumi.Input<StorageApplianceConfigurationDataArgs>[]>;
+    storageApplianceConfigurationData?: pulumi.Input<pulumi.Input<StorageApplianceConfigurationDataArgs>[] | undefined>;
 }
 
 export interface RuntimeProtectionConfigurationArgs {
     /**
      * The mode of operation for runtime protection.
      */
-    enforcementLevel?: pulumi.Input<string | enums.RuntimeProtectionEnforcementLevel>;
+    enforcementLevel?: pulumi.Input<string | enums.RuntimeProtectionEnforcementLevel | undefined>;
 }
 /**
  * runtimeProtectionConfigurationArgsProvideDefaults sets the appropriate defaults for RuntimeProtectionConfigurationArgs
@@ -703,34 +720,34 @@ export interface SecretArchiveSettingsArgs {
     /**
      * The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
      */
-    associatedIdentity?: pulumi.Input<IdentitySelectorArgs>;
+    associatedIdentity?: pulumi.Input<IdentitySelectorArgs | undefined>;
     /**
      * The URI for the key vault used as the secret archive.
      */
-    vaultUri?: pulumi.Input<string>;
+    vaultUri?: pulumi.Input<string | undefined>;
 }
 
 export interface ServiceLoadBalancerBgpPeerArgs {
     /**
      * The indicator of BFD enablement for this BgpPeer.
      */
-    bfdEnabled?: pulumi.Input<string | enums.BfdEnabled>;
+    bfdEnabled?: pulumi.Input<string | enums.BfdEnabled | undefined>;
     /**
      * The indicator to enable multi-hop peering support.
      */
-    bgpMultiHop?: pulumi.Input<string | enums.BgpMultiHop>;
+    bgpMultiHop?: pulumi.Input<string | enums.BgpMultiHop | undefined>;
     /**
      * Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
      */
-    holdTime?: pulumi.Input<string>;
+    holdTime?: pulumi.Input<string | undefined>;
     /**
      * Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
      */
-    keepAliveTime?: pulumi.Input<string>;
+    keepAliveTime?: pulumi.Input<string | undefined>;
     /**
      * The autonomous system number used for the local end of the BGP session.
      */
-    myAsn?: pulumi.Input<number>;
+    myAsn?: pulumi.Input<number | undefined>;
     /**
      * The name used to identify this BGP peer for association with a BGP advertisement.
      */
@@ -738,7 +755,7 @@ export interface ServiceLoadBalancerBgpPeerArgs {
     /**
      * The authentication password for routers enforcing TCP MD5 authenticated sessions.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 or IPv6 address used to connect this BGP session.
      */
@@ -750,7 +767,7 @@ export interface ServiceLoadBalancerBgpPeerArgs {
     /**
      * The port used to connect this BGP session.
      */
-    peerPort?: pulumi.Input<number>;
+    peerPort?: pulumi.Input<number | undefined>;
 }
 /**
  * serviceLoadBalancerBgpPeerArgsProvideDefaults sets the appropriate defaults for ServiceLoadBalancerBgpPeerArgs
@@ -806,7 +823,7 @@ export interface StorageApplianceConfigurationDataArgs {
     /**
      * The user-provided name for the storage appliance that will be created from this specification.
      */
-    storageApplianceName?: pulumi.Input<string>;
+    storageApplianceName?: pulumi.Input<string | undefined>;
 }
 
 export interface StorageProfileArgs {
@@ -817,7 +834,7 @@ export interface StorageProfileArgs {
     /**
      * The resource IDs of volumes that are requested to be attached to the virtual machine.
      */
-    volumeAttachments?: pulumi.Input<pulumi.Input<string>[]>;
+    volumeAttachments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 /**
  * storageProfileArgsProvideDefaults sets the appropriate defaults for StorageProfileArgs
@@ -848,7 +865,7 @@ export interface TrunkedNetworkAttachmentConfigurationArgs {
     /**
      * The indicator of how this network will be utilized by the Kubernetes cluster.
      */
-    pluginType?: pulumi.Input<string | enums.KubernetesPluginType>;
+    pluginType?: pulumi.Input<string | enums.KubernetesPluginType | undefined>;
 }
 /**
  * trunkedNetworkAttachmentConfigurationArgsProvideDefaults sets the appropriate defaults for TrunkedNetworkAttachmentConfigurationArgs
@@ -898,7 +915,7 @@ export interface VulnerabilityScanningSettingsArgs {
     /**
      * The mode selection for container vulnerability scanning.
      */
-    containerScan?: pulumi.Input<string | enums.VulnerabilityScanningSettingsContainerScan>;
+    containerScan?: pulumi.Input<string | enums.VulnerabilityScanningSettingsContainerScan | undefined>;
 }
 /**
  * vulnerabilityScanningSettingsArgsProvideDefaults sets the appropriate defaults for VulnerabilityScanningSettingsArgs

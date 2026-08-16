@@ -5,6 +5,8 @@ import * as types from "./types";
  * Cognitive Services RAI Tool Label resource.
  *
  * Uses Azure REST API version 2025-10-01-preview.
+ *
+ * Other available API versions: 2025-12-01, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01, 2026-05-15-preview, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class RaiToolLabel extends pulumi.CustomResource {
     /**
@@ -99,7 +101,7 @@ export class RaiToolLabel extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20251001preview:RaiToolLabel" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20251001preview:RaiToolLabel" }, { type: "azure-native:cognitiveservices/v20251201:RaiToolLabel" }, { type: "azure-native:cognitiveservices/v20260115preview:RaiToolLabel" }, { type: "azure-native:cognitiveservices/v20260301:RaiToolLabel" }, { type: "azure-native:cognitiveservices/v20260315preview:RaiToolLabel" }, { type: "azure-native:cognitiveservices/v20260501:RaiToolLabel" }, { type: "azure-native:cognitiveservices/v20260515preview:RaiToolLabel" }, { type: "azure-native:cognitiveservices/v20260701:RaiToolLabel" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RaiToolLabel.__pulumiType, name, resourceInputs, opts);
     }
@@ -116,11 +118,11 @@ export interface RaiToolLabelArgs {
     /**
      * Properties of the RAI Tool Label.
      */
-    properties?: pulumi.Input<types.inputs.RaiToolLabelPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.RaiToolLabelPropertiesArgs | undefined>;
     /**
      * The name of the Rai Tool Label
      */
-    raiToolConnectionName?: pulumi.Input<string>;
+    raiToolConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -128,5 +130,5 @@ export interface RaiToolLabelArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

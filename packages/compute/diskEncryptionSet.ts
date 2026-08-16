@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
  *
- * Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02, 2026-03-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DiskEncryptionSet extends pulumi.CustomResource {
     /**
@@ -145,7 +145,7 @@ export class DiskEncryptionSet extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20190701:DiskEncryptionSet" }, { type: "azure-native:compute/v20191101:DiskEncryptionSet" }, { type: "azure-native:compute/v20200501:DiskEncryptionSet" }, { type: "azure-native:compute/v20200630:DiskEncryptionSet" }, { type: "azure-native:compute/v20200930:DiskEncryptionSet" }, { type: "azure-native:compute/v20201201:DiskEncryptionSet" }, { type: "azure-native:compute/v20210401:DiskEncryptionSet" }, { type: "azure-native:compute/v20210801:DiskEncryptionSet" }, { type: "azure-native:compute/v20211201:DiskEncryptionSet" }, { type: "azure-native:compute/v20220302:DiskEncryptionSet" }, { type: "azure-native:compute/v20220702:DiskEncryptionSet" }, { type: "azure-native:compute/v20230102:DiskEncryptionSet" }, { type: "azure-native:compute/v20230402:DiskEncryptionSet" }, { type: "azure-native:compute/v20231002:DiskEncryptionSet" }, { type: "azure-native:compute/v20240302:DiskEncryptionSet" }, { type: "azure-native:compute/v20250102:DiskEncryptionSet" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20190701:DiskEncryptionSet" }, { type: "azure-native:compute/v20191101:DiskEncryptionSet" }, { type: "azure-native:compute/v20200501:DiskEncryptionSet" }, { type: "azure-native:compute/v20200630:DiskEncryptionSet" }, { type: "azure-native:compute/v20200930:DiskEncryptionSet" }, { type: "azure-native:compute/v20201201:DiskEncryptionSet" }, { type: "azure-native:compute/v20210401:DiskEncryptionSet" }, { type: "azure-native:compute/v20210801:DiskEncryptionSet" }, { type: "azure-native:compute/v20211201:DiskEncryptionSet" }, { type: "azure-native:compute/v20220302:DiskEncryptionSet" }, { type: "azure-native:compute/v20220702:DiskEncryptionSet" }, { type: "azure-native:compute/v20230102:DiskEncryptionSet" }, { type: "azure-native:compute/v20230402:DiskEncryptionSet" }, { type: "azure-native:compute/v20231002:DiskEncryptionSet" }, { type: "azure-native:compute/v20240302:DiskEncryptionSet" }, { type: "azure-native:compute/v20250102:DiskEncryptionSet" }, { type: "azure-native:compute/v20260302:DiskEncryptionSet" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DiskEncryptionSet.__pulumiType, name, resourceInputs, opts);
     }
@@ -158,27 +158,27 @@ export interface DiskEncryptionSetArgs {
     /**
      * The key vault key which is currently used by this disk encryption set.
      */
-    activeKey?: pulumi.Input<types.inputs.KeyForDiskEncryptionSetArgs>;
+    activeKey?: pulumi.Input<types.inputs.KeyForDiskEncryptionSetArgs | undefined>;
     /**
      * The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
      */
-    diskEncryptionSetName?: pulumi.Input<string>;
+    diskEncryptionSetName?: pulumi.Input<string | undefined>;
     /**
      * The type of key used to encrypt the data of the disk.
      */
-    encryptionType?: pulumi.Input<string | types.enums.DiskEncryptionSetType>;
+    encryptionType?: pulumi.Input<string | types.enums.DiskEncryptionSetType | undefined>;
     /**
      * Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property.
      */
-    federatedClientId?: pulumi.Input<string>;
+    federatedClientId?: pulumi.Input<string | undefined>;
     /**
      * The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.
      */
-    identity?: pulumi.Input<types.inputs.EncryptionSetIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.EncryptionSetIdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -186,9 +186,9 @@ export interface DiskEncryptionSetArgs {
     /**
      * Set this flag to true to enable auto-updating of this disk encryption set to the latest key version.
      */
-    rotationToLatestKeyVersionEnabled?: pulumi.Input<boolean>;
+    rotationToLatestKeyVersionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

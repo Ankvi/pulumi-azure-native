@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
  *
- * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview, 2026-04-01-preview, 2026-04-30, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Update extends pulumi.CustomResource {
     /**
@@ -197,7 +197,7 @@ export class Update extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20221201:Update" }, { type: "azure-native:azurestackhci/v20221215preview:Update" }, { type: "azure-native:azurestackhci/v20230201:Update" }, { type: "azure-native:azurestackhci/v20230301:Update" }, { type: "azure-native:azurestackhci/v20230601:Update" }, { type: "azure-native:azurestackhci/v20230801:Update" }, { type: "azure-native:azurestackhci/v20230801preview:Update" }, { type: "azure-native:azurestackhci/v20231101preview:Update" }, { type: "azure-native:azurestackhci/v20240101:Update" }, { type: "azure-native:azurestackhci/v20240215preview:Update" }, { type: "azure-native:azurestackhci/v20240401:Update" }, { type: "azure-native:azurestackhci/v20240901preview:Update" }, { type: "azure-native:azurestackhci/v20241201preview:Update" }, { type: "azure-native:azurestackhci/v20250201preview:Update" }, { type: "azure-native:azurestackhci/v20250915preview:Update" }, { type: "azure-native:azurestackhci/v20251001:Update" }, { type: "azure-native:azurestackhci/v20251101preview:Update" }, { type: "azure-native:azurestackhci/v20251201preview:Update" }, { type: "azure-native:azurestackhci/v20260201:Update" }, { type: "azure-native:azurestackhci/v20260215preview:Update" }, { type: "azure-native:azurestackhci/v20260301preview:Update" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20221201:Update" }, { type: "azure-native:azurestackhci/v20221215preview:Update" }, { type: "azure-native:azurestackhci/v20230201:Update" }, { type: "azure-native:azurestackhci/v20230301:Update" }, { type: "azure-native:azurestackhci/v20230601:Update" }, { type: "azure-native:azurestackhci/v20230801:Update" }, { type: "azure-native:azurestackhci/v20230801preview:Update" }, { type: "azure-native:azurestackhci/v20231101preview:Update" }, { type: "azure-native:azurestackhci/v20240101:Update" }, { type: "azure-native:azurestackhci/v20240215preview:Update" }, { type: "azure-native:azurestackhci/v20240401:Update" }, { type: "azure-native:azurestackhci/v20240901preview:Update" }, { type: "azure-native:azurestackhci/v20241201preview:Update" }, { type: "azure-native:azurestackhci/v20250201preview:Update" }, { type: "azure-native:azurestackhci/v20250915preview:Update" }, { type: "azure-native:azurestackhci/v20251001:Update" }, { type: "azure-native:azurestackhci/v20251101preview:Update" }, { type: "azure-native:azurestackhci/v20251201preview:Update" }, { type: "azure-native:azurestackhci/v20260201:Update" }, { type: "azure-native:azurestackhci/v20260215preview:Update" }, { type: "azure-native:azurestackhci/v20260301preview:Update" }, { type: "azure-native:azurestackhci/v20260401preview:Update" }, { type: "azure-native:azurestackhci/v20260430:Update" }, { type: "azure-native:azurestackhci/v20260501preview:Update" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Update.__pulumiType, name, resourceInputs, opts);
     }
@@ -210,11 +210,11 @@ export interface UpdateArgs {
     /**
      * Extensible KV pairs serialized as a string. This is currently used to report the stamp OEM family and hardware model information when an update is flagged as Invalid for the stamp based on OEM type.
      */
-    additionalProperties?: pulumi.Input<string>;
+    additionalProperties?: pulumi.Input<string | undefined>;
     /**
      * Indicates the way the update content can be downloaded.
      */
-    availabilityType?: pulumi.Input<string | types.enums.AvailabilityType>;
+    availabilityType?: pulumi.Input<string | types.enums.AvailabilityType | undefined>;
     /**
      * The name of the cluster.
      */
@@ -222,59 +222,59 @@ export interface UpdateArgs {
     /**
      * Description of the update.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the Update
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Last time the package-specific checks were run.
      */
-    healthCheckDate?: pulumi.Input<string>;
+    healthCheckDate?: pulumi.Input<string | undefined>;
     /**
      * Date that the update was installed.
      */
-    installedDate?: pulumi.Input<string>;
+    installedDate?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Minimum Sbe Version of the update.
      */
-    minSbeVersionRequired?: pulumi.Input<string>;
+    minSbeVersionRequired?: pulumi.Input<string | undefined>;
     /**
      * Brief message with instructions for updates of AvailabilityType Notify.
      */
-    notifyMessage?: pulumi.Input<string>;
+    notifyMessage?: pulumi.Input<string | undefined>;
     /**
      * Path where the update package is available.
      */
-    packagePath?: pulumi.Input<string>;
+    packagePath?: pulumi.Input<string | undefined>;
     /**
      * Size of the package. This value is a combination of the size from update metadata and size of the payload that results from the live scan operation for OS update content.
      */
-    packageSizeInMb?: pulumi.Input<number>;
+    packageSizeInMb?: pulumi.Input<number | undefined>;
     /**
      * Customer-visible type of the update.
      */
-    packageType?: pulumi.Input<string>;
+    packageType?: pulumi.Input<string | undefined>;
     /**
      * If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.
      */
-    prerequisites?: pulumi.Input<pulumi.Input<types.inputs.UpdatePrerequisiteArgs>[]>;
+    prerequisites?: pulumi.Input<pulumi.Input<types.inputs.UpdatePrerequisiteArgs>[] | undefined>;
     /**
      * Progress percentage of ongoing operation. Currently this property is only valid when the update is in the Downloading state, where it maps to how much of the update content has been downloaded.
      */
-    progressPercentage?: pulumi.Input<number>;
+    progressPercentage?: pulumi.Input<number | undefined>;
     /**
      * Publisher of the update package.
      */
-    publisher?: pulumi.Input<string>;
+    publisher?: pulumi.Input<string | undefined>;
     /**
      * Link to release notes for the update.
      */
-    releaseLink?: pulumi.Input<string>;
+    releaseLink?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -282,13 +282,13 @@ export interface UpdateArgs {
     /**
      * State of the update as it relates to this stamp.
      */
-    state?: pulumi.Input<string | types.enums.State>;
+    state?: pulumi.Input<string | types.enums.State | undefined>;
     /**
      * The name of the Update
      */
-    updateName?: pulumi.Input<string>;
+    updateName?: pulumi.Input<string | undefined>;
     /**
      * Version of the update.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

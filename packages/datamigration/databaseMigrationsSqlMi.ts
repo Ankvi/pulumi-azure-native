@@ -103,7 +103,7 @@ export interface DatabaseMigrationsSqlMiArgs {
     /**
      * Database Migration Resource properties for SQL Managed Instance.
      */
-    properties?: pulumi.Input<types.inputs.DatabaseMigrationPropertiesSqlMiArgs>;
+    properties?: pulumi.Input<types.inputs.DatabaseMigrationPropertiesSqlMiArgs | undefined>;
     /**
      * Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -111,5 +111,5 @@ export interface DatabaseMigrationsSqlMiArgs {
     /**
      * The name of the target database.
      */
-    targetDbName?: pulumi.Input<string>;
+    targetDbName?: pulumi.Input<string | undefined>;
 }

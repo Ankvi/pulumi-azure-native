@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets a source control byt its identifier.
  *
- * Uses Azure REST API version 2023-05-01-preview.
+ * Uses Azure REST API version 2025-09-01.
  *
- * Other available API versions: 2023-03-01-preview, 2023-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSourceControl(args: GetSourceControlArgs, opts?: pulumi.InvokeOptions): Promise<GetSourceControlResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -27,7 +27,7 @@ export interface GetSourceControlArgs {
      */
     sourceControlId: string;
     /**
-     * The name of the workspace.
+     * The name of the monitor workspace.
      */
     workspaceName: string;
 }
@@ -63,11 +63,15 @@ export interface GetSourceControlResult {
     /**
      * Information regarding the latest deployment for the source control.
      */
-    readonly lastDeploymentInfo?: types.outputs.DeploymentInfoResponse;
+    readonly lastDeploymentInfo: types.outputs.DeploymentInfoResponse;
     /**
      * The name of the resource
      */
     readonly name: string;
+    /**
+     * Information regarding the pull request of the source control.
+     */
+    readonly pullRequest: types.outputs.PullRequestResponse;
     /**
      * The repository type of the source control
      */
@@ -81,6 +85,10 @@ export interface GetSourceControlResult {
      */
     readonly repositoryResourceInfo?: types.outputs.RepositoryResourceInfoResponse;
     /**
+     * Service principal metadata.
+     */
+    readonly servicePrincipal?: types.outputs.ServicePrincipalResponse;
+    /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
@@ -91,14 +99,18 @@ export interface GetSourceControlResult {
     /**
      * The version number associated with the source control
      */
-    readonly version?: string;
+    readonly version: string;
+    /**
+     * Workload Identity metadata.
+     */
+    readonly workloadIdentityFederation: types.outputs.WorkloadIdentityFederationResponse;
 }
 /**
  * Gets a source control byt its identifier.
  *
- * Uses Azure REST API version 2023-05-01-preview.
+ * Uses Azure REST API version 2025-09-01.
  *
- * Other available API versions: 2023-03-01-preview, 2023-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getSourceControlOutput(args: GetSourceControlOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSourceControlResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -119,7 +131,7 @@ export interface GetSourceControlOutputArgs {
      */
     sourceControlId: pulumi.Input<string>;
     /**
-     * The name of the workspace.
+     * The name of the monitor workspace.
      */
     workspaceName: pulumi.Input<string>;
 }

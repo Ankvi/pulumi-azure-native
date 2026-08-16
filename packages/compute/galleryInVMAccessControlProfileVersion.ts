@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2024-03-03.
  *
- * Other available API versions: 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class GalleryInVMAccessControlProfileVersion extends pulumi.CustomResource {
     /**
@@ -153,7 +153,7 @@ export class GalleryInVMAccessControlProfileVersion extends pulumi.CustomResourc
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20240303:GalleryInVMAccessControlProfileVersion" }, { type: "azure-native:compute/v20250303:GalleryInVMAccessControlProfileVersion" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20240303:GalleryInVMAccessControlProfileVersion" }, { type: "azure-native:compute/v20250303:GalleryInVMAccessControlProfileVersion" }, { type: "azure-native:compute/v20251203:GalleryInVMAccessControlProfileVersion" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GalleryInVMAccessControlProfileVersion.__pulumiType, name, resourceInputs, opts);
     }
@@ -170,7 +170,7 @@ export interface GalleryInVMAccessControlProfileVersionArgs {
     /**
      * If set to true, Virtual Machines deployed from the latest version of the Resource Profile won't use this Profile version.
      */
-    excludeFromLatest?: pulumi.Input<boolean>;
+    excludeFromLatest?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Shared Image Gallery.
      */
@@ -182,11 +182,11 @@ export interface GalleryInVMAccessControlProfileVersionArgs {
     /**
      * The name of the gallery inVMAccessControlProfile version to be retrieved.
      */
-    inVMAccessControlProfileVersionName?: pulumi.Input<string>;
+    inVMAccessControlProfileVersionName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * This property allows you to specify whether the access control rules are in Audit mode, in Enforce mode or Disabled. Possible values are: 'Audit', 'Enforce' or 'Disabled'.
      */
@@ -198,13 +198,13 @@ export interface GalleryInVMAccessControlProfileVersionArgs {
     /**
      * This is the Access Control Rules specification for an inVMAccessControlProfile version.
      */
-    rules?: pulumi.Input<types.inputs.AccessControlRulesArgs>;
+    rules?: pulumi.Input<types.inputs.AccessControlRulesArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The target regions where the Resource Profile version is going to be replicated to. This property is updatable.
      */
-    targetLocations?: pulumi.Input<pulumi.Input<types.inputs.TargetRegionArgs>[]>;
+    targetLocations?: pulumi.Input<pulumi.Input<types.inputs.TargetRegionArgs>[] | undefined>;
 }

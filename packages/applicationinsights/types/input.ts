@@ -7,7 +7,7 @@ export interface ApplicationInsightsComponentAnalyticsItemPropertiesArgs {
     /**
      * A function alias, used when the type of the item is Function
      */
-    functionAlias?: pulumi.Input<string>;
+    functionAlias?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -17,19 +17,19 @@ export interface ApplicationInsightsComponentDataVolumeCapArgs {
     /**
      * Daily data volume cap in GB.
      */
-    cap?: pulumi.Input<number>;
+    cap?: pulumi.Input<number | undefined>;
     /**
      * Do not send a notification email when the daily data volume cap is met.
      */
-    stopSendNotificationWhenHitCap?: pulumi.Input<boolean>;
+    stopSendNotificationWhenHitCap?: pulumi.Input<boolean | undefined>;
     /**
      * Reserved, not used for now.
      */
-    stopSendNotificationWhenHitThreshold?: pulumi.Input<boolean>;
+    stopSendNotificationWhenHitThreshold?: pulumi.Input<boolean | undefined>;
     /**
      * Reserved, not used for now.
      */
-    warningThreshold?: pulumi.Input<number>;
+    warningThreshold?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -39,35 +39,35 @@ export interface ApplicationInsightsComponentProactiveDetectionConfigurationProp
     /**
      * The rule description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The rule name as it is displayed in UI
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * URL which displays additional info about the proactive detection rule
      */
-    helpUrl?: pulumi.Input<string>;
+    helpUrl?: pulumi.Input<string | undefined>;
     /**
      * A flag indicating whether the rule is enabled by default
      */
-    isEnabledByDefault?: pulumi.Input<boolean>;
+    isEnabledByDefault?: pulumi.Input<boolean | undefined>;
     /**
      * A flag indicating whether the rule is hidden (from the UI)
      */
-    isHidden?: pulumi.Input<boolean>;
+    isHidden?: pulumi.Input<boolean | undefined>;
     /**
      * A flag indicating whether the rule is in preview
      */
-    isInPreview?: pulumi.Input<boolean>;
+    isInPreview?: pulumi.Input<boolean | undefined>;
     /**
      * The rule name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A flag indicating whether email notifications are supported for detections for this rule
      */
-    supportsEmailNotifications?: pulumi.Input<boolean>;
+    supportsEmailNotifications?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -77,11 +77,11 @@ export interface HeaderFieldArgs {
     /**
      * The name of the header.
      */
-    headerFieldName?: pulumi.Input<string>;
+    headerFieldName?: pulumi.Input<string | undefined>;
     /**
      * The value of the header.
      */
-    headerFieldValue?: pulumi.Input<string>;
+    headerFieldValue?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -91,7 +91,7 @@ export interface MyWorkbookManagedIdentityArgs {
     /**
      * The identity type.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -101,7 +101,7 @@ export interface WebTestGeolocationArgs {
     /**
      * Location ID for the WebTest to run from.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -111,25 +111,7 @@ export interface WebTestPropertiesConfigurationArgs {
     /**
      * The XML specification of a WebTest to run against an application.
      */
-    webTest?: pulumi.Input<string>;
-}
-
-/**
- * The collection of content validation properties
- */
-export interface WebTestPropertiesContentValidationArgs {
-    /**
-     * Content to look for in the return of the WebTest.  Must not be null or empty.
-     */
-    contentMatch?: pulumi.Input<string>;
-    /**
-     * When set, this value makes the ContentMatch validation case insensitive.
-     */
-    ignoreCase?: pulumi.Input<boolean>;
-    /**
-     * When true, validation will pass if there is a match for the ContentMatch string.  If false, validation will fail if there is a match
-     */
-    passIfTextFound?: pulumi.Input<boolean>;
+    webTest?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,27 +121,27 @@ export interface WebTestPropertiesRequestArgs {
     /**
      * Follow redirects for this web test.
      */
-    followRedirects?: pulumi.Input<boolean>;
+    followRedirects?: pulumi.Input<boolean | undefined>;
     /**
      * List of headers and their values to add to the WebTest call.
      */
-    headers?: pulumi.Input<pulumi.Input<HeaderFieldArgs>[]>;
+    headers?: pulumi.Input<pulumi.Input<HeaderFieldArgs>[] | undefined>;
     /**
      * Http verb to use for this web test.
      */
-    httpVerb?: pulumi.Input<string>;
+    httpVerb?: pulumi.Input<string | undefined>;
     /**
      * Parse Dependent request for this WebTest.
      */
-    parseDependentRequests?: pulumi.Input<boolean>;
+    parseDependentRequests?: pulumi.Input<boolean | undefined>;
     /**
      * Base64 encoded string body to send with this web test.
      */
-    requestBody?: pulumi.Input<string>;
+    requestBody?: pulumi.Input<string | undefined>;
     /**
      * Url location to test.
      */
-    requestUrl?: pulumi.Input<string>;
+    requestUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -169,23 +151,41 @@ export interface WebTestPropertiesValidationRulesArgs {
     /**
      * The collection of content validation properties
      */
-    contentValidation?: pulumi.Input<WebTestPropertiesContentValidationArgs>;
+    contentValidation?: pulumi.Input<WebTestPropertiesValidationRulesContentValidationArgs | undefined>;
     /**
      * Validate that the WebTest returns the http status code provided.
      */
-    expectedHttpStatusCode?: pulumi.Input<number>;
+    expectedHttpStatusCode?: pulumi.Input<number | undefined>;
     /**
      * When set, validation will ignore the status code.
      */
-    ignoreHttpStatusCode?: pulumi.Input<boolean>;
+    ignoreHttpStatusCode?: pulumi.Input<boolean | undefined>;
     /**
      * A number of days to check still remain before the the existing SSL cert expires.  Value must be positive and the SSLCheck must be set to true.
      */
-    sSLCertRemainingLifetimeCheck?: pulumi.Input<number>;
+    sSLCertRemainingLifetimeCheck?: pulumi.Input<number | undefined>;
     /**
      * Checks to see if the SSL cert is still valid.
      */
-    sSLCheck?: pulumi.Input<boolean>;
+    sSLCheck?: pulumi.Input<boolean | undefined>;
+}
+
+/**
+ * The collection of content validation properties
+ */
+export interface WebTestPropertiesValidationRulesContentValidationArgs {
+    /**
+     * Content to look for in the return of the WebTest.  Must not be null or empty.
+     */
+    contentMatch?: pulumi.Input<string | undefined>;
+    /**
+     * When set, this value makes the ContentMatch validation case insensitive.
+     */
+    ignoreCase?: pulumi.Input<boolean | undefined>;
+    /**
+     * When true, validation will pass if there is a match for the ContentMatch string.  If false, validation will fail if there is a match
+     */
+    passIfTextFound?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -199,7 +199,7 @@ export interface WorkbookResourceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -209,23 +209,23 @@ export interface WorkbookTemplateGalleryArgs {
     /**
      * Category for the gallery.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * Name of the workbook template in the gallery.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Order of the template within the gallery.
      */
-    order?: pulumi.Input<number>;
+    order?: pulumi.Input<number | undefined>;
     /**
      * Azure resource type supported by the gallery.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * Type of workbook supported by the workbook template.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -235,9 +235,9 @@ export interface WorkbookTemplateLocalizedGalleryArgs {
     /**
      * Workbook galleries supported by the template.
      */
-    galleries?: pulumi.Input<pulumi.Input<WorkbookTemplateGalleryArgs>[]>;
+    galleries?: pulumi.Input<pulumi.Input<WorkbookTemplateGalleryArgs>[] | undefined>;
     /**
      * Valid JSON object containing workbook template payload.
      */
-    templateData?: any;
+    templateData?: any | undefined;
 }

@@ -146,5 +146,5 @@ export interface VolumeArgs {
     /**
      * Volume Resource
      */
-    volumeName?: pulumi.Input<string>;
+    volumeName?: pulumi.Input<string | undefined>;
 }

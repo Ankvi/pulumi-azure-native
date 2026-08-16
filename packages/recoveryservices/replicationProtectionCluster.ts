@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2024-02-01.
  *
- * Other available API versions: 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01, 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01, 2025-08-01, 2026-01-01, 2026-02-01, 2026-03-31-preview, 2026-05-01, 2026-05-31-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ReplicationProtectionCluster extends pulumi.CustomResource {
     /**
@@ -91,7 +91,7 @@ export class ReplicationProtectionCluster extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:recoveryservices/v20240201:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20240401:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20241001:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20250101:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20250201:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20250801:ReplicationProtectionCluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:recoveryservices/v20240201:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20240401:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20241001:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20250101:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20250201:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20250801:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20260101:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20260201:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20260331preview:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20260501:ReplicationProtectionCluster" }, { type: "azure-native:recoveryservices/v20260531preview:ReplicationProtectionCluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ReplicationProtectionCluster.__pulumiType, name, resourceInputs, opts);
     }
@@ -108,7 +108,7 @@ export interface ReplicationProtectionClusterArgs {
     /**
      * The custom data.
      */
-    properties?: pulumi.Input<types.inputs.ReplicationProtectionClusterPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ReplicationProtectionClusterPropertiesArgs | undefined>;
     /**
      * Protection container name.
      */
@@ -116,7 +116,7 @@ export interface ReplicationProtectionClusterArgs {
     /**
      * Replication protection cluster name.
      */
-    replicationProtectionClusterName?: pulumi.Input<string>;
+    replicationProtectionClusterName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

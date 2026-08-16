@@ -7,9 +7,9 @@ export interface PrincipalsArgs {
     /**
      * Object Id for the user
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * UPN of the user.
      */
-    upn?: pulumi.Input<string>;
+    upn?: pulumi.Input<string | undefined>;
 }

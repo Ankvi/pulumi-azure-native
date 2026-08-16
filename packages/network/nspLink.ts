@@ -142,7 +142,7 @@ export class NspLink extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NspLink" }, { type: "azure-native:network/v20230701preview:NspLink" }, { type: "azure-native:network/v20230801preview:NspLink" }, { type: "azure-native:network/v20240601preview:NspLink" }, { type: "azure-native:network/v20240701:NspLink" }, { type: "azure-native:network/v20241001:NspLink" }, { type: "azure-native:network/v20250101:NspLink" }, { type: "azure-native:network/v20250301:NspLink" }, { type: "azure-native:network/v20250501:NspLink" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NspLink" }, { type: "azure-native:network/v20230701preview:NspLink" }, { type: "azure-native:network/v20230801preview:NspLink" }, { type: "azure-native:network/v20240601preview:NspLink" }, { type: "azure-native:network/v20240701:NspLink" }, { type: "azure-native:network/v20241001:NspLink" }, { type: "azure-native:network/v20250101:NspLink" }, { type: "azure-native:network/v20250301:NspLink" }, { type: "azure-native:network/v20250501:NspLink" }, { type: "azure-native:network/v20250701:NspLink" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NspLink.__pulumiType, name, resourceInputs, opts);
     }
@@ -155,19 +155,19 @@ export interface NspLinkArgs {
     /**
      * Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
      */
-    autoApprovedRemotePerimeterResourceId?: pulumi.Input<string>;
+    autoApprovedRemotePerimeterResourceId?: pulumi.Input<string | undefined>;
     /**
      * A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the NSP link.
      */
-    linkName?: pulumi.Input<string>;
+    linkName?: pulumi.Input<string | undefined>;
     /**
      * Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
      */
-    localInboundProfiles?: pulumi.Input<pulumi.Input<string>[]>;
+    localInboundProfiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the network security perimeter.
      */
@@ -175,7 +175,7 @@ export interface NspLinkArgs {
     /**
      * Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
      */
-    remoteInboundProfiles?: pulumi.Input<pulumi.Input<string>[]>;
+    remoteInboundProfiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the resource group.
      */

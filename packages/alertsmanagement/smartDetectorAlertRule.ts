@@ -168,11 +168,11 @@ export interface SmartDetectorAlertRuleArgs {
     /**
      * The name of the alert rule.
      */
-    alertRuleName?: pulumi.Input<string>;
+    alertRuleName?: pulumi.Input<string | undefined>;
     /**
      * The alert rule description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The alert rule's detector.
      */
@@ -184,7 +184,7 @@ export interface SmartDetectorAlertRuleArgs {
     /**
      * The resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group.
      */
@@ -204,9 +204,9 @@ export interface SmartDetectorAlertRuleArgs {
     /**
      * The resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The alert rule throttling information.
      */
-    throttling?: pulumi.Input<types.inputs.ThrottlingInformationArgs>;
+    throttling?: pulumi.Input<types.inputs.ThrottlingInformationArgs | undefined>;
 }

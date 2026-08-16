@@ -62,7 +62,7 @@ export class InterfaceEndpoint extends pulumi.CustomResource {
     /**
      * Gets an array of references to the network interfaces created for this interface endpoint.
      */
-    declare public /*out*/ readonly networkInterfaces: pulumi.Output<types.outputs.NetworkInterfaceResponseV1[]>;
+    declare public /*out*/ readonly networkInterfaces: pulumi.Output<types.outputs.NetworkInterfaceInterfaceEndpointResponse[]>;
     /**
      * A read-only property that identifies who created this interface endpoint.
      */
@@ -74,7 +74,7 @@ export class InterfaceEndpoint extends pulumi.CustomResource {
     /**
      * The ID of the subnet from which the private IP will be allocated.
      */
-    declare public readonly subnet: pulumi.Output<types.outputs.SubnetResponse | undefined>;
+    declare public readonly subnet: pulumi.Output<types.outputs.SubnetInterfaceEndpointResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -104,7 +104,7 @@ export class InterfaceEndpoint extends pulumi.CustomResource {
             resourceInputs["interfaceEndpointName"] = args?.interfaceEndpointName;
             resourceInputs["location"] = args?.location;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
-            resourceInputs["subnet"] = args ? (args.subnet ? pulumi.output(args.subnet).apply(types.inputs.subnetArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["subnet"] = args ? pulumi.output(args.subnet).apply(v => v === undefined ? undefined : types.inputs.subnetArgsProvideDefaults(v)) : undefined;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -128,7 +128,7 @@ export class InterfaceEndpoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180801:InterfaceEndpoint" }, { type: "azure-native:network/v20181001:InterfaceEndpoint" }, { type: "azure-native:network/v20181101:InterfaceEndpoint" }, { type: "azure-native:network/v20181201:InterfaceEndpoint" }, { type: "azure-native:network/v20190201:InterfaceEndpoint" }, { type: "azure-native:network/v20190401:InterfaceEndpoint" }, { type: "azure-native:network/v20190601:InterfaceEndpoint" }, { type: "azure-native:network/v20190701:InterfaceEndpoint" }, { type: "azure-native:network/v20190801:InterfaceEndpoint" }, { type: "azure-native:network/v20190901:InterfaceEndpoint" }, { type: "azure-native:network/v20191101:InterfaceEndpoint" }, { type: "azure-native:network/v20191201:InterfaceEndpoint" }, { type: "azure-native:network/v20200301:InterfaceEndpoint" }, { type: "azure-native:network/v20200401:InterfaceEndpoint" }, { type: "azure-native:network/v20200501:InterfaceEndpoint" }, { type: "azure-native:network/v20200601:InterfaceEndpoint" }, { type: "azure-native:network/v20200701:InterfaceEndpoint" }, { type: "azure-native:network/v20200801:InterfaceEndpoint" }, { type: "azure-native:network/v20201101:InterfaceEndpoint" }, { type: "azure-native:network/v20210201:InterfaceEndpoint" }, { type: "azure-native:network/v20210201:PrivateEndpoint" }, { type: "azure-native:network/v20210301:InterfaceEndpoint" }, { type: "azure-native:network/v20210501:InterfaceEndpoint" }, { type: "azure-native:network/v20210801:InterfaceEndpoint" }, { type: "azure-native:network/v20220101:InterfaceEndpoint" }, { type: "azure-native:network/v20220501:InterfaceEndpoint" }, { type: "azure-native:network/v20220701:InterfaceEndpoint" }, { type: "azure-native:network/v20220901:InterfaceEndpoint" }, { type: "azure-native:network/v20221101:InterfaceEndpoint" }, { type: "azure-native:network/v20230201:InterfaceEndpoint" }, { type: "azure-native:network/v20230201:PrivateEndpoint" }, { type: "azure-native:network/v20230401:InterfaceEndpoint" }, { type: "azure-native:network/v20230401:PrivateEndpoint" }, { type: "azure-native:network/v20230501:InterfaceEndpoint" }, { type: "azure-native:network/v20230501:PrivateEndpoint" }, { type: "azure-native:network/v20230601:InterfaceEndpoint" }, { type: "azure-native:network/v20230601:PrivateEndpoint" }, { type: "azure-native:network/v20230901:InterfaceEndpoint" }, { type: "azure-native:network/v20230901:PrivateEndpoint" }, { type: "azure-native:network/v20231101:InterfaceEndpoint" }, { type: "azure-native:network/v20231101:PrivateEndpoint" }, { type: "azure-native:network/v20240101:InterfaceEndpoint" }, { type: "azure-native:network/v20240101:PrivateEndpoint" }, { type: "azure-native:network/v20240301:InterfaceEndpoint" }, { type: "azure-native:network/v20240301:PrivateEndpoint" }, { type: "azure-native:network/v20240501:InterfaceEndpoint" }, { type: "azure-native:network/v20240501:PrivateEndpoint" }, { type: "azure-native:network/v20240701:InterfaceEndpoint" }, { type: "azure-native:network/v20241001:InterfaceEndpoint" }, { type: "azure-native:network/v20250101:InterfaceEndpoint" }, { type: "azure-native:network/v20250301:InterfaceEndpoint" }, { type: "azure-native:network/v20250501:InterfaceEndpoint" }, { type: "azure-native:network:PrivateEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20180801:InterfaceEndpoint" }, { type: "azure-native:network/v20181001:InterfaceEndpoint" }, { type: "azure-native:network/v20181101:InterfaceEndpoint" }, { type: "azure-native:network/v20181201:InterfaceEndpoint" }, { type: "azure-native:network/v20190201:InterfaceEndpoint" }, { type: "azure-native:network/v20190401:InterfaceEndpoint" }, { type: "azure-native:network/v20190601:InterfaceEndpoint" }, { type: "azure-native:network/v20190701:InterfaceEndpoint" }, { type: "azure-native:network/v20190801:InterfaceEndpoint" }, { type: "azure-native:network/v20190901:InterfaceEndpoint" }, { type: "azure-native:network/v20191101:InterfaceEndpoint" }, { type: "azure-native:network/v20191201:InterfaceEndpoint" }, { type: "azure-native:network/v20200301:InterfaceEndpoint" }, { type: "azure-native:network/v20200401:InterfaceEndpoint" }, { type: "azure-native:network/v20200501:InterfaceEndpoint" }, { type: "azure-native:network/v20200601:InterfaceEndpoint" }, { type: "azure-native:network/v20200701:InterfaceEndpoint" }, { type: "azure-native:network/v20200801:InterfaceEndpoint" }, { type: "azure-native:network/v20201101:InterfaceEndpoint" }, { type: "azure-native:network/v20210201:InterfaceEndpoint" }, { type: "azure-native:network/v20210201:PrivateEndpoint" }, { type: "azure-native:network/v20210301:InterfaceEndpoint" }, { type: "azure-native:network/v20210501:InterfaceEndpoint" }, { type: "azure-native:network/v20210801:InterfaceEndpoint" }, { type: "azure-native:network/v20220101:InterfaceEndpoint" }, { type: "azure-native:network/v20220501:InterfaceEndpoint" }, { type: "azure-native:network/v20220701:InterfaceEndpoint" }, { type: "azure-native:network/v20220901:InterfaceEndpoint" }, { type: "azure-native:network/v20221101:InterfaceEndpoint" }, { type: "azure-native:network/v20230201:InterfaceEndpoint" }, { type: "azure-native:network/v20230201:PrivateEndpoint" }, { type: "azure-native:network/v20230401:InterfaceEndpoint" }, { type: "azure-native:network/v20230401:PrivateEndpoint" }, { type: "azure-native:network/v20230501:InterfaceEndpoint" }, { type: "azure-native:network/v20230501:PrivateEndpoint" }, { type: "azure-native:network/v20230601:InterfaceEndpoint" }, { type: "azure-native:network/v20230601:PrivateEndpoint" }, { type: "azure-native:network/v20230901:InterfaceEndpoint" }, { type: "azure-native:network/v20230901:PrivateEndpoint" }, { type: "azure-native:network/v20231101:InterfaceEndpoint" }, { type: "azure-native:network/v20231101:PrivateEndpoint" }, { type: "azure-native:network/v20240101:InterfaceEndpoint" }, { type: "azure-native:network/v20240101:PrivateEndpoint" }, { type: "azure-native:network/v20240301:InterfaceEndpoint" }, { type: "azure-native:network/v20240301:PrivateEndpoint" }, { type: "azure-native:network/v20240501:InterfaceEndpoint" }, { type: "azure-native:network/v20240501:PrivateEndpoint" }, { type: "azure-native:network/v20240701:InterfaceEndpoint" }, { type: "azure-native:network/v20241001:InterfaceEndpoint" }, { type: "azure-native:network/v20250101:InterfaceEndpoint" }, { type: "azure-native:network/v20250301:InterfaceEndpoint" }, { type: "azure-native:network/v20250501:InterfaceEndpoint" }, { type: "azure-native:network/v20250701:InterfaceEndpoint" }, { type: "azure-native:network:PrivateEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(InterfaceEndpoint.__pulumiType, name, resourceInputs, opts);
     }
@@ -141,23 +141,23 @@ export interface InterfaceEndpointArgs {
     /**
      * A reference to the service being brought into the virtual network.
      */
-    endpointService?: pulumi.Input<types.inputs.EndpointServiceArgs>;
+    endpointService?: pulumi.Input<types.inputs.EndpointServiceArgs | undefined>;
     /**
      * A first-party service's FQDN that is mapped to the private IP allocated via this interface endpoint.
      */
-    fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the interface endpoint.
      */
-    interfaceEndpointName?: pulumi.Input<string>;
+    interfaceEndpointName?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group.
      */
@@ -165,9 +165,9 @@ export interface InterfaceEndpointArgs {
     /**
      * The ID of the subnet from which the private IP will be allocated.
      */
-    subnet?: pulumi.Input<types.inputs.SubnetArgs>;
+    subnet?: pulumi.Input<types.inputs.SubnetArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Client extends pulumi.CustomResource {
     /**
@@ -121,7 +121,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20230601preview:Client" }, { type: "azure-native:eventgrid/v20231215preview:Client" }, { type: "azure-native:eventgrid/v20240601preview:Client" }, { type: "azure-native:eventgrid/v20241215preview:Client" }, { type: "azure-native:eventgrid/v20250215:Client" }, { type: "azure-native:eventgrid/v20250401preview:Client" }, { type: "azure-native:eventgrid/v20250715preview:Client" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20230601preview:Client" }, { type: "azure-native:eventgrid/v20231215preview:Client" }, { type: "azure-native:eventgrid/v20240601preview:Client" }, { type: "azure-native:eventgrid/v20241215preview:Client" }, { type: "azure-native:eventgrid/v20250215:Client" }, { type: "azure-native:eventgrid/v20250401preview:Client" }, { type: "azure-native:eventgrid/v20250715preview:Client" }, { type: "azure-native:eventgrid/v20251115preview:Client" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Client.__pulumiType, name, resourceInputs, opts);
     }
@@ -136,23 +136,23 @@ export interface ClientArgs {
      * Example:
      * "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] }
      */
-    attributes?: any;
+    attributes?: any | undefined;
     /**
      * The name presented by the client for authentication. The default value is the name of the resource.
      */
-    authenticationName?: pulumi.Input<string>;
+    authenticationName?: pulumi.Input<string | undefined>;
     /**
      * The client certificate authentication information.
      */
-    clientCertificateAuthentication?: pulumi.Input<types.inputs.ClientCertificateAuthenticationArgs>;
+    clientCertificateAuthentication?: pulumi.Input<types.inputs.ClientCertificateAuthenticationArgs | undefined>;
     /**
      * The client name.
      */
-    clientName?: pulumi.Input<string>;
+    clientName?: pulumi.Input<string | undefined>;
     /**
      * Description for the Client resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the namespace.
      */
@@ -164,5 +164,5 @@ export interface ClientArgs {
     /**
      * Indicates if the client is enabled or not. Default value is Enabled.
      */
-    state?: pulumi.Input<string | types.enums.ClientState>;
+    state?: pulumi.Input<string | types.enums.ClientState | undefined>;
 }

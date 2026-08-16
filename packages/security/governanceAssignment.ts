@@ -50,7 +50,7 @@ export class GovernanceAssignment extends pulumi.CustomResource {
      */
     declare public readonly isGracePeriod: pulumi.Output<boolean | undefined>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -66,7 +66,11 @@ export class GovernanceAssignment extends pulumi.CustomResource {
      */
     declare public readonly remediationEta: pulumi.Output<types.outputs.RemediationEtaResponse | undefined>;
     /**
-     * Resource type
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -101,6 +105,7 @@ export class GovernanceAssignment extends pulumi.CustomResource {
             resourceInputs["scope"] = args?.scope;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["additionalData"] = undefined /*out*/;
@@ -111,6 +116,7 @@ export class GovernanceAssignment extends pulumi.CustomResource {
             resourceInputs["owner"] = undefined /*out*/;
             resourceInputs["remediationDueDate"] = undefined /*out*/;
             resourceInputs["remediationEta"] = undefined /*out*/;
+            resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -127,27 +133,27 @@ export interface GovernanceAssignmentArgs {
     /**
      * The additional data for the governance assignment - e.g. links to ticket (optional), see example
      */
-    additionalData?: pulumi.Input<types.inputs.GovernanceAssignmentAdditionalDataArgs>;
+    additionalData?: pulumi.Input<types.inputs.GovernanceAssignmentAdditionalDataArgs | undefined>;
     /**
-     * The Assessment Key - A unique key for the assessment type
+     * The assessment key of the governance assignment.
      */
     assessmentName: pulumi.Input<string>;
     /**
-     * The governance assignment key - the assessment key of the required governance assignment
+     * The governance assignment key.
      */
-    assignmentKey?: pulumi.Input<string>;
+    assignmentKey?: pulumi.Input<string | undefined>;
     /**
      * The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
      */
-    governanceEmailNotification?: pulumi.Input<types.inputs.GovernanceEmailNotificationArgs>;
+    governanceEmailNotification?: pulumi.Input<types.inputs.GovernanceEmailNotificationArgs | undefined>;
     /**
      * Defines whether there is a grace period on the governance assignment
      */
-    isGracePeriod?: pulumi.Input<boolean>;
+    isGracePeriod?: pulumi.Input<boolean | undefined>;
     /**
      * The Owner for the governance assignment - e.g. user@contoso.com - see example
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * The remediation due-date - after this date Secure Score will be affected (in case of  active grace-period)
      */
@@ -155,9 +161,9 @@ export interface GovernanceAssignmentArgs {
     /**
      * The ETA (estimated time of arrival) for remediation (optional), see example
      */
-    remediationEta?: pulumi.Input<types.inputs.RemediationEtaArgs>;
+    remediationEta?: pulumi.Input<types.inputs.RemediationEtaArgs | undefined>;
     /**
-     * The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+     * The scope of the governance assignment.
      */
     scope: pulumi.Input<string>;
 }

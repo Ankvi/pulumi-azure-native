@@ -15,7 +15,7 @@ export interface AzureDataExplorerConnectionPropertiesArgs {
     /**
      * The name of the Azure Data Explorer table used for recording relationship lifecycle events. The table will not be created if this property is left unspecified.
      */
-    adxRelationshipLifecycleEventsTableName?: pulumi.Input<string>;
+    adxRelationshipLifecycleEventsTableName?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the Azure Data Explorer cluster.
      */
@@ -23,11 +23,11 @@ export interface AzureDataExplorerConnectionPropertiesArgs {
     /**
      * The name of the Azure Data Explorer table used for storing updates to properties of twins and relationships. Defaults to AdtPropertyEvents.
      */
-    adxTableName?: pulumi.Input<string>;
+    adxTableName?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure Data Explorer table used for recording twin lifecycle events. The table will not be created if this property is left unspecified.
      */
-    adxTwinLifecycleEventsTableName?: pulumi.Input<string>;
+    adxTwinLifecycleEventsTableName?: pulumi.Input<string | undefined>;
     /**
      * The type of time series connection resource.
      * Expected value is 'AzureDataExplorer'.
@@ -36,7 +36,7 @@ export interface AzureDataExplorerConnectionPropertiesArgs {
     /**
      * The EventHub consumer group to use when ADX reads from EventHub. Defaults to $Default.
      */
-    eventHubConsumerGroup?: pulumi.Input<string>;
+    eventHubConsumerGroup?: pulumi.Input<string | undefined>;
     /**
      * The URL of the EventHub namespace for identity-based authentication. It must include the protocol sb://
      */
@@ -52,11 +52,11 @@ export interface AzureDataExplorerConnectionPropertiesArgs {
     /**
      * Managed identity properties for the time series database connection resource.
      */
-    identity?: pulumi.Input<ManagedIdentityReferenceArgs>;
+    identity?: pulumi.Input<ManagedIdentityReferenceArgs | undefined>;
     /**
      * Specifies whether or not to record twin / relationship property and item removals, including removals of indexed or keyed values (such as map entries, array elements, etc.). This feature is de-activated unless explicitly set to 'true'. Setting this property to 'true' will generate an additional column in the property events table in ADX.
      */
-    recordPropertyAndItemRemovals?: pulumi.Input<string | enums.RecordPropertyAndItemRemovals>;
+    recordPropertyAndItemRemovals?: pulumi.Input<string | enums.RecordPropertyAndItemRemovals | undefined>;
 }
 /**
  * azureDataExplorerConnectionPropertiesArgsProvideDefaults sets the appropriate defaults for AzureDataExplorerConnectionPropertiesArgs
@@ -77,11 +77,11 @@ export interface ConnectionPropertiesArgs {
     /**
      * The list of group ids for the private endpoint connection.
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The connection state.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<ConnectionPropertiesPrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<ConnectionPropertiesPrivateLinkServiceConnectionStateArgs | undefined>;
 }
 
 /**
@@ -91,7 +91,7 @@ export interface ConnectionPropertiesPrivateLinkServiceConnectionStateArgs {
     /**
      * Actions required for a private endpoint connection.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The description for the current state of a private endpoint connection.
      */
@@ -109,13 +109,13 @@ export interface DigitalTwinsIdentityArgs {
     /**
      * The type of Managed Identity used by the DigitalTwinsInstance.
      */
-    type?: pulumi.Input<string | enums.DigitalTwinsIdentityType>;
+    type?: pulumi.Input<string | enums.DigitalTwinsIdentityType | undefined>;
     /**
      * The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
      * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      * .
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -129,19 +129,19 @@ export interface EventGridArgs {
     /**
      * EventGrid secondary accesskey. Will be obfuscated during read.
      */
-    accessKey2?: pulumi.Input<string>;
+    accessKey2?: pulumi.Input<string | undefined>;
     /**
      * Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
      */
-    authenticationType?: pulumi.Input<string | enums.AuthenticationType>;
+    authenticationType?: pulumi.Input<string | enums.AuthenticationType | undefined>;
     /**
      * Dead letter storage secret for key-based authentication. Will be obfuscated during read.
      */
-    deadLetterSecret?: pulumi.Input<string>;
+    deadLetterSecret?: pulumi.Input<string | undefined>;
     /**
      * Dead letter storage URL for identity-based authentication.
      */
-    deadLetterUri?: pulumi.Input<string>;
+    deadLetterUri?: pulumi.Input<string | undefined>;
     /**
      * The type of Digital Twins endpoint
      * Expected value is 'EventGrid'.
@@ -150,7 +150,7 @@ export interface EventGridArgs {
     /**
      * Managed identity properties for the endpoint.
      */
-    identity?: pulumi.Input<ManagedIdentityReferenceArgs>;
+    identity?: pulumi.Input<ManagedIdentityReferenceArgs | undefined>;
     /**
      * EventGrid Topic Endpoint.
      */
@@ -164,23 +164,23 @@ export interface EventHubArgs {
     /**
      * Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
      */
-    authenticationType?: pulumi.Input<string | enums.AuthenticationType>;
+    authenticationType?: pulumi.Input<string | enums.AuthenticationType | undefined>;
     /**
      * PrimaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
      */
-    connectionStringPrimaryKey?: pulumi.Input<string>;
+    connectionStringPrimaryKey?: pulumi.Input<string | undefined>;
     /**
      * SecondaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
      */
-    connectionStringSecondaryKey?: pulumi.Input<string>;
+    connectionStringSecondaryKey?: pulumi.Input<string | undefined>;
     /**
      * Dead letter storage secret for key-based authentication. Will be obfuscated during read.
      */
-    deadLetterSecret?: pulumi.Input<string>;
+    deadLetterSecret?: pulumi.Input<string | undefined>;
     /**
      * Dead letter storage URL for identity-based authentication.
      */
-    deadLetterUri?: pulumi.Input<string>;
+    deadLetterUri?: pulumi.Input<string | undefined>;
     /**
      * The type of Digital Twins endpoint
      * Expected value is 'EventHub'.
@@ -189,15 +189,15 @@ export interface EventHubArgs {
     /**
      * The URL of the EventHub namespace for identity-based authentication. It must include the protocol 'sb://'.
      */
-    endpointUri?: pulumi.Input<string>;
+    endpointUri?: pulumi.Input<string | undefined>;
     /**
      * The EventHub name in the EventHub namespace for identity-based authentication.
      */
-    entityPath?: pulumi.Input<string>;
+    entityPath?: pulumi.Input<string | undefined>;
     /**
      * Managed identity properties for the endpoint.
      */
-    identity?: pulumi.Input<ManagedIdentityReferenceArgs>;
+    identity?: pulumi.Input<ManagedIdentityReferenceArgs | undefined>;
 }
 
 /**
@@ -207,11 +207,11 @@ export interface ManagedIdentityReferenceArgs {
     /**
      * The type of managed identity used.
      */
-    type?: pulumi.Input<string | enums.IdentityType>;
+    type?: pulumi.Input<string | enums.IdentityType | undefined>;
     /**
      * The user identity ARM resource id if the managed identity type is 'UserAssigned'.
      */
-    userAssignedIdentity?: pulumi.Input<string>;
+    userAssignedIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -231,15 +231,15 @@ export interface ServiceBusArgs {
     /**
      * Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
      */
-    authenticationType?: pulumi.Input<string | enums.AuthenticationType>;
+    authenticationType?: pulumi.Input<string | enums.AuthenticationType | undefined>;
     /**
      * Dead letter storage secret for key-based authentication. Will be obfuscated during read.
      */
-    deadLetterSecret?: pulumi.Input<string>;
+    deadLetterSecret?: pulumi.Input<string | undefined>;
     /**
      * Dead letter storage URL for identity-based authentication.
      */
-    deadLetterUri?: pulumi.Input<string>;
+    deadLetterUri?: pulumi.Input<string | undefined>;
     /**
      * The type of Digital Twins endpoint
      * Expected value is 'ServiceBus'.
@@ -248,21 +248,21 @@ export interface ServiceBusArgs {
     /**
      * The URL of the ServiceBus namespace for identity-based authentication. It must include the protocol 'sb://'.
      */
-    endpointUri?: pulumi.Input<string>;
+    endpointUri?: pulumi.Input<string | undefined>;
     /**
      * The ServiceBus Topic name for identity-based authentication.
      */
-    entityPath?: pulumi.Input<string>;
+    entityPath?: pulumi.Input<string | undefined>;
     /**
      * Managed identity properties for the endpoint.
      */
-    identity?: pulumi.Input<ManagedIdentityReferenceArgs>;
+    identity?: pulumi.Input<ManagedIdentityReferenceArgs | undefined>;
     /**
      * PrimaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
      */
-    primaryConnectionString?: pulumi.Input<string>;
+    primaryConnectionString?: pulumi.Input<string | undefined>;
     /**
      * SecondaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
      */
-    secondaryConnectionString?: pulumi.Input<string>;
+    secondaryConnectionString?: pulumi.Input<string | undefined>;
 }

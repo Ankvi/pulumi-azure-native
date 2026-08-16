@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-11-01.
  *
- * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01, 2026-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DataflowEndpoint extends pulumi.CustomResource {
     /**
@@ -83,7 +83,7 @@ export class DataflowEndpoint extends pulumi.CustomResource {
             resourceInputs["dataflowEndpointName"] = args?.dataflowEndpointName;
             resourceInputs["extendedLocation"] = args?.extendedLocation;
             resourceInputs["instanceName"] = args?.instanceName;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.dataflowEndpointPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? pulumi.output(args.properties).apply(v => v === undefined ? undefined : types.inputs.dataflowEndpointPropertiesArgsProvideDefaults(v)) : undefined;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -98,7 +98,7 @@ export class DataflowEndpoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:DataFlowEndpoint" }, { type: "azure-native:iotoperations/v20240701preview:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20240815preview:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20240915preview:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20241101:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20250401:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20250701preview:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20251001:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20260301:DataflowEndpoint" }, { type: "azure-native:iotoperations:DataFlowEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:DataFlowEndpoint" }, { type: "azure-native:iotoperations/v20240701preview:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20240815preview:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20240915preview:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20241101:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20250401:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20250701preview:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20251001:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20260301:DataflowEndpoint" }, { type: "azure-native:iotoperations/v20260701:DataflowEndpoint" }, { type: "azure-native:iotoperations:DataFlowEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DataflowEndpoint.__pulumiType, name, resourceInputs, opts);
     }
@@ -111,7 +111,7 @@ export interface DataflowEndpointArgs {
     /**
      * Name of Instance dataflowEndpoint resource
      */
-    dataflowEndpointName?: pulumi.Input<string>;
+    dataflowEndpointName?: pulumi.Input<string | undefined>;
     /**
      * Edge location of the resource.
      */
@@ -123,7 +123,7 @@ export interface DataflowEndpointArgs {
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.DataflowEndpointPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DataflowEndpointPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

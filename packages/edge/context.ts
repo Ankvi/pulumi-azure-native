@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01.
  *
- * Other available API versions: 2025-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-08-01, 2025-08-15-preview, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Context extends pulumi.CustomResource {
     /**
@@ -97,7 +97,7 @@ export class Context extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:edge/v20250601:Context" }, { type: "azure-native:edge/v20250801:Context" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:edge/v20250601:Context" }, { type: "azure-native:edge/v20250801:Context" }, { type: "azure-native:edge/v20250815preview:Context" }, { type: "azure-native:edge/v20260301:Context" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Context.__pulumiType, name, resourceInputs, opts);
     }
@@ -110,15 +110,15 @@ export interface ContextArgs {
     /**
      * The name of the Context.
      */
-    contextName?: pulumi.Input<string>;
+    contextName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.ContextPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ContextPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -126,5 +126,5 @@ export interface ContextArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

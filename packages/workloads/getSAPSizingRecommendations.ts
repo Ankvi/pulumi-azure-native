@@ -115,7 +115,7 @@ export interface GetSAPSizingRecommendationsOutputArgs {
     /**
      * The DB scale method.
      */
-    dbScaleMethod?: pulumi.Input<string | types.enums.SAPDatabaseScaleMethod>;
+    dbScaleMethod?: pulumi.Input<string | types.enums.SAPDatabaseScaleMethod | undefined>;
     /**
      * The deployment type. Eg: SingleServer/ThreeTier
      */
@@ -127,7 +127,7 @@ export interface GetSAPSizingRecommendationsOutputArgs {
     /**
      * The high availability type.
      */
-    highAvailabilityType?: pulumi.Input<string | types.enums.SAPHighAvailabilityType>;
+    highAvailabilityType?: pulumi.Input<string | types.enums.SAPHighAvailabilityType | undefined>;
     /**
      * The name of Azure region.
      */

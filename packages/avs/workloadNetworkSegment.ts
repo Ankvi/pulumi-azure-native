@@ -138,11 +138,11 @@ export interface WorkloadNetworkSegmentArgs {
     /**
      * Gateway which to connect segment to.
      */
-    connectedGateway?: pulumi.Input<string>;
+    connectedGateway?: pulumi.Input<string | undefined>;
     /**
      * Display name of the segment.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Name of the private cloud
      */
@@ -154,13 +154,13 @@ export interface WorkloadNetworkSegmentArgs {
     /**
      * NSX revision number.
      */
-    revision?: pulumi.Input<number>;
+    revision?: pulumi.Input<number | undefined>;
     /**
      * The ID of the NSX Segment
      */
-    segmentId?: pulumi.Input<string>;
+    segmentId?: pulumi.Input<string | undefined>;
     /**
      * Subnet which to connect segment to.
      */
-    subnet?: pulumi.Input<types.inputs.WorkloadNetworkSegmentSubnetArgs>;
+    subnet?: pulumi.Input<types.inputs.WorkloadNetworkSegmentSubnetArgs | undefined>;
 }

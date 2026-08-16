@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Bookmark extends pulumi.CustomResource {
     /**
@@ -173,7 +173,7 @@ export class Bookmark extends pulumi.CustomResource {
             resourceInputs["updatedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:Bookmark" }, { type: "azure-native:securityinsights/v20200101:Bookmark" }, { type: "azure-native:securityinsights/v20210901preview:Bookmark" }, { type: "azure-native:securityinsights/v20211001:Bookmark" }, { type: "azure-native:securityinsights/v20211001preview:Bookmark" }, { type: "azure-native:securityinsights/v20220101preview:Bookmark" }, { type: "azure-native:securityinsights/v20220401preview:Bookmark" }, { type: "azure-native:securityinsights/v20220501preview:Bookmark" }, { type: "azure-native:securityinsights/v20220601preview:Bookmark" }, { type: "azure-native:securityinsights/v20220701preview:Bookmark" }, { type: "azure-native:securityinsights/v20220801:Bookmark" }, { type: "azure-native:securityinsights/v20220801preview:Bookmark" }, { type: "azure-native:securityinsights/v20220901preview:Bookmark" }, { type: "azure-native:securityinsights/v20221001preview:Bookmark" }, { type: "azure-native:securityinsights/v20221101:Bookmark" }, { type: "azure-native:securityinsights/v20221101preview:Bookmark" }, { type: "azure-native:securityinsights/v20221201preview:Bookmark" }, { type: "azure-native:securityinsights/v20230201:Bookmark" }, { type: "azure-native:securityinsights/v20230201preview:Bookmark" }, { type: "azure-native:securityinsights/v20230301preview:Bookmark" }, { type: "azure-native:securityinsights/v20230401preview:Bookmark" }, { type: "azure-native:securityinsights/v20230501preview:Bookmark" }, { type: "azure-native:securityinsights/v20230601preview:Bookmark" }, { type: "azure-native:securityinsights/v20230701preview:Bookmark" }, { type: "azure-native:securityinsights/v20230801preview:Bookmark" }, { type: "azure-native:securityinsights/v20230901preview:Bookmark" }, { type: "azure-native:securityinsights/v20231001preview:Bookmark" }, { type: "azure-native:securityinsights/v20231101:Bookmark" }, { type: "azure-native:securityinsights/v20231201preview:Bookmark" }, { type: "azure-native:securityinsights/v20240101preview:Bookmark" }, { type: "azure-native:securityinsights/v20240301:Bookmark" }, { type: "azure-native:securityinsights/v20240401preview:Bookmark" }, { type: "azure-native:securityinsights/v20240901:Bookmark" }, { type: "azure-native:securityinsights/v20241001preview:Bookmark" }, { type: "azure-native:securityinsights/v20250101preview:Bookmark" }, { type: "azure-native:securityinsights/v20250301:Bookmark" }, { type: "azure-native:securityinsights/v20250401preview:Bookmark" }, { type: "azure-native:securityinsights/v20250601:Bookmark" }, { type: "azure-native:securityinsights/v20250701preview:Bookmark" }, { type: "azure-native:securityinsights/v20250901:Bookmark" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:Bookmark" }, { type: "azure-native:securityinsights/v20200101:Bookmark" }, { type: "azure-native:securityinsights/v20210901preview:Bookmark" }, { type: "azure-native:securityinsights/v20211001:Bookmark" }, { type: "azure-native:securityinsights/v20211001preview:Bookmark" }, { type: "azure-native:securityinsights/v20220101preview:Bookmark" }, { type: "azure-native:securityinsights/v20220401preview:Bookmark" }, { type: "azure-native:securityinsights/v20220501preview:Bookmark" }, { type: "azure-native:securityinsights/v20220601preview:Bookmark" }, { type: "azure-native:securityinsights/v20220701preview:Bookmark" }, { type: "azure-native:securityinsights/v20220801:Bookmark" }, { type: "azure-native:securityinsights/v20220801preview:Bookmark" }, { type: "azure-native:securityinsights/v20220901preview:Bookmark" }, { type: "azure-native:securityinsights/v20221001preview:Bookmark" }, { type: "azure-native:securityinsights/v20221101:Bookmark" }, { type: "azure-native:securityinsights/v20221101preview:Bookmark" }, { type: "azure-native:securityinsights/v20221201preview:Bookmark" }, { type: "azure-native:securityinsights/v20230201:Bookmark" }, { type: "azure-native:securityinsights/v20230201preview:Bookmark" }, { type: "azure-native:securityinsights/v20230301preview:Bookmark" }, { type: "azure-native:securityinsights/v20230401preview:Bookmark" }, { type: "azure-native:securityinsights/v20230501preview:Bookmark" }, { type: "azure-native:securityinsights/v20230601preview:Bookmark" }, { type: "azure-native:securityinsights/v20230701preview:Bookmark" }, { type: "azure-native:securityinsights/v20230801preview:Bookmark" }, { type: "azure-native:securityinsights/v20230901preview:Bookmark" }, { type: "azure-native:securityinsights/v20231001preview:Bookmark" }, { type: "azure-native:securityinsights/v20231101:Bookmark" }, { type: "azure-native:securityinsights/v20231201preview:Bookmark" }, { type: "azure-native:securityinsights/v20240101preview:Bookmark" }, { type: "azure-native:securityinsights/v20240301:Bookmark" }, { type: "azure-native:securityinsights/v20240401preview:Bookmark" }, { type: "azure-native:securityinsights/v20240901:Bookmark" }, { type: "azure-native:securityinsights/v20241001preview:Bookmark" }, { type: "azure-native:securityinsights/v20250101preview:Bookmark" }, { type: "azure-native:securityinsights/v20250301:Bookmark" }, { type: "azure-native:securityinsights/v20250401preview:Bookmark" }, { type: "azure-native:securityinsights/v20250601:Bookmark" }, { type: "azure-native:securityinsights/v20250701preview:Bookmark" }, { type: "azure-native:securityinsights/v20250901:Bookmark" }, { type: "azure-native:securityinsights/v20251001preview:Bookmark" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Bookmark.__pulumiType, name, resourceInputs, opts);
     }
@@ -186,15 +186,15 @@ export interface BookmarkArgs {
     /**
      * Bookmark ID
      */
-    bookmarkId?: pulumi.Input<string>;
+    bookmarkId?: pulumi.Input<string | undefined>;
     /**
      * The time the bookmark was created
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * Describes a user that created the bookmark
      */
-    createdBy?: pulumi.Input<types.inputs.UserInfoArgs>;
+    createdBy?: pulumi.Input<types.inputs.UserInfoArgs | undefined>;
     /**
      * The display name of the bookmark
      */
@@ -202,19 +202,19 @@ export interface BookmarkArgs {
     /**
      * The bookmark event time
      */
-    eventTime?: pulumi.Input<string>;
+    eventTime?: pulumi.Input<string | undefined>;
     /**
      * Describes an incident that relates to bookmark
      */
-    incidentInfo?: pulumi.Input<types.inputs.IncidentInfoArgs>;
+    incidentInfo?: pulumi.Input<types.inputs.IncidentInfoArgs | undefined>;
     /**
      * List of labels relevant to this bookmark
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The notes of the bookmark
      */
-    notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
     /**
      * The query of the bookmark.
      */
@@ -222,15 +222,15 @@ export interface BookmarkArgs {
     /**
      * The end time for the query
      */
-    queryEndTime?: pulumi.Input<string>;
+    queryEndTime?: pulumi.Input<string | undefined>;
     /**
      * The query result of the bookmark.
      */
-    queryResult?: pulumi.Input<string>;
+    queryResult?: pulumi.Input<string | undefined>;
     /**
      * The start time for the query
      */
-    queryStartTime?: pulumi.Input<string>;
+    queryStartTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -238,11 +238,11 @@ export interface BookmarkArgs {
     /**
      * The last time the bookmark was updated
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
     /**
      * Describes a user that updated the bookmark
      */
-    updatedBy?: pulumi.Input<types.inputs.UserInfoArgs>;
+    updatedBy?: pulumi.Input<types.inputs.UserInfoArgs | undefined>;
     /**
      * The name of the workspace.
      */

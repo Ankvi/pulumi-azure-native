@@ -114,11 +114,11 @@ export interface CloudLinkArgs {
     /**
      * Name of the cloud link.
      */
-    cloudLinkName?: pulumi.Input<string>;
+    cloudLinkName?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the other private cloud participating in the link.
      */
-    linkedCloud?: pulumi.Input<string>;
+    linkedCloud?: pulumi.Input<string | undefined>;
     /**
      * Name of the private cloud
      */

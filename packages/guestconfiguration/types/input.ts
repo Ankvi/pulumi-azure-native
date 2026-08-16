@@ -7,11 +7,11 @@ export interface ConfigurationParameterArgs {
     /**
      * Name of the configuration parameter.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Value of the configuration parameter.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -21,11 +21,11 @@ export interface GuestConfigurationAssignmentPropertiesArgs {
     /**
      * The source which initiated the guest configuration assignment. Ex: Azure Policy
      */
-    context?: pulumi.Input<string>;
+    context?: pulumi.Input<string | undefined>;
     /**
      * The guest configuration to assign.
      */
-    guestConfiguration?: pulumi.Input<GuestConfigurationNavigationArgs>;
+    guestConfiguration?: pulumi.Input<GuestConfigurationNavigationArgs | undefined>;
 }
 
 /**
@@ -35,37 +35,37 @@ export interface GuestConfigurationNavigationArgs {
     /**
      * Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
      */
-    assignmentType?: pulumi.Input<string | enums.AssignmentType>;
+    assignmentType?: pulumi.Input<string | enums.AssignmentType | undefined>;
     /**
      * The configuration parameters for the guest configuration.
      */
-    configurationParameter?: pulumi.Input<pulumi.Input<ConfigurationParameterArgs>[]>;
+    configurationParameter?: pulumi.Input<pulumi.Input<ConfigurationParameterArgs>[] | undefined>;
     /**
      * The protected configuration parameters for the guest configuration.
      */
-    configurationProtectedParameter?: pulumi.Input<pulumi.Input<ConfigurationParameterArgs>[]>;
+    configurationProtectedParameter?: pulumi.Input<pulumi.Input<ConfigurationParameterArgs>[] | undefined>;
     /**
      * Combined hash of the guest configuration package and configuration parameters.
      */
-    contentHash?: pulumi.Input<string>;
+    contentHash?: pulumi.Input<string | undefined>;
     /**
      * Managed identity with storage access of the guest configuration package and configuration parameters.
      */
-    contentManagedIdentity?: pulumi.Input<string>;
+    contentManagedIdentity?: pulumi.Input<string | undefined>;
     /**
      * Uri of the storage where guest configuration package is uploaded.
      */
-    contentUri?: pulumi.Input<string>;
+    contentUri?: pulumi.Input<string | undefined>;
     /**
      * Kind of the guest configuration. For example:DSC
      */
-    kind?: pulumi.Input<string | enums.Kind>;
+    kind?: pulumi.Input<string | enums.Kind | undefined>;
     /**
      * Name of the guest configuration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Version of the guest configuration.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

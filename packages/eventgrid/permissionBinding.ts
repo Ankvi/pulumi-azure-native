@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
  *
- * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PermissionBinding extends pulumi.CustomResource {
     /**
@@ -115,7 +115,7 @@ export class PermissionBinding extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20230601preview:PermissionBinding" }, { type: "azure-native:eventgrid/v20231215preview:PermissionBinding" }, { type: "azure-native:eventgrid/v20240601preview:PermissionBinding" }, { type: "azure-native:eventgrid/v20241215preview:PermissionBinding" }, { type: "azure-native:eventgrid/v20250215:PermissionBinding" }, { type: "azure-native:eventgrid/v20250401preview:PermissionBinding" }, { type: "azure-native:eventgrid/v20250715preview:PermissionBinding" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20230601preview:PermissionBinding" }, { type: "azure-native:eventgrid/v20231215preview:PermissionBinding" }, { type: "azure-native:eventgrid/v20240601preview:PermissionBinding" }, { type: "azure-native:eventgrid/v20241215preview:PermissionBinding" }, { type: "azure-native:eventgrid/v20250215:PermissionBinding" }, { type: "azure-native:eventgrid/v20250401preview:PermissionBinding" }, { type: "azure-native:eventgrid/v20250715preview:PermissionBinding" }, { type: "azure-native:eventgrid/v20251115preview:PermissionBinding" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PermissionBinding.__pulumiType, name, resourceInputs, opts);
     }
@@ -129,11 +129,11 @@ export interface PermissionBindingArgs {
      * The name of the client group resource that the permission is bound to.
      * The client group needs to be a resource under the same namespace the permission binding is a part of.
      */
-    clientGroupName?: pulumi.Input<string>;
+    clientGroupName?: pulumi.Input<string | undefined>;
     /**
      * Description for the Permission Binding resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the namespace.
      */
@@ -141,11 +141,11 @@ export interface PermissionBindingArgs {
     /**
      * The allowed permission.
      */
-    permission?: pulumi.Input<string | types.enums.PermissionType>;
+    permission?: pulumi.Input<string | types.enums.PermissionType | undefined>;
     /**
      * The permission binding name.
      */
-    permissionBindingName?: pulumi.Input<string>;
+    permissionBindingName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group within the user's subscription.
      */
@@ -154,5 +154,5 @@ export interface PermissionBindingArgs {
      * The name of the Topic Space resource that the permission is bound to.
      * The Topic space needs to be a resource under the same namespace the permission binding is a part of.
      */
-    topicSpaceName?: pulumi.Input<string>;
+    topicSpaceName?: pulumi.Input<string | undefined>;
 }

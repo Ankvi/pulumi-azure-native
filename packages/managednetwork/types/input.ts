@@ -7,15 +7,15 @@ export interface ManagedNetworkPeeringPolicyPropertiesArgs {
     /**
      * Gets or sets the hub virtual network ID
      */
-    hub?: pulumi.Input<ResourceIdArgs>;
+    hub?: pulumi.Input<ResourceIdArgs | undefined>;
     /**
      * Gets or sets the mesh group IDs
      */
-    mesh?: pulumi.Input<pulumi.Input<ResourceIdArgs>[]>;
+    mesh?: pulumi.Input<pulumi.Input<ResourceIdArgs>[] | undefined>;
     /**
      * Gets or sets the spokes group IDs
      */
-    spokes?: pulumi.Input<pulumi.Input<ResourceIdArgs>[]>;
+    spokes?: pulumi.Input<pulumi.Input<ResourceIdArgs>[] | undefined>;
     /**
      * Gets or sets the connectivity type of a network structure policy
      */
@@ -29,7 +29,7 @@ export interface ResourceIdArgs {
     /**
      * Resource Id
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -39,17 +39,17 @@ export interface ScopeArgs {
     /**
      * The collection of management groups covered by the Managed Network
      */
-    managementGroups?: pulumi.Input<pulumi.Input<ResourceIdArgs>[]>;
+    managementGroups?: pulumi.Input<pulumi.Input<ResourceIdArgs>[] | undefined>;
     /**
      * The collection of  subnets covered by the Managed Network
      */
-    subnets?: pulumi.Input<pulumi.Input<ResourceIdArgs>[]>;
+    subnets?: pulumi.Input<pulumi.Input<ResourceIdArgs>[] | undefined>;
     /**
      * The collection of subscriptions covered by the Managed Network
      */
-    subscriptions?: pulumi.Input<pulumi.Input<ResourceIdArgs>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<ResourceIdArgs>[] | undefined>;
     /**
      * The collection of virtual nets covered by the Managed Network
      */
-    virtualNetworks?: pulumi.Input<pulumi.Input<ResourceIdArgs>[]>;
+    virtualNetworks?: pulumi.Input<pulumi.Input<ResourceIdArgs>[] | undefined>;
 }

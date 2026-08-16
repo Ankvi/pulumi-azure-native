@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2024-01-01-preview.
  *
- * Other available API versions: 2024-01-01-preview, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-01-01-preview, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class VerifierWorkspace extends pulumi.CustomResource {
     /**
@@ -101,7 +101,7 @@ export class VerifierWorkspace extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20240101preview:VerifierWorkspace" }, { type: "azure-native:network/v20240501:VerifierWorkspace" }, { type: "azure-native:network/v20240701:VerifierWorkspace" }, { type: "azure-native:network/v20241001:VerifierWorkspace" }, { type: "azure-native:network/v20250101:VerifierWorkspace" }, { type: "azure-native:network/v20250301:VerifierWorkspace" }, { type: "azure-native:network/v20250501:VerifierWorkspace" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20240101preview:VerifierWorkspace" }, { type: "azure-native:network/v20240501:VerifierWorkspace" }, { type: "azure-native:network/v20240701:VerifierWorkspace" }, { type: "azure-native:network/v20241001:VerifierWorkspace" }, { type: "azure-native:network/v20250101:VerifierWorkspace" }, { type: "azure-native:network/v20250301:VerifierWorkspace" }, { type: "azure-native:network/v20250501:VerifierWorkspace" }, { type: "azure-native:network/v20250701:VerifierWorkspace" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VerifierWorkspace.__pulumiType, name, resourceInputs, opts);
     }
@@ -114,7 +114,7 @@ export interface VerifierWorkspaceArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the network manager.
      */
@@ -122,7 +122,7 @@ export interface VerifierWorkspaceArgs {
     /**
      * Properties of Verifier Workspace resource.
      */
-    properties?: pulumi.Input<types.inputs.VerifierWorkspacePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.VerifierWorkspacePropertiesArgs | undefined>;
     /**
      * The name of the resource group.
      */
@@ -130,9 +130,9 @@ export interface VerifierWorkspaceArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Workspace name.
      */
-    workspaceName?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string | undefined>;
 }

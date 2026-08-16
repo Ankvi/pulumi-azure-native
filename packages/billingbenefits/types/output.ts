@@ -15,6 +15,40 @@ export interface AutomaticShortfallSuppressReasonResponse {
 }
 
 /**
+ * Award details for milestone completion
+ */
+export interface AwardResponse {
+    /**
+     * Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+     */
+    balanceVersion: number;
+    /**
+     * Credit amount to be awarded
+     */
+    credit?: CommitmentResponse;
+    /**
+     * Duration for which the benefit is active. Will be in format P{int}M or P{int}Y. Any values representing up to 12 years are valid. Upper limit examples: P144M, P12Y.
+     */
+    duration?: string;
+    /**
+     * End date when the credit expires
+     */
+    endAt?: string;
+    /**
+     * Resource ID for the awarded credit.
+     */
+    resourceId: string;
+    /**
+     * Start date when the credit becomes effective
+     */
+    startAt?: string;
+    /**
+     * This is the globally unique identifier of the credit which will not change for its lifetime.
+     */
+    systemId: string;
+}
+
+/**
  * Catalog claim for a discount.
  */
 export interface CatalogClaimsItemResponse {
@@ -38,6 +72,36 @@ export interface CommitmentResponse {
 }
 
 /**
+ * Milestone definition within a conditional credit
+ */
+export interface ConditionalCreditMilestoneResponse {
+    /**
+     * Award details for this milestone (only present for primary conditional credits)
+     */
+    award?: AwardResponse;
+    /**
+     * End date for this milestone
+     */
+    endAt?: string;
+    /**
+     * Unique identifier for the milestone
+     */
+    milestoneId?: string;
+    /**
+     * Display name for the milestone
+     */
+    name?: string;
+    /**
+     * Spend target for this milestone
+     */
+    spendTarget?: PriceResponse;
+    /**
+     * Current status of the milestone
+     */
+    status?: string;
+}
+
+/**
  * Condition for a discount.
  */
 export interface ConditionsItemResponse {
@@ -47,6 +111,99 @@ export interface ConditionsItemResponse {
      * These items are open-ended strings.
      */
     value?: string[];
+}
+
+/**
+ * Milestone definition for contributor conditional credit (excludes award details)
+ */
+export interface ContributorConditionalCreditMilestoneResponse {
+    /**
+     * Award details for this milestone (only present for primary conditional credits)
+     */
+    award?: AwardResponse;
+    /**
+     * End date for this milestone
+     */
+    endAt?: string;
+    /**
+     * Unique identifier for the milestone
+     */
+    milestoneId?: string;
+    /**
+     * Display name for the milestone
+     */
+    name?: string;
+    /**
+     * Spend target for this milestone
+     */
+    spendTarget?: PriceResponse;
+    /**
+     * Current status of the milestone
+     */
+    status?: string;
+}
+
+/**
+ * Properties for contributor conditional credit.
+ */
+export interface ContributorConditionalCreditPropertiesResponse {
+    /**
+     * Fully-qualified identifier of the benefit under applicable benefit list.
+     */
+    benefitResourceId: string;
+    /**
+     * The billing account resource ID
+     */
+    billingAccountResourceId?: string;
+    /**
+     * Display name for the conditional credit
+     */
+    displayName?: string;
+    /**
+     * End date of the conditional credit (derived from last milestone)
+     */
+    endAt?: string;
+    /**
+     * Type of conditional credit entity
+     * Expected value is 'Contributor'.
+     */
+    entityType: "Contributor";
+    /**
+     * List of milestones copied from primary conditional credit (excludes award details)
+     */
+    milestones: ContributorConditionalCreditMilestoneResponse[];
+    /**
+     * Fully-qualified billing account resource identifier of the primary CACO. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}.
+     */
+    primaryBillingAccountResourceId?: string;
+    /**
+     * Resource ID of the primary conditional credit (required for contributors)
+     */
+    primaryResourceId?: string;
+    /**
+     * Product code for the conditional credit
+     */
+    productCode?: string;
+    /**
+     * The provisioning state of the resource
+     */
+    provisioningState: string;
+    /**
+     * Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
+     */
+    resourceId?: string;
+    /**
+     * Start date of the conditional credit
+     */
+    startAt?: string;
+    /**
+     * The status of the conditional credit
+     */
+    status?: string;
+    /**
+     * System identifier shared between primary and contributor conditional credits representing the same conditional credit program
+     */
+    systemId?: string;
 }
 
 /**
@@ -106,11 +263,11 @@ export interface CreditReasonResponse {
     /**
      * The reason code for credit.
      */
-    code: number;
+    code?: string;
     /**
      * The free string description of the credit.
      */
-    description: string;
+    description?: string;
 }
 
 /**
@@ -564,7 +721,7 @@ export interface PlanResponse {
      */
     name: string;
     /**
-     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. 
+     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
      */
     product: string;
     /**
@@ -601,6 +758,65 @@ export interface PriceResponse {
      * The ISO 4217 3-letter currency code for the currency used by this purchase record.
      */
     currencyCode?: string;
+}
+
+/**
+ * Properties for primary conditional credit.
+ */
+export interface PrimaryConditionalCreditPropertiesResponse {
+    /**
+     * Whether this conditional credit allows contributor billing accounts
+     */
+    allowContributors?: string;
+    /**
+     * Fully-qualified identifier of the benefit under applicable benefit list.
+     */
+    benefitResourceId: string;
+    /**
+     * The billing account resource ID
+     */
+    billingAccountResourceId?: string;
+    /**
+     * Display name for the conditional credit
+     */
+    displayName?: string;
+    /**
+     * End date of the conditional credit (derived from last milestone)
+     */
+    endAt?: string;
+    /**
+     * Type of conditional credit entity
+     * Expected value is 'Primary'.
+     */
+    entityType: "Primary";
+    /**
+     * List of milestones for this conditional credit (must include awards)
+     */
+    milestones?: ConditionalCreditMilestoneResponse[];
+    /**
+     * Product code for the conditional credit
+     */
+    productCode?: string;
+    /**
+     * The provisioning state of the resource
+     */
+    provisioningState: string;
+    /**
+     * Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
+     */
+    resourceId?: string;
+    /**
+     * Start date of the conditional credit
+     */
+    startAt?: string;
+    /**
+     * The status of the conditional credit
+     */
+    status?: string;
+    /**
+     * System identifier shared between primary and contributor conditional credits representing the same conditional credit program
+     */
+    systemId?: string;
 }
 
 /**
@@ -654,7 +870,7 @@ export interface SkuResponse {
      */
     name: string;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
     size?: string;
     /**

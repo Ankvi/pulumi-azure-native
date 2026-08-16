@@ -7,15 +7,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -25,7 +25,7 @@ export interface RetentionPolicyDetailsArgs {
     /**
      * The orchestration state to which this policy applies. If omitted, the policy applies to all purgeable orchestration states.
      */
-    orchestrationState?: pulumi.Input<string | enums.PurgeableOrchestrationState>;
+    orchestrationState?: pulumi.Input<string | enums.PurgeableOrchestrationState | undefined>;
     /**
      * The retention period in days after which the orchestration will be purged automatically
      */
@@ -39,7 +39,7 @@ export interface RetentionPolicyPropertiesArgs {
     /**
      * The orchestration retention policies
      */
-    retentionPolicies?: pulumi.Input<pulumi.Input<RetentionPolicyDetailsArgs>[]>;
+    retentionPolicies?: pulumi.Input<pulumi.Input<RetentionPolicyDetailsArgs>[] | undefined>;
 }
 
 /**
@@ -63,7 +63,7 @@ export interface SchedulerSkuArgs {
     /**
      * The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * The name of the SKU
      */

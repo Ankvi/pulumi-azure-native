@@ -7,11 +7,11 @@ export interface AgriServiceResourcePropertiesArgs {
     /**
      * Data connector credentials of AgriService instance.
      */
-    dataConnectorCredentials?: pulumi.Input<pulumi.Input<DataConnectorCredentialMapArgs>[]>;
+    dataConnectorCredentials?: pulumi.Input<pulumi.Input<DataConnectorCredentialMapArgs>[] | undefined>;
     /**
      * AgriService installed solutions.
      */
-    installedSolutions?: pulumi.Input<pulumi.Input<InstalledSolutionMapArgs>[]>;
+    installedSolutions?: pulumi.Input<pulumi.Input<InstalledSolutionMapArgs>[] | undefined>;
 }
 
 /**
@@ -35,23 +35,23 @@ export interface DataConnectorCredentialsArgs {
     /**
      * Client Id associated with the provider, if type of credentials is OAuthClientCredentials.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Name of the key vault key.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * Uri of the key vault
      */
-    keyVaultUri?: pulumi.Input<string>;
+    keyVaultUri?: pulumi.Input<string | undefined>;
     /**
      * Version of the key vault key.
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
     /**
      * Type of credential.
      */
-    kind?: pulumi.Input<string | enums.AuthCredentialsKind>;
+    kind?: pulumi.Input<string | enums.AuthCredentialsKind | undefined>;
 }
 
 /**
@@ -79,7 +79,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -89,23 +89,23 @@ export interface SkuArgs {
     /**
      * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * If the service has different generations of hardware, for the same SKU, then that can be captured here.
      */
-    family?: pulumi.Input<string>;
+    family?: pulumi.Input<string | undefined>;
     /**
      * The name of the SKU. E.g. P3. It is typically a letter+number code
      */
     name: pulumi.Input<string>;
     /**
-     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
      */
-    tier?: pulumi.Input<enums.SkuTier>;
+    tier?: pulumi.Input<enums.SkuTier | undefined>;
 }
 
 /**
@@ -115,25 +115,25 @@ export interface SolutionArgs {
     /**
      * Application name of the solution.
      */
-    applicationName?: pulumi.Input<string>;
+    applicationName?: pulumi.Input<string | undefined>;
     /**
      * Marketplace publisher Id.
      */
-    marketPlacePublisherId?: pulumi.Input<string>;
+    marketPlacePublisherId?: pulumi.Input<string | undefined>;
     /**
      * Partner Id.
      */
-    partnerId?: pulumi.Input<string>;
+    partnerId?: pulumi.Input<string | undefined>;
     /**
      * Plan Id.
      */
-    planId?: pulumi.Input<string>;
+    planId?: pulumi.Input<string | undefined>;
     /**
      * Saas subscription Id.
      */
-    saasSubscriptionId?: pulumi.Input<string>;
+    saasSubscriptionId?: pulumi.Input<string | undefined>;
     /**
      * Saas subscription name.
      */
-    saasSubscriptionName?: pulumi.Input<string>;
+    saasSubscriptionName?: pulumi.Input<string | undefined>;
 }

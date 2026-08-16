@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
  *
- * Other available API versions: 2023-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-10-01-preview, 2025-03-01-preview, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class PipelineGroup extends pulumi.CustomResource {
     /**
@@ -42,7 +42,7 @@ export class PipelineGroup extends pulumi.CustomResource {
     /**
      * The complex type of the extended location.
      */
-    declare public readonly extendedLocation: pulumi.Output<types.outputs.AzureResourceManagerCommonTypesExtendedLocationResponse | undefined>;
+    declare public readonly extendedLocation: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -103,7 +103,7 @@ export class PipelineGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:monitor/v20231001preview:PipelineGroup" }, { type: "azure-native:monitor/v20241001preview:PipelineGroup" }, { type: "azure-native:monitor/v20250301preview:PipelineGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:monitor/v20231001preview:PipelineGroup" }, { type: "azure-native:monitor/v20241001preview:PipelineGroup" }, { type: "azure-native:monitor/v20250301preview:PipelineGroup" }, { type: "azure-native:monitor/v20260401:PipelineGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PipelineGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -116,19 +116,19 @@ export interface PipelineGroupArgs {
     /**
      * The complex type of the extended location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.AzureResourceManagerCommonTypesExtendedLocationArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of pipeline group. The name is case insensitive.
      */
-    pipelineGroupName?: pulumi.Input<string>;
+    pipelineGroupName?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.PipelineGroupPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PipelineGroupPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -136,5 +136,5 @@ export interface PipelineGroupArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

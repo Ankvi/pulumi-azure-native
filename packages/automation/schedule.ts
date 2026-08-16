@@ -189,7 +189,7 @@ export interface ScheduleArgs {
     /**
      * Gets or sets the AdvancedSchedule.
      */
-    advancedSchedule?: pulumi.Input<types.inputs.AdvancedScheduleArgs>;
+    advancedSchedule?: pulumi.Input<types.inputs.AdvancedScheduleArgs | undefined>;
     /**
      * The name of the automation account.
      */
@@ -197,11 +197,11 @@ export interface ScheduleArgs {
     /**
      * Gets or sets the description of the schedule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the end time of the schedule.
      */
-    expiryTime?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the frequency of the schedule.
      */
@@ -209,19 +209,19 @@ export interface ScheduleArgs {
     /**
      * Gets or sets the interval of the schedule.
      */
-    interval?: any;
+    interval?: any | undefined;
     /**
      * Gets or sets the name of the Schedule.
      */
     name: pulumi.Input<string>;
     /**
-     * Name of an Azure Resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * The schedule name.
      */
-    scheduleName?: pulumi.Input<string>;
+    scheduleName?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets the start time of the schedule.
      */
@@ -229,5 +229,5 @@ export interface ScheduleArgs {
     /**
      * Gets or sets the time zone of the schedule.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }

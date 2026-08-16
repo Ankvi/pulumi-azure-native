@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
  *
- * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class InternalNetwork extends pulumi.CustomResource {
     /**
@@ -145,7 +145,7 @@ export class InternalNetwork extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vlanId'");
             }
             resourceInputs["annotation"] = args?.annotation;
-            resourceInputs["bgpConfiguration"] = args ? (args.bgpConfiguration ? pulumi.output(args.bgpConfiguration).apply(types.inputs.internalNetworkPropertiesBgpConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["bgpConfiguration"] = args ? pulumi.output(args.bgpConfiguration).apply(v => v === undefined ? undefined : types.inputs.internalNetworkPropertiesBgpConfigurationArgsProvideDefaults(v)) : undefined;
             resourceInputs["connectedIPv4Subnets"] = args?.connectedIPv4Subnets;
             resourceInputs["connectedIPv6Subnets"] = args?.connectedIPv6Subnets;
             resourceInputs["egressAclId"] = args?.egressAclId;
@@ -160,7 +160,7 @@ export class InternalNetwork extends pulumi.CustomResource {
             resourceInputs["l3IsolationDomainName"] = args?.l3IsolationDomainName;
             resourceInputs["mtu"] = (args?.mtu) ?? 1500;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
-            resourceInputs["staticRouteConfiguration"] = args ? (args.staticRouteConfiguration ? pulumi.output(args.staticRouteConfiguration).apply(types.inputs.internalNetworkPropertiesStaticRouteConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["staticRouteConfiguration"] = args ? pulumi.output(args.staticRouteConfiguration).apply(v => v === undefined ? undefined : types.inputs.internalNetworkPropertiesStaticRouteConfigurationArgsProvideDefaults(v)) : undefined;
             resourceInputs["vlanId"] = args?.vlanId;
             resourceInputs["administrativeState"] = undefined /*out*/;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
@@ -194,7 +194,7 @@ export class InternalNetwork extends pulumi.CustomResource {
             resourceInputs["vlanId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:InternalNetwork" }, { type: "azure-native:managednetworkfabric/v20230615:InternalNetwork" }, { type: "azure-native:managednetworkfabric/v20240215preview:InternalNetwork" }, { type: "azure-native:managednetworkfabric/v20240615preview:InternalNetwork" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:InternalNetwork" }, { type: "azure-native:managednetworkfabric/v20230615:InternalNetwork" }, { type: "azure-native:managednetworkfabric/v20240215preview:InternalNetwork" }, { type: "azure-native:managednetworkfabric/v20240615preview:InternalNetwork" }, { type: "azure-native:managednetworkfabric/v20250715:InternalNetwork" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(InternalNetwork.__pulumiType, name, resourceInputs, opts);
     }
@@ -207,55 +207,55 @@ export interface InternalNetworkArgs {
     /**
      * Switch configuration description.
      */
-    annotation?: pulumi.Input<string>;
+    annotation?: pulumi.Input<string | undefined>;
     /**
      * BGP configuration properties.
      */
-    bgpConfiguration?: pulumi.Input<types.inputs.InternalNetworkPropertiesBgpConfigurationArgs>;
+    bgpConfiguration?: pulumi.Input<types.inputs.InternalNetworkPropertiesBgpConfigurationArgs | undefined>;
     /**
      * List of Connected IPv4 Subnets.
      */
-    connectedIPv4Subnets?: pulumi.Input<pulumi.Input<types.inputs.ConnectedSubnetArgs>[]>;
+    connectedIPv4Subnets?: pulumi.Input<pulumi.Input<types.inputs.ConnectedSubnetArgs>[] | undefined>;
     /**
      * List of connected IPv6 Subnets.
      */
-    connectedIPv6Subnets?: pulumi.Input<pulumi.Input<types.inputs.ConnectedSubnetArgs>[]>;
+    connectedIPv6Subnets?: pulumi.Input<pulumi.Input<types.inputs.ConnectedSubnetArgs>[] | undefined>;
     /**
      * Egress Acl. ARM resource ID of Access Control Lists.
      */
-    egressAclId?: pulumi.Input<string>;
+    egressAclId?: pulumi.Input<string | undefined>;
     /**
      * Export Route Policy either IPv4 or IPv6.
      */
-    exportRoutePolicy?: pulumi.Input<types.inputs.ExportRoutePolicyArgs>;
+    exportRoutePolicy?: pulumi.Input<types.inputs.ExportRoutePolicyArgs | undefined>;
     /**
      * ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
      */
-    exportRoutePolicyId?: pulumi.Input<string>;
+    exportRoutePolicyId?: pulumi.Input<string | undefined>;
     /**
      * Extension. Example: NoExtension | NPB.
      */
-    extension?: pulumi.Input<string | types.enums.Extension>;
+    extension?: pulumi.Input<string | types.enums.Extension | undefined>;
     /**
      * Import Route Policy either IPv4 or IPv6.
      */
-    importRoutePolicy?: pulumi.Input<types.inputs.ImportRoutePolicyArgs>;
+    importRoutePolicy?: pulumi.Input<types.inputs.ImportRoutePolicyArgs | undefined>;
     /**
      * ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
      */
-    importRoutePolicyId?: pulumi.Input<string>;
+    importRoutePolicyId?: pulumi.Input<string | undefined>;
     /**
      * Ingress Acl. ARM resource ID of Access Control Lists.
      */
-    ingressAclId?: pulumi.Input<string>;
+    ingressAclId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Internal Network.
      */
-    internalNetworkName?: pulumi.Input<string>;
+    internalNetworkName?: pulumi.Input<string | undefined>;
     /**
      * To check whether monitoring of internal network is enabled or not.
      */
-    isMonitoringEnabled?: pulumi.Input<string | types.enums.IsMonitoringEnabled>;
+    isMonitoringEnabled?: pulumi.Input<string | types.enums.IsMonitoringEnabled | undefined>;
     /**
      * Name of the L3 Isolation Domain.
      */
@@ -263,7 +263,7 @@ export interface InternalNetworkArgs {
     /**
      * Maximum transmission unit. Default value is 1500.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -271,7 +271,7 @@ export interface InternalNetworkArgs {
     /**
      * Static Route Configuration properties.
      */
-    staticRouteConfiguration?: pulumi.Input<types.inputs.InternalNetworkPropertiesStaticRouteConfigurationArgs>;
+    staticRouteConfiguration?: pulumi.Input<types.inputs.InternalNetworkPropertiesStaticRouteConfigurationArgs | undefined>;
     /**
      * Vlan identifier. Example: 1001.
      */

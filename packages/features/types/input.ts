@@ -4,19 +4,19 @@ export interface SubscriptionFeatureRegistrationPropertiesArgs {
     /**
      * The feature description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Key-value pairs for meta data.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates whether feature should be displayed in Portal.
      */
-    shouldFeatureDisplayInPortal?: pulumi.Input<boolean>;
+    shouldFeatureDisplayInPortal?: pulumi.Input<boolean | undefined>;
     /**
      * The state.
      */
-    state?: pulumi.Input<string | enums.SubscriptionFeatureRegistrationState>;
+    state?: pulumi.Input<string | enums.SubscriptionFeatureRegistrationState | undefined>;
 }
 /**
  * subscriptionFeatureRegistrationPropertiesArgsProvideDefaults sets the appropriate defaults for SubscriptionFeatureRegistrationPropertiesArgs

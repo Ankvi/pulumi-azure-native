@@ -163,7 +163,7 @@ export class ActivityCustomEntityQuery extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20210301preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20210901preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20211001preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220101preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220401preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220501preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220601preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220701preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220801preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220901preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20221001preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20221101preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20221201preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230201preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230301preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230401preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230501preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230601preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230701preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230801preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230901preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20231001preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20231201preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20240101preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20240401preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20241001preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20250101preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20250401preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20250701preview:ActivityCustomEntityQuery" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20210301preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20210901preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20211001preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220101preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220401preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220501preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220601preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220701preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220801preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20220901preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20221001preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20221101preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20221201preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230201preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230301preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230401preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230501preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230601preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230701preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230801preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20230901preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20231001preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20231201preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20240101preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20240401preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20241001preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20250101preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20250401preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20250701preview:ActivityCustomEntityQuery" }, { type: "azure-native:securityinsights/v20251001preview:ActivityCustomEntityQuery" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ActivityCustomEntityQuery.__pulumiType, name, resourceInputs, opts);
     }
@@ -176,27 +176,27 @@ export interface ActivityCustomEntityQueryArgs {
     /**
      * The entity query content to display in timeline
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The entity query description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Determines whether this activity is enabled or disabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The query applied only to entities matching to all filters
      */
-    entitiesFilter?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    entitiesFilter?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
     /**
      * entity query ID
      */
-    entityQueryId?: pulumi.Input<string>;
+    entityQueryId?: pulumi.Input<string | undefined>;
     /**
      * The type of the query's source entity
      */
-    inputEntityType?: pulumi.Input<string | types.enums.EntityType>;
+    inputEntityType?: pulumi.Input<string | types.enums.EntityType | undefined>;
     /**
      * The kind of the entity query that supports put request.
      * Expected value is 'Activity'.
@@ -205,11 +205,11 @@ export interface ActivityCustomEntityQueryArgs {
     /**
      * The Activity query definitions
      */
-    queryDefinitions?: pulumi.Input<types.inputs.ActivityEntityQueriesPropertiesQueryDefinitionsArgs>;
+    queryDefinitions?: pulumi.Input<types.inputs.ActivityEntityQueriesPropertiesQueryDefinitionsArgs | undefined>;
     /**
      * List of the fields of the source entity that are required to run the query
      */
-    requiredInputFieldsSets?: pulumi.Input<pulumi.Input<pulumi.Input<string>[]>[]>;
+    requiredInputFieldsSets?: pulumi.Input<pulumi.Input<pulumi.Input<string>[]>[] | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -217,11 +217,11 @@ export interface ActivityCustomEntityQueryArgs {
     /**
      * The template id this activity was created from
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
     /**
      * The entity query title
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * The name of the workspace.
      */

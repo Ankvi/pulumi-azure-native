@@ -126,7 +126,7 @@ export interface AmazonMWSObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -305,9 +305,9 @@ export interface AmazonRdsForOraclePartitionSettingsResponse {
      */
     partitionLowerBound?: any;
     /**
-     * Names of the physical partitions of AmazonRdsForOracle table. 
+     * Names of the physical partitions of AmazonRdsForOracle table.
      */
-    partitionNames?: any[];
+    partitionNames?: any;
     /**
      * The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
      */
@@ -384,7 +384,7 @@ export interface AmazonRdsForOracleTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -621,7 +621,7 @@ export interface AmazonRdsForSqlServerTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -762,7 +762,7 @@ export interface AmazonRedshiftTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -954,7 +954,7 @@ export interface AmazonS3DatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * The format of files.
      */
@@ -1295,7 +1295,7 @@ export interface AvroDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -1544,7 +1544,7 @@ export interface AzureBlobDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * The path of the Azure Blob storage. Type: string (or Expression with resultType string).
      */
@@ -1611,7 +1611,7 @@ export interface AzureBlobFSDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * The path of the Azure Data Lake Storage Gen2 storage. Type: string (or Expression with resultType string).
      */
@@ -2324,7 +2324,7 @@ export interface AzureDataExplorerTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -2438,7 +2438,7 @@ export interface AzureDataLakeStoreDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Path to the folder in the Azure Data Lake Store. Type: string (or Expression with resultType string).
      */
@@ -2747,7 +2747,7 @@ export interface AzureDatabricksDeltaLakeDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -2997,7 +2997,7 @@ export interface AzureDatabricksLinkedServiceResponse {
     /**
      * Additional tags for cluster resources. This property is ignored in instance pool configurations.
      */
-    newClusterCustomTags?: {[key: string]: any};
+    newClusterCustomTags?: any;
     /**
      * The driver node type for the new job cluster. This property is ignored in instance pool configurations. Type: string (or Expression with resultType string).
      */
@@ -3025,11 +3025,11 @@ export interface AzureDatabricksLinkedServiceResponse {
     /**
      * A set of optional, user-specified Spark configuration key-value pairs.
      */
-    newClusterSparkConf?: {[key: string]: any};
+    newClusterSparkConf?: any;
     /**
      * A set of optional, user-specified Spark environment variables key-value pairs.
      */
-    newClusterSparkEnvVars?: {[key: string]: any};
+    newClusterSparkEnvVars?: any;
     /**
      * If not using an existing interactive cluster, this specifies the Spark version of a new job cluster or instance pool nodes created for each run of this activity. Required if instancePoolId is specified. Type: string (or Expression with resultType string).
      */
@@ -3264,7 +3264,7 @@ export interface AzureFunctionActivityResponse {
     /**
      * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
      */
-    headers?: {[key: string]: any};
+    headers?: any;
     /**
      * Linked service reference.
      */
@@ -3432,7 +3432,7 @@ export interface AzureMLBatchExecutionActivityResponse {
     /**
      * Key,Value pairs to be passed to the Azure ML Batch Execution Service endpoint. Keys must match the names of web service parameters defined in the published Azure ML web service. Values will be passed in the GlobalParameters property of the Azure ML batch execution request.
      */
-    globalParameters?: {[key: string]: any};
+    globalParameters?: any;
     /**
      * Linked service reference.
      */
@@ -3839,7 +3839,7 @@ export interface AzureMariaDBTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -4003,7 +4003,7 @@ export interface AzureMySqlTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -4186,7 +4186,7 @@ export interface AzurePostgreSqlSinkResponse {
     /**
      * Azure Database for PostgreSQL upsert option settings
      */
-    upsertSettings?: AzurePostgreSqlSinkResponseUpsertSettings;
+    upsertSettings?: AzurePostgreSqlSinkUpsertSettingsResponse;
     /**
      * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
      */
@@ -4204,7 +4204,7 @@ export interface AzurePostgreSqlSinkResponse {
 /**
  * Azure Database for PostgreSQL upsert option settings
  */
-export interface AzurePostgreSqlSinkResponseUpsertSettings {
+export interface AzurePostgreSqlSinkUpsertSettingsResponse {
     /**
      * Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
      */
@@ -4265,7 +4265,7 @@ export interface AzurePostgreSqlTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -4347,7 +4347,7 @@ export interface AzureSearchIndexDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * The name of the Azure Search Index. Type: string (or Expression with resultType string).
      */
@@ -4627,7 +4627,7 @@ export interface AzureSqlDWTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -4992,7 +4992,7 @@ export interface AzureSqlMITableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -5173,7 +5173,7 @@ export interface AzureSqlTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -5314,7 +5314,7 @@ export interface AzureTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -5528,7 +5528,7 @@ export interface BinaryDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -5948,7 +5948,7 @@ export interface CassandraTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * The keyspace of the Cassandra database. Type: string (or Expression with resultType string).
      */
@@ -6018,7 +6018,7 @@ export interface ChainingTriggerResponse {
 /**
  * The folder that this CDC is in. If not specified, CDC will appear at the root level.
  */
-export interface ChangeDataCaptureResponseFolder {
+export interface ChangeDataCaptureFolderResponse {
     /**
      * The name of the folder that this CDC is in.
      */
@@ -6067,7 +6067,7 @@ export interface CommonDataServiceForAppsEntityDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -6361,7 +6361,7 @@ export interface ConcurObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -6736,7 +6736,7 @@ export interface CosmosDbMongoDbApiCollectionDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -6908,7 +6908,7 @@ export interface CosmosDbSqlApiCollectionDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -7115,7 +7115,7 @@ export interface CouchbaseTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -7194,7 +7194,7 @@ export interface CustomActivityResponse {
     /**
      * User defined property bag. There is no restriction on the keys or values that can be used. The user specified custom activity has the full responsibility to consume and interpret the content defined.
      */
-    extendedProperties?: {[key: string]: any};
+    extendedProperties?: any;
     /**
      * Folder path for resource files Type: string (or Expression with resultType string).
      */
@@ -7288,7 +7288,7 @@ export interface CustomDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -7384,6 +7384,16 @@ export interface DWCopyCommandSettingsResponse {
 }
 
 /**
+ * The folder that this data flow is in. If not specified, Data flow will appear at the root level.
+ */
+export interface DataFlowFolderResponse {
+    /**
+     * The name of the folder that this data flow is in.
+     */
+    name?: string;
+}
+
+/**
  * Data flow reference type.
  */
 export interface DataFlowReferenceResponse {
@@ -7394,7 +7404,7 @@ export interface DataFlowReferenceResponse {
     /**
      * Data flow parameters
      */
-    parameters?: {[key: string]: any};
+    parameters?: any;
     /**
      * Reference data flow name.
      */
@@ -7403,16 +7413,6 @@ export interface DataFlowReferenceResponse {
      * Data flow reference type.
      */
     type: string;
-}
-
-/**
- * The folder that this data flow is in. If not specified, Data flow will appear at the root level.
- */
-export interface DataFlowResponseFolder {
-    /**
-     * The name of the folder that this data flow is in.
-     */
-    name?: string;
 }
 
 /**
@@ -7528,7 +7528,7 @@ export interface DataLakeAnalyticsUSQLActivityResponse {
     /**
      * Parameters for U-SQL job request.
      */
-    parameters?: {[key: string]: any};
+    parameters?: any;
     /**
      * Activity policy.
      */
@@ -7609,7 +7609,7 @@ export interface DatabricksJobActivityResponse {
     /**
      * Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
      */
-    jobParameters?: {[key: string]: any};
+    jobParameters?: any;
     /**
      * Linked service reference.
      */
@@ -7648,7 +7648,7 @@ export interface DatabricksNotebookActivityResponse {
     /**
      * Base parameters to be used for each run of this job.If the notebook takes a parameter that is not specified, the default value from the notebook will be used.
      */
-    baseParameters?: {[key: string]: any};
+    baseParameters?: any;
     /**
      * Activity depends on condition.
      */
@@ -7660,7 +7660,7 @@ export interface DatabricksNotebookActivityResponse {
     /**
      * A list of libraries to be installed on the cluster that will execute the job.
      */
-    libraries?: {[key: string]: any}[];
+    libraries?: any[];
     /**
      * Linked service reference.
      */
@@ -7711,7 +7711,7 @@ export interface DatabricksSparkJarActivityResponse {
     /**
      * A list of libraries to be installed on the cluster that will execute the job.
      */
-    libraries?: {[key: string]: any}[];
+    libraries?: any[];
     /**
      * Linked service reference.
      */
@@ -7766,7 +7766,7 @@ export interface DatabricksSparkPythonActivityResponse {
     /**
      * A list of libraries to be installed on the cluster that will execute the job.
      */
-    libraries?: {[key: string]: any}[];
+    libraries?: any[];
     /**
      * Linked service reference.
      */
@@ -7821,13 +7821,23 @@ export interface DatasetCompressionResponse {
 }
 
 /**
+ * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+ */
+export interface DatasetFolderResponse {
+    /**
+     * The name of the folder that this Dataset is in.
+     */
+    name?: string;
+}
+
+/**
  * Dataset reference type.
  */
 export interface DatasetReferenceResponse {
     /**
      * Arguments for dataset.
      */
-    parameters?: {[key: string]: any};
+    parameters?: any;
     /**
      * Reference dataset name.
      */
@@ -7836,16 +7846,6 @@ export interface DatasetReferenceResponse {
      * Dataset reference type.
      */
     type: string;
-}
-
-/**
- * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
- */
-export interface DatasetResponseFolder {
-    /**
-     * The name of the folder that this Dataset is in.
-     */
-    name?: string;
 }
 
 /**
@@ -8008,7 +8008,7 @@ export interface Db2TableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -8146,7 +8146,7 @@ export interface DelimitedTextDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -8351,7 +8351,7 @@ export interface DocumentDbCollectionDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -8558,7 +8558,7 @@ export interface DrillTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -8660,7 +8660,7 @@ export interface DynamicsAXResourceDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -8750,7 +8750,7 @@ export interface DynamicsCrmEntityDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -8970,7 +8970,7 @@ export interface DynamicsEntityDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -9245,7 +9245,7 @@ export interface EloquaObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -9390,7 +9390,7 @@ export interface ExcelDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -9476,7 +9476,7 @@ export interface ExecuteDataFlowActivityResponse {
     /**
      * Compute properties for data flow activity.
      */
-    compute?: ExecuteDataFlowActivityTypePropertiesResponseCompute;
+    compute?: ExecuteDataFlowActivityTypePropertiesComputeResponse;
     /**
      * Continuation settings for execute data flow activity.
      */
@@ -9551,7 +9551,7 @@ export interface ExecuteDataFlowActivityResponse {
 /**
  * Compute properties for data flow activity.
  */
-export interface ExecuteDataFlowActivityTypePropertiesResponseCompute {
+export interface ExecuteDataFlowActivityTypePropertiesComputeResponse {
     /**
      * Compute type of the cluster which will execute data flow job. Possible values include: 'General', 'MemoryOptimized', 'ComputeOptimized'. Type: string (or Expression with resultType string)
      */
@@ -9595,7 +9595,7 @@ export interface ExecutePipelineActivityResponse {
     /**
      * Pipeline parameters.
      */
-    parameters?: {[key: string]: any};
+    parameters?: any;
     /**
      * Pipeline reference.
      */
@@ -9721,7 +9721,7 @@ export interface ExecuteWranglingDataflowActivityResponse {
     /**
      * Compute properties for data flow activity.
      */
-    compute?: ExecuteDataFlowActivityTypePropertiesResponseCompute;
+    compute?: ExecuteDataFlowActivityTypePropertiesComputeResponse;
     /**
      * Continuation settings for execute data flow activity.
      */
@@ -9942,7 +9942,7 @@ export interface FactoryIdentityResponse {
     /**
      * List of user assigned identities for the factory.
      */
-    userAssignedIdentities?: {[key: string]: any};
+    userAssignedIdentities?: any;
 }
 
 /**
@@ -10210,7 +10210,7 @@ export interface FileShareDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * The path of the on-premises file system. Type: string (or Expression with resultType string).
      */
@@ -10382,7 +10382,7 @@ export interface FlowletResponse {
     /**
      * The folder that this data flow is in. If not specified, Data flow will appear at the root level.
      */
-    folder?: DataFlowResponseFolder;
+    folder?: DataFlowFolderResponse;
     /**
      * Flowlet script.
      */
@@ -10795,7 +10795,7 @@ export interface GoogleAdWordsObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -10960,7 +10960,7 @@ export interface GoogleBigQueryObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -11109,7 +11109,7 @@ export interface GoogleBigQueryV2ObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -11477,7 +11477,7 @@ export interface GreenplumTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -11599,7 +11599,7 @@ export interface HBaseObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -11677,7 +11677,7 @@ export interface HDInsightHiveActivityResponse {
     /**
      * Allows user to specify defines for Hive job request.
      */
-    defines?: {[key: string]: any};
+    defines?: any;
     /**
      * Activity depends on condition.
      */
@@ -11738,7 +11738,7 @@ export interface HDInsightHiveActivityResponse {
     /**
      * User specified arguments under hivevar namespace.
      */
-    variables?: {[key: string]: any};
+    variables?: any;
 }
 
 /**
@@ -11827,7 +11827,7 @@ export interface HDInsightMapReduceActivityResponse {
     /**
      * Allows user to specify defines for the MapReduce job request.
      */
-    defines?: {[key: string]: any};
+    defines?: any;
     /**
      * Activity depends on condition.
      */
@@ -12065,7 +12065,7 @@ export interface HDInsightPigActivityResponse {
     /**
      * Allows user to specify defines for Pig job request.
      */
-    defines?: {[key: string]: any};
+    defines?: any;
     /**
      * Activity depends on condition.
      */
@@ -12176,7 +12176,7 @@ export interface HDInsightSparkActivityResponse {
     /**
      * Spark configuration property.
      */
-    sparkConfig?: {[key: string]: any};
+    sparkConfig?: any;
     /**
      * The storage linked service for uploading the entry file and dependencies, and for receiving logs.
      */
@@ -12215,7 +12215,7 @@ export interface HDInsightStreamingActivityResponse {
     /**
      * Allows user to specify defines for streaming job request.
      */
-    defines?: {[key: string]: any};
+    defines?: any;
     /**
      * Activity depends on condition.
      */
@@ -12569,7 +12569,7 @@ export interface HiveObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -12665,7 +12665,7 @@ export interface HttpDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * The format of files.
      */
@@ -12943,7 +12943,7 @@ export interface HubspotObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -13025,7 +13025,7 @@ export interface IcebergDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -13252,7 +13252,7 @@ export interface ImpalaObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -13471,7 +13471,7 @@ export interface InformixTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -13561,6 +13561,17 @@ export interface IntegrationRuntimeCustomerVirtualNetworkResponse {
     subnetId?: string;
 }
 
+export interface IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemResponse {
+    /**
+     * Name of custom property.
+     */
+    name?: string;
+    /**
+     * Value of custom property.
+     */
+    value?: string;
+}
+
 /**
  * Data flow properties for managed integration runtime.
  */
@@ -13580,22 +13591,11 @@ export interface IntegrationRuntimeDataFlowPropertiesResponse {
     /**
      * Custom properties are used to tune the data flow runtime performance.
      */
-    customProperties?: IntegrationRuntimeDataFlowPropertiesResponseCustomProperties[];
+    customProperties?: IntegrationRuntimeDataFlowPropertiesCustomPropertiesItemResponse[];
     /**
      * Time to live (in minutes) setting of the cluster which will execute data flow job.
      */
     timeToLive?: number;
-}
-
-export interface IntegrationRuntimeDataFlowPropertiesResponseCustomProperties {
-    /**
-     * Name of custom property.
-     */
-    name?: string;
-    /**
-     * Value of custom property.
-     */
-    value?: string;
 }
 
 /**
@@ -13623,7 +13623,7 @@ export interface IntegrationRuntimeReferenceResponse {
     /**
      * Arguments for integration runtime.
      */
-    parameters?: {[key: string]: any};
+    parameters?: any;
     /**
      * Reference integration runtime name.
      */
@@ -13812,7 +13812,7 @@ export interface JiraObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -13906,7 +13906,7 @@ export interface JsonDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -14245,7 +14245,7 @@ export interface LakeHouseTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -14453,7 +14453,7 @@ export interface LinkedServiceReferenceResponse {
     /**
      * Arguments for LinkedService.
      */
-    parameters?: {[key: string]: any};
+    parameters?: any;
     /**
      * Reference LinkedService name.
      */
@@ -14647,7 +14647,7 @@ export interface MagentoObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -15148,7 +15148,7 @@ export interface MappingDataFlowResponse {
     /**
      * The folder that this data flow is in. If not specified, Data flow will appear at the root level.
      */
-    folder?: DataFlowResponseFolder;
+    folder?: DataFlowFolderResponse;
     /**
      * DataFlow script.
      */
@@ -15301,7 +15301,7 @@ export interface MariaDBTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -15403,7 +15403,7 @@ export interface MarketoObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -15628,7 +15628,7 @@ export interface MicrosoftAccessTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -15675,7 +15675,7 @@ export interface MongoDbAtlasCollectionDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -15847,7 +15847,7 @@ export interface MongoDbCollectionDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -16018,7 +16018,7 @@ export interface MongoDbV2CollectionDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -16347,7 +16347,7 @@ export interface MySqlTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -16518,7 +16518,7 @@ export interface NetezzaTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -16666,7 +16666,7 @@ export interface ODataResourceDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -16881,7 +16881,7 @@ export interface OdbcTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -16924,7 +16924,7 @@ export interface Office365DatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -17315,9 +17315,9 @@ export interface OraclePartitionSettingsResponse {
      */
     partitionLowerBound?: any;
     /**
-     * Names of the physical partitions of Oracle table. 
+     * Names of the physical partitions of Oracle table.
      */
-    partitionNames?: any[];
+    partitionNames?: any;
     /**
      * The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
      */
@@ -17398,7 +17398,7 @@ export interface OracleServiceCloudObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -17574,7 +17574,7 @@ export interface OracleTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -17621,7 +17621,7 @@ export interface OrcDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -17816,7 +17816,7 @@ export interface ParquetDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -18053,7 +18053,7 @@ export interface PaypalObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -18214,7 +18214,7 @@ export interface PhoenixObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -18314,6 +18314,16 @@ export interface PipelineExternalComputeScalePropertiesResponse {
 }
 
 /**
+ * The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
+ */
+export interface PipelineFolderResponse {
+    /**
+     * The name of the folder that this Pipeline is in.
+     */
+    name?: string;
+}
+
+/**
  * Pipeline Policy.
  */
 export interface PipelinePolicyResponse {
@@ -18339,16 +18349,6 @@ export interface PipelineReferenceResponse {
      * Pipeline reference type.
      */
     type: string;
-}
-
-/**
- * The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
- */
-export interface PipelineResponseFolder {
-    /**
-     * The name of the folder that this Pipeline is in.
-     */
-    name?: string;
 }
 
 /**
@@ -18470,7 +18470,7 @@ export interface PostgreSqlTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -18667,7 +18667,7 @@ export interface PostgreSqlV2TableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -18887,7 +18887,7 @@ export interface PrestoObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -19072,7 +19072,7 @@ export interface QuickBooksObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -19300,7 +19300,7 @@ export interface RelationalTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -19456,7 +19456,7 @@ export interface ResponsysObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -19530,7 +19530,7 @@ export interface RestResourceDatasetResponse {
     /**
      * The additional HTTP headers in the request to the RESTful API.
      */
-    additionalHeaders?: {[key: string]: any};
+    additionalHeaders?: any;
     /**
      * List of tags that can be used for describing the Dataset.
      */
@@ -19542,7 +19542,7 @@ export interface RestResourceDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -19550,7 +19550,7 @@ export interface RestResourceDatasetResponse {
     /**
      * The pagination rules to compose next page requests.
      */
-    paginationRules?: {[key: string]: any};
+    paginationRules?: any;
     /**
      * Parameters for dataset.
      */
@@ -19722,7 +19722,7 @@ export interface RestSinkResponse {
      */
     maxConcurrentConnections?: any;
     /**
-     * The time to await before sending next request, in milliseconds 
+     * The time to await before sending next request, in milliseconds
      */
     requestInterval?: any;
     /**
@@ -19785,7 +19785,7 @@ export interface RestSourceResponse {
      */
     requestBody?: any;
     /**
-     * The time to await before sending next page request. 
+     * The time to await before sending next page request.
      */
     requestInterval?: any;
     /**
@@ -20100,7 +20100,7 @@ export interface SalesforceMarketingCloudObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -20182,7 +20182,7 @@ export interface SalesforceObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -20284,7 +20284,7 @@ export interface SalesforceServiceCloudObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -20468,7 +20468,7 @@ export interface SalesforceServiceCloudV2ObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -20750,7 +20750,7 @@ export interface SalesforceV2ObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -20954,7 +20954,7 @@ export interface SapBwCubeDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -21079,7 +21079,7 @@ export interface SapCloudForCustomerResourceDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -21255,7 +21255,7 @@ export interface SapEccResourceDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -21412,7 +21412,7 @@ export interface SapHanaSourceResponse {
      */
     packetSize?: any;
     /**
-     * The partition mechanism that will be used for SAP HANA read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "SapHanaDynamicRange". 
+     * The partition mechanism that will be used for SAP HANA read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "SapHanaDynamicRange".
      */
     partitionOption?: any;
     /**
@@ -21457,7 +21457,7 @@ export interface SapHanaTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -21607,7 +21607,7 @@ export interface SapOdpResourceDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -21835,7 +21835,7 @@ export interface SapOpenHubTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -21995,7 +21995,7 @@ export interface SapTableResourceDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -22218,11 +22218,11 @@ export interface ScriptActivityResponse {
     /**
      * Linked service reference.
      */
-    linkedServiceName: LinkedServiceReferenceResponse;
+    linkedServiceName?: LinkedServiceReferenceResponse;
     /**
      * Log settings of script activity.
      */
-    logSettings?: ScriptActivityTypePropertiesResponseLogSettings;
+    logSettings?: ScriptActivityTypePropertiesLogSettingsResponse;
     /**
      * Activity name.
      */
@@ -22287,7 +22287,7 @@ export interface ScriptActivityScriptBlockResponse {
 /**
  * Log settings of script activity.
  */
-export interface ScriptActivityTypePropertiesResponseLogSettings {
+export interface ScriptActivityTypePropertiesLogSettingsResponse {
     /**
      * The destination of logs. Type: string.
      */
@@ -22620,7 +22620,7 @@ export interface ServiceNowObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -22765,7 +22765,7 @@ export interface ServiceNowV2ObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -23001,7 +23001,7 @@ export interface SftpReadSettingsResponse {
 }
 
 /**
- * A linked service for an SSH File Transfer Protocol (SFTP) server. 
+ * A linked service for an SSH File Transfer Protocol (SFTP) server.
  */
 export interface SftpServerLinkedServiceResponse {
     /**
@@ -23188,7 +23188,7 @@ export interface SharePointOnlineListResourceDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -23321,7 +23321,7 @@ export interface ShopifyObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -23456,7 +23456,7 @@ export interface SnowflakeDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -23491,11 +23491,11 @@ export interface SnowflakeExportCopyCommandResponse {
     /**
      * Additional copy options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalCopyOptions": { "DATE_FORMAT": "MM/DD/YYYY", "TIME_FORMAT": "'HH24:MI:SS.FF'" }
      */
-    additionalCopyOptions?: {[key: string]: any};
+    additionalCopyOptions?: any;
     /**
      * Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "OVERWRITE": "TRUE", "MAX_FILE_SIZE": "'FALSE'" }
      */
-    additionalFormatOptions?: {[key: string]: any};
+    additionalFormatOptions?: any;
     /**
      * The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
      */
@@ -23514,11 +23514,11 @@ export interface SnowflakeImportCopyCommandResponse {
     /**
      * Additional copy options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalCopyOptions": { "DATE_FORMAT": "MM/DD/YYYY", "TIME_FORMAT": "'HH24:MI:SS.FF'" }
      */
-    additionalCopyOptions?: {[key: string]: any};
+    additionalCopyOptions?: any;
     /**
      * Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "FORCE": "TRUE", "LOAD_UNCERTAIN_FILES": "'FALSE'" }
      */
-    additionalFormatOptions?: {[key: string]: any};
+    additionalFormatOptions?: any;
     /**
      * The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
      */
@@ -23666,7 +23666,7 @@ export interface SnowflakeV2DatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -24000,7 +24000,7 @@ export interface SparkObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -24673,7 +24673,7 @@ export interface SqlServerStoredProcedureActivityResponse {
     /**
      * Linked service reference.
      */
-    linkedServiceName: LinkedServiceReferenceResponse;
+    linkedServiceName?: LinkedServiceReferenceResponse;
     /**
      * Activity name.
      */
@@ -24724,7 +24724,7 @@ export interface SqlServerTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -24986,7 +24986,7 @@ export interface SquareObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -25487,7 +25487,7 @@ export interface SybaseTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -25574,7 +25574,7 @@ export interface SynapseNotebookActivityResponse {
     /**
      * Spark configuration property.
      */
-    sparkConfig?: {[key: string]: any};
+    sparkConfig?: any;
     /**
      * The name of the big data pool which will be used to execute the notebook.
      */
@@ -25691,7 +25691,7 @@ export interface SynapseSparkJobDefinitionActivityResponse {
     /**
      * Spark configuration property.
      */
-    sparkConfig?: {[key: string]: any};
+    sparkConfig?: any;
     /**
      * Synapse spark job reference.
      */
@@ -25731,6 +25731,36 @@ export interface SynapseSparkJobReferenceResponse {
      * Synapse spark job reference type.
      */
     type: string;
+}
+
+/**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
 }
 
 /**
@@ -26070,7 +26100,7 @@ export interface TeradataTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -26201,7 +26231,7 @@ export interface TriggerPipelineReferenceResponse {
     /**
      * Pipeline parameters.
      */
-    parameters?: {[key: string]: any};
+    parameters?: any;
     /**
      * Pipeline reference.
      */
@@ -26612,7 +26642,7 @@ export interface VerticaTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -26887,7 +26917,7 @@ export interface WarehouseTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -26984,7 +27014,7 @@ export interface WebActivityResponse {
     /**
      * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
      */
-    headers?: {[key: string]: any};
+    headers?: any;
     /**
      * Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
      */
@@ -27120,7 +27150,7 @@ export interface WebHookActivityResponse {
     /**
      * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
      */
-    headers?: {[key: string]: any};
+    headers?: any;
     /**
      * Rest API method for target endpoint.
      */
@@ -27245,7 +27275,7 @@ export interface WebTableDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * The zero-based index of the table in the web page. Type: integer (or Expression with resultType integer), minimum: 0.
      */
@@ -27296,7 +27326,7 @@ export interface WranglingDataFlowResponse {
     /**
      * The folder that this data flow is in. If not specified, Data flow will appear at the root level.
      */
-    folder?: DataFlowResponseFolder;
+    folder?: DataFlowFolderResponse;
     /**
      * Power query mashup script.
      */
@@ -27391,7 +27421,7 @@ export interface XeroObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -27481,7 +27511,7 @@ export interface XmlDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */
@@ -27727,7 +27757,7 @@ export interface ZohoObjectDatasetResponse {
     /**
      * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
      */
-    folder?: DatasetResponseFolder;
+    folder?: DatasetFolderResponse;
     /**
      * Linked service reference.
      */

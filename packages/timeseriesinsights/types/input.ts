@@ -21,11 +21,11 @@ export interface LocalTimestampArgs {
     /**
      * An enum that represents the format of the local timestamp property that needs to be set.
      */
-    format?: pulumi.Input<string | enums.LocalTimestampFormat>;
+    format?: pulumi.Input<string | enums.LocalTimestampFormat | undefined>;
     /**
      * An object that represents the offset information for the local timestamp format specified. Should not be specified for LocalTimestampFormat - Embedded.
      */
-    timeZoneOffset?: pulumi.Input<LocalTimestampTimeZoneOffsetArgs>;
+    timeZoneOffset?: pulumi.Input<LocalTimestampTimeZoneOffsetArgs | undefined>;
 }
 
 /**
@@ -35,7 +35,7 @@ export interface LocalTimestampTimeZoneOffsetArgs {
     /**
      * The event property that will be contain the offset information to calculate the local timestamp. When the LocalTimestampFormat is Iana, the property name will contain the name of the column which contains IANA Timezone Name (eg: Americas/Los Angeles). When LocalTimestampFormat is Timespan, it contains the name of property which contains values representing the offset (eg: P1D or 1.00:00:00)
      */
-    propertyName?: pulumi.Input<string>;
+    propertyName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -45,11 +45,11 @@ export interface ReferenceDataSetKeyPropertyArgs {
     /**
      * The name of the key property.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of the key property.
      */
-    type?: pulumi.Input<string | enums.ReferenceDataKeyPropertyType>;
+    type?: pulumi.Input<string | enums.ReferenceDataKeyPropertyType | undefined>;
 }
 
 /**
@@ -73,11 +73,11 @@ export interface TimeSeriesIdPropertyArgs {
     /**
      * The name of the property.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of the property.
      */
-    type?: pulumi.Input<string | enums.PropertyType>;
+    type?: pulumi.Input<string | enums.PropertyType | undefined>;
 }
 
 /**

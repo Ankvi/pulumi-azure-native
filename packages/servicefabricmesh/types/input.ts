@@ -42,7 +42,7 @@ export interface ApplicationScopedVolumeArgs {
     /**
      * The flag indicating whether the volume is read only. Default is 'false'.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -52,7 +52,7 @@ export interface ApplicationScopedVolumeCreationParametersServiceFabricVolumeDis
     /**
      * User readable description of the volume.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies the application-scoped volume kind.
      * Expected value is 'ServiceFabricVolumeDisk'.
@@ -131,19 +131,19 @@ export interface AzureInternalMonitoringPipelineSinkDescriptionArgs {
     /**
      * Azure Internal monitoring pipeline account.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Azure Internal monitoring pipeline autokey associated with the certificate.
      */
-    autoKeyConfigUrl?: pulumi.Input<string>;
+    autoKeyConfigUrl?: pulumi.Input<string | undefined>;
     /**
      * A description of the sink.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Azure Internal monitoring agent fluentd configuration.
      */
-    fluentdConfigUrl?: any;
+    fluentdConfigUrl?: any | undefined;
     /**
      * The kind of DiagnosticsSink.
      * Expected value is 'AzureInternalMonitoringPipeline'.
@@ -152,15 +152,15 @@ export interface AzureInternalMonitoringPipelineSinkDescriptionArgs {
     /**
      * Azure Internal monitoring agent configuration.
      */
-    maConfigUrl?: pulumi.Input<string>;
+    maConfigUrl?: pulumi.Input<string | undefined>;
     /**
      * Name of the sink. This value is referenced by DiagnosticsReferenceDescription
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Azure Internal monitoring pipeline account namespace.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,23 +170,23 @@ export interface ContainerCodePackagePropertiesArgs {
     /**
      * Command array to execute within the container in exec form.
      */
-    commands?: pulumi.Input<pulumi.Input<string>[]>;
+    commands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Reference to sinks in DiagnosticsDescription.
      */
-    diagnostics?: pulumi.Input<DiagnosticsRefArgs>;
+    diagnostics?: pulumi.Input<DiagnosticsRefArgs | undefined>;
     /**
      * The endpoints exposed by this container.
      */
-    endpoints?: pulumi.Input<pulumi.Input<EndpointPropertiesArgs>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<EndpointPropertiesArgs>[] | undefined>;
     /**
      * Override for the default entry point in the container.
      */
-    entrypoint?: pulumi.Input<string>;
+    entrypoint?: pulumi.Input<string | undefined>;
     /**
      * The environment variables to set in this container
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<EnvironmentVariableArgs>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<EnvironmentVariableArgs>[] | undefined>;
     /**
      * The Container image to use.
      */
@@ -194,11 +194,11 @@ export interface ContainerCodePackagePropertiesArgs {
     /**
      * Image registry credential.
      */
-    imageRegistryCredential?: pulumi.Input<ImageRegistryCredentialArgs>;
+    imageRegistryCredential?: pulumi.Input<ImageRegistryCredentialArgs | undefined>;
     /**
      * The labels to set in this container.
      */
-    labels?: pulumi.Input<pulumi.Input<ContainerLabelArgs>[]>;
+    labels?: pulumi.Input<pulumi.Input<ContainerLabelArgs>[] | undefined>;
     /**
      * The name of the code package.
      */
@@ -206,7 +206,7 @@ export interface ContainerCodePackagePropertiesArgs {
     /**
      * A list of ReliableCollection resources used by this particular code package. Please refer to ReliableCollectionsRef for more details.
      */
-    reliableCollectionsRefs?: pulumi.Input<pulumi.Input<ReliableCollectionsRefArgs>[]>;
+    reliableCollectionsRefs?: pulumi.Input<pulumi.Input<ReliableCollectionsRefArgs>[] | undefined>;
     /**
      * The resources required by this container.
      */
@@ -214,15 +214,15 @@ export interface ContainerCodePackagePropertiesArgs {
     /**
      * The settings to set in this container. The setting file path can be fetched from environment variable "Fabric_SettingPath". The path for Windows container is "C:\\secrets". The path for Linux container is "/var/secrets".
      */
-    settings?: pulumi.Input<pulumi.Input<SettingArgs>[]>;
+    settings?: pulumi.Input<pulumi.Input<SettingArgs>[] | undefined>;
     /**
      * Volumes to be attached to the container. The lifetime of these volumes is independent of the application's lifetime.
      */
-    volumeRefs?: pulumi.Input<pulumi.Input<VolumeReferenceArgs>[]>;
+    volumeRefs?: pulumi.Input<pulumi.Input<VolumeReferenceArgs>[] | undefined>;
     /**
      * Volumes to be attached to the container. The lifetime of these volumes is scoped to the application's lifetime.
      */
-    volumes?: pulumi.Input<pulumi.Input<ApplicationScopedVolumeArgs>[]>;
+    volumes?: pulumi.Input<pulumi.Input<ApplicationScopedVolumeArgs>[] | undefined>;
 }
 
 /**
@@ -246,15 +246,15 @@ export interface DiagnosticsDescriptionArgs {
     /**
      * The sinks to be used if diagnostics is enabled. Sink choices can be overridden at the service and code package level.
      */
-    defaultSinkRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultSinkRefs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Status of whether or not sinks are enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * List of supported sinks that can be referenced.
      */
-    sinks?: pulumi.Input<pulumi.Input<AzureInternalMonitoringPipelineSinkDescriptionArgs>[]>;
+    sinks?: pulumi.Input<pulumi.Input<AzureInternalMonitoringPipelineSinkDescriptionArgs>[] | undefined>;
 }
 
 /**
@@ -264,11 +264,11 @@ export interface DiagnosticsRefArgs {
     /**
      * Status of whether or not sinks are enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * List of sinks to be used if enabled. References the list of sinks in DiagnosticsDescription.
      */
-    sinkRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    sinkRefs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -282,7 +282,7 @@ export interface EndpointPropertiesArgs {
     /**
      * Port used by the container.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -292,7 +292,7 @@ export interface EndpointRefArgs {
     /**
      * Name of the endpoint.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -302,11 +302,11 @@ export interface EnvironmentVariableArgs {
     /**
      * The name of the environment variable.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The value of the environment variable.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -388,11 +388,11 @@ export interface HttpRouteMatchHeaderArgs {
     /**
      * how to match header value
      */
-    type?: pulumi.Input<string | enums.HeaderMatchType>;
+    type?: pulumi.Input<string | enums.HeaderMatchType | undefined>;
     /**
      * Value of header to match in request.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -402,7 +402,7 @@ export interface HttpRouteMatchPathArgs {
     /**
      * replacement string for matched part of the Uri.
      */
-    rewrite?: pulumi.Input<string>;
+    rewrite?: pulumi.Input<string | undefined>;
     /**
      * how to match value in the Uri
      */
@@ -420,7 +420,7 @@ export interface HttpRouteMatchRuleArgs {
     /**
      * headers and their values to match in request.
      */
-    headers?: pulumi.Input<pulumi.Input<HttpRouteMatchHeaderArgs>[]>;
+    headers?: pulumi.Input<pulumi.Input<HttpRouteMatchHeaderArgs>[] | undefined>;
     /**
      * Path to match for routing.
      */
@@ -434,7 +434,7 @@ export interface ImageRegistryCredentialArgs {
     /**
      * The password for the private registry. The password is required for create or update operations, however it is not returned in the get or list operations.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Docker image registry server, without protocol such as `http` and `https`.
      */
@@ -452,11 +452,11 @@ export interface NetworkRefArgs {
     /**
      * A list of endpoints that are exposed on this network.
      */
-    endpointRefs?: pulumi.Input<pulumi.Input<EndpointRefArgs>[]>;
+    endpointRefs?: pulumi.Input<pulumi.Input<EndpointRefArgs>[] | undefined>;
     /**
      * Name of the network
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -466,7 +466,7 @@ export interface NetworkResourcePropertiesArgs {
     /**
      * User readable description of the network.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The type of a Service Fabric container network.
      * Expected value is 'NetworkResourceProperties'.
@@ -481,7 +481,7 @@ export interface ReliableCollectionsRefArgs {
     /**
      * False (the default) if ReliableCollections state is persisted to disk as usual. True if you do not want to persist state, in which case replication is still enabled and you can use ReliableCollections as distributed cache.
      */
-    doNotPersistState?: pulumi.Input<boolean>;
+    doNotPersistState?: pulumi.Input<boolean | undefined>;
     /**
      * Name of ReliableCollection resource. Right now it's not used and you can use any string.
      */
@@ -495,11 +495,11 @@ export interface ResourceLimitsArgs {
     /**
      * CPU limits in cores. At present, only full cores are supported.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * The memory limit in GB.
      */
-    memoryInGB?: pulumi.Input<number>;
+    memoryInGB?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -523,7 +523,7 @@ export interface ResourceRequirementsArgs {
     /**
      * Describes the maximum limits on the resources for a given container.
      */
-    limits?: pulumi.Input<ResourceLimitsArgs>;
+    limits?: pulumi.Input<ResourceLimitsArgs | undefined>;
     /**
      * Describes the requested resources for a given container.
      */
@@ -537,11 +537,11 @@ export interface SecretResourcePropertiesArgs {
     /**
      * The type of the content stored in the secret value. The value of this property is opaque to Service Fabric. Once set, the value of this property cannot be changed.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * User readable description of the secret.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Describes the kind of secret.
      * Expected value is 'SecretResourceProperties'.
@@ -556,7 +556,7 @@ export interface ServiceResourceDescriptionArgs {
     /**
      * Auto scaling policies
      */
-    autoScalingPolicies?: pulumi.Input<pulumi.Input<AutoScalingPolicyArgs>[]>;
+    autoScalingPolicies?: pulumi.Input<pulumi.Input<AutoScalingPolicyArgs>[] | undefined>;
     /**
      * Describes the set of code packages that forms the service. A code package describes the container and the properties for running it. All the code packages are started together on the same host and share the same context (network, process etc.).
      */
@@ -564,19 +564,19 @@ export interface ServiceResourceDescriptionArgs {
     /**
      * User readable description of the service.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Reference to sinks in DiagnosticsDescription.
      */
-    diagnostics?: pulumi.Input<DiagnosticsRefArgs>;
+    diagnostics?: pulumi.Input<DiagnosticsRefArgs | undefined>;
     /**
      * The name of the resource
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The names of the private networks that this service needs to be part of.
      */
-    networkRefs?: pulumi.Input<pulumi.Input<NetworkRefArgs>[]>;
+    networkRefs?: pulumi.Input<pulumi.Input<NetworkRefArgs>[] | undefined>;
     /**
      * The operation system required by the code in service.
      */
@@ -584,7 +584,7 @@ export interface ServiceResourceDescriptionArgs {
     /**
      * The number of replicas of the service to create. Defaults to 1 if not specified.
      */
-    replicaCount?: pulumi.Input<number>;
+    replicaCount?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -594,11 +594,11 @@ export interface SettingArgs {
     /**
      * The name of the setting.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The value of the setting.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -626,7 +626,7 @@ export interface VolumeProviderParametersAzureFileArgs {
     /**
      * Access key of the Azure storage account for the File Share.
      */
-    accountKey?: pulumi.Input<string>;
+    accountKey?: pulumi.Input<string | undefined>;
     /**
      * Name of the Azure storage account for the File Share.
      */
@@ -652,5 +652,5 @@ export interface VolumeReferenceArgs {
     /**
      * The flag indicating whether the volume is read only. Default is 'false'.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
 }

@@ -101,7 +101,7 @@ export interface DevOpsConfigurationArgs {
     /**
      * DevOps Configuration properties.
      */
-    properties?: pulumi.Input<types.inputs.DevOpsConfigurationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DevOpsConfigurationPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

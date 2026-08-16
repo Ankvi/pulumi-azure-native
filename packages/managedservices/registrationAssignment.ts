@@ -96,11 +96,11 @@ export interface RegistrationAssignmentArgs {
     /**
      * The properties of a registration assignment.
      */
-    properties?: pulumi.Input<types.inputs.RegistrationAssignmentPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.RegistrationAssignmentPropertiesArgs | undefined>;
     /**
      * The GUID of the registration assignment.
      */
-    registrationAssignmentId?: pulumi.Input<string>;
+    registrationAssignmentId?: pulumi.Input<string | undefined>;
     /**
      * The scope of the resource.
      */

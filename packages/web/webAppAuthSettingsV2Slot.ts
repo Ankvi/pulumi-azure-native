@@ -115,7 +115,7 @@ export class WebAppAuthSettingsV2Slot extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20200601:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20200901:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20201001:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20201201:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20210101:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20210115:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20210201:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20210301:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20220301:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20220901:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20230101:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20231201:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20240401:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20241101:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20250301:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20250501:WebAppAuthSettingsV2Slot" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20200601:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20200901:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20201001:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20201201:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20210101:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20210115:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20210201:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20210301:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20220301:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20220901:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20230101:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20231201:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20240401:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20241101:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20250301:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20250501:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20260301preview:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20260315:WebAppAuthSettingsV2Slot" }, { type: "azure-native:web/v20260715:WebAppAuthSettingsV2Slot" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppAuthSettingsV2Slot.__pulumiType, name, resourceInputs, opts);
     }
@@ -128,23 +128,23 @@ export interface WebAppAuthSettingsV2SlotArgs {
     /**
      * The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
      */
-    globalValidation?: pulumi.Input<types.inputs.GlobalValidationArgs>;
+    globalValidation?: pulumi.Input<types.inputs.GlobalValidationArgs | undefined>;
     /**
      * The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
      */
-    httpSettings?: pulumi.Input<types.inputs.HttpSettingsArgs>;
+    httpSettings?: pulumi.Input<types.inputs.HttpSettingsArgs | undefined>;
     /**
      * The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
      */
-    identityProviders?: pulumi.Input<types.inputs.IdentityProvidersArgs>;
+    identityProviders?: pulumi.Input<types.inputs.IdentityProvidersArgs | undefined>;
     /**
      * Kind of resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The configuration settings of the login flow of users using App Service Authentication/Authorization.
      */
-    login?: pulumi.Input<types.inputs.LoginArgs>;
+    login?: pulumi.Input<types.inputs.LoginArgs | undefined>;
     /**
      * Name of web app.
      */
@@ -152,7 +152,7 @@ export interface WebAppAuthSettingsV2SlotArgs {
     /**
      * The configuration settings of the platform of App Service Authentication/Authorization.
      */
-    platform?: pulumi.Input<types.inputs.AuthPlatformArgs>;
+    platform?: pulumi.Input<types.inputs.AuthPlatformArgs | undefined>;
     /**
      * Name of the resource group to which the resource belongs.
      */

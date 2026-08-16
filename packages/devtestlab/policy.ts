@@ -163,19 +163,19 @@ export interface PolicyArgs {
     /**
      * The description of the policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The evaluator type of the policy (i.e. AllowedValuesPolicy, MaxValuePolicy).
      */
-    evaluatorType?: pulumi.Input<string | types.enums.PolicyEvaluatorType>;
+    evaluatorType?: pulumi.Input<string | types.enums.PolicyEvaluatorType | undefined>;
     /**
      * The fact data of the policy.
      */
-    factData?: pulumi.Input<string>;
+    factData?: pulumi.Input<string | undefined>;
     /**
      * The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
      */
-    factName?: pulumi.Input<string | types.enums.PolicyFactName>;
+    factName?: pulumi.Input<string | types.enums.PolicyFactName | undefined>;
     /**
      * labs
      */
@@ -183,11 +183,11 @@ export interface PolicyArgs {
     /**
      * The location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the Policy
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * policysets
      */
@@ -199,13 +199,13 @@ export interface PolicyArgs {
     /**
      * The status of the policy.
      */
-    status?: pulumi.Input<string | types.enums.PolicyStatus>;
+    status?: pulumi.Input<string | types.enums.PolicyStatus | undefined>;
     /**
      * The tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The threshold of the policy (i.e. a number for MaxValuePolicy, and a JSON array of values for AllowedValuesPolicy).
      */
-    threshold?: pulumi.Input<string>;
+    threshold?: pulumi.Input<string | undefined>;
 }

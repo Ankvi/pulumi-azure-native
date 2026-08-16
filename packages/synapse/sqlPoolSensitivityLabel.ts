@@ -164,20 +164,20 @@ export interface SqlPoolSensitivityLabelArgs {
     /**
      * The information type.
      */
-    informationType?: pulumi.Input<string>;
+    informationType?: pulumi.Input<string | undefined>;
     /**
      * The information type ID.
      */
-    informationTypeId?: pulumi.Input<string>;
+    informationTypeId?: pulumi.Input<string | undefined>;
     /**
      * The label ID.
      */
-    labelId?: pulumi.Input<string>;
+    labelId?: pulumi.Input<string | undefined>;
     /**
      * The label name.
      */
-    labelName?: pulumi.Input<string>;
-    rank?: pulumi.Input<types.enums.SensitivityLabelRank>;
+    labelName?: pulumi.Input<string | undefined>;
+    rank?: pulumi.Input<types.enums.SensitivityLabelRank | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -189,7 +189,7 @@ export interface SqlPoolSensitivityLabelArgs {
     /**
      * The source of the sensitivity label.
      */
-    sensitivityLabelSource?: pulumi.Input<string>;
+    sensitivityLabelSource?: pulumi.Input<string | undefined>;
     /**
      * SQL pool name
      */

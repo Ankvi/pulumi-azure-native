@@ -4,15 +4,15 @@ export interface AccessPolicyArgs {
     /**
      * Expiry time of the access policy
      */
-    expiryTime?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string | undefined>;
     /**
      * List of abbreviated permissions.
      */
-    permission?: pulumi.Input<string>;
+    permission?: pulumi.Input<string | undefined>;
     /**
      * Start time of the access policy
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -22,15 +22,15 @@ export interface AccountImmutabilityPolicyPropertiesArgs {
     /**
      * This property can only be changed for disabled and unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.
      */
-    allowProtectedAppendWrites?: pulumi.Input<boolean>;
+    allowProtectedAppendWrites?: pulumi.Input<boolean | undefined>;
     /**
      * The immutability period for the blobs in the container since the policy creation, in days.
      */
-    immutabilityPeriodSinceCreationInDays?: pulumi.Input<number>;
+    immutabilityPeriodSinceCreationInDays?: pulumi.Input<number | undefined>;
     /**
      * The ImmutabilityPolicy state defines the mode of the policy. Disabled state disables the policy, Unlocked state allows increase and decrease of immutability retention time and also allows toggling allowProtectedAppendWrites property, Locked state only allows the increase of the immutability retention time. A policy can only be created in a Disabled or Unlocked state and can be toggled between the two states. Only a policy in an Unlocked state can transition to a Locked state which cannot be reverted.
      */
-    state?: pulumi.Input<string | enums.AccountImmutabilityPolicyState>;
+    state?: pulumi.Input<string | enums.AccountImmutabilityPolicyState | undefined>;
 }
 
 /**
@@ -40,11 +40,11 @@ export interface ActiveDirectoryPropertiesArgs {
     /**
      * Specifies the Active Directory account type for Azure Storage.
      */
-    accountType?: pulumi.Input<string | enums.AccountType>;
+    accountType?: pulumi.Input<string | enums.AccountType | undefined>;
     /**
      * Specifies the security identifier (SID) for Azure Storage.
      */
-    azureStorageSid?: pulumi.Input<string>;
+    azureStorageSid?: pulumi.Input<string | undefined>;
     /**
      * Specifies the domain GUID.
      */
@@ -56,19 +56,19 @@ export interface ActiveDirectoryPropertiesArgs {
     /**
      * Specifies the security identifier (SID).
      */
-    domainSid?: pulumi.Input<string>;
+    domainSid?: pulumi.Input<string | undefined>;
     /**
      * Specifies the Active Directory forest to get.
      */
-    forestName?: pulumi.Input<string>;
+    forestName?: pulumi.Input<string | undefined>;
     /**
      * Specifies the NetBIOS domain name.
      */
-    netBiosDomainName?: pulumi.Input<string>;
+    netBiosDomainName?: pulumi.Input<string | undefined>;
     /**
      * Specifies the Active Directory SAMAccountName for Azure Storage.
      */
-    samAccountName?: pulumi.Input<string>;
+    samAccountName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -78,11 +78,11 @@ export interface AzureFilesIdentityBasedAuthenticationArgs {
     /**
      * Required if directoryServiceOptions are AD, optional if they are AADKERB.
      */
-    activeDirectoryProperties?: pulumi.Input<ActiveDirectoryPropertiesArgs>;
+    activeDirectoryProperties?: pulumi.Input<ActiveDirectoryPropertiesArgs | undefined>;
     /**
      * Default share permission for users using Kerberos authentication if RBAC role is not assigned.
      */
-    defaultSharePermission?: pulumi.Input<string | enums.DefaultSharePermission>;
+    defaultSharePermission?: pulumi.Input<string | enums.DefaultSharePermission | undefined>;
     /**
      * Indicates the directory service used. Note that this enum may be extended in the future.
      */
@@ -96,7 +96,7 @@ export interface BlobInventoryCreationTimeArgs {
     /**
      * When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500.
      */
-    lastNDays?: pulumi.Input<number>;
+    lastNDays?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -106,7 +106,7 @@ export interface BlobInventoryPolicyDefinitionArgs {
     /**
      * An object that defines the filter set.
      */
-    filters?: pulumi.Input<BlobInventoryPolicyFilterArgs>;
+    filters?: pulumi.Input<BlobInventoryPolicyFilterArgs | undefined>;
     /**
      * This is a required field, it specifies the format for the inventory files.
      */
@@ -132,31 +132,31 @@ export interface BlobInventoryPolicyFilterArgs {
     /**
      * An array of predefined enum values. Valid values include blockBlob, appendBlob, pageBlob. Hns accounts does not support pageBlobs. This field is required when definition.objectType property is set to 'Blob'.
      */
-    blobTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    blobTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This property is used to filter objects based on the object creation time
      */
-    creationTime?: pulumi.Input<BlobInventoryCreationTimeArgs>;
+    creationTime?: pulumi.Input<BlobInventoryCreationTimeArgs | undefined>;
     /**
      * An array of strings with maximum 10 blob prefixes to be excluded from the inventory.
      */
-    excludePrefix?: pulumi.Input<pulumi.Input<string>[]>;
+    excludePrefix?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Includes blob versions in blob inventory when value is set to true. The definition.schemaFields values 'VersionId and IsCurrentVersion' are required if this property is set to true, else they must be excluded.
      */
-    includeBlobVersions?: pulumi.Input<boolean>;
+    includeBlobVersions?: pulumi.Input<boolean | undefined>;
     /**
      * For 'Container' definition.objectType the definition.schemaFields must include 'Deleted, Version, DeletedTime and RemainingRetentionDays'. For 'Blob' definition.objectType and HNS enabled storage accounts the definition.schemaFields must include 'DeletionId, Deleted, DeletedTime and RemainingRetentionDays' and for Hns disabled accounts the definition.schemaFields must include 'Deleted and RemainingRetentionDays', else it must be excluded.
      */
-    includeDeleted?: pulumi.Input<boolean>;
+    includeDeleted?: pulumi.Input<boolean | undefined>;
     /**
      * Includes blob snapshots in blob inventory when value is set to true. The definition.schemaFields value 'Snapshot' is required if this property is set to true, else it must be excluded.
      */
-    includeSnapshots?: pulumi.Input<boolean>;
+    includeSnapshots?: pulumi.Input<boolean | undefined>;
     /**
      * An array of strings with maximum 10 blob prefixes to be included in the inventory.
      */
-    prefixMatch?: pulumi.Input<pulumi.Input<string>[]>;
+    prefixMatch?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -206,11 +206,11 @@ export interface ChangeFeedArgs {
     /**
      * Indicates whether change feed event logging is enabled for the Blob service.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates the duration of changeFeed retention in days. Minimum value is 1 day and maximum value is 146000 days (400 years). A null value indicates an infinite retention of the change feed.
      */
-    retentionInDays?: pulumi.Input<number>;
+    retentionInDays?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -240,13 +240,13 @@ export interface CorsRuleArgs {
 }
 
 /**
- * Sets the CORS rules. You can include up to five CorsRule elements in the request. 
+ * Sets the CORS rules. You can include up to five CorsRule elements in the request.
  */
 export interface CorsRulesArgs {
     /**
-     * The List of CORS rules. You can include up to five CorsRule elements in the request. 
+     * The List of CORS rules. You can include up to five CorsRule elements in the request.
      */
-    corsRules?: pulumi.Input<pulumi.Input<CorsRuleArgs>[]>;
+    corsRules?: pulumi.Input<pulumi.Input<CorsRuleArgs>[] | undefined>;
 }
 
 /**
@@ -260,7 +260,41 @@ export interface CustomDomainArgs {
     /**
      * Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates.
      */
-    useSubDomainName?: pulumi.Input<boolean>;
+    useSubDomainName?: pulumi.Input<boolean | undefined>;
+}
+
+/**
+ * The connection details for Data Share source
+ */
+export interface DataShareConnectionArgs {
+    /**
+     * The URI of the backing DataShare. Must be in the format: azds://<region>:<DataShareName>:<DataShareIdentifier>
+     */
+    dataShareUri: pulumi.Input<string>;
+    /**
+     * The connection type for bucket connection in storage connector.
+     * Expected value is 'DataShare'.
+     */
+    type: pulumi.Input<"DataShare">;
+}
+
+/**
+ * The properties of data share source
+ */
+export interface DataShareSourceArgs {
+    /**
+     * Details for how to authenticate to the backing data store.
+     */
+    authProperties: pulumi.Input<ManagedIdentityAuthPropertiesArgs>;
+    /**
+     * Details for how to connect to the backing data store.
+     */
+    connection: pulumi.Input<DataShareConnectionArgs>;
+    /**
+     * The type of the backing data source for storage connector
+     * Expected value is 'DataShare'.
+     */
+    type: pulumi.Input<"DataShare">;
 }
 
 /**
@@ -274,7 +308,7 @@ export interface DateAfterCreationArgs {
     /**
      * Value indicating the age in days after last blob tier change time. This property is only applicable for tierToArchive actions and requires daysAfterCreationGreaterThan to be set for snapshots and blob version based actions. The blob will be archived if both the conditions are satisfied.
      */
-    daysAfterLastTierChangeGreaterThan?: pulumi.Input<number>;
+    daysAfterLastTierChangeGreaterThan?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -284,19 +318,19 @@ export interface DateAfterModificationArgs {
     /**
      * Value indicating the age in days after blob creation.
      */
-    daysAfterCreationGreaterThan?: pulumi.Input<number>;
+    daysAfterCreationGreaterThan?: pulumi.Input<number | undefined>;
     /**
      * Value indicating the age in days after last blob access. This property can only be used in conjunction with last access time tracking policy
      */
-    daysAfterLastAccessTimeGreaterThan?: pulumi.Input<number>;
+    daysAfterLastAccessTimeGreaterThan?: pulumi.Input<number | undefined>;
     /**
      * Value indicating the age in days after last blob tier change time. This property is only applicable for tierToArchive actions and requires daysAfterModificationGreaterThan to be set for baseBlobs based actions. The blob will be archived if both the conditions are satisfied.
      */
-    daysAfterLastTierChangeGreaterThan?: pulumi.Input<number>;
+    daysAfterLastTierChangeGreaterThan?: pulumi.Input<number | undefined>;
     /**
      * Value indicating the age in days after last modification
      */
-    daysAfterModificationGreaterThan?: pulumi.Input<number>;
+    daysAfterModificationGreaterThan?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -306,15 +340,15 @@ export interface DeleteRetentionPolicyArgs {
     /**
      * This property when set to true allows deletion of the soft deleted blob versions and snapshots. This property cannot be used blob restore policy. This property only applies to blob service and does not apply to containers or file share.
      */
-    allowPermanentDelete?: pulumi.Input<boolean>;
+    allowPermanentDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates the number of days that the deleted item should be retained. The minimum specified value can be 1 and the maximum value can be 365.
      */
-    days?: pulumi.Input<number>;
+    days?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether DeleteRetentionPolicy is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -324,23 +358,23 @@ export interface EncryptionArgs {
     /**
      * The identity to be used with service-side encryption at rest.
      */
-    encryptionIdentity?: pulumi.Input<EncryptionIdentityArgs>;
+    encryptionIdentity?: pulumi.Input<EncryptionIdentityArgs | undefined>;
     /**
      * The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault
      */
-    keySource?: pulumi.Input<string | enums.KeySource>;
+    keySource?: pulumi.Input<string | enums.KeySource | undefined>;
     /**
      * Properties provided by key vault.
      */
-    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<KeyVaultPropertiesArgs | undefined>;
     /**
      * A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest.
      */
-    requireInfrastructureEncryption?: pulumi.Input<boolean>;
+    requireInfrastructureEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * List of services which support encryption.
      */
-    services?: pulumi.Input<EncryptionServicesArgs>;
+    services?: pulumi.Input<EncryptionServicesArgs | undefined>;
 }
 /**
  * encryptionArgsProvideDefaults sets the appropriate defaults for EncryptionArgs
@@ -359,11 +393,11 @@ export interface EncryptionIdentityArgs {
     /**
      * ClientId of the multi-tenant application to be used in conjunction with the user-assigned identity for cross-tenant customer-managed-keys server-side encryption on the storage account.
      */
-    encryptionFederatedIdentityClientId?: pulumi.Input<string>;
+    encryptionFederatedIdentityClientId?: pulumi.Input<string | undefined>;
     /**
      * Resource identifier of the UserAssigned identity to be associated with server-side encryption on the storage account.
      */
-    encryptionUserAssignedIdentity?: pulumi.Input<string>;
+    encryptionUserAssignedIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -373,7 +407,7 @@ export interface EncryptionScopeKeyVaultPropertiesArgs {
     /**
      * The object identifier for a key vault key object. When applied, the encryption scope will use the key referenced by the identifier to enable customer-managed key support on this encryption scope.
      */
-    keyUri?: pulumi.Input<string>;
+    keyUri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -383,11 +417,11 @@ export interface EncryptionServiceArgs {
     /**
      * A boolean indicating whether or not the service encrypts the data as it is stored. Encryption at rest is enabled by default today and cannot be disabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used.
      */
-    keyType?: pulumi.Input<string | enums.KeyType>;
+    keyType?: pulumi.Input<string | enums.KeyType | undefined>;
 }
 
 /**
@@ -397,19 +431,19 @@ export interface EncryptionServicesArgs {
     /**
      * The encryption function of the blob storage service.
      */
-    blob?: pulumi.Input<EncryptionServiceArgs>;
+    blob?: pulumi.Input<EncryptionServiceArgs | undefined>;
     /**
      * The encryption function of the file storage service.
      */
-    file?: pulumi.Input<EncryptionServiceArgs>;
+    file?: pulumi.Input<EncryptionServiceArgs | undefined>;
     /**
      * The encryption function of the queue storage service.
      */
-    queue?: pulumi.Input<EncryptionServiceArgs>;
+    queue?: pulumi.Input<EncryptionServiceArgs | undefined>;
     /**
      * The encryption function of the table storage service.
      */
-    table?: pulumi.Input<EncryptionServiceArgs>;
+    table?: pulumi.Input<EncryptionServiceArgs | undefined>;
 }
 
 /**
@@ -419,11 +453,11 @@ export interface ExecutionTargetArgs {
     /**
      * List of object prefixes to be excluded from task execution. If there is a conflict between include and exclude prefixes, the exclude prefix will be the determining factor
      */
-    excludePrefix?: pulumi.Input<pulumi.Input<string>[]>;
+    excludePrefix?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required list of object prefixes to be included for task execution
      */
-    prefix?: pulumi.Input<pulumi.Input<string>[]>;
+    prefix?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -447,11 +481,11 @@ export interface ExtendedLocationArgs {
     /**
      * The name of the extended location.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of the extended location.
      */
-    type?: pulumi.Input<string | enums.ExtendedLocationTypes>;
+    type?: pulumi.Input<string | enums.ExtendedLocationTypes | undefined>;
 }
 
 /**
@@ -461,15 +495,15 @@ export interface FileSharePropertiesFileSharePaidBurstingArgs {
     /**
      * Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type.
      */
-    paidBurstingEnabled?: pulumi.Input<boolean>;
+    paidBurstingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share.
      */
-    paidBurstingMaxBandwidthMibps?: pulumi.Input<number>;
+    paidBurstingMaxBandwidthMibps?: pulumi.Input<number | undefined>;
     /**
      * The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 102400 which is the maximum allowed IOPS for a share.
      */
-    paidBurstingMaxIops?: pulumi.Input<number>;
+    paidBurstingMaxIops?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -479,7 +513,7 @@ export interface IPRuleArgs {
     /**
      * The action of IP ACL rule.
      */
-    action?: pulumi.Input<enums.Action>;
+    action?: pulumi.Input<enums.Action | undefined>;
     /**
      * Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
      */
@@ -506,7 +540,7 @@ export interface IdentityArgs {
     /**
      * Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -516,11 +550,11 @@ export interface ImmutableStorageAccountArgs {
     /**
      * A boolean flag which enables account-level immutability. All the containers under such an account have object-level immutability enabled by default.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the default account-level immutability policy which is inherited and applied to objects that do not possess an explicit immutability policy at the object level. The object-level immutability policy has higher precedence than the container-level immutability policy, which has a higher precedence than the account-level immutability policy.
      */
-    immutabilityPolicy?: pulumi.Input<AccountImmutabilityPolicyPropertiesArgs>;
+    immutabilityPolicy?: pulumi.Input<AccountImmutabilityPolicyPropertiesArgs | undefined>;
 }
 
 /**
@@ -530,7 +564,7 @@ export interface ImmutableStorageWithVersioningArgs {
     /**
      * This is an immutable property, when set to true it enables object level immutability at the container level.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -550,15 +584,15 @@ export interface KeyVaultPropertiesArgs {
     /**
      * The name of KeyVault key.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The Uri of KeyVault.
      */
-    keyVaultUri?: pulumi.Input<string>;
+    keyVaultUri?: pulumi.Input<string | undefined>;
     /**
      * The version of KeyVault key.
      */
-    keyVersion?: pulumi.Input<string>;
+    keyVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -568,7 +602,7 @@ export interface LastAccessTimeTrackingPolicyArgs {
     /**
      * An array of predefined supported blob types. Only blockBlob is the supported value. This field is currently read only
      */
-    blobType?: pulumi.Input<pulumi.Input<string>[]>;
+    blobType?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When set to true last access time based tracking is enabled.
      */
@@ -576,11 +610,26 @@ export interface LastAccessTimeTrackingPolicyArgs {
     /**
      * Name of the policy. The valid value is AccessTimeTracking. This field is currently read only
      */
-    name?: pulumi.Input<string | enums.Name>;
+    name?: pulumi.Input<string | enums.Name | undefined>;
     /**
      * The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.This field is currently read only with value as 1
      */
-    trackingGranularityInDays?: pulumi.Input<number>;
+    trackingGranularityInDays?: pulumi.Input<number | undefined>;
+}
+
+/**
+ * The managed identity auth properties for dataShare connection.
+ */
+export interface ManagedIdentityAuthPropertiesArgs {
+    /**
+     * ARM ResourceId of the managed identity that should be used to authenticate to the backing data source.
+     */
+    identityResourceId?: pulumi.Input<string | undefined>;
+    /**
+     * The auth type supported for bucket connection in storage connector.
+     * Expected value is 'ManagedIdentity'.
+     */
+    type: pulumi.Input<"ManagedIdentity">;
 }
 
 /**
@@ -590,15 +639,15 @@ export interface ManagementPolicyActionArgs {
     /**
      * The management policy action for base blob
      */
-    baseBlob?: pulumi.Input<ManagementPolicyBaseBlobArgs>;
+    baseBlob?: pulumi.Input<ManagementPolicyBaseBlobArgs | undefined>;
     /**
      * The management policy action for snapshot
      */
-    snapshot?: pulumi.Input<ManagementPolicySnapShotArgs>;
+    snapshot?: pulumi.Input<ManagementPolicySnapShotArgs | undefined>;
     /**
      * The management policy action for version
      */
-    version?: pulumi.Input<ManagementPolicyVersionArgs>;
+    version?: pulumi.Input<ManagementPolicyVersionArgs | undefined>;
 }
 
 /**
@@ -608,27 +657,27 @@ export interface ManagementPolicyBaseBlobArgs {
     /**
      * The function to delete the blob
      */
-    delete?: pulumi.Input<DateAfterModificationArgs>;
+    delete?: pulumi.Input<DateAfterModificationArgs | undefined>;
     /**
      * This property enables auto tiering of a blob from cool to hot on a blob access. This property requires tierToCool.daysAfterLastAccessTimeGreaterThan.
      */
-    enableAutoTierToHotFromCool?: pulumi.Input<boolean>;
+    enableAutoTierToHotFromCool?: pulumi.Input<boolean | undefined>;
     /**
      * The function to tier blobs to archive storage.
      */
-    tierToArchive?: pulumi.Input<DateAfterModificationArgs>;
+    tierToArchive?: pulumi.Input<DateAfterModificationArgs | undefined>;
     /**
      * The function to tier blobs to cold storage.
      */
-    tierToCold?: pulumi.Input<DateAfterModificationArgs>;
+    tierToCold?: pulumi.Input<DateAfterModificationArgs | undefined>;
     /**
      * The function to tier blobs to cool storage.
      */
-    tierToCool?: pulumi.Input<DateAfterModificationArgs>;
+    tierToCool?: pulumi.Input<DateAfterModificationArgs | undefined>;
     /**
      * The function to tier blobs to hot storage. This action can only be used with Premium Block Blob Storage Accounts
      */
-    tierToHot?: pulumi.Input<DateAfterModificationArgs>;
+    tierToHot?: pulumi.Input<DateAfterModificationArgs | undefined>;
 }
 
 /**
@@ -642,17 +691,17 @@ export interface ManagementPolicyDefinitionArgs {
     /**
      * An object that defines the filter set.
      */
-    filters?: pulumi.Input<ManagementPolicyFilterArgs>;
+    filters?: pulumi.Input<ManagementPolicyFilterArgs | undefined>;
 }
 
 /**
- * Filters limit rule actions to a subset of blobs within the storage account. If multiple filters are defined, a logical AND is performed on all filters. 
+ * Filters limit rule actions to a subset of blobs within the storage account. If multiple filters are defined, a logical AND is performed on all filters.
  */
 export interface ManagementPolicyFilterArgs {
     /**
      * An array of blob index tag based filters, there can be at most 10 tag filters
      */
-    blobIndexMatch?: pulumi.Input<pulumi.Input<TagFilterArgs>[]>;
+    blobIndexMatch?: pulumi.Input<pulumi.Input<TagFilterArgs>[] | undefined>;
     /**
      * An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
      */
@@ -660,7 +709,7 @@ export interface ManagementPolicyFilterArgs {
     /**
      * An array of strings for prefixes to be match.
      */
-    prefixMatch?: pulumi.Input<pulumi.Input<string>[]>;
+    prefixMatch?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -674,7 +723,7 @@ export interface ManagementPolicyRuleArgs {
     /**
      * Rule is enabled if set to true.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
      */
@@ -702,23 +751,23 @@ export interface ManagementPolicySnapShotArgs {
     /**
      * The function to delete the blob snapshot
      */
-    delete?: pulumi.Input<DateAfterCreationArgs>;
+    delete?: pulumi.Input<DateAfterCreationArgs | undefined>;
     /**
      * The function to tier blob snapshot to archive storage.
      */
-    tierToArchive?: pulumi.Input<DateAfterCreationArgs>;
+    tierToArchive?: pulumi.Input<DateAfterCreationArgs | undefined>;
     /**
      * The function to tier blobs to cold storage.
      */
-    tierToCold?: pulumi.Input<DateAfterCreationArgs>;
+    tierToCold?: pulumi.Input<DateAfterCreationArgs | undefined>;
     /**
      * The function to tier blob snapshot to cool storage.
      */
-    tierToCool?: pulumi.Input<DateAfterCreationArgs>;
+    tierToCool?: pulumi.Input<DateAfterCreationArgs | undefined>;
     /**
      * The function to tier blobs to hot storage. This action can only be used with Premium Block Blob Storage Accounts
      */
-    tierToHot?: pulumi.Input<DateAfterCreationArgs>;
+    tierToHot?: pulumi.Input<DateAfterCreationArgs | undefined>;
 }
 
 /**
@@ -728,23 +777,23 @@ export interface ManagementPolicyVersionArgs {
     /**
      * The function to delete the blob version
      */
-    delete?: pulumi.Input<DateAfterCreationArgs>;
+    delete?: pulumi.Input<DateAfterCreationArgs | undefined>;
     /**
      * The function to tier blob version to archive storage.
      */
-    tierToArchive?: pulumi.Input<DateAfterCreationArgs>;
+    tierToArchive?: pulumi.Input<DateAfterCreationArgs | undefined>;
     /**
      * The function to tier blobs to cold storage.
      */
-    tierToCold?: pulumi.Input<DateAfterCreationArgs>;
+    tierToCold?: pulumi.Input<DateAfterCreationArgs | undefined>;
     /**
      * The function to tier blob version to cool storage.
      */
-    tierToCool?: pulumi.Input<DateAfterCreationArgs>;
+    tierToCool?: pulumi.Input<DateAfterCreationArgs | undefined>;
     /**
      * The function to tier blobs to hot storage. This action can only be used with Premium Block Blob Storage Accounts
      */
-    tierToHot?: pulumi.Input<DateAfterCreationArgs>;
+    tierToHot?: pulumi.Input<DateAfterCreationArgs | undefined>;
 }
 
 /**
@@ -754,7 +803,7 @@ export interface MultichannelArgs {
     /**
      * Indicates whether multichannel is enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -764,7 +813,7 @@ export interface NetworkRuleSetArgs {
     /**
      * Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
      */
-    bypass?: pulumi.Input<string | enums.Bypass>;
+    bypass?: pulumi.Input<string | enums.Bypass | undefined>;
     /**
      * Specifies the default action of allow or deny when no other rules match.
      */
@@ -772,15 +821,15 @@ export interface NetworkRuleSetArgs {
     /**
      * Sets the IP ACL rules
      */
-    ipRules?: pulumi.Input<pulumi.Input<IPRuleArgs>[]>;
+    ipRules?: pulumi.Input<pulumi.Input<IPRuleArgs>[] | undefined>;
     /**
      * Sets the resource access rules
      */
-    resourceAccessRules?: pulumi.Input<pulumi.Input<ResourceAccessRuleArgs>[]>;
+    resourceAccessRules?: pulumi.Input<pulumi.Input<ResourceAccessRuleArgs>[] | undefined>;
     /**
      * Sets the virtual network rules
      */
-    virtualNetworkRules?: pulumi.Input<pulumi.Input<VirtualNetworkRuleArgs>[]>;
+    virtualNetworkRules?: pulumi.Input<pulumi.Input<VirtualNetworkRuleArgs>[] | undefined>;
 }
 /**
  * networkRuleSetArgsProvideDefaults sets the appropriate defaults for NetworkRuleSetArgs
@@ -800,11 +849,11 @@ export interface ObjectReplicationPolicyFilterArgs {
     /**
      * Blobs created after the time will be replicated to the destination. It must be in datetime format 'yyyy-MM-ddTHH:mm:ssZ'. Example: 2020-02-19T16:05:00Z
      */
-    minCreationTime?: pulumi.Input<string>;
+    minCreationTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. Filters the results to replicate only blobs whose names begin with the specified prefix.
      */
-    prefixMatch?: pulumi.Input<pulumi.Input<string>[]>;
+    prefixMatch?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -814,7 +863,7 @@ export interface ObjectReplicationPolicyPropertiesMetricsArgs {
     /**
      * Indicates whether object replication metrics feature is enabled for the policy.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -828,11 +877,11 @@ export interface ObjectReplicationPolicyRuleArgs {
     /**
      * Optional. An object that defines the filter set.
      */
-    filters?: pulumi.Input<ObjectReplicationPolicyFilterArgs>;
+    filters?: pulumi.Input<ObjectReplicationPolicyFilterArgs | undefined>;
     /**
      * Rule Id is auto-generated for each new rule on destination account. It is required for put policy on source account.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * Required. Source container name.
      */
@@ -861,15 +910,15 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionRequired?: pulumi.Input<string>;
+    actionRequired?: pulumi.Input<string | undefined>;
     /**
      * The reason for approval/rejection of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -879,7 +928,7 @@ export interface ProtocolSettingsArgs {
     /**
      * Setting for SMB protocol
      */
-    smb?: pulumi.Input<SmbSettingArgs>;
+    smb?: pulumi.Input<SmbSettingArgs | undefined>;
 }
 
 /**
@@ -889,11 +938,11 @@ export interface ResourceAccessRuleArgs {
     /**
      * Resource Id
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Tenant Id
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -903,7 +952,7 @@ export interface RestorePolicyPropertiesArgs {
     /**
      * how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
      */
-    days?: pulumi.Input<number>;
+    days?: pulumi.Input<number | undefined>;
     /**
      * Blob restore is enabled if set to true.
      */
@@ -917,15 +966,15 @@ export interface RoutingPreferenceArgs {
     /**
      * A boolean flag which indicates whether internet routing storage endpoints are to be published
      */
-    publishInternetEndpoints?: pulumi.Input<boolean>;
+    publishInternetEndpoints?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean flag which indicates whether microsoft routing storage endpoints are to be published
      */
-    publishMicrosoftEndpoints?: pulumi.Input<boolean>;
+    publishMicrosoftEndpoints?: pulumi.Input<boolean | undefined>;
     /**
      * Routing Choice defines the kind of network routing opted by the user.
      */
-    routingChoice?: pulumi.Input<string | enums.RoutingChoice>;
+    routingChoice?: pulumi.Input<string | enums.RoutingChoice | undefined>;
 }
 
 /**
@@ -955,11 +1004,11 @@ export interface SignedIdentifierArgs {
     /**
      * Access policy
      */
-    accessPolicy?: pulumi.Input<AccessPolicyArgs>;
+    accessPolicy?: pulumi.Input<AccessPolicyArgs | undefined>;
     /**
      * An unique identifier of the stored access policy.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -979,34 +1028,128 @@ export interface SmbSettingArgs {
     /**
      * SMB authentication methods supported by server. Valid values are NTLMv2, Kerberos. Should be passed as a string with delimiter ';'.
      */
-    authenticationMethods?: pulumi.Input<string>;
+    authenticationMethods?: pulumi.Input<string | undefined>;
     /**
      * SMB channel encryption supported by server. Valid values are AES-128-CCM, AES-128-GCM, AES-256-GCM. Should be passed as a string with delimiter ';'.
      */
-    channelEncryption?: pulumi.Input<string>;
+    channelEncryption?: pulumi.Input<string | undefined>;
     /**
      * Kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256. Should be passed as a string with delimiter ';'
      */
-    kerberosTicketEncryption?: pulumi.Input<string>;
+    kerberosTicketEncryption?: pulumi.Input<string | undefined>;
     /**
      * Multichannel setting. Applies to Premium FileStorage only.
      */
-    multichannel?: pulumi.Input<MultichannelArgs>;
+    multichannel?: pulumi.Input<MultichannelArgs | undefined>;
     /**
      * SMB protocol versions supported by server. Valid values are SMB2.1, SMB3.0, SMB3.1.1. Should be passed as a string with delimiter ';'.
      */
-    versions?: pulumi.Input<string>;
+    versions?: pulumi.Input<string | undefined>;
 }
 
 export interface SshPublicKeyArgs {
     /**
      * Optional. It is used to store the function/usage of the key
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Ssh public key base64 encoded. The format should be: '<keyType> <keyData>', e.g. ssh-rsa AAAABBBB
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+}
+
+/**
+ * The storage connector properties
+ */
+export interface StorageConnectorPropertiesArgs {
+    /**
+     * The type of backing data source for this Storage Connector.
+     */
+    dataSourceType: pulumi.Input<string | enums.StorageConnectorDataSourceType>;
+    /**
+     * Arbitrary description of this Storage Connector. Max 250 characters.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * Information about how to communicate with and authenticate to the backing data store.
+     */
+    source: pulumi.Input<DataShareSourceArgs>;
+    /**
+     * State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active)
+     * (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise.
+     */
+    state?: pulumi.Input<string | enums.StorageConnectorState | undefined>;
+    /**
+     * Test connection to backing data source before creating the storage connector.
+     */
+    testConnection?: pulumi.Input<boolean | undefined>;
+}
+/**
+ * storageConnectorPropertiesArgsProvideDefaults sets the appropriate defaults for StorageConnectorPropertiesArgs
+ */
+export function storageConnectorPropertiesArgsProvideDefaults(val: StorageConnectorPropertiesArgs): StorageConnectorPropertiesArgs {
+    return {
+        ...val,
+        state: (val.state) ?? "Active",
+        testConnection: (val.testConnection) ?? false,
+    };
+}
+
+/**
+ * Policy that specify the permission allowed to a managed identity
+ */
+export interface StorageDataShareAccessPolicyArgs {
+    /**
+     * Allowed permissions. Currently, only supported value is Read.
+     */
+    permission: pulumi.Input<string | enums.StorageDataShareAccessPolicyPermission>;
+    /**
+     * The AAD principal ID of the Managed Identity.
+     */
+    principalId: pulumi.Input<string>;
+    /**
+     * The AAD tenant ID of the Managed Identity.
+     */
+    tenantId: pulumi.Input<string>;
+}
+
+/**
+ * Properties of a shared resource.
+ */
+export interface StorageDataShareAssetArgs {
+    /**
+     * Source Path to be shared. It can be a folder or a blob.
+     * The asset path should contain container name followed by path within the container, e.g. /container1/logs/external.
+     */
+    assetPath: pulumi.Input<string>;
+    /**
+     * Consumer visible name of the original path.
+     */
+    displayName: pulumi.Input<string>;
+}
+
+/**
+ * The storage datashare properties
+ */
+export interface StorageDataSharePropertiesArgs {
+    /**
+     * List of access policies that specify the permission allowed to a managed identity.
+     * For Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array.
+     * For Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged.
+     * If provided with a non-null value, the existing access policies are replaced with the specified list.
+     */
+    accessPolicies: pulumi.Input<pulumi.Input<StorageDataShareAccessPolicyArgs>[]>;
+    /**
+     * List of assets that specify the properties of the shared resources.
+     * For Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array.
+     * For Update - This property is optional. If set to null or not passed, the existing assets are left unchanged.
+     * If provided with a non-null value, the existing assets are replaced with the specified list.
+     */
+    assets: pulumi.Input<pulumi.Input<StorageDataShareAssetArgs>[]>;
+    /**
+     * Arbitrary description of this Data Share. Max 250 characters.
+     */
+    description?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1016,7 +1159,7 @@ export interface StorageTaskAssignmentExecutionContextArgs {
     /**
      * Execution target of the storage task assignment
      */
-    target?: pulumi.Input<ExecutionTargetArgs>;
+    target?: pulumi.Input<ExecutionTargetArgs | undefined>;
     /**
      * Execution trigger of the storage task assignment
      */
@@ -1066,7 +1209,7 @@ export interface TableAccessPolicyArgs {
     /**
      * Expiry time of the access policy
      */
-    expiryTime?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string | undefined>;
     /**
      * Required. List of abbreviated permissions. Supported permission values include 'r','a','u','d'
      */
@@ -1074,7 +1217,7 @@ export interface TableAccessPolicyArgs {
     /**
      * Start time of the access policy
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1084,7 +1227,7 @@ export interface TableSignedIdentifierArgs {
     /**
      * Access policy
      */
-    accessPolicy?: pulumi.Input<TableAccessPolicyArgs>;
+    accessPolicy?: pulumi.Input<TableAccessPolicyArgs | undefined>;
     /**
      * unique-64-character-value of the stored access policy.
      */
@@ -1116,23 +1259,23 @@ export interface TriggerParametersArgs {
     /**
      * When to end task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
      */
-    endBy?: pulumi.Input<string>;
+    endBy?: pulumi.Input<string | undefined>;
     /**
      * Run interval of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * Run interval unit of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
      */
-    intervalUnit?: pulumi.Input<enums.IntervalUnit>;
+    intervalUnit?: pulumi.Input<enums.IntervalUnit | undefined>;
     /**
      * When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
      */
-    startFrom?: pulumi.Input<string>;
+    startFrom?: pulumi.Input<string | undefined>;
     /**
      * When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
      */
-    startOn?: pulumi.Input<string>;
+    startOn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1142,11 +1285,11 @@ export interface VirtualNetworkRuleArgs {
     /**
      * The action of virtual network rule.
      */
-    action?: pulumi.Input<enums.Action>;
+    action?: pulumi.Input<enums.Action | undefined>;
     /**
      * Gets the state of virtual network rule.
      */
-    state?: pulumi.Input<string | enums.State>;
+    state?: pulumi.Input<string | enums.State | undefined>;
     /**
      * Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
      */

@@ -394,7 +394,7 @@ export interface FlowPropertiesResponse {
 /**
  * Properties of flow
  */
-export interface FlowPropertiesResponseV1 {
+export interface FlowPropertieslistListFlowsByPipelineResponse {
     /**
      * The API Flow configuration options for Azure Data Transfer API Flow type.
      */
@@ -456,7 +456,7 @@ export interface FlowPropertiesResponseV1 {
      */
     messagingOptions?: MessagingOptionsResponse;
     /**
-     * The passphrase used for SRT streams
+     * The passphrase used for SRT streams (non-secret)
      */
     passphrase?: string;
     /**
@@ -540,7 +540,7 @@ export interface FlowResponse {
     /**
      * Properties of flow
      */
-    properties?: FlowPropertiesResponseV1;
+    properties?: FlowPropertieslistListFlowsByPipelineResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -992,7 +992,7 @@ export interface PlanResponse {
      */
     name: string;
     /**
-     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. 
+     * The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
      */
     product: string;
     /**

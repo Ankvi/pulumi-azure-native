@@ -104,7 +104,7 @@ export class BrokerAuthorization extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["authorizationName"] = args?.authorizationName;
-            resourceInputs["authorizationPolicies"] = args ? (args.authorizationPolicies ? pulumi.output(args.authorizationPolicies).apply(types.inputs.authorizationConfigArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["authorizationPolicies"] = args ? pulumi.output(args.authorizationPolicies).apply(types.inputs.authorizationConfigArgsProvideDefaults) : undefined;
             resourceInputs["brokerName"] = args?.brokerName;
             resourceInputs["extendedLocation"] = args?.extendedLocation;
             resourceInputs["listenerRef"] = args?.listenerRef;
@@ -143,7 +143,7 @@ export interface BrokerAuthorizationArgs {
     /**
      * Name of MQ broker/authorization resource
      */
-    authorizationName?: pulumi.Input<string>;
+    authorizationName?: pulumi.Input<string | undefined>;
     /**
      * The list of authorization policies supported by the Authorization Resource.
      */
@@ -163,7 +163,7 @@ export interface BrokerAuthorizationArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of MQ resource
      */
@@ -175,5 +175,5 @@ export interface BrokerAuthorizationArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

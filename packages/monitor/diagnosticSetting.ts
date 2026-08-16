@@ -52,7 +52,7 @@ export class DiagnosticSetting extends pulumi.CustomResource {
     /**
      * The list of logs settings.
      */
-    declare public readonly logs: pulumi.Output<types.outputs.LogSettingsResponse[] | undefined>;
+    declare public readonly logs: pulumi.Output<types.outputs.DiagnosticsLogSettingsResponse[] | undefined>;
     /**
      * The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
      */
@@ -60,7 +60,7 @@ export class DiagnosticSetting extends pulumi.CustomResource {
     /**
      * The list of metric settings.
      */
-    declare public readonly metrics: pulumi.Output<types.outputs.MetricSettingsResponse[] | undefined>;
+    declare public readonly metrics: pulumi.Output<types.outputs.DiagnosticsMetricSettingsResponse[] | undefined>;
     /**
      * The name of the resource
      */
@@ -74,7 +74,7 @@ export class DiagnosticSetting extends pulumi.CustomResource {
      */
     declare public readonly storageAccountId: pulumi.Output<string | undefined>;
     /**
-     * The system metadata related to this resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -143,45 +143,45 @@ export interface DiagnosticSettingArgs {
     /**
      * The resource Id for the event hub authorization rule.
      */
-    eventHubAuthorizationRuleId?: pulumi.Input<string>;
+    eventHubAuthorizationRuleId?: pulumi.Input<string | undefined>;
     /**
      * The name of the event hub. If none is specified, the default event hub will be selected.
      */
-    eventHubName?: pulumi.Input<string>;
+    eventHubName?: pulumi.Input<string | undefined>;
     /**
      * A string indicating whether the export to Log Analytics should use the default destination type, i.e. AzureDiagnostics, or use a destination type constructed as follows: <normalized service identity>_<normalized category name>. Possible values are: Dedicated and null (null is default.)
      */
-    logAnalyticsDestinationType?: pulumi.Input<string>;
+    logAnalyticsDestinationType?: pulumi.Input<string | undefined>;
     /**
      * The list of logs settings.
      */
-    logs?: pulumi.Input<pulumi.Input<types.inputs.LogSettingsArgs>[]>;
+    logs?: pulumi.Input<pulumi.Input<types.inputs.DiagnosticsLogSettingsArgs>[] | undefined>;
     /**
      * The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
      */
-    marketplacePartnerId?: pulumi.Input<string>;
+    marketplacePartnerId?: pulumi.Input<string | undefined>;
     /**
      * The list of metric settings.
      */
-    metrics?: pulumi.Input<pulumi.Input<types.inputs.MetricSettingsArgs>[]>;
+    metrics?: pulumi.Input<pulumi.Input<types.inputs.DiagnosticsMetricSettingsArgs>[] | undefined>;
     /**
      * The name of the diagnostic setting.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
-     * The identifier of the resource.
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     resourceUri: pulumi.Input<string>;
     /**
      * The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
      */
-    serviceBusRuleId?: pulumi.Input<string>;
+    serviceBusRuleId?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the storage account to which you would like to send Diagnostic Logs.
      */
-    storageAccountId?: pulumi.Input<string>;
+    storageAccountId?: pulumi.Input<string | undefined>;
     /**
      * The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }

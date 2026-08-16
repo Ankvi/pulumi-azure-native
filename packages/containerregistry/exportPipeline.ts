@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01-preview.
  *
- * Other available API versions: 2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-05-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2019-12-01-preview, 2020-11-01-preview, 2021-06-01-preview, 2021-08-01-preview, 2021-12-01-preview, 2022-02-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-05-01-preview, 2025-06-01-preview, 2026-01-01-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ExportPipeline extends pulumi.CustomResource {
     /**
@@ -116,7 +116,7 @@ export class ExportPipeline extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20191201preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20201101preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20210601preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20210801preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20211201preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20220201preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20230101preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20230601preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20230801preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20231101preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20241101preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20250301preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20250501preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20250601preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20260101preview:ExportPipeline" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerregistry/v20191201preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20201101preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20210601preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20210801preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20211201preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20220201preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20230101preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20230601preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20230801preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20231101preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20241101preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20250301preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20250501preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20250601preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20260101preview:ExportPipeline" }, { type: "azure-native:containerregistry/v20260301preview:ExportPipeline" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ExportPipeline.__pulumiType, name, resourceInputs, opts);
     }
@@ -129,19 +129,19 @@ export interface ExportPipelineArgs {
     /**
      * The name of the export pipeline.
      */
-    exportPipelineName?: pulumi.Input<string>;
+    exportPipelineName?: pulumi.Input<string | undefined>;
     /**
      * The identity of the export pipeline.
      */
-    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs | undefined>;
     /**
      * The location of the export pipeline.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The list of all options configured for the pipeline.
      */
-    options?: pulumi.Input<pulumi.Input<string | types.enums.PipelineOptions>[]>;
+    options?: pulumi.Input<pulumi.Input<string | types.enums.PipelineOptions>[] | undefined>;
     /**
      * The name of the container registry.
      */

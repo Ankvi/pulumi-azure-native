@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2015-05-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2015-05-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ServerKey extends pulumi.CustomResource {
     /**
@@ -118,7 +118,7 @@ export class ServerKey extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20150501preview:ServerKey" }, { type: "azure-native:sql/v20200202preview:ServerKey" }, { type: "azure-native:sql/v20200801preview:ServerKey" }, { type: "azure-native:sql/v20201101preview:ServerKey" }, { type: "azure-native:sql/v20210201preview:ServerKey" }, { type: "azure-native:sql/v20210501preview:ServerKey" }, { type: "azure-native:sql/v20210801preview:ServerKey" }, { type: "azure-native:sql/v20211101:ServerKey" }, { type: "azure-native:sql/v20211101preview:ServerKey" }, { type: "azure-native:sql/v20220201preview:ServerKey" }, { type: "azure-native:sql/v20220501preview:ServerKey" }, { type: "azure-native:sql/v20220801preview:ServerKey" }, { type: "azure-native:sql/v20221101preview:ServerKey" }, { type: "azure-native:sql/v20230201preview:ServerKey" }, { type: "azure-native:sql/v20230501preview:ServerKey" }, { type: "azure-native:sql/v20230801:ServerKey" }, { type: "azure-native:sql/v20230801preview:ServerKey" }, { type: "azure-native:sql/v20240501preview:ServerKey" }, { type: "azure-native:sql/v20241101preview:ServerKey" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20150501preview:ServerKey" }, { type: "azure-native:sql/v20200202preview:ServerKey" }, { type: "azure-native:sql/v20200801preview:ServerKey" }, { type: "azure-native:sql/v20201101preview:ServerKey" }, { type: "azure-native:sql/v20210201preview:ServerKey" }, { type: "azure-native:sql/v20210501preview:ServerKey" }, { type: "azure-native:sql/v20210801preview:ServerKey" }, { type: "azure-native:sql/v20211101:ServerKey" }, { type: "azure-native:sql/v20211101preview:ServerKey" }, { type: "azure-native:sql/v20220201preview:ServerKey" }, { type: "azure-native:sql/v20220501preview:ServerKey" }, { type: "azure-native:sql/v20220801preview:ServerKey" }, { type: "azure-native:sql/v20221101preview:ServerKey" }, { type: "azure-native:sql/v20230201preview:ServerKey" }, { type: "azure-native:sql/v20230501preview:ServerKey" }, { type: "azure-native:sql/v20230801:ServerKey" }, { type: "azure-native:sql/v20230801preview:ServerKey" }, { type: "azure-native:sql/v20240501preview:ServerKey" }, { type: "azure-native:sql/v20241101preview:ServerKey" }, { type: "azure-native:sql/v20250101:ServerKey" }, { type: "azure-native:sql/v20250201preview:ServerKey" }, { type: "azure-native:sql/v20250801preview:ServerKey" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ServerKey.__pulumiType, name, resourceInputs, opts);
     }
@@ -131,7 +131,7 @@ export interface ServerKeyArgs {
     /**
      * The name of the server key to be operated on (updated or created). The key name is required to be in the format of 'vault_key_version'. For example, if the keyId is https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion, then the server key name should be formatted as: YourVaultName_YourKeyName_YourKeyVersion
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -147,5 +147,5 @@ export interface ServerKeyArgs {
     /**
      * The URI of the server key. If the ServerKeyType is AzureKeyVault, then the URI is required. The AKV URI is required to be in this format: 'https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion'
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }

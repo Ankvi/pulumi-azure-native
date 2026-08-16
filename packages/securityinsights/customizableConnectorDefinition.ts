@@ -124,7 +124,7 @@ export class CustomizableConnectorDefinition extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20230701preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20230801preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20230901preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20231001preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20231201preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20240101preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20240401preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20240901:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20241001preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250101preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250301:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250401preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250601:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250701preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250901:CustomizableConnectorDefinition" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20230701preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20230801preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20230901preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20231001preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20231201preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20240101preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20240401preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20240901:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20241001preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250101preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250301:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250401preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250601:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250701preview:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20250901:CustomizableConnectorDefinition" }, { type: "azure-native:securityinsights/v20251001preview:CustomizableConnectorDefinition" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CustomizableConnectorDefinition.__pulumiType, name, resourceInputs, opts);
     }
@@ -137,7 +137,7 @@ export interface CustomizableConnectorDefinitionArgs {
     /**
      * The UiConfig for 'Customizable' connector definition kind.
      */
-    connectionsConfig?: pulumi.Input<types.inputs.CustomizableConnectionsConfigArgs>;
+    connectionsConfig?: pulumi.Input<types.inputs.CustomizableConnectionsConfigArgs | undefined>;
     /**
      * The UiConfig for 'Customizable' connector definition kind.
      */
@@ -145,11 +145,11 @@ export interface CustomizableConnectorDefinitionArgs {
     /**
      * Gets or sets the connector definition created date in UTC format.
      */
-    createdTimeUtc?: pulumi.Input<string>;
+    createdTimeUtc?: pulumi.Input<string | undefined>;
     /**
      * The data connector definition name.
      */
-    dataConnectorDefinitionName?: pulumi.Input<string>;
+    dataConnectorDefinitionName?: pulumi.Input<string | undefined>;
     /**
      * The kind of the data connector definitions
      * Expected value is 'Customizable'.
@@ -158,7 +158,7 @@ export interface CustomizableConnectorDefinitionArgs {
     /**
      * Gets or sets the connector definition last modified date in UTC format.
      */
-    lastModifiedUtc?: pulumi.Input<string>;
+    lastModifiedUtc?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

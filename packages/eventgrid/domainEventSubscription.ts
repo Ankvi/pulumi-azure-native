@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
  *
- * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class DomainEventSubscription extends pulumi.CustomResource {
     /**
@@ -125,10 +125,10 @@ export class DomainEventSubscription extends pulumi.CustomResource {
             resourceInputs["eventDeliverySchema"] = (args?.eventDeliverySchema) ?? "EventGridSchema";
             resourceInputs["eventSubscriptionName"] = args?.eventSubscriptionName;
             resourceInputs["expirationTimeUtc"] = args?.expirationTimeUtc;
-            resourceInputs["filter"] = args ? (args.filter ? pulumi.output(args.filter).apply(types.inputs.eventSubscriptionFilterArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["filter"] = args ? pulumi.output(args.filter).apply(v => v === undefined ? undefined : types.inputs.eventSubscriptionFilterArgsProvideDefaults(v)) : undefined;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["resourceGroupName"] = args?.resourceGroupName;
-            resourceInputs["retryPolicy"] = args ? (args.retryPolicy ? pulumi.output(args.retryPolicy).apply(types.inputs.retryPolicyArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["retryPolicy"] = args ? pulumi.output(args.retryPolicy).apply(v => v === undefined ? undefined : types.inputs.retryPolicyArgsProvideDefaults(v)) : undefined;
             resourceInputs["azureApiVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -153,7 +153,7 @@ export class DomainEventSubscription extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20211015preview:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20220615:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20230601preview:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20231215preview:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20240601preview:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20241215preview:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20250215:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20250401preview:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20250715preview:DomainEventSubscription" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20211015preview:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20220615:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20230601preview:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20231215preview:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20240601preview:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20241215preview:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20250215:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20250401preview:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20250715preview:DomainEventSubscription" }, { type: "azure-native:eventgrid/v20251115preview:DomainEventSubscription" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DomainEventSubscription.__pulumiType, name, resourceInputs, opts);
     }
@@ -167,22 +167,22 @@ export interface DomainEventSubscriptionArgs {
      * The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
      * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    deadLetterDestination?: pulumi.Input<types.inputs.StorageBlobDeadLetterDestinationArgs>;
+    deadLetterDestination?: pulumi.Input<types.inputs.StorageBlobDeadLetterDestinationArgs | undefined>;
     /**
      * The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
      * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    deadLetterWithResourceIdentity?: pulumi.Input<types.inputs.DeadLetterWithResourceIdentityArgs>;
+    deadLetterWithResourceIdentity?: pulumi.Input<types.inputs.DeadLetterWithResourceIdentityArgs | undefined>;
     /**
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    deliveryWithResourceIdentity?: pulumi.Input<types.inputs.DeliveryWithResourceIdentityArgs>;
+    deliveryWithResourceIdentity?: pulumi.Input<types.inputs.DeliveryWithResourceIdentityArgs | undefined>;
     /**
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    destination?: pulumi.Input<types.inputs.AzureFunctionEventSubscriptionDestinationArgs | types.inputs.EventHubEventSubscriptionDestinationArgs | types.inputs.HybridConnectionEventSubscriptionDestinationArgs | types.inputs.MonitorAlertEventSubscriptionDestinationArgs | types.inputs.NamespaceTopicEventSubscriptionDestinationArgs | types.inputs.ServiceBusQueueEventSubscriptionDestinationArgs | types.inputs.ServiceBusTopicEventSubscriptionDestinationArgs | types.inputs.StorageQueueEventSubscriptionDestinationArgs | types.inputs.WebHookEventSubscriptionDestinationArgs>;
+    destination?: pulumi.Input<types.inputs.AzureFunctionEventSubscriptionDestinationArgs | types.inputs.EventHubEventSubscriptionDestinationArgs | types.inputs.HybridConnectionEventSubscriptionDestinationArgs | types.inputs.MonitorAlertEventSubscriptionDestinationArgs | types.inputs.NamespaceTopicEventSubscriptionDestinationArgs | types.inputs.ServiceBusQueueEventSubscriptionDestinationArgs | types.inputs.ServiceBusTopicEventSubscriptionDestinationArgs | types.inputs.StorageQueueEventSubscriptionDestinationArgs | types.inputs.WebHookEventSubscriptionDestinationArgs | undefined>;
     /**
      * Name of the domain topic.
      */
@@ -190,23 +190,23 @@ export interface DomainEventSubscriptionArgs {
     /**
      * The event delivery schema for the event subscription.
      */
-    eventDeliverySchema?: pulumi.Input<string | types.enums.EventDeliverySchema>;
+    eventDeliverySchema?: pulumi.Input<string | types.enums.EventDeliverySchema | undefined>;
     /**
      * Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only.
      */
-    eventSubscriptionName?: pulumi.Input<string>;
+    eventSubscriptionName?: pulumi.Input<string | undefined>;
     /**
      * Expiration time of the event subscription.
      */
-    expirationTimeUtc?: pulumi.Input<string>;
+    expirationTimeUtc?: pulumi.Input<string | undefined>;
     /**
      * Information about the filter for the event subscription.
      */
-    filter?: pulumi.Input<types.inputs.EventSubscriptionFilterArgs>;
+    filter?: pulumi.Input<types.inputs.EventSubscriptionFilterArgs | undefined>;
     /**
      * List of user defined labels.
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the resource group within the user's subscription.
      */
@@ -214,5 +214,5 @@ export interface DomainEventSubscriptionArgs {
     /**
      * The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
      */
-    retryPolicy?: pulumi.Input<types.inputs.RetryPolicyArgs>;
+    retryPolicy?: pulumi.Input<types.inputs.RetryPolicyArgs | undefined>;
 }

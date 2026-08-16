@@ -75,11 +75,11 @@ export interface ListCustomApiWsdlInterfacesOutputArgs {
     /**
      * The WSDL content
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The WSDL import method
      */
-    importMethod?: pulumi.Input<string | types.enums.WsdlImportMethod>;
+    importMethod?: pulumi.Input<string | types.enums.WsdlImportMethod | undefined>;
     /**
      * The location
      */
@@ -87,13 +87,13 @@ export interface ListCustomApiWsdlInterfacesOutputArgs {
     /**
      * The service with name and endpoint names
      */
-    service?: pulumi.Input<types.inputs.WsdlServiceArgs>;
+    service?: pulumi.Input<types.inputs.WsdlServiceArgs | undefined>;
     /**
      * Subscription Id
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
     /**
      * The WSDL URL
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }

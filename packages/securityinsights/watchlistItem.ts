@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WatchlistItem extends pulumi.CustomResource {
     /**
@@ -155,7 +155,7 @@ export class WatchlistItem extends pulumi.CustomResource {
             resourceInputs["watchlistItemType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20210301preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20210401:WatchlistItem" }, { type: "azure-native:securityinsights/v20210901preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20211001:WatchlistItem" }, { type: "azure-native:securityinsights/v20211001preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220101preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220401preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220501preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220601preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220701preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220801:WatchlistItem" }, { type: "azure-native:securityinsights/v20220801preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220901preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20221001preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20221101:WatchlistItem" }, { type: "azure-native:securityinsights/v20221101preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20221201preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230201:WatchlistItem" }, { type: "azure-native:securityinsights/v20230201preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230301preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230401preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230501preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230601preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230701preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230801preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230901preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20231001preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20231101:WatchlistItem" }, { type: "azure-native:securityinsights/v20231201preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20240101preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20240301:WatchlistItem" }, { type: "azure-native:securityinsights/v20240401preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20240901:WatchlistItem" }, { type: "azure-native:securityinsights/v20241001preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20250101preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20250301:WatchlistItem" }, { type: "azure-native:securityinsights/v20250401preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20250601:WatchlistItem" }, { type: "azure-native:securityinsights/v20250701preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20250901:WatchlistItem" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights/v20190101preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20210301preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20210401:WatchlistItem" }, { type: "azure-native:securityinsights/v20210901preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20211001:WatchlistItem" }, { type: "azure-native:securityinsights/v20211001preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220101preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220401preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220501preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220601preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220701preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220801:WatchlistItem" }, { type: "azure-native:securityinsights/v20220801preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20220901preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20221001preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20221101:WatchlistItem" }, { type: "azure-native:securityinsights/v20221101preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20221201preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230201:WatchlistItem" }, { type: "azure-native:securityinsights/v20230201preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230301preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230401preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230501preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230601preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230701preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230801preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20230901preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20231001preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20231101:WatchlistItem" }, { type: "azure-native:securityinsights/v20231201preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20240101preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20240301:WatchlistItem" }, { type: "azure-native:securityinsights/v20240401preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20240901:WatchlistItem" }, { type: "azure-native:securityinsights/v20241001preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20250101preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20250301:WatchlistItem" }, { type: "azure-native:securityinsights/v20250401preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20250601:WatchlistItem" }, { type: "azure-native:securityinsights/v20250701preview:WatchlistItem" }, { type: "azure-native:securityinsights/v20250901:WatchlistItem" }, { type: "azure-native:securityinsights/v20251001preview:WatchlistItem" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WatchlistItem.__pulumiType, name, resourceInputs, opts);
     }
@@ -168,19 +168,19 @@ export interface WatchlistItemArgs {
     /**
      * The time the watchlist item was created
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * Describes a user that created the watchlist item
      */
-    createdBy?: pulumi.Input<types.inputs.WatchlistUserInfoArgs>;
+    createdBy?: pulumi.Input<types.inputs.WatchlistUserInfoArgs | undefined>;
     /**
      * key-value pairs for a watchlist item entity mapping
      */
-    entityMapping?: any;
+    entityMapping?: any | undefined;
     /**
      * A flag that indicates if the watchlist item is deleted or not
      */
-    isDeleted?: pulumi.Input<boolean>;
+    isDeleted?: pulumi.Input<boolean | undefined>;
     /**
      * key-value pairs for a watchlist item
      */
@@ -192,15 +192,15 @@ export interface WatchlistItemArgs {
     /**
      * The tenantId to which the watchlist item belongs to
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The last time the watchlist item was updated
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
     /**
      * Describes a user that updated the watchlist item
      */
-    updatedBy?: pulumi.Input<types.inputs.WatchlistUserInfoArgs>;
+    updatedBy?: pulumi.Input<types.inputs.WatchlistUserInfoArgs | undefined>;
     /**
      * The watchlist alias
      */
@@ -208,11 +208,11 @@ export interface WatchlistItemArgs {
     /**
      * The id (a Guid) of the watchlist item
      */
-    watchlistItemId?: pulumi.Input<string>;
+    watchlistItemId?: pulumi.Input<string | undefined>;
     /**
      * The type of the watchlist item
      */
-    watchlistItemType?: pulumi.Input<string>;
+    watchlistItemType?: pulumi.Input<string | undefined>;
     /**
      * The name of the workspace.
      */

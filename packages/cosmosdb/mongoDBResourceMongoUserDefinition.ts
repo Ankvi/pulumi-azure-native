@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-10-15.
  *
- * Other available API versions: 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-10-15-preview, 2021-11-15-preview, 2022-02-15-preview, 2022-05-15-preview, 2022-08-15, 2022-08-15-preview, 2022-11-15, 2022-11-15-preview, 2023-03-01-preview, 2023-03-15, 2023-03-15-preview, 2023-04-15, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview, 2024-08-15, 2024-09-01-preview, 2024-11-15, 2024-12-01-preview, 2025-04-15, 2025-05-01-preview, 2025-11-01-preview, 2026-03-15, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class MongoDBResourceMongoUserDefinition extends pulumi.CustomResource {
     /**
@@ -113,7 +113,7 @@ export class MongoDBResourceMongoUserDefinition extends pulumi.CustomResource {
             resourceInputs["userName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cosmosdb/v20211015preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20211115preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20220215preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20220515preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20220815:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20220815preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20221115:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20221115preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20230301preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20230315:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20230315preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20230415:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20230915:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20230915preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20231115:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20231115preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20240215preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20240515:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20240515preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20240815:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20240901preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20241115:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20241201preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20250415:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20250501preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20251015:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20251101preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20230415:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20230915:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20230915preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20231115:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20231115preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20240215preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20240515:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20240515preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20240815:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20240901preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20241115:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20241201preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb:MongoDBResourceMongoUserDefinition" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cosmosdb/v20211015preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20211115preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20220215preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20220515preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20220815:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20220815preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20221115:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20221115preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20230301preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20230315:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20230315preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20230415:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20230915:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20230915preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20231115:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20231115preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20240215preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20240515:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20240515preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20240815:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20240901preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20241115:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20241201preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20250415:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20250501preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20251015:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20251101preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20260315:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:cosmosdb/v20260401preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20230415:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20230915:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20230915preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20231115:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20231115preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20240215preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20240515:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20240515preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20240815:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20240901preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20241115:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb/v20241201preview:MongoDBResourceMongoUserDefinition" }, { type: "azure-native:documentdb:MongoDBResourceMongoUserDefinition" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MongoDBResourceMongoUserDefinition.__pulumiType, name, resourceInputs, opts);
     }
@@ -130,23 +130,23 @@ export interface MongoDBResourceMongoUserDefinitionArgs {
     /**
      * A custom definition for the USer Definition.
      */
-    customData?: pulumi.Input<string>;
+    customData?: pulumi.Input<string | undefined>;
     /**
      * The database name for which access is being granted for this User Definition.
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
     /**
      * The Mongo Auth mechanism. For now, we only support auth mechanism SCRAM-SHA-256.
      */
-    mechanisms?: pulumi.Input<string>;
+    mechanisms?: pulumi.Input<string | undefined>;
     /**
      * The ID for the User Definition {dbName.userName}.
      */
-    mongoUserDefinitionId?: pulumi.Input<string>;
+    mongoUserDefinitionId?: pulumi.Input<string | undefined>;
     /**
      * The password for User Definition. Response does not contain user password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -154,9 +154,9 @@ export interface MongoDBResourceMongoUserDefinitionArgs {
     /**
      * The set of roles inherited by the User Definition.
      */
-    roles?: pulumi.Input<pulumi.Input<types.inputs.RoleArgs>[]>;
+    roles?: pulumi.Input<pulumi.Input<types.inputs.RoleArgs>[] | undefined>;
     /**
      * The user name for User Definition.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }

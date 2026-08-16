@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
  *
- * Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkTapRule extends pulumi.CustomResource {
     /**
@@ -160,7 +160,7 @@ export class NetworkTapRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230615:NetworkTapRule" }, { type: "azure-native:managednetworkfabric/v20240215preview:NetworkTapRule" }, { type: "azure-native:managednetworkfabric/v20240615preview:NetworkTapRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230615:NetworkTapRule" }, { type: "azure-native:managednetworkfabric/v20240215preview:NetworkTapRule" }, { type: "azure-native:managednetworkfabric/v20240615preview:NetworkTapRule" }, { type: "azure-native:managednetworkfabric/v20250715:NetworkTapRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkTapRule.__pulumiType, name, resourceInputs, opts);
     }
@@ -173,7 +173,7 @@ export interface NetworkTapRuleArgs {
     /**
      * Switch configuration description.
      */
-    annotation?: pulumi.Input<string>;
+    annotation?: pulumi.Input<string | undefined>;
     /**
      * Input method to configure Network Tap Rule.
      */
@@ -181,23 +181,23 @@ export interface NetworkTapRuleArgs {
     /**
      * List of dynamic match configurations.
      */
-    dynamicMatchConfigurations?: pulumi.Input<pulumi.Input<types.inputs.CommonDynamicMatchConfigurationArgs>[]>;
+    dynamicMatchConfigurations?: pulumi.Input<pulumi.Input<types.inputs.CommonDynamicMatchConfigurationArgs>[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * List of match configurations.
      */
-    matchConfigurations?: pulumi.Input<pulumi.Input<types.inputs.NetworkTapRuleMatchConfigurationArgs>[]>;
+    matchConfigurations?: pulumi.Input<pulumi.Input<types.inputs.NetworkTapRuleMatchConfigurationArgs>[] | undefined>;
     /**
      * Name of the Network Tap Rule.
      */
-    networkTapRuleName?: pulumi.Input<string>;
+    networkTapRuleName?: pulumi.Input<string | undefined>;
     /**
      * Polling interval in seconds.
      */
-    pollingIntervalInSeconds?: pulumi.Input<number>;
+    pollingIntervalInSeconds?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -205,9 +205,9 @@ export interface NetworkTapRuleArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Network Tap Rules file URL.
      */
-    tapRulesUrl?: pulumi.Input<string>;
+    tapRulesUrl?: pulumi.Input<string | undefined>;
 }

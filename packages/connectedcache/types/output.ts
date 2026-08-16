@@ -323,7 +323,7 @@ export interface CacheNodeEntityResponse {
      */
     autoUpdateRequestedWeek?: number;
     /**
-     * Auto Update Ring Type which is slow or fast etc.
+     * Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01.
      */
     autoUpdateRingType?: string;
     /**

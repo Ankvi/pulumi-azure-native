@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
  *
- * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview, 2025-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Topic extends pulumi.CustomResource {
     /**
@@ -52,7 +52,7 @@ export class Topic extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
-     * Event Type Information for the user topic. This information is provided by the publisher and can be used by the 
+     * Event Type Information for the user topic. This information is provided by the publisher and can be used by the
      * subscriber to view different types of events that are published.
      */
     declare public readonly eventTypeInfo: pulumi.Output<types.outputs.EventTypeInfoResponse | undefined>;
@@ -97,7 +97,7 @@ export class Topic extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
-     * This determines if traffic is allowed over public network. By default it is enabled. 
+     * This determines if traffic is allowed over public network. By default it is enabled.
      * You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
      */
     declare public readonly publicNetworkAccess: pulumi.Output<string | undefined>;
@@ -171,7 +171,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20170615preview:Topic" }, { type: "azure-native:eventgrid/v20170915preview:Topic" }, { type: "azure-native:eventgrid/v20180101:Topic" }, { type: "azure-native:eventgrid/v20180501preview:Topic" }, { type: "azure-native:eventgrid/v20180915preview:Topic" }, { type: "azure-native:eventgrid/v20190101:Topic" }, { type: "azure-native:eventgrid/v20190201preview:Topic" }, { type: "azure-native:eventgrid/v20190601:Topic" }, { type: "azure-native:eventgrid/v20200101preview:Topic" }, { type: "azure-native:eventgrid/v20200401preview:Topic" }, { type: "azure-native:eventgrid/v20200601:Topic" }, { type: "azure-native:eventgrid/v20201015preview:Topic" }, { type: "azure-native:eventgrid/v20210601preview:Topic" }, { type: "azure-native:eventgrid/v20211015preview:Topic" }, { type: "azure-native:eventgrid/v20211201:Topic" }, { type: "azure-native:eventgrid/v20220615:Topic" }, { type: "azure-native:eventgrid/v20230601preview:Topic" }, { type: "azure-native:eventgrid/v20231215preview:Topic" }, { type: "azure-native:eventgrid/v20240601preview:Topic" }, { type: "azure-native:eventgrid/v20241215preview:Topic" }, { type: "azure-native:eventgrid/v20250215:Topic" }, { type: "azure-native:eventgrid/v20250401preview:Topic" }, { type: "azure-native:eventgrid/v20250715preview:Topic" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20170615preview:Topic" }, { type: "azure-native:eventgrid/v20170915preview:Topic" }, { type: "azure-native:eventgrid/v20180101:Topic" }, { type: "azure-native:eventgrid/v20180501preview:Topic" }, { type: "azure-native:eventgrid/v20180915preview:Topic" }, { type: "azure-native:eventgrid/v20190101:Topic" }, { type: "azure-native:eventgrid/v20190201preview:Topic" }, { type: "azure-native:eventgrid/v20190601:Topic" }, { type: "azure-native:eventgrid/v20200101preview:Topic" }, { type: "azure-native:eventgrid/v20200401preview:Topic" }, { type: "azure-native:eventgrid/v20200601:Topic" }, { type: "azure-native:eventgrid/v20201015preview:Topic" }, { type: "azure-native:eventgrid/v20210601preview:Topic" }, { type: "azure-native:eventgrid/v20211015preview:Topic" }, { type: "azure-native:eventgrid/v20211201:Topic" }, { type: "azure-native:eventgrid/v20220615:Topic" }, { type: "azure-native:eventgrid/v20230601preview:Topic" }, { type: "azure-native:eventgrid/v20231215preview:Topic" }, { type: "azure-native:eventgrid/v20240601preview:Topic" }, { type: "azure-native:eventgrid/v20241215preview:Topic" }, { type: "azure-native:eventgrid/v20250215:Topic" }, { type: "azure-native:eventgrid/v20250401preview:Topic" }, { type: "azure-native:eventgrid/v20250715preview:Topic" }, { type: "azure-native:eventgrid/v20251115preview:Topic" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Topic.__pulumiType, name, resourceInputs, opts);
     }
@@ -184,45 +184,45 @@ export interface TopicArgs {
     /**
      * Data Residency Boundary of the resource.
      */
-    dataResidencyBoundary?: pulumi.Input<string | types.enums.DataResidencyBoundary>;
+    dataResidencyBoundary?: pulumi.Input<string | types.enums.DataResidencyBoundary | undefined>;
     /**
      * This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the topic.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
-     * Event Type Information for the user topic. This information is provided by the publisher and can be used by the 
+     * Event Type Information for the user topic. This information is provided by the publisher and can be used by the
      * subscriber to view different types of events that are published.
      */
-    eventTypeInfo?: pulumi.Input<types.inputs.EventTypeInfoArgs>;
+    eventTypeInfo?: pulumi.Input<types.inputs.EventTypeInfoArgs | undefined>;
     /**
      * Identity information for the resource.
      */
-    identity?: pulumi.Input<types.inputs.IdentityInfoArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityInfoArgs | undefined>;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[]>;
+    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[] | undefined>;
     /**
      * This determines the format that Event Grid should expect for incoming events published to the topic.
      */
-    inputSchema?: pulumi.Input<string | types.enums.InputSchema>;
+    inputSchema?: pulumi.Input<string | types.enums.InputSchema | undefined>;
     /**
      * This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
      */
-    inputSchemaMapping?: pulumi.Input<types.inputs.JsonInputSchemaMappingArgs>;
+    inputSchemaMapping?: pulumi.Input<types.inputs.JsonInputSchemaMappingArgs | undefined>;
     /**
      * Location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Minimum TLS version of the publisher allowed to publish to this topic
      */
-    minimumTlsVersionAllowed?: pulumi.Input<string | types.enums.TlsVersion>;
+    minimumTlsVersionAllowed?: pulumi.Input<string | types.enums.TlsVersion | undefined>;
     /**
-     * This determines if traffic is allowed over public network. By default it is enabled. 
+     * This determines if traffic is allowed over public network. By default it is enabled.
      * You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
      * The name of the resource group within the user's subscription.
      */
@@ -230,9 +230,9 @@ export interface TopicArgs {
     /**
      * Tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the topic.
      */
-    topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string | undefined>;
 }

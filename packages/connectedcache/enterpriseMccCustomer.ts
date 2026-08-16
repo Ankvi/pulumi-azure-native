@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
  *
- * Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-11-30-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class EnterpriseMccCustomer extends pulumi.CustomResource {
     /**
@@ -97,7 +97,7 @@ export class EnterpriseMccCustomer extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:connectedcache/v20230501preview:EnterpriseMccCustomer" }, { type: "azure-native:connectedcache/v20241130preview:EnterpriseMccCustomer" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:connectedcache/v20230501preview:EnterpriseMccCustomer" }, { type: "azure-native:connectedcache/v20241130preview:EnterpriseMccCustomer" }, { type: "azure-native:connectedcache/v20260601:EnterpriseMccCustomer" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(EnterpriseMccCustomer.__pulumiType, name, resourceInputs, opts);
     }
@@ -110,15 +110,15 @@ export interface EnterpriseMccCustomerArgs {
     /**
      * Name of the Customer resource
      */
-    customerResourceName?: pulumi.Input<string>;
+    customerResourceName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource-specific properties for this resource.
      */
-    properties?: pulumi.Input<types.inputs.CustomerPropertyArgs>;
+    properties?: pulumi.Input<types.inputs.CustomerPropertyArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -126,5 +126,5 @@ export interface EnterpriseMccCustomerArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

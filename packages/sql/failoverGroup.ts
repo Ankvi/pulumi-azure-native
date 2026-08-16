@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
  *
- * Other available API versions: 2015-05-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2015-05-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview, 2025-01-01, 2025-02-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FailoverGroup extends pulumi.CustomResource {
     /**
@@ -132,7 +132,7 @@ export class FailoverGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20150501preview:FailoverGroup" }, { type: "azure-native:sql/v20200202preview:FailoverGroup" }, { type: "azure-native:sql/v20200801preview:FailoverGroup" }, { type: "azure-native:sql/v20201101preview:FailoverGroup" }, { type: "azure-native:sql/v20210201preview:FailoverGroup" }, { type: "azure-native:sql/v20210501preview:FailoverGroup" }, { type: "azure-native:sql/v20210801preview:FailoverGroup" }, { type: "azure-native:sql/v20211101:FailoverGroup" }, { type: "azure-native:sql/v20211101preview:FailoverGroup" }, { type: "azure-native:sql/v20220201preview:FailoverGroup" }, { type: "azure-native:sql/v20220501preview:FailoverGroup" }, { type: "azure-native:sql/v20220801preview:FailoverGroup" }, { type: "azure-native:sql/v20221101preview:FailoverGroup" }, { type: "azure-native:sql/v20230201preview:FailoverGroup" }, { type: "azure-native:sql/v20230501preview:FailoverGroup" }, { type: "azure-native:sql/v20230801:FailoverGroup" }, { type: "azure-native:sql/v20230801preview:FailoverGroup" }, { type: "azure-native:sql/v20240501preview:FailoverGroup" }, { type: "azure-native:sql/v20241101preview:FailoverGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20150501preview:FailoverGroup" }, { type: "azure-native:sql/v20200202preview:FailoverGroup" }, { type: "azure-native:sql/v20200801preview:FailoverGroup" }, { type: "azure-native:sql/v20201101preview:FailoverGroup" }, { type: "azure-native:sql/v20210201preview:FailoverGroup" }, { type: "azure-native:sql/v20210501preview:FailoverGroup" }, { type: "azure-native:sql/v20210801preview:FailoverGroup" }, { type: "azure-native:sql/v20211101:FailoverGroup" }, { type: "azure-native:sql/v20211101preview:FailoverGroup" }, { type: "azure-native:sql/v20220201preview:FailoverGroup" }, { type: "azure-native:sql/v20220501preview:FailoverGroup" }, { type: "azure-native:sql/v20220801preview:FailoverGroup" }, { type: "azure-native:sql/v20221101preview:FailoverGroup" }, { type: "azure-native:sql/v20230201preview:FailoverGroup" }, { type: "azure-native:sql/v20230501preview:FailoverGroup" }, { type: "azure-native:sql/v20230801:FailoverGroup" }, { type: "azure-native:sql/v20230801preview:FailoverGroup" }, { type: "azure-native:sql/v20240501preview:FailoverGroup" }, { type: "azure-native:sql/v20241101preview:FailoverGroup" }, { type: "azure-native:sql/v20250101:FailoverGroup" }, { type: "azure-native:sql/v20250201preview:FailoverGroup" }, { type: "azure-native:sql/v20250801preview:FailoverGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FailoverGroup.__pulumiType, name, resourceInputs, opts);
     }
@@ -145,11 +145,11 @@ export interface FailoverGroupArgs {
     /**
      * List of databases in the failover group.
      */
-    databases?: pulumi.Input<pulumi.Input<string>[]>;
+    databases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the failover group.
      */
-    failoverGroupName?: pulumi.Input<string>;
+    failoverGroupName?: pulumi.Input<string | undefined>;
     /**
      * List of partner server information for the failover group.
      */
@@ -157,7 +157,7 @@ export interface FailoverGroupArgs {
     /**
      * Read-only endpoint of the failover group instance.
      */
-    readOnlyEndpoint?: pulumi.Input<types.inputs.FailoverGroupReadOnlyEndpointArgs>;
+    readOnlyEndpoint?: pulumi.Input<types.inputs.FailoverGroupReadOnlyEndpointArgs | undefined>;
     /**
      * Read-write endpoint of the failover group instance.
      */
@@ -169,7 +169,7 @@ export interface FailoverGroupArgs {
     /**
      * Databases secondary type on partner server.
      */
-    secondaryType?: pulumi.Input<string | types.enums.FailoverGroupDatabasesSecondaryType>;
+    secondaryType?: pulumi.Input<string | types.enums.FailoverGroupDatabasesSecondaryType | undefined>;
     /**
      * The name of the server containing the failover group.
      */
@@ -177,5 +177,5 @@ export interface FailoverGroupArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

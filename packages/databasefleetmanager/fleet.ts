@@ -108,15 +108,15 @@ export interface FleetArgs {
     /**
      * Name of the database fleet.
      */
-    fleetName?: pulumi.Input<string>;
+    fleetName?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The fleet properties.
      */
-    properties?: pulumi.Input<types.inputs.FleetPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.FleetPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -124,5 +124,5 @@ export interface FleetArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

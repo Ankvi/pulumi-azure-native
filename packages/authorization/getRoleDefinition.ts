@@ -22,7 +22,7 @@ export interface GetRoleDefinitionArgs {
      */
     roleDefinitionId: string;
     /**
-     * The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scope: string;
 }
@@ -52,11 +52,11 @@ export interface GetRoleDefinitionResult {
      */
     readonly description?: string;
     /**
-     * The role definition ID.
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
-     * The role definition name.
+     * The name of the resource
      */
     readonly name: string;
     /**
@@ -72,7 +72,11 @@ export interface GetRoleDefinitionResult {
      */
     readonly roleType?: string;
     /**
-     * The role definition type.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
     /**
@@ -105,7 +109,7 @@ export interface GetRoleDefinitionOutputArgs {
      */
     roleDefinitionId: pulumi.Input<string>;
     /**
-     * The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+     * The fully qualified Azure Resource manager identifier of the resource.
      */
     scope: pulumi.Input<string>;
 }

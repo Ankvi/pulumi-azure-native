@@ -140,23 +140,23 @@ export interface FluidRelayServerArgs {
     /**
      * All encryption configuration for a resource.
      */
-    encryption?: pulumi.Input<types.inputs.EncryptionPropertiesArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionPropertiesArgs | undefined>;
     /**
      * The Fluid Relay server resource name.
      */
-    fluidRelayServerName?: pulumi.Input<string>;
+    fluidRelayServerName?: pulumi.Input<string | undefined>;
     /**
      * The type of identity used for the resource.
      */
-    identity?: pulumi.Input<types.inputs.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Provision states for FluidRelay RP
      */
-    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState | undefined>;
     /**
      * The resource group containing the resource.
      */
@@ -164,9 +164,9 @@ export interface FluidRelayServerArgs {
     /**
      * Sku of the storage associated with the resource
      */
-    storagesku?: pulumi.Input<string | types.enums.StorageSKU>;
+    storagesku?: pulumi.Input<string | types.enums.StorageSKU | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

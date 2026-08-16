@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01, 2025-08-01, 2026-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class FileShare extends pulumi.CustomResource {
     /**
@@ -240,7 +240,7 @@ export class FileShare extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20190401:FileShare" }, { type: "azure-native:storage/v20190601:FileShare" }, { type: "azure-native:storage/v20200801preview:FileShare" }, { type: "azure-native:storage/v20210101:FileShare" }, { type: "azure-native:storage/v20210201:FileShare" }, { type: "azure-native:storage/v20210401:FileShare" }, { type: "azure-native:storage/v20210601:FileShare" }, { type: "azure-native:storage/v20210801:FileShare" }, { type: "azure-native:storage/v20210901:FileShare" }, { type: "azure-native:storage/v20220501:FileShare" }, { type: "azure-native:storage/v20220901:FileShare" }, { type: "azure-native:storage/v20230101:FileShare" }, { type: "azure-native:storage/v20230401:FileShare" }, { type: "azure-native:storage/v20230501:FileShare" }, { type: "azure-native:storage/v20240101:FileShare" }, { type: "azure-native:storage/v20250101:FileShare" }, { type: "azure-native:storage/v20250601:FileShare" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storage/v20190401:FileShare" }, { type: "azure-native:storage/v20190601:FileShare" }, { type: "azure-native:storage/v20200801preview:FileShare" }, { type: "azure-native:storage/v20210101:FileShare" }, { type: "azure-native:storage/v20210201:FileShare" }, { type: "azure-native:storage/v20210401:FileShare" }, { type: "azure-native:storage/v20210601:FileShare" }, { type: "azure-native:storage/v20210801:FileShare" }, { type: "azure-native:storage/v20210901:FileShare" }, { type: "azure-native:storage/v20220501:FileShare" }, { type: "azure-native:storage/v20220901:FileShare" }, { type: "azure-native:storage/v20230101:FileShare" }, { type: "azure-native:storage/v20230401:FileShare" }, { type: "azure-native:storage/v20230501:FileShare" }, { type: "azure-native:storage/v20240101:FileShare" }, { type: "azure-native:storage/v20250101:FileShare" }, { type: "azure-native:storage/v20250601:FileShare" }, { type: "azure-native:storage/v20250801:FileShare" }, { type: "azure-native:storage/v20260401:FileShare" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FileShare.__pulumiType, name, resourceInputs, opts);
     }
@@ -253,7 +253,7 @@ export interface FileShareArgs {
     /**
      * Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium.
      */
-    accessTier?: pulumi.Input<string | types.enums.ShareAccessTier>;
+    accessTier?: pulumi.Input<string | types.enums.ShareAccessTier | undefined>;
     /**
      * The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
      */
@@ -261,27 +261,27 @@ export interface FileShareArgs {
     /**
      * The authentication protocol that is used for the file share. Can only be specified when creating a share.
      */
-    enabledProtocols?: pulumi.Input<string | types.enums.EnabledProtocols>;
+    enabledProtocols?: pulumi.Input<string | types.enums.EnabledProtocols | undefined>;
     /**
      * Optional, used to expand the properties within share's properties. Valid values are: snapshots. Should be passed as a string with delimiter ','
      */
-    expand?: pulumi.Input<string>;
+    expand?: pulumi.Input<string | undefined>;
     /**
      * File Share Paid Bursting properties.
      */
-    fileSharePaidBursting?: pulumi.Input<types.inputs.FileSharePropertiesFileSharePaidBurstingArgs>;
+    fileSharePaidBursting?: pulumi.Input<types.inputs.FileSharePropertiesFileSharePaidBurstingArgs | undefined>;
     /**
      * A name-value pair to associate with the share as metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The provisioned bandwidth of the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v2 account type. Please refer to the GetFileServiceUsage API response for the minimum and maximum allowed value for provisioned bandwidth.
      */
-    provisionedBandwidthMibps?: pulumi.Input<number>;
+    provisionedBandwidthMibps?: pulumi.Input<number | undefined>;
     /**
      * The provisioned IOPS of the share. This property is only for file shares created under Files Provisioned v2 account type. Please refer to the GetFileServiceUsage API response for the minimum and maximum allowed value for provisioned IOPS.
      */
-    provisionedIops?: pulumi.Input<number>;
+    provisionedIops?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -289,17 +289,17 @@ export interface FileShareArgs {
     /**
      * The property is for NFS share only. The default is NoRootSquash.
      */
-    rootSquash?: pulumi.Input<string | types.enums.RootSquashType>;
+    rootSquash?: pulumi.Input<string | types.enums.RootSquashType | undefined>;
     /**
      * The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
      */
-    shareName?: pulumi.Input<string>;
+    shareName?: pulumi.Input<string | undefined>;
     /**
      * The provisioned size of the share, in gibibytes. Must be greater than 0, and less than or equal to 5TB (5120). For Large File Shares, the maximum size is 102400. For file shares created under Files Provisioned v2 account type, please refer to the GetFileServiceUsage API response for the minimum and maximum allowed provisioned storage size.
      */
-    shareQuota?: pulumi.Input<number>;
+    shareQuota?: pulumi.Input<number | undefined>;
     /**
      * List of stored access policies specified on the share.
      */
-    signedIdentifiers?: pulumi.Input<pulumi.Input<types.inputs.SignedIdentifierArgs>[]>;
+    signedIdentifiers?: pulumi.Input<pulumi.Input<types.inputs.SignedIdentifierArgs>[] | undefined>;
 }

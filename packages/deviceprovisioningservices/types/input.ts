@@ -7,11 +7,11 @@ export interface CertificatePropertiesArgs {
     /**
      * base-64 representation of X509 certificate .cer file or just .pem file content.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * Determines whether certificate has been verified.
      */
-    isVerified?: pulumi.Input<boolean>;
+    isVerified?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -21,44 +21,44 @@ export interface IotDpsPropertiesDescriptionArgs {
     /**
      * Allocation policy to be used by this provisioning service.
      */
-    allocationPolicy?: pulumi.Input<string | enums.AllocationPolicy>;
+    allocationPolicy?: pulumi.Input<string | enums.AllocationPolicy | undefined>;
     /**
      * List of authorization keys for a provisioning service.
      */
-    authorizationPolicies?: pulumi.Input<pulumi.Input<SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArgs>[]>;
+    authorizationPolicies?: pulumi.Input<pulumi.Input<SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArgs>[] | undefined>;
     /**
      * Optional.
      * Indicates if the DPS instance has Data Residency enabled, removing the cross geo-pair disaster recovery.
      */
-    enableDataResidency?: pulumi.Input<boolean>;
+    enableDataResidency?: pulumi.Input<boolean | undefined>;
     /**
      * List of IoT hubs associated with this provisioning service.
      */
-    iotHubs?: pulumi.Input<pulumi.Input<IotHubDefinitionDescriptionArgs>[]>;
+    iotHubs?: pulumi.Input<pulumi.Input<IotHubDefinitionDescriptionArgs>[] | undefined>;
     /**
      * The IP filter rules.
      */
-    ipFilterRules?: pulumi.Input<pulumi.Input<IpFilterRuleArgs>[]>;
+    ipFilterRules?: pulumi.Input<pulumi.Input<IpFilterRuleArgs>[] | undefined>;
     /**
      * Portal endpoint to enable CORS for this provisioning service.
      */
-    portalOperationsHostName?: pulumi.Input<string>;
+    portalOperationsHostName?: pulumi.Input<string | undefined>;
     /**
      * Private endpoint connections created on this IotHub
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<PrivateEndpointConnectionArgs>[] | undefined>;
     /**
      * The ARM provisioning state of the provisioning service.
      */
-    provisioningState?: pulumi.Input<string>;
+    provisioningState?: pulumi.Input<string | undefined>;
     /**
      * Whether requests from Public Network are allowed
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess | undefined>;
     /**
      * Current state of the provisioning service.
      */
-    state?: pulumi.Input<string | enums.State>;
+    state?: pulumi.Input<string | enums.State | undefined>;
 }
 
 /**
@@ -68,11 +68,11 @@ export interface IotDpsSkuInfoArgs {
     /**
      * The number of units to provision
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Sku name.
      */
-    name?: pulumi.Input<string | enums.IotDpsSku>;
+    name?: pulumi.Input<string | enums.IotDpsSku | undefined>;
 }
 
 /**
@@ -82,11 +82,11 @@ export interface IotHubDefinitionDescriptionArgs {
     /**
      * weight to apply for a given iot h.
      */
-    allocationWeight?: pulumi.Input<number>;
+    allocationWeight?: pulumi.Input<number | undefined>;
     /**
      * flag for applying allocationPolicy or not for a given iot hub.
      */
-    applyAllocationPolicy?: pulumi.Input<boolean>;
+    applyAllocationPolicy?: pulumi.Input<boolean | undefined>;
     /**
      * Connection string of the IoT hub.
      */
@@ -116,7 +116,7 @@ export interface IpFilterRuleArgs {
     /**
      * Target for requests captured by this rule.
      */
-    target?: pulumi.Input<enums.IpFilterTargetType>;
+    target?: pulumi.Input<enums.IpFilterTargetType | undefined>;
 }
 
 /**
@@ -130,7 +130,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -160,7 +160,7 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * Actions required for a private endpoint connection
      */
-    actionsRequired?: pulumi.Input<string>;
+    actionsRequired?: pulumi.Input<string | undefined>;
     /**
      * The description for the current state of a private endpoint connection
      */
@@ -182,7 +182,7 @@ export interface SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionAr
     /**
      * Primary SAS key value.
      */
-    primaryKey?: pulumi.Input<string>;
+    primaryKey?: pulumi.Input<string | undefined>;
     /**
      * Rights that this key has.
      */
@@ -190,5 +190,5 @@ export interface SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionAr
     /**
      * Secondary SAS key value.
      */
-    secondaryKey?: pulumi.Input<string>;
+    secondaryKey?: pulumi.Input<string | undefined>;
 }

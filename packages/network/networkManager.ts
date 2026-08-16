@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
  *
- * Other available API versions: 2021-02-01-preview, 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-02-01-preview, 2022-01-01, 2022-02-01-preview, 2022-04-01-preview, 2022-05-01, 2022-07-01, 2022-09-01, 2022-11-01, 2023-02-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01, 2023-11-01, 2024-01-01, 2024-01-01-preview, 2024-03-01, 2024-07-01, 2024-10-01, 2025-01-01, 2025-03-01, 2025-05-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkManager extends pulumi.CustomResource {
     /**
@@ -131,7 +131,7 @@ export class NetworkManager extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NetworkManager" }, { type: "azure-native:network/v20210501preview:NetworkManager" }, { type: "azure-native:network/v20220101:NetworkManager" }, { type: "azure-native:network/v20220201preview:NetworkManager" }, { type: "azure-native:network/v20220401preview:NetworkManager" }, { type: "azure-native:network/v20220501:NetworkManager" }, { type: "azure-native:network/v20220701:NetworkManager" }, { type: "azure-native:network/v20220901:NetworkManager" }, { type: "azure-native:network/v20221101:NetworkManager" }, { type: "azure-native:network/v20230201:NetworkManager" }, { type: "azure-native:network/v20230401:NetworkManager" }, { type: "azure-native:network/v20230501:NetworkManager" }, { type: "azure-native:network/v20230601:NetworkManager" }, { type: "azure-native:network/v20230901:NetworkManager" }, { type: "azure-native:network/v20231101:NetworkManager" }, { type: "azure-native:network/v20240101:NetworkManager" }, { type: "azure-native:network/v20240101preview:NetworkManager" }, { type: "azure-native:network/v20240301:NetworkManager" }, { type: "azure-native:network/v20240501:NetworkManager" }, { type: "azure-native:network/v20240701:NetworkManager" }, { type: "azure-native:network/v20241001:NetworkManager" }, { type: "azure-native:network/v20250101:NetworkManager" }, { type: "azure-native:network/v20250301:NetworkManager" }, { type: "azure-native:network/v20250501:NetworkManager" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NetworkManager" }, { type: "azure-native:network/v20210501preview:NetworkManager" }, { type: "azure-native:network/v20220101:NetworkManager" }, { type: "azure-native:network/v20220201preview:NetworkManager" }, { type: "azure-native:network/v20220401preview:NetworkManager" }, { type: "azure-native:network/v20220501:NetworkManager" }, { type: "azure-native:network/v20220701:NetworkManager" }, { type: "azure-native:network/v20220901:NetworkManager" }, { type: "azure-native:network/v20221101:NetworkManager" }, { type: "azure-native:network/v20230201:NetworkManager" }, { type: "azure-native:network/v20230401:NetworkManager" }, { type: "azure-native:network/v20230501:NetworkManager" }, { type: "azure-native:network/v20230601:NetworkManager" }, { type: "azure-native:network/v20230901:NetworkManager" }, { type: "azure-native:network/v20231101:NetworkManager" }, { type: "azure-native:network/v20240101:NetworkManager" }, { type: "azure-native:network/v20240101preview:NetworkManager" }, { type: "azure-native:network/v20240301:NetworkManager" }, { type: "azure-native:network/v20240501:NetworkManager" }, { type: "azure-native:network/v20240701:NetworkManager" }, { type: "azure-native:network/v20241001:NetworkManager" }, { type: "azure-native:network/v20250101:NetworkManager" }, { type: "azure-native:network/v20250301:NetworkManager" }, { type: "azure-native:network/v20250501:NetworkManager" }, { type: "azure-native:network/v20250701:NetworkManager" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkManager.__pulumiType, name, resourceInputs, opts);
     }
@@ -144,23 +144,23 @@ export interface NetworkManagerArgs {
     /**
      * A description of the network manager.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Resource ID.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Resource location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the network manager.
      */
-    networkManagerName?: pulumi.Input<string>;
+    networkManagerName?: pulumi.Input<string | undefined>;
     /**
      * Scope Access.
      */
-    networkManagerScopeAccesses?: pulumi.Input<pulumi.Input<string | types.enums.ConfigurationType>[]>;
+    networkManagerScopeAccesses?: pulumi.Input<pulumi.Input<string | types.enums.ConfigurationType>[] | undefined>;
     /**
      * Scope of Network Manager.
      */
@@ -172,5 +172,5 @@ export interface NetworkManagerArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

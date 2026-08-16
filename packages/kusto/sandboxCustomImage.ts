@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2023-08-15.
  *
- * Other available API versions: 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-08-15, 2025-02-14. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SandboxCustomImage extends pulumi.CustomResource {
     /**
@@ -110,7 +110,7 @@ export class SandboxCustomImage extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:kusto/v20230815:SandboxCustomImage" }, { type: "azure-native:kusto/v20240413:SandboxCustomImage" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:kusto/v20230815:SandboxCustomImage" }, { type: "azure-native:kusto/v20240413:SandboxCustomImage" }, { type: "azure-native:kusto/v20250214:SandboxCustomImage" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SandboxCustomImage.__pulumiType, name, resourceInputs, opts);
     }
@@ -123,7 +123,7 @@ export interface SandboxCustomImageArgs {
     /**
      * The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
      */
-    baseImageName?: pulumi.Input<string>;
+    baseImageName?: pulumi.Input<string | undefined>;
     /**
      * The name of the Kusto cluster.
      */
@@ -135,11 +135,11 @@ export interface SandboxCustomImageArgs {
     /**
      * The version of the language. Either this property or baseImageName should be specified.
      */
-    languageVersion?: pulumi.Input<string>;
+    languageVersion?: pulumi.Input<string | undefined>;
     /**
      * The requirements file content.
      */
-    requirementsFileContent?: pulumi.Input<string>;
+    requirementsFileContent?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -147,5 +147,5 @@ export interface SandboxCustomImageArgs {
     /**
      * The name of the sandbox custom image.
      */
-    sandboxCustomImageName?: pulumi.Input<string>;
+    sandboxCustomImageName?: pulumi.Input<string | undefined>;
 }

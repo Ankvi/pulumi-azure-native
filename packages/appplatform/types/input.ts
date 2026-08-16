@@ -12,11 +12,11 @@ export interface AcceleratorBasicAuthSettingArgs {
     /**
      * Resource Id of CA certificate for https URL of Git repository.
      */
-    caCertResourceId?: pulumi.Input<string>;
+    caCertResourceId?: pulumi.Input<string | undefined>;
     /**
      * Password of git repository basic auth.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Username of git repository basic auth.
      */
@@ -31,23 +31,23 @@ export interface AcceleratorGitRepositoryArgs {
     /**
      * Git repository branch to be used.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Git repository commit to be used.
      */
-    commit?: pulumi.Input<string>;
+    commit?: pulumi.Input<string | undefined>;
     /**
      * Git repository tag to be used.
      */
-    gitTag?: pulumi.Input<string>;
+    gitTag?: pulumi.Input<string | undefined>;
     /**
      * Interval for checking for updates to Git or image repository.
      */
-    intervalInSeconds?: pulumi.Input<number>;
+    intervalInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Folder path inside the git repository to consider as the root of the accelerator or fragment.
      */
-    subPath?: pulumi.Input<string>;
+    subPath?: pulumi.Input<string | undefined>;
     /**
      * Git repository URL for the accelerator.
      */
@@ -66,7 +66,7 @@ export interface AcceleratorPublicSettingArgs {
     /**
      * Resource Id of CA certificate for https URL of Git repository.
      */
-    caCertResourceId?: pulumi.Input<string>;
+    caCertResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -81,15 +81,15 @@ export interface AcceleratorSshSettingArgs {
     /**
      * Public SSH Key of git repository.
      */
-    hostKey?: pulumi.Input<string>;
+    hostKey?: pulumi.Input<string | undefined>;
     /**
      * SSH Key algorithm of git repository.
      */
-    hostKeyAlgorithm?: pulumi.Input<string>;
+    hostKeyAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Private SSH Key algorithm of git repository.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -99,7 +99,7 @@ export interface ApiPortalCustomDomainPropertiesArgs {
     /**
      * The thumbprint of bound certificate.
      */
-    thumbprint?: pulumi.Input<string>;
+    thumbprint?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -109,27 +109,27 @@ export interface ApiPortalPropertiesArgs {
     /**
      * Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
      */
-    apiTryOutEnabledState?: pulumi.Input<string | enums.ApiPortalApiTryOutEnabledState>;
+    apiTryOutEnabledState?: pulumi.Input<string | enums.ApiPortalApiTryOutEnabledState | undefined>;
     /**
      * The array of resource Ids of gateway to integrate with API portal.
      */
-    gatewayIds?: pulumi.Input<pulumi.Input<string>[]>;
+    gatewayIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicate if only https is allowed.
      */
-    httpsOnly?: pulumi.Input<boolean>;
+    httpsOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the API portal exposes endpoint.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * Collection of OpenAPI source URL locations.
      */
-    sourceUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Single sign-on related configuration
      */
-    ssoProperties?: pulumi.Input<SsoPropertiesArgs>;
+    ssoProperties?: pulumi.Input<SsoPropertiesArgs | undefined>;
 }
 /**
  * apiPortalPropertiesArgsProvideDefaults sets the appropriate defaults for ApiPortalPropertiesArgs
@@ -150,11 +150,11 @@ export interface ApmPropertiesArgs {
     /**
      * Non-sensitive properties for the APM
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Sensitive properties for the APM
      */
-    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * APM Type
      */
@@ -178,55 +178,55 @@ export interface AppResourcePropertiesArgs {
     /**
      * Collection of addons
      */
-    addonConfigs?: pulumi.Input<{[key: string]: any}>;
+    addonConfigs?: pulumi.Input<{[key: string]: any} | undefined>;
     /**
      * List of custom persistent disks
      */
-    customPersistentDisks?: pulumi.Input<pulumi.Input<CustomPersistentDiskResourceArgs>[]>;
+    customPersistentDisks?: pulumi.Input<pulumi.Input<CustomPersistentDiskResourceArgs>[] | undefined>;
     /**
      * Indicate if end to end TLS is enabled.
      */
-    enableEndToEndTLS?: pulumi.Input<boolean>;
+    enableEndToEndTLS?: pulumi.Input<boolean | undefined>;
     /**
      * Indicate if only https is allowed.
      */
-    httpsOnly?: pulumi.Input<boolean>;
+    httpsOnly?: pulumi.Input<boolean | undefined>;
     /**
      * App ingress settings payload.
      */
-    ingressSettings?: pulumi.Input<IngressSettingsArgs>;
+    ingressSettings?: pulumi.Input<IngressSettingsArgs | undefined>;
     /**
      * Collection of loaded certificates
      */
-    loadedCertificates?: pulumi.Input<pulumi.Input<LoadedCertificateArgs>[]>;
+    loadedCertificates?: pulumi.Input<pulumi.Input<LoadedCertificateArgs>[] | undefined>;
     /**
      * Persistent disk settings
      */
-    persistentDisk?: pulumi.Input<PersistentDiskArgs>;
+    persistentDisk?: pulumi.Input<PersistentDiskArgs | undefined>;
     /**
      * Indicates whether the App exposes public endpoint
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * Collection of auth secrets
      */
-    secrets?: pulumi.Input<pulumi.Input<SecretArgs>[]>;
+    secrets?: pulumi.Input<pulumi.Input<SecretArgs>[] | undefined>;
     /**
      * Temporary disk settings
      */
-    temporaryDisk?: pulumi.Input<TemporaryDiskArgs>;
+    temporaryDisk?: pulumi.Input<TemporaryDiskArgs | undefined>;
     /**
      * State of test endpoint auth.
      */
-    testEndpointAuthState?: pulumi.Input<string | enums.TestEndpointAuthState>;
+    testEndpointAuthState?: pulumi.Input<string | enums.TestEndpointAuthState | undefined>;
     /**
      * Additional App settings in vnet injection instance
      */
-    vnetAddons?: pulumi.Input<AppVNetAddonsArgs>;
+    vnetAddons?: pulumi.Input<AppVNetAddonsArgs | undefined>;
     /**
      * The workload profile used for this app. Supported for Consumption + Dedicated plan.
      */
-    workloadProfileName?: pulumi.Input<string>;
+    workloadProfileName?: pulumi.Input<string | undefined>;
 }
 /**
  * appResourcePropertiesArgsProvideDefaults sets the appropriate defaults for AppResourcePropertiesArgs
@@ -236,9 +236,9 @@ export function appResourcePropertiesArgsProvideDefaults(val: AppResourcePropert
         ...val,
         enableEndToEndTLS: (val.enableEndToEndTLS) ?? false,
         httpsOnly: (val.httpsOnly) ?? false,
-        temporaryDisk: (val.temporaryDisk ? pulumi.output(val.temporaryDisk).apply(temporaryDiskArgsProvideDefaults) : undefined),
+        temporaryDisk: pulumi.output(val.temporaryDisk).apply(v => v === undefined ? undefined : temporaryDiskArgsProvideDefaults(v)),
         testEndpointAuthState: (val.testEndpointAuthState) ?? "Enabled",
-        vnetAddons: (val.vnetAddons ? pulumi.output(val.vnetAddons).apply(appVNetAddonsArgsProvideDefaults) : undefined),
+        vnetAddons: pulumi.output(val.vnetAddons).apply(v => v === undefined ? undefined : appVNetAddonsArgsProvideDefaults(v)),
     };
 }
 
@@ -249,7 +249,7 @@ export interface AppVNetAddonsArgs {
     /**
      * Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet.
      */
-    publicEndpoint?: pulumi.Input<boolean>;
+    publicEndpoint?: pulumi.Input<boolean | undefined>;
 }
 /**
  * appVNetAddonsArgsProvideDefaults sets the appropriate defaults for AppVNetAddonsArgs
@@ -268,11 +268,11 @@ export interface AzureFileVolumeArgs {
     /**
      * If set to true, it will create and mount a dedicated directory for every individual app instance.
      */
-    enableSubPath?: pulumi.Input<boolean>;
+    enableSubPath?: pulumi.Input<boolean | undefined>;
     /**
      * These are the mount options for a persistent disk.
      */
-    mountOptions?: pulumi.Input<pulumi.Input<string>[]>;
+    mountOptions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The mount path of the persistent disk.
      */
@@ -280,11 +280,11 @@ export interface AzureFileVolumeArgs {
     /**
      * Indicates whether the persistent disk is a readOnly one.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The share name of the Azure File share.
      */
-    shareName?: pulumi.Input<string>;
+    shareName?: pulumi.Input<string | undefined>;
     /**
      * The type of the underlying resource to mount as a persistent disk.
      * Expected value is 'AzureFileVolume'.
@@ -308,15 +308,15 @@ export interface BindingResourcePropertiesArgs {
     /**
      * Binding parameters of the Binding resource
      */
-    bindingParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    bindingParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The key of the bound resource
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The Azure resource id of the bound resource
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -326,31 +326,31 @@ export interface BuildPropertiesArgs {
     /**
      * The resource id of agent pool
      */
-    agentPool?: pulumi.Input<string>;
+    agentPool?: pulumi.Input<string | undefined>;
     /**
      * The APMs for this build
      */
-    apms?: pulumi.Input<pulumi.Input<ApmReferenceArgs>[]>;
+    apms?: pulumi.Input<pulumi.Input<ApmReferenceArgs>[] | undefined>;
     /**
      * The resource id of builder to build the source code
      */
-    builder?: pulumi.Input<string>;
+    builder?: pulumi.Input<string | undefined>;
     /**
      * The CA Certificates for this build
      */
-    certificates?: pulumi.Input<pulumi.Input<CertificateReferenceArgs>[]>;
+    certificates?: pulumi.Input<pulumi.Input<CertificateReferenceArgs>[] | undefined>;
     /**
      * The environment variables for this build
      */
-    env?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    env?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The relative path of source code
      */
-    relativePath?: pulumi.Input<string>;
+    relativePath?: pulumi.Input<string | undefined>;
     /**
      * The customized build resource for this build
      */
-    resourceRequests?: pulumi.Input<BuildResourceRequestsArgs>;
+    resourceRequests?: pulumi.Input<BuildResourceRequestsArgs | undefined>;
 }
 /**
  * buildPropertiesArgsProvideDefaults sets the appropriate defaults for BuildPropertiesArgs
@@ -358,7 +358,7 @@ export interface BuildPropertiesArgs {
 export function buildPropertiesArgsProvideDefaults(val: BuildPropertiesArgs): BuildPropertiesArgs {
     return {
         ...val,
-        resourceRequests: (val.resourceRequests ? pulumi.output(val.resourceRequests).apply(buildResourceRequestsArgsProvideDefaults) : undefined),
+        resourceRequests: pulumi.output(val.resourceRequests).apply(v => v === undefined ? undefined : buildResourceRequestsArgsProvideDefaults(v)),
     };
 }
 
@@ -367,15 +367,15 @@ export function buildPropertiesArgsProvideDefaults(val: BuildPropertiesArgs): Bu
  */
 export interface BuildResourceRequestsArgs {
     /**
-     * Optional Cpu allocated to the build resource. 1 core can be represented by 1 or 1000m. 
+     * Optional Cpu allocated to the build resource. 1 core can be represented by 1 or 1000m.
      * The default value is 1, this should not exceed build service agent pool cpu size.
      */
-    cpu?: pulumi.Input<string>;
+    cpu?: pulumi.Input<string | undefined>;
     /**
-     * Optional Memory allocated to the build resource. 1 GB can be represented by 1Gi or 1024Mi. 
+     * Optional Memory allocated to the build resource. 1 GB can be represented by 1Gi or 1024Mi.
      * The default value is 2Gi, this should not exceed build service agent pool memory size.
      */
-    memory?: pulumi.Input<string>;
+    memory?: pulumi.Input<string | undefined>;
 }
 /**
  * buildResourceRequestsArgsProvideDefaults sets the appropriate defaults for BuildResourceRequestsArgs
@@ -395,7 +395,7 @@ export interface BuildResultUserSourceInfoArgs {
     /**
      * Resource id of an existing succeeded build result under the same Spring instance.
      */
-    buildResultId?: pulumi.Input<string>;
+    buildResultId?: pulumi.Input<string | undefined>;
     /**
      * Type of the source uploaded
      * Expected value is 'BuildResult'.
@@ -404,7 +404,7 @@ export interface BuildResultUserSourceInfoArgs {
     /**
      * Version of the source
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -414,7 +414,7 @@ export interface BuildServiceAgentPoolPropertiesArgs {
     /**
      * build service agent pool size properties
      */
-    poolSize?: pulumi.Input<BuildServiceAgentPoolSizePropertiesArgs>;
+    poolSize?: pulumi.Input<BuildServiceAgentPoolSizePropertiesArgs | undefined>;
 }
 
 /**
@@ -424,7 +424,7 @@ export interface BuildServiceAgentPoolSizePropertiesArgs {
     /**
      * The name of build service agent pool size
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -434,11 +434,11 @@ export interface BuilderPropertiesArgs {
     /**
      * Builder buildpack groups.
      */
-    buildpackGroups?: pulumi.Input<pulumi.Input<BuildpacksGroupPropertiesArgs>[]>;
+    buildpackGroups?: pulumi.Input<pulumi.Input<BuildpacksGroupPropertiesArgs>[] | undefined>;
     /**
      * Builder cluster stack property.
      */
-    stack?: pulumi.Input<StackPropertiesArgs>;
+    stack?: pulumi.Input<StackPropertiesArgs | undefined>;
 }
 
 /**
@@ -448,11 +448,11 @@ export interface BuildpackBindingLaunchPropertiesArgs {
     /**
      * Non-sensitive properties for launchProperties
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Sensitive properties for launchProperties
      */
-    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -462,11 +462,11 @@ export interface BuildpackBindingPropertiesArgs {
     /**
      * Buildpack Binding Type
      */
-    bindingType?: pulumi.Input<string | enums.BindingType>;
+    bindingType?: pulumi.Input<string | enums.BindingType | undefined>;
     /**
      * The object describes the buildpack binding launch properties
      */
-    launchProperties?: pulumi.Input<BuildpackBindingLaunchPropertiesArgs>;
+    launchProperties?: pulumi.Input<BuildpackBindingLaunchPropertiesArgs | undefined>;
 }
 
 /**
@@ -476,7 +476,7 @@ export interface BuildpackPropertiesArgs {
     /**
      * Id of the buildpack
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -486,11 +486,11 @@ export interface BuildpacksGroupPropertiesArgs {
     /**
      * Buildpacks in the buildpack group
      */
-    buildpacks?: pulumi.Input<pulumi.Input<BuildpackPropertiesArgs>[]>;
+    buildpacks?: pulumi.Input<pulumi.Input<BuildpackPropertiesArgs>[] | undefined>;
     /**
      * Buildpack group name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -510,28 +510,28 @@ export interface ClusterResourcePropertiesArgs {
     /**
      * The name of the resource group that contains the infrastructure resources
      */
-    infraResourceGroup?: pulumi.Input<string>;
+    infraResourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Additional Service settings for planned maintenance
      */
-    maintenanceScheduleConfiguration?: pulumi.Input<WeeklyMaintenanceScheduleConfigurationArgs>;
+    maintenanceScheduleConfiguration?: pulumi.Input<WeeklyMaintenanceScheduleConfigurationArgs | undefined>;
     /**
      * The resource Id of the Managed Environment that the Spring Apps instance builds on
      */
-    managedEnvironmentId?: pulumi.Input<string>;
+    managedEnvironmentId?: pulumi.Input<string | undefined>;
     /**
      * Purchasing 3rd party product of the Service resource.
      */
-    marketplaceResource?: pulumi.Input<MarketplaceResourceArgs>;
+    marketplaceResource?: pulumi.Input<MarketplaceResourceArgs | undefined>;
     /**
      * Network profile of the Service
      */
-    networkProfile?: pulumi.Input<NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<NetworkProfileArgs | undefined>;
     /**
      * Additional Service settings in vnet injection instance
      */
-    vnetAddons?: pulumi.Input<ServiceVNetAddonsArgs>;
-    zoneRedundant?: pulumi.Input<boolean>;
+    vnetAddons?: pulumi.Input<ServiceVNetAddonsArgs | undefined>;
+    zoneRedundant?: pulumi.Input<boolean | undefined>;
 }
 /**
  * clusterResourcePropertiesArgsProvideDefaults sets the appropriate defaults for ClusterResourcePropertiesArgs
@@ -539,7 +539,7 @@ export interface ClusterResourcePropertiesArgs {
 export function clusterResourcePropertiesArgsProvideDefaults(val: ClusterResourcePropertiesArgs): ClusterResourcePropertiesArgs {
     return {
         ...val,
-        vnetAddons: (val.vnetAddons ? pulumi.output(val.vnetAddons).apply(serviceVNetAddonsArgsProvideDefaults) : undefined),
+        vnetAddons: pulumi.output(val.vnetAddons).apply(v => v === undefined ? undefined : serviceVNetAddonsArgsProvideDefaults(v)),
         zoneRedundant: (val.zoneRedundant) ?? false,
     };
 }
@@ -551,35 +551,35 @@ export interface ConfigServerGitPropertyArgs {
     /**
      * Public sshKey of git repository.
      */
-    hostKey?: pulumi.Input<string>;
+    hostKey?: pulumi.Input<string | undefined>;
     /**
      * SshKey algorithm of git repository.
      */
-    hostKeyAlgorithm?: pulumi.Input<string>;
+    hostKeyAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Label of the repository
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * Password of git repository basic auth.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Private sshKey algorithm of git repository.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Repositories of git.
      */
-    repositories?: pulumi.Input<pulumi.Input<GitPatternRepositoryArgs>[]>;
+    repositories?: pulumi.Input<pulumi.Input<GitPatternRepositoryArgs>[] | undefined>;
     /**
      * Searching path of the repository
      */
-    searchPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    searchPaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Strict host key checking or not.
      */
-    strictHostKeyChecking?: pulumi.Input<boolean>;
+    strictHostKeyChecking?: pulumi.Input<boolean | undefined>;
     /**
      * URI of the repository
      */
@@ -587,7 +587,7 @@ export interface ConfigServerGitPropertyArgs {
     /**
      * Username of git repository basic auth.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -597,15 +597,15 @@ export interface ConfigServerPropertiesArgs {
     /**
      * Settings of config server.
      */
-    configServer?: pulumi.Input<ConfigServerSettingsArgs>;
+    configServer?: pulumi.Input<ConfigServerSettingsArgs | undefined>;
     /**
      * Enabled state of the config server. This is only used in Consumption tier.
      */
-    enabledState?: pulumi.Input<string | enums.ConfigServerEnabledState>;
+    enabledState?: pulumi.Input<string | enums.ConfigServerEnabledState | undefined>;
     /**
      * Error when apply config server settings.
      */
-    error?: pulumi.Input<ErrorArgs>;
+    error?: pulumi.Input<ErrorArgs | undefined>;
 }
 
 /**
@@ -615,7 +615,7 @@ export interface ConfigServerSettingsArgs {
     /**
      * Property of git environment.
      */
-    gitProperty?: pulumi.Input<ConfigServerGitPropertyArgs>;
+    gitProperty?: pulumi.Input<ConfigServerGitPropertyArgs | undefined>;
 }
 
 /**
@@ -625,7 +625,7 @@ export interface ConfigurationServiceGitPropertyArgs {
     /**
      * Repositories of Application Configuration Service git property.
      */
-    repositories?: pulumi.Input<pulumi.Input<ConfigurationServiceGitRepositoryArgs>[]>;
+    repositories?: pulumi.Input<pulumi.Input<ConfigurationServiceGitRepositoryArgs>[] | undefined>;
 }
 
 /**
@@ -635,19 +635,19 @@ export interface ConfigurationServiceGitRepositoryArgs {
     /**
      * Resource Id of CA certificate for https URL of Git repository.
      */
-    caCertResourceId?: pulumi.Input<string>;
+    caCertResourceId?: pulumi.Input<string | undefined>;
     /**
      * Git libraries used to support various repository providers
      */
-    gitImplementation?: pulumi.Input<string | enums.GitImplementation>;
+    gitImplementation?: pulumi.Input<string | enums.GitImplementation | undefined>;
     /**
      * Public sshKey of git repository.
      */
-    hostKey?: pulumi.Input<string>;
+    hostKey?: pulumi.Input<string | undefined>;
     /**
      * SshKey algorithm of git repository.
      */
-    hostKeyAlgorithm?: pulumi.Input<string>;
+    hostKeyAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Label of the repository
      */
@@ -659,7 +659,7 @@ export interface ConfigurationServiceGitRepositoryArgs {
     /**
      * Password of git repository basic auth.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Collection of patterns of the repository
      */
@@ -667,15 +667,15 @@ export interface ConfigurationServiceGitRepositoryArgs {
     /**
      * Private sshKey algorithm of git repository.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Searching path of the repository
      */
-    searchPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    searchPaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Strict host key checking or not.
      */
-    strictHostKeyChecking?: pulumi.Input<boolean>;
+    strictHostKeyChecking?: pulumi.Input<boolean | undefined>;
     /**
      * URI of the repository
      */
@@ -683,7 +683,7 @@ export interface ConfigurationServiceGitRepositoryArgs {
     /**
      * Username of git repository basic auth.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -693,11 +693,11 @@ export interface ConfigurationServicePropertiesArgs {
     /**
      * The generation of the Application Configuration Service.
      */
-    generation?: pulumi.Input<string | enums.ConfigurationServiceGeneration>;
+    generation?: pulumi.Input<string | enums.ConfigurationServiceGeneration | undefined>;
     /**
      * The settings of Application Configuration Service.
      */
-    settings?: pulumi.Input<ConfigurationServiceSettingsArgs>;
+    settings?: pulumi.Input<ConfigurationServiceSettingsArgs | undefined>;
 }
 /**
  * configurationServicePropertiesArgsProvideDefaults sets the appropriate defaults for ConfigurationServicePropertiesArgs
@@ -716,11 +716,11 @@ export interface ConfigurationServiceSettingsArgs {
     /**
      * Property of git environment.
      */
-    gitProperty?: pulumi.Input<ConfigurationServiceGitPropertyArgs>;
+    gitProperty?: pulumi.Input<ConfigurationServiceGitPropertyArgs | undefined>;
     /**
      * How often (in seconds) to check repository updates. Minimum value is 0.
      */
-    refreshIntervalInSeconds?: pulumi.Input<number>;
+    refreshIntervalInSeconds?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -730,7 +730,7 @@ export interface ContainerProbeSettingsArgs {
     /**
      * Indicates whether disable the liveness and readiness probe
      */
-    disableProbe?: pulumi.Input<boolean>;
+    disableProbe?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -773,7 +773,7 @@ export interface ContentCertificatePropertiesArgs {
     /**
      * The content of uploaded certificate.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The type of the certificate source.
      * Expected value is 'ContentCertificate'.
@@ -788,27 +788,27 @@ export interface CustomContainerArgs {
     /**
      * Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
      */
-    args?: pulumi.Input<pulumi.Input<string>[]>;
+    args?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
      */
-    command?: pulumi.Input<pulumi.Input<string>[]>;
+    command?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Container image of the custom container. This should be in the form of <repository>:<tag> without the server name of the registry
      */
-    containerImage?: pulumi.Input<string>;
+    containerImage?: pulumi.Input<string | undefined>;
     /**
      * Credential of the image registry
      */
-    imageRegistryCredential?: pulumi.Input<ImageRegistryCredentialArgs>;
+    imageRegistryCredential?: pulumi.Input<ImageRegistryCredentialArgs | undefined>;
     /**
      * Language framework of the container image uploaded. Supported values: "springboot", "", null.
      */
-    languageFramework?: pulumi.Input<string>;
+    languageFramework?: pulumi.Input<string | undefined>;
     /**
      * The name of the registry that contains the container image
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -818,7 +818,7 @@ export interface CustomContainerUserSourceInfoArgs {
     /**
      * Custom container payload
      */
-    customContainer?: pulumi.Input<CustomContainerArgs>;
+    customContainer?: pulumi.Input<CustomContainerArgs | undefined>;
     /**
      * Type of the source uploaded
      * Expected value is 'Container'.
@@ -827,7 +827,7 @@ export interface CustomContainerUserSourceInfoArgs {
     /**
      * Version of the source
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -837,11 +837,11 @@ export interface CustomDomainPropertiesArgs {
     /**
      * The bound certificate name of domain.
      */
-    certName?: pulumi.Input<string>;
+    certName?: pulumi.Input<string | undefined>;
     /**
      * The thumbprint of bound certificate.
      */
-    thumbprint?: pulumi.Input<string>;
+    thumbprint?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -851,7 +851,7 @@ export interface CustomPersistentDiskResourceArgs {
     /**
      * Properties of the custom persistent disk resource payload.
      */
-    customPersistentDiskProperties?: pulumi.Input<AzureFileVolumeArgs>;
+    customPersistentDiskProperties?: pulumi.Input<AzureFileVolumeArgs | undefined>;
     /**
      * The resource id of Azure Spring Apps Storage resource.
      */
@@ -863,7 +863,7 @@ export interface CustomPersistentDiskResourceArgs {
 export function customPersistentDiskResourceArgsProvideDefaults(val: CustomPersistentDiskResourceArgs): CustomPersistentDiskResourceArgs {
     return {
         ...val,
-        customPersistentDiskProperties: (val.customPersistentDiskProperties ? pulumi.output(val.customPersistentDiskProperties).apply(azureFileVolumeArgsProvideDefaults) : undefined),
+        customPersistentDiskProperties: pulumi.output(val.customPersistentDiskProperties).apply(v => v === undefined ? undefined : azureFileVolumeArgsProvideDefaults(v)),
     };
 }
 
@@ -874,31 +874,31 @@ export interface CustomScaleRuleArgs {
     /**
      * Authentication secrets for the custom scale rule.
      */
-    auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
+    auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[] | undefined>;
     /**
      * Metadata properties to describe custom scale rule.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of the custom scale rule
      * eg: azure-servicebus, redis etc.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
  * Customized accelerator properties payload
  */
 export interface CustomizedAcceleratorPropertiesArgs {
-    acceleratorTags?: pulumi.Input<pulumi.Input<string>[]>;
+    acceleratorTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of the customized accelerator.
      */
-    acceleratorType?: pulumi.Input<string | enums.CustomizedAcceleratorType>;
-    description?: pulumi.Input<string>;
-    displayName?: pulumi.Input<string>;
+    acceleratorType?: pulumi.Input<string | enums.CustomizedAcceleratorType | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    displayName?: pulumi.Input<string | undefined>;
     gitRepository: pulumi.Input<AcceleratorGitRepositoryArgs>;
-    iconUrl?: pulumi.Input<string>;
+    iconUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -908,15 +908,15 @@ export interface DeploymentResourcePropertiesArgs {
     /**
      * Indicates whether the Deployment is active
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Deployment settings of the Deployment
      */
-    deploymentSettings?: pulumi.Input<DeploymentSettingsArgs>;
+    deploymentSettings?: pulumi.Input<DeploymentSettingsArgs | undefined>;
     /**
      * Uploaded source information of the deployment.
      */
-    source?: pulumi.Input<BuildResultUserSourceInfoArgs | CustomContainerUserSourceInfoArgs | JarUploadedUserSourceInfoArgs | NetCoreZipUploadedUserSourceInfoArgs | SourceUploadedUserSourceInfoArgs | UploadedUserSourceInfoArgs | WarUploadedUserSourceInfoArgs>;
+    source?: pulumi.Input<BuildResultUserSourceInfoArgs | CustomContainerUserSourceInfoArgs | JarUploadedUserSourceInfoArgs | NetCoreZipUploadedUserSourceInfoArgs | SourceUploadedUserSourceInfoArgs | UploadedUserSourceInfoArgs | WarUploadedUserSourceInfoArgs | undefined>;
 }
 /**
  * deploymentResourcePropertiesArgsProvideDefaults sets the appropriate defaults for DeploymentResourcePropertiesArgs
@@ -924,7 +924,7 @@ export interface DeploymentResourcePropertiesArgs {
 export function deploymentResourcePropertiesArgsProvideDefaults(val: DeploymentResourcePropertiesArgs): DeploymentResourcePropertiesArgs {
     return {
         ...val,
-        deploymentSettings: (val.deploymentSettings ? pulumi.output(val.deploymentSettings).apply(deploymentSettingsArgsProvideDefaults) : undefined),
+        deploymentSettings: pulumi.output(val.deploymentSettings).apply(v => v === undefined ? undefined : deploymentSettingsArgsProvideDefaults(v)),
     };
 }
 
@@ -935,43 +935,43 @@ export interface DeploymentSettingsArgs {
     /**
      * Collection of addons
      */
-    addonConfigs?: pulumi.Input<{[key: string]: any}>;
+    addonConfigs?: pulumi.Input<{[key: string]: any} | undefined>;
     /**
      * Collection of ApmReferences
      */
-    apms?: pulumi.Input<pulumi.Input<ApmReferenceArgs>[]>;
+    apms?: pulumi.Input<pulumi.Input<ApmReferenceArgs>[] | undefined>;
     /**
      * Container liveness and readiness probe settings
      */
-    containerProbeSettings?: pulumi.Input<ContainerProbeSettingsArgs>;
+    containerProbeSettings?: pulumi.Input<ContainerProbeSettingsArgs | undefined>;
     /**
      * Collection of environment variables
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Periodic probe of App Instance liveness. App Instance will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
      */
-    livenessProbe?: pulumi.Input<ProbeArgs>;
+    livenessProbe?: pulumi.Input<ProbeArgs | undefined>;
     /**
      * Periodic probe of App Instance service readiness. App Instance will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
      */
-    readinessProbe?: pulumi.Input<ProbeArgs>;
+    readinessProbe?: pulumi.Input<ProbeArgs | undefined>;
     /**
      * The requested resource quantity for required CPU and Memory. It is recommended that using this field to represent the required CPU and Memory, the old field cpu and memoryInGB will be deprecated later.
      */
-    resourceRequests?: pulumi.Input<ResourceRequestsArgs>;
+    resourceRequests?: pulumi.Input<ResourceRequestsArgs | undefined>;
     /**
      * Scaling properties for the Azure Spring Apps App Instance.
      */
-    scale?: pulumi.Input<ScaleArgs>;
+    scale?: pulumi.Input<ScaleArgs | undefined>;
     /**
      * StartupProbe indicates that the App Instance has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a App Instance's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
      */
-    startupProbe?: pulumi.Input<ProbeArgs>;
+    startupProbe?: pulumi.Input<ProbeArgs | undefined>;
     /**
      * Optional duration in seconds the App Instance needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the App Instance are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to 90 seconds.
      */
-    terminationGracePeriodSeconds?: pulumi.Input<number>;
+    terminationGracePeriodSeconds?: pulumi.Input<number | undefined>;
 }
 /**
  * deploymentSettingsArgsProvideDefaults sets the appropriate defaults for DeploymentSettingsArgs
@@ -979,10 +979,10 @@ export interface DeploymentSettingsArgs {
 export function deploymentSettingsArgsProvideDefaults(val: DeploymentSettingsArgs): DeploymentSettingsArgs {
     return {
         ...val,
-        livenessProbe: (val.livenessProbe ? pulumi.output(val.livenessProbe).apply(probeArgsProvideDefaults) : undefined),
-        readinessProbe: (val.readinessProbe ? pulumi.output(val.readinessProbe).apply(probeArgsProvideDefaults) : undefined),
-        scale: (val.scale ? pulumi.output(val.scale).apply(scaleArgsProvideDefaults) : undefined),
-        startupProbe: (val.startupProbe ? pulumi.output(val.startupProbe).apply(probeArgsProvideDefaults) : undefined),
+        livenessProbe: pulumi.output(val.livenessProbe).apply(v => v === undefined ? undefined : probeArgsProvideDefaults(v)),
+        readinessProbe: pulumi.output(val.readinessProbe).apply(v => v === undefined ? undefined : probeArgsProvideDefaults(v)),
+        scale: pulumi.output(val.scale).apply(v => v === undefined ? undefined : scaleArgsProvideDefaults(v)),
+        startupProbe: pulumi.output(val.startupProbe).apply(v => v === undefined ? undefined : probeArgsProvideDefaults(v)),
         terminationGracePeriodSeconds: (val.terminationGracePeriodSeconds) ?? 90,
     };
 }
@@ -994,7 +994,7 @@ export interface DevToolPortalFeatureDetailArgs {
     /**
      * State of the plugin
      */
-    state?: pulumi.Input<string | enums.DevToolPortalFeatureState>;
+    state?: pulumi.Input<string | enums.DevToolPortalFeatureState | undefined>;
 }
 /**
  * devToolPortalFeatureDetailArgsProvideDefaults sets the appropriate defaults for DevToolPortalFeatureDetailArgs
@@ -1013,11 +1013,11 @@ export interface DevToolPortalFeatureSettingsArgs {
     /**
      * Detail of Accelerator plugin
      */
-    applicationAccelerator?: pulumi.Input<DevToolPortalFeatureDetailArgs>;
+    applicationAccelerator?: pulumi.Input<DevToolPortalFeatureDetailArgs | undefined>;
     /**
      * Detail of App Live View plugin
      */
-    applicationLiveView?: pulumi.Input<DevToolPortalFeatureDetailArgs>;
+    applicationLiveView?: pulumi.Input<DevToolPortalFeatureDetailArgs | undefined>;
 }
 /**
  * devToolPortalFeatureSettingsArgsProvideDefaults sets the appropriate defaults for DevToolPortalFeatureSettingsArgs
@@ -1025,8 +1025,8 @@ export interface DevToolPortalFeatureSettingsArgs {
 export function devToolPortalFeatureSettingsArgsProvideDefaults(val: DevToolPortalFeatureSettingsArgs): DevToolPortalFeatureSettingsArgs {
     return {
         ...val,
-        applicationAccelerator: (val.applicationAccelerator ? pulumi.output(val.applicationAccelerator).apply(devToolPortalFeatureDetailArgsProvideDefaults) : undefined),
-        applicationLiveView: (val.applicationLiveView ? pulumi.output(val.applicationLiveView).apply(devToolPortalFeatureDetailArgsProvideDefaults) : undefined),
+        applicationAccelerator: pulumi.output(val.applicationAccelerator).apply(v => v === undefined ? undefined : devToolPortalFeatureDetailArgsProvideDefaults(v)),
+        applicationLiveView: pulumi.output(val.applicationLiveView).apply(v => v === undefined ? undefined : devToolPortalFeatureDetailArgsProvideDefaults(v)),
     };
 }
 
@@ -1037,15 +1037,15 @@ export interface DevToolPortalPropertiesArgs {
     /**
      * Settings for Dev Tool Portal
      */
-    features?: pulumi.Input<DevToolPortalFeatureSettingsArgs>;
+    features?: pulumi.Input<DevToolPortalFeatureSettingsArgs | undefined>;
     /**
      * Indicates whether the resource exposes public endpoint
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * Single sign-on related configuration
      */
-    ssoProperties?: pulumi.Input<DevToolPortalSsoPropertiesArgs>;
+    ssoProperties?: pulumi.Input<DevToolPortalSsoPropertiesArgs | undefined>;
 }
 /**
  * devToolPortalPropertiesArgsProvideDefaults sets the appropriate defaults for DevToolPortalPropertiesArgs
@@ -1053,7 +1053,7 @@ export interface DevToolPortalPropertiesArgs {
 export function devToolPortalPropertiesArgsProvideDefaults(val: DevToolPortalPropertiesArgs): DevToolPortalPropertiesArgs {
     return {
         ...val,
-        features: (val.features ? pulumi.output(val.features).apply(devToolPortalFeatureSettingsArgsProvideDefaults) : undefined),
+        features: pulumi.output(val.features).apply(v => v === undefined ? undefined : devToolPortalFeatureSettingsArgsProvideDefaults(v)),
         public: (val.public) ?? false,
     };
 }
@@ -1065,19 +1065,19 @@ export interface DevToolPortalSsoPropertiesArgs {
     /**
      * The public identifier for the application
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The secret known only to the application and the authorization server
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * The URI of a JSON file with generic OIDC provider configuration.
      */
-    metadataUrl?: pulumi.Input<string>;
+    metadataUrl?: pulumi.Input<string | undefined>;
     /**
      * It defines the specific actions applications can be allowed to do on a user's behalf
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1087,15 +1087,15 @@ export interface EnvVarArgs {
     /**
      * Environment variable name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * secret environment variable value.
      */
-    secretValue?: pulumi.Input<string>;
+    secretValue?: pulumi.Input<string | undefined>;
     /**
      * Non-secret environment variable value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1105,11 +1105,11 @@ export interface ErrorArgs {
     /**
      * The code of error.
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * The message of error.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1119,7 +1119,7 @@ export interface ExecActionArgs {
     /**
      * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
      */
-    command?: pulumi.Input<pulumi.Input<string>[]>;
+    command?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of the action to take to perform the health check.
      * Expected value is 'ExecAction'.
@@ -1134,23 +1134,23 @@ export interface GatewayApiMetadataPropertiesArgs {
     /**
      * Detailed description of the APIs available on the Gateway instance (default: `Generated OpenAPI 3 document that describes the API routes configured.`)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Location of additional documentation for the APIs available on the Gateway instance
      */
-    documentation?: pulumi.Input<string>;
+    documentation?: pulumi.Input<string | undefined>;
     /**
      * Base URL that API consumers will use to access APIs on the Gateway instance.
      */
-    serverUrl?: pulumi.Input<string>;
+    serverUrl?: pulumi.Input<string | undefined>;
     /**
      * Title describing the context of the APIs available on the Gateway instance (default: `Spring Cloud Gateway for K8S`)
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * Version of APIs available on this Gateway instance (default: `unspecified`).
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1160,39 +1160,39 @@ export interface GatewayApiRouteArgs {
     /**
      * A description, will be applied to methods in the generated OpenAPI documentation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * To modify the request before sending it to the target endpoint, or the received response.
      */
-    filters?: pulumi.Input<pulumi.Input<string>[]>;
+    filters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Route processing order.
      */
-    order?: pulumi.Input<number>;
+    order?: pulumi.Input<number | undefined>;
     /**
      * A number of conditions to evaluate a route for each request. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request.
      */
-    predicates?: pulumi.Input<pulumi.Input<string>[]>;
+    predicates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable sso validation.
      */
-    ssoEnabled?: pulumi.Input<boolean>;
+    ssoEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Classification tags, will be applied to methods in the generated OpenAPI documentation.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A title, will be applied to methods in the generated OpenAPI documentation.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * Pass currently-authenticated user's identity token to application service, default is 'false'
      */
-    tokenRelay?: pulumi.Input<boolean>;
+    tokenRelay?: pulumi.Input<boolean | undefined>;
     /**
      * Full uri, will override `appName`.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1202,31 +1202,31 @@ export interface GatewayCorsPropertiesArgs {
     /**
      * Whether user credentials are supported on cross-site requests. Valid values: `true`, `false`.
      */
-    allowCredentials?: pulumi.Input<boolean>;
+    allowCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * Allowed headers in cross-site requests. The special value `*` allows actual requests to send any header.
      */
-    allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Allowed HTTP methods on cross-site requests. The special value `*` allows all methods. If not set, `GET` and `HEAD` are allowed by default.
      */
-    allowedMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Allowed origin patterns to make cross-site requests.
      */
-    allowedOriginPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedOriginPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Allowed origins to make cross-site requests. The special value `*` allows all domains.
      */
-    allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * HTTP response headers to expose for cross-site requests.
      */
-    exposedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    exposedHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * How long, in seconds, the response from a pre-flight request can be cached by clients.
      */
-    maxAge?: pulumi.Input<number>;
+    maxAge?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1236,7 +1236,7 @@ export interface GatewayCustomDomainPropertiesArgs {
     /**
      * The thumbprint of bound certificate.
      */
-    thumbprint?: pulumi.Input<string>;
+    thumbprint?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1251,11 +1251,11 @@ export interface GatewayLocalResponseCachePerInstancePropertiesArgs {
     /**
      * Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * Time before a cached entry is expired (300s, 5m, 1h...)
      */
-    timeToLive?: pulumi.Input<string>;
+    timeToLive?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1270,11 +1270,11 @@ export interface GatewayLocalResponseCachePerRoutePropertiesArgs {
     /**
      * Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * Time before a cached entry is expired (300s, 5m, 1h...)
      */
-    timeToLive?: pulumi.Input<string>;
+    timeToLive?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1284,51 +1284,51 @@ export interface GatewayPropertiesArgs {
     /**
      * Collection of addons for Spring Cloud Gateway
      */
-    addonConfigs?: pulumi.Input<{[key: string]: any}>;
+    addonConfigs?: pulumi.Input<{[key: string]: any} | undefined>;
     /**
      * API metadata property for Spring Cloud Gateway
      */
-    apiMetadataProperties?: pulumi.Input<GatewayApiMetadataPropertiesArgs>;
+    apiMetadataProperties?: pulumi.Input<GatewayApiMetadataPropertiesArgs | undefined>;
     /**
      * Collection of APM type used in Spring Cloud Gateway
      */
-    apmTypes?: pulumi.Input<pulumi.Input<string | enums.ApmType>[]>;
+    apmTypes?: pulumi.Input<pulumi.Input<string | enums.ApmType>[] | undefined>;
     /**
      * Collection of ApmReferences in service level
      */
-    apms?: pulumi.Input<pulumi.Input<ApmReferenceArgs>[]>;
+    apms?: pulumi.Input<pulumi.Input<ApmReferenceArgs>[] | undefined>;
     /**
      * Client-Certification Authentication.
      */
-    clientAuth?: pulumi.Input<GatewayPropertiesClientAuthArgs>;
+    clientAuth?: pulumi.Input<GatewayPropertiesClientAuthArgs | undefined>;
     /**
      * Cross-Origin Resource Sharing property
      */
-    corsProperties?: pulumi.Input<GatewayCorsPropertiesArgs>;
+    corsProperties?: pulumi.Input<GatewayCorsPropertiesArgs | undefined>;
     /**
      * Environment variables of Spring Cloud Gateway
      */
-    environmentVariables?: pulumi.Input<GatewayPropertiesEnvironmentVariablesArgs>;
+    environmentVariables?: pulumi.Input<GatewayPropertiesEnvironmentVariablesArgs | undefined>;
     /**
      * Indicate if only https is allowed.
      */
-    httpsOnly?: pulumi.Input<boolean>;
+    httpsOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the Spring Cloud Gateway exposes endpoint.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * The requested resource quantity for required CPU and Memory.
      */
-    resourceRequests?: pulumi.Input<GatewayResourceRequestsArgs>;
+    resourceRequests?: pulumi.Input<GatewayResourceRequestsArgs | undefined>;
     /**
      * The properties to configure different types of response cache for Spring Cloud Gateway.
      */
-    responseCacheProperties?: pulumi.Input<GatewayLocalResponseCachePerInstancePropertiesArgs | GatewayLocalResponseCachePerRoutePropertiesArgs>;
+    responseCacheProperties?: pulumi.Input<GatewayLocalResponseCachePerInstancePropertiesArgs | GatewayLocalResponseCachePerRoutePropertiesArgs | undefined>;
     /**
      * Single sign-on related configuration
      */
-    ssoProperties?: pulumi.Input<SsoPropertiesArgs>;
+    ssoProperties?: pulumi.Input<SsoPropertiesArgs | undefined>;
 }
 /**
  * gatewayPropertiesArgsProvideDefaults sets the appropriate defaults for GatewayPropertiesArgs
@@ -1336,10 +1336,10 @@ export interface GatewayPropertiesArgs {
 export function gatewayPropertiesArgsProvideDefaults(val: GatewayPropertiesArgs): GatewayPropertiesArgs {
     return {
         ...val,
-        clientAuth: (val.clientAuth ? pulumi.output(val.clientAuth).apply(gatewayPropertiesClientAuthArgsProvideDefaults) : undefined),
+        clientAuth: pulumi.output(val.clientAuth).apply(v => v === undefined ? undefined : gatewayPropertiesClientAuthArgsProvideDefaults(v)),
         httpsOnly: (val.httpsOnly) ?? false,
         public: (val.public) ?? false,
-        resourceRequests: (val.resourceRequests ? pulumi.output(val.resourceRequests).apply(gatewayResourceRequestsArgsProvideDefaults) : undefined),
+        resourceRequests: pulumi.output(val.resourceRequests).apply(v => v === undefined ? undefined : gatewayResourceRequestsArgsProvideDefaults(v)),
     };
 }
 
@@ -1350,11 +1350,11 @@ export interface GatewayPropertiesClientAuthArgs {
     /**
      * Whether to enable certificate verification or not
      */
-    certificateVerification?: pulumi.Input<string | enums.GatewayCertificateVerification>;
+    certificateVerification?: pulumi.Input<string | enums.GatewayCertificateVerification | undefined>;
     /**
      * Collection of certificate resource Ids in Azure Spring Apps.
      */
-    certificates?: pulumi.Input<pulumi.Input<string>[]>;
+    certificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 /**
  * gatewayPropertiesClientAuthArgsProvideDefaults sets the appropriate defaults for GatewayPropertiesClientAuthArgs
@@ -1373,11 +1373,11 @@ export interface GatewayPropertiesEnvironmentVariablesArgs {
     /**
      * Non-sensitive properties
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Sensitive properties
      */
-    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -1387,11 +1387,11 @@ export interface GatewayResourceRequestsArgs {
     /**
      * Cpu allocated to each Spring Cloud Gateway instance.
      */
-    cpu?: pulumi.Input<string>;
+    cpu?: pulumi.Input<string | undefined>;
     /**
      * Memory allocated to each Spring Cloud Gateway instance.
      */
-    memory?: pulumi.Input<string>;
+    memory?: pulumi.Input<string | undefined>;
 }
 /**
  * gatewayResourceRequestsArgsProvideDefaults sets the appropriate defaults for GatewayResourceRequestsArgs
@@ -1411,7 +1411,7 @@ export interface GatewayRouteConfigOpenApiPropertiesArgs {
     /**
      * The URI of OpenAPI specification.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1421,31 +1421,31 @@ export interface GatewayRouteConfigPropertiesArgs {
     /**
      * The resource Id of the Azure Spring Apps app, required unless route defines `uri`.
      */
-    appResourceId?: pulumi.Input<string>;
+    appResourceId?: pulumi.Input<string | undefined>;
     /**
      * To modify the request before sending it to the target endpoint, or the received response in app level.
      */
-    filters?: pulumi.Input<pulumi.Input<string>[]>;
+    filters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * OpenAPI properties of Spring Cloud Gateway route config.
      */
-    openApi?: pulumi.Input<GatewayRouteConfigOpenApiPropertiesArgs>;
+    openApi?: pulumi.Input<GatewayRouteConfigOpenApiPropertiesArgs | undefined>;
     /**
      * A number of conditions to evaluate a route for each request in app level. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request.
      */
-    predicates?: pulumi.Input<pulumi.Input<string>[]>;
+    predicates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Protocol of routed Azure Spring Apps applications.
      */
-    protocol?: pulumi.Input<string | enums.GatewayRouteConfigProtocol>;
+    protocol?: pulumi.Input<string | enums.GatewayRouteConfigProtocol | undefined>;
     /**
      * Array of API routes, each route contains properties such as `title`, `uri`, `ssoEnabled`, `predicates`, `filters`.
      */
-    routes?: pulumi.Input<pulumi.Input<GatewayApiRouteArgs>[]>;
+    routes?: pulumi.Input<pulumi.Input<GatewayApiRouteArgs>[] | undefined>;
     /**
      * Enable Single Sign-On in app level.
      */
-    ssoEnabled?: pulumi.Input<boolean>;
+    ssoEnabled?: pulumi.Input<boolean | undefined>;
 }
 /**
  * gatewayRouteConfigPropertiesArgsProvideDefaults sets the appropriate defaults for GatewayRouteConfigPropertiesArgs
@@ -1464,15 +1464,15 @@ export interface GitPatternRepositoryArgs {
     /**
      * Public sshKey of git repository.
      */
-    hostKey?: pulumi.Input<string>;
+    hostKey?: pulumi.Input<string | undefined>;
     /**
      * SshKey algorithm of git repository.
      */
-    hostKeyAlgorithm?: pulumi.Input<string>;
+    hostKeyAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Label of the repository
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * Name of the repository
      */
@@ -1480,23 +1480,23 @@ export interface GitPatternRepositoryArgs {
     /**
      * Password of git repository basic auth.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Collection of pattern of the repository
      */
-    pattern?: pulumi.Input<pulumi.Input<string>[]>;
+    pattern?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Private sshKey algorithm of git repository.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Searching path of the repository
      */
-    searchPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    searchPaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Strict host key checking or not.
      */
-    strictHostKeyChecking?: pulumi.Input<boolean>;
+    strictHostKeyChecking?: pulumi.Input<boolean | undefined>;
     /**
      * URI of the repository
      */
@@ -1504,7 +1504,7 @@ export interface GitPatternRepositoryArgs {
     /**
      * Username of git repository basic auth.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1514,7 +1514,7 @@ export interface HTTPGetActionArgs {
     /**
      * Path to access on the HTTP server.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Scheme to use for connecting to the host. Defaults to HTTP.
      *
@@ -1522,7 +1522,7 @@ export interface HTTPGetActionArgs {
      *  - `"HTTP"` means that the scheme used will be http://
      *  - `"HTTPS"` means that the scheme used will be https://
      */
-    scheme?: pulumi.Input<string | enums.HTTPSchemeType>;
+    scheme?: pulumi.Input<string | enums.HTTPSchemeType | undefined>;
     /**
      * The type of the action to take to perform the health check.
      * Expected value is 'HTTPGetAction'.
@@ -1537,11 +1537,11 @@ export interface HttpScaleRuleArgs {
     /**
      * Authentication secrets for the custom scale rule.
      */
-    auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
+    auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[] | undefined>;
     /**
      * Metadata properties to describe http scale rule.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -1551,11 +1551,11 @@ export interface ImageRegistryCredentialArgs {
     /**
      * The password of the image registry credential
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The username of the image registry credential
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1565,7 +1565,7 @@ export interface IngressConfigArgs {
     /**
      * Ingress read time out in seconds.
      */
-    readTimeoutInSeconds?: pulumi.Input<number>;
+    readTimeoutInSeconds?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1575,27 +1575,27 @@ export interface IngressSettingsArgs {
     /**
      * How ingress should communicate with this app backend service.
      */
-    backendProtocol?: pulumi.Input<string | enums.BackendProtocol>;
+    backendProtocol?: pulumi.Input<string | enums.BackendProtocol | undefined>;
     /**
      * Client-Certification Authentication.
      */
-    clientAuth?: pulumi.Input<IngressSettingsClientAuthArgs>;
+    clientAuth?: pulumi.Input<IngressSettingsClientAuthArgs | undefined>;
     /**
      * Ingress read time out in seconds.
      */
-    readTimeoutInSeconds?: pulumi.Input<number>;
+    readTimeoutInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Ingress send time out in seconds.
      */
-    sendTimeoutInSeconds?: pulumi.Input<number>;
+    sendTimeoutInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Type of the affinity, set this to Cookie to enable session affinity.
      */
-    sessionAffinity?: pulumi.Input<string | enums.SessionAffinity>;
+    sessionAffinity?: pulumi.Input<string | enums.SessionAffinity | undefined>;
     /**
      * Time in seconds until the cookie expires.
      */
-    sessionCookieMaxAge?: pulumi.Input<number>;
+    sessionCookieMaxAge?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1605,7 +1605,7 @@ export interface IngressSettingsClientAuthArgs {
     /**
      * Collection of certificate resource id.
      */
-    certificates?: pulumi.Input<pulumi.Input<string>[]>;
+    certificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1615,15 +1615,15 @@ export interface JarUploadedUserSourceInfoArgs {
     /**
      * JVM parameter
      */
-    jvmOptions?: pulumi.Input<string>;
+    jvmOptions?: pulumi.Input<string | undefined>;
     /**
      * Relative path of the storage which stores the source
      */
-    relativePath?: pulumi.Input<string>;
+    relativePath?: pulumi.Input<string | undefined>;
     /**
      * Runtime version of the Jar file
      */
-    runtimeVersion?: pulumi.Input<string>;
+    runtimeVersion?: pulumi.Input<string | undefined>;
     /**
      * Type of the source uploaded
      * Expected value is 'Jar'.
@@ -1632,7 +1632,7 @@ export interface JarUploadedUserSourceInfoArgs {
     /**
      * Version of the source
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1642,15 +1642,15 @@ export interface JobExecutionTemplateArgs {
     /**
      * Arguments for the Job execution.
      */
-    args?: pulumi.Input<pulumi.Input<string>[]>;
+    args?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Environment variables of Job execution
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<EnvVarArgs>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<EnvVarArgs>[] | undefined>;
     /**
      * The requested resource quantity for required CPU and Memory.
      */
-    resourceRequests?: pulumi.Input<JobResourceRequestsArgs>;
+    resourceRequests?: pulumi.Input<JobResourceRequestsArgs | undefined>;
 }
 /**
  * jobExecutionTemplateArgsProvideDefaults sets the appropriate defaults for JobExecutionTemplateArgs
@@ -1658,7 +1658,7 @@ export interface JobExecutionTemplateArgs {
 export function jobExecutionTemplateArgsProvideDefaults(val: JobExecutionTemplateArgs): JobExecutionTemplateArgs {
     return {
         ...val,
-        resourceRequests: (val.resourceRequests ? pulumi.output(val.resourceRequests).apply(jobResourceRequestsArgsProvideDefaults) : undefined),
+        resourceRequests: pulumi.output(val.resourceRequests).apply(v => v === undefined ? undefined : jobResourceRequestsArgsProvideDefaults(v)),
     };
 }
 
@@ -1669,19 +1669,19 @@ export interface JobResourcePropertiesArgs {
     /**
      * Referenced managed components collection
      */
-    managedComponentReferences?: pulumi.Input<pulumi.Input<ManagedComponentReferenceArgs>[]>;
+    managedComponentReferences?: pulumi.Input<pulumi.Input<ManagedComponentReferenceArgs>[] | undefined>;
     /**
      * Uploaded source information of the Job.
      */
-    source?: pulumi.Input<BuildResultUserSourceInfoArgs | CustomContainerUserSourceInfoArgs | JarUploadedUserSourceInfoArgs | NetCoreZipUploadedUserSourceInfoArgs | SourceUploadedUserSourceInfoArgs | UploadedUserSourceInfoArgs | WarUploadedUserSourceInfoArgs>;
+    source?: pulumi.Input<BuildResultUserSourceInfoArgs | CustomContainerUserSourceInfoArgs | JarUploadedUserSourceInfoArgs | NetCoreZipUploadedUserSourceInfoArgs | SourceUploadedUserSourceInfoArgs | UploadedUserSourceInfoArgs | WarUploadedUserSourceInfoArgs | undefined>;
     /**
      * The template which is applied for all executions of the Job.
      */
-    template?: pulumi.Input<JobExecutionTemplateArgs>;
+    template?: pulumi.Input<JobExecutionTemplateArgs | undefined>;
     /**
      * The Job trigger related configuration.
      */
-    triggerConfig?: pulumi.Input<ManualJobTriggerConfigArgs>;
+    triggerConfig?: pulumi.Input<ManualJobTriggerConfigArgs | undefined>;
 }
 /**
  * jobResourcePropertiesArgsProvideDefaults sets the appropriate defaults for JobResourcePropertiesArgs
@@ -1689,8 +1689,8 @@ export interface JobResourcePropertiesArgs {
 export function jobResourcePropertiesArgsProvideDefaults(val: JobResourcePropertiesArgs): JobResourcePropertiesArgs {
     return {
         ...val,
-        template: (val.template ? pulumi.output(val.template).apply(jobExecutionTemplateArgsProvideDefaults) : undefined),
-        triggerConfig: (val.triggerConfig ? pulumi.output(val.triggerConfig).apply(manualJobTriggerConfigArgsProvideDefaults) : undefined),
+        template: pulumi.output(val.template).apply(v => v === undefined ? undefined : jobExecutionTemplateArgsProvideDefaults(v)),
+        triggerConfig: pulumi.output(val.triggerConfig).apply(v => v === undefined ? undefined : manualJobTriggerConfigArgsProvideDefaults(v)),
     };
 }
 
@@ -1701,11 +1701,11 @@ export interface JobResourceRequestsArgs {
     /**
      * CPU allocated to each job execution instance.
      */
-    cpu?: pulumi.Input<string>;
+    cpu?: pulumi.Input<string | undefined>;
     /**
      * Memory allocated to each job execution instance.
      */
-    memory?: pulumi.Input<string>;
+    memory?: pulumi.Input<string | undefined>;
 }
 /**
  * jobResourceRequestsArgsProvideDefaults sets the appropriate defaults for JobResourceRequestsArgs
@@ -1725,15 +1725,15 @@ export interface KeyVaultCertificatePropertiesArgs {
     /**
      * Indicates whether to automatically synchronize certificate from key vault or not.
      */
-    autoSync?: pulumi.Input<string | enums.KeyVaultCertificateAutoSync>;
+    autoSync?: pulumi.Input<string | enums.KeyVaultCertificateAutoSync | undefined>;
     /**
      * The certificate version of key vault.
      */
-    certVersion?: pulumi.Input<string>;
+    certVersion?: pulumi.Input<string | undefined>;
     /**
      * Optional. If set to true, it will not import private key from key vault.
      */
-    excludePrivateKey?: pulumi.Input<boolean>;
+    excludePrivateKey?: pulumi.Input<boolean | undefined>;
     /**
      * The certificate name of key vault.
      */
@@ -1766,7 +1766,7 @@ export interface LoadedCertificateArgs {
     /**
      * Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
      */
-    loadTrustStore?: pulumi.Input<boolean>;
+    loadTrustStore?: pulumi.Input<boolean | undefined>;
     /**
      * Resource Id of loaded certificate
      */
@@ -1799,19 +1799,19 @@ export interface ManagedIdentityPropertiesArgs {
     /**
      * Principal Id of system-assigned managed identity.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * Tenant Id of system-assigned managed identity.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Type of the managed identity
      */
-    type?: pulumi.Input<string | enums.ManagedIdentityType>;
+    type?: pulumi.Input<string | enums.ManagedIdentityType | undefined>;
     /**
      * Properties of user-assigned managed identities
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1821,15 +1821,15 @@ export interface ManualJobTriggerConfigArgs {
     /**
      * Number of parallel replicas of a job execution can run.
      */
-    parallelism?: pulumi.Input<number>;
+    parallelism?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of retries before failing the job.
      */
-    retryLimit?: pulumi.Input<number>;
+    retryLimit?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of seconds an execution is allowed to run.
      */
-    timeoutInSeconds?: pulumi.Input<number>;
+    timeoutInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Type of job trigger
      * Expected value is 'Manual'.
@@ -1853,15 +1853,15 @@ export interface MarketplaceResourceArgs {
     /**
      * The plan id of the 3rd Party Artifact that is being procured.
      */
-    plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string | undefined>;
     /**
      * The 3rd Party artifact that is being procured.
      */
-    product?: pulumi.Input<string>;
+    product?: pulumi.Input<string | undefined>;
     /**
      * The publisher id of the 3rd Party Artifact that is being bought.
      */
-    publisher?: pulumi.Input<string>;
+    publisher?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1871,19 +1871,19 @@ export interface MonitoringSettingPropertiesArgs {
     /**
      * Target application insight instrumentation key, null or whitespace include empty will disable monitoringSettings
      */
-    appInsightsInstrumentationKey?: pulumi.Input<string>;
+    appInsightsInstrumentationKey?: pulumi.Input<string | undefined>;
     /**
      * Indicates the sampling rate of application insight agent, should be in range [0.0, 100.0]
      */
-    appInsightsSamplingRate?: pulumi.Input<number>;
+    appInsightsSamplingRate?: pulumi.Input<number | undefined>;
     /**
      * Error when apply Monitoring Setting changes.
      */
-    error?: pulumi.Input<ErrorArgs>;
+    error?: pulumi.Input<ErrorArgs | undefined>;
     /**
      * Indicates whether enable the trace functionality, which will be deprecated since api version 2020-11-01-preview. Please leverage appInsightsInstrumentationKey to indicate if monitoringSettings enabled or not
      */
-    traceEnabled?: pulumi.Input<boolean>;
+    traceEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1893,15 +1893,15 @@ export interface NetCoreZipUploadedUserSourceInfoArgs {
     /**
      * The path to the .NET executable relative to zip root
      */
-    netCoreMainEntryPath?: pulumi.Input<string>;
+    netCoreMainEntryPath?: pulumi.Input<string | undefined>;
     /**
      * Relative path of the storage which stores the source
      */
-    relativePath?: pulumi.Input<string>;
+    relativePath?: pulumi.Input<string | undefined>;
     /**
      * Runtime version of the .Net file
      */
-    runtimeVersion?: pulumi.Input<string>;
+    runtimeVersion?: pulumi.Input<string | undefined>;
     /**
      * Type of the source uploaded
      * Expected value is 'NetCoreZip'.
@@ -1910,7 +1910,7 @@ export interface NetCoreZipUploadedUserSourceInfoArgs {
     /**
      * Version of the source
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1920,31 +1920,31 @@ export interface NetworkProfileArgs {
     /**
      * Name of the resource group containing network resources for customer apps in Azure Spring Apps
      */
-    appNetworkResourceGroup?: pulumi.Input<string>;
+    appNetworkResourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Fully qualified resource Id of the subnet to host customer apps in Azure Spring Apps
      */
-    appSubnetId?: pulumi.Input<string>;
+    appSubnetId?: pulumi.Input<string | undefined>;
     /**
      * Ingress configuration payload for Azure Spring Apps resource.
      */
-    ingressConfig?: pulumi.Input<IngressConfigArgs>;
+    ingressConfig?: pulumi.Input<IngressConfigArgs | undefined>;
     /**
      * The egress traffic type of Azure Spring Apps VNet instances.
      */
-    outboundType?: pulumi.Input<string>;
+    outboundType?: pulumi.Input<string | undefined>;
     /**
      * Azure Spring Apps service reserved CIDR
      */
-    serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource group containing network resources of Azure Spring Apps Service Runtime
      */
-    serviceRuntimeNetworkResourceGroup?: pulumi.Input<string>;
+    serviceRuntimeNetworkResourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime
      */
-    serviceRuntimeSubnetId?: pulumi.Input<string>;
+    serviceRuntimeSubnetId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1954,11 +1954,11 @@ export interface PersistentDiskArgs {
     /**
      * Mount path of the persistent disk
      */
-    mountPath?: pulumi.Input<string>;
+    mountPath?: pulumi.Input<string | undefined>;
     /**
      * Size of the persistent disk in GB
      */
-    sizeInGB?: pulumi.Input<number>;
+    sizeInGB?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -1972,27 +1972,27 @@ export interface ProbeArgs {
     /**
      * Minimum consecutive failures for the probe to be considered failed after having succeeded. Minimum value is 1.
      */
-    failureThreshold?: pulumi.Input<number>;
+    failureThreshold?: pulumi.Input<number | undefined>;
     /**
      * Number of seconds after the App Instance has started before probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
      */
-    initialDelaySeconds?: pulumi.Input<number>;
+    initialDelaySeconds?: pulumi.Input<number | undefined>;
     /**
      * How often (in seconds) to perform the probe. Minimum value is 1.
      */
-    periodSeconds?: pulumi.Input<number>;
+    periodSeconds?: pulumi.Input<number | undefined>;
     /**
      * The action of the probe.
      */
-    probeAction?: pulumi.Input<ExecActionArgs | HTTPGetActionArgs | TCPSocketActionArgs>;
+    probeAction?: pulumi.Input<ExecActionArgs | HTTPGetActionArgs | TCPSocketActionArgs | undefined>;
     /**
      * Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 for liveness and startup. Minimum value is 1.
      */
-    successThreshold?: pulumi.Input<number>;
+    successThreshold?: pulumi.Input<number | undefined>;
     /**
      * Number of seconds after which the probe times out. Minimum value is 1.
      */
-    timeoutSeconds?: pulumi.Input<number>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
 }
 /**
  * probeArgsProvideDefaults sets the appropriate defaults for ProbeArgs
@@ -2011,15 +2011,15 @@ export interface QueueScaleRuleArgs {
     /**
      * Authentication secrets for the queue scale rule.
      */
-    auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
+    auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[] | undefined>;
     /**
      * Queue length.
      */
-    queueLength?: pulumi.Input<number>;
+    queueLength?: pulumi.Input<number | undefined>;
     /**
      * Queue name.
      */
-    queueName?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2029,11 +2029,11 @@ export interface ResourceRequestsArgs {
     /**
      * Required CPU. 1 core can be represented by 1 or 1000m. This should be 500m or 1 for Basic tier, and {500m, 1, 2, 3, 4} for Standard tier.
      */
-    cpu?: pulumi.Input<string>;
+    cpu?: pulumi.Input<string | undefined>;
     /**
      * Required memory. 1 GB can be represented by 1Gi or 1024Mi. This should be {512Mi, 1Gi, 2Gi} for Basic tier, and {512Mi, 1Gi, 2Gi, ..., 8Gi} for Standard tier.
      */
-    memory?: pulumi.Input<string>;
+    memory?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2043,15 +2043,15 @@ export interface ScaleArgs {
     /**
      * Optional. Maximum number of container replicas. Defaults to 10 if not set.
      */
-    maxReplicas?: pulumi.Input<number>;
+    maxReplicas?: pulumi.Input<number | undefined>;
     /**
      * Optional. Minimum number of container replicas.
      */
-    minReplicas?: pulumi.Input<number>;
+    minReplicas?: pulumi.Input<number | undefined>;
     /**
      * Scaling rules.
      */
-    rules?: pulumi.Input<pulumi.Input<ScaleRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<ScaleRuleArgs>[] | undefined>;
 }
 /**
  * scaleArgsProvideDefaults sets the appropriate defaults for ScaleArgs
@@ -2070,23 +2070,23 @@ export interface ScaleRuleArgs {
     /**
      * Azure Queue based scaling.
      */
-    azureQueue?: pulumi.Input<QueueScaleRuleArgs>;
+    azureQueue?: pulumi.Input<QueueScaleRuleArgs | undefined>;
     /**
      * Custom scale rule.
      */
-    custom?: pulumi.Input<CustomScaleRuleArgs>;
+    custom?: pulumi.Input<CustomScaleRuleArgs | undefined>;
     /**
      * HTTP requests based scaling.
      */
-    http?: pulumi.Input<HttpScaleRuleArgs>;
+    http?: pulumi.Input<HttpScaleRuleArgs | undefined>;
     /**
      * Scale Rule Name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Tcp requests based scaling.
      */
-    tcp?: pulumi.Input<TcpScaleRuleArgs>;
+    tcp?: pulumi.Input<TcpScaleRuleArgs | undefined>;
 }
 
 /**
@@ -2096,11 +2096,11 @@ export interface ScaleRuleAuthArgs {
     /**
      * Name of the Azure Spring Apps App Instance secret from which to pull the auth params.
      */
-    secretRef?: pulumi.Input<string>;
+    secretRef?: pulumi.Input<string | undefined>;
     /**
      * Trigger Parameter that uses the secret
      */
-    triggerParameter?: pulumi.Input<string>;
+    triggerParameter?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2110,11 +2110,11 @@ export interface SecretArgs {
     /**
      * Secret Name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Secret Value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2124,11 +2124,11 @@ export interface ServiceVNetAddonsArgs {
     /**
      * Indicates whether the data plane components(log stream, app connect, remote debugging) in vnet injection instance could be accessed from internet.
      */
-    dataPlanePublicEndpoint?: pulumi.Input<boolean>;
+    dataPlanePublicEndpoint?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the log stream in vnet injection instance could be accessed from internet.
      */
-    logStreamPublicEndpoint?: pulumi.Input<boolean>;
+    logStreamPublicEndpoint?: pulumi.Input<boolean | undefined>;
 }
 /**
  * serviceVNetAddonsArgsProvideDefaults sets the appropriate defaults for ServiceVNetAddonsArgs
@@ -2148,15 +2148,15 @@ export interface SkuArgs {
     /**
      * Current capacity of the target resource
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * Name of the Sku
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Tier of the Sku
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }
 /**
  * skuArgsProvideDefaults sets the appropriate defaults for SkuArgs
@@ -2177,15 +2177,15 @@ export interface SourceUploadedUserSourceInfoArgs {
      * Selector for the artifact to be used for the deployment for multi-module projects. This should be
      * the relative path to the target module/project.
      */
-    artifactSelector?: pulumi.Input<string>;
+    artifactSelector?: pulumi.Input<string | undefined>;
     /**
      * Relative path of the storage which stores the source
      */
-    relativePath?: pulumi.Input<string>;
+    relativePath?: pulumi.Input<string | undefined>;
     /**
      * Runtime version of the source file
      */
-    runtimeVersion?: pulumi.Input<string>;
+    runtimeVersion?: pulumi.Input<string | undefined>;
     /**
      * Type of the source uploaded
      * Expected value is 'Source'.
@@ -2194,7 +2194,7 @@ export interface SourceUploadedUserSourceInfoArgs {
     /**
      * Version of the source
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2204,19 +2204,19 @@ export interface SsoPropertiesArgs {
     /**
      * The public identifier for the application
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The secret known only to the application and the authorization server
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * The URI of Issuer Identifier
      */
-    issuerUri?: pulumi.Input<string>;
+    issuerUri?: pulumi.Input<string | undefined>;
     /**
      * It defines the specific actions applications can be allowed to do on a user's behalf
      */
-    scope?: pulumi.Input<pulumi.Input<string>[]>;
+    scope?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -2226,11 +2226,11 @@ export interface StackPropertiesArgs {
     /**
      * Id of the ClusterStack.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Version of the ClusterStack
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2270,11 +2270,11 @@ export interface TcpScaleRuleArgs {
     /**
      * Authentication secrets for the tcp scale rule.
      */
-    auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[]>;
+    auth?: pulumi.Input<pulumi.Input<ScaleRuleAuthArgs>[] | undefined>;
     /**
      * Metadata properties to describe tcp scale rule.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -2284,11 +2284,11 @@ export interface TemporaryDiskArgs {
     /**
      * Mount path of the temporary disk
      */
-    mountPath?: pulumi.Input<string>;
+    mountPath?: pulumi.Input<string | undefined>;
     /**
      * Size of the temporary disk in GB
      */
-    sizeInGB?: pulumi.Input<number>;
+    sizeInGB?: pulumi.Input<number | undefined>;
 }
 /**
  * temporaryDiskArgsProvideDefaults sets the appropriate defaults for TemporaryDiskArgs
@@ -2307,7 +2307,7 @@ export interface UploadedUserSourceInfoArgs {
     /**
      * Relative path of the storage which stores the source
      */
-    relativePath?: pulumi.Input<string>;
+    relativePath?: pulumi.Input<string | undefined>;
     /**
      * Type of the source uploaded
      * Expected value is 'UploadedUserSourceInfo'.
@@ -2316,7 +2316,7 @@ export interface UploadedUserSourceInfoArgs {
     /**
      * Version of the source
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -2326,19 +2326,19 @@ export interface WarUploadedUserSourceInfoArgs {
     /**
      * JVM parameter
      */
-    jvmOptions?: pulumi.Input<string>;
+    jvmOptions?: pulumi.Input<string | undefined>;
     /**
      * Relative path of the storage which stores the source
      */
-    relativePath?: pulumi.Input<string>;
+    relativePath?: pulumi.Input<string | undefined>;
     /**
      * Runtime version of the war file
      */
-    runtimeVersion?: pulumi.Input<string>;
+    runtimeVersion?: pulumi.Input<string | undefined>;
     /**
      * Server version, currently only Apache Tomcat is supported
      */
-    serverVersion?: pulumi.Input<string>;
+    serverVersion?: pulumi.Input<string | undefined>;
     /**
      * Type of the source uploaded
      * Expected value is 'War'.
@@ -2347,7 +2347,7 @@ export interface WarUploadedUserSourceInfoArgs {
     /**
      * Version of the source
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**

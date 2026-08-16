@@ -7,11 +7,11 @@ export interface DnsConfigArgs {
     /**
      * The relative DNS name provided by this Traffic Manager profile. This value is combined with the DNS domain name used by Azure Traffic Manager to form the fully-qualified domain name (FQDN) of the profile.
      */
-    relativeName?: pulumi.Input<string>;
+    relativeName?: pulumi.Input<string | undefined>;
     /**
      * The DNS Time-To-Live (TTL), in seconds. This informs the local DNS resolvers and DNS clients how long to cache DNS responses provided by this Traffic Manager profile.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -21,71 +21,71 @@ export interface EndpointArgs {
     /**
      * If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
      */
-    alwaysServe?: pulumi.Input<string | enums.AlwaysServe>;
+    alwaysServe?: pulumi.Input<string | enums.AlwaysServe | undefined>;
     /**
      * List of custom headers.
      */
-    customHeaders?: pulumi.Input<pulumi.Input<EndpointPropertiesCustomHeadersItemArgs>[]>;
+    customHeaders?: pulumi.Input<pulumi.Input<EndpointPropertiesCustomHeadersItemArgs>[] | undefined>;
     /**
      * Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
      */
-    endpointLocation?: pulumi.Input<string>;
+    endpointLocation?: pulumi.Input<string | undefined>;
     /**
      * The monitoring status of the endpoint.
      */
-    endpointMonitorStatus?: pulumi.Input<string | enums.EndpointMonitorStatus>;
+    endpointMonitorStatus?: pulumi.Input<string | enums.EndpointMonitorStatus | undefined>;
     /**
      * The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method.
      */
-    endpointStatus?: pulumi.Input<string | enums.EndpointStatus>;
+    endpointStatus?: pulumi.Input<string | enums.EndpointStatus | undefined>;
     /**
      * The list of countries/regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager Geographic documentation for a full list of accepted values.
      */
-    geoMapping?: pulumi.Input<pulumi.Input<string>[]>;
+    geoMapping?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The minimum number of endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.
      */
-    minChildEndpoints?: pulumi.Input<number>;
+    minChildEndpoints?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of IPv4 (DNS record type A) endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.
      */
-    minChildEndpointsIPv4?: pulumi.Input<number>;
+    minChildEndpointsIPv4?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of IPv6 (DNS record type AAAA) endpoints that must be available in the child profile in order for the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.
      */
-    minChildEndpointsIPv6?: pulumi.Input<number>;
+    minChildEndpointsIPv6?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
      */
-    subnets?: pulumi.Input<pulumi.Input<EndpointPropertiesSubnetsItemArgs>[]>;
+    subnets?: pulumi.Input<pulumi.Input<EndpointPropertiesSubnetsItemArgs>[] | undefined>;
     /**
      * The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
      */
-    targetResourceId?: pulumi.Input<string>;
+    targetResourceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -95,11 +95,11 @@ export interface EndpointPropertiesCustomHeadersItemArgs {
     /**
      * Header name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Header value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -109,15 +109,15 @@ export interface EndpointPropertiesSubnetsItemArgs {
     /**
      * First address in the subnet.
      */
-    first?: pulumi.Input<string>;
+    first?: pulumi.Input<string | undefined>;
     /**
      * Last address in the subnet.
      */
-    last?: pulumi.Input<string>;
+    last?: pulumi.Input<string | undefined>;
     /**
      * Block size (number of leading bits in the subnet mask).
      */
-    scope?: pulumi.Input<number>;
+    scope?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -127,39 +127,39 @@ export interface MonitorConfigArgs {
     /**
      * List of custom headers.
      */
-    customHeaders?: pulumi.Input<pulumi.Input<MonitorConfigCustomHeadersItemArgs>[]>;
+    customHeaders?: pulumi.Input<pulumi.Input<MonitorConfigCustomHeadersItemArgs>[] | undefined>;
     /**
      * List of expected status code ranges.
      */
-    expectedStatusCodeRanges?: pulumi.Input<pulumi.Input<MonitorConfigExpectedStatusCodeRangesItemArgs>[]>;
+    expectedStatusCodeRanges?: pulumi.Input<pulumi.Input<MonitorConfigExpectedStatusCodeRangesItemArgs>[] | undefined>;
     /**
      * The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile.
      */
-    intervalInSeconds?: pulumi.Input<number>;
+    intervalInSeconds?: pulumi.Input<number | undefined>;
     /**
      * The path relative to the endpoint domain name used to probe for endpoint health.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The TCP port used to probe for endpoint health.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The profile-level monitoring status of the Traffic Manager profile.
      */
-    profileMonitorStatus?: pulumi.Input<string | enums.ProfileMonitorStatus>;
+    profileMonitorStatus?: pulumi.Input<string | enums.ProfileMonitorStatus | undefined>;
     /**
      * The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
      */
-    protocol?: pulumi.Input<string | enums.MonitorProtocol>;
+    protocol?: pulumi.Input<string | enums.MonitorProtocol | undefined>;
     /**
      * The monitor timeout for endpoints in this profile. This is the time that Traffic Manager allows endpoints in this profile to response to the health check.
      */
-    timeoutInSeconds?: pulumi.Input<number>;
+    timeoutInSeconds?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next failed health check.
      */
-    toleratedNumberOfFailures?: pulumi.Input<number>;
+    toleratedNumberOfFailures?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -169,11 +169,11 @@ export interface MonitorConfigCustomHeadersItemArgs {
     /**
      * Header name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Header value.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -183,9 +183,9 @@ export interface MonitorConfigExpectedStatusCodeRangesItemArgs {
     /**
      * Max status code.
      */
-    max?: pulumi.Input<number>;
+    max?: pulumi.Input<number | undefined>;
     /**
      * Min status code.
      */
-    min?: pulumi.Input<number>;
+    min?: pulumi.Input<number | undefined>;
 }

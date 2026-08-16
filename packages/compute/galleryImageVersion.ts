@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2022-03-03.
  *
- * Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-03-03, 2022-08-03, 2023-07-03, 2025-03-03, 2025-12-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class GalleryImageVersion extends pulumi.CustomResource {
     /**
@@ -150,7 +150,7 @@ export class GalleryImageVersion extends pulumi.CustomResource {
             resourceInputs["validationsProfile"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20180601:GalleryImageVersion" }, { type: "azure-native:compute/v20190301:GalleryImageVersion" }, { type: "azure-native:compute/v20190701:GalleryImageVersion" }, { type: "azure-native:compute/v20191201:GalleryImageVersion" }, { type: "azure-native:compute/v20200930:GalleryImageVersion" }, { type: "azure-native:compute/v20210701:GalleryImageVersion" }, { type: "azure-native:compute/v20211001:GalleryImageVersion" }, { type: "azure-native:compute/v20220103:GalleryImageVersion" }, { type: "azure-native:compute/v20220303:GalleryImageVersion" }, { type: "azure-native:compute/v20220803:GalleryImageVersion" }, { type: "azure-native:compute/v20230703:GalleryImageVersion" }, { type: "azure-native:compute/v20240303:GalleryImageVersion" }, { type: "azure-native:compute/v20250303:GalleryImageVersion" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20180601:GalleryImageVersion" }, { type: "azure-native:compute/v20190301:GalleryImageVersion" }, { type: "azure-native:compute/v20190701:GalleryImageVersion" }, { type: "azure-native:compute/v20191201:GalleryImageVersion" }, { type: "azure-native:compute/v20200930:GalleryImageVersion" }, { type: "azure-native:compute/v20210701:GalleryImageVersion" }, { type: "azure-native:compute/v20211001:GalleryImageVersion" }, { type: "azure-native:compute/v20220103:GalleryImageVersion" }, { type: "azure-native:compute/v20220303:GalleryImageVersion" }, { type: "azure-native:compute/v20220803:GalleryImageVersion" }, { type: "azure-native:compute/v20230703:GalleryImageVersion" }, { type: "azure-native:compute/v20240303:GalleryImageVersion" }, { type: "azure-native:compute/v20250303:GalleryImageVersion" }, { type: "azure-native:compute/v20251203:GalleryImageVersion" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GalleryImageVersion.__pulumiType, name, resourceInputs, opts);
     }
@@ -167,7 +167,7 @@ export interface GalleryImageVersionArgs {
     /**
      * The name of the gallery image version to be retrieved.
      */
-    galleryImageVersionName?: pulumi.Input<string>;
+    galleryImageVersionName?: pulumi.Input<string | undefined>;
     /**
      * The name of the Shared Image Gallery.
      */
@@ -175,11 +175,11 @@ export interface GalleryImageVersionArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The publishing profile of a gallery image Version.
      */
-    publishingProfile?: pulumi.Input<types.inputs.GalleryImageVersionPublishingProfileArgs>;
+    publishingProfile?: pulumi.Input<types.inputs.GalleryImageVersionPublishingProfileArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -187,15 +187,15 @@ export interface GalleryImageVersionArgs {
     /**
      * Indicates if this is a soft-delete resource restoration request.
      */
-    restore?: pulumi.Input<boolean>;
+    restore?: pulumi.Input<boolean | undefined>;
     /**
      * This is the safety profile of the Gallery Image Version.
      */
-    safetyProfile?: pulumi.Input<types.inputs.GalleryImageVersionSafetyProfileArgs>;
+    safetyProfile?: pulumi.Input<types.inputs.GalleryImageVersionSafetyProfileArgs | undefined>;
     /**
      * The security profile of a gallery image version
      */
-    securityProfile?: pulumi.Input<types.inputs.ImageVersionSecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.ImageVersionSecurityProfileArgs | undefined>;
     /**
      * This is the storage profile of a Gallery Image Version.
      */
@@ -203,5 +203,5 @@ export interface GalleryImageVersionArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

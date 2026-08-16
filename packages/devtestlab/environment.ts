@@ -145,11 +145,11 @@ export interface EnvironmentArgs {
     /**
      * The display name of the Azure Resource Manager template that produced the environment.
      */
-    armTemplateDisplayName?: pulumi.Input<string>;
+    armTemplateDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The deployment properties of the environment.
      */
-    deploymentProperties?: pulumi.Input<types.inputs.EnvironmentDeploymentPropertiesArgs>;
+    deploymentProperties?: pulumi.Input<types.inputs.EnvironmentDeploymentPropertiesArgs | undefined>;
     /**
      * The name of the lab.
      */
@@ -157,11 +157,11 @@ export interface EnvironmentArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -169,7 +169,7 @@ export interface EnvironmentArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the user profile.
      */

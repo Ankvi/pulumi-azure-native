@@ -7,7 +7,7 @@ export interface AccessPolicyEntryArgs {
     /**
      *  Application ID of the client making request on behalf of a principal
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies.
      */
@@ -26,7 +26,7 @@ export interface ActionArgs {
     /**
      * The type of action.
      */
-    type?: pulumi.Input<enums.KeyRotationPolicyActionType>;
+    type?: pulumi.Input<enums.KeyRotationPolicyActionType | undefined>;
 }
 
 /**
@@ -46,19 +46,19 @@ export interface KeyAttributesArgs {
     /**
      * Determines whether or not the object is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Expiry date in seconds since 1970-01-01T00:00:00Z.
      */
-    expires?: pulumi.Input<number>;
+    expires?: pulumi.Input<number | undefined>;
     /**
      * Indicates if the private key can be exported.
      */
-    exportable?: pulumi.Input<boolean>;
+    exportable?: pulumi.Input<boolean | undefined>;
     /**
      * Not before date in seconds since 1970-01-01T00:00:00Z.
      */
-    notBefore?: pulumi.Input<number>;
+    notBefore?: pulumi.Input<number | undefined>;
 }
 /**
  * keyAttributesArgsProvideDefaults sets the appropriate defaults for KeyAttributesArgs
@@ -77,28 +77,28 @@ export interface KeyPropertiesArgs {
     /**
      * The attributes of the key.
      */
-    attributes?: pulumi.Input<KeyAttributesArgs>;
+    attributes?: pulumi.Input<KeyAttributesArgs | undefined>;
     /**
      * The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
      */
-    curveName?: pulumi.Input<string | enums.JsonWebKeyCurveName>;
-    keyOps?: pulumi.Input<pulumi.Input<string | enums.JsonWebKeyOperation>[]>;
+    curveName?: pulumi.Input<string | enums.JsonWebKeyCurveName | undefined>;
+    keyOps?: pulumi.Input<pulumi.Input<string | enums.JsonWebKeyOperation>[] | undefined>;
     /**
      * The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096.
      */
-    keySize?: pulumi.Input<number>;
+    keySize?: pulumi.Input<number | undefined>;
     /**
      * The type of the key. For valid values, see JsonWebKeyType.
      */
-    kty?: pulumi.Input<string | enums.JsonWebKeyType>;
+    kty?: pulumi.Input<string | enums.JsonWebKeyType | undefined>;
     /**
      * Key release policy in response. It will be used for both output and input. Omitted if empty
      */
-    releasePolicy?: pulumi.Input<KeyReleasePolicyArgs>;
+    releasePolicy?: pulumi.Input<KeyReleasePolicyArgs | undefined>;
     /**
      * Key rotation policy in response. It will be used for both output and input. Omitted if empty
      */
-    rotationPolicy?: pulumi.Input<RotationPolicyArgs>;
+    rotationPolicy?: pulumi.Input<RotationPolicyArgs | undefined>;
 }
 /**
  * keyPropertiesArgsProvideDefaults sets the appropriate defaults for KeyPropertiesArgs
@@ -106,8 +106,8 @@ export interface KeyPropertiesArgs {
 export function keyPropertiesArgsProvideDefaults(val: KeyPropertiesArgs): KeyPropertiesArgs {
     return {
         ...val,
-        attributes: (val.attributes ? pulumi.output(val.attributes).apply(keyAttributesArgsProvideDefaults) : undefined),
-        releasePolicy: (val.releasePolicy ? pulumi.output(val.releasePolicy).apply(keyReleasePolicyArgsProvideDefaults) : undefined),
+        attributes: pulumi.output(val.attributes).apply(v => v === undefined ? undefined : keyAttributesArgsProvideDefaults(v)),
+        releasePolicy: pulumi.output(val.releasePolicy).apply(v => v === undefined ? undefined : keyReleasePolicyArgsProvideDefaults(v)),
     };
 }
 
@@ -115,11 +115,11 @@ export interface KeyReleasePolicyArgs {
     /**
      * Content type and version of key release policy
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * Blob encoding the policy rules under which the key can be released.
      */
-    data?: pulumi.Input<string>;
+    data?: pulumi.Input<string | undefined>;
 }
 /**
  * keyReleasePolicyArgsProvideDefaults sets the appropriate defaults for KeyReleasePolicyArgs
@@ -135,18 +135,18 @@ export interface KeyRotationPolicyAttributesArgs {
     /**
      * The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'.
      */
-    expiryTime?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string | undefined>;
 }
 
 export interface LifetimeActionArgs {
     /**
      * The action of key rotation policy lifetimeAction.
      */
-    action?: pulumi.Input<ActionArgs>;
+    action?: pulumi.Input<ActionArgs | undefined>;
     /**
      * The trigger of key rotation policy lifetimeAction.
      */
-    trigger?: pulumi.Input<TriggerArgs>;
+    trigger?: pulumi.Input<TriggerArgs | undefined>;
 }
 
 /**
@@ -156,11 +156,11 @@ export interface MHSMGeoReplicatedRegionArgs {
     /**
      * A boolean value that indicates whether the region is the primary region or a secondary region.
      */
-    isPrimary?: pulumi.Input<boolean>;
+    isPrimary?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the geo replicated region.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -180,19 +180,19 @@ export interface MHSMNetworkRuleSetArgs {
     /**
      * Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If not specified the default is 'AzureServices'.
      */
-    bypass?: pulumi.Input<string | enums.NetworkRuleBypassOptions>;
+    bypass?: pulumi.Input<string | enums.NetworkRuleBypassOptions | undefined>;
     /**
      * The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
      */
-    defaultAction?: pulumi.Input<string | enums.NetworkRuleAction>;
+    defaultAction?: pulumi.Input<string | enums.NetworkRuleAction | undefined>;
     /**
      * The list of IP address rules.
      */
-    ipRules?: pulumi.Input<pulumi.Input<MHSMIPRuleArgs>[]>;
+    ipRules?: pulumi.Input<pulumi.Input<MHSMIPRuleArgs>[] | undefined>;
     /**
      * The list of virtual network rules.
      */
-    virtualNetworkRules?: pulumi.Input<pulumi.Input<MHSMVirtualNetworkRuleArgs>[]>;
+    virtualNetworkRules?: pulumi.Input<pulumi.Input<MHSMVirtualNetworkRuleArgs>[] | undefined>;
 }
 
 /**
@@ -202,15 +202,15 @@ export interface MHSMPrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string | enums.ActionsRequired>;
+    actionsRequired?: pulumi.Input<string | enums.ActionsRequired | undefined>;
     /**
      * The reason for approval or rejection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been approved, rejected or removed by the key vault owner.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 /**
@@ -230,39 +230,39 @@ export interface ManagedHsmPropertiesArgs {
     /**
      * The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
      */
-    createMode?: pulumi.Input<enums.CreateMode>;
+    createMode?: pulumi.Input<enums.CreateMode | undefined>;
     /**
      * Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
      */
-    enablePurgeProtection?: pulumi.Input<boolean>;
+    enablePurgeProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable.
      */
-    enableSoftDelete?: pulumi.Input<boolean>;
+    enableSoftDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Array of initial administrators object ids for this managed hsm pool.
      */
-    initialAdminObjectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    initialAdminObjectIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Rules governing the accessibility of the key vault from specific network locations.
      */
-    networkAcls?: pulumi.Input<MHSMNetworkRuleSetArgs>;
+    networkAcls?: pulumi.Input<MHSMNetworkRuleSetArgs | undefined>;
     /**
      * Control permission to the managed HSM from public networks.
      */
-    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess | undefined>;
     /**
      * List of all regions associated with the managed hsm pool.
      */
-    regions?: pulumi.Input<pulumi.Input<MHSMGeoReplicatedRegionArgs>[]>;
+    regions?: pulumi.Input<pulumi.Input<MHSMGeoReplicatedRegionArgs>[] | undefined>;
     /**
      * Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
      */
-    softDeleteRetentionInDays?: pulumi.Input<number>;
+    softDeleteRetentionInDays?: pulumi.Input<number | undefined>;
     /**
      * The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 /**
  * managedHsmPropertiesArgsProvideDefaults sets the appropriate defaults for ManagedHsmPropertiesArgs
@@ -302,7 +302,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -312,19 +312,19 @@ export interface NetworkRuleSetArgs {
     /**
      * Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If not specified the default is 'AzureServices'.
      */
-    bypass?: pulumi.Input<string | enums.NetworkRuleBypassOptions>;
+    bypass?: pulumi.Input<string | enums.NetworkRuleBypassOptions | undefined>;
     /**
      * The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
      */
-    defaultAction?: pulumi.Input<string | enums.NetworkRuleAction>;
+    defaultAction?: pulumi.Input<string | enums.NetworkRuleAction | undefined>;
     /**
      * The list of IP address rules.
      */
-    ipRules?: pulumi.Input<pulumi.Input<IPRuleArgs>[]>;
+    ipRules?: pulumi.Input<pulumi.Input<IPRuleArgs>[] | undefined>;
     /**
      * The list of virtual network rules.
      */
-    virtualNetworkRules?: pulumi.Input<pulumi.Input<VirtualNetworkRuleArgs>[]>;
+    virtualNetworkRules?: pulumi.Input<pulumi.Input<VirtualNetworkRuleArgs>[] | undefined>;
 }
 
 /**
@@ -334,19 +334,19 @@ export interface PermissionsArgs {
     /**
      * Permissions to certificates
      */
-    certificates?: pulumi.Input<pulumi.Input<string | enums.CertificatePermissions>[]>;
+    certificates?: pulumi.Input<pulumi.Input<string | enums.CertificatePermissions>[] | undefined>;
     /**
      * Permissions to keys
      */
-    keys?: pulumi.Input<pulumi.Input<string | enums.KeyPermissions>[]>;
+    keys?: pulumi.Input<pulumi.Input<string | enums.KeyPermissions>[] | undefined>;
     /**
      * Permissions to secrets
      */
-    secrets?: pulumi.Input<pulumi.Input<string | enums.SecretPermissions>[]>;
+    secrets?: pulumi.Input<pulumi.Input<string | enums.SecretPermissions>[] | undefined>;
     /**
      * Permissions to storage accounts
      */
-    storage?: pulumi.Input<pulumi.Input<string | enums.StoragePermissions>[]>;
+    storage?: pulumi.Input<pulumi.Input<string | enums.StoragePermissions>[] | undefined>;
 }
 
 /**
@@ -356,26 +356,26 @@ export interface PrivateLinkServiceConnectionStateArgs {
     /**
      * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    actionsRequired?: pulumi.Input<string | enums.ActionsRequired>;
+    actionsRequired?: pulumi.Input<string | enums.ActionsRequired | undefined>;
     /**
      * The reason for approval or rejection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection has been approved, rejected or removed by the key vault owner.
      */
-    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | undefined>;
 }
 
 export interface RotationPolicyArgs {
     /**
      * The attributes of key rotation policy.
      */
-    attributes?: pulumi.Input<KeyRotationPolicyAttributesArgs>;
+    attributes?: pulumi.Input<KeyRotationPolicyAttributesArgs | undefined>;
     /**
      * The lifetimeActions for key rotation action.
      */
-    lifetimeActions?: pulumi.Input<pulumi.Input<LifetimeActionArgs>[]>;
+    lifetimeActions?: pulumi.Input<pulumi.Input<LifetimeActionArgs>[] | undefined>;
 }
 
 /**
@@ -385,15 +385,15 @@ export interface SecretAttributesArgs {
     /**
      * Determines whether the object is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Expiry date in seconds since 1970-01-01T00:00:00Z.
      */
-    expires?: pulumi.Input<number>;
+    expires?: pulumi.Input<number | undefined>;
     /**
      * Not before date in seconds since 1970-01-01T00:00:00Z.
      */
-    notBefore?: pulumi.Input<number>;
+    notBefore?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -403,15 +403,15 @@ export interface SecretPropertiesArgs {
     /**
      * The attributes of the secret.
      */
-    attributes?: pulumi.Input<SecretAttributesArgs>;
+    attributes?: pulumi.Input<SecretAttributesArgs | undefined>;
     /**
      * The content type of the secret.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -432,11 +432,11 @@ export interface TriggerArgs {
     /**
      * The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
      */
-    timeAfterCreate?: pulumi.Input<string>;
+    timeAfterCreate?: pulumi.Input<string | undefined>;
     /**
      * The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
      */
-    timeBeforeExpiry?: pulumi.Input<string>;
+    timeBeforeExpiry?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -447,43 +447,43 @@ export interface VaultPropertiesArgs {
      * An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<AccessPolicyEntryArgs>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<AccessPolicyEntryArgs>[] | undefined>;
     /**
      * The vault's create mode to indicate whether the vault need to be recovered or not.
      */
-    createMode?: pulumi.Input<enums.CreateMode>;
+    createMode?: pulumi.Input<enums.CreateMode | undefined>;
     /**
      * Property specifying whether protection against purge is enabled for this vault. Setting this property to true activates protection against purge for this vault and its content - only the Key Vault service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible - that is, the property does not accept false as its value.
      */
-    enablePurgeProtection?: pulumi.Input<boolean>;
+    enablePurgeProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Property that controls how data actions are authorized. When true, the key vault will use Role Based Access Control (RBAC) for authorization of data actions, and the access policies specified in vault properties will be  ignored. When false, the key vault will use the access policies specified in vault properties, and any policy stored on Azure Resource Manager will be ignored. If null or not specified, the vault is created with the default value of false. Note that management actions are always authorized with RBAC.
      */
-    enableRbacAuthorization?: pulumi.Input<boolean>;
+    enableRbacAuthorization?: pulumi.Input<boolean | undefined>;
     /**
      * Property to specify whether the 'soft delete' functionality is enabled for this key vault. If it's not set to any value(true or false) when creating new key vault, it will be set to true by default. Once set to true, it cannot be reverted to false.
      */
-    enableSoftDelete?: pulumi.Input<boolean>;
+    enableSoftDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Property to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault.
      */
-    enabledForDeployment?: pulumi.Input<boolean>;
+    enabledForDeployment?: pulumi.Input<boolean | undefined>;
     /**
      * Property to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys.
      */
-    enabledForDiskEncryption?: pulumi.Input<boolean>;
+    enabledForDiskEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * Property to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault.
      */
-    enabledForTemplateDeployment?: pulumi.Input<boolean>;
+    enabledForTemplateDeployment?: pulumi.Input<boolean | undefined>;
     /**
      * Rules governing the accessibility of the key vault from specific network locations.
      */
-    networkAcls?: pulumi.Input<NetworkRuleSetArgs>;
+    networkAcls?: pulumi.Input<NetworkRuleSetArgs | undefined>;
     /**
      * Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
      */
-    publicNetworkAccess?: pulumi.Input<string>;
+    publicNetworkAccess?: pulumi.Input<string | undefined>;
     /**
      * SKU details
      */
@@ -491,7 +491,7 @@ export interface VaultPropertiesArgs {
     /**
      * softDelete data retention days. It accepts >=7 and <=90.
      */
-    softDeleteRetentionInDays?: pulumi.Input<number>;
+    softDeleteRetentionInDays?: pulumi.Input<number | undefined>;
     /**
      * The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
      */
@@ -524,5 +524,5 @@ export interface VirtualNetworkRuleArgs {
     /**
      * Property to specify whether NRP will ignore the check if parent subnet has serviceEndpoints configured.
      */
-    ignoreMissingVnetServiceEndpoint?: pulumi.Input<boolean>;
+    ignoreMissingVnetServiceEndpoint?: pulumi.Input<boolean | undefined>;
 }

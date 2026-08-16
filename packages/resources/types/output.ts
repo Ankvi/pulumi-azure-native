@@ -3,6 +3,72 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
  */
+export interface ActionOnUnmanageDeploymentStacksWhatIfResultsAtManagementGroupResponse {
+    /**
+     * Specifies an action for a newly unmanaged resource management group.
+     */
+    managementGroups?: string;
+    /**
+     * Specifies an action for a newly unmanaged resource group.
+     */
+    resourceGroups?: string;
+    /**
+     * Specifies an action for a newly unmanaged resource.
+     */
+    resources: string;
+    /**
+     * Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+     */
+    resourcesWithoutDeleteSupport?: string;
+}
+
+/**
+ * Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+ */
+export interface ActionOnUnmanageDeploymentStacksWhatIfResultsAtResourceGroupResponse {
+    /**
+     * Specifies an action for a newly unmanaged resource management group.
+     */
+    managementGroups?: string;
+    /**
+     * Specifies an action for a newly unmanaged resource group.
+     */
+    resourceGroups?: string;
+    /**
+     * Specifies an action for a newly unmanaged resource.
+     */
+    resources: string;
+    /**
+     * Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+     */
+    resourcesWithoutDeleteSupport?: string;
+}
+
+/**
+ * Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+ */
+export interface ActionOnUnmanageDeploymentStacksWhatIfResultsAtSubscriptionResponse {
+    /**
+     * Specifies an action for a newly unmanaged resource management group.
+     */
+    managementGroups?: string;
+    /**
+     * Specifies an action for a newly unmanaged resource group.
+     */
+    resourceGroups?: string;
+    /**
+     * Specifies an action for a newly unmanaged resource.
+     */
+    resources: string;
+    /**
+     * Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+     */
+    resourcesWithoutDeleteSupport?: string;
+}
+
+/**
+ * Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+ */
 export interface ActionOnUnmanageResponse {
     /**
      * Specifies an action for a newly unmanaged resource management group.
@@ -16,72 +82,6 @@ export interface ActionOnUnmanageResponse {
      * Specifies an action for a newly unmanaged resource.
      */
     resources: string;
-}
-
-/**
- * Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
- */
-export interface ActionOnUnmanageResponseV1 {
-    /**
-     * Specifies an action for a newly unmanaged resource management group.
-     */
-    managementGroups?: string;
-    /**
-     * Specifies an action for a newly unmanaged resource group.
-     */
-    resourceGroups?: string;
-    /**
-     * Specifies an action for a newly unmanaged resource.
-     */
-    resources: string;
-    /**
-     * Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
-     */
-    resourcesWithoutDeleteSupport?: string;
-}
-
-/**
- * Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
- */
-export interface ActionOnUnmanageResponseV2 {
-    /**
-     * Specifies an action for a newly unmanaged resource management group.
-     */
-    managementGroups?: string;
-    /**
-     * Specifies an action for a newly unmanaged resource group.
-     */
-    resourceGroups?: string;
-    /**
-     * Specifies an action for a newly unmanaged resource.
-     */
-    resources: string;
-    /**
-     * Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
-     */
-    resourcesWithoutDeleteSupport?: string;
-}
-
-/**
- * Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
- */
-export interface ActionOnUnmanageResponseV3 {
-    /**
-     * Specifies an action for a newly unmanaged resource management group.
-     */
-    managementGroups?: string;
-    /**
-     * Specifies an action for a newly unmanaged resource group.
-     */
-    resourceGroups?: string;
-    /**
-     * Specifies an action for a newly unmanaged resource.
-     */
-    resources: string;
-    /**
-     * Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
-     */
-    resourcesWithoutDeleteSupport?: string;
 }
 
 export interface AliasPathMetadataResponse {
@@ -136,7 +136,7 @@ export interface AliasPatternResponse {
 }
 
 /**
- * The alias type. 
+ * The alias type.
  */
 export interface AliasResponse {
     /**
@@ -375,11 +375,11 @@ export interface DeploymentPropertiesExtendedResponse {
      */
     outputs: any;
     /**
-     * Deployment parameters. 
+     * Deployment parameters.
      */
     parameters: any;
     /**
-     * The URI referencing the parameters. 
+     * The URI referencing the parameters.
      */
     parametersLink: ParametersLinkResponse;
     /**
@@ -641,151 +641,151 @@ export interface DeploymentStacksWhatIfResourceChangeResponseResourceConfigurati
 /**
  * DeploymentStack WhatIfResult Properties
  */
+export interface DeploymentStacksWhatIfResultPropertiesDeploymentStacksWhatIfResultsAtResourceGroupResponse {
+    /**
+     * Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+     */
+    actionOnUnmanage: ActionOnUnmanageDeploymentStacksWhatIfResultsAtResourceGroupResponse;
+    /**
+     * All of the changes predicted by the deployment stack what-if operation.
+     */
+    changes: DeploymentStacksWhatIfChangeResponse;
+    /**
+     * The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
+     */
+    correlationId: string;
+    /**
+     * The debug setting of the deployment.
+     */
+    debugSetting?: DeploymentStacksDebugSettingResponse;
+    /**
+     * Defines how resources deployed by the stack are locked.
+     */
+    denySettings: DenySettingsResponse;
+    /**
+     * The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+     */
+    deploymentScope?: string;
+    /**
+     * The timestamp for when the deployment stack was last modified. This can be used to determine if the what-if data is still current.
+     */
+    deploymentStackLastModified: string;
+    /**
+     * The deployment stack id to use as the basis for comparison.
+     */
+    deploymentStackResourceId: string;
+    /**
+     * Deployment stack description. Max length of 4096 characters.
+     */
+    description?: string;
+    /**
+     * List of resource diagnostics detected by What-If operation.
+     */
+    diagnostics: DeploymentStacksDiagnosticResponse[];
+    /**
+     * The error detail.
+     */
+    error: ErrorDetailResponse;
+    /**
+     * Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+     */
+    parameters?: {[key: string]: DeploymentParameterResponse};
+    /**
+     * The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+     */
+    parametersLink?: DeploymentStacksParametersLinkResponse;
+    /**
+     * State of the deployment stack.
+     */
+    provisioningState: string;
+    /**
+     * The interval to persist the deployment stack what-if result in ISO 8601 format.
+     */
+    retentionInterval: string;
+    /**
+     * The validation level of the deployment stack
+     */
+    validationLevel?: string;
+}
+
+/**
+ * DeploymentStack WhatIfResult Properties
+ */
+export interface DeploymentStacksWhatIfResultPropertiesDeploymentStacksWhatIfResultsAtSubscriptionResponse {
+    /**
+     * Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+     */
+    actionOnUnmanage: ActionOnUnmanageDeploymentStacksWhatIfResultsAtSubscriptionResponse;
+    /**
+     * All of the changes predicted by the deployment stack what-if operation.
+     */
+    changes: DeploymentStacksWhatIfChangeResponse;
+    /**
+     * The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
+     */
+    correlationId: string;
+    /**
+     * The debug setting of the deployment.
+     */
+    debugSetting?: DeploymentStacksDebugSettingResponse;
+    /**
+     * Defines how resources deployed by the stack are locked.
+     */
+    denySettings: DenySettingsResponse;
+    /**
+     * The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+     */
+    deploymentScope?: string;
+    /**
+     * The timestamp for when the deployment stack was last modified. This can be used to determine if the what-if data is still current.
+     */
+    deploymentStackLastModified: string;
+    /**
+     * The deployment stack id to use as the basis for comparison.
+     */
+    deploymentStackResourceId: string;
+    /**
+     * Deployment stack description. Max length of 4096 characters.
+     */
+    description?: string;
+    /**
+     * List of resource diagnostics detected by What-If operation.
+     */
+    diagnostics: DeploymentStacksDiagnosticResponse[];
+    /**
+     * The error detail.
+     */
+    error: ErrorDetailResponse;
+    /**
+     * Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+     */
+    parameters?: {[key: string]: DeploymentParameterResponse};
+    /**
+     * The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+     */
+    parametersLink?: DeploymentStacksParametersLinkResponse;
+    /**
+     * State of the deployment stack.
+     */
+    provisioningState: string;
+    /**
+     * The interval to persist the deployment stack what-if result in ISO 8601 format.
+     */
+    retentionInterval: string;
+    /**
+     * The validation level of the deployment stack
+     */
+    validationLevel?: string;
+}
+
+/**
+ * DeploymentStack WhatIfResult Properties
+ */
 export interface DeploymentStacksWhatIfResultPropertiesResponse {
     /**
      * Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
      */
-    actionOnUnmanage: ActionOnUnmanageResponseV1;
-    /**
-     * All of the changes predicted by the deployment stack what-if operation.
-     */
-    changes: DeploymentStacksWhatIfChangeResponse;
-    /**
-     * The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
-     */
-    correlationId: string;
-    /**
-     * The debug setting of the deployment.
-     */
-    debugSetting?: DeploymentStacksDebugSettingResponse;
-    /**
-     * Defines how resources deployed by the stack are locked.
-     */
-    denySettings: DenySettingsResponse;
-    /**
-     * The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
-     */
-    deploymentScope?: string;
-    /**
-     * The timestamp for when the deployment stack was last modified. This can be used to determine if the what-if data is still current.
-     */
-    deploymentStackLastModified: string;
-    /**
-     * The deployment stack id to use as the basis for comparison.
-     */
-    deploymentStackResourceId: string;
-    /**
-     * Deployment stack description. Max length of 4096 characters.
-     */
-    description?: string;
-    /**
-     * List of resource diagnostics detected by What-If operation.
-     */
-    diagnostics: DeploymentStacksDiagnosticResponse[];
-    /**
-     * The error detail.
-     */
-    error: ErrorDetailResponse;
-    /**
-     * Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
-     */
-    parameters?: {[key: string]: DeploymentParameterResponse};
-    /**
-     * The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-     */
-    parametersLink?: DeploymentStacksParametersLinkResponse;
-    /**
-     * State of the deployment stack.
-     */
-    provisioningState: string;
-    /**
-     * The interval to persist the deployment stack what-if result in ISO 8601 format.
-     */
-    retentionInterval: string;
-    /**
-     * The validation level of the deployment stack
-     */
-    validationLevel?: string;
-}
-
-/**
- * DeploymentStack WhatIfResult Properties
- */
-export interface DeploymentStacksWhatIfResultPropertiesResponseV1 {
-    /**
-     * Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
-     */
-    actionOnUnmanage: ActionOnUnmanageResponseV2;
-    /**
-     * All of the changes predicted by the deployment stack what-if operation.
-     */
-    changes: DeploymentStacksWhatIfChangeResponse;
-    /**
-     * The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
-     */
-    correlationId: string;
-    /**
-     * The debug setting of the deployment.
-     */
-    debugSetting?: DeploymentStacksDebugSettingResponse;
-    /**
-     * Defines how resources deployed by the stack are locked.
-     */
-    denySettings: DenySettingsResponse;
-    /**
-     * The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
-     */
-    deploymentScope?: string;
-    /**
-     * The timestamp for when the deployment stack was last modified. This can be used to determine if the what-if data is still current.
-     */
-    deploymentStackLastModified: string;
-    /**
-     * The deployment stack id to use as the basis for comparison.
-     */
-    deploymentStackResourceId: string;
-    /**
-     * Deployment stack description. Max length of 4096 characters.
-     */
-    description?: string;
-    /**
-     * List of resource diagnostics detected by What-If operation.
-     */
-    diagnostics: DeploymentStacksDiagnosticResponse[];
-    /**
-     * The error detail.
-     */
-    error: ErrorDetailResponse;
-    /**
-     * Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
-     */
-    parameters?: {[key: string]: DeploymentParameterResponse};
-    /**
-     * The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-     */
-    parametersLink?: DeploymentStacksParametersLinkResponse;
-    /**
-     * State of the deployment stack.
-     */
-    provisioningState: string;
-    /**
-     * The interval to persist the deployment stack what-if result in ISO 8601 format.
-     */
-    retentionInterval: string;
-    /**
-     * The validation level of the deployment stack
-     */
-    validationLevel?: string;
-}
-
-/**
- * DeploymentStack WhatIfResult Properties
- */
-export interface DeploymentStacksWhatIfResultPropertiesResponseV2 {
-    /**
-     * Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
-     */
-    actionOnUnmanage: ActionOnUnmanageResponseV3;
+    actionOnUnmanage: ActionOnUnmanageDeploymentStacksWhatIfResultsAtManagementGroupResponse;
     /**
      * All of the changes predicted by the deployment stack what-if operation.
      */
@@ -1049,11 +1049,11 @@ export function managedResourceReferenceResponseProvideDefaults(val: ManagedReso
 }
 
 /**
- * Managed identity generic object.
+ * Describes the managed identities for an Azure resource.
  */
 export interface ManagedServiceIdentityResponse {
     /**
-     * ID of the Azure Active Directory.
+     * The tenant id of the managed identity.
      */
     tenantId: string;
     /**
@@ -1125,7 +1125,7 @@ export interface PlanResponse {
 }
 
 /**
- * The provider extended location. 
+ * The provider extended location.
  */
 export interface ProviderExtendedLocationResponse {
     /**
@@ -1220,7 +1220,7 @@ export interface ProviderResponse {
  */
 export interface ResourceGroupPropertiesResponse {
     /**
-     * The provisioning state. 
+     * The provisioning state.
      */
     provisioningState: string;
 }
@@ -1264,7 +1264,7 @@ export interface ScriptStatusResponse {
     /**
      * Error that is relayed from the script execution.
      */
-    error?: ErrorResponseResponse;
+    error?: ErrorDetailResponse;
     /**
      * Time the deployment script resource will expire.
      */

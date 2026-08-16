@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-01-31. In version 2.x of the Azure Native provider, it used API version 2023-01-31.
  *
- * Other available API versions: 2022-01-31-preview, 2023-07-31-preview, 2024-11-30, 2025-01-31-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managedidentity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-01-31-preview, 2023-07-31-preview, 2024-11-30, 2025-01-31-preview, 2025-05-31-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managedidentity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class UserAssignedIdentity extends pulumi.CustomResource {
     /**
@@ -109,7 +109,7 @@ export class UserAssignedIdentity extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managedidentity/v20150831preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20181130:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20210930preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20220131preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20230131:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20230731preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20241130:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20250131preview:UserAssignedIdentity" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managedidentity/v20150831preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20181130:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20210930preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20220131preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20230131:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20230731preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20241130:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20250131preview:UserAssignedIdentity" }, { type: "azure-native:managedidentity/v20250531preview:UserAssignedIdentity" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(UserAssignedIdentity.__pulumiType, name, resourceInputs, opts);
     }
@@ -122,7 +122,7 @@ export interface UserAssignedIdentityArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the Resource Group to which the identity belongs.
      */
@@ -130,9 +130,9 @@ export interface UserAssignedIdentityArgs {
     /**
      * The name of the identity resource.
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

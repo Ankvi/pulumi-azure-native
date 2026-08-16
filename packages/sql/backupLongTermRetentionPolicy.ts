@@ -102,7 +102,7 @@ export class BackupLongTermRetentionPolicy extends pulumi.CustomResource {
             resourceInputs["yearlyRetention"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20200202preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20200801preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20201101preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20210201preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20210501preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20210801preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20211101:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20211101:LongTermRetentionPolicy" }, { type: "azure-native:sql/v20211101preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20220201preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20220501preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20220801preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20221101preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20221101preview:LongTermRetentionPolicy" }, { type: "azure-native:sql/v20230201preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20230201preview:LongTermRetentionPolicy" }, { type: "azure-native:sql/v20230501preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20230501preview:LongTermRetentionPolicy" }, { type: "azure-native:sql/v20230801:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20230801preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20230801preview:LongTermRetentionPolicy" }, { type: "azure-native:sql/v20240501preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20240501preview:LongTermRetentionPolicy" }, { type: "azure-native:sql/v20241101preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql:LongTermRetentionPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20170301preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20200202preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20200801preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20201101preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20210201preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20210501preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20210801preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20211101:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20211101:LongTermRetentionPolicy" }, { type: "azure-native:sql/v20211101preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20220201preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20220501preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20220801preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20221101preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20221101preview:LongTermRetentionPolicy" }, { type: "azure-native:sql/v20230201preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20230201preview:LongTermRetentionPolicy" }, { type: "azure-native:sql/v20230501preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20230501preview:LongTermRetentionPolicy" }, { type: "azure-native:sql/v20230801:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20230801preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20230801preview:LongTermRetentionPolicy" }, { type: "azure-native:sql/v20240501preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20240501preview:LongTermRetentionPolicy" }, { type: "azure-native:sql/v20241101preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20250101:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20250201preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql/v20250801preview:BackupLongTermRetentionPolicy" }, { type: "azure-native:sql:LongTermRetentionPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(BackupLongTermRetentionPolicy.__pulumiType, name, resourceInputs, opts);
     }
@@ -119,11 +119,11 @@ export interface BackupLongTermRetentionPolicyArgs {
     /**
      * The monthly retention policy for an LTR backup in an ISO 8601 format.
      */
-    monthlyRetention?: pulumi.Input<string>;
+    monthlyRetention?: pulumi.Input<string | undefined>;
     /**
      * The policy name. Should always be Default.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -135,13 +135,13 @@ export interface BackupLongTermRetentionPolicyArgs {
     /**
      * The week of year to take the yearly backup in an ISO 8601 format.
      */
-    weekOfYear?: pulumi.Input<number>;
+    weekOfYear?: pulumi.Input<number | undefined>;
     /**
      * The weekly retention policy for an LTR backup in an ISO 8601 format.
      */
-    weeklyRetention?: pulumi.Input<string>;
+    weeklyRetention?: pulumi.Input<string | undefined>;
     /**
      * The yearly retention policy for an LTR backup in an ISO 8601 format.
      */
-    yearlyRetention?: pulumi.Input<string>;
+    yearlyRetention?: pulumi.Input<string | undefined>;
 }

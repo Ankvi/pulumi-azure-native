@@ -177,23 +177,23 @@ export interface CustomImageArgs {
     /**
      * The author of the custom image.
      */
-    author?: pulumi.Input<string>;
+    author?: pulumi.Input<string | undefined>;
     /**
      * Storage information about the plan related to this custom image
      */
-    customImagePlan?: pulumi.Input<types.inputs.CustomImagePropertiesFromPlanArgs>;
+    customImagePlan?: pulumi.Input<types.inputs.CustomImagePropertiesFromPlanArgs | undefined>;
     /**
      * Storage information about the data disks present in the custom image
      */
-    dataDiskStorageInfo?: pulumi.Input<pulumi.Input<types.inputs.DataDiskStorageTypeInfoArgs>[]>;
+    dataDiskStorageInfo?: pulumi.Input<pulumi.Input<types.inputs.DataDiskStorageTypeInfoArgs>[] | undefined>;
     /**
      * The description of the custom image.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
      */
-    isPlanAuthorized?: pulumi.Input<boolean>;
+    isPlanAuthorized?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the lab.
      */
@@ -201,19 +201,19 @@ export interface CustomImageArgs {
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The Managed Image Id backing the custom image.
      */
-    managedImageId?: pulumi.Input<string>;
+    managedImageId?: pulumi.Input<string | undefined>;
     /**
      * The Managed Snapshot Id backing the custom image.
      */
-    managedSnapshotId?: pulumi.Input<string>;
+    managedSnapshotId?: pulumi.Input<string | undefined>;
     /**
      * The name of the CustomImage
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -221,13 +221,13 @@ export interface CustomImageArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VHD from which the image is to be created.
      */
-    vhd?: pulumi.Input<types.inputs.CustomImagePropertiesCustomArgs>;
+    vhd?: pulumi.Input<types.inputs.CustomImagePropertiesCustomArgs | undefined>;
     /**
      * The virtual machine from which the image is to be created.
      */
-    vm?: pulumi.Input<types.inputs.CustomImagePropertiesFromVmArgs>;
+    vm?: pulumi.Input<types.inputs.CustomImagePropertiesFromVmArgs | undefined>;
 }

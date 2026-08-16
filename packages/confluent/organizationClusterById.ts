@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
  *
- * Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-07-17-preview, 2025-08-18-preview, 2026-05-01-preview, 2026-06-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class OrganizationClusterById extends pulumi.CustomResource {
     /**
@@ -111,7 +111,7 @@ export class OrganizationClusterById extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20240701:OrganizationClusterById" }, { type: "azure-native:confluent/v20250717preview:OrganizationClusterById" }, { type: "azure-native:confluent/v20250818preview:OrganizationClusterById" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:confluent/v20240701:OrganizationClusterById" }, { type: "azure-native:confluent/v20250717preview:OrganizationClusterById" }, { type: "azure-native:confluent/v20250818preview:OrganizationClusterById" }, { type: "azure-native:confluent/v20260501preview:OrganizationClusterById" }, { type: "azure-native:confluent/v20260602preview:OrganizationClusterById" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(OrganizationClusterById.__pulumiType, name, resourceInputs, opts);
     }
@@ -124,7 +124,7 @@ export interface OrganizationClusterByIdArgs {
     /**
      * Confluent kafka or schema registry cluster id
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Confluent environment id
      */
@@ -132,11 +132,11 @@ export interface OrganizationClusterByIdArgs {
     /**
      * Type of cluster
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Metadata of the record
      */
-    metadata?: pulumi.Input<types.inputs.SCMetadataEntityArgs>;
+    metadata?: pulumi.Input<types.inputs.SCMetadataEntityArgs | undefined>;
     /**
      * Organization resource name
      */
@@ -148,9 +148,9 @@ export interface OrganizationClusterByIdArgs {
     /**
      * Specification of the cluster
      */
-    spec?: pulumi.Input<types.inputs.SCClusterSpecEntityArgs>;
+    spec?: pulumi.Input<types.inputs.SCClusterSpecEntityArgs | undefined>;
     /**
      * Specification of the cluster status
      */
-    status?: pulumi.Input<types.inputs.ClusterStatusEntityArgs>;
+    status?: pulumi.Input<types.inputs.ClusterStatusEntityArgs | undefined>;
 }

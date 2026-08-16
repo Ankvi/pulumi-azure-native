@@ -5,6 +5,8 @@ import * as types from "./types";
  * The private endpoint connection resource.
  *
  * Uses Azure REST API version 2026-02-01.
+ *
+ * Other available API versions: 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class SchedulerPrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -108,7 +110,7 @@ export class SchedulerPrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:durabletask/v20260201:SchedulerPrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:durabletask/v20260201:SchedulerPrivateEndpointConnection" }, { type: "azure-native:durabletask/v20260501preview:SchedulerPrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SchedulerPrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }
@@ -121,7 +123,7 @@ export interface SchedulerPrivateEndpointConnectionArgs {
     /**
      * The name of the private endpoint connection associated with the Azure resource.
      */
-    privateEndpointConnectionName?: pulumi.Input<string>;
+    privateEndpointConnectionName?: pulumi.Input<string | undefined>;
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */

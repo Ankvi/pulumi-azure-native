@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
  *
- * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview, 2025-12-01, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Rule extends pulumi.CustomResource {
     /**
@@ -125,7 +125,7 @@ export class Rule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:Rule" }, { type: "azure-native:cdn/v20210601:Rule" }, { type: "azure-native:cdn/v20220501preview:Rule" }, { type: "azure-native:cdn/v20221101preview:Rule" }, { type: "azure-native:cdn/v20230501:Rule" }, { type: "azure-native:cdn/v20230701preview:Rule" }, { type: "azure-native:cdn/v20240201:Rule" }, { type: "azure-native:cdn/v20240501preview:Rule" }, { type: "azure-native:cdn/v20240601preview:Rule" }, { type: "azure-native:cdn/v20240901:Rule" }, { type: "azure-native:cdn/v20250101preview:Rule" }, { type: "azure-native:cdn/v20250415:Rule" }, { type: "azure-native:cdn/v20250601:Rule" }, { type: "azure-native:cdn/v20250701preview:Rule" }, { type: "azure-native:cdn/v20250901preview:Rule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cdn/v20200901:Rule" }, { type: "azure-native:cdn/v20210601:Rule" }, { type: "azure-native:cdn/v20220501preview:Rule" }, { type: "azure-native:cdn/v20221101preview:Rule" }, { type: "azure-native:cdn/v20230501:Rule" }, { type: "azure-native:cdn/v20230701preview:Rule" }, { type: "azure-native:cdn/v20240201:Rule" }, { type: "azure-native:cdn/v20240501preview:Rule" }, { type: "azure-native:cdn/v20240601preview:Rule" }, { type: "azure-native:cdn/v20240901:Rule" }, { type: "azure-native:cdn/v20250101preview:Rule" }, { type: "azure-native:cdn/v20250415:Rule" }, { type: "azure-native:cdn/v20250601:Rule" }, { type: "azure-native:cdn/v20250701preview:Rule" }, { type: "azure-native:cdn/v20250901preview:Rule" }, { type: "azure-native:cdn/v20251201:Rule" }, { type: "azure-native:cdn/v20260401preview:Rule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Rule.__pulumiType, name, resourceInputs, opts);
     }
@@ -138,19 +138,19 @@ export interface RuleArgs {
     /**
      * A list of actions that are executed when all the conditions of a rule are satisfied.
      */
-    actions?: pulumi.Input<pulumi.Input<types.inputs.DeliveryRuleCacheExpirationActionArgs | types.inputs.DeliveryRuleCacheKeyQueryStringActionArgs | types.inputs.DeliveryRuleRequestHeaderActionArgs | types.inputs.DeliveryRuleResponseHeaderActionArgs | types.inputs.DeliveryRuleRouteConfigurationOverrideActionArgs | types.inputs.OriginGroupOverrideActionArgs | types.inputs.UrlRedirectActionArgs | types.inputs.UrlRewriteActionArgs | types.inputs.UrlSigningActionArgs>[]>;
+    actions?: pulumi.Input<pulumi.Input<types.inputs.DeliveryRuleCacheExpirationActionArgs | types.inputs.DeliveryRuleCacheKeyQueryStringActionArgs | types.inputs.DeliveryRuleRequestHeaderActionArgs | types.inputs.DeliveryRuleResponseHeaderActionArgs | types.inputs.DeliveryRuleRouteConfigurationOverrideActionArgs | types.inputs.OriginGroupOverrideActionArgs | types.inputs.UrlRedirectActionArgs | types.inputs.UrlRewriteActionArgs | types.inputs.UrlSigningActionArgs>[] | undefined>;
     /**
      * A list of conditions that must be matched for the actions to be executed
      */
-    conditions?: pulumi.Input<pulumi.Input<types.inputs.DeliveryRuleClientPortConditionArgs | types.inputs.DeliveryRuleCookiesConditionArgs | types.inputs.DeliveryRuleHostNameConditionArgs | types.inputs.DeliveryRuleHttpVersionConditionArgs | types.inputs.DeliveryRuleIsDeviceConditionArgs | types.inputs.DeliveryRulePostArgsConditionArgs | types.inputs.DeliveryRuleQueryStringConditionArgs | types.inputs.DeliveryRuleRemoteAddressConditionArgs | types.inputs.DeliveryRuleRequestBodyConditionArgs | types.inputs.DeliveryRuleRequestHeaderConditionArgs | types.inputs.DeliveryRuleRequestMethodConditionArgs | types.inputs.DeliveryRuleRequestSchemeConditionArgs | types.inputs.DeliveryRuleRequestUriConditionArgs | types.inputs.DeliveryRuleServerPortConditionArgs | types.inputs.DeliveryRuleSocketAddrConditionArgs | types.inputs.DeliveryRuleSslProtocolConditionArgs | types.inputs.DeliveryRuleUrlFileExtensionConditionArgs | types.inputs.DeliveryRuleUrlFileNameConditionArgs | types.inputs.DeliveryRuleUrlPathConditionArgs>[]>;
+    conditions?: pulumi.Input<pulumi.Input<types.inputs.DeliveryRuleClientPortConditionArgs | types.inputs.DeliveryRuleCookiesConditionArgs | types.inputs.DeliveryRuleHostNameConditionArgs | types.inputs.DeliveryRuleHttpVersionConditionArgs | types.inputs.DeliveryRuleIsDeviceConditionArgs | types.inputs.DeliveryRulePostArgsConditionArgs | types.inputs.DeliveryRuleQueryStringConditionArgs | types.inputs.DeliveryRuleRemoteAddressConditionArgs | types.inputs.DeliveryRuleRequestBodyConditionArgs | types.inputs.DeliveryRuleRequestHeaderConditionArgs | types.inputs.DeliveryRuleRequestMethodConditionArgs | types.inputs.DeliveryRuleRequestSchemeConditionArgs | types.inputs.DeliveryRuleRequestUriConditionArgs | types.inputs.DeliveryRuleServerPortConditionArgs | types.inputs.DeliveryRuleSocketAddrConditionArgs | types.inputs.DeliveryRuleSslProtocolConditionArgs | types.inputs.DeliveryRuleUrlFileExtensionConditionArgs | types.inputs.DeliveryRuleUrlFileNameConditionArgs | types.inputs.DeliveryRuleUrlPathConditionArgs>[] | undefined>;
     /**
      * If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
      */
-    matchProcessingBehavior?: pulumi.Input<string | types.enums.MatchProcessingBehavior>;
+    matchProcessingBehavior?: pulumi.Input<string | types.enums.MatchProcessingBehavior | undefined>;
     /**
      * The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
      */
-    order?: pulumi.Input<number>;
+    order?: pulumi.Input<number | undefined>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
      */
@@ -162,7 +162,7 @@ export interface RuleArgs {
     /**
      * Name of the delivery rule which is unique within the endpoint.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * Name of the rule set under the profile which is unique globally.
      */

@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-02-preview.
  *
- * Other available API versions: 2024-10-02-preview, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2024-10-02-preview, 2025-07-01, 2025-10-02-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class HttpRouteConfig extends pulumi.CustomResource {
     /**
@@ -89,7 +89,7 @@ export class HttpRouteConfig extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20241002preview:HttpRouteConfig" }, { type: "azure-native:app/v20250202preview:HttpRouteConfig" }, { type: "azure-native:app/v20250701:HttpRouteConfig" }, { type: "azure-native:app/v20251002preview:HttpRouteConfig" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20241002preview:HttpRouteConfig" }, { type: "azure-native:app/v20250202preview:HttpRouteConfig" }, { type: "azure-native:app/v20250701:HttpRouteConfig" }, { type: "azure-native:app/v20251002preview:HttpRouteConfig" }, { type: "azure-native:app/v20260101:HttpRouteConfig" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(HttpRouteConfig.__pulumiType, name, resourceInputs, opts);
     }
@@ -106,11 +106,11 @@ export interface HttpRouteConfigArgs {
     /**
      * Name of the Http Route Config Resource.
      */
-    httpRouteName?: pulumi.Input<string>;
+    httpRouteName?: pulumi.Input<string | undefined>;
     /**
      * Http Route Config properties
      */
-    properties?: pulumi.Input<types.inputs.HttpRouteConfigPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.HttpRouteConfigPropertiesArgs | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

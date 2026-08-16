@@ -104,5 +104,5 @@ export interface GetAndroidMAMPolicyByNameOutputArgs {
     /**
      * select specific fields in entity.
      */
-    select?: pulumi.Input<string>;
+    select?: pulumi.Input<string | undefined>;
 }

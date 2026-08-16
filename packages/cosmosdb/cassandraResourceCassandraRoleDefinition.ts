@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01-preview.
  *
- * Other available API versions: 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2025-11-01-preview, 2026-03-15, 2026-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cosmosdb [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class CassandraResourceCassandraRoleDefinition extends pulumi.CustomResource {
     /**
@@ -102,7 +102,7 @@ export class CassandraResourceCassandraRoleDefinition extends pulumi.CustomResou
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cosmosdb/v20250501preview:CassandraResourceCassandraRoleDefinition" }, { type: "azure-native:cosmosdb/v20251101preview:CassandraResourceCassandraRoleDefinition" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cosmosdb/v20250501preview:CassandraResourceCassandraRoleDefinition" }, { type: "azure-native:cosmosdb/v20251101preview:CassandraResourceCassandraRoleDefinition" }, { type: "azure-native:cosmosdb/v20260315:CassandraResourceCassandraRoleDefinition" }, { type: "azure-native:cosmosdb/v20260401preview:CassandraResourceCassandraRoleDefinition" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CassandraResourceCassandraRoleDefinition.__pulumiType, name, resourceInputs, opts);
     }
@@ -119,15 +119,15 @@ export interface CassandraResourceCassandraRoleDefinitionArgs {
     /**
      * A set of fully qualified Scopes at or below which Cassandra Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist.
      */
-    assignableScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    assignableScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The path id for the Role Definition.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The set of operations allowed through this Role Definition.
      */
-    permissions?: pulumi.Input<pulumi.Input<types.inputs.PermissionArgs>[]>;
+    permissions?: pulumi.Input<pulumi.Input<types.inputs.PermissionArgs>[] | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -135,13 +135,13 @@ export interface CassandraResourceCassandraRoleDefinitionArgs {
     /**
      * The GUID for the Role Definition.
      */
-    roleDefinitionId?: pulumi.Input<string>;
+    roleDefinitionId?: pulumi.Input<string | undefined>;
     /**
      * A user-friendly name for the Role Definition. Must be unique for the database account.
      */
-    roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the Role Definition was built-in or user created.
      */
-    type?: pulumi.Input<types.enums.RoleDefinitionType>;
+    type?: pulumi.Input<types.enums.RoleDefinitionType | undefined>;
 }

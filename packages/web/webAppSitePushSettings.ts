@@ -3,9 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Push settings for the App.
  *
- * Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+ * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class WebAppSitePushSettings extends pulumi.CustomResource {
     /**
@@ -61,7 +61,7 @@ export class WebAppSitePushSettings extends pulumi.CustomResource {
     /**
      * Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
      * Tags can consist of alphanumeric characters and the following:
-     * '_', '@', '#', '.', ':', '-'. 
+     * '_', '@', '#', '.', ':', '-'.
      * Validation should be performed at the PushRequestHandler.
      */
     declare public readonly tagsRequiringAuth: pulumi.Output<string | undefined>;
@@ -110,7 +110,7 @@ export class WebAppSitePushSettings extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20160801:WebAppSitePushSettings" }, { type: "azure-native:web/v20180201:WebAppSitePushSettings" }, { type: "azure-native:web/v20181101:WebAppSitePushSettings" }, { type: "azure-native:web/v20190801:WebAppSitePushSettings" }, { type: "azure-native:web/v20200601:WebAppSitePushSettings" }, { type: "azure-native:web/v20200901:WebAppSitePushSettings" }, { type: "azure-native:web/v20201001:WebAppSitePushSettings" }, { type: "azure-native:web/v20201201:WebAppSitePushSettings" }, { type: "azure-native:web/v20210101:WebAppSitePushSettings" }, { type: "azure-native:web/v20210115:WebAppSitePushSettings" }, { type: "azure-native:web/v20210201:WebAppSitePushSettings" }, { type: "azure-native:web/v20210301:WebAppSitePushSettings" }, { type: "azure-native:web/v20220301:WebAppSitePushSettings" }, { type: "azure-native:web/v20220901:WebAppSitePushSettings" }, { type: "azure-native:web/v20230101:WebAppSitePushSettings" }, { type: "azure-native:web/v20231201:WebAppSitePushSettings" }, { type: "azure-native:web/v20240401:WebAppSitePushSettings" }, { type: "azure-native:web/v20241101:WebAppSitePushSettings" }, { type: "azure-native:web/v20250301:WebAppSitePushSettings" }, { type: "azure-native:web/v20250501:WebAppSitePushSettings" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20160801:WebAppSitePushSettings" }, { type: "azure-native:web/v20180201:WebAppSitePushSettings" }, { type: "azure-native:web/v20181101:WebAppSitePushSettings" }, { type: "azure-native:web/v20190801:WebAppSitePushSettings" }, { type: "azure-native:web/v20200601:WebAppSitePushSettings" }, { type: "azure-native:web/v20200901:WebAppSitePushSettings" }, { type: "azure-native:web/v20201001:WebAppSitePushSettings" }, { type: "azure-native:web/v20201201:WebAppSitePushSettings" }, { type: "azure-native:web/v20210101:WebAppSitePushSettings" }, { type: "azure-native:web/v20210115:WebAppSitePushSettings" }, { type: "azure-native:web/v20210201:WebAppSitePushSettings" }, { type: "azure-native:web/v20210301:WebAppSitePushSettings" }, { type: "azure-native:web/v20220301:WebAppSitePushSettings" }, { type: "azure-native:web/v20220901:WebAppSitePushSettings" }, { type: "azure-native:web/v20230101:WebAppSitePushSettings" }, { type: "azure-native:web/v20231201:WebAppSitePushSettings" }, { type: "azure-native:web/v20240401:WebAppSitePushSettings" }, { type: "azure-native:web/v20241101:WebAppSitePushSettings" }, { type: "azure-native:web/v20250301:WebAppSitePushSettings" }, { type: "azure-native:web/v20250501:WebAppSitePushSettings" }, { type: "azure-native:web/v20260301preview:WebAppSitePushSettings" }, { type: "azure-native:web/v20260315:WebAppSitePushSettings" }, { type: "azure-native:web/v20260715:WebAppSitePushSettings" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WebAppSitePushSettings.__pulumiType, name, resourceInputs, opts);
     }
@@ -123,7 +123,7 @@ export interface WebAppSitePushSettingsArgs {
     /**
      * Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
      */
-    dynamicTagsJson?: pulumi.Input<string>;
+    dynamicTagsJson?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets a flag indicating whether the Push endpoint is enabled.
      */
@@ -131,24 +131,24 @@ export interface WebAppSitePushSettingsArgs {
     /**
      * Kind of resource.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
-     * Name of web app.
+     * Name of the app.
      */
     name: pulumi.Input<string>;
     /**
-     * Name of the resource group to which the resource belongs.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
     /**
      * Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
      */
-    tagWhitelistJson?: pulumi.Input<string>;
+    tagWhitelistJson?: pulumi.Input<string | undefined>;
     /**
      * Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.
      * Tags can consist of alphanumeric characters and the following:
-     * '_', '@', '#', '.', ':', '-'. 
+     * '_', '@', '#', '.', ':', '-'.
      * Validation should be performed at the PushRequestHandler.
      */
-    tagsRequiringAuth?: pulumi.Input<string>;
+    tagsRequiringAuth?: pulumi.Input<string | undefined>;
 }

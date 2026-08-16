@@ -32,11 +32,11 @@ export interface ListRemediationDeploymentsAtSubscriptionArgs {
  */
 export interface ListRemediationDeploymentsAtSubscriptionResult {
     /**
-     * The URL to get the next set of results.
+     * The link to the next page of items
      */
-    readonly nextLink: string;
+    readonly nextLink?: string;
     /**
-     * Array of deployments for the remediation.
+     * The RemediationDeployment items on this page
      */
     readonly value: types.outputs.RemediationDeploymentResponse[];
 }
@@ -63,5 +63,5 @@ export interface ListRemediationDeploymentsAtSubscriptionOutputArgs {
     /**
      * Maximum number of records to return.
      */
-    top?: pulumi.Input<number>;
+    top?: pulumi.Input<number | undefined>;
 }

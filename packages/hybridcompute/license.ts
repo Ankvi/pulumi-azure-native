@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-07-10. In version 2.x of the Azure Native provider, it used API version 2023-06-20-preview.
  *
- * Other available API versions: 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview, 2025-06-01, 2025-08-21-preview, 2025-09-16-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview, 2025-06-01, 2025-08-21-preview, 2025-09-16-preview, 2026-02-12-preview, 2026-06-04-preview, 2026-06-16-preview, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class License extends pulumi.CustomResource {
     /**
@@ -115,7 +115,7 @@ export class License extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20230620preview:License" }, { type: "azure-native:hybridcompute/v20231003preview:License" }, { type: "azure-native:hybridcompute/v20240331preview:License" }, { type: "azure-native:hybridcompute/v20240520preview:License" }, { type: "azure-native:hybridcompute/v20240710:License" }, { type: "azure-native:hybridcompute/v20240731preview:License" }, { type: "azure-native:hybridcompute/v20240910preview:License" }, { type: "azure-native:hybridcompute/v20241110preview:License" }, { type: "azure-native:hybridcompute/v20250113:License" }, { type: "azure-native:hybridcompute/v20250219preview:License" }, { type: "azure-native:hybridcompute/v20250601:License" }, { type: "azure-native:hybridcompute/v20250821preview:License" }, { type: "azure-native:hybridcompute/v20250916preview:License" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20230620preview:License" }, { type: "azure-native:hybridcompute/v20231003preview:License" }, { type: "azure-native:hybridcompute/v20240331preview:License" }, { type: "azure-native:hybridcompute/v20240520preview:License" }, { type: "azure-native:hybridcompute/v20240710:License" }, { type: "azure-native:hybridcompute/v20240731preview:License" }, { type: "azure-native:hybridcompute/v20240910preview:License" }, { type: "azure-native:hybridcompute/v20241110preview:License" }, { type: "azure-native:hybridcompute/v20250113:License" }, { type: "azure-native:hybridcompute/v20250219preview:License" }, { type: "azure-native:hybridcompute/v20250601:License" }, { type: "azure-native:hybridcompute/v20250821preview:License" }, { type: "azure-native:hybridcompute/v20250916preview:License" }, { type: "azure-native:hybridcompute/v20260212preview:License" }, { type: "azure-native:hybridcompute/v20260604preview:License" }, { type: "azure-native:hybridcompute/v20260616preview:License" }, { type: "azure-native:hybridcompute/v20260715:License" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(License.__pulumiType, name, resourceInputs, opts);
     }
@@ -128,19 +128,19 @@ export interface LicenseArgs {
     /**
      * Describes the properties of a License.
      */
-    licenseDetails?: pulumi.Input<types.inputs.LicenseDetailsArgs>;
+    licenseDetails?: pulumi.Input<types.inputs.LicenseDetailsArgs | undefined>;
     /**
      * The name of the license.
      */
-    licenseName?: pulumi.Input<string>;
+    licenseName?: pulumi.Input<string | undefined>;
     /**
      * The type of the license resource.
      */
-    licenseType?: pulumi.Input<string | types.enums.LicenseType>;
+    licenseType?: pulumi.Input<string | types.enums.LicenseType | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -148,9 +148,9 @@ export interface LicenseArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Describes the tenant id.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

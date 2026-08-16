@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-03-01-preview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-06-01-preview, 2024-09-01-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-06-01-preview, 2025-10-01-preview, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicefabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ManagedClusterApplication extends pulumi.CustomResource {
     /**
@@ -132,7 +132,7 @@ export class ManagedClusterApplication extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:servicefabric/v20210101preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20210501:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20210701preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20210901privatepreview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20211101preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20220101:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20220201preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20220601preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20220801preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20221001preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20230201preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20230301preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20230701preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20230901preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20231101preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20231201preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20240201preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20240401:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20240601preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20240901preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20241101preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20250301preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20250601preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20251001preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20260201:ManagedClusterApplication" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:servicefabric/v20210101preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20210501:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20210701preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20210901privatepreview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20211101preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20220101:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20220201preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20220601preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20220801preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20221001preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20230201preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20230301preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20230701preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20230901preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20231101preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20231201preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20240201preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20240401:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20240601preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20240901preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20241101preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20250301preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20250601preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20251001preview:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20260201:ManagedClusterApplication" }, { type: "azure-native:servicefabric/v20260501preview:ManagedClusterApplication" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedClusterApplication.__pulumiType, name, resourceInputs, opts);
     }
@@ -145,7 +145,7 @@ export interface ManagedClusterApplicationArgs {
     /**
      * The name of the application resource.
      */
-    applicationName?: pulumi.Input<string>;
+    applicationName?: pulumi.Input<string | undefined>;
     /**
      * The name of the cluster resource.
      */
@@ -153,19 +153,19 @@ export interface ManagedClusterApplicationArgs {
     /**
      * Describes the managed identities for an Azure resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedIdentityArgs | undefined>;
     /**
      * Resource location depends on the parent resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * List of user assigned identities for the application, each mapped to a friendly name.
      */
-    managedIdentities?: pulumi.Input<pulumi.Input<types.inputs.ApplicationUserAssignedIdentityArgs>[]>;
+    managedIdentities?: pulumi.Input<pulumi.Input<types.inputs.ApplicationUserAssignedIdentityArgs>[] | undefined>;
     /**
      * List of application parameters with overridden values from their default values specified in the application manifest.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the resource group.
      */
@@ -173,14 +173,14 @@ export interface ManagedClusterApplicationArgs {
     /**
      * Azure resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Describes the policy for a monitored application upgrade.
      */
-    upgradePolicy?: pulumi.Input<types.inputs.ApplicationUpgradePolicyArgs>;
+    upgradePolicy?: pulumi.Input<types.inputs.ApplicationUpgradePolicyArgs | undefined>;
     /**
      * The version of the application type as defined in the application manifest.
      * This name must be the full Arm Resource ID for the referenced application type version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

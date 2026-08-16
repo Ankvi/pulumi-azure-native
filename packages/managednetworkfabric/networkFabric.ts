@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-02-01-preview.
  *
- * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview, 2025-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class NetworkFabric extends pulumi.CustomResource {
     /**
@@ -173,7 +173,7 @@ export class NetworkFabric extends pulumi.CustomResource {
             resourceInputs["ipv4Prefix"] = args?.ipv4Prefix;
             resourceInputs["ipv6Prefix"] = args?.ipv6Prefix;
             resourceInputs["location"] = args?.location;
-            resourceInputs["managementNetworkConfiguration"] = args ? (args.managementNetworkConfiguration ? pulumi.output(args.managementNetworkConfiguration).apply(types.inputs.managementNetworkConfigurationPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["managementNetworkConfiguration"] = args ? pulumi.output(args.managementNetworkConfiguration).apply(types.inputs.managementNetworkConfigurationPropertiesArgsProvideDefaults) : undefined;
             resourceInputs["networkFabricControllerId"] = args?.networkFabricControllerId;
             resourceInputs["networkFabricName"] = args?.networkFabricName;
             resourceInputs["networkFabricSku"] = args?.networkFabricSku;
@@ -220,7 +220,7 @@ export class NetworkFabric extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:NetworkFabric" }, { type: "azure-native:managednetworkfabric/v20230615:NetworkFabric" }, { type: "azure-native:managednetworkfabric/v20240215preview:NetworkFabric" }, { type: "azure-native:managednetworkfabric/v20240615preview:NetworkFabric" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:managednetworkfabric/v20230201preview:NetworkFabric" }, { type: "azure-native:managednetworkfabric/v20230615:NetworkFabric" }, { type: "azure-native:managednetworkfabric/v20240215preview:NetworkFabric" }, { type: "azure-native:managednetworkfabric/v20240615preview:NetworkFabric" }, { type: "azure-native:managednetworkfabric/v20250715:NetworkFabric" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkFabric.__pulumiType, name, resourceInputs, opts);
     }
@@ -233,7 +233,7 @@ export interface NetworkFabricArgs {
     /**
      * Switch configuration description.
      */
-    annotation?: pulumi.Input<string>;
+    annotation?: pulumi.Input<string | undefined>;
     /**
      * ASN of CE devices for CE/PE connectivity.
      */
@@ -241,7 +241,7 @@ export interface NetworkFabricArgs {
     /**
      * The version of Network Fabric.
      */
-    fabricVersion?: pulumi.Input<string>;
+    fabricVersion?: pulumi.Input<string | undefined>;
     /**
      * IPv4Prefix for Management Network. Example: 10.1.0.0/19.
      */
@@ -249,11 +249,11 @@ export interface NetworkFabricArgs {
     /**
      * IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59
      */
-    ipv6Prefix?: pulumi.Input<string>;
+    ipv6Prefix?: pulumi.Input<string | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Configuration to be used to setup the management network.
      */
@@ -265,7 +265,7 @@ export interface NetworkFabricArgs {
     /**
      * Name of the Network Fabric.
      */
-    networkFabricName?: pulumi.Input<string>;
+    networkFabricName?: pulumi.Input<string | undefined>;
     /**
      * Supported Network Fabric SKU.Example: Compute / Aggregate racks. Once the user chooses a particular SKU, only supported racks can be added to the Network Fabric. The SKU determines whether it is a single / multi rack Network Fabric.
      */
@@ -273,7 +273,7 @@ export interface NetworkFabricArgs {
     /**
      * Number of compute racks associated to Network Fabric.
      */
-    rackCount?: pulumi.Input<number>;
+    rackCount?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -285,7 +285,7 @@ export interface NetworkFabricArgs {
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Network and credentials configuration currently applied to terminal server.
      */

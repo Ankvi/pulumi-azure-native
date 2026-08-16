@@ -35,7 +35,7 @@ export interface ManagedServiceIdentityArgs {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -45,7 +45,7 @@ export interface StorageTaskActionArgs {
     /**
      * The else block of storage task operation
      */
-    else?: pulumi.Input<ElseConditionArgs>;
+    else?: pulumi.Input<ElseConditionArgs | undefined>;
     /**
      * The if block of storage task operation
      */
@@ -63,13 +63,13 @@ export interface StorageTaskOperationArgs {
     /**
      * Action to be taken when the operation fails for a object.
      */
-    onFailure?: pulumi.Input<string | enums.OnFailure>;
+    onFailure?: pulumi.Input<string | enums.OnFailure | undefined>;
     /**
      * Action to be taken when the operation is successful for a object.
      */
-    onSuccess?: pulumi.Input<string | enums.OnSuccess>;
+    onSuccess?: pulumi.Input<string | enums.OnSuccess | undefined>;
     /**
      * Key-value parameters for the operation.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

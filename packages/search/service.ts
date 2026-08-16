@@ -6,7 +6,7 @@ import * as types from "./types";
  *
  * Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
  *
- * Other available API versions: 2022-09-01, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2022-09-01, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview, 2026-03-01-preview, 2026-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Service extends pulumi.CustomResource {
     /**
@@ -88,7 +88,7 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly networkRuleSet: pulumi.Output<types.outputs.NetworkRuleSetResponse | undefined>;
     /**
-     * The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
+     * The number of partitions in the dedicated search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
      */
     declare public readonly partitionCount: pulumi.Output<number | undefined>;
     /**
@@ -104,11 +104,11 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly publicNetworkAccess: pulumi.Output<string | undefined>;
     /**
-     * The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
+     * The number of replicas in the dedicated search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
      */
     declare public readonly replicaCount: pulumi.Output<number | undefined>;
     /**
-     * Sets options that control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations.
+     * Specifies the availability and billing plan for semantic search on the Azure AI Search service. This configuration is only available for certain pricing tiers in certain regions.
      */
     declare public readonly semanticSearch: pulumi.Output<string | undefined>;
     /**
@@ -223,7 +223,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["upgradeAvailable"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:search/v20150819:Service" }, { type: "azure-native:search/v20191001preview:Service" }, { type: "azure-native:search/v20200313:Service" }, { type: "azure-native:search/v20200801:Service" }, { type: "azure-native:search/v20200801preview:Service" }, { type: "azure-native:search/v20210401preview:Service" }, { type: "azure-native:search/v20220901:Service" }, { type: "azure-native:search/v20231101:Service" }, { type: "azure-native:search/v20240301preview:Service" }, { type: "azure-native:search/v20240601preview:Service" }, { type: "azure-native:search/v20250201preview:Service" }, { type: "azure-native:search/v20250501:Service" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:search/v20150819:Service" }, { type: "azure-native:search/v20191001preview:Service" }, { type: "azure-native:search/v20200313:Service" }, { type: "azure-native:search/v20200801:Service" }, { type: "azure-native:search/v20200801preview:Service" }, { type: "azure-native:search/v20210401preview:Service" }, { type: "azure-native:search/v20220901:Service" }, { type: "azure-native:search/v20231101:Service" }, { type: "azure-native:search/v20240301preview:Service" }, { type: "azure-native:search/v20240601preview:Service" }, { type: "azure-native:search/v20250201preview:Service" }, { type: "azure-native:search/v20250501:Service" }, { type: "azure-native:search/v20260301preview:Service" }, { type: "azure-native:search/v20260901preview:Service" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Service.__pulumiType, name, resourceInputs, opts);
     }
@@ -236,55 +236,55 @@ export interface ServiceArgs {
     /**
      * Defines the options for how the data plane API of a search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
      */
-    authOptions?: pulumi.Input<types.inputs.DataPlaneAuthOptionsArgs>;
+    authOptions?: pulumi.Input<types.inputs.DataPlaneAuthOptionsArgs | undefined>;
     /**
      * Configure this property to support the search service using either the Default Compute or Azure Confidential Compute.
      */
-    computeType?: pulumi.Input<string | types.enums.ComputeType>;
+    computeType?: pulumi.Input<string | types.enums.ComputeType | undefined>;
     /**
      * A list of data exfiltration scenarios that are explicitly disallowed for the search service. Currently, the only supported value is 'All' to disable all possible data export scenarios with more fine grained controls planned for the future.
      */
-    dataExfiltrationProtections?: pulumi.Input<pulumi.Input<string | types.enums.SearchDataExfiltrationProtection>[]>;
+    dataExfiltrationProtections?: pulumi.Input<pulumi.Input<string | types.enums.SearchDataExfiltrationProtection>[] | undefined>;
     /**
      * When set to true, calls to the search service will not be permitted to utilize API keys for authentication. This cannot be set to true if 'dataPlaneAuthOptions' are defined.
      */
-    disableLocalAuth?: pulumi.Input<boolean>;
+    disableLocalAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies any policy regarding encryption of resources (such as indexes) using customer manager keys within a search service.
      */
-    encryptionWithCmk?: pulumi.Input<types.inputs.EncryptionWithCmkArgs>;
+    encryptionWithCmk?: pulumi.Input<types.inputs.EncryptionWithCmkArgs | undefined>;
     /**
      * The endpoint of the Azure AI Search service.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'Default' or 'HighDensity'. For all other SKUs, this value must be 'Default'.
      */
-    hostingMode?: pulumi.Input<types.enums.HostingMode>;
+    hostingMode?: pulumi.Input<types.enums.HostingMode | undefined>;
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
      * The geo-location where the resource lives
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Network specific rules that determine how the Azure AI Search service may be reached.
      */
-    networkRuleSet?: pulumi.Input<types.inputs.NetworkRuleSetArgs>;
+    networkRuleSet?: pulumi.Input<types.inputs.NetworkRuleSetArgs | undefined>;
     /**
-     * The number of partitions in the search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
+     * The number of partitions in the dedicated search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3.
      */
-    partitionCount?: pulumi.Input<number>;
+    partitionCount?: pulumi.Input<number | undefined>;
     /**
      * This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess | undefined>;
     /**
-     * The number of replicas in the search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
+     * The number of replicas in the dedicated search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU.
      */
-    replicaCount?: pulumi.Input<number>;
+    replicaCount?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -292,21 +292,21 @@ export interface ServiceArgs {
     /**
      * The name of the Azure AI Search service associated with the specified resource group.
      */
-    searchServiceName?: pulumi.Input<string>;
+    searchServiceName?: pulumi.Input<string | undefined>;
     /**
-     * Sets options that control the availability of semantic search. This configuration is only possible for certain Azure AI Search SKUs in certain locations.
+     * Specifies the availability and billing plan for semantic search on the Azure AI Search service. This configuration is only available for certain pricing tiers in certain regions.
      */
-    semanticSearch?: pulumi.Input<string | types.enums.SearchSemanticSearch>;
+    semanticSearch?: pulumi.Input<string | types.enums.SearchSemanticSearch | undefined>;
     /**
      * The SKU of the search service, which determines price tier and capacity limits. This property is required when creating a new search service.
      */
-    sku?: pulumi.Input<types.inputs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs | undefined>;
     /**
      * Resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates if the search service has an upgrade available.
      */
-    upgradeAvailable?: pulumi.Input<string | types.enums.UpgradeAvailable>;
+    upgradeAvailable?: pulumi.Input<string | types.enums.UpgradeAvailable | undefined>;
 }
