@@ -25,7 +25,7 @@ export interface DnsRecordResponse {
 /**
  * List of DnsRecord
  */
-export interface DomainPropertiesResponseVerificationRecords {
+export interface DomainPropertiesVerificationRecordsResponse {
     /**
      * A class that represents a VerificationStatus record.
      */
@@ -51,7 +51,7 @@ export interface DomainPropertiesResponseVerificationRecords {
 /**
  * List of VerificationStatusRecord
  */
-export interface DomainPropertiesResponseVerificationStates {
+export interface DomainPropertiesVerificationStatesResponse {
     /**
      * A class that represents a VerificationStatus record.
      */

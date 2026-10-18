@@ -51,6 +51,10 @@ export interface SchedulerPropertiesArgs {
      */
     ipAllowlist: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Allow or disallow public network access to durable task scheduler
+     */
+    publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess | undefined>;
+    /**
      * SKU of the durable task scheduler
      */
     sku: pulumi.Input<SchedulerSkuArgs>;
@@ -67,5 +71,5 @@ export interface SchedulerSkuArgs {
     /**
      * The name of the SKU
      */
-    name: pulumi.Input<string>;
+    name: pulumi.Input<string | enums.SchedulerSkuName>;
 }
