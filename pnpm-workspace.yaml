@@ -5,3 +5,8 @@ packages:
 allowBuilds:
   '@biomejs/biome': true
   protobufjs: false
+
+catalog:
+  "@pulumi/pulumi": "^3.142.0"
+  "@types/node": "^26.0.0"
+  "typescript": "^6.0.0"

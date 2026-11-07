@@ -29,14 +29,14 @@ class TemplateLoader {
                 type: "git",
             },
             dependencies: {
-                "@pulumi/pulumi": "^3.142.0",
+                "@pulumi/pulumi": "catalog:",
             },
             publishConfig: {
                 access: "public",
             },
             devDependencies: {
-                typescript: "^5.0.0",
-                "@types/node": "^20.0.0",
+                typescript: "catalog:",
+                "@types/node": "catalog:",
             },
             scripts: {
                 build: "tsc",
@@ -62,6 +62,7 @@ class TemplateLoader {
             this.readmeTemplate = await Bun.file(`${import.meta.dir}/README.template.md`).text();
         }
 
+        // biome-ignore lint/suspicious/noTemplateCurlyInString: Not a template string, just a placeholder for replacement
         return this.readmeTemplate.replace("${NAME}", name);
     }
 
