@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Description of a namespace resource.
  *
- * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
+ * Uses Azure REST API version 2026-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
  *
- * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01, 2025-05-01-preview, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class Namespace extends pulumi.CustomResource {
     /**
@@ -56,11 +56,19 @@ export class Namespace extends pulumi.CustomResource {
      */
     declare public readonly encryption: pulumi.Output<types.outputs.EncryptionResponse | undefined>;
     /**
+     * Geo Data Replication settings for the namespace
+     */
+    declare public readonly geoDataReplication: pulumi.Output<types.outputs.GeoDataReplicationPropertiesResponse | undefined>;
+    /**
      * Properties of BYOK Identity description
      */
     declare public readonly identity: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
-     * The Geo-location where the resource lives
+     * The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
+     */
+    declare public readonly ipAddressType: pulumi.Output<string | undefined>;
+    /**
+     * The geo-location where the resource lives
      */
     declare public readonly location: pulumi.Output<string>;
     /**
@@ -72,9 +80,10 @@ export class Namespace extends pulumi.CustomResource {
      */
     declare public readonly minimumTlsVersion: pulumi.Output<string | undefined>;
     /**
-     * Resource name
+     * The name of the resource
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
+    declare public readonly platformCapabilities: pulumi.Output<types.outputs.PlatformCapabilitiesResponse | undefined>;
     /**
      * The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
      */
@@ -104,15 +113,15 @@ export class Namespace extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * The system meta data relating to this resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * Resource tags
+     * Resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -120,7 +129,7 @@ export class Namespace extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
+     * Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
      */
     declare public readonly zoneRedundant: pulumi.Output<boolean | undefined>;
 
@@ -141,10 +150,13 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["alternateName"] = args?.alternateName;
             resourceInputs["disableLocalAuth"] = args?.disableLocalAuth;
             resourceInputs["encryption"] = args ? pulumi.output(args.encryption).apply(v => v === undefined ? undefined : types.inputs.encryptionArgsProvideDefaults(v)) : undefined;
+            resourceInputs["geoDataReplication"] = args?.geoDataReplication;
             resourceInputs["identity"] = args?.identity;
+            resourceInputs["ipAddressType"] = args?.ipAddressType;
             resourceInputs["location"] = args?.location;
             resourceInputs["minimumTlsVersion"] = args?.minimumTlsVersion;
             resourceInputs["namespaceName"] = args?.namespaceName;
+            resourceInputs["platformCapabilities"] = args?.platformCapabilities;
             resourceInputs["premiumMessagingPartitions"] = args?.premiumMessagingPartitions;
             resourceInputs["privateEndpointConnections"] = args?.privateEndpointConnections;
             resourceInputs["publicNetworkAccess"] = (args?.publicNetworkAccess) ?? "Enabled";
@@ -168,11 +180,14 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["disableLocalAuth"] = undefined /*out*/;
             resourceInputs["encryption"] = undefined /*out*/;
+            resourceInputs["geoDataReplication"] = undefined /*out*/;
             resourceInputs["identity"] = undefined /*out*/;
+            resourceInputs["ipAddressType"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metricId"] = undefined /*out*/;
             resourceInputs["minimumTlsVersion"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["platformCapabilities"] = undefined /*out*/;
             resourceInputs["premiumMessagingPartitions"] = undefined /*out*/;
             resourceInputs["privateEndpointConnections"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -210,11 +225,19 @@ export interface NamespaceArgs {
      */
     encryption?: pulumi.Input<types.inputs.EncryptionArgs | undefined>;
     /**
+     * Geo Data Replication settings for the namespace
+     */
+    geoDataReplication?: pulumi.Input<types.inputs.GeoDataReplicationPropertiesArgs | undefined>;
+    /**
      * Properties of BYOK Identity description
      */
     identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
-     * The Geo-location where the resource lives
+     * The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
+     */
+    ipAddressType?: pulumi.Input<string | types.enums.IpAddressType | undefined>;
+    /**
+     * The geo-location where the resource lives
      */
     location?: pulumi.Input<string | undefined>;
     /**
@@ -222,9 +245,10 @@ export interface NamespaceArgs {
      */
     minimumTlsVersion?: pulumi.Input<string | types.enums.TlsVersion | undefined>;
     /**
-     * The namespace name.
+     * The namespace name
      */
     namespaceName?: pulumi.Input<string | undefined>;
+    platformCapabilities?: pulumi.Input<types.inputs.PlatformCapabilitiesArgs | undefined>;
     /**
      * The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
      */
@@ -247,11 +271,11 @@ export interface NamespaceArgs {
      */
     sku?: pulumi.Input<types.inputs.SBSkuArgs | undefined>;
     /**
-     * Resource tags
+     * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
+     * Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
      */
     zoneRedundant?: pulumi.Input<boolean | undefined>;
 }

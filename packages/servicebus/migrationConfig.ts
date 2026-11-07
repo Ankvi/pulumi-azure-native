@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Single item in List or Get Migration Config operation
  *
- * Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
+ * Uses Azure REST API version 2026-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
  *
- * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01, 2025-05-01-preview, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class MigrationConfig extends pulumi.CustomResource {
     /**
@@ -60,11 +60,11 @@ export class MigrationConfig extends pulumi.CustomResource {
      */
     declare public readonly postMigrationName: pulumi.Output<string>;
     /**
-     * Provisioning state of Migration Configuration
+     * Provisioning state of Migration ConfigurationProvisioning state of Migration Configuration
      */
     declare public /*out*/ readonly provisioningState: pulumi.Output<string>;
     /**
-     * The system meta data relating to this resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -72,7 +72,7 @@ export class MigrationConfig extends pulumi.CustomResource {
      */
     declare public readonly targetNamespace: pulumi.Output<string>;
     /**
-     * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -136,7 +136,7 @@ export class MigrationConfig extends pulumi.CustomResource {
  */
 export interface MigrationConfigArgs {
     /**
-     * The configuration name. Should always be "$default".
+     * The configuration name. Should always be $default.
      */
     configName?: pulumi.Input<string | undefined>;
     /**

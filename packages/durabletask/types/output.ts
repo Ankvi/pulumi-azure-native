@@ -1,6 +1,44 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * The private endpoint connection resource.
+ */
+export interface PrivateEndpointConnectionResponse {
+    /**
+     * The group ids for the private endpoint resource.
+     */
+    groupIds: string[];
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The private endpoint resource.
+     */
+    privateEndpoint?: PrivateEndpointResponse;
+    /**
+     * A collection of information about the state of the connection between service consumer and provider.
+     */
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private endpoint connection resource.
+     */
+    provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
  * The private endpoint resource.
  */
 export interface PrivateEndpointResponse {
@@ -69,9 +107,17 @@ export interface SchedulerPropertiesResponse {
      */
     ipAllowlist: string[];
     /**
+     * The private endpoints exposed by this resource
+     */
+    privateEndpointConnections: PrivateEndpointConnectionResponse[];
+    /**
      * The status of the last operation
      */
     provisioningState: string;
+    /**
+     * Allow or disallow public network access to durable task scheduler
+     */
+    publicNetworkAccess?: string;
     /**
      * SKU of the durable task scheduler
      */

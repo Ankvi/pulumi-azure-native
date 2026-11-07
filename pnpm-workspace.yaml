@@ -1,3 +1,7 @@
 packages:
   - packages/*
   - scripts
+
+allowBuilds:
+  '@biomejs/biome': true
+  protobufjs: false
