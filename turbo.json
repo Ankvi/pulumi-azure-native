@@ -5,6 +5,10 @@
         "build": {
             "dependsOn": [
                 "^build"
+            ],
+            "outputs": [
+                "**/*.js",
+                "**/*.d.ts",
             ]
         },
         "lint": {
