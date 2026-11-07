@@ -5,3 +5,4 @@ azure-native
 **/*.d.ts
 *.cache
 dist
+.turbo
