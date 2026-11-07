@@ -1,15 +1,18 @@
 {
     "compilerOptions": {
-        "target": "ES2016",
-        "module": "CommonJS",
+        "strict": true,
+        "target": "ES2022",
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "moduleDetection": "force",
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,
-        "moduleResolution": "node",
         "declaration": true,
         "inlineSourceMap": true,
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
-        "strict": true
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
     },
     "include": [
         "packages/**/*.ts"

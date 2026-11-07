@@ -1,22 +1,23 @@
 {
-    "name": "scripts",
-    "private": true,
-    "scripts": {
-        "generate-packages": "bun index.ts build --no-submodules",
-        "commit-and-push": "bun index.ts commit-and-push",
-        "list-module-names": "bun index.ts list-module-names",
-        "check-version": "bun index.ts check-version",
-        "lint": "tsc --noEmit"
-    },
-    "devDependencies": {
-        "@types/node": "catalog:",
-        "@types/bun": "^1.4.4",
-        "@biomejs/biome": "^2.6.5",
-        "typescript": "catalog:"
-    },
-    "dependencies": {
-        "@octokit/rest": "^21.0.2",
-        "commander": "^15.1.0",
-        "loglevel": "^1.9.2"
-    }
+	"name": "scripts",
+	"private": true,
+	"scripts": {
+		"generate-packages": "bun index.ts build --no-submodules",
+		"commit-and-push": "bun index.ts commit-and-push",
+		"list-module-names": "bun index.ts list-module-names",
+		"check-version": "bun index.ts check-version",
+		"lint": "tsc --noEmit",
+		"format": "biome format"
+	},
+	"devDependencies": {
+		"@types/node": "catalog:",
+		"@types/bun": "^1.4.4",
+		"@biomejs/biome": "2.6.5",
+		"typescript": "catalog:"
+	},
+	"dependencies": {
+		"@octokit/rest": "^21.0.2",
+		"commander": "15.0.0",
+		"loglevel": "^1.9.2"
+	}
 }

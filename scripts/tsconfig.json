@@ -1,21 +1,14 @@
 {
-    "compilerOptions": {
-        "lib": [
-            "esnext"
-        ],
-        "target": "ESNext",
-        "skipDefaultLibCheck": true,
-        "skipLibCheck": true,
-        "moduleResolution": "bundler",
-        "module": "esnext",
-        "noEmit": true,
-        "strict": true,
-    },
-    "include": [
-        "**/*.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        "**/*.template.ts",
-    ]
+	"compilerOptions": {
+		"lib": ["esnext"],
+		"target": "ESNext",
+		"skipDefaultLibCheck": true,
+		"skipLibCheck": true,
+		"moduleResolution": "bundler",
+		"module": "esnext",
+		"noEmit": true,
+		"strict": true
+	},
+	"include": ["**/*.ts"],
+	"exclude": ["node_modules", "**/*.template.ts"]
 }
