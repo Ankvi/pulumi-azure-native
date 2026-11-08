@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * The scheduled query rule resource.
  *
- * Uses Azure REST API version 2025-01-01-preview.
+ * Uses Azure REST API version 2026-03-01.
  *
- * Other available API versions: 2023-12-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2023-12-01, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
@@ -58,7 +58,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
      * The rule criteria that defines the conditions of the scheduled query rule.
      */
-    declare public readonly criteria: pulumi.Output<types.outputs.ScheduledQueryRuleCriteriaResponse | undefined>;
+    declare public readonly criteria: pulumi.Output<types.outputs.ScheduledQueryRuleCriteriaResponse>;
     /**
      * The description of the scheduled query rule.
      */
@@ -70,9 +70,9 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
      * The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
      */
-    declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
-     * "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
+     * The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
@@ -118,7 +118,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
      * The list of resource id's that this scheduled query rule is scoped to.
      */
-    declare public readonly scopes: pulumi.Output<string[] | undefined>;
+    declare public readonly scopes: pulumi.Output<string[]>;
     /**
      * Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
      */
@@ -128,7 +128,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
      */
     declare public readonly skipQueryValidation: pulumi.Output<boolean | undefined>;
     /**
-     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     * SystemData of ScheduledQueryRule.
      */
     declare public /*out*/ readonly systemData: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
@@ -159,8 +159,17 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if (args?.criteria === undefined && !opts.urn) {
+                throw new Error("Missing required property 'criteria'");
+            }
+            if (args?.enabled === undefined && !opts.urn) {
+                throw new Error("Missing required property 'enabled'");
+            }
             if (args?.resourceGroupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
+            }
+            if (args?.scopes === undefined && !opts.urn) {
+                throw new Error("Missing required property 'scopes'");
             }
             resourceInputs["actions"] = args?.actions;
             resourceInputs["autoMitigate"] = args?.autoMitigate;
@@ -248,7 +257,7 @@ export interface ScheduledQueryRuleArgs {
     /**
      * The rule criteria that defines the conditions of the scheduled query rule.
      */
-    criteria?: pulumi.Input<types.inputs.ScheduledQueryRuleCriteriaArgs | undefined>;
+    criteria: pulumi.Input<types.inputs.ScheduledQueryRuleCriteriaArgs>;
     /**
      * The description of the scheduled query rule.
      */
@@ -260,7 +269,7 @@ export interface ScheduledQueryRuleArgs {
     /**
      * The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
      */
-    enabled?: pulumi.Input<boolean | undefined>;
+    enabled: pulumi.Input<boolean>;
     /**
      * How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
      */
@@ -268,7 +277,7 @@ export interface ScheduledQueryRuleArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.MicrosoftCommonIdentityArgs | undefined>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs | undefined>;
     /**
      * Indicates the type of scheduled query rule. The default is LogAlert.
      */
@@ -300,7 +309,7 @@ export interface ScheduledQueryRuleArgs {
     /**
      * The list of resource id's that this scheduled query rule is scoped to.
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
      */

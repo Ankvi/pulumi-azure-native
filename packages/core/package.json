@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-core",
-    "version": "3.29.0",
+    "version": "3.30.0",
     "description": "Pulumi Azure Native package for core",
     "keywords": [
         "pulumi",
@@ -15,20 +15,20 @@
         "type": "git"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^3.142.0"
+        "@pulumi/pulumi": "catalog:"
     },
     "publishConfig": {
         "access": "public"
     },
     "devDependencies": {
-        "typescript": "^5.0.0",
-        "@types/node": "^20.0.0"
+        "typescript": "catalog:",
+        "@types/node": "catalog:"
     },
     "scripts": {
         "build": "tsc",
         "clean": "tsc --build --clean",
         "lint": "tsc --noEmit",
         "prepublishOnly": "./prepublish.sh",
-        "install": "node scripts/install-pulumi-plugin.js resource azure-native v3.29.0"
+        "install": "node scripts/install-pulumi-plugin.js resource azure-native v3.30.0"
     }
 }

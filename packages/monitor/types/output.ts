@@ -657,30 +657,6 @@ export function concurrencyConfigurationResponseProvideDefaults(val: Concurrency
 }
 
 /**
- * The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
- */
-export interface ConditionFailingPeriodsResponse {
-    /**
-     * The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
-     */
-    minFailingPeriodsToAlert?: number;
-    /**
-     * The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
-     */
-    numberOfEvaluationPeriods?: number;
-}
-/**
- * conditionFailingPeriodsResponseProvideDefaults sets the appropriate defaults for ConditionFailingPeriodsResponse
- */
-export function conditionFailingPeriodsResponseProvideDefaults(val: ConditionFailingPeriodsResponse): ConditionFailingPeriodsResponse {
-    return {
-        ...val,
-        minFailingPeriodsToAlert: (val.minFailingPeriodsToAlert) ?? 1,
-        numberOfEvaluationPeriods: (val.numberOfEvaluationPeriods) ?? 1,
-    };
-}
-
-/**
  * A condition of the scheduled query rule.
  */
 export interface ConditionResponse {
@@ -693,13 +669,13 @@ export interface ConditionResponse {
      */
     criterionType?: string;
     /**
-     * List of Dimensions conditions
+     * List of Dimensions conditions. Relevant only for rules of the kind LogAlert and LogToMetric.
      */
     dimensions?: DimensionResponse[];
     /**
      * The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
      */
-    failingPeriods?: ConditionFailingPeriodsResponse;
+    failingPeriods?: ConditionResponseFailingPeriods;
     /**
      * Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format). Relevant only for dynamic threshold rules of the kind LogAlert.
      */
@@ -743,7 +719,31 @@ export interface ConditionResponse {
 export function conditionResponseProvideDefaults(val: ConditionResponse): ConditionResponse {
     return {
         ...val,
-        failingPeriods: (val.failingPeriods ? conditionFailingPeriodsResponseProvideDefaults(val.failingPeriods) : undefined),
+        failingPeriods: (val.failingPeriods ? conditionResponseFailingPeriodsProvideDefaults(val.failingPeriods) : undefined),
+    };
+}
+
+/**
+ * The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert.
+ */
+export interface ConditionResponseFailingPeriods {
+    /**
+     * The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
+     */
+    minFailingPeriodsToAlert?: number;
+    /**
+     * The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
+     */
+    numberOfEvaluationPeriods?: number;
+}
+/**
+ * conditionResponseFailingPeriodsProvideDefaults sets the appropriate defaults for ConditionResponseFailingPeriods
+ */
+export function conditionResponseFailingPeriodsProvideDefaults(val: ConditionResponseFailingPeriods): ConditionResponseFailingPeriods {
+    return {
+        ...val,
+        minFailingPeriodsToAlert: (val.minFailingPeriodsToAlert) ?? 1,
+        numberOfEvaluationPeriods: (val.numberOfEvaluationPeriods) ?? 1,
     };
 }
 
@@ -3765,15 +3765,15 @@ export interface UserAssignedIdentityResponse {
 }
 
 /**
- * Properties of the user assigned identity.
+ * User assigned identity properties.
  */
 export interface UserIdentityPropertiesResponse {
     /**
-     * The client ID of resource identity.
+     * The client id of user assigned identity.
      */
     clientId: string;
     /**
-     * The principal ID of resource identity.
+     * The principal id of user assigned identity.
      */
     principalId: string;
 }

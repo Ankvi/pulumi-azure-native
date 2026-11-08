@@ -164,6 +164,9 @@ settings:
 
 catalogs:
   default:
+    '@pulumi/pulumi':
+      specifier: ^3.142.0
+      version: 3.274.1
     '@types/node':
       specifier: ^26.0.0
       version: 26.6.6
@@ -185,15 +188,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/aadiam:
     dependencies:
@@ -201,15 +204,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/addons:
     dependencies:
@@ -217,15 +220,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/advisor:
     dependencies:
@@ -233,15 +236,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/agfoodplatform:
     dependencies:
@@ -249,15 +252,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/agricultureplatform:
     dependencies:
@@ -265,15 +268,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/alertsmanagement:
     dependencies:
@@ -281,15 +284,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/analysisservices:
     dependencies:
@@ -297,15 +300,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/apicenter:
     dependencies:
@@ -313,15 +316,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/apimanagement:
     dependencies:
@@ -329,15 +332,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/app:
     dependencies:
@@ -345,15 +348,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/appcomplianceautomation:
     dependencies:
@@ -361,15 +364,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/appconfiguration:
     dependencies:
@@ -377,15 +380,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/applicationinsights:
     dependencies:
@@ -393,15 +396,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/applink:
     dependencies:
@@ -409,15 +412,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/appplatform:
     dependencies:
@@ -425,15 +428,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/attestation:
     dependencies:
@@ -441,15 +444,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/authorization:
     dependencies:
@@ -457,15 +460,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/automanage:
     dependencies:
@@ -473,15 +476,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/automation:
     dependencies:
@@ -489,15 +492,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/avs:
     dependencies:
@@ -505,15 +508,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/awsconnector:
     dependencies:
@@ -521,15 +524,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/azureactivedirectory:
     dependencies:
@@ -537,15 +540,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/azurearcdata:
     dependencies:
@@ -553,15 +556,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/azuredata:
     dependencies:
@@ -569,15 +572,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/azuredatatransfer:
     dependencies:
@@ -585,15 +588,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/azurefleet:
     dependencies:
@@ -601,15 +604,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/azurelargeinstance:
     dependencies:
@@ -617,15 +620,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/azureplaywrightservice:
     dependencies:
@@ -633,15 +636,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/azureresiliencemanagement:
     dependencies:
@@ -649,15 +652,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/azuresphere:
     dependencies:
@@ -665,15 +668,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/azurestack:
     dependencies:
@@ -681,15 +684,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/azurestackhci:
     dependencies:
@@ -697,15 +700,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/baremetalinfrastructure:
     dependencies:
@@ -713,15 +716,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/batch:
     dependencies:
@@ -729,15 +732,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/billing:
     dependencies:
@@ -745,15 +748,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/billingbenefits:
     dependencies:
@@ -761,15 +764,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/billingtrust:
     dependencies:
@@ -777,15 +780,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/blueprint:
     dependencies:
@@ -793,15 +796,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/botservice:
     dependencies:
@@ -809,15 +812,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/cdn:
     dependencies:
@@ -825,15 +828,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/certificateregistration:
     dependencies:
@@ -841,15 +844,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/chaos:
     dependencies:
@@ -857,15 +860,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/cloudhealth:
     dependencies:
@@ -873,15 +876,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/cloudngfw:
     dependencies:
@@ -889,15 +892,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/codesigning:
     dependencies:
@@ -905,15 +908,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/cognitiveservices:
     dependencies:
@@ -921,15 +924,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/communication:
     dependencies:
@@ -937,15 +940,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/community:
     dependencies:
@@ -953,15 +956,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/compute:
     dependencies:
@@ -969,15 +972,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/computebulkactions:
     dependencies:
@@ -985,15 +988,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/computelimit:
     dependencies:
@@ -1001,15 +1004,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/computeschedule:
     dependencies:
@@ -1017,15 +1020,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/confidentialledger:
     dependencies:
@@ -1033,15 +1036,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/config:
     dependencies:
@@ -1049,15 +1052,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/confluent:
     dependencies:
@@ -1065,15 +1068,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/connectedcache:
     dependencies:
@@ -1081,15 +1084,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/connectedvmwarevsphere:
     dependencies:
@@ -1097,15 +1100,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/consumption:
     dependencies:
@@ -1113,15 +1116,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/containerinstance:
     dependencies:
@@ -1129,15 +1132,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/containerregistry:
     dependencies:
@@ -1145,15 +1148,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/containerservice:
     dependencies:
@@ -1161,15 +1164,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/containerstorage:
     dependencies:
@@ -1177,15 +1180,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/contoso:
     dependencies:
@@ -1193,28 +1196,28 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/core:
     dependencies:
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/cosmosdb:
     dependencies:
@@ -1222,15 +1225,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/costmanagement:
     dependencies:
@@ -1238,15 +1241,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/customerinsights:
     dependencies:
@@ -1254,15 +1257,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/customproviders:
     dependencies:
@@ -1270,15 +1273,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/dashboard:
     dependencies:
@@ -1286,15 +1289,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/databasefleetmanager:
     dependencies:
@@ -1302,15 +1305,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/databasewatcher:
     dependencies:
@@ -1318,15 +1321,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/databox:
     dependencies:
@@ -1334,15 +1337,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/databoxedge:
     dependencies:
@@ -1350,15 +1353,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/databricks:
     dependencies:
@@ -1366,15 +1369,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/datacatalog:
     dependencies:
@@ -1382,15 +1385,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/datadog:
     dependencies:
@@ -1398,15 +1401,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/datafactory:
     dependencies:
@@ -1414,15 +1417,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/datalakeanalytics:
     dependencies:
@@ -1430,15 +1433,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/datalakestore:
     dependencies:
@@ -1446,15 +1449,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/datamigration:
     dependencies:
@@ -1462,15 +1465,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/dataprotection:
     dependencies:
@@ -1478,15 +1481,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/datareplication:
     dependencies:
@@ -1494,15 +1497,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/datashare:
     dependencies:
@@ -1510,15 +1513,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/dbformariadb:
     dependencies:
@@ -1526,15 +1529,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/dbformysql:
     dependencies:
@@ -1542,15 +1545,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/dbforpostgresql:
     dependencies:
@@ -1558,15 +1561,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/delegatednetwork:
     dependencies:
@@ -1574,15 +1577,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/dependencymap:
     dependencies:
@@ -1590,15 +1593,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/desktopvirtualization:
     dependencies:
@@ -1606,15 +1609,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/devcenter:
     dependencies:
@@ -1622,15 +1625,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/devhub:
     dependencies:
@@ -1638,15 +1641,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/deviceprovisioningservices:
     dependencies:
@@ -1654,15 +1657,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/deviceregistry:
     dependencies:
@@ -1670,15 +1673,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/deviceupdate:
     dependencies:
@@ -1686,15 +1689,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/devopsinfrastructure:
     dependencies:
@@ -1702,15 +1705,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/devspaces:
     dependencies:
@@ -1718,15 +1721,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/devtestlab:
     dependencies:
@@ -1734,15 +1737,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/digitaltwins:
     dependencies:
@@ -1750,15 +1753,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/discovery:
     dependencies:
@@ -1766,15 +1769,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/dns:
     dependencies:
@@ -1782,15 +1785,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/dnsresolver:
     dependencies:
@@ -1798,15 +1801,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/domainregistration:
     dependencies:
@@ -1814,15 +1817,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/durabletask:
     dependencies:
@@ -1830,15 +1833,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/dynamics365fraudprotection:
     dependencies:
@@ -1846,15 +1849,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/easm:
     dependencies:
@@ -1862,15 +1865,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/edge:
     dependencies:
@@ -1878,15 +1881,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/edgemarketplace:
     dependencies:
@@ -1894,15 +1897,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/edgeorder:
     dependencies:
@@ -1910,15 +1913,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/education:
     dependencies:
@@ -1926,15 +1929,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/elastic:
     dependencies:
@@ -1942,15 +1945,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/elasticsan:
     dependencies:
@@ -1958,15 +1961,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/engagementfabric:
     dependencies:
@@ -1974,15 +1977,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/enterpriseknowledgegraph:
     dependencies:
@@ -1990,15 +1993,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/eventgrid:
     dependencies:
@@ -2006,15 +2009,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/eventhub:
     dependencies:
@@ -2022,15 +2025,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/extendedlocation:
     dependencies:
@@ -2038,15 +2041,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/fabric:
     dependencies:
@@ -2054,15 +2057,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/features:
     dependencies:
@@ -2070,15 +2073,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/fileshares:
     dependencies:
@@ -2086,15 +2089,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/fluidrelay:
     dependencies:
@@ -2102,15 +2105,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/frontdoor:
     dependencies:
@@ -2118,15 +2121,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/graphservices:
     dependencies:
@@ -2134,15 +2137,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/guestconfiguration:
     dependencies:
@@ -2150,15 +2153,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/hardwaresecuritymodules:
     dependencies:
@@ -2166,15 +2169,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/hdinsight:
     dependencies:
@@ -2182,15 +2185,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/healthbot:
     dependencies:
@@ -2198,15 +2201,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/healthcareapis:
     dependencies:
@@ -2214,15 +2217,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/healthdataaiservices:
     dependencies:
@@ -2230,15 +2233,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/horizondb:
     dependencies:
@@ -2246,15 +2249,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/hybridcloud:
     dependencies:
@@ -2262,15 +2265,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/hybridcompute:
     dependencies:
@@ -2278,15 +2281,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/hybridconnectivity:
     dependencies:
@@ -2294,15 +2297,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/hybridcontainerservice:
     dependencies:
@@ -2310,15 +2313,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/hybridnetwork:
     dependencies:
@@ -2326,15 +2329,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/impact:
     dependencies:
@@ -2342,15 +2345,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/importexport:
     dependencies:
@@ -2358,15 +2361,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/integrationspaces:
     dependencies:
@@ -2374,15 +2377,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/intune:
     dependencies:
@@ -2390,15 +2393,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/iotcentral:
     dependencies:
@@ -2406,15 +2409,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/iotfirmwaredefense:
     dependencies:
@@ -2422,15 +2425,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/iothub:
     dependencies:
@@ -2438,15 +2441,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/iotoperations:
     dependencies:
@@ -2454,15 +2457,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/iotoperationsdataprocessor:
     dependencies:
@@ -2470,15 +2473,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/iotoperationsmq:
     dependencies:
@@ -2486,15 +2489,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/iotoperationsorchestrator:
     dependencies:
@@ -2502,15 +2505,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/keyvault:
     dependencies:
@@ -2518,15 +2521,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/kubernetes:
     dependencies:
@@ -2534,15 +2537,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/kubernetesconfiguration:
     dependencies:
@@ -2550,15 +2553,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/kubernetesruntime:
     dependencies:
@@ -2566,15 +2569,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/kusto:
     dependencies:
@@ -2582,15 +2585,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/labservices:
     dependencies:
@@ -2598,15 +2601,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/loadtestservice:
     dependencies:
@@ -2614,15 +2617,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/logic:
     dependencies:
@@ -2630,15 +2633,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/m365securityandcompliance:
     dependencies:
@@ -2646,15 +2649,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/machinelearning:
     dependencies:
@@ -2662,15 +2665,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/machinelearningservices:
     dependencies:
@@ -2678,15 +2681,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/maintenance:
     dependencies:
@@ -2694,15 +2697,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/managedidentity:
     dependencies:
@@ -2710,15 +2713,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/managednetwork:
     dependencies:
@@ -2726,15 +2729,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/managednetworkfabric:
     dependencies:
@@ -2742,15 +2745,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/managedops:
     dependencies:
@@ -2758,15 +2761,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/managedservices:
     dependencies:
@@ -2774,15 +2777,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/management:
     dependencies:
@@ -2790,15 +2793,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/managementpartner:
     dependencies:
@@ -2806,15 +2809,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/manufacturingplatform:
     dependencies:
@@ -2822,15 +2825,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/maps:
     dependencies:
@@ -2838,15 +2841,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/marketplace:
     dependencies:
@@ -2854,15 +2857,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/migrate:
     dependencies:
@@ -2870,15 +2873,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/mission:
     dependencies:
@@ -2886,15 +2889,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/mongocluster:
     dependencies:
@@ -2902,15 +2905,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/monitor:
     dependencies:
@@ -2918,15 +2921,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/mysqldiscovery:
     dependencies:
@@ -2934,15 +2937,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/netapp:
     dependencies:
@@ -2950,15 +2953,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/network:
     dependencies:
@@ -2966,15 +2969,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/networkcloud:
     dependencies:
@@ -2982,15 +2985,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/networkfunction:
     dependencies:
@@ -2998,15 +3001,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/notificationhubs:
     dependencies:
@@ -3014,15 +3017,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/offazure:
     dependencies:
@@ -3030,15 +3033,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/offazurespringboot:
     dependencies:
@@ -3046,15 +3049,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/onlineexperimentation:
     dependencies:
@@ -3062,15 +3065,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/openenergyplatform:
     dependencies:
@@ -3078,15 +3081,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/operationalinsights:
     dependencies:
@@ -3094,15 +3097,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/operationsmanagement:
     dependencies:
@@ -3110,15 +3113,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/orbital:
     dependencies:
@@ -3126,15 +3129,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/peering:
     dependencies:
@@ -3142,15 +3145,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/policyinsights:
     dependencies:
@@ -3158,15 +3161,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/portal:
     dependencies:
@@ -3174,15 +3177,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/portalservices:
     dependencies:
@@ -3190,15 +3193,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/powerbi:
     dependencies:
@@ -3206,15 +3209,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/powerbidedicated:
     dependencies:
@@ -3222,15 +3225,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/powerplatform:
     dependencies:
@@ -3238,15 +3241,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/privatedns:
     dependencies:
@@ -3254,15 +3257,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/professionalservice:
     dependencies:
@@ -3270,15 +3273,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/programenrollment:
     dependencies:
@@ -3286,15 +3289,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/programmableconnectivity:
     dependencies:
@@ -3302,15 +3305,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/providerhub:
     dependencies:
@@ -3318,15 +3321,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/purview:
     dependencies:
@@ -3334,15 +3337,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/quantum:
     dependencies:
@@ -3350,15 +3353,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/quota:
     dependencies:
@@ -3366,15 +3369,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/recommendationsservice:
     dependencies:
@@ -3382,15 +3385,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/recoveryservices:
     dependencies:
@@ -3398,15 +3401,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/redhatopenshift:
     dependencies:
@@ -3414,15 +3417,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/redis:
     dependencies:
@@ -3430,15 +3433,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/redisenterprise:
     dependencies:
@@ -3446,15 +3449,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/relationships:
     dependencies:
@@ -3462,15 +3465,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/relay:
     dependencies:
@@ -3478,15 +3481,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/resourceconnector:
     dependencies:
@@ -3494,15 +3497,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/resourcegraph:
     dependencies:
@@ -3510,15 +3513,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/resourcehealth:
     dependencies:
@@ -3526,15 +3529,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/resources:
     dependencies:
@@ -3542,15 +3545,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/saas:
     dependencies:
@@ -3558,15 +3561,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/scheduler:
     dependencies:
@@ -3574,15 +3577,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/scom:
     dependencies:
@@ -3590,15 +3593,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/scvmm:
     dependencies:
@@ -3606,15 +3609,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/search:
     dependencies:
@@ -3622,15 +3625,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/secretsynccontroller:
     dependencies:
@@ -3638,15 +3641,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/security:
     dependencies:
@@ -3654,15 +3657,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/securityandcompliance:
     dependencies:
@@ -3670,15 +3673,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/securityinsights:
     dependencies:
@@ -3686,15 +3689,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/serialconsole:
     dependencies:
@@ -3702,15 +3705,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/servicebus:
     dependencies:
@@ -3718,15 +3721,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/servicefabric:
     dependencies:
@@ -3734,15 +3737,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/servicefabricmesh:
     dependencies:
@@ -3750,15 +3753,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/servicelinker:
     dependencies:
@@ -3766,15 +3769,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/servicenetworking:
     dependencies:
@@ -3782,15 +3785,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/signalrservice:
     dependencies:
@@ -3798,15 +3801,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/softwareplan:
     dependencies:
@@ -3814,15 +3817,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/solutions:
     dependencies:
@@ -3830,15 +3833,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/sovereign:
     dependencies:
@@ -3846,15 +3849,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/sql:
     dependencies:
@@ -3862,15 +3865,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/sqlvirtualmachine:
     dependencies:
@@ -3878,15 +3881,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/standbypool:
     dependencies:
@@ -3894,15 +3897,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/storage:
     dependencies:
@@ -3910,15 +3913,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/storageactions:
     dependencies:
@@ -3926,15 +3929,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/storagecache:
     dependencies:
@@ -3942,15 +3945,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/storagediscovery:
     dependencies:
@@ -3958,15 +3961,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/storagemover:
     dependencies:
@@ -3974,15 +3977,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/storagepool:
     dependencies:
@@ -3990,15 +3993,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/storagesync:
     dependencies:
@@ -4006,15 +4009,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/streamanalytics:
     dependencies:
@@ -4022,15 +4025,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/subscription:
     dependencies:
@@ -4038,15 +4041,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/synapse:
     dependencies:
@@ -4054,15 +4057,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/syntex:
     dependencies:
@@ -4070,15 +4073,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/testbase:
     dependencies:
@@ -4086,15 +4089,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/timeseriesinsights:
     dependencies:
@@ -4102,15 +4105,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/trafficmanager:
     dependencies:
@@ -4118,15 +4121,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/verifiedid:
     dependencies:
@@ -4134,15 +4137,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/videoindexer:
     dependencies:
@@ -4150,15 +4153,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/virtualmachineimages:
     dependencies:
@@ -4166,15 +4169,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/vmwarecloudsimple:
     dependencies:
@@ -4182,15 +4185,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/web:
     dependencies:
@@ -4198,15 +4201,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/webpubsub:
     dependencies:
@@ -4214,15 +4217,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/weightsandbiases:
     dependencies:
@@ -4230,15 +4233,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/widget:
     dependencies:
@@ -4246,15 +4249,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/windowsesu:
     dependencies:
@@ -4262,15 +4265,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/windowsiot:
     dependencies:
@@ -4278,15 +4281,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   packages/workloads:
     dependencies:
@@ -4294,15 +4297,15 @@ importers:
         specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
-        specifier: ^3.142.0
-        version: 3.274.1(typescript@5.9.3)
+        specifier: 'catalog:'
+        version: 3.274.1(typescript@6.0.3)
     devDependencies:
       '@types/node':
-        specifier: ^20.0.0
-        version: 20.19.43
+        specifier: 'catalog:'
+        version: 26.6.6
       typescript:
-        specifier: ^5.0.0
-        version: 5.9.3
+        specifier: 'catalog:'
+        version: 6.0.3
 
   scripts:
     dependencies:
@@ -4671,9 +4674,6 @@ packages:
   '@types/google-protobuf@3.15.12':
     resolution: {integrity: sha512-40um9QqwHjRS92qnOaDpL7RmDK15NuZYo9HihiJRbYkMQZlWnuH8AdvbMy8/o6lgLmKbDUKa+OALCltHdbOTpQ==}
 
-  '@types/node@20.19.43':
-    resolution: {integrity: sha512-6oYBAi5ikg4Pl+kGsoYtawUMBT2zZMCvPNF7pVLnHZfd1zf38DRiWn/gT01RYCdUqkv7Fhr+C9ot4/tb+2sVvA==}
-
   '@types/node@26.6.6':
     resolution: {integrity: sha512-MzQj+8Kx3XI40OmUAE6Qoh58ZMNstNNMwn2nfd3qWsfe7nDNSqJNzes4njhz6AHwrSHOffSLwXU6yb474Q4aog==}
 
@@ -4902,18 +4902,10 @@ packages:
     resolution: {integrity: sha512-3GJYwig8ygEI89oaOZdduJX8/aw6O9eRPYHoIt6T3FZl9hkKjiyIspufJoVgqXihPoJu8M5CSV0DlZvzfohBCw==}
     hasBin: true
 
-  typescript@5.9.3:
-    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
   typescript@6.0.3:
     resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
     engines: {node: '>=14.17'}
     hasBin: true
-
-  undici-types@6.21.0:
-    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
   undici-types@8.12.4:
     resolution: {integrity: sha512-GNCQH3MbVGB8OAVAoTiLH8pu4wx5Ni3DWKpnBzGj3WDsi8EwmK0aOVBooNEt+g5YL1eHPxcS9XUTouwFU6j1kQ==}
@@ -5236,7 +5228,7 @@ snapshots:
 
   '@protobufjs/utf8@1.1.2': {}
 
-  '@pulumi/pulumi@3.274.1(typescript@5.9.3)':
+  '@pulumi/pulumi@3.274.1(typescript@6.0.3)':
     dependencies:
       '@grpc/grpc-js': 1.14.7
       '@logdna/tail-file': 2.2.0
@@ -5263,7 +5255,7 @@ snapshots:
       source-map-support: 0.5.21
       upath: 1.2.0
     optionalDependencies:
-      typescript: 5.9.3
+      typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
 
@@ -5290,10 +5282,6 @@ snapshots:
       bun-types: 1.4.4
 
   '@types/google-protobuf@3.15.12': {}
-
-  '@types/node@20.19.43':
-    dependencies:
-      undici-types: 6.21.0
 
   '@types/node@26.6.6':
     dependencies:
@@ -5439,7 +5427,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.2
-      '@types/node': 20.19.43
+      '@types/node': 26.6.6
       long: 5.3.2
 
   require-directory@2.1.1: {}
@@ -5505,11 +5493,7 @@ snapshots:
       '@turbo/windows-64': 2.11.10
       '@turbo/windows-arm64': 2.11.10
 
-  typescript@5.9.3: {}
-
   typescript@6.0.3: {}
-
-  undici-types@6.21.0: {}
 
   undici-types@8.12.4: {}
 
