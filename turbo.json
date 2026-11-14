@@ -11,6 +11,11 @@
                 "**/*.d.ts",
             ]
         },
+        "check-types": {
+            "dependsOn": [
+                "^check-types"
+            ]
+        },
         "lint": {
             "dependsOn": [
                 "^lint"

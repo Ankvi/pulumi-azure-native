@@ -6,8 +6,8 @@
 		"commit-and-push": "bun index.ts commit-and-push",
 		"list-module-names": "bun index.ts list-module-names",
 		"check-version": "bun index.ts check-version",
-		"lint": "tsc --noEmit",
-		"format": "biome format"
+		"check-types": "tsc --noEmit",
+		"lint": "biome check"
 	},
 	"devDependencies": {
 		"@types/node": "catalog:",

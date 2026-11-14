@@ -47,7 +47,7 @@ class TemplateLoader {
 			scripts: {
 				build: "tsc",
 				clean: "tsc --build --clean",
-				lint: "tsc --noEmit",
+				"check-types": "tsc --noEmit",
 				prepublishOnly: "./prepublish.sh",
 			},
 		};

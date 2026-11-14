@@ -5,10 +5,10 @@ node_modules/ci:
 	IGNORE_PULUMI_SCRIPTS=1 pnpm install --frozen-lockfile
 
 lint:
-	pnpm -r run lint
+	pnpm check-types
 
 build:
-	pnpm -r run build
+	pnpm build
 
 publish:
 	pnpm -r publish --no-git-checks
