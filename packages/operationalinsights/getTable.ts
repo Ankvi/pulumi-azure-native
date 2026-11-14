@@ -4,9 +4,9 @@ import * as types from "./types";
 /**
  * Gets a Log Analytics workspace table.
  *
- * Uses Azure REST API version 2023-09-01.
+ * Uses Azure REST API version 2026-03-01.
  *
- * Other available API versions: 2021-12-01-preview, 2022-10-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-12-01-preview, 2022-10-01, 2023-09-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promise<GetTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,7 +37,7 @@ export interface GetTableArgs {
  */
 export interface GetTableResult {
     /**
-     * The table data archive retention in days. Calculated as (totalRetentionInDays-retentionInDays)
+     * The tables long-term retention in days. Calculated as (totalRetentionInDays-retentionInDays).
      */
     readonly archiveRetentionInDays: number;
     /**
@@ -45,7 +45,7 @@ export interface GetTableResult {
      */
     readonly azureApiVersion: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
@@ -61,6 +61,10 @@ export interface GetTableResult {
      */
     readonly plan?: string;
     /**
+     * The protection level of the table. Determines the default data access isolation behavior.
+     */
+    readonly protectionLevel?: string;
+    /**
      * Table's current provisioning state. If set to 'updating', indicates a resource lock due to ongoing operation, forbidding any update to the table until the ongoing operation is concluded.
      */
     readonly provisioningState: string;
@@ -73,7 +77,7 @@ export interface GetTableResult {
      */
     readonly resultStatistics: types.outputs.ResultStatisticsResponse;
     /**
-     * The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
+     * In Analytics table: the tables analytics retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention. In Basic and Auxiliary table: read only property.
      */
     readonly retentionInDays?: number;
     /**
@@ -89,11 +93,11 @@ export interface GetTableResult {
      */
     readonly searchResults?: types.outputs.SearchResultsResponse;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     readonly systemData: types.outputs.SystemDataResponse;
     /**
-     * The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
+     * The table total retention in days, between 4 and 4383. Setting this property to -1 will default to retentionInDays.
      */
     readonly totalRetentionInDays?: number;
     /**
@@ -108,9 +112,9 @@ export interface GetTableResult {
 /**
  * Gets a Log Analytics workspace table.
  *
- * Uses Azure REST API version 2023-09-01.
+ * Uses Azure REST API version 2026-03-01.
  *
- * Other available API versions: 2021-12-01-preview, 2022-10-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+ * Other available API versions: 2021-12-01-preview, 2022-10-01, 2023-09-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
  */
 export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

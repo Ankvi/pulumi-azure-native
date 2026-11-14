@@ -27,7 +27,7 @@
     "scripts": {
         "build": "tsc",
         "clean": "tsc --build --clean",
-        "lint": "tsc --noEmit",
+        "check-types": "tsc --noEmit",
         "prepublishOnly": "./prepublish.sh",
         "install": "node scripts/install-pulumi-plugin.js resource azure-native v3.30.0"
     }
